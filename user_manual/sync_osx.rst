@@ -1,14 +1,39 @@
 Synchronizing with OS X
 =======================
 
-To use ownCloud with iCal you will need to use the following URL:
+Setup synchronisation with Mountain Lion (10.8)
+-----------------------------------------------
 
-  http://ADDRESS/remote.php/caldav/principals/username/
+*Note: Although these steps belong to Mountain Lion (10.8), they should be similar with Lion (10.7)*
 
-In principle the setup is the same as with iOS using the path
-``ADDRESS/remote.php/caldav/principals/username/`` to sync with
-ownCloud. For OS X 10.7 Lion and 10.8 Mountain Lion everything works
-fine, but OS X 10.6 (Snow Leopard) and older needs some fiddling to
+Open the *System Preferences*, choose *Mail, Contacts & Calendars* and scroll down to select *Add Other Account...*.
+
+.. image:: /images/osx-10-8-1.png
+
+Synchronising the Calendar
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Select *Add a CalDAV account*.
+
+.. image:: /images/osx-10-8-2.png
+
+Enter your ownCloud-username, your password and the full URL-path to your ownCloud-installation:
+``ADDRESS/remote.php/caldav/principals/USERNAME/`` (Replace ADDRESS and USERNAME.)
+
+Synchronising the Addressbook
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Select *Add a CardDAV account*.
+
+.. image:: /images/osx-10-8-3.png
+
+Enter your ownCloud-username, your password and the full URL-path to your ownCloud-installation:
+``ADDRESS/remote.php/carddav/principals/USERNAME/`` (Replace ADDRESS and USERNAME, note the url is slightly different to the URL in the previous step.)
+
+Installation directions for Snow Leopard (10.6)
+-----------------------------------------------
+
+While OS X Lion and Mountain Lion work fine, OS X Snow Leopard (10.6) and older needs some fiddling to
 work. A user contributed the following:
 
 #. Make sure, Addressbook is not running. If it is, select the windows
