@@ -31,11 +31,16 @@ major linux distributions.
 
 Mobile
 -------
+To connect to your ownCloud server with the ownCloud mobile apps, use the base URL and folder only::
 
-There are apps in development for both `Android`_ and `webOS`_. Feel
-free to `contribute, if you can`_! Right now you can use other apps to
-connect to ownCloud from your phone via WebDAV. `WebDAV Navigator`_ is a
-good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_.
+    example.com/owncloud
+
+No need to add remote.php/webdav as you do for any other WebDAV client.
+
+There are also apps in development for both `Android`_ and `webOS`_. Feel
+free to `contribute, if you can`_! 
+
+You may also connect to ownCloud from your phone or tablet via WebDAV: `WebDAV Navigator`_ is a good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_.
 
 
 
