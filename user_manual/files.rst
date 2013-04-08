@@ -40,7 +40,9 @@ No need to add remote.php/webdav as you do for any other WebDAV client.
 There are also apps in development for both `Android`_ and `webOS`_. Feel
 free to `contribute, if you can`_! 
 
-You may also connect to ownCloud from your phone or tablet via WebDAV: `WebDAV Navigator`_ is a good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_.
+You may also connect to ownCloud from your phone or tablet via WebDAV: `WebDAV Navigator`_ is a good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_. The URL for these is::
+
+    example.com/owncloud/remote.php/webdav
 
 
 
