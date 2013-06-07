@@ -17,6 +17,7 @@ And as *optional* dependencies:
 
 * php5-intl
 * php5-sqlite (>= 3)
+* php5-pgsql (or php-pgsql depending on your distro)
 * php5-mysql
 * smbclient
 * curl
@@ -35,7 +36,7 @@ Commands for Ubuntu and Debian (run as root):
 ::
 
   apt-get install apache2 php5 php5-gd php-xml-parser php5-intl
-  apt-get install php5-sqlite php5-mysql smbclient curl libcurl3 php5-curl
+  apt-get install php5-sqlite php5-mysql php5-pgsql smbclient curl libcurl3 php5-curl
 
 If you are running Ubuntu 10.04 LTS you will need to update your PHP from
 this `PHP PPA`_:
