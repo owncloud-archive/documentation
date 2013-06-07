@@ -24,8 +24,8 @@ And as *optional* dependencies:
 * libcurl3
 * php5-curl
 
-You have to install at least one of php5-sqlite or php5-mysql, depending
-on which of the two database systems you want to use.
+You have to install at least one of php5-sqlite, php5-pgsql or php5-mysql, depending
+on which of the three database systems (SQLite, PostgreSQL or MySQL) you want to use.
 
 smbclient is only used if you want to mount SMB shares to your ownCloud.
 The curl packages are needed for some apps (e.g. http user authentication)
