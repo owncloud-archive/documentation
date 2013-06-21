@@ -14,7 +14,7 @@ ownCloud's core business is to provide access to your files and to files shared 
     
 OC Package
 ~~~~~~~~~~
-The three OC_* classes are part of the API for applications. The OC_Files class can be used for retrieved the actual content of a file or directory (by creating a ZIP file for example). The OC_FileSystem class deprecated and simply forward the method calls to OC\Files\FileSystem. Finnaly the OC_FileSystemView class is an extension of the View class and again doesn't add any extra functionality.
+The three OC_* classes are part of the API for applications. The OC_Files class can be used for retrieved the actual content of a file or directory (by creating a ZIP file for example). The OC_FileSystem class deprecated and simply forward the method calls to OC\\Files\\FileSystem. Finnaly the OC_FileSystemView class is an extension of the View class and again doesn't add any extra functionality.
 
 Files Package
 ~~~~~~~~~~~~~
@@ -33,7 +33,7 @@ Using the view class, ownCloud can create a certain "view" in which you can work
 
 Mapper
 ^^^^^^
-The mapper class can be used to translate relative URL's to absolute URL's.
+The mapper is used to map file paths to "slugified" file path for use on storage backends without proper unicode support (mainly for servers running on windows). This class is used by the MappedLocal class.
 
 
 Mount Package
