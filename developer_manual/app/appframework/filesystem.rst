@@ -6,7 +6,7 @@ File System
 
 ownCloud's core business is to provide access to your files and to files shared with you by others. In the API for apps in the lib folder are a few classes which can be used to create, delete and modify files which are available for the current user. Below you can find the class diagram containing the most important classes for the file system API.
 
-.. figure:: http://s3.postimg.org/gqk0sv1hv/File_System.jpg
+.. figure:: ../../images/File_System.jpg
     :width: 500px
     :align: center
     :alt: Class diagram of the file system.
@@ -58,7 +58,7 @@ Workflow
 
 So how does a simple request for Storage object looks like. There are two options; by directly creating a view for a certain fake root or by using the File system. Below you can a sequence diagram of the workflow of initializing the FileSystem and getting the path of the local version of a file. 
 
-.. figure:: http://s3.postimg.org/uy9phie6r/sequence_File_System.jpg
+.. figure:: ../../images/sequence_File_System.jpg
     :width: 500px
     :align: center
     :alt: Sequence diagram of the file system.
