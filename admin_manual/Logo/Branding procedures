@@ -1,0 +1,79 @@
+Guidance for editing logos/branding in Owncloud. Follow this guidline can save you many hour of frustration. 
+
+Although editing the logo's in owncloud is the easiest function for customization or theme changes in owncloud, it does not come without a basic understanding of how the logo's function in Owncloud.  They are simply .jpg files or .png files like you might find in your worpress website.  There is more to it but don't worry. Following these steps is easy and will have your new Owncloud server looking customized in no time. If you would like to see a custom logo functioning in owncloud, you can visit https://myowncloud9.com/owncloud9/
+
+Getting Started:
+
+1) First, you need to make a copy of the /image/ folder from your main owncloud directory folder. 
+
+		-Assuming you named your owncloud directory 'owncloud', You can find the image directory here: 
+		<yourwebdirectory/owncloud/core/img/> 
+
+		-Copy the entire /img/ folder to your desktop. Make a 2nd copy of that folder and name it edited files. 
+		The reason for the copy is, you want to maintain a clean unedited copy of all of the files because you will be
+		overwriting the files in one folder on your desktop and the files within the /img/ folder on the server. 
+		It's always good to have a clean version to just drop back into the server since you will most likely make a few
+		mistakes and this folder copy will save you some hair loss. 
+		
+		-Use your favorite FTP program to navigate through your owncloud directories and
+		locate the /img/ directory. Drag and drop copies onto my desktop. Once on your desktop, make the copy we talked
+		about before.  I use filezilla FTP client for this. You can download it for free here: https://filezilla-project.org
+		
+2) Editing the logo file(s)	
+		
+		-Now that the file directories are copied, you can begin editing the files. You don't have to be a graphic artist to
+		do this and if you made a copy of the IMG directory you don't have any worries. You will need a grahics editing
+		program to edit the files but not just any program. It must be able to edit .svg files. Photoshop will not work here
+		
+		I suggest getting a free trial of Adobe Illustrator. Their new creative cloud is lean and fast and the free trial is
+		fully featured. Go here to sign up for the free trial. https://creative.adobe.com/products/illustrator
+		
+		-First edit the larger logo. This is the one that you see first when you open the login page. The name of that file
+		is simply 'Logo". You will NOT be editing the .PNG version of this logo individually so don't even open it. In the
+		IMG folder you will see two files with the name "logo" among other duplicate named files. You only want to open and
+		edit the .SVG version and that is the same for all graphics here, not just the Logo file. 
+		
+		-These file versions might look like an HTML page icon and that's because they are. These are not really a graphics
+		file at all. The graphics are generated from these files and these files are based on actual code behind the
+		pictures however, Adobe Illustrator (AI) handles the code while you just edit the pretty pictures. (This is the
+		biggest confusion most people have with regards to editing the logos in owncloud). 
+		
+		-Open the file logo.svg from within Adobe AI. Do not change the size of the graphic unless you know what you are
+		doing. Just click the +plus (enlarge) option to zoom in for a larger view to edit if you need to. NOTE: When you
+		open this file it will appear to be a blank logo. It is not blank but appears that way because the logo is white and
+		against a transparent background and it is displayed in vector format. If you click the logo you will see the vector
+		lines appear. If you add anything with color it will display for you and that is supposed to happen. 
+		
+		-IMPORTANT: Please pay close attention to the following process. You can edit the logo as you please including
+		colors,logo images etc. Stay within the margins of the file template and you won't force Adobe to increase the size
+		of the file.  Stay clear of the edges by a few pixles.
+		
+3) SAVING YOUR NEW LOGO FILES
+
+		-Now that you have edited your logo.svg file, you're ready to save and export. First click 'save' in Adobe. Do not
+		change the format or adjust any settings at all, just let Adobe's default settings work here.
+		
+		EXPORT: Now it's time to export. Remember earlier we mentioned NOT editing the '.png' files? You do not edit it but
+		ou will overwrite that file now. After you click save,go to the file menu in Adobe AI and scroll down to "export'. 
+		
+		Your save window will appear and now you will chose a different setting but do not change anything else.
+		Change the file setting to .png but do not change the name of the file. Once you change to .png you will see all of
+		the files that are .png including the file you want to overwrite. Locate the logo.png file and double click the file
+		You will be asked if you would like to overwrite or replace the file.  Click 'Yes'.
+		-Note:An additional window may or may not come up depending on what graphics you added or fonts. If you used some
+		fancy font that is not a google or common internet font you will need to alter settings at this stage. You can learn
+		about custom fonts included in .svg files here :
+		http://graphicdesign.stackexchange.com/questions/10733/how-do-i-use-a-custom-font-in-an-svg-image-on-my-site
+		
+		It's best to use google fonts or typical internet fonts and this won't be an issue. If you are not sure if the font 
+		you used is a google or internet font, you can find out by checking the website after you have uploaded your new
+		files to owncloud from a computer that does not have the font you used installed locally. If the machine has the
+		font, it will displayed normally as you intended. If it does not have the font, a default font will be substituted.
+		We told you the .svg file isn't a graphics file.  Now, do the same thing for the logo-wide.svg file and whatever other graphics 
+		you intend on changing. we suggest sticking to the logo and logo-wide for now. 
+		
+4) Moving new logo's back to Owncloud Server <final steps>	
+		Once you have edited all of these files to your liking, it's time to put them on the server. Using your FTP program, simply drag and drop files into the /owncloud/core/img/ folder. Click 'overwrite file' when asked and you are finished. Your new logos for owncloud will be live. 
+		
+		If you do not see your logo's appear right away even after a chache empty in your browser, you may have a delay on your server's cache.  Just keep refreshing nthe browser a few times and they will show up.  If they don't show up, you either missed a step or uploaded the wrong files.
+		If you have further questions regarding changing or editing the logo's or graphics you can post your questions to the owncloud community on github.
