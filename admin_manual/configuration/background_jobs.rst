@@ -53,13 +53,14 @@ may have.
 
 **Example**
 
-To run a cron job on a *nix system, e.g. every 15min, under the default webserver
-user, e.g. **www-data**, you need to set-up the following cron job to call the
-**cron.php** script. Please check the crontab man page for the exact command syntax.
+To run the owncloud cron script **cron.php** every minute as the default webserver user 
+on a Linux system (**www-data** in the example), you need to edit the system's crontab.
+
+Please check the crontab man page for the exact command syntax.
 
 ::
 
   # crontab -u www-data -e
-  */15  *  *  *  * php -f /var/www/owncloud/cron.php
+  *  *  *  *  * php -f /var/www/owncloud/cron.php
 
 .. _easyCron: http://www.easycron.com/  
