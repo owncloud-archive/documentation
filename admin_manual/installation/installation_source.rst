@@ -108,6 +108,25 @@ For systemd systems (fedora, ArchLinux, Fedora, OpenSuse) use::
 
 In order for the maximum upload size to be configurable, the .htaccess file in the ownCloud folder needs to be made writable by the server.
 
+
+Set up your database and database user
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+A separate chapter explains how to set up the owncloud database and database user for various database systems:
+
+* :doc:`../configuration/configuration_database`
+
+When you use MySQL or MariaDB, you can create a new database "owncloud" and a new user "ownclouduser" with these lines:
+
+.. code-block:: sql
+
+  shell> mysql -u root -p
+  mysql> CREATE USER 'ownclouduser'@'localhost' IDENTIFIED BY 'password';
+         CREATE DATABASE IF NOT EXISTS owncloud;
+         GRANT ALL PRIVILEGES ON owncloud.* TO 'ownclouduser'@'localhost' IDENTIFIED BY 'password';
+         FLUSH PRIVILEGES;
+         EXIT;
+
+
 Follow the Install Wizard
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 Open your web browser and navigate to your ownCloud instance. If you are

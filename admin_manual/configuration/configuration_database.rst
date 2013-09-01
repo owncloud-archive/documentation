@@ -52,7 +52,7 @@ when you login for the first time.
 
 To start the MySQL command line mode use::
 
-  mysql -uroot -p
+  mysql -u root -p
 
 Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
