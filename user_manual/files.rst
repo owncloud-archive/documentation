@@ -11,7 +11,7 @@ In most cases, accessing ownCloud using your file manager will be
 sufficient:
 
 -  *Connect to Server...* `in your file manager`_:
-   ``webdav://ADDRESS/files/webdav.php``
+   ``webdav://youraddress.com/remote.php/webdav``
 
 -  Change the protocol to ``dav://`` in Nautilus or ``http://`` in
       Finder
@@ -33,7 +33,7 @@ Mobile
 -------
 To connect to your ownCloud server with the ownCloud mobile apps, use the base URL and folder only::
 
-    example.com/owncloud
+    youraddress.com/owncloud
 
 No need to add remote.php/webdav as you do for any other WebDAV client.
 
@@ -42,7 +42,7 @@ free to `contribute, if you can`_!
 
 You may also connect to ownCloud from your phone or tablet via WebDAV: `WebDAV Navigator`_ is a good (proprietary) app for `Android App`_ , `iPhone`_ & `BlackBerry`_. The URL for these is::
 
-    example.com/owncloud/remote.php/webdav
+    youraddress.com/owncloud/remote.php/webdav
 
 
 
