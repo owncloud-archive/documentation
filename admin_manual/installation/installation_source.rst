@@ -114,9 +114,9 @@ Open your web browser and navigate to your ownCloud instance. If you are
 installing ownCloud on the same machine as you will access the install wizard
 from, the url will be: http://localhost/ (or http://localhost/owncloud).
 
-For basic installs we recommend SQLite as it is easy to setup (ownCloud will do it for you). For larger installs you should use MySQL or PostgreSQL. Click on the Advanced options to show the configuration options. You may enter admin
-credentials and let ownCloud create its own database user, or enter a preconfigured user.  If you are not using apache as the webserver, please set the data directory to a location outside of the document root. See the advanced
-install settings.
+For basic installs we recommend SQLite as it is easy to setup (ownCloud will do it for you). In that case ownCloud requires write access to the directory containing the SQLite file.
+
+For larger installs you should use MySQL or PostgreSQL. Click on the Advanced options to show the configuration options. You may enter admin credentials and let ownCloud create its own database user, or enter a preconfigured user.  If you are not using apache as the webserver, please set the data directory to a location outside of the document root. See the advanced install settings.
 
 Test your Installation
 ~~~~~~~~~~~~~~~~~~~~~~
