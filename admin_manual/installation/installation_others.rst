@@ -143,8 +143,6 @@ Patch the package source::
 Increment the package version with ``dch -i``. This will open the changelog with a new entry. You can save as-is or add info to it. The important bit is that the version is bumped so apt will not try to "upgrade" back to Debian's version.
 
 Then build with ``debuild`` and install the .debs for any Lighttpd packages you already have installed.
-    
-
 
 Yaws Configuration
 ------------------
