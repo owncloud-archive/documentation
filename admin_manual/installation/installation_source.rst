@@ -32,6 +32,7 @@ And as *optional* dependencies:
 * PHP module bz2
 * PHP module curl
 * PHP module exif (for image rotation in pictures app)
+* PHP module fileinfo
 * PHP module intl
 * PHP module ldap (for ldap integration)
 * PHP module mcrypt
