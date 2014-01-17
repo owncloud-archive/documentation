@@ -52,7 +52,7 @@ For preview generation (*optional*):
 For external storage (*optional*):
 
 * smbclient (for SMB storage)
-* php5-ftp (for FTP storage)
+* PHP module ftp (for FTP storage)
 
 Please check your distribution, operating system or hosting partner documentation on how to install/enable
 these modules.
