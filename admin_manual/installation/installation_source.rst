@@ -27,7 +27,7 @@ on which of the three database systems (SQLite, PostgreSQL or MySQL) you want to
 and activate its PDO module in the **php.ini**.
 
 smbclient is only used if you want to mount SMB shares to your ownCloud.
-The php5-curl package is required for some apps (e.g. http user authentication)
+The php5-curl package is required for some apps (e.g. http user authentication).
 
 
 Commands for Ubuntu and Debian (run as root):
