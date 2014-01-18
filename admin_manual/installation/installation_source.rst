@@ -29,14 +29,14 @@ Database connectors (pick at least one):
 
 And as *optional* dependencies:
 
-* PHP module bz2
-* PHP module curl
+* PHP module bz2 (recommended, required for extraction of apps)
+* PHP module curl (highly recommended, some functionality depends on this)
 * PHP module exif (for image rotation in pictures app)
-* PHP module fileinfo
-* PHP module intl
+* PHP module fileinfo (highly recommended, increases file analysis performance)
+* PHP module intl (increases language translation performance)
 * PHP module ldap (for ldap integration)
-* PHP module mcrypt
-* PHP module openssl
+* PHP module mcrypt (increases file encryption performance)
+* PHP module openssl (required for accessing HTTPS resources)
 
 For performance increase (*optional* / select one of the following):
 
