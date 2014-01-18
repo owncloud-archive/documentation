@@ -27,13 +27,16 @@ Database connectors (pick at least one):
 * PHP module mysql
 * PHP module pgsql (requires PostgreSQL >= 9.0)
 
-And as *optional* dependencies:
+*Recommended* dependencies:
 
-* PHP module bz2
 * PHP module curl
-* PHP module exif (for image rotation in pictures app)
 * PHP module fileinfo
 * PHP module intl
+
+*Optional* dependencies:
+
+* PHP module bz2
+* PHP module exif (for image rotation in pictures app)
 * PHP module ldap (for ldap integration)
 * PHP module mcrypt
 * PHP module openssl
