@@ -9,7 +9,7 @@ Prerequisites
 
 To run ownCloud, your web server must have the following installed:
 
-* php5 (>= 5.3.3, minimum recommended 5.4)
+* PHP (>= 5.3.3, minimum recommended 5.4)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
@@ -53,7 +53,7 @@ For preview generation (*optional*):
 For external storage (*optional*):
 
 * smbclient (for SMB storage)
-* php5-ftp (for FTP storage)
+* PHP module ftp (for FTP storage)
 
 Please check your distribution, operating system or hosting partner documentation on how to install/enable
 these modules.
