@@ -144,3 +144,9 @@ Other Syncing options provided by ownCloud
 
 1. For Android you may use official Android app which can be found `here <https://owncloud.org/install/>`_.
 2. And for iOS (iPhone and iPad) use their app which can be found `here <https://owncloud.org/install/>`_.
+
+It doesn't work!!!
+------------------
+
+Are you having problems using the app? Have a look at the :doc:`troubleshooting` guide.
+
