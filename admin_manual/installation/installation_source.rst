@@ -104,6 +104,7 @@ Fedora users should use::
   chown -R apache:apache /path/to/your/owncloud/install/data
 
 .. note:: The **data/** directory will only be created after setup has run (see below) and is not present by default in the tarballs.
+When using an NFS mount for the data directory, do not change ownership as above.  The simple act of mounting the drive will set proper permissions for ownCloud to write to the directory.  Changing ownership as above could result in some issues if the NFS mount is lost.
 
 Web Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
