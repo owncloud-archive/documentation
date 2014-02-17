@@ -29,6 +29,9 @@ configured to use it.
 There are several techniques to remedy this, which are described extensively at the
 `Sabre DAV website <http://code.google.com/p/sabredav/wiki/ServiceDiscovery>`_.
 
+Apple iOS
+`````````
+
 Below is what have proven to work with iOS including iOS 7.
 
 If your ownCloud instance is installed in a sub-folder under the web servers document root, and
@@ -53,6 +56,20 @@ If you use Nginx as web server, the setting looks something like::
 Now change the URL in the client settings to just use ``ADDRESS`` instead of e.g. ``ADDRESS/remote.php/carddav/principals/username``.
 
 This problem is being discussed in the `forum <http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
+
+
+BlackBerry OS 10.2
+``````````````````
+
+BlackBerry OS up to 10.2.2102 doesn't accept a URL with protocol ``https://`` in front of the server address.
+It will always tell you, that it cannot login on your server. So instead of writing
+
+    https://address/remote.php/carddav/principals/username
+    
+in the server address field, you have to write
+
+    address/remote.php/carddav/principals/username
+
 
 Unable to update Contacts or Events
 -----------------------------------
