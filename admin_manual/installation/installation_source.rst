@@ -32,18 +32,26 @@ Database connectors (pick at least one):
 * PHP module mysql
 * PHP module pgsql (requires PostgreSQL >= 9.0)
 
-And as *optional* dependencies:
+And as *recommended* packages:
 
-* PHP module bz2 (recommended, required for extraction of apps)
 * PHP module curl (highly recommended, some functionality, e.g. http user authentication, depends on this)
-* PHP module exif (for image rotation in pictures app)
-* PHP module fileinfo (highly recommended, increases file analysis performance)
+* PHP module fileinfo (highly recommended, enhances file analysis performance)
+* PHP module bz2 (recommended, required for extraction of apps)
 * PHP module intl (increases language translation performance)
-* PHP module ldap (for ldap integration)
 * PHP module mcrypt (increases file encryption performance)
 * PHP module openssl (required for accessing HTTPS resources)
 
-For performance increase (*optional* / select one of the following):
+Required for specific apps (if you use the mentioned app, you must install that package):
+
+* PHP module ldap (for ldap integration)
+* smbclient (for SMB storage)
+* PHP module ftp (for FTP storage)
+
+Recommended for specific apps (*optional*):
+
+* PHP module exif (for image rotation in pictures app)
+
+For enhanced performance (*optional* / select one of the following):
 
 * PHP module apc
 * PHP module apcu
@@ -55,19 +63,9 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or libreOffice
 
-For external storage (*optional*):
-
-* smbclient (for SMB storage)
-* PHP module ftp (for FTP storage)
-
 Please check your distribution, operating system or hosting partner documentation
 on how to install/enable these modules.
 
-For example, on an Ubuntu machine, you could install the required modules for a typical
-apache - mysql server by issueing the following command in the terminal:
-::
-
-  sudo apt-get install apache2 libapache2-mod-php5 mysql-server
 
 If you are running Ubuntu 10.04 LTS you will need to update your PHP from
 this `PHP PPA`_:
@@ -77,9 +75,17 @@ this `PHP PPA`_:
   sudo add-apt-repository ppa:ondrej/php5
   sudo apt-get update
   sudo apt-get install php5
+  
+For example, on an Ubuntu 12.04 LTS machine, you would install the required and
+recommended modules for a typical owncloud install using apache and mysql
+(without any special apps - see list above for details) by issuing the following
+command in the terminal:
+::
+
+  sudo apt-get install apache2 mysql-server libapache2-mod-php5 php5-gd php5-json php5-mysql php5-curl php5-intl php5-mcrypt php5-imagick
 
 
-You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
+**Note:** You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
 to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
 In fact, you should make sure that any built-in WebDAV module of your web server
 is disabled (at least for the ownCloud directory), as it can interfere with
