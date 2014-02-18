@@ -83,22 +83,25 @@ First, download the archive of the latest ownCloud version:
 
 * Navigate to `http://owncloud.org/install`
 * Click "Tar or Zip file"
-* In the opening dialog, chose the "Linux" link to download a file named
-owncloud-x.y.z.tar.bz2 (where x.y.z is the version number of the current
-latest version)
-* You will have to save this file on the machine you want to install
-ownCloud on. If that's a different machine than the one you are working
-on, use e.g. FTP to transfer the downloaded archive file there.
+* In the opening dialog, chose the "Linux" link.
+
+This will download a file named owncloud-x.y.z.tar.bz2 (where x.y.z is the
+version number of the current latest version). Save this file on the machine
+you want to install ownCloud on. If that's a different machine than the one you
+are currently working on, use e.g. FTP to transfer the downloaded archive file
+there. Note down the directory where you put the file.
 
 Then, extract the archive contents:
 
-* Open a terminal, and run::
+* Open a terminal, and run:
+::
 
   cd path/to/downloaded/archive
   tar -xjf owncloud-x.y.z.tar.bz2
 
-(where x.y.z of course has to be replaced by the actual version number as in
-the file you have downloaded).
+where path/to/downloaded/archive is to be replaced by the path where you put
+the downloaded file, and x.y.z of course has to be replaced by the actual
+version number as in the file you have downloaded.
   
 If you have extracted the files in a different location than where your
 webserver document root is located, execute also the following command 
