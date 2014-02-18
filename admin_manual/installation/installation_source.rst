@@ -7,6 +7,11 @@ using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
 Prerequisites
 ~~~~~~~~~~~~~
 
+This tutorial assumes you have terminal access to the machine you want to install
+owncloud on. Although this is not an absolute requirement, installation without it
+is highly likely to require contacting your hoster (e.g. for installing required
+modules).
+
 To run ownCloud, your web server must have the following installed:
 
 * PHP (>= 5.3.3 minimum, 5.4 or higher recommended)
@@ -30,7 +35,7 @@ Database connectors (pick at least one):
 And as *optional* dependencies:
 
 * PHP module bz2 (recommended, required for extraction of apps)
-* PHP module curl (highly recommended, some functionality depends on this)
+* PHP module curl (highly recommended, some functionality, e.g. http user authentication, depends on this)
 * PHP module exif (for image rotation in pictures app)
 * PHP module fileinfo (highly recommended, increases file analysis performance)
 * PHP module intl (increases language translation performance)
@@ -55,10 +60,14 @@ For external storage (*optional*):
 * smbclient (for SMB storage)
 * PHP module ftp (for FTP storage)
 
-Please check your distribution, operating system or hosting partner documentation on how to install/enable
-these modules.
+Please check your distribution, operating system or hosting partner documentation
+on how to install/enable these modules.
 
-The curl PHP module is required for some apps (e.g. http user authentication).
+For example, on an Ubuntu machine, you could install the required modules for a typical
+apache - mysql server by issueing the following command in the terminal:
+::
+
+  sudo apt-get install apache2 libapache2-mod-php5 mysql-server
 
 If you are running Ubuntu 10.04 LTS you will need to update your PHP from
 this `PHP PPA`_:
@@ -91,28 +100,26 @@ you want to install ownCloud on. If that's a different machine than the one you
 are currently working on, use e.g. FTP to transfer the downloaded archive file
 there. Note down the directory where you put the file.
 
-Then, extract the archive contents:
-
-* Open a terminal, and run:
+Then you have to extract the archive contents. Open a terminal on the machine
+you plan to run owncloud on, and run:
 ::
 
   cd path/to/downloaded/archive
   tar -xjf owncloud-x.y.z.tar.bz2
 
 where path/to/downloaded/archive is to be replaced by the path where you put
-the downloaded file, and x.y.z of course has to be replaced by the actual
+the downloaded archive, and x.y.z of course has to be replaced by the actual
 version number as in the file you have downloaded.
   
-If you have extracted the files in a different location than where your
-webserver document root is located, execute also the following command 
-(in the same directory as you executed the tar... command above)::
+Finally - if you haven't already extracted the files in the document root
+of your webserver - execute also the following command::
 
   cp -r owncloud /path/to/your/webserver/document-root
 
 If you don't know where your webserver's document root is located, consult
 its documentation. For apache, see e.g. here:
 `http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`
-For Ubuntu,  would usually be /var/www.
+For Ubuntu for example, this would usually be /var/www.
 
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
