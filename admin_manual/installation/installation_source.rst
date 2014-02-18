@@ -76,13 +76,38 @@ In fact, you should make sure that any built-in WebDAV module of your web server
 is disabled (at least for the ownCloud directory), as it can interfere with
 ownCloud's built-in WebDAV support.
 
-Extract ownCloud and Copy to Your Web Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Download, extract and copy ownCloud to Your Web Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-::
+First, download the archive of the latest ownCloud version:
+* Navigate to `http://owncloud.org/install`
+* Click "Tar or Zip file"
+* In the opening dialog, chose the "Linux" link to download a file named
+owncloud-x.y.z.tar.bz2 (where x.y.z is the version number of the current
+latest version)
+* You will have to save this file on the machine you want to install
+ownCloud on. If that's a different machine than the one you are working
+on, use e.g. FTP to transfer the downloaded archive file there.
 
-  tar -xjf path/to/downloaded/owncloud-x.x.x.tar.bz2
-  cp -r owncloud /path/to/your/webserver
+Then, extract the archive contents:
+* Open a terminal, and run:
+
+  cd path/to/downloaded/archive
+  tar -xjf owncloud-x.y.z.tar.bz2
+
+(where x.y.z of course has to be replaced by the actual version number as in
+the file you have downloaded).
+  
+If you have extracted the files in a different location than where your
+webserver document root is located, execute also the following command 
+(in the same directory as you executed the tar... command above):
+
+  cp -r owncloud /path/to/your/webserver/document-root
+
+If you don't know where your webserver's document root is located, consult
+its documentation. For apache, see e.g. here:
+`http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`
+For Ubuntu,  would usually be /var/www.
 
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
