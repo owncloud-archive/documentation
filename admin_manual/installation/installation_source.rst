@@ -1,13 +1,13 @@
 Manual Installation
 -------------------
 
-If you do not want to use packages, here is how you setup ownCloud on from scratch
+.. note:: If you do not want to use packages, here is how you setup ownCloud on from scratch
 using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
 
 Prerequisites
 ~~~~~~~~~~~~~
 
-This tutorial assumes you have terminal access to the machine you want to install
+.. note:: This tutorial assumes you have terminal access to the machine you want to install
 owncloud on. Although this is not an absolute requirement, installation without it
 is highly likely to require contacting your hoster (e.g. for installing required
 modules).
@@ -32,7 +32,7 @@ Database connectors (pick at least one):
 * PHP module mysql
 * PHP module pgsql (requires PostgreSQL >= 9.0)
 
-And as *recommended* packages:
+*Recommended* packages:
 
 * PHP module curl (highly recommended, some functionality, e.g. http user authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
@@ -51,7 +51,7 @@ Recommended for specific apps (*optional*):
 
 * PHP module exif (for image rotation in pictures app)
 
-For enhanced performance (*optional* / select one of the following):
+For enhanced performance (*optional* / select only one of the following):
 
 * PHP module apc
 * PHP module apcu
@@ -84,8 +84,7 @@ command in the terminal:
 
   sudo apt-get install apache2 mysql-server libapache2-mod-php5 php5-gd php5-json php5-mysql php5-curl php5-intl php5-mcrypt php5-imagick
 
-
-**Note:** You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
+.. note:: You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
 to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
 In fact, you should make sure that any built-in WebDAV module of your web server
 is disabled (at least for the ownCloud directory), as it can interfere with
@@ -122,7 +121,7 @@ of your webserver - execute also the following command::
 
   cp -r owncloud /path/to/your/webserver/document-root
 
-If you don't know where your webserver's document root is located, consult
+.. note:: If you don't know where your webserver's document root is located, consult
 its documentation. For apache, see e.g. here:
 `http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`
 For Ubuntu for example, this would usually be /var/www.
