@@ -80,6 +80,7 @@ Download, extract and copy ownCloud to Your Web Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 First, download the archive of the latest ownCloud version:
+
 * Navigate to `http://owncloud.org/install`
 * Click "Tar or Zip file"
 * In the opening dialog, chose the "Linux" link to download a file named
@@ -90,7 +91,8 @@ ownCloud on. If that's a different machine than the one you are working
 on, use e.g. FTP to transfer the downloaded archive file there.
 
 Then, extract the archive contents:
-* Open a terminal, and run:
+
+* Open a terminal, and run::
 
   cd path/to/downloaded/archive
   tar -xjf owncloud-x.y.z.tar.bz2
@@ -100,7 +102,7 @@ the file you have downloaded).
   
 If you have extracted the files in a different location than where your
 webserver document root is located, execute also the following command 
-(in the same directory as you executed the tar... command above):
+(in the same directory as you executed the tar... command above)::
 
   cp -r owncloud /path/to/your/webserver/document-root
 
