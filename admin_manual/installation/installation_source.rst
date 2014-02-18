@@ -1,16 +1,16 @@
 Manual Installation
 -------------------
 
-.. note:: If you do not want to use packages, here is how you setup ownCloud on from scratch
-using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
+.. note:: If you do not want to use packages, here is how you setup ownCloud
+          on from scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
 
 Prerequisites
 ~~~~~~~~~~~~~
 
-.. note:: This tutorial assumes you have terminal access to the machine you want to install
-owncloud on. Although this is not an absolute requirement, installation without it
-is highly likely to require contacting your hoster (e.g. for installing required
-modules).
+.. note:: This tutorial assumes you have terminal access to the machine you want
+          to install owncloud on. Although this is not an absolute requirement,
+          installation without it is highly likely to require contacting your
+          hoster (e.g. for installing required modules).
 
 To run ownCloud, your web server must have the following installed:
 
@@ -82,13 +82,15 @@ recommended modules for a typical owncloud install using apache and mysql
 command in the terminal:
 ::
 
-  sudo apt-get install apache2 mysql-server libapache2-mod-php5 php5-gd php5-json php5-mysql php5-curl php5-intl php5-mcrypt php5-imagick
+  sudo apt-get install apache2 mysql-server libapache2-mod-php5
+  sudo apt-get insatll php5-gd php5-json php5-mysql php5-curl
+  sudo apt-get insatll php5-intl php5-mcrypt php5-imagick
 
-.. note:: You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
-to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
-In fact, you should make sure that any built-in WebDAV module of your web server
-is disabled (at least for the ownCloud directory), as it can interfere with
-ownCloud's built-in WebDAV support.
+.. note:: You don’t need any WebDAV support of your web server (i.e. apache’s
+          mod_webdav) to access your ownCloud data via WebDAV, ownCloud has a
+          WebDAV server built in. In fact, you should make sure that any built-in
+          WebDAV module of your web server is disabled (at least for the ownCloud
+          directory), as it can interfere with ownCloud's built-in WebDAV support.
 
 Download, extract and copy ownCloud to Your Web Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -121,10 +123,10 @@ of your webserver - execute also the following command::
 
   cp -r owncloud /path/to/your/webserver/document-root
 
-.. note:: If you don't know where your webserver's document root is located, consult
-its documentation. For apache, see e.g. here:
-`http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`
-For Ubuntu for example, this would usually be /var/www.
+.. note:: If you don't know where your webserver's document root is located,
+          consult its documentation. For apache, see e.g. here:
+          `http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`.
+          For Ubuntu for example, this would usually be /var/www.
 
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -145,8 +147,9 @@ Fedora users should use::
 
   chown -R apache:apache /path/to/your/owncloud/install/data
 
-.. note:: The **data/** directory will only be created after setup has run (see below) and is not present by default in the tarballs.
-When using an NFS mount for the data directory, do not change ownership as above.  The simple act of mounting the drive will set proper permissions for ownCloud to write to the directory.  Changing ownership as above could result in some issues if the NFS mount is lost.
+.. note:: The **data/** directory will only be created after setup has run
+          (see below) and is not present by default in the tarballs.
+When using an NFS mount for the data directory, do not change ownership as above. The simple act of mounting the drive will set proper permissions for ownCloud to write to the directory.  Changing ownership as above could result in some issues if the NFS mount is lost.
 
 Web Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -287,7 +290,8 @@ Nginx Configuration
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
 -  Remove **fastcgi_params HTTPS on;**
 
-.. note:: If you want to effectively increase maximum upload size you will also have to modify your **php-fpm configuration** (**usually at
+.. note:: If you want to effectively increase maximum upload size you will also
+          have to modify your **php-fpm configuration** (**usually at
           /etc/php5/fpm/php.ini**) and increase **upload_max_filesize** and
           **post_max_size** values. You’ll need to restart php5-fpm and nginx
 	  services in order these changes to be applied.
