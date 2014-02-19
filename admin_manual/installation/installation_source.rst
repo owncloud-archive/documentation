@@ -1,11 +1,16 @@
 Manual Installation
 -------------------
 
-If you do not want to use packages, here is how you setup ownCloud on from scratch
-using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
+.. note:: If you do not want to use packages, here is how you setup ownCloud
+          on from scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
 
 Prerequisites
 ~~~~~~~~~~~~~
+
+.. note:: This tutorial assumes you have terminal access to the machine you want
+          to install owncloud on. Although this is not an absolute requirement,
+          installation without it is highly likely to require contacting your
+          hoster (e.g. for installing required modules).
 
 To run ownCloud, your web server must have the following installed:
 
@@ -27,18 +32,26 @@ Database connectors (pick at least one):
 * PHP module mysql
 * PHP module pgsql (requires PostgreSQL >= 9.0)
 
-And as *optional* dependencies:
+*Recommended* packages:
 
+* PHP module curl (highly recommended, some functionality, e.g. http user authentication, depends on this)
+* PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
-* PHP module curl (highly recommended, some functionality depends on this)
-* PHP module exif (for image rotation in pictures app)
-* PHP module fileinfo (highly recommended, increases file analysis performance)
 * PHP module intl (increases language translation performance)
-* PHP module ldap (for ldap integration)
 * PHP module mcrypt (increases file encryption performance)
 * PHP module openssl (required for accessing HTTPS resources)
 
-For performance increase (*optional* / select one of the following):
+Required for specific apps (if you use the mentioned app, you must install that package):
+
+* PHP module ldap (for ldap integration)
+* smbclient (for SMB storage)
+* PHP module ftp (for FTP storage)
+
+Recommended for specific apps (*optional*):
+
+* PHP module exif (for image rotation in pictures app)
+
+For enhanced performance (*optional* / select only one of the following):
 
 * PHP module apc
 * PHP module apcu
@@ -50,15 +63,9 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or libreOffice
 
-For external storage (*optional*):
+Please check your distribution, operating system or hosting partner documentation
+on how to install/enable these modules.
 
-* smbclient (for SMB storage)
-* PHP module ftp (for FTP storage)
-
-Please check your distribution, operating system or hosting partner documentation on how to install/enable
-these modules.
-
-The curl PHP module is required for some apps (e.g. http user authentication).
 
 If you are running Ubuntu 10.04 LTS you will need to update your PHP from
 this `PHP PPA`_:
@@ -68,21 +75,58 @@ this `PHP PPA`_:
   sudo add-apt-repository ppa:ondrej/php5
   sudo apt-get update
   sudo apt-get install php5
-
-
-You don’t need any WebDAV support of your web server (i.e. apache’s mod_webdav)
-to access your ownCloud data via WebDAV, ownCloud has a WebDAV server built in.
-In fact, you should make sure that any built-in WebDAV module of your web server
-is disabled (at least for the ownCloud directory), as it can interfere with
-ownCloud's built-in WebDAV support.
-
-Extract ownCloud and Copy to Your Web Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
+  
+For example, on an Ubuntu 12.04 LTS machine, you would install the required and
+recommended modules for a typical owncloud install using apache and mysql
+(without any special apps - see list above for details) by issuing the following
+command in the terminal:
 ::
 
-  tar -xjf path/to/downloaded/owncloud-x.x.x.tar.bz2
-  cp -r owncloud /path/to/your/webserver
+  sudo apt-get install apache2 mysql-server libapache2-mod-php5
+  sudo apt-get insatll php5-gd php5-json php5-mysql php5-curl
+  sudo apt-get insatll php5-intl php5-mcrypt php5-imagick
+
+.. note:: You don’t need any WebDAV support of your web server (i.e. apache’s
+          mod_webdav) to access your ownCloud data via WebDAV, ownCloud has a
+          WebDAV server built in. In fact, you should make sure that any built-in
+          WebDAV module of your web server is disabled (at least for the ownCloud
+          directory), as it can interfere with ownCloud's built-in WebDAV support.
+
+Download, extract and copy ownCloud to Your Web Server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+First, download the archive of the latest ownCloud version:
+
+* Navigate to `http://owncloud.org/install`
+* Click "Tar or Zip file"
+* In the opening dialog, chose the "Linux" link.
+
+This will download a file named owncloud-x.y.z.tar.bz2 (where x.y.z is the
+version number of the current latest version). Save this file on the machine
+you want to install ownCloud on. If that's a different machine than the one you
+are currently working on, use e.g. FTP to transfer the downloaded archive file
+there. Note down the directory where you put the file.
+
+Then you have to extract the archive contents. Open a terminal on the machine
+you plan to run owncloud on, and run:
+::
+
+  cd path/to/downloaded/archive
+  tar -xjf owncloud-x.y.z.tar.bz2
+
+where path/to/downloaded/archive is to be replaced by the path where you put
+the downloaded archive, and x.y.z of course has to be replaced by the actual
+version number as in the file you have downloaded.
+  
+Finally - if you haven't already extracted the files in the document root
+of your webserver - execute also the following command::
+
+  cp -r owncloud /path/to/your/webserver/document-root
+
+.. note:: If you don't know where your webserver's document root is located,
+          consult its documentation. For apache, see e.g. here:
+          `http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`.
+          For Ubuntu for example, this would usually be /var/www.
 
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -103,8 +147,9 @@ Fedora users should use::
 
   chown -R apache:apache /path/to/your/owncloud/install/data
 
-.. note:: The **data/** directory will only be created after setup has run (see below) and is not present by default in the tarballs.
-When using an NFS mount for the data directory, do not change ownership as above.  The simple act of mounting the drive will set proper permissions for ownCloud to write to the directory.  Changing ownership as above could result in some issues if the NFS mount is lost.
+.. note:: The **data/** directory will only be created after setup has run
+          (see below) and is not present by default in the tarballs.
+When using an NFS mount for the data directory, do not change ownership as above. The simple act of mounting the drive will set proper permissions for ownCloud to write to the directory.  Changing ownership as above could result in some issues if the NFS mount is lost.
 
 Web Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -245,7 +290,8 @@ Nginx Configuration
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
 -  Remove **fastcgi_params HTTPS on;**
 
-.. note:: If you want to effectively increase maximum upload size you will also have to modify your **php-fpm configuration** (**usually at
+.. note:: If you want to effectively increase maximum upload size you will also
+          have to modify your **php-fpm configuration** (**usually at
           /etc/php5/fpm/php.ini**) and increase **upload_max_filesize** and
           **post_max_size** values. You’ll need to restart php5-fpm and nginx
 	  services in order these changes to be applied.
