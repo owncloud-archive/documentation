@@ -79,7 +79,7 @@ For preview generation (*optional*):
   specified above. If it doesn't, there might be custom repositories you can use.
   If you are e.g. running Ubuntu 10.04 LTS, you can update your
   PHP using a custom `PHP PPA`_:
-::
+  ::
 
 	sudo add-apt-repository ppa:ondrej/php5
 	sudo apt-get update
@@ -128,7 +128,8 @@ First, download the archive of the latest ownCloud version:
   e.g. FTP to transfer the downloaded archive file there.
 * Note down the directory where you put the file.
 * Extract the archive contents. Open a terminal on the machine
-  you plan to run owncloud on, and run:::
+  you plan to run owncloud on, and run:
+  ::
 
 	cd path/to/downloaded/archive
 	tar -xjf owncloud-x.y.z.tar.bz2
@@ -139,14 +140,16 @@ First, download the archive of the latest ownCloud version:
   
 * Copy the ownCloud files to their final destination in the document root of your
   webserver (you can skip this step if you already downloaded and extracted the
-  files there)::
+  files there):
+  ::
 
 	sudo cp -r owncloud /path/to/your/webserver/document-root
 
 
   * If you don't know where your webserver's document root is located, consult its
     documentation. For apache on Ubuntu 12.04 LTS for example, this would usually be
-    :code:`/var/www`. So above command should look like this:::
+    :code:`/var/www`. So above command should look like this:
+    ::
 
 	sudo cp -r owncloud /var/www
 
@@ -157,29 +160,31 @@ First, download the archive of the latest ownCloud version:
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The owner of your web server must own the apps/, data/ and config/ directories
-in your ownCloud install. You can do this by running the following command for
-the apps, data and config directories.
+The user running your web server must own at least the apps/, data/ and config/
+directories in your ownCloud installation folder.
+The following command will change the ownership of the whole folder to that user.
 
-For Debian-based distributions like Ubuntu, Debian or Linux Mint and Gentoo use::
+* For Debian-based distributions (like Ubuntu, Debian or Linux Mint) and Gentoo, run:
+  ::
 
 	sudo chown -R www-data:www-data /path/to/your/owncloud
   
-For continuing the example from above, for Ubuntu 12.04 LTS the install location
-was :code:`/var/www` so you would run::
+* Continuing the example from above, for Ubuntu 12.04 LTS, where the install location
+  was :code:`/var/www`, you would run:
+  ::
 
 	sudo chown -R www-data:www-data /var/www/owncloud
 
-For ArchLinux should run (as root)::
+* For ArchLinux should run (as root):
+  ::
 
 	chown -R http:http /path/to/your/owncloud
 
-Fedora users should run (as root)::
+* Fedora users should run (as root):
+  ::
 
 	chown -R apache:apache /path/to/your/owncloud
 
-.. note:: The :code:`data/` directory will only be created after setup has run
-          (see below) and is not present by default in the tarballs.
 When using an NFS mount for the data directory, do not change ownership as above.
 The simple act of mounting the drive will set proper permissions for ownCloud to
 write to the directory. Changing ownership as above could result in some issues
@@ -202,10 +207,9 @@ Apache Configuration
 Enabling SSL
 ............
 
-If you are running apache under Ubuntu (because you for example have
-installed it with the :code:`apt-get install` commands given above), it is
-already set-up with a simple self-signed certificate. All you have to do then
-is enable the ssl module and the according site. Open a terminal and run
+An apache installed under Ubuntu comes already set-up with a simple
+self-signed certificate. All you have to do is to enable the ssl module and
+the according site. Open a terminal and run
 ::
 
 	sudo a2enmod ssl
@@ -216,16 +220,16 @@ If you are using a different distribution, check their documentation on how to
 enable SSL.
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your owncloud server publicly accessible. You might
-          consider getting a certificate signed by an official signing
-          authority. If you're looking for a free certificate, you could
-          consult e.g. this article:
+          plan to make your owncloud server publicly accessible. You might want
+          to consider getting a certificate signed by an official signing
+          authority. If you're looking for a free certificate, you can consult
+          e.g. this article:
           `https://www.sslshopper.com/article-free-ssl-certificates-from-a-free-certificate-authority.html`
 
 Configuring ownCloud
 ....................
 
-Since there was a change in the way version 2.2 and 2.4 are configured,
+Since there was a change in the way versions 2.2 and 2.4 are configured,
 you'll have to find out which apache version you are using.
 
 Usually you can do this by running
@@ -234,6 +238,7 @@ Usually you can do this by running
 	sudo apachectl -v
     
 or
+::
 
 	apache2 -v
     
@@ -243,7 +248,8 @@ Example output:
 	Server version: Apache/2.2.22 (Ubuntu)
 	Server built:   Jul 12 2013 13:37:10
 
-This would indicate an apache of the 2.2 branch (as e.g. you will find on Ubuntu 12.04 LTS).
+This indicates an apache of the 2.2 version branch (as e.g. you will find on
+Ubuntu 12.04 LTS).
 
 Example config for Apache 2.2:
 
