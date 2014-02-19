@@ -198,7 +198,7 @@ Apache Configuration
 ********************
 
 Enabling SSL
-~~~~~~~~~~~~
+............
 
 The following basic guide will just describe how to set up a basic self-signed
 certificate.
@@ -209,10 +209,14 @@ certificate.
 
 If you are running apache under Ubuntu (because you for example have installed
 it with the apt-get install commands given above), it is already set-up with a
-simple self-signed certificate. You only have to enable the ssl profile. Open
+simple self-signed certificate.
+
+
+All you have to do is enable the ssl module and the according site. Open
 a terminal and run
 ::
 
+	sudo a2enmod ssl
 	sudo a2ensite default-ssl
 	sudo service apache2 reload
 
@@ -220,7 +224,7 @@ If you are using a different distribution, check their documentation on how to
 enable SSL.
 
 Configuring ownCloud
-~~~~~~~~~~~~~~~~~~~~
+....................
 
 Since there was a change in the way version 2.2 and 2.4 are configured,
 you'll have to find out which apache version you are using.
@@ -236,8 +240,9 @@ or
     
 Example output:
 ::
-Server version: Apache/2.2.22 (Ubuntu)
-Server built:   Jul 12 2013 13:37:10
+
+	Server version: Apache/2.2.22 (Ubuntu)
+	Server built:   Jul 12 2013 13:37:10
 
 This would indicate an apache of the 2.2 branch (as e.g. you will find on Ubuntu 12.04 LTS).
 
@@ -277,7 +282,7 @@ in a Terminal, run:
 Add the entry shown above immediately before the line containing
 ::
 
-  </VirtualHost>
+	</VirtualHost>
 
 (this should be one of the last lines in the file).
 
@@ -290,11 +295,11 @@ Enable it by running::
 In distributions that do not come with a2enmod the :file:`/etc/httpd/httpd.conf`
 needs to be changed to enable **mod_rewrite**
 
-Then restart apache. For Ubuntu systems (or distributions using upstartd) use::
+Then restart apache. For Ubuntu systems (or distributions using upstartd), run::
 
 	sudo service apache2 restart
 
-For systemd systems (Fedora, ArchLinux, OpenSUSE) use::
+For systemd systems (Fedora, ArchLinux, OpenSUSE), run::
 
 	systemctl restart httpd.service
 
@@ -311,7 +316,7 @@ configuration of your ownCloud. In above "<Directory ..." code, add the followin
 directly after the "allow from all" / "Require all granted" line):
 ::
 
-    Dav Off
+	Dav Off
 
 Furthermore, you need to disable any server-configured authentication for owncloud, as
 it's internally using Basic authentication for its *DAV services.
@@ -321,8 +326,61 @@ to do so, in above "<Directory ..." code, add the following line directly after 
 "allow from all" / "Require all granted" line):
 ::
 
-    Satisfy Any
+	Satisfy Any
 
+A minimal site configuration on Ubuntu 12.04 might look like this:
+
+.. code-block:: xml
+	<IfModule mod_ssl.c>
+	<VirtualHost _default_:443>
+		ServerName YourServerName
+		ServerAdmin webmaster@localhost
+		DocumentRoot /var/www
+		<Directory />
+			Options FollowSymLinks
+			AllowOverride None
+		</Directory>
+		<Directory /var/www/>
+			Options Indexes FollowSymLinks MultiViews
+			AllowOverride None
+			Order allow,deny
+			allow from all
+		</Directory>
+		ErrorLog ${APACHE_LOG_DIR}/error.log
+		LogLevel warn
+		CustomLog ${APACHE_LOG_DIR}/ssl_access.log combined
+		SSLEngine on
+		SSLCertificateFile    /etc/ssl/certs/ssl-cert-snakeoil.pem
+		SSLCertificateKeyFile /etc/ssl/private/ssl-cert-snakeoil.key
+		<FilesMatch "\.(cgi|shtml|phtml|php)$">
+			SSLOptions +StdEnvVars
+		</FilesMatch>
+		<Directory /usr/lib/cgi-bin>
+			SSLOptions +StdEnvVars
+		</Directory>
+		BrowserMatch "MSIE [2-6]" \
+			nokeepalive ssl-unclean-shutdown \
+			downgrade-1.0 force-response-1.0
+		BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
+		<Directory /var/www/owncloud>
+			Options Indexes FollowSymLinks MultiViews
+			AllowOverride All
+			Order allow,deny
+			Allow from all
+			# add any possibly required additional directives here
+			# e.g. the Satisfy directive:
+			Satisfy Any
+		</Directory>
+	</VirtualHost>
+	</IfModule>
+
+When using ssl, take special note on the ServerName. You should specify one in the
+server configuration, as well as in the CommonName field of the certificate. If you want
+your owncloud to be reachable via the internet, then set both these to the domain you
+want to reach your owncloud under.
+
+.. note:: By default, the certificates' CommonName will get set to the host name at the time
+          when the ssl-cert package was installed.
 
 Nginx Configuration
 *******************
