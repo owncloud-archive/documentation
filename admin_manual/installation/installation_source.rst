@@ -1,8 +1,8 @@
 Manual Installation
 -------------------
 
-.. note:: If you do not want to use packages, here is how you setup ownCloud
-          on from scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
+If you do not want to use packages, here is how you setup ownCloud on
+from scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
 
 Prerequisites
 ~~~~~~~~~~~~~
@@ -72,25 +72,37 @@ this `PHP PPA`_:
 
 ::
 
-  sudo add-apt-repository ppa:ondrej/php5
-  sudo apt-get update
-  sudo apt-get install php5
+	sudo add-apt-repository ppa:ondrej/php5
+	sudo apt-get update
+	sudo apt-get install php5
   
-For example, on an Ubuntu 12.04 LTS machine, you would install the required and
-recommended modules for a typical owncloud install using apache and mysql
-(without any special apps - see list above for details) by issuing the following
-command in the terminal:
+For example, on a machine running a pristine Ubuntu 12.04.4 LTS server, you would
+install the required and recommended modules for a typical owncloud install by
+issuing the following commands in a terminal:
 ::
 
-  sudo apt-get install apache2 mysql-server libapache2-mod-php5
-  sudo apt-get insatll php5-gd php5-json php5-mysql php5-curl
-  sudo apt-get insatll php5-intl php5-mcrypt php5-imagick
+	sudo apt-get install apache2 mysql-server libapache2-mod-php5
+	sudo apt-get install php5-gd php5-json php5-mysql php5-curl
+	sudo apt-get install php5-intl php5-mcrypt php5-imagick
 
-.. note:: You don’t need any WebDAV support of your web server (i.e. apache’s
-          mod_webdav) to access your ownCloud data via WebDAV, ownCloud has a
-          WebDAV server built in. In fact, you should make sure that any built-in
-          WebDAV module of your web server is disabled (at least for the ownCloud
-          directory), as it can interfere with ownCloud's built-in WebDAV support.
+At the execution of each of the above commands you might be prompted whether you
+want to continue; press "Y" for Yes (that is if your system language is english.
+You might have to press a different key if you have a different system language).
+
+At the installation of the mysql server, you will be prompted for a root password.
+Be sure to remember that password for later use.
+
+This installs the packages for the ownCloud core system. If you are planning on
+running additional apps, keep in mind that they might require additional packages.
+See the list above for details.
+
+As webserver, apache will be used, and mysql as database engine. If you want to
+use a different web- or database server, you'll have to consult the documentation
+of your distributions or of the respective softwares on which packages to install.
+
+.. note:: You don’t need any WebDAV support module for your web server (i.e.
+          apache’s mod_webdav) to access your ownCloud data via WebDAV. ownCloud
+          has built-in WebDAV server of its own.
 
 Download, extract and copy ownCloud to Your Web Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -111,8 +123,8 @@ Then you have to extract the archive contents. Open a terminal on the machine
 you plan to run owncloud on, and run:
 ::
 
-  cd path/to/downloaded/archive
-  tar -xjf owncloud-x.y.z.tar.bz2
+	cd path/to/downloaded/archive
+	tar -xjf owncloud-x.y.z.tar.bz2
 
 where path/to/downloaded/archive is to be replaced by the path where you put
 the downloaded archive, and x.y.z of course has to be replaced by the actual
@@ -121,12 +133,26 @@ version number as in the file you have downloaded.
 Finally - if you haven't already extracted the files in the document root
 of your webserver - execute also the following command::
 
-  cp -r owncloud /path/to/your/webserver/document-root
+	sudo cp -r owncloud /path/to/your/webserver/document-root
 
-.. note:: If you don't know where your webserver's document root is located,
-          consult its documentation. For apache, see e.g. here:
-          `http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`.
-          For Ubuntu for example, this would usually be /var/www.
+to copy the ownCloud files to their final destination directly inside the
+document root of your webserver.
+
+If you don't know where your webserver's document root is located, consult its
+documentation. For apache, see e.g. here:
+`http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`.
+For Ubuntu for example, this would usually be /var/www.
+
+.. note:: The above assumes you want to install ownCloud into a subdirectory
+          "owncloud" on your webserver. For installing it anywhere else, you'll
+          have to adapt the above commands accordingly.
+          
+.. note:: You can also install ownCloud in a directory outside of the document
+          root. You will then however have to either set up a link to the
+          owncloud folder from somewhere in the document root (provided your
+          apache configuration allows linking), or create an alias for it in
+          the apache configuration. See your webserver documentation on how to
+          do so.
 
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -135,31 +161,87 @@ The owner of your web server must own the apps/, data/ and config/ directories
 in your ownCloud install. You can do this by running the following command for
 the apps, data and config directories.
 
-For Debian based distributions like Ubuntu, Debian or Linux Mint and Gentoo use::
+For Debian-based distributions like Ubuntu, Debian or Linux Mint and Gentoo use::
 
-  chown -R www-data:www-data /path/to/your/owncloud/install/data
+	sudo chown -R www-data:www-data /path/to/your/owncloud/install/data
+  
+For the typical install location in /var/www as  given above, you would e.g. run::
 
-For ArchLinux use::
+	sudo chown -R www-data:www-data /var/www/owncloud
 
-  chown -R http:http /path/to/your/owncloud/install/data
+For ArchLinux should run (as root)::
 
-Fedora users should use::
+	chown -R http:http /path/to/your/owncloud/install/data
 
-  chown -R apache:apache /path/to/your/owncloud/install/data
+Fedora users should run (as root)::
+
+	chown -R apache:apache /path/to/your/owncloud/install/data
 
 .. note:: The **data/** directory will only be created after setup has run
           (see below) and is not present by default in the tarballs.
-When using an NFS mount for the data directory, do not change ownership as above. The simple act of mounting the drive will set proper permissions for ownCloud to write to the directory.  Changing ownership as above could result in some issues if the NFS mount is lost.
+When using an NFS mount for the data directory, do not change ownership as above.
+The simple act of mounting the drive will set proper permissions for ownCloud to
+write to the directory. Changing ownership as above could result in some issues
+if the NFS mount is lost.
 
 Web Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: You can use ownCloud without SSL/TLS support, but we strongly encourage
+          you not to do that. If you don't use it, and you for example access your
+          ownCloud over an unsecured WiFi, everyone can grab your authentication
+          data or the content of files synchronized while on the WiFi.
 
 Apache is the recommended web server.
 
 Apache Configuration
 ********************
 
-Example Apache 2.2:
+Enabling SSL
+~~~~~~~~~~~~
+
+The following basic guide will just describe how to set up a basic self-signed
+certificate.
+
+.. note:: It is recommended to get a certificate signed by an official signing
+          authority. https://www.startssl.com for example provides free basic
+          certificates.
+
+If you are running apache under Ubuntu (because you for example have installed
+it with the apt-get install commands given above), it is already set-up with a
+simple self-signed certificate. You only have to enable the ssl profile. Open
+a terminal and run
+::
+
+	sudo a2ensite default-ssl
+	sudo service apache2 reload
+
+If you are using a different distribution, check their documentation on how to
+enable SSL.
+
+Configuring ownCloud
+~~~~~~~~~~~~~~~~~~~~
+
+Since there was a change in the way version 2.2 and 2.4 are configured,
+you'll have to find out which apache version you are using.
+
+Usually you can do this by running
+::
+
+	sudo apachectl -v
+    
+or
+
+	apache2 -v
+    
+Example output:
+::
+Server version: Apache/2.2.22 (Ubuntu)
+Server built:   Jul 12 2013 13:37:10
+
+This would indicate an apache of the 2.2 branch (as e.g. you will find on Ubuntu 12.04 LTS).
+
+Example config for Apache 2.2:
 
 .. code-block:: xml
 
@@ -171,7 +253,7 @@ Example Apache 2.2:
     </Directory>
 
 
-Example Apache 2.4:
+Example config for Apache 2.4:
 
 .. code-block:: xml
 
@@ -181,23 +263,65 @@ Example Apache 2.4:
         Require all granted
     </Directory>
 
+This config entry needs to go into the configuration file of the "site" you want
+to use.
 
-Enable mod_rewrite::
+On a Ubuntu system, this typically could be the "default-ssl" site.
+Edit the file /etc/apache2/sites-available/default-ssl with your favorite editor
+(note that you'll need root permissions to modify that file). For example,
+in a Terminal, run:
+::
 
-	a2enmod rewrite
+	sudo nano /etc/apache2/sites-available/default-ssl
 
-In distributions that do not come with a2enmod the :file:`/etc/httpd/httpd.conf` needs to be changed to enable **mod_rewrite**
+Add the entry shown above immediately before the line containing
+::
+
+  </VirtualHost>
+
+(this should be one of the last lines in the file).
+
+
+For owncloud to work correctly, we need the module mod_rewrite.
+Enable it by running::
+
+	sudo a2enmod rewrite
+
+In distributions that do not come with a2enmod the :file:`/etc/httpd/httpd.conf`
+needs to be changed to enable **mod_rewrite**
 
 Then restart apache. For Ubuntu systems (or distributions using upstartd) use::
 
-	service apache2 restart
+	sudo service apache2 restart
 
 For systemd systems (Fedora, ArchLinux, OpenSUSE) use::
 
 	systemctl restart httpd.service
 
-In order for the maximum upload size to be configurable, the .htaccess file in the ownCloud folder needs to be made writable by the server.
+In order for the maximum upload size to be configurable, the .htaccess file in the
+ownCloud folder needs to be made writable by the server.
 
+You should make sure that any built-in WebDAV module of your web server is disabled
+(at least for the ownCloud directory), as it will interfere with ownCloud's
+built-in WebDAV support.
+
+If you need the WebDAV support in the rest of your configuration, you can turn it off
+specifically for the ownCloud entry by adding the following line in the
+configuration of your ownCloud. In above "<Directory ..." code, add the following line
+directly after the "allow from all" / "Require all granted" line):
+::
+
+    Dav Off
+
+Furthermore, you need to disable any server-configured authentication for owncloud, as
+it's internally using Basic authentication for its *DAV services.
+If you have turned on authentication on a parent folder (via e.g. an "AuthType Basic"
+directive), you can turn off the authentication specifically for the ownCloud entry;
+to do so, in above "<Directory ..." code, add the following line directly after the
+"allow from all" / "Require all granted" line):
+::
+
+    Satisfy Any
 
 
 Nginx Configuration
@@ -283,8 +407,7 @@ Nginx Configuration
 
     }
 
-.. note:: You can use ownCloud without SSL/TLS support, but we strongly encourage you not to do that:
-
+To enable SSL support:
 -  Remove the server block containing the redirect
 -  Change **listen 443 ssl** to **listen 80;**
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
