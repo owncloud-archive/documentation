@@ -92,8 +92,8 @@ For preview generation (*optional*):
 Example installation on Ubuntu 12.04.4 LTS Server
 *************************************************
 On a machine running a pristine Ubuntu 12.04.4 LTS server, you would install the
-required and recommended modules for a typical owncloud install by issuing the
-following commands in a terminal:
+required and recommended modules for a typical owncloud installation, using
+apache and mysql by issuing the following commands in a terminal:
 ::
 
 	sudo apt-get install apache2 mysql-server libapache2-mod-php5
@@ -101,6 +101,9 @@ following commands in a terminal:
 	sudo apt-get install php5-intl php5-mcrypt php5-imagick
 
 **Remarks:**
+
+* If you want to use any other combination of distribution, webserver or database,
+  please consult the respective documentation.
 
 * At the execution of each of the above commands you might be prompted whether you
   want to continue; press "Y" for Yes (that is if your system language is english.
