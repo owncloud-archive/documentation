@@ -6,7 +6,7 @@ Updating ownCloud
 
 Update
 ------
-Updating means updating ownCloud to the latest *point release*, e.g. ownCloud 4.0.6 → 4.0.7. This procedure uses the
+Updating means updating ownCloud to the latest *point release*, e.g. ownCloud 5.0.13 → 5.0.14a. This procedure uses the
 ownCloud updater plugin called "Updater": it's an internal application already present in your ownCloud installation.
 
 To update ownCloud, follow those steps:
@@ -23,12 +23,12 @@ a full upgrade to update to the latest point release (see below).
 Upgrade
 -------
 Upgrade is to bring an ownCloud instance to a new *major release*, e.g.
-ownCloud 4.0.7 → 4.5.0. Always do backups anyway.
+ownCloud 5.0.14a → 6.0.2. Always do backups anyway.
 
 To upgrade ownCloud, follow those steps:
 
 #. Make sure that you ran the latest point release of the major ownCloud
-   version, e.g. 4.0.7 in the 4.0 series. If not, update to that version first
+   version, e.g. 5.0.14a in the 5.0 series. If not, update to that version first
    (see above).
 #. Make a backup of the ownCloud folder and the database.
 #. Download the latest version to the working directory::
