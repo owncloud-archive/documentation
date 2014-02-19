@@ -39,4 +39,3 @@ Then all the public classes and methods of the library will be available for you
 .. |1000000000000270000003A317117674_png| image:: images/1000000000000270000003A317117674.png
     :width: 10.795cm
     :height: 16.106cm
-

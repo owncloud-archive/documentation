@@ -1,152 +1,73 @@
-EXAMPLES
+Examples
 ========
 
 Init the library
 ----------------
 
-Start using the library; it is needed to init the object mClient that will be in charge of keeping the communication with the server.
+Start using the library; it is needed to init the object mClient that will be
+in charge of keeping the communication with the server.
 
 Code example
 ~~~~~~~~~~~~
 
+.. code-block:: java
 
-+-------------------------------------------------------------+
-| **public**                                                  |
-|                                                             |
-| **class**                                                   |
-|                                                             |
-| MainActivity                                                |
-| **extends**                                                 |
-|                                                             |
-| Activity                                                    |
-|                                                             |
-| **implements**                                              |
-|                                                             |
-| OnRemoteOperationListener, OnDatatransferProgressListener { |
-|                                                             |
-|                                                             |
-| **private**                                                 |
-|                                                             |
-| OwnCloudClient                                              |
-| mClient                                                     |
-| ;                                                           |
-|                                                             |
-|                                                             |
-| **private**                                                 |
-|                                                             |
-| Handler                                                     |
-| mHandler =                                                  |
-| **new**                                                     |
-|                                                             |
-| Handler();                                                  |
-|                                                             |
-|                                                             |
-| …                                                           |
-|                                                             |
-| **public**                                                  |
-|                                                             |
-| **void**                                                    |
-|                                                             |
-| onCreate(Bundle                                             |
-| *savedInstanceState*                                        |
-| ) {                                                         |
-|                                                             |
-| …                                                           |
-|                                                             |
-| // Build full URI to WebDAV entry point                     |
-|                                                             |
-| Uri serverUri = Uri.                                        |
-| *parse*                                                     |
-| (getString(R.string.                                        |
-| *server_base_url*                                           |
-| ) +                                                         |
-|                                                             |
-| AccountUtils.                                               |
-| *WEBDAV_PATH_4_0*                                           |
-| );                                                          |
-|                                                             |
-|                                                             |
-| // Create client object to perform remote operations        |
-|                                                             |
-| mClient                                                     |
-|                                                             |
-| = OwnCloudClientFactory.                                    |
-| *createOwnCloudClient*                                      |
-| (                                                           |
-|                                                             |
-| serverUri,                                                  |
-|                                                             |
-| **this**                                                    |
-| ,                                                           |
-| // Activity or Service context                              |
-|                                                             |
-| **true**                                                    |
-| );                                                          |
-|                                                             |
-+-------------------------------------------------------------+
+  public class MainActivity extends Activity
+                            implements  OnRemoteOperationListener,
+                                        OnDatatransferProgressListener {
+  private OwnCloudClient mClient;
+  private Handler mHandler = new Handler();
 
+  ...
+
+  public void onCreate(Bundle savedInstanceState) {
+
+  ...
+
+  // Build full URI to WebDAV entry point
+  Uri serverUri = Uri.parse(getString(R.string.server_base_url)
+                  + AccountUtils(WEBDAV_PATH_4_0);
+
+  // Create client object to perform remote operations
+  mClient = OwnCloudClientFactory.createOwnCloudClient(
+              serverUri,
+              this,
+              // Activity or Service context
+              true);
 
 Set credentials
 ---------------
 
 Authentication on the app is possible by 3 different methods:
 
-*   Basic authentication, user name and password
-
-
-
-*   Bearer access token (oAuth2)
-
-
-
-*   Cookie (SAML-based single-sign-on)
-
-
-
+* Basic authentication, user name and password
+* Bearer access token (oAuth2)
+* Cookie (SAML-based single-sign-on)
 
 Code example
 ~~~~~~~~~~~~
 
-+-------------------------------------------------+
-| **package**                                     |
-|                                                 |
-| com.owncloud.android.lib.common;                |
-|                                                 |
-| …                                               |
-|                                                 |
-| **public**                                      |
-|                                                 |
-| **class**                                       |
-|                                                 |
-| OwnCloudClient                                  |
-| **extends**                                     |
-|                                                 |
-| HttpClient {                                    |
-|                                                 |
-| …                                               |
-|                                                 |
-| // Set basic credentials                        |
-|                                                 |
-| client.setBasicCredentials(username, password); |
-|                                                 |
-|                                                 |
-| // Set bearer access token                      |
-|                                                 |
-| client.set                                      |
-| BearerCredentials(accessToken);                 |
-|                                                 |
-|                                                 |
-| // Set session cookie                           |
-|                                                 |
-| client.setSsoSessionCookie(cookie);             |
-|                                                 |
-+-------------------------------------------------+
+.. code-block:: java
+
+  package com.owncloud.android.lib.common;
+
+  public class OwnCloudClient extends HttpClient {
+
+  ...
+
+  // Set basic credentials
+  client.setBasicCredentials(username, password);
+  // Set bearer access token
+  client.setBearerCredentials(accessToken);
+  // Set session cookie
+  client.setSsoSessionCookie(cookie);
 
 
 Create a folder
 ---------------
 
-Create a new folder on the cloud server, the info needed to be sent is the path of the new folder.
+Create a new folder on the cloud server, the info needed to be sent is the path
+of the new folder.
 
 Code example
 ~~~~~~~~~~~~
@@ -215,8 +136,10 @@ Code example
 Read folder
 -----------
 
-Get the content of an existing folder on the cloud server, the info needed to be sent is the path of the folder, in the example shown it has been asked the content of the root folder.
-As answer of this method, it will be received an array with all the files and folders stored in the selected folder.
+Get the content of an existing folder on the cloud server, the info needed to
+be sent is the path of the folder, in the example shown it has been asked the
+content of the root folder.  As answer of this method, it will be received an
+array with all the files and folders stored in the selected folder.
 
 Code example
 ~~~~~~~~~~~~
@@ -292,7 +215,8 @@ Code example
 Read file
 ---------
 
-Get information related to a certain file or folder, information obtained is: : filePath, filename, isDirectory, size and date
+Get information related to a certain file or folder, information obtained is: :
+filePath, filename, isDirectory, size and date
 
 Code example
 ~~~~~~~~~~~~
@@ -362,7 +286,8 @@ Code example
 Delete file or folder
 ---------------------
 
-Delete a file or folder on the cloud server. The info needed is the path of folder/file to be deleted.
+Delete a file or folder on the cloud server. The info needed is the path of
+folder/file to be deleted.
 
 Code example
 ~~~~~~~~~~~~
@@ -428,7 +353,9 @@ Code example
 Download a file
 ---------------
 
-Download an existing file on the cloud server. The info needed is path of the file on the server and targetDirectory, path where the file will be stored on the device.
+Download an existing file on the cloud server. The info needed is path of the
+file on the server and targetDirectory, path where the file will be stored on
+the device.
 
 Code example
 ~~~~~~~~~~~~
@@ -541,14 +468,12 @@ Code example
 |                                                                           |
 +---------------------------------------------------------------------------+
 
-
-
-
-
 Upload a file
 -------------
 
-Upload a new file to the cloud server. The info needed is fileToUpload, path where the file is stored on the device, remotePath, path where the file will be stored on the server and mimeType.
+Upload a new file to the cloud server. The info needed is fileToUpload, path
+where the file is stored on the device, remotePath, path where the file will be
+stored on the server and mimeType.
 
 Code example
 ~~~~~~~~~~~~
@@ -760,7 +685,10 @@ Get the share resources for a given file or folder
 --------------------------------------------------
 
 
-Get information about what files and folder are shared by link on a certain folder. The info needed is filePath, path of the file/folder on the server, the Boolean variable, getReshares, come from the Sharing api, from the moment it is not in use within the ownCloud Android library.
+Get information about what files and folder are shared by link on a certain
+folder. The info needed is filePath, path of the file/folder on the server, the
+Boolean variable, getReshares, come from the Sharing api, from the moment it is
+not in use within the ownCloud Android library.
 
 Code example
 ~~~~~~~~~~~~
@@ -880,8 +808,10 @@ Share link of file or folder
 
 
 Share a file or a folder from your cloud server by link.
-** **
-The info needed is filePath, the path of the item that you want to share and Password, this comes from the Sharing api, from the moment it is not in use within the ownCloud Android library.
+
+The info needed is filePath, the path of the item that you want to share and
+Password, this comes from the Sharing api, from the moment it is not in use
+within the ownCloud Android library.
 
 
 Code example
@@ -1048,7 +978,7 @@ Delete a share resource
 
 
 Stop sharing by link a file or a folder from your cloud server.
-** **
+
 The info needed is the object OCShare that you want to stop sharing by link.
 
 Code example
@@ -1116,49 +1046,10 @@ Code example
 Tips
 ----
 
-
-*   Credentials must be set before calling any method
-
-
-
-
-*   Paths must not be on URL Encoding
-
-
-
-
-* Correct path:
-`http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop <http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop>`_
-Music/
-
-* Wrong path:
-`http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop%20Music/ <http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop%20Music/>`_
-
-
-*   There are some forbidden characters to be used in folder and files names on the server, same on the ownCloud Android Library
-
-
-
-
-"\", "/","<",">",":",""","|","?","*"
-
-
+* Credentials must be set before calling any method
+* Paths must not be on URL Encoding
+* Correct path: `http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop <http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop>`_ Music/
+* Wrong path: `http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop%20Music/ <http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop%20Music/>`_
+* There are some forbidden characters to be used in folder and files names on the server, same on the ownCloud Android Library "\","/","<",">",":",""","|","?","*"
 *   Upload and download actions may be cancelled thanks to the objects uploadOperation.cancel(), downloadOperation.cancel()
-
-
-
-
 *   Unit tests, before launching unit tests you have to enter your account information (server url, user and password) on TestActivity.java
-
-
-
-
-
-
-
-
-
-
-
-
-

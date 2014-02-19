@@ -18,6 +18,8 @@ ownCloud documentation contents
     testing/index
     bugtracker/index
     commun/index
+    android_library/index
+    ios_library/index
 
 Indices and tables
 ==================
