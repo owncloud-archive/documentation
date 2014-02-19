@@ -8,8 +8,6 @@ License
 
 All documentation in this repository is licensed under the Creative Commons Attribution 3.0 Unported license (`CC BY 3.0`_).
 
-.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
-
 Style
 -------
 
@@ -53,3 +51,26 @@ Enter any manual and clicking the "Build HTML" shortcut will create a HTML build
 PDF using the more lightweight, but feature-incomplete RST2PDF tool. The results are in ``_build/html`` and  ``_build/pdf``
 respectively.
 
+Importing Word and OpenDocument files
+-------------------------------------
+
+Somtimes, documentation might exist as Word or LibreOffice document. To make it part of the documentation,
+follow these steps:
+
+Prerequisits
+^^^^^^^^^^^^
+
+1. Install Python 2.x
+2. Install odt2shpinx (``easy_install odt2sphinx``)
+3. Install GCC/clang (`Xcode command line tools`_ required on Mac OS)
+
+Process
+^^^^^^^
+
+1. ``doc/docx`` files need to be stored as odt first
+2. Run ``odt2sphinx my.docx``
+3. Move the resulting ``rst`` files in place and reference them
+4. Wrap text lines at 80 chars, apply markup fixes
+
+.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
+.. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
