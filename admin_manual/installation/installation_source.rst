@@ -235,16 +235,12 @@ Configuring ownCloud
 Since there was a change in the way versions 2.2 and 2.4 are configured,
 you'll have to find out which apache version you are using.
 
-Usually you can do this by running
+Usually you can do this by running one of the following commands:
 ::
 
 	sudo apachectl -v
-    
-or
-::
-
 	apache2 -v
-    
+
 Example output:
 ::
 
