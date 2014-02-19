@@ -4,6 +4,11 @@ Manual Installation
 If you do not want to use packages, here is how you setup ownCloud on
 from scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup:
 
+This document provides a complete walk-through for installing ownCloud 
+on Ubuntu 12.04 LTS Server with apache and mysql.
+It also provides guidelines for installing it on other distributions,
+webservers and database systems.
+
 Prerequisites
 ~~~~~~~~~~~~~
 
@@ -28,20 +33,22 @@ To run ownCloud, your web server must have the following installed:
 
 Database connectors (pick at least one):
 
-* PHP module sqlite (>= 3)
+* PHP module sqlite (>= 3, usually not recommendable for performance reasons)
 * PHP module mysql
 * PHP module pgsql (requires PostgreSQL >= 9.0)
 
 *Recommended* packages:
 
-* PHP module curl (highly recommended, some functionality, e.g. http user authentication, depends on this)
+* PHP module curl (highly recommended, some functionality, e.g. http user
+  authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
 * PHP module intl (increases language translation performance)
 * PHP module mcrypt (increases file encryption performance)
 * PHP module openssl (required for accessing HTTPS resources)
 
-Required for specific apps (if you use the mentioned app, you must install that package):
+Required for specific apps (if you use the mentioned app, you must install that
+package):
 
 * PHP module ldap (for ldap integration)
 * smbclient (for SMB storage)
@@ -63,46 +70,48 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or libreOffice
 
-Please check your distribution, operating system or hosting partner documentation
-on how to install/enable these modules.
+**Remarks:**
 
+* Please check your distribution, operating system or hosting partner documentation
+  on how to install/enable these modules.
 
-If you are running Ubuntu 10.04 LTS you will need to update your PHP from
-this `PHP PPA`_:
-
+* Make sure your distribution's php version fulfils the version requirements
+  specified above. If it doesn't, there might be custom repositories providing
+  apt packages. If you are e.g. running Ubuntu 10.04 LTS, you can update your
+  PHP using a custom `PHP PPA`_:
 ::
 
 	sudo add-apt-repository ppa:ondrej/php5
 	sudo apt-get update
 	sudo apt-get install php5
+
+* You don’t need any WebDAV support module for your web server (i.e. apache’s
+  mod_webdav) to access your ownCloud data via WebDAV. ownCloud has a built-in
+  WebDAV server of its own.
   
-For example, on a machine running a pristine Ubuntu 12.04.4 LTS server, you would
-install the required and recommended modules for a typical owncloud install by
-issuing the following commands in a terminal:
+Example installation on Ubuntu 12.04.4 LTS Server
+*************************************************
+On a machine running a pristine Ubuntu 12.04.4 LTS server, you would install the
+required and recommended modules for a typical owncloud install by issuing the
+following commands in a terminal:
 ::
 
 	sudo apt-get install apache2 mysql-server libapache2-mod-php5
 	sudo apt-get install php5-gd php5-json php5-mysql php5-curl
 	sudo apt-get install php5-intl php5-mcrypt php5-imagick
 
-At the execution of each of the above commands you might be prompted whether you
-want to continue; press "Y" for Yes (that is if your system language is english.
-You might have to press a different key if you have a different system language).
+**Remarks:**
 
-At the installation of the mysql server, you will be prompted for a root password.
-Be sure to remember that password for later use.
+* At the execution of each of the above commands you might be prompted whether you
+  want to continue; press "Y" for Yes (that is if your system language is english.
+  You might have to press a different key if you have a different system language).
 
-This installs the packages for the ownCloud core system. If you are planning on
-running additional apps, keep in mind that they might require additional packages.
-See the list above for details.
+* At the installation of the mysql server, you will be prompted for a root password.
+  Be sure to remember that password for later use.
 
-As webserver, apache will be used, and mysql as database engine. If you want to
-use a different web- or database server, you'll have to consult the documentation
-of your distributions or of the respective softwares on which packages to install.
-
-.. note:: You don’t need any WebDAV support module for your web server (i.e.
-          apache’s mod_webdav) to access your ownCloud data via WebDAV. ownCloud
-          has built-in WebDAV server of its own.
+* This installs the packages for the ownCloud core system. If you are planning on
+  running additional apps, keep in mind that they might require additional packages.
+  See the list above for details.
 
 Download, extract and copy ownCloud to Your Web Server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -119,40 +128,34 @@ you want to install ownCloud on. If that's a different machine than the one you
 are currently working on, use e.g. FTP to transfer the downloaded archive file
 there. Note down the directory where you put the file.
 
-Then you have to extract the archive contents. Open a terminal on the machine
-you plan to run owncloud on, and run:
-::
+* Then you have to extract the archive contents. Open a terminal on the machine
+  you plan to run owncloud on, and run:::
 
 	cd path/to/downloaded/archive
 	tar -xjf owncloud-x.y.z.tar.bz2
 
-where path/to/downloaded/archive is to be replaced by the path where you put
-the downloaded archive, and x.y.z of course has to be replaced by the actual
-version number as in the file you have downloaded.
+  where :code:`path/to/downloaded/archive` is to be replaced by the path where you
+  put the downloaded archive, and x.y.z of course has to be replaced by the actual
+  version number as in the file you have downloaded.
   
-Finally - if you haven't already extracted the files in the document root
-of your webserver - execute also the following command::
+* Finally - if you haven't already extracted the files in the document root
+  of your webserver - execute also the following command to copy the ownCloud
+  files to their final destination directly inside the document root of your
+  webserver::
 
 	sudo cp -r owncloud /path/to/your/webserver/document-root
 
-to copy the ownCloud files to their final destination directly inside the
-document root of your webserver.
+**Remarks:**
 
-If you don't know where your webserver's document root is located, consult its
-documentation. For apache, see e.g. here:
-`http://www.cyberciti.biz/faq/howto-find-unix-linux-apache-documentroot/`.
-For Ubuntu for example, this would usually be /var/www.
+* If you don't know where your webserver's document root is located, consult its
+  documentation. For apache on Ubuntu for example, this would usually be
+  :code:`/var/www`. So above command should look like this:::
 
-.. note:: The above assumes you want to install ownCloud into a subdirectory
-          "owncloud" on your webserver. For installing it anywhere else, you'll
-          have to adapt the above commands accordingly.
-          
-.. note:: You can also install ownCloud in a directory outside of the document
-          root. You will then however have to either set up a link to the
-          owncloud folder from somewhere in the document root (provided your
-          apache configuration allows linking), or create an alias for it in
-          the apache configuration. See your webserver documentation on how to
-          do so.
+	sudo cp -r owncloud /var/www
+
+* The above assumes you want to install ownCloud into a subdirectory "owncloud"
+  on your webserver. For installing it anywhere else, you'll have to adapt the
+  above commands accordingly.
 
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -200,20 +203,10 @@ Apache Configuration
 Enabling SSL
 ............
 
-The following basic guide will just describe how to set up a basic self-signed
-certificate.
-
-.. note:: It is recommended to get a certificate signed by an official signing
-          authority. https://www.startssl.com for example provides free basic
-          certificates.
-
-If you are running apache under Ubuntu (because you for example have installed
-it with the apt-get install commands given above), it is already set-up with a
-simple self-signed certificate.
-
-
-All you have to do is enable the ssl module and the according site. Open
-a terminal and run
+If you are running apache under Ubuntu (because you for example have
+installed it with the :code:`apt-get install` commands given above), it is
+already set-up with a simple self-signed certificate. All you have to do then
+is enable the ssl module and the according site. Open a terminal and run
 ::
 
 	sudo a2enmod ssl
@@ -222,6 +215,13 @@ a terminal and run
 
 If you are using a different distribution, check their documentation on how to
 enable SSL.
+
+.. note:: Self-signed certificates have their drawbacks - especially when you
+          plan to make your owncloud server publicly accessible. You might
+          consider getting a certificate signed by an official signing
+          authority. If you're looking for a free certificate, you could
+          consult e.g. this article:
+          `https://www.sslshopper.com/article-free-ssl-certificates-from-a-free-certificate-authority.html`
 
 Configuring ownCloud
 ....................
