@@ -35,6 +35,7 @@ Code example
               // Activity or Service context
               true);
 
+
 Set credentials
 ---------------
 
@@ -52,16 +53,14 @@ Code example
   package com.owncloud.android.lib.common;
 
   public class OwnCloudClient extends HttpClient {
-
-  ...
-
-  // Set basic credentials
-  client.setBasicCredentials(username, password);
-  // Set bearer access token
-  client.setBearerCredentials(accessToken);
-  // Set session cookie
-  client.setSsoSessionCookie(cookie);
-
+    ...
+    // Set basic credentials
+    client.setBasicCredentials(username, password);
+    // Set bearer access token
+    client.setBearerCredentials(accessToken);
+    // Set session cookie
+    client.setSsoSessionCookie(cookie);
+  }
 
 Create a folder
 ---------------
@@ -71,67 +70,23 @@ of the new folder.
 
 Code example
 ~~~~~~~~~~~~
+                                                      
+.. code-block:: java
 
-+----------------------------------------------------+
-|                                                    |
-| **private**                                        |
-|                                                    |
-| **void**                                           |
-|                                                    |
-| startFolderCreation(String newFolderPath) {        |
-|                                                    |
-| CreateRemoteFolderOperation createOperation =      |
-|                                                    |
-| **new**                                            |
-|                                                    |
-| CreateRemoteFolderOperation(newFolderPath,         |
-| **false**                                          |
-| );                                                 |
-|                                                    |
-| createOperation.execute(                           |
-| mClient                                            |
-| ,                                                  |
-| **this**                                           |
-| ,                                                  |
-| mHandler                                           |
-| );                                                 |
-|                                                    |
-| }                                                  |
-|                                                    |
-|                                                    |
-| @Override                                          |
-|                                                    |
-| **public**                                         |
-|                                                    |
-| **void**                                           |
-|                                                    |
-| onRemoteOperationFinish(RemoteOperation operation, |
-|                                                    |
-| RemoteOperationResult result) {                    |
-|                                                    |
-| **if**                                             |
-|                                                    |
-| (operation                                         |
-| **instanceof**                                     |
-|                                                    |
-| CreateRemoteFolderOperation) {                     |
-|                                                    |
-| **if**                                             |
-|                                                    |
-| (result.isSuccess()) {                             |
-|                                                    |
-| // do your stuff here                              |
-|                                                    |
-| }                                                  |
-|                                                    |
-| }                                                  |
-|                                                    |
-| …                                                  |
-|                                                    |
-| }                                                  |
-|                                                    |
-+----------------------------------------------------+
+  private void startFolderCreation(String newFolderPath) {
+    CreateRemoteFolderOperation createOperation = new CreateRemoteFolderOperation(newFolderPath, false); 
+    createOperation.execute( mClient , this , mHandler); 
+  }
 
+  @Override
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof CreateRemoteFolderOperation) {
+      if (result.isSuccess()) {
+      // do your stuff here
+      }
+    }
+    …
+  }
 
 Read folder
 -----------
@@ -144,144 +99,52 @@ array with all the files and folders stored in the selected folder.
 Code example
 ~~~~~~~~~~~~
 
-+-----------------------------------------------------+
-| **private**                                         |
-|                                                     |
-| **void**                                            |
-|                                                     |
-| startReadRootFolder() {                             |
-|                                                     |
-| ReadRemoteFolderOperation                           |
-|                                                     |
-| refreshOperation =                                  |
-|                                                     |
-| **new**                                             |
-|                                                     |
-| ReadRemoteFolderOperation                           |
-| (FileUtils.                                         |
-| *PATH_SEPARATOR*                                    |
-| );                                                  |
-| // root folder                                      |
-|                                                     |
-| refreshOperation.execute(                           |
-| mClient                                             |
-| ,                                                   |
-| **this**                                            |
-| ,                                                   |
-| mHandler                                            |
-| );                                                  |
-|                                                     |
-| }                                                   |
-|                                                     |
-|                                                     |
-| @Override                                           |
-|                                                     |
-| **public**                                          |
-|                                                     |
-| **void**                                            |
-|                                                     |
-| onRemoteOperationFinish( RemoteOperation operation, |
-|                                                     |
-| RemoteOperationResult result) {                     |
-|                                                     |
-| **if**                                              |
-|                                                     |
-| (operation                                          |
-| **instanceof**                                      |
-|                                                     |
-| ReadRemoteFolderOperation) {                        |
-|                                                     |
-| **if**                                              |
-|                                                     |
-| (result.isSuccess()) {                              |
-|                                                     |
-| List<                                               |
-| RemoteFile                                          |
-| > files = result.getData();                         |
-|                                                     |
-| // do your stuff here                               |
-|                                                     |
-| }                                                   |
-|                                                     |
-| }                                                   |
-|                                                     |
-| …                                                   |
-|                                                     |
-| }                                                   |
-|                                                     |
-+-----------------------------------------------------+
+.. code-block:: java
 
+  private void startReadRootFolder() {
+    ReadRemoteFolderOperation refreshOperation = new ReadRemoteFolderOperation(FileUtils.PATH_SEPARATOR); 
+    // root folder
+    refreshOperation.execute(mClient, this, mHandler);
+  }
+
+
+  @Override
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) { 
+    if (operation instanceof ReadRemoteFolderOperation) {
+      if (result.isSuccess()) {
+        List< RemoteFile > files = result.getData(); 
+        // do your stuff here
+      }
+    }
+    …
+  }
 
 Read file
 ---------
 
-Get information related to a certain file or folder, information obtained is: :
-filePath, filename, isDirectory, size and date
+Get information related to a certain file or folder, information obtained is:
+``filePath``, ``filename``, ``isDirectory``, ``size`` and ``date``.
 
 Code example
 ~~~~~~~~~~~~
 
-+-----------------------------------------------------+
-|                                                     |
-| **private**                                         |
-|                                                     |
-| **void**                                            |
-|                                                     |
-| startReadFileProperties                             |
-| (String filePath) {                                 |
-|                                                     |
-| ReadRemoteFileOperation readOperation =             |
-| **new**                                             |
-|                                                     |
-| ReadRemoteFileOperation(filePath);                  |
-|                                                     |
-| readOperation.execute(                              |
-| mClient                                             |
-| ,                                                   |
-| **this**                                            |
-| ,                                                   |
-| mHandler                                            |
-| );                                                  |
-|                                                     |
-| }                                                   |
-|                                                     |
-| @Override                                           |
-|                                                     |
-| **public**                                          |
-|                                                     |
-| **void**                                            |
-|                                                     |
-| onRemoteOperationFinish( RemoteOperation operation, |
-|                                                     |
-| RemoteOperationResult result) {                     |
-|                                                     |
-| **if**                                              |
-|                                                     |
-| (operation                                          |
-| **instanceof**                                      |
-|                                                     |
-| ReadRemoteFileOperation) {                          |
-|                                                     |
-| **if**                                              |
-|                                                     |
-| (result.isSuccess()) {                              |
-|                                                     |
-| RemoteFile                                          |
-| file = result.getData()[0];                         |
-|                                                     |
-| // do your stuff here                               |
-|                                                     |
-| }                                                   |
-|                                                     |
-| }                                                   |
-| …                                                   |
-|                                                     |
-| }                                                   |
-|                                                     |
-+-----------------------------------------------------+
+.. code-block:: java
 
+  private void startReadFileProperties(String filePath) {
+    ReadRemoteFileOperation readOperation = new ReadRemoteFileOperation(filePath);
+    readOperation.execute(mClient, this, mHandler);
+  }
 
-
+  @Override
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof ReadRemoteFileOperation) {
+      if (result.isSuccess()) { 
+        RemoteFile file = result.getData()[0];
+        // do your stuff here
+      }
+    }
+    …
+  }
 
 Delete file or folder
 ---------------------
@@ -292,62 +155,22 @@ folder/file to be deleted.
 Code example
 ~~~~~~~~~~~~
 
-+----------------------------------------------------+
-|                                                    |
-| **private**                                        |
-|                                                    |
-| **void**                                           |
-|                                                    |
-| startRemoveFile(String filePath) {                 |
-|                                                    |
-| RemoveRemoteFileOperation removeOperation =        |
-| **new**                                            |
-| ** **                                              |
-| RemoveRemoteFileOperation(remotePath);             |
-|                                                    |
-| *removeOperation*                                  |
-| .execute(                                          |
-| *mClient*                                          |
-| ,                                                  |
-| **this**                                           |
-| ,                                                  |
-| mHandler                                           |
-| );                                                 |
-|                                                    |
-| }                                                  |
-|                                                    |
-| @Override                                          |
-|                                                    |
-| **public**                                         |
-|                                                    |
-| **void**                                           |
-|                                                    |
-| onRemoteOperationFinish(RemoteOperation operation, |
-|                                                    |
-| RemoteOperationResult result) {                    |
-|                                                    |
-| **if**                                             |
-|                                                    |
-| (operation                                         |
-| **instanceof**                                     |
-|                                                    |
-| RemoveRemoteFileOperation) {                       |
-|                                                    |
-| **if**                                             |
-|                                                    |
-| (result.isSuccess()) {                             |
-|                                                    |
-| // do your stuff here                              |
-|                                                    |
-| }                                                  |
-|                                                    |
-| }                                                  |
-|                                                    |
-| …                                                  |
-|                                                    |
-| }                                                  |
-|                                                    |
-+----------------------------------------------------+
+.. code-block:: java
+
+  private void startRemoveFile(String filePath) { 
+    RemoveRemoteFileOperation removeOperation = new RemoveRemoteFileOperation(remotePath);
+    removeOperation.execute( mClient , this , mHandler);
+  }
+
+  @Override
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof RemoveRemoteFileOperation) {
+      if (result.isSuccess()) { 
+        // do your stuff here 
+      }
+    }
+    …
+  }
 
 
 Download a file
@@ -360,113 +183,32 @@ the device.
 Code example
 ~~~~~~~~~~~~
 
+.. code-block:: java
 
-+---------------------------------------------------------------------------+
-|                                                                           |
-|                                                                           |
-|                                                                           |
-| **private**                                                               |
-|                                                                           |
-| **void**                                                                  |
-|                                                                           |
-| startDownload(String filePath, File targetDirectory) {                    |
-|                                                                           |
-| DownloadRemoteFileOperation downloadOperation =                           |
-|                                                                           |
-| **new**                                                                   |
-|                                                                           |
-| DownloadRemoteFileOperation(filePath, targetDirectory.getAbsolutePath()); |
-|                                                                           |
-| downloadOperation.addDatatransferProgressListener(                        |
-| **this**                                                                  |
-| );                                                                        |
-|                                                                           |
-| downloadOperation.execute(                                                |
-| mClient                                                                   |
-| ,                                                                         |
-| **this**                                                                  |
-| ,                                                                         |
-| mHandler                                                                  |
-| );                                                                        |
-|                                                                           |
-| }                                                                         |
-|                                                                           |
-| @Override                                                                 |
-|                                                                           |
-| **public**                                                                |
-|                                                                           |
-| **void**                                                                  |
-|                                                                           |
-| onRemoteOperationFinish( RemoteOperation operation,                       |
-|                                                                           |
-| RemoteOperationResult result) {                                           |
-|                                                                           |
-| **if**                                                                    |
-|                                                                           |
-| (operation                                                                |
-| **instanceof**                                                            |
-|                                                                           |
-| DownloadRemoteFileOperation) {                                            |
-|                                                                           |
-| **if**                                                                    |
-|                                                                           |
-| (result.isSuccess()) {                                                    |
-|                                                                           |
-| // do your stuff here                                                     |
-|                                                                           |
-| }                                                                         |
-|                                                                           |
-| }                                                                         |
-|                                                                           |
-| }                                                                         |
-|                                                                           |
-| @                                                                         |
-| Override                                                                  |
-|                                                                           |
-| **public**                                                                |
-|                                                                           |
-| **void**                                                                  |
-|                                                                           |
-| onTransferProgress(                                                       |
-| **long**                                                                  |
-|                                                                           |
-| progressRate,                                                             |
-|                                                                           |
-| **long**                                                                  |
-|                                                                           |
-| totalTransferredSoFar,                                                    |
-|                                                                           |
-| **long**                                                                  |
-|                                                                           |
-| totalToTransfer,                                                          |
-|                                                                           |
-| String fileName) {                                                        |
-|                                                                           |
-|                                                                           |
-| mHandler                                                                  |
-| .post(                                                                    |
-| **new**                                                                   |
-|                                                                           |
-| Runnable() {                                                              |
-|                                                                           |
-| @                                                                         |
-| Override                                                                  |
-|                                                                           |
-| **public**                                                                |
-|                                                                           |
-| **void**                                                                  |
-|                                                                           |
-| run() {                                                                   |
-|                                                                           |
-| // do your UI updates about progress here                                 |
-|                                                                           |
-| }                                                                         |
-|                                                                           |
-| });                                                                       |
-|                                                                           |
-| }                                                                         |
-|                                                                           |
-+---------------------------------------------------------------------------+
+  private void startDownload(String filePath, File targetDirectory) {
+    DownloadRemoteFileOperation downloadOperation = new DownloadRemoteFileOperation(filePath, targetDirectory.getAbsolutePath());
+    downloadOperation.addDatatransferProgressListener(this); 
+    downloadOperation.execute( mClient, this, mHandler);
+  }
+
+  @Override
+  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof DownloadRemoteFileOperation) {
+      if (result.isSuccess()) {
+        // do your stuff here
+      }
+    }
+  }
+
+  @Override
+  public void onTransferProgress( long progressRate, long totalTransferredSoFar, long totalToTransfer, String fileName) {
+  mHandler.post( new Runnable() {
+    @Override
+    public void run() { 
+      // do your UI updates about progress here
+    }
+  });
+  }
 
 Upload a file
 -------------
@@ -478,118 +220,32 @@ stored on the server and mimeType.
 Code example
 ~~~~~~~~~~~~
 
+.. code-block:: java
 
-+-----------------------------------------------------------+
-|                                                           |
-| **private**                                               |
-|                                                           |
-| **void**                                                  |
-|                                                           |
-| startUpload                                               |
-| (File fileToUpload, String remotePath, String mimeType) { |
-|                                                           |
-| UploadRemoteFileOperation uploadOperation =               |
-| **new**                                                   |
-|                                                           |
-| UploadRemoteFileOperation(                                |
-|                                                           |
-| fileToUpload.getAbsolutePath(),                           |
-|                                                           |
-| remotePath,                                               |
-|                                                           |
-| mimeType);                                                |
-|                                                           |
-| uploadOperation.addDatatransferProgressListener(          |
-| **this**                                                  |
-| );                                                        |
-|                                                           |
-| uploadOperation.execute(                                  |
-| mClient                                                   |
-| ,                                                         |
-| **this**                                                  |
-| ,                                                         |
-| mHandler                                                  |
-| );                                                        |
-|                                                           |
-| }                                                         |
-|                                                           |
-| @Override                                                 |
-|                                                           |
-| **public**                                                |
-|                                                           |
-| **void**                                                  |
-|                                                           |
-| onRemoteOperationFinish(RemoteOperation operation,        |
-|                                                           |
-| RemoteOperationResult result) {                           |
-|                                                           |
-| **if**                                                    |
-|                                                           |
-| (operation                                                |
-| **instanceof**                                            |
-|                                                           |
-| UploadRemoteFileOperation) {                              |
-|                                                           |
-| **if**                                                    |
-|                                                           |
-| (result.isSuccess()) {                                    |
-|                                                           |
-| // do your stuff here                                     |
-|                                                           |
-| }                                                         |
-|                                                           |
-| }                                                         |
-|                                                           |
-| }                                                         |
-|                                                           |
-| @                                                         |
-| Override                                                  |
-|                                                           |
-| **public**                                                |
-|                                                           |
-| **void**                                                  |
-|                                                           |
-| onTransferProgress(                                       |
-| **long**                                                  |
-|                                                           |
-| progressRate,                                             |
-|                                                           |
-| **long**                                                  |
-|                                                           |
-| totalTransferredSoFar,                                    |
-|                                                           |
-| **long**                                                  |
-|                                                           |
-| totalToTransfer,                                          |
-|                                                           |
-| String fileName) {                                        |
-|                                                           |
-|                                                           |
-| mHandler                                                  |
-| .post(                                                    |
-| **new**                                                   |
-|                                                           |
-| Runnable() {                                              |
-|                                                           |
-| @                                                         |
-| Override                                                  |
-|                                                           |
-| **public**                                                |
-|                                                           |
-| **void**                                                  |
-|                                                           |
-| run() {                                                   |
-|                                                           |
-| // do your UI updates about progress here                 |
-|                                                           |
-| }                                                         |
-|                                                           |
-| });                                                       |
-|                                                           |
-| }                                                         |
-|                                                           |
-+-----------------------------------------------------------+
+  private void startUpload (File fileToUpload, String remotePath, String mimeType) { 
+    UploadRemoteFileOperation uploadOperation = new UploadRemoteFileOperation( fileToUpload.getAbsolutePath(), remotePath, mimeType);
+    uploadOperation.addDatatransferProgressListener(this); 
+    uploadOperation.execute(mClient, this, mHandler); 
+  }
 
+  @Override
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof UploadRemoteFileOperation) {
+      if (result.isSuccess()) {
+        // do your stuff here 
+      }
+    }
+  }
+
+  @Override 
+  public void onTransferProgress(long progressRate, long totalTransferredSoFar, long totalToTransfer, String fileName) {
+    mHandler.post( new Runnable() {
+      @Override
+      public void run() {
+        // do your UI updates about progress here
+      }
+    });
+  }
 
 Read shared items by link
 -------------------------
@@ -600,86 +256,25 @@ mClient contains the information about the server url and account)
 Code example
 ~~~~~~~~~~~~
 
+.. code-block:: java
 
-+------------------------------------------------------------------------+
-|                                                                        |
-| **private**                                                            |
-|                                                                        |
-| **void**                                                               |
-|                                                                        |
-| startAllSharesRetrieval() {                                            |
-|                                                                        |
-| GetRemoteSharesOperation getSharesOp = new GetRemoteSharesOperation(); |
-|                                                                        |
-| getSharesOp.execute(                                                   |
-| mClient                                                                |
-| ,                                                                      |
-| **this**                                                               |
-| ,                                                                      |
-| mHandler                                                               |
-| );                                                                     |
-|                                                                        |
-| }                                                                      |
-|                                                                        |
-| @Override                                                              |
-|                                                                        |
-| **public**                                                             |
-|                                                                        |
-| **void**                                                               |
-|                                                                        |
-| onRemoteOperationFinish( RemoteOperation operation,                    |
-|                                                                        |
-| RemoteOperationResult result) {                                        |
-|                                                                        |
-| **if**                                                                 |
-|                                                                        |
-| (operation                                                             |
-| **instanceof**                                                         |
-|                                                                        |
-| GetRemoteSharesOperation) {                                            |
-|                                                                        |
-| **if**                                                                 |
-|                                                                        |
-| (result.isSuccess()) {                                                 |
-|                                                                        |
-| ArrayList<                                                             |
-| OCShare                                                                |
-| > shares =                                                             |
-| **new**                                                                |
-|                                                                        |
-| ArrayList<                                                             |
-| OCShare                                                                |
-| >();                                                                   |
-|                                                                        |
-| **for**                                                                |
-| (Object obj: result.getData()) {                                       |
-|                                                                        |
-| shares.add((                                                           |
-| OCShare                                                                |
-| ) obj);                                                                |
-|                                                                        |
-| }                                                                      |
-|                                                                        |
-| // do your stuff here                                                  |
-|                                                                        |
-| }                                                                      |
-|                                                                        |
-| }                                                                      |
-|                                                                        |
-| }                                                                      |
-|                                                                        |
-+------------------------------------------------------------------------+
+  private void startAllSharesRetrieval() {
+    GetRemoteSharesOperation getSharesOp = new GetRemoteSharesOperation();
+    getSharesOp.execute( mClient , this , mHandler); 
+  }
 
-
-
-
-
-
-
-
-
-
-
+  @Override
+  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof GetRemoteSharesOperation) {
+      if (result.isSuccess()) { 
+        ArrayList< OCShare > shares = new ArrayList< OCShare >(); 
+        for (Object obj: result.getData()) {
+          shares.add(( OCShare) obj);
+        }
+        // do your stuff here
+      }
+    }
+  }
 
 Get the share resources for a given file or folder
 --------------------------------------------------
@@ -693,114 +288,30 @@ not in use within the ownCloud Android library.
 Code example
 ~~~~~~~~~~~~
 
+.. code-block:: java
 
-+----------------------------------------------------------+
-|                                                          |
-| **private**                                              |
-|                                                          |
-| **void**                                                 |
-|                                                          |
-| startSharesRetrievalForFileOrFolder(String filePath,     |
-| **boolean**                                              |
-|                                                          |
-| getReshares) {                                           |
-|                                                          |
-| GeteRemoteSharesForFileOperation operation =             |
-| **new**                                                  |
-|                                                          |
-|                                                          |
-| GetRemoteSharesForFileOperation(filePath, getReshares,   |
-| **false**                                                |
-| );                                                       |
-|                                                          |
-|                                                          |
-| operation.execute(                                       |
-| mClient                                                  |
-| ,                                                        |
-| **this**                                                 |
-| ,                                                        |
-| mHandler                                                 |
-| );                                                       |
-|                                                          |
-| }                                                        |
-|                                                          |
-|                                                          |
-| **private**                                              |
-|                                                          |
-| **void**                                                 |
-|                                                          |
-| startSharesRetrievalForFilesInFolder(String folderPath,  |
-| **boolean**                                              |
-|                                                          |
-| getReshares) {                                           |
-|                                                          |
-| GetRemoteSharesForFileOperation operation =              |
-| **new**                                                  |
-|                                                          |
-|                                                          |
-| GetRemoteSharesForFileOperation(folderPath, getReshares, |
-| **true**                                                 |
-| );                                                       |
-|                                                          |
-|                                                          |
-| operation.execute(                                       |
-| mClient                                                  |
-| ,                                                        |
-| **this**                                                 |
-| ,                                                        |
-| mHandler                                                 |
-| );                                                       |
-|                                                          |
-| }                                                        |
-|                                                          |
-| @Override                                                |
-|                                                          |
-| **public**                                               |
-|                                                          |
-| **void**                                                 |
-|                                                          |
-| onRemoteOperationFinish( RemoteOperation operation,      |
-|                                                          |
-| RemoteOperationResult result) {                          |
-|                                                          |
-| **if**                                                   |
-|                                                          |
-| (operation                                               |
-| **instanceof**                                           |
-|                                                          |
-| GetRemoteSharesForFileOperation) {                       |
-|                                                          |
-| **if**                                                   |
-|                                                          |
-| (result.isSuccess()) {                                   |
-|                                                          |
-| ArrayList<                                               |
-| OCShare                                                  |
-| > shares =                                               |
-| **new**                                                  |
-|                                                          |
-| ArrayList<                                               |
-| OCShare                                                  |
-| >();                                                     |
-|                                                          |
-| **for**                                                  |
-| (Object obj: result.getData()) {                         |
-|                                                          |
-| shares.add((                                             |
-| OCShare                                                  |
-| ) obj);                                                  |
-|                                                          |
-| }                                                        |
-|                                                          |
-| // do your stuff here                                    |
-|                                                          |
-| }                                                        |
-|                                                          |
-| }                                                        |
-|                                                          |
-| }                                                        |
-|                                                          |
-+----------------------------------------------------------+
+  private void startSharesRetrievalForFileOrFolder(String filePath, boolean getReshares) {
+    GeteRemoteSharesForFileOperation operation = new GetRemoteSharesForFileOperation(filePath, getReshares, false);
+    operation.execute( mClient, this, mHandler); 
+  }
+
+  private void startSharesRetrievalForFilesInFolder(String folderPath, boolean getReshares) {
+    GetRemoteSharesForFileOperation operation = new GetRemoteSharesForFileOperation(folderPath, getReshares, true);
+    operation.execute( mClient, this, mHandler); 
+  }
+
+  @Override
+  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof GetRemoteSharesForFileOperation) {
+      if (result.isSuccess()) {
+        ArrayList< OCShare > shares = new ArrayList< OCShare >(); 
+        for (Object obj: result.getData()) {
+          shares.add(( OCShare) obj); 
+        }
+        // do your stuff here
+     }
+  }
+  }
 
 
 Share link of file or folder
@@ -817,165 +328,36 @@ within the ownCloud Android library.
 Code example
 ~~~~~~~~~~~~
 
+.. code-block:: java
 
-+-----------------------------------------------------------------------+
-| **private**                                                           |
-|                                                                       |
-| **void**                                                              |
-|                                                                       |
-| startCreationOfPublicShareForFile(String filePath, String password) { |
-|                                                                       |
-| CreateRemoteShareOperation operation =                                |
-|                                                                       |
-| **new**                                                               |
-|                                                                       |
-| CreateRemoteShareOperation(                                           |
-|                                                                       |
-| filePath,                                                             |
-|                                                                       |
-| ShareType.                                                            |
-| *PUBLIC_LINK*                                                         |
-| ,                                                                     |
-|                                                                       |
-| ""                                                                    |
-| ,                                                                     |
-|                                                                       |
-| **false**                                                             |
-| ,                                                                     |
-|                                                                       |
-| password,                                                             |
-|                                                                       |
-| 1                                                                     |
-| );                                                                    |
-|                                                                       |
-| operation.execute(                                                    |
-| mClient                                                               |
-| ,                                                                     |
-| **this**                                                              |
-| ,                                                                     |
-| mHandler                                                              |
-| );}                                                                   |
-|                                                                       |
-|                                                                       |
-| **private**                                                           |
-|                                                                       |
-| **void**                                                              |
-|                                                                       |
-| startCreationOfGroupShareForFile(String filePath, String groupId) {   |
-|                                                                       |
-| CreateRemoteShareOperation operation =                                |
-|                                                                       |
-| **new**                                                               |
-|                                                                       |
-| CreateRemoteShareOperation(                                           |
-|                                                                       |
-| filePath,                                                             |
-|                                                                       |
-| ShareType.                                                            |
-| *GROUP*                                                               |
-| ,                                                                     |
-|                                                                       |
-| groupId,                                                              |
-|                                                                       |
-| **false**                                                             |
-| ,                                                                     |
-|                                                                       |
-| ""                                                                    |
-| ,                                                                     |
-|                                                                       |
-| 31                                                                    |
-| );                                                                    |
-|                                                                       |
-| operation.execute(                                                    |
-| mClient                                                               |
-| ,                                                                     |
-| **this**                                                              |
-| ,                                                                     |
-| mHandler                                                              |
-| );                                                                    |
-|                                                                       |
-| }                                                                     |
-|                                                                       |
-|                                                                       |
-| **private**                                                           |
-|                                                                       |
-| **void**                                                              |
-|                                                                       |
-| startCreationOfUserShareForFile(String filePath, String userId) {     |
-|                                                                       |
-| CreateRemoteShareOperation operation =                                |
-|                                                                       |
-| **new**                                                               |
-|                                                                       |
-| CreateRemoteShareOperation(                                           |
-|                                                                       |
-| filePath,                                                             |
-|                                                                       |
-| ShareType.                                                            |
-| *USER*                                                                |
-| ,                                                                     |
-|                                                                       |
-| userId,                                                               |
-|                                                                       |
-| **false**                                                             |
-| ,                                                                     |
-|                                                                       |
-| ""                                                                    |
-| ,                                                                     |
-|                                                                       |
-| 31                                                                    |
-| );                                                                    |
-|                                                                       |
-| operation.execute(                                                    |
-| mClient                                                               |
-| ,                                                                     |
-| **this**                                                              |
-| ,                                                                     |
-| mHandler                                                              |
-| );                                                                    |
-|                                                                       |
-| }                                                                     |
-|                                                                       |
-| @Override                                                             |
-|                                                                       |
-| **public**                                                            |
-|                                                                       |
-| **void**                                                              |
-|                                                                       |
-| onRemoteOperationFinish( RemoteOperation operation,                   |
-|                                                                       |
-| RemoteOperationResult result) {                                       |
-|                                                                       |
-| **if**                                                                |
-|                                                                       |
-| (operation                                                            |
-| **instanceof**                                                        |
-|                                                                       |
-| CreateRemoteShareOperation) {                                         |
-|                                                                       |
-| **if**                                                                |
-|                                                                       |
-| (result.isSuccess()) {                                                |
-|                                                                       |
-| OCShare share = (OCShare) result.                                     |
-| getData                                                               |
-| ().get(0);                                                            |
-|                                                                       |
-| // do your stuff here                                                 |
-|                                                                       |
-|                                                                       |
-| }                                                                     |
-|                                                                       |
-| }                                                                     |
-|                                                                       |
-| }                                                                     |
-|                                                                       |
-+-----------------------------------------------------------------------+
+  private void startCreationOfPublicShareForFile(String filePath, String password) {
+    CreateRemoteShareOperation operation = new CreateRemoteShareOperation(filePath, ShareType.PUBLIC_LINK, "", false, password, 1);
+    operation.execute( mClient , this , mHandler);
+  }
+
+  private void startCreationOfGroupShareForFile(String filePath, String groupId) {
+    CreateRemoteShareOperation operation = new CreateRemoteShareOperation(filePath, ShareType.GROUP, groupId, false , "", 31); 
+    operation.execute(mClient, this, mHandler); 
+  }
+
+  private void startCreationOfUserShareForFile(String filePath, String userId) {
+    CreateRemoteShareOperation operation = new CreateRemoteShareOperation(filePath, ShareType.USER, userId, false, "", 31);
+    operation.execute(mClient, this, mHandler);
+  }
+
+  @Override
+  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof CreateRemoteShareOperation) {
+      if (result.isSuccess()) { 
+        OCShare share = (OCShare) result.getData ().get(0);
+        // do your stuff here
+      }
+    }
+  }
 
 
 Delete a share resource
 -----------------------
-
 
 Stop sharing by link a file or a folder from your cloud server.
 
@@ -984,63 +366,21 @@ The info needed is the object OCShare that you want to stop sharing by link.
 Code example
 ~~~~~~~~~~~~
 
+.. code-block:: java
 
-+-------------------------------------------------------+
-|                                                       |
-| **private**                                           |
-|                                                       |
-| **void**                                              |
-|                                                       |
-| startShareRemoval(OCShare share) {                    |
-|                                                       |
-| RemoveRemoteShareOperation operation =                |
-|                                                       |
-| **new**                                               |
-|                                                       |
-| RemoveRemoteShareOperation((                          |
-| **int**                                               |
-| ) share.getIdRemoteShared());                         |
-|                                                       |
-| operation.execute(                                    |
-| mClient                                               |
-| ,                                                     |
-| **this**                                              |
-| ,                                                     |
-| mHandler                                              |
-| );                                                    |
-|                                                       |
-| }                                                     |
-|                                                       |
-| @Override                                             |
-|                                                       |
-| **public**                                            |
-|                                                       |
-| **void**                                              |
-|                                                       |
-| onRemoteOperationFinish(   RemoteOperation operation, |
-|                                                       |
-| RemoteOperationResult result) {                       |
-|                                                       |
-| **if**                                                |
-|                                                       |
-| (operation                                            |
-| **instanceof**                                        |
-|                                                       |
-| RemoveRemoteShareOperation) {                         |
-|                                                       |
-| **if**                                                |
-|                                                       |
-| (result.isSuccess()) {                                |
-|                                                       |
-| // do your stuff here                                 |
-|                                                       |
-| }                                                     |
-|                                                       |
-| }                                                     |
-|                                                       |
-| }                                                     |
-|                                                       |
-+-------------------------------------------------------+
+  private void startShareRemoval(OCShare share) {
+    RemoveRemoteShareOperation operation = new RemoveRemoteShareOperation((int) share.getIdRemoteShared());
+    operation.execute( mClient, this, mHandler);
+  }
+
+  @Override
+  public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof RemoveRemoteShareOperation) {
+      if (result.isSuccess()) {
+      // do your stuff here
+      }
+    }
+  }
 
 
 Tips
@@ -1048,8 +388,8 @@ Tips
 
 * Credentials must be set before calling any method
 * Paths must not be on URL Encoding
-* Correct path: `http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop <http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop>`_ Music/
-* Wrong path: `http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop%20Music/ <http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop%20Music/>`_
+* Correct path: ``http://www.myowncloudserver.com/owncloud/remote.php/webdav/PopMusic``
+* Wrong path: ``http://www.myowncloudserver.com/owncloud/remote.php/webdav/Pop%20Music/``
 * There are some forbidden characters to be used in folder and files names on the server, same on the ownCloud Android Library "\","/","<",">",":",""","|","?","*"
-*   Upload and download actions may be cancelled thanks to the objects uploadOperation.cancel(), downloadOperation.cancel()
-*   Unit tests, before launching unit tests you have to enter your account information (server url, user and password) on TestActivity.java
+* Upload and download actions may be cancelled thanks to the objects uploadOperation.cancel(), downloadOperation.cancel()
+* Unit tests, before launching unit tests you have to enter your account information (server url, user and password) on TestActivity.java
