@@ -46,7 +46,8 @@ To upgrade ownCloud, follow those steps:
    directory, you could execute this command::
    
     tar xfj owncloud-latest.tar.bz2
-   
+
+#. Set the permissions properly   
 #. With the next page request the update procedures will run.
 #. If you had 3rd party applications, check if they provide versions compatible
    with the new release. If so, install and enable them, update procedures will run if needed. 
