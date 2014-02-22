@@ -83,7 +83,8 @@ For preview generation (*optional*):
 * Make sure your distribution's php version fulfils the version requirements
   specified above. If it doesn't, there might be custom repositories you can
   use. If you are e.g. running Ubuntu 10.04 LTS, you can update your PHP using
-  a custom `PHP PPA`_:::
+  a custom `PHP PPA`_: ::
+
 	sudo add-apt-repository ppa:ondrej/php5
 	sudo apt-get update
 	sudo apt-get install php5
@@ -97,8 +98,7 @@ Installation of packages on Ubuntu 12.04.4 LTS Server
 
 On a machine running a pristine Ubuntu 12.04.4 LTS server, you would install the
 required and recommended modules for a typical ownCloud installation, using
-Apache and MySQL by issuing the following commands in a terminal:
-::
+Apache and MySQL by issuing the following commands in a terminal:::
 
 	sudo apt-get install apache2 mysql-server libapache2-mod-php5
 	sudo apt-get install php5-gd php5-json php5-mysql php5-curl
@@ -123,7 +123,7 @@ Download, extract and copy ownCloud to Your Web Server
 
 First, download the archive of the latest ownCloud version:
 
-* Navigate to the `ownCloud Download Page`_
+* Navigate to the `ownCloud Installation Page`_
 * Click "Tar or Zip file"
 * In the opening dialog, chose the "Linux" link.
 * This will start the download of a file named owncloud-x.y.z.tar.bz2 (where
@@ -132,6 +132,7 @@ First, download the archive of the latest ownCloud version:
   If that's a different machine than the one you are currently working on, use
   e.g. FTP to transfer the downloaded archive file there.
 * Extract the archive contents. Open a terminal and run::
+
 	cd path/to/downloaded/archive
 	tar -xjf owncloud-x.y.z.tar.bz2
 
@@ -142,13 +143,16 @@ First, download the archive of the latest ownCloud version:
 * Copy the ownCloud files to their final destination in the document root of your
   webserver (you can skip this step if you already downloaded and extracted the
   files there)::
+
 	sudo cp -r owncloud /path/to/your/webservers/document-root
 
   where ``/path/to/your/webservers/document-root``, needs to be replaced by the
   actual path where the document root of your webserver is configured to be.
+
   * If you don't know where your webserver's document root is located, consult
     its documentation. For Apache on Ubuntu 12.04 LTS for example, this would
     usually be ``/var/www``. So the concrete command to run would be::
+
 	sudo cp -r owncloud /var/www
 
   * The above assumes you want to install ownCloud into a subdirectory "owncloud"
@@ -174,6 +178,7 @@ The following command will change the ownership of the whole ownCloud folder to
 that user.
 
 * The generic command to run is::
+
 	sudo chown -R <php-user>:<php-user> /path/to/your/webservers/document-root/owncloud
 
   where ``<php-user>`` is to be replaced by the user running php scripts, and
@@ -183,6 +188,7 @@ that user.
 * For Ubuntu 12.04 LTS server, where the owncloud folder was copied into the
   apache document root at ``/var/www``, and the user running apache and php
   scripts is called ``www-data``, this would mean you need to run::
+
 	sudo chown -R www-data:www-data /var/www/owncloud
 
 * For all Debian-based distributions (like Ubuntu, Debian or Linux Mint) and Gentoo,
@@ -210,6 +216,7 @@ Enabling SSL
 An Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the ssl module and
 the according site. Open a terminal and run::
+
 	sudo a2enmod ssl
 	sudo a2ensite default-ssl
 	sudo service apache2 reload
@@ -230,10 +237,12 @@ Since there was a change in the way versions 2.2 and 2.4 are configured,
 you'll have to find out which Apache version you are using.
 
 Usually you can do this by running one of the following commands::
+
 	sudo apachectl -v
 	apache2 -v
 
-Example output:::
+Example output: ::
+
 	Server version: Apache/2.2.22 (Ubuntu)
 	Server built:   Jul 12 2013 13:37:10
 
@@ -266,14 +275,17 @@ Example config for Apache 2.4:
 * Edit the site file with your favorite editor (note that you'll need root
   permissions to modify that file). For Ubuntu 12.04 LTS, you could for example run
   the following command in a Terminal::
+
 	sudo nano /etc/apache2/sites-available/default-ssl
 
 * Add the entry shown above immediately before the line containing::
+
 	</VirtualHost>
 
   (this should be one of the last lines in the file).
 
 * For ownCloud to work correctly, we need the module mod_rewrite. Enable it by running::
+
 	sudo a2enmod rewrite
 
 * In distributions that do not come with ``a2enmod``, the module needs to be
@@ -283,9 +295,11 @@ Example config for Apache 2.4:
 * Then restart Apache.
 
   * For Ubuntu systems (or distributions using upstartd), run::
+
 	sudo service apache2 restart
 
   * For systemd systems (Fedora, ArchLinux, OpenSUSE), run::
+
 	systemctl restart httpd.service
 
 * In order for the maximum upload size to be configurable, the .htaccess file in the
@@ -299,7 +313,8 @@ Example config for Apache 2.4:
   If you need the WebDAV support in the rest of your configuration, you can turn it off
   specifically for the ownCloud entry by adding the following line in the
   configuration of your ownCloud. In above "<Directory ..." code, add the following line
-  directly after the ``allow from all`` / ``Require all granted`` line):::
+  directly after the ``allow from all`` / ``Require all granted`` line): ::
+
 	Dav Off
 
 * Furthermore, you need to disable any server-configured authentication for ownCloud, as
@@ -307,7 +322,8 @@ Example config for Apache 2.4:
   If you have turned on authentication on a parent folder (via e.g. an ``AuthType Basic``
   directive), you can turn off the authentication specifically for the ownCloud entry;
   to do so, in above "<Directory ..." code, add the following line directly after the
-  ``allow from all`` / ``Require all granted`` line):::
+  ``allow from all`` / ``Require all granted`` line): ::
+
 	Satisfy Any
 
 A minimal site configuration on Ubuntu 12.04 might look like this:
@@ -561,8 +577,9 @@ Follow the Install Wizard
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 * Open your web browser
 * Navigate to your ownCloud instance.
+
   * If you are installing ownCloud on the same machine as you are accessing the
-    install wizard from, the url will be: https://localhost/owncloud
+    install wizard from, the url will be https://localhost/owncloud
   * If you are installing ownCloud on a different machine, you'll have to access
     it by its hostname or IP address, e.g. https://example.com/owncloud
   * If you are using a self-signed certificate, you will be presented with a
@@ -577,6 +594,7 @@ Follow the Install Wizard
   to a location outside of the document root.
 
 * If following the Ubuntu-Apache-Mysql walk-through:
+
   * choose mysql as Database backend (you might not be presented with any other
     choice, if only mysql is available anyway).
   * As Database host, enter ``localhost``.
@@ -590,6 +608,7 @@ Follow the Install Wizard
     permissions only on its own database.
 
 * In general, you have the following choices regarding the database:
+
   * For basic installs we recommend SQLite as it is easy to setup (ownCloud will do
     it for you). The performance when using sqlite is however inferior to the two
     other options.
@@ -597,6 +616,7 @@ Follow the Install Wizard
   * Note that you will only be able to choose among the php database connectors
     which are actually installed on the system (see package requirements above).
   * Regarding the database name and user account you have two options:
+
     * You can specify either an admin/root user, and the name of a database
       which does not yet exist. This lets ownCloud create its own database and
       database user account.
@@ -629,7 +649,7 @@ For configuration examples, refer to the config.php document.
 
 
 .. _PHP PPA: https://launchpad.net/~ondrej/+archive/php5
-.. _ownCloud Download Page: http://owncloud.org/install
+.. _ownCloud Installation Page: http://owncloud.org/install
 .. _options for free SSL certificates: https://www.sslshopper.com/article-free-ssl-certificates-from-a-free-certificate-authority.html
 .. _github gist for further instructions: https://gist.github.com/2200407
 .. _Nginx HTTP SSL Module documentation: http://wiki.nginx.org/HttpSslModule
