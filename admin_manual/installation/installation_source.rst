@@ -17,7 +17,7 @@ Prerequisites
 ~~~~~~~~~~~~~
 
 .. note:: This tutorial assumes you have terminal access to the machine you want
-          to install owncloud on. Although this is not an absolute requirement,
+          to install ownCloud on. Although this is not an absolute requirement,
           installation without it is highly likely to require contacting your
           hoster (e.g. for installing required modules).
 
@@ -165,11 +165,14 @@ Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The user running your web server must own at least the config/, data/ and apps/ 
-directories in your ownCloud installation folder so that you can configure ownCloud,
-create/modify and delete your data files through ownCloud and install apps through
-the web interface. If you are planning on also using the automatic updater app for
-updating, the whole ``owncloud`` folder must be owned by (or at least by writable to)
-the user running php on your system.
+directories in your ownCloud installation folder so that you can configure
+ownCloud, create/modify and delete your data files through ownCloud and install
+apps through the web interface. It is further recommended for the
+:file:`.htaccess` to be writable by ownCloud, so that you can configure e.g.
+upload limits as administrative ownCloud user. If you are planning on also
+using the automatic updater app for updating, the whole ``owncloud`` folder
+must be owned by (or at least by writable to) the user running php on your
+system.
 
 .. note:: When using an NFS mount for the data directory, do not change ownership as above.
           The simple act of mounting the drive will set proper permissions for ownCloud to
@@ -254,6 +257,7 @@ Ubuntu 12.04 LTS).
 Example config for Apache 2.2:
 
 .. code-block:: xml
+
     <Directory /path/to/your/owncloud/install>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
@@ -264,6 +268,7 @@ Example config for Apache 2.2:
 Example config for Apache 2.4:
 
 .. code-block:: xml
+
     <Directory /path/to/your/owncloud/install>
         Options Indexes FollowSymLinks MultiViews
         AllowOverride All
@@ -286,49 +291,7 @@ Example config for Apache 2.4:
 
   (this should be one of the last lines in the file).
 
-* For ownCloud to work correctly, we need the module mod_rewrite. Enable it by running::
-
-	sudo a2enmod rewrite
-
-* In distributions that do not come with ``a2enmod``, the module needs to be enabled
-  manually by editing the Apache config files, usually :file:`/etc/httpd/httpd.conf`.
-  consult the Apache documentation or your distributions documentation.
-
-* Then restart Apache.
-
-  * For Ubuntu systems (or distributions using upstartd), run::
-
-	sudo service apache2 restart
-
-  * For systemd systems (Fedora, ArchLinux, OpenSUSE), run::
-
-	systemctl restart httpd.service
-
-* In order for the maximum upload size to be configurable, the .htaccess file in the
-  ownCloud folder needs to be made writable by the server (this should already be done,
-  see section `Set the Directory Permissions`_).
-
-* You should make sure that any built-in WebDAV module of your web server is disabled
-  (at least for the ownCloud directory), as it will interfere with ownCloud's
-  built-in WebDAV support.
-
-  If you need the WebDAV support in the rest of your configuration, you can turn it off
-  specifically for the ownCloud entry by adding the following line in the
-  configuration of your ownCloud. In above "<Directory ..." code, add the following line
-  directly after the ``allow from all`` / ``Require all granted`` line): ::
-
-	Dav Off
-
-* Furthermore, you need to disable any server-configured authentication for ownCloud, as
-  it's internally using Basic authentication for its \*DAV services.
-  If you have turned on authentication on a parent folder (via e.g. an ``AuthType Basic``
-  directive), you can turn off the authentication specifically for the ownCloud entry;
-  to do so, in above "<Directory ..." code, add the following line directly after the
-  ``allow from all`` / ``Require all granted`` line): ::
-
-	Satisfy Any
-
-A minimal site configuration on Ubuntu 12.04 might look like this:
+* A minimal site configuration on Ubuntu 12.04 might look like this:
 
 .. code-block:: xml
 
@@ -369,19 +332,62 @@ A minimal site configuration on Ubuntu 12.04 might look like this:
 			Order allow,deny
 			Allow from all
 			# add any possibly required additional directives here
-			# e.g. the Satisfy directive:
+			# e.g. the Satisfy directive (see below for details):
 			Satisfy Any
 		</Directory>
 	</VirtualHost>
 	</IfModule>
 
-When using ssl, take special note on the ServerName. You should specify one in the
-server configuration, as well as in the CommonName field of the certificate. If you want
-your ownCloud to be reachable via the internet, then set both these to the domain you
-want to reach your ownCloud under.
+* For ownCloud to work correctly, we need the module mod_rewrite. Enable it by running::
+
+	sudo a2enmod rewrite
+
+* In distributions that do not come with ``a2enmod``, the module needs to be
+  enabled manually by editing the Apache config files, usually :file:`/etc/httpd/httpd.conf`.
+  consult the Apache documentation or your distributions documentation.
+
+* In order for the maximum upload size to be configurable, the .htaccess file in the
+  ownCloud folder needs to be made writable by the server (this should already be done,
+  see section `Set the Directory Permissions`_).
+
+* You should make sure that any built-in WebDAV module of your web server is not installed
+  or disabled (at least for the ownCloud directory), as it will interfere with ownCloud's
+  built-in WebDAV support.
+
+  If you need the WebDAV support in the rest of your configuration, you can turn it off
+  specifically for the ownCloud entry by adding the following line in the
+  configuration of your ownCloud. In above "<Directory ..." code, add the following line
+  directly after the ``allow from all`` / ``Require all granted`` line): ::
+
+	Dav Off
+
+* Furthermore, you need to disable any server-configured authentication for ownCloud, as
+  it's internally using Basic authentication for its \*DAV services.
+  If you have turned on authentication on a parent folder (via e.g. an ``AuthType Basic``
+  directive), you can turn off the authentication specifically for the ownCloud entry;
+  to do so, in above "<Directory ..." code, add the following line directly after the
+  ``allow from all`` / ``Require all granted`` line): ::
+
+	Satisfy Any
+
+* When using ssl, take special note on the ServerName. You should specify one in the
+  server configuration, and this should be the same name you specified in the
+  CommonName field of the certificate. If you want
+  your ownCloud to be reachable via the internet, then set both to the domain you
+  want to reach your ownCloud under.
 
 .. note:: By default, the certificates' CommonName will get set to the host
           name at the time when the ssl-cert package was installed.
+
+* Finally, restart apache.
+
+  * For Ubuntu systems (or distributions using upstartd), run::
+
+	sudo service apache2 restart
+
+  * For systemd systems (Fedora, ArchLinux, OpenSUSE), run::
+
+	systemctl restart httpd.service
 
 Nginx Configuration
 *******************
