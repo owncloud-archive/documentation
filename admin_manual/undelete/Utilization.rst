@@ -15,7 +15,6 @@ to the right of the file.
 
 
 To delete multiple files simultaneously, select the check box on all the desired files, then select Delete
-
 on the upper right of the screen.
 
 View Deleted Files
