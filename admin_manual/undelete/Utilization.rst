@@ -76,7 +76,7 @@ Delete only the file
 ~~~~~~~~~~~~~~~~~~~~
 
 If the file “ownCloud undelete.docx”
-was accidently deleted, it may be restored following the steps described in section
+was accidentally deleted, it may be restored following the steps described in section
 .
 The restore will place the file back into the directory structure from where it came.
 

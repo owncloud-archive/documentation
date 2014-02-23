@@ -78,7 +78,7 @@ The previous value is stored in the client’s database.
 If it is not, it means the file was recently added to the local repository.
 Note that on the local side, the modification time is a good attribute to detect changes because it does not depend on time shifts.
 
-For the remote (ie ownCloud server) repository, the client compares the ETag of each file with its previous value.
+For the remote (i.e., ownCloud server) repository, the client compares the ETag of each file with its previous value.
 Like the client, the previous value is obtained from a database query.
 If the ETag is the same, the file has not changed.
 

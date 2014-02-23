@@ -105,7 +105,7 @@ So, in the above example, the sync is to the server root directory and thus it i
 
 
 
-*   Edit Ignored Files: provides a list of files which will be ignored, ie will not sync between the client and server.
+*   Edit Ignored Files: provides a list of files which will be ignored, i.e., will not sync between the client and server.
     The ignored files editor allows adding patterns for files or directories that should be excluded from the sync process.
     Besides normal characters, wild cards may be used, an asterisk ‘*’ indicating multiple characters, or a question mark ‘?’ indicating a single character.
 

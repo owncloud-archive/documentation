@@ -24,7 +24,7 @@ Then press enter.
 |100000000000047A000000FB86FF2A9A_png|
 
 Notice the file has been placed in section 2 of the main ownCloud window.
-Since it is an empty file, the size is ‘0 Bytes” and it was last modified a few seconds ago.
+Since it is an empty file, the size is “0 Bytes” and it was last modified a few seconds ago.
 
 Create a folder
 ~~~~~~~~~~~~~~~
