@@ -15,7 +15,6 @@ to the right of the file.
 
 
 To delete multiple files simultaneously, select the check box on all the desired files, then select Delete
-
 on the upper right of the screen.
 
 View Deleted Files
@@ -76,7 +75,7 @@ Delete only the file
 ~~~~~~~~~~~~~~~~~~~~
 
 If the file “ownCloud undelete.docx”
-was accidently deleted, it may be restored following the steps described in section
+was accidentally deleted, it may be restored following the steps described in section
 .
 The restore will place the file back into the directory structure from where it came.
 

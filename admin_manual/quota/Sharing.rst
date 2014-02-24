@@ -23,4 +23,4 @@ If user A shares a file with user B who then reshares a file to user C, the spac
 Public sharing with upload permission
 -------------------------------------
 
-If user A publically shares a directory via a link and enables “public upload” permission, files uploaded to that directory from the outside are counted against user A’s quota.
+If user A publicly shares a directory via a link and enables “public upload” permission, files uploaded to that directory from the outside are counted against user A’s quota.

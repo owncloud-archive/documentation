@@ -19,7 +19,6 @@ Age
 
 By default, deleted files remain in the trash bin for 30 days.
 This can be configured using the trashbin_retention_obligation parameter
-
 in the config.php
 file.
 Files older than the configured value (or default 30 days) will be permanently deleted.

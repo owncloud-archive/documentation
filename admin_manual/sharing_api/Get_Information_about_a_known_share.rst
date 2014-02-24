@@ -12,7 +12,7 @@ Note: the share ID can be obtained from the output of any of the previous Share 
 | Method    | GET                             |
 |           |                                 |
 +-----------+---------------------------------+
-| Arugments | Share id (int)                  |
+| Arguments | Share id (int)                  |
 |           |                                 |
 +-----------+---------------------------------+
 | Result    | XML code with share information |
