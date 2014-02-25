@@ -90,10 +90,10 @@ Select GET.
 Curl – default configuration:
 -----------------------------
 
-#curl –G –data “path=test_share_api/ieee.txt” http://<userid>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
+$ curl –G –data "path=test_share_api/ieee.txt" \http://<userid>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
 
-#curl –G –data “path=test_share_api/ieee.txt”
-`http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares <http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares>`_
+$ curl –G –data "path=test_share_api/ieee.txt"
+\http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares
 
 output
 ------
@@ -204,10 +204,10 @@ Select Get
 Curl – To add another argument, such as re-shares
 -------------------------------------------------
 
-#curl –G –data “path=test_share_api/ieee.tx&reshares=true” http://<userid>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
+$ curl –G –data "path=test_share_api/ieee.tx&reshares=true" \http://<userid>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
 
-#curl –G –data “path=test_share_api/ieee.tx&reshares=true”
-`http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares <http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares>`_
+$ curl –G –data "path=test_share_api/ieee.tx&reshares=true"
+\http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares
 
 output
 ------
