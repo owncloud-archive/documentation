@@ -406,7 +406,7 @@ Other characters are replaced with their ASCII correspondence or are simply omit
 
 The LDAP backend ensures that there are no duplicate internal usernames in ownCloud, i.e. that it is checking all other activated user back ends (including local ownCloud users). On collisions a random number (between 1000 and 9999) will be attached to the retrieved value. For example, if “alice” exists, the next username may be “alice_1337”.
 
-The internal username is also the default name for the user home folder in ownCloud. It is also a part of remote URLs, for instance for all *DAV services. With this setting the default behavior can be overridden.
+The internal username is also the default name for the user home folder in ownCloud. It is also a part of remote URLs, for instance for all \*DAV services. With this setting the default behavior can be overridden.
 
 Leave it empty for default behavior. Changes will have effect only on newly mapped (added) LDAP users.
 

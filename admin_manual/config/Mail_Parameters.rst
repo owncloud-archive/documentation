@@ -23,9 +23,9 @@ These parameters are related to ownCloud’s ability to send emails for lost pas
 |                         |                                    | The program used to send email is defined in the PHP.ini file.                                                                 |
 |                         |                                    |                                                                                                                                |
 |                         |                                    | If using sendmail, it is necessary to have an installed and working email system on the server.                                |
-|                         |                                    | The sendmail binary is /usr/sbin/sendmail and should be installed on your *nix system.                                         |
+|                         |                                    | The sendmail binary is /usr/sbin/sendmail and should be installed on your \*nix system.                                         |
 |                         |                                    |                                                                                                                                |
-|                         |                                    | If using qmail to send email, the binary is /var/qmail/bin/sendmail and should be installed in your *nix system.               |
+|                         |                                    | If using qmail to send email, the binary is /var/qmail/bin/sendmail and should be installed in your \*nix system.               |
 |                         |                                    |                                                                                                                                |
 |                         |                                    |                                                                                                                                |
 +-------------------------+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
