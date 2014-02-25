@@ -1,8 +1,9 @@
 .. _index:
 
-==================
-User Documentation
-==================
+=====================================
+ownCloud |version| User Documentation
+=====================================
+
 **Welcome to ownCloud, your self-hosted file sync and share solution.**
 
 ownCloud is open source file sync and share software for everyone from individuals operating the free Community Edition, to large enterprises and service providers operating ownCloud Enterprise Edition. ownCloud provides a safe, secure and compliant file sync and share solution on servers you control.
