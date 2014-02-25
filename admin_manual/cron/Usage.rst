@@ -8,7 +8,7 @@ Cron.php needs to be called by the system’s cron daemon and run as the same us
 
 As an example, on an ordinary Linux distribution, place the following in the webserver’s user’s crontab:
 
-*/15
+\*/15
 *
 *
 *
