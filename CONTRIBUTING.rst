@@ -19,7 +19,7 @@ Getting Started with the Documentation Repository
 
 You have two basic choices, editing the manual `directly
 on GitHub`_, or checking out the sources. If you want to
-use direct editing, please make sure to pick "stable45" (or
+use direct editing, please make sure to pick "stable6" (or
 whatever the latest stable branch is) from the branch selector
 before proceeding. If you want to check out the documentation
 locally, follow these steps:
@@ -27,8 +27,8 @@ locally, follow these steps:
 1. Check out ``git://github.com/owncloud/documentation``
 2. Select the branch that you want to edit. Check out the
    ``Policy`` section to know which branch is right for you.
-   Usually, it's the latest stable branch, i.e. ``git checkout stable45``
-   if the latest stable ownCloud version is 4.5.
+   Usually, it's the latest stable branch, i.e. ``git checkout stable6``
+   if the latest stable ownCloud version is 6.0.
 3. Find the manual you want to edit, pick the correct .rst file and
    start working. Check the next section about target audiences!
 4. Run "make html" and "make latexpdf" (requires a full LaTeX installation!)
@@ -320,7 +320,7 @@ Frequently Asked Questions
 **Why not use cherry-picking from master to the stable branch?**
   Cherry-picking only works if we have someone who makes sure the cherries
   actually get picked. This also involves adjusting the documentation to
-  stable45, which requires domain specific knowledge of both versions. If you
+  stable6, which requires domain specific knowledge of both versions. If you
   still would like to volunteer, speak up.
 
 **LaTeX fails to render my fancy table. What can I do to fix this?**
