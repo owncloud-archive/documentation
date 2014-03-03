@@ -1,9 +1,9 @@
-**ownCloud First Run Wizard**
+First Run Wizard
+================
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
-    Table_of_Contents
     Introduction
     Configuration
     Usage

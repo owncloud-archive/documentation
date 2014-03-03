@@ -1,8 +1,8 @@
-**ownCloud Antivirus**
+Antivirus App for files
+=======================
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
-    Table_of_Contents
     Introduction
     Configuration
