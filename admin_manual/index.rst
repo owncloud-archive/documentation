@@ -71,6 +71,22 @@ This chapter covers ownCloud and web server configuration.
 * :doc:`configuration/configuration_logging`
 * :doc:`configuration/configuration_language`
 
+Apps
+====
+This chapter covers individual ownCloud apps.
+
+* :doc:`apps/activity/index`
+* :doc:`apps/admin_dependencies_chk/index`
+* :doc:`apps/files_antivirus/index`
+* :doc:`apps/files_encryption/index`
+* :doc:`apps/files_external/index`
+* :doc:`apps/files_sharing/index`
+* :doc:`apps/files_trashbin/index`
+* :doc:`apps/files_versions/index`
+* :doc:`apps/firstrunwizard/index`
+* :doc:`apps/user_ldap/index`
+* :doc:`apps/viewers/index`
+
 Maintenance
 ===========
 This chapter covers maintenance tasks such as updating or migrating to a new version.
