@@ -13,10 +13,7 @@ page and select Deleted Files.
 Storage
 -------
 
-Once a file has been deleted by the user, it is moved to the
-*~/data/<user>/files_trashbin/files*
-
-folder.
+Once a file has been deleted by the user, it is moved to the ``~/data/<user>/files_trashbin/files`` folder.
 
 |10000000000002B3000000365E1CD00D_png|
 
