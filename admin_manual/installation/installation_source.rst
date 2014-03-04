@@ -19,6 +19,7 @@ To run ownCloud, your web server must have the following installed:
 * PHP module dom
 * PHP module GD
 * PHP module iconv
+* PHP module intl
 * PHP module JSON
 * PHP module libxml
 * PHP module mb multibyte
@@ -38,7 +39,6 @@ Database connectors (pick at least one):
   authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
-* PHP module intl (increases language translation performance)
 * PHP module mcrypt (increases file encryption performance)
 * PHP module openssl (required for accessing HTTPS resources)
 
