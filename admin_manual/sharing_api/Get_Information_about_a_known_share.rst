@@ -66,7 +66,7 @@ Curl
 $ curl \http://<user>:<passowrd>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares/<share_id>
 
 
-output
+Output
 ------
 
 +--------------------------------------------------------+------------------------+

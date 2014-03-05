@@ -190,7 +190,7 @@ Curl – Share with User
 $ curl \http://<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares -k -u user:password -X POST –data "path=<file>&shareType=0&shareWith=<user>"
 
 
-output
+Output
 ------
 
 +------------------------------+-------------------------+

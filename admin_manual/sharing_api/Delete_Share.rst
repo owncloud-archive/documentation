@@ -46,7 +46,7 @@ Curl
 $ curl –X "DELETE" \http://<user>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/files/<share_id>
 
 
-output
+Output
 ------
 
 +------------------------------+------------------------+
