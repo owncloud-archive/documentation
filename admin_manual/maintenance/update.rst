@@ -51,7 +51,10 @@ To upgrade ownCloud, follow those steps:
 #. **Make a backup of the ownCloud folder and the database**
 #. Deactivate all third party applications.
 #. Delete everything from your ownCloud installation directory, except data and
-   config.
+   config. Assuming that it's your working directory, you could execute this command::
+
+    find . -mindepth 1 -maxdepth 1 ! -path data ! -path config -exec rm -rf {} \;
+
 #. Unpack the release tarball in the owncloud directory (or copy the
    files thereto).
 #. Make sure that the file permissions are correct.
