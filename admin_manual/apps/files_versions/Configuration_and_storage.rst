@@ -8,25 +8,20 @@ By default, the ownCloud versions app is enabled.
 To verify or disable, navigate to the apps
 page and select Versions.
 
-|10000000000004ED000000BE3B9E25D5_png|
-|1000000000000336000000F38C3FAF84_png|
-|1000000000000336000000F38C3FAF84_png|
-|1000000000000336000000F38C3FAF84_png|
 |1000000000000336000000F38C3FAF84_png|
 
 Storage
 -------
 
-Previous versions of files are stored in the
-data/<user>/files_versions
-folder.
+Previous versions of files are stored in the ``data/<user>/files_versions`` folder.
 
 |100000000000021C0000004CACBF786C_png|
 
 This directory is automatically created when the first file version is created.
 
-The naming convention of the files in this directory are
-<file_name>.v<unix_timestamp>.
+The naming convention of the files in this directory are::
+
+  <file_name>.v<unix_timestamp>
 
 |10000000000002210000002DE3BE7515_png|
 

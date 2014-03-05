@@ -1,15 +1,10 @@
-CONFIGURATION
+Configuration
 =============
 
 Enable LDAP app
 ---------------
 
-From the
-APPs
-page, select “
-LDAP user and group backend”
-and select
-enable
+From the APPs page, select “LDAP user and group backend” and select enable
 
 |1000020100000359000000A8B848DE68_png|
 
@@ -43,25 +38,19 @@ The button
 Delete Configuration deletes the current configuration.
 
 Host
-^^^^^
+^^^^
 
 The hostname of the LDAP server.
-It can also be a ldaps:// URI.
+It can also be a ``ldaps://`` URI.
 It is possible to pass a port number which will speed up port detection.
 This is especially useful if a custom port is used.
 ownCloud will subsequently move the port value to the port field.
 
-Examples:
+Examples::
 
-*   Directory.my-company.com
-
-
-
-*   Ldaps://directory.my-company.com
-
-
-
-*   Directory.my-company.com:9876
+  directory.my-company.com
+  ldaps://directory.my-company.com
+  directory.my-company.com:9876
 
 
 
@@ -129,10 +118,9 @@ Edit raw filter instead
 Selecting this text will toggle the filter mode.
 Instead of the wizard’s assistance, the admin may enter the raw LDAP filter in this field.
 
-Example:
+Example::
 
-*   objectClass=inetOrgPerson
-
+  objectClass=inetOrgPerson
 
 
 x users found
@@ -155,13 +143,13 @@ LDAP Username
 ^^^^^^^^^^^^^
 
 If checked, the login credentials will be compared to the username in the LDAP directory.
-The corresponding attribute, usually “uid” or “samaccountname” will be automatically detected by ownCloud.
+The corresponding attribute, usually ``uid`` or ``samaccountname`` will be automatically detected by ownCloud.
 
 LDAP Email Address
 ^^^^^^^^^^^^^^^^^^
 
 If checked, the login credentials will be compared to an email address in the LDAP directory.
-ownCloud will exmaine the “mailPrimaryAddress” and “mail” attributes in the LDAP for the email address.
+ownCloud will exmaine the ``mailPrimaryAddress`` and ``mail`` attributes in the LDAP for the email address.
 
 Other attributes
 ^^^^^^^^^^^^^^^^
@@ -175,18 +163,17 @@ Enter raw filter instead
 Selecting this text will toggle the filter mode.
 Instead of the wizard’s assistance, the admin may enter the raw LDAP filter in this field.
 
-The “%uid” placeholder will be replaced with the login name entered by the user upon login.
+The ``%uid`` placeholder will be replaced with the login name entered by the user upon login.
 
 Examples:
 
-*   Username only:
+* Username only::
+
     uid=%iud
 
+* Username or email address::
 
-
-*   Username or email address: (|(uid=%uid)(mail=%uid))
-
-
+    (|(uid=%uid)(mail=%uid))
 
 |10000000000004170000016ACB5E15AE_png|
 
@@ -237,18 +224,9 @@ These options are not required for a working connection however, they can have a
 
 The Advanced Settings tab has three sections
 
-*   Connection settings
-
-
-
-*   Directory settings
-
-
-
-*   Special attributes
-
-
-
+* Connection settings
+* Directory settings
+* Special attributes
 
 Connection Settings
 ^^^^^^^^^^^^^^^^^^^
@@ -333,7 +311,10 @@ Group Display Name Field
 """"""""""""""""""""""""
 
 The attribute that should be used as an ownCloud group name.
-ownCloud allows a limited set of characters (a-zA_Z0-9,-_@).
+ownCloud allows a limited set of characters (regex notation)::
+
+  [a-zA_Z0-9,-_@]
+
 Every other character will be replaced in ownCloud.
 Once a group bane is assigned, it will not be changed.
 
@@ -367,16 +348,18 @@ Quota Field
 """""""""""
 
 This field is used to set a LDAP attribute to define the user quota.
-The attribute should retain a readable value, for example “2 GB”.
+The attribute should retain a readable value, for example::
+
+  2 GB
 
 Quota Default
 """""""""""""
 
 This is used to override the ownCloud default quota for LDAP users who do not have an attribute set in the above parameter.
 
-Example
+Example::
 
-15GB
+  15GB
 
 Email Field
 """""""""""
@@ -388,7 +371,7 @@ User Home Folder Naming Rule
 
 By default, ownCloud creates a user directory which contains all files and meta data based on the ownCloud user name.
 To override this setting and name it after a different attribute, configure that attribute here.
-The attribute can also return an absolute path (such as “/mnt/storage43/alice”).
+The attribute can also return an absolute path (such as ``/mnt/storage43/alice``).
 
 |100000000000041D0000017D8D1BC4D9_png|
 
@@ -401,10 +384,13 @@ Internal Username
 The internal username is the identifier in ownCloud for LDAP users.
 By default it will be created from the UUID attribute.
 By using the UUID attribute it is made sure that the username is unique and characters do not need to be converted.
-The internal username has the restriction that only these characters are allowed [a-zA-Z0-0_.@-].
+The internal username has the restriction that only these characters are allowed (regex notation)::
+
+  [a-zA-Z0-0_.@-]
+
 Other characters are replaced with their ASCII correspondence or are simply omitted
 
-The LDAP backend ensures that there are no duplicate internal usernames in ownCloud, i.e. that it is checking all other activated user back ends (including local ownCloud users). On collisions a random number (between 1000 and 9999) will be attached to the retrieved value. For example, if “alice” exists, the next username may be “alice_1337”.
+The LDAP backend ensures that there are no duplicate internal usernames in ownCloud, i.e. that it is checking all other activated user back ends (including local ownCloud users). On collisions a random number (between 1000 and 9999) will be attached to the retrieved value. For example, if ``alice`` exists, the next username may be ``alice_1337``.
 
 The internal username is also the default name for the user home folder in ownCloud. It is also a part of remote URLs, for instance for all \*DAV services. With this setting the default behavior can be overridden.
 

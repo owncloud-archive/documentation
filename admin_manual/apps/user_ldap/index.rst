@@ -1,8 +1,9 @@
-**LDAP Active Directory Integration**
+LDAP user and group backend
+===========================
+
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
-    Table_of_Contents
     Introduction
-    CONFIGURATION
+    Configuration

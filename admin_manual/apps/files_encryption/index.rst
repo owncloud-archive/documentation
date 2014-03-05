@@ -1,9 +1,9 @@
-**ownCloud Enctryption**
+Encryption
+==========
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
-    Table_of_Contents
     Introduction
     Configuration
     File_Systems

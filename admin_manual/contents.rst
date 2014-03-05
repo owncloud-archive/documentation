@@ -14,6 +14,7 @@ ownCloud documentation contents
 
     installation/index
     configuration/index
+    apps/index
     maintenance/index
     issues/index
 

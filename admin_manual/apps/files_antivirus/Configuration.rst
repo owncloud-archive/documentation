@@ -14,13 +14,13 @@ Install ClamAV
 ClamAV must be installed on the server (either the local for Executable or Daemon Socket mode or a remote server for Daemon mode).
 
 To install, use the repository’s installation method to install “clamav”.
-For example:
+For example::
 
-#apt-get install clamav
+  apt-get install clamav
 
-For daemon mode, the ClamAV daemon must also be installed (either on the local machine for Daemon Socket or the remote machine for daemon mode).
+For daemon mode, the ClamAV daemon must also be installed (either on the local machine for Daemon Socket or the remote machine for daemon mode)::
 
-#apt-get install clamav-daemon
+  apt-get install clamav-daemon
 
 Configure Logging
 -----------------
@@ -43,13 +43,11 @@ The default value, according to the ClamAV web site is 10M which equates to 1048
 The Path to clamscan is the path for the executable clamscan file.
 By default it installs in /usr/bin/clamscan.
 
-When files are uploaded, they will be scanned and, if clean, the following logs will appear:
+When files are uploaded, they will be scanned and, if clean, the following logs will appear::
 
-{"app":"files_antivirus","message":"Scanning file : \/Lab.txt","level":0,"time":"2013-12-17T15:24:05+00:00"}
-
-{"app":"files_antivirus","message":"Exec scan: \/Lab.txt","level":0,"time":"2013-12-17T15:24:05+00:00"}
-
-{"app":"files_antivirus","message":"Result CLEAN!","level":0,"time":"2013-12-17T15:24:09+00:00"}
+  {"app":"files_antivirus","message":"Scanning file : \/Lab.txt","level":0,"time":"2013-12-17T15:24:05+00:00"}
+  {"app":"files_antivirus","message":"Exec scan: \/Lab.txt","level":0,"time":"2013-12-17T15:24:05+00:00"}
+  {"app":"files_antivirus","message":"Result CLEAN!","level":0,"time":"2013-12-17T15:24:09+00:00"}
 
 
 Daemon Mode
@@ -58,13 +56,13 @@ Daemon Mode
 When running in Daemon Mode, install ClamAV and clamAV-Daemon on a remote server.
 
 The port, upon which ClamAV listens must be configured.
-To do this, add the following line in /etc/clamav/clamd.conf:
+To do this, add the following line in ``/etc/clamav/clamd.conf``::
 
-TCPSocket 3310
+  TCPSocket 3310
 
-Then restart the Clamd service:
+Then restart the Clamd service::
 
-/etc/init.d/clamav-daemon restart
+  /etc/init.d/clamav-daemon restart
 
 Back on the ownCloud server, navigate to the Admin page and configure the Antivirus Configuration as follows:
 
@@ -72,11 +70,10 @@ Back on the ownCloud server, navigate to the Admin page and configure the Antivi
 
 Where the host is the IP of the server running the ClamAV Daemon and the Port is what was configured in the above step.
 
-Upon upload of files to the ownCloud server, the following logs will appear indicating the files are clean.
+Upon upload of files to the ownCloud server, the following logs will appear indicating the files are clean::
 
-{"app":"files_antivirus","message":"Scanning file : \/Lab.txt","level":0,"time":"2013-12-17T17:39:35+00:00"}
-
-{"app":"files_antivirus","message":"Response :: stream: OK\n","level":0,"time":"2013-12-17T17:39:48+00:00"}
+  {"app":"files_antivirus","message":"Scanning file : \/Lab.txt","level":0,"time":"2013-12-17T17:39:35+00:00"}
+  {"app":"files_antivirus","message":"Response :: stream: OK\n","level":0,"time":"2013-12-17T17:39:48+00:00"}
 
 
 Daemon Socket mode
@@ -90,12 +87,10 @@ Configure the Admin page as such:
 
 Where Socket is the location of the Clamd executable.
 
-Upon upload of a clean file to the ownCloud server, the following logs will appear.
+Upon upload of a clean file to the ownCloud server, the following logs will appear::
 
-
-{"app":"files_antivirus","message":"Scanning file : \/Lab.txt","level":0,"time":"2013-12-17T18:19:08+00:00"}
-
-{"app":"files_antivirus","message":"Response :: stream: OK\n","level":0,"time":"2013-12-17T18:19:08+00:00"}
+  {"app":"files_antivirus","message":"Scanning file : \/Lab.txt","level":0,"time":"2013-12-17T18:19:08+00:00"}
+  {"app":"files_antivirus","message":"Response :: stream: OK\n","level":0,"time":"2013-12-17T18:19:08+00:00"}
 
 
 

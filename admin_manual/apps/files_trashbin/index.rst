@@ -1,9 +1,9 @@
-**ownCloud Deleted Files**
+Deleted Files
+=============
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
-    Table_of_Contents
     Introduction
-    Configuration_and_storage_
+    Configuration_and_storage
     Utilization

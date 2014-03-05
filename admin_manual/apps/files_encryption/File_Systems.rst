@@ -5,11 +5,11 @@ Once enabled, all files within ownCloud are encrypted, with the exceptions menti
 This includes files in local storage, as well as files contained within external storage mounts.
 
 The encryption app creates several key files/folders when enabled.
-~/data/public-keys contains the public keys for all users, and ~/data/owncloud_private_keys contains system wide private keys utilized for public link shares as well as the recovery key.
+``~/data/public-keys`` contains the public keys for all users, and ``~/data/owncloud_private_keys`` contains system wide private keys utilized for public link shares as well as the recovery key.
 
 |10000000000002C700000048F3729BAA_png|
 
-The encryption app stores key information in the ~/data/<user>/files_encryption directory.
+The encryption app stores key information in the ``~/data/<user>/files_encryption`` directory.
 
 |100000000000024400000027BEE1E4A9_png|
 

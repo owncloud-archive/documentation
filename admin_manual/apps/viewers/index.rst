@@ -1,11 +1,8 @@
-**ownCloud Viewers**
-
-Table of Contents
-
-` <#_Toc376421150>`_
+Viewers
+=======
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     Introduction
     Configuration
