@@ -594,6 +594,26 @@ as the web server, please set the data directory to a location outside of the do
 install settings.
 
 
+Note
+~~~~
+When the initial ownCloud configuration is performed, ownCloud will take the URL used to access it and insert that 
+the config.php file under the ‘trusted_domains’ header.  
+
+Users will only be able to log into ownCloud when the addressed URL is as stated in the ‘trusted_domans’  header 
+in the config.php file.  
+
+In the event that a load balancer is in place, as long as it sends the correct X-Forwarded-Host header, there will
+be no issues.  
+
+It should be noted that the loopback address, 127.0.0.1, is white labeled and therefore users on the ownCloud 
+server who access ownCloud with the loopback will successfully login.
+In the event that an improper URL is used, the following error will appear:
+
+
+For configuration examples, refer to the config.php document.
+
+
+
 .. _PHP PPA: https://launchpad.net/~ondrej/+archive/php5
 .. _github gist for further instructions: https://gist.github.com/2200407
 .. _`http://wiki.nginx.org/HttpSslModule`: http://wiki.nginx.org/HttpSslModule
