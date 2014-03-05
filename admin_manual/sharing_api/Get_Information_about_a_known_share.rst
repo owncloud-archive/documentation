@@ -65,8 +65,6 @@ Curl
 
 $ curl \http://<user>:<passowrd>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares/<share_id>
 
-$ curl \http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares/7
-
 
 output
 ------
