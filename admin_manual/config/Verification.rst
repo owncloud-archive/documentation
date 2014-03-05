@@ -21,9 +21,10 @@ This section describes different verification checks that ownCloud may perform.
 |                             |                                       |                                                                                                                      |
 +-----------------------------+---------------------------------------+----------------------------------------------------------------------------------------------------------------------+
 | **Working .htaccess**       | "check_for_working_htaccess" => true, | Verifies whether the .htaccess file may be modified by ownCloud.                                                     |
-|                             |                                       | If set to false, this check will not be performed.                                                                   |
+|                             |                                       | If set to false, this check will not be                                                                              |
+|                             |                                       | performed.                                                                                                           |
 |                             |                                       | If the file cannot be modified, items such as large file uploads cannot be performed.                                |
-|                             |                                       | This check only affects Apache servers.                                                                              |
+|                             |                                       | This check only affects apache servers.                                                                              |
 |                             |                                       |                                                                                                                      |
 +-----------------------------+---------------------------------------+----------------------------------------------------------------------------------------------------------------------+
 

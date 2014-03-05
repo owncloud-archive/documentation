@@ -23,9 +23,9 @@ These parameters are related to ownCloud’s ability to send emails for lost pas
 |                         |                                    | The program used to send email is defined in the PHP.ini file.                                                                 |
 |                         |                                    |                                                                                                                                |
 |                         |                                    | If using sendmail, it is necessary to have an installed and working email system on the server.                                |
-|                         |                                    | The sendmail binary is /usr/sbin/sendmail and should be installed on your \*nix system.                                        |
+|                         |                                    | The sendmail binary is /usr/sbin/sendmail and should be installed on your *nix system.                                         |
 |                         |                                    |                                                                                                                                |
-|                         |                                    | If using qmail to send email, the binary is /var/qmail/bin/sendmail and should be installed in your \*nix system.              |
+|                         |                                    | If using qmail to send email, the binary is /var/qmail/bin/sendmail and should be installed in your *nix system.               |
 |                         |                                    |                                                                                                                                |
 |                         |                                    |                                                                                                                                |
 +-------------------------+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
@@ -42,8 +42,9 @@ These parameters are related to ownCloud’s ability to send emails for lost pas
 |                         |                                    | That can be done using this parameter.                                                                                         |
 |                         |                                    |                                                                                                                                |
 +-------------------------+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
-| **Mail SMTP Secure**    | "mail_smtpsecure" => "",           | Default value is no security.                                                                                                  |
-|                         |                                    | May be ssl or tls depending on the required level of security.                                                                 |
+| **Mail SMTP **          | "mail_smtpsecure" => "",           | Default value is no security.                                                                                                  |
+| **Secure**              |                                    | May be ssl or tls depending                                                                                                    |
+|                         |                                    | on the required level of security.                                                                                             |
 |                         |                                    |                                                                                                                                |
 +-------------------------+------------------------------------+--------------------------------------------------------------------------------------------------------------------------------+
 | **MAIL SMPT AUTH**      | "mail_smtpauth" => false,          | Determine if the mail server requires authentication.                                                                          |

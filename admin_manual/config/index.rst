@@ -1,9 +1,9 @@
 **ownCloud config.php**
 
+
 .. toctree::
     :maxdepth: 2
 
-    Table_of_Contents
     Introduction
     Default_Parameters
     Reverse_Proxy_Configurations
