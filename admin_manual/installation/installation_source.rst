@@ -165,7 +165,7 @@ The user running your web server must own at least the config/, data/ and apps/
 directories in your ownCloud installation folder so that you can configure ownCloud,
 create/modify and delete your data files through ownCloud and install apps through
 the web interface. If you are planning on also using the automatic updater app for
-updating, the whole ``owncloud`` folder must be owned by (or at least by writable to)
+updating, the whole ``owncloud`` folder must be owned by (or at least be writable to)
 the user running php on your system.
 
 .. note:: When using an NFS mount for the data directory, do not change ownership as above.
@@ -240,7 +240,7 @@ Usually you can do this by running one of the following commands::
 	sudo apachectl -v
 	apache2 -v
 
-Example output: ::
+Example output::
 
 	Server version: Apache/2.2.22 (Ubuntu)
 	Server built:   Jul 12 2013 13:37:10
