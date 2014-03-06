@@ -72,4 +72,3 @@ For more information on the sharing, versions, deletion or Activity features, pl
 .. |1000000000000470000001B68AE60DD3_png| image:: images/1000000000000470000001B68AE60DD3.png
     :width: 6.5in
     :height: 2.5063in
-

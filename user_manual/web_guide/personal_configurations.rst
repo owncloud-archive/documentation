@@ -81,4 +81,3 @@ This provides the address to use in order to access a user’s files via WebDav.
 .. |10000000000004690000026615360BEB_png| image:: images/10000000000004690000026615360BEB.png
     :width: 6.5in
     :height: 3.5346in
-

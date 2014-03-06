@@ -29,4 +29,3 @@ There are four sections in the main ownCloud screen
 .. |100000000000047700000219A3013A92_png| image:: images/100000000000047700000219A3013A92.png
     :width: 6.5in
     :height: 3.0535in
-

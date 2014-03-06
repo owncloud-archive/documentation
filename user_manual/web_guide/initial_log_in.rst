@@ -26,4 +26,3 @@ To close the banner and start using ownCloud, select the ‘x’ in the upper ri
 .. |1000000000000479000002887E7F48EA_png| image:: images/1000000000000479000002887E7F48EA.png
     :width: 6.5in
     :height: 3.6783in
-

@@ -114,4 +114,3 @@ To upload multiple files simultaneously, use either the SHIFT or CTRL key during
 .. |100000000000048100000245268CDB7A_png| image:: images/100000000000048100000245268CDB7A.png
     :width: 6.5in
     :height: 3.2756in
-
