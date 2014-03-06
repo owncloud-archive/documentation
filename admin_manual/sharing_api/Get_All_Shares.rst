@@ -29,8 +29,8 @@ The following is a list of returned status codes:
 +------------------+---------------------+
 
 
-Poster:
--------
+Poster
+------
 
 +---------------+---------------------------------------------+
 | Field         | Value                                       |
@@ -59,13 +59,10 @@ Curl
 The user is the id of the user who shares the files.
 The password belongs to that user as well.
 
-#curl http://<user>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
-
-#curl
-`http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/appsi/files_sharing/api/v1/shares <http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/appsi/files_sharing/api/v1/shares>`_
+$ curl \http://<user>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
 
 
-output
+Output
 ------
 
 +--------------------------------------------------------+---------------------------------------------+

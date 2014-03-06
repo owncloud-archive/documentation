@@ -98,12 +98,7 @@ Select POST.
 Curl – Share as link
 --------------------
 
-#curl http://<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares -k -u user:password -X POST –data “path=<file>&shareType=3”
-
-#curl
-`http://192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares <http://192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares>`_
-
--k -u ser72_oc6:Password01 -X POST –data “path=test/Lab.txt&shareType=3”
+$ curl \http://<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares -k -u user:password -X POST –data “path=<file>&shareType=3”
 
 
 Output
@@ -192,15 +187,10 @@ Select POST.
 Curl – Share with User
 ----------------------
 
-#curl http://<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares -k -u user:password -X POST –data “path=<file>&shareType=0&shareWith=<user>”
-
-#curl
-`http://192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares <http://192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares>`_
-
--k -u ser72_oc6:Password01 -X POST –data “path=test/Lab.txt&shareType=0&shareWith=ser72”
+$ curl \http://<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares -k -u user:password -X POST –data "path=<file>&shareType=0&shareWith=<user>"
 
 
-output
+Output
 ------
 
 +------------------------------+-------------------------+

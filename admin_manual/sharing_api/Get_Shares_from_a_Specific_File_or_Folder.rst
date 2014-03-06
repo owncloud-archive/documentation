@@ -47,7 +47,7 @@ The following is a list of returned status codes:
 +------------------+------------------------------------------------------+
 
 
-Poster - Default arguments
+Poster – Default arguments
 --------------------------
 
 This example shows the output of share information for “test share api/ieee.txt”
@@ -87,15 +87,13 @@ Navigate to the “Content to Send” tab and select “Body from Parameters” 
 
 Select GET.
 
-Curl – default configuration:
------------------------------
+Curl – Default configuration
+----------------------------
 
-#curl –G –data “path=test_share_api/ieee.txt” http://<userid>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
+$ curl –G –data "path=test_share_api/ieee.txt" \http://<userid>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
 
-#curl –G –data “path=test_share_api/ieee.txt”
-`http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares <http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares>`_
 
-output
+Output
 ------
 
 +--------------------------------------------------------+-------------------------------+
@@ -182,8 +180,8 @@ output
 +--------------------------------------------------------+-------------------------------+
 
 
-Poster - To add another argument, such as re-shares:
-----------------------------------------------------
+Poster – To add another argument, such as re-shares
+---------------------------------------------------
 
 This example shows the output of share information for “test share api/ieee.txt”.
 reshares is set to true which will show output if the file is re-shared by another user.
@@ -204,12 +202,10 @@ Select Get
 Curl – To add another argument, such as re-shares
 -------------------------------------------------
 
-#curl –G –data “path=test_share_api/ieee.tx&reshares=true” http://<userid>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
+$ curl –G –data "path=test_share_api/ieee.tx&reshares=true" \http://<userid>:<password>@<ip>/ocs/v1.php/apps/files_sharing/api/v1/shares
 
-#curl –G –data “path=test_share_api/ieee.tx&reshares=true”
-`http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares <http://ser72_oc6:Password01@192.168.1.63/owncloud/ocs/v1.php/apps/files_sharing/api/v1/shares>`_
 
-output
+Output
 ------
 
 +--------------------------------------------------------+--------------------------------------+
