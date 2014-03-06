@@ -6,7 +6,6 @@ from scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup.
 
 This document provides a complete walk-through for installing ownCloud 
 on Ubuntu 12.04 LTS Server with Apache and MySQL.
-It also provides guidelines for installing it on some other distributions,
 It also provides guidelines for installing it on other distributions,
 webservers and database systems.
 
