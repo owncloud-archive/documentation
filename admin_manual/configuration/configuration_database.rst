@@ -1,5 +1,5 @@
-Database Configuration
-======================
+MySQL/Postgres/SQLite Support
+=============================
 
 ownCloud requires a database where administrative data will be held. Four different database types are currently
 supported, `MySQL <http://www.mysql.com/>`_, `MariaDB <https://mariadb.org/>`_, `SQLite <http://www.sqlite.org/>`_,

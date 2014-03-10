@@ -1,5 +1,6 @@
-Apps Configuration
-==================
+Managing Apps
+=============
+
 After you have installed ownCloud, you might realize that it would be nice to
 provide an additional function on top of the core functionality in your ownCloud installation.
 

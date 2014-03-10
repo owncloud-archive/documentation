@@ -1,6 +1,7 @@
-Uploading big files > 512MB (as set by default)
-===============================================
-It's usefull to know limiting factors, that make it impossible to exceed the values given by the ownCloud-system:
+Dealing with Big File Uploads
+=============================
+
+It's useful to know limiting factors, that make it impossible to exceed the values given by the ownCloud-system:
 
 Not outnumberable upload limits:
 --------------------------------
@@ -12,13 +13,14 @@ Not outnumberable upload limits:
 Other recommendable preconditions:
 ----------------------------------
 
-* Make sure, that the latest version of php (at least 5.4.9) is installed
+* Make sure, that the latest version of POP (at least 5.4.9) is installed
 * Disable user quota. This means: set the user quota of the account, you are currently logged in, to "unlimited".
 This is important, because you possibly could not watch otherwise, whether the desired changes take effect.
 
 Enabling uploading big files
-============================
-Note: The order of the following steps is important! If you swap steps described below, the settings may fail.
+----------------------------
+
+.. note:: The order of the following steps is important! If you swap steps described below, the settings may fail.
 
 **Go to the admin section in the ownCloud-WebUI and do the following:**
 
@@ -27,15 +29,15 @@ Note: The order of the following steps is important! If you swap steps described
 
 **Open the php.ini - file**
 
-* Under Debian or SUSE and their derivatives this file lies at /etc/php5/apache2/php.ini
-* On Windows, you can find this file within C:/Program Files (x86)/PHP/PHP.ini 
+* Under Debian or SUSE and their derivatives this file resides at ``/etc/php5/apache2/php.ini``
+* On Windows, you can find this file within ``C:\Program Files (x86)\PHP\PHP.ini``
 
 **Do the following:**
 
 * Set the following three parameters inside th php.ini to the same value as chosen inside the admin-section one step before:
-* upload_max_filesize = 16G   (e.g., to stay consistent with the example value above)
-* post_max_size = 16G   (e.g., to stay consistent with the example value above)
-* output_buffering = 16384	(e.g., to stay consistent with the example value above)
+* ``upload_max_filesize = 16G``   (e.g., to stay consistent with the example value above)
+* ``post_max_size = 16G``   (e.g., to stay consistent with the example value above)
+* ``output_buffering = 16384``	(e.g., to stay consistent with the example value above)
 
 whereas the "output_buffering" has to be given in MegaBytes but as a plain figure (without size-units as 'M' or 'G')
 

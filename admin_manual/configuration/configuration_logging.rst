@@ -1,5 +1,6 @@
-Logging Configuration
-=====================
+Configure Logging
+=================
+
 To get an idea of how the current status of an ownCloud system is or to
 solve issues log information is a good point to start with. ownCloud allows
 to configure the way how and which depth of information should be logged.

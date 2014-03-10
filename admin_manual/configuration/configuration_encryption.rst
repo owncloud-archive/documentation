@@ -1,5 +1,5 @@
-Use Server-Side Encryption
-==========================
+Using Server-Side Encryption
+============================
 
 ownCloud ships a encryption app, which allows to encrypt all files stored in
 your ownCloud. Encryption and decryption always happens server-side. This

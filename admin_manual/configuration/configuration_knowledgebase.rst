@@ -1,8 +1,10 @@
-Knowledge Base Configuration
-============================
+Disable Knowledge Base
+======================
+
 The usage of ownCloud is more or less self explaining but nevertheless a user
-might run into a problem where he needs to consult the documentation or knowledge base. To ease access to the ownCloud
-documentation and knowledge base, a help menu item is shown in the settings menu by default.
+might run into a problem where he needs to consult the documentation or
+knowledge base. To ease access to the ownCloud documentation and knowledge
+base, a help menu item is shown in the settings menu by default.
 
 Parameters
 ----------

@@ -1,5 +1,6 @@
-Mail Configuration
-==================
+Sending Mail Notifications
+==========================
+
 ownCloud does not contain a full email program but contains some parameters to
 allow to send e.g. password reset email to the users. This function relies on
 the `PHPMailer library <http://sourceforge.net/projects/phpmailer/>`_. To

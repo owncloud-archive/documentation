@@ -1,5 +1,5 @@
-3rd-Party Configuration
-=======================
+Find Third-Party Libraries
+==========================
 
 ownCloud resorts to some 3rd-party PHP components to provide its functionality.
 These components are part of the software package and are usually shipped in

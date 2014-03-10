@@ -1,5 +1,5 @@
-Custom Client Configuration
-===========================
+Customizing Client Download Links
+=================================
 
 If you want to access your ownCloud, you can choose between the standard Web-GUI
 and different client sync applications. Download links which point to these

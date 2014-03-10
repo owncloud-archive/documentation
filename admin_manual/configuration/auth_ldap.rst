@@ -1,5 +1,5 @@
-User Authentication with LDAP
-=============================
+LDAP Authentication
+===================
 
 ownCloud ships an LDAP backend, which allows full use of ownCloud for user
 logging in with LDAP credentials including:

@@ -1,6 +1,6 @@
-=======================
-Antivirus App for files
-=======================
+=====================
+File Antivirus Engine
+=====================
 
 ownCloud integrates with ClamAV, an open source (GPL) antivirus engine, to provide an antivirus solution for files which are uploaded to the ownCloud server.
 Via this method, ownCloud/ClamAV can detect Trojans, viruses, malware and other malicious threats.
