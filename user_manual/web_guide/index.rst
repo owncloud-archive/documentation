@@ -1,16 +1,15 @@
-==========================
 The ownCloud Web Interface
 ==========================
 
 Introduction
-============
+------------
 
 This document will discuss the ownCloud web interface from a user’s perspective.
 It will detail how to log into ownCloud, upload files, create files and folders, as well as describe the Personal Page settings.
 When possible, it will reference other more detailed documents on specific functionality.
 
 Initial Log In
-==============
+--------------
 
 The ownCloud initial login screen is as follows.
 
@@ -39,7 +38,7 @@ To close the banner and start using ownCloud, select the ‘x’ in the upper ri
     :height: 3.6783in
 
 Main ownCloud screen
-====================
+--------------------
 
 Once logged into ownCloud, the main screen will be displayed.
 
@@ -62,7 +61,7 @@ There are four sections in the main ownCloud screen
 
 
 
-#.  The search box allows the user to search and the user name pull-down can bring the user to the Personal page for personal configurations as well as log the user out.
+#.  The search box allows the user to search and the user name pull^down can bring the user to the Personal page for personal configurations as well as log the user out.
 
 
 
@@ -71,14 +70,14 @@ There are four sections in the main ownCloud screen
     :height: 3.0535in
 
 Adding Data
-===========
+-----------
 
 There are a few ways to add data to the ownCloud instance.
 Files may be uploaded or text files may be created directly within ownCloud.
 Folders may also be created directly within the ownCloud web interface.
 
 Creation
---------
+^^^^^^^^
 
 To create a file or folder, select the New button in section 3 of the main ownCloud screen.
 
@@ -126,7 +125,7 @@ To do this, select “From link” from the menu and enter the URL of the file t
 The file contained in the link now appears in the user’s ownCloud instance.
 
 Uploading files
----------------
+^^^^^^^^^^^^^^^
 
 There are two methods possible to upload files to the ownCloud web interface.
 
@@ -187,10 +186,10 @@ To upload multiple files simultaneously, use either the SHIFT or CTRL key during
     :width: 6.5in
     :height: 3.2756in
 Navigation
-==========
+----------
 
 Changing directories
---------------------
+^^^^^^^^^^^^^^^^^^^^
 
 To navigate to other folders within ownCloud, simply click on the desired folder.
 
@@ -200,7 +199,7 @@ Notice that Section 3 shows the currently displayed directory “my_folder”.
 To navigate back to the root directly, select the “Home” button.
 
 Viewing/Editing files
----------------------
+^^^^^^^^^^^^^^^^^^^^^
 
 ownCloud has the ability to view text files as well as pictures.
 To view a text file or a picture, click on the file.
@@ -218,22 +217,22 @@ Once changes have been saved, a thumbnail of the text file will appear in the ma
 |100000000000041D0000003D52225C0D_png|
 
 Downloading a file
-------------------
+^^^^^^^^^^^^^^^^^^
 
 To download a file from ownCloud to your working computer, hover over the file and then select the “Download” button.
 
 |100000000000047200000129CB014025_png|
 
-For non-text or picture files, the user may also click on the file name to download it.
+For non^text or picture files, the user may also click on the file name to download it.
 
 Renaming files or Folders
--------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To rename a file or folder within ownCloud, hover over the file and select Rename.
 Then type the new name of the file or folder.
 
 Sharing, Versions, Delete, and Activity
----------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For more information on the sharing, versions, deletion or Activity features, please see the respective documents.
 
@@ -261,7 +260,7 @@ For more information on the sharing, versions, deletion or Activity features, pl
     :width: 6.5in
     :height: 2.5063in
 Personal Configurations
-=======================
+-----------------------
 
 Each ownCloud user may configure some personal preferences.
 To make these configurations, navigate to the Personal page.
@@ -280,37 +279,37 @@ The basic configuration parameters are as follows.
 |10000000000004690000026615360BEB_png|
 
 Important links
----------------
+^^^^^^^^^^^^^^^
 
 The top section of the Personal page contains the same links as the First Run Wizard described earlier in this document.
 For more information on this, see the document on the First Run Wizard.
 
 Quota
------
+^^^^^
 
 Below shows the used and remaining space for the user.
 For information as to how this is calculated, refer to the ownCloud Quota Calculations document.
 
 Password Change
----------------
+^^^^^^^^^^^^^^^
 
 If the user desires to change the password, do so in this section.
 Enter the current password followed by the new password and select “Change Password”.
 It should be noted, that when using LDAP authentication, the password is contained within the LDAP and not locally thus this field will not change the password.
 
 Change Display Name
--------------------
+^^^^^^^^^^^^^^^^^^^
 
 To change the way your name is displayed within ownCloud, enter the desired name under “Full Name”.
 
 Add Email Address
------------------
+^^^^^^^^^^^^^^^^^
 
 For password recovery and share notifications, it is important for ownCloud to have an email on record.
 Enter the desired email address under the EMAIL section.
 
 Avatar
-------
+^^^^^^
 
 ownCloud allows a user to upload an Avatar for their ownCloud instance.
 This can be done under the “Profile Picture” section of the Personal Page.
@@ -319,12 +318,12 @@ To upload a new Avatar, select the “Upload new” button.
 If the desired avatar exists on the ownCloud file system, select “Select new from Files” and to remove the avatar and return to the default, select “Remove image”
 
 Language
---------
+^^^^^^^^
 
 If English is not the user’s native language, they may change the language in this section.
 
 WebDAV
-------
+^^^^^^
 
 This provides the address to use in order to access a user’s files via WebDav.
 
