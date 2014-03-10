@@ -12,7 +12,7 @@ This means that if the user loses their login password, data will be lost.
 To protect against password loss, the recovery key may be used as described in a later section.
 
 What gets encrypted?
---------------------
+====================
 
 All files stored in ownCloud will be encrypted with the following exceptions:
 
@@ -24,7 +24,7 @@ All files stored in ownCloud will be encrypted with the following exceptions:
 *   Search index form the full text search app.
 
 Decrypting the data
--------------------
+===================
 
 If the encryption app is disable, users will get the following message alerting
 them how to decrypt their files.

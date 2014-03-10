@@ -7,7 +7,6 @@ The Configuration File
     :maxdepth: 2
     :hidden:
 
-    introduction
     default_parameters
     reverse_proxy_configurations
     user_experience

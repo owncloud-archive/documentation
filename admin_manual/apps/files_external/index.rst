@@ -10,7 +10,7 @@ In addition, the ownCloud Admin may decide to provide the end user the ability t
 The mounts may be created on a per-user, per group, or all user basis.
 
 Supported mounts
-----------------
+================
 
 The following lists the supported storage types.
 
