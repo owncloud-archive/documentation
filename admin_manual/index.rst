@@ -71,6 +71,9 @@ This chapter covers ownCloud and web server configuration.
 * :doc:`configuration/configuration_logging`
 * :doc:`configuration/configuration_language`
 
+Finally, the chapter :doc:`config/index` details on the switches
+in the ``config.php`` file.
+
 Apps
 ====
 This chapter covers individual ownCloud apps.
