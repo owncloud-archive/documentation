@@ -194,14 +194,6 @@ that user.
   use ``www-data`` user
 * On ArchLinux, use ``http`` user.
 * On Fedora, use ``apache`` user.
-* When you had extracted ownCloud as user ``root``, you should adjust file and directory
-  permission to avoid world writeable files and folder::
-
-	find /path/to/your/webservers/document-root/owncloud -type d -exec chmod 750 {} \;
-	find /path/to/your/webservers/document-root/owncloud -type f -exec chmod 640 {} \;
-
-  Running this in combination with the above ``chown`` command will give a secure
-  set-up.
 
 Web Server Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~~
