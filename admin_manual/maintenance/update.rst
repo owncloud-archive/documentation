@@ -6,7 +6,7 @@ Updating ownCloud
 
 Update
 ------
-Updating means updating ownCloud to the latest *point release*, e.g. ownCloud 5.0.13 → 5.0.14a. This procedure uses the
+Updating means updating ownCloud to the latest *point release*, e.g. ownCloud 6.0.0a → 6.0.2. This procedure uses the
 ownCloud updater plugin called "Updater": it's an internal application already present in your ownCloud installation.
 
 To update ownCloud, follow those steps:
