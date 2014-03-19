@@ -1,19 +1,28 @@
 ownCloud Documentation
 ======================
 
-This is the ownCloud documentation. It currently focuses on the server, client manuals are in the respective git repositories. Because of the complexity of the server and the split into the core and apps modules, the manuals are in this separate directory.
+This is the ownCloud documentation. It currently focuses on the server,
+client manuals are in the respective git repositories. Because of the
+complexity of the server and the split into the core and apps modules,
+the manuals are in this separate directory.
 
 License
 -------
 
-All documentation in this repository is licensed under the Creative Commons Attribution 3.0 Unported license (`CC BY 3.0`_).
+All documentation in this repository is licensed under the Creative Commons
+Attribution 3.0 Unported license (`CC BY 3.0`_).
 
 Style
 -------
 
-It is using the `Sphinx Documentation Generator <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited from GitHub.
+It is using the `Sphinx Documentation Generator
+<http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
+<http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
+from GitHub.
 
-For PHP documentation you'll need to get the according language domain package. The documenation for PHP source is located at http://packages.python.org/sphinxcontrib-phpdomain/reference.html
+For PHP documentation you'll need to get the according language
+domain package. The documenation for PHP source is located at
+http://packages.python.org/sphinxcontrib-phpdomain/reference.html
 
 Manuals
 -------
@@ -22,7 +31,8 @@ At this point, this repository hosts three manuals:
 
 * **Users Manual:** Covers topics from an end user's Point of View
 * **Administrators Manual:** Setup, Deployment, Best Practices, etc.
-* **Developers Manual:** Developing Apps for ownCloud & understanding the core Architecture.
+* **Developers Manual:** Developing Apps for ownCloud & understanding the
+  core Architecture.
 
 Building
 --------
@@ -30,32 +40,37 @@ Building
 Linux / OS X
 ^^^^^^^^^^^^
 
-First make sure that these things are installed
- - Python 2 (2.6.0 or better, Python 3 is not yet supported!)
- - Sphinx (e.g. sudo yum install python-sphinx), on Mac: ``sudo easy_install Sphinx``
- - Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
- - rst2pdf (e.g. ``sudo easy_install rst2pdf``)
- - If you're on Arch Linux, the build script is called sphinx-build2 which will fail. Therefore you have to provide a link::
+First, make sure that the following are installed:
+
+* Python 2 (2.6.0 or better, Python 3 is not yet supported!)
+* Sphinx (e.g. ``sudo yum install python-sphinx``),
+  on Mac: ``sudo easy_install Sphinx``
+* Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
+* rst2pdf (e.g. ``sudo easy_install rst2pdf``)
+* If you're on Arch Linux, the build script is called sphinx-build2 which
+  will fail. You will need to provide a link to the expected script name::
 
      sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
 
-then enter any manual directory, then run ``make html``. The result can be found in the ``_build/html`` subdirectory.
-PDFs can be build with the ``make latexpdf`` command and found 
+...then enter any manual directory, then run ``make html``. The result can
+be found in the ``_build/html`` subdirectory.  PDFs can be build with the
+``make latexpdf`` command and found
 
 Windows
 ^^^^^^^
 
 Running ``setup.cmd`` will install Python 2.7 and install all dependencies.
 
-Enter any manual and clicking the "Build HTML" shortcut will create a HTML build. Likewise, "Build PDF" will build the
-PDF using the more lightweight, but feature-incomplete RST2PDF tool. The results are in ``_build/html`` and  ``_build/pdf``
-respectively.
+Enter any manual and clicking the "Build HTML" shortcut will create a HTML
+build. Likewise, "Build PDF" will build the PDF using the more lightweight,
+but feature-incomplete RST2PDF tool. The results are in ``_build/html`` and
+``_build/pdf`` respectively.
 
 Importing Word and OpenDocument files
 -------------------------------------
 
-Somtimes, documentation might exist as Word or LibreOffice document. To make it part of the documentation,
-follow these steps:
+Sometimes, existing documentation might be in Word or LibreOffice documents. To
+make it part of this documentation collection, follow these steps:
 
 Prerequisits
 ^^^^^^^^^^^^
