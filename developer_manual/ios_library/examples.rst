@@ -551,6 +551,33 @@ Code example
     }
   ];
 
+
+Check if file of folder is shared
+----------------------------------
+
+Check if a specific file or folder is shared in your cloud server.
+
+Teh info need is Path, your server URL and the Id of the item that you want.
+
+
+Before check an item, you have to read the shared items on the selected
+server, using the method “ readSharedByServer ” so that you get the array
+“items” with all the shared elements.  These are objects OCShareDto, one of
+their properties is idRemoteShared, parameter needed to unshared an element.
+
+Code example
+~~~~~~~~~~~~
+
+.. code-block:: objective-c
+
+  [[AppDelegate sharedOCCommunication] isShareFileOrFolderByServer:path andIdRemoteShared:_shareDto.idRemoteShared onCommunication:[AppDelegate sharedOCCommunication] successRequest:^(NSHTTPURLResponse *response, NSString *redirectedServer, BOOL isShared) {
+       //File/Folder is shared 
+        
+    } failureRequest:^(NSHTTPURLResponse *response, NSError *error) {
+       //File/Folder is not shared 
+  }];
+
+
 Tips
 ----
 
