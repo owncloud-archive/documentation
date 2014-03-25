@@ -415,8 +415,8 @@ Code Example
   }];
 
 
-Read shared items by link
--------------------------
+Read shared all items by link 
+-----------------------------
 
 Get information about what files and folder are shared by link.
 
@@ -438,6 +438,27 @@ Code example
     NSLog ( @"Operation error: %d" , response.statusCode);
   }];
 
+
+Read shared items by link of a path
+------------------------------------
+
+Get information about what files and folder are shared by link in a specific path.
+
+The info needed is the server URL that you want to check and the specific path tha you want to check.
+
+Code example
+~~~~~~~~~~~~
+
+.. code-block:: objective-c
+
+  [[AppDelegate sharedOCCommunication] readSharedByServer:serverPath andPath:path onCommunication:[AppDelegate sharedOCCommunication] successRequest:^(NSHTTPURLResponse *response, NSArray *items, NSString *redirectedServer) {
+            NSLog ( @"Item: %d" , items);
+            
+            
+        } failureRequest:^(NSHTTPURLResponse *response, NSError *error) {
+             NSLog ( @"error: %@" , error);
+             NSLog ( @"Operation error: %d" , response.statusCode);            
+  }];
 
 Share link of file or folder
 ----------------------------
