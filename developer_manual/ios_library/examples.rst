@@ -357,7 +357,7 @@ Code example
       }
     }
   }
-  successRequest :^( NSHTTPURLResponse *response) {
+  successRequest :^( NSHTTPURLResponse *response, NSString *redirectedServer) {
     //Upload complete
   }
   failureRequest :^( NSHTTPURLResponse *response, NSString *redirectedServer, NSError *error) {
