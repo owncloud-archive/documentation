@@ -118,23 +118,20 @@ Windows Server 2008
 Installing PHP
 ~~~~~~~~~~~~~~
 
-This part is also straightforward, but it is necessary to remind you that this
-is for IIS only.
+1. Go to the `PHP for Windows`_ download page.
 
-1. Go to the following link and grab the `PHP installer
-   <http://windows.php.net/download/>`_ for version "VC9 Non Thread Safe" 32 or
-   64 bit based on your system.
+.. note:: The instructions below are for IIS only. If using a different server
+          software, make sure to follow the hints on "Which version do I
+          choose" on the left hand side of the page linked above.
 
-.. note:: If you are using Apache, make sure you grab VC6 instead, lower on the page.
-
-2. Once through that login, select the location that is closest to you
-   geographically.
-3. Run that install wizard once it is downloaded. Read the license agreement,
-   agree, select an install directory.
-4. Then select IIS FastCGI as the install server. 
-5. Take the default selections for the items to install, and click next.
+2. Download the Installer for PHP 5.3, the "VC9 Non Thread Safe" version,
+   either 32 or 64 bit, based on your system.
+3. Open the downloaded installation package.
+4. Read the license agreement, agree, select an install directory.
+5. Then select IIS FastCGI as the install server.
+6. Take the default selections for the items to install, and click next.
    Then click `install`.
-6. After a few minutes, PHP will be installed. On to MySQL.
+7. After a few minutes, PHP will be installed. On to MySQL.
 
 Installing MySQL
 ~~~~~~~~~~~~~~~~
@@ -273,3 +270,6 @@ uploads on the web server larger than 30MB.
 .. note:: This entry is in BYTES, not KB.
 
 You should now have ownCloud configured and ready for use.
+
+
+.. _PHP For Windows: http://windows.php.net/download/
