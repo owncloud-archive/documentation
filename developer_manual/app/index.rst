@@ -1,7 +1,7 @@
 .. _appindex:
 
 ================
-App Developement
+App Development
 ================
 
 .. toctree::
