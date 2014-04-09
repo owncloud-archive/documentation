@@ -10,7 +10,7 @@ It also provides guidelines for installing it on other distributions,
 webservers and database systems.
 
 Although this document tries to describe all aspects of setting up ownCloud,
-a basic understandig of the linux operating system and of server administration
+a basic understanding of the Linux operating system and of server administration
 is required.
 
 Prerequisites
