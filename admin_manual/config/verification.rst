@@ -24,7 +24,7 @@ This section describes different verification checks that ownCloud may perform.
 |                             |                                       | If set to false, this check will not be                                                                              |
 |                             |                                       | performed.                                                                                                           |
 |                             |                                       | If the file cannot be modified, items such as large file uploads cannot be performed.                                |
-|                             |                                       | This check only affects apache servers.                                                                              |
+|                             |                                       | This check only affects Apache servers.                                                                              |
 |                             |                                       |                                                                                                                      |
 +-----------------------------+---------------------------------------+----------------------------------------------------------------------------------------------------------------------+
 
