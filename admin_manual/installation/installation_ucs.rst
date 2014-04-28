@@ -26,8 +26,8 @@ assign your required value.
   "owncloud/directory/data", "/var/lib/owncloud", "Specifies where the file storage will be placed", "2012.0.1"
   "owncloud/db/name",   "owncloud",	"Name of the MySQL database. ownCloud will create an own user for it.",	2012.0.1
   "owncloud/user/quota",	"(empty)",	"The default quota, when a user is being added. Assign values in human readable strings, e.g. “2 GB”. Unlimited if empty.",	2012.0.1
-  "owncloud/user/enabled",	0,	"Wether a new user is allowed to use ownCloud by default.",	2012.0.1
-  "owncloud/group/enabled",	"0",	"Wether a new group is allowed to be used in ownCloud by default.",	2012.4.0.4
+  "owncloud/user/enabled",	0,	"Whether a new user is allowed to use ownCloud by default.",	2012.0.1
+  "owncloud/group/enabled",	"0",	"Whether a new group is allowed to be used in ownCloud by default.",	2012.4.0.4
   "owncloud/ldap/base/users",	"cn=users,$ldap_base",	"The users-subtree in the LDAP directory. If left blank it will fall back to the LDAP base.",	2012.4.0.4
   "owncloud/ldap/base/groups",	"cn=groups,$ldap_base",	"The groups-subtree in the LDAP directory. If left blank it will fall back to the LDAP base.",	2012.4.0.4
   "owncloud/ldap/groupMemberAssoc",	"uniqueMember",	"The LDAP attribute showing the group-member relationship. Possible values: uniqueMember, memberUid and member",	2012.4.0.4
@@ -45,8 +45,8 @@ assign your required value.
   "owncloud/ldap/user/homeAttribute",	"(empty)",	"Attribute that should be used to create the user's owncloud internal home folder",	5.0.9
   "owncloud/ldap/group/displayName",	"cn",	"The LDAP attribute that should be used as groupname in ownCloud",	2012.4.0.4
   "owncloud/ldap/group/searchAttributes",	"cn,description, mailPrimaryAddress",	"Attributes taken into consideration when searching for groups (comma separated)",	5.0.9
-  "owncloud/join/users/update",	"yes",	"Wether ownCloud LDAP schema should be applied to existing users",	2012.0.1
-  "owncloud/group/enableDomainUsers",	"1",	"Wether the group “Domain Users” shall be enabled for ownCloud on install",	2012.4.0.4
+  "owncloud/join/users/update",	"yes",	"Whether ownCloud LDAP schema should be applied to existing users",	2012.0.1
+  "owncloud/group/enableDomainUsers",	"1",	"Whether the group “Domain Users” shall be enabled for ownCloud on install",	2012.4.0.4
   "owncloud/join/users/filter",	"(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0)) (!(\|(uid=*$) (uid=owncloudsystemuser) (uid=join-backup) (uid=join-slave))) (!(objectClass=ownCloudUser)))",	"Filters, on which LDAP users the ownCloud schema should be applied to. The default excludes system users and already ownCloudUsers.",	2012.0.1
   "owncloud/join/groups/filter",	"(empty)",	"Filters which LDAP groups will be en/disabled for ownCloud when running the script /usr/share/owncloud/update-groups.sh",	2012.4.0.4
 
@@ -57,7 +57,7 @@ question in the UCR and assign your required value, for example::
 
 or via UMC:
 
-.. image:: /images/ucsint2.png
+.. image:: images/ucsint2.png
 
 
 Installation
@@ -72,11 +72,11 @@ UCS App Center
 Open the Univention Management Console and choose the App Center module. You
 will see a variety of available applications, including ownCloud.
 
-.. image:: /images/ucs-app-center-module.png
+.. image:: images/ucs-app-center-module.png
 
 Click on ownCloud 5 and follow the instructions.
 
-.. image:: /images/ucs-app-center-install.png
+.. image:: images/ucs-app-center-install.png
 
 In the UCS App Center, you can also upgrade from ownCloud 4.5 by installing
 ownCloud 5.0. They are provided as separate apps. It is only possible to have
@@ -96,8 +96,8 @@ optional) via command line:
 ownCloud will be configured to fully work with LDAP.
 
 
-Reinstallation
-""""""""""""""
+Re-installation
+"""""""""""""""
 
 When ownCloud was installed before and uninstalled via AppCenter or via command
 line using apt-get remove, ownCloud can be simply installed again. The old
@@ -116,8 +116,8 @@ MySQL database "ownCloud" using the command line:
 In this case you probably also want to remove the data directory
 **/var/lib/owncloud** although this is not mandatory.
 
-Postconfiguration (optional)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Post configuration (optional)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is only one local admin user “owncloudadmin”, you can find his password in
 `/etc/owncloudadmin.secret`. Use this account, if you want to change basic
@@ -140,7 +140,7 @@ If you did not, go to the UMC and enable the users who shall have access
 (see picture below). Then, login at http://myserver.com/owncloud/ with
 your LDAP credentials.
 
-.. image:: /images/ucsint1.png
+.. image:: images/ucsint1.png
 
 Updating users can also be done by the script
 :file:`/usr/share/owncloud/update-users.sh` . It takes the following UCR
@@ -157,7 +157,7 @@ instead of single users, for example. It is also important to note, that
 users can only share within groups where they belong to. Groups can be
 enabled and disabled via UCM as shown in the screen shot below.
 
-.. image:: /images/ucsint.png
+.. image:: images/ucsint.png
 
 Another way to enable or disable groups is to use the script
 :file:`/usr/share/owncloud/update-groups.sh`. Currently, it takes an argument
