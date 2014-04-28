@@ -29,7 +29,7 @@ Cron.php needs to be called by the system’s cron daemon and run as the same
 user the web server runs as.
 
 As an example, on an ordinary Linux distribution, place the following in the
-webserver’s user’s crontab::
+web server’s user’s crontab::
 
     */15 * * * * /usr/bin/php -f /srv/http/owncloud/cron.php /dev/null 2>&1
 
