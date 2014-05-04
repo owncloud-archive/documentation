@@ -9,6 +9,9 @@ The ownCloud Admin has the ability to create such a mount.
 In addition, the ownCloud Admin may decide to provide the end user the ability to create the mount.
 The mounts may be created on a per-user, per group, or all user basis.
 
+.. note:: Using ``$user`` in any option gets replaced by the current user. This can be used e.g to
+	  specify users' own paths easily by just writing ``/home/$user/``.
+
 Supported mounts
 ================
 
