@@ -4,7 +4,7 @@ Manual Installation
 If you do not want to use packages, here is how you setup ownCloud on
 from scratch using a classic :abbr:`LAMP (Linux, Apache, MySQL, PHP)` setup.
 
-This document provides a complete walk-through for installing ownCloud 
+This document provides a complete walk-through for installing ownCloud
 on Ubuntu 12.04 LTS Server with Apache and MySQL.
 It also provides guidelines for installing it on other distributions,
 webservers and database systems.
@@ -23,7 +23,7 @@ Prerequisites
 
 To run ownCloud, your web server must have the following installed:
 
-* PHP (>= 5.3.3 minimum, 5.4 or higher recommended)
+* PHP (>= 5.3.8 minimum, 5.4 or higher recommended)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
@@ -91,7 +91,7 @@ For preview generation (*optional*):
 * You don’t need any WebDAV support module for your web server (i.e. Apache’s
   mod_webdav) to access your ownCloud data via WebDAV. ownCloud has a built-in
   WebDAV server of its own.
-  
+
 Installation of packages on Ubuntu 12.04.4 LTS Server
 *****************************************************
 
@@ -138,7 +138,7 @@ First, download the archive of the latest ownCloud version:
   where ``path/to/downloaded/archive`` is to be replaced by the path where you
   put the downloaded archive, and x.y.z of course has to be replaced by the actual
   version number as in the file you have downloaded.
-  
+
 * Copy the ownCloud files to their final destination in the document root of your
   webserver (you can skip this step if you already downloaded and extracted the
   files there)::
@@ -161,7 +161,7 @@ First, download the archive of the latest ownCloud version:
 Set the Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The user running your web server must own at least the config/, data/ and apps/ 
+The user running your web server must own at least the config/, data/ and apps/
 directories in your ownCloud installation folder so that you can configure ownCloud,
 create/modify and delete your data files through ownCloud and install apps through
 the web interface. If you are planning on also using the automatic updater app for
@@ -401,7 +401,7 @@ Nginx Configuration
 .. code-block:: python
 
     upstream php-handler {
-            server 127.0.0.1:9000; 
+            server 127.0.0.1:9000;
             #server unix:/var/run/php5-fpm.sock;
     }
 
@@ -509,7 +509,7 @@ Disable directory listing::
 	$HTTP["url"] =~ "^/owncloud($|/)" {
 		dir-listing.activate = "disable"
 	}
-       
+
 **Note for Lighttpd users on Debian stable (wheezy):**
 
 Recent versions of ownCloud make use of the **HTTP PATCH** feature, which was added to Lighttpd at version 1.4.32 while Debian stable only ships 1.4.31. The patch is simple, however, and easy to integrate if you're willing to build your own package.
@@ -520,7 +520,7 @@ Make sure you have the build tools you need::
 
     apt-get build-dep lighttpd
     apt-get install quilt patch devscripts
-    
+
 Patch the package source::
 
     apt-get source lighttpd
@@ -656,16 +656,16 @@ Follow the Install Wizard
 
 Note
 ~~~~
-When the initial ownCloud configuration is performed, ownCloud will take the URL used to access it and insert that 
-the config.php file under the ‘trusted_domains’ header.  
+When the initial ownCloud configuration is performed, ownCloud will take the URL used to access it and insert that
+the config.php file under the ‘trusted_domains’ header.
 
-Users will only be able to log into ownCloud when the addressed URL is as stated in the ‘trusted_domans’  header 
-in the config.php file.  
+Users will only be able to log into ownCloud when the addressed URL is as stated in the ‘trusted_domans’  header
+in the config.php file.
 
 In the event that a load balancer is in place, as long as it sends the correct X-Forwarded-Host header, there will
-be no issues.  
+be no issues.
 
-It should be noted that the loopback address, 127.0.0.1, is white labeled and therefore users on the ownCloud 
+It should be noted that the loopback address, 127.0.0.1, is white labeled and therefore users on the ownCloud
 server who access ownCloud with the loopback will successfully login.
 In the event that an improper URL is used, the following error will appear:
 
