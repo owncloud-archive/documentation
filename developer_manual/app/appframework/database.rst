@@ -37,12 +37,12 @@ Getters and setters will automatically be created for all public attributes. Sho
           // cast timestamp to an int when fromRow is being called
           // the second parameter is the argument that is passed to
           // the php function settype()
-          $this->addType('timestamp', 'int')
+          $this->addType('timestamp', 'int');
       }
 
 
       // transform username to lower case
-      public function function setName($name){
+      public function setName($name){
           $name = strtolower($name);
           parent::setName($name);
       }
