@@ -23,7 +23,7 @@ Getters and setters will automatically be created for all public attributes. Sho
   <?php
   namespace \OCA\YourApp\Db;
 
-  use \OCA\AppFramework\Db\Entity
+  use \OCA\AppFramework\Db\Entity;
 
   class Item extends Entity {
 
