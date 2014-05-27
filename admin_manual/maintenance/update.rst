@@ -20,11 +20,11 @@ Use rsync in archive mode (this leaves file owner, permissions, and time stamps 
 
 Download the latest version to the working directory::
 
-  wget http://download.owncloud.org/community/owncloud-latest.tar.bz2
+  wget http://download.owncloud.org/community/owncloud-5.0.16.tar.bz2
 
-Extract content of archive to **./owncloud_latest/**::
+Extract content of archive to **./owncloud-5.0.16/**::
 
-  mkdir owncloud_latest; tar -C owncloud_latest -xjf owncloud-latest.tar.bz2
+  mkdir owncloud-5.0.16; tar -C owncloud-5.0.16 -xjf owncloud-5.0.16.tar.bz2
 
 Use rsync to recursivly copy extracted files (new) to ownCloud installation (old) using modification times of the new files, but preserving owner and permissions of the old files:
 
@@ -32,11 +32,11 @@ Use rsync to recursivly copy extracted files (new) to ownCloud installation (old
 
 ::
 
-  rsync --inplace -rtv owncloud_latest/owncloud/ owncloud/
+  rsync --inplace -rtv owncloud-5.0.16/owncloud/ owncloud/
 
 Clean up::
 
-  rm -rf owncloud-latest.tar.bz2 owncloud_latest/
+  rm -rf owncloud-5.0.16.tar.bz2 owncloud-5.0.16/
 
 Upgrade
 -------
