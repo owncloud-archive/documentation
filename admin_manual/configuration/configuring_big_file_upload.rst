@@ -45,3 +45,8 @@ These client configurations have been proven by testing maximum file sizes of 16
 
 * Linux 32 Bit: Ubuntu, Firefox => 16GB 
 * Windows 8  64 Bit: Google Chrome => 8GB
+
+**Note:**
+You will need a minimum of 16GB (e.g, to stay consistent with the example value above), in your upload_tmp_dir. 
+Normally this points to /tmp. If your /tmp has not enough space, 
+you can change the value of upload_tmp_dir in your php.ini
