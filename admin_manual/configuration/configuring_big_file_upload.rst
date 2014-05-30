@@ -27,21 +27,30 @@ Enabling uploading big files
 * Under "File handling" set the Maximum upload size to the desired value (e.g. 16GB)
 * Click the "save"-Button
 
-**Open the php.ini - file**
+**Configuring your webserver**
+
+ownCloud comes with a .htaccess - file which propagates all config to your webserver. To adapt those settings go to the ownCloud - Folder on your server and set the following two parameters inside the .htaccess file:
+
+* ``upload_max_filesize = 16G``   (e.g., to stay consistent with the example value above)
+* ``post_max_size = 16G``   (e.g., to stay consistent with the example value above)
+
+If you don't want to use the shipped .htaccess - file, outcomment those options there and edit them in your global php.ini file:
 
 * Under Debian or SUSE and their derivatives this file resides at ``/etc/php5/apache2/php.ini``
 * On Windows, you can find this file within ``C:\Program Files (x86)\PHP\PHP.ini``
 
-**Do the following:**
+Set the following two parameters inside the php.ini to the same value as chosen inside the admin-section one step before:
 
-* Set the following three parameters inside th php.ini to the same value as chosen inside the admin-section one step before:
 * ``upload_max_filesize = 16G``   (e.g., to stay consistent with the example value above)
 * ``post_max_size = 16G``   (e.g., to stay consistent with the example value above)
+
+**Output Buffering** allows you to get performance benefits in some setups. Please make sure you know what you are doing before using it in production. As previously mentioned, add this option in your .htaccess file or edit your php.ini file:
+
 * ``output_buffering = 16384``	(e.g., to stay consistent with the example value above)
 
-whereas the "output_buffering" has to be given in MegaBytes but as a plain figure (without size-units as 'M' or 'G')
+As you can see, the "output_buffering" has to be given in MegaBytes but as a plain figure (without size-units as 'M' or 'G')
 
-These client configurations have been proven by testing maximum file sizes of 16 GB:
+**These client configurations have been proven by testing maximum file sizes of 16 GB:**
 
 * Linux 32 Bit: Ubuntu, Firefox => 16GB 
 * Windows 8  64 Bit: Google Chrome => 8GB
