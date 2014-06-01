@@ -290,7 +290,7 @@ Download a file
 
 Download an existing file on the cloud server. The info needed is the server
 URL, path of the file on the server and localPath, path where the file will be
-stored on the device.
+stored on the device and a boolean to indicate if is neccesary to use LIFO queue or FIFO.
 
 Code example
 ~~~~~~~~~~~~
@@ -299,7 +299,7 @@ Code example
 .. code-block:: objective-c
 
   NSOperation *op = nil;
-  op = [[ AppDelegate sharedOCCommunication ] downloadFile :remotePath toDestiny :localPath onCommunication :[ AppDelegate sharedOCCommunication ]
+  op = [[ AppDelegate sharedOCCommunication ] downloadFile :remotePath toDestiny :localPath withLIFOSystem:isLIFO onCommunication :[ AppDelegate sharedOCCommunication ]
 
   progressDownload :^( NSUInteger bytesRead, long long totalBytesRead, long long totalBytesExpectedToRead) {
 

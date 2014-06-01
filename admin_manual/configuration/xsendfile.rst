@@ -4,8 +4,8 @@ Since ownCloud 5 it is possible to let web servers handle static file serving.
 This should generally improve performance (web servers are optimized for this) and in some cases permits controlled
 file serving (i.e. pause and resume downloads).
 
-.. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory
-and local mounts. Controlled file serving **does not work for generated zip files**. This is due to how temporary files are created.
+.. note:: This feature can currently only be activated for local files, i.e. files inside the **data/** directory
+   and local mounts. Controlled file serving **does not work for generated zip files**. This is due to how temporary files are created.
 
 Apache2 (X-Sendfile)
 --------------------

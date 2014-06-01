@@ -54,6 +54,8 @@ This chapter covers ownCloud and web server configuration.
 * :doc:`configuration/configuration_users`
 * :doc:`configuration/configuration_database`
 * :doc:`configuration/auth_ldap`
+* :doc:`cron/index`
+* :doc:`quota/index`
 * :doc:`configuration/custom_mount_config_gui`
 * :doc:`configuration/custom_mount_config`
 * :doc:`configuration/background_jobs`

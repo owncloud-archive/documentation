@@ -16,6 +16,9 @@ ownCloud documentation contents
     configuration/index
     apps/index
     maintenance/index
+    cron/index
+    quota/index
+    sharing_api/index
     config/index
     issues/index
 
