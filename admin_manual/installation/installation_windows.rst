@@ -80,6 +80,8 @@ This should open the standard IIS 7 splash page, which is just a static image
 that says your web server is running. Assuming you were able to get the
 splash page, it is safe to say your web server is now up and running.
 
+Continue by `installing PHP`_.
+
 
 Windows Server 2008
 ^^^^^^^^^^^^^^^^^^^
@@ -111,9 +113,10 @@ Windows Server 2008
 
 9. Once this is complete, you should be able to go to a web browser and type
    `localhost`. This should open the standard IIS 7 splash page, which is just a
-   static image that says your web server is running.Assuming you were able to get
-   the splash page, it is safe to say your web server is now up and running. The
-   next part of this “how to” installs PHP on the server.
+   static image that says your web server is running. Assuming you were able to get
+   the splash page, it is safe to say your web server is now up and running.
+
+Continue by installing PHP.
 
 Installing PHP
 ~~~~~~~~~~~~~~
@@ -125,13 +128,15 @@ Installing PHP
           choose" on the left hand side of the page linked above.
 
 2. Download the Installer for PHP 5.3, the "VC9 Non Thread Safe" version,
-   either 32 or 64 bit, based on your system.
-3. Open the downloaded installation package.
+   either 32 or 64 bit, depending on your system.
+3. Run the downloaded installation executable.
 4. Read the license agreement, agree, select an install directory.
 5. Then select IIS FastCGI as the install server.
 6. Take the default selections for the items to install, and click next.
    Then click `install`.
-7. After a few minutes, PHP will be installed. On to MySQL.
+7. Once the installer is finished, PHP is installed.
+
+Continue by installing MySQL.
 
 Installing MySQL
 ~~~~~~~~~~~~~~~~
