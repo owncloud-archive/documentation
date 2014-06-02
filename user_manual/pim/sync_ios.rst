@@ -15,7 +15,7 @@ Calendar
 #. If your server does not support SSL, a warning will be displayed.
    Select Continue.
 #. If the iPhone is unable to verify the account information perform the
-   following:
+   following steps:
 
    -  Select OK.
    -  Select advanced settings.
@@ -23,11 +23,11 @@ Calendar
    -  Change port to 80.
    -  Go back to account information and hit Save.
 
-Your calendar should now be visible in the Calendar application
+Your calendar should now be visible in the Calendar application.
 
 
-Address book
-------------
+Addressbook
+-----------
 
 #. Open the settings application.
 #. Select Mail, Contacts, Calendars.
@@ -48,6 +48,6 @@ Address book
    -  Change port to 80.
    -  Go back to account information and hit Save.
 
-Now should now find your contacts in the address book of your
+Now should now find your contacts in the addressbook of your
 iPhone.
 If it's still not working, have a look at the :doc:`troubleshooting` guide.

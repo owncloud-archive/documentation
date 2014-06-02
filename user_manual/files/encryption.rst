@@ -1,9 +1,9 @@
 Files Encryption
 ================
 
-ownCloud ships a encryption app, which enables encryption of all files stored in
+ownCloud ships an encryption app, which enables encryption of all files stored in
 your ownCloud. Once the encryption app is enabled by the admin, all your files
-will be encrypted automatically. Encryption and decryption always happens
+will be encrypted automatically. Encryption and decryption always happens on the
 server-side. This enables the user to continue to use all the other apps to
 view and edit their data. But this also means that the server administrator could
 intercept your data. Server-Side encryption is especially useful if you
@@ -27,6 +27,9 @@ The current version encrypts all your files stored in ownCloud except the follow
 
 All this data is stored directly on your ownCloud server, so you don't have to worry about exposing
 your data to a third party storage provider.
+
+.. Is the above a safe statement? Are we ignoring the earlier example of server admin intercepting the data? (jw)
+
 
 Decrypt your data again
 -----------------------

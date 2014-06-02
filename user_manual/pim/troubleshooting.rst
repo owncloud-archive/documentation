@@ -10,9 +10,9 @@ configured to use it.
 There are several techniques to remedy this, which are described extensively at the
 `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
-Below is what have proven to work with iOS including iOS 7.
+Below is what has proven to work with iOS including iOS 7.
 
-If your ownCloud instance is installed in a sub-folder under the web servers document root, and
+If your ownCloud instance is installed in a sub-folder under the web server's document root, and
 the client has difficulties finding the Cal- or CardDAV end-points, configure your web server to
 redirect from a "well-know" URL to the one used by ownCloud.
 When using the Apache web server this is easily achieved using a :file:`.htaccess` file in the document
@@ -34,3 +34,6 @@ If you use Nginx as web server, the setting looks something like::
 Now change the URL in the client settings to just use ``ADDRESS`` instead of e.g. ``ADDRESS/remote.php/carddav/principals/username``.
 
 This problem is being discussed in the `forum <http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
+
+.. please add a section with hints for generic troubleshooting. e.g. go to the forum, the chat, ... (jw)
+

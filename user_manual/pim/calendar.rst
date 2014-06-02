@@ -22,6 +22,8 @@ If you use the calendar the first time, there will be already a calendar called
 pane, type a calendar name and pick a color. Then, click on the tick button to
 complete.
 
+.. above, is 'tick button' a good name? (jw)
+
 .. _eds:
 
 Edit/Delete
@@ -54,7 +56,7 @@ click on the |share| icon and fill in the desired fields.
 .. |share| image:: ../images/share.png
 
 A calendar can be shared with a user, group, and/or public. It can have a password and a
-expiration date which will expiry the share after the specified date.
+expiration date which will expire the share after the specified date.
 
 If the calendar is shared with a user or group, it is possible to set permissions to
 create, edit, delete, and share the events in it.
@@ -64,10 +66,10 @@ Import
 ~~~~~~
 
 .. figure:: ../images/calendar_import.png
-Importing calendar
+Importing a calendar
 
-Importing your calendar as iCal file is done by using the files app. Upload the iCal file
-and just click on the calendar file to open the import dialog. You can import the calendar
+Importing your calendar as an iCal file is done by using the files app. Upload the iCal file
+and just click on the calendar file to open the import dialog. You can import the calendar data
 into a new calendar or an already existing one.
 
 .. note:: If the progress bar does not work properly, the folder
@@ -104,7 +106,7 @@ New event window
 With the advanced options you can set the description, the location, categories etc.
 
 In the repeating tab, you can choose one from various options. If repeating should end,
-you can choose between setting the end by date or by occurrences by clicking *Advanced*
+you can choose between setting the end by date or by occurrences by clicking the *Advanced*
 button next to the repeat option.
 
 .. note:: Events are draggable. You can also bring the mouse cursor close to the right
@@ -122,12 +124,12 @@ on *Delete event*.
 Import events
 ~~~~~~~~~~~~~
 
-Importing events is done as importing calendars. Upload your event's iCal file
+Importing events is done the same as importing calendars. Upload your event's iCal file
 using the files app. Then, click on the event file to open the import dialog.
 You can import the event into a new calendar or an already existing one.
 
 .. note:: If the progress bar does not work properly, the folder
-          ``apps/calendar/import_tmp/`` has probably no write permission. Please contact
+          ``apps/calendar/import_tmp/`` probably has no write permission. Please contact
           your administrator for this issue.
 
 Export events
@@ -135,7 +137,7 @@ Export events
 
 If you want to export a single event click on it and press the *Export* button
 on the bottom left corner of the event (you need to expand *Advanced* settings
-in event editing window to see this button).
+in the event editing window to see this button).
 
 To export all events in calendar see :ref:`export-calendar` section in :ref:`managing-calendars`.
 
@@ -155,7 +157,7 @@ with the software you like.
 To get the global link of your calendars, click on the |gear| icon on the bottom
 left of the calendar app and copy the relevant address.
 
-To manually get those addresses, please follow the following steps::
+To manually get those addresses, please follow these steps::
 
 Assuming you access your web interface via an address like this::
 
@@ -171,7 +173,7 @@ URL, including the trailing slash::
 
   http://ADDRESS/remote.php/caldav/principals/username/
 
-Mozilla Lightning users need to this URL scheme::
+Mozilla Lightning users need to use this URL scheme::
 
   https://ADDRESS/remote.php/caldav/calendars/USERNAME/CALENDARNAME
 
@@ -181,7 +183,7 @@ Mozilla Lightning users need to this URL scheme::
 
        https://ADDRESS/remote.php/caldav/calendars/test/defaultcalendar
 
-.. note:: Calendar names are lowercased and the spaces removed. They are not to be URL-encoded
+.. note:: Calendar names are lowercased and spaces are removed. They are not to be URL-encoded
 	  anymore.
 
 

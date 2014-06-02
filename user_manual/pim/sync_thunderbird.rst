@@ -2,9 +2,9 @@ Thunderbird - Synchronize Addressbook
 ======================================
 
 Addressbook
-------------
+-----------
 
-As someone who is new to ownCloud, New to SoGo Connector, and new to Thunderbird Addressbook... here is what you need in excruciating pithy detail you need to make this work (for all the other lost souls out there):
+As someone who is new to ownCloud, new to SoGo Connector, and new to Thunderbird Addressbook... here are some details. You need to make this work (for all the other lost souls out there):
 
 #. `Thunderbird <http://www.mozilla.org/en-US/thunderbird/>`_ for your OS unless it comes with your OS distribution (Linux)
 #. `Sogo Connector <http://www.sogo.nu/english/downloads/frontends.html>`_ (latest release)
@@ -25,8 +25,23 @@ which will display the URL you need for your installation to work.
 
 .. image:: ../images/contact_thunderbird-URL_config.jpg
 
-Once installed, synchronize (right click on your newly made remote addressbook and select "Synchronize"). You'll see your addressbook populate from ownCloud! Don't click "read only" above unless you don't want to modify your ownCloud server addressbook, like it contains a listing of corporate contacts and is shared with lots of people, and you don't want a new user dragging it somewhere unintended.
+Once installed, synchronize (right click on your newly made remote addressbook
+and select "Synchronize"). You'll see your addressbook populate from ownCloud!
+Don't click "read only" above unless you don't want to modify your ownCloud
+server addressbook, like it contains a listing of corporate contacts and is
+shared with lots of people, and you don't want a new user dragging it somewhere
+unintended.
 
-The rest of the details of dealing with Thunderbird addressbook are left to the reader... First thing I learned is dragging a contact to a different addressbook is a "move" operation. If you are worried about losing the contact, save it to a VCF file using ownCloud (Or LDIF using Thunderbird Addressbook) first! Like dragging from "ownCloud Addressbook" to "Personal Address Book" removes the contact from ownCloud Server (*deleting it from all the other synchronized installations*) and puts it in your Local Machine -only- Addressbook. So be careful or you'll have unintended consequences where you might have intended a "copy" operation.
+.. Above, please simplify: "don't ... unless you don't" (jw)
+
+The rest of the details of dealing with Thunderbird addressbook are left to the
+reader... Note that dragging a contact to a different
+addressbook is a "move" operation. If you are worried about losing the contact,
+save it to a VCF file using ownCloud (Or LDIF using Thunderbird Addressbook)
+first! Like dragging from "ownCloud Addressbook" to "Personal Address Book"
+removes the contact from ownCloud Server (*deleting it from all the other
+synchronized installations*) and puts it in your Local Machine -only-
+Addressbook. So be careful or you'll have unintended consequences where you
+might have intended a "copy" operation.
 
 Contact *Pictures* are also sync'ed!

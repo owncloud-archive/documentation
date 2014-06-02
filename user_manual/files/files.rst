@@ -117,7 +117,7 @@ For details, check the respective `vendor documentation`_ at the Apple website.
 
 Windows
 -------
-For Windows a seperate WebDAV client is recommended to access the files from your server. Choose one from the `WebDAV Project page <http://www.webdav.org/projects/>`_
+For Windows a separate WebDAV client is recommended to access the files from your server. Choose one from the `WebDAV Project page <http://www.webdav.org/projects/>`_
 
 Should you have to use the native implementation, you can assign ownCloud a drive letter. This allows you to
 browse files stored on an ownCloud server the way you would files stored in a mapped network drive.
