@@ -2,8 +2,8 @@ Using the Contacts App
 ======================
 
 The contacts app of ownCloud is like any other mobile contact app but with more functionality.
-Just as you open your account you will get the default addressbook available.
-We will see later how you can always add and remove addressbooks in here.
+Just as you open your account you will get the default addressbook.
+We will see later how you can add and remove addressbooks.
 
 Adding contacts
 ---------------
@@ -77,7 +77,7 @@ an option to crop the picture to suit your requirements.
 .. image:: ../images/contact_crop.jpg
 Cropping the contact picture
 
-You can crop the picture as you wish and then press *Crop photo*.
+You can crop the picture as you like and then press *Crop photo*.
 
 As you can see it is really easy to set things right in this app.
 It automatically picks up the First name, Middle name (if any) and the last name.
@@ -97,7 +97,7 @@ There, you have the ability to add, delete, download or share your addressbooks.
 Hover your cursor on every icon to see what they mean.
 
 
-Keeping your addressbook in sync
+Keeping your addressbooks in sync
 --------------------------------
 
 One of the most important things in any contact app is to keep it in sync.
@@ -107,10 +107,10 @@ You can sync the contact app to your Android or iOS phone.
 Syncing with Android
 ~~~~~~~~~~~~~~~~~~~~
 
-1) Install CardDAV - Sync free from Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
-2) This app supports auto- configuration which is an advantage. After installing visit this `<carddavs://example.org/remote.php/carddav/> <carddavs://example.org/remote.php/carddav/>`_ to auto-configure the app.
+1) Install CardDAV-Sync free from Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
+2) This app supports auto-configuration which is an advantage. After installing visit this `<carddavs://example.org/remote.php/carddav/> <carddavs://example.org/remote.php/carddav/>`_ to auto-configure the app.
 3) Enter your login details
-4) After the app has checked your login details you may select- Sync server to phone option
+4) After the app has checked your login details you may select the *Sync server to phone* option
 5) That is it. There is nothing else to do for Android!
 
 .. image:: ../images/contact_syncopt.jpg
@@ -137,7 +137,7 @@ Synchronizing the addressbook.
 * Change port to 80.
 * Go back to account information and hit Save.
 
-You should now find your contacts in the addressbook of your iPhone.
+You should now be able to find your contacts in the addressbook of your iPhone.
 
 
 Other Syncing options provided by ownCloud

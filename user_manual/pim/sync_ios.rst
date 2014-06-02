@@ -48,6 +48,7 @@ Addressbook
    -  Change port to 80.
    -  Go back to account information and hit Save.
 
-Now should now find your contacts in the addressbook of your
-iPhone.
+.. this procedure is duplicated in pim/contacts.rst -- keep in sync. (jw)
+
+Now should now be able to find your contacts in the addressbook of your iPhone.
 If it's still not working, have a look at the :doc:`troubleshooting` guide.

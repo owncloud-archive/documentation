@@ -122,7 +122,7 @@ on *Delete event*.
 Import events
 ~~~~~~~~~~~~~
 
-Importing events is done the same as importing calendars. Upload your event's iCal file
+Importing events is done in the same way as importing calendars. Upload your event's iCal file
 using the files app. Then, click on the event file to open the import dialog.
 You can import the event into a new calendar or an already existing one.
 
