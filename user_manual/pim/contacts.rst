@@ -108,7 +108,7 @@ Syncing with Android
 ~~~~~~~~~~~~~~~~~~~~
 
 1) Install CardDAV-Sync free from Google play store by visiting `this link <https://play.google.com/store/apps/details?id=org.dmfs.carddav.sync>`_.
-2) This app supports auto-configuration which is an advantage. After installing visit this `<carddavs://example.org/remote.php/carddav/> <carddavs://example.org/remote.php/carddav/>`_ to auto-configure the app.
+2) This app supports auto-configuration which is an advantage. After installing visit `<carddavs://example.org/remote.php/carddav/> <carddavs://example.org/remote.php/carddav/>`_ to auto-configure the app.
 3) Enter your login details
 4) After the app has checked your login details you may select the *Sync server to phone* option
 5) That is it. There is nothing else to do for Android!
