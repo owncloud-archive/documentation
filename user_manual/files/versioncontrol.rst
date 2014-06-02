@@ -33,4 +33,4 @@ created.
 
 Beside that the version app takes care to never use more that 50% of the users
 currently available free space. If the stored versions exceed this limit ownCloud
-deletes the oldest versions until it meets the memory usage limit again.
+deletes the oldest versions until it meets the disk space limit again.
