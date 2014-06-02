@@ -585,96 +585,25 @@ Microsoft Internet Information Server (IIS)
 
 See :doc:`installation_windows` for further instructions.
 
-.. _install-wizard:
+Install Wizard
+~~~~~~~~~~~~~~
 
-Follow the Install Wizard
-~~~~~~~~~~~~~~~~~~~~~~~~~
-* Open your web browser
-* Navigate to your ownCloud instance.
+The last thing to do is to click through the installation wizard.
 
-  * If you are installing ownCloud on the same machine as you are accessing the
-    install wizard from, the url will be https://localhost/owncloud
-  * If you are installing ownCloud on a different machine, you'll have to access
-    it by its hostname or IP address, e.g. https://example.com/owncloud
-  * If you are using a self-signed certificate, you will be presented with a
-    security warning about the issuer of the certificate not being trusted which
-    you can ignore.
+Here are some guidelines for the values to enter there if following the
+Ubuntu-Apache-MySQL walk-through:
 
-* You will be presented with the setup screen
-* Enter username and password for the administrative user account
-* Expand Advanced options to choose a data folder and the database system
+* Make sure to click the "Advanced" Button to see the database settings
 
-* If you are not using Apache as the web server, please set the data directory
-  to a location outside of the document root.
+* Choose MySQL as Database backend (you might not be presented with any other
+choice if you haven't installed any other database systems).
+* As Database host, enter ``localhost``.
+* As Database user enter ``root``.
+* As Database password, enter the password you entered during installation of
+the MySQL server package.
+* As Database name, enter an arbitrary name as you see fit
 
-* If following the Ubuntu-Apache-MySQL walk-through:
-
-  * choose MySQL as Database backend (you might not be presented with any other
-    choice if you haven't installed any other database systems).
-  * As Database host, enter ``localhost``.
-  * As Database user enter ``root``.
-  * As Database password, enter the password you entered during installation of
-    the MySQL server package.
-  * As Database name, enter an arbitrary name as you see fit
-
-    * Beware that there are restrictions as to what characters a database name
-      may or may not contain, see the
-      `MySQL Schema Object Names documentation`_ for details);
-    * Make sure to choose a name under which no database exists yet
-  * ownCloud will use the provided credentials and create its own user with
-    permissions only on its own database.
-
-* In general, you have the following choices regarding the database:
-
-  * For basic installs we recommend SQLite as it is easy to setup (ownCloud will do
-    it for you). The performance when using sqlite is however inferior to the two
-    other options.
-  * For larger installs you should use MySQL or PostgreSQL.
-  * Note that you will only be able to choose among the php database connectors
-    which are actually installed on the system (see package requirements above).
-  * Further, it is not easily possible to migrate to another database system
-    once you have set up your ownCloud to use a specific one. So make sure to
-    carefully consider which database system to use.
-  * When using MySQL or PostgreSQL you have two options  regarding the database
-    name and user account you specify:
-
-    * You can specify either an admin/root user, and the name of a database
-      which does not yet exist. This lets ownCloud create its own database; it
-      will also create a database user account with restricted rights (with the
-      same username as you specified for the administrative user, plus an
-      ``oc_`` prefix) and will use that for all subsequent database access.
-    * You can enter the name of an existing database and the username/password
-      of a user with restricted permissions
-
-      * You can create such a user yourself e.g. via phpmyadmin.
-      * This user shouldn't have permission to create a database.
-      * It should have full permissions on the (existing) database with the
-        name you specify.
-
-* Press "Finish Setup"
-* ownCloud will set up your cloud according to the given settings
-* When its finished, it will log you in as administrative user and present the
-  "Welcome to ownCloud" screen.
-
-Note
-~~~~
-When the initial ownCloud configuration is performed, ownCloud will take the URL used to access it and insert that
-the config.php file under the ‘trusted_domains’ header.
-
-Users will only be able to log into ownCloud when the addressed URL is as stated in the ‘trusted_domans’  header
-in the config.php file.
-
-In the event that a load balancer is in place, as long as it sends the correct X-Forwarded-Host header, there will
-be no issues.
-
-It should be noted that the loopback address, 127.0.0.1, is white labeled and therefore users on the ownCloud
-server who access ownCloud with the loopback will successfully login.
-In the event that an improper URL is used, the following error will appear:
-
-.. image:: images/untrusted-domain.png
-
-For configuration examples, refer to the config.php document.
-
+Continue by following the :doc:`installation_wizard`.
 
 
 .. _PHP PPA: https://launchpad.net/~ondrej/+archive/php5
@@ -682,4 +611,3 @@ For configuration examples, refer to the config.php document.
 .. _options for free SSL certificates: https://www.sslshopper.com/article-free-ssl-certificates-from-a-free-certificate-authority.html
 .. _github gist for further instructions: https://gist.github.com/2200407
 .. _Nginx HTTP SSL Module documentation: http://wiki.nginx.org/HttpSslModule
-.. _MySQL Schema Object Names documentation: http://dev.mysql.com/doc/refman/5.5/en/identifiers.html
