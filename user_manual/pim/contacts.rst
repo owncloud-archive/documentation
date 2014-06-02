@@ -2,7 +2,7 @@ Using the Contacts App
 ======================
 
 The contacts app of ownCloud is like any other mobile contact app but with more functionality.
-Just as you open your account you will get the default addressbook.
+Just as you open your account you will see the default addressbook.
 We will see later how you can add and remove addressbooks.
 
 Adding contacts
