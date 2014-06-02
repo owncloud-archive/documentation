@@ -19,10 +19,8 @@ Create
 
 If you use the calendar the first time, there will be already a calendar called
 "Personal". To create another calendar, click on *New Calendar* button on the left
-pane, type a calendar name and pick a color. Then, click on the tick button to
+pane, type a calendar name and pick a color. Then, click on the checkmark button to
 complete.
-
-.. above, is 'tick button' a good name? (jw)
 
 .. _eds:
 
@@ -30,7 +28,7 @@ Edit/Delete
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To edit a calendar name and/or color, click on the |pencil| icon and change the values.
-Then, click on the tick button to apply changes.
+Then, click on the checkmark button to apply changes.
 
 .. |pencil| image:: ../images/pencil.png
 
