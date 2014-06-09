@@ -178,7 +178,7 @@ that user.
 
 * The generic command to run is::
 
-	sudo chown -R <php-user>:<php-user> /path/to/your/webservers/document-root/owncloud
+    sudo chown -R <php-user>:<php-user> /path/to/your/webservers/document-root/owncloud
 
   where ``<php-user>`` is to be replaced by the user running php scripts, and
   ``/path/to/your/webservers/document-root/owncloud`` by the folder where the
@@ -596,11 +596,11 @@ Ubuntu-Apache-MySQL walk-through:
 * Make sure to click the "Advanced" Button to see the database settings
 
 * Choose MySQL as Database backend (you might not be presented with any other
-choice if you haven't installed any other database systems).
+  choice if you haven't installed any other database systems).
 * As Database host, enter ``localhost``.
 * As Database user enter ``root``.
-* As Database password, enter the password you entered during installation of
-the MySQL server package.
+* As Database password, enter the password you entered during installation of the
+  MySQL server package.
 * As Database name, enter an arbitrary name as you see fit
 
 Continue by following the :doc:`installation_wizard`.
