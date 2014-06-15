@@ -19,13 +19,13 @@ So first we'll check out how to import all the VCF files as they are a lot
 more faster way of creating contacts.
 Just below the contact list, click on the gear button:
 
-.. image:: ../images/contact_bottombar.png
+.. figure:: ../images/contact_bottombar.png
 
 Contact settings icon
 
 Once you've clicked it, an up arrow button which lets you upload files will be shown:
 
-.. image:: ../images/contact_uploadbutton.png
+.. figure:: ../images/contact_uploadbutton.png
 
 Contact file upload icon
 
@@ -38,7 +38,7 @@ Keep pressing CTRL and select the files to upload.
 After you are done just click on the open button
 After the upload it should look something like this in which all the names and contacts will be sorted alphabetically
 
-.. image:: ../images/contact_vcfpick.jpg
+.. figure:: ../images/contact_vcfpick.jpg
 
 Picking VCF files
 
@@ -56,9 +56,9 @@ the name, the address, the e-mail, the telephone nr, etc.
 Just click on a field and start typing the information.
 You can use the "Add Field" button to add another types of information for this contact.
 
-.. image:: ../images/contact_emptycontact.png
+.. figure:: ../images/contact_emptycontact.png
 
-Empty contact view
+   Empty contact view
 
 When you want to remove an information of your contact, just click on little delete icon
 at the right of the field you want to remove.
@@ -68,7 +68,7 @@ Adding picture to the contact
 
 There are two methods in which you can give a picture id to the specific contact
 
-.. image:: ../images/contact_picture.jpg
+.. figure:: ../images/contact_picture.jpg
 
 Contact picture options
 
@@ -78,7 +78,7 @@ Contact picture options
 After you have selected the picture for the contact you get
 an option to crop the picture to suit your requirements
 
-.. image:: ../images/contact_crop.jpg
+.. figure:: ../images/contact_crop.jpg
 
 Cropping contact picture
 
@@ -95,7 +95,7 @@ When you click on settings button on bottom bar,
 you will have access to the application's settings.
 Then, you will be shown all available addressbooks to access the options.
 
-.. image:: ../images/contact_del_ab.png
+.. figure:: ../images/contact_del_ab.png
 
 Addressbook options
 
@@ -119,7 +119,7 @@ Syncing with Android
 4) After the app has checked your login details you may just select- Sync server to phone option
 5) That's it there is nothing else to do for Android :)
 
-.. image:: ../images/contact_syncopt.jpg
+.. figure:: ../images/contact_syncopt.jpg
 
 Syncing your iOS device
 ~~~~~~~~~~~~~~~~~~~~~~~
