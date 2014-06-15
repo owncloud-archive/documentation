@@ -19,7 +19,9 @@ So first we'll check out how to import all the VCF files as they are a lot
 more faster way of creating contacts.
 Just below the contact list, 3 buttons: The middle one let you upload files.
 
-.. image:: ../images/contact_bottombar.jpg
+.. figure:: ../images/contact_bottombar.jpg
+
+   Contact settings icon
 
 
 Once you've clicked it, the upload window let you choose your files.
@@ -50,7 +52,9 @@ the name, the address, the e-mail, the telephone nr, ...
 Just click on a field and start typing the information.
 You can use the "Add Field" button to add another types of information for this contact.
 
-.. image:: ../images/contact_emptycontact.jpg
+.. figure:: ../images/contact_emptycontact.jpg
+
+   Empty contact view
 
 When you want to remove an information of your contact, just click on little delete icon
 at the right of the field you want to remove.
@@ -61,7 +65,9 @@ Adding picture to the contact
 
 There are two methods in which you can give a picture id to the specific contact
 
-.. image:: ../images/contact_picture.jpg
+.. figure:: ../images/contact_picture.jpg
+
+   Contact picture options
 
 1) **Direct upload**
 2) **Select pics already uploaded in ownCloud files.**
@@ -69,7 +75,9 @@ There are two methods in which you can give a picture id to the specific contact
 After you have selected the picture for the contact you get
 an option to crop the picture to suit your requirements
 
-.. image:: ../images/contact_crop.jpg
+.. figure:: ../images/contact_crop.jpg
+
+   Cropping contact picture
 
 You can crop the picture however you wish and then press OK.
 
@@ -105,7 +113,7 @@ Syncing with Android
 4) After the app has checked your login details you may just select- Sync server to phone option
 5) That's it there is nothing else to do for Android :)
 
-.. image:: ../images/contact_syncopt.jpg
+.. figure:: ../images/contact_syncopt.jpg
 
 Syncing your IOS device
 ~~~~~~~~~~~~~~~~~~~~~~~
