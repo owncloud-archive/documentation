@@ -24,9 +24,8 @@ Code example
 
   ...
 
-  // Build full URI to WebDAV entry point
-  Uri serverUri = Uri.parse(getString(R.string.server_base_url)
-                  + AccountUtils(WEBDAV_PATH_4_0);
+  // Parse URI to the base URL of the ownCloud server
+  Uri serverUri = Uri.parse(getString(R.string.server_base_url));
 
   // Create client object to perform remote operations
   mClient = OwnCloudClientFactory.createOwnCloudClient(
@@ -55,11 +54,17 @@ Code example
   public class OwnCloudClient extends HttpClient {
     ...
     // Set basic credentials
-    client.setBasicCredentials(username, password);
+    client.setCredentials(
+        OwnCloudCredentialsFactory.newBasicCredentials(username, password)
+    );
     // Set bearer access token
-    client.setBearerCredentials(accessToken);
-    // Set session cookie
-    client.setSsoSessionCookie(cookie);
+    client.setCredentials(
+        OwnCloudCredentialsFactory.newBearerCredentials(accessToken)
+    );
+    // Set SAML2 session token
+    client.setCredentials(
+        OwnCloudCredentialsFactory.newSamlSsoCredentials(cookie)
+    );
   }
 
 Create a folder
