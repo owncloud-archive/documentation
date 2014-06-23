@@ -28,6 +28,33 @@ Code example
     return sharedOCCommunication;
   }
 
+Also could happen that you need to overwrite the class AFURLSessionManager to manage SSL Certificates
+
+.. code-block:: objective-c
+
+    #import "OCCommunication.h"
+    
+    + (OCCommunication*)sharedOCCommunication
+    {
+    static OCCommunication* sharedOCCommunication = nil;
+    if (sharedOCCommunication == nil)
+    {
+    //Network Upload queue for NSURLSession (iOS 7)
+        NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration backgroundSessionConfiguration:k_session_name];
+        configuration.HTTPMaximumConnectionsPerHost = 1;
+        configuration.requestCachePolicy = NSURLRequestReloadIgnoringLocalCacheData;
+        OCURLSessionManager *uploadSessionManager = [[OCURLSessionManager alloc] initWithSessionConfiguration:configuration];
+        [uploadSessionManager.operationQueue setMaxConcurrentOperationCount:1];
+        [uploadSessionManager setSessionDidReceiveAuthenticationChallengeBlock:^NSURLSessionAuthChallengeDisposition (NSURLSession *session, NSURLAuthenticationChallenge *challenge, NSURLCredential * __autoreleasing *credential) {
+            return NSURLSessionAuthChallengePerformDefaultHandling;
+        }];
+        
+        sharedOCCommunication = [[OCCommunication alloc] initWithUploadSessionManager:uploadSessionManager];
+        
+    }
+    return sharedOCCommunication;
+    }        
+
 Set credentials
 ---------------
 
@@ -393,6 +420,100 @@ Code example
     [op cancel];
   }];
 
+
+Upload a file with background session
+-------------------------------------
+
+Upload a new file to the cloud server using background session, only supported by iOS 7 and higher. 
+
+The info needed is localPath, path where the file is stored on the device and server URL, path where the file will be stored on the server and NSProgress object where get the callbacks of the upload progress.
+
+To get the callbacks of the progress is needed use a KVO in the progress object. We add the code in this example of the call to set the KVO and the method where catch the notifications.
+
+Code example
+~~~~~~~~~~~~
+
+.. code-block:: objective-c
+
+    NSURLSessionUploadTask *uploadTask = nil;
+    
+    NSProgress *progress = nil;
+    
+    uploadTask = [[AppDelegate sharedOCCommunication] uploadFileSession:localPath toDestiny:remotePath onCommunication:[ AppDelegate sharedOCCommunication ] withProgress:&progress successRequest:^(NSURLResponse *response, NSString *redirectedServer) {
+     		//Upload complete
+         } failureRequest:^(NSURLResponse *response, NSString *redirectedServer, NSError *error) {
+         	switch (response.statusCode) {
+        case kOCErrorServerUnauthorized :
+          //Bad credentials
+          break;
+        case kOCErrorServerForbidden:
+          //Forbidden
+          break;
+        case kOCErrorProxyAuth:
+          //Proxy access required
+          break;
+        case kOCErrorServerPathNotFound:
+          //Path not found
+          break;
+        default:
+          //Default
+          break;
+        }
+             
+      }];
+    
+    // Observe fractionCompleted using KVO
+     [progress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
+     
+     
+     
+    //Method to catch the progress notifications with callbacks
+    - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+    {
+        if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
+            NSProgress *progress = (NSProgress *)object;
+            
+            float percent = roundf (progress.fractionCompleted * 100);
+            
+            //We make it on the main thread because we came from a delegate
+            dispatch_async(dispatch_get_main_queue(), ^{
+                 NSLog(@"Progress is %f", percent);
+            });
+      
+        }  
+    }
+
+Set callback when background task finish
+-----------------------------------------
+
+Method to set callbacks of the pending transfers when the app starts. It's used when there are pendings background transfers. The block is executed when a pending background task finished.
+
+Code example
+~~~~~~~~~~~~
+
+.. code-block:: objective-c
+
+    [[AppDelegate sharedOCCommunication] setTaskDidCompleteBlock:^(NSURLSession *session, NSURLSessionTask *task, NSError *error) {
+    
+              
+    }];
+
+Set progress callback with pending background tasks
+---------------------------------------------------
+
+Method to set progress callbacks of the pending transfers. It's used when there are pendings background transfers. The block is executed when a pending task get a input porgress.
+
+Code example
+~~~~~~~~~~~~
+
+.. code-block:: objective-c
+
+    [[AppDelegate sharedOCCommunication] setTaskDidCompleteBlock:^(NSURLSession *session, NSURLSessionTask *task, NSError *error) {
+    
+            
+       
+    }];
+    
 
 Check if the server supports Sharing api
 ----------------------------------------
