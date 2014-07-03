@@ -116,7 +116,7 @@ Windows Server 2008
    static image that says your web server is running. Assuming you were able to get
    the splash page, it is safe to say your web server is now up and running.
 
-Continue by installing PHP.
+Continue by `installing PHP`_.
 
 Installing PHP
 ~~~~~~~~~~~~~~
@@ -136,7 +136,7 @@ Installing PHP
    Then click `install`.
 7. Once the installer is finished, PHP is installed.
 
-Continue by installing MySQL.
+Continue by `installing MySQL`_.
 
 Installing MySQL
 ~~~~~~~~~~~~~~~~
