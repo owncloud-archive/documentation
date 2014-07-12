@@ -70,14 +70,3 @@ The **appstoreurl** is used to set the http path to the ownCloud apps store. The
 
     "appstoreenabled" => true,
     "appstoreurl" => "http://api.apps.owncloud.com/v1",
-
-Guard against malicious 3rdparty code
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Finally you can enable checks for malicious code fragments of 3rd-party apps
-by setting the **appcodechecker** parameter.
-
-.. code-block:: php
-
-  <?php
-
-    "appcodechecker" => false,

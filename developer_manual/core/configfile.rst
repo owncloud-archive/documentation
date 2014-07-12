@@ -82,9 +82,6 @@ App config
   /* Password to use for sendmail mail, depends on mail_smtpauth if this is used */
   "mail_smtppassword" => "",
 
-  /* Check 3rdparty apps for malicious code fragments */
-  "appcodechecker" => "",
-
   /* Check if ownCloud is up to date */
   "updatechecker" => true,
 
