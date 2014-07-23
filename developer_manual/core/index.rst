@@ -5,6 +5,7 @@
    :maxdepth: 1
    :hidden:
 
+   pull-request-review
    translation
    unit-testing
    theming
@@ -12,9 +13,9 @@
    externalapi
    ocs-share-api
 
-=================
+================
 Core Development
-=================
+================
 
 Intro
 -----
@@ -26,6 +27,7 @@ Please make sure you have set up a development environment:
 Core related docs
 -----------------
 
+* :doc:`pull-request-review`
 * :doc:`translation`
 * :doc:`unit-testing`
 * :doc:`theming`
