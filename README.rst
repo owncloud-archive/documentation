@@ -73,18 +73,38 @@ First, make sure that the following are installed:
 be found in the ``_build/html`` subdirectory.  PDFs can be build with the
 ``make latexpdf`` command and found
 
-The openSUSE way
-~~~~~~~~~~~~~~~~
- sudo zypper in pyhton-Sphinx
- sudo zypper in pyhton-rst2pdf
- sudo zypper in pdfjam   # pull in latexpdf and all of texlive
- sudo zypper in texlive-threeparttable
- sudo zypper in texlive-wrapfig
- sudo zypper in texlive-multirow
- cd user_manual
- make latexpdf
- okular _build/latex/ownCloudUserManual.pdf
+Distribution Specific Dependencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+**Fedora / RHEL and Derivatives**
+
+To install these packages on Fedora / RHEL and derivatives the following should
+suffice::
+
+  sudo yum install python-pip rst2pdf sphinx texlive-cm texlive-cmap 
+  texlive-courier texlive-dvips texlive-ec texlive-fancybox texlive-fancyhdr 
+  texlive-framed texlive-helvetic texlive-latex texlive-latex-bin 
+  texlive-mdwtools texlive-metafont texlive-misc texlive-multirow 
+  texlive-parskip texlive-pdftex-def texlive-texconfig texlive-threeparttable
+  texlive-times texlive-titlesec texlive-wrapfig
+
+You then must install the packages that are unavailable in the repositories::
+
+  sudo pip install sphinxcontrib-phpdomain
+
+If an error is shown relating to dependencies, check the error output and look 
+for something like::
+
+  Error: File `fancyhdr.sty' not found
+
+After finding this the file name can be used to install the required package::
+
+  sudo yum install 'tex(fancyhdr.sty)'
+
+**openSUSE** ::
+
+ sudo zypper install python-Sphinx python-rst2pdf pdfjam texlive-threeparttable
+ texlive-wrapfig texlive-multirow
 
 Windows
 ^^^^^^^
