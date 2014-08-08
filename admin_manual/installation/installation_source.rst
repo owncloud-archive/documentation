@@ -425,7 +425,7 @@ Nginx Configuration
                 access_log off;
             }
 
-            # Eliminates log entries for (missing) flavico.ico
+            # Prevents log entries for (missing) flavico.ico
             location = /flavico.ico {
                 access_log off;
                 log_not_found off;
