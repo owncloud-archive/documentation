@@ -10,8 +10,9 @@ The mounts may be created on a per-user, per group, or all user basis.
 
 .. note:: Using ``$user`` in any option gets replaced by the current user. This can be used e.g to
 	  specify users' own paths easily by just writing ``/home/$user/``.
-	  When using LDAP authentication the default for the $user variable is the LDAP UUID. This can 
-	  be changed by changing the LDAP user mapping in the LDAP settings.
+	  When using LDAP authentication the default for the $user variable is the 
+	  LDAP UUID. This can be changed by changing the LDAP user mapping in the 
+	  LDAP settings.
 
 Supported mounts
 ----------------
