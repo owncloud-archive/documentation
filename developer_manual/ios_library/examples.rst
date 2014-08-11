@@ -393,21 +393,21 @@ Code example
          		default: 
          			switch (response.statusCode) {
         				case kOCErrorServerUnauthorized :
-          				//Bad credentials
-          			break;
-        			case kOCErrorServerForbidden:
-          				//Forbidden
-          			break;
-		        	case kOCErrorProxyAuth:
-        	  			//Proxy access required
-          			break;
-		        	case kOCErrorServerPathNotFound:
-        				//Path not found
-		        	break;
-        			default:
-          				//Default
-	          		break;
-        		}
+          					//Bad credentials
+          				break;
+        				case kOCErrorServerForbidden:
+          					//Forbidden
+          				break;
+		        		case kOCErrorProxyAuth:
+        	  				//Proxy access required
+          				break;
+		        		case kOCErrorServerPathNotFound:
+        					//Path not found
+		        		break;
+        				default:
+          					//Default
+	          			break;
+        			}
          		break;
          	}
       }];
@@ -431,6 +431,37 @@ Code example
         }  
     }
 
+
+Set callback when background download task finishes
+-----------------------------------------
+
+Method to set callbacks of the pending download transfers when the app starts. It's used when there are pendings download background transfers. The block is executed when a pending background task finishes.
+
+Code example
+~~~~~~~~~~~~
+
+.. code-block:: objective-c
+
+    [[AppDelegate sharedOCCommunication] setDownloadTaskComleteBlock:^NSURL *(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, NSURL *location) {
+    
+              
+    }];
+
+Set progress callback with pending background download tasks
+---------------------------------------------------
+
+Method to set progress callbacks of the pending download transfers. It's used when there are pendings background download transfers. The block is executed when a pending task get a input porgress.
+
+Code example
+~~~~~~~~~~~~
+
+.. code-block:: objective-c
+
+    [[AppDelegate sharedOCCommunication] setDownloadTaskDidGetBodyDataBlock:^(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
+
+       
+    }];
+    
 
 
 
@@ -583,7 +614,7 @@ Code example
 
 .. code-block:: objective-c
 
-    [[AppDelegate sharedOCCommunication] setTaskDidCompleteBlock:^(NSURLSession *session, NSURLSessionTask *task, NSError *error) {
+    [[AppDelegate sharedOCCommunication] setTaskDidSendBodyDataBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
     
             
        
