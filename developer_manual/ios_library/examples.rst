@@ -360,6 +360,81 @@ Code example
   }];
 
 
+
+
+
+Download a file with background session
+-------------------------------------
+
+Download an existing file storaged on the cloud server using background session, only supported by iOS 7 and higher. 
+
+The info needed is the server URL: path where the file is stored on the server; localPath: path where the file will be stored on the device and NSProgress object where get the callbacks of the upload progress.
+
+To get the callbacks of the progress is needed use a KVO in the progress object. We add the code in this example of the call to set the KVO and the method where catch the notifications.
+
+Code example
+~~~~~~~~~~~~
+
+.. code-block:: objective-c
+
+    NSURLSessionDownloadTask *downloadTask = nil;
+    
+    NSProgress *progress = nil;
+    
+    downloadTask = [_sharedOCCommunication downloadFileSession:serverUrl toDestiny:localPath defaultPriority:YES onCommunication:_sharedOCCommunication withProgress:&progress successRequest:^(NSURLResponse *response, NSURL *filePath) {
+     		//Upload complete
+         } failureRequest:^(NSURLResponse *response, NSError *error) {
+         	
+         	switch (error.code) {
+         		case kCFURLErrorUserCancelledAuthentication:
+         			//Authentication cancelled
+         		break;
+         		
+         		default: 
+         			switch (response.statusCode) {
+        				case kOCErrorServerUnauthorized :
+          				//Bad credentials
+          			break;
+        			case kOCErrorServerForbidden:
+          				//Forbidden
+          			break;
+		        	case kOCErrorProxyAuth:
+        	  			//Proxy access required
+          			break;
+		        	case kOCErrorServerPathNotFound:
+        				//Path not found
+		        	break;
+        			default:
+          				//Default
+	          		break;
+        		}
+         		break;
+         	}
+      }];
+    
+    // Observe fractionCompleted using KVO
+     [progress addObserver:self forKeyPath:@"fractionCompleted" options:NSKeyValueObservingOptionNew context:NULL];
+     
+     
+    //Method to catch the progress notifications with callbacks
+    - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context
+    {
+        if ([keyPath isEqualToString:@"fractionCompleted"] && [object isKindOfClass:[NSProgress class]]) {
+            NSProgress *progress = (NSProgress *)object;
+            
+            float percent = roundf (progress.fractionCompleted * 100);
+            
+            //We make it on the main thread because we came from a delegate
+            dispatch_async(dispatch_get_main_queue(), ^{
+                 NSLog(@"Progress is %f", percent);
+            });
+        }  
+    }
+
+
+
+
+
 Upload a file
 -------------
 
