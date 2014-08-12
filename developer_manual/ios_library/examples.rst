@@ -368,7 +368,7 @@ Download a file with background session
 
 Download an existing file storaged on the cloud server using background session, only supported by iOS 7 and higher. 
 
-The info needed is the server URL: path where the file is stored on the server; localPath: path where the file will be stored on the device and NSProgress object where get the callbacks of the upload progress.
+The info needed is, the server URL: path where the file is stored on the server; localPath: path where the file will be stored on the device; and NSProgress: object where get the callbacks of the upload progress.
 
 To get the callbacks of the progress is needed use a KVO in the progress object. We add the code in this example of the call to set the KVO and the method where catch the notifications.
 
