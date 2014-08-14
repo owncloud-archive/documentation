@@ -79,9 +79,11 @@ suffice::
 If this is not the case and an error is shown relating to dependencies, 
 installing it can be greatly simplified by checking the error output and looking
 for something like::
-  Error: File `fancyhdr.sty' not found.
+
+  Error: File `fancyhdr.sty' not found
 
 After finding this installation is as simple as::
+
   sudo yum install 'tex(fancyhdr.sty)'
 
 If you find a case like above where something new needs to be installed please 
