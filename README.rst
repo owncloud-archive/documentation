@@ -80,12 +80,17 @@ Distribution Specific Dependencies
 
 To install these packages on Fedora / RHEL and derivatives the following should
 suffice::
+
   sudo yum install python-pip rst2pdf sphinx texlive-cm texlive-cmap 
   texlive-courier texlive-dvips texlive-ec texlive-fancybox texlive-fancyhdr 
   texlive-framed texlive-helvetic texlive-latex texlive-latex-bin 
   texlive-mdwtools texlive-metafont texlive-misc texlive-multirow 
   texlive-parskip texlive-pdftex-def texlive-texconfig texlive-threeparttable
   texlive-times texlive-titlesec texlive-wrapfig
+
+You then must install the packages that are unavailable in the repositories::
+
+  sudo pip install sphinxcontrib-phpdomain
 
 If this is not the case and an error is shown relating to dependencies, 
 installing it can be greatly simplified by checking the error output and looking
