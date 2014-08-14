@@ -97,9 +97,6 @@ After finding this installation is as simple as::
 
   sudo yum install 'tex(fancyhdr.sty)'
 
-If you find a case like above where something new needs to be installed please 
-update these instructions.
-
 **openSUSE** ::
 
  sudo zypper install python-Sphinx python-rst2pdf pdfjam texlive-threeparttable
