@@ -73,6 +73,30 @@ First, make sure that the following are installed:
 be found in the ``_build/html`` subdirectory.  PDFs can be build with the
 ``make latexpdf`` command and found
 
+**Fedora / RHEL and Derivatives**
+
+To install these packages on Fedora / RHEL and derivatives the following should
+suffice::
+  sudo yum install python-pip rst2pdf sphinx texlive-cm texlive-cmap 
+  texlive-courier texlive-dvips texlive-ec texlive-fancybox texlive-fancyhdr 
+  texlive-framed texlive-helvetic texlive-latex texlive-latex-bin 
+  texlive-mdwtools texlive-metafont texlive-misc texlive-multirow 
+  texlive-parskip texlive-pdftex-def texlive-texconfig texlive-threeparttable
+  texlive-times texlive-titlesec texlive-wrapfig
+
+If this is not the case and an error is shown relating to dependencies, 
+installing it can be greatly simplified by checking the error output and looking
+for something like::
+
+  Error: File `fancyhdr.sty' not found
+
+After finding this installation is as simple as::
+
+  sudo yum install 'tex(fancyhdr.sty)'
+
+If you find a case like above where something new needs to be installed please 
+update these instructions.
+
 The openSUSE way
 ~~~~~~~~~~~~~~~~
  sudo zypper in pyhton-Sphinx
@@ -84,7 +108,6 @@ The openSUSE way
  cd user_manual
  make latexpdf
  okular _build/latex/ownCloudUserManual.pdf
-
 
 Windows
 ^^^^^^^
