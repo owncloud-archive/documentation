@@ -73,7 +73,8 @@ First, make sure that the following are installed:
 be found in the ``_build/html`` subdirectory.  PDFs can be build with the
 ``make latexpdf`` command and found
 
-**Fedora / RHEL and Derivatives**
+Fedora / RHEL and Derivatives
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To install these packages on Fedora / RHEL and derivatives the following should
 suffice::
