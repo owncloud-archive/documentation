@@ -1,7 +1,7 @@
 Performance Tips
 ================
 
-The performance of ownCloud, like any `LAMP application<http://wikipedia.org/wiki/LAMP_%28software_bundle%29>`_,
+The performance of ownCloud, like any `LAMP application <http://wikipedia.org/wiki/LAMP_%28software_bundle%29>`_,
 is dependent on all components of the stack.
 Maximuming performance can be achieved by optimizing the operations and interactions
 of the underlying network, hardware, operating systems, webservers, databases, and storage.
@@ -14,7 +14,7 @@ SSL / Encryption App
 
 SSL (HTTPS) and file encryption/decryption can be offloaded to a processors AES-NI extensions.
 This can both speed up these operations while lowering processing overhead.
-This requires a processor with the `AES-NI instruction set<http://wikipedia.org/wiki/AES_instruction_set>`_.
+This requires a processor with the `AES-NI instruction set <http://wikipedia.org/wiki/AES_instruction_set>`_.
 
 OPcache Extension
 -----------------
@@ -31,13 +31,13 @@ Object caching can be done locally with the APCu extension,
 or for distributed PHP environments using Memcached.
 Memcached servers must be specified in the "memcached_servers" array in ownCloud's config file.
 
-[Serving static files via web server](./xsendfile.rst)
+`Serving static files via web server <xsendfile.rst>`_
 -----------------------------------
 
-[Using cron to perform background jobs](./background_jobs.rst#cron)
+`Using cron to perform background jobs <background_jobs.rst#cron>`_
 -------------------------------------
 
-[Using MySQL instead of SQLite](./configuration_database.rst#configuring-a-mysql-or-mariadb-database)
+`Using MySQL instead of SQLite <configuration_database.rst#configuring-a-mysql-or-mariadb-database>`_
 -----------------------------
 
 MySQL or MariaDB should be perfered because of the inherent performance limitations of SQLite.
