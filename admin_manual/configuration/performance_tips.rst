@@ -1,8 +1,8 @@
 Performance Tips
 ================
 
-The performance of ownCloud, like any [LAMP application]
-(http://wikipedia.org/wiki/LAMP_%28software_bundle%29), is dependent on all components of the stack.
+The performance of ownCloud, like any `LAMP application<http://wikipedia.org/wiki/LAMP_%28software_bundle%29>`_,
+is dependent on all components of the stack.
 Maximuming performance can be achieved by optimizing the operations and interactions
 of the underlying network, hardware, operating systems, webservers, databases, and storage.
 
@@ -14,7 +14,7 @@ SSL / Encryption App
 
 SSL (HTTPS) and file encryption/decryption can be offloaded to a processors AES-NI extensions.
 This can both speed up these operations while lowering processing overhead.
-This requires a processor with the [AES-NI instruction set](http://wikipedia.org/wiki/AES_instruction_set).
+This requires a processor with the `AES-NI instruction set<http://wikipedia.org/wiki/AES_instruction_set>`_.
 
 OPcache Extension
 -----------------
