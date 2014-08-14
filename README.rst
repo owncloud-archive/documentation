@@ -73,8 +73,9 @@ First, make sure that the following are installed:
 be found in the ``_build/html`` subdirectory.  PDFs can be build with the
 ``make latexpdf`` command and found
 
-Fedora / RHEL and Derivatives
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Distribution Specific Dependencies
+
+**Fedora / RHEL and Derivatives**
 
 To install these packages on Fedora / RHEL and derivatives the following should
 suffice::
@@ -98,10 +99,9 @@ After finding this installation is as simple as::
 If you find a case like above where something new needs to be installed please 
 update these instructions.
 
-The openSUSE way
-~~~~~~~~~~~~~~~~
- sudo zypper in pyhton-Sphinx
- sudo zypper in pyhton-rst2pdf
+**openSUSE**
+ sudo zypper in python-Sphinx
+ sudo zypper in python-rst2pdf
  sudo zypper in pdfjam   # pull in latexpdf and all of texlive
  sudo zypper in texlive-threeparttable
  sudo zypper in texlive-wrapfig
