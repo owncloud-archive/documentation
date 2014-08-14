@@ -92,13 +92,12 @@ You then must install the packages that are unavailable in the repositories::
 
   sudo pip install sphinxcontrib-phpdomain
 
-If this is not the case and an error is shown relating to dependencies, 
-installing it can be greatly simplified by checking the error output and looking
+If an error is shown relating to dependencies, check the error output and look 
 for something like::
 
   Error: File `fancyhdr.sty' not found
 
-After finding this installation is as simple as::
+After finding this the file name can be used to install the required package::
 
   sudo yum install 'tex(fancyhdr.sty)'
 
