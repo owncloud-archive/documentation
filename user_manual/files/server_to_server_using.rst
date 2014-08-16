@@ -1,7 +1,7 @@
 Using Server-to-Server Sharing
 ==============================
 
-ownCloud 7 introduces a powerful new feature, server-to-server sharing.  With just a few clicks you can easily access shares from other ownCloud 7 servers, and create your own shares. This feature enables you to:
+ownCloud 7 introduces a powerful new feature, server-to-server sharing.  With just a few clicks you can easily access shares from other ownCloud 7 servers, link them to your account, and create your own shares. This feature enables you to:
 
 * Selectively share files or directories.
 * Combine two private clouds into a single public cloud. 
@@ -21,11 +21,9 @@ by default. (See "Configuring Server-to-Server Sharing" in the Administrators Ma
 
 2. Set any options that you want to apply to your new share: send an email notification, add password protection, allow users to upload files to the share, or set an expiration date.
 
-   .. figure:: ../images/create_public_share.png
+   .. figure:: ../images/s2s-create_public_share.png
    
-And that's all there is to it. Your new public share is labeled with a chain link. If you do not protect it with a password, it is visible to anyone who has the URL.
-
-   .. figure:: ../images/chain-link-on-public-share.png
+And that's all there is to it. Your new public share is labeled with a chain link. If you do not protect it with a password, it is visible to anyone who has the URL. (ownCloud server admins have the option of requiring users to set passwords on shares in ``Admin > Sharing.``)
 
 
 Connecting to a Remote Share
@@ -33,12 +31,17 @@ Connecting to a Remote Share
 
 1. Open the share link in your Web browser.
 
-   .. figure:: ../images/connect-to-remote-s2s-share.png
+   .. figure:: ../images/s2s-connect-to-remote-share.png
 
-2. Click the ``Add to your ownCloud`` button, and enter the URL of your local ownCloud server. 
+2. Click the ``Add to your ownCloud`` button, and enter the URL of your ownCloud server. 
 
 3. You will see a dialogue asking you ``"Do you want to add the remote share [share name] from [remote server name]?"``
 
-   .. figure:: ../images/add-remote-s3s-share.png
+   .. figure:: ../images/s2s-add-remote-share.png
 
-4. Click the ``Add Remote Share`` button, and enjoy your new share.
+4. Click the ``Add Remote Share`` button, and enjoy your new share. It is marked with a share icon, and the name of the share's owner and originating server.
+
+   .. figure:: ../images/s2s-add-remote-share-labeled.png
+
+Remove your linked share anytime by clicking the trash can icon.   
+
