@@ -33,15 +33,15 @@ Connecting to a Remote Share
 
    .. figure:: ../images/s2s-connect-to-remote-share.png
 
-2. Click the ``Add to your ownCloud`` button, and enter the URL of your ownCloud server. 
+2. Click the ``Add to your ownCloud`` button, and enter the URL of your ownCloud server. If you are not already logged in you will get a login window.
 
-3. You will see a dialogue asking you ``"Do you want to add the remote share [share name] from [remote server name]?"``
+3. After logging in you will see a dialogue asking you ``"Do you want to add the remote share [share name] from [remote server name]?"``
 
    .. figure:: ../images/s2s-add-remote-share.png
 
 4. Click the ``Add Remote Share`` button, and enjoy your new share. It is marked with a share icon, and the name of the share's owner and originating server.
 
-   .. figure:: ../images/s2s-add-remote-share-labeled.png
+   .. figure:: ../images/s2s-remote-share-labeled.png
 
 Remove your linked share anytime by clicking the trash can icon.   
 
