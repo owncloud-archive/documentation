@@ -23,7 +23,7 @@ Follow these steps to add your own SharePoint connections:
 
 * Enter the name of your local mountpoint in Local Folder Name column. This can be an existing folder, or automatically create a new on
 
-* Enter your  SharePoint server URL
+* Enter your SharePoint server URL
 
 * Click the little refresh icon to the left of the Document Library field. If your credentials and URL are correct you'll get a dropdown list of SharePoint libraries to choose from
 
