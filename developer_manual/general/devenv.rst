@@ -44,8 +44,8 @@ Check out the code
 
 There are two ways to check out the code, either by using the **ocdev** tool or manually.
 
-Check out Using ocdev
-~~~~~~~~~~~~~~~~~~~~~
+Using the ocdev method 
+~~~~~~~~~~~~~~~~~~~~~~
 
 The following commands are using **/var/www** as the web server's directory and **www-data** as user name and group.
 
@@ -63,8 +63,8 @@ Then install ownCloud from git::
 
   ocdev setup base
 
-Check out manually
-~~~~~~~~~~~~~~~~~~
+Using the manual method
+~~~~~~~~~~~~~~~~~~~~~~~
 
 The following commands are using **/var/www** as the web server's directory and **www-data** as user name and group.
 
@@ -72,16 +72,12 @@ The following commands are using **/var/www** as the web server's directory and 
 
   sudo chmod o+rw /var/www
   cd /var/www
-  git clone https://github.com/owncloud/core.git owncloud
+  git clone https://github.com/owncloud/core.git
   git clone https://github.com/owncloud/apps.git
   cd owncloud/
   git submodule init
   git submodule update
   mkdir data
-  sudo chown -R www-data:www-data config/ data/ apps/
-  sudo chmod -R o-rw /var/www
-
-Now **restart the web server**.
 
 Check out additional apps (optional)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -91,21 +87,13 @@ For example for the calendar, contact and notes apps:
 
 .. code-block:: bash
 
-  cd /var/www/extra-apps
+  cd /var/www/core/apps
   git clone https://github.com/owncloud/calendar.git
   git clone https://github.com/owncloud/contacts.git
   git clone https://github.com/owncloud/notes.git
 
-Then create a symbolic link for every app into ownCloud's **apps** folder.
-
-.. code-block:: bash
-
-  ln -s /var/www/extra-apps/calendar /var/www/owncloud/apps/calendar
-  ln -s /var/www/extra-apps/contacts /var/www/owncloud/apps/contacts
-  ln -s /var/www/extra-apps/notes /var/www/owncloud/apps/notes
-
-Finalizing the checkout
-~~~~~~~~~~~~~~~~~~~~~~~
+Finalizing the setup
+--------------------
 
 Adjust rights::
 
