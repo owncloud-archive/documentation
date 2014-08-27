@@ -1,36 +1,39 @@
-cceptance Testing For OwnCloud
+Acceptance Testing
+==================
 
-[![Build Status](https://travis-ci.org/Gomez/acceptance-testing.svg?branch=robot-rewrite)](https://travis-ci.org/Gomez/acceptance-testing)
-
-##Preparing your system
+Preparing your system
+---------------------
 
 For running the acceptance tests you need Python 2.7 (other versions not tested). If you do not want pollute your
 system-wide Python, install virtualenv and activate it.
 
-After installing python, bootstrap this rep:
+After installing python, bootstrap this rep::
 
-    $ python bootstrap.py
+  python bootstrap.py
 
-Now you can fetch the dependencies using the buildout.cfg:
+Now you can fetch the dependencies using the buildout.cfg::
 
-    $ bin/buildout
+  bin/buildout
 
 Everything is now fetched and a bin/pybot execute script is created.
 
-# Running tests
+Running tests
+-------------
 
-## Running tests on your own system
+Running tests on your own system
+--------------------------------
 
 To keep the ownCloud repositories stable you should always test your code
 before pushing it. To ensure that your changes do not affect the rest of
 ownCloud you should run the acceptance test suite against your code on a
 regular base.
 
-##Running tests in your test environment
+Running tests in your test environment
+--------------------------------------
 
-The tests get normally executed against http://localhost, this can be overriden from the cli:
+The tests get normally executed against http://localhost, this can be overriden from the cli::
 
-    $ bin/pybot --variable OWNCLOUD_URL:http://localhost/mypath/owncloud/ tests/
+    bin/pybot --variable OWNCLOUD_URL:http://localhost/mypath/owncloud/ tests/
 
 Robotframework expects to find the following environment:
 
@@ -44,24 +47,26 @@ Robotframework expects to find the following environment:
 
 1. Users "user1" and "user2" are member of "group1"
 
-To execute the tests run
+To execute the tests run::
 
-    $ bin/pybot tests
+    bin/pybot tests
 
-
-#Extending the test suite
+Extending the test suite
+------------------------
 
 Having a test suite is cool, but without constantly updating it the test suite 
 becomes useless over time.
 
 There are several ways to help us improving the test suite.
 
-##Writing new tests
+Writing new tests
+-----------------
 
 Writing user stories is really easy. Just have a look at the existing stories
 in /tests and change them according to your needs.
 
-##Adapting tests to changes in the UI
+Adapting tests to changes in the UI
+-----------------------------------
 
 When an old test fails, there are several possible reasons.
 
@@ -74,11 +79,8 @@ When an old test fails, there are several possible reasons.
 
 * The test has been removed: remove the test.
 
-#Known Issues
-
-* None for now
-
-#Note on Patches/Pull Requests
+Note on Patches/Pull Requests
+-----------------------------
 
 * Fork the project.
 
