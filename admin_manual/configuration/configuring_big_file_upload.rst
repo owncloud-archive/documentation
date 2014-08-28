@@ -43,7 +43,7 @@ Set the following two parameters inside the php.ini to the same value as chosen 
 * ``upload_max_filesize = 16G``   (e.g., to stay consistent with the example value above)
 * ``post_max_size = 16G``   (e.g., to stay consistent with the example value above)
 
-**Output Buffering** must be turned off, or PHP will return memory-related errors.
+**Output Buffering** must be turned off in ``.htaccess`` or ``php.ini``, or PHP will return memory-related errors.
 
 * ``output_buffering = 0``
 
