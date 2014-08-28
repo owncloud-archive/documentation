@@ -43,11 +43,9 @@ Set the following two parameters inside the php.ini to the same value as chosen 
 * ``upload_max_filesize = 16G``   (e.g., to stay consistent with the example value above)
 * ``post_max_size = 16G``   (e.g., to stay consistent with the example value above)
 
-**Output Buffering** allows you to get performance benefits in some setups. Please make sure you know what you are doing before using it in production. As previously mentioned, add this option in your .htaccess file or edit your php.ini file:
+**Output Buffering** must be turned off, or PHP will return memory-related errors.
 
-* ``output_buffering = 16384``	(e.g., to stay consistent with the example value above)
-
-As you can see, the "output_buffering" has to be given in MegaBytes but as a plain figure (without size-units as 'M' or 'G')
+* ``output_buffering = 0``
 
 **These client configurations have been proven by testing maximum file sizes of 16 GB:**
 
