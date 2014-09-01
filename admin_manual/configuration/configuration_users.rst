@@ -42,7 +42,7 @@ Creating a New User
 To create a user account:
 
 * Enter the new user's **Login Name** and their initial **Password** 
-* Optionally, assign **Groups** memberships and **Group Admin** assigments
+* Optionally, assign **Groups** memberships
 * Click the **Create** button
 
 .. figure:: ../images/users-create.png
