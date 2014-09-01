@@ -41,15 +41,16 @@ Creating a New User
 
 To create a user account:
 
-# Enter the new user's **Login Name** and their initial **Password** 
-# Optionally, assign **Groups** memberships and **Group Admin** assigments
-# Click the **Create** button
+* Enter the new user's **Login Name** and their initial **Password** 
+* Optionally, assign **Groups** memberships and **Group Admin** assigments
+* Click the **Create** button
 
 .. figure:: ../images/users-create.png
 
 Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-), 
 underscores (_), periods (.) and ampersands (@). After creating the user, you 
-may fill in their **Full Name** if it is different than the login name.
+may fill in their **Full Name** if it is different than the login name, or 
+leave it for the user to complete.
 
 Remember to give your new users their logins and passwords.
 
@@ -58,9 +59,9 @@ Reset a User's Password
 
 You cannot recover a user's password, but you can set a new one:
 
-# Hover your cursor over the user's **Password** field
-# Click on the **pencil icon** 
-# Enter the user's new password in the password field, and remember to provide 
+* Hover your cursor over the user's **Password** field
+* Click on the **pencil icon** 
+* Enter the user's new password in the password field, and remember to provide 
   the user with their password
 
 Renaming a User
@@ -72,9 +73,9 @@ the display name of a user, but you cannot change the login name of any user.
 
 To set or change a user's display name:
 
-# Hover your cursor over the user's **Full Name** field
-# Click on the **Pencil icon** 
-# Enter the user's new display name
+* Hover your cursor over the user's **Full Name** field
+* Click on the **Pencil icon** 
+* Enter the user's new display name
 
 
 Granting Administrator Privileges to a User
