@@ -34,7 +34,7 @@ User accounts have the following properties:
 *Quota*
   The maximum disk space assigned to each user. Any user that exceeds the quota 
   cannot upload or sync data. ownCloud 7 introduces a new feature, and that is 
-  the option to not include external storage in user quotas.
+  the option to include external storage in user quotas.
 
 Creating a New User
 ~~~~~~~~~~~~~
@@ -119,6 +119,17 @@ then change the default ``false`` to ``true``.::
 
    'quota_include_external_storage' => false,
 
+Metadata takes up about 10% of disk space, but is not counted against user 
+quotas. Users can check their used and available space on their Personal pages.
+Only files that originate with users count against their quotas, and not files
+shared by other users. Deleted files that are still in the trash bin do not
+count against quotas. The trash bin is set at 50% of quota in the 
+``lib/trashbin.php`` file. Deleted file aging is set with by 
+``trashbin_retention_obligation`` in ``config.php``, with a default of 30 days.
+When deleted files exceed 50% of quota then the oldest files are removed until
+the total  is below 50%. 
+
+
 Deleting users
 ~~~~~~~~~~~
 
@@ -131,5 +142,7 @@ recover the deleted user.
 All of the files owned by the user are deleted as well, including all files 
 they have shared. If you need to preserve the user's files and shares, you must 
 first download them from your ownCloud Files page, which compresses them into a 
-zip file, or use a sync client to copy them to your local computer.
+zip file, or use a sync client to copy them to your local computer. See the "File
+Sharing" section to learn how to create persistent file shares that survive user
+deletions.
 
