@@ -166,8 +166,8 @@ To limit a user's storage quota:
 
 Find the user and select an item from the **Quota** drop-down list.
 
-   * If you select *Default*, the default storage limit, specified in the
-     action bar at the top, is applied.
+   * If you select *Default*, the default storage limit is applied. See below
+     where to set this.
    * If you select *Unlimited*, the user is not limited until the total disk
      space is consumed.
    * If you want to enter a custom limit, select *Other...*, enter the storage
