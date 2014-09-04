@@ -252,6 +252,36 @@ Code example
     });
   }
 
+Move a file or folder
+---------------------
+
+Move an exisintg file or folder to a different location in the ownCloud server. Parameters needed are the path
+to the file or folder to move, and the new path desired for it. The parent folder of the new path must exist in 
+the server.
+
+When the parameter 'overwrite' is set to 'true', the file or folder is moved even if the new path is already
+used by a different file or folder. This one will be replaced by the former.
+
+Code example
+~~~~~~~~~~~~
+                                                      
+.. code-block:: java
+
+  private void startFileMove(String filePath, String newFilePath, boolean overwrite) {
+    MoveRemoteFileOperation moveOperation = new MoveRemoteFileOperation(filePath, newFilePath, overwrite); 
+    moveOperation.execute( mClient , this , mHandler); 
+  }
+
+  @Override
+  public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationResult result) {
+    if (operation instanceof MoveRemoteFileOperation) {
+      if (result.isSuccess()) {
+      // do your stuff here
+	  }
+    }
+    …
+  }
+
 Read shared items by link
 -------------------------
 
