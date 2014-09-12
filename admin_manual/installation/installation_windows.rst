@@ -3,6 +3,10 @@ Windows 7 and Windows Server 2008
 
 .. note:: You must move the data directory outside of your public root (See
           advanced install settings)
+          
+.. note:: If you are updating ownCloud 6 running on IIS and SQL Server, the 
+          SQL Server database upgrade requires specialized scripts for a 
+          successful upgrade. See github.com/owncloud/enterprise/issues/238.
 
 This section describes how to install ownCloud on Windows with :abbr:`IIS
 (Internet Information Services)`.
