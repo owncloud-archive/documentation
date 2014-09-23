@@ -431,6 +431,14 @@ Nginx Configuration
                 access_log off;
             }
 
+            # Prevents log entries for (missing) flavico.ico
+            location = /flavico.ico {
+                access_log off;
+                log_not_found off;
+                expires 30d;
+                try_files /flavico.ico = 204;
+            }
+
             location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README) {
                     deny all;
             }
