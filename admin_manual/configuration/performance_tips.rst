@@ -3,7 +3,7 @@ Performance Tips
 
 The performance of ownCloud, like any `LAMP application <http://wikipedia.org/wiki/LAMP_%28software_bundle%29>`_,
 is dependent on all components of the stack.
-Maximuming performance can be achieved by optimizing the operations and interactions
+Maximizing performance can be achieved by optimizing the operations and interactions
 of the underlying network, hardware, operating systems, webservers, databases, and storage.
 
 This guide cannot cover all possible configurations and will instead
@@ -12,7 +12,7 @@ cover tips that are specific to ownCloud or give the greatest benefit.
 SSL / Encryption App
 --------------------
 
-SSL (HTTPS) and file encryption/decryption can be offloaded to a processors AES-NI extensions.
+SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's AES-NI extension.
 This can both speed up these operations while lowering processing overhead.
 This requires a processor with the `AES-NI instruction set <http://wikipedia.org/wiki/AES_instruction_set>`_.
 
@@ -40,4 +40,4 @@ Memcached servers must be specified in the "memcached_servers" array in ownCloud
 `Using MySQL instead of SQLite <configuration_database.rst#configuring-a-mysql-or-mariadb-database>`_
 -----------------------------
 
-MySQL or MariaDB should be perfered because of the inherent performance limitations of SQLite.
+MySQL or MariaDB should be preferred because of the inherent performance limitations of SQLite.
