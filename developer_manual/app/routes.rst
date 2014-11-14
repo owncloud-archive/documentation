@@ -230,5 +230,7 @@ Inside the PageController the URL generator can now be used to generate an URL f
 
 URLGenerator is case sensitive, so **appName** must match **exactly** the name you use in :doc:`configuration.rst`.
 If you use a CamelCase name as *myCamelCaseApp*, 
+
 .. code-block:: php
-    $route = 'myCamelCaseApp.author_api.do_something'
+
+    $route = 'myCamelCaseApp.author_api.do_something';
