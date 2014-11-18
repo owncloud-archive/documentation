@@ -11,6 +11,17 @@ To translate text in javascript use: ``t('appname','text to translate');``
 
 .. note:: ``print_unescaped()`` should be preferred only if you would like to display HTML code. Otherwise, using ``p()`` is strongly preferred to escape HTML characters against XSS attacks.
 
+Loading translations
+--------------------
+
+Since ownCloud 8, the mechanism for loading translations has changed.
+Translations must be loaded explicitly, using one of these three ways:
+
+- from PHP: add ``OCP\Util\addTranslations('appName');`` in appinfo/app.php or other
+  PHP files.
+- from PHP templates: ``<?php translation('appName'); ?>``
+- from Javascript: ``OC.addTranslations('appName', callback);``. This happens asynchronously, so a callback function should be provided
+
 You shall never split sentences!
 --------------------------------
 
@@ -41,8 +52,8 @@ Html on translation string:
 
 Html tags in translation strings is ugly but usually translators can handle this.
 
-What about variable in the strings?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+What about variables in the strings?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In case you need to add variables to the translation strings do it like that:
 
