@@ -86,12 +86,16 @@ All member variables of a class needs to be type annotated within a single line 
 	class Foo {
 		/** @var \OC_Defaults */
 		private $defaults;
+		/** @var \OCP\IRequest */
+		private $request;
 	
 		/**
 		 * @param \OC_Defaults $defaults
+		 * @param \OCP\IRequest $request
 		 */
-		public function __construct(\OC_Defaults $defaults) {
+		public function __construct(\OC_Defaults $defaults, \OCP\IRequest $request) {
 			$this->defaults = $defaults;
+			$this->request = $request;
 		}
 	}
 Objects, Functions, Arrays & Variables
