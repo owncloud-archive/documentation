@@ -17,14 +17,16 @@ Nginx Configuration
     }
 
   server {
-    listen 80;
+    listen 0.0.0.0:80;
+    listen [::]:80 ipv6only=on;
     server_name cloud.example.com;
     # enforce https
     return 301 https://$server_name$request_uri;  
     }
 
   server {
-    listen 443 ssl;
+    listen 0.0.0.5:443 ssl;
+    listen [::]:443 ssl ipv6only=on;
     server_name cloud.example.com;
 
     ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
@@ -90,7 +92,8 @@ Nginx Configuration
           user's logins and data in transit.
 
 -  Remove the server block containing the redirect
--  Change **listen 443 ssl** to **listen 80;**
+-  Change **listen 0.0.0.0:443 ssl;** to **listen 0.0.0.0:80;**
+-  Change **listen [::]:443 ssl ipv6only=on;** to **listen [::]:80 ipv6only=on;**
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
 -  Remove **fastcgi_params HTTPS on;**
 
