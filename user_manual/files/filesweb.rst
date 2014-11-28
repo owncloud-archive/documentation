@@ -36,6 +36,15 @@ Share
 Trash
   Delete the selected file or folder, or unshare a shared file or folder.
 
+Clicking on the file name will download the file, except for 
+contents like images, videos and text, which will be displayed embedded
+in the browser window. This behavior can be extended and modified by
+installing additional owncloud apps.
+
+.. Note:: Whether videos will be streamed by the native owncloud
+  video viewer or not will depend on the browser and on the video format.
+  Different browsers do not support all video formats and codecs.
+
 .. Note:: The Shared folder has been removed from new installations of ownCloud 
   7. Shares now appear in the top level of your file tree on your Files page. 
   If you are upgrading from older ownCloud versions you will still have your 
