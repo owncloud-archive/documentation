@@ -215,13 +215,17 @@ notification, protect it with a password, and put an expiration date on it. Your
 administrator has the option to require passwords and expiration dates.
 
 For security reasons, files shared via public link do not open in the recipient's Web 
-browser. Image files, such as PNG, JPG, and PDF are rendered as previews, and users must 
-click the Download button to fetch the original files. The following screenshot shows how 
-a JPG appears; it's not really the full file, but a reduced-size preview. 
+browser. Image files such as PNG and JPG are rendered as previews, and users 
+must click the Download button to fetch the original files. The following screenshot shows 
+how a JPG appears; it's not really the full file, but a reduced-size preview. 
 
 .. figure:: ../images/users-share-public2.jpg
 
-Text documents may be downloaded only, and are not previewed.
+PDF files will appear as previews if the PDF Viewer app in ownCloud is enabled, and if 
+the recipient's Web browser is configured to display PDFs.
+
+Text documents, such as ODT, DOC, and other text formats may be downloaded and are not 
+previewed.
 
 .. figure:: ../images/users-share-public3.jpg
 
