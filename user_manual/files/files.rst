@@ -108,6 +108,7 @@ Known Issues
 
 **Solution:** If you use a self-signed certificate, you will get a warning. To change this, you need to adress the "pem"-file of your certificate. 
 At first copy ``mycertificate.pem`` to  - for example - ``/etc/davfs2/certs/``. After that edit :file:`/etc/davfs2/davfs2.conf` and uncomment the line ``servercert`` (or add it). 
+
 Now add the path of your certificate. In this this example::
     servercert   /etc/davfs2/certs/mycertificate.pem
 

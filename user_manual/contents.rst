@@ -18,13 +18,5 @@ ownCloud User Manual
     pim/index
     documents
     bookmarks
-    migration
     userpreferences
     external_storage/google_drive
-
-
-
-.. Indices and tables
-.. ==================
-
-.. * :ref:`genindex`
