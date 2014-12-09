@@ -209,13 +209,14 @@ and check Share Link.
 
   **Public share box**
 
-This creates a public URL that anyone can use to access the share; all they have to do is 
-click the link and it opens in their Web browser. You have the options to send an email 
-notification, protect it with a password, and put an expiration date on it. Your ownCloud 
-administrator has the option to require passwords and expiration dates.
+This creates a public URL that anyone can use to access the share; just send them the 
+link and all they have to do is click and it opens in their Web browser. You 
+have the options to send an email notification, protect it with a password, and put an 
+expiration date on it. Your ownCloud administrator has the option to require passwords and 
+expiration dates.
 
-For security reasons, files shared via public link do not open in the recipient's Web 
-browser. Image files such as PNG and JPG are rendered as previews, and users 
+For security reasons, some files shared via public link do not open in the recipient's 
+Web browser. Image files such as PNG and JPG are rendered as previews, and users 
 must click the Download button to fetch the original files. The following screenshot shows 
 how a JPG appears; it's not really the full file, but a reduced-size preview. 
 
@@ -228,6 +229,10 @@ Text documents, such as ODT, DOC, and other text formats may be downloaded and a
 previewed.
 
 .. figure:: ../images/users-share-public3.jpg
+
+Video files will play in the recipient's browser if the Video Viewer app is enabled on 
+the ownCloud server, and the recipient has the appropriate browser configuration and 
+codecs.
 
 Change in Share Expiration Date
 -------------------------------
