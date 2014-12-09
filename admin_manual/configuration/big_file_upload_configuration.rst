@@ -20,6 +20,10 @@ Other recommendable preconditions:
 This is important, because you possibly could not watch otherwise whether the 
 desired changes take effect.
 
+.. note:: If you are running ownCloud on a 32-bit system, any open_basedir directive in 
+   your ``php.ini`` file needs to be removed; otherwise you may have problems uploading 
+   large files.
+
 Enabling uploading big files
 ----------------------------
 
