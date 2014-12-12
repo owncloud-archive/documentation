@@ -2,13 +2,11 @@
 LDAP User Cleanup
 =================
 
-LDAP User Cleanup is a new feature in the ``LDAP user and group backend`` 
-application (see :doc:`user_auth_ldap`). LDAP User Cleanup is a background 
-process that automatically searches the ownCloud LDAP mappings table, and verifies if the 
-users are still available on your LDAP server. The background process runs every 23 minutes and 
-examines 50 users at a time. Any users that are not available are marked as ``deleted``. Then you can
-examine a table containing a list of users marked as ``deleted``, and then you have the
-option of removing their data from your ownCloud data directory.
+LDAP User Cleanup is a new feature in the ``LDAP user and group backend`` application. LDAP User Cleanup is a background process 
+that automatically searches the ownCloud LDAP mappings table, and verifies if the LDAP users are still available. Any users that 
+are not available are marked as ``deleted`` in the ``oc_preferences`` database table. Then you can run a command to display this 
+table, displaying only the users marked as ``deleted``, and then you have the option of removing their data from your ownCloud 
+data directory.
 
 These items are removed upon cleanup:
 
@@ -25,6 +23,10 @@ There are two prequisites for LDAP User Cleanup to operate:
 2. All configured LDAP connections are enabled and operating correctly. As users can 
    exist on multiple LDAP servers, you want to be sure that all of your LDAP servers are available so that 
    a user on a temporarily disconnected LDAP server is not marked as ``deleted``.
+   
+The background process examines 50 users at a time, and runs at the interval you configured with ``ldapUserCleanupInterval``. For 
+example, if you have 200 LDAP users and your ``ldapUserCleanupInterval`` is 20 minutes, the process will examine the first 50 
+users, then 20 minutes later the next 50 users, and 20 minutes later the next 50, and so on.
 
 You have two commands to use:
 
@@ -33,9 +35,8 @@ You have two commands to use:
 
 2. ``occ user:delete [user]`` removes the user's data from the ownCloud data directory.
 
-The ``occ`` command is in your ownCloud directory, for example ``/var/www/owncloud/occ``. 
-This example shows what the table of deleted users looks like, and it assumes you have changed 
-to the directory that ``occ`` is in::
+The ``occ`` command is in your ownCloud directory, for example ``/var/www/owncloud/occ``. This example shows what the table of 
+users marked as ``deleted`` looks like, and it assumes you have changed to the directory that ``occ`` is in::
 
  # ./occ ldap:show-remnants
  +-----------------+-----------------+------------------+--------------------------------------+
@@ -58,15 +59,15 @@ Using the occ Command
 ---------------------
 
 ``occ``, the ownCloud console command, can be run in various ways. You need root permissions, or the HTTP user to run ``occ``. If 
-it is marked as executable, then both of these examples work. The first one is run from the ``owncloud`` directory, and the 
-second one uses the full filepath::
+it is marked as executable, then both of these examples work. The first one is run from the ``owncloud`` directory, and the second 
+one uses the full filepath::
  
- ./occ
- /var/www/owncloud/occ
+ # ./occ
+ # /var/www/owncloud/occ
  
 You may also run it this way if the ``occ`` file is not executable::
 
- php occ 
+ # php occ 
 
 Running it with no options displays a help screen. 
 
