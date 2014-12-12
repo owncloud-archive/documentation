@@ -17,7 +17,10 @@ General
 
 Labels
 ------
-We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done. The most important labels and their meaning:
+We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done. Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on. It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to ownCloud.
+
+The most important labels and their meaning:
+
 * #bug - this issue is a bug
 * #enhancement - this issue is a feature request/idea for improvement of ownCloud
 * #design - this needs help from the design team or is a design-related issue/pull request
@@ -32,6 +35,7 @@ We assign labels to issues and pull requests to make it easy to find them and to
  * #4 - Developing - development in progress
  * #5 - To Review - ready for review
  * #6 - Reviewing - review in progress
+ Under discussion!
 * App tags: #app:files #app:user_ldap #app:files_encryption and so on. These tags indicate the app that is impacted by the issue or which the PR is related to
 * settings tags: #settings:personal #settings:apps #settings:admin and so on. These tags indicate the settings area that is impacted by the issue or which the PR is related to
 * db tags: #db:mysql #db:sqlite #db:PostGreSQL and so on. These tags indicate the database that is impacted by the issue or which the PR is related to
@@ -39,33 +43,33 @@ We assign labels to issues and pull requests to make it easy to find them and to
 * #triage - this issue has to be `triaged <../bugtracker/triaging.html>`_
 * #needsinfo - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_ old tag is #clarification request, please don't use that one anymore.
 * #discussion - this issue needs to be discussed
-* #EE - ?
-* #QA -
-* #Update - ?
 * #Security - this is a security related issue
 * #Windows server - this is related to windows server
 * #research - this item requires some research before it can continue
 * #packaging - this is related to packaging
-* #theming - this is related to theming
-* #quota ?
-* #L10n - ?
-* #Avatars ?
-* #Engineering ?
-* #release note - ?
-* #privacy - ?
+* #theming - refers to theming issues or improvements
+* #L10n - refers to translation issues or improvements
+* #release note - relevant for the release notes
+* #privacy - refers to issues that might lead to privacy concerns
+* #won't fix - This problem won't be fixed (can be for a wide variety of reasons...)
+* #QA -
+* #Update - ?
 * #documentation - ?
 * #Planned feature - ?
-* #Bug - no plans to fix - ?
 * #attention - ?
-* #showstopper - ?
-* #won't fix - ?
-* #Duplicate - ?
+* #showstopper - showstoppers for the next release - to be assigned by project lead
 * #sqlite-to-mysql-migration - ?
 * #approved by qa - ?
 * #blue ticket - ?
 * #green ticket - ?
 * #purple ticket - ?
-* #Gold ticket - ?
+* #Gold ticket - replace with #showstopper
+* #Bug - no plans to fix - replace with #won't fix
+* #Duplicate - TO BE REMOVED
+* #EE - TO BE REMOVED
+* #quota - TO BE REMOVED
+* #Avatars - TO BE REMOVED
+* #Engineering - TO BE REMOVED
 
 Coding
 ------
