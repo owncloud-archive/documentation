@@ -17,18 +17,11 @@ obeys certain principles
 Getting Started with the Documentation Repository
 -------------------------------------------------
 
-You have two basic choices, editing the manual `directly
-on GitHub`_, or checking out the sources. If you want to
-use direct editing, please make sure to pick "stable45" (or
-whatever the latest stable branch is) from the branch selector
-before proceeding. If you want to check out the documentation
-locally, follow these steps:
+Check out the sources and create your own local mirror of the repository
+by following these steps:
 
 1. Check out ``git://github.com/owncloud/documentation``
-2. Select the branch that you want to edit. Check out the
-   ``Policy`` section to know which branch is right for you.
-   Usually, it's the latest stable branch, i.e. ``git checkout stable45``
-   if the latest stable ownCloud version is 4.5.
+2. Select the branch that you want to edit. The current stable branch is stable7.
 3. Find the manual you want to edit, pick the correct .rst file and
    start working. Check the next section about target audiences!
 4. Run "make html" and "make latexpdf" (requires a full LaTeX installation!)
