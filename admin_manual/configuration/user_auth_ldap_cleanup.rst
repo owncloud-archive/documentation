@@ -77,7 +77,7 @@ These examples show how to run it as the HTTP user. On Debian and Ubuntu this is
   
 Running it with no options displays a help screen. 
 
-The ``occ`` command should be owned by root and the HTTP group, set to read-write-execute for root, and read-execute for the HTTP group:
+The ``occ`` command should be owned by root and the HTTP group, set to read-write-execute for root, and read-execute for the HTTP group::
 
  # chown root:www-data occ
  # chmod 0750 occ
