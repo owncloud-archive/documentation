@@ -14,8 +14,8 @@ Create a plain-text file containing these lines::
 
  \OC_User::setPassword('admin', 'RecoveredPassword');
  
-If your ownCloud username is not ``admin``, then change ``admin`` to your 
-username. 
+This script works for all users. If your ownCloud username is not ``admin``, 
+then change ``admin`` to your username.
 
 Name the file something like ``reset.php``. Then upload this file to your 
 ownCloud Web server directory (such as ``/var/www/owncloud/reset.php``), and 
