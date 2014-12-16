@@ -2,9 +2,9 @@
 Resetting a Lost Admin Password
 ===============================
 
-If you lose your ownCloud admin password, the easy way to reset it to ask 
-another admin on your ownCloud server to reset it for you. If this is not an 
-option, then follow this method.
+If you lose your ownCloud admin password, the easy way to reset it is to ask 
+another admin on your ownCloud server to reset it for you, or to use the normal
+email reset. If neither of these are an option, then follow this method.
 
 Create a plain-text file containing these lines::
 
