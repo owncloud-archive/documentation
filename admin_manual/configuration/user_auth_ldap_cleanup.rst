@@ -67,9 +67,22 @@ one uses the full filepath::
  
 You may also run it this way if the ``occ`` file is not executable::
 
- # php occ 
-
+ # php occ
+ 
+These examples show how to run it as the HTTP user. On Debian and Ubuntu this is ``www-data``, and on Red Hat and CentOS it is ``apache``::
+  
+  $ sudo -u www-data ./occ
+  $ sudo -u www-data php occ
+  $ sudo -u www-data /var/www/owncloud/occ
+  
 Running it with no options displays a help screen. 
+
+The ``occ`` command should be owned by root and the HTTP group, set to read-write-execute for root, and read-execute for the HTTP group:
+
+ # chown root:www-data occ
+ # chmod 0750 occ
+
+
 
  
 
