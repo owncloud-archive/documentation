@@ -58,7 +58,7 @@ You may also use ``occ user:delete [user]`` to remove a local ownCloud user; thi
 Using the occ Command
 ---------------------
 
-``occ``, the ownCloud console command, is in the ``owncloud`` directory, for example ``/var/www/owncloud/occ``. It is best to run it as the HTTP user. On Debian and Ubuntu this is ``www-data``, and on Red Hat and CentOS it is ``apache``. The command syntax is ``sudo -u [http-user] php [path/to/occ], for example::
+``occ``, the ownCloud console command, is in the ``owncloud`` directory, for example ``/var/www/owncloud/occ``. It is best to run it as the HTTP user. On Debian and Ubuntu this is ``www-data``, and on Red Hat and CentOS it is ``apache``. The command syntax is ``sudo -u [http-user] php [path/to/occ]``, for example::
 
  $ sudo -u www-data /var/www/owncloud/occ
   
