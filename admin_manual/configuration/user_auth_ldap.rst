@@ -286,6 +286,9 @@ User Display Name Field:
 
   *  Example: *displayName*
 
+.. Note:: *displayName* is the default value. If your LDAP configuration does
+   use another attribute, this _must_ be set.
+
 Base User Tree:
   The base DN of LDAP, from where all users can be reached. This must be a 
   complete DN, regardless of what you have entered for your Base DN in the 
