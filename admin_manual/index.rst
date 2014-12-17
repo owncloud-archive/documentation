@@ -72,6 +72,7 @@ This chapter covers ownCloud and web server configuration.
 * :doc:`configuration/configuration_knowledgebase`
 * :doc:`configuration/configuration_logging`
 * :doc:`configuration/configuration_language`
+* :doc:`configuration/recover_admin_password`
 
 Finally, the chapter :doc:`config/index` details on the switches
 in the ``config.php`` file.
