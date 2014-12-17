@@ -26,3 +26,4 @@ Configuration
    custom_mount_config
    custom_user_backend
    xsendfile
+   recover_admin_password
