@@ -53,8 +53,17 @@ Using a higher value requires more time and CPU power to calculate the hashes
 	  ),
 
 Your list of trusted domains that users can log into. Specifying trusted
-domains prevents host header poisoning. Do not remove this, as it performs
-necessary security checks.
+domains prevents host header poisoning. These values will be matched against
+the HTTP host header, i.e. the hostname entered by the user in their browser,
+regardless of IP address or canonical hostname of the server. Do not remove this,
+as it performs necessary security checks.
+
+In the rare case that your server does not have a stable IP address
+or stable hostname, you can use a star as a wildcard. For example, if your
+DHCP server might issue any IP address on the ``192.168.1`` network for your
+server, a value of ``192.168.1.*`` can be used. Note that any use
+of the wildcard will reduce security and should only be made if you are
+certain that no host header poisoning can occur from the matching domains.
 
 ::
 
