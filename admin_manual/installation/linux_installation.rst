@@ -5,12 +5,13 @@ Linux Distributions
 Supported Distribution Packages
 -------------------------------
 
-Ready-to-use packages are available at `openSUSE Build Service`_ for a variety of Linux distributions.
+Ready-to-use packages are available at `openSUSE Build Service`_ for a variety of Linux distributions. You must also install ``php5-libsmbclient`` from the `oBS repository`_.
 
 If your distribution is not listed please follow :doc:`source_installation`.
 
 .. _openSUSE Build Service: http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud
 
+..`oBS repository`_: http://software.opensuse.org/download.html?project=isv%3AownCloud%3Acommunity%3A7.0&package=php5-libsmbclient
 
 Additional Installation Guides and Notes
 ----------------------------------------
