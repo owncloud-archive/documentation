@@ -37,5 +37,4 @@ This documents the *deprecated* ownCloud release.
 ownCloud Desktop Client 1.7
 ---------------------------
 
-* `ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.7/>`_ (`Download PDF 
-<http://doc.owncloud.org/desktop/1.7/ownCloudClientManual.pdf>`_)
+* `ownCloud Desktop Client Manual <http://doc.owncloud.org/desktop/1.7/>`_ (`Download PDF <http://doc.owncloud.org/desktop/1.7/ownCloudClientManual.pdf>`_)
