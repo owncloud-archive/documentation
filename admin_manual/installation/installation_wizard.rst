@@ -3,10 +3,8 @@ Installation Wizard
 
 When ownCloud prerequisites are fulfilled and all ownCloud files are installed
 on the server, the last step to complete the installation is
-running the Installation Wizard.
-
-* Open your web browser
-* Navigate to your ownCloud instance.
+running the Installation Wizard. Open your Web browser to your new ownCloud 
+installation.
 
   * If you are installing ownCloud on the same machine as you are accessing the
     install wizard from, the URL will be ``http://localhost/owncloud``, or ``https://localhost/owncloud`` if you have enabled SSL.
@@ -31,12 +29,12 @@ password that you want.
 Storage & Database
 ~~~~~~~~~~~~~~~~~~
 
-* Click ``Storage & Database`` to see all of your database options, and to optionally change the default data storage directory.
-
-* The database you want to use must already be installed, and you must have a database admin user and password.
-
-* Enter any arbitrary name for the Database name. This must be a database that does not already exist.
-
+* Click ``Storage & Database`` to see all of your database options, and to 
+  optionally change the default data storage directory.
+* The database you want to use must already be installed, and you must have a 
+  database admin user and password.
+* Enter any arbitrary name for the Database name. This must be a database that 
+  does not already exist.
 * If you are not using Apache as the web server, it is highly
   recommended to configure the data directory to a location outside of
   the document root. Otherwise all user data is potentially publicly
@@ -68,9 +66,9 @@ Database Choice
     same username as you specified for the administrative user, plus an
     ``oc_`` prefix) and will use that for all subsequent database access.
 
-  * There are restrictions as to what characters a database name
-      may or may not contain, see the
-      `MySQL Schema Object Names documentation`_ for details);
+  * There are restrictions as to what characters a database name may or may 
+    not contain; see the
+    `MySQL Schema Object Names documentation`_ for details);
 
 Finish Installation
 ~~~~~~~~~~~~~~~~~~~
@@ -83,9 +81,75 @@ Finish Installation
 Setting Strong Directory Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-For improved server security, you should set strong permissions on your 
-ownCloud directories according to the **Setting Strong Directory Permissions** 
-section of :doc:`source_installation`.
+For hardened security we recommend setting the permissions on your ownCloud 
+directory as strictly as possible. This should be done immediately after the 
+initial installation. Your HTTP user must own the ``config/``, ``data/`` and 
+``apps/`` directories in your ownCloud directory so that you can configure 
+ownCloud, create, modify and delete your data files, and install apps via the 
+ownCloud Web interface. 
+
+You can find your HTTP user in your HTTP server configuration files. Or you can 
+create a PHP page to find it for you. To do this, create a plain text file with 
+a single line in it:
+
+      ``<?php echo exec('whoami'); ?>``
+   
+Name it ``whoami.php`` and place it in your ``/var/www/html`` directory, and 
+then open it in a Web browser, for example ``http://localhost/whoami.php``. You 
+should see a single line in your browser page with the HTTP user name.
+
+* The HTTP user and group in Debian/Ubuntu is ``www-data``.
+* The HTTP user and group in Fedora/CentOS is ``apache``.
+* The HTTP user and group in Arch Linux is ``http``.
+* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
+
+.. note:: When using an NFS mount for the data directory, do not change its 
+   ownership from the default. The simple act of mounting the drive will set 
+   proper permissions for ownCloud to write to the directory. Changing 
+   ownership as above could result in some issues if the NFS mount is 
+   lost.
+
+The easy way to set the correct permissions is to copy and run this 
+script. Replace the ``ocpath`` variable with the path to your ownCloud 
+directory, and replace the ``htuser`` variable with your own HTTP user::
+
+ #!/bin/bash
+ ocpath='/var/www/owncloud'
+ htuser='www-data'
+
+ find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
+ find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
+
+ chown -R root:${htuser} ${ocpath}/
+ chown -R ${htuser}:${htuser} ${ocpath}/apps/
+ chown -R ${htuser}:${htuser} ${ocpath}/config/
+ chown -R ${htuser}:${htuser} ${ocpath}/data/
+
+ chown root:${htuser} ${ocpath}/.htaccess
+ chown root:${htuser} ${ocpath}/data/.htaccess
+ 
+ chmod 0644 ${ocpath}/.htaccess
+ chmod 0644 ${ocpath}/data/.htaccess
+ 
+If you have customized your ownCloud installation and your filepaths are 
+different than the standard installation, then modify this script accordingly. 
+
+This lists the recommended modes and ownership for your ownCloud directories 
+and files:
+
+* All files should be read-write for the file owner, read-only for the 
+  group owner, and zero for the world
+* All directories should be executable (because directories always need the 
+  executable bit set), read-write for the directory owner, and read-only for 
+  the group owner
+* The :file:`/` directory should be owned by ``root:[HTTP user]``
+* The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP user]``
+* The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP user]``
+* The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP user]``
+* The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP user]``
+* The :file:`data/.htaccess` file should be owned by ``root:[HTTP user]``
+* Both :file:`.htaccess` files are read-write file owner, read-only group and 
+  world
 
 Trusted Domains
 ~~~~~~~~~~~~~~~
