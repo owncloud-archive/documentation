@@ -20,3 +20,4 @@ ownCloud User Manual
     bookmarks
     userpreferences
     external_storage/google_drive
+    android/android_app
