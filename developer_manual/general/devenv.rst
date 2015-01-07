@@ -16,60 +16,27 @@ First `set up your web server and database <http://doc.owncloud.org/server/7.0/a
 Get the source
 ==============
 
-There are two ways to obtain ownCloud sources: 
+There are two ways to obtain ownCloud sources:
 
 * Using the `stable version <http://doc.owncloud.org/server/7.0/admin_manual/#installation>`_
 * Using the development version from `GitHub`_ which will be explained below.
 
 To check out the source from `GitHub`_ you will need to install git (see `Setting up git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
 
-Gather information about server setup
--------------------------------------
-
-To get started the basic git repositories need to cloned into the web server's directory. Depending on the distribution this will either be
-
-* **/var/www**
-* **/var/www/html** 
-* **/srv/http** 
-
-
-Then identify the user and group the web server is running as and the Apache user and group for the **chown** command will either be
-
-* **http**
-* **www-data** 
-* **apache**
-* **wwwrun**
-
 Check out the code
 ------------------
-
-The following commands are using **/var/www** as the web server's directory and **www-data** as user name and group.
-
 Install the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_
 
-After the development tool installation make the directory writable::
+After the development tool installation run the following command to install ownCloud from git::
 
-  sudo chmod o+rw /var/www
-  
-Then install ownCloud from git::
+  ocdev setup --branch stable8 --dir owncloud base
 
-  ocdev setup base
+Then change into the the **owncloud** directory and run ownCloud using the build in PHP webserver::
 
-Adjust rights::
+  cd owncloud
+  php -S localhost:8080
 
-  sudo chown -R www-data:www-data /var/www/core/data/
-  sudo chmod o-rw /var/www
-
-
-Finally restart the web server (this might vary depending on your distribution)::
-
-  sudo systemctl restart httpd.service
-
-or::
-
-  sudo /etc/init.d/apache2 restart
-
-After the clone Open http://localhost/core (or the corresponding URL) in your web browser to set up your instance.
+Your ownCloud installation can now be accessed under `http://localhost:8080 <http://localhost:8080>`_
 
 Enabling debug mode
 -------------------
