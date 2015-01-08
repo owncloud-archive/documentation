@@ -46,8 +46,10 @@ Or Get The Source Manually
 
 You can also clone the repositories from the command line.  Make sure you're in your webserver's directory, then issue the following commands::
 
-  git clone https://github.com/owncloud/core.git
+  git clone https://github.com/owncloud/core.git owncloud
+  cd owncloud
   git submodule init && git submodule update
+  mkdir data
 
 Set Up Permissions
 ==================
@@ -59,10 +61,14 @@ Identify the user and group the web server is running as and the Apache user and
 * **apache**
 * **wwwrun**
 
-Adjust rights::
+Adjust rights (replacing :code:`<web-server-user>` and :code:`<web-server-group>` with their appropriate values)::
 
-  sudo chown -R www-data:www-data /var/www/core/data/
-  sudo chmod o-rw /var/www
+  sudo chown <web-server-user>:<web-server-group> core/data
+  sudo chown :<web-server-group> config/
+  sudo chmod 775 config/
+  sudo chown :<web-server-group> apps/
+  sudo chmod 775 apps/
+  sudo chmod o-rw </path/to/webserver/dir>
 
 Restart The Server
 ==================
