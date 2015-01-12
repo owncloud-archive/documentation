@@ -18,15 +18,34 @@ unsupported, and you'll likely experience unpredictable results. It is best to
 install all upgrades and updates in order.
 
 .. note:: If you installed ownCloud from
-   `openSUSE Build Service <http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud>`_, or from your Linux distribution repositories using your package manager, then it is best to update/upgrade ownCloud using your package manager rather than using the Updater app or upgrading manually. You should still maintain regular backups (see :doc:`backup`), and make a backup before every update/upgrade.
+   `openSUSE Build Service 
+   <http://software.opensuse.org/download.html?project=isv:ownCloud:community&
+   package=owncloud>`_, or from your Linux distribution repositories using 
+   your package manager, then it is best to update/upgrade ownCloud using your 
+   package manager rather than using the Updater app or upgrading manually. 
+   You should still maintain regular backups (see :doc:`backup`), and make a 
+   backup before every update/upgrade.
 
 Manual Upgrade Procedure
 ------------------------
 
-Start by putting your server in maintenance mode. Do this by entering your 
-``config.php`` file and changing ``'maintenance' => false,`` to ``'maintenance' 
-=> true,``. This prevents new logins, and logged-in users can't make any 
-further requests.
+Start by putting your server in maintenance mode. There are two ways to do this. 
+One by entering your ``config.php`` file and changing ``'maintenance' => 
+false,`` to ``'maintenance' => true,``. This prevents new logins, locks the 
+sessions of logged-in users, and displays a status screen so users know what is 
+happening. When you're finished upgrading, remember to change ``true`` to 
+``false``.
+
+The second way is to use the ``occ`` command. This example is for 
+Ubuntu Linux::
+
+ $ sudo -u www-data php occ maintenance:mode --on
+ 
+When you're finished, take it out of maintenance mode. ::
+  
+ $ sudo -u www-data php occ maintenance:mode --off
+ 
+Please see :doc:`../configuration/occ_command` to learn more about ``occ``. 
 
 1. Ensure that you are running the latest point release of your current major 
    ownCloud version.
@@ -179,10 +198,11 @@ To start the Windows IIS web server, you can use either the user interface
     
     If you are an enterprise customer, or are running a large installation with 
     a lot of files and users, you should launch the update from the command 
-    line. The ``occ`` command is in your ``owncloud/`` directory, so on a 
-    typical Linux installation you could run this command:
+    line using ``occ`` to avoid timeouts, like this example on Ubuntu Linux::
     
-     ``php /var/www/owncloud/occ upgrade``
+     $ sudo -u www-data php occ upgrade
+     
+    Please see :doc:`../configuration/occ_command` to learn more about ``occ``.
     
 13. The upgrade operation takes a few minutes, depending on the size of your 
     installation. When it is finished you will see a success message, or an 
