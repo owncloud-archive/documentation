@@ -5,11 +5,9 @@ Using the occ Command
 ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line 
 interface. You can perform many common server operations with ``occ``::
 
-* Maintenance tasks
 * Manage apps
 * Upgrade the ownCloud database
 * Reset passwords, including administrator passwords
-* List files owned by users
 * Convert the ownCloud database from SQLite to a more performant DB
 * Query and change LDAP settings
 
@@ -21,7 +19,11 @@ all commands and options, like this example on Ubuntu::
  $ sudo -u www-data php occ
 
 This is the same as ``sudo -u www-data php occ list``.
- 
+
+.. note:: See the **Setting Strong Directory Permissions** section of 
+   :doc:`../installation/installation_wizard` to learn how to find your HTTP 
+   user
+
 Run it with the ``-h`` option for syntax help::
 
  $ sudo -u www-data php occ -h
@@ -69,8 +71,8 @@ this example for the ``maintenance:mode`` command::
 Maintenance Commands
 --------------------
 
-These three maintenance commands put your ownCloud server into three modes: maintenance, 
-singleuser, and repair.
+These three maintenance commands put your ownCloud server into
+maintenance and single-user mode, and run repair steps during updates.
 
 You must put your ownCloud server into maintenance mode whenever you perform an 
 update or upgrade. This locks the sessions of all logged-in users, including 
@@ -94,7 +96,9 @@ And turn it off when you're finished::
  $ sudo -u www-data php occ maintenance:singleuser --off
    Single user mode disabled
 
-TODO: What does  maintenance:repair do? Needs details::
+The ``maintenance:repair`` command runs automatically during upgrades to clean 
+up the database, so while you can run it manually there usually isn't a need 
+to::
   
   $ sudo -u www-data php occ maintenance:repair
     - Repair mime types  
@@ -117,20 +121,22 @@ You can reset any user's password, including administrators (see
 View a user's most recent login::   
    
  $ sudo -u www-data php occ user:lastseen layla 
-   layla`s last login: 09.01.2015 18:46
+ layla's last login: 09.01.2015 18:46
    
-TODO: does this count LDAP and other external users, or local only?::
+Generate a simple report that counts all users, including users on external user
+authentication servers such as LDAP::
 
  $ sudo -u www-data php occ user:report
-   +------------------+---+
-   | User Report      |   |
-   +------------------+---+
-   | OC_User_Database | 2 |
-   |                  |   |
-   | total users      | 2 |
-   |                  |   |
-   | user directories | 3 |
-   +------------------+---+
+ +------------------+----+
+ | User Report      |    |
+ +------------------+----+
+ | Database         | 12 |
+ | LDAP             | 86 |
+ |                  |    |
+ | total users      | 98 |
+ |                  |    |
+ | user directories | 2  |
+ +------------------+----+
    
 Apps Commands
 -------------
@@ -153,80 +159,84 @@ Disable an app::
 Upgrade Command
 ---------------
 
-When you are performing an update or upgrade on your ownCloud server, it is 
-better to use ``occ`` to perform the database upgrade step, rather than the Web 
-GUI,  in order to avoid timeouts.
-
-TODO: what timeouts? What causes them?
-
-You can perform a dry-run first to see what will happen, without changing 
-anything::
-
- $ sudo -u www-data php occ upgrade --dry-run
-
-When this looks satisfactory, you can go ahead and perform the upgrade::
+When you are performing an update or upgrade on your ownCloud server (see the 
+Maintenance section of this manual), it is better to use ``occ`` to perform the 
+database upgrade step, rather than the Web GUI,  in order to avoid timeouts. PHP 
+scripts invoked from the Web interface are limited to 3600 seconds. In larger 
+environments this may not be enough, leaving the system in an inconsistent 
+state. Use this command to upgrade your databases::
 
  $ sudo -u www-data php occ upgrade
- 
-TODO why would you want to use --skip-migration-test? ::
-  
+
+Before completing the upgrade, ownCloud first runs a simulation by 
+copying all database tables to a temporary directory and then performing the 
+upgrade on them, to ensure that the upgrade will complete correctly. This 
+takes twice as much time, which on large installations can be many hours, so 
+you can omit this step with the ``--skip-migration-test`` option::
+
  $ sudo -u www-data php occ upgrade --skip-migration-test
+
+You can perform this simulation manually with the ``--dry-run`` option::
  
-
-File Scanning
--------------
-
-The ``files:scan`` command lists all files belonging to a specified user, and 
-all files that belong to all users. This lists all files that belong to user 
-layla::
-
- $ sudo -u www-data php occ files:scan layla
+ $ sudo -u www-data php occ upgrade --dry-run
  
-This lists all files owned by all of your ownCloud users::
-
- $ sudo -u www-data php occ files:scan --all
-
-You can store all those filenames in a text file. The file must be created in a 
-directory that you have write permissions to, such as your home directory::
-
-  $ sudo -u www-data php occ files:scan layla --all > /home/user/ocfilelist.txt
-
 Database Conversion
 -------------------
 
 The SQLite database is good for testing, and for ownCloud servers with small 
-workloads, but servers with more than a few users and data files should use 
-MariaDB, MySQL, PostgreSQL, or Oracle. You can use ``occ`` to convert from 
-SQLite to one of these other databases. You need:
+workloads, but production servers with multiple users should use MariaDB, MySQL, 
+or PostgreSQL. You can use ``occ`` to convert from SQLite to one of these other 
+databases. You need:
 
 * Your desired database installed and its PHP connector
 * The login and password of a database admin user
 * The database port number, if it is a non-standard port
 
-This is example converts to MariaDB, and also converts the schema for all 
-installed apps:: 
+This is example converts to MySQL/MariaDB:: 
 
  $ sudo -u www-data php occ db:generate-change-script
- $ sudo -u www-data php occ db:convert-type --all-apps mysql oc_dbuser 127.0.0.1 oc_database
+ $ sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 
+ oc_database
 
 For a more detailed explanation see :doc:`../maintenance/convert_db`   
 
 LDAP Commands
 -------------
 
-TODO: explanation of each LDAP command, and example command output
+You can run the following LDAP commands with ``occ``.
 
-These all do something::
+Search for an LDAP user, using this syntax::
 
- $ sudo -u www-data php occ ldap:search
- $ sudo -u www-data php occ ldap:set-config
+ $ sudo -u www-data php occ ldap:search [--group] [--offset="..."] 
+ [--limit="..."] search
+
+This example searches for usernames that includes "rob"::
+
+ $ sudo -u www-data php occ ldap:search rob
+ 
+You can see your whole LDAP configuration, or the configuration for a single 
+configID::
+
  $ sudo -u www-data php occ ldap:show-config
- $ sudo -u www-data php occ ldap:test-config
-
+ $ sudo -u www-data php occ ldap:show-config s01
  
-
+The ``ldap:set-config`` command is for manipulating configurations, like this 
+example that sets search attributes::
  
+ $ sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch 
+ "cn;givenname;sn;displayname;mail"
+ 
+``ldap:test-config`` tests whether your configuration is correct can bind to 
+the server::
 
+ $ sudo -u www-data php occ ldap:test-config ""
+ The configuration is valid and the connection could be established!
+ 
+File Scanning
+-------------
+
+The ``files:scan`` command scans for new files for the file cache, and isn't 
+intended to be run manually.
 
 
 

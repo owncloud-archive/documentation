@@ -1,3 +1,4 @@
+==============================
 Upgrading Your ownCloud Server
 ==============================
 
@@ -29,15 +30,10 @@ install all upgrades and updates in order.
 Manual Upgrade Procedure
 ------------------------
 
-Start by putting your server in maintenance mode. There are two ways to do this. 
-One by entering your ``config.php`` file and changing ``'maintenance' => 
-false,`` to ``'maintenance' => true,``. This prevents new logins, locks the 
-sessions of logged-in users, and displays a status screen so users know what is 
-happening. When you're finished upgrading, remember to change ``true`` to 
-``false``.
-
-The second way is to use the ``occ`` command. This example is for 
-Ubuntu Linux::
+Start by putting your server in maintenance mode. This prevents new logins, 
+locks the sessions of logged-in users, and displays a status screen so users 
+know what is happening. There are two ways to do this, and the preferred method 
+is to use the ``occ`` command. This example is for Ubuntu Linux::
 
  $ sudo -u www-data php occ maintenance:mode --on
  
@@ -46,6 +42,12 @@ When you're finished, take it out of maintenance mode. ::
  $ sudo -u www-data php occ maintenance:mode --off
  
 Please see :doc:`../configuration/occ_command` to learn more about ``occ``. 
+
+The other way is by entering your ``config.php`` file and changing 
+``'maintenance' => false,`` to ``'maintenance' => true,``.  When you're finished 
+upgrading, remember to change ``true`` to ``false``.
+
+Then:
 
 1. Ensure that you are running the latest point release of your current major 
    ownCloud version.

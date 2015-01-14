@@ -1,49 +1,65 @@
-Converting Database Type
-========================
+=======================================================
+Converting From SQLite to MySQL, MariaDB, or PostgreSQL
+=======================================================
 
-You can convert a sqlite database to a more performing MySQL, MariaDB or PostgreSQL database with the ownCloud command line tool.
-Available since ownCloud version 7.0.0. To convert former ownCloud installations, first update to at least version 7.0.0.
+You can convert a SQLite database to a more performing MySQL, MariaDB or 
+PostgreSQL database with the ownCloud command line tool ``occ``, which first 
+appeared in ownCloud version 7.0.0. You must have ownCloud 7 to perform this 
+conversion. SQLite is sufficient for testing and for very small installations, 
+but for production servers with multiple users it is better to use MySQL, 
+MariaDB or PostgreSQL.
 
+Please see :doc:`../configuration/occ_command` for more information on using 
+the ``occ`` command.
 
-Run the conversion
-------------------
+Running the Conversion
+----------------------
 
-First setup the new database, here called "new_db_name".
-In ownCloud root folder call
+First set up the new database, in these examples called "new_db_name". In your 
+ownCloud root folder call:
 
 .. code-block:: bash
 
   php occ db:convert-type [options] type username hostname database
 
-Available values for the ``type`` parameter are:
+The available values for the ``type`` parameter are:
 
 * mysql (for MySQL or MariaDB)
-* oci (for Oracle)
 * pgsql (for PostgreSQL)
 
-The Options
+Conversion Options
+------------------
 
-* ``--port="3306"``                       the database port (optional)
-* ``--password="mysql_user_password"``    password for the new database. If omitted the tool will ask you (optional)
-* ``--clear-schema``                      clear schema (optional)
-* ``--all-apps``                          by default, tables for enabled apps are converted, use to convert also tables of deactivated apps (optional)
+* ``--port="3306"``  Your database port (optional, specify the port if it is a 
+  non-standard port).
+* ``username``  A database admin user.  
+* ``--password="mysql_user_password"`` The database admin password, if there is 
+  one.
+* ``--clear-schema``  Clear the schema in the new DB (optional).
+* ``--all-apps``  By default, tables for enabled apps are converted. Use this 
+  option to convert tables of deactivated apps.
 
-*Note:* The converter searches for apps in your configured app folders and uses the schema definitions in the apps to create the new table. So tables of removed apps will not be converted even with option ``--all-apps``
+.. note:: The converter searches for apps in your configured app folders and 
+   uses the schema definitions in the apps to create the new table. So 
+   the tables of removed apps will not be converted even with the option 
+   ``--all-apps``
 
-For example
+This example converts the SQLite DB and tables for all installed apps to 
+MySQL/MariaDB:
 
 .. code-block:: bash
 
   php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
 
-To successfully proceed with the conversion, you must type ``yes`` when prompted with the question ``Continue with the conversion?``
-
-On success the converter will automatically configure the new database in your ownCloud config ``config.php``.
+To complete the conversion, type ``yes`` when prompted ``Continue with the 
+conversion?`` On success the converter will automatically configure the new 
+database in your ownCloud configuration in ``config.php``.
 
 Unconvertible Tables
 --------------------
 
-If you updated your ownCloud installation there might exist old tables, which are not used anymore. The converter will tell you
+After conversion some obsolete database tables may be left over. The converter 
+will tell you what these are:
 
 .. code-block:: bash
 
