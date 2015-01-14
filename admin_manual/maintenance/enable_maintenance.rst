@@ -1,21 +1,21 @@
 Maintenance Mode Configuration
 ==============================
 
-If you want to prevent users to login to ownCloud before you start doing
-some maintenance work, you need to set the value of the **maintenance**
-parameter to *true*. Please keep in mind that users who are already logged-in
-are kicked out of ownCloud instantly.
+You must put your ownCloud server into maintenance mode before performing 
+updates or upgrades, and for performing troubleshooting and maintenance. Please 
+see :doc:`../configuration/occ_command` to learn how to put your server into 
+the various maintenance modes (``maintenance:mode, maintenance:singleuser``, 
+and ``maintenance:repair``) with the ``occ`` command.
 
-
-
-
-Parameters
-----------
+``maintenance:mode`` locks the sessions of logged-in users and prevents new 
+logins. This is the mode to use for updates and upgrades. You may also put your 
+server into this mode by editing :file:`config/config.php`. Change 
+``"maintenance" => false`` to ``"maintenance" => true``:
 
 .. code-block:: php
 
-  <?php
+   <?php
 
-    "maintenance" => false,
+    "maintenance" => true,
 
-This parameters can be set in the :file:`config/config.php`
+Then change it back to ``false`` when you are finished.

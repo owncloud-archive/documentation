@@ -1,3 +1,4 @@
+======================================
 Updating ownCloud with the Updater App
 ======================================
 
@@ -56,7 +57,9 @@ steps:
    always have your own current backups (See :doc:`backup` for details.)
    
 3. Verify that the HTTP user on your system can write to your whole ownCloud 
-   directory; see the 
+   directory; see the **Setting Strong Directory Permissions** section of 
+   :doc:`../installation/installation_wizard` to learn about managing directory 
+   permissions for your ownCloud server.
    
 4. Navigate to your 'Admin' page and click the 'Update Center' button under 
    Updater:
@@ -68,9 +71,10 @@ steps:
 .. figure:: ../images/updater-3.png
 
 6. Click Update, and carefully read the messages. If there are any problems it 
-will tell you. The most common issue is directory permissions; see 
-:ref:`setting_strong_permissions`. Otherwise you will see a message about 
-checking your installation, making a backup, and moving files:
+   will tell you. The most common issue is directory permissions; see the 
+   **Setting Strong Directory Permissions** section of 
+   :doc:`../installation/installation_wizard`. Otherwise you will see a message 
+   about checking your installation, making a backup, and moving files:
 
 .. figure:: ../images/updater-4.png
 
@@ -92,9 +96,7 @@ checking your installation, making a backup, and moving files:
 Refresh your Admin page to verify your new version number.
 
 If the Updater app fails, then you must update manually. See :doc:`upgrade` to 
-learn how to upgrade manually. 
-
-.. _setting_strong_permissions:
+learn how to upgrade manually.
 
 Setting Strong Permissions
 --------------------------
