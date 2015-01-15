@@ -1,4 +1,3 @@
-======================================
 Updating ownCloud with the Updater App
 ======================================
 
@@ -23,16 +22,6 @@ to update/upgrade ownCloud using your package manager rather than using the
 Updater app or upgrading manually. You should still maintain regular backups 
 (see :doc:`backup`), and make a backup before every update/upgrade. 
 
-.. note:: If you have a large ownCloud installation you
-   should not use the Updater app, in order to avoid PHP timeouts. The Updater 
-   app is better for smaller installations that have less data and fewer 
-   users, and for admins who do not have shell access, for example on shared 
-   hosting. Larger installations should update ownCloud with their 
-   Linux package managers or manually upgrade, and then complete the update 
-   with the ``occ upgrade`` command, which is in the ``owncloud`` directory. 
-   See :doc:`../configuration/occ_command` to learn more about using the 
-   ``occ`` command. 
-
 The Updater app performs these operations:
 
 * Creates a ``backup`` directory under your ownCloud data directory
@@ -43,6 +32,7 @@ The Updater app performs these operations:
 * Moves all directories except ``data``, ``config`` and ``themes`` from the 
   current instance to ``backup/tmp``
 * Moves all directories from ``backup/packageVersion`` to the current version
+* Updates the ownCloud database
 * Copies your old ``config.php`` to the new ``config/`` directory
 
 Using the Updater app to upgrade your ownCloud installation is just a few 
@@ -57,9 +47,7 @@ steps:
    always have your own current backups (See :doc:`backup` for details.)
    
 3. Verify that the HTTP user on your system can write to your whole ownCloud 
-   directory; see the **Setting Strong Directory Permissions** section of 
-   :doc:`../installation/installation_wizard` to learn about managing directory 
-   permissions for your ownCloud server.
+   directory; see :ref:`setting_strong_permissions`.
    
 4. Navigate to your 'Admin' page and click the 'Update Center' button under 
    Updater:
@@ -71,10 +59,9 @@ steps:
 .. figure:: ../images/updater-3.png
 
 6. Click Update, and carefully read the messages. If there are any problems it 
-   will tell you. The most common issue is directory permissions; see the 
-   **Setting Strong Directory Permissions** section of 
-   :doc:`../installation/installation_wizard`. Otherwise you will see a message 
-   about checking your installation, making a backup, and moving files:
+will tell you. The most common issue is directory permissions; see 
+:ref:`setting_strong_permissions`. Otherwise you will see a message about 
+checking your installation, making a backup, and moving files:
 
 .. figure:: ../images/updater-4.png
 
@@ -88,6 +75,16 @@ steps:
 
 .. figure:: ../images/updater-6.png
 
+.. note:: If you have a large ownCloud installation, at this point you
+   should use the ``occ upgrade`` command, running it as your HTTP user, 
+   instead of clicking Start Update, in order to avoid PHP timeouts. This 
+   example is for Ubuntu Linux:
+
+   $ sudo -u www-data php occ upgrade
+   
+   See :doc:`../configuration/occ_command` to learn more about using the 
+   ``occ`` command. 
+
 8. It works for a few minutes, and when it is finished displays a success 
    message, which disappears after a short time. 
    
@@ -96,7 +93,9 @@ steps:
 Refresh your Admin page to verify your new version number.
 
 If the Updater app fails, then you must update manually. See :doc:`upgrade` to 
-learn how to upgrade manually.
+learn how to upgrade manually. 
+
+.. _setting_strong_permissions:
 
 Setting Strong Permissions
 --------------------------
