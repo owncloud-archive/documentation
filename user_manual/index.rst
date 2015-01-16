@@ -27,12 +27,14 @@ provides the ability to put the right files in the right hands at the right
 time on any device with one simple-to-use, secure, private and controlled
 solution. After all, with ownCloud, it’s Your Cloud, Your Data, Your Way.
 
-Web Interface
-=============
-The following topic contains a general overview how to access ownCloud from a
-web browser like Firefox, Chrome, or Internet Explorer:
+Web Interface and Mobile Apps
+=============================
+How to access ownCloud from a web browser and from the ownCloud Android and iOS 
+apps.
 
 * :doc:`webinterface`
+* :doc:`android/android_app`
+* :doc:`ios/ios_app`
 
 File Access and Management
 ==========================
