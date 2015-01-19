@@ -21,3 +21,4 @@ ownCloud User Manual
     userpreferences
     external_storage/google_drive
     android/android_app
+    ios/ios_app
