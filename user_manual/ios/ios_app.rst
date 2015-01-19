@@ -10,7 +10,7 @@ some advantages over the Web interface:
 * A simplified interface that fits nicely on an iPhone or iPad
 * Automatic synchronization of your files
 * Easily upload files from your device to ownCloud
-* Two-factor authentication
+* Optional PIN for stronger security
 
 Getting the ownCloud Android App
 --------------------------------
