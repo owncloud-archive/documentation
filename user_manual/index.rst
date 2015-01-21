@@ -29,18 +29,9 @@ solution. After all, with ownCloud, it’s Your Cloud, Your Data, Your Way.
 
 Web Interface and Mobile Apps
 =============================
-How to access ownCloud from a web browser and from the ownCloud Android and iOS 
-apps.
+How to access ownCloud from a Web browser.
 
 * :doc:`webinterface`
-* :doc:`android/android_app`
-* :doc:`ios/ios_app`
-
-Mobile Apps
-===========
-How to access ownCloud from a Android device.
-
-* :doc:`android/android_app`
 
 File Access and Management
 ==========================
