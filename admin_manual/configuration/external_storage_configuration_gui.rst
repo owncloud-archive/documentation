@@ -28,6 +28,10 @@ ownCloud admins may mount these external storage services and devices:
 ownCloud users can be given permission to mount any of these, except local 
 storage.
 
+To understand how ownCloud manages passwords for external mounts, and the 
+security implications, see the **External Storage Password Management** section 
+of :doc:`external_storage_configuration`.
+
 Enabling External Storage Support
 ---------------------------------
 
