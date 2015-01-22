@@ -27,11 +27,22 @@ provides the ability to put the right files in the right hands at the right
 time on any device with one simple-to-use, secure, private and controlled
 solution. After all, with ownCloud, it’s Your Cloud, Your Data, Your Way.
 
-Web Interface and Mobile Apps
-=============================
+Web Interface
+=============
 How to access ownCloud from a Web browser.
 
 * :doc:`webinterface`
+
+Desktop Sync Client
+===================
+
+The ownCloud desktop sync client keeps your files synchronized between your PC 
+and your ownCloud server. Download the `desktop sync client for Mac OS X, 
+Linux, and Windows <http://owncloud.org/install/#desktop>`_, and you may 
+wish to refer to the `ownCloud Desktop Client Manual
+<http://doc.owncloud.org/desktop/1.7/index.html>`_ to learn how to set up your 
+account, select which files or folders to synchronize or exclude, limit 
+bandwidth, and how to use other features.
 
 File Access and Management
 ==========================
