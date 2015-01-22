@@ -92,6 +92,7 @@ contains the following topics:
 * :doc:`configuration/thirdparty_php_configuration`
 * :doc:`configuration/user_auth_ftp_smb_imap`
 * :doc:`configuration/user_auth_ldap`
+* :doc:`configuration/user_auth_ldap_cleanup`
 * :doc:`configuration/user_configuration`
 * :doc:`configuration/reset_admin_password`
 

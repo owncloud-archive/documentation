@@ -32,5 +32,6 @@ Configuration
    thirdparty_php_configuration
    user_auth_ftp_smb_imap
    user_auth_ldap
+   user_auth_ldap_cleanup
    user_configuration
    reset_admin_password
