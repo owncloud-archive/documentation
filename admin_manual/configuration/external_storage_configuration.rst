@@ -434,8 +434,8 @@ user is not logged-in to have sharing and other key features properly working.
 To sum up:
 
 The "login with ownCloud credentials" SMB function in the community edition 
-exposes the password in the system's process list. If you want to get around 
-this limitation without waiting for it to be addressed in CE you can get 
+exposes the password in the server system's process list. If you want to get 
+around this limitation without waiting for it to be addressed in CE you can get 
 the Enterprise Edition. However, even then the password is stored in the PHP 
 session and a malicious admin could access it. You can protect your PHP session 
 files using protections available in your filesystem. Stored credentials are 
