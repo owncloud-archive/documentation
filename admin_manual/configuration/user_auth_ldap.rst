@@ -7,7 +7,7 @@ accounts.
 
 .. Note:: For performance reasons, we recommend using PHP 5.4 or greater to use 
    the LDAP application with more than 500 users. The PHP LDAP module is 
-   required; this is supplied by ``php-ldap`` on Debian/Ubuntu, and 
+   required; this is supplied by ``php5-ldap`` on Debian/Ubuntu, and 
    ``php-ldap`` on CentOS/Red Hat/Fedora.
 
 The LDAP application supports:
