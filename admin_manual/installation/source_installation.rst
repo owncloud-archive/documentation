@@ -219,7 +219,7 @@ Example config for Apache 2.2:
 .. code-block:: xml
 
     <Directory /path/to/owncloud>
-        Options Indexes FollowSymLinks MultiViews
+        Options Indexes FollowSymLinks
         AllowOverride All
         Order allow,deny
         allow from all
@@ -231,7 +231,7 @@ Example config for Apache 2.4:
 .. code-block:: xml
 
     <Directory /path/to/owncloud>
-        Options Indexes FollowSymLinks MultiViews
+        Options Indexes FollowSymLinks
         AllowOverride All
         Require all granted
     </Directory>
@@ -260,7 +260,7 @@ Example config for Apache 2.4:
 			AllowOverride None
 		</Directory>
 		<Directory /var/www/>
-			Options Indexes FollowSymLinks MultiViews
+			Options Indexes FollowSymLinks
 			AllowOverride None
 			Order allow,deny
 			allow from all
@@ -282,7 +282,7 @@ Example config for Apache 2.4:
 			downgrade-1.0 force-response-1.0
 		BrowserMatch "MSIE [17-9]" ssl-unclean-shutdown
 		<Directory /var/www/owncloud>
-			Options Indexes FollowSymLinks MultiViews
+			Options Indexes FollowSymLinks
 			AllowOverride All
 			Allow from all
 			Require all granted
