@@ -337,11 +337,16 @@ Known Problems
 **Problem**
   Windows does not connect using HTTPS.
 
-**Solution**
+**Solution 1**
   The Windows WebDAV Client might not support Server Name Indication (SNI) on
   encrypted connections. If you encounter an error mounting an SSL-encrypted
   ownCloud instance, contact your provider about assigning a dedicated IP 
   address for your SSL-based server.
+
+**Solution 2**
+  The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2 connections.
+  If you have restricted your server config to only provide TLSv1.1 and above
+  the connection to your server might fail.
 
 **Problem**
   You receive the following error message:
