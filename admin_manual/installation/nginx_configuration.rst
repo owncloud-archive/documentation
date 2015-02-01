@@ -24,7 +24,7 @@ Nginx Configuration
     }
 
   server {
-    listen 443 ssl;
+    listen 443 ssl spdy;
     server_name cloud.example.com;
 
     ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
@@ -90,7 +90,7 @@ Nginx Configuration
           user's logins and data in transit.
 
 -  Remove the server block containing the redirect
--  Change **listen 443 ssl** to **listen 80;**
+-  Change **listen 443 ssl spdy** to **listen 80;**
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
 -  Remove **fastcgi_params HTTPS on;**
 
