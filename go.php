@@ -10,6 +10,7 @@ $mapping = array(
     'admin-install'           => '/admin_manual/installation/index.html',
     'admin-encryption'        => '/admin_manual/configuration/encryption_configuration.html',
     'admin-external-storage'  => '/admin_manual/configuration/external_storage_configuration_gui.html',
+    'admin-provisioning-api'  => '/admin_manual/configuration/user_provisioning_api.html',
 
     'user-manual'             => '/user_manual',
     'user-webdav'             => '/user_manual/files/files.html',
