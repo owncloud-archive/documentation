@@ -278,9 +278,9 @@ skeleton files.
 		)
 	),
 
-The ``user_backends`` app allows you to configure alternate authentication
-backends. Supported backends are IMAP (OC_User_IMAP), SMB (OC_User_SMB), and
-FTP (OC_User_FTP).
+The ``user_backends`` app (which needs to be enabled first) allows you to
+configure alternate authentication backends. Supported backends are:
+IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
 
 Mail Parameters
 ---------------
@@ -757,31 +757,31 @@ Only register providers that have been explicitly enabled
 
 The following providers are enabled by default:
 
- - OC\Preview\Image
- - OC\Preview\MarkDown
- - OC\Preview\MP3
- - OC\Preview\TXT
+ - OC\\Preview\\Image
+ - OC\\Preview\\MarkDown
+ - OC\\Preview\\MP3
+ - OC\\Preview\\TXT
 
 The following providers are disabled by default due to performance or privacy
 concerns:
 
- - OC\Preview\Movies
- - OC\Preview\MSOffice2003
- - OC\Preview\MSOffice2007
- - OC\Preview\MSOfficeDoc
- - OC\Preview\OpenDocument
- - OC\Preview\PDF
- - OC\Preview\StarOffice
- - OC\Preview\SVG
+ - OC\\Preview\\Movies
+ - OC\\Preview\\MSOffice2003
+ - OC\\Preview\\MSOffice2007
+ - OC\\Preview\\MSOfficeDoc
+ - OC\\Preview\\OpenDocument
+ - OC\\Preview\\PDF
+ - OC\\Preview\\StarOffice
+ - OC\\Preview\\SVG
 
 The following providers are not available in Microsoft Windows:
 
- - OC\Preview\Movie
- - OC\Preview\MSOfficeDoc
- - OC\Preview\MSOffice2003
- - OC\Preview\MSOffice2007
- - OC\Preview\OpenDocument
- - OC\Preview\StarOffice
+ - OC\\Preview\\Movie
+ - OC\\Preview\\MSOfficeDoc
+ - OC\\Preview\\MSOffice2003
+ - OC\\Preview\\MSOffice2007
+ - OC\\Preview\\OpenDocument
+ - OC\\Preview\\StarOffice
 
 LDAP
 ----
