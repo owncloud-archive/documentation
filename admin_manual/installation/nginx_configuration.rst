@@ -19,6 +19,7 @@ Nginx Configuration
   server {
     listen 80;
     server_name cloud.example.com;
+    server_tokens off;
     # enforce https
     return 301 https://$server_name$request_uri;  
     }
@@ -26,6 +27,7 @@ Nginx Configuration
   server {
     listen 443 ssl;
     server_name cloud.example.com;
+    server_tokens off;
 
     ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
     ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
