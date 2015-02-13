@@ -322,6 +322,15 @@ ownCloud provides the following alternative synchronization options:
 - For iOS (iPhone and iPad) devices, you can use their official app.  You can
   find this app `here <https://owncloud.org/install/>`_.
 
+Special CardDAV URLs
+-------------------
+
+Additionally, the Contacts app is providing an URL for special functions:
+
+**Export an address book as a vCard file**
+
+  https://ADDRESS/remote.php/caldav/addressbooks/USERNAME/ADDRESSBOOK?export
+
 Troubleshooting
 ---------------
 
