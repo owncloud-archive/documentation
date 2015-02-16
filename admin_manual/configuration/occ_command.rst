@@ -11,6 +11,12 @@ interface. You can perform many common server operations with ``occ``::
 * Convert the ownCloud database from SQLite to a more performant DB
 * Query and change LDAP settings
 
+.. warning:: Always run the ``occ`` command as the HTTP user, because this
+   command could write to the :file:`config/` and :file:`data/` directory and
+   these are just readable and writable by the HTTP user. Running this script
+   as root can set wrong ownership of files in those two folders and cause
+   problem in situation where the webserver can't read or write those files.
+
 ``occ`` is in the :file:`owncloud/` directory; for example 
 :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. You must run 
 it as your HTTP user to ensure that the correct permissions are maintained on 
