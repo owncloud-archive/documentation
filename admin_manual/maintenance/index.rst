@@ -5,11 +5,11 @@ Maintenance
 .. toctree::
    :maxdepth: 2
 
-   enable_maintenance
    backup
+   convert_db
+   enable_maintenance
+   migrating
+   restore
    update
    upgrade
-   restore
-   migrating
-   convert_db
 
