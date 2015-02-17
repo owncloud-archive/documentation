@@ -93,7 +93,13 @@ On large instances you could consider `running MySQLTuner <https://github.com/ma
 
 See the section :doc:`configuration_database` how to configure ownCloud for MySQL or MariaDB.
 
------------------------------------
+Improve slow performance with MySQL on Windows
+----------------------------------------------
+
+On Windows hosts running MySQL on the same system changing the parameter ``dbhost`` in your ``config/config.php``
+from ``localhost`` to ``127.0.0.1`` could improve the page loading time.
+
+See also `this forum thread <http://forum.owncloud.org/viewtopic.php?f=17&t=7559>`_.
 
 Nginx: caching ownCloud gallery thumbnails with fastcgi_cache_purge
 -------------------------------------------------------------------
