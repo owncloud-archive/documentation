@@ -56,3 +56,24 @@ Set the following two parameters inside the php.ini to the same value as chosen 
 You will need a minimum of 16GB (e.g, to stay consistent with the example value above), in your upload_tmp_dir. 
 Normally this points to /tmp. If your /tmp has not enough space, 
 you can change the value of upload_tmp_dir in your php.ini
+
+There are also several other configuration option in your webserver config which
+could prevent the upload of larger files. Please see the manual of your webserver
+how to configure those values correctly:
+
+Apache
+~~~~~~
+`LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_
+`SSLRenegBufferSize <https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize>`_
+
+Apache with mod_fcgid
+~~~~~~~~~~~~~~~~~~~~~
+`FcgidMaxRequestLen <https://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html#fcgidmaxrequestlen>`_
+
+NginX
+~~~~~
+`client_max_body_size <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
+
+IIS
+~~~
+`maxAllowedContentLength <http://www.iis.net/configreference/system.webserver/security/requestfiltering/requestlimits#005>`_
