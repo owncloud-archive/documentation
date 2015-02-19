@@ -213,6 +213,12 @@ Solution
   value of 4GB, pick **Decimal** and enter **4294967295** as value. Afterwards,
   reboot Windows or restart the **WebClient** service.
 
+**Problem**
+  Accessing your files from Microsoft Office via WebDAV fails.
+
+**Solution**
+  Known problems and their solutions are documented in the KB2123563_ article.
+
 .. todo::
 
    document registry keys on file size limit and not complaining in no network cases
@@ -240,6 +246,7 @@ The URL for these is::
 
     example.org/owncloud/remote.php/webdav
 
+.. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _ownCloud sync clients: http://owncloud.org/documentation/sync-clients/
 .. _Mount ownCloud to a local folder without sync: http://owncloud.org/use/webdav/
