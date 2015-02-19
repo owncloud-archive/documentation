@@ -196,11 +196,19 @@ Known Problems
 Problem
   Windows refuses to connect via HTTPS
 
-Solution
+Solution 1
   The Windows WebDAV Client does not support Server Name Indication (SNI) on
   encrypted connections. If you encounter an error mounting an SSL-encrypted
   ownCloud instance, please contact your provider about assigning a dedicated
   IP address for your SSL-based server.
+
+Solution 2
+  The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2 connections.
+  If you have restricted your server config to only provide TLSv1.1 and above
+  the connection to your server might fail. Please refer to the WinHTTP_
+  documentation for further information.
+
+.. _WinHTTP: https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features
 
 Problem
   I receive the error **Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.**
