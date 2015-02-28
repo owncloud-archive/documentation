@@ -191,4 +191,8 @@ verify the version number. Check your other settings to make sure they're
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled.
 
+.. note:: occasionally, files do not show up after a upgrade. A rescan of the files can help:
+
+    $ sudo -u www-data php console.php files:scan --all
+
 Now you can review your third-party apps, and upgrade and enable them.
