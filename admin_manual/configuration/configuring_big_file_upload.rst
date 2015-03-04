@@ -57,6 +57,11 @@ You will need a minimum of 16GB (e.g, to stay consistent with the example value 
 Normally this points to /tmp. If your /tmp has not enough space, 
 you can change the value of upload_tmp_dir in your php.ini
 
+The `mod_reqtimeout <https://httpd.apache.org/docs/current/mod/mod_reqtimeout.html>`_
+Apache module could also stop large uploads from completing. If you're using this
+module and getting failed uploads of large files either disable it in your Apache
+config or raise the configured ``RequestReadTimeout`` timeouts.
+
 There are also several other configuration option in your webserver config which
 could prevent the upload of larger files. Please see the manual of your webserver
 how to configure those values correctly:
