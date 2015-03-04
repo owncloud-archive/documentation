@@ -44,10 +44,11 @@ Notes
 
 Your Apache Web server must have ``mod_rewrite`` enabled, and you must have 
 ``trusted_domains`` configured in ``config.php``. Consider also enabling SSL to 
-encrypt all traffic between your servers. (See "Manual Installation" in the 
-Administrators Manual to learn more about mod_rewrite, SSL, and alternative 
-HTTP servers. See "Installation Wizard" in the Administrators Manual to learn 
-more about configuring trusted domains.)
+encrypt all traffic between your servers. (See :doc:`../installation/source_installation` 
+to learn more about mod_rewrite, SSL, and alternative HTTP servers. See
+:doc:`../installation/installation_wizard` to learn more about configuring trusted domains.)
+
+Self-signed certificates for Server-to-Server Sharing are currently not supported.
 
 Your ownCloud server creates the share link from the URL that you used to log 
 into the server, so make sure that you log into your server using a URL that is 
