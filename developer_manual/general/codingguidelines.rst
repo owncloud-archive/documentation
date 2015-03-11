@@ -26,21 +26,20 @@ The most important labels and their meaning:
 * #design - this needs help from the design team or is a design-related issue/pull request
 * #sharing - this issue or PR is related to sharing
 * #technical debt - this issue or PR is about `technical debt <http://en.wikipedia.org/wiki/Technical_debt>`_
-* #sev1-critical #sev2-high #sev3-medium #sev4-low signify how important the bug is. Data loss gets sev1, XXXX
+* #sev1-critical #sev2-high #sev3-medium #sev4-low signify how important the bug is.
 * #Junior Job - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in ownCloud
 * Tags showing the state of the issue or PR, numbered 1-6:
- * #1 - Backlog - this issue has to be tackled but isn't planned in yet
+ * #1 - Backlog - this issue has to be tackled but isn't planned in yet (please don't use, we prefer using a backlog milestone)
  * #2 - Triaging - this issue has to be `triaged <../bugtracker/triaging.html>`_
  * #3 - To develop - ready to start development on this
  * #4 - Developing - development in progress
  * #5 - To Review - ready for review
  * #6 - Reviewing - review in progress
- Under discussion!
 * App tags: #app:files #app:user_ldap #app:files_encryption and so on. These tags indicate the app that is impacted by the issue or which the PR is related to
 * settings tags: #settings:personal #settings:apps #settings:admin and so on. These tags indicate the settings area that is impacted by the issue or which the PR is related to
 * db tags: #db:mysql #db:sqlite #db:PostGreSQL and so on. These tags indicate the database that is impacted by the issue or which the PR is related to
 * browser tags: #browser:ie #browser:safari ands o on. These tags indicate the browser that is impacted by the issue or which the PR is related to
-* #triage - this issue has to be `triaged <../bugtracker/triaging.html>`_
+* #triage - this issue *has to be* `triaged <../bugtracker/triaging.html>`_
 * #needsinfo - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_ old tag is #clarification request, please don't use that one anymore.
 * #discussion - this issue needs to be discussed
 * #Security - this is a security related issue
@@ -52,24 +51,8 @@ The most important labels and their meaning:
 * #release note - relevant for the release notes
 * #privacy - refers to issues that might lead to privacy concerns
 * #won't fix - This problem won't be fixed (can be for a wide variety of reasons...)
-* #QA -
-* #Update - ?
-* #documentation - ?
-* #Planned feature - ?
-* #attention - ?
-* #showstopper - showstoppers for the next release - to be assigned by project lead
-* #sqlite-to-mysql-migration - ?
-* #approved by qa - ?
-* #blue ticket - ?
-* #green ticket - ?
-* #purple ticket - ?
-* #Gold ticket - replace with #showstopper
-* #Bug - no plans to fix - replace with #won't fix
-* #Duplicate - TO BE REMOVED
-* #EE - TO BE REMOVED
-* #quota - TO BE REMOVED
-* #Avatars - TO BE REMOVED
-* #Engineering - TO BE REMOVED
+
+If you want a label not in the list above, please first discuss on the mailing list.
 
 Coding
 ------
