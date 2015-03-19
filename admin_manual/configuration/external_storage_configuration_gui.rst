@@ -1,3 +1,4 @@
+==================================
 Configuring External Storage (GUI)
 ==================================
 
@@ -170,7 +171,7 @@ FTP/FTPS/SFTP
 Connecting to an FTP server requires:
 
 * Whatever name you want for your local mountpoint.
-* The URL of your FTP server.
+* The URL of your FTP server, and optionally the port number.
 * FTP server username and password.
 * The FTP directory to mount in ownCloud. ownCloud defaults to the root 
   directory. When you specify a different directory you must leave off the 
@@ -349,4 +350,3 @@ Although configuration may be done by making modifications to the
 panel (as described in the above section) to add, remove, or modify mount 
 options to prevent any problems. See :doc:`external_storage_configuration` for 
 configuration examples.
-
