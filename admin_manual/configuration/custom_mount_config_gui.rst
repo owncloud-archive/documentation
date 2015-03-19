@@ -40,6 +40,7 @@ For example, the FTP storage backend needs the following configuration details
 to be entered:
 
 -  **host**: the hostname of the ftp server
+-  **URL**  the URL to the ftp server, and optionally the port number, e.g. ftp.example.com:21
 -  **user**: the username used to login to the ftp server
 -  **password**: the password to login to the ftp server
 -  **secure**: whether to use ftps:// (FTP over TLS) to connect to the ftp
