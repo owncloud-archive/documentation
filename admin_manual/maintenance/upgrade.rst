@@ -2,30 +2,112 @@
 Upgrading Your ownCloud Server
 ==============================
 
-Updating and upgrading your ownCloud installation are two different tasks. 
-Updating means updating to the next point release, which is indicated 
-by the third digit of the version number. For example, 4.5.1, 5.0.17, 6.0.4 and 
-7.0.1 are point releases. (Look at the bottom of your Admin page to see your 
-version number.)
+It is best to keep your ownCloud server upgraded regularly, and to install all 
+point releases and major releases without skipping any of them. Major releases 
+are 6.0 and 7.0, and point releases are intermediate releases for each 
+major release. For example, 7.0.1 and 7.0.2 are point releases.
 
-Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0, 
-6.0.0, and 7.0.0 are major releases. You may use the Updater app for staying 
-current with new point releases (Community Edition only), but not for upgrading 
-to a major release. Please see :doc:`update` for instructions on using the 
-Updater app.
+There are multiple ways to keep your ownCloud server upgraded: with the Updater 
+App, with your Linux package manager, and by manually upgrading. In this chapter 
+you will learn how to keep your ownCloud installation current with your Linux 
+package manager, and by manually upgrading.
 
-You cannot skip major releases; for example, upgrading from 5.0 to 7.0. This is 
-unsupported, and you'll likely experience unpredictable results. It is best to 
-install all upgrades and updates in order.
+(See :doc:`update` to learn about the Updater App.)
 
-.. note:: If you installed ownCloud from
-   `openSUSE Build Service 
-   <http://software.opensuse.org/download.html?project=isv:ownCloud:community&
-   package=owncloud>`_, or from your Linux distribution repositories using 
-   your package manager, then it is best to update/upgrade ownCloud using your 
-   package manager rather than using the Updater app or upgrading manually. 
-   You should still maintain regular backups (see :doc:`backup`), and make a 
-   backup before every update/upgrade.
+.. note:: Before upgrading to a new major release, always first review any 
+   third-party apps you have installed for compatibility with  
+   the new ownCloud release. Any apps that are not developed by ownCloud show a 
+   3rd party designation. Install unsupported apps at your own risk. Then, 
+   before the upgrade, they must all be disabled. After the upgrade is 
+   complete and you are sure they are compatible with the new ownCloud 
+   release you may re-enable them.
+
+Preferred Upgrade Method
+------------------------
+
+The best method for keeping ownCloud on Linux servers current is by 
+configuring your system to use the `openSUSE Build Service 
+<http://software.opensuse.org/download.html?project=isv:ownCloud:community& 
+package=owncloud>`_ (see :doc:`../installation/linux_installation`); just 
+follow the instructions on oBS for setting up your package manager. Then 
+stay current by using your Linux package manager to upgrade.
+
+You should always maintain regular backups (see :doc:`../maintenance/backup`), 
+and make a backup before every upgrade.
+
+When a new ownCloud release is available you will see a yellow banner in your 
+ownCloud Web interface.
+
+.. figure:: ../images/updater-1.png
+
+**Upgrading is disruptive**. When you upgrade ownCloud with your Linux package 
+manager, that is just the first step to applying the upgrade. After 
+downloading the new ownCloud packages your session will be interrupted, and you 
+must run the upgrade wizard to complete the upgrade, which is discussed in the 
+next section.
+
+Upgrading With Your Linux Package Manager
+-----------------------------------------
+
+When an ownCloud upgrade is available from the openSUSE Build Service 
+repository, you can apply it just like any normal Linux upgrade. For example, 
+on Debian or Ubuntu Linux this is the standard system upgrade command::
+
+ $ sudo apt-get update && sudo apt-get upgrade
+ 
+Or you can upgrade just ownCloud with this command::
+
+ $ sudo apt-get update && sudo apt-get install owncloud
+ 
+On Fedora, CentOS, and Red Hat Linux use ``yum`` to see all available updates::
+
+ $ yum check-update
+ 
+You can apply all available updates with this command::
+ 
+ $ sudo yum update
+ 
+Or update only ownCloud::
+ 
+ $ sudo yum update owncloud
+ 
+Your Linux package manager only downloads the current ownCloud packages. There 
+is one more step, and that is to run the upgrade wizard to perform the final 
+steps of updating the database and turning off maintenance mode. After using 
+your package manager to install the current ownCloud release, you will see two 
+screens. On the first screen, click the Start Upgrade button, or optionally run 
+the ``occ upgrade`` command instead of clicking the button. 
+
+.. figure:: ../images/updater-6.png
+
+``occ upgrade`` 
+is more reliable, especially on installations with large datasets and large 
+numbers of users because it avoids the risk of PHP timeouts. The ``occ`` 
+command 
+is in your ``owncloud/`` directory. You must run it as your HTTP user. This 
+example is for Debian/Ubuntu::
+
+ $ sudo -u www-data php occ upgrade
+ 
+This example is for Fedora, CentOS, and Red Hat Linux::
+
+ $ sudo -u apache php occ upgrade 
+
+* The HTTP user and group in Debian/Ubuntu is ``www-data``.
+* The HTTP user and group in Fedora/CentOS/RHEL is ``apache``.
+* The HTTP user and group in Arch Linux is ``http``.
+* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``. 
+
+See :doc:`../configuration/occ_command` to learn more about using the 
+``occ`` command, and see the **Setting Strong Directory Permissions** section 
+of :doc:`../installation/installation_wizard` to learn how to find your 
+HTTP user.
+
+When the upgrade is successful you will see the following screen:
+
+.. figure:: ../images/updater-7.png
+
+If the upgrade fails, then you must try a manual upgrade.
 
 Manual Upgrade Procedure
 ------------------------
@@ -36,11 +118,7 @@ know what is happening. There are two ways to do this, and the preferred method
 is to use the ``occ`` command. This example is for Ubuntu Linux::
 
  $ sudo -u www-data php occ maintenance:mode --on
- 
-When you're finished, take it out of maintenance mode. ::
-  
- $ sudo -u www-data php occ maintenance:mode --off
- 
+
 Please see :doc:`../configuration/occ_command` to learn more about ``occ``. 
 
 The other way is by entering your ``config.php`` file and changing 
@@ -65,7 +143,7 @@ current ownCloud tarball with ``wget``:
 
   ``wget http://download.owncloud.org/community/owncloud-latest.tar.bz2``
 
-For Windows operating systems. see the installation instruction in 
+For Windows operating systems see the installation instruction in 
 :doc:`../installation/windows_installation`.
 
 5. Stop your web server.
@@ -138,9 +216,7 @@ or command line method as follows:
     don't have to do anything with it.
 
 .. note:: We recommend storing your ``data/`` directory in a location other 
-   than your ``owncloud/`` directory. If you have your ``data/`` directory 
-   already stored in another location, you can skip this step. If you want to 
-   do so, now is a good time to change the location of your ``data/`` directory. 
+   than your ``owncloud/`` directory.
 
 11. Restart your web server.
 
@@ -191,13 +267,13 @@ To start the Windows IIS web server, you can use either the user interface
 
 12. Now you should be able to open a web browser to your ownCloud server and 
     log in as usual. You have a couple more steps to go: You should see a 
-    **Start Update** screen. Review the prequisites, and if you have followed 
-    all the steps click the **Start Update** button. 
+    **Start Update** screen, just like in the previous section. Review the 
+    prequisites, and if you have followed all the steps click the **Start 
+    Update** button.    
     
-    
-    If you are an enterprise customer, or are running a large installation with 
-    a lot of files and users, you should launch the update from the command 
-    line using ``occ`` to avoid timeouts, like this example on Ubuntu Linux::
+    If you  are running a large installation with a lot of files and users, you 
+    should launch the update from the command line using ``occ`` to avoid 
+    timeouts, like this example on Ubuntu Linux::
     
      $ sudo -u www-data php occ upgrade
      
@@ -212,4 +288,12 @@ verify the version number. Check your other settings to make sure they're
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled.
 
-Now you can review your third-party apps, and upgrade and enable them.
+Now you can enable your third-party apps.
+
+Setting Strong Permissions
+--------------------------
+
+For hardened security we highly recommend setting the permissions on your 
+ownCloud directory as strictly as possible. After upgrading, verify that your 
+ownCloud directory permissions are set according to the Setting Strong Directory 
+Permissions section of :doc:`../installation/installation_wizard`.

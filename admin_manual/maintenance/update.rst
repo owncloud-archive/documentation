@@ -1,25 +1,25 @@
+======================================
 Updating ownCloud with the Updater App
 ======================================
 
-The Updater app automates many of the steps of updating an ownCloud installation 
-to the next point release. The Updater app should be enabled in your ownCloud 
-instance by default, which you can easily confirm by looking on your Apps page.
+The Updater app automates many of the steps of updating an ownCloud 
+installation. You should keep your ownCloud server updated and not skip any 
+releases. The Updater app is enabled in your ownCloud Server instance by 
+default, which you can confirm by looking on your Apps page.
 
-Updating and upgrading your ownCloud installation are two different tasks. 
-Updating means updating to the next point release, which is indicated 
-by third digit of the version number. For example, 4.5.1, 5.0.17, 6.0.4 and 
-7.0.1 are point releases. (Look at the bottom of your Admin page to see your 
-version number.)
+The Updater App is not required, and it is recommended to use other methods for 
+keeping your ownCloud server up-to-date, if possible. (See :doc:`upgrade`.) The 
+Updater App is useful for installations that do not have root access, such as 
+shared hosting, and for installations with a smaller number of users and data.
 
-Major releases are indicated by the first and second digits. So 4.5.0, 5.0.0, 
-6.0.0, and 7.0.0 are major releases. The Updater app is not for upgrades; 
-please see :doc:`upgrade` for instructions on upgrading to a major release.
-
-If you installed ownCloud from our `openSUSE Build Service repositories 
+If you installed ownCloud from the `openSUSE Build Service repositories 
 <https://software.opensuse.org/download/package?project=isv:ownCloud:community& 
 package=owncloud>`_ or your own Linux distribution repositories, then it is best 
-to update/upgrade ownCloud using your package manager rather than using the 
-Updater app or upgrading manually. You should still maintain regular backups 
+to upgrade ownCloud using your package manager rather than using the 
+Updater app or upgrading manually. See the :doc:`upgrade` for instructions on 
+maintaining your ownCloud server from packages and upgrading manually.
+
+You should always maintain regular backups 
 (see :doc:`backup`), and make a backup before every update/upgrade. 
 
 The Updater app performs these operations:
@@ -78,7 +78,7 @@ checking your installation, making a backup, and moving files:
 .. note:: If you have a large ownCloud installation, at this point you
    should use the ``occ upgrade`` command, running it as your HTTP user, 
    instead of clicking Start Update, in order to avoid PHP timeouts. This 
-   example is for Ubuntu Linux:
+   example is for Ubuntu Linux::
 
    $ sudo -u www-data php occ upgrade
    
