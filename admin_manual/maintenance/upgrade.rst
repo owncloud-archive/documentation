@@ -82,7 +82,12 @@ the ``occ upgrade`` command instead of clicking the button.
 
 ``occ upgrade`` 
 is more reliable, especially on installations with large datasets and large 
-numbers of users because it avoids the risk of PHP timeouts. The ``occ`` 
+numbers of users because it avoids the risk of PHP timeouts. 
+
+.. note:: The ``occ`` command does not download ownCloud updates. You must first 
+   download the updated code, and then ``occ`` performs the final upgrade steps.
+
+The ``occ`` 
 command 
 is in your ``owncloud/`` directory. You must run it as your HTTP user. This 
 example is for Debian/Ubuntu::
@@ -276,6 +281,9 @@ To start the Windows IIS web server, you can use either the user interface
     timeouts, like this example on Ubuntu Linux::
     
      $ sudo -u www-data php occ upgrade
+     
+   .. note:: The ``occ`` command does not download ownCloud updates. You must first 
+      download and install the updated code, and then ``occ`` performs the final upgrade steps.
      
     Please see :doc:`../configuration/occ_command` to learn more about ``occ``.
     
