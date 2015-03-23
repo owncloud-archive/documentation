@@ -184,6 +184,9 @@ Connecting to an FTP server requires:
   
 .. figure:: ../images/external-storage-ftp.png
 
+.. note:: A non-blocking or correctly configured SELinux setup is needed
+   for this backend to work.
+
 SFTP uses SSH rather than SSL, as FTPS does, so your SFTP sessions are always 
 safely tucked inside an SSH tunnel. To connect an SFTP server you need:
 
