@@ -65,3 +65,7 @@ Click the *Grant access* button and you will be redirected to a Dropbox website 
 Google Drive
 ~~~~~~~~~~~~
 For a detailed step-by-step guide read `User Manual <../../user_manual/external_storage/google_drive.html>`_
+
+FTP (or FTPS)
+~~~~~~~~~~~~~
+A non-blocking or correctly configured SELinux setup is needed for this backend to work.
