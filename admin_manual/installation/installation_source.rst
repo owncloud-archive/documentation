@@ -424,6 +424,9 @@ Nginx Configuration
             client_max_body_size 10G; # set max upload size
             fastcgi_buffers 64 4K;
 
+            # Disable gzip to avoid the removal of the ETag header
+            gzip off;
+
             rewrite ^/caldav(.*)$ /remote.php/caldav$1 redirect;
             rewrite ^/carddav(.*)$ /remote.php/carddav$1 redirect;
             rewrite ^/webdav(.*)$ /remote.php/webdav$1 redirect;
