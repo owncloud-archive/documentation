@@ -1,3 +1,4 @@
+======================
 ownCloud Documentation
 ======================
 
@@ -5,6 +6,19 @@ This is the ownCloud documentation. It currently focuses on the server,
 client manuals are in the respective git repositories. Because of the
 complexity of the server and the split into the core and apps modules,
 the manuals are in this separate directory.
+
+Manuals
+-------
+
+At this point, this repository hosts three manuals:
+
+* **Users Manual:** Covers topics from an end user's Point of View
+* **Administrators Manual:** Setup, Deployment, Best Practices, etc.
+* **Developers Manual:** Developing Apps for ownCloud & understanding the
+  core Architecture.
+
+.. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
+   ``config.sample.php`` file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
 
 License
 -------
