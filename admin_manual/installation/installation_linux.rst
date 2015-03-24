@@ -6,6 +6,9 @@ Supported Distribution Packages
 
 Ready-to-use packages are available at `openSUSE Build Service`_ for a variety of Linux distributions.
 
+.. note:: Please don't move the folders provided by this packages after the installation.
+   This will break further updates.
+
 If your distribution is not listed please follow :doc:`installation_source`.
 
 .. _openSUSE Build Service: http://software.opensuse.org/download.html?project=isv:ownCloud:community&package=owncloud
