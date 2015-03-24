@@ -885,7 +885,7 @@ Miscellaneous
 	'blacklisted_files' => array('.htaccess'),
 
 Blacklist a specific file or files and disallow the upload of files
-with this name. ``.htaccess`` is blocked by default.
+with this name. Use only lower case. ``.htaccess`` is blocked by default.
 
 WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
