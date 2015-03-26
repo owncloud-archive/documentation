@@ -1033,3 +1033,6 @@ Custom CSP policy, changing this will overwrite the standard policy
 
 Secret used by ownCloud for various purposes, e.g. to encrypt data. If you
 lose this string there will be data corruption.
+
+.. ALL_OTHER_SECTIONS_END
+.. Generated content above. Don't change this.
