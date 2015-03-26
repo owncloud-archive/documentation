@@ -7,6 +7,9 @@ client manuals are in the respective git repositories. Because of the
 complexity of the server and the split into the core and apps modules,
 the manuals are in this separate directory.
 
+Documentation can be seen on: https://doc.owncloud.org and 
+https://doc.owncloud.org
+
 Manuals
 -------
 
@@ -16,9 +19,13 @@ At this point, this repository hosts three manuals:
 * **Administrators Manual:** Setup, Deployment, Best Practices, etc.
 * **Developers Manual:** Developing Apps for ownCloud & understanding the
   core Architecture.
+  
+Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for 
+ownCloud 7, stable 8 is for ownCloud 8.0, and master is version 8.1.
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
-   ``config.sample.php`` file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
+   config.sample.php file; changes to this file must be made in core 
+   `<https://github.com/owncloud/core/tree/master/config>`_
 
 License
 -------
@@ -40,15 +47,19 @@ For PHP documentation you'll need to get the according language
 domain package. The documenation for PHP source is located at
 http://packages.python.org/sphinxcontrib-phpdomain/reference.html
 
-Manuals
+Editing
 -------
+Contributing to the documentation requires a github account.
 
-At this point, this repository hosts three manuals:
+To edit a document, either do a checkout of the repository and edit the rst
+files from there, or work directly on github. The latter is only really
+suitable for small fixes and improvements because substantial editing efforts
+can better be controlled in an editor.
 
-* **Users Manual:** Covers topics from an end user's Point of View
-* **Administrators Manual:** Setup, Deployment, Best Practices, etc.
-* **Developers Manual:** Developing Apps for ownCloud & understanding the
-  core Architecture.
+To edit on github, fork the repository (see top-right of the screen, under
+your username). You will then be able to make changes easily. Once done, 
+you can create a pull request and get the changes reviewed and back into
+the official repository.
 
 Editing
 -------
@@ -143,7 +154,7 @@ Prerequisites
 ^^^^^^^^^^^^
 
 1. Install Python 2.x
-2. Install odt2shpinx (``easy_install odt2sphinx``)
+2. Install odt2sphinx (``easy_install odt2sphinx``)
 3. Install GCC/clang (`Xcode command line tools`_ required on Mac OS)
 
 Process
@@ -155,4 +166,6 @@ Process
 4. Wrap text lines at 80 chars, apply markup fixes
 
 .. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
-.. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
+.. _`Xcode command line tools`: 
+http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-
+line-tools
