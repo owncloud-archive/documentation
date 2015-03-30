@@ -32,6 +32,10 @@ system nor registration at a third party service.
 The disadvantage of this solution compared to the Webcron service is, that it
 requires regular visits of the page to get triggered.
 
+.. note:: Especially when using the Activity App or external storages, where new
+   files are added, updated or deleted one of the two methods below should be
+   preferred.
+
 Webcron
 ~~~~~~~
 

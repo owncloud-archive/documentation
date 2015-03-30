@@ -3,6 +3,9 @@ Dealing with Big File Uploads
 
 It's useful to know limiting factors, that make it impossible to exceed the values given by the ownCloud-system:
 
+.. note:: The ownCloud sync client is not affected by this described upload limits
+   as it is uploading files in smaller chunks.
+
 Not outnumberable upload limits:
 --------------------------------
 * < 2GB on 32Bit OS-architecture
