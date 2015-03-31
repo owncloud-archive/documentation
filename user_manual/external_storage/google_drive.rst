@@ -9,5 +9,5 @@ configuration howtos and example:
 
 `Configuring External Storage (GUI) 
 <http://doc.owncloud.org/server/7.0/admin_manual/configuration/
-custom_mount_config_gui.html>`_
+external_storage_configuration_gui.html>`_
 
