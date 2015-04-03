@@ -34,6 +34,10 @@ Mozilla Lightning users need to this URL scheme::
 
   https://ADDRESS/remote.php/caldav/calendars/USERNAME/CALENDARNAME
 
+.. Note:: Mozilla Lightning doesn't support using multiple accounts on a single
+   server as a default. You need to set ``calendar.network.multirealm`` to ``true``
+   in the Config Editor of Thunderbird to be able to use multiple accounts.
+
    Example for a simple calendar: The "Default calendar" is referred to as "defaultcalendar", 
    and the users' name here is "test".
    The full URL (which on the picture can't be seen because of the
@@ -41,7 +45,7 @@ Mozilla Lightning users need to this URL scheme::
 
        https://localhost/owncloud/remote.php/caldav/calendars/test/defaultcalendar
 
-.. Note: the calendar names are lowercased and the spaces removed. They are not to be URL-encoded anymore.
+.. Note:: the calendar names are lowercased and the spaces removed. They are not to be URL-encoded anymore.
 
 Creating events
 ---------------
