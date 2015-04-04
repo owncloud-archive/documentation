@@ -30,6 +30,10 @@ Enabling uploading big files
 * Under "File handling" set the Maximum upload size to the desired value (e.g. 16GB)
 * Click the "save"-Button
 
+.. note:: This input box is only shown if your webserver has write access to your
+   ``.htaccess`` file and the ``AllowOverride ALL`` directive is set in your
+   webservers vhost configuration. It is also not shown on non-Apache webservers.
+
 **Configuring your webserver**
 
 ownCloud comes with a .htaccess - file which propagates all config to your webserver. To adapt those settings go to the ownCloud - Folder on your server and set the following two parameters inside the .htaccess file:
