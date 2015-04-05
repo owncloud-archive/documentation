@@ -8,6 +8,7 @@ logging in with LDAP credentials including:
 * File sharing with users and groups
 * Access via WebDAV and of course ownCloud Desktop Client
 * Versioning, external Storages and all other ownCloud goodies
+* Read-only access to your LDAP (no edit or delete of users on your LDAP) 
 
 To connect to an LDAP server the configuration needs to be set up properly.
 Once the LDAP backend is activated (Apps Sidebar→Apps, choose **LDAP user and

@@ -398,6 +398,10 @@ Nginx Configuration
 - Make sure your SSL certificates are readable by the server (see the
    `Nginx HTTP SSL Module documentation`_).
 
+.. note:: The following example assumes that your ownCloud is installed in
+   your webroot. If you're using a subfolder you need to adjust the configuration
+   accordingly.
+
 .. code-block:: python
 
     upstream php-handler {
