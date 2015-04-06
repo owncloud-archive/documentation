@@ -13,6 +13,9 @@ to the one depicted below:
 
    The ownCloud login screen
 
+.. note:: Some apps like ``files_encryption`` are disabling the ``remember``
+   checkbox (shown above) on purpose if they are enabled by your administrator. 
+
 Login with the user name and password with you have received from
 your service provider. If you have set up the server yourself,
 log in with the user name which you have created during the
