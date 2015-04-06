@@ -26,6 +26,9 @@ bar.
 
     **ownCloud login window**
 
+.. note:: Some apps like ``files_encryption`` are disabling the ``remember``
+   checkbox (shown above) on purpose if they are enabled by your administrator. 
+
 2. Enter your valid username and password.
 
    The username and password combination can be those that you set up yourself
