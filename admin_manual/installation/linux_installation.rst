@@ -14,6 +14,9 @@ repository, download and install the repository signing key, and install
 ownCloud. Then run the Installation Wizard to complete your installation. (see 
 :doc:`installation_wizard`).
 
+You can `still get 7.0.5
+<https://software.opensuse.org/download/package?project=isv:ownCloud:community:7.0&package=owncloud>`_, which is the latest 7.0 version. It is recommended to use the latest stable 8.x version, but if you wish to roll back an upgrade to 8.x, or delay upgrading, use this direct link to 7.0.5.
+
 .. note:: Please don't move the folders provided by this packages after the installation.
    This will break further updates.
 
