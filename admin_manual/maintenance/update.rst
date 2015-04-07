@@ -20,7 +20,7 @@ Updater app or upgrading manually. See the :doc:`upgrade` for instructions on
 maintaining your ownCloud server from packages and upgrading manually.
 
 You should always maintain regular backups 
-(see :doc:`backup`), and make a backup before every update/upgrade. 
+(see :doc:`backup`), and make a backup before every update/upgrade. The Updater app does not backup your database or data directory.
 
 The Updater app performs these operations:
 
@@ -32,7 +32,6 @@ The Updater app performs these operations:
 * Moves all directories except ``data``, ``config`` and ``themes`` from the 
   current instance to ``backup/tmp``
 * Moves all directories from ``backup/packageVersion`` to the current version
-* Updates the ownCloud database
 * Copies your old ``config.php`` to the new ``config/`` directory
 
 Using the Updater app to upgrade your ownCloud installation is just a few 
