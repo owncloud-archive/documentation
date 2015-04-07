@@ -41,7 +41,7 @@ An additional setting is needed if your installation is connecting to a remote d
 
  setsebool -P httpd_can_network_connect_db on
  
- Allow access to LDAP server
+Allow access to LDAP server
 ---------------------------
 
 Use this setting to allow LDAP connections::
