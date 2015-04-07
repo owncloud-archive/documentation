@@ -1,10 +1,16 @@
+===================
 Linux Distributions
--------------------
+===================
 
 Supported Distribution Packages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ready-to-use packages are available at `openSUSE Build Service`_ for a variety of Linux distributions.
+Current ready-to-use packages are available at `openSUSE Build Service`_ for a 
+variety of Linux distributions. You can `still get 6.0.7 at 
+<https://software.opensuse.org/download/package?project=isv:ownCloud:community:6
+.0&package=owncloud>`_, which is the latest 6.0 version, though you really 
+shouldn't be running such an old ownCloud version as it reaches end-of-life in 
+June 2015, and newer releases have many improvements and fixes.
 
 .. note:: Please don't move the folders provided by this packages after the installation.
    This will break further updates.
