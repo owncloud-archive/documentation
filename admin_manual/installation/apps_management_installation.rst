@@ -72,7 +72,7 @@ To view or install apps from the ownCloud apps store:
 5. Ensure the permissions and ownership are similar to the other ownCloud apps. 
    Typically, access rights are **rwxr-x---**, or **0750** in octal notation, 
    and the owner and group are your HTTP user. On CentOS this is ``apache``, 
-   Ubuntu is ``www-data``, and on openSUSE is it ``wwwrun:www``.
+   Debian/Ubuntu is ``www-data``, and on openSUSE is it ``wwwrun:www``.
 
 Sometimes the installation of a third-party app fails silently, possibly because 
 ``'appcodechecker' => true,`` is enabled in ``config.php``. When 
