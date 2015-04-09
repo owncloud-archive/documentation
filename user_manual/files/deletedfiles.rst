@@ -39,6 +39,7 @@ When you share files, other users may copy, rename, move, and share them with
 other people, just as they can for any computer files; ownCloud does not have 
 magic powers to prevent this.
 
+
 How the Deleted Files app Manages Storage Space
 -----------------------------------------------
 
