@@ -32,6 +32,9 @@ scenario illustrates:
    User2 (recipient)
 4. But User3 will not have a copy of "sub" in her trash bin
 
+When User1 deletes "sub" then it is moved to User1's trashbin, and it is not 
+deleted from User2 and User3.
+
 When you share files, other users may copy, rename, move, and share them with 
 other people, just as they can for any computer files; ownCloud does not have 
 magic powers to prevent this.
