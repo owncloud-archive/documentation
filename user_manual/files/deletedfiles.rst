@@ -15,15 +15,14 @@ Quotas
 ------
 
 Deleted files are not counted against your storage quota. Only files that 
-originate with users count against their quotas, and not files 
+originate with users count against their quotas, not files 
 shared with them that originate from other users. (See :doc:`quota` to learn 
 more about quotas.)
 
 What Happens When Shared Files Are Deleted
 ------------------------------------------
 
-Deleting files gets a little complicated when they are shared files, and when 
-you delete a shared file it may not delete copies held by other users, as this 
+Deleting files gets a little complicated when they are shared files, as this 
 scenario illustrates:
 
 1. User1 shares a folder "test" with User2 and User3
@@ -32,22 +31,21 @@ scenario illustrates:
    User2 (recipient)
 4. But User3 will not have a copy of "sub" in her trash bin
 
-When User1 deletes "sub" then it is moved to User1's trashbin, and it is not 
-deleted from User2 and User3.
+When User1 deletes "sub" then it is moved to User1's trash bin. It is 
+deleted from User2 and User3, but not placed in their trash bins.
 
 When you share files, other users may copy, rename, move, and share them with 
 other people, just as they can for any computer files; ownCloud does not have 
 magic powers to prevent this.
 
-
 How the Deleted Files app Manages Storage Space
 -----------------------------------------------
 
-To ensure that users doesn't run over their storage quotas, 
-the Deleted Files app allocates a maximum of 50% of their currently 
-available free space to deleted files. If your deleted files exceed this limit, 
-ownCloud deletes the oldest versions until it meets the memory usage limit 
-again.
+To ensure that users doesn't run over their storage quotas, the Deleted Files 
+app allocates a maximum of 50% of their currently available free space to 
+deleted files. If your deleted files exceed this limit, ownCloud deletes the 
+oldest files (files with the oldest timestamps from when they were deleted) 
+until it meets the memory usage limit again.
 
 ownCloud checks the age of deleted files every time new files are added to the 
 deleted files. By default, deleted files stay in the trash bin for 180 days. The 
