@@ -10,10 +10,16 @@ Dropbox and Google Drive) will be encrypted by the ownCloud server, and upon
 retrieval, decrypted before serving them to you and anyone you have shared them 
 with.
 
-.. note:: Encrypting files increases their size by roughly 35%, so you must take 
-   this into account when you are provisioning storage and setting storage 
-   quotas. User's quotas are based on the unencrypted file size, and not the 
-   encrypted file size.
+.. note:: When you upgrade from older versions of ownCloud to ownCloud 8.0, you 
+   must manually migrate your encryption keys with the *occ* command after the 
+   upgrade is complete, like this example for CentOS:
+   *sudo -u apache php occ encryption:migrate-keys*
+   You must run *occ* as your HTTP user. See 
+   :doc:`../configuration_server/occ_command` to learn more about *occ*
+
+Encrypting files increases their size by roughly 35%, so you must take this into 
+account when you are provisioning storage and setting storage quotas. User's 
+quotas are based on the unencrypted file size, and not the encrypted file size.
 
 When files on external storage are encrypted in ownCloud, you cannot share them 
 directly from the external storage services, but only through ownCloud sharing 
@@ -173,23 +179,3 @@ to match on their next ownCloud login. The user will need both their old and new
 to do this. If you have enabled the Recovery Key then you can change a user's password in 
 the ownCloud Users panel to match their back-end password, and then, of course, notify the 
 user and give them their new password.
-
-"Missing requirements" Message on Windows Servers
--------------------------------------------------
-
-If you get a "Missing requirements" error message when you enable encryption on 
-a Windows server, enter the absolute location of your openSSL configuration file in 
-``config.php``::
-
-  'openssl' => array(
-      'config' => 'C:\path\to\openssl.cnf',
-  ),
-  
-For example, in a typical installation on a 64-bit Windows 7 system it looks like this::
-
-  'openssl' => array(
-      'config' => 'C:\OpenSSL-Win64\openssl.cnf',
-  ),
-
-There are many ways to configure OpenSSL, so be sure to verify your correct file
-location.

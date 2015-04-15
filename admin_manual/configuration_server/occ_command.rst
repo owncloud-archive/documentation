@@ -16,13 +16,17 @@ interface. You can perform many common server operations with ``occ``::
 it as your HTTP user to ensure that the correct permissions are maintained on 
 your ownCloud files and directories. 
 
-.. note:: The HTTP user is different on the various Linux distributions. See 
-   the **Setting Strong Directory Permissions** section of 
-   :doc:`../installation/installation_wizard` to learn how to find your HTTP 
-   user
+The HTTP user is different on the various Linux distributions. See the **Setting 
+Strong Directory Permissions** section of 
+:doc:`../installation/installation_wizard` to learn how to find your HTTP user
+
+* The HTTP user and group in Debian/Ubuntu is www-data.
+* The HTTP user and group in Fedora/CentOS is apache.
+* The HTTP user and group in Arch Linux is http.
+* The HTTP user in openSUSE is wwwrun, and the HTTP group is www.   
 
 Running it with no options lists all commands and options, like this example on 
-Ubuntu::
+Ubuntu Linux::
 
  $ sudo -u www-data php occ
 
@@ -167,8 +171,7 @@ Upgrade Command
 
 When you are performing an update or upgrade on your ownCloud server (see the 
 Maintenance section of this manual), it is better to use ``occ`` to perform the 
-database upgrade step, rather than the Web GUI,  in order to avoid timeouts. 
-PHP 
+database upgrade step, rather than the Web GUI,  in order to avoid timeouts. PHP 
 scripts invoked from the Web interface are limited to 3600 seconds. In larger 
 environments this may not be enough, leaving the system in an inconsistent 
 state. Use this command to upgrade your databases::
@@ -186,6 +189,11 @@ you can omit this step with the ``--skip-migration-test`` option::
 You can perform this simulation manually with the ``--dry-run`` option::
  
  $ sudo -u www-data php occ upgrade --dry-run
+ 
+If you are using the Encryption app, you must manually migrate your encryption 
+keys after upgrading to ownCloud 8.0 from older ownCloud versions::
+
+ $  sudo -u www-data php occ encryption:migrate-keys
  
 Database Conversion
 -------------------
