@@ -8,6 +8,14 @@ increases the risk of errors. Major releases are 6.0, 7.0, and 8.0, and point re
 are intermediate releases for each major release. For example, 8.0.1 and 8.0.2 are point 
 releases.
 
+.. note:: If you are using the Encryption app and upgrading from older 
+   versions of ownCloud to ownCloud 8.0, you must manually migrate your 
+   encryption keys with the *occ* command after the upgrade is complete, like 
+   this example for CentOS:
+   *sudo -u apache php occ encryption:migrate-keys*
+   You must run *occ* as your HTTP user. See 
+   :doc:`../configuration_server/occ_command` to learn more about *occ*
+
 There are multiple ways to keep your ownCloud server upgraded: with the Updater 
 App (Server Edition only), with your Linux package manager, and by manually 
 upgrading. In this chapter you will learn how to keep your ownCloud installation 
@@ -90,12 +98,11 @@ the ``occ upgrade`` command instead of clicking the button.
 is more reliable, especially on installations with large datasets and large 
 numbers of users because it avoids the risk of PHP timeouts. 
 
-.. note:: The ``occ`` command does not download ownCloud updates. You must first download
-   the updated code, and then ``occ`` performs the final upgrade steps.
+.. note:: The ``occ`` command does not download ownCloud updates. You must first 
+   download the updated code, and then ``occ`` performs the final upgrade steps.
 
-The ``occ`` command 
-is in your ``owncloud/`` directory. You must run it as your HTTP user. This 
-example is for Debian/Ubuntu::
+The ``occ`` command is in your ``owncloud/`` directory. You must run it as your 
+HTTP user. This example is for Debian/Ubuntu::
 
  $ sudo -u www-data php occ upgrade
  
@@ -117,9 +124,9 @@ When the upgrade is successful you will see the following screen:
 
 .. figure:: ../images/updater-7.png
 
-After upgrading, verify that your ownCloud
-directory permissions are set according to the **Setting Strong Directory Permissions** 
-section of :doc:`../installation/installation_wizard`.
+After upgrading, verify that your ownCloud directory permissions are set 
+according to the **Setting Strong Directory Permissions** section of 
+:doc:`../installation/installation_wizard`.
 
 If the upgrade fails, then you must try a manual upgrade.
 

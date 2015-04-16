@@ -3,7 +3,7 @@ ownCloud |version| Release Notes
 ================================
 
 Recommended Setup for Running ownCloud
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+--------------------------------------
 
 For best performance, stability, support, and full functionality we recommend:
 
@@ -13,7 +13,7 @@ For best performance, stability, support, and full functionality we recommend:
 * Apache 2.4
 
 Supported Platforms
-^^^^^^^^^^^^^^^^^^^
+-------------------
 
 * Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
   Red Hat Enterprise Linux/Centos 6.5 and 7, Ubuntu 12.04 LTS, 14.04 LTS, 
@@ -27,6 +27,15 @@ Supported Platforms
   21, openSUSE 12.3, 13)
 * Mobile apps: iOS 7+, Android 4+
 * Web browser: IE8+, Firefox 14+, Chrome 18+, Safari 5+
+
+Manually Migrate Encryption Keys after Upgrade
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you are using the Encryption app and upgrading from older versions of 
+ownCloud to ownCloud 8.0, you must manually migrate your encryption keys with 
+the *occ* command after the upgrade is complete, like this example for CentOS: 
+*sudo -u apache php occ encryption:migrate-keys* You must run *occ* as your HTTP 
+user. See :doc:`../configuration_server/occ_command` to learn more about *occ*
 
 Windows Server Not Supported
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -97,8 +106,8 @@ on your ownCloud server.
 .. https://github.com/owncloud/core/issues/10657
 
 
-**-- Enterprise 8 Only --**
----------------------------
+Enterprise 8 Only
+-----------------
 
 No Federated Cloud Sharing with Shibboleth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -132,8 +141,8 @@ App Store is Back
 The ownCloud App Store has been re-enabled in oC 8. Note that third-party apps 
 are not supported.
 
-**-- ownCloud 7 Release Notes --**
-----------------------------------
+ownCloud 7 Release Notes
+------------------------
 
 LDAP Search Performance Improved
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -229,8 +238,8 @@ Setting a user's storage quota should be the equivalent of read-only, however,
 users can 
 still create empty files.
 
-**-- Enterprise 7 Only --**
----------------------------
+Enterprise 7 Only
+-----------------
 
 No Federated Cloud Sharing with Shibboleth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

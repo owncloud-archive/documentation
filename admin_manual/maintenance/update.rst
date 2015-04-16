@@ -7,14 +7,22 @@ installation. You should keep your ownCloud server updated and not skip any
 releases. The Updater app is enabled in your ownCloud Server instance by 
 default, which you can confirm by looking on your Apps page.
 
+.. note:: The Updater app is not enabled and not supported in ownCloud 
+   Enterprise Subscription.
+
 The Updater App is not required, and it is recommended to use other methods for 
 keeping your ownCloud server up-to-date, if possible. (See :doc:`upgrade`.) The 
 Updater App is useful for installations that do not have root access, 
 such as shared hosting, and for installations with a smaller number of users 
 and data.
 
-.. note:: The Updater app is not enabled and not supported in ownCloud 
-   Enterprise Subscription.
+.. note:: If you are using the Encryption app and upgrading from older 
+   versions of ownCloud to ownCloud 8.0, you must manually migrate your 
+   encryption keys with the *occ* command after the upgrade is complete, like 
+   this example for CentOS:
+   *sudo -u apache php occ encryption:migrate-keys*
+   You must run *occ* as your HTTP user. See 
+   :doc:`../configuration_server/occ_command` to learn more about *occ*
 
 You should maintain regular backups (see :doc:`backup`), and make a backup 
 before every update. The Updater app does not backup your database or data 
@@ -32,6 +40,8 @@ The Updater app performs these operations:
 * Moves all directories from ``updater_backup/packageVersion`` to the current 
   version
 * Copies your old ``config.php`` to the new ``config/`` directory
+
+**Follow these steps in order**
 
 Using the Updater app to update your ownCloud installation is just a few 
 steps:
@@ -80,9 +90,7 @@ steps:
 ..  note:: If you have a large ownCloud installation, at this point you
     should use the ``occ upgrade`` command, running it as your HTTP user, 
     instead of clicking the Start Update button, in order to avoid PHP 
-    timeouts. The ``occ`` command does not download ownCloud updates. 
-    You must first download and install the updated code, and then ``occ`` 
-    performs the final upgrade steps.  This example is for Ubuntu Linux::
+    timeouts. This example is for Ubuntu Linux::
 
      $ sudo -u www-data php occ upgrade
    
