@@ -340,10 +340,7 @@ Select your group and click **Continue**.
    
 On the confirmation screen click **Assign**, and you'll see the message "You 
 have successfully updated the App Groups associations with your App ID."   
-   
-    * Edit DocumentProvider and add to App Group
-    * "You have successfully updated the App Groups associations with your App 
-      ID"
+
     * Identifiers > App IDs, create new bundleID.DocumentProviderFileProvider. 
     * Add to App Group
 
