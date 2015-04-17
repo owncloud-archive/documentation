@@ -27,4 +27,5 @@ Enterprise Subscription Only
     enterprise_installation/index
     enterprise_clients/index
     enterprise_external_storage/index
+    enterprise_ios_app/index
     enterprise_user_management/index
