@@ -19,6 +19,7 @@ Configuration
    external_storage_configuration
    file_sharing_configuration
    files_locking_enabling
+   harden_server
    js_css_asset_management_configuration
    knowledgebase_configuration
    language_configuration
