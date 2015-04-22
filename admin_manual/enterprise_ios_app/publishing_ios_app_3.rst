@@ -16,7 +16,7 @@ descriptive. The **App ID Prefix** is your Apple Developer Team ID, and is
 automatically entered for you.
 
 .. figure:: ../images/cert-8.png
-   :scale: 50%
+   :scale: 60%
    
    *click to enlarge*
 
@@ -27,7 +27,7 @@ ID
 is reverse-domain, e.g. *com.MyCompany.MyProductName*.
 
 .. figure:: ../images/cert-9.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
    
@@ -37,7 +37,7 @@ finish creating your App ID. Make your selections and then click the
 **Continue** button at the bottom.  
 
 .. figure:: ../images/cert-10.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*   
 
@@ -46,14 +46,14 @@ Now you can confirm all of your information. If everything is correct click
 
 
 .. figure:: ../images/cert-11.png
-   :scale: 50%
+   :scale: 60%
    
    *click to enlarge*
 
 When you are finished you will see a confirmation.
 
 .. figure:: ../images/cert-12.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
 
@@ -65,7 +65,7 @@ The next step is to create an App Group and put your App ID in it. Go to
 
 .. .. figure:: ../images/cert-13.png
 .. figure:: ../images/Selection_015.png
-   :scale: 60%
+   :scale: 70%
    
    *click to enlarge*
    
@@ -73,7 +73,7 @@ Create a description for your app group, and a unique identifier in the format
 *groups.com.MyCompany.MyAppGroup*. Then click **Continue**.    
 
 .. figure:: ../images/cert-14.png
-   :scale: 60%
+   :scale: 70%
    
    *click to enlarge*
 
@@ -81,14 +81,14 @@ Review the confirmation screen, and if everything looks correct click the
 **Register** button.
 
 .. figure:: ../images/cert-15.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
 
 You'll see a final confirmation screen; click **Done**.
 
 .. figure:: ../images/cert-16.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
 
@@ -96,7 +96,7 @@ When you click on **App Groups** you will see your new app group.
 
 .. .. figure:: ../images/cert-17.png
 .. figure:: ../images/Selection_019.png
-   :scale: 60%
+   :scale: 70%
    
    *click to enlarge*
    
@@ -105,14 +105,14 @@ screen that displays all your app information. Click the **Edit** button at the
 bottom. 
 
 .. figure:: ../images/cert-18.png
-   :scale: 60%
+   :scale: 70%
    
    *click to enlarge*
    
 This opens the edit screen; check **App Groups**.
 
 .. figure:: ../images/cert-19.png
-   :scale: 60%
+   :scale: 70%
    
    *click to enlarge*
 
@@ -124,7 +124,7 @@ first time, then you have not yet created provisioning profiles, so click
 **OK**.
 
 .. figure:: ../images/cert-20.png
-   :scale: 60%
+   :scale: 70%
    
    *click to enlarge*
    
@@ -132,7 +132,7 @@ When you click **OK** the popup is dismissed, and you must click the **Edit**
 button.
 
 .. figure:: ../images/cert-21.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
    
@@ -140,14 +140,14 @@ Select your app and click **Continue**
    
 .. ..figure:: ../images/cert-22.png
 .. figure:: ../images/Selection_026.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*   
 
 Review the confirmation screen, and then click **Assign**.
 
 .. figure:: ../images/cert-23.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*   
 
@@ -157,7 +157,7 @@ App IDs** and click on your app, you'll see an additional confirmation that you
 successfully assigned your app to your app group.
 
 .. figure:: ../images/cert-24.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
 
@@ -169,14 +169,14 @@ create a DocumentProvider Bundle ID. Follow the same naming conventions as for
 your App ID.
 
 .. figure:: ../images/cert-25.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
 
 Confirm your new App ID and click **Submit**.
 
 .. figure:: ../images/cert-26.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
  
@@ -187,14 +187,14 @@ DocumentProvider Bundle ID to open its configuration window, and then click the
 
 .. .. figure:: ../images/cert-27.png
 .. figure:: ../images/Selection_035.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
 
 Select **App Groups** and click the **Edit** button.   
 
 .. figure:: ../images/cert-28.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
    
@@ -202,7 +202,7 @@ Select your group and click **Continue**.
 
 .. .. figure:: ../images/cert-29.png
 .. figure:: ../images/Selection_037.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
    
@@ -217,14 +217,14 @@ create a DocumentProviderFileProvider Bundle ID. Follow the same naming
 conventions as for your App ID, then click **Continue**.
 
 .. figure:: ../images/cert-30.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
    
 Confirm your new App ID and click **Submit**.
 
 .. figure:: ../images/cert-31.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
  
@@ -234,23 +234,29 @@ DocumentProviderFileProvider Bundle ID to open its configuration window, and
 then click the **Edit** button. 
 
 .. figure:: ../images/cert-32.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
 
 Select **App Groups** and click the **Edit** button.   
 
 .. figure:: ../images/cert-33.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
    
 Select your group and click **Continue**.
 
 .. figure:: ../images/cert-34.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
    
 On the confirmation screen click **Assign**, and you'll see the message "You 
 have successfully updated the App Groups associations with your App ID." 
+
+Now you should have three new App IDs, and all three of them should belong to 
+your App Group. (You can verify group membership by going to the edit 
+screen for each App ID and looking at the **iOS App ID Settings**.)
+
+.. figure:: ../images/cert-37.png

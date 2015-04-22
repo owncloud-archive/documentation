@@ -6,7 +6,7 @@ Create a `.certSigningRequest` (CSR) file on your Mac, using Keychain Access.
 Open Finder, and then open Keychain Access from the Utilities folder.
     
 .. figure:: ../images/mac-1.png
-   :scale: 50%
+   :scale: 60%
    
    *click to enlarge*
 
@@ -14,7 +14,7 @@ Next, open **Keychain Access > Certificate Assistant > Request a Certificate
 From a Certificate Authority**.
       
 .. figure:: ../images/mac-2.png
-   :scale: 50%
+   :scale: 60%
    
    *click to enlarge*
       
@@ -38,7 +38,7 @@ your certSigningRequest file (CSR) to your hard drive.
 .. figure:: ../images/mac-5.png
 
 In the next screen your certificate creation is verified, and you can click a 
-button to view it.  
+button to view it, or click **Done** to go to the next step.
 
 .. figure:: ../images/mac-6.png      
     
@@ -51,7 +51,7 @@ Now login to the **Member Center** on `<https://developer.apple.com/>`_.
 Click **Certificates, Identifiers, & Profiles**.
 
 .. figure:: ../images/cert-1.png
-   :scale: 50%
+   :scale: 60%
    
    *click to enlarge*
     
@@ -63,9 +63,8 @@ Next, click the add button (the little plus sign) in the top right corner of
 the 
 **iOS Certificate** page.
 
-.. .. figure:: ../images/cert-3.png
-.. figure:: ../images/Selection_005.png
-   :scale: 50%
+.. figure:: ../images/cert-3.png
+   :scale: 60%
    
    *click to enlarge*
 
@@ -73,7 +72,7 @@ Under "What type of certificate do you need?" check **App Store and Ad Hoc**,
 then click the **Continue** button at the bottom of the page.
 
 .. figure:: ../images/cert-4.png
-   :scale: 50%
+   :scale: 60%
    
    *click to enlarge*
 
@@ -83,7 +82,7 @@ go to the next screen. "Add iOS Certificate", to upload the CSR you already
 created, then click the **Generate** button.
 
 .. figure:: ../images/cert-5.png
-   :scale: 50%
+   :scale: 60%
    
    *click to enlarge*
   
@@ -92,7 +91,7 @@ Mac;
 then find it and double-click on it to install it properly in Keychain.
 
 .. figure:: ../images/cert-6.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
   
@@ -100,7 +99,7 @@ After installing it, you should see it stored with its corresponding private
 key in Keychain.
 
 .. figure:: ../images/cert-7.png
-   :scale: 70%
+   :scale: 80%
    
    *click to enlarge*
    
