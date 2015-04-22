@@ -72,7 +72,7 @@ The following commands are using **/var/www** as the web server's directory and 
 
   sudo chmod o+rw /var/www
   cd /var/www
-  git clone https://github.com/owncloud/core.git
+  git clone https://github.com/owncloud/core.git owncloud
   git clone https://github.com/owncloud/apps.git
   cd owncloud/
   git submodule init
@@ -87,7 +87,7 @@ For example for the calendar, contact and notes apps:
 
 .. code-block:: bash
 
-  cd /var/www/core/apps
+  cd /var/www/owncloud/apps
   git clone https://github.com/owncloud/calendar.git
   git clone https://github.com/owncloud/contacts.git
   git clone https://github.com/owncloud/notes.git
@@ -97,7 +97,7 @@ Finalizing the setup
 
 Adjust rights::
 
-  sudo chown -R www-data:www-data /var/www/core/data/
+  sudo chown -R www-data:www-data /var/www/owncloud/data/
   sudo chmod o-rw /var/www
 
 
@@ -109,7 +109,7 @@ or::
 
   sudo /etc/init.d/apache2 restart
 
-After the clone Open http://localhost/core (or the corresponding URL) in your web browser to set up your instance.
+After the clone Open http://localhost/owncloud (or the corresponding URL) in your web browser to set up your instance.
 
 Enabling debug mode
 -------------------
