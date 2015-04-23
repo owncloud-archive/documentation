@@ -13,6 +13,26 @@ deployment.
 
 This chapter gives a few hands-on tips on how to achieve this.
 
+***************************
+PHP Version and Information
+***************************
+
+You will need to know your PHP version and configurations. To do this, create a 
+plain-text file named **phpinfo.php** and place it in your Web root, for 
+example ``/var/www/html/phpinfo.php``. (Your Web root may be in a different 
+location; your Linux distribution documentation will tell you where.) This file 
+contains just this line::
+
+ <?php phpinfo(); ?>
+
+Open this file in a Web browser:
+
+.. figure:: ../images/phpinfo.png
+
+Your PHP version is at the top, and the rest of the page contains abundant 
+essential system information such as active modules, active `.ini` files, and 
+much more.
+
 ********************
 General Linux tuning
 ********************
@@ -34,11 +54,32 @@ performance. To do so, add the following to ``/etc/fstab``::
 
 	none /tmp tmpfs,size=6g defaults
 
-Make sure the APC byte code cache is installed:
+Make sure the APC or Opcache bytecode cache is installed. This example is for 
+CentOS/Red Hat/Fedora running PHP 5.4:
 
 .. code-block:: console
 
-	# yum install php-pecl-apc
+	$ sudo yum install php-pecl-apc
+	
+On Ubuntu systems running PHP 5.4 this command installs APC:
+
+.. code-block:: console
+
+        $ sudo apt-get install php-apc
+             
+PHP 5.5 replaces APC with Opcache. Opcache is bundled with PHP 5.5 so it should 
+not be necessary to install it separately. For reference, this command installs 
+it on CentOS/Red Hat/Fedora running PHP 5.5 and up:       
+
+.. code-block:: console
+
+        $ sudo yum install php-pecl-zendopcache
+        
+For reference, this installs it on Ubuntu:
+
+.. code-block:: console
+
+        $ sudo apt-get install php5-xcache        
 
 Tuning System Parameters
 ========================
@@ -99,7 +140,6 @@ Move PHP Code into RAM Disk:
 
 	# mv /var/www/html /var/www/html_fs
 
-
 Copy ownCloud installation to RAM Disk and symlink storage to ownCloud ``data``
 directory.
 
@@ -116,8 +156,8 @@ Object Caching
 
 ownCloud is written to take advantage of object caching. Object caching can be 
 done locally with the APCu extension, or for distributed PHP environments using 
-Memcached. Memcached servers must be specified in the "memcached_servers" array 
-in ownCloud's config file.
+Memcached. Memcached servers must be specified in the ``memcached_servers`` array 
+in ownCloud's config file ``config.php``. For examples see ``config.sample.php``
 
 Serving static files via web server
 ===================================
@@ -191,7 +231,7 @@ your webservers module for more information:
 
 * `mod-spdy for Apache <https://code.google.com/p/mod-spdy/>`_
 
-* `ngx_http_spdy_module for NginX 
+* `ngx_http_spdy_module for nginx 
   <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
 
 .. note:: If you want to enable SPDY for Apache please note the `Known Issues 
@@ -480,8 +520,8 @@ Compile Nginx with the ``nginx-cache-purge`` module
 Add following lines (in case, replace ``{trusty}`` by your distribution  
 name)::
 
-   deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx``
-   deb -src http://nginx.org/packages/mainline/ubuntu/ trusty nginx``    
+   deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx
+   deb -src http://nginx.org/packages/mainline/ubuntu/ trusty nginx    
 
 Then run ``sudo apt-get update``
 
@@ -498,7 +538,7 @@ Then run ``sudo apt-get update``
 
    cd /opt
    sudo apt-get build-dep nginx
-   sudo apt-get source nginx`  
+   sudo apt-get source nginx
 
 3. **Download module(s) to be compiled in and configure compiler arguments**
     
@@ -524,7 +564,7 @@ If not present, add the following line at the top under::
    #export DH_VERBOSE=1:
    MODULESDIR = $(CURDIR)/debian/modules
    
-And the end of every ``./configure`` command add::
+And the end of every ``configure`` command add::
 
   --add-module=$(MODULESDIR)/ngx_cache_purge
     
@@ -551,19 +591,19 @@ The parameters may now look::
    
 .. code-block:: bash  
 
-   nginx -V 2>&1  grep  ngx_cache_purge -o``
+   nginx -V 2>&1 | grep ngx_cache_purge -o
     
 It should show now: ``ngx_cache_purge``
     
 Show Nginx version including all features compiled and installed::
 
-   nginx -V 2>&1  sed s/" --"/"\n\t--"/g
+   nginx -V 2>&1 | sed s/" --"/"\n\t--"/g
 
 6. **Mark Nginx to be blocked from further updates via apt-get**
 
 .. code-block:: bash
 
-   sudo dpkg --get-selections  grep nginx
+   sudo dpkg --get-selections | grep nginx
     
 For every nginx component listed run ``sudo apt-mark hold <component>``   
 
@@ -588,12 +628,11 @@ Configure Nginx with the ``nginx-cache-purge`` module
 
 .. code-block:: bash
 
-   sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}``
+   sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}
     
 Add at the *beginning*, but *outside* the ``server{}`` block::
 
-   fastcgi_cache_path {path} levels=1:2 keys_zone=OWNCLOUD:100m 
-   inactive=60m;
+   fastcgi_cache_path {path} levels=1:2 keys_zone=OWNCLOUD:100m inactive=60m;
    
 Add *inside* the ``server{}`` block, as an example of a configuration::
    
