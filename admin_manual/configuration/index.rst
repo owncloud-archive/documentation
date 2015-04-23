@@ -17,6 +17,7 @@ Configuration
    encryption_configuration
    external_storage_configuration_gui
    external_storage_configuration
+   external_sites
    file_sharing_configuration
    files_locking_enabling
    harden_server
