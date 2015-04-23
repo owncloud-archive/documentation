@@ -10,8 +10,10 @@ Sites app, as this screenshot shows.
 
    *Click to enlarge*
 
-This is a useful tool for quick access to important Web pages such as the 
-ownCloud manuals, and informational pages for your company.
+This is useful for quick access to important Web pages such as the 
+ownCloud manuals and informational pages for your company, and for presenting 
+external pages inside your custom ownCloud branding, if you use your own custom 
+themes.
 
 The External sites app is included in all versions of ownCloud. Go to **Apps >  
 Not Enabled** to enable it. Then go to your ownCloud Admin page to create your 
@@ -35,5 +37,21 @@ to protect Web surfers from dangerous links, and safety apps like
 `Privacy Badger <https://www.eff.org/privacybadger>`_ and ad-blockers may block 
 embedded pages. It is strongly recommended to enforce HTTPS on your ownCloud 
 server; do not weaken this, or any of your security tools, just to make 
-embedded Web pages work. It is recommended to link only to pages that do not 
-require logins, because of the risk of clickjacking in IFrames.
+embedded Web pages work. After all, you can freely access them outside of 
+ownCloud.
+
+Most Web sites that offer login functionalities use the ``X-Frame-Options`` or 
+``Content-Security-Policy`` HTTP header which instructs browsers to not 
+allow their pages to be embedded for security reasons (e.g. "Clickjacking"). You 
+can usually verify the reason why embedding the website is not possible by using 
+your browser's console tool. For example, this page has an invalid SSL 
+certificate.
+
+.. figure:: ../images/external-sites-4.png
+
+On this page, X-Frame-Options prevents the embedding.
+
+.. figure:: ../images/external-sites-5.png
+
+There isn't much you can do about these issues, but if you're curious you can 
+see what is happening.
