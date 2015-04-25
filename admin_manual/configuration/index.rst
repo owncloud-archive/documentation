@@ -5,6 +5,7 @@ Configuration
 .. toctree::
    :maxdepth: 2
 
+   activity_configuration
    antivirus_configuration
    automatic_configuration
    background_jobs_configuration
