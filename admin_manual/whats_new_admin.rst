@@ -56,7 +56,14 @@ Enterprise Subscription.
 No More PHP 5.3
 ---------------
 
-PHP 5.3 is not supported in ownCloud 8, and PHP 5.4 is required.
+PHP 5.3 is not supported in ownCloud 8, and PHP 5.4+ is required.
+
+Modular Configuration Files
+---------------------------
+
+The ``owncloud/config`` directory is now modular, and may contain multiple 
+configuration files. Any file matching the pattern ``*.config.php`` will be 
+read; for example ``foo.config.php`` and ``bar.config.php``.
 
 Improved Admin and Settings UI
 ------------------------------
@@ -82,7 +89,7 @@ More Powerful User Management
 
 In addition to the existing filter and text string searchable user management, 
 an entirely new set of features has been added to ownCloud. Admins can now edit 
-email addresses for system users and send email notification to newly created
+email addresses for system users and send email notifications to newly created
 system users.
 
 LDAP Improvements, Including LDAP User Cleanup
