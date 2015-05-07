@@ -28,6 +28,11 @@ Supported Platforms
 * Mobile apps: iOS 7+, Android 4+
 * Web browser: IE8+, Firefox 14+, Chrome 18+, Safari 5+
 
+Remote Federated Cloud Share Cannot be Reshared With Local Users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` to learn more about federated cloud sharing)
+
 Manually Migrate Encryption Keys after Upgrade
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
