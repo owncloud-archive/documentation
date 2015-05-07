@@ -11,6 +11,11 @@ This document lists some security hardenings which require manual interaction by
 administrators. The whole document content is based on the assumption that you 
 run ownCloud Server on Apache2 on a Linux environment.
 
+Limit on Password Length
+------------------------
+
+ownCloud uses the bcrypt algorithm and thus for security and performance reasons, e.g. Denial of Service as CPU demand increases exponentially, it only verifies the first 72 characters of passwords. This applies to all passwords that you use in ownCloud: user passwords, passwords on link shares, and passwords on external shares.
+
 Operating system
 ----------------
 
