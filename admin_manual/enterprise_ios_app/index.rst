@@ -10,3 +10,4 @@ Creating Branded iOS Apps (ES only)
    publishing_ios_app_3
    publishing_ios_app_4
    publishing_ios_app_5
+   publishing_ios_app_6

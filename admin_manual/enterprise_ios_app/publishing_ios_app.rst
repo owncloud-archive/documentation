@@ -10,11 +10,9 @@ use these to build your app, and then in 24-48 hours your new branded app is in
 your account on `<https://customer.owncloud.com/owncloud>`_.
 
 The process for digitally signing your branded iOS app involves a large number 
-of steps, which are detailed in this chapter over several pages. It is an 
-insanely over-complicated incomprehensible process that will make you weep and 
-break things in frustration, thanks to Apple's requirements. But it can be 
-done-- follow these instructions exactly and in order, and you will have a nice 
-branded iOS app that you can distribute to your users.
+of steps, which are detailed in this chapter over several pages. Follow these 
+instructions exactly and in order, and you will have a nice branded iOS app that 
+you can distribute to your users.
 
 Prerequisites
 =============

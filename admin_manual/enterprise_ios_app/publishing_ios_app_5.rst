@@ -10,7 +10,7 @@ First Provisioning Profile
 --------------------------
 
 Go to **Provisioning Profiles > All**, then click the plus button (top right) 
-to open the *Add iOS Provisioning Profile* screen. Select **Ad Hoc** and click 
+to open the *Add iOS Provisioning Profile* screen. Select *Ad Hoc* and click 
 **Continue**.
 
 .. figure:: ../images/cert-35.png
@@ -151,34 +151,9 @@ And listed in your "iOS Provisioning Profiles".
 
 .. figure:: ../images/cert-52.png
    :scale: 70%
+
+You have one more certificate to create, and that is your P12 certificate.   
    
-   
-   
-    * Provisioning Profiles > +, Ad Hoc, Select the  
-      bundleID.DocumentProviderFileProvider from dropdown menu, generate, 
-      download
-    
-5.  Register device UDIDs; you must register all devices that you will test 
-    your ad hoc app on   
-    
-6.  Go to customer.owncloud.com and use the ownBrander app to create your 
-    branded iOS ownCloud app. You will need the Application Name, Bundle ID, 
-    and App Group from your developer.apple.com account. You will also need 
-    several graphical images in specific sizes, which you can see in your 
-    ownBrander wizard.
-    
-7.  When you have created your app, email your three provisioning profiles to 
-    branding@owncloud.com. In 24-48 hours your new app will be on your files 
-    page on customer.owncloud.com.
 
-
-QUESTIONS    
-
-1. Can the customer test their ad hoc app on iOS simulators?
-2. How do they find UDIDs?
-3. How do they get to a production release?
-4. How do they use Xcode to upload to the Apple Store?
-5. How do they manage upgrades?
-
-https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/
-AppDistributionGuide/Introduction/Introduction.html
+.. https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/
+.. AppDistributionGuide/Introduction/Introduction.html
