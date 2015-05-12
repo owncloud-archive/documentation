@@ -5,6 +5,8 @@ In production environments, JavaScript and CSS files are delivered in a concaten
 
 ownCloud creates individual JavaScript and CSS files and saves them in a folder called 'assets' in the web root. This folder must be owned by the web server user and is used for static delivery of these files.
 
+.. note:: Test this thoroughly on production systems as it should work reliably
+   with core apps, but you may encounter problems with community/third-party apps.
 
 Parameters
 ----------
