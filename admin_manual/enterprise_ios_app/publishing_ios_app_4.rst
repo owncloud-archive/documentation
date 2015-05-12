@@ -17,7 +17,8 @@ will your UDID.
    
    *click to enlarge*
    
-Return to your account on `<https://developer.apple.com>`_, go to **IOS Apps > 
+Return to your account on `Developer.apple.com 
+<https://developer.apple.com>`_, go to **IOS Apps > 
 Devices > All**, and click the plus button on the top right to register a new 
 device. You can make the name anything you want, and the UDID must be the UDID 
 copied from iTunes.
@@ -41,5 +42,5 @@ Click ``Download sample files`` to see examples of plain text and markup files.
    
    *click to enlarge*
 
-When you are finished entering your device IDs click the Continue button.
-
+When you are finished entering your device IDs click the **Continue** button. 
+Verify, and then click **Done**.

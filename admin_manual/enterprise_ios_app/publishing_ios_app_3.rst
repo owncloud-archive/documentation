@@ -2,9 +2,11 @@
 Create Bundle IDs
 =================
 
-The next step is to create three Bundle IDs. These are unique identifiers for 
-your branded iOS app. You must also create an App Group and place your three 
-Bundle IDs in your App Group.
+The next step is to create three **Bundle IDs**. These are unique identifiers 
+for your branded iOS app. You must also create an **App Group** and place your 
+three **Bundle IDs** in your **App Group**. You will need your base **Bundle 
+ID** and **App Group** when you build your app with the ownBrander app on 
+`Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_.
 
 Create App ID
 -------------
@@ -20,10 +22,12 @@ automatically entered for you.
    
    *click to enlarge*
 
-Scroll down to the **App ID Suffix** section and create your Bundle ID. Your 
-Bundle ID is the unique identifier for your app. Make a note of it because you 
-will need it as you continue through this process. The format for your Bundle 
-ID 
+Scroll down to the **App ID Suffix** section and create your **Bundle ID**. 
+Your 
+**Bundle ID** is the unique identifier for your app. Make a note of it because 
+you 
+will need it as you continue through this process. The format for your **Bundle 
+ID** 
 is reverse-domain, e.g. *com.MyCompany.MyProductName*.
 
 .. figure:: ../images/cert-9.png
@@ -33,7 +37,7 @@ is reverse-domain, e.g. *com.MyCompany.MyProductName*.
    
 The next section, **App Services**, is where you select the services you want 
 enabled in your app. You can edit this anytime after you 
-finish creating your App ID. Make your selections and then click the 
+finish creating your **App ID**. Make your selections and then click the 
 **Continue** button at the bottom.  
 
 .. figure:: ../images/cert-10.png

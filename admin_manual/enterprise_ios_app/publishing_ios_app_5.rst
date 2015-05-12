@@ -4,7 +4,8 @@ Create Provisioning Profiles
 
 The next phase is to create three provisioning profiles. These are the profiles 
 that you will email to branding@owncloud.com after building your branded app 
-with the ownBrander app on `<https://customer.owncloud.com>`_.
+with the ownBrander app on 
+`Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_.
 
 First Provisioning Profile
 --------------------------
