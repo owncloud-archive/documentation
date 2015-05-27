@@ -227,6 +227,13 @@ Solution
 **Solution**
   Known problems and their solutions are documented in the KB2123563_ article.
 
+**Problem**
+  You cannot download more than 50 MB or upload large Files when the upload takes
+  longer than 30 minutes using Web Client in Windows 7.
+
+**Solution**
+  Workarounds are documented in the KB2668751_ article.
+
 .. todo::
 
    document registry keys on file size limit and not complaining in no network cases
@@ -254,6 +261,7 @@ The URL for these is::
 
     example.org/owncloud/remote.php/webdav
 
+.. _KB2668751: https://support.microsoft.com/kb/2668751
 .. _KB2123563: https://support.microsoft.com/kb/2123563
 .. _in your file manager: http://en.wikipedia.org/wiki/Webdav#WebDAV_client_applications
 .. _ownCloud sync clients: http://owncloud.org/documentation/sync-clients/
