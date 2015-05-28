@@ -16,12 +16,19 @@ Additional ownCloud Resources
 -----------------------------
 
 * `Howto, demo, news, and Webinar videos
-  <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_ 
+  <https://doc.owncloud.org/server/8.0/admin_manual/videos/index.html>`_
 * `What's New in ownCloud 8 
   <https://owncloud.org/eight>`_ Video introduction to ownCloud 8.
 * `Where to get help 
-  <https://owncloud.org/faq/>`_ when the documentation is not enough.
- 
+  <https://owncloud.org/support/>`_ when the documentation is not enough.
+  
+------------------------------------------------
+Reporting Documentation Bugs & How to Contribute
+------------------------------------------------
+
+If you find an error or omission in any of the manuals, we welcome your bug 
+reports and contributions. Please see :doc:`howto_contribute` for instructions.
+
 ------------
 ownCloud 8.1
 ------------
@@ -31,27 +38,32 @@ This documents the *development* version of ownCloud.
 * `User Manual <https://doc.owncloud.org/server/8.1/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.1/ownCloudUserManual.pdf>`_)
 * `Administration Manual <https://doc.owncloud.org/server/8.1/admin_manual/>`_
-  (`Download PDF   
-  <https://doc.owncloud.org/server/8.1/ownCloudServerAdminManual.pdf>`_)
 * `Developer Manual <https://doc.owncloud.org/server/8.1/developer_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.org/server/8.1/ownCloudDeveloperManual.pdf>`_) 
   
+.. disable admin pdf until iOS ownbrander section is fixed
+..   (`Download PDF   
+..  <https://doc.owncloud.org/server/8.1/ownCloudServerAdminManual.pdf>`_)
+
 ------------
 ownCloud 8.0
 ------------
 
-This documents *latest* version of ownCloud, Server and Enterprise Subscription, 
+This documents *latest* version of ownCloud, Server and Enterprise 
+Subscription, 
 suitable for production use.
 
 * `User Manual <https://doc.owncloud.org/server/8.0/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
 * `Administration Manual <https://doc.owncloud.org/server/8.0/admin_manual/>`_
-  (`Download PDF   
-  <https://doc.owncloud.org/server/8.0/ownCloudServerAdminManual.pdf>`_)
 * `Developer Manual <https://doc.owncloud.org/server/8.0/developer_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.org/server/8.0/ownCloudDeveloperManual.pdf>`_)
+  
+ .. disable admin pdf until iOS ownbrander section is fixed
+..   (`Download PDF   
+..  <https://doc.owncloud.org/server/8.0/ownCloudServerAdminManual.pdf>`_) 
 
 ------------------------------
 ownCloud Community Edition 7.0
@@ -76,7 +88,7 @@ Desktop Client and Mobile Apps
 ownCloud Desktop Client 1.8
 ---------------------------
 
-The *development* version of the ownCloud desktop sync client.
+The *latest* ownCloud desktop sync client release, suitable for production use.
 
 * `ownCloud Desktop Client Manual <https://doc.owncloud.org/desktop/1.8/>`_ 
   (`Download PDF 
@@ -86,7 +98,8 @@ The *development* version of the ownCloud desktop sync client.
 ownCloud Desktop Client 1.7
 ---------------------------
 
-The *latest* ownCloud desktop sync client release, suitable for production use.
+The *previous* ownCloud desktop sync client release, suitable for production 
+use.
 
 * `ownCloud Desktop Client Manual <https://doc.owncloud.org/desktop/1.7/>`_ 
   (`Download PDF 
