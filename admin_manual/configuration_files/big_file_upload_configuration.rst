@@ -8,15 +8,14 @@ hard limits that cannot be exceeded:
 
 * < 2GB on 32Bit OS-architecture
 * < 2GB on Windows (32Bit and 64Bit)
-* < 2GB with Server Version 4.5 or older
 * < 2GB with IE6 - IE8
 * < 4GB with IE9 - IE10
 
 64-bit filesystems have much higher limits; consult the documentation for your 
 filesystem.
 
-.. note:: The ownCloud sync client is not affected by this described upload limits
-   as it is uploading files in smaller chunks.
+.. note:: The ownCloud sync client is not affected by these upload limits
+   as it uploads files in smaller chunks.
 
 System Configuration
 --------------------
@@ -78,7 +77,7 @@ Configuring PHP
 ---------------
 
 If you don't want to use the ownCloud ``.htaccess`` or ``.user.ini`` file, you may 
-configure PHP instead. Make sure to comment out any lines ``.htaccess`` 
+configure PHP instead. Make sure to comment out any lines in ``.htaccess`` 
 pertaining to upload size, if you entered any.
 
 To view your current PHP configuration and to see the location of your 
