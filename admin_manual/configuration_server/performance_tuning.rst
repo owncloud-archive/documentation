@@ -145,11 +145,38 @@ ownCloud Server Tuning
 Object Caching
 ==============
 
-ownCloud is written to take advantage of object caching. Object caching can be 
-done locally with the APCu extension, or for distributed PHP environments using 
-Memcached. Memcached servers must be specified in the ``memcached_servers`` array 
-in ownCloud's config file ``config.php``. For examples see 
-:doc:`config_sample_php_parameters`
+Caching improves performance by storing data, code, and other objects in 
+memory. 
+
+The APC or OPCache bytecode cache are commonly used in PHP environments. This 
+example installs APC on CentOS/Red Hat/Fedora systems running PHP 5.4:
+
+.. code-block:: console
+
+	$ sudo yum install php-pecl-apc
+	
+On Ubuntu systems running PHP 5.4 this command installs APC:
+
+.. code-block:: console
+
+        $ sudo apt-get install php-apc
+             
+PHP 5.5 replaces APC with OPCache. OPCache is bundled with PHP 5.5 so it should 
+not be necessary to install it separately. OPCache improves PHP performance by 
+storing precompiled script bytecode in shared memory, thereby removing the need 
+for PHP to load and parse scripts on each request. This extension is bundled 
+with PHP 5.5.0 and later, and is available in PECL for PHP versions 5.2, 5.3, 
+and 5.4.
+
+APC is both an opcode cache and data store. OPCache is only an opcode cache, so 
+for caching user data you should also install APCu.
+
+The Redis key-value cache and store is an excellent fast and robust cache. For 
+configuration examples see :doc:`config_sample_php_parameters`. 
+
+Distributed PHP environments should use Memcached. Memcached servers must be 
+specified in the ``memcached_servers`` array in ownCloud's config file 
+``config.php``. For examples see :doc:`config_sample_php_parameters`.
 
 Serving static files via web server
 ===================================
@@ -167,13 +194,14 @@ benefits.
 Enable JavaScript and CSS Asset Management
 ==========================================
 
-See the section :doc:`js_css_asset_management_configuration` for a description and the 
+See the section :doc:`js_css_asset_management_configuration` for a description 
+and the 
 benefits.
 
-OPcache Extension
+OPCache Extension
 =================
 
-OPcache improves PHP performance by storing precompiled script bytecode in 
+OPCache improves PHP performance by storing precompiled script bytecode in 
 shared memory, thereby removing the need for PHP to load and parse scripts on 
 each request. This extension is bundled with PHP 5.5.0 and later, and is 
 available in PECL for PHP versions 5.2, 5.3, and 5.4.
