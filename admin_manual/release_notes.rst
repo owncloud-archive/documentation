@@ -32,6 +32,7 @@ No Preview Icon on Text Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There is no preview icon displayed for text files when the file contains fewer than six characters.
+
 .. https://github.com/owncloud/core/issues/16556#event-316503097
 
 Remote Federated Cloud Share Cannot be Reshared With Local Users
