@@ -16,7 +16,9 @@ This is how the File Firewall GUI looks when you have not created any rules
    
 It also creates a corresponding text configuration file in 
 :file:`owncloud/config/firewall.config.php`, which you can copy to other 
-ownCloud servers. When you have no firewall rules it contains these lines::
+ownCloud servers. When you are running multiple ownCloud servers you may wish 
+to do this in order to have consistent behavior across all of your servers. 
+When you have no firewall rules it contains these lines::
 
  <?php
  $CONFIG = array (
