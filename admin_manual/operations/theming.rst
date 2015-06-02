@@ -48,22 +48,31 @@ to the file being replaced and mirror that path within the themes directory stru
 Customize the logo
 ------------------
 
-Customized logos must meet the following specifications, and they go in the 
-``themes/core/img`` directory.
+Customized logos go in the ``themes/core/img`` directory. You can adapt the following example code, which goes in ``themes/themename/core/css/header.css``, to display your customized logos::
 
-Logo.svg
---------
+ #header .logo {
+    background-image: url(../img/logo.svg);
+    background-repeat: no-repeat;
+    width: 252px;
+    height: 120px;
+    margin: 0 auto;
+ }
 
-This is the splash screen logo that appears above the ownCloud login page. The size of 
-this image is approximately 252x122 pixels.  Any larger and the logo will not fit properly 
-on the page.
+ #header .logo-wide {
+    background-image: url(../img/logo-wide.svg);
+    background-repeat: no-repeat;
+    width: 150px;
+    height: 34px;
+ }
 
-Logo-wide.svg
--------------
-
-This is the little logo that appears in the top left of the ownCloud navigation frame.  
-The size of this image is 140x32 pixels. The width may be larger but the height is 
-fixed.
+ #header .logo-icon {
+    /* display logo so appname can be shown next to it */
+    display: inline-block;
+    background-image: url(../img/logo-icon.svg);
+    background-repeat: no-repeat;
+    width: 62px;
+    height: 34px;
+ }
 
 Changing Colors
 ---------------
