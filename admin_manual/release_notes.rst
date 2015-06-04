@@ -26,7 +26,17 @@ Supported Platforms
   only), Linux (CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
   21, openSUSE 12.3, 13)
 * Mobile apps: iOS 7+, Android 4+
-* Web browser: IE8+ (but not Compatibility Mode), Firefox 14+, Chrome 18+, Safari 5+
+* Web browser: IE8+ (but not Compatibility Mode), Firefox 14+, Chrome 18+, 
+  Safari 5+
+
+Manual LDAP Port Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you are configuring the LDAP user and group backend application, ownCloud 
+may not auto-detect the LDAP server's port number, so you will need to enter it 
+manually.
+
+.. https://github.com/owncloud/core/pull/16748
 
 No Preview Icon on Text Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -38,7 +48,10 @@ There is no preview icon displayed for text files when the file contains fewer t
 Remote Federated Cloud Share Cannot be Reshared With Local Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` to learn more about federated cloud sharing)
+When you mount a Federated Cloud share from a remote ownCloud server, you cannot 
+re-share it with your local ownCloud users. (See 
+:doc:`configuration_files/federated_cloud_sharing_configuration` to learn more 
+about federated cloud sharing)
 
 Manually Migrate Encryption Keys after Upgrade
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -118,8 +131,8 @@ on your ownCloud server.
 .. https://github.com/owncloud/core/issues/10657
 
 
-Enterprise 8 Only
------------------
+Enterprise 8.0 Only
+-------------------
 
 No Federated Cloud Sharing with Shibboleth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -155,6 +168,15 @@ are not supported.
 
 ownCloud 7 Release Notes
 ------------------------
+
+Manual LDAP Port Configuration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When you are configuring the LDAP user and group backend application, ownCloud 
+may not auto-detect the LDAP server's port number, so you will need to enter it 
+manually.
+
+.. https://github.com/owncloud/core/pull/16748
 
 LDAP Search Performance Improved
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
