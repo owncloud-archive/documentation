@@ -43,9 +43,9 @@ Structure
 =========
 
 The folder structure of a theme is exactly the same as the main ownCloud
-structure. You can override js files, images and templates with own versions.
-CSS files are loaded additionally to the default files so you can override CSS
-properties.
+structure. You can override js files, images, translations and templates with
+own versions. CSS files are loaded additionally to the default files so you can
+override CSS properties.
 
 
 How to change images and the logo
@@ -111,6 +111,26 @@ Save your CSS-file and refresh to see the new login screen.
 The other major color scheme is the blue header bar on the main navigation page once you log in to ownCloud.
 This color we will change with the above as well.
 Save the file and refresh the browser for the changes to take effect.
+
+How to change translations
+==========================
+
+You can override the translation of single strings within your theme. Simply
+create the same folder structure within your theme folder for the language file
+you want to override. Only the changed strings need to be added to that file for
+all other terms the shipped translation will be used.
+
+If you want to override the translation of the term "Download" within the
+``files`` app for the language ``de`` you need to create the file
+``themes/THEME_NAME/apps/files/l10n/de.php`` and put the following code in:
+
+.. code-block:: php
+
+  <?php
+  $TRANSLATIONS = array(
+      "Download" => "Herunterladen"
+  );
+  $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";
 
 Testing the new theme out
 =========================
