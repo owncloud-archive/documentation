@@ -14,6 +14,7 @@ ownCloud documentation contents
      
     videos 
     whats_new_admin
+    release_notes
     installation/index
     configuration/index
     maintenance/index
