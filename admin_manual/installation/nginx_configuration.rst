@@ -65,6 +65,8 @@ Nginx Configuration
       deny all;
       }
 
+    location = /favicon.ico { return 301 /core/img/favicon.png; }
+
     location / {
      # The following 2 rules are only needed with webfinger
      rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
