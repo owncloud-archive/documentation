@@ -78,14 +78,14 @@ The available operators for each condition are displayed in a dropdown menu.
 This simple example limits members of the ownCloud user group "Support" to 
 5-megabyte uploads (figure 2).
 
-.. figure:: /images/file-firewall-gui-2.png
+.. figure:: ../images/file-firewall-gui-2.png
 
    *figure 2*
    
 Users in Support who try to upload files larger than 5MB will see a "Forbidden" 
 banner (figure 3).
 
-.. figure:: /images/file-firewall-gui-3.png
+.. figure:: ../images/file-firewall-gui-3.png
 
    *figure 3*
 
