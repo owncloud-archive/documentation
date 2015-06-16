@@ -18,7 +18,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <require>5</require>
 
       <types>
-          <type>filesystem</type>
+          <filesystem/>
       </types>
 
       <remote>
