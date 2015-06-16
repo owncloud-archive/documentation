@@ -19,7 +19,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <requiremin>5</requiremin>
 
       <types>
-          <type>filesystem</type>
+          <filesystem/>
       </types>
 
 
