@@ -83,7 +83,6 @@ Available:
 	- mysql (MySQL/MariaDB)
 	- pgsql (PostgreSQL)
 	- oci (Oracle - Enterprise Edition Only)
-	- mssql (Microsoft SQL Server - Enterprise Edition Only)
 
 ::
 
