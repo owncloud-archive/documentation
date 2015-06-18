@@ -18,6 +18,23 @@ The ownCloud Desktop Client and mobile clients can interact with an
 ownCloud instance running inside a Shibboleth Service Provider by using built-in 
 browser components for authentication against the IdP.
 
+The ownCloud desktop sync client and mobile apps store users' logins, so 
+your users only need to enter their logins the first time they set up their 
+accounts. These screenshots show what the user sees at account setup. Figure 1 
+shows a test login screen. Your login screen will probably look different.
+
+.. figure:: ../images/shib-gui1.png
+
+   *figure 1: First login screen*
+   
+Then after going through the setup wizard, the desktop sync client displays the 
+server and login information just like it does for any other ownCloud server 
+connections.
+
+.. figure:: ../images/shib-gui4.png
+
+   *figure 2: ownCloud client displays server information*
+
 Apache Configuration
 --------------------
 
