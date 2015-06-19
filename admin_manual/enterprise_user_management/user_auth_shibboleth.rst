@@ -21,7 +21,8 @@ browser components for authentication against the IdP.
 The ownCloud desktop sync client and mobile apps store users' logins, so 
 your users only need to enter their logins the first time they set up their 
 accounts. These screenshots show what the user sees at account setup. Figure 1 
-shows a test login screen. Your login screen will probably look different.
+shows a test login screen from 
+`Testshib.org <https://www.testshib.org/index.html>`_.
 
 .. figure:: ../images/shib-gui1.png
 
@@ -34,6 +35,9 @@ connections.
 .. figure:: ../images/shib-gui4.png
 
    *figure 2: ownCloud client displays server information*
+   
+To your users, it doesn't look very different on the desktop sync client, 
+Android app, or iOS app from an ordinary ownCloud account setup.   
 
 Apache Configuration
 --------------------
