@@ -1,6 +1,6 @@
-=============
-File Firewall
-=============
+=======================
+File Firewall (ES only)
+=======================
 
 .. toctree::
     :maxdepth: 2
