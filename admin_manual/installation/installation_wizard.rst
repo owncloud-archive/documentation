@@ -153,7 +153,8 @@ Trusted Domains
 ownCloud will take the URL used to access the Installation Wizard and insert that into the ``config.php`` file for the 
 ``trusted_domains`` setting. All needed domain names of the ownCloud server go into the ``trusted_domains`` setting. Users will 
 only be able to log into ownCloud when they point their browsers to a domain name listed in the ``trusted_domains`` setting. An 
-IPv4 address can be specified instead of a domain name. A typical configuration looks like this::
+IPv4 address can be specified instead of a domain name. But if you wan to access the ownCloud server by either IP or 
+hostname then you need to enter both, no DNS lookup is happening. A typical configuration looks like this::
 
  'trusted_domains' => 
    array (
