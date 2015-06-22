@@ -157,8 +157,7 @@ Application Configuration
 
 After installing and enabling the Shibboleth application there are three 
 configuration variables to set up, depending on the data sent back by the 
-IdP. The configuration is stored in ``config/config.php``, or you may create a 
-separate configuration file, e.g. ``config/shibboleth.config.php``.
+IdP. The configuration is stored in ``apps/user_shibboleth``.
 
 .. code-block:: php
 
