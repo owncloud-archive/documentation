@@ -9,6 +9,9 @@ You can automatically send an email notification when you create the share,
 share directly with users on other ownCloud servers, add password protection, 
 allow users to upload files, and set an expiration date.
 
+.. Note:: Currently, federated shares cannot be re-shared, and the only visible 
+   option when you create the share is **Can edit**.
+
 Creating a Direct Share Link
 ----------------------------
 
