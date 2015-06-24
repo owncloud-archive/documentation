@@ -143,10 +143,10 @@ and files:
   executable bit set), read-write for the directory owner, and read-only for 
   the group owner
 * The :file:`/` directory should be owned by ``root:[HTTP user]``
-* The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP user]``
-* The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP user]``
-* The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP user]``
-* The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP user]``
+* The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP user]``
 * The :file:`data/.htaccess` file should be owned by ``root:[HTTP user]``
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
