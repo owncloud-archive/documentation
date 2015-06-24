@@ -109,26 +109,25 @@ should see a single line in your browser page with the HTTP user name.
    ownership as above could result in some issues if the NFS mount is 
    lost.
 
-The easy way to set the correct permissions is to copy and run this 
-script. Replace the ``ocpath`` variable with the path to your ownCloud 
-directory, and replace the ``htuser`` variable with your own HTTP user::
+The easy way to set the correct permissions is to copy and run this script. Replace the ``ocpath`` variable with the path to your ownCloud directory, and replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  #!/bin/bash
  ocpath='/var/www/owncloud'
  htuser='www-data'
+ htgroup='www-data'
 
  find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
  find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
 
  chown -R root:${htuser} ${ocpath}/
- chown -R ${htuser}:${htuser} ${ocpath}/apps/
- chown -R ${htuser}:${htuser} ${ocpath}/config/
- chown -R ${htuser}:${htuser} ${ocpath}/data/
- chown -R ${htuser}:${htuser} ${ocpath}/themes/
+ chown -R ${htuser}:${htgroup} ${ocpath}/apps/
+ chown -R ${htuser}:${htgroup} ${ocpath}/config/
+ chown -R ${htuser}:${htgroup} ${ocpath}/data/
+ chown -R ${htuser}:${htgroup} ${ocpath}/themes/
 
  chown root:${htuser} ${ocpath}/.htaccess
  chown root:${htuser} ${ocpath}/data/.htaccess
- 
+
  chmod 0644 ${ocpath}/.htaccess
  chmod 0644 ${ocpath}/data/.htaccess
  
