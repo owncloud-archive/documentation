@@ -295,6 +295,47 @@ Supported databases are::
  - pgsql (PostgreSQL)
  - oci (Oracle) 
  
+Installing ownCloud
+-------------------
+
+You may install ownCloud entirely from the command line. After downloading and 
+unpacking the tarball into the appropriate directories, or installing an 
+ownCloud package, you may complete the installation using ``occ`` instead of 
+running the graphical Installation Wizard. The installation commands appear 
+only after ownCloud has been downloaded and before running the Installation 
+Wizard. They will not appear after you have completed the installation.
+
+Change to your ownCloud directory (typically ``/var/www/owncloud``) and run 
+this command to see your installation options::
+
+$ sudo -u www-data php occ help maintenance:install
+ownCloud is not installed - only a limited number of commands are available
+Usage:
+ maintenance:install [--database="..."] [--database-name="..."] 
+[--database-host="..."] [--database-user="..."] [--database-pass[="..."]] 
+[--database-table-prefix[="..."]] [--admin-user="..."] [--admin-pass="..."] 
+[--data-dir="..."]
+
+Options:
+ --database               Supported database type (default: "sqlite")
+ --database-name          Name of the database
+ --database-host          Hostname of the database (default: "localhost")
+ --database-user          User name to connect to the database
+ --database-pass          Password of the database user
+ --database-table-prefix  Prefix for all tables (default: oc_)
+ --admin-user             User name of the admin account (default: "admin")
+ --admin-pass             Password of the admin account
+ --data-dir               Path to data directory (default: 
+"/var/www/owncloud/data")
+ --help (-h)              Display this help message
+ --quiet (-q)             Do not output any message
+ --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal 
+output, 2 for more verbose output and 3 for debug
+ --version (-V)           Display this application version
+ --ansi                   Force ANSI output
+ --no-ansi                Disable ANSI output
+ --no-interaction (-n)    Do not ask any interactive question
+
 l10n, Create javascript Translation Files for Apps
 --------------------------------------------------
 
