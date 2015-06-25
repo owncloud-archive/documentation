@@ -41,6 +41,7 @@ To run ownCloud, your web server must have the following installed:
 * PHP module XMLWriter
 * PHP module zip
 * PHP module zlib
+* PHP module curl
 
 Database connectors (pick at least one):
 
@@ -50,8 +51,6 @@ Database connectors (pick at least one):
 
 *Recommended* packages:
 
-* PHP module curl (highly recommended, some functionality, e.g. http user
-  authentication, depends on this)
 * PHP module fileinfo (highly recommended, enhances file analysis performance)
 * PHP module bz2 (recommended, required for extraction of apps)
 * PHP module intl (increases language translation performance and fixes sorting 
@@ -75,6 +74,7 @@ For enhanced server performance (*optional* / select only one of the following):
 * PHP module apc
 * PHP module apcu
 * PHP module xcache
+* PHP module redis
 
 For preview generation (*optional*):
 

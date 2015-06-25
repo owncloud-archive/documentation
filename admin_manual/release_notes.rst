@@ -28,6 +28,37 @@ Supported Platforms
 * Mobile apps: iOS 7+, Android 4+
 * Web browser: IE8+ (but not compatibility mode), Firefox 14+, Chrome 18+, 
   Safari 5+
+  
+.htaccess and index.html Overwritten
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The ``.htaccess`` and ``index.html`` files in the ``data/`` directory are now 
+updated after every update. Administrators are encouraged to verify that they 
+don't have any manual modifications done in there.
+
+SabreDAV Removed
+^^^^^^^^^^^^^^^^
+
+The SabreDAV browser at ``/remote.php/webdav`` has been removed, and replaced 
+with WebDAV.
+
+trusted_domains Required
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Using ownCloud without a trusted_domain will not work anymore.
+
+New Logging Format for Failed Logins
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The logging format for failed logins has changed and considers now the proxy 
+configuration in ``config.php``.
+
+New Security Headers Added to .htaccess
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A default set of security and privacy HTTP headers have been added to the 
+ownCloud ``.htaccess`` file, and ownCloud administrators may now customize which 
+headers are sent.
 
 Caching Change for LDAP App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -35,6 +66,17 @@ Caching Change for LDAP App
 The persistent file-based cache has been dropped and replaced with a 
 memory-only cache, which must be explicitly configured. See 
 :doc:`configuration_user/user_auth_ldap`
+
+OC_User_HTTP Backend Removed
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The OC_User_HTTP backend has been removed. Administrators are encouraged to use 
+the ``user_webdavauth`` application instead.
+
+
+ownCloud ships now it's own root certificate bundle derived from the Mozilla 
+one. The system root certificate bundle will not be used anymore for most 
+requests.
   
 Special Migration Considerations for Encryption
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -46,8 +88,10 @@ enable the new encryption backend and migrate your encryption keys. See
 Older Desktop Clients Not Allowed to Connect and Sync
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Because of various technical issues, desktop sync clients older than 1.7 are 
-not allowed to connect and sync with the ownCloud server.
+Because of various technical issues, by default desktop sync clients older than 
+1.7 are not allowed to connect and sync with the ownCloud server. This is 
+configurable with the ``minimum.supported.desktop.version`` switch in 
+``config.php``.
 
 Windows Not Supported
 ^^^^^^^^^^^^^^^^^^^^^
