@@ -22,6 +22,10 @@ Statuscodes:
 * 100 - successful
 * 404 - couldn't fetch shares
 
+Returns:
+
+* A list of shares (see share_return_)
+
 Get Shares from a specific file or folder
 -----------------------------------------
 
@@ -44,6 +48,11 @@ Statuscodes
 * 400 - not a directory (if the 'subfile' argument was used)
 * 404 - file doesn't exist
 
+Returns:
+
+* A list of shares (see share_return_)
+
+
 Get information about a known Share
 -----------------------------------
 
@@ -60,6 +69,31 @@ Statuscodes:
 
 * 100 - successful
 * 404 - share doesn't exist
+
+.. _share_return:
+
+Returns:
+
+* id
+* item_type
+* item_source
+* parent
+* share_type
+* share_with
+* file_source
+* file_target
+* path
+* permissions
+* stime
+* expiration
+* token
+* storage
+* mail_send
+* uid_owner
+* storage_id
+* share_with_displayname
+* displayname_owner
+
 
 
 Create a new Share
@@ -88,6 +122,12 @@ Statuscodes:
 * 403 - public upload was disabled by the admin
 * 404 - file couldn't be shared
 
+Returns:
+
+* id
+* url (only for public shares)
+* token (only for public shares)
+
 Delete Share
 ------------
 
@@ -103,6 +143,9 @@ Statuscodes:
 * 100 - successful
 * 404 - file couldn't be deleted
 
+Returns:
+
+    Nothing is returned since the share is deleted.
 
 Update Share
 ------------
@@ -129,3 +172,7 @@ Statuscodes:
 * 400 - wrong or no update parameter given
 * 403 - public upload disabled by the admin
 * 404 - couldn't update share
+
+Returns:
+
+    Nothing is returned
