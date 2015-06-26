@@ -172,8 +172,10 @@ htmlhelp_basename = 'ownCloudServerAdminManual'
 
 # -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {'preamble': '\usepackage{morefloats}'
+latex_elements = {'preamble': '\usepackage{morefloats}', 'figure_align': 'H',
 }
+
+
 
 # latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
