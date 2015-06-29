@@ -37,33 +37,28 @@ This documents the *development* version of ownCloud.
 
 * `User Manual <https://doc.owncloud.org/server/8.1/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.1/ownCloudUserManual.pdf>`_)
-* `Administration Manual <https://doc.owncloud.org/server/8.1/admin_manual/>`_
+* `Administration Manual <https://doc.owncloud.org/server/8.1/admin_manual/>`_ 
+  (`Download PDF   
+  <https://doc.owncloud.org/server/8.1/ownCloudServerAdminManual.pdf>`_)
 * `Developer Manual <https://doc.owncloud.org/server/8.1/developer_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.org/server/8.1/ownCloudDeveloperManual.pdf>`_) 
   
-.. disable admin pdf until iOS ownbrander section is fixed
-..   (`Download PDF   
-..  <https://doc.owncloud.org/server/8.1/ownCloudServerAdminManual.pdf>`_)
-
 ------------
 ownCloud 8.0
 ------------
 
-This documents *latest* version of ownCloud, Server and Enterprise 
-Subscription, 
+This documents *latest* version of ownCloud, Server and Enterprise Subscription, 
 suitable for production use.
 
 * `User Manual <https://doc.owncloud.org/server/8.0/user_manual/>`_ (`Download 
   PDF <https://doc.owncloud.org/server/8.0/ownCloudUserManual.pdf>`_)
-* `Administration Manual <https://doc.owncloud.org/server/8.0/admin_manual/>`_
+* `Administration Manual <https://doc.owncloud.org/server/8.0/admin_manual/>`_ 
+  (`Download PDF   
+  <https://doc.owncloud.org/server/8.0/ownCloudServerAdminManual.pdf>`_) 
 * `Developer Manual <https://doc.owncloud.org/server/8.0/developer_manual/>`_ 
   (`Download PDF 
   <https://doc.owncloud.org/server/8.0/ownCloudDeveloperManual.pdf>`_)
-  
- .. disable admin pdf until iOS ownbrander section is fixed
-..   (`Download PDF   
-..  <https://doc.owncloud.org/server/8.0/ownCloudServerAdminManual.pdf>`_) 
 
 ------------------------------
 ownCloud Community Edition 7.0
@@ -98,8 +93,7 @@ The *latest* ownCloud desktop sync client release, suitable for production use.
 ownCloud Desktop Client 1.7
 ---------------------------
 
-The *previous* ownCloud desktop sync client release, suitable for production 
-use.
+The *previous* ownCloud desktop sync client release, suitable for production use.
 
 * `ownCloud Desktop Client Manual <https://doc.owncloud.org/desktop/1.7/>`_ 
   (`Download PDF 
