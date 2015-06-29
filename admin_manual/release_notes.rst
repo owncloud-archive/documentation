@@ -28,81 +28,54 @@ Supported Platforms
 * Mobile apps: iOS 7+, Android 4+
 * Web browser: IE8+ (but not compatibility mode), Firefox 14+, Chrome 18+, 
   Safari 5+
+ 
+Changes in 8.1
+--------------
   
-.htaccess and index.html Overwritten
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+"Download from link" feature has been removed.
 
 The ``.htaccess`` and ``index.html`` files in the ``data/`` directory are now 
-updated after every update. Administrators are encouraged to verify that they 
-don't have any manual modifications done in there.
+updated after every update. If you make any modifications to these files they 
+will be lost after updates.
 
-SabreDAV Removed
-^^^^^^^^^^^^^^^^
+The SabreDAV browser at ``/remote.php/webdav`` has been removed.
 
-The SabreDAV browser at ``/remote.php/webdav`` has been removed, and replaced 
-with WebDAV.
-
-trusted_domains Required
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-Using ownCloud without a trusted_domain will not work anymore.
-
-New Logging Format for Failed Logins
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Using ownCloud without a ``trusted_domain`` configuration will not work anymore.
 
 The logging format for failed logins has changed and considers now the proxy 
 configuration in ``config.php``.
-
-New Security Headers Added to .htaccess
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A default set of security and privacy HTTP headers have been added to the 
 ownCloud ``.htaccess`` file, and ownCloud administrators may now customize which 
 headers are sent.
 
-Caching Change for LDAP App
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The persistent file-based cache has been dropped and replaced with a 
-memory-only cache, which must be explicitly configured. See 
-:doc:`configuration_user/user_auth_ldap`
-
-OC_User_HTTP Backend Removed
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+The persistent file-based cache for LDAP integration has been dropped and 
+replaced with a memory-only cache, which must be explicitly configured. See 
+:doc:`configuration_user/user_auth_ldap`. Memory cache configuration for the 
+ownCloud server is no longer automatic, requiring configuration in 
+``config.php```` with the keys memcache.local`` and/or 
+``memcache.distributed``; see :ref:`caching`. 
 
 The OC_User_HTTP backend has been removed. Administrators are encouraged to use 
 the ``user_webdavauth`` application instead.
 
-
-ownCloud ships now it's own root certificate bundle derived from the Mozilla 
-one. The system root certificate bundle will not be used anymore for most 
+ownCloud ships now with its own root certificate bundle derived from the 
+Mozilla. The system root certificate bundle will not be used anymore for most 
 requests.
   
-Special Migration Considerations for Encryption
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
 When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must 
 enable the new encryption backend and migrate your encryption keys. See 
 :doc:`configuration_files/encryption_configuration`
   
-Older Desktop Clients Not Allowed to Connect and Sync
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Because of various technical issues, by default desktop sync clients older than 
+Due to various technical issues, by default desktop sync clients older than 
 1.7 are not allowed to connect and sync with the ownCloud server. This is 
-configurable with the ``minimum.supported.desktop.version`` switch in 
+configurable via the ``minimum.supported.desktop.version`` switch in 
 ``config.php``.
-
-Windows Not Supported
-^^^^^^^^^^^^^^^^^^^^^
 
 The ownCloud 8 server is not supported on any version of Windows.
 
 Enterprise 8.1 Only
 -------------------
-
-Sharepoint Drive SSL Not Verified
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
 server or the ownCloud server, as it is expected that both devices are in the 
