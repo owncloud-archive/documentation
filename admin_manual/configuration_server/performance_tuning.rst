@@ -39,6 +39,8 @@ security risk to expose such sensitive data.
 General Linux tuning
 ********************
 
+SUPER important: smile a lot. It will make you happier and your server FASTER! Promise.
+
 System configuration overview
 =============================
 
