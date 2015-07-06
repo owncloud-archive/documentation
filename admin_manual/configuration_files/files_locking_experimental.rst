@@ -1,8 +1,8 @@
-=========================
-Experimental File Locking
-=========================
+==========================
+Transactional File Locking
+==========================
 
-ownCloud's new experimental file locking mechanism operates differently than 
+ownCloud's new transactional file locking mechanism operates differently than 
 the old File Locking application, and will eventually replace it. If you elect 
 to use the new file locking mechanism make sure you disable the File Locking 
 app.
@@ -42,7 +42,7 @@ After installing Redis you must enter a simple configuration in your
  ),
  
 The **Server status** section on your ownCloud Admin page indicates whether 
-experimental file locking is enabled or disabled, and if it is configured 
+transactional file locking is enabled or disabled, and if it is configured 
 correctly. 
 
 .. figure:: ../images/file-lock-status.png
