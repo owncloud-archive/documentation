@@ -45,7 +45,7 @@ The **Server status** section on your ownCloud Admin page indicates whether
 transactional file locking is enabled or disabled, and if it is configured 
 correctly. 
 
-.. figure:: ../images/file-lock-status.png
+.. .. figure:: ../images/file-lock-status.png
 
 See ``config.sample.php`` to see configuration examples for Redis, and for all 
 supported memcaches.
