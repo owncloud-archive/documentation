@@ -101,7 +101,7 @@ Further Shibboleth specific configuration as defined in
 	  |public.php$
 	  |cron.php$
 	  |core/img/
-	  |index.php/apps/files_sharing/ajax/publicpreview.pph$
+	  |index.php/apps/files_sharing/ajax/publicpreview.php$
 	  |index.php/apps/files/ajax/upload.php$
 	  |apps/files/templates/fileexists.html$
 	  |index.php/apps/files/ajax/mimeicon.php$)">
