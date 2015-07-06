@@ -936,6 +936,12 @@ Available cache backends:
 * \OC\Memcache\Redis      Redis backend
 * \OC\Memcache\XCache     XCache backend
 
+Advice on choosing between the various backends:
+
+* APCu should be easiest to install. Almost all distributions have packages.
+  Use this for single user environment for all caches.
+* Use Redis or memcache for distributed environments.
+  For the not distributed cache (you can configure two) take APCu.
 
 ::
 
