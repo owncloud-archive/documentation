@@ -924,9 +924,136 @@ SSL
 
 Extra SSL options to be used for configuration.
 
-Miscellaneous
--------------
+Memory caching backend configuration
+------------------------------------
 
+Available cache backends:
+
+* \OC\Memcache\APC        Alternative PHP Cache backend
+* \OC\Memcache\APCu       APC user backend
+* \OC\Memcache\ArrayCache In-memory array-based backend (not recommended)
+* \OC\Memcache\Memcached  Memcached backend
+* \OC\Memcache\Redis      Redis backend
+* \OC\Memcache\XCache     XCache backend
+
+Advice on choosing between the various backends:
+
+* APCu should be easiest to install. Almost all distributions have packages.
+  Use this for single user environment for all caches.
+* Use Redis or memcache for distributed environments.
+  For the not distributed cache (you can configure two) take APCu.
+
+::
+
+	'memcache.local' => '\OC\Memcache\APCu',
+
+Memory caching backend for locally stored data
+  Used for host-specific data, e.g. file paths
+
+::
+
+	'memcache.distributed' => '\OC\Memcache\Memcached',
+
+Memory caching backend for distributed data
+  Used for installation-specific data, e.g. database caching
+  If unset, defaults to the value of memcache.local
+
+::
+
+	'redis' => array(
+		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
+		'port' => 6379,
+		'timeout' => 0.0,
+		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
+	),
+
+Connection details for redis to use for memory caching.
+
+::
+
+	'memcached_servers' => array(
+		// hostname, port and optional weight. Also see:
+		// http://www.php.net/manual/en/memcached.addservers.php
+		// http://www.php.net/manual/en/memcached.addserver.php
+		array('localhost', 11211),
+		//array('other.host.local', 11211),
+	),
+
+Server details for one or more memcached servers to use for memory caching.
+
+::
+
+	'cache_path' => '',
+
+Location of the cache folder, defaults to ``data/$user/cache`` where
+``$user`` is the current user. When specified, the format will change to
+``$cache_path/$user`` where ``$cache_path`` is the configured cache directory
+and ``$user`` is the user.
+
+Using Object Store with ownCloud
+--------------------------------
+
+::
+
+	'objectstore' => array(
+		'class' => 'OC\\Files\\ObjectStore\\Swift',
+		'arguments' => array(
+			// trystack will user your facebook id as the user name
+			'username' => 'facebook100000123456789',
+			// in the trystack dashboard go to user -> settings -> API Password to
+			// generate a password
+			'password' => 'Secr3tPaSSWoRdt7',
+			// must already exist in the objectstore, name can be different
+			'container' => 'owncloud',
+			// create the container if it does not exist. default is false
+			'autocreate' => true,
+			// required, dev-/trystack defaults to 'RegionOne'
+			'region' => 'RegionOne',
+			// The Identity / Keystone endpoint
+			'url' => 'http://8.21.28.222:5000/v2.0',
+			// required on dev-/trystack
+			'tenantName' => 'facebook100000123456789',
+			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
+			// if omitted
+			'serviceName' => 'swift',
+		),
+	),
+
+The example above shows how to configure ownCloud to store all files in a
+swift object storage.
+
+It is important to note that ownCloud in object store mode will expect
+exclusive access to the object store container because it only stores the
+binary data for each file. The metadata is currently kept in the local
+database for performance reasons.
+
+WARNING: The current implementation is incompatible with any app that uses
+direct file IO and circumvents our virtual filesystem. That includes
+Encryption and Gallery. Gallery will store thumbnails directly in the
+filesystem and encryption will cause severe overhead because key files need
+to be fetched in addition to any requested file.
+
+One way to test is applying for a trystack account at http://trystack.org/
+
+::
+
+	'supportedDatabases' => array(
+		'sqlite',
+		'mysql',
+		'pgsql',
+		'oci',
+	),
+
+Database types that are supported for installation.
+
+Available:
+	- sqlite (SQLite3 - not in Enterprise)
+	- mysql (MySQL)
+	- pgsql (PostgreSQL)
+	- oci (Oracle - Enterprise Edition Only)
+
+All other config options
+------------------------
 
 ::
 
@@ -971,65 +1098,6 @@ When changing this, note that older unsupported versions of the ownCloud desktop
 client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
-Memory caching backend configuration
-------------------------------------
-
-Available cache backends:
-- \OC\Memcache\APC        Alternative PHP Cache backend
-- \OC\Memcache\APCu       APC user backend
-- \OC\Memcache\ArrayCache In-memory array-based backend (not recommended)
-- \OC\Memcache\Memcached  Memcached backend
-- \OC\Memcache\Redis      Redis backend
-- \OC\Memcache\XCache     XCache backend
-
-
-::
-
-	'memcache.local' => '\OC\Memcache\APCu',
-
-Memory caching backend for locally stored data
-Used for host-specific data, e.g. file paths
-
-::
-
-	'memcache.distributed' => '\OC\Memcache\Memcached',
-
-Memory caching backend for distributed data
-Used for installation-specific data, e.g. database caching
-If unset, defaults to the value of memcache.local
-
-::
-
-	'redis' => array(
-		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
-		'port' => 6379,
-		'timeout' => 0.0,
-		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
-	),
-
-Connection details for redis to use for memory caching.
-
-::
-
-	'memcached_servers' => array(
-		// hostname, port and optional weight. Also see:
-		// http://www.php.net/manual/en/memcached.addservers.php
-		// http://www.php.net/manual/en/memcached.addserver.php
-		array('localhost', 11211),
-		//array('other.host.local', 11211),
-	),
-
-Server details for one or more memcached servers to use for memory caching.
-
-::
-
-	'cache_path' => '',
-
-Location of the cache folder, defaults to ``data/$user/cache`` where
-``$user`` is the current user. When specified, the format will change to
-``$cache_path/$user`` where ``$cache_path`` is the configured cache directory
-and ``$user`` is the user.
-
 ::
 
 	'quota_include_external_storage' => false,
@@ -1059,7 +1127,7 @@ using external storages, not recommended for regular use.
 	'asset-pipeline.enabled' => false,
 
 All css and js files will be served by the web server statically in one js
-file and one css file if this is set to ``true``.
+file and one css file if this is set to ``true``. This improves performance.
 
 ::
 
@@ -1085,69 +1153,6 @@ Where ``mount.json`` file should be stored, defaults to ``data/mount.json``
 
 When ``true``, prevent ownCloud from changing the cache due to changes in the
 filesystem for all storage.
-
-::
-
-	'objectstore' => array(
-		'class' => 'OC\\Files\\ObjectStore\\Swift',
-		'arguments' => array(
-			// trystack will user your facebook id as the user name
-			'username' => 'facebook100000123456789',
-			// in the trystack dashboard go to user -> settings -> API Password to
-			// generate a password
-			'password' => 'Secr3tPaSSWoRdt7',
-			// must already exist in the objectstore, name can be different
-			'container' => 'owncloud',
-			// create the container if it does not exist. default is false
-			'autocreate' => true,
-			// required, dev-/trystack defaults to 'RegionOne'
-			'region' => 'RegionOne',
-			// The Identity / Keystone endpoint
-			'url' => 'http://8.21.28.222:5000/v2.0',
-			// required on dev-/trystack
-			'tenantName' => 'facebook100000123456789',
-			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
-			// if omitted
-			'serviceName' => 'swift',
-		),
-	),
-
-The example below shows how to configure ownCloud to store all files in a
-swift object storage.
-
-It is important to note that ownCloud in object store mode will expect
-exclusive access to the object store container because it only stores the
-binary data for each file. The metadata is currently kept in the local
-database for performance reasons.
-
-WARNING: The current implementation is incompatible with any app that uses
-direct file IO and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
-
-One way to test is applying for a trystack account at http://trystack.org/
-
-::
-
-	'supportedDatabases' => array(
-		'sqlite',
-		'mysql',
-		'pgsql',
-		'oci',
-	),
-
-Database types that are supported for installation.
-
-Available:
-	- sqlite (SQLite3 - Community Edition Only)
-	- mysql (MySQL)
-	- pgsql (PostgreSQL)
-	- oci (Oracle - Enterprise Edition Only)
-
-All other config options
-------------------------
-
 
 ::
 
@@ -1178,8 +1183,8 @@ max file size for animating gifs on public-sharing-site.
 If the gif is bigger, it'll show a static preview
 
 Value represents the maximum filesize in megabytes
-Default is 10
-Set to -1 for no limit
+  Default is 10
+  Set to -1 for no limit
 
 ::
 
@@ -1191,7 +1196,9 @@ This is disabled by default as it is still beta.
 
 Prevents concurrent processes to access the same files
 at the same time. Can help prevent side effects that would
-be caused by concurrent operations.
+be caused by concurrent operations. Mainly relevant for
+very large installations with many users working with
+shared files.
 
 WARNING: BETA quality
 
@@ -1200,7 +1207,7 @@ WARNING: BETA quality
 	'memcache.locking' => '\\OC\\Memcache\\Redis',
 
 Memory caching backend for file locking
-Because most memcache backends can clean values without warning using redis is recommended
+  Because most memcache backends can clean values without warning using redis is highly recommended to *avoid data loss*
 
 ::
 
