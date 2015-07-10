@@ -61,8 +61,9 @@ necessary security checks.
 	'datadirectory' => '/var/www/owncloud/data',
 
 Where user files are stored; this defaults to ``data/`` in the ownCloud
-directory. The SQLite database is also stored here, when you use SQLite. (SQLite is
-available only in ownCloud Community Edition)
+directory. The SQLite database is also stored here, when you use SQLite.
+
+(SQLite is not available in ownCloud Enterprise Edition)
 
 ::
 
@@ -79,7 +80,7 @@ Identifies the database used with this installation. See also config option
 ``supportedDatabases``
 
 Available:
-	- sqlite (SQLite3 - Community Edition Only)
+	- sqlite (SQLite3 - Not in Enterprise Edition)
 	- mysql (MySQL/MariaDB)
 	- pgsql (PostgreSQL)
 	- oci (Oracle - Enterprise Edition Only)
@@ -875,8 +876,123 @@ Works only together when `forcessl` is set to true.
 
 Extra SSL options to be used for configuration.
 
-Miscellaneous
--------------
+Memory caching backend configuration
+------------------------------------
+
+
+::
+
+	'redis' => array(
+		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
+		'port' => 6379,
+		'timeout' => 0.0
+	),
+
+Connection details for redis to use for memory caching.
+
+Redis is only used if other memory cache options (xcache, apc, apcu) are
+not available.
+
+::
+
+	'memcached_servers' => array(
+		// hostname, port and optional weight. Also see:
+		// http://www.php.net/manual/en/memcached.addservers.php
+		// http://www.php.net/manual/en/memcached.addserver.php
+		array('localhost', 11211),
+		//array('other.host.local', 11211),
+	),
+
+Server details for one or more memcached servers to use for memory caching.
+
+Memcache is only used if other memory cache options (xcache, apc, apcu, redis) are
+not available.
+
+::
+
+	'cache_path' => '',
+
+Location of the cache folder, defaults to ``data/$user/cache`` where
+``$user`` is the current user. When specified, the format will change to
+``$cache_path/$user`` where ``$cache_path`` is the configured cache directory
+and ``$user`` is the user.
+
+Using Object Store with ownCloud
+--------------------------------
+
+
+::
+
+	'objectstore' => array(
+		'class' => 'OC\\Files\\ObjectStore\\Swift',
+		'arguments' => array(
+			// trystack will user your facebook id as the user name
+			'username' => 'facebook100000123456789',
+			// in the trystack dashboard go to user -> settings -> API Password to
+			// generate a password
+			'password' => 'Secr3tPaSSWoRdt7',
+			// must already exist in the objectstore, name can be different
+			'container' => 'owncloud',
+			// create the container if it does not exist. default is false
+			'autocreate' => true,
+			// required, dev-/trystack defaults to 'RegionOne'
+			'region' => 'RegionOne',
+			// The Identity / Keystone endpoint
+			'url' => 'http://8.21.28.222:5000/v2.0',
+			// required on dev-/trystack
+			'tenantName' => 'facebook100000123456789',
+			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
+			// if omitted
+			'serviceName' => 'swift',
+		),
+	),
+
+This example shows how to configure ownCloud to store all files in a
+swift object storage.
+
+It is important to note that ownCloud in object store mode will expect
+exclusive access to the object store container because it only stores the
+binary data for each file. The metadata is currently kept in the local
+database for performance reasons.
+
+WARNING: The current implementation is incompatible with any app that uses
+direct file IO and circumvents our virtual filesystem. That includes
+Encryption and Gallery. Gallery will store thumbnails directly in the
+filesystem and encryption will cause severe overhead because key files need
+to be fetched in addition to any requested file.
+
+One way to test is applying for a trystack account at http://trystack.org/
+
+::
+
+	'supportedDatabases' => array(
+		'sqlite',
+		'mysql',
+		'pgsql',
+		'oci',
+		'mssql'
+	),
+
+Database types that are supported for installation.
+
+Available:
+	- sqlite (SQLite3 - Not in Enterprise Edition)
+	- mysql (MySQL)
+	- pgsql (PostgreSQL)
+	- oci (Oracle - Enterprise Edition Only)
+	- mssql (Microsoft SQL Server - Enterprise Edition Only)
+
+::
+
+	'custom_csp_policy' =>
+		"default-src 'self'; script-src 'self' 'unsafe-eval'; ".
+		"style-src 'self' 'unsafe-inline'; frame-src *; img-src *; ".
+		"font-src 'self' data:; media-src *; connect-src *",
+
+Custom CSP policy, changing this will overwrite the standard policy
+
+All other config options
+------------------------
 
 
 ::
@@ -919,43 +1035,6 @@ AES-256-CFB are supported.
 
 ::
 
-	'redis' => array(
-		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
-		'port' => 6379,
-		'timeout' => 0.0
-	),
-
-Connection details for redis to use for memory caching.
-
-Redis is only used if other memory cache options (xcache, apc, apcu) are
-not available.
-
-::
-
-	'memcached_servers' => array(
-		// hostname, port and optional weight. Also see:
-		// http://www.php.net/manual/en/memcached.addservers.php
-		// http://www.php.net/manual/en/memcached.addserver.php
-		array('localhost', 11211),
-		//array('other.host.local', 11211),
-	),
-
-Server details for one or more memcached servers to use for memory caching.
-
-Memcache is only used if other memory cache options (xcache, apc, apcu, redis) are
-not available.
-
-::
-
-	'cache_path' => '',
-
-Location of the cache folder, defaults to ``data/$user/cache`` where
-``$user`` is the current user. When specified, the format will change to
-``$cache_path/$user`` where ``$cache_path`` is the configured cache directory
-and ``$user`` is the user.
-
-::
-
 	'quota_include_external_storage' => false,
 
 EXPERIMENTAL: option whether to include external storage in quota
@@ -983,7 +1062,7 @@ using external storages, not recommended for regular use.
 	'asset-pipeline.enabled' => false,
 
 All css and js files will be served by the web server statically in one js
-file and one css file if this is set to ``true``.
+file and one css file if this is set to ``true``. This improves performance.
 
 ::
 
@@ -1009,80 +1088,6 @@ Where ``mount.json`` file should be stored, defaults to ``data/mount.json``
 
 When ``true``, prevent ownCloud from changing the cache due to changes in the
 filesystem for all storage.
-
-::
-
-	'objectstore' => array(
-		'class' => 'OC\\Files\\ObjectStore\\Swift',
-		'arguments' => array(
-			// trystack will user your facebook id as the user name
-			'username' => 'facebook100000123456789',
-			// in the trystack dashboard go to user -> settings -> API Password to
-			// generate a password
-			'password' => 'Secr3tPaSSWoRdt7',
-			// must already exist in the objectstore, name can be different
-			'container' => 'owncloud',
-			// create the container if it does not exist. default is false
-			'autocreate' => true,
-			// required, dev-/trystack defaults to 'RegionOne'
-			'region' => 'RegionOne',
-			// The Identity / Keystone endpoint
-			'url' => 'http://8.21.28.222:5000/v2.0',
-			// required on dev-/trystack
-			'tenantName' => 'facebook100000123456789',
-			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
-			// if omitted
-			'serviceName' => 'swift',
-		),
-	),
-
-The example below shows how to configure ownCloud to store all files in a
-swift object storage.
-
-It is important to note that ownCloud in object store mode will expect
-exclusive access to the object store container because it only stores the
-binary data for each file. The metadata is currently kept in the local
-database for performance reasons.
-
-WARNING: The current implementation is incompatible with any app that uses
-direct file IO and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
-
-One way to test is applying for a trystack account at http://trystack.org/
-
-::
-
-	'supportedDatabases' => array(
-		'sqlite',
-		'mysql',
-		'pgsql',
-		'oci',
-		'mssql'
-	),
-
-Database types that are supported for installation.
-
-Available:
-	- sqlite (SQLite3 - Community Edition Only)
-	- mysql (MySQL)
-	- pgsql (PostgreSQL)
-	- oci (Oracle - Enterprise Edition Only)
-	- mssql (Microsoft SQL Server - Enterprise Edition Only)
-
-::
-
-	'custom_csp_policy' =>
-		"default-src 'self'; script-src 'self' 'unsafe-eval'; ".
-		"style-src 'self' 'unsafe-inline'; frame-src *; img-src *; ".
-		"font-src 'self' data:; media-src *; connect-src *",
-
-Custom CSP policy, changing this will overwrite the standard policy
-
-All other config options
-------------------------
-
 
 ::
 
@@ -1112,9 +1117,8 @@ max file size for animating gifs on public-sharing-site.
 
 If the gif is bigger, it'll show a static preview
 
-Value represents the maximum filesize in megabytes
-Default is 10
-Set to -1 for no limit
+Value represents the maximum filesize in megabytes. Default is 10. Set to
+-1 for no limit.
 
 ::
 
