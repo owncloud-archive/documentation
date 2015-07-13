@@ -18,6 +18,8 @@ On the User management page of your ownCloud Web UI you can:
 The default view displays basic information about your users.
 
 .. figure:: ../images/users-config.png
+   :alt: The user administration page displays all users in a table format. The top of the table     contains the fields for creating new users, and the user search form. This is followed by rows    showing their ownCloud IDs, full names, password change fields, group configuration dropdown
+   menus, group admin configuration dropdown menus, and quota configuration dropdown menus.
 
 The Group filters on the left sidebar lets you quickly filter users by their 
 group memberships, and create new groups.
