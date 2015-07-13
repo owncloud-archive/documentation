@@ -20,7 +20,7 @@ The default view displays basic information about your users.
 .. figure:: ../images/users-config.png
    :alt: The user administration page displays all users in a table format.
    
-   The user administration page displays all users in a table format.
+   *The user administration page displays all users in a table format.*
 
 The Group filters on the left sidebar lets you quickly filter users by their 
 group memberships, and create new groups.
