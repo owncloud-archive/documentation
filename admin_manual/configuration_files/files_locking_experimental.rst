@@ -33,7 +33,7 @@ After installing Redis you must enter a simple configuration in your
  'redis' => array(
 	'host' => 'localhost', 
 	// can also be a unix domain socket: 
-        '/tmp/redis.sock'
+        '/tmp/redis.sock',
 	'port' => 6379,
 	'timeout' => 0.0,
 	// Optional, if undefined SELECT will not run and will use Redis 
