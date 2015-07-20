@@ -75,6 +75,10 @@ enable the new encryption backend and migrate your encryption keys. See
 Encryption can no longer be disabled in ownCloud 8.1. It is planned to re-add
 this feature to the command line client for a future release.
 
+It is not recommended to upgrade encryption-enabled systems from ownCloud Server 8.0
+to version 8.1.0 as there is a chance the migration will break. We recommend to
+migrate to the first bugfix release, ownCloud Server 8.1.1.
+
 Due to various technical issues, by default desktop sync clients older than 
 1.7 are not allowed to connect and sync with the ownCloud server. This is 
 configurable via the ``minimum.supported.desktop.version`` switch in 
