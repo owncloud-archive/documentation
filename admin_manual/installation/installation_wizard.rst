@@ -5,6 +5,12 @@ Installation Wizard
 When ownCloud prerequisites are fulfilled and all ownCloud files are installed on the server, the last step to complete the 
 installation is running the Installation Wizard.
 
+`Video: Your first minute with ownCloud Server 8.1
+<https://youtu.be/8QeJKGyhFhk>`_
+
+.. figure:: images/video_firstminute.png
+   :target: https://youtu.be/8QeJKGyhFhk 
+
   * If you are installing ownCloud on the same machine as you are accessing the
     install wizard from, the URL will be ``http://localhost/owncloud``, or ``https://localhost/owncloud`` if you have enabled SSL.
   * If you are installing ownCloud on a different machine, you'll have to access
@@ -17,7 +23,7 @@ installation is running the Installation Wizard.
 
 .. image:: images/install-wizard.png
    :scale: 75%
- 
+   
    
 Required Settings
 ~~~~~~~~~~~~~~~~~
