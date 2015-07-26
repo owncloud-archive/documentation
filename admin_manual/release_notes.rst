@@ -84,11 +84,16 @@ Due to various technical issues, by default desktop sync clients older than
 configurable via the ``minimum.supported.desktop.version`` switch in 
 ``config.php``.
 
-Previews are now generated at a maximum size of 2048 x 2048 pixels. This is configurable via the ``preview_max_x`` and ``preview_max_y`` switches in ``config.php``.
+Previews are now generated at a maximum size of 2048 x 2048 pixels. This is configurable
+via the ``preview_max_x`` and ``preview_max_y`` switches in ``config.php``.
 
 The ownCloud 8 server is not supported on any version of Windows.
 
-The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the apps page and try again, and the update will succeed.
+The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the
+apps page and try again, and the update will succeed.
+
+The ``forcessl`` option within the ``config.php`` and the ``Enforce SSL`` option within the
+Admin-Backend was removed. This now needs to be configured like described in :ref:`use-https-label`.
 
 Enterprise 8.1 Only
 -------------------
