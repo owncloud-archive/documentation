@@ -15,6 +15,12 @@ On the User management page of your ownCloud Web UI you can:
 * Send an automatic email notification to new users
 * Delete them with a single click
 
+`Video: Managing Users in ownCloud Server 8.1
+<https://youtu.be/teelHVdXD4k>`_
+
+.. figure:: images/video_usermanagement.png
+   :target: https://youtu.be/teelHVdXD4k 
+
 The default view displays basic information about your users.
 
 .. figure:: ../images/users-config.png
