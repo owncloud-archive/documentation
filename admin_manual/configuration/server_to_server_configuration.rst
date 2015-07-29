@@ -9,10 +9,10 @@ can automatically send an email notification when you create the share, add
 password protection, allow users to upload files, and set an expiration date.
 
 .. note:: This is called Federated Cloud Sharing in ownCloud 8. You may create 
-   shares with oC 8 servers, following the steps below using public link 
-   shares. oC 8 also supports creating the share using the ``Share with user or 
+   shares with oC8 servers, following the steps below using public link 
+   shares. oC8 also supports creating the share using the ``Share with user or 
    group`` form field. This is not supported in oC7 and you must use public 
-   link shares. 
+   link shares on both servers. 
 
 Follow these steps to create a new public share:
 
