@@ -22,12 +22,16 @@ user interface or how to install clients on the server, refer to the following:
 .. _`User Manual`: http://doc.owncloud.com/
 .. _`Desktop Client Manual`: http://doc.owncloud.com/
 
-ownCloud Videos
----------------
+ownCloud Videos and Blogs
+-------------------------
 
-See :doc:`videos`
-for howtos, demos, news, and Webinars for both the 
-Community and Enterprise versions of ownCloud.
+See the `official ownCloud channel 
+<https://www.youtube.com/channel/UC_4gez4lsWqciH-otOlXo5w>`_ and `ownClouders 
+community channel <https://www.youtube.com/channel/UCA8Ehsdu3KaxSz5KOcCgHbw>`_ 
+on YouTube for tutorials, overviews, and conference videos.
+
+Visit `ownCloud Planet <https://owncloud.org/news/>`_ for news and developer 
+blogs.
 
 Document Structure
 ------------------
