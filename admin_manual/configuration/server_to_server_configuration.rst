@@ -1,12 +1,18 @@
+====================================
 Configuring Server-to-Server Sharing
-========================================
+====================================
 
 ownCloud 7 introduces a powerful new feature, server-to-server sharing. With 
 just a few clicks you can easily and securely create public shares for sharing 
-files and directories with other ownCloud 7 servers. (Currently, this works only 
-with OC7 and not older versions.)  You can automatically send an email 
-notification when you create the share, add password protection, allow users to 
-upload files, and set an expiration date.
+files and directories with other ownCloud 7 (and newer versions) servers. You 
+can automatically send an email notification when you create the share, add 
+password protection, allow users to upload files, and set an expiration date.
+
+.. note:: This is called Federated Cloud Sharing in ownCloud 8. You may create 
+   shares with oC 8 servers, following the steps below using public link 
+   shares. oC 8 also supports creating the share using the ``Share with user or 
+   group`` form field. This is not supported in oC7 and you must use public 
+   link shares. 
 
 Follow these steps to create a new public share:
 
@@ -40,13 +46,14 @@ See "Using Server-to-Server Sharing" in the Users Manual to learn how to
 connect to a remote public share.
 
 Notes
---------
+-----
 
 Your Apache Web server must have ``mod_rewrite`` enabled, and you must have 
 ``trusted_domains`` configured in ``config.php``. Consider also enabling SSL to 
-encrypt all traffic between your servers. (See :doc:`../installation/source_installation` 
-to learn more about mod_rewrite, SSL, and alternative HTTP servers. See
-:doc:`../installation/installation_wizard` to learn more about configuring trusted domains.)
+encrypt all traffic between your servers. (See 
+:doc:`../installation/source_installation` to learn more about mod_rewrite, SSL, 
+and alternative HTTP servers. See :doc:`../installation/installation_wizard` to 
+learn more about configuring trusted domains.)
 
 Self-signed certificates for Server-to-Server Sharing are currently not supported.
 
