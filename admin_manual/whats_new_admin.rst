@@ -1,6 +1,6 @@
-=====================================
-What's New for Admins in ownCloud 8.1
-=====================================
+===========================================
+What's New for Admins in ownCloud |version|
+===========================================
 
 New Packaging
 -------------
@@ -57,7 +57,7 @@ Enterprise Subscription.
 Improvements and New Features
 -----------------------------
 
-ownCloud Server and Enterprise Subscription 8.1 are shipping with a batch of 
+ownCloud Server and Enterprise Subscription |version| are shipping with a batch of 
 improvements and new features, including:
 
 * Improved performance, with faster file transfers, much faster file deletion, 
