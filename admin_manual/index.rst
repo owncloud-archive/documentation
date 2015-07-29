@@ -29,8 +29,10 @@ editions.
 ownCloud Videos
 ---------------
 
-See :doc:`videos/index` for howtos, demos, news, and Webinars for both the 
-Server and Enterprise Subscription versions of ownCloud.
+See the `official ownCloud channel 
+<https://www.youtube.com/channel/UC_4gez4lsWqciH-otOlXo5w>`_ and `ownClouders 
+community channel <https://www.youtube.com/channel/UCA8Ehsdu3KaxSz5KOcCgHbw>`_ 
+on YouTube for tutorials, overviews, and conference videos.
 
 Target Audience
 ---------------
