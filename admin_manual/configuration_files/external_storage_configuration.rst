@@ -33,6 +33,9 @@ available for use:
    can use the examples below. See the section :doc:`external_storage_configuration_gui`
    how to do this.
 
+.. note:: A non-blocking or correctly configured SELinux setup is needed
+   for these backends to work. Please refer to the :ref:`selinux-config-label`.
+
 Please keep in mind that some formatting has been applied and carriage returns
 have been added for better readability. In the :file:`data/mount.json` all
 values need to be concatenated and written in a row without these modifications!
@@ -178,9 +181,6 @@ Example
     }
 
 .. note:: PHP needs to be build with FTP support for this backend to work.
-
-.. note:: A non-blocking or correctly configured SELinux setup is needed
-   for this backend to work.
 
 .. note:: The external storage ``FTP/FTPS/SFTP`` needs the ``allow_url_fopen`` PHP
    setting to be set to ``1``. When having connection problems make sure that it is

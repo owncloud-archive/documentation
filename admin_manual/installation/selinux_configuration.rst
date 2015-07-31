@@ -1,3 +1,5 @@
+.. _selinux-config-label:
+
 =====================
 SELinux Configuration
 =====================
@@ -47,3 +49,19 @@ Allow access to LDAP server
 Use this setting to allow LDAP connections::
 
  setsebool -P httpd_can_connect_ldap on
+  
+Allow access to remote network
+------------------------------
+
+ownCloud requires access to remote networks for functionalities such as Server-to-Server sharing, external storages or
+the app store. To allow this access use the following setting::
+
+ setsebool -P httpd_can_network_connect on
+
+Allow access to SMTP/sendmail
+-----------------------------
+
+If you want to allow ownCloud to send out e-mail notifications via sendmail you need
+to use the following setting::
+
+ setsebool -P httpd_can_sendmail on
