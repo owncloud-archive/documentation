@@ -21,7 +21,7 @@ At this point, this repository hosts three manuals:
   core Architecture.
   
 Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for 
-ownCloud 7, stable 8 is for ownCloud 8.0, and master is version 8.1.
+ownCloud 7, stable 8 is for ownCloud 8.0, stable 8.1 is for ownCloud 8.1, and master is version 8.2.
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
