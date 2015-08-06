@@ -7,7 +7,7 @@ To restore an ownCloud installation there are three main things you need to rest
 #. The data folder
 #. The database
 
-When you have completed your restoration, see the ``Setting Strong Directory Permissions`` section of :doc:`..installation/installation_wizard`.
+When you have completed your restoration, see the ``Setting Strong Directory Permissions`` section of :doc:`../installation/installation_wizard`.
 
 Restore Folders
 ---------------
