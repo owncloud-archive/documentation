@@ -93,7 +93,17 @@ This documents the ownCloud 7.0 release, suitable for production use.
   
 ==============================
 Desktop Client and Mobile Apps
-==============================  
+==============================
+
+---------------------------
+ownCloud Desktop Client 2.0
+---------------------------
+
+The *development* version of the ownCloud Desktop Client.
+
+* `ownCloud Desktop Client Manual <https://doc.owncloud.org/desktop/2.0/>`_ 
+  (`Download PDF 
+  <https://doc.owncloud.org/desktop/2.0/ownCloudClientManual.pdf>`_)
   
 ---------------------------
 ownCloud Desktop Client 1.8
@@ -109,7 +119,8 @@ The *latest* ownCloud desktop sync client release, suitable for production use.
 ownCloud Desktop Client 1.7
 ---------------------------
 
-The *previous* ownCloud desktop sync client release, suitable for production use.
+The *previous* ownCloud desktop sync client release. Users are encouraged to 
+upgrade to 1.8.
 
 * `ownCloud Desktop Client Manual <https://doc.owncloud.org/desktop/1.7/>`_ 
   (`Download PDF 
