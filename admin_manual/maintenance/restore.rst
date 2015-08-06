@@ -7,6 +7,8 @@ To restore an ownCloud installation there are three main things you need to rest
 #. The data folder
 #. The database
 
+When you have completed your restoration, see the ``Setting Strong Directory Permissions`` section of :doc:`..installation/installation_wizard`.
+
 Restore Folders
 ---------------
 
@@ -33,7 +35,8 @@ SQLite
 ^^^^^^
 ::
 
-    sqlite3 data/owncloud.db .dump < owncloud-sqlbkp.bak
+    rm data/owncloud.db
+    sqlite3 data/owncloud.db < owncloud-sqlbkp.bak
 
 PostgreSQL
 ^^^^^^^^^^
