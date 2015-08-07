@@ -16,14 +16,14 @@ Supported Platforms
 -------------------
 
 * Server: Linux (Debian 7 & 8, SUSE Linux Enterprise Server 11 SP3 & 12, 
-  Red Hat Enterprise Linux/Centos 6.5 and 7, Ubuntu 12.04 LTS, 14.04 LTS, 
-  14.10)
+  Red Hat Enterprise Linux/Centos 6.5, 6.6 and 7, Ubuntu 12.04 LTS, 14.04 LTS, 
+  15.04)
 * Webserver: Apache 2  
 * Databases: MySQL/MariaDB 5.x; Oracle 11g; PostgreSQL
 * PHP 5.4 + required
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
 * Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
-  only), Linux (CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
+  only), Linux (Debian 8, CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
   21, openSUSE 12.3, 13)
 * Mobile apps: iOS 7+, Android 4+
 * Web browser: IE8+ (but not compatibility mode), Firefox 14+, Chrome 18+, 
