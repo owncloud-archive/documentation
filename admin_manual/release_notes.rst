@@ -140,6 +140,8 @@ apps page and try again, and the update will succeed.
 The ``forcessl`` option within the ``config.php`` and the ``Enforce SSL`` option within the
 Admin-Backend was removed. This now needs to be configured like described in :ref:`use-https-label`.
 
+WebDAV file locking was removed in oC 8.1 which causes Finder on Mac OS X to mount WebDAV read-only.
+
 Enterprise 8.1 Only
 -------------------
 
