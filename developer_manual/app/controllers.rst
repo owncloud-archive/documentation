@@ -168,7 +168,7 @@ would be passed in as the string *'false'* which is not what one would expect. T
 
     }
 
-The following types will be casted:
+The following types will be cast:
 
 * **bool** or **boolean**
 * **float**
@@ -600,7 +600,7 @@ If you want to use a custom, lazily rendered response simply implement the inter
 
 .. note:: Because this code is rendered after several usually built in helpers, you need to take care of errors and proper HTTP caching by yourself.
 
-Modifying the Content Securicy Policy
+Modifying the Content Security Policy
 -------------------------------------
 .. versionadded:: 8.1
 
