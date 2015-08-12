@@ -149,7 +149,9 @@ If the upgrade fails, then you must try a manual upgrade.
 Manual Upgrade Procedure
 ------------------------
 
-Start by putting your server in maintenance mode. This prevents new logins, 
+If you are upgrading to a major release, for example from 7.0.5 to 8.0, you must review all third party applications (not core apps), for compatibility with your new ownCloud version. Then disable all of them before starting the upgrade.
+
+Next putting your server in maintenance mode. This prevents new logins, 
 locks the sessions of logged-in users, and displays a status screen so users 
 know what is happening. There are two ways to do this, and the preferred method 
 is to use the ``occ`` command, which you must run as your HTTP user. This example
@@ -162,19 +164,15 @@ Please see :doc:`../configuration_server/occ_command` to learn more about ``occ`
 The other way is by entering your ``config.php`` file and changing 
 ``'maintenance' => false,`` to ``'maintenance' => true,``. 
 
-1. If you are upgrading to a major release, for example from 7.0.5 to 
-   8.0, you must review all third party applications (not core apps), for  
-   compatibility with your new ownCloud version. Then disable all of them 
-   before starting the upgrade.
-2. Back up your existing ownCloud Server database, data directory, and 
+3. Back up your existing ownCloud Server database, data directory, and 
    ``config.php`` file. (See :doc:`backup`.)
-3. Download and unpack the latest ownCloud Server release (Archive file) from 
+4. Download and unpack the latest ownCloud Server release (Archive file) from 
    `owncloud.org/install/ 
    <https://owncloud.org/install/>`_ into an empty directory outside 
    of your current installation. For example, if your current ownCloud is 
    installed in ``/var/www/owncloud/`` you could create a new directory called
    ``/var/www/owncloud2/``
-4. Stop your web server.
+5. Stop your web server.
 
 Apache 2 is the recommended server for ownCloud (see :doc:`../release_notes` 
 for recommended setups and supported platforms.)
@@ -194,22 +192,22 @@ for recommended setups and supported platforms.)
   | openSUSE 12.3 and up  | ``systemctl stop apache2``              |
   +-----------------------+-----------------------------------------+
 
-5. Rename or move your current ownCloud directory (named ``owncloud/`` if 
+6. Rename or move your current ownCloud directory (named ``owncloud/`` if 
    installed using defaults) to another location.
 
-6. Unpack your new tarball::
+7. Unpack your new tarball::
 
     tar xjf owncloud-latest.tar.bz2
     
-7. This creates a new ``owncloud/`` directory populated with your new server 
+8. This creates a new ``owncloud/`` directory populated with your new server 
    files. Copy this directory and its contents to the original location of your 
    old server, for example ``/var/www/``, so that once again you have 
    ``/var/www/owncloud`` .
 
-8. Copy and paste the ``config.php`` file from your old version of 
+9. Copy and paste the ``config.php`` file from your old version of 
    ownCloud to your new ownCloud version.
 
-9. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
+10. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
    it from your old version of ownCloud to the ``owncloud/`` directory of 
    your new ownCloud version. If you keep it outside of ``owncloud/`` then 
    you don't have to do anything with it, because its location is configured in 
@@ -218,7 +216,7 @@ for recommended setups and supported platforms.)
 .. note:: We recommend storing your ``data/`` directory in a location other 
    than your ``owncloud/`` directory.
 
-10. Restart your web server.
+11. Restart your web server.
 
   +-----------------------+-----------------------------------------+
   | Operating System      | Command (as root)                       |
@@ -235,7 +233,7 @@ for recommended setups and supported platforms.)
   | openSUSE 12.3 and up  | ``systemctl start apache2``             |
   +-----------------------+-----------------------------------------+
 
-11. Now you should be able to open a Web browser to your ownCloud server and 
+12. Now you should be able to open a Web browser to your ownCloud server and 
     log in as usual. You have a couple more steps to go: You should see a 
     **Start Update** screen, just like in the **Upgrading With Your Linux 
     Package Manager** section, above. Review the prerequisites, and if you have 
