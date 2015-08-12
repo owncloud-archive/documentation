@@ -151,7 +151,7 @@ Manual Upgrade Procedure
 
 If you are upgrading to a major release, for example from 7.0.5 to 8.0, you must review all third party applications (not core apps), for compatibility with your new ownCloud version. Then disable all of them before starting the upgrade.
 
-Next putting your server in maintenance mode. This prevents new logins, 
+Next put your server in maintenance mode. This prevents new logins, 
 locks the sessions of logged-in users, and displays a status screen so users 
 know what is happening. There are two ways to do this, and the preferred method 
 is to use the ``occ`` command, which you must run as your HTTP user. This example
