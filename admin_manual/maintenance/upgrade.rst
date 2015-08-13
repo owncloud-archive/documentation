@@ -208,10 +208,10 @@ for recommended setups and supported platforms.)
    ownCloud to your new ownCloud version.
 
 10. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
-   it from your old version of ownCloud to the ``owncloud/`` directory of 
-   your new ownCloud version. If you keep it outside of ``owncloud/`` then 
-   you don't have to do anything with it, because its location is configured in 
-   your original ``config.php``, and none of the upgrade steps touch it.
+    it from your old version of ownCloud to the ``owncloud/`` directory of 
+    your new ownCloud version. If you keep it outside of ``owncloud/`` then 
+    you don't have to do anything with it, because its location is configured 
+    in your original ``config.php``, and none of the upgrade steps touch it.
 
 .. note:: We recommend storing your ``data/`` directory in a location other 
    than your ``owncloud/`` directory.
