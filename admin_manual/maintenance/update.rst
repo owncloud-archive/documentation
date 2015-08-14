@@ -9,6 +9,12 @@ default, which you can confirm by looking on your Apps page.
 
 .. note:: The Updater app is not enabled and not supported in ownCloud 
    Enterprise Subscription.
+   
+   **Downgrading** is not supported and risks corrupting your data! If you want 
+   to revert to an older ownCloud version, install it from scratch and then 
+   restore your data from backup. Before doing this, file a support ticket (if 
+   you have paid support) or ask for help in the ownCloud forums to see if your 
+   issue can be resolved without downgrading.
 
 The Updater App is not required, and it is recommended to use other methods for 
 keeping your ownCloud server up-to-date, if possible. (See :doc:`upgrade`.) The 
