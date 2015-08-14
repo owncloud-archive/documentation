@@ -57,11 +57,11 @@ Enterprise Subscription.
 Improvements and New Features
 -----------------------------
 
-ownCloud Server and Enterprise Subscription |version| are shipping with a batch of 
-improvements and new features, including:
+ownCloud Server and Enterprise Subscription |version| are shipping with a batch 
+of improvements and new features, including:
 
 * Improved performance, with faster file transfers, much faster file deletion, 
-  improved scalability   through improved handling of parallel requests, and up 
+  improved scalability through improved handling of parallel requests, and up 
   to 50% more users on each ownCloud server instance. 
 * Better file locking
 * Updated encryption with support for multiple encryption backends and 
@@ -71,18 +71,17 @@ improvements and new features, including:
 * SFTP external storage with SSH keys
 * SMB external storage is now based on ``libsmbclient``
 
-
 * Individual settings per external storage mount, including encryption and previews
 * Improved performance and better storage space management of preview 
   generation
-* UI improvements for configurating external storage
+* UI improvements for configuring external storage
 * The ownCloud Appstore shows now different trust levels, and allows enabling 
   experimental apps
 * Deleted files & folders now keep the share info after restoring from trashbin 
   (local shares only and not external storage)
 
 
-* Many more links from the administration UI to the relevant documention
+* Many more links from the administration UI to the relevant documentation
 * ``occ`` command updated to allow installing ownCloud completely from the 
   command line
 * User avatars are displayed in share dialogs
@@ -98,7 +97,6 @@ improvements and new features, including:
 * `Developer changelog 
   <https://doc.owncloud.org/server/8.1/developer_manual/app/changelog.html>`_ 
   is available in the Developer's Manual
-  
 
 * File IDs are now persistent when moving files across storages, deleted to 
   trashbin or restored as version
