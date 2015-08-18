@@ -39,7 +39,7 @@ The Encryption app encrypts only the contents of files, and not filenames and
 folder structures.
 
 You should regularly backup all encryption keys to prevent permanent data loss. 
-The encryption keys are stored in following folders:
+The encryption keys are stored in the following folders:
 
 ``data/owncloud_private_key`` 
   Recovery key, if enabled, and public share key
