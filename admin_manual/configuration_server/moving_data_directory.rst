@@ -27,7 +27,7 @@ Then copy your data directory to its new location, which in this example is
 
  $ sudo cp -r /var/www/owncloud/data /var/storage
  
-Configure your new location in your ``config.php``, using the 
+Configure your new location in your ``config.php`` file, using the 
 ``datadirectory`` parameter::
  
  'datadirectory' => '/var/storage/data'
@@ -35,6 +35,10 @@ Configure your new location in your ``config.php``, using the
 Run ``occ maintenance:repair`` to update the filepaths in your database::
 
  $ sudo -u www-data php occ maintenance:repair
+ 
+Take your server out of maintenance mode::
+
+  $ sudo -u www-data php occ maintenance:mode --off
  
 Log in and make sure all your files are there, and your users' files. When 
 everything looks correct, you can delete your old data directory. Remember to 
