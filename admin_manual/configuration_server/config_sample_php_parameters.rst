@@ -357,7 +357,7 @@ on your Unix system.
 
 	'mail_smtphost' => '127.0.0.1',
 
-This depends on ``mail_smtpmode``. Specified the IP address of your mail
+This depends on ``mail_smtpmode``. Specify the IP address of your mail
 server host. This may contain multiple hosts separated by a semi-colon. If
 you need to specify the port number append it to the IP address separated by
 a colon, like this: ``127.0.0.1:24``.
@@ -372,7 +372,7 @@ This depends on ``mail_smtpmode``. Specify the port for sending mail.
 
 	'mail_smtptimeout' => 10,
 
-This depends on ``mail_smtpmode``. This set an SMTP server timeout, in
+This depends on ``mail_smtpmode``. This sets the SMTP server timeout, in
 seconds. You may need to increase this if you are running an anti-malware or
 spam scanner.
 
@@ -459,7 +459,7 @@ addresses starting with ``10.0.0.`` and ending with 1 to 3:
 
 	'overwrite.cli.url' => '',
 
-Use this configuration parameter to specify the base url for any urls which
+Use this configuration parameter to specify the base URL for any URLs which
 are generated within ownCloud using any kind of command line tools (cron or
 occ). The value should contain the full base URL:
 ``https://www.example.com/owncloud``
@@ -715,7 +715,7 @@ size.
 
 By default, ownCloud can generate previews for the following filetypes:
 
-- Images files
+- Image files
 - Covers of MP3 files
 - Text documents
 
@@ -829,7 +829,7 @@ Global settings used by LDAP User and Group Backend
 	'ldapUserCleanupInterval' => 51,
 
 defines the interval in minutes for the background job that checks user
-existance and marks them as ready to be cleaned up. The number is always
+existence and marks them as ready to be cleaned up. The number is always
 minutes. Setting it to 0 disables the feature.
 
 See command line (occ) methods ldap:show-remnants and user:delete
@@ -1079,7 +1079,7 @@ file and one css file if this is set to ``true``. This improves performance.
 	'assetdirectory' => '/var/www/owncloud',
 
 The parent of the directory where css and js assets will be stored if
-piplelining is enabled; this defaults to the ownCloud directory. The assets
+pipelining is enabled; this defaults to the ownCloud directory. The assets
 will be stored in a subdirectory of this directory named 'assets'. The
 server *must* be configured to serve that directory as $WEBROOT/assets.
 
