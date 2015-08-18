@@ -22,4 +22,4 @@ Parameters
       ...
     );
 
-You can set this parameters in the :file:`config/config.php`
+You can set this parameter in the :file:`config/config.php`
