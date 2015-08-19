@@ -13,7 +13,7 @@ with.
 .. note:: When you upgrade from older versions of ownCloud to ownCloud 8.0, you 
    must manually migrate your encryption keys with the *occ* command after the 
    upgrade is complete, like this example for CentOS:
-   *sudo -u apache php occ encryption:migrate-keys*
+   *sudo -u apache php occ encryption:migrate*
    You must run *occ* as your HTTP user. See 
    :doc:`../configuration_server/occ_command` to learn more about *occ*
 
@@ -173,12 +173,13 @@ third-party storage providers are guaranteed to be encrypted.
 LDAP and Other External User Back-ends
 --------------------------------------
 
-If you use an external user back-end, such as an LDAP or Samba server, and you change a 
-user's password on the back-end, the user will be prompted to change their ownCloud login 
-to match on their next ownCloud login. The user will need both their old and new passwords 
-to do this. If you have enabled the Recovery Key then you can change a user's password in 
-the ownCloud Users panel to match their back-end password, and then, of course, notify the 
-user and give them their new password.
+If you use an external user back-end, such as an LDAP or Samba server, and you 
+change a user's password on the back-end, the user will be prompted to change 
+their ownCloud login to match on their next ownCloud login. The user will need 
+both their old and new passwords to do this. If you have enabled the Recovery 
+Key then you can change a user's password in the ownCloud Users panel to match 
+their back-end password, and then, of course, notify the user and give them 
+their new password.
 
 .. This section commented out because there is no windows support
 .. in oC8; un-comment this if windows support is restored

@@ -142,7 +142,7 @@ Encryption
 When you are using encryption, you must manually migrate your encryption 
 keys after upgrading your ownCloud server::
 
- $ sudo -u www-data php occ encryption:migrate-keys 
+ $ sudo -u www-data php occ encryption:migrate
 
 File Operations
 ---------------
