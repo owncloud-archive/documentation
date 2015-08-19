@@ -15,7 +15,7 @@ in a Linux environment.
 Limit on Password Length
 ------------------------
 
-ownCloud uses the bcrypt algorithm and thus for security and performance 
+ownCloud uses the bcrypt algorithm, and thus for security and performance 
 reasons, e.g. Denial of Service as CPU demand increases exponentially, it only 
 verifies the first 72 characters of passwords. This applies to all passwords 
 that you use in ownCloud: user passwords, passwords on link shares, and 
@@ -51,8 +51,11 @@ Place data directory outside of the web root
 
 It is highly recommended to place your data directory outside of the Web root 
 (i.e. outside of ``/var/www``). It is easiest to do this on a new 
-installation. You may also move your data directory on an existing 
-installation; see :doc:``
+installation.
+
+.. Doc on moving data dir coming soon
+.. You may also move your data directory on an existing 
+.. installation; see :doc:``
 
 Disable preview image generation
 ********************************
@@ -71,13 +74,13 @@ modifying the ``enabledPreviewProviders`` option switch.
 Use HTTPS
 ---------
 
-Using ownCloud without using an encrypted HTTPS connection might allow attackers 
-in a man-in-the-middle (MITM) situation to intercept your users data and 
-passwords. Thus ownCloud always recommends to setup ownCloud behind HTTPS.
+Using ownCloud without using an encrypted HTTPS connection opens up your server 
+to a man-in-the-middle (MITM) attack, and risks the interception of user data 
+and passwords. It is a best practice, and highly recommended, to always use 
+HTTPS on production servers, and to never allow unencrypted HTTP.
 
-How to setup HTTPS on your web server depends on your setup, we recommend to 
-check your distribution's vendor information on how to configure and setup 
-HTTPS.
+How to setup HTTPS on your Web server depends on your setup; please consult the 
+documentation for your HTTP server. The following examples are for Apache.
 
 Redirect all unencrypted traffic to HTTPS
 *****************************************
@@ -96,12 +99,11 @@ achieved by a setting such as the following in the Apache VirtualHosts config:
 Enable HTTP Strict Transport Security
 *************************************
 
-While redirecting all traffic to HTTPS is already a good start it will often not 
-completely prevent man-in-the-middle attacks for a regular user. Thus 
-administrators are encouraged to set the HTTP Strict Transport Security header 
-which will instruct browsers to not allow any connection to the ownCloud 
-instance anymore using HTTPS and an invalid certificate warning will often not be 
-able to get bypassed.
+While redirecting all traffic to HTTPS is good, it may not completely prevent 
+man-in-the-middle attacks. Thus administrators are encouraged to set the HTTP 
+Strict Transport Security header, which instructs browsers to not allow any 
+connection to the ownCloud instance using HTTP, and it attempts to prevent site 
+visitors from bypassing invalid certificate warnings.
 
 This can be achieved by setting the following settings within the Apache 
 VirtualHost file:
@@ -113,12 +115,12 @@ VirtualHost file:
      Header always add Strict-Transport-Security "max-age=15768000"
   </VirtualHost>
 
-It shall be noted that this requires that the ``mod_headers`` extension to be installed.
+This requires the ``mod_headers`` extension in Apache.
 
 Proper SSL configuration
 ************************
 
-Default SSL configurations by web servers are often not state-of-the-art and 
+Default SSL configurations by Web servers are often not state-of-the-art, and 
 require fine-tuning for an optimal performance and security experience. The 
 available SSL ciphers and options depend completely on your environment and 
 thus giving a generic recommendation is not really possible.
@@ -150,11 +152,10 @@ These include:
 - ``X-Frame-Options: SAMEORIGIN``
 	- Prevents embedding of the ownCloud instance within an iframe from other domains to prevent Clickjacking and other similiar attacks.
 
-However, these headers are added by the applications code in PHP and thus not 
-served on static resources and rely on the fact that there is no way to bypass 
-the intended response code path.
+These headers are hard-coded into the ownCloud server, and need no intervention 
+by the server administrator.
 
-For optimal security administrators are encouraged to serve these basic HTTP 
+For optimal security, administrators are encouraged to serve these basic HTTP 
 headers by the web server to enforce them on response. To do this Apache has to 
 be configured to use the ``.htaccess`` file and the following Apache 
 modules need to be enabled:
