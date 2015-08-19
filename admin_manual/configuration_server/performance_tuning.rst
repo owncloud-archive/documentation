@@ -35,6 +35,28 @@ system information such as active modules, active `.ini` files, and much more.
 When you are finished reviewing your information you must delete 
 ``phpinfo.php``, or move it outside of your Web directory, because it is a 
 security risk to expose such sensitive data.
+
+**********************
+ownCloud Server Tuning
+**********************
+
+Serving static files via web server
+===================================
+
+See :doc:`../configuration_files/serving_static_files_configuration` for a 
+description and the benefits.
+
+Using cron to perform background jobs
+=====================================
+
+See :doc:`background_jobs_configuration` for a description and the 
+benefits.
+
+Enable JavaScript and CSS Asset Management
+==========================================
+
+See :doc:`js_css_asset_management_configuration` for a description and the 
+benefits.
           
 **************  
 Webserver Tips
