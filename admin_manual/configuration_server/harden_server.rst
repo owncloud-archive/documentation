@@ -3,13 +3,10 @@ Hardening and Security Guidance
 ===============================
 
 ownCloud aims to ship with secure defaults that do not need to get modified by 
-administrators. However, in some cases some additional security hardening can 
-only be applied in scenarios were the administrator has complete control over 
-the ownCloud instance.
-
-This document lists some security hardenings which require manual interaction by 
-administrators. The whole document content is based on the assumption that you 
-run ownCloud Server on Apache2 in a Linux environment.
+administrators. However, in some cases some additional security hardening can be 
+applied in scenarios were the administrator has complete control over 
+the ownCloud instance. This page assumes that you run ownCloud Server on Apache2 
+in a Linux environment.
 
 .. note:: ownCloud will warn you in the administration interface if some 
    critical security-relevant options are missing. However, it is still up to 
@@ -18,13 +15,18 @@ run ownCloud Server on Apache2 in a Linux environment.
 Limit on Password Length
 ------------------------
 
-ownCloud uses the bcrypt algorithm and thus for security and performance reasons, e.g. Denial of Service as CPU demand increases exponentially, it only verifies the first 72 characters of passwords. This applies to all passwords that you use in ownCloud: user passwords, passwords on link shares, and passwords on external shares.   
+ownCloud uses the bcrypt algorithm and thus for security and performance 
+reasons, e.g. Denial of Service as CPU demand increases exponentially, it only 
+verifies the first 72 characters of passwords. This applies to all passwords 
+that you use in ownCloud: user passwords, passwords on link shares, and 
+passwords on external shares.
 
 Operating system
 ----------------
 
 Give PHP read accesss to ``/dev/urandom``
 *****************************************
+
 ownCloud uses a `RFC 4086 ("Randomness Requirements for Security")`_ compliant 
 mixer to generate cryptographically secure pseudo-random numbers. This means 
 that when generating a random number ownCloud will request multiple random 
@@ -36,22 +38,25 @@ a way that PHP is able to read random data from it.
 
 Enable hardening modules such as SELinux
 ****************************************
-It is highly recommend to enable hardening modules such as SELinux where 
+
+It is highly recommended to enable hardening modules such as SELinux where 
 possible. See :doc:`../installation/selinux_configuration` to learn more about 
 SELinux.
 
 Deployment
 ----------
 
-Move data directory outside of the web root
-*******************************************
-It is highly recommended to move the data directory (where ownCloud stores its 
-data) outside of the web root (i.e. outside of ``/var/www``) It is possible to 
-do this by moving the folder manually, and then adjusting the 
-``'datadirectory'`` parameter in ``config.php``.
+Place data directory outside of the web root
+********************************************
+
+It is highly recommended to place your data directory outside of the Web root 
+(i.e. outside of ``/var/www``). It is easiest to do this on a new 
+installation. You may also move your data directory on an existing 
+installation; see :doc:``
 
 Disable preview image generation
 ********************************
+
 ownCloud is able to generate preview images of common filetypes such as images 
 or text files. By default the preview generation for some file types that we 
 consider secure enough for deployment is enabled by default. However, 
@@ -65,6 +70,7 @@ modifying the ``enabledPreviewProviders`` option switch.
 
 Use HTTPS
 ---------
+
 Using ownCloud without using an encrypted HTTPS connection might allow attackers 
 in a man-in-the-middle (MITM) situation to intercept your users data and 
 passwords. Thus ownCloud always recommends to setup ownCloud behind HTTPS.
@@ -75,6 +81,7 @@ HTTPS.
 
 Redirect all unencrypted traffic to HTTPS
 *****************************************
+
 To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a 
 permanent redirect using the 301 status code. When using Apache this can be 
 achieved by a setting such as the following in the Apache VirtualHosts config:
@@ -88,6 +95,7 @@ achieved by a setting such as the following in the Apache VirtualHosts config:
 
 Enable HTTP Strict Transport Security
 *************************************
+
 While redirecting all traffic to HTTPS is already a good start it will often not 
 completely prevent man-in-the-middle attacks for a regular user. Thus 
 administrators are encouraged to set the HTTP Strict Transport Security header 
@@ -109,25 +117,29 @@ It shall be noted that this requires that the ``mod_headers`` extension to be in
 
 Proper SSL configuration
 ************************
-Default SSL configurations by web servers are often not state of the art and 
+
+Default SSL configurations by web servers are often not state-of-the-art and 
 require fine-tuning for an optimal performance and security experience. The 
 available SSL ciphers and options depend completely on your environment and 
 thus giving a generic recommendation is not really possible.
 
-We recommend to use the `Mozilla SSL Configuration Generator`_ to generate a 
-suitable configuration suited for your environment, furthermore the free `Qualys 
-SSL Labs Tests`_ give good guidance about whether the SSL server was correctly 
+We recommend using the `Mozilla SSL Configuration Generator`_ to generate a 
+suitable configuration suited for your environment, and the free `Qualys 
+SSL Labs Tests`_ gives good guidance on whether your SSL server is correctly 
 configured.
 
 Use a dedicated domain for ownCloud
 -----------------------------------
+
 Administrators are encouraged to install ownCloud on a dedicated domain such as 
 cloud.domain.tld instead of domain.tld to gain all the benefits offered by the 
 Same-Origin-Policy.
 
 Serve security related Headers by the web server
 ------------------------------------------------
-Basic security headers are served by ownCloud already in a default environment. These include:
+
+Basic security headers are served by ownCloud already in a default environment. 
+These include:
 
 - ``X-Content-Type-Options: nosniff``
 	- Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.
