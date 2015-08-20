@@ -1,3 +1,4 @@
+===================
 Nginx Configuration
 ===================
 
@@ -115,3 +116,17 @@ Nginx Configuration
           it can't read ``.htaccess`` PHP settings unless the ``htscanner`` PECL extension
           is installed. If PHP-FPM is used without this PECL extension installed, settings
           and permissions must be set in the ``owncloud/.user.ini`` file.
+
+Suppressing Log Messages
+------------------------
+
+If you're seeing meaningless messages in your logfile, for example `client 
+denied by server configuration: /var/www/data/htaccesstest.txt 
+<https://forum.owncloud.org/viewtopic.php?f=17&t=20217>_`, add this section to 
+your Nginx configuration to suppress them::
+
+         location = /data/htaccesstest.txt {
+            allow all;
+            log_not_found off;
+            access_log off;
+        }
