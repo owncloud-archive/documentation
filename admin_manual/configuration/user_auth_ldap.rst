@@ -1,3 +1,4 @@
+=============================
 User Authentication with LDAP
 =============================
 
@@ -25,9 +26,9 @@ The LDAP application supports:
 
 .. Note:: The LDAP app is not compatible with the ``WebDAV user backend`` app. 
    You cannot use both of them at the same time.
-
-.. note:: A non-blocking or correctly configured SELinux setup is needed
+   A non-blocking or correctly configured SELinux setup is needed
    for the LDAP backend to work. Please refer to the :ref:`selinux-config-label`.
+   On  a new LDAP configuration, it may take up to 24 hours after first login for user's avatars to appear.
 
 Configuration
 -------------
