@@ -329,7 +329,7 @@ Additionally, the Contacts app is providing an URL for special functions:
 
 **Export an address book as a vCard file**
 
-  https://ADDRESS/remote.php/caldav/addressbooks/USERNAME/ADDRESSBOOK?export
+  https://ADDRESS/remote.php/carddav/addressbooks/USERNAME/ADDRESSBOOKNAME?export
 
 Troubleshooting
 ---------------
