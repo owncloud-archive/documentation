@@ -18,7 +18,7 @@ This repository hosts three manuals:
 * **Administration Manual**
 * **Developers Manual** 
   
-Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, and stable8 is 8.0, stable8.1 is 8.1, and master is version 8.2.
+Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, stable8 is 8.0, stable8.1 is 8.1, and master is version 8.2.
 
 Please wrap lines at 80 characters.
 
@@ -44,7 +44,7 @@ Attribution 3.0 Unported license (`CC BY 3.0`_).
 Style
 -----
 
-It is using the `Sphinx Documentation Generator
+Source files are written using the `Sphinx Documentation Generator
 <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
@@ -69,20 +69,6 @@ many mistakes. Create a new branch against the master or stable branch you are
 editing, make your edits, then push your new branch to Github and open a new PR. 
 
 To edit on Github, fork the repository (see top-right of the screen, under
-your username). You will then be able to make changes easily. Once done, 
-you can create a pull request and get the changes reviewed and back into
-the official repository.
-
-Editing
--------
-Contributing to the documentation requires a github account.
-
-To edit a document, either do a checkout of the repository and edit the rst
-files from there, or work directly on github. The latter is only really
-suitable for small fixes and improvements because substantial editing efforts
-can better be controlled in an editor.
-
-To edit on github, fork the repository (see top-right of the screen, under
 your username). You will then be able to make changes easily. Once done, 
 you can create a pull request and get the changes reviewed and back into
 the official repository.
@@ -178,4 +164,4 @@ Process
 4. Wrap text lines at 80 chars, apply markup fixes
 
 .. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
-.. _`Xcode command line tools`:http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
+.. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
