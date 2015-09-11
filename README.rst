@@ -18,7 +18,7 @@ This repository hosts three manuals:
 * **Administration Manual**
 * **Developers Manual** 
   
-Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, and stable8 is 8.0, stable8.1 is 8.1, and master is version 8.2.
+Please work in the appropriate branch. stable6 is for ownCloud 6, stable7 is for ownCloud 7, stable8 is 8.0, stable8.1 is 8.1, and master is version 8.2.
 
 Please wrap lines at 80 characters.
 
@@ -44,7 +44,7 @@ Attribution 3.0 Unported license (`CC BY 3.0`_).
 Style
 -----
 
-It is using the `Sphinx Documentation Generator
+Source files are written using the `Sphinx Documentation Generator
 <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
