@@ -198,7 +198,7 @@ One exception is the method ``buildDocLinkToKey`` which gets passed in a key as 
 .. code-block:: php
 
   public function buildDocLinkToKey($key) {
-    return $this->getDocBaseUrl() . '/server/8.2/go.php?to=' . $key;
+    return $this->getDocBaseUrl() . '/server/8.1/go.php?to=' . $key;
   }
 
 Testing the new theme out
