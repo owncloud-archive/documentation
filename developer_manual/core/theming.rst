@@ -112,6 +112,53 @@ The other major color scheme is the blue header bar on the main navigation page 
 This color we will change with the above as well.
 Save the file and refresh the browser for the changes to take effect.
 
+How to change names, slogans and URLs
+=====================================
+
+The ownCloud theming allows a lot of the names that are shown on the web interface to be changed. It's also possible to change the URLs to the documentation or the Android/iOS apps.
+
+This can be done with a file named ``defaults.php`` within the root of the theme. In there you need to specify a class named ``OC_Theme`` and need to implement the methods you want to overwrite:
+
+.. code-block:: php
+
+  class OC_Theme {
+    public function getAndroidClientUrl() {
+      return 'https://play.google.com/store/apps/details?id=com.owncloud.android';
+    }
+
+    public function getName() {
+      return 'ownCloud';
+    }
+  }
+
+Each method should return a string. Following methods are available:
+
+* ``getAndroidClientUrl``
+* ``getBaseUrl``
+* ``getDocBaseUrl``
+* ``getEntity``
+* ``getName``
+* ``getHTMLName``
+* ``getiOSClientUrl``
+* ``getiTunesAppId``
+* ``getLogoClaim``
+* ``getLongFooter``
+* ``getMailHeaderColor``
+* ``getSyncClientUrl``
+* ``getTitle``
+* ``getShortFooter``
+* ``getSlogan``
+
+.. note:: Only these methods are available in the templates, because we internally wrap around hardcoded method names.
+
+One exception is the method ``buildDocLinkToKey`` which gets passed in a key as first parameter. For core we do something like this to build the documentation link:
+
+.. code-block:: php
+
+  public function buildDocLinkToKey($key) {
+    return $this->getDocBaseUrl() . '/server/8.2/go.php?to=' . $key;
+  }
+
 Testing the new theme out
 =========================
 
