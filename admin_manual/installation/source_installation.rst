@@ -1,9 +1,14 @@
+============================
 Manual Installation on Linux
 ============================
 
-Installing ownCloud on Linux from the openSUSE Build Service packages is the preferred method (see :doc:`linux_installation`). These are maintained by ownCloud engineers, and you can use your package manager to keep your ownCloud server up-to-date.
-
-If there are no packages for your Linux distribution, or you prefer installing from sources, you can setup ownCloud from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a complete walk-through for installing ownCloud on Ubuntu 
+Installing ownCloud on Linux from the openSUSE Build Service packages is the 
+preferred method (see :doc:`linux_installation`). These are maintained by 
+ownCloud engineers, and you can use your package manager to keep your ownCloud 
+server up-to-date. If there are no packages for your Linux distribution, or you 
+prefer installing from sources, you can setup ownCloud from scratch using a 
+classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a 
+complete walk-through for installing ownCloud on Ubuntu 
 14.04 LTS Server with Apache and MySQL.
 
 Prerequisites
@@ -13,11 +18,14 @@ Prerequisites
           to install ownCloud on. Although this is not an absolute requirement,
           installation without it is likely to require contacting your
           hoster (e.g. for installing required modules). Consult the `PHP manual 
-          <http://php.net/manual/en/extensions.php>`_ for information on modules. Your Linux distribution should have packages for all required modules.
+          <http://php.net/manual/en/extensions.php>`_ for information on 
+          modules.Your Linux distribution should have packages for all 
+          required modules.
 
 To run ownCloud, your web server must have the following installed:
 
-* php5 (>= 5.3.8, we highly recommended 5.4+ as 5.3 is old and has many problems )
+* php5 (>= 5.3.8, we highly recommended 5.4+ as 5.3 is old and has many 
+  problems. See :ref:`label-rhel6-php54`)
 * PHP module ctype
 * PHP module dom
 * PHP module GD
@@ -71,8 +79,6 @@ For preview generation (*optional*):
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
 
-**Remarks:**
-
 * Please check your distribution, operating system or hosting partner 
   documentation on how to install and enable these modules.
 
@@ -88,6 +94,77 @@ For preview generation (*optional*):
 * You don’t need the WebDAV module for your web server (i.e. Apache’s
   ``mod_webdav``) to access your ownCloud data via WebDAV. ownCloud has a built-in
   WebDAV server of its own, SabreDAV.
+  
+.. _label-rhel6-php54:
+	
+Red Hat Enterprise Linux 6, CentOS 6, and PHP 5.4
+-------------------------------------------------
+
+RHEL 6 and CentOS still ship with PHP 5.3.x. It is highly recommended to 
+upgrade to 5.4 because 5.3.x has many deprecated functions, and will cause 
+problems with your ownCloud installation. To upgrade to PHP 5.4 without 
+violating your RHEL support agreement you must use the Software Collections 
+(SCL) repository. Follow these steps on RHEL 6::
+
+ subscription-manager repos --enable rhel-server-rhscl-6-eus-rpms
+ 
+Then install PHP 5.4 and these modules::
+
+ yum install php54 php54-php php54-php-gd php54-php-mbstring
+
+You must also install the updated database module for your database. This 
+installs the new PHP 5.4 module for MySQL/MariaDB:: 
+ 
+ yum install php54-php-mysqlnd
+ 
+Activate the new PHP version permanently::
+ 
+ source /opt/rh/php54/enable
+ 
+Disable loading the old PHP 5.3 Apache module:: 
+
+ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf/old
+ 
+You should have a ``/etc/httpd/conf.d/php54-php.conf`` file, which loads the 
+correct PHP 5.4 module for Apache.
+
+Then restart Apache::
+ 
+ service httpd restart
+
+Verify with ``phpinfo`` that your Apache server is using PHP 5.4 and loading 
+the correct modules.
+
+The steps for CentOS 6 are slightly different. First install the SCL repo::
+
+ yum install centos-release-SCL
+ 
+Then install PHP 5.4 and these modules:: 
+
+ yum install php54 php54-php php54-php-gd php54-php-mbstring
+ 
+You must also install the updated database module. This installs the new PHP 5.4 
+module for MySQL/MariaDB:: 
+ 
+ yum install php54-php-mysqlnd
+ 
+Activate the new PHP version permanently::
+ 
+ source /opt/rh/php54/enable
+ 
+Disable loading the old PHP 5.3 Apache module:: 
+
+ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php.conf/old
+ 
+You should now have a /etc/httpd/conf.d/php54-php.conf file, which loads the 
+correct PHP 5.4 module for Apache.
+
+Finally, restart Apache::
+ 
+ service httpd restart
+
+Verify with ``phpinfo`` that your Apache server is using PHP 5.4 and loading 
+the correct module.
 
 Example installation on Ubuntu 14.04 LTS Server
 -----------------------------------------------
@@ -364,10 +441,7 @@ Example config for Apache 2.4:
 
   * On systemd systems (Fedora, Arch Linux, OpenSUSE), run::
 
-     systemctl restart httpd.service
-     
-
-  
+     systemctl restart httpd.service  
 
 Other Web Servers
 -----------------
