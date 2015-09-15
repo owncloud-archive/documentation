@@ -32,6 +32,7 @@ Follow these steps to get the appliance working:
    should work. If not, please review and adjust the network setup of 
    Virtualbox to bridged mode.
 
+6. You should see a Web page with login credentials (if you haven't changed 
    them already) and a list of URLs to try to reach the ownCloud web 
    service.  Which one works, again depends on the network setup of your 
    hypervisor.
