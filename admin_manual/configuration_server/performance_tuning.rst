@@ -1,6 +1,6 @@
-################################
+================================
 Server Tuning & Performance Tips
-################################
+================================
 
 There are a number of options to tune the ownCloud installation and enable a 
 higher level of performance. This chapter gives a few hands-on tips on 
@@ -11,11 +11,8 @@ deploying them on production servers.
 If you wish to add tips to this page, please put them in the relevant section. 
 If there isn't an appropriate section then start a new one.
 
-.. _phpinfo:
-
-***************************
 PHP Version and Information
-***************************
+---------------------------
 
 You will need to know your PHP version and configurations. To do this, create a 
 plain-text file named **phpinfo.php** and place it in your Web root, for 
@@ -36,24 +33,23 @@ When you are finished reviewing your information you must delete
 ``phpinfo.php``, or move it outside of your Web directory, because it is a 
 security risk to expose such sensitive data.
 
-**********************
 ownCloud Server Tuning
-**********************
+----------------------
 
 Serving static files via web server
-===================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See :doc:`../configuration_files/serving_static_files_configuration` for a 
 description and the benefits.
 
 Using cron to perform background jobs
-=====================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See :doc:`background_jobs_configuration` for a description and the 
 benefits.
 
 Enable JavaScript and CSS Asset Management
-==========================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 See :doc:`js_css_asset_management_configuration` for a description and the 
 benefits.
@@ -116,12 +112,11 @@ specified in the ``memcached_servers`` array in ownCloud's config file
            This does not however affect **occ**, which will instead just print
            a warning to the logs.
           
-**************  
 Webserver Tips
-**************
+--------------
 
 PHP safe mode
-=============
+^^^^^^^^^^^^^
 
 PHP safe mode has to be turned off. It is deprecated and has been removed in
 newer PHP versions. Verify its status in `phpinfo_`, and look for ``safe_mode 
@@ -130,7 +125,7 @@ on/off``. If it is on, then add this line to ``php.ini`` to turn it off::
  safe_mode = Off
 
 Enable the SPDY protocol
-========================
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Your webserver can be configured to use the SPDY protocol which could improve 
 the overall performance of ownCloud. Please have a look at the documentation of 
@@ -145,19 +140,18 @@ your webservers module for more information:
    <https://code.google.com/p/mod-spdy/wiki/KnownIssues>`_
    of this module to avoid problems after enabling it.
 
-*************
 Apache Tuning
-*************
+-------------
 
 Maximum number of Apache processes
-==================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 An Apache process uses around 12MB of RAM. Apache should be configured so that 
 the maximum number of HTTPD processes times 12MB is lower than the amount of 
 RAM. Otherwise the system begins to swap and the performance goes down. 
 
 KeepAlive should be configured with sensible defaults
-=====================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: apache
 
@@ -166,7 +160,7 @@ KeepAlive should be configured with sensible defaults
 	MaxKeepAliveRequests 10
 
 mod_gzip
-========
+^^^^^^^^
 
 ``mod_gzip`` should be used because it speeds up the transfer of data and 
 helps to free server memory, and HTTP connections are closed faster.
@@ -178,13 +172,13 @@ helps to free server memory, and HTTP connections are closed faster.
 .. to free server memory and http connections are closed faster
 
 MPM
-===
+^^^
 
 Apache prefork has to be used. Don’t use threaded ``mpm`` with ``mod_php`` 
 because PHP is currently not thread safe.
 
 Hostname Lookups
-================
+^^^^^^^^^^^^^^^^
 
 .. code-block:: bash
 
@@ -193,7 +187,7 @@ Hostname Lookups
 	HostnameLookups off
 
 Log files
-=========
+^^^^^^^^^
 
 Log files should be switched off for maximum performance.
 
@@ -203,7 +197,7 @@ down errors.
 .. todo: loglevel?
 
 MaxKeepAliveRequests 4096
-=========================
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. code-block:: apache
 
@@ -220,9 +214,8 @@ MaxKeepAliveRequests 4096
 		Options Indexes SymLinksIfOwnerMatch AllowOverride All
 	</Directory>
 
-******************************************
 Nginx: caching ownCloud gallery thumbnails
-******************************************
+------------------------------------------
 
 One of the optimisations for ownCloud when using Nginx as the webserver is to 
 combine FastCGI caching with "Cache Purge", a `3rdparty Nginx module 
@@ -243,7 +236,7 @@ adapt it according your OS type and release.
    documentation.
 
 Nginx module check
-==================
+^^^^^^^^^^^^^^^^^^
 
 As a first step, it is necessary to check if your Nginx installation has the 
 ``nginx cache purge`` module compiled in::
@@ -254,7 +247,7 @@ If your output contains ``ngx_cache_purge``, you can continue with the
 configuration, otherwise you need to manually compile Nginx with the module needed.
 
 Compile Nginx with the ``nginx-cache-purge`` module
-===================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. **Preparation:**
 
@@ -361,7 +354,7 @@ Do a regular visit on the `Nginx news page <http://nginx.org>`_ and proceed
 in case of updates with items 2 to 5.
 
 Configure Nginx with the ``nginx-cache-purge`` module
-=====================================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. **Preparation**
    Create a directory where Nginx will save the cached thumbnails. Use any 
@@ -438,10 +431,9 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    Your thumbnails should appear more or less immediately.
 *  ``htop`` will not show up additional load while processing, compared to 
    the high load before.
-   
-**********************
+
 Database Best Practice
-**********************
+^^^^^^^^^^^^^^^^^^^^^^
 
 Currently ownCloud supports the following relational database management 
 systems:
@@ -467,7 +459,7 @@ with a `MDB2 Schema`_ based table description in XML.
 
 
 Using MariaDB/MySQL instead of SQLite
-=====================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 MySQL or MariaDB are preferred because of the `performance limitations of 
 SQLite with highly concurrent applications 
@@ -484,7 +476,7 @@ SQLite then it is possible to convert to MySQL or MariaDB using the steps
 provided in :doc:`../configuration_database/db_conversion`.
 
 Improve slow performance with MySQL on Windows
-==============================================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On Windows hosts running MySQL on the same system changing the parameter 
 ``dbhost`` in your ``config/config.php``
@@ -494,13 +486,13 @@ See also `this forum thread
 <http://forum.owncloud.org/viewtopic.php?f=17&t=7559>`_.
 
 Other performance improvements
-==============================
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Mysql: compare https://tools.percona.com/wizard to your current settings
 MariaDB: https://mariadb.com/kb/en/optimization-and-tuning/
 
 Postgresql
-==========
+^^^^^^^^^^
 
 Alternative to MariaDB/MySQL. Used in production by a few core developers.
 
@@ -512,7 +504,7 @@ Other performance improvements
 See http://wiki.postgresql.org/wiki/Performance_Optimization
 
 Oracle Database
-===============
+^^^^^^^^^^^^^^^
 
 Usage scenario: Existing enterprise installations. Only core apps are supported 
 and tested. Not recommended because it involves compiling the oci8
@@ -531,10 +523,9 @@ When ORA-56600 occurs (Oracle Bug 8467564) set this php.ini setting:
 
 .. _oracle forum discussion: 
    https://community.oracle.com/message/3468020#3468020
-
-********************          
+         
 SSL / Encryption App
-********************
+--------------------
 
 SSL (HTTPS) and file encryption/decryption can be offloaded to a processor's 
 AES-NI extension. This can both speed up these operations while lowering 
