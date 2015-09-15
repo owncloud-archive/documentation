@@ -28,11 +28,10 @@ Follow these steps to get the appliance working:
    change the password. This is optional.
 
 5. With your wWeb browser try ``http://localhost:8888`` or 
-   ``http://localhost:80`` or the address printed on the console. One of them 
+   ``http://localhost:80`` or the adress printed on the console. One of them 
    should work. If not, please review and adjust the network setup of 
    Virtualbox to bridged mode.
 
-6. You should see a Web page with login credentials (if you haven't changed 
    them already) and a list of URLs to try to reach the ownCloud web 
    service.  Which one works, again depends on the network setup of your 
    hypervisor.
