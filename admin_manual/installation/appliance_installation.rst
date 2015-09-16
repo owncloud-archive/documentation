@@ -53,7 +53,8 @@ Follow these steps to get the appliance working:
 
 **For VMware**
 
-You can follow most of the steps above, however, after opening the VMX file, you will have to configure ``Bridged Network`` as *Network Adapter*
+You can follow most of the steps above, however, after opening the VMX file, you 
+will have to configure ``Bridged Network`` as *Network Adapter*
 
 Software Appliances
 -------------------

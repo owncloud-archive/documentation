@@ -8,17 +8,14 @@ refer to our community support channels:
 * `The ownCloud Forums`_
 
 .. note:: The ownCloud forums have a `FAQ page`_ where each topic corresponds 
-to 
-   typical mistakes or frequently occurring issues
+   to typical mistakes or frequently occurring issues
 
 * `The ownCloud User mailing list`_
 *  The ownCloud IRC chat channel ``irc://#owncloud@freenode.net`` on 
-freenode.net, also 
-   accessible via `webchat`_
+   freenode.net, also accessible via `webchat`_
 
 Please understand that all these channels essentially consist of users like you 
-helping each other out. Consider helping others out where you can, to 
-contribute 
+helping each other out. Consider helping others out where you can, to contribute 
 back for the help you get. This is the only way to keep a community like 
 ownCloud healthy and sustainable!
 
@@ -54,14 +51,13 @@ ownCloud Logfiles
 
 In a standard ownCloud installation the log level is set to ``Normal``. To find 
 any issues you need to raise the log level to ``All`` in your ``config.php`` 
-file, or to **Everything** on your ownCloud Admin page.
-Please see :doc:`../configuration_server/logging_configuration` for more 
-information on these log levels.
+file, or to **Everything** on your ownCloud Admin page. Please see 
+:doc:`../configuration_server/logging_configuration` for more information on 
+these log levels.
 
 Some logging - for example JavaScript console logging - needs manually editing 
-the
-configuration file.
-Edit :file:`config/config.php` and add ``define('DEBUG', true);``::
+the configuration file. Edit :file:`config/config.php` and add ``define('DEBUG', 
+true);``::
 
     <?php
     define('DEBUG',true);
@@ -92,10 +88,8 @@ contains just this line::
 
 Open this file in a Web browser. e.g. ``http://localhost/phpinfo``. Your PHP 
 version is at the top, and the rest of the page contains abundant system 
-information such as active modules, active `.ini` files, and much more. When 
-you 
-are finished reviewing your information you must delete ``phpinfo.php``, or 
-move 
+information such as active modules, active `.ini` files, and much more. When you 
+are finished reviewing your information you must delete ``phpinfo.php``, or move 
 it outside of your Web directory, because it is a security risk to expose such 
 sensitive data.
 
@@ -103,8 +97,7 @@ Debugging Sync Issues
 ^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: The data directory on the server is exclusive to ownCloud and must 
-not 
-   be modified manually.
+   not be modified manually.
 
 Disregarding this can lead to unwanted behaviours like:
 
@@ -112,8 +105,7 @@ Disregarding this can lead to unwanted behaviours like:
 * Undetected changes due to caching in the database
 
 If you need to directly upload files from the same server please use a WebDAV 
-command
-line client like ``cadaver`` to upload files to the WebDAV interface at:
+command line client like ``cadaver`` to upload files to the WebDAV interface at:
 
   https://example.org/owncloud/remote.php/webdav
 
@@ -126,30 +118,23 @@ Some common problems / error messages found in your logfiles as described above:
   connection limit of your database, please refer to the manual of your database
   for more information.
 * ``SQLSTATE[HY000]: General error: 5 database is locked`` -> You're using 
-``SQLite``
+  ``SQLite``
   which can't handle a lot of parallel requests. Please consider converting to
   another database like described in 
-:doc:`../configuration_database/db_conversion`.
+  :doc:`../configuration_database/db_conversion`.
 * ``SQLSTATE[HY000]: General error: 2006 MySQL server has gone away`` -> The 
-database
-  request takes too long and therefore the MySQL server times out. Its also 
-possible
-  that the server is dropping a packet that is too large. Please refer to the 
-manual of your
-  database for how to raise the config options ``wait_timeout`` and/or 
-``max_allowed_packet``.
+  database request takes too long and therefore the MySQL server times out. Its 
+  also possible that the server is dropping a packet that is too large. Please 
+  refer to the manual of your database for how to raise the config options 
+  ``wait_timeout`` and/or ``max_allowed_packet``.
 * ``SQLSTATE[HY000] [2002] No such file or directory`` -> There is a problem
   accessing your SQLite database file in your data directory 
-(``data/owncloud.db``).
-  Please check the permissions of this folder/file or if it exists at all. If 
-you're
-  using MySQL please start your database.
+  (``data/owncloud.db``). Please check the permissions of this folder/file or 
+  if it exists at all. If you're using MySQL please start your database.
 * ``Connection closed / Operation cancelled`` -> This could be caused by wrong 
-``KeepAlive``
-  settings within your Apache config. Make sure that ``KeepAlive`` is set to 
-``On`` and
-  also try to raise the limits of ``KeepAliveTimeout`` and 
-``MaxKeepAliveRequests``.
+  ``KeepAlive`` settings within your Apache config. Make sure that 
+  ``KeepAlive`` is set to ``On`` and  also try to raise the limits of 
+  ``KeepAliveTimeout`` and  ``MaxKeepAliveRequests``.
 
 Troubleshooting Webserver and PHP problems
 ------------------------------------------
@@ -158,14 +143,11 @@ Logfiles
 ^^^^^^^^
 
 When having issues the first step is to check the logfiles provided by PHP, the 
-Webserver
-and ownCloud itself.
+Webserver and ownCloud itself.
 
 .. note:: In the following the paths to the logfiles of a default Debian 
-installation
-   running Apache2 with mod_php is assumed. On other webservers, linux distros 
-or
-   operating systems they can differ.
+   installation running Apache2 with mod_php is assumed. On other webservers, 
+   Linux distros or operating systems they can differ.
 
 * The logfile of Apache2 is located in ``/var/log/apache2/error.log``.
 * The logfile of PHP can be configured in your ``/etc/php5/apache2/php.ini``. 
@@ -173,15 +155,14 @@ or
   to store the logfile in the ``error_log`` directive. After those changes you
   need to restart your Webserver.
 * The logfile of ownCloud is located in the data directory 
-``/var/www/owncloud/data/owncloud.log``.
+  ``/var/www/owncloud/data/owncloud.log``.
 
 Webserver and PHP modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are some Webserver or PHP modules which are known to cause various 
-problems
-like broken up-/downloads. The following shows a draft overview of these 
-modules:
+problems like broken up-/downloads. The following shows a draft overview of 
+these modules:
 
 1. Apache
 
@@ -192,10 +173,10 @@ modules:
 * mod_deflate
 * libapache2-mod-php5filter (use libapache2-mod-php5 instead)
 * mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm 
-instead)
+  instead)
 * mod_dav
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured 
-correctly)
+  correctly)
 
 2. NginX
 
@@ -247,12 +228,10 @@ Service discovery
 ^^^^^^^^^^^^^^^^^
 
 Some clients - especially iOS - have problems finding the proper sync URL, even 
-when explicitly
-configured to use it.
+when explicitly configured to use it.
 
 There are several techniques to remedy this, which are described extensively at 
-the
-`Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
+the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
 Apple iOS
 ^^^^^^^^^
@@ -260,13 +239,10 @@ Apple iOS
 Below is what has been proven to work with iOS including iOS 7.
 
 If your ownCloud instance is installed in a subfolder under the web server's 
-document root and
-the client has difficulties finding the Cal- or CardDAV end-points, configure 
-your web server to
-redirect from a "well-known" URL to the one used by ownCloud.
-When using the Apache web server this is easily achieved using a 
-:file:`.htaccess` file in the document
-root of your site.
+document root and the client has difficulties finding the Cal- or CardDAV 
+end-points, configure your web server to redirect from a "well-known" URL to the 
+one used by ownCloud. When using the Apache web server this is easily achieved 
+using a :file:`.htaccess` file in the document root of your site.
 
 Say your instance is located in the ``owncloud`` folder, so the URL to it is 
 ``ADDRESS/owncloud``, create or edit the :file:`.htaccess` file and add the 
@@ -275,7 +251,7 @@ following lines::
     Redirect 301 /.well-known/carddav /owncloud/remote.php/carddav
     Redirect 301 /.well-known/caldav /owncloud/remote.php/caldav
 
-If you use lighttpd as the web server, the setting looks something like::
+If you use Lighttpd as the web server, the setting looks something like::
 
     url.redirect = (
         "^/.well-known/carddav" => "/owncloud/remote.php/carddav",
@@ -301,5 +277,5 @@ Outdated lighttpd web server
 Using Pound reverse-proxy/load balancer
   As of writing this Pound doesn't support the HTTP/1.1 verb.
   Pound is easily `patched 
-<http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_ to 
-support HTTP/1.1.
+  <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_ 
+  to support HTTP/1.1.
