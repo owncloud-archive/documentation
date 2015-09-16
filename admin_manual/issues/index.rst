@@ -2,7 +2,8 @@
 Issues and Troubleshooting
 ==========================
 
-If you have trouble installing, configuring or maintaining ownCloud, please refer to our community support channels:
+If you have trouble installing, configuring or maintaining ownCloud, please 
+refer to our community support channels:
 
 * `The ownCloud Forums`_
 
@@ -13,9 +14,14 @@ If you have trouble installing, configuring or maintaining ownCloud, please refe
 *  The ownCloud IRC chat channel ``irc://#owncloud@freenode.net`` on freenode.net, also 
    accessible via `webchat`_
 
-Please understand that all these channels essentially consist of users like you helping each other out. Consider helping others out where you can, to contribute back for the help you get. This is the only way to keep a community like ownCloud healthy and sustainable!
+Please understand that all these channels essentially consist of users like you 
+helping each other out. Consider helping others out where you can, to contribute 
+back for the help you get. This is the only way to keep a community like 
+ownCloud healthy and sustainable!
 
-If you are using ownCloud in a business or otherwise large scale deployment, note that ownCloud Inc. offers the `Enterprise Edition`_ with commercial support options.
+If you are using ownCloud in a business or otherwise large scale deployment, 
+note that ownCloud Inc. offers the `Enterprise Subscription`_ with commercial 
+support options.
 
 Bugs
 ----
@@ -23,16 +29,15 @@ Bugs
 If you think you have found a bug in ownCloud, please:
 
 * Search for a solution (see the options above)
-* Double check your configuration
+* Double-check your configuration
 
 If you can't find a solution, please use our `bugtracker`_.
-
 
 .. _the ownCloud Forums: http://forum.owncloud.org
 .. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
 .. _the ownCloud User mailing list: https://mailman.owncloud.org/mailman/listinfo/user
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
-.. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
+.. _Enterprise Subscription: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: http://doc.owncloud.org/server/8.0/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
@@ -40,10 +45,11 @@ General Troubleshooting
 -----------------------
 
 ownCloud Logfiles
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 In a standard ownCloud installation the log level is set to ``Normal``. To find 
-any issues you need to raise the log level to ``All`` from the Admin page. 
+any issues you need to raise the log level to ``All`` in your ``config.php`` 
+file, or to **Everything** on your ownCloud Admin page.
 Please see :doc:`../configuration_server/logging_configuration` for more 
 information on these log levels.
 
@@ -57,15 +63,18 @@ Edit :file:`config/config.php` and add ``define('DEBUG', true);``::
         ... configuration goes here ...
     );
 
-For JavaScript issues you will also need to view the javascript console. All major browsers
-have decent developer tools for viewing the console, and you usually access them by
-pressing F-12. For Firefox it is recommended to install the `Firebug extension <https://getfirebug.com/>`_.
+For JavaScript issues you will also need to view the javascript console. All 
+major browsers have developer tools for viewing the console, and you 
+usually access them by pressing F12. For Firefox we recommend to installing 
+the `Firebug extension <https://getfirebug.com/>`_.
 
 .. note:: The logfile of ownCloud is located in the data directory 
-   ``/var/www/owncloud/data/owncloud.log``.
+   ``owncloud/data/owncloud.log``.
 
+.. _label-phpinfo:   
+   
 phpinfo
-~~~~~~~
+^^^^^^^
 
 You will need to know your PHP version and configurations. To do this, create a 
 plain-text file named **phpinfo.php** and place it in your Web root, for 
@@ -75,16 +84,18 @@ contains just this line::
 
  <?php phpinfo(); ?>
 
-Open this file in a Web browser. Your PHP version is at the top, and the rest of 
-the page contains abundant system information such as active modules, active 
-`.ini` files, and much more. When you are finished reviewing your information 
-you must delete ``phpinfo.php``, or move it outside of your Web directory, 
-because it is a security risk to expose such sensitive data.
+Open this file in a Web browser. e.g. ``http://localhost/phpinfo``. Your PHP 
+version is at the top, and the rest of the page contains abundant system 
+information such as active modules, active `.ini` files, and much more. When you 
+are finished reviewing your information you must delete ``phpinfo.php``, or move 
+it outside of your Web directory, because it is a security risk to expose such 
+sensitive data.
 
-Debugging Sync-Issues
-~~~~~~~~~~~~~~~~~~~~~
+Debugging Sync Issues
+^^^^^^^^^^^^^^^^^^^^^
 
-.. note:: The data directory on the server is exclusive to ownCloud and must not be modified manually.
+.. note:: The data directory on the server is exclusive to ownCloud and must not 
+   be modified manually.
 
 Disregarding this can lead to unwanted behaviours like:
 
@@ -97,7 +108,7 @@ line client like ``cadaver`` to upload files to the WebDAV interface at:
   https://example.org/owncloud/remote.php/webdav
 
 Common problems / error messages
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Some common problems / error messages found in your logfiles as described above:
 
@@ -123,7 +134,7 @@ Troubleshooting Webserver and PHP problems
 ------------------------------------------
 
 Logfiles
-~~~~~~~~
+^^^^^^^^
 
 When having issues the first step is to check the logfiles provided by PHP, the Webserver
 and ownCloud itself.
@@ -140,7 +151,7 @@ and ownCloud itself.
 * The logfile of ownCloud is located in the data directory ``/var/www/owncloud/data/owncloud.log``.
 
 Webserver and PHP modules
-~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 There are some Webserver or PHP modules which are known to cause various problems
 like broken up-/downloads. The following shows a draft overview of these modules:
@@ -203,7 +214,7 @@ Troubleshooting Contacts & Calendar
 -----------------------------------
 
 Service discovery
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 Some clients - especially iOS - have problems finding the proper sync URL, even when explicitly
 configured to use it.
@@ -212,7 +223,7 @@ There are several techniques to remedy this, which are described extensively at 
 `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
 
 Apple iOS
-~~~~~~~~~
+^^^^^^^^^
 
 Below is what has been proven to work with iOS including iOS 7.
 
@@ -222,8 +233,9 @@ redirect from a "well-known" URL to the one used by ownCloud.
 When using the Apache web server this is easily achieved using a :file:`.htaccess` file in the document
 root of your site.
 
-Say your instance is located in the ``owncloud`` folder, so the URL to it is ``ADDRESS/owncloud``,
-create or edit the :file:`.htaccess` file and add the following lines::
+Say your instance is located in the ``owncloud`` folder, so the URL to it is 
+``ADDRESS/owncloud``, create or edit the :file:`.htaccess` file and add the 
+following lines::
 
     Redirect 301 /.well-known/carddav /owncloud/remote.php/carddav
     Redirect 301 /.well-known/caldav /owncloud/remote.php/caldav
@@ -235,15 +247,17 @@ If you use lighttpd as the web server, the setting looks something like::
         "^/.well-known/caldav" => "/owncloud/remote.php/caldav",
     )
 
-Now change the URL in the client settings to just use ``ADDRESS`` instead of e.g. ``ADDRESS/remote.php/carddav/principals/username``.
+Now change the URL in the client settings to just use ``ADDRESS`` instead of 
+e.g. ``ADDRESS/remote.php/carddav/principals/username``.
 
-This problem is being discussed in the `forum <http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
+This problem is being discussed in the `forum 
+<http://forum.owncloud.org/viewtopic.php?f=3&t=71&p=2211#p2197>`_.
 
 Unable to update Contacts or Events
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you get an error like ``PATCH https://ADDRESS/some_url HTTP/1.0 501 Not Implemented`` it is
-likely caused by one of the following reasons:
+If you get an error like ``PATCH https://ADDRESS/some_url HTTP/1.0 501 Not 
+Implemented`` it is likely caused by one of the following reasons:
 
 Outdated lighttpd web server
   lighttpd in debian wheezy (1.4.31) doesn't support the PATCH HTTP verb.
