@@ -63,12 +63,13 @@ Edit :file:`config/config.php` and add ``define('DEBUG', true);``::
         ... configuration goes here ...
     );
 
-For JavaScript issues you will also need to view the javascript console. All major browsers
-have decent developer tools for viewing the console, and you usually access them by
-pressing F-12. For Firefox it is recommended to install the `Firebug extension <https://getfirebug.com/>`_.
+For JavaScript issues you will also need to view the javascript console. All 
+major browsers have developer tools for viewing the console, and you 
+usually access them by pressing F12. For Firefox we recommend to installing 
+the `Firebug extension <https://getfirebug.com/>`_.
 
 .. note:: The logfile of ownCloud is located in the data directory 
-   ``/var/www/owncloud/data/owncloud.log``.
+   ``owncloud/data/owncloud.log``.
 
 .. _label-phpinfo:   
    
@@ -83,12 +84,12 @@ contains just this line::
 
  <?php phpinfo(); ?>
 
-Open this file in a Web browser. e.g. http://localhost/phpinfo. Your PHP 
-version is at the top, and the rest of 
-the page contains abundant system information such as active modules, active 
-`.ini` files, and much more. When you are finished reviewing your information 
-you must delete ``phpinfo.php``, or move it outside of your Web directory, 
-because it is a security risk to expose such sensitive data.
+Open this file in a Web browser. e.g. ``http://localhost/phpinfo``. Your PHP 
+version is at the top, and the rest of the page contains abundant system 
+information such as active modules, active `.ini` files, and much more. When you 
+are finished reviewing your information you must delete ``phpinfo.php``, or move 
+it outside of your Web directory, because it is a security risk to expose such 
+sensitive data.
 
 Debugging Sync Issues
 ^^^^^^^^^^^^^^^^^^^^^

@@ -60,8 +60,8 @@ Webserver Tips
 PHP safe mode
 ^^^^^^^^^^^^^
 
-PHP safe mode has to be turned off. It is deprecated and has been removed in
-newer PHP versions. Verify its status in `phpinfo_`, and look for ``safe_mode 
+PHP safe mode has to be turned off. It is deprecated and has been removed in 
+newer PHP versions. Verify its status with ``phpinfo``, and look for ``safe_mode 
 on/off``. If it is on, then add this line to ``php.ini`` to turn it off::
 
  safe_mode = Off
@@ -159,7 +159,7 @@ MaxKeepAliveRequests 4096
 Nginx: caching ownCloud gallery thumbnails
 ------------------------------------------
 
-One of the optimisations for ownCloud when using Nginx as the webserver is to 
+One of the optimizations for ownCloud when using Nginx as the webserver is to 
 combine FastCGI caching with "Cache Purge", a `3rdparty Nginx module 
 <http://wiki.nginx.org/3rdPartyModules>`_  that adds the ability to purge 
 content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. This mechanism 
@@ -171,10 +171,10 @@ The following procedure is based on an Ubuntu 14.04 system. You may need to
 adapt it according your OS type and release.
 
 .. note::
-   Unlike Apache, Nginx does not dynamically load modules. All modules needed, 
+   Unlike Apache, Nginx does not dynamically load modules. All modules needed 
    must be compiled into Nginx. This is one of the reasons for Nginx´s 
    performance. It is expected to have an already running Nginx installation 
-   with a working configuration set up like described in the ownCloud 
+   with a working configuration set up as described in the ownCloud 
    documentation.
 
 Nginx module check

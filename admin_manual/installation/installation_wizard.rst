@@ -22,13 +22,13 @@ You're finished and can start using your new ownCloud server.
 Of course, there is much more that you can do to set up your ownCloud server for 
 best performance and security. In the following sections we will cover important 
 installation and post-installation steps. Note that you must follow the 
-instructions in :ref:`Setting Strong Permssions <label-setting-strong-perms>` in 
-order to use the :doc:`../configuration_server/occ_command`.
+instructions in :ref:`Setting Strong Permissions <label-setting-strong-perms>` 
+in order to use the :doc:`occ Command <../configuration_server/occ_command>`.
 
 * :ref:`Data Directory Location <label-data-directory-location>`
 * :ref:`Database Choice <label-database-choice>`
 * :ref:`Trusted Domains <label-trusted-domains>`
-* :ref:`Setting Strong Permssions <label-setting-strong-perms>`
+* :ref:`Setting Strong Permissions <label-setting-strong-perms>`
 
 .. _label-data-directory-location:
 
@@ -42,12 +42,13 @@ options for your ownCloud data directory and database options.
    :scale: 75%
    :alt: screenshot of the installation wizard with all options exposed
 
-If you are using an HTTP server other than Apache, or wish to store your 
-ownCloud data in a different location for other reasons (i.e. on a large storage 
-server) it is best to configure it at installation, as it is difficult to move 
-after installation. You may put it anywhere; in this example is it located in 
-``/var/oc-data``. This directory must already exist, and must be owned by your 
-HTTP user (see :ref:`label-setting-strong-perms`).
+You should locate your ownCloud data directory outside of your Web root if you 
+are using an HTTP server other than Apache, or you may wish to store your 
+ownCloud data in a different location for other reasons (e.g. on a storage 
+server). It is best to configure your data directory location at installation, 
+as it is difficult to move after installation. You may put it anywhere; in this 
+example is it located in ``/var/oc-data``. This directory must already exist, 
+and must be owned by your HTTP user (see :ref:`label-setting-strong-perms`).
 
 .. _label-database-choice:
 
@@ -82,7 +83,7 @@ Trusted Domains
 All URLs used to access your ownCloud server must be whitelisted in your 
 ``config.php`` file, under the ``trusted_domains`` setting. Users 
 are allowed to log into ownCloud only when they point their browsers to a 
-domain name listed in the ``trusted_domains`` setting. You may use IP addresses 
+URL that is listed in the ``trusted_domains`` setting. You may use IP addresses 
 and domain names. A typical configuration looks like this::
 
  'trusted_domains' => 
@@ -109,10 +110,11 @@ Setting Strong Directory Permissions
 ------------------------------------
 
 For hardened security we recommend setting the permissions on your ownCloud 
-directories as strictly as possible. This should be done immediately after the 
-initial installation. Your HTTP user must own the ``config/``, ``data/`` and 
-``apps/`` directories so that you can configure ownCloud, create, modify and 
-delete your data files, and install apps via the ownCloud Web interface. 
+directories as strictly as possible, and for proper server operations. This 
+should be done immediately after the initial installation. Your HTTP user must 
+own the ``config/``, ``data/`` and ``apps/`` directories so that you can 
+configure ownCloud, create, modify and delete your data files, and install apps 
+via the ownCloud Web interface. 
 
 You can find your HTTP user in your HTTP server configuration files. Or you can 
 use ``phpinfo``. To do this, create a plain text file with 
@@ -135,7 +137,9 @@ for the **User/Group** line.
    ownership as above could result in some issues if the NFS mount is 
    lost.
 
-The easy way to set the correct permissions is to copy and run this script. Replace the ``ocpath`` variable with the path to your ownCloud directory, and replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
+The easy way to set the correct permissions is to copy and run this script. 
+Replace the ``ocpath`` variable with the path to your ownCloud directory, and 
+replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  #!/bin/bash
  ocpath='/var/www/owncloud'
