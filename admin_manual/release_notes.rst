@@ -2,33 +2,6 @@
 ownCloud |version| Release Notes
 ================================
 
-Recommended Setup for Running ownCloud
---------------------------------------
-
-For best performance, stability, support, and full functionality we recommend:
-
-* Red Hat Enterprise Linux 7
-* MySQL/MariaDB
-* PHP 5.4 +
-* Apache 2.4
-
-Supported Platforms
--------------------
-
-* Server: Linux (Debian 7, SUSE Linux Enterprise Server 11 SP3 & 12, 
-  Red Hat Enterprise Linux/Centos 6.5 and 7, Ubuntu 12.04 LTS, 14.04 LTS, 
-  14.10)
-* Webserver: Apache 2  
-* Databases: MySQL/MariaDB 5.x; Oracle 11g; PostgreSQL
-* PHP 5.4 + required
-* Hypervisors: Hyper-V, VMware ESX, Xen, KVM
-* Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
-  only), Linux (CentOS 6.5, 7, Ubuntu 12.04 LTS, 14.04 LTS, 14.10, Fedora 20, 
-  21, openSUSE 12.3, 13)
-* Mobile apps: iOS 7+, Android 4+
-* Web browser: IE8+ (but not Compatibility Mode), Firefox 14+, Chrome 18+, 
-  Safari 5+
-
 Manual LDAP Port Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
