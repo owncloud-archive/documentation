@@ -313,8 +313,7 @@ Supported databases are::
 l10n, Create javascript Translation Files for Apps
 --------------------------------------------------
 
-Use the ``l10n:createjs`` to translate apps into various languages, using this 
-syntax::
+Use the ``l10n:createjs`` command to migrate your PHP-based translation files into Javascript files::
 
   l10n:createjs appname language_name
   
