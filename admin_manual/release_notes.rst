@@ -2,6 +2,9 @@
 ownCloud |version| Release Notes
 ================================
 
+ownCloud Server 8.0
+-------------------
+
 Manual LDAP Port Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
