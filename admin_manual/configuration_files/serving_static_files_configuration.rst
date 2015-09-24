@@ -4,7 +4,7 @@ Serving Static Files for Better Performance
 
 ownCloud can serve static files, which may improve performance.
 
-.. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory and local mounts.  It also does not work with the Encryption App enabled.
+.. note:: This feature can currently only be activated for local files, i.e. files inside the **data/** directory and local mounts.  It also does not work with the Encryption App enabled.
   Controlled file serving **does not work for generated zip files**. This is due to zip files being generated and streamed back directly to the client.
 
 Apache2 (X-Sendfile)
