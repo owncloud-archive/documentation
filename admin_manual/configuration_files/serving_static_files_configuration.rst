@@ -1,9 +1,8 @@
+===========================================
 Serving Static Files for Better Performance
 ===========================================
 
-Since ownCloud 5 it is possible to let web servers handle static file serving.
-This should generally improve performance (web servers are optimized for this) and in some cases permits controlled
-file serving (i.e. pause and resume downloads).
+ownCloud can serve static files, which may improve performance.
 
 .. note :: This feature can currently only be activated for local files, i.e. files inside the **data/** directory and local mounts.  It also does not work with the Encryption App enabled.
   Controlled file serving **does not work for generated zip files**. This is due to zip files being generated and streamed back directly to the client.
@@ -50,31 +49,6 @@ For versions >=0.10 (e.g. Ubuntu 12.10)
 * **XSendFile**: enables web server handling of X-Sendfile headers (and therefore file serving) for the specified Directory
 * **XSendFileAllowAbove (<0.10)**: enables file serving through the web server on a path outside the specified Directory. This is needed for configured local mounts which may reside outside the data directory.
 * **XSendFilePath (>=0.10)**: a white list of paths that the web server is allowed to serve outside of the specified Directory. Other paths which correspond to local mounts should be configured here as well. For a more in-depth documentation of this directive refer to the mod_xsendfile website linked above.
-
-LigHTTPd (X-Sendfile2)
-----------------------
-LigHTTPd uses similar headers to Apache2, apart from the fact that it does not handle partial downloads in the same way
-Apache2 does. For this reason, a different method is used for LigHTTPd.
-
-Installation
-~~~~~~~~~~~~
-X-Sendfile and X-Sendfile2 are supported by default in LigHTTPd and no additional operation should be needed to install it.
-
-Configuration
-~~~~~~~~~~~~~
-Your server configuration should include the following statements::
-
-      fastcgi.server          = ( ".php" => ((
-         ...
-         "allow-x-send-file" => "enable",
-         "bin-environment" => (
-            "MOD_X_SENDFILE2_ENABLED" => "1",
-         ),
-      )))
-
-* **allow-x-send-file**: enables LigHTTPd to use X-Sendfile and X-Sendfile2 headers to serve files
-* **bin-environment**: is used to parse MOD_X_SENDFILE2_ENABLED to the ownCloud backend, to make it use the X-Sendfile and X-Sendfile2 headers in it's response
-
 
 Nginx (X-Accel-Redirect)
 ------------------------
