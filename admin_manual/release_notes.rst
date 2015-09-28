@@ -5,6 +5,11 @@ ownCloud |version| Release Notes
 ownCloud Server 8.0
 -------------------
 
+APCu 4.0.6 and Higher Only
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Use APCu only if available in version 4.0.6 and higher. If you install an older version, you will see a ``APCu below version 4.0.6 is installed, for stability and performance reasons we recommend to update to a newer APCu version`` warning on your ownCloud admin page.
+
 Manual LDAP Port Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
