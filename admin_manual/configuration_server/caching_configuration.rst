@@ -189,3 +189,26 @@ Cache Directory Location
 The cache directory defaults to ``data/$user/cache`` where ``$user`` is the 
 current user. You may use the ``'cache_path'`` directive in ``config.php``
 (See :doc:`config_sample_php_parameters`) to select a different location.
+
+Additional config for Background Job ``Cron`` and ``occ`` command line tool
+---------------------------------------------------------------------------
+
+If you have enabled the Background Job ``Cron`` or want to use the ``occ``
+command line tool an additional PHP configuration option is needed for
+oC 8.1 when using ``APC`` or ``APCu``:
+
+  apc.enable_cli = 1
+
+This can be either configured in your main ``php.ini`` or within the file
+``apc.ini`` or ``apcu.ini`` shipped by your distribution. The location of this
+file depends on your used distribution. On Debian/Ubuntu those files are
+located in:
+
+  /etc/php5/cli/
+
+and/or
+
+  /etc/php5/cli/conf.d/
+
+It is important that you configure this for the **PHP cli** package and not for
+the webserver specific configuration of PHP.
