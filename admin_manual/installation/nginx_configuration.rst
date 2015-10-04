@@ -5,16 +5,14 @@ Nginx Configuration
 ===================
 
 -  You need to insert the following code into **your nginx config file.**
--  The config assumes that ownCloud is installed in /var/www/owncloud and
-   that it is accessed via http(s)://cloud.example.com.
+-  The config assumes that ownCloud is installed in /var/www/owncloud
 -  Adjust **server_name**, **root**, **ssl_certificate** and 
    **ssl_certificate_key** to suit your needs.
 -  Make sure your SSL certificates are readable by the server (see `Nginx HTTP 
    SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
 
-.. note:: The following example assumes that your ownCloud is installed in
-   your webroot. If you're using a subfolder you need to adjust the configuration
-   accordingly.
+Serving at https(s)://cloud.example.com
+---------------------------------------
 
 .. code-block:: python
 
@@ -107,6 +105,108 @@ Nginx Configuration
      }
 
     }
+
+Serving at https(s)://example.com/owncloud
+------------------------------------------
+
+.. note:: Assumes php-fpm; :ref:`using_php-fpm`
+
+.. code-block:: python
+
+
+    server {
+        listen 80;
+        server_name example.com;
+        # enforce https
+        return 301 https://$server_name$request_uri;
+    }
+
+    server {
+        listen 443 ssl;
+        server_name example.com;
+
+        ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
+        ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+
+        # Add headers to serve security related headers
+        add_header Strict-Transport-Security "max-age=0; includeSubDomains; preload;";
+        add_header X-Content-Type-Options nosniff;
+        add_header X-Frame-Options "SAMEORIGIN";
+        add_header X-XSS-Protection "1; mode=block";
+        add_header X-Robots-Tag none;
+
+        # Path to the root of your website (one level above owncloud folder)
+        root /var/www;
+        # set max upload size
+        client_max_body_size 10G;
+        fastcgi_buffers 64 4K;
+
+        # Disable gzip to avoid the removal of the ETag header
+        gzip off;
+
+        # Uncomment if your server is build with the ngx_pagespeed module
+        # This module is currently not supported.
+        #pagespeed off;
+
+        # ownCloud blacklist
+        location ~ ^/owncloud/(?:\.htaccess|data|config|db_structure\.xml|README) {
+            deny all;
+            error_page 403 = /owncloud/core/templates/403.php;
+        }
+
+        index index.php;
+
+        location = /robots.txt {
+            allow all;
+            log_not_found off;
+            access_log off;
+        }
+
+        location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README){
+            deny all;
+        }
+
+        location /owncloud {
+            error_page 403 = /owncloud/core/templates/403.php;
+            error_page 404 = /owncloud/core/templates/404.php;
+
+            rewrite ^/owncloud/caldav(.*)$ /remote.php/caldav$1 redirect;
+            rewrite ^/owncloud/carddav(.*)$ /remote.php/carddav$1 redirect;
+            rewrite ^/owncloud/webdav(.*)$ /remote.php/webdav$1 redirect;
+
+            rewrite ^(/owncloud/core/doc[^\/]+/)$ $1/index.html;
+
+            # The following rules are only needed with webfinger
+            rewrite ^/owncloud/.well-known/host-meta /public.php?service=host-meta last;
+            rewrite ^/owncloud/.well-known/host-meta.json /public.php?service=host-meta-json last;
+            rewrite ^/owncloud/.well-known/carddav /remote.php/carddav/ redirect;
+            rewrite ^/owncloud/.well-known/caldav /remote.php/caldav/ redirect;
+
+            try_files $uri $uri/ index.php;
+        }
+
+        location ~ \.php(?:$|/) {
+            fastcgi_split_path_info ^(.+\.php)(/.+)$;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+            fastcgi_param PATH_INFO $fastcgi_path_info;
+            fastcgi_param HTTPS on;
+            fastcgi_pass unix:/var/run/php5-fpm.sock;
+        }
+
+        location / {
+             root /var/www/html/;
+             index index.html;
+        }
+
+        # Optional: set long EXPIRES header on static assets
+        location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+            expires 30d;
+            # Optional: Don't log access to assets
+            access_log off;
+        }
+    }
+
 
 .. note:: You can use ownCloud over plain http, but we strongly encourage you to
           use SSL/TLS to encrypt all of your server traffic, and to protect 
