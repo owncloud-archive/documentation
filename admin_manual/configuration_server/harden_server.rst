@@ -124,7 +124,7 @@ VirtualHost file::
      </IfModule>
   </VirtualHost>
   
-This example configuration will make all subdomains only accessible via HTTPS. If you have subdomains not accessible via HTTPS remove `includeSubdomains;`  
+This example configuration will make all subdomains only accessible via HTTPS. If you have subdomains not accessible via HTTPS remove `includeSubdomains``. 
 
 This requires the ``mod_headers`` extension in Apache.
 
