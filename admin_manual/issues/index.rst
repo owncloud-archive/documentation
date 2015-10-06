@@ -264,3 +264,11 @@ Implemented`` it is likely caused by one of the following reasons:
 Using Pound reverse-proxy/load balancer
   As of writing this Pound doesn't support the HTTP/1.1 verb.
   Pound is easily `patched <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_ to support HTTP/1.1.
+
+Other issues
+------------
+
+Some services like *Cloudflare* can cause issues by minimizing JavaScript
+and loading it only when needed. When having issues like a not working
+login button or creating new users make sure to disable such services
+first.
