@@ -529,6 +529,14 @@ Compared to earlier ownCloud versions, no further tweaks need to be done to
 make ownCloud work with Active Directory. ownCloud will automatically find the
 correct configuration in the set-up process.
 
+memberOf / Read MemberOf permissions
+------------------------------------
+
+If you want to use ``memberOf`` within your filter you might need to give your
+querying user the permissions to use it. For Microsoft Active Directory this
+is described `here <https://serverfault.com/questions/167371/what-permissions-are
+-required-for-enumerating-users-groups-in-active-directory/167401#167401>`_.
+
 Duplicating Server Configurations
 ---------------------------------
 
@@ -551,7 +559,7 @@ ownCloud LDAP Internals
 Some parts of how the LDAP backend works are described here.
 
 User and Group Mapping
-----------------------
+^^^^^^^^^^^^^^^^^^^^^^
 
 In ownCloud the user or group name is used to have all relevant information in
 the database assigned. To work reliably a permanent internal user name and
@@ -571,7 +579,7 @@ it into production. The mapping tables are filled early, but as long as you are
 testing, you can empty the tables any time. Do not do this in production.
 
 Caching
--------
+^^^^^^^
 
 The ownCloud  **Cache** helps to speed up user interactions and sharing. It is 
 populated on demand, and remains populated until the **Cache Time-To-Live** for 
@@ -610,7 +618,7 @@ defunct, for example due to a server migration or unreachable server. In this
 case the other servers will also receive the request.
 
 Handling with Backup Server
----------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When ownCloud is not able to contact the main LDAP server, ownCloud assumes it 
 is offline and will not try to connect again for the time specified in **Cache 
