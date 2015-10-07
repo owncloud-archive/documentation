@@ -555,7 +555,7 @@ ownCloud LDAP Internals
 Some parts of how the LDAP backend works are described here.
 
 User and Group Mapping
-^^^^^^^^^^^^^^^^^^^^^^
+----------------------
 
 In ownCloud the user or group name is used to have all relevant information in
 the database assigned. To work reliably a permanent internal user name and
@@ -575,7 +575,7 @@ it into production. The mapping tables are filled early, but as long as you are
 testing, you can empty the tables any time. Do not do this in production.
 
 Caching
-^^^^^^^
+-------
 
 The LDAP cache has changed in ownCloud 8.1. There is no more file cache, but 
 only a memory cache, and you must install and configure the memory cache (see 
@@ -611,7 +611,7 @@ defunct, for example due to a server migration or unreachable server. In this
 case the other servers will also receive the request.
 
 Handling with Backup Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+---------------------------
 
 When ownCloud is not able to contact the main LDAP server, ownCloud assumes it 
 is offline and will not try to connect again for the time specified in **Cache 

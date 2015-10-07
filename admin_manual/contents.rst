@@ -13,7 +13,6 @@ Table of Contents
     configuration_user/index
     configuration_files/index    
     configuration_database/index
-    configuration_mimetypes/index
     maintenance/index
     operations/index
     issues/index

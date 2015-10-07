@@ -75,3 +75,4 @@ There are a number of unofficial pre-made virtual machine-based appliances:
 .. _SUSE Studio, ownCloud on openSuSE: http://susestudio.com/a/TadMax/owncloud-in-a-box
 .. _QNAP Guide: http://wiki.qnap.com/wiki/Category:OwnCloud
 .. _Synology Package: http://www.cphub.net/index.php?id=40&pid=213
+.. _ownCloud VM on Ubuntu 14.04 with MySQL and Apache: https://www.en0ch.se/machine-setup/
