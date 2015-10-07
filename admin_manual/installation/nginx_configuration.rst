@@ -18,14 +18,14 @@ Nginx Configuration
   upstream php-handler {
     server 127.0.0.1:9000;
     #server unix:/var/run/php5-fpm.sock;
-    }
+  }
 
   server {
     listen 80;
     server_name cloud.example.com;
     # enforce https
     return 301 https://$server_name$request_uri;  
-    }
+  }
 
   server {
     listen 443 ssl;
@@ -59,42 +59,41 @@ Nginx Configuration
       allow all;
       log_not_found off;
       access_log off;
-      }
+    }
 
     location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README){
       deny all;
-      }
+    }
 
     location / {
-     # The following 2 rules are only needed with webfinger
-     rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-     rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
+      # The following 2 rules are only needed with webfinger
+      rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
+      rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
 
-     rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
-     rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
+      rewrite ^/.well-known/carddav /remote.php/carddav/ redirect;
+      rewrite ^/.well-known/caldav /remote.php/caldav/ redirect;
 
-     rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
+      rewrite ^(/core/doc/[^\/]+/)$ $1/index.html;
 
-     try_files $uri $uri/ /index.php;
-     }
-
-     location ~ \.php(?:$|/) {
-     fastcgi_split_path_info ^(.+\.php)(/.+)$;
-     include fastcgi_params;
-     fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-     fastcgi_param PATH_INFO $fastcgi_path_info;
-     fastcgi_param HTTPS on;
-     fastcgi_pass php-handler;
-     }
-
-     # Optional: set long EXPIRES header on static assets
-     location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
-         expires 30d;
-         # Optional: Don't log access to assets
-           access_log off;
-     }
-
+      try_files $uri $uri/ /index.php;
     }
+
+    location ~ \.php(?:$|/) {
+      fastcgi_split_path_info ^(.+\.php)(/.+)$;
+      include fastcgi_params;
+      fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+      fastcgi_param PATH_INFO $fastcgi_path_info;
+      fastcgi_param HTTPS on;
+      fastcgi_pass php-handler;
+    }
+
+    # Optional: set long EXPIRES header on static assets
+    location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+      expires 30d;
+      # Optional: Don't log access to assets
+      access_log off;
+    }
+  }
 
 .. note:: You can use ownCloud over plain http, but we strongly encourage you to
           use SSL/TLS to encrypt all of your server traffic, and to protect 
@@ -110,3 +109,35 @@ Nginx Configuration
           /etc/php5/fpm/php.ini**) and increase **upload_max_filesize** and
           **post_max_size** values. You’ll need to restart php5-fpm and nginx
 	  services in order these changes to be applied.
+
+Suppressing Log Messages
+------------------------
+
+If you're seeing meaningless messages in your logfile, for example `client 
+denied by server configuration: /var/www/data/htaccesstest.txt 
+<https://forum.owncloud.org/viewtopic.php?f=17&t=20217>`_, add this section to 
+your Nginx configuration to suppress them::
+
+        location = /data/htaccesstest.txt {
+          allow all;
+          log_not_found off;
+          access_log off;
+        }
+
+JavaScript (.js) or CSS (.css) files not served properly
+--------------------------------------------------------
+
+A common issue with custom nginx configs is that JavaScript (.js)
+or CSS (.css) files are not served properly leading to a 404 (File not found)
+error on those files and a broken webinterface.
+
+This could be caused by the::
+
+        location ~* \.(?:jpg|jpeg|gif|bmp|ico|png|css|js|swf)$ {
+
+block shown above not located **below** the::
+
+        location ~ \.php(?:$|/) {
+
+block. Other custom configurations like caching JavaScript (.js)
+or CSS (.css) files via gzip could also cause such issues.
