@@ -66,6 +66,15 @@ on/off``. If it is on, then add this line to ``php.ini`` to turn it off::
 
  safe_mode = Off
 
+Raise max_file_uploads of PHP
+-----------------------------
+
+The PHP setting ``max_file_uploads`` within the ``php.ini`` defaults to ``20``
+on most environments which allows that number of simultaneous uploads.
+Currently the ownCloud sync client is doing ``3`` parallel uploads which means
+that at least ``6`` clients can upload files simultaneously. Depending on your
+server usage it is recommended to raise this number to a higher value.
+
 Enable the SPDY / http_v2 protocol
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -110,11 +119,16 @@ RAM. Otherwise the system begins to swap and the performance goes down.
 KeepAlive should be configured with sensible defaults
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+The KeepAlive directive enables persistent HTTP connections, allowing multiple 
+requests to be sent over the same TCP connection. This reduces latency by as 
+much as 50%. Especially in combination with the periodic checks of the sync
+client the following settings are recommended:
+
 .. code-block:: apache
 
 	KeepAlive On
-	KeepAliveTimeout 2
-	MaxKeepAliveRequests 10
+	KeepAliveTimeout 100
+	MaxKeepAliveRequests 200
 
 mod_gzip
 ^^^^^^^^
