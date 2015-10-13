@@ -162,6 +162,7 @@ see for more details https://www.sqlite.org/wal.html
 Indicates whether the ownCloud instance was installed successfully; ``true``
 indicates a successful installation, and ``false`` indicates an unsuccessful
 installation.
+
 .. DEFAULT_SECTION_END
 .. Generated content above. Don't change this.
 
