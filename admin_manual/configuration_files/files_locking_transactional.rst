@@ -35,6 +35,18 @@ file like this example::
        'timeout' => 0.0,
         ),
 
+If you want to connect to Redis configured to listen on an unix socket (which is
+recommended if Redis is running on the same system as ownCloud) use this example
+``config.php`` configuration::
+
+  'filelocking.enabled' => 'true',
+  'memcache.locking' => '\OC\Memcache\Redis',
+  'redis' => array(
+       'host' => '/var/run/redis/redis.sock',
+       'port' => 0,
+       'timeout' => 0.0,
+        ),
+
 The **Server status** section on your ownCloud Admin page indicates whether 
 transactional file locking is enabled or disabled.
 
