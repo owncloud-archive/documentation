@@ -70,9 +70,21 @@ Nginx Configuration
       log_not_found off;
       access_log off;
     }
-
+    
+    # Security improvement translated from apache htaccess to nginx.
     location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README){
       deny all;
+      error_page 403 = /core/templates/403.php;
+    }
+
+    location ~ ^/(?:build|tests|config|lib|3rdparty|templates) {
+      deny all;
+      error_page 403 = /core/templates/403.php;
+    }
+
+    location ~ ^/(?:autotest|occ|issue|indie|db_|console).* {
+      deny all;
+      error_page 403 = /core/templates/403.php;
     }
 
     location / {
