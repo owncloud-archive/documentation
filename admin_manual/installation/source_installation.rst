@@ -79,8 +79,6 @@ memcaches:
 * PHP module memcached
 * PHP module redis (required for Transactional File Locking)
 
-See :doc:`../configuration_server/caching_configuration`.
-
 For preview generation (*optional*):
 
 * PHP module imagick
