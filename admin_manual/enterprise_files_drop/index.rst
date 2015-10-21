@@ -3,6 +3,6 @@ Enabling Anonymous Uploads with Files Drop (ES Only)
 ====================================================
 
 .. toctree::
-   :maxdepth: 2
+    :maxdepth: 2
 
-   files_drop
+    files_drop
