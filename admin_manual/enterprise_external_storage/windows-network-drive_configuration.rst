@@ -110,6 +110,10 @@ You have four options for login credentials:
    :alt: Form on Admin page for creating Windows network drive shares.
    
    *Click to enlarge*
+   
+.. note:: When you create a new mountpoint using **Login credentials** you must 
+   log out of ownCloud, and then log back in so you can access the share. You 
+   only have to do this the first time. 
 
 Personal SMB Mounts
 -------------------
