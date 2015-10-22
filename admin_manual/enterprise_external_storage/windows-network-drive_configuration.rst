@@ -14,7 +14,8 @@ SMB/CIFS server will be visible on your Files page just like your other ownCloud
 files and folders. They are labeled with a little four-pane Windows-style icon, 
 and the left pane of your Files page includes a Windows Network Drive filter.
 
-.. figure:: ../images/smb-files-view.png
+.. figure:: images/wnd-1.png
+   :alt: Files page view of Windows network shares.
 
 Files are synchronized bi-directionally, and you can create, upload, and delete 
 files and folders. You have the option of allowing users to create personal 
@@ -33,9 +34,9 @@ Installation
 Enable the Windows Network Drive app on your ownCloud Apps page. Then there are 
 a few dependencies to install.
 
-You must install the ownCloud ``php5-libsmbclient`` binary; please refer to the README in 
-your `customer.owncloud.com <https://customer.owncloud.com/>`_ account for instructions 
-on obtaining it.
+You must install the ownCloud ``php5-libsmbclient`` binary; please refer to the 
+README in your `customer.owncloud.com <https://customer.owncloud.com/>`_ account 
+for instructions on obtaining it.
 
 You also need the Samba client installed on your Linux system. This is included in 
 all Linux distributions; on Debian, Ubuntu, and other Debian derivatives this 
@@ -45,10 +46,10 @@ is ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is
 Additional Installation Steps
 -----------------------------
 
-If your Linux distribution ships with ``libsmbclient 3.x``, which is included in the Samba 
-client, you may need to set up the HOME variable in Apache to prevent a segmentation 
-fault. If you have ``libsmbclient 4.1.6`` and higher it doesn't seem to be an issue, so 
-you won't have to change your HOME variable.
+If your Linux distribution ships with ``libsmbclient 3.x``, which is included in 
+the Samba client, you may need to set up the HOME variable in Apache to prevent 
+a segmentation fault. If you have ``libsmbclient 4.1.6`` and higher it doesn't 
+seem to be an issue, so you won't have to change your HOME variable.
 
 To set up the HOME variable on Ubuntu, modify the ``/etc/apache2/envvars`` 
 file::
@@ -92,15 +93,23 @@ the server address, the share name, and the folder you want to connect to.
 4. Then the Windows share name
 5. Then the root folder of the share
 
-You have three options for login credentials: 
+You have four options for login credentials: 
 
-* Global credentials, which are set in the ``Global credentials`` fields
-* ``Credentials only for this mount``, which are set in the fields to the right 
-  of the ``Credentials`` dropdown menu 
-* ``Let users use their credentials`` requires users to configure their logins 
-  on their Personal pages, or enter them the first time they access the share
+* **Global credentials**. Uses the credentials set in the Global credentials 
+  fields.
+* **User credentials**. For admin-created global mountpoints; users must click 
+  on the share and then enter their personal credentials to access the share.
+* **Login credentials** is for users to connect to the mountpoint using their 
+  Windows domain login credentials.
+* **Custom Credentials**. When you select this, a form appears for entering 
+  your custom login and password for the share. You must supply this login to 
+  users who are granted access to the share.
   
-.. figure:: ../images/smb-create-share.png
+.. figure:: images/wnd-3.png
+   :scale: 60%
+   :alt: Form on Admin page for creating Windows network drive shares.
+   
+   *Click to enlarge*
 
 Personal SMB Mounts
 -------------------
@@ -109,10 +118,18 @@ Users create their own personal SMB mounts on their Personal pages. These are
 created the same way as Admin-created shares. Users have only two options for 
 login credentials: 
 
-* ``Use personal credentials``, which are entered in the ``Personal 
-  credentials`` fields.
-* ``Use credentials only for this mount``, which are entered in the fields to 
-  the right of the Credentials dropdown menu
+* **Personal credentials**. Your own login to the share.
+* **Custom credentials**. When you select this, a form appears for entering 
+  your custom login and password for the share.
 
-.. figure:: ../images/smb-user-share.png
-
+.. figure:: images/wnd-2.png
+   :scale: 60%
+   :alt: Form on Personal page for creating Windows network drive shares.
+   
+   *Click to enlarge*
+   
+To share your personal SMB mounts, go to your Files page and share your SMB 
+files or folders just like any other file or folder. You should use custom 
+credentials on shared mounts so that you do not give away your own  Windows 
+network drive login.  
+   
