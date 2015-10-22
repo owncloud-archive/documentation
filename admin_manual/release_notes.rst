@@ -28,6 +28,9 @@ Run ``sudo -u www-data php occ ldap:show-config`` to find the correct ``sNN``
 value; if there is not one then use empty quotes, ``""``. (See 
 :doc:`configuration_server/occ_command`.)
 
+Users of the Linux Package needs to update their repository setup like described
+in this `blogpost <https://owncloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
+
 Changes in 8.1
 --------------
 
