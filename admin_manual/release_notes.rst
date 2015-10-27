@@ -33,6 +33,11 @@ value; if there is not one then use empty quotes, ``""``. (See
 Users of the Linux Package need to update their repository setup as described
 in this `blogpost <https://owncloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
 
+The log format for failed logins to the ``owncloud.log`` has a slight syntax change.
+If a tool relies on logging failed logins please revise its rule. For ``fail2ban``
+you will find an updated rule at the `forums <https://forum.owncloud.org/viewtopic.
+php?f=8&t=28678>`_.
+
 Changes in 8.1
 --------------
 
