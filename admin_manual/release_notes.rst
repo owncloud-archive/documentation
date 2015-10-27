@@ -5,6 +5,8 @@ ownCloud |version| Release Notes
 Changes in 8.2
 --------------
 
+PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
+
 ``filesystem_check_changes`` in ``config.php`` is set to 0 by default. This 
 prevents unnecessary update checks and improves performance. If you are using 
 external storage mounts such as NFS on a remote storage server, set this to 1 
