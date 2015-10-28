@@ -5,6 +5,8 @@ ownCloud |version| Release Notes
 ownCloud Server 8.0
 -------------------
 
+PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
+
 APCu 4.0.6 and Higher Only
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
