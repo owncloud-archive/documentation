@@ -5,6 +5,8 @@ ownCloud |version| Release Notes
 Changes in 8.1
 --------------
 
+PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
+
 Use APCu only if available in version 4.0.6 and higher. If you install an older version, you will see a ``APCu below version 4.0.6 is installed, for stability and performance reasons we recommend to update to a newer APCu version`` warning on your ownCloud admin page.
 
 SMB external storage now based on ``php5-libsmbclient``, which must be downloaded 
