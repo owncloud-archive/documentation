@@ -28,6 +28,11 @@ Supported Platforms
 * Web browser: IE8+ (but not Compatibility Mode), Firefox v14+, Chrome v18+, 
   Safari v5+
 
+PHP 5.6.11+ Breaks LDAP Wizard
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
+
 Manual LDAP Port Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
