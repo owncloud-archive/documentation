@@ -22,14 +22,6 @@ Version numbering changed with ownCloud 8.0. Major releases are now indicated
 by the second number, so 8.0. 8.1, and 8.2 are major releases. The third number 
 indicates an intermediate release, e.g. 8.0.5.
 
-.. note:: If you are using the Encryption app and upgrading from older 
-   versions of ownCloud to ownCloud 8.0, you must manually migrate your 
-   encryption keys with the *occ* command after the upgrade is complete, like 
-   this example for CentOS:
-   *sudo -u apache php occ encryption:migrate*
-   You must run *occ* as your HTTP user. See 
-   :doc:`../configuration_server/occ_command` to learn more about *occ*
-
 There are multiple ways to keep your ownCloud server upgraded: with the Updater 
 App (Server Edition only), with your Linux package manager, and by manually 
 upgrading. In this chapter you will learn how to keep your ownCloud installation 
