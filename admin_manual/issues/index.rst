@@ -49,9 +49,10 @@ General Troubleshooting
 Disable 3rdparty / non-shipped apps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Always verify that 3rd party apps are compatible with your ownCloud version, 
-and always disable them before upgrades, and re-enable them after the upgrade 
-is completed. 
+It might be possible that 3rd party / non-shipped apps are causing various 
+different issues. Always disable 3rd party apps before upgrades, and for 
+troubleshooting. Please refer to the :ref:`apps_commands_label` on how
+to disable an app from command line.
 
 ownCloud Logfiles
 ^^^^^^^^^^^^^^^^^
