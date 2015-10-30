@@ -96,7 +96,9 @@ this example for the ``maintenance:mode`` command::
    --ansi                Force ANSI output.
    --no-ansi             Disable ANSI output.
    --no-interaction (-n) Do not ask any interactive question.
-  
+
+.. _apps_commands_label:
+
 Apps Commands
 -------------
 
