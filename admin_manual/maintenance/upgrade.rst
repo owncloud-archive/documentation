@@ -2,6 +2,10 @@
 Upgrading Your ownCloud Server
 ==============================
 
+**Starting with version 7.0.11, ownCloud will be automatically put into 
+maintenance mode after downloading upgraded packages. You must take it out of 
+maintenance mode and then run the upgrade wizard to complete the upgrade.**
+
 It is best to keep your ownCloud server upgraded regularly, and to install all 
 point releases and major releases without skipping any of them. Major releases 
 are 6.0 and 7.0, and point releases are intermediate releases for each 
@@ -72,45 +76,32 @@ Or update only ownCloud::
  $ sudo yum update owncloud
  
 Your Linux package manager only downloads the current ownCloud packages. There 
-is one more step, and that is to run the upgrade wizard to perform the final 
-steps of updating the database and turning off maintenance mode. After using 
-your package manager to install the current ownCloud release, you will see two 
-screens. On the first screen, click the Start Upgrade button, or optionally run 
-the ``occ upgrade`` command instead of clicking the button. 
+are two more steps:
 
-.. figure:: ../images/updater-6.png
+* Take your ownCloud server out of maintenance mode (7.0.11+)
+* Run the upgrade wizard to perform the final steps of updating the database and 
+  apps.
 
-``occ upgrade`` 
-is more reliable, especially on installations with large datasets and large 
-numbers of users because it avoids the risk of PHP timeouts. 
+Your Linux package manager only downloads the current ownCloud packages. Then 
+your ownCloud server is automatically put into maintenance mode. Take your 
+server out of maintenance mode by changing ``'maintenance' => true,`` to 
+``'maintenance' => false,`` in ``config.php``, or use the ``occ command``, like 
+this example on Ubuntu::
+
+ $ sudo -u www-data php occ maintenance:mode --off
+
+``occ upgrade`` is more reliable, especially on installations with large 
+datasets and large numbers of users because it avoids the risk of PHP timeouts. 
 
 .. note:: The ``occ`` command does not download ownCloud updates. You must first 
    download the updated code, and then ``occ`` performs the final upgrade steps.
-
-The ``occ`` 
-command 
-is in your ``owncloud/`` directory. You must run it as your HTTP user. This 
-example is for Debian/Ubuntu::
-
- $ sudo -u www-data php occ upgrade
- 
-This example is for Fedora, CentOS, and Red Hat Linux::
-
- $ sudo -u apache php occ upgrade 
-
-* The HTTP user and group in Debian/Ubuntu is ``www-data``.
-* The HTTP user and group in Fedora/CentOS/RHEL is ``apache``.
-* The HTTP user and group in Arch Linux is ``http``.
-* The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``. 
 
 See :doc:`../configuration/occ_command` to learn more about using the 
 ``occ`` command, and see the **Setting Strong Directory Permissions** section 
 of :doc:`../installation/installation_wizard` to learn how to find your 
 HTTP user.
 
-When the upgrade is successful you will see the following screen:
-
-.. figure:: ../images/updater-7.png
+When the upgrade is successful you will be returned to the login screen.
 
 If the upgrade fails, then you must try a manual upgrade.
 
