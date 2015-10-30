@@ -22,7 +22,7 @@ Run occ As Your HTTP User
 -------------------------
 
 The HTTP user is different on the various Linux distributions. See 
-:ref:`strong_perms` to learn how to find your HTTP user.
+:ref:`strong_perms_label` to learn how to find your HTTP user.
    
 * The HTTP user and group in Debian/Ubuntu is www-data.
 * The HTTP user and group in Fedora/CentOS is apache.
@@ -232,7 +232,7 @@ after installing ownCloud packages (See
 place of running the graphical Installation Wizard.
 
 Apply correct permissions to your ownCloud directories; see 
-:ref:`strong_perms`. Then choose your ``occ`` options. This lists your 
+:ref:`strong_perms_label`. Then choose your ``occ`` options. This lists your 
 available options::
 
  $ sudo -u www-data php /var/www/owncloud/occ
