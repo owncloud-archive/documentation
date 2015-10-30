@@ -29,15 +29,13 @@ improve
 the overall performance of ownCloud. Please have a look at the documentation of 
 your webservers module for more information:
 
-====================  ==================
-Webserver             Module Name / Link
-====================  ==================
-Apache                `mod-spdy <https://code.google.com/p/mod-spdy/>`_
-nginx (<1.9.5)        `ngx_http_spdy_module 
-<http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
-nginx (+1.9.5)        `ngx_http_http2_module 
-<http://nginx.org/en/docs/http/ngx_http_v2_module.html>`_
-====================  ==================
+* `Apache mod-spdy <https://code.google.com/p/mod-spdy/>`_
+
+* `nginx (<1.9.5) ngx_http_spdy_module 
+  <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
+
+* `nginx (+1.9.5) ngx_http_http2_module 
+  <http://nginx.org/en/docs/http/ngx_http_v2_module.html>`_
 
 .. note:: If you want to enable SPDY for Apache please note the `Known Issues 
    <https://code.google.com/p/mod-spdy/wiki/KnownIssues>`_
@@ -49,10 +47,10 @@ nginx (+1.9.5)        `ngx_http_http2_module
    to the openssl version used on your system. It will be enabled with the 
    ``--with-http_v2_module`` configuration parameter during compilation. The 
    dependency should be checked automatically. You can check the presence of 
-http_v2
+   http_v2
    with ``nginx -V 2>&1 | grep http_v2 -o``. An example how to compile nginx can
    be found in section "Configure Nginx with the ``nginx-cache-purge`` module" 
-below.
+   below.
    
    2.) When you have used SPDY before, the nginx config has to be changed from 
    ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
@@ -305,8 +303,7 @@ Add at the *beginning*, but *outside* the ``server{}`` block::
 .. note:: Please adopt or delete any regex line in the ``map`` block according 
    your needs and the ownCloud version used.
 .. note:: As an alternative to mapping, you can use as many ``if`` statements 
-in 
-   your server block as necessary::
+   in your server block as necessary::
    
     set $skip_cache 1;
     if ($request_uri ~* "thumbnail.php")      { set $skip_cache 0; }
