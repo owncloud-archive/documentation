@@ -119,7 +119,7 @@ This ``output`` option is available on all list and list-like commands:
 ``status``, ``check``, ``app:list``, ``encryption:status``
 and ``encryption:list-modules``
 
-.. apps_commands_label:
+.. _apps_commands_label:
 
 Apps Commands
 -------------
