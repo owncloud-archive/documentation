@@ -3,11 +3,13 @@ ownCloud Documentation
 ======================
 
 Documentation is published on `<https://doc.owncloud.org>`_ and 
-`<https://doc.owncloud.com.>`_
+`<https://doc.owncloud.com>`_.
 
 The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is 
 available for tips, tricks, edge cases, and anyone who wants to contribute more 
 easily, without having to learn Git and Sphinx.
+
+See the `Style Guide <https://github.com/owncloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
 
 Manuals
 -------
@@ -32,6 +34,7 @@ As this grows it may be moved to its own page.
 
 * ownCloud Apps Store
 * synchronize
+* Web (Web page, Web site)
 
 License
 -------
