@@ -4,7 +4,7 @@ Changelog
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The following changes went into ownCloud 8.1:
+The following changes went into ownCloud 8.2:
 
 
 Breaking changes
@@ -17,6 +17,7 @@ The following breaking changes usually do only affect applications which misuse 
 * The CSRF token may now contain not URL compatible characters (for example the plus sign: +), developers have to ensure that the CSRF token is encoded properly before using it in URIs.
 * The default RNG now returns all valid base64 characters
 * OC.msg escapes the message now by default (see https://github.com/owncloud/core/pull/14208)
+* Share dropdown was moved to the files sidebar, so `OC.Share.showDropDown()` should not be used any more by apps (it was never really public API). Apps that did use it should provide their own copy of "share.js". Example in the contacts app: https://github.com/owncloud/contacts/pull/1057
 
 
 Features
