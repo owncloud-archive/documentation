@@ -108,19 +108,12 @@ your ownCloud server is automatically put into maintenance mode.
    
    *Click to enlarge*
 
-Next, take your server out of maintenance mode. You can do this by changing 
-``'maintenance' => true,`` to ``'maintenance' => false,`` in ``config.php``, or 
-use the :doc:`occ command <../configuration_server/occ_command>`, like this 
-example on Ubuntu::
-
- $ sudo -u www-data php occ maintenance:mode --off
- 
 .. _upgrade_wizard_label:
  
 Upgrade Wizard
 --------------
  
-The final step is to run the upgrade wizard to perform the final steps of 
+Next, run the upgrade wizard to perform the various steps of 
 updating your apps and database. You will see a screen with a summary of apps 
 that are updated, and a **Start Update** button. If you have shell access it 
 is better to **not** click the Start Update button, but rather to use ``occ 
@@ -137,7 +130,12 @@ upgrade``, like this example on CentOS::
 ``occ upgrade`` is more reliable, especially on installations with large 
 datasets and large numbers of users because it avoids the risk of PHP timeouts.
 
-When the upgrade is completed you will be returned to the login screen.
+Finally, take your server out of maintenance mode. You can do this by changing 
+``'maintenance' => true,`` to ``'maintenance' => false,`` in ``config.php``, or 
+use the :doc:`occ command <../configuration_server/occ_command>`, like this 
+example on Ubuntu::
+
+ $ sudo -u www-data php occ maintenance:mode --off
 
 .. _migration_test_label:
 
