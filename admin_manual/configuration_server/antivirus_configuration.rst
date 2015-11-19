@@ -131,7 +131,7 @@ Daemon
   For the Daemon option you need the hostname or IP address of the remote
   server running ClamAV, and the server's port number.
 
-  .. figure:: ../images/antivirus-daemon-socket.png
+  .. figure:: ../images/antivirus-daemon.png
 
 Executable
   The Executable option requires the path to ``clamscan``, which is the
