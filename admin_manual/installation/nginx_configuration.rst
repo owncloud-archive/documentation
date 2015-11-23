@@ -129,6 +129,8 @@ Nginx Configuration
           is installed. If PHP-FPM is used without this PECL extension installed, settings
           and permissions must be set in the ``owncloud/.user.ini`` file.
 
+.. note:: If you are using php-fpm please read :ref:`php_fpm_tips_label`
+
 Suppressing Log Messages
 ------------------------
 
