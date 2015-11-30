@@ -75,7 +75,7 @@ Nginx Configuration
       access_log off;
     }
 
-    location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README){
+    location ~ ^/(?:\.htaccess|data|config|db_structure\.xml|README|\.user.ini){
       deny all;
     }
 
