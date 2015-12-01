@@ -9,7 +9,7 @@ maintenance mode and then run the upgrade wizard to complete the upgrade.**
 It is best to keep your ownCloud server upgraded regularly, and to install all 
 point releases and major releases without skipping any of them. Major releases 
 are 6.0 and 7.0, and point releases are intermediate releases for each 
-major release. For example, 7.0.1 and 7.0.2 are point releases.
+major release. For example, 7.0.1 and 7.0.2 are point releases. **Skipping major releases is not supported.**
 
 There are multiple ways to keep your ownCloud server upgraded: with the Updater 
 App, with your Linux package manager, and by manually upgrading. In this chapter 
