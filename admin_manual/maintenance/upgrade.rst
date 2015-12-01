@@ -10,7 +10,7 @@ It is best to keep your ownCloud server upgraded regularly, and to install all
 point releases and major releases without skipping any of them, as skipping 
 releases increases the risk of errors. Major releases are 8.0, 8.1, 8.2, and 
 9.0. Point releases are intermediate releases for each major release. For 
-example, 8.0.9 and 8.1.3 are point releases.
+example, 8.0.9 and 8.1.3 are point releases. **Skipping major releases is not supported.**
 
 There are multiple ways to keep your ownCloud server upgraded: with the 
 :doc:`Updater App <update>` (Server Edition only), with your Linux package 
