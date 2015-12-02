@@ -12,6 +12,7 @@ ownCloud Server Configuration
    background_jobs_configuration
    caching_configuration
    config_sample_php_parameters
+   custom_client_repos   
    email_configuration
    external_sites
    js_css_asset_management_configuration
