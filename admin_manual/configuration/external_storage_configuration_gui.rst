@@ -205,74 +205,113 @@ safely tucked inside an SSH tunnel. To connect an SFTP server you need:
 Google Drive
 ------------
 
-All applications that access a Google API must be registered through the 
-`Google Cloud Console <https://console.developers.google.com/>`_. Follow along carefully 
-because the Google is a bit of a maze and it's easy to get lost. 
+ownCloud uses OAuth 2.0 to connect to Google Drive. This requires configuration
+through Google to get an app ID and app secret, as ownCloud registers itself
+as an app.
 
-.. note:: Your ownCloud server must have a registered domain name and be 
-   accessible over the Internet; Google Drive will not connect to a LAN-only 
-   server.
+All applications that access a Google API must be registered through the 
+`Google Cloud Console <https://console.developers.google.com/>`_. Follow along 
+carefully 
+because the Google interface is a bit of a maze and it's easy to get lost. 
 
 If you already have a Google account, such as Groups, Drive, or Mail, you can 
 use your existing login to log into the Google Cloud Console. After logging in 
-click ``Go to my console``, and then click the ``Create Project`` button. It 
-takes a minute or two to create your new project.
+click  the **Create Project** button.
 
-.. figure:: ../images/external-storage-google-drive.png
+.. figure:: ../images/google-drive.png
+   :alt: Google Drive app "create project" screen
 
-In the next screen give your project a name, accept the default ``Project ID`` 
-or create your own, click the Terms of Service box, and click the ``Create`` 
-button.
+Give your project a name, and either accept the default **Project ID** or 
+create 
+your own, then click the **Create** button.
 
-.. figure:: ../images/external-storage-google-drive1.png
+.. figure:: ../images/google-drive1.png
+   :alt: New project creation screen.
 
-The next screen is your ``Project Dashboard``. In the left sidebar click ``APIs 
-& Auth > APIs``, and then enable the ``Drive API`` and ``Drive SDK`` by 
-toggling the boxes in the far-right ``Status`` column to the green On buttons.
+You'll be returned to your dashboard.
 
-.. figure:: ../images/external-storage-google-drive2.png
+.. figure:: ../images/google-drive2.png
+   :alt: Project dashboard, with all project options.
+   :scale: 75% 
+   
+Google helpfully highlights your next step in blue, the **Use Google APIs** 
+box. Make sure that your new project is selected, click on **Use Google APIs** 
+, 
+and it takes you to Google's APIs screen. There are many Google APIs; look for 
+the **Google Apps APIs** and click **Drive API.**
 
-This brings you to the ``Google Drive SDK`` screen. Click ``API Access``.
+.. figure:: ../images/google-drive3.png
+   :alt: Drive API link.
 
-.. figure:: ../images/external-storage-google-drive-sdk.png
+**Drive API** takes you to the API Manager overview. Click the blue **Enable 
+API** button.
 
-This opens the ``API Access`` screen. Click the ``Create a 0Auth 2.0 Client 
-ID`` button. 
+.. figure::../ images/google-drive4.png
+   :alt: API dashboard.
 
-.. figure:: ../images/external-storage-google-drive-0auth.png
+Now you must create your credentials, so click on **Go to credentials**.
+   
+.. figure:: ../images/google-drive5.png
+   :alt: Create Client ID screen.
+   
+For some reason Google warns us again that we need to create credentials. We 
+will use 0Auth 2.0.
 
-The next screen that opens is ``Create Client ID: Branding Information``. Google 
-requires to you to fill this out. When you're finished move on to the ``Create 
-Client ID: Client ID Settings`` screen.
+.. figure:: ../images/google-drive6.png
+   :alt: Another warning to create credentials.
+   
+Now we have to create a consent screen. This is the information in the screen 
+Google shows you when you connect your new Google app to ownCloud the first 
+time. Click **Configure consent screen**. Then fill in the required form 
+fields. 
+Your logo must be hosted, as you cannot upload it, so enter its URL. When 
+you're finished click **Save**.
 
-.. figure:: ../images/external-storage-google-drive5.png
+.. figure:: ../images/google-drive8.png
+   :alt: Creating the consent screen.
 
-The ``Application Type`` is Web application.
-
-Click ``Your site or hostname (more options)`` to expose  ``Authorized 
-Redirect URIs``. Enter two Redirect URIs like these examples, replacing 
-``https://example.com/owncloud/`` with your own ownCloud server 
-URL. You must use a registered domain name, and you cannot use the server's 
-IP address.
+The next screen that opens is **Create Client ID**. Check **Web Application**,  
+then enter your app name. **Authorized JavaScript Origins** is your root 
+domain, 
+for example ``https://www.example.com``, without a trailing slash. You need two 
+**Authorized Redirect URIs**, and they must be in this form::
 
   https://example.com/owncloud/index.php/settings/personal
   https://example.com/owncloud/index.php/settings/admin
   
-Click ``Create client ID`` and you'll see a screen like this:
+Replace ``https://example.com/owncloud/`` with your own ownCloud server URL, 
+then click **Create**.
 
-.. figure:: ../images/external-storage-google-drive-9.png
+.. figure:: ../images/google-drive9.png
+   :alt: Creating client credentials.
 
-This contains your ``Client ID`` and ``Client Secret``, which you need to set up 
-your ownCloud connection. Go to your ``Admin`` page in ownCloud, create your new 
-folder name, enter the Client ID and Client Secret, select your users and 
-groups, and click ``Grant Access``.
+Now Google reveals to you your **Client ID** and **Client Secret**. Click 
+**OK**.
 
-.. figure:: ../images/external-storage-google-drive8.png
+.. figure:: ../images/google-drive10.png
+   :alt: Client ID and client secret.
 
-Google will open a dialogue asking for permission to connect to ownCloud. Click 
-``Accept`` and you're finished.
+You can see these anytime in your Google console; just click on your app name 
+to see complete information.   
 
-.. figure:: ../images/external-storage-google-drive7.png
+.. figure:: ../images/google-drive11.png
+   :alt: Client ID and client secret
+   
+Now you have everything you need to mount your Google Drive in ownCloud. 
+
+Go to the External Storage section of your Admin page, create your new folder 
+name, enter the Client ID and Client Secret, and click **Grant Access**. Your 
+consent page appears when ownCloud makes a successful connection. Click 
+**Allow**.
+
+.. figure:: ../images/google-drive12.png
+   :alt: Google Drive consent page.
+
+When you see the green light confirming a successful connection
+you're finished.
+
+.. figure:: ../images/google-drive13.png
+   :alt: Google Drive mount in ownCloud.
 
 SMB/CIFS
 --------
