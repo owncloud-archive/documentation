@@ -23,7 +23,7 @@ assign your required value.
   :header: Key, Default, Description, Introduced
   :widths: 20, 30, 30, 20
 
-  "owncloud/directory/data", "/var/lib/owncloud", "Specifies where the file storage will be placed", "2012.0.1"
+    "owncloud/directory/data", "/var/lib/owncloud", "Specifies where the file storage will be placed", "2012.0.1"
   "owncloud/db/name",   "owncloud",	"Name of the MySQL database. ownCloud will create an own user for it.",	2012.0.1
   "owncloud/user/quota",	"(empty)",	"The default quota, when a user is being added. Assign values in human readable strings, e.g. “2 GB”. Unlimited if empty.",	2012.0.1
   "owncloud/user/enabled",	0,	"Whether a new user is allowed to use ownCloud by default.",	2012.0.1
@@ -50,6 +50,7 @@ assign your required value.
   "owncloud/join/users/filter",	"(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0)) (!(\|(uid=*$) (uid=owncloudsystemuser) (uid=join-backup) (uid=join-slave))) (!(objectClass=ownCloudUser)))",	"Filters, on which LDAP users the ownCloud schema should be applied to. The default excludes system users and already ownCloudUsers.",	2012.0.1
   "owncloud/join/groups/filter",	"(empty)",	"Filters which LDAP groups will be en/disabled for ownCloud when running the script /usr/share/owncloud/update-groups.sh",	2012.4.0.4
 
+
 If you want to override the default settings, simply create the key in
 question in the UCR and assign your required value, for example::
 
@@ -63,58 +64,15 @@ or via UMC:
 Installation
 ^^^^^^^^^^^^
 
-Now, we are ready to install ownCloud. This can be either done through the UCS
-App Center (recommended) or by downloading the packages.
+Now, we are ready to install ownCloud. The recommend method is by using the UCS
+App Center.
 
 UCS App Center
 """"""""""""""
 
 Open the Univention Management Console and choose the App Center module. You
-will see a variety of available applications, including ownCloud.
-
-.. image:: ../images/ucs-app-center-module.png
-
-Click on ownCloud 5 and follow the instructions.
-
-.. image:: ../images/ucs-app-center-install.png
-
-In the UCS App Center, you can also upgrade from ownCloud 4.5 by installing
-ownCloud 5.0. They are provided as separate apps. It is only possible to have
-one version of ownCloud installed.
-
-Manually by download
-""""""""""""""""""""
-
-Download the integration packages `from our website`_ and install them from
-within your download folder (note: the package owncloud-unsupported is
-optional) via command line:
-
-::
-
-	dpkg -i owncloud*.deb
-
-ownCloud will be configured to fully work with LDAP.
-
-
-Reinstallation
-""""""""""""""
-
-When ownCloud was installed before and uninstalled via AppCenter or via command
-line using apt-get remove, ownCloud can be simply installed again. The old
-configuration will be used again.
-
-When an older ownCloud was installed and has been purged (only possible via
-command line using apt-get purge) the old configuration is gone, but data is
-left. This blocks an installation. You can either install the old version and
-upgrade to ownCloud 5 or (re)move the old data. This is done by removing the
-MySQL database "ownCloud" using the command line:
-
-::
-
-	mysql -u root -e "DROP DATABASE owncloud" -p`tail /etc/mysql.secret
-
-In this case you probably also want to remove the data directory
-**/var/lib/owncloud** although this is not mandatory.
+will see a variety of available applications, including ownCloud. You can 
+install and upgrade ownCloud from the App Center.
 
 Postconfiguration (optional)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -148,13 +106,10 @@ variables as parameters: **owncloud/user/enabled** for enabling or disabling,
 **owncloud/user/quota** as the Quota value and **owncloud/join/users/filter** as
 LDAP filter to select the users to update.
 
-Groups 2012.4.0.4
-"""""""""""""""""
+Groups
+""""""
 
-Since ownCloud Enterprise 2012.4.0.4 group support is enabled. Groups,
-that are activated for ownCloud usage, can be used to share files to
-instead of single users, for example. It is also important to note, that
-users can only share within groups where they belong to. Groups can be
+Groups can be
 enabled and disabled via UCM as shown in the screen shot below.
 
 .. image:: ../images/ucsint.png
@@ -167,3 +122,5 @@ empty, a message will be displayed.
 
 
 .. _from our website: https://owncloud.com/download
+
+.. _from the UCS App Center: https://www.univention.com/products/univention-app-center/app-catalog/
