@@ -191,7 +191,16 @@ name of the file owner.
   **Shared file**
 
 When you want to revoke a share, simply click the Trashcan icon next to the 
-name of the appropriate user or group in the Shared dialog.    
+name of the appropriate user or group in the Shared dialog.
+
+
+You have five share permissions:
+
+* Can share; allows the users you share with to re-share.
+* Can edit; allows the users you share with to edit your shared files, and to collaborate using the Documents app.
+* Create; allows the users you share with to create new files and add them to the share.
+* Change; allows uploading a new version of a shared file and replacing it.
+* Delete; allows the users you share with to delete shared files.
     
 Creating a Public Link Share
 ----------------------------
