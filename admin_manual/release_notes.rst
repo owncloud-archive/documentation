@@ -5,6 +5,8 @@ ownCloud |version| Release Notes
 ownCloud Server 8.0
 -------------------
 
+Home folder rule is enforced in the user_ldap application in new ownCloud installations; see :doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
+
 PHP 5.6.11+ breaks the LDAP wizard with a 'Could not connect to LDAP' error. See https://github.com/owncloud/core/issues/20020. 
 
 APCu 4.0.6 and Higher Only
