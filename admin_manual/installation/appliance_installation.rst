@@ -73,7 +73,7 @@ There are a number of unofficial pre-made virtual machine-based appliances:
    https://owncloud.org/install/#instructions-server 
 .. _Amahi home server: https://wiki.amahi.org/index.php/OwnCloud
 .. _ownCloud VM on Ubuntu 14.04 with MySQL and Apache: 
-   https://www.en0ch.se/pre-configured-owncloud-installaton/
+   https://www.techandme.se/pre-configured-owncloud-installaton/
 .. _ownCloud 7 on Raspberry Pi (Arch Linux) using Lighttpd: 
    http://eiosifidis.blogspot.de/2014/07/install-owncloud-7-on-raspberry-pi-
    arch.html
