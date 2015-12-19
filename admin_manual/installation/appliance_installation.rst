@@ -11,6 +11,7 @@ Software Appliances
 
 There are number of pre-made virtual machine-based appliances:
 
+-  `Tech and Me - ownCloud VM on Ubuntu 14.04 with MySQL and Apache`_
 -  `SUSE Studio, ownCloud on openSuSE`_, runnable directly from an USB stick.
 -  `Ubuntu charm, ownCloud`_
 -  `Amahi home server`_
@@ -29,6 +30,8 @@ These are tutorials provided by the user communities of the respective appliance
 
 .. todo:: Tutorials for running ownCloud on Dreamplug.
 
+.. _Tech and Me - ownCloud VM on Ubuntu 14.04 with MySQL and Apache: 
+   https://www.techandme.se/pre-configured-owncloud-installaton/
 .. _Amahi home server: https://wiki.amahi.org/index.php/OwnCloud
 .. _ownCloud 7 on Raspberry Pi (Arch Linux) using Lighttpd: http://eiosifidis.blogspot.de/2014/07/install-owncloud-7-on-raspberry-pi-arch.html
 .. _OpenWrt Guide: http://wiki.openwrt.org/doc/howto/owncloud
