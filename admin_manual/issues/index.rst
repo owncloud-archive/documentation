@@ -47,6 +47,9 @@ If you can't find a solution, please use our `bugtracker`_.
 General Troubleshooting
 -----------------------
 
+See :doc:`../installation/system_requirements` for supported platforms, and 
+especially supported Web browsers.
+
 Disable 3rdparty / non-shipped apps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
