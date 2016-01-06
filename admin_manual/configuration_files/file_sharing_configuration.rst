@@ -59,6 +59,12 @@ re-sharing, editing, updating, and deletion privileges:
    expire. The only way to "expire" a local share is to click the trash can 
    icon to un-share your files.
 
+
+.. note:: ownCloud does not preserve the mtime (modification time) of 
+   directories, though it does update the mtimes on files. See  
+   `Wrong folder date when syncing 
+   <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
+  
 Creating Persistent File Shares
 -------------------------------
 
