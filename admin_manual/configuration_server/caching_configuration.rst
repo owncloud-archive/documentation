@@ -158,7 +158,17 @@ The Redis PHP module must be version 2.2.5 and up.
 
 On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis``. The installer 
 will automatically launch ``redis-server`` and configure it to launch at 
-startup.
+startup. On Ubuntu Trusty, note that the php5-redis version is too old to be
+supported. You can check what version you have with ``show php5-redis``::
+
+      show php5-redis
+      Package: php5-redis
+      State: installed
+      Automatically installed: no
+      Version: 2.2.4-1build2
+
+This shows an outdated version. A solution is to look for a PPA if you want redis on
+Ubuntu Trusty. See `launchpad <https://launchpad.net/ubuntu/+source/php-redis>`_.
 
 On Red Hat/CentOS/Fedora install ``redis`` and ``php-pecl-redis``. It will not 
 start automatically, so you must use your service manager to start 
