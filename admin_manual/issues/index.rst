@@ -44,6 +44,9 @@ If you can't find a solution, please use our `bugtracker`_.
 General Troubleshooting
 -----------------------
 
+Check the ownCloud :doc:`../installation/system_requirements`, especially 
+supported browser versions.
+
 Disable 3rdparty / non-shipped apps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
