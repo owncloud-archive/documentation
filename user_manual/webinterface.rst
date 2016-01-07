@@ -72,5 +72,3 @@ The ownCloud user interface contains the following fields and functions:
   * ownCloud Version information
 
 See :doc:`userpreferences` section to learn more about these settings.
-
-See :doc:`../installation/system_requirements` for supported platforms, and especially supported Web browsers.
