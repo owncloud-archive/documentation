@@ -1,10 +1,10 @@
 Deploy And Maintain Branded Linux Clients (Enterprise Only)
 ===========================================================
 
-ownBrander user can enable the build of branded Linux in the “Desktop”
-section of their account. They get a \*.tar file which contains
-everything to set up complete self-hosted Linux repositories for the
-selected Linux distributions.
+As an ownBrander user, you can enable the build of branded Linux in the
+“Desktop” section of their account. You can download a \*.tar file which
+contains everything to set up complete self-hosted Linux repositories
+for the selected Linux distributions.
 
 This is the content of ``mycloud-2.0.2.450-linux.tar``:
 
@@ -83,18 +83,34 @@ This is the content of ``mycloud-2.0.2.450-linux.tar``:
     └── openSUSE_13.2
         └── …
 
-The download folder provides detailed instructions
-(``download/index.html``) how to install the branded Linux clients on
-the selected Linux distributions. All location information in the HTML
-files is set to ``example.com``. All metadata in the repo is set to
-``example.com`` too.
+The download folder provides detailed instructions for your
+users(\ ``download/index.html``) how to install the branded Linux
+clients on the selected Linux distributions. All location information in
+the HTML files is set to ``download.example.com``. All metadata in the
+repo is set to ``download.example.com`` too.
 
 The download folder contains a shell script (\```download/example.sh``).
-It allows to modify the HTML and the repo metadata itself according to
-the custom repo location on the deployment webserver.
+This allows you to modify the HTML and the repo itself according to your
+repo location on your webserver.
+
+**download/example.sh:**
+
+::
+
+    #! /bin/bash
+    #
+    # This example demonstrates how to call repo-admin.py
+    # You will need to call repo-admin.py with your download url.
+    # Basic auth username and password is supported as shown below.
+    #
+    # You can customitze the main html file and re-run repo-admin.py later.
+    #
+    cd $(dirname $0)
+    set -x
+    python bin/repo-admin.py --url http://download.example.com/repo -d 'download' -p '.*-client' -i 'index.html' -f ..
 
 The ownBrander build system can be configured to include the custom repo
 URL information in the \*.tar file. Currently, this parameter isn’t
 available in the ownBrander web UI, but the ownCloud support
-(support@owncloud.com) can add this information to the ownBrander
+(support@owncloud.com) can add this information to your ownBrander
 account.
