@@ -182,24 +182,24 @@ The other way is by entering your ``config.php`` file and changing
    of your current installation. For example, if your current ownCloud is 
    installed in ``/var/www/owncloud/`` you could create a new directory called
    ``/var/www/owncloud2/``
+
+.. note:: To unpack your new tarball::
+		tar xjf owncloud-latest.tar.bz2
+
 3. Stop your Web server.
 
 4. Rename or move your current ownCloud directory (named ``owncloud/`` if 
    installed using defaults) to another location.
 
-5. Unpack your new tarball::
-
-    tar xjf owncloud-latest.tar.bz2
-    
-6. This creates a new ``owncloud/`` directory populated with your new server 
+5. This creates a new ``owncloud/`` directory populated with your new server 
    files. Copy this directory and its contents to the original location of your 
    old server, for example ``/var/www/``, so that once again you have 
    ``/var/www/owncloud`` .
 
-7. Copy and paste the ``config.php`` file from your old version of 
+6. Copy and paste the ``config.php`` file from your old version of 
    ownCloud to your new ownCloud version.
 
-8. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
+7. If you keep your ``data/`` directory in your ``owncloud/`` directory, copy 
    it from your old version of ownCloud to the ``owncloud/`` directory of 
    your new ownCloud version. If you keep it outside of ``owncloud/`` then 
    you don't have to do anything with it, because its location is configured in 
@@ -208,9 +208,9 @@ The other way is by entering your ``config.php`` file and changing
 .. note:: We recommend storing your ``data/`` directory in a location other 
    than your ``owncloud/`` directory.
 
-9. Restart your Web server.
+8. Restart your Web server.
 
-10. Now you should be able to open a Web browser to your ownCloud server and 
+9. Now you should be able to open a Web browser to your ownCloud server and 
     log in as usual. You have a couple more steps to go: You should see a 
     **Start Update** screen, just like in the **Upgrading With Your Linux 
     Package Manager** section, above. Review the prerequisites, and if you have 
@@ -226,7 +226,7 @@ The other way is by entering your ``config.php`` file and changing
       first download and install the updated code (steps 1-3), and then 
       ``occ`` performs the final upgrade steps.  
      
-11. The upgrade operation takes a few minutes to a few hours, depending on the 
+10. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
     message, or an error message that will tell where it went wrong.   
 
