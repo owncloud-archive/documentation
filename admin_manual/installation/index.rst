@@ -6,6 +6,7 @@ Installation
    :maxdepth: 2
    
    system_requirements
+   deployment_recommendations
    linux_installation
    installation_wizard
    apps_management_installation
