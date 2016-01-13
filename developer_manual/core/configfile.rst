@@ -50,9 +50,6 @@ App config
   /* Enable the help menu item in the settings */
   "knowledgebaseenabled" => true,
 
-  /* URL to use for the help page, server should understand OCS */
-  "knowledgebaseurl" => "http://api.apps.owncloud.com/v1",
-
   /* Enable installing apps from the appstore */
   "appstoreenabled" => true,
 
