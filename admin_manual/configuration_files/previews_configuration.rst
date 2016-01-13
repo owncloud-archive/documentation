@@ -5,11 +5,10 @@ Previews Configuration
 The ownCloud thumbnail system generates previews of files for all 
 ownCloud apps that display files, such as Files and Gallery.
 
-The following image shows a file (A) where the ownCloud server generates a 
-preview image, and another file (B) that it could not generate a preview for. In this 
-case a generic icon is displayed.
+The following image shows some examples of previews of various file types.
 
 .. figure:: ../images/preview_images.png
+   :alt: Thumbnails of various image and audio/video files.
 
 By default, ownCloud can generate previews for the following filetypes:
 
