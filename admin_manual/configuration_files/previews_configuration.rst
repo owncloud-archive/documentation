@@ -1,12 +1,13 @@
+======================
 Previews Configuration
 ======================
-The ownCloud thumbnail system is used to generate thumbnails from various 
-file types, which are then shown as thumbnails in the Files application of 
-the web interface, or as a larger preview for public shared links.
+
+The ownCloud thumbnail system generates previews of files for all 
+ownCloud apps that display files, such as Files and Gallery.
 
 The following image shows a file (A) where the ownCloud server generates a 
 preview image, and another file (B) that it could not generate a preview for. In this 
-case a generic icon (depending on the filetype) is displayed.
+case a generic icon is displayed.
 
 .. figure:: ../images/preview_images.png
 
@@ -25,14 +26,20 @@ By default, ownCloud can generate previews for the following filetypes:
 
 Parameters
 ----------
+
 Please notice that the ownCloud preview system comes already with sensible 
-defaults, and therefore it is usually unecessary to adjust those configuration 
+defaults, and therefore it is usually unnecessary to adjust those configuration 
 values. 
 
 Disabling previews:
 ~~~~~~~~~~~~~~~~~~~
-Under certain circumstances, for example if the server has only very limited 
+
+Under certain circumstances, for example if the server has limited 
 resources, you might want to consider disabling the generation of previews. 
+Note that if you do this all previews in all apps are disabled, including 
+the Gallery app, and will display generic icons instead of 
+thumbnails.
+
 Set the configuration option ``enable_previews`` in config.php to ``false``:
 
 .. code-block:: php
@@ -65,6 +72,7 @@ to a maximum size of 100×100px:
 
 Maximum scale factor:
 ~~~~~~~~~~~~~~~~~~~~~
+
 If a lot of small pictures are stored on the ownCloud instance and the preview 
 system generates blurry previews, you might want to consider setting a maximum 
 scale factor. By default, pictures are upscaled to 10 times the original size:
