@@ -109,6 +109,11 @@ repo location on your webserver.
     set -x
     python bin/repo-admin.py --url http://download.example.com/repo -d 'download' -p '.*-client' -i 'index.html' -f ..
 
+Replace ``http://download.example.com/repo`` with the base URL of your
+repository and save the file with a new name. (``download/mycloud.sh``)
+
+Then execute the script and check ``download/index.html`` on your webserver.
+
 The ownBrander build system can be configured to include the custom repo
 URL information in the \*.tar file. Currently, this parameter isn’t
 available in the ownBrander web UI, but the ownCloud support
