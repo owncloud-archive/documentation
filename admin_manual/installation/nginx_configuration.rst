@@ -112,6 +112,7 @@ Nginx Configuration
     # Adding the cache control header for js and css files
     # Make sure it is BELOW the location ~ \.php(?:$|/) { block
     location ~* \.(?:css|js)$ {
+      include /etc/nginx/mime.types; 
       add_header Cache-Control "public, max-age=7200";
       # Add headers to serve security related headers
       add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
