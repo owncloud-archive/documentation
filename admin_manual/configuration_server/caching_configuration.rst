@@ -154,53 +154,152 @@ as a local cache for :doc:`Transactional File Locking
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
-The Redis PHP module must be version 2.2.5 and up.
+.. note::
+  | The Redis PHP module must be version 2.2.5 and up.
+  | Please note that the Redis versions 2.2.5 - 2.2.7 will only work for:
+  
+  .. code-block:: bash
+   
+   PHP version 6.0.0 or older
+   PHP version 5.2.0 or newer
+  
+  See also: https://pecl.php.net/package/redis
 
-On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis``. The installer 
-will automatically launch ``redis-server`` and configure it to launch at 
-startup.
+Server Preparation
+^^^^^^^^^^^^^^^^^^
 
-On Red Hat/CentOS/Fedora install ``redis`` and ``php-pecl-redis``. It will not 
-start automatically, so you must use your service manager to start 
-``redis``, and to launch it at boot as a daemon.
- 
+- On Debian/Ubuntu/Mint, install Redis with:
+  
+  | ``apt-get install redis-server``
+  | ``apt-get install php5-redis``.
+
+  The installer will automatically launch ``redis-server`` and configure it to launch at startup.
+
+.. note::
+  | On Ubuntu 14.04 (Trusty), the ``php5-redis`` version is too old and not supported.
+  | You can check what version you have installed with:
+  
+  .. code-block:: bash
+  
+   apt-show-versions php5-redis
+   php5-redis:amd64/trusty 2.2.4-1build2 uptodate
+  
+  | This example shows an outdated version. 
+  | If you have this version, you must uninstall this version with: 
+  
+  .. code-block:: bash
+  
+   apt-get remove php5-redis
+
+  and install a newer version of Redis. 
+    
+  One solution option is to look for a PPA. See `Ubuntu launchpad <https://launchpad.net/ubuntu/+source/php-redis>`_.
+  
+  Another solution option is using the PECL/PEAR PHP extension repository:
+    
+  .. code-block:: bash
+  
+   apt-get install php-pear php5-dev make
+   pecl install redis
+  
+  
+  Check if the extension is enabled, if not do:
+  
+  .. code-block:: bash
+  
+   echo extension=redis.so > /etc/php5/mods-available/redis.ini
+
+  If you use Apache enable it with:
+  
+  .. code-block:: bash
+  
+    php5enmod redis
+
+
+- On Red Hat/CentOS/Fedora, install ``redis`` and ``php-pecl-redis``. It will not 
+  start automatically, so you must use your service manager to start 
+  ``redis``, and to launch it at boot as a daemon.
+
+| 
+
 You can verify that the Redis daemon is running with ``ps ax``::
  
  ps ax | grep redis
  22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379 
  
-Restart your Web server, add the appropriate entries to your ``config.php``, and 
-refresh your ownCloud admin page. This example ``config.php`` configuration uses 
-Redis for the local server cache::
+| You may also check the presence of the PHP Redis configuration links in the corresponding subdirectories of php ``cli`` and ``fpm``. If you use nginx, you most likely also use fpm.
+| 
+| Examples based on Ubuntu:
+| 
+| For ``fpm``, the link is found at ``/etc/php5/fpm/conf.d``:
 
-  'memcache.local' => '\OC\Memcache\Redis',
-  'redis' => array(
-       'host' => 'localhost',
-       'port' => 6379,
-       'password' => '', // Optional, if not defined no password will be used.
-        ),
+.. code-block:: bash
+  
+  20-redis.ini -> ../../mods-available/redis.ini
 
-For best performance, use Redis for file locking by adding this::
+If the link is not present, create it with:
 
-  'memcache.locking' => '\OC\Memcache\Redis',
+.. code-block:: bash
+  
+  cd /etc/php5/fpm/conf.d
+  ln -s ../../mods-available/redis.ini /etc/php5/fpm/conf.d/20-redis.ini
+
+| Do the same for ``cli``. 
+| You can check PHP-cli-Redis with the command below, after that you should see "OK".
+
+.. code-block:: bash
+  
+  php -r "if (new Redis() == true){ echo \"\r\n OK \r\n\"; }"
+
+| Restart your Web server and if needed ``php5-fpm``.
+| 
+| If you later want to monitor the commands processed by the Redis server, we recommend
+| reading `Monitoring Redis <http://redis.io/commands/MONITOR>`_.
+| 
+
+Instance Preparation
+^^^^^^^^^^^^^^^^^^^^
+ 
+| Add the appropriate entries to your ``config.php``, and refresh your ownCloud admin page.
+| 
+| Here are some example configurations:
+
+- Use Redis for the local server cache:
+  
+  ::
+  
+    'memcache.local' => '\OC\Memcache\Redis',
+    'redis' => array(
+         'host' => 'localhost',
+         'port' => 6379,
+         'password' => '', // Optional, if not defined no password will be used.
+         ),
+
+- For best performance, use Redis for file locking by adding this:
+  
+  ::
+  
+    'memcache.locking' => '\OC\Memcache\Redis',
+
+- If you want to connect to Redis configured to listen on an unix socket (which is recommended if Redis is running on the same system as ownCloud), use the following configuration:
+  
+  ::
+  
+    'memcache.local' => '\OC\Memcache\Redis',
+    'redis' => array(
+         'host' => '/var/run/redis/redis.sock',
+         'port' => 0,
+          ),
 
 .. note:: For enhanced security it is recommended to configure Redis to require
    a password. See http://redis.io/topics/security for more information.
 
-If you want to connect to Redis configured to listen on an unix socket (which is
-recommended if Redis is running on the same system as ownCloud) use this example
-``config.php`` configuration::
-
-  'memcache.local' => '\OC\Memcache\Redis',
-  'redis' => array(
-       'host' => '/var/run/redis/redis.sock',
-       'port' => 0,
-        ),
+.. note:: Consider reading `Performance tips for Redis Cache Server <https://www.techandme.se/performance-tips-for-redis-cache-server>`_
 
 Redis is very configurable; consult `the Redis documentation 
 <http://redis.io/documentation>`_ to learn more. 
 
-If you are on Ubuntu you can follow `this guide 
+If you are on Ubuntu you can also follow `this guide 
 <https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
 
 Cache Directory Location
