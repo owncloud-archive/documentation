@@ -45,6 +45,11 @@ Then identify the user and group the web server is running as and the Apache use
 Check out the code
 ------------------
 
+There are two ways to check out the code, either by using the **ocdev** tool or manually.
+
+Using the ocdev method 
+~~~~~~~~~~~~~~~~~~~~~~
+
 The following commands are using **/var/www** as the web server's directory and **www-data** as user name and group.
 
 Install the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_
@@ -59,9 +64,41 @@ Then install ownCloud from git::
 
 where <folder> is the folder where you want to install ownCloud.
 
+Using the manual method
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The following commands are using **/var/www** as the web server's directory and **www-data** as user name and group.
+
+.. code-block:: bash
+
+  sudo chmod o+rw /var/www
+  cd /var/www
+  git clone https://github.com/owncloud/core.git owncloud
+  git clone https://github.com/owncloud/apps.git
+  cd owncloud/
+  git submodule init
+  git submodule update
+  mkdir data
+
+Check out additional apps (optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you would like to develop on non-core apps, you can check them out into the **apps** directory as well.
+For example for the calendar, contact and notes apps:
+
+.. code-block:: bash
+
+  cd /var/www/owncloud/apps
+  git clone https://github.com/owncloud/calendar.git
+  git clone https://github.com/owncloud/contacts.git
+  git clone https://github.com/owncloud/notes.git
+
+Finalizing the setup
+--------------------
+
 Adjust rights::
 
-  sudo chown -R www-data:www-data /var/www/core/data/
+  sudo chown -R www-data:www-data /var/www/owncloud/data/
   sudo chmod o-rw /var/www
 
 
@@ -73,7 +110,7 @@ or::
 
   sudo /etc/init.d/apache2 restart
 
-After the clone Open http://localhost/core (or the corresponding URL) in your web browser to set up your instance.
+After the clone Open http://localhost/owncloud (or the corresponding URL) in your web browser to set up your instance.
 
 Enabling debug mode
 -------------------
