@@ -22,7 +22,7 @@ The LDAP application supports:
 * Support for primary groups in Active Directory
 * Auto-detection of LDAP attributes such as base DN, email, and the LDAP server 
   port number
-* Read-only access to your LDAP (no edit or delete of users on your LDAP) 
+* Only read access to your LDAP (edit or delete of users on your LDAP is not supported)
 
 .. Note:: The LDAP app is not compatible with the ``WebDAV user backend`` app. 
    You cannot use both of them at the same time.
