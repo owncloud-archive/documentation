@@ -21,6 +21,14 @@ The new file locking mechanism has these capabilities:
 * Manages locks correctly on external storage mounts
 * Manages encrypted files correctly
 
+What Transactional File locking is not for: it is not for preventing collisions 
+in collaborative document editing (see 
+:doc:`collaborative_documents_configuration` to learn about collaboration with 
+the Documents app), nor will it prevent multiple users from editing the same 
+document, or give notice that other users are working on the same document. 
+Multiple users can open and edit a file at the same time and Transactional File 
+locking does not prevent this. Rather, it prevents simultaneous file saving.
+
 You must install the Redis server and corresponding PHP module for the new file 
 locking to work. (See :doc:`../configuration_server/caching_configuration`.)
 
