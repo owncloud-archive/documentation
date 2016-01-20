@@ -22,6 +22,14 @@ file corruption during normal operation. It performs these functions:
    visit your Apps page to verify that it is disabled; the File Locking app and 
    Transactional File Locking cannot both operate at the same time.
    
+What Transactional File locking is not for: it is not for preventing collisions 
+in collaborative document editing (see 
+:doc:`collaborative_documents_configuration` to learn about collaboration with 
+the Documents app), nor will it prevent multiple users from editing the same 
+document, or give notice that other users are working on the same document. 
+Multiple users can open and edit a file at the same time and Transactional File 
+locking does not prevent this. Rather, it prevents simultaneous file saving.   
+   
 When you see the warning on your ownCloud admin page "Transactional file locking 
 is using the database as locking backend, for best performance it's advised to 
 configure a memcache for locking", you are not required to use a memcache. File 
