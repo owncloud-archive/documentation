@@ -138,7 +138,7 @@ replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  ocpath='/var/www/owncloud'
  htuser='www-data'
  htgroup='www-data'
- rootuser='root' # On QNAP this is admin
+ rootuser='root'
 
  find ${ocpath}/ -type f -print0 | xargs -0 chmod 0640
  find ${ocpath}/ -type d -print0 | xargs -0 chmod 0750
