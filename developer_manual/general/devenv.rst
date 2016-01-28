@@ -12,6 +12,7 @@ Set up web server and database
 ==============================
 
 First `set up your web server and database <http://doc.owncloud.org/server/8.2/admin_manual/#installation>`_ (**Section**: Manual Installation - Prerequisites).
+
 .. TODO ON RELEASE: Update version number above on release
 
 Get the source
