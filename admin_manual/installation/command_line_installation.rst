@@ -8,17 +8,18 @@ the command line. There are three stages to installing ownCloud via the command
 line:
 
 1. Download and install the ownCloud code via your package manager, or download 
-and unpack the tarball in the appropriate directories. (See 
-:doc:`linux_installation` and :doc:`source_installation`.)
+   and unpack the tarball in the appropriate directories. (See 
+   :doc:`linux_installation` and :doc:`source_installation`.)
 
 2. Apply the correction permissions to your ownCloud files and directories (see 
-:ref:`strong_perms_label`.)
+   :ref:`strong_perms_label`.)
 
 3. Use the ``occ`` command to complete your installation. This takes the place 
-of running the graphical Installation Wizard.
+   of running the graphical Installation Wizard.
 
-You must run ``occ`` as your HTTP user; see :ref:`http_user`. This example 
-shows how to complete your ownCloud installation with ``occ`` on Ubuntu Linux::
+You must run ``occ`` as your HTTP user; see :ref:`strong_perms_label`. This 
+example shows how to complete your ownCloud installation with ``occ`` on Ubuntu 
+Linux::
 
  $ cd /var/www/owncloud/
  $ sudo -u www-data php occ  maintenance:install --database 
@@ -38,4 +39,4 @@ Supported databases are::
  - pgsql (PostgreSQL)
  - oci (Oracle)
  
-See :ref:`cli_installation` for more information. 
+See :ref:`command_line_installation_label` for more information. 

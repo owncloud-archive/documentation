@@ -24,6 +24,8 @@ occ Command Directory
 * :ref:`create_javascript_translation_files_label`
 * :ref:`maintenance_commands_label`
 * :ref:`user_commands_label`
+* :ref:`command_line_installation_label`
+* :ref:`command_line_upgrade_label`
 
 .. _http_user_label:
 
@@ -67,7 +69,7 @@ Ubuntu::
   check                       check dependencies of the server environment
   help                        Displays help for a command
   list                        Lists commands
-  status                      show some status informationb
+  status                      show some status information
   upgrade                     run upgrade routines after installation of a new 
                               release. The release has to be installed before.
 
@@ -241,14 +243,14 @@ This is example converts SQLite to MySQL/MariaDB::
  oc_database
 
 For a more detailed explanation see 
-:doc:`../configuration_database/db_conversion`
+:doc:`../configuration_database/db_conversion`.
 
 .. _encryption_label:
 
 Encryption
 ----------
 
-ownCloud 8.2 introduces a new set of encryption commands::
+You may control encryption, and view encryption status::
 
  encryption
   encryption:disable                   Disable encryption
@@ -406,8 +408,7 @@ report showing how many users you have, and when a user was last logged in::
  user
   user:add            adds a user
   user:delete         deletes the specified user
-  user:lastseen       shows when the user was logged it last 
-                      time
+  user:lastseen       shows when the user was logged in last time
   user:report         shows how many users have access
   user:resetpassword  Resets the password of the named user
 
@@ -488,3 +489,192 @@ authentication servers such as LDAP::
  |                  |    |
  | user directories | 2  |
  +------------------+----+
+ 
+.. _command_line_installation_label: 
+ 
+Command Line Installation
+-------------------------
+
+These commands are available only after you have downloaded and unpacked the 
+ownCloud archive, and taken no further installation steps.
+
+You can install ownCloud entirely from the command line. After downloading the 
+tarball and copying ownCloud into the appropriate directories, or 
+after installing ownCloud packages (See 
+:doc:`../installation/linux_installation` and 
+:doc:`../installation/source_installation`) you can use ``occ`` commands in 
+place of running the graphical Installation Wizard.
+
+Apply correct permissions to your ownCloud directories; see 
+:ref:`strong_perms_label`. Then choose your ``occ`` options. This lists your 
+available options::
+
+ $ sudo -u www-data php /var/www/owncloud/occ
+ ownCloud is not installed - only a limited number of commands are available
+ ownCloud version 8.1.5.
+
+ Usage:
+  [options] command [arguments]
+
+ Options:
+  --help (-h)           Display this help message
+  --quiet (-q)          Do not output any message
+  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal 
+  output,  2 for more verbose output and 3 for debug
+  --version (-V)        Display this application version
+  --ansi                Force ANSI output
+  --no-ansi             Disable ANSI output
+  --no-interaction (-n) Do not ask any interactive question
+
+ Available commands:
+  check                 check dependencies of the server environment
+  help                  Displays help for a command
+  list                  Lists commands
+  status                show some status information
+  app
+  app:check-code        check code to be compliant
+  l10n
+  l10n:createjs         Create javascript translation files for a given app
+  maintenance
+  maintenance:install   install ownCloud
+  
+Display your ``maintenance:install`` options::
+
+ $ sudo -u www-data php occ help maintenance:install
+ ownCloud is not installed - only a limited number of commands are available
+ Usage:
+  maintenance:install [--database="..."] [--database-name="..."] 
+ [--database-host="..."] [--database-user="..."] [--database-pass[="..."]] 
+ [--database-table-prefix[="..."]] [--admin-user="..."] [--admin-pass="..."] 
+ [--data-dir="..."]
+
+ Options:
+  --database               Supported database type (default: "sqlite")
+  --database-name          Name of the database
+  --database-host          Hostname of the database (default: "localhost")
+  --database-user          User name to connect to the database
+  --database-pass          Password of the database user
+  --database-table-prefix  Prefix for all tables (default: oc_)
+  --admin-user             User name of the admin account (default: "admin")
+  --admin-pass             Password of the admin account
+  --data-dir               Path to data directory (default: 
+                           "/var/www/owncloud/data")
+  --help (-h)              Display this help message
+  --quiet (-q)             Do not output any message
+  --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal 
+   output, 2 for more verbose output and 3 for debug
+  --version (-V)           Display this application version
+  --ansi                   Force ANSI output
+  --no-ansi                Disable ANSI output
+  --no-interaction (-n)    Do not ask any interactive question
+
+This example completes the installation::
+
+ $ cd /var/www/owncloud/
+ $ sudo -u www-data php occ maintenance:install --database 
+ "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
+ "password" --admin-user "admin" --admin-pass "password" 
+ ownCloud is not installed - only a limited number of commands are available
+ ownCloud was successfully installed
+
+Supported databases are::
+
+ - sqlite (SQLite3 - Community Edition Only)
+ - mysql (MySQL/MariaDB)
+ - pgsql (PostgreSQL)
+ - oci (Oracle)
+ 
+.. _command_line_upgrade_label: 
+   
+Command Line Upgrade
+--------------------
+
+These commands are available only after you have downloaded upgraded packages, 
+or downloaded and unpacked tar archives and copied them to their respective 
+directories in your Web directory, and before you complete the upgrade.
+
+List all options, like this example on CentOS Linux::
+
+ $ sudo -u apache php occ upgrade -h
+ Usage:
+ upgrade [--skip-migration-test] [--dry-run] [--no-app-disable]
+
+ Options:
+ --skip-migration-test  skips the database schema migration simulation and 
+    update directly
+ --dry-run              only runs the database schema migration simulation, do 
+   not actually update
+ --no-app-disable       skips the disable of third party apps
+ --help (-h)            Display this help message.
+ --quiet (-q)           Do not output any message.
+ --verbose (-v|vv|vvv)  Increase the verbosity of messages: 1 for normal 
+                        output, 2 for more verbose output and 3 for debug.
+ --version (-V)         Display this application version.
+ --ansi                 Force ANSI output.
+ --no-ansi              Disable ANSI output.
+ --no-interaction (-n)  Do not ask any interactive question
+
+When you are performing an update or upgrade on your ownCloud server (see the 
+Maintenance section of this manual), it is better to use ``occ`` to perform the 
+database upgrade step, rather than the Web GUI, in order to avoid timeouts. PHP
+scripts invoked from the Web interface are limited to 3600 seconds. In larger 
+environments this may not be enough, leaving the system in an inconsistent 
+state. After performing all the preliminary steps (see 
+:doc:`../maintenance/upgrade`) use this command to upgrade your databases, 
+like this example on CentOS Linux. Note how it details the steps::
+
+ $ sudo -u www-data php occ upgrade
+ ownCloud or one of the apps require upgrade - only a limited number of 
+ commands are available                            
+ Turned on maintenance mode                                                     
+ 
+ Checked database schema update           
+ Checked database schema update for apps
+ Updated database      
+ Updating <gallery> ...                                                         
+ 
+ Updated <gallery> to 0.6.1               
+ Updating <activity> ...
+ Updated <activity> to 2.1.0            
+ Update successful
+ Turned off maintenance mode
+ 
+Enabling verbosity displays timestamps::
+
+ $ sudo -u www-data php occ upgrade -v
+ ownCloud or one of the apps require upgrade - only a limited number of commands 
+ are available
+ 2015-06-23T09:06:15+0000 Turned on maintenance mode
+ 2015-06-23T09:06:15+0000 Checked database schema update
+ 2015-06-23T09:06:15+0000 Checked database schema update for apps
+ 2015-06-23T09:06:15+0000 Updated database
+ 2015-06-23T09:06:15+0000 Updated <files_sharing> to 0.6.6
+ 2015-06-23T09:06:15+0000 Update successful
+ 2015-06-23T09:06:15+0000 Turned off maintenance mode
+
+If there is an error it throws an exception, and the error is detailed in your 
+ownCloud logfile, so you can use the log output to figure out what went wrong, 
+or to use in a bug report::
+
+ Turned on maintenance mode
+ Checked database schema update
+ Checked database schema update for apps
+ Updated database
+ Updating <files_sharing> ...
+ Exception
+ ServerNotAvailableException: LDAP server is not available
+ Update failed
+ Turned off maintenance mode
+
+Before completing the upgrade, ownCloud first runs a simulation by copying all 
+database tables to new tables, and then performs the upgrade on them, to ensure 
+that the upgrade will complete correctly. The copied tables are deleted after 
+the upgrade. This takes twice as much time, which on large installations can be 
+many hours, so you can omit this step with the ``--skip-migration-test`` 
+option::
+
+ $ sudo -u www-data php occ upgrade --skip-migration-test
+
+You can perform this simulation manually with the ``--dry-run`` option::
+ 
+ $ sudo -u www-data php occ upgrade --dry-run
