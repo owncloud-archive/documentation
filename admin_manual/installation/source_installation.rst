@@ -41,6 +41,8 @@ The ownCloud .tar archive contains all of the required PHP modules. This section
 lists all required and optional PHP modules.  Consult the `PHP manual 
 <http://php.net/manual/en/extensions.php>`_ for more information on modules. 
 Your Linux distribution should have packages for all required modules.
+You can check the precense of a module by typing ``php -m | grep -i <module_name>``.
+If you get a result, the module is present.
 
 Required:
 
@@ -105,6 +107,10 @@ For preview generation (*optional*):
 * PHP module imagick
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
+
+For command line processing (*optional*):
+
+* PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
 
 You don’t need the WebDAV module for your Web server (i.e. Apache’s 
 ``mod_webdav``), as ownCloud has a built-in WebDAV server of its own, SabreDAV. 
@@ -405,10 +411,9 @@ server in order for these changes to be applied.
 
 **.htaccess notes for webservers \<> Apache**
 
-ownCloud comes with its own ``owncloud/.htaccess`` file. ``php-fpm`` can't 
-read PHP settings in ``.htaccess`` unless the ``htscanner`` PECL extension is 
-installed. If ``php-fpm`` is used without this PECL extension installed, 
-settings and permissions must be set in the ``owncloud/.user.ini`` file.
+ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm`` can't 
+read PHP settings in ``.htaccess`` these settings must be set in the 
+``owncloud/.user.ini`` file.
 
 .. _other_HTTP_servers_label:
 
