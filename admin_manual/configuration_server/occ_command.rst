@@ -49,7 +49,7 @@ Running it with no options lists all commands and options, like this example on
 Ubuntu::
 
  $ sudo -u www-data php occ
- ownCloud version 8.2
+ ownCloud version 8.1
  Usage:
   [options] command [arguments]
 
@@ -80,14 +80,14 @@ Run it with the ``-h`` option for syntax help::
 Display your ownCloud version::
 
  $ sudo -u www-data php occ -V
-   ownCloud version 8.2
+   ownCloud version 8.1
    
 Query your ownCloud server status::
 
  $ sudo -u www-data php occ status
    - installed: true
-   - version: 8.2.0.9
-   - versionstring: 8.2
+   - version: 8.1.5.2
+   - versionstring: 8.1
    - edition:
    
 ``occ`` has options, commands, and arguments. Options and arguments are 
