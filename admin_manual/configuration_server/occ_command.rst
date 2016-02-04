@@ -277,60 +277,9 @@ These commands get the value of a single app or system configuration::
 Setting a Single Configuration Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-These commands set the value of a single app or system configuration::
-
-  $ sudo -u www-data php occ config:system:set logtimezone --value="Europe/Berlin"
-  System config value logtimezone set to Europe/Berlin
-
-  $ sudo -u www-data php occ config:app:set files_sharing 
-    incoming_server2server_share_enabled --value="yes" --type=boolean
-  Config value incoming_server2server_share_enabled for app files_sharing set to yes
-
-The ``config:system:set`` command creates the value, if it does not already 
-exist. To update an existing value,  set ``--update-only``::
-
-  $ sudo -u www-data php occ config:system:set doesnotexist --value="true" 
-    --type=boolean --update-only
-  Value not updated, as it has not been set before.
-
-Note that in order to write a Boolean, float, or integer value to the 
-configuration file, you need to specify the type on your command. This 
-applies only to the ``config:system:set`` command. The following values are 
-known:
-
-* ``boolean``
-* ``integer``
-* ``float``
-* ``string`` (default)
-
-When you want to e.g. disable the maintenance mode run the following command::
-
-  $ sudo -u www-data php occ config:system:set maintenance --value=false --type=boolean
-  ownCloud is in maintenance mode - no app have been loaded
-  System config value maintenance set to boolean false
-
-Setting an array Configuration Value
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Some configurations (e.g. the trusted domain setting) are an array of data.
-In order to set (and also get) the value of one key, you can specify multiple
-``config`` names separated by spaces::
-
-  $ sudo -u www-data php occ config:system:get trusted_domains
-  localhost
-  owncloud.local
-  sample.tld
-
-To replace ``sample.tld`` with ``example.com`` trusted_domains => 2 needs to be
-set::
-
-  $ sudo -u www-data php occ config:system:set trusted_domains 2 --value=example.com
-  System config value trusted_domains => 2 set to string example.com
-
-  $ sudo -u www-data php occ config:system:get trusted_domains
-  localhost
-  owncloud.local
-  example.com
+The ``config:system:set`` commands set the value of a single app or 
+system configuration. However, they are not fully-implemented in ownCloud 8.2, 
+so you should not use them. They will be fully-implemented in ownCloud 9.0.
 
 Deleting a Single Configuration Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
