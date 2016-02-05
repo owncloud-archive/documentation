@@ -55,7 +55,15 @@ complete the upgrade. These are the basic steps to upgrading ownCloud:
 * Log in and :ref:`apply strong permissions <strong_perms_label>` to your 
   ownCloud directories.
 * Re-enable third-party apps.
-   
+
+.. note:: If you are using the Encryption app and upgrading from older 
+   versions of ownCloud to ownCloud 8.0, you must manually migrate your 
+   encryption keys with the *occ* command after the upgrade is complete, like 
+   this example for CentOS:
+   *sudo -u apache php occ encryption:migrate-keys*
+   You must run *occ* as your HTTP user. See 
+   :doc:`../configuration_server/occ_command` to learn more about *occ*
+
 Prerequisites
 -------------
 
