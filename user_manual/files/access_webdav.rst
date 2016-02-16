@@ -160,6 +160,18 @@ Now every time you login to your Linux system your ownCloud share should
 automatically mount via WebDAV in your ``~/owncloud`` directory. If you prefer 
 to mount it manually, change ``auto`` to ``noauto`` in ``/etc/fstab``.
 
+Accessing public shares over WebDAV
+-----------------------------------
+
+ownCloud provides the possibility to access public shares over WebDAV.
+
+To access the public share, open::
+
+  https://example.com/owncloud/public.php/webdav
+
+in a WebDAV client, use the share token as username and the (optional) share password
+as password.
+
 Known Issues
 ------------
 
