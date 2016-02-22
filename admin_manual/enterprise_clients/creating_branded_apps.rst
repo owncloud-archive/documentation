@@ -27,6 +27,12 @@ Your users may run both a branded and un-branded desktop sync client
 side-by-side. Both clients run independently of each other, and do not share 
 account information or files.
 
+Another feature exclusive to branded desktop sync clients: On the General tab, 
+where users have the option to limit the size of downloaded files, branded 
+clients have two additional options. If they enter 0, that means "always ask 
+before downloading any new folder." If they enter -1 that means never ask, and 
+download all new folders automatically.
+
 Building a Branded iOS App
 --------------------------
 
