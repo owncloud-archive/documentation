@@ -2,7 +2,7 @@ Automatic Configuration Setup
 =============================
 
 If you need to install ownCloud on multiple servers, you normally do not want
-to set up each instance separately as described in 
+to set up each instance separately as described in
 :doc:`../configuration_database/linux_database_configuration`.
 For this reason, ownCloud provides an automatic configuration feature.
 
@@ -70,8 +70,8 @@ Using the following parameter settings, the "Finish setup" screen requests data 
       "dbtableprefix" => "",
     );
 
-.. note:: Keep in mind that the automatic configuration does not eliminate the need for 
-   creating the  database user and database in advance, as described in 
+.. note:: Keep in mind that the automatic configuration does not eliminate the need for
+   creating the  database user and database in advance, as described in
    :doc:`../configuration_database/linux_database_configuration`.
 
 PostgreSQL Database
@@ -90,8 +90,8 @@ Using the following parameter settings, the "Finish setup" screen requests data 
       "dbtableprefix" => "",
     );
 
-.. note:: Keep in mind that the automatic configuration does not eliminate the need for 
-   creating the database user and database in advance, as described in 
+.. note:: Keep in mind that the automatic configuration does not eliminate the need for
+   creating the database user and database in advance, as described in
    :doc:`../configuration_database/linux_database_configuration`.
 
 All Parameters
@@ -114,7 +114,7 @@ Using the following parameter settings, because all parameters are already confi
       "directory"     => "/www/htdocs/owncloud/data",
     );
 
-.. note:: Keep in mind that the automatic configuration does not eliminate the need for 
-   creating the database user and database in advance, as described in 
+.. note:: Keep in mind that the automatic configuration does not eliminate the need for
+   creating the database user and database in advance, as described in
    :doc:`../configuration_database/linux_database_configuration`.
-   
+

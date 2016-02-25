@@ -2,13 +2,13 @@
 User Provisioning API
 =====================
 
-The Provisioning API application enables a set of APIs that external systems can use to create, 
-edit, delete and query user attributes, query, set and remove groups, set quota 
-and query total storage used in ownCloud. Group admin users can also query 
-ownCloud and perform the same functions as an admin for groups they manage. The 
-API also enables an admin to query for active ownCloud applications, application 
-info, and to enable or disable an app remotely. HTTP 
-requests can be used via a Basic Auth header to perform any of the functions 
+The Provisioning API application enables a set of APIs that external systems can use to create,
+edit, delete and query user attributes, query, set and remove groups, set quota
+and query total storage used in ownCloud. Group admin users can also query
+ownCloud and perform the same functions as an admin for groups they manage. The
+API also enables an admin to query for active ownCloud applications, application
+info, and to enable or disable an app remotely. HTTP
+requests can be used via a Basic Auth header to perform any of the functions
 listed above. The Provisioning API app is enabled by default.
 
 The base URL for all calls to the share API is **owncloud_base_url/ocs/v1.php/cloud**.
@@ -19,7 +19,7 @@ Instruction Set For Users
 **users / adduser**
 -------------------
 
-Create a new user on the ownCloud server. Authentication is done by sending a 
+Create a new user on the ownCloud server. Authentication is done by sending a
 basic HTTP authentication header.
 
 **Syntax: ocs/v1.php/cloud/users**
@@ -38,7 +38,7 @@ Status codes:
 Example
 ^^^^^^^
 
-* POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d 
+* POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d
   userid="Frank" -d password="frankspassword"``
 * Creates the user ``Frank`` with password ``frankspassword``
 
@@ -60,7 +60,7 @@ XML Output
 **users / getusers**
 --------------------
 
-Retrieves a list of users from the ownCloud server. Authentication is done by 
+Retrieves a list of users from the ownCloud server. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users**
@@ -101,7 +101,7 @@ XML Output
 **users / getuser**
 -------------------
 
-Retrieves information about a single user. Authentication is done by sending a 
+Retrieves information about a single user. Authentication is done by sending a
 Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
@@ -139,8 +139,8 @@ XML Output
 **users / edituser**
 --------------------
 
-Edits attributes related to a user. Users are able to edit email, displayname 
-and password; admins can also edit the quota value. Authentication is done by 
+Edits attributes related to a user. Users are able to edit email, displayname
+and password; admins can also edit the quota value. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
@@ -158,14 +158,14 @@ Status codes:
 Examples
 ^^^^^^^^
 
-  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
+  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d
     key="email" -d value="franksnewemail@example.org"``
   * Updates the email address for the user ``Frank``
-  
-  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
+
+  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d
     key="quota" -d value="100MB"``
   * Updates the quota for the user ``Frank``
-  
+
 XML Output
 ^^^^^^^^^^
 
@@ -183,7 +183,7 @@ XML Output
 **users / deleteuser**
 ----------------------
 
-Deletes a user from the ownCloud server. Authentication is done by sending a 
+Deletes a user from the ownCloud server. Authentication is done by sending a
 Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}**
@@ -218,7 +218,7 @@ XML Output
 **users / getgroups**
 ---------------------
 
-Retrieves a list of groups the specified user is a member of. Authentication is 
+Retrieves a list of groups the specified user is a member of. Authentication is
 done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
@@ -257,7 +257,7 @@ XML Output
 **users / addtogroup**
 ----------------------
 
-Adds the specified user to the specified group. Authentication is done by 
+Adds the specified user to the specified group. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
@@ -277,7 +277,7 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups 
+  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups
     -d groupid="newgroup"``
   * Adds the user ``Frank`` to the group ``newgroup``
 
@@ -298,7 +298,7 @@ XML Output
 **users / removefromgroup**
 ---------------------------
 
-Removes the specified user from the specified group. Authentication is done by 
+Removes the specified user from the specified group. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/groups**
@@ -318,8 +318,8 @@ Status codes:
 Example
 ^^^^^^^
 
-  * DELETE 
-    ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d 
+  * DELETE
+    ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d
     groupid="newgroup"``
   * Removes the user ``Frank`` from the group ``newgroup``
 
@@ -336,17 +336,17 @@ XML Output
     </meta>
     <data/>
   </ocs>
-  
+
 **users / createsubadmin**
 --------------------------
 
-Makes a user the subadmin of a group. Authentication is done by sending a Basic 
+Makes a user the subadmin of a group. Authentication is done by sending a Basic
 HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 
 * HTTP method: POST
-* POST argument: groupid, string - the group of which to make the user a 
+* POST argument: groupid, string - the group of which to make the user a
   subadmin
 
 Status codes:
@@ -359,8 +359,8 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins 
+  * POST
+    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins
     -d groupid="group"``
   * Makes the user ``Frank`` a subadmin of the ``group`` group
 
@@ -381,13 +381,13 @@ XML Output
 **users / removesubadmin**
 --------------------------
 
-Removes the subadmin rights for the user specified from the group specified. 
+Removes the subadmin rights for the user specified from the group specified.
 Authentication is done by sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
 
 * HTTP method: DELETE
-* DELETE argument: groupid, string - the group from which to remove the user's 
+* DELETE argument: groupid, string - the group from which to remove the user's
   subadmin rights
 
 Status codes:
@@ -400,8 +400,8 @@ Status codes:
 Example
 ^^^^^^^
 
-  * DELETE 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins 
+  * DELETE
+    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins
     -d groupid="oldgroup"``
   * Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
 
@@ -418,11 +418,11 @@ XML Output
     </meta>
     <data/>
   </ocs>
-  
+
 **users / getsubadmingroups**
 -----------------------------
 
-Returns the groups in which the user is a subadmin. Authentication is done by 
+Returns the groups in which the user is a subadmin. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
@@ -438,7 +438,7 @@ Status codes:
 Example
 ^^^^^^^
 
-  * GET 
+  * GET
     ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins``
   * Returns the groups of which ``Frank`` is a subadmin
 
@@ -457,15 +457,15 @@ XML Output
     <data>
       <element>testgroup</element>
     </data>
-  </ocs>  
-  
+  </ocs>
+
 Instruction Set For Groups
-==========================  
+==========================
 
 **groups / getgroups**
 ----------------------
 
-Retrieves a list of groups from the ownCloud server. Authentication is done by 
+Retrieves a list of groups from the ownCloud server. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups**
@@ -524,7 +524,7 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups -d 
+  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups -d
     groupid="newgroup"``
   * Adds a new group called ``newgroup``
 
@@ -545,7 +545,7 @@ XML Output
 **groups / getgroup**
 ---------------------
 
-Retrieves a list of group members. Authentication is done by sending a Basic 
+Retrieves a list of group members. Authentication is done by sending a Basic
 HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups/{groupid}**
@@ -579,7 +579,7 @@ XML Output
       </users>
     </data>
   </ocs>
-  
+
 **groups / getsubadmins**
 -------------------------
 
@@ -587,7 +587,7 @@ Returns subadmins of the group. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/groups/{groupid}/subadmins**
-      
+
 * HTTP method: GET
 
 Status codes:
@@ -599,7 +599,7 @@ Status codes:
 Example
 ^^^^^^^
 
-  * GET 
+  * GET
     ``https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins``
   * Return the subadmins of the group: ``mygroup``
 
@@ -618,7 +618,7 @@ XML Output
     <data>
       <element>Tom</element>
     </data>
-  </ocs>  
+  </ocs>
 
 **groups / deletegroup**
 ------------------------
@@ -655,15 +655,15 @@ XML Output
     </meta>
     <data/>
   </ocs>
-  
+
 Instruction Set For Apps
-=========================  
+=========================
 
 **apps / getapps**
 ------------------
 
-Returns a list of apps installed on the ownCloud server. Authentication is done 
-by sending a Basic HTTP Authorization 
+Returns a list of apps installed on the ownCloud server. Authentication is done
+by sending a Basic HTTP Authorization
 header.
 
 **Syntax: ocs/v1.php/cloud/apps/**
@@ -704,7 +704,7 @@ XML Output
 **apps / getappinfo**
 ---------------------
 
-Provides information on a specific application. Authentication is done by 
+Provides information on a specific application. Authentication is done by
 sending a Basic HTTP Authorization header.
 
 **Syntax: ocs/v1.php/cloud/apps/{appid}**
@@ -758,7 +758,7 @@ XML Output
 **apps / enable**
 -----------------
 
-Enable an app.  Authentication is done by sending a Basic HTTP Authorization 
+Enable an app.  Authentication is done by sending a Basic HTTP Authorization
 header.
 
 **Syntax: ocs/v1.php/cloud/apps/{appid}**
@@ -821,4 +821,4 @@ XML Output
       <status>ok</status>
     </meta>
   </ocs>
-  
+

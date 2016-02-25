@@ -1,35 +1,35 @@
 Email Configuration
 ===================
 
-ownCloud is capable of sending password reset emails, notifying users of new 
-file shares, changes in files, and activity notifications. Your users configure 
-which notifications they want to receive on their Personal pages. 
+ownCloud is capable of sending password reset emails, notifying users of new
+file shares, changes in files, and activity notifications. Your users configure
+which notifications they want to receive on their Personal pages.
 
-ownCloud does not contain a full email server, but rather connects to your 
-existing mail server. You must have a functioning mail server for ownCloud to be 
-able to send emails. You may have a mail server on the same machine as ownCloud, 
+ownCloud does not contain a full email server, but rather connects to your
+existing mail server. You must have a functioning mail server for ownCloud to be
+able to send emails. You may have a mail server on the same machine as ownCloud,
 or it may be a remote server.
 
 ownCloud 7 introduces a new feature, the graphical Email Configuration Wizard.
 
 .. figure:: ../images/smtp-config-wizard.png
-   
-With the new wizard, connecting ownCloud to your mail server is fast and easy. 
-The wizard fills in the values in ``config/config.php``, so you may use either 
+
+With the new wizard, connecting ownCloud to your mail server is fast and easy.
+The wizard fills in the values in ``config/config.php``, so you may use either
 or both as you prefer.
 
-The ownCloud Email wizard supports three types of mail server connections: 
-SMTP, PHP, and Sendmail. Use the SMTP configurator for a remote server, and PHP 
-or Sendmail when your mail server is on the same machine as ownCloud. 
+The ownCloud Email wizard supports three types of mail server connections:
+SMTP, PHP, and Sendmail. Use the SMTP configurator for a remote server, and PHP
+or Sendmail when your mail server is on the same machine as ownCloud.
 
-.. note:: The Sendmail option refers to the Sendmail SMTP server, and any 
-   drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of 
+.. note:: The Sendmail option refers to the Sendmail SMTP server, and any
+   drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of
    these include a ``sendmail`` binary, and are freely-interchangeable.
 
 Configuring an SMTP Server
 --------------------------
 
-You need the following information from your mailserver administrator to 
+You need the following information from your mailserver administrator to
 connect ownCloud to a remote SMTP server:
 
 * Encryption type: None, SSL, or TLS
@@ -46,12 +46,12 @@ connect ownCloud to a remote SMTP server:
 
 .. figure:: ../images/smtp-config-smtp.png
 
-Your changes are saved immediately, and you can click the Send Email button to 
-test your configuration. This sends a test message to the email address you 
+Your changes are saved immediately, and you can click the Send Email button to
+test your configuration. This sends a test message to the email address you
 configured on your Personal page. The test message says::
 
   If you received this email, the settings seem to be correct.
-  
+
   --
   ownCloud
   web services under your control
@@ -59,40 +59,40 @@ configured on your Personal page. The test message says::
 Configuring PHP and Sendmail
 ----------------------------
 
-Configuring PHP or Sendmail requires only that you select one of them, and then 
+Configuring PHP or Sendmail requires only that you select one of them, and then
 enter your desired return address.
 
 .. figure:: ../images/smtp-config-php-sendmail.png
-   
-How do you decide which one to use? PHP mode uses your local ``sendmail`` 
-binary. Use this if you want to use ``php.ini`` to control some of your mail 
-server functions, such as setting paths, headers, or passing extra command 
-options to the ``sendmail`` binary. These vary according to which server you 
+
+How do you decide which one to use? PHP mode uses your local ``sendmail``
+binary. Use this if you want to use ``php.ini`` to control some of your mail
+server functions, such as setting paths, headers, or passing extra command
+options to the ``sendmail`` binary. These vary according to which server you
 are using, so consult your server's documentation to see what your options are.
 
-In most cases the ``smtp`` option is best, because it removes the extra step of 
-passing through PHP, and you can control all of your mail server options in one 
+In most cases the ``smtp`` option is best, because it removes the extra step of
+passing through PHP, and you can control all of your mail server options in one
 place, in your mail server configuration.
 
 
 Using Email Templates
 ---------------------
 
-Another useful new feature is editable email templates. Now you can edit 
-ownCloud's email templates on your Admin page. These are your available 
+Another useful new feature is editable email templates. Now you can edit
+ownCloud's email templates on your Admin page. These are your available
 templates:
 
-* Sharing email (HTML) -- HTML version of emails notifying users of new file 
+* Sharing email (HTML) -- HTML version of emails notifying users of new file
   shares
 
 * Sharing email  (plain text fallback) -- Plain text email notifying users of new file shares
 
 * Lost password mail -- Password reset email for users who lose their passwords.
 
-* Activity notification mail -- Notification of activities that users have 
+* Activity notification mail -- Notification of activities that users have
   enabled in the Notifications section of their Personal pages.
 
-In addition to providing the email templates, this feature enables you to apply 
+In addition to providing the email templates, this feature enables you to apply
 any preconfigured themes to the email.
 
 To modify an email template to users:
@@ -105,35 +105,35 @@ To modify an email template to users:
 
 4. Make any desired modifications to the template.
 
-The templates are written in PHP and HTML, and are already loaded with the 
-relevant variables such as username, share links, and filenames. You can, if you 
-are careful, edit these even without knowing PHP or HTML; don't touch any of the 
-code, but you can edit the text portions of the messages. For example, this the 
+The templates are written in PHP and HTML, and are already loaded with the
+relevant variables such as username, share links, and filenames. You can, if you
+are careful, edit these even without knowing PHP or HTML; don't touch any of the
+code, but you can edit the text portions of the messages. For example, this the
 lost password mail template:
 
 .. code-block:: php
 
   <?php
-  
+
      echo str_replace('{link}', $_['link'], $l->t('Use the following link to
      reset your password: {link}'));
 
-You could change the text portion of the template, ``Use the following link to 
-reset your password:`` to say something else, such as ``Click the following link 
-to reset your password. If you did not ask for a password reset, ignore this 
+You could change the text portion of the template, ``Use the following link to
+reset your password:`` to say something else, such as ``Click the following link
+to reset your password. If you did not ask for a password reset, ignore this
 message.``
 
-Again, be very careful to change nothing but the message text, because the 
+Again, be very careful to change nothing but the message text, because the
 tiniest coding error will break the template.
 
-.. note:: You can edit the templates directly in the template text box, or you 
-   can copy and paste them to a text editor for modification and then copy and 
+.. note:: You can edit the templates directly in the template text box, or you
+   can copy and paste them to a text editor for modification and then copy and
    paste them back to the template text box for use when you are done.
 
 Setting Mail Server Parameters in config.php
 --------------------------------------------
 
-If you prefer, you may set your mail server parameters in ``config/config.php``. 
+If you prefer, you may set your mail server parameters in ``config/config.php``.
 The following examples are for SMTP, PHP, Sendmail, and Qmail.
 
 SMTP
@@ -308,7 +308,7 @@ of the Admin settings page.
 Troubleshooting
 ---------------
 
-If you are unable to send email, try turning on debugging. Do this by enabling 
+If you are unable to send email, try turning on debugging. Do this by enabling
 the ``mail_smtpdebug parameter`` in ``config/config.php``.
 
 .. code-block:: php
@@ -317,15 +317,15 @@ the ``mail_smtpdebug parameter`` in ``config/config.php``.
 
     "mail_smtpdebug" => true;
 
-.. note:: Immediately after pressing the **Send email** button, as described 
-   before, several **SMTP -> get_lines(): ...** messages appear on the screen.  
+.. note:: Immediately after pressing the **Send email** button, as described
+   before, several **SMTP -> get_lines(): ...** messages appear on the screen.
    This is expected behavior and can be ignored.
 
 **Question**: Why is my web domain different from my mail domain?
 
-**Answer**: The default domain name used for the sender address is the hostname 
-where your ownCloud installation is served.  If you have a different mail domain 
-name you can override this behavior by setting the following configuration 
+**Answer**: The default domain name used for the sender address is the hostname
+where your ownCloud installation is served.  If you have a different mail domain
+name you can override this behavior by setting the following configuration
 parameter:
 
 .. code-block:: php
@@ -334,7 +334,7 @@ parameter:
 
     "mail_domain" => "example.com",
 
-This setting results in every email sent by ownCloud (for example, the password 
+This setting results in every email sent by ownCloud (for example, the password
 reset email) having the domain part of the sender address appear as follows::
 
   no-reply@example.com
@@ -352,13 +352,13 @@ reset email) having the domain part of the sender address appear as follows::
   time=3.64ms
 
 
-**Question**: How can I find out if the SMTP server is listening on a specific 
+**Question**: How can I find out if the SMTP server is listening on a specific
 TCP port?
 
-**Answer**: The best way to get mail server information is to ask your mail 
-server admin. If you are the mail server admin, or need information in a 
-hurry, you can use the ``netstat`` command. This example shows all active 
-servers on your system, and the ports they are listening on. The SMTP server is 
+**Answer**: The best way to get mail server information is to ask your mail
+server admin. If you are the mail server admin, or need information in a
+hurry, you can use the ``netstat`` command. This example shows all active
+servers on your system, and the ports they are listening on. The SMTP server is
 listening on localhost port 25.
 
 ::
@@ -373,30 +373,30 @@ listening on localhost port 25.
  tcp    0      0    127.0.0.1:25    0.0.0.0:*        LISTEN   2245/exim4
  tcp    0      0    127.0.0.1:3306  0.0.0.0:*        LISTEN   1524/mysqld
 
-*  25/tcp is unencrypted smtp 
+*  25/tcp is unencrypted smtp
 
-* 110/tcp/udp is unencrypted pop3 
+* 110/tcp/udp is unencrypted pop3
 
 * 143/tcp/udp is unencrypted imap4
 
 * 465/tcp is encrypted ssmtp
 
 * 993/tcp/udp is encrypted imaps
-      
-* 995/tcp/udp is encrypted pop3s 
+
+* 995/tcp/udp is encrypted pop3s
 
 
-**Question**: How can I determine if the SMTP server supports the outdated SMTPS 
+**Question**: How can I determine if the SMTP server supports the outdated SMTPS
 protocol?
 
-**Answer**: A good indication that the SMTP server supports the SMTPS protocol 
-is that it is listening on port **465**. 
+**Answer**: A good indication that the SMTP server supports the SMTPS protocol
+is that it is listening on port **465**.
 
-**Question**: How can I determine what authorization and encryption protocols 
+**Question**: How can I determine what authorization and encryption protocols
 the mail server supports?
 
-**Answer**: SMTP servers usually announce the availability of STARTTLS 
-immediately after a connection has been established. You can easily check this 
+**Answer**: SMTP servers usually announce the availability of STARTTLS
+immediately after a connection has been established. You can easily check this
 using the ``telnet`` command.
 
 .. note:: You must enter the marked lines to obtain the information displayed.

@@ -11,7 +11,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import sys
+import os
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -25,7 +26,8 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo', 'rst2pdf.pdfbuilder']
+extensions = ['sphinxcontrib.phpdomain',
+              'sphinx.ext.todo', 'rst2pdf.pdfbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -101,7 +103,7 @@ html_theme_path = ['../_shared_assets/themes']
 # a list of builtin themes.
 html_theme = 'owncloud_org'
 html_theme_options = {
-#    "rightsidebar": "true",
+    # "rightsidebar": "true",
 }
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -172,14 +174,14 @@ htmlhelp_basename = 'owncloudDeveloperManual'
 # -- Options for LaTeX output --------------------------------------------------
 
 latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
+    # The paper size ('letterpaper' or 'a4paper').
+    # 'papersize': 'letterpaper',
 
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+    # The font size ('10pt', '11pt' or '12pt').
+    # 'pointsize': '10pt',
 
-# Additional stuff for the LaTeX preamble.
-#'preamble': '',
+    # Additional stuff for the LaTeX preamble.
+    # 'preamble': '',
 }
 
 # Grouping the document tree into LaTeX files. List of tuples
@@ -212,7 +214,7 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 # -- Options for pdf page output -----------------------------------------------
 
 pdf_documents = [('index', u'owncloudDeveloperManual', u'ownCloud Developer Manual',
-                  u'The ownCloud developers'),]
+                  u'The ownCloud developers'), ]
 
 # -- Options for manual page output --------------------------------------------
 

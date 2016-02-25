@@ -2,8 +2,8 @@
 Custom Client Download Repositories
 ===================================
 
-You may configure the URLs to your own download repositories for your ownCloud 
-desktop clients and mobile apps in :file:`config/config.php`. This example shows 
+You may configure the URLs to your own download repositories for your ownCloud
+desktop clients and mobile apps in :file:`config/config.php`. This example shows
 the default download locations:
 
 .. code-block:: php
@@ -19,9 +19,9 @@ Simply replace the URLs with the links to your own preferred download repos.
 You may test alternate URLs without editing :file:`config/config.php` by setting a test URL as an environment variable::
 
  export OCC_UPDATE_URL=https://test.example.com
-  
+
 When you're finished testing you can disable the environment variable::
 
  unset OCC_UPDATE_URL
- 
- 
+
+

@@ -2,12 +2,12 @@
 Supported ownCloud Enterprise Subscription Apps
 ===============================================
 
-See :doc:`../installation/apps_management_installation` for instructions on 
+See :doc:`../installation/apps_management_installation` for instructions on
 managing ownCloud apps.
 
-These applications are supported in ownCloud Enterprise Edition. The first name 
-on each line is the name of the application as it appears on the Apps page in 
-your ownCloud Web GUI, and the name in parentheses is the filename as it 
+These applications are supported in ownCloud Enterprise Edition. The first name
+on each line is the name of the application as it appears on the Apps page in
+your ownCloud Web GUI, and the name in parentheses is the filename as it
 appears in your ``owncloud/apps`` directory.
 
 Activity (activity)
@@ -58,6 +58,6 @@ User backend using remote HTTP servers (user_webdavauth)
 
 Windows Network Drive (windows_network_drive)
 
-.. note:: 3rd party and unsupported apps must be disabled before performing a 
-   system upgrade. Then install the upgraded versions, and after the 
+.. note:: 3rd party and unsupported apps must be disabled before performing a
+   system upgrade. Then install the upgraded versions, and after the
    upgrade is complete re-enable them.

@@ -22,7 +22,7 @@ Backup Database
 MySQL/MariaDB
 ^^^^^^^^^^^^^
 
-MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended 
+MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended
 database engine. To backup MySQL/MariaDB::
 
     mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > owncloud-sqlbkp_`date +"%Y%m%d"`.bak

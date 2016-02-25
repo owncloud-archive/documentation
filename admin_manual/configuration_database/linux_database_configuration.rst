@@ -30,22 +30,22 @@ affected if you see the following in your log file during the installation or
 update of ownCloud:
 
  An unhandled exception has been thrown:
- exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1665 
- Cannot execute statement: impossible to write to binary log since 
- BINLOG_FORMAT = STATEMENT and at least one table uses a storage engine limited 
- to row-based logging. InnoDB is limited to row-logging when transaction 
+ exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1665
+ Cannot execute statement: impossible to write to binary log since
+ BINLOG_FORMAT = STATEMENT and at least one table uses a storage engine limited
+ to row-based logging. InnoDB is limited to row-logging when transaction
  isolation level is READ COMMITTED or READ UNCOMMITTED.'
 
-There are two solutions. One is to disable binary logging. Binary logging 
-records all changes to your database, and how long each change took. The 
-purpose of binary logging is to enable replication and to support backup 
+There are two solutions. One is to disable binary logging. Binary logging
+records all changes to your database, and how long each change took. The
+purpose of binary logging is to enable replication and to support backup
 operations.
 
-The other is to change the BINLOG_FORMAT = STATEMENT in your database 
-configuration file, or possibly in your database startup script, to 
-BINLOG_FORMAT = MIXED. See `Overview of the Binary 
-Log <https://mariadb.com/kb/en/mariadb/overview-of-the-binary-log/>`_ and `The 
-Binary Log <https://dev.mysql.com/doc/refman/5.6/en/binary-log.html>`_ for 
+The other is to change the BINLOG_FORMAT = STATEMENT in your database
+configuration file, or possibly in your database startup script, to
+BINLOG_FORMAT = MIXED. See `Overview of the Binary
+Log <https://mariadb.com/kb/en/mariadb/overview-of-the-binary-log/>`_ and `The
+Binary Log <https://dev.mysql.com/doc/refman/5.6/en/binary-log.html>`_ for
 detailed information.
 
 Parameters
@@ -161,7 +161,7 @@ You can quit the prompt by entering::
 
 An ownCloud instance configured with PostgreSQL would contain the path to the socket on
 which the database is running as the hostname, the system username the php process is using,
-and an empty password to access it, and the name of the database. The :file:`config/config.php` as 
+and an empty password to access it, and the name of the database. The :file:`config/config.php` as
 created by the :doc:`../installation/installation_wizard` would therefore contain entries like
 this:
 
@@ -377,7 +377,7 @@ On the machine where your Oracle database is installed, type::
   --------------------------------------------------------------------------------
   Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
   PL/SQL Release 11.2.0.2.0 - Production
-  CORE	11.2.0.2.0	Production
+  CORE  11.2.0.2.0  Production
   TNS for Linux: Version 11.2.0.2.0 - Production
   NLSRTL Version 11.2.0.2.0 - Production
 

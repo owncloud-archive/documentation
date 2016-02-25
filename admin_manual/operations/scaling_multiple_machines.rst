@@ -34,7 +34,7 @@ following components were installed on each application server:
 *   PHP-MYSQL
 *   PHP-CURL
 
-Also required is `php5-libsmbclient 
+Also required is `php5-libsmbclient
 <https://download.owncloud.org/download/repositories/stable/owncloud/>`_.
 
 It is also worth mentioning that the appropriate exceptions where made in the

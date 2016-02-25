@@ -2,9 +2,9 @@
 Converting Database Type
 ========================
 
-You can convert a SQLite database to a more performing MySQL, MariaDB or 
-PostgreSQL database with the ownCloud command line tool. SQLite is good for 
-testing and simple single-user ownCloud servers, but it does not scale for 
+You can convert a SQLite database to a more performing MySQL, MariaDB or
+PostgreSQL database with the ownCloud command line tool. SQLite is good for
+testing and simple single-user ownCloud servers, but it does not scale for
 multiple-user production users.
 
 .. note:: ownCloud Enterprise Subscription does not support SQLite.
@@ -26,8 +26,8 @@ The Options
 * ``--clear-schema``                      clear schema (optional)
 * ``--all-apps``                          by default, tables for enabled apps are converted, use to convert also tables of deactivated apps (optional)
 
-*Note:* The converter searches for apps in your configured app folders and uses 
-the schema definitions in the apps to create the new table. So tables of removed 
+*Note:* The converter searches for apps in your configured app folders and uses
+the schema definitions in the apps to create the new table. So tables of removed
 apps will not be converted even with option ``--all-apps``
 
 For example
@@ -36,16 +36,16 @@ For example
 
   php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
 
-To successfully proceed with the conversion, you must type ``yes`` when prompted 
+To successfully proceed with the conversion, you must type ``yes`` when prompted
 with the question ``Continue with the conversion?``
 
-On success the converter will automatically configure the new database in your 
+On success the converter will automatically configure the new database in your
 ownCloud config ``config.php``.
 
 Unconvertible Tables
 --------------------
 
-If you updated your ownCloud installation there might exist old tables, which 
+If you updated your ownCloud installation there might exist old tables, which
 are not used anymore. The converter will tell you which ones.
 
 .. code-block:: bash

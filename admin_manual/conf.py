@@ -11,7 +11,8 @@
 # All configuration values have a default; values that are commented out
 # serve to show the default.
 
-import sys, os
+import sys
+import os
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -25,7 +26,8 @@ import sys, os
 
 # Add any Sphinx extension module names here, as strings. They can be extensions
 # coming with Sphinx (named 'sphinx.ext.*') or your custom ones.
-extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo', 'rst2pdf.pdfbuilder']
+extensions = ['sphinxcontrib.phpdomain',
+              'sphinx.ext.todo', 'rst2pdf.pdfbuilder']
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
@@ -65,7 +67,7 @@ copyright = u'2012-2016, The ownCloud developers'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build','_shared_assets','scripts/*']
+exclude_patterns = ['_build', '_shared_assets', 'scripts/*']
 
 # The reST default role (used for this markup: `text`) to use for all documents.
 #default_role = None
@@ -101,7 +103,7 @@ html_theme_path = ['../_shared_assets/themes']
 # a list of builtin themes.
 html_theme = 'owncloud_org'
 html_theme_options = {
-#    "rightsidebar": "true",
+    # "rightsidebar": "true",
 }
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -171,8 +173,7 @@ htmlhelp_basename = 'ownCloudServerAdminManual'
 
 # -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {'preamble': '\usepackage{morefloats}', 'figure_align': 'H',
-}
+latex_elements = {'preamble': '\usepackage{morefloats}', 'figure_align': 'H'}
 
 # latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
@@ -185,7 +186,8 @@ latex_elements = {'preamble': '\usepackage{morefloats}', 'figure_align': 'H',
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [('contents', 'ownCloud_Server_Administration_Manual.tex', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'manual'),]
+latex_documents = [('contents', 'ownCloud_Server_Administration_Manual.tex',
+                    u'ownCloud Server Administration Manual', u'The ownCloud developers', 'manual'), ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -209,13 +211,15 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('contents', u'owncloud Server Administration Manual', u'ownCloud Server Administration Manual', u'The ownCloud developers'),]
+pdf_documents = [('contents', u'owncloud Server Administration Manual',
+                  u'ownCloud Server Administration Manual', u'The ownCloud developers'), ]
 
 # -- Options for manual page output --------------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Administration Manual', [u'The ownCloud developers'], 1) ]
+man_pages = [('contents', 'owncloudserveradminmanual',
+              u'ownCloud Server Administration Manual', [u'The ownCloud developers'], 1)]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -226,7 +230,8 @@ man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Admini
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [ ('contents', 'ownCloud Server Admin Manual', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'ownCloud', 'The ownCloud Server Administration Manual.', 'Miscellaneous'), ]
+texinfo_documents = [('contents', 'ownCloud Server Admin Manual', u'ownCloud Server Administration Manual',
+                      u'The ownCloud developers', 'ownCloud', 'The ownCloud Server Administration Manual.', 'Miscellaneous'), ]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []
@@ -282,5 +287,3 @@ epub_copyright = u'2012-2016, The ownCloud developers'
 
 # Include todos?
 todo_include_todos = True
-
-
