@@ -1,0 +1,31 @@
+[Default]
+max_line_length = 80
+use_spaces = True
+
+html.enabled = False
+css.enabled = False
+
+[rst]
+bears = LineLengthBear, SpaceConsistencyBear, LanguageToolBear
+files = *.rst, admin_manual/**/*.rst
+default_actions = SpaceConsistencyBear: ApplyPatchAction
+
+[php]
+files = go.php
+bears = SpaceConsistencyBear, PHPLintBear
+default_actions = SpaceConsistencyBear: ApplyPatchAction
+
+[python]
+bears = SpaceConsistencyBear, PEP8Bear
+files = admin_manual/conf.py, developer_manual/conf.py, user_manual/conf.py
+default_actions = SpaceConsistencyBear: ApplyPatchAction
+
+[html]
+bears = SpaceConsistencyBear, LineLengthBear, HTMLLintBear
+files = **/*.html
+default_actions = SpaceConsistencyBear: ApplyPatchAction
+
+[css]
+bears = SpaceConsistencyBear, LineLengthBear, CSSLintBear
+files = **/*.css
+default_actions = SpaceConsistencyBear: ApplyPatchAction
