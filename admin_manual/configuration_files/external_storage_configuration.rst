@@ -2,8 +2,8 @@
 Configuring External Storage (Configuration File)
 =================================================
 
-You may configure external storage mounts by creating and editing the 
-:file:`data/mount.json`. This file contains all settings in JSON (JavaScript 
+You may configure external storage mounts by creating and editing the
+:file:`data/mount.json`. This file contains all settings in JSON (JavaScript
 Object Notation) format. At the moment two different types of entries exist:
 
 -  **Group mounts:** each entry configures a mount for each user in group.
@@ -27,13 +27,13 @@ available for use:
 -  `Google Drive`_
 -  `OpenStack Swift`_
 
-You need to enable the `External storage support` app first. You can 
-do this on the Apps page of your ownCloud Web GUI, or use the ``occ`` command. 
-This example shows how to list apps, and how to enable the `External storage 
+You need to enable the `External storage support` app first. You can
+do this on the Apps page of your ownCloud Web GUI, or use the ``occ`` command.
+This example shows how to list apps, and how to enable the `External storage
 support` app on Debian Linux and its derivatives::
 
  $ sudo -u www-data php occ app:list
- Enabled:                                                                        
+ Enabled:
   [snip]
  Disabled:
  - files_external
@@ -53,9 +53,9 @@ administrator panel to add, remove or modify mount options to prevent any proble
 Using self-signed certificates
 ------------------------------
 
-When using self-signed certificates for external storage mounts the certificate 
-needs to be imported in the personal settings of the user. Please refer to `this 
-<http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_ 
+When using self-signed certificates for external storage mounts the certificate
+needs to be imported in the personal settings of the user. Please refer to `this
+<http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
 blogpost for more information.
 
 Adding files to external storages
@@ -70,10 +70,10 @@ Please also be aware that ownCloud might not always be able to find out what has
 changed remotely (files changed without going through ownCloud), especially
 when it's very deep in the folder hierarchy of the external storage.
 
-You might need to setup a cron job that runs ``sudo -u www-data php occ 
-files:scan --all`` (or replace "--all" with the user name, see also 
-:doc:`../configuration_server/occ_command`) to trigger a rescan of the user's 
-files periodically (for example every 15 minutes), which includes the mounted 
+You might need to setup a cron job that runs ``sudo -u www-data php occ
+files:scan --all`` (or replace "--all" with the user name, see also
+:doc:`../configuration_server/occ_command`) to trigger a rescan of the user's
+files periodically (for example every 15 minutes), which includes the mounted
 external storage.
 
 Example
@@ -135,17 +135,17 @@ following order, with later mount types always overriding a previous mount type:
 Configuring Temporary Disk Space Needs
 --------------------------------------
 
-Not all external storage types are currently enabled for, or support 
-streaming. Therefore ownCloud needs temporary space to buffer data for 
-transfers. This can occur when there are many concurrent users transferring data 
-with a higher volume over small bandwidth. ownCloud may need, in these 
+Not all external storage types are currently enabled for, or support
+streaming. Therefore ownCloud needs temporary space to buffer data for
+transfers. This can occur when there are many concurrent users transferring data
+with a higher volume over small bandwidth. ownCloud may need, in these
 cases, additional temporary space.
 
-Example: 100 concurrent users uploading each a 300MB file with a 
-total transfer time of 6000s (1h 40min). The temporary space needed by ownCloud 
-for this period of time is 30GB. Even though it is not mandatory, the location 
-of the temp directory used by ownCloud can be configured manually. To do so, 
-you need to maintain the ``tempdirectory`` parameter described in 
+Example: 100 concurrent users uploading each a 300MB file with a
+total transfer time of 6000s (1h 40min). The temporary space needed by ownCloud
+for this period of time is 30GB. Even though it is not mandatory, the location
+of the temp directory used by ownCloud can be configured manually. To do so,
+you need to maintain the ``tempdirectory`` parameter described in
 ``config.sample.php``
 
 As of writing, following external storage list uses temp files for up/download:
@@ -266,8 +266,8 @@ Example
 SMB
 ~~~
 The SMB backend mounts a folder on a remote Samba server, a NAS appliance or
-a Windows machine into the virtual file system. This requires 
-``php5-libsmbclient`` (`installation instructions 
+a Windows machine into the virtual file system. This requires
+``php5-libsmbclient`` (`installation instructions
 <https://download.owncloud.org/download/repositories/stable/owncloud/>`_).
 It is part of the ‘External storage support’ app, the class to be used
 is **\\OC\\Files\\Storage\\SMB**\  and takes the following options:
@@ -295,7 +295,7 @@ With username only:
         },
         "priority":100
     }
-    
+
 With domainname and username:
 
 .. code-block:: json
@@ -465,61 +465,61 @@ Example
 
 External Storage Password Management
 ------------------------------------
-    
-ownCloud handles passwords for external mounts differently than regular 
+
+ownCloud handles passwords for external mounts differently than regular
 ownCloud user passwords.
 
-The regular user and file share passwords (when you use the default ownCloud 
-user backend) are stored using a strong cryptographically secure hashing 
-mechanism in the database. On a new user account with a new password, the 
-password is hashed and stored in the ownCloud database. The plain-text password 
-is never stored. When the user logs in, the hash of the password they enter is 
-compared with the hash in the database. When the hashes match the user is 
-allowed access. These are not recoverable, so when a user loses a password the 
+The regular user and file share passwords (when you use the default ownCloud
+user backend) are stored using a strong cryptographically secure hashing
+mechanism in the database. On a new user account with a new password, the
+password is hashed and stored in the ownCloud database. The plain-text password
+is never stored. When the user logs in, the hash of the password they enter is
+compared with the hash in the database. When the hashes match the user is
+allowed access. These are not recoverable, so when a user loses a password the
 only option is to create a new password.
 
-Passwords which are used to connect against external storage (e.g. 
-SMB or FTP), there we have to differentiate again between different 
+Passwords which are used to connect against external storage (e.g.
+SMB or FTP), there we have to differentiate again between different
 implementations:
 
-1. **Login with ownCloud credentials** 
+1. **Login with ownCloud credentials**
 
-When a mountpoint has this option, for example ``SMB / CIFS using OC login``, 
-the password will be intercepted when a user logs in and written to the PHP 
-session (which is a file on the filesystem), and written encrypted into the 
-session with a key from the configuration file. Every time that password is 
+When a mountpoint has this option, for example ``SMB / CIFS using OC login``,
+the password will be intercepted when a user logs in and written to the PHP
+session (which is a file on the filesystem), and written encrypted into the
+session with a key from the configuration file. Every time that password is
 required ownCloud reads it from the PHP session file.
 
-When you use this option, features such as sharing will not work properly from 
+When you use this option, features such as sharing will not work properly from
 that mountpoint when the user is not logged-in.
 
-Depending on the implementation of the application, this means that the password 
-could get leaked in the ``ps`` output, as we use ``smbclient`` for SMB storage 
-access in the community version. There is a `bug report on this 
-<https://github.com/owncloud/core/issues/6092>`_. Consequently, we're currently 
-evaluating an alternative approach accessing the library directly, and thus not 
-leaking the password anymore. This is already implemented in the Enterprise 
-Edition in our Windows Network Drive application, and it will get into the 
-community version once we have streamlined the code of the ``files_external`` 
+Depending on the implementation of the application, this means that the password
+could get leaked in the ``ps`` output, as we use ``smbclient`` for SMB storage
+access in the community version. There is a `bug report on this
+<https://github.com/owncloud/core/issues/6092>`_. Consequently, we're currently
+evaluating an alternative approach accessing the library directly, and thus not
+leaking the password anymore. This is already implemented in the Enterprise
+Edition in our Windows Network Drive application, and it will get into the
+community version once we have streamlined the code of the ``files_external``
 application a little bit more.
 
 2. **Stored credentials**
 
-When you enter credentials into the ``files_external`` dialog those are stored 
-on the filesystem and encrypted with a key stored in ``config.php``. This is 
-required since ownCloud needs access to those files and shares even when the 
+When you enter credentials into the ``files_external`` dialog those are stored
+on the filesystem and encrypted with a key stored in ``config.php``. This is
+required since ownCloud needs access to those files and shares even when the
 user is not logged-in to have sharing and other key features properly working.
 
 To sum up:
 
-The "login with ownCloud credentials" SMB function in the community edition 
-exposes the password in the server system's process list. If you want to get 
-around this limitation without waiting for it to be addressed in CE you can get 
-the Enterprise Edition. However, even then the password is stored in the PHP 
-session and a malicious admin could access it. You can protect your PHP session 
-files using protections available in your filesystem. Stored credentials are 
+The "login with ownCloud credentials" SMB function in the community edition
+exposes the password in the server system's process list. If you want to get
+around this limitation without waiting for it to be addressed in CE you can get
+the Enterprise Edition. However, even then the password is stored in the PHP
+session and a malicious admin could access it. You can protect your PHP session
+files using protections available in your filesystem. Stored credentials are
 always accessible to the ownCloud instance.
-   
+
 .. _Amazon S3: http://aws.amazon.com/de/s3/
 .. _Dropbox: https://www.dropbox.com/
 .. _Google Drive: https://drive.google.com/start

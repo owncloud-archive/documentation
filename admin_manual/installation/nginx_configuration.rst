@@ -7,22 +7,22 @@ Nginx Configuration
 -  You need to insert the following code into **your nginx config file.**
 -  The config assumes that ownCloud is installed in /var/www/owncloud and
    that it is accessed via http(s)://cloud.example.com.
--  Adjust **server_name**, **root**, **ssl_certificate** and 
+-  Adjust **server_name**, **root**, **ssl_certificate** and
    **ssl_certificate_key** to suit your needs.
--  Make sure your SSL certificates are readable by the server (see `Nginx HTTP 
+-  Make sure your SSL certificates are readable by the server (see `Nginx HTTP
    SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
--  ``add_header`` statements are only taken from the current level and are not cascaded 
-   from or to a different level. All necessary ``add_header`` statements must be defined 
-   in each level needed. For better readability it is possible to move *common* add 
-   header statements into a separate file and include that file wherever necessary. 
-   However, each ``add_header`` statement must be written in a single line to prevent 
+-  ``add_header`` statements are only taken from the current level and are not cascaded
+   from or to a different level. All necessary ``add_header`` statements must be defined
+   in each level needed. For better readability it is possible to move *common* add
+   header statements into a separate file and include that file wherever necessary.
+   However, each ``add_header`` statement must be written in a single line to prevent
    connection problems with sync clients.
 
 .. note:: The following example assumes that your ownCloud is installed in
    your webroot. If you're using a subfolder you need to adjust the configuration
    accordingly.
-   
-::   
+
+::
 
   upstream php-handler {
     server 127.0.0.1:9000;
@@ -33,7 +33,7 @@ Nginx Configuration
     listen 80;
     server_name cloud.example.com;
     # enforce https
-    return 301 https://$server_name$request_uri;  
+    return 301 https://$server_name$request_uri;
   }
 
   server {
@@ -54,8 +54,8 @@ Nginx Configuration
 
     # Path to the root of your installation
     root /var/www/owncloud/;
-    # set max upload size 
-    client_max_body_size 10G;             
+    # set max upload size
+    client_max_body_size 10G;
     fastcgi_buffers 64 4K;
 
     # Disable gzip to avoid the removal of the ETag header
@@ -134,7 +134,7 @@ Nginx Configuration
   }
 
 .. note:: You can use ownCloud over plain http, but we strongly encourage you to
-          use SSL/TLS to encrypt all of your server traffic, and to protect 
+          use SSL/TLS to encrypt all of your server traffic, and to protect
           user's logins and data in transit.
 
 -  Remove the server block containing the redirect
@@ -147,9 +147,9 @@ Nginx Configuration
 Suppressing Log Messages
 ------------------------
 
-If you're seeing meaningless messages in your logfile, for example `client 
-denied by server configuration: /var/www/data/htaccesstest.txt 
-<https://forum.owncloud.org/viewtopic.php?f=17&t=20217>`_, add this section to 
+If you're seeing meaningless messages in your logfile, for example `client
+denied by server configuration: /var/www/data/htaccesstest.txt
+<https://forum.owncloud.org/viewtopic.php?f=17&t=20217>`_, add this section to
 your Nginx configuration to suppress them::
 
         location = /data/htaccesstest.txt {

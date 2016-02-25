@@ -39,106 +39,106 @@ following aliases are defined in an Apache virtual host directive:
 
 .. code-block:: apache
 
-	# non-Shibboleth access
-	Alias /owncloud /var/www/owncloud/
-	# for Shibboleth access
-	Alias /oc-shib /var/www/owncloud/
+    # non-Shibboleth access
+    Alias /owncloud /var/www/owncloud/
+    # for Shibboleth access
+    Alias /oc-shib /var/www/owncloud/
 
 Further Shibboleth specific configuration as defined in
 ``/etc/apache2/conf.d/shib.conf``::
 
-	#
-	# Load the Shibboleth module.
-	#
-	LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_22.so
+    #
+    # Load the Shibboleth module.
+    #
+    LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_22.so
 
-	#
-	# Ensures handler will be accessible.
-	#
-	<Location /Shibboleth.sso>
-	  Satisfy Any
-	  Allow from all
-	</Location>
+    #
+    # Ensures handler will be accessible.
+    #
+    <Location /Shibboleth.sso>
+      Satisfy Any
+      Allow from all
+    </Location>
 
-	#
-	# Configure the module for content.
-	#
-	# Shibboleth is disabled for the following location to allow non
-	# Shibboleth webdav access
-	<Location ~ "/oc-shib/remote.php/nonshib-webdav">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
+    #
+    # Configure the module for content.
+    #
+    # Shibboleth is disabled for the following location to allow non
+    # Shibboleth webdav access
+    <Location ~ "/oc-shib/remote.php/nonshib-webdav">
+      Satisfy Any
+      Allow from all
+      AuthType None
+      Require all granted
+    </Location>
 
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	<Location ~
-	  "/oc-shib/(status.php$
-	  |index.php/s/
-	  |public.php$
-	  |cron.php$
-	  |core/img/
-	  |index.php/apps/files_sharing/ajax/publicpreview.php$
-	  |index.php/apps/files/ajax/upload.php$
-	  |apps/files/templates/fileexists.html$
-	  |index.php/apps/files/ajax/mimeicon.php$)">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
+    # Shibboleth is disabled for the following location to allow public link
+    # sharing
+    <Location ~
+      "/oc-shib/(status.php$
+      |index.php/s/
+      |public.php$
+      |cron.php$
+      |core/img/
+      |index.php/apps/files_sharing/ajax/publicpreview.php$
+      |index.php/apps/files/ajax/upload.php$
+      |apps/files/templates/fileexists.html$
+      |index.php/apps/files/ajax/mimeicon.php$)">
+      Satisfy Any
+      Allow from all
+      AuthType None
+      Require all granted
+    </Location>
 
-	# Shibboleth is disabled for the following location 
-	# to allow public gallery sharing
-	<Location ~
+    # Shibboleth is disabled for the following location
+    # to allow public gallery sharing
+    <Location ~
          "/oc-shib/(apps/gallery/templates/slideshow.html$
          |index.php/apps/gallery/ajax/getimages.php
          |index.php/apps/gallery/ajax/thumbnail.php
          |index.php/apps/gallery/ajax/image.php)">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
+      Satisfy Any
+      Allow from all
+      AuthType None
+      Require all granted
+    </Location>
 
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	<Location ~ "/oc-shib/.*\.css">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
+    # Shibboleth is disabled for the following location to allow public link
+    # sharing
+    <Location ~ "/oc-shib/.*\.css">
+      Satisfy Any
+      Allow from all
+      AuthType None
+      Require all granted
+    </Location>
 
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	<Location ~ "/oc-shib/.*\.js">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
+    # Shibboleth is disabled for the following location to allow public link
+    # sharing
+    <Location ~ "/oc-shib/.*\.js">
+      Satisfy Any
+      Allow from all
+      AuthType None
+      Require all granted
+    </Location>
 
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	<Location ~ "/oc-shib/.*\.woff ">
-	  Satisfy Any
-	  Allow from all
-	  AuthType None
-	  Require all granted
-	</Location>
+    # Shibboleth is disabled for the following location to allow public link
+    # sharing
+    <Location ~ "/oc-shib/.*\.woff ">
+      Satisfy Any
+      Allow from all
+      AuthType None
+      Require all granted
+    </Location>
 
-	# Besides the exceptions above this location is now under control of
-	# Shibboleth
-	<Location /oc-shib>
-	  AuthType shibboleth
-	  ShibRequireSession On
-	  ShibUseHeaders Off
-	  ShibExportAssertion On
-	  require valid-user
-	</Location>
+    # Besides the exceptions above this location is now under control of
+    # Shibboleth
+    <Location /oc-shib>
+      AuthType shibboleth
+      ShibRequireSession On
+      ShibUseHeaders Off
+      ShibExportAssertion On
+      require valid-user
+    </Location>
 
 Depending on the ownCloud Shibboleth app mode, you may need to revisit this
 configuration.
@@ -158,27 +158,27 @@ attributes on your Admin page.
 Choosing the App Mode
 ^^^^^^^^^^^^^^^^^^^^^
 
-After enabling the app it will be in **Not active** mode, which ignores a 
-Shibboleth session and allows you to login as an administrator and inspect the 
-currently available Apache environment variables. Use this mode to set up the 
-environment mapping for the other modes, and in case you locked yourself out of 
-the system. You can also change the app mode and environment mappings by using 
+After enabling the app it will be in **Not active** mode, which ignores a
+Shibboleth session and allows you to login as an administrator and inspect the
+currently available Apache environment variables. Use this mode to set up the
+environment mapping for the other modes, and in case you locked yourself out of
+the system. You can also change the app mode and environment mappings by using
 the ``occ`` command, eg.::
 
  $ sudo -u www-data php occ shibboleth:mode notactive
  $ sudo -u www-data php occ shibboleth:mapping --uid login
 
-In **Single sign-on only** mode the app checks if the environment variable for 
-the Shibboleth session, by default **Shib-Session-Id**, is set. If that is the 
-case it will take the value of the environment variable as the ``uid``, by 
-default ``eppn``, and check if a user is known by that ``uid``. In effect, this 
-allows another user backend, eg. the LDAP app, to provide the ``displayname``, 
+In **Single sign-on only** mode the app checks if the environment variable for
+the Shibboleth session, by default **Shib-Session-Id**, is set. If that is the
+case it will take the value of the environment variable as the ``uid``, by
+default ``eppn``, and check if a user is known by that ``uid``. In effect, this
+allows another user backend, eg. the LDAP app, to provide the ``displayname``,
 ``email`` and ``avatar``.
 
  .. note:: As an example the IdP can send the **sAMAccountName** which the
     Apache Shibboleth module writes to a custom Apache environment variable
     called ``login``. The ownCloud Shibboleth app reads that ``login``
-    environment variable and tries to find an LDAP user with that ``uid``. For 
+    environment variable and tries to find an LDAP user with that ``uid``. For
     this to work the LDAP backend also needs to be configured to use the
     **sAMAccountName** as the **Internal Username Attribute** in the
     :doc:`LDAP expert settings <../configuration_user/user_auth_ldap>`.
@@ -197,7 +197,7 @@ variables for display name and email address.
 .. figure:: ../images/shib-gui6.png
    :alt: Dropdowns for mapping Shibboleth environment configuration variables to ownCloud user attributes.
 
-   *figure 2: Mapping Shibboleth environment configuration variables to ownCloud 
+   *figure 2: Mapping Shibboleth environment configuration variables to ownCloud
    user attributes*
 
 In ownCloud 8.1 the Shibboleth environment variable mapping was stored in
@@ -263,10 +263,10 @@ Personal settings page.
 
 .. image:: ../images/shibboleth-personal.png
 
-.. note:: In **Single sign-on only** mode the alternative WebDAV Url feature 
-   will not work, as we have no way to store the WebDAV password. Instead the 
-   normal WebDAV endpoint can be omittet from the Shibboleth authentication, 
-   allowing WebDAV clients to use normal username and password based 
+.. note:: In **Single sign-on only** mode the alternative WebDAV Url feature
+   will not work, as we have no way to store the WebDAV password. Instead the
+   normal WebDAV endpoint can be omittet from the Shibboleth authentication,
+   allowing WebDAV clients to use normal username and password based
    authentication. That includes the desktop and mobile clients.
 
 For provisioning purpose an OCS API has been added to revoke a generated
@@ -285,16 +285,16 @@ Example:
 
 .. code-block:: bash
 
-	$ curl -X DELETE "https://cloud.example.com/ocs/v1.php/cloud/users/myself@testshib.org/non_shib_password" -u admin:admin
-	<?xml version="1.0"?>
-	<ocs>
-	 <meta>
-	  <status>ok</status>
-	  <statuscode>100</statuscode>
-	  <message/>
-	 </meta>
-	 <data/>
-	</ocs>
+    $ curl -X DELETE "https://cloud.example.com/ocs/v1.php/cloud/users/myself@testshib.org/non_shib_password" -u admin:admin
+    <?xml version="1.0"?>
+    <ocs>
+     <meta>
+      <status>ok</status>
+      <statuscode>100</statuscode>
+      <message/>
+     </meta>
+     <data/>
+    </ocs>
 
 
 Known Limitations
@@ -303,10 +303,10 @@ Known Limitations
 Encryption
 ^^^^^^^^^^
 
-File encryption can only be used together with Shibboleth when the 
-:ref:`master key-based encryption <occ_encryption_label>` is used because the 
-per- user encryption requires the user's password to unlock the private 
-encryption key. Due to the nature of Shibboleth the user's password is not known 
+File encryption can only be used together with Shibboleth when the
+:ref:`master key-based encryption <occ_encryption_label>` is used because the
+per- user encryption requires the user's password to unlock the private
+encryption key. Due to the nature of Shibboleth the user's password is not known
 to the service provider.
 
 Other Login Mechanisms
@@ -386,9 +386,9 @@ because ``uid`` collisions will be detected by ``user_ldap``.
 .. _WebDAV and Shibboleth:
     https://wiki.shibboleth.net/confluence/display/SHIB2/WebDAV
 
-    
+
 .. Github references
-.. update shibboleth doc, restructure some sections, add occ commands 
+.. update shibboleth doc, restructure some sections, add occ commands
 .. https://github.com/owncloud/documentation/pull/2116/
 .. Shibboleth configuration in 8.2.1
 .. https://github.com/owncloud/enterprise/issues/981

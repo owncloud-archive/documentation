@@ -16,8 +16,8 @@ Installation
    php_54_installation
    php_55_installation
    selinux_configuration
-   nginx_configuration   
+   nginx_configuration
    ucs_installation
-   hiawatha_configuration   
+   hiawatha_configuration
    yaws_configuration
    macos_installation

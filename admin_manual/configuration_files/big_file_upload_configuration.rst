@@ -2,8 +2,8 @@
 Uploading big files > 512MB
 ===========================
 
-The default maximum file size for uploads is 512MB. You can increase this 
-limit up to what your filesystem and operating system allows. There are certain 
+The default maximum file size for uploads is 512MB. You can increase this
+limit up to what your filesystem and operating system allows. There are certain
 hard limits that cannot be exceeded:
 
 * < 2GB on 32Bit OS-architecture
@@ -12,7 +12,7 @@ hard limits that cannot be exceeded:
 * < 2GB with IE6 - IE8
 * < 4GB with IE9 - IE11
 
-64-bit filesystems have much higher limits; consult the documentation for your 
+64-bit filesystems have much higher limits; consult the documentation for your
 filesystem.
 
 .. note:: The ownCloud sync client is not affected by these upload limits
@@ -23,9 +23,9 @@ System Configuration
 
 * Make sure that the latest version of PHP (at least 5.4.9) is installed
 * Disable user quotas, which makes them unlimited
-* Your temp file or partition has to be big enough to hold multiple 
-  parallel uploads from multiple users; e.g. if the max upload size is 10GB and 
-  the average number of users uploading at the same time is 100: temp space has 
+* Your temp file or partition has to be big enough to hold multiple
+  parallel uploads from multiple users; e.g. if the max upload size is 10GB and
+  the average number of users uploading at the same time is 100: temp space has
   to hold at least 10x100 GB
 
 Configuring Your Web server
@@ -35,14 +35,14 @@ Configuring Your Web server
    can't read PHP settings in ``.htaccess`` these settings must be set in the
    ``owncloud/.user.ini`` file.
 
-Set the following two parameters inside the corresponding php.ini file (see the 
-**Loaded Configuration File** section of :ref:`label-phpinfo` to find your 
+Set the following two parameters inside the corresponding php.ini file (see the
+**Loaded Configuration File** section of :ref:`label-phpinfo` to find your
 relevant php.ini files) ::
 
  php_value upload_max_filesize = 16G
  php_value post_max_size = 16G
 
-Adjust these values for your needs. If you see PHP timeouts in your logfiles, 
+Adjust these values for your needs. If you see PHP timeouts in your logfiles,
 increase the timeout values, which are in seconds::
 
  php_value max_input_time 3600
@@ -71,7 +71,7 @@ Apache with mod_fcgid
    ``FcgidMaxRequestInMem`` still needs to be significantly increased from its default value
    to avoid the occurence of segmentation faults when uploading big files. This is not a regular
    setting but serves as a workaround for `Apache with mod_fcgid bug #51747 <https://bz.apache.org/bugzilla/show_bug.cgi?id=51747>`_.
-   
+
    Setting ``FcgidMaxRequestInMem`` significantly higher than normal may no longer be
    necessary, once bug #51747 is fixed.
 
@@ -94,24 +94,24 @@ wiki entry.
 Configuring PHP
 ---------------
 
-If you don't want to use the ownCloud ``.htaccess`` or ``.user.ini`` file, you may 
-configure PHP instead. Make sure to comment out any lines ``.htaccess`` 
+If you don't want to use the ownCloud ``.htaccess`` or ``.user.ini`` file, you may
+configure PHP instead. Make sure to comment out any lines ``.htaccess``
 pertaining to upload size, if you entered any.
 
-If you are running ownCloud on a 32-bit system, any ``open_basedir`` directive 
+If you are running ownCloud on a 32-bit system, any ``open_basedir`` directive
 in your ``php.ini`` file needs to be commented out.
 
-Set the following two parameters inside ``php.ini``, using your own desired 
+Set the following two parameters inside ``php.ini``, using your own desired
 file size values::
 
  upload_max_filesize = 16G
  post_max_size = 16G
- 
+
 Tell PHP which temp file you want it to use::
- 
+
  upload_tmp_dir = /var/big_temp_file/
 
-**Output Buffering** must be turned off in ``.htaccess`` or ``.user.ini`` or ``php.ini``, or PHP 
+**Output Buffering** must be turned off in ``.htaccess`` or ``.user.ini`` or ``php.ini``, or PHP
 will return memory-related errors:
 
 * ``output_buffering = 0``
@@ -124,7 +124,7 @@ As an alternative to the ``upload_tmp_dir`` of PHP (e.g. if you don't have acces
 ``tempdirectory`` setting in your ``config.php`` (See :doc:`../configuration_server/config_sample_php_parameters`).
 
 If you have configured the ``session_lifetime`` setting in your ``config.php``
-(See :doc:`../configuration_server/config_sample_php_parameters`) file then 
+(See :doc:`../configuration_server/config_sample_php_parameters`) file then
 make sure it is not too
 low. This setting needs to be configured to at least the time (in seconds) that
 the longest upload will take. If unsure remove this completely from your

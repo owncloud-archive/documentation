@@ -2,42 +2,42 @@
 File Firewall (ES only)
 =======================
 
-The File Firewall GUI enables you to create and manage firewall rule sets from 
-your ownCloud admin page. The File Firewall gives you finer-grained control of 
-access and sharing, with rules for allowing or denying access, and restrictions 
-per group, upload size, client devices, IP address, time of day, and many more 
-criteria. For additional flexibility the File Firewall also supports regular 
+The File Firewall GUI enables you to create and manage firewall rule sets from
+your ownCloud admin page. The File Firewall gives you finer-grained control of
+access and sharing, with rules for allowing or denying access, and restrictions
+per group, upload size, client devices, IP address, time of day, and many more
+criteria. For additional flexibility the File Firewall also supports regular
 expressions.
 
-Each rule consists of one or more conditions. A request matches a rule if 
-all conditions evaluate to true. If a request matches at least one of the 
+Each rule consists of one or more conditions. A request matches a rule if
+all conditions evaluate to true. If a request matches at least one of the
 defined rules, the request is blocked and the file content can not be read or
 written.
 
 .. note::
    As of ownCloud 9.0, the File Firewall app cannot lock out administrators from the Web interface when      rules are misconfigured.
 
-Figure 1 shows an empty firewall configuration panel. Set your logging level to 
-**Failures Only** for debugging, and create a new ruleset by clicking the **Add 
-Group** button. After setting up your rules you must click the **Save Rules** 
+Figure 1 shows an empty firewall configuration panel. Set your logging level to
+**Failures Only** for debugging, and create a new ruleset by clicking the **Add
+Group** button. After setting up your rules you must click the **Save Rules**
 button.
 
 .. figure:: images/firewall-1.png
    :alt: Empty File Firewall configuration panel.
-   
+
    *Figure 1: Empty File Firewall configuration panel*
 
-Figure 2 shows two rules. The first rule, **No Support outside 
-office hours**, prevents members of the support group from logging into the 
+Figure 2 shows two rules. The first rule, **No Support outside
+office hours**, prevents members of the support group from logging into the
 ownCloud Web interface from 5pm-9am, and also blocks client syncing.
 
-The second rule prevents members of the qa-team group from accessing the Web UI 
+The second rule prevents members of the qa-team group from accessing the Web UI
 from IP addresses that are outside of the local network.
 
 .. figure:: images/firewall-2.png
    :alt: Two example rules that restrict logins per user group.
-   
-   *Figure 2: Two example rules that restrict logins per user group*   
+
+   *Figure 2: Two example rules that restrict logins per user group*
 
 All other users are not affected, and can log in anytime from anywhere.
 
@@ -55,11 +55,11 @@ User Device
   their User Agent string.
 
 Request Time
- The time of the request (has to|must not) be in a single range from beginning 
+ The time of the request (has to|must not) be in a single range from beginning
  time to end time.
 
 Request URL
- The **full page URL** (has to|must not) (match|contain|begin with|end) with a 
+ The **full page URL** (has to|must not) (match|contain|begin with|end) with a
  given string.
 
 Request Type
@@ -72,11 +72,11 @@ Subnet (IPv4) and Subnet (IPv6)
  The request's ``SERVER_ADDR`` header (is|is not) matching the given IP range.
 
 File Size Upload
- When a file is uploaded the size has to be (less|less or equal|greater|greater 
+ When a file is uploaded the size has to be (less|less or equal|greater|greater
  or equal) to the given size.
 
 File Mimetype Upload
- When a file is uploaded the mimetype (is|is not|begins with|does not begin 
+ When a file is uploaded the mimetype (is|is not|begins with|does not begin
  with|ends with|does not end with) the given string.
 
 System File Tag
@@ -84,7 +84,7 @@ System File Tag
  tag.
 
 Regular Expression
- The File Firewall supports regular expressions, allowing you to create custom 
+ The File Firewall supports regular expressions, allowing you to create custom
  rules using the following conditions:
 
 * IP Range (IPv4)
@@ -95,7 +95,7 @@ Regular Expression
 * User group
 * Request URL
 
-You can combine multiple rules into one rule. E.g., if a rule applies to both 
+You can combine multiple rules into one rule. E.g., if a rule applies to both
 the support and the qa-team you could write your rule like this::
 
  Regular Expression > ^(support|qa-team)$ > is > User group
@@ -104,7 +104,7 @@ No Manual Editing
 -----------------
 
 We do not recommend modifying the configuration values directly in your
-``config.php``. These use JSON encoding, so the values are difficult to read 
+``config.php``. These use JSON encoding, so the values are difficult to read
 and a single typo will break all of your rules.
 
 Controlling Access to Folders
@@ -129,11 +129,11 @@ Block by System Tag::
 Custom Configuration for Branded Clients
 ----------------------------------------
 
-If you are using :doc:`branded ownCloud clients <../enterprise_clients/index>`, 
-you may define ``firewall.branded_clients`` in your ``config.php`` to identify 
+If you are using :doc:`branded ownCloud clients <../enterprise_clients/index>`,
+you may define ``firewall.branded_clients`` in your ``config.php`` to identify
 your branded clients in the firewall **"User Device"** rule.
 
-The configuration is a ``User-Agent`` => ``Device`` map. ``Device`` must be one 
+The configuration is a ``User-Agent`` => ``Device`` map. ``Device`` must be one
 of the following:
 
 * android
@@ -143,15 +143,15 @@ of the following:
 * desktop
 * desktop_branded
 
-The ``User-Agent`` is always compared all lowercase. By default the agent is 
-compared with ``equals``. When a trailing or leading asterisk, ``*``, is found, 
-the agent is compared with ``starts with`` or ``ends with``. If the agent has 
-both a leading and a trailing ``*``, the string must appear anywhere. For 
-technical reasons the ``User-Agent`` string must be at least 4 characters 
-(including wildcards). (When you build your branded client you have the option 
+The ``User-Agent`` is always compared all lowercase. By default the agent is
+compared with ``equals``. When a trailing or leading asterisk, ``*``, is found,
+the agent is compared with ``starts with`` or ``ends with``. If the agent has
+both a leading and a trailing ``*``, the string must appear anywhere. For
+technical reasons the ``User-Agent`` string must be at least 4 characters
+(including wildcards). (When you build your branded client you have the option
 to create a custom User Agent.)
 
-In this example configuration you need to replace the example User Agent 
+In this example configuration you need to replace the example User Agent
 strings, for example ``'android_branded'``, with your own User Agent strings::
 
  // config.php
@@ -173,9 +173,9 @@ The Web UI dropdown then expands to the following options:
 * Android Client (Branded) - visible when at least one ``android_branded`` is defined
 * iOS Client (Branded) - visible when at least one ``ios_branded`` is defined
 * Desktop Client (Branded) - visible when at least one ``desktop_branded`` is defined
-* All branded clients - visible when at least one of ``android_branded``, 
+* All branded clients - visible when at least one of ``android_branded``,
   ``ios_branded`` or ``desktop_branded`` is defined
-* All non-branded clients - visible when at least one of ``android_branded``, 
+* All non-branded clients - visible when at least one of ``android_branded``,
   ``ios_branded`` or ``desktop_branded`` is defined
 * Others (Browsers, etc.) - always visible
 
@@ -183,6 +183,6 @@ Then these options operate this way:
 
 * The ``* Client`` options only match ``android``, ``ios`` and ``desktop`` respectively.
 * The ``* Client (Branded)`` options match the ``*_branded`` agents equivalent.
-* ``All branded clients`` matches: ``android_branded``, ``ios_branded`` and 
+* ``All branded clients`` matches: ``android_branded``, ``ios_branded`` and
   ``desktop_branded``
 * ``All non-branded clients`` matches: ``android``, ``ios`` and ``desktop``

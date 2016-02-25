@@ -24,31 +24,31 @@ assign your required value.
   :widths: 20, 30, 30, 20
 
   "owncloud/directory/data", "/var/lib/owncloud", "Specifies where the file storage will be placed", "2012.0.1"
-  "owncloud/db/name",   "owncloud",	"Name of the MySQL database. ownCloud will create an own user for it.",	2012.0.1
-  "owncloud/user/quota",	"(empty)",	"The default quota, when a user is being added. Assign values in human readable strings, e.g. “2 GB”. Unlimited if empty.",	2012.0.1
-  "owncloud/user/enabled",	0,	"Whether a new user is allowed to use ownCloud by default.",	2012.0.1
-  "owncloud/group/enabled",	"0",	"Whether a new group is allowed to be used in ownCloud by default.",	2012.4.0.4
-  "owncloud/ldap/base/users",	"cn=users,$ldap_base",	"The users-subtree in the LDAP directory. If left blank it will fall back to the LDAP base.",	2012.4.0.4
-  "owncloud/ldap/base/groups",	"cn=groups,$ldap_base",	"The groups-subtree in the LDAP directory. If left blank it will fall back to the LDAP base.",	2012.4.0.4
-  "owncloud/ldap/groupMemberAssoc",	"uniqueMember",	"The LDAP attribute showing the group-member relationship. Possible values: uniqueMember, memberUid and member",	2012.4.0.4
-  "owncloud/ldap/tls",	1,	"Whether to talk to the LDAP server via TLS.",	2012.0.1
-  "owncloud/ldap/disableMainServer",	0,	"Deactivates the (first) LDAP Configuration",	5.0.9
-  "owncloud/ldap/cacheTTL",	600,	"Lifetime of the ownCloud LDAP Cache in seconds",	5.0.9
-  "owncloud/ldap/UUIDAttribute",	"(empty)",	"Attribute that provides a unique value for each user and group entry. Empty value for autodetection.",	5.0.9
-  "owncloud/ldap/loginFilter",	"(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0)) (!(uid=*$)) (&(uid=%uid) (ownCloudEnabled=1)))",	"The LDAP filter that shall be used when a user tries to log in.",	2012.0.1
-  "owncloud/ldap/userlistFilter",	"(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0))(!(uid=*$)) (&(ownCloudEnabled=1)))",	"The LDAP filter that shall be used when the user list is being retrieved (e.g. for sharing)",	2012.0.1
-  "owncloud/ldap/groupFilter",	"(&(objectClass=posixGroup) (ownCloudEnabled=1))",	"The LDAP filter that shall be used when the group list is being retrieved (e.g. for sharing)",	2012.4.0.4
-  "owncloud/ldap/internalNameAttribute",	"uid",	"Attribute that should be used to create the user's owncloud internal name",	5.0.9
-  "owncloud/ldap/displayName",	"uid", "The LDAP attribute that should be displayed as name in ownCloud",	2012.0.1
-  "owncloud/ldap/user/searchAttributes",	"uid,givenName,sn,description,employeeNumber,mailPrimaryAddress",	"Attributes taken into consideration when searching for users (comma separated)",	5.0.9
-  "owncloud/ldap/user/quotaAttribute",	"ownCloudQuota",	"Name of the quota attribute. The default attribute is provided by owncloud-schema.",	5.0.9
-  "owncloud/ldap/user/homeAttribute",	"(empty)",	"Attribute that should be used to create the user's owncloud internal home folder",	5.0.9
-  "owncloud/ldap/group/displayName",	"cn",	"The LDAP attribute that should be used as groupname in ownCloud",	2012.4.0.4
-  "owncloud/ldap/group/searchAttributes",	"cn,description, mailPrimaryAddress",	"Attributes taken into consideration when searching for groups (comma separated)",	5.0.9
-  "owncloud/join/users/update",	"yes",	"Whether ownCloud LDAP schema should be applied to existing users",	2012.0.1
-  "owncloud/group/enableDomainUsers",	"1",	"Whether the group “Domain Users” shall be enabled for ownCloud on install",	2012.4.0.4
-  "owncloud/join/users/filter",	"(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0)) (!(\|(uid=*$) (uid=owncloudsystemuser) (uid=join-backup) (uid=join-slave))) (!(objectClass=ownCloudUser)))",	"Filters, on which LDAP users the ownCloud schema should be applied to. The default excludes system users and existing ownCloudUsers.",	2012.0.1
-  "owncloud/join/groups/filter",	"(empty)",	"Filters which LDAP groups will be en/disabled for ownCloud when running the script /usr/share/owncloud/update-groups.sh",	2012.4.0.4
+  "owncloud/db/name",   "owncloud", "Name of the MySQL database. ownCloud will create an own user for it.", 2012.0.1
+  "owncloud/user/quota",    "(empty)",  "The default quota, when a user is being added. Assign values in human readable strings, e.g. “2 GB”. Unlimited if empty.", 2012.0.1
+  "owncloud/user/enabled",  0,  "Whether a new user is allowed to use ownCloud by default.",    2012.0.1
+  "owncloud/group/enabled", "0",    "Whether a new group is allowed to be used in ownCloud by default.",    2012.4.0.4
+  "owncloud/ldap/base/users",   "cn=users,$ldap_base",  "The users-subtree in the LDAP directory. If left blank it will fall back to the LDAP base.",   2012.4.0.4
+  "owncloud/ldap/base/groups",  "cn=groups,$ldap_base", "The groups-subtree in the LDAP directory. If left blank it will fall back to the LDAP base.",  2012.4.0.4
+  "owncloud/ldap/groupMemberAssoc", "uniqueMember", "The LDAP attribute showing the group-member relationship. Possible values: uniqueMember, memberUid and member",    2012.4.0.4
+  "owncloud/ldap/tls",  1,  "Whether to talk to the LDAP server via TLS.",  2012.0.1
+  "owncloud/ldap/disableMainServer",    0,  "Deactivates the (first) LDAP Configuration",   5.0.9
+  "owncloud/ldap/cacheTTL", 600,    "Lifetime of the ownCloud LDAP Cache in seconds",   5.0.9
+  "owncloud/ldap/UUIDAttribute",    "(empty)",  "Attribute that provides a unique value for each user and group entry. Empty value for autodetection.", 5.0.9
+  "owncloud/ldap/loginFilter",  "(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0)) (!(uid=*$)) (&(uid=%uid) (ownCloudEnabled=1)))", "The LDAP filter that shall be used when a user tries to log in.",  2012.0.1
+  "owncloud/ldap/userlistFilter",   "(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0))(!(uid=*$)) (&(ownCloudEnabled=1)))", "The LDAP filter that shall be used when the user list is being retrieved (e.g. for sharing)",  2012.0.1
+  "owncloud/ldap/groupFilter",  "(&(objectClass=posixGroup) (ownCloudEnabled=1))",  "The LDAP filter that shall be used when the group list is being retrieved (e.g. for sharing)", 2012.4.0.4
+  "owncloud/ldap/internalNameAttribute",    "uid",  "Attribute that should be used to create the user's owncloud internal name",    5.0.9
+  "owncloud/ldap/displayName",  "uid", "The LDAP attribute that should be displayed as name in ownCloud",   2012.0.1
+  "owncloud/ldap/user/searchAttributes",    "uid,givenName,sn,description,employeeNumber,mailPrimaryAddress",   "Attributes taken into consideration when searching for users (comma separated)",   5.0.9
+  "owncloud/ldap/user/quotaAttribute",  "ownCloudQuota",    "Name of the quota attribute. The default attribute is provided by owncloud-schema.",   5.0.9
+  "owncloud/ldap/user/homeAttribute",   "(empty)",  "Attribute that should be used to create the user's owncloud internal home folder", 5.0.9
+  "owncloud/ldap/group/displayName",    "cn",   "The LDAP attribute that should be used as groupname in ownCloud",  2012.4.0.4
+  "owncloud/ldap/group/searchAttributes",   "cn,description, mailPrimaryAddress",   "Attributes taken into consideration when searching for groups (comma separated)",  5.0.9
+  "owncloud/join/users/update", "yes",  "Whether ownCloud LDAP schema should be applied to existing users", 2012.0.1
+  "owncloud/group/enableDomainUsers",   "1",    "Whether the group “Domain Users” shall be enabled for ownCloud on install",    2012.4.0.4
+  "owncloud/join/users/filter", "(&(\|(&(objectClass=posixAccount) (objectClass=shadowAccount)) (objectClass=univentionMail) (objectClass=sambaSamAccount) (objectClass=simpleSecurityObject) (&(objectClass=person) (objectClass=organizationalPerson) (objectClass=inetOrgPerson))) (!(uidNumber=0)) (!(\|(uid=*$) (uid=owncloudsystemuser) (uid=join-backup) (uid=join-slave))) (!(objectClass=ownCloudUser)))", "Filters, on which LDAP users the ownCloud schema should be applied to. The default excludes system users and existing ownCloudUsers.", 2012.0.1
+  "owncloud/join/groups/filter",    "(empty)",  "Filters which LDAP groups will be en/disabled for ownCloud when running the script /usr/share/owncloud/update-groups.sh",  2012.4.0.4
 
 If you want to override the default settings, simply create the key in
 question in the UCR and assign your required value, for example::
