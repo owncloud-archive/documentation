@@ -98,6 +98,8 @@ into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\
             'url' => 'http://devstack:5000/v2.0',
             'tenantName' => 'demo', 
             'serviceName' => 'swift', 
+            // url Type, optional, public, internal or admin
+	    'urlType' => 'internal'
         ),
     ),
 
