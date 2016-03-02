@@ -1232,6 +1232,15 @@ using external storages, not recommended for regular use.
 
 ::
 
+	'part_file_in_storage' => true,
+
+On default ownCloud will store the part files created during upload in the
+same storage as the upload target. Setting this to false will store the part
+files in the root of the users folder which might be required to work with certain
+external storage setups that have limited rename capabilities.
+
+::
+
 	'asset-pipeline.enabled' => false,
 
 All css and js files will be served by the web server statically in one js
