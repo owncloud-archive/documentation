@@ -313,7 +313,7 @@ Example output::
 
 Example config for Apache 2.2:
 
-.. code-block:: xml
+::
 
     <Directory /path/to/owncloud>
         Options Indexes FollowSymLinks
@@ -325,7 +325,7 @@ Example config for Apache 2.2:
 
 Example config for Apache 2.4:
 
-.. code-block:: xml
+::
 
     <Directory /path/to/owncloud>
         Options Indexes FollowSymLinks
@@ -345,7 +345,7 @@ Example config for Apache 2.4:
 
 * A minimal site configuration file on Ubuntu 14.04 might look like this:
 
-.. code-block:: xml
+::
 
 	<IfModule mod_ssl.c>
 	<VirtualHost _default_:443>

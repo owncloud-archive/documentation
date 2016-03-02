@@ -12,3 +12,4 @@ It will always tell you, that it cannot login on your server. So instead of writ
 in the server address field, you have to write
 
     address/remote.php/carddav/principals/username
+    

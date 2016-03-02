@@ -26,7 +26,7 @@ Configuration
 Configuration of mod_xsendfile for ownCloud depends on its version.
 For versions below 0.10 (Debian squeeze ships with 0.9)
 
-.. code-block:: xml
+::
 
     <Directory /var/www/owncloud>
         ...
@@ -37,7 +37,7 @@ For versions below 0.10 (Debian squeeze ships with 0.9)
 
 For versions >=0.10 (e.g. Ubuntu 12.10)
 
-.. code-block:: xml
+::
 
     <Directory /var/www/owncloud>
         ...
