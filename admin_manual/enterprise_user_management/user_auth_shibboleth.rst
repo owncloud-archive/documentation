@@ -35,9 +35,7 @@ running the Apache Web server. These configurations are highly operating system
 specific and require a high degree of customization.
 
 The ownCloud instance itself is installed in ``/var/www/owncloud/``.  The
-following aliases are defined in an Apache virtual host directive:
-
-.. code-block:: apache
+following aliases are defined in an Apache virtual host directive::
 
 	# non-Shibboleth access
 	Alias /owncloud /var/www/owncloud/
@@ -45,9 +43,7 @@ following aliases are defined in an Apache virtual host directive:
 	Alias /oc-shib /var/www/owncloud/
 
 Further Shibboleth specific configuration as defined in
-``/etc/apache2/conf.d/shib.conf``:
-
-.. code-block:: Apache
+``/etc/apache2/conf.d/shib.conf``::
 
 	#
 	# Load the Shibboleth module.
@@ -283,9 +279,7 @@ Status codes:
 * 100 - successful
 * 998 - user unknown
 
-Example:
-
-.. code-block:: bash
+Example::
 
 	$ curl -X DELETE "https://cloud.example.com/ocs/v1.php/cloud/users/myself@testshib.org/non_shib_password" -u admin:admin
 	<?xml version="1.0"?>

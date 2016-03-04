@@ -79,7 +79,7 @@ external storage.
 Example
 -------
 
-.. code-block:: json
+::
 
     {
       "group":{
@@ -179,7 +179,7 @@ takes the following options:
 Example
 ^^^^^^^
 
-.. code-block:: json
+::
 
     { "class":"\\OC\\Files\\Storage\\Local",
       "options":{ "datadir":"\/mnt\/additional_storage" },
@@ -208,7 +208,7 @@ options:
 Example
 ^^^^^^^
 
-.. code-block:: json
+::
 
     {   "class":"\\OC\\Files\\Storage\\FTP",
         "options":{
@@ -245,7 +245,7 @@ options:
 Example
 ^^^^^^^
 
-.. code-block:: json
+::
 
     {   "class":"\\OC\\Files\\Storage\\SFTP",
         "options":{
@@ -281,9 +281,8 @@ is **\\OC\\Files\\Storage\\SMB**\  and takes the following options:
 
 Example
 ^^^^^^^
-With username only:
 
-.. code-block:: json
+With username only::
 
     {   "class":"\\OC\\Files\\Storage\\SMB",
         "options":{
@@ -296,9 +295,8 @@ With username only:
         "priority":100
     }
     
-With domainname and username:
+With domainname and username::
 
-.. code-block:: json
 
     {   "class":"\\OC\\Files\\Storage\\SMB",
         "options":{
@@ -331,7 +329,7 @@ following options:
 Example
 ^^^^^^^
 
-.. code-block:: json
+::
 
     {   "class":"\\OC\\Files\\Storage\\DAV",
         "options":{
@@ -359,7 +357,7 @@ options:
 Example
 ^^^^^^^
 
-.. code-block:: json
+::
 
     {   "class":"\\OC\\Files\\Storage\\AmazonS3",
         "options":{
@@ -387,7 +385,7 @@ be used is **\\OC\\Files\\Storage\\Dropbox**\  and takes the following options:
 Example
 ^^^^^^^
 
-.. code-block:: json
+::
 
     {   "class":"\\OC\\Files\\Storage\\Dropbox",
         "options":{
@@ -418,7 +416,7 @@ It takes the following options:
 Example
 ^^^^^^^
 
-.. code-block:: json
+::
 
     {   "class":"\\OC\\Files\\Storage\\Google",
         "options":{
@@ -450,7 +448,7 @@ the following options:
 Example
 ^^^^^^^
 
-.. code-block:: json
+::
 
     {   "class":"\\OC\\Files\\Storage\\SWIFT",
         "options":{
