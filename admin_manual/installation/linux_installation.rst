@@ -68,6 +68,13 @@ Mageia software repository.
 owncloud installation directory as well as some more needed configuration 
 options.
 
+.. _here is a guide: https://www.techandme.se/virtualhost-443/
+
+**Installation notes for ownCloud 9 + PHP 7:**
+If you are planning to install ownCloud togehter with PHP 7 you have to install the ownCloud files seperatly and do the rest of the configuration yourself. So instead of using ``apt-get install owncloud`` you use ``apt-get install owncloud-files``.
+The manual installation consists of making the Apache config, it's not that hard, and `here is a guide`_
+
+
 **Running ownCloud in a subdir**: If you're running ownCloud in a subdir and
 want to use CalDAV or CardDAV clients make sure you have configured the correct 
 :ref:`service-discovery-label` URLs.
