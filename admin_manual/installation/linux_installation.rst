@@ -74,5 +74,5 @@ on how to correctly configure your environment if you have binary logging enable
 
 
 .. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/9.0/owncloud/
+   https://download.owncloud.org/download/repositories/8.2/owncloud/
    
