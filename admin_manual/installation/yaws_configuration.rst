@@ -7,7 +7,7 @@ to somewhere else, because files will be saved in this directory and it
 should not be accessible from the outside. A configuration file would look
 like this
 
-.. code-block:: xml
+::
 
     <server owncloud.myserver.com/>
             port = 80
