@@ -19,7 +19,7 @@ add a new theme, copy a directory containing your themes files in this directory
 directory name is the theme name, and you configure ownCloud to use this theme by linking 
 it in ``config.php`` with the ``theme`` directive:
 
-.. code-block:: php
+::
 
   'theme' => 'themename',
   
@@ -86,7 +86,7 @@ to ``themes/<themename>/core/css/styles.css`` and edit.
 This example shows a section in ``styles.css`` that configures colors. There are several 
 locations within this file that assign colors to various page elements.
 
-.. code-block:: css
+::
 
   #body-login {
           text-align: center;
@@ -138,7 +138,7 @@ Configuration File
 
 Next, add your new theme name to ``config.php``:
 
-.. code-block:: php
+::
 
   ‘theme’ => ‘GeneralHospital’,
 
@@ -173,7 +173,7 @@ The first step is to copy this file to ``themes/GeneralHospital/core/css/styles.
 
 As stated in section Changing colors, edit the colors as desired in this section:
 
-.. code-block:: css
+::
 
   #body-login {
           text-align: center;
@@ -260,7 +260,7 @@ different in the two instances.
 As an enterprise customer, all modifications to the ``wizard.php`` file should be in the 
 "Else" section of the following condition statements:
 
-.. code-block:: php
+::
 
   <?php if (OC_Util::getEditEditionString() === ''): ?>
     ...
@@ -270,7 +270,7 @@ As an enterprise customer, all modifications to the ``wizard.php`` file should b
 
 General Hospital wants to modify the welcome window, so modify ``wizard.php`` to apply the appropriate customizations. In this example several instances of ``ownCloud`` are replaced with ``General Hospital``.
 
-.. code-block:: php
+::
 
  <div id="firstrunwizard">
 

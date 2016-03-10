@@ -290,7 +290,7 @@ find your HTTP user)::
    rules to complete their ownCloud installation; see 
    :ref:`selinux_tips_label`. 
 
-To use ``occ`` see :doc:`command_line_installation`. 
+To use ``occ`` see :doc:`../configuration_server/occ_command`. 
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 

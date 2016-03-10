@@ -13,7 +13,7 @@ Assets found in that folder will from now on be served as static files by your w
 Parameters
 ----------
 
-.. code-block:: php
+::
 
   <?php
     $CONFIG = array (

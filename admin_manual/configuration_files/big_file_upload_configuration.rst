@@ -56,7 +56,7 @@ could prevent the upload of larger files. Please see the manual of your webserve
 for how to configure those values correctly:
 
 Apache
-~~~~~~
+^^^^^^
 * `LimitRequestBody <https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody>`_
 * `SSLRenegBufferSize <https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize>`_
 
@@ -74,7 +74,7 @@ Apache with mod_fcgid
    necessary, once bug #51747 is fixed.
 
 nginx
-~~~~~
+^^^^^
 * `client_max_body_size <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
 * `fastcgi_read_timeout <http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_
 * `client_body_temp_path <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
@@ -88,10 +88,6 @@ wiki entry.
    partition the ``upload_tmp_dir`` setting described below is pointing to. For optimal
    performance ``client_body_temp_path`` and ``upload_tmp_dir`` should be also placed
    on different devices/hard drives.
-
-IIS
-~~~
-* `maxAllowedContentLength <http://www.iis.net/configreference/system.webserver/security/requestfiltering/requestlimits#005>`_
 
 
 Configuring PHP
@@ -138,7 +134,7 @@ the longest upload will take. If unsure remove this completely from your
 configuration to reset it to the default shown in the ``config.sample.php``.
 
 Configuring upload limits within the GUI
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+----------------------------------------
 
 If all prerequisites described in this documentation are in place an admin can change the
 upload limits on demand by using the ``File handling`` input box within the administrative

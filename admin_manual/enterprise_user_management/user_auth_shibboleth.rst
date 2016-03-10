@@ -61,7 +61,7 @@ specific and require a high degree of customization.
 The ownCloud instance itself is installed in ``/var/www/owncloud/``.  The 
 following aliases are defined in an Apache virtual host directive:
 
-.. code-block:: apache
+::
 
 	# non-Shibboleth access
 	Alias /owncloud /var/www/owncloud/
@@ -71,7 +71,7 @@ following aliases are defined in an Apache virtual host directive:
 Further Shibboleth specific configuration as defined in 
 ``/etc/apache2/conf.d/shib.conf``:
 
-.. code-block:: apache
+::
 
 	#
 	# Load the Shibboleth module.
@@ -164,7 +164,7 @@ After installing and enabling the Shibboleth application there are three
 configuration variables to set up, depending on the data sent back by the 
 IdP. The configuration is stored in ``apps/user_shibboleth``.
 
-.. code-block:: php
+::
 
 	namespace OCA\user_shibboleth {
 	        const SHIB_SESSION_ID = 'Shib-Session-ID';

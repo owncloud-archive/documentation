@@ -115,7 +115,7 @@ requests to be sent over the same TCP connection. This reduces latency by as
 much as 50%. Especially in combination with the periodic checks of the sync
 client the following settings are recommended:
 
-.. code-block:: apache
+::
 
 	KeepAlive On
 	KeepAliveTimeout 100
@@ -142,7 +142,7 @@ because PHP is currently not thread safe.
 Hostname Lookups
 ^^^^^^^^^^^^^^^^
 
-.. code-block:: bash
+::
 
 	# cat /etc/httpd/conf/httpd.conf
         ...
@@ -162,7 +162,7 @@ down errors.
 .. MaxKeepAliveRequests 4096
 .. ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. .. code-block:: apache
+.. ::
 
 ..	<IfModule prefork.c>
 ..		StartServers 100
@@ -214,7 +214,7 @@ Compile Nginx with the ``nginx-cache-purge`` module
 
 1. **Preparation:**
 
-.. code-block:: bash
+::
 
     cd /opt
     wget http://nginx.org/keys/nginx_signing.key
@@ -238,7 +238,7 @@ Then run ``sudo apt-get update``
 
 2. **Download the Nginx source from the ppa repository**
 
-.. code-block:: bash
+::
 
    cd /opt
    sudo apt-get build-dep nginx
@@ -246,7 +246,7 @@ Then run ``sudo apt-get update``
 
 3. **Download module(s) to be compiled in and configure compiler arguments**
     
-.. code-block:: bash 
+:: 
    
    ls -la
     
@@ -256,7 +256,7 @@ Please replace ``{release}`` with the release downloaded::
     
 If folder "modules" is not present, do:
 
-.. code-block:: bash
+::
 
    sudo mkdir modules
    cd modules
@@ -283,7 +283,7 @@ The parameters may now look like::
 
 4. **Compile and install Nginx**
 
-.. code-block:: bash
+::
 
    cd /opt/nginx-{release}
    sudo dpkg-buildpackage -uc -b
@@ -293,7 +293,7 @@ The parameters may now look like::
 5. **Check if the compilation and installation of the ngx_cache_purge module 
    was successful**
    
-.. code-block:: bash  
+::  
 
    nginx -V 2>&1 | grep ngx_cache_purge -o
     
@@ -305,7 +305,7 @@ Show Nginx version including all features compiled and installed::
 
 6. **Mark Nginx to be blocked from further updates via apt-get**
 
-.. code-block:: bash
+::
 
    sudo dpkg --get-selections | grep nginx
     
@@ -324,13 +324,13 @@ Configure Nginx with the ``nginx-cache-purge`` module
    path that fits to your environment. Replace ``{path}`` in this example with 
    your path created:
    
-.. code-block:: bash   
+::   
    
    sudo mkdir -p /usr/local/tmp/cache   
 
 2. **Configuration**
 
-.. code-block:: bash
+::
 
    sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}
    
@@ -393,7 +393,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    
 3. **Test the configuration**
 
-.. code-block:: bash
+::
 
    sudo nginx -s reload
    

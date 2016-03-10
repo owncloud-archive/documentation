@@ -5,7 +5,7 @@ You may configure additional user backends
 in ownCloud's configuration :file:`config/config.php` using the following
 syntax:
 
-.. code-block:: php
+::
 
   <?php
 
@@ -34,7 +34,7 @@ Provides authentication against IMAP servers
 - **Dependency:** php-imap (See :doc:`../installation/source_installation`)
 - **Example:**
 
-.. code-block:: php
+::
 
   <?php
 
@@ -56,7 +56,7 @@ Provides authentication against Samba servers
 - **Dependency:** smbclient (See :doc:`../installation/source_installation`)
 - **Example:**
 
-.. code-block:: php
+::
 
   <?php
 
@@ -79,7 +79,7 @@ Provides authentication against FTP servers
 - **Dependency:** php-ftp (See :doc:`../installation/source_installation`)
 - **Example:**
 
-.. code-block:: php
+::
 
   <?php
 

@@ -112,7 +112,7 @@ in that folder.
    shipped with ownCloud, follow this example to setup an **/apps2/** folder 
    which will be used to store all other apps.
 
-.. code-block:: php
+::
 
   <?php
 
@@ -146,7 +146,7 @@ To enable installation from your own apps store:
    This parameter is used to set the HTTP path to the ownCloud apps store. The 
    appstore server must use :abbr:`OCS (Open Collaboration Services)`.
 
-.. code-block:: php
+::
 
   <?php
 
