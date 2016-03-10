@@ -7,6 +7,10 @@ Upgrade ownCloud From Packages
    repositories** to install or upgrade ownCloud 8.2+. The new repositories are 
    at our `Open Build Service`_.
    
+   The 8.1 repos are still at the old `openSUSE Build Service 
+   <https://software.opensuse.org/download/package?project=isv:ownCloud:
+   community:8.1&package=owncloud>`_
+   
 Upgrade Quickstart
 ------------------
 
