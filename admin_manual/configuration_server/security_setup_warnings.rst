@@ -38,14 +38,15 @@ You are accessing this site via HTTP
 server to require using HTTPS instead." Please take this warning seriously; 
 using HTTPS is a fundamental security measure. You must configure your Web 
 server to support it, and then there are some settings in the **Security** 
-section of your ownCloud Admin page to enable. The following manual pages 
+section of your ownCloud Admin page to enable. The following pages 
 describe how to enable HTTPS on the Apache and Nginx Web servers.
 
 :ref:`enabling_ssl_label` (on Apache)
 
 :ref:`use-https-label`
 
-:ref:`nginx_configuration_example`
+`NGINX configuration 
+<https://github.com/owncloud/documentation/wiki/NGINX-Configuration>`_
 
 The test with getenv(\"PATH\") only returns an empty response
 -------------------------------------------------------------
@@ -57,44 +58,66 @@ environment.
 The "Strict-Transport-Security" HTTP header is not configured
 -------------------------------------------------------------
 
-"The "Strict-Transport-Security" HTTP header is not configured to least "15768000" seconds.
-For enhanced security we recommend enabling HSTS as described in our security tips."
+"The "Strict-Transport-Security" HTTP header is not configured to least 
+"15768000" seconds.
+For enhanced security we recommend enabling HSTS as described in our security 
+tips."
 
-The HSTS header needs to be configured within your webserver by following the
+The HSTS header needs to be configured within your Web server by following the
 :ref:`enable-hsts-label` documentation
 
 /dev/urandom is not readable by PHP
 -----------------------------------
 
-"/dev/urandom is not readable by PHP which is highly discouraged for security reasons.
+"/dev/urandom is not readable by PHP which is highly discouraged for security 
+reasons.
 Further information can be found in our documentation."
 
-This message is another one which needs to be taken seriously. Please have a look
+This message is another one which needs to be taken seriously. Please have a 
+look
 at the :ref:`dev-urandom-label` documentation.
 
-Your web server is not yet set up properly to allow file synchronization
+Your Web server is not yet set up properly to allow file synchronization
 ------------------------------------------------------------------------
 
-"Your web server is not yet set up properly to allow file synchronization because
+"Your web server is not yet set up properly to allow file synchronization 
+because
 the WebDAV interface seems to be broken."
 
-At the ownCloud community forums a larger `FAQ <https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+At the ownCloud community forums a larger `FAQ 
+<https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
 is maintained containing various information and debugging hints.
 
 Outdated NSS / OpenSSL version
 ------------------------------
 
-"cURL is using an outdated OpenSSL version (OpenSSL/$version). Please update your 
-operating system or features such as installing and updating apps via the app store 
+"cURL is using an outdated OpenSSL version (OpenSSL/$version). Please update 
+your 
+operating system or features such as installing and updating apps via the app 
+store 
 or Federated Cloud Sharing will not work reliably."
 
-"cURL is using an outdated NSS version (NSS/$version). Please update your operating 
-system or features such as installing and updating apps via the app store or Federated 
+"cURL is using an outdated NSS version (NSS/$version). Please update your 
+operating 
+system or features such as installing and updating apps via the app store or 
+Federated 
 Cloud Sharing will not work reliably."
 
-There are known bugs in older OpenSSL and NSS versions leading to misbehaviour in 
+There are known bugs in older OpenSSL and NSS versions leading to misbehaviour 
+in 
 combination with remote hosts using SNI. A technology used by most of the HTTPS
 websites. To ensure that ownCloud will work properly you need to update OpenSSL
-to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution
+to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your 
+distribution
 and an heuristic is running the test which actually reproduces the bug. There
-are distributions such as RHEL/CentOS which have this backport still `pending <https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
+are distributions such as RHEL/CentOS which have this backport still `pending 
+<https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
+
+Your Web server is not set up properly to resolve /.well-known/caldav/ or 
+/.well-known/carddav/
+--------------------------------------------------------------------------------
+---------------
+
+Both URLs needs to be correctly redirected to the DAV endpoint of ownCloud. 
+Please
+refer to :ref:`service-discovery-label` for more info.
