@@ -31,7 +31,7 @@ example, 8.0.9 and 8.1.3 are point releases. **Skipping major releases is not su
 mode, so your users will be locked out until the upgrade is completed. Large 
 installations may take several hours to complete the upgrade.
 
-.. note:: **Downgrading is not supported** and risks corrupting your data! If 
+.. warning:: **Downgrading is not supported** and risks corrupting your data! If 
    you want to revert to an older ownCloud version, make a new, fresh 
    installation and then restore your data from backup. Before doing this, 
    file a support ticket (if you have paid support) or ask for help in the 
