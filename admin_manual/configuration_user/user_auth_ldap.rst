@@ -9,7 +9,8 @@ create separate ownCloud user accounts for them. You will manage their ownCloud
 group memberships, quotas, and sharing permissions just like any other ownCloud 
 user.
 
-.. Note:: The PHP LDAP module is required; this is supplied by php5-ldap on Debian/Ubuntu, and php-ldap on CentOS/Red Hat/Fedora. PHP 5.4+ is required in ownCloud 8.
+.. note:: The PHP LDAP module is required; this is supplied by php5-ldap on Debian/Ubuntu,
+   and php-ldap on CentOS/Red Hat/Fedora. PHP 5.4+ is required in ownCloud 8.
 
 The LDAP application supports:
 
@@ -24,7 +25,7 @@ The LDAP application supports:
   port number
 * Only read access to your LDAP (edit or delete of users on your LDAP is not supported)
 
-.. Note:: The LDAP app is not compatible with the ``WebDAV user backend`` app. 
+.. warning:: The LDAP app is not compatible with the ``WebDAV user backend`` app. 
    You cannot use both of them at the same time.
 
 .. note:: A non-blocking or correctly configured SELinux setup is needed
