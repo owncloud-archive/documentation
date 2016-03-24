@@ -58,6 +58,8 @@ This is an example configuration as installed and operated on a Linux server
 running the Apache Web server. These configurations are highly operating system 
 specific and require a high degree of customization.
 
+See the `documentation Wiki <https://github.com/owncloud/documentation/wiki/Shibboleth-example-configurations>`_ for more configuration examples.
+
 The ownCloud instance itself is installed in ``/var/www/owncloud/``.  The 
 following aliases are defined in an Apache virtual host directive:
 
