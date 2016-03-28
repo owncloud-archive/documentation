@@ -23,6 +23,8 @@ Some of the improvements of interest to ownCloud admins are:
 * Downgrades are prevented because they are unsupported  
 * Admin page warning for EOL PHP version 
 * Show apps that will be updated on the DB update page
+* New optional second name attribute in the LDAP app, so that user names appear 
+  as ``User Foo (optional 2nd attribute)`` (:ref:`ldap_directory_settings`) 
 
 There are many security enhancements, including:
 
