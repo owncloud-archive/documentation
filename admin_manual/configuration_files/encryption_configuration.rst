@@ -10,13 +10,6 @@ Dropbox and Google Drive) will be encrypted by the ownCloud server, and upon
 retrieval, decrypted before serving them to you and anyone you have shared them 
 with.
 
-.. note:: When you upgrade from older versions of ownCloud to ownCloud 8.0, you 
-   must manually migrate your encryption keys with the *occ* command after the 
-   upgrade is complete, like this example for CentOS:
-   *sudo -u apache php occ encryption:migrate-keys*
-   You must run *occ* as your HTTP user. See 
-   :doc:`../configuration_server/occ_command` to learn more about *occ*
-
 Encrypting files increases their size by roughly 35%, so you must take this into 
 account when you are provisioning storage and setting storage quotas. User's 
 quotas are based on the unencrypted file size, and not the encrypted file size.
@@ -180,6 +173,16 @@ both their old and new passwords to do this. If you have enabled the Recovery
 Key then you can change a user's password in the ownCloud Users panel to match 
 their back-end password, and then, of course, notify the user and give them 
 their new password.
+
+.. _upgrading_encryption_label:
+
+Encryption migration to ownCloud 8.0
+------------------------------------
+
+When you upgrade from older versions of ownCloud to ownCloud 8.0, you must manually migrate
+your encryption keys with the *occ* command after the upgrade is complete, like this
+example for CentOS: *sudo -u apache php occ encryption:migrate-keys* You must run *occ* as
+your HTTP user. See :doc:`../configuration_server/occ_command` to learn more about *occ*.
 
 .. This section commented out because there is no windows support
 .. in oC8; un-comment this if windows support is restored
