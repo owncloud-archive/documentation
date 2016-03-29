@@ -81,6 +81,12 @@ them.
 into maintenance mode, so your users will be locked out until the upgrade is 
 completed. Large installations may take several hours to complete the upgrade.
 
+Encryption migration from oC 7.0 to 8.0
+---------------------------------------
+
+The encryption backend was changed between ownCloud 7.0 and 8.0. If you're upgrading from
+this older version please refer to :ref:`upgrading_encryption_label` for the needed migration steps.
+
 Upgrading With Your Linux Package Manager
 -----------------------------------------
 
