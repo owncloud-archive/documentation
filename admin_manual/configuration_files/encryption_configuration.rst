@@ -227,12 +227,20 @@ Key then you can change a user's password in the ownCloud Users panel to match
 their back-end password, and then, of course, notify the user and give them 
 their new password.
 
-.. _upgrading:
+.. _upgrading_encryption_label:
 
-Upgrading From ownCloud 8.0
----------------------------
+Encryption migration to ownCloud 8.0
+------------------------------------
 
-The encryption backend has changed in ownCloud 8.1, so you must take some 
+When you upgrade from older versions of ownCloud to ownCloud 8.0, you must manually migrate
+your encryption keys with the *occ* command after the upgrade is complete, like this
+example for CentOS: *sudo -u apache php occ encryption:migrate-keys* You must run *occ* as
+your HTTP user. See :doc:`../configuration_server/occ_command` to learn more about *occ*.
+
+Encryption migration to ownCloud 8.1
+------------------------------------
+
+The encryption backend has changed in ownCloud 8.1 again, so you must take some 
 additional steps to migrate encryption correctly. If you do not follow these 
 steps you may not be able to access your files.
 
