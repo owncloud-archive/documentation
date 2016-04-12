@@ -3,7 +3,8 @@ Encryption Configuration
 ========================
 
 If you are upgrading from ownCloud 8.0, and have encryption enabled, please see 
-:ref:`upgrading` (below) for the correct steps to upgrade your encryption. 
+:ref:`upgrading_encryption_label` (below) for the correct steps to upgrade your 
+encryption. 
 
 In ownCloud 8.1 and up the server-side encryption has a number of changes and 
 improvements, including:
