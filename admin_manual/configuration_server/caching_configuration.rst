@@ -45,8 +45,7 @@ and enabling your desired cache, and then adding the appropriate entry to
 all possible config parameters).
 
 You may use both a local and a distributed cache. Recommended caches are APCu 
-and Redis. After installing and enabling your chosen memcache, verify that it 
-is 
+and Redis. After installing and enabling your chosen memcache, verify that it is 
 active by running :ref:`label-phpinfo`.
    
 APC
@@ -74,10 +73,13 @@ PHP 5.5 and up include the Zend OPcache in core, and on most Linux
 distributions it is enabled by default. However, it does 
 not bundle a data cache. APCu is a data cache, and it is available in most 
 Linux distributions. On Red Hat/CentOS/Fedora systems running PHP 5.5 and up 
-install ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu``. 
+install ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu``.
+On Ubuntu 14.04LTS, the APCu version is 4.0.2, which is too old to use with ownCloud. 
+ownCloud requires 4.0.6+. You may install 4.0.7 from Ubuntu backports with this command::
+
+  apt-get install php5-apcu/trusty-backports
+   
 Then restart your Web server.
- 
-The version of APCu must be 4.0.6 and up.
 
 After restarting your Web server, add this line to your ``config.php`` file::
 
@@ -89,7 +91,10 @@ Memcached
 ---------
 
 Memcached is a reliable oldtimer for shared caching on distributed servers, 
-and performs well with ownCloud.
+and performs well with ownCloud with one exception: it is not suitable to use 
+with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>`
+because it does not store locks, and data can disappear from the cache at any time
+(Redis is the best memcache for this). 
 
 .. note:: Be sure to install the **memcached** PHP module, and not memcache, as 
    in the following examples. ownCloud supports only the **memcached** PHP 
@@ -127,15 +132,15 @@ Redis
 -----
 
 Redis is an excellent modern memcache to use for both distributed caching, and 
-as a local cache  because it guarantees 
+as a local cache for :doc:`Transactional File Locking 
+<../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
 The Redis PHP module must be version 2.2.5+. If you are running a Linux 
 distribution that does not package the supported versions of this module, or 
 does not package Redis at all, see :ref:`install_redis_label`.
 
-On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis``. The 
-installer 
+On Debian/Ubuntu/Mint install ``redis-server`` and ``php5-redis``. The installer 
 will automatically launch ``redis-server`` and configure it to launch at 
 startup.
 
@@ -148,10 +153,8 @@ You can verify that the Redis daemon is running with ``ps ax``::
  ps ax | grep redis
  22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379 
  
-Restart your Web server, add the appropriate entries to your ``config.php``, 
-and 
-refresh your ownCloud admin page. This example ``config.php`` configuration 
-uses 
+Restart your Web server, add the appropriate entries to your ``config.php``, and 
+refresh your ownCloud admin page. This example ``config.php`` configuration uses 
 Redis for the local server cache::
 
   'memcache.local' => '\OC\Memcache\Redis',
