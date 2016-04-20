@@ -91,10 +91,7 @@ Memcached
 ---------
 
 Memcached is a reliable oldtimer for shared caching on distributed servers, 
-and performs well with ownCloud with one exception: it is not suitable to use 
-with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>`
-because it does not store locks, and data can disappear from the cache at any time
-(Redis is the best memcache for this). 
+and performs well with ownCloud.
 
 .. note:: Be sure to install the **memcached** PHP module, and not memcache, as 
    in the following examples. ownCloud supports only the **memcached** PHP 
@@ -130,11 +127,6 @@ servers in the shared cache pool with their port numbers::
 
 Redis
 -----
-
-Redis is an excellent modern memcache to use for both distributed caching, and 
-as a local cache for :doc:`Transactional File Locking 
-<../configuration_files/files_locking_transactional>` because it guarantees 
-that cached objects are available for as long as they are needed.
 
 The Redis PHP module must be version 2.2.5+. If you are running a Linux 
 distribution that does not package the supported versions of this module, or 
