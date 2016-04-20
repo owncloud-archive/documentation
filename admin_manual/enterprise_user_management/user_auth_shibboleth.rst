@@ -65,7 +65,7 @@ Further Shibboleth specific configuration as defined in
 	#
 	
 	#
-	# Besides the exceptions above this location is now under control of
+	# Besides the exceptions below, this location is now under control of
 	# Shibboleth
 	#
 	<Location /oc-shib>
