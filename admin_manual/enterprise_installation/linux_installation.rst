@@ -14,6 +14,11 @@ After you have completed your initial installation of ownCloud as detailed in
 the README, follow the instructions in :doc:`../installation/installation_wizard` to finish 
 setting up ownCloud.
 
+Manual Installation
+-------------------
+
+Download the ownCloud archive from your account at https://customer.owncloud.com/owncloud, then follow the instructions at :doc:`../installation/source_installation`.
+
 SELinux
 -------
 
