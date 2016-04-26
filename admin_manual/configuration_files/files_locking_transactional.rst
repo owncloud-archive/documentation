@@ -30,10 +30,7 @@ document, or give notice that other users are working on the same document.
 Multiple users can open and edit a file at the same time and Transactional File 
 locking does not prevent this. Rather, it prevents simultaneous file saving.   
    
-When you see the warning on your ownCloud admin page "Transactional file locking 
-is using the database as locking backend, for best performance it's advised to 
-configure a memcache for locking", you are not required to use a memcache. File 
-locking is enabled by default, using the database locking backend. This 
+File locking is enabled by default, using the database locking backend. This 
 places a significant load on your database. Using ``memcache.locking`` relieves 
 the database load and improves performance. Admins of ownCloud servers with 
 heavy workloads should install a memcache. (See 
