@@ -25,7 +25,7 @@ default theme.
 ``owncloud/core/skeleton/`` is overwritten on upgrades. If you wish to provide 
 a set of default files, place them in a different directory such as 
 ``owncloud/config/skeleton``. Then enter this path in ``config.php`` with the 
-``'skeletondirectory' => '/path/tofile',`` directive.
+``'skeletondirectory' => '/path/to/folder',`` directive.
 
 Upgrade Quickstart
 ------------------
@@ -103,7 +103,7 @@ the upgrade. This takes twice as much time, which on large installations can be
 many hours, so you can omit this step with the ``--skip-migration-test`` 
 option, like this example on CentOS::
 
- $ sudo -u apache php occ upgrade --skip-migration-test
+ sudo -u apache php occ upgrade --skip-migration-test
 
 Setting Strong Directory Permissions
 ------------------------------------
