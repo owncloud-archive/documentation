@@ -2,11 +2,31 @@
 Upgrade ownCloud From Packages
 ==============================
 
-.. note:: Starting with ownCloud 8.2 the Linux package repositories have 
-   changed, and **you must configure your system to use these new 
-   repositories** to install or upgrade ownCloud 8.2+. The new repositories are 
-   at our `Open Build Service`_.
-   
+Changes in ownCloud 8.2 
+-----------------------
+
+* The Linux package repositories have changed, and **you must configure your 
+  system to use these new repositories** to install or upgrade ownCloud 8.2+. 
+  The new repositories are at our `Open Build Service`_.
+
+* Apache configuration files are in a separate package, 
+  ``owncloud-config-apache``.
+
+Upgrade Notes
+-------------
+
+If you are using a custom theme, the upgrade changes it back to the default 
+theme. After the upgrade is completed and you have verified that everything 
+works correctly, change back to your custom theme by entering the path 
+to your theme with ``'theme' => '',`` in your ``config.php`` file. If your 
+custom theme causes any issues, comment out ``'theme' => '',`` to restore the 
+default theme.
+
+``owncloud/core/skeleton/`` is overwritten on upgrades. If you wish to provide 
+a set of default files, place them in a different directory such as 
+``owncloud/config/skeleton``. Then enter this path in ``config.php`` with the 
+``'skeletondirectory' => '/path/to/folder',`` directive.
+
 Upgrade Quickstart
 ------------------
 
@@ -22,8 +42,7 @@ upgrade. These are the basic steps to upgrading ownCloud:
 * Make a :doc:`fresh backup <backup>`.
 * Upgrade your ownCloud packages.
 * Run :ref:`occ upgrade <command_line_upgrade_label>` (optionally disabling the 
-  :ref:`migration test   
-  <migration_test_label>`).
+  :ref:`migration test <migration_test_label>`).
 * :ref:`Apply strong permissions <strong_perms_label>` to your 
   ownCloud directories.
 * Take your ownCloud server out of :ref:`maintenance mode 
@@ -84,7 +103,7 @@ the upgrade. This takes twice as much time, which on large installations can be
 many hours, so you can omit this step with the ``--skip-migration-test`` 
 option, like this example on CentOS::
 
- $ sudo -u apache php occ upgrade --skip-migration-test
+ sudo -u apache php occ upgrade --skip-migration-test
 
 Setting Strong Directory Permissions
 ------------------------------------
