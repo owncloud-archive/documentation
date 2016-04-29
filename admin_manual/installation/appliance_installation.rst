@@ -61,7 +61,7 @@ Software Appliances
 
 There are a number of unofficial pre-made virtual machine-based appliances:
 
--  `Tech and Me - ownCloud VM on Ubuntu 14.04 with MySQL and Apache`_, fully configured 
+-  `Tech and Me - ownCloud VM on Ubuntu 16.04 with PHP 7, MySQL, and Apache`_, fully configured 
    environment.
 -  `SUSE Studio, ownCloud on openSuSE`_, which runs directly from an USB stick.
 -  `Amahi home server`_
@@ -75,4 +75,4 @@ There are a number of unofficial pre-made virtual machine-based appliances:
 .. _SUSE Studio, ownCloud on openSuSE: http://susestudio.com/a/TadMax/owncloud-in-a-box
 .. _QNAP Guide: http://wiki.qnap.com/wiki/Category:OwnCloud
 .. _Synology Package: http://www.cphub.net/index.php?id=40&pid=213
-.. _Tech and Me - ownCloud VM on Ubuntu 14.04 with MySQL and Apache: https://www.techandme.se/machine-setup/
+.. _Tech and Me - ownCloud VM on Ubuntu 16.04 with PHP 7, MySQL, and Apache: https://www.techandme.se/machine-setup/
