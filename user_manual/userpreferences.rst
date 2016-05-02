@@ -107,18 +107,6 @@ hourly, daily, or weekly.
 .. figure:: images/notifications_personal_settings.png
    :alt: screenshot of notifications management form
 
-Limit notifications to your favorite files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Since ownCloud 8.1 it is possible to "Limit notifications about creation and
-changes to your favorite files". This means you will no longer receive
-notifications for all files, but only those which are marked as favorite or are
-in a folder that is marked as a favorite, using the new :ref:`favorites-label`
-feature.
-
-.. note:: This option is only available for the notification stream at the
-  moment, due to the way the email notifications are generated in ownCloud 8.1.
-
 Save New Documents Location
 ---------------------------
 
