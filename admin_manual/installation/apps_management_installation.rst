@@ -5,11 +5,11 @@ Installing and Managing Apps
 After installing ownCloud, you may provide added functionality by installing 
 applications.
 
-Enterprise Subscription Supported Apps
---------------------------------------
+Enterprise Edition Supported Apps
+---------------------------------
 
 See :doc:`../enterprise_installation/supported_apps_installation` for a list of 
-supported Enterprise Subscription apps.
+supported Enterprise apps.
 
 Viewing Enabled Apps
 --------------------
@@ -86,10 +86,11 @@ To view or install apps from the ownCloud Apps Store:
    and the owner and group are your HTTP user. On CentOS this is ``apache``, 
    Debian/Ubuntu is ``www-data``, and on openSUSE is it ``wwwrun:www``.
 
-Sometimes the installation of a third-party app fails silently, possibly because
-``'appcodechecker' => true,`` is enabled in ``config.php``. When ``appcodechecker`` is 
-enabled it checks if third-party apps are using the private API, rather than the public 
-API. If they are then they will not be installed.
+Sometimes the installation of a third-party app fails silently, possibly because 
+``'appcodechecker' => true,`` is enabled in ``config.php``. When 
+``appcodechecker`` is enabled it checks if third-party apps are using the 
+private API, rather than the public API. If they are then they will not be 
+installed.
 
 .. note:: If you would like to create or add your own ownCloud app, please use the 
     *Add your App...* button on the same page. This button redirects you to the 
@@ -130,8 +131,8 @@ in that folder.
 Using Your Own Appstore
 -----------------------
 
-You can enable the installation of apps from your own apps store. This requires that you 
-can write to at least one of the configured apps directories.
+You can enable the installation of apps from your own apps store. This requires 
+that you can write to at least one of the configured apps directories.
 
 To enable installation from your own apps store:
 

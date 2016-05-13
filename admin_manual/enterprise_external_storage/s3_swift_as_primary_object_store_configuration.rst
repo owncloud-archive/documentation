@@ -1,15 +1,16 @@
 =============================================================
 Configuring S3 and OpenStack Swift Objects as Primary Storage
 =============================================================
-In ownCloud Enterprise Subscription, you can configure S3 objects as primary 
-storage. This replaces the default ownCloud ``owncloud/data`` directory. You may 
-still need to keep the ``owncloud/data`` directory for these reasons:
+
+In ownCloud Enterprise edition, you can configure S3 objects as primary storage. 
+This replaces the default ownCloud ``owncloud/data`` directory. You may still 
+need to keep the ``owncloud/data`` directory for these reasons:
 
 * The ownCloud log file is saved in the data directory
 * Legacy apps may not support using anything but the ``owncloud/data`` directory
 
-You can move your logfile by changing its location in ``config.php``. You may still need 
-``owncloud/data`` for backwards compatibility with some apps.
+You can move your logfile by changing its location in ``config.php``. You may 
+still need ``owncloud/data`` for backwards compatibility with some apps.
 
 Implications
 ------------

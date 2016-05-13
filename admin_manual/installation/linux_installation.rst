@@ -19,11 +19,11 @@ installation. (see :doc:`installation_wizard`).
 .. note:: Do not move the folders provided by these packages after the 
    installation, as this will break updates.
 
-Installing ownCloud Enterprise Subscription
--------------------------------------------
+Installing ownCloud Enterprise Edition
+--------------------------------------
 
 See :doc:`../enterprise_installation/linux_installation` for instructions on 
-installing ownCloud Enterprise Subscription.
+installing ownCloud Enterprise edition.
 
 Downgrading Not Supported
 -------------------------
