@@ -11,8 +11,8 @@ refer to our community support channels:
    typical mistakes or frequently occurring issues
 
 * `The ownCloud User mailing list`_
-*  The ownCloud IRC chat channel ``irc://#owncloud@freenode.net`` on freenode.net, also 
-   accessible via `webchat`_
+*  The ownCloud IRC chat channel ``irc://#owncloud@freenode.net`` on 
+   freenode.net, also accessible via `webchat`_
 
 Please understand that all these channels essentially consist of users like you 
 helping each other out. Consider helping others out where you can, to contribute 
@@ -20,7 +20,7 @@ back for the help you get. This is the only way to keep a community like
 ownCloud healthy and sustainable!
 
 If you are using ownCloud in a business or otherwise large scale deployment, 
-note that ownCloud Inc. offers the `Enterprise Subscription`_ with commercial 
+note that ownCloud Inc. offers the `Enterprise Edition`_ with commercial 
 support options.
 
 Bugs
@@ -37,8 +37,10 @@ If you can't find a solution, please use our `bugtracker`_.
 .. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
 .. _the ownCloud User mailing list: https://mailman.owncloud.org/mailman/listinfo/user
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
-.. _Enterprise Subscription: https://owncloud.com/lp/community-or-enterprise/
-.. _bugtracker: http://doc.owncloud.org/server/8.0/developer_manual/bugtracker/index.html
+.. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
+.. _bugtracker: http://doc.owncloud.org/server/8.0/developer_manual/bugtrackerindex.html
+.. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
+
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting

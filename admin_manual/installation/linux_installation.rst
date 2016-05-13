@@ -23,11 +23,11 @@ ownCloud. Then run the Installation Wizard to complete your installation. (see
    http://software.opensuse.org/download.html?project=isv:ownCloud:community&
    package=owncloud
 
-Installing ownCloud Enterprise Subscription
--------------------------------------------
+Installing ownCloud Enterprise Edition
+--------------------------------------
 
 See :doc:`../enterprise_installation/linux_installation` for instructions on 
-installing ownCloud Enterprise Subscription.
+installing ownCloud Enterprise edition.
 
 Downgrading Not Supported
 -------------------------
@@ -73,3 +73,4 @@ want to use CalDAV or CardDAV clients make sure you have configured the correct
 
 **Note for MySQL/MariaDB environments**: Please refer to :ref:`db-binlog-label`
 on how to correctly configure your environment if you have binary logging enabled.
+

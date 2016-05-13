@@ -18,7 +18,7 @@ manager, and by manually upgrading. In this chapter you will learn how to keep
 your ownCloud installation current with your Linux package manager, and by 
 manually upgrading.
 
-.. note:: Enterprise Subscription customers will use their Enterprise software
+.. note:: Enterprise customers will use their Enterprise software
    repositories to install ownCloud packages, rather 
    than the Open Build Service. Then follow the instructions on this page 
    for completing upgrades. Please see    

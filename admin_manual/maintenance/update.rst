@@ -8,7 +8,7 @@ releases. The Updater app is enabled in your ownCloud Server instance by
 default, which you can confirm by looking on your Apps page.
 
 .. note:: The Updater app is **not enabled and not supported** in ownCloud 
-   Enterprise Subscription. 
+   Enterprise edition. 
    
    The Updater app is **not included** in the 
    `Linux packages on our Open Build Service 

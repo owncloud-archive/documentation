@@ -17,9 +17,9 @@ Table of Contents
     operations/index
     issues/index
     videos/index
-    
-Enterprise Subscription Only
-----------------------------
+
+Enterprise Edition Only
+-----------------------
 
 .. toctree::
     :maxdepth: 3

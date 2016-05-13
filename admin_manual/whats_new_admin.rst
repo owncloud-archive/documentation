@@ -31,7 +31,7 @@ Note: This does not include support for Contacts, Calendar, Tasks, Chat,
 Documents, or any other community-only apps, and it does not include support 
 for Enterprise-only apps or services.
 
-The ownCloud Enterprise Subscription replaces the Enterprise Edition. This 
+The ownCloud Enterprise Subscription provides paid support for the Enterprise Edition. This 
 includes the core Server plus Enterprise apps. The Enterprise Subscription 
 includes:
 
