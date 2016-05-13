@@ -9,7 +9,7 @@ LDAP Home Connector
 The LDAP Home Connector App provides the ability to mount a user’s windows home
 directory to their ownCloud instance.
 
-This document assumes the ownCloud Enterprise Subscription has been installed and
+This document assumes the ownCloud Enterprise edition has been installed and
 the app has been downloaded from ownCloud.
 
 

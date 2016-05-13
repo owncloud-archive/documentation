@@ -3,8 +3,9 @@ Enterprise Logging Apps
 =======================
 
 There are two enterprise logging apps available to ownCloud Enterprise 
-Subscription customers: **Log file sharing** and **Log user actions**. The **Log file sharing** app records the file sharing activity 
-of your users, and **Log user actions** records user logins and logouts.
+edition customers: **Log file sharing** and **Log user actions**. The **Log 
+file sharing** app records the file sharing activity of your users, and **Log 
+user actions** records user logins and logouts.
 
 .. figure:: images/logging-1.png
    :alt: The two enterprise logging apps on the Apps page.
