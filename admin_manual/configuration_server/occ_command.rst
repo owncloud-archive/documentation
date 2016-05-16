@@ -579,10 +579,10 @@ This example completes the installation::
 
 Supported databases are::
 
- - sqlite (SQLite3 - Community Edition Only)
+ - sqlite (SQLite3 - ownCloud Community edition only)
  - mysql (MySQL/MariaDB)
  - pgsql (PostgreSQL)
- - oci (Oracle)
+ - oci (Oracle - ownCloud Enterprise edition only)
  
 .. _command_line_upgrade_label: 
    
