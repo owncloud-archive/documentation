@@ -10,10 +10,11 @@ It is best to keep your ownCloud server upgraded regularly, and to install all
 point releases and major releases without skipping any of them, as skipping 
 releases increases the risk of errors. Major releases are 8.0, 8.1, 8.2, and 
 9.0. Point releases are intermediate releases for each major release. For 
-example, 8.0.9 and 8.1.3 are point releases. **Skipping major releases is not supported.**
+example, 8.0.9 and 8.1.3 are point releases. **Skipping major releases is not 
+supported.**
 
 There are multiple ways to keep your ownCloud server upgraded: with the 
-:doc:`Updater App <update>` (Server Edition only), with your Linux package 
+:doc:`Updater App <update>` (Community Edition only), with your Linux package 
 manager, and by manually upgrading. In this chapter you will learn how to keep 
 your ownCloud installation current with your Linux package manager, and by 
 manually upgrading.
@@ -167,6 +168,8 @@ according to :ref:`strong_perms_label`.
 
 If the upgrade fails, then you must try a manual upgrade.
 
+.. _manual_upgrade_label:
+
 Manual Upgrade Procedure
 ------------------------
 
@@ -249,6 +252,35 @@ verify the version number. Check your other settings to make sure they're
 correct. Go to the Apps page and review the core apps to make sure the right 
 ones are enabled. Re-enable your third-party apps. Then apply strong 
 permissions to your ownCloud directories (:ref:`strong_perms_label`).
+
+.. _skipped_release_upgrade_label:  
+   
+Upgrading Across Skipped Releases
+---------------------------------
+
+It is best to update your ownCloud installation with every new point release, 
+and to never skip any major releases. If you have skipped any major releases 
+you 
+can bring your ownCloud current with these steps:
+
+#. Add the repository of your current version
+#. Upgrade your current version to the latest point release
+#. Add the repo of the next major release
+#. Upgrade your current version to the next major release
+#. Run upgrade routine
+#. Repeat from step 3 until you reach the last available major release
+
+You'll find previous ownCloud releases in the `ownCloud Server Changelog 
+<https://owncloud.org/changelog/>`_.
+
+If upgrading via your package manager fails, then you must perform a 
+:ref:`manual_upgrade_label`.
+
+Previous ownCloud Releases
+--------------------------
+
+You'll find previous ownCloud releases in the `ownCloud Server Changelog 
+<https://owncloud.org/changelog/>`_.
 
 Reverse Upgrade
 ---------------
