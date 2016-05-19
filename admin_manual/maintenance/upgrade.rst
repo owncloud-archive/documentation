@@ -326,3 +326,24 @@ If this does not work properly, try the repair function::
 .. _openSUSE Build Service: 
    http://software.opensuse.org/download.html?project=isv:ownCloud:community& 
    package=owncloud
+   
+.. _owncloud.org/install/:
+   https://owncloud.org/install/
+
+Encryption migration from oC 7.0 to 8.0 and 8.0 to 8.1
+------------------------------------------------------
+
+The encryption backend was changed twice between ownCloud 7.0 and 8.0 as well as
+between 8.0 and 8.1. If you're upgrading from these older versions please refer 
+to 
+:ref:`upgrading_encryption_label` for the needed migration steps.
+
+Debian Migration to Official ownCloud Packages
+----------------------------------------------
+
+As of March 2016 Debian will not include ownCloud packages. Debian users can 
+migrate to the official ownCloud packages by following this guide, 
+`Upgrading ownCloud on Debian Stable to official packages 
+<https://owncloud.org/blog/upgrading-owncloud-on-debian-stable-to-official- 
+packages/>`_.
+
