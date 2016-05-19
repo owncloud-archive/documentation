@@ -45,6 +45,9 @@ indicates the storage is ready for use. A red or yellow icon indicates
 that ownCloud could not connect to the external storage, so you need to 
 re-check your configuration and network availability.
 
+If there is an error on the storage, it will be marked as unavailable for ten 
+minutes. To re-check it, click the colored icon or reload your Admin page.
+
 User and Group Permissions
 --------------------------
 
