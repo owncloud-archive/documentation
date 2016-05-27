@@ -35,7 +35,7 @@ locking to work. (See :doc:`../configuration_server/caching_configuration`.)
 After installing Redis you must enter a configuration in your ``config.php`` 
 file like this example::
 
-  'filelocking.enabled' => 'true',
+  'filelocking.enabled' => true,
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
        'host' => 'localhost',
@@ -47,7 +47,7 @@ If you want to connect to Redis configured to listen on an unix socket (which is
 recommended if Redis is running on the same system as ownCloud) use this example
 ``config.php`` configuration::
 
-  'filelocking.enabled' => 'true',
+  'filelocking.enabled' => true,
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
        'host' => '/var/run/redis/redis.sock',
