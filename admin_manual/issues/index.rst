@@ -32,7 +32,9 @@ If you think you have found a bug in ownCloud, please:
 * Search for a solution (see the options above)
 * Double-check your configuration
 
-If you can't find a solution, please use our `bugtracker`_.
+If you can't find a solution, please use our `bugtracker`_. You can generate a 
+configuration report with the :ref:`occ config command <config_commands_label>`, 
+with passwords automatically obscured.
 
 .. _the ownCloud Forums: http://forum.owncloud.org
 .. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
