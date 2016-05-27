@@ -31,7 +31,7 @@ If you think you have found a bug in ownCloud, please:
 * Search for a solution (see the options above)
 * Double-check your configuration
 
-If you can't find a solution, please use our `bugtracker`_.
+If you can't find a solution, please use our `bugtracker`_. 
 
 .. _the ownCloud Forums: http://forum.owncloud.org
 .. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
