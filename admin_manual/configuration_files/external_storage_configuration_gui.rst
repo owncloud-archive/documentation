@@ -56,6 +56,8 @@ storage.
 Enabling External Storage Support
 ---------------------------------
 
+.. warning:: Enabling this app will disable the **Stay logged in** checkbox on the login page.
+
 The ``External storage support`` application is enabled on the ``Apps`` page.
 
 .. figure:: ../images/external-storage-app-enable.png
