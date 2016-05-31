@@ -12,11 +12,13 @@ $mapping = array(
     'admin-provisioning-api'  => '/admin_manual/configuration_user/user_provisioning_api.html',
     'admin-source_install'    => '/admin_manual/installation/source_installation.html',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
+    
     'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
     'admin-performance'       => '/admin_manual/configuration_server/performance_tuning.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
-    'admin-security'          => '/admin_manual/configuration_server/hardening.html',
+    'admin-security'          => '/admin_manual/configuration_server/hardening.html', 
+    'admin-enterprise-license' => '/admin_manual/enterprise_installation/license_keys_installation.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 
