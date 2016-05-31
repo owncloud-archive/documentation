@@ -21,7 +21,8 @@ $mapping = array(
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
     'admin-security'          => '/admin_manual/configuration_server/harden_server.html',
-    'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',
+    'admin-email'             => '/admin_manual/configuration_server/email_configuration.html',  
+    'admin-enterprise-license' => '/admin_manual/enterprise_installation/license_keys_installation.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
 
