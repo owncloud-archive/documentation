@@ -492,8 +492,13 @@ the scan::
    --all                 will rescan all files of all known users
    --quiet               suppress any output
    --verbose             files and directories being processed are shown additionally during scanning
+   --unscanned           scan only previously unscanned files
 
 Verbosity levels of ``-vv`` or ``-vvv`` are automatically reset to ``-v``
+
+Note for option --unscanned:
+In general there is a background job (through cron) that will do that scan periodically.
+The --unscanned option makes it possible to trigger this from the CLI.
 
 When using the ``--path`` option, the path must consist of following components::
 
