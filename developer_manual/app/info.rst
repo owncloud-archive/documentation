@@ -27,6 +27,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <documentation>
           <user>https://doc.owncloud.org</user>
           <admin>https://doc.owncloud.org</admin>
+          <developer>https://doc.owncloud.org</developer>
       </documentation>
 
       <category>tool</category>
@@ -126,7 +127,7 @@ ownCloud allows to specify four kind of ``types``. Currently supported ``types``
 
 documentation
 -------------
-Link to 'developer', 'admin' and 'user' documentation
+**Required**: Link to 'developer', 'admin' and 'user' documentation
 
 Common places are: (where $name is the name of your app, e.g. $name=theapp)
 
@@ -142,15 +143,15 @@ Another popular starting point for developer documentation is the `README.md` in
 
 website
 -------
-Link to project web page
+**Required**: Link to project web page
 
 repository
 ----------
-Link to the version control repo
+**Required**: Link to the version control repo
 
 bugs
 ----
-Link to the bug tracker
+**Required**: Link to the bug tracker
 
 category
 --------
