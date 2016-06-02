@@ -28,7 +28,7 @@ The :file:`appinfo/info.xml` contains metadata about the app:
           <user>https://doc.owncloud.org</user>
           <admin>https://doc.owncloud.org</admin>
           <developer>https://doc.owncloud.org</developer>
-        </documentation>
+      </documentation>
 
       <category>tool</category>
 
