@@ -126,7 +126,19 @@ ownCloud allows to specify four kind of ``types``. Currently supported ``types``
 
 documentation
 -------------
-Link to 'admin' and 'user' documentation
+Link to 'developer', 'admin' and 'user' documentation
+
+Common places are: (where $name is the name of your app, e.g. $name=theapp)
+
+.. code-block:: xml
+
+  $DOCUMENTATION_BASE = 'https://doc.owncloud.org';
+  $DOCUMENTATION_DEVELOPER = $DOCUMENTATION_BASE.'/server/'.$VERSIONS_SERVER_MAJOR_DEV_DOCS.'/developer_manual/$name/';`    
+  $DOCUMENTATION_ADMIN = $DOCUMENTATION_BASE.'/server/'.$VERSIONS_SERVER_MAJOR_STABLE.'/admin_manual/$name/';
+  $DOCUMENTATION_USER = $DOCUMENTATION_BASE.'/server/'.$VERSIONS_SERVER_MAJOR_STABLE.'/user_manual/$name/';
+
+These places are maintained at https://github.com/owncloud/documentation/. 
+Another popular starting point for developer documentation is the `README.md` in GitHub.
 
 website
 -------
