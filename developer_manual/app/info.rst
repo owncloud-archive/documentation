@@ -126,19 +126,19 @@ ownCloud allows to specify four kind of ``types``. Currently supported ``types``
 
 documentation
 -------------
-Link to 'admin' and 'user' documentation
+**Required**: Link to 'admin' and 'user' documentation
 
 website
 -------
-Link to project web page
+**Required**: Link to project web page
 
 repository
 ----------
-Link to the version control repo
+**Required**: Link to the version control repo
 
 bugs
 ----
-Link to the bug tracker
+**Required**: Link to the bug tracker
 
 category
 --------
