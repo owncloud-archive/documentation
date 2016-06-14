@@ -157,3 +157,10 @@ Depending on your environment this input box won't show up so you need to make s
 :ref:`strong_perms_label` might prevent write access to these files. As an admin you need
 to decide between the ability to use the input box and a more secure ownCloud installation
 where you need to manually modify the upload limits in the ``.htaccess`` file described above.
+
+General upload issues
+---------------------
+
+Various environmental factors could cause a restriction of the upload size. An example is
+the ``LVE Manager`` of ``CloudLinux`` which sets a ``I/O limit``. Other webserver modules
+like described in :doc:`../issues/general_troubleshooting` might cause additional problems.
