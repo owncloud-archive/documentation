@@ -160,3 +160,10 @@ To be able to use this input box you need to make sure that:
 to decide between the ability to use the input box and a more secure ownCloud installation
 where you need to manually modify the upload limits in the ``.htaccess`` and ``.user.ini``
 files described above.
+
+General upload issues
+---------------------
+
+Various environmental factors could cause a restriction of the upload size. An example is
+the ``LVE Manager`` of ``CloudLinux`` which sets a ``I/O limit``. Other webserver modules
+like described in :doc:`../issues/general_troubleshooting` might cause additional problems.
