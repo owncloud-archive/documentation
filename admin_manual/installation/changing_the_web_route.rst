@@ -30,8 +30,8 @@ Example: Moving from /owncloud to /
       ...
       #### DO NOT CHANGE ANYTHING ABOVE THIS LINE ####
       ...
-        <IfModule mod_rewrite.c>
-      RewriteBase /
+      <IfModule mod_rewrite.c>
+        RewriteBase /
       ...
     
 
