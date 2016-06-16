@@ -6,9 +6,9 @@ This admin manual assumes that the owncloud server shall be accessible under the
 ``/owncloud`` -- this is also where the Linux packages make the server appear.
 
 Basic system administrator and apache configuration knowledge is prerequisite.
-Several configuration files need to be kept in sync, when changeing the web route location.
+Several configuration files need to be kept in sync, when changing the web route location.
 
-On an Ubuntu-14.04 system the follwing files are typically involved:
+On an Ubuntu-14.04 system the following files are typically involved:
 
 - /etc/apache2/conf-enabled/owncloud.conf
 - /var/www/owncloud/config/config.php
@@ -17,30 +17,29 @@ On an Ubuntu-14.04 system the follwing files are typically involved:
 Example: Moving from /owncloud to /
 -----------------------------------
 
+    Edit the file /etc/apache2/conf-enabled/owncloud.conf to say::
 
-::
-
-    vi /etc/apache2/conf-enabled/owncloud.conf
       Alias / "/var/www/owncloud/"
-    ZZ
 
-    vi /var/www/owncloud/config/config.php
+    Edit /var/www/owncloud/config/config.php to say::
+
       'overwrite.cli.url' => 'http://localhost/',
-    ZZ
 
-    vi /var/www/owncloud/.htaccess
-    ...
+    Edit the file /var/www/owncloud/.htaccess to say::
+
+      ...
       #### DO NOT CHANGE ANYTHING ABOVE THIS LINE ####
-    ...
-      <IfModule mod_rewrite.c>
-    RewriteBase /
-    ...
-    ZZ
+      ...
+        <IfModule mod_rewrite.c>
+      RewriteBase /
+      ...
+    
 
-    # optionally also set your document root. (Not recommended)
-    vi /etc/apache2/sites-enabled/000-default.conf
+    Optionally also set your document root -- Generally not needed or recommended.
+    Edit the file /etc/apache2/sites-enabled/000-default.conf to say::
+
       DocumentRoot /var/www/owncloud
-    ZZ
+    
 
 
 Note:
