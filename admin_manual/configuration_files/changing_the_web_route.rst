@@ -17,28 +17,29 @@ On an Ubuntu-14.04 system the follwing files are typically involved:
 Example: Moving from /owncloud to /
 -----------------------------------
 
-<pre>
-vi /etc/apache2/conf-enabled/owncloud.conf
-  Alias / "/var/www/owncloud/"
-ZZ
 
-vi /var/www/owncloud/config/config.php
-  'overwrite.cli.url' => 'http://localhost/',
-ZZ
+    vi /etc/apache2/conf-enabled/owncloud.conf
+      Alias / "/var/www/owncloud/"
+    ZZ
 
-vi /var/www/owncloud/.htaccess
-  #### DO NOT CHANGE ANYTHING ABOVE THIS LINE ####
-...
-  <IfModule mod_rewrite.c>
+    vi /var/www/owncloud/config/config.php
+      'overwrite.cli.url' => 'http://localhost/',
+    ZZ
+
+    vi /var/www/owncloud/.htaccess
+    ...
+      #### DO NOT CHANGE ANYTHING ABOVE THIS LINE ####
+    ...
+      <IfModule mod_rewrite.c>
     RewriteBase /
-...
-ZZ
+    ...
+    ZZ
 
-# optionally also set your document root. (Not recommended)
-vi /etc/apache2/sites-enabled/000-default.conf
-  DocumentRoot /var/www/owncloud
-ZZ
-</pre>
+    # optionally also set your document root. (Not recommended)
+    vi /etc/apache2/sites-enabled/000-default.conf
+      DocumentRoot /var/www/owncloud
+    ZZ
+
 
 Note:
   Since owncloud version 9.0.2 we support short url's without index.php. The rewrite mechanisms
