@@ -10,9 +10,9 @@ Several configuration files need to be kept in sync, when changeing the web rout
 
 On an Ubuntu-14.04 system the follwing files are typically involved:
 
- - /etc/apache2/conf-enabled/owncloud.conf
- - /var/www/owncloud/config/config.php
- - /var/www/owncloud/.htaccess
+- /etc/apache2/conf-enabled/owncloud.conf
+- /var/www/owncloud/config/config.php
+- /var/www/owncloud/.htaccess
 
 Example: Moving from /owncloud to /
 -----------------------------------
