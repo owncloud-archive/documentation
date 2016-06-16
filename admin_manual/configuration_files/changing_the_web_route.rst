@@ -18,6 +18,8 @@ Example: Moving from /owncloud to /
 -----------------------------------
 
 
+::
+
     vi /etc/apache2/conf-enabled/owncloud.conf
       Alias / "/var/www/owncloud/"
     ZZ
