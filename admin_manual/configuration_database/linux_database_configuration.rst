@@ -99,7 +99,6 @@ Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the follo
 
 ::
 
-  CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
   CREATE DATABASE IF NOT EXISTS owncloud;
   GRANT ALL PRIVILEGES ON owncloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
 
