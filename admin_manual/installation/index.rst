@@ -10,6 +10,7 @@ Installation
    linux_installation
    installation_wizard
    command_line_installation
+   changing_the_web_route
    apps_management_installation
    apps_supported
    source_installation
