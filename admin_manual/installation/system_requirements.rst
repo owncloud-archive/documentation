@@ -38,3 +38,12 @@ Supported Platforms
 
 See :doc:`source_installation` for minimum software versions for installing 
 ownCloud.
+
+Database Requirements for MySQL / MariaDB
+-----------------------------------------
+
+The following is currently required if you're running ownCloud together with a MySQL / MariaDB database:
+
+* Disabled or BINLOG_FORMAT = MIXED configured Binary Logging (See: :ref:`db-binlog-label`)
+* InnoDB storage engine (MyISAM is not supported, see: :ref:`db-storage-engine-label`)
+* "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
