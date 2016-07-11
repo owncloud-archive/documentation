@@ -63,6 +63,14 @@ many parallel operations) you need to configure the transaction isolation level 
 Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html>`_
 for detailed information.
 
+.. _db-storage-engine-label:
+
+MySQL / MariaDB storage engine
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Since ownCloud 7 only InnoDB is supported as a storage engine. There are some shared hosters that
+do not support InnoDB and only MyISAM. Running ownCloud on such an environment is not supported.
+
 Parameters
 ----------
 For setting up ownCloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your ownCloud instance to a database created by a previous installation of ownCloud), some modification might be required.
