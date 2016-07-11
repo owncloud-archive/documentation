@@ -120,3 +120,11 @@ distribution
 and an heuristic is running the test which actually reproduces the bug. There
 are distributions such as RHEL/CentOS which have this backport still `pending 
 <https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
+
+Your database does not run with "READ COMMITED" transaction isolation level
+---------------------------------------------------------------------------
+
+"Your database does not run with "READ COMMITED" transaction isolation level.
+This can cause problems when multiple actions are executed in parallel."
+
+Please refer to :ref:`db-transaction-label` how to configure your database for this requirement.
