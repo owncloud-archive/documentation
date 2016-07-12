@@ -23,11 +23,10 @@ community-maintained. (Thank you, contributors!)
    necessary.  However, each ``add_header`` statement must be written in a 
    single line to prevent connection problems with sync clients.
 
-Example Configurations
-----------------------
+Example Configuration
+---------------------
 
 - :doc:`nginx_owncloud_8x`
-- :doc:`nginx_owncloud_9x`
 
 You can use ownCloud over plain http, but we strongly encourage you to use 
 SSL/TLS to encrypt all of your server traffic, and to protect user's logins and 
