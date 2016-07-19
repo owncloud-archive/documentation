@@ -6,9 +6,6 @@ The following configuration should be used when ownCloud is placed in the
 webroot of your Nginx installation. Be careful about line breaks if you copy 
 the examples, as long lines may be broken for page formatting.
 
-Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their 
-``php.ini``.
-
 Thanks to `@josh4trunks <https://github.com/josh4trunks>`_ for providing / 
 creating these configuration examples.
 
@@ -40,10 +37,8 @@ your nginx installation.
       ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
   
       # Add headers to serve security related headers
-      # Before enabling Strict-Transport-Security headers please read into this 
-      # topic first.
-      # add_header Strict-Transport-Security "max-age=15768000; 
-      # includeSubDomains; preload;";
+      # Before enabling Strict-Transport-Security headers please read into this topic first.
+      # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
       add_header X-Content-Type-Options nosniff;
       add_header X-Frame-Options "SAMEORIGIN";
       add_header X-XSS-Protection "1; mode=block";
@@ -63,13 +58,14 @@ your nginx installation.
       # The following 2 rules are only needed for the user_webfinger app.
       # Uncomment it if you're planning to use this app.
       #rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-      #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json 
-      # last;
+      #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
   
-      location = /.well-known/carddav { return 301 
-       $scheme://$host/remote.php/dav; }
-      location = /.well-known/caldav { return 301 
-       $scheme://$host/remote.php/dav; }
+      location = /.well-known/carddav {
+          return 301 $scheme://$host/remote.php/dav;
+      }
+      location = /.well-known/caldav {
+          return 301 $scheme://$host/remote.php/dav;
+      }
   
       location /.well-known/acme-challenge { }
   
@@ -82,7 +78,7 @@ your nginx installation.
   
       # Uncomment if your server is build with the ngx_pagespeed module
       # This module is currently not supported.
-      #pagespeed off;
+      # pagespeed off;
   
       error_page 403 /core/templates/403.php;
       error_page 404 /core/templates/404.php;
@@ -92,22 +88,19 @@ your nginx installation.
       }
   
       location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
-          deny all;
+          return 404;
       }
       location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console) {
-          deny all;
+          return 404;
       }
   
-      location ~ 
-      ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater
-      /.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+      location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+          fastcgi_split_path_info ^(.+\.php)(/.*)$;
           include fastcgi_params;
-          fastcgi_split_path_info ^(.+\.php)(/.+)$;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
           fastcgi_param PATH_INFO $fastcgi_path_info;
           fastcgi_param HTTPS on;
-          #Avoid sending the security headers twice
-          fastcgi_param modHeadersAvailable true; 
+          fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
           fastcgi_param front_controller_active true;
           fastcgi_pass php-handler;
           fastcgi_intercept_errors on;
@@ -124,12 +117,9 @@ your nginx installation.
       location ~* \.(?:css|js)$ {
           try_files $uri /index.php$uri$is_args$args;
           add_header Cache-Control "public, max-age=7200";
-          # Add headers to serve security related headers (It is intended to 
-          # have those duplicated to the ones above)
-          # Before enabling Strict-Transport-Security headers please read into 
-          # this topic first.
-          # add_header Strict-Transport-Security "max-age=15768000; 
-          #  includeSubDomains; preload;";
+          # Add headers to serve security related headers (It is intended to have those duplicated to the ones above)
+          # Before enabling Strict-Transport-Security headers please read into this topic first.
+          # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
           add_header X-Content-Type-Options nosniff;
           add_header X-Frame-Options "SAMEORIGIN";
           add_header X-XSS-Protection "1; mode=block";
@@ -175,10 +165,8 @@ your nginx installation.
       ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
   
       # Add headers to serve security related headers
-      # Before enabling Strict-Transport-Security headers please read into this 
-      # topic first.
-      #add_header Strict-Transport-Security "max-age=15768000; 
-      # includeSubDomains; preload;";
+      # Before enabling Strict-Transport-Security headers please read into this topic first.
+      # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
       add_header X-Content-Type-Options nosniff;
       add_header X-Frame-Options "SAMEORIGIN";
       add_header X-XSS-Protection "1; mode=block";
@@ -197,15 +185,15 @@ your nginx installation.
   
       # The following 2 rules are only needed for the user_webfinger app.
       # Uncomment it if you're planning to use this app.
-      # rewrite ^/.well-known/host-meta /owncloud/public.php?service=host-meta 
-      # last;
-      #rewrite ^/.well-known/host-meta.json 
-      # /owncloud/public.php?service=host-meta-json last;
+      # rewrite ^/.well-known/host-meta /owncloud/public.php?service=host-meta last;
+      # rewrite ^/.well-known/host-meta.json /owncloud/public.php?service=host-meta-json last;
   
-      location = /.well-known/carddav { return 301 
-        $scheme://$host/owncloud/remote.php/dav; }
-      location = /.well-known/caldav { return 301 
-        $scheme://$host/owncloud/remote.php/dav; }
+      location = /.well-known/carddav {
+          return 301 $scheme://$host/owncloud/remote.php/dav;
+      }
+      location = /.well-known/caldav {
+          return 301 $scheme://$host/owncloud/remote.php/dav;
+      }
   
       location /.well-known/acme-challenge { }
   
@@ -220,7 +208,7 @@ your nginx installation.
   
           # Uncomment if your server is build with the ngx_pagespeed module
           # This module is currently not supported.
-          #pagespeed off;
+          # pagespeed off;
   
           error_page 403 /owncloud/core/templates/403.php;
           error_page 404 /owncloud/core/templates/404.php;
@@ -229,24 +217,20 @@ your nginx installation.
               rewrite ^ /owncloud/index.php$uri;
           }
   
-          location ~ 
-          ^/owncloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
-              deny all;
+          location ~ ^/owncloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
+              return 404;
           }
           location ~ ^/owncloud/(?:\.|autotest|occ|issue|indie|db_|console) {
-              deny all;
+              return 404;
           }
   
-          location ~ 
-       ^/owncloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|
-       updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+          location ~ ^/owncloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
+              fastcgi_split_path_info ^(.+\.php)(/.*)$;
               include fastcgi_params;
-              fastcgi_split_path_info ^(.+\.php)(/.+)$;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               fastcgi_param PATH_INFO $fastcgi_path_info;
               fastcgi_param HTTPS on;
-              #Avoid sending the security headers twice    
-              fastcgi_param modHeadersAvailable true; 
+              fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
               fastcgi_param front_controller_active true;
               fastcgi_pass php-handler;
               fastcgi_intercept_errors on;
@@ -263,12 +247,9 @@ your nginx installation.
           location ~* \.(?:css|js)$ {
               try_files $uri /owncloud/index.php$uri$is_args$args;
               add_header Cache-Control "public, max-age=7200";
-              # Add headers to serve security related headers  (It is intended 
-              # to have those duplicated to the ones above)
-              # Before enabling Strict-Transport-Security headers please read 
-              # into this topic first.
-              # add_header Strict-Transport-Security "max-age=15768000; 
-              # includeSubDomains; preload;";
+              # Add headers to serve security related headers  (It is intended to have those duplicated to the ones above)
+              # Before enabling Strict-Transport-Security headers please read into this topic first.
+              # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
               add_header X-Content-Type-Options nosniff;
               add_header X-Frame-Options "SAMEORIGIN";
               add_header X-XSS-Protection "1; mode=block";
@@ -286,4 +267,4 @@ your nginx installation.
           }
       }
   }
-  
+
