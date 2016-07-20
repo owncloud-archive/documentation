@@ -332,9 +332,6 @@ have a session length longer than the length controlled by the IdP. In extreme
 cases this could result in re-login on mobile clients and desktop clients every
 hour.
 
-The session timeout can be overridden in the service provider as described in 
-the 'Shibboleth Wiki <https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPSessions#NativeSPSessions-Attributes>'_.
-
 UID Considerations and Windows Network Drive compatability
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
