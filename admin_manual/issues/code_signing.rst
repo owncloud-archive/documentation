@@ -97,6 +97,10 @@ content of the file will look similar to the following example:
   	- EXCEPTION
   		- OC\IntegrityCheck\Exceptions\InvalidSignatureException
   		- Signature data not found.
+  - tasks
+  	- EXCEPTION
+  		- OC\IntegrityCheck\Exceptions\InvalidSignatureException
+  		- Certificate has been revoked.
 
   Raw output
   ==========
@@ -157,6 +161,15 @@ content of the file will look similar to the following example:
                   )
 
           )
+      [tasks] => Array
+          (
+              [EXCEPTION] => Array
+                  (
+                      [class] => OC\IntegrityCheck\Exceptions\InvalidSignatureException
+                      [message] => Certificate has been revoked.
+                  )
+
+          )
 
   )
 
@@ -166,10 +179,16 @@ In above error output it can be seen that:
    "index.php" and "version.php" do have the wrong version.
 2. In the ownCloud core the unrequired extra file "/test.php" has been found.
 3. It was not possible to verify the signature of the calendar application.
+4. The certificate of the task application was revoked.
 
-The solution is to upload the correct "index.php" and "version.php" files, and 
-delete the "test.php" file. For the calendar exception contact the developer of 
-the application. For other means on how to receive support please take a look at 
+You have to do the following steps to solve this:
+
+1. Upload the correct "index.php" and "version.php" files from e.g. the archive of your ownCloud version.
+2. Delete the "test.php" file. 
+3. Contact the developer of the application. A new version of the app containing a valid signature file needs to be released.
+4. Contact the developer of the application. A new version of the app signed with a valid signature needs to be released.
+
+For other means on how to receive support please take a look at 
 https://owncloud.org/support/. After fixing these problems verify by clicking 
 "Rescan…".
 
