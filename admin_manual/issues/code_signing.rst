@@ -257,3 +257,7 @@ The following errors can be encountered when trying to verify a code signature.
     - ``Signature could not get verified.``
 
       - There was a problem with verifying the signature of ``signature.json``.
+
+    - ``Certificate has been revoked.``
+
+      - The certificate which was used to sign the application was removed.
