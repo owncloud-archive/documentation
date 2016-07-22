@@ -260,5 +260,5 @@ The following errors can be encountered when trying to verify a code signature.
 
     - ``Certificate has been revoked.``
 
-      - The certificate which was used to sign the application was removed.
+      - The certificate which was used to sign the application was revoked.
       
