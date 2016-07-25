@@ -14,9 +14,9 @@ Recommended Setup for Running ownCloud
 
 For best performance, stability, support, and full functionality we recommend:
 
-* Red Hat Enterprise Linux 7
+* Ubuntu 16.04
 * MySQL/MariaDB
-* PHP 5.4 +
+* PHP 7.0
 * Apache 2.4 with mod_php
 
 Supported Platforms
