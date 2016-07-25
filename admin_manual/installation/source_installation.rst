@@ -120,6 +120,20 @@ If ``mod_webdav`` is enabled you must disable it for ownCloud. (See
   
 .. _ubuntu_installation_label:  
 
+Example Installation on Ubuntu 16.04 LTS Server
+-----------------------------------------------
+
+On a machine running a pristine Ubuntu 14.06 LTS server, install the
+required and recommended modules for a typical ownCloud installation, using
+Apache and MariaDB, by issuing the following commands in a terminal::
+
+    apt install apache2 mariadb-server libapache2-mod-php7.0
+    apt install php7.0-gd php7.0-json php7.0-mysql php7.0-curl
+    apt install php7.0-intl php7.0-mcrypt php-imagick
+    apt install php7.0-zip php7.0-xml php7.0-mbstring
+
+The remaining steps are analogus to the installation on Ubuntu 14.04 as shown below.
+
 Example Installation on Ubuntu 14.04 LTS Server
 -----------------------------------------------
 
