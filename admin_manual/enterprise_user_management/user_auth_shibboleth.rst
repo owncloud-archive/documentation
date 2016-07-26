@@ -328,10 +328,6 @@ have a session length longer than the length controlled by the IdP. In extreme
 cases this could result in re-login on mobile clients and desktop clients every
 hour.
 
-The session timeout can be overridden in the service provider, but this
-requires a source code change of the Apache Shibboleth module. A patch can be
-provided by the ownCloud support team.
-
 UID Considerations and Windows Network Drive compatability
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
