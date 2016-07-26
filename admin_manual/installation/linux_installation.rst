@@ -7,7 +7,7 @@ and experienced Linux administators. This is especially useful in installations,
 webserver, storage and database are on separate machines.
 In this scenario, all dependencies and requirements are managed by the package management 
 of your OS, while the ownCloud code itself is maintained in a sequence of simple steps 
-as documented in '<https://doc.owncloud.com/server/9.0/admin_manual/maintenance/manual_upgrade.html>'_.
+as documented in our instructions for the `Manual ownCloud Upgrade <https://doc.owncloud.com/server/9.0/admin_manual/maintenance/manual_upgrade.html>`_.
 
 The package installation is for smaller setups, where ease of use matters more than 
 stability of operation.
