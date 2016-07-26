@@ -123,7 +123,7 @@ If ``mod_webdav`` is enabled you must disable it for ownCloud. (See
 Example Installation on Ubuntu 16.04 LTS Server
 -----------------------------------------------
 
-On a machine running a pristine Ubuntu 14.06 LTS server, install the
+On a machine running a pristine Ubuntu 16.04 LTS server, install the
 required and recommended modules for a typical ownCloud installation, using
 Apache and MariaDB, by issuing the following commands in a terminal::
 
