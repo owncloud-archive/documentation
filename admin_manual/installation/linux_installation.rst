@@ -2,6 +2,16 @@
 Preferred Linux Installation Method
 ===================================
 
+We recommend the installation from the tar ball for large productive environments 
+and experienced Linux administators. This is especially useful in installations, where 
+webserver, storage and database are on separate machines.
+In this scenario, all dependencies and requirements are managed by the package management 
+of your OS, while the ownCloud code itself is maintained in a sequence of simple steps 
+as documented in '<https://doc.owncloud.com/server/9.0/admin_manual/maintenance/manual_upgrade.html>'_.
+
+The package installation is for smaller setups, where ease of use matters more than 
+stability of operation.
+
 Changes in 9.0
 --------------
 
@@ -19,11 +29,11 @@ Install ``owncloud`` to get a complete installation with dependencies.
 
 Split packages are available for the following Linux distributions:
 
-* CentOS 7                      
-* Debian 8 
-* RHEL 7 
-* SLES 12 
-* Ubuntu 14.04, 15.10
+* Ubuntu 14.04, 16.04
+* Debian 8
+* RHEL 7
+* CentOS 7
+* SLES 12
 * openSUSE 13.2, Leap 42.1
 
 ``owncloud-files`` is available for the following distributions, but not 
@@ -33,10 +43,10 @@ with the ownCloud package. Browse
 `<http://download.owncloud.org/download/repositories/9.0/owncloud/>`_ to find 
 the ``owncloud-files`` package for your distro:
 
-* CentOS 6
+* Ubuntu 14.04, 16.04
 * Debian 7
 * RHEL 6
-* Ubuntu 12.04, 14.10
+* CentOS 6
 
 Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If 
 you use Fedora, install ``owncloud-files`` over your own LAMP stack. openSUSE 
