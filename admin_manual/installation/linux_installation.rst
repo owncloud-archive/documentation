@@ -2,14 +2,13 @@
 Preferred Linux Installation Method
 ===================================
 
-We recommend the installation from the tar ball for large productive environments 
-and experienced Linux administators. This is especially useful in installations, where 
-webserver, storage and database are on separate machines.
-In this scenario, all dependencies and requirements are managed by the package management 
+For production environment, we recommend the installation from the tar archive. 
+This applies in particular to scenarios, where webserver, storage and database are on separate machines. 
+In this constellation, all dependencies and requirements are managed by the package management 
 of your OS, while the ownCloud code itself is maintained in a sequence of simple steps 
-as documented in our instructions for the `Manual ownCloud Upgrade <https://doc.owncloud.com/server/9.0/admin_manual/maintenance/manual_upgrade.html>`_.
+as documented in our instructions for the `Manual Installation on Linux <https://doc.owncloud.com/server/9.0/admin_manual/installation/source_installation.html>`_ and the `Manual ownCloud Upgrade <https://doc.owncloud.com/server/9.0/admin_manual/maintenance/manual_upgrade.html>`_.
 
-The package installation is for smaller setups, where ease of use matters more than 
+The package installation is for single-server setups, where ease of use matters more than 
 stability of operation.
 
 Changes in 9.0
@@ -42,7 +41,7 @@ the ``owncloud-files`` package for your distro:
 * SLES 12, 12 SP1
 * openSUSE 13.2, Leap 42.1
 
-owncloud packages with dependencies are available for the following Linux distributions:
+ownCloud packages with dependencies are available for the following Linux distributions:
 
 * Ubuntu 14.04, 16.04
 * Debian 8
@@ -67,7 +66,7 @@ See the :doc:`system_requirements` for the recommended ownCloud setup and
 supported platforms.
 
 Repos: Stable or Major Release?
--------------------------
+-------------------------------
 
 You may use either of the following repositories for ownCloud 9:
 
