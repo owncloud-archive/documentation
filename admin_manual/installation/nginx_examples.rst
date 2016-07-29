@@ -42,8 +42,8 @@ Suppressing Log Messages
 
 If you're seeing meaningless messages in your logfile, for example `client 
 denied by server configuration: /var/www/data/htaccesstest.txt 
-<https://forum.owncloud.org/viewtopic.php?f=17&t=20217>`_, add this section to 
-your nginx configuration to suppress them::
+<https://central.owncloud.org/t/htaccesstest-txt-errors-in-logfiles/831>`_,
+add this section to your nginx configuration to suppress them::
 
         location = /data/htaccesstest.txt {
           allow all;
