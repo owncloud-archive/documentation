@@ -2,14 +2,13 @@
 Preferred Linux Installation Method
 ===================================
 
-For production environment, we recommend the installation from the tar archive. 
+For production environments, we recommend the installation from the tar archive. 
 This applies in particular to scenarios, where webserver, storage and database are on separate machines. 
 In this constellation, all dependencies and requirements are managed by the package management 
 of your OS, while the ownCloud code itself is maintained in a sequence of simple steps 
 as documented in our instructions for the `Manual Installation on Linux <https://doc.owncloud.com/server/9.0/admin_manual/installation/source_installation.html>`_ and the `Manual ownCloud Upgrade <https://doc.owncloud.com/server/9.0/admin_manual/maintenance/manual_upgrade.html>`_.
 
-The package installation is for single-server setups, where ease of use matters more than 
-stability of operation.
+The package installation is for single-server setups only.
 
 Changes in 9.0
 --------------
@@ -24,7 +23,7 @@ The ``owncloud-deps`` packages install all dependencies: Apache, PHP, and MySQL.
 ``owncloud-deps`` is not intended to be installed by itself, but rather is 
 pulled in by the metapackage ``owncloud``. 
 
-Install ``owncloud`` to get a complete installation with all dependencies.
+Install the metapackage``owncloud`` to get a complete installation with all dependencies.
 
 ``owncloud-files`` is available for the following distributions, but not 
 ``owncloud-deps``.
