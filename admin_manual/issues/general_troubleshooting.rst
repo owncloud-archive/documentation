@@ -7,7 +7,7 @@ refer to our community support channels:
 
 * `The ownCloud Forums`_
 
-.. note:: The ownCloud forums have a `FAQ page`_ where each topic corresponds 
+.. note:: The ownCloud forums have a `FAQ category`_ where each topic corresponds 
    to typical mistakes or frequently occurring issues
 
 * `The ownCloud User mailing list`_
@@ -35,8 +35,8 @@ If you can't find a solution, please use our `bugtracker`_. You can generate a
 configuration report with the :ref:`occ config command 
 <config_commands_label>`, with passwords automatically obscured.
 
-.. _the ownCloud Forums: https://forum.owncloud.org
-.. _FAQ page: https://forum.owncloud.org/viewforum.php?f=17
+.. _the ownCloud Forums: https://central.owncloud.org
+.. _FAQ category: https://central.owncloud.org/c/faq
 .. _the ownCloud User mailing list: 
    https://mailman.owncloud.org/mailman/listinfo/user
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
@@ -150,7 +150,7 @@ Some common problems / error messages found in your logfiles as described above:
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
   PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is
   failing. Information on how to correctly configure your environment can be
-  found at the `forums <https://forum.owncloud.org/viewtopic.php?f=17&t=30646>`_.
+  found at the `forums <https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819>`_.
 
 Troubleshooting Web server and PHP problems
 -------------------------------------------
@@ -234,7 +234,7 @@ See:
   (Describes problems with Finder on various Web servers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums 
-<https://forum.owncloud.org/viewtopic.php?f=17&t=7536>`_
+<https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852>`_
 which contains various additional information about WebDAV problems.
 
 Troubleshooting Contacts & Calendar
