@@ -24,3 +24,4 @@ ownCloud Server Configuration
    js_css_asset_management_configuration
    automatic_configuration
    oc_server_tuning
+   index_php_less_urls
