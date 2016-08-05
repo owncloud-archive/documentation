@@ -851,12 +851,15 @@ Use these commands when you upgrade ownCloud, manage encryption, perform
 backups and other tasks that require locking users out until you are finished::
 
  maintenance
-  maintenance:mimetype:update-db       Update database mimetypes and update 
-                                       filecache
-  maintenance:mimetype:update-js       Update mimetypelist.js
-  maintenance:mode                     set maintenance mode
-  maintenance:repair                   repair this installation
-  maintenance:singleuser               set single user mode
+  maintenance:data-fingerprint        update the systems data-fingerprint after 
+                                      a backup is restored
+  maintenance:mimetype:update-db      Update database mimetypes and update 
+                                      filecache
+  maintenance:mimetype:update-js      Update mimetypelist.js
+  maintenance:mode                    set maintenance mode
+  maintenance:repair                  repair this installation
+  maintenance:singleuser              set single user mode
+  maintenance:update:htaccess         Updates the .htaccess file
 
 ``maintenance:mode`` locks the sessions of all logged-in users, including 
 administrators, and displays a status screen warning that the server is in 
@@ -878,6 +881,10 @@ Turn it off when you're finished::
 
  sudo -u www-data php occ maintenance:singleuser --off
  Single user mode disabled
+ 
+Run ``maintenance:data-fingerprint`` to tell desktop and mobile clients that a 
+server backup has been restored. Users will be prompted to resolve any 
+conflicts between newer and older file versions.
 
 The ``maintenance:repair`` command runs automatically during upgrades to clean 
 up the database, so while you can run it manually there usually isn't a need 
