@@ -28,6 +28,8 @@ ownCloud currently supports the following storage backends:
 -  `Google Drive`_
 -  `OpenStack Swift`_
 
+.. note:: Self-signed certificates for external storages are currently not supported.
+
 Please keep in mind, that users are not allowed to mount local file storage for
 security purposes.
 
