@@ -7,7 +7,7 @@ refer to our community support channels:
 
 * `The ownCloud Forums`_
 
-.. note:: The ownCloud forums have a `FAQ page`_ where each topic corresponds 
+.. note:: The ownCloud forums have a `FAQ category`_ where each topic corresponds 
    to typical mistakes or frequently occurring issues
 
 * `The ownCloud User mailing list`_
@@ -36,13 +36,13 @@ configuration report with the :ref:`occ config command
 <config_commands_label>`, with passwords automatically obscured.
 
 .. _the ownCloud Forums: https://central.owncloud.org
-.. _FAQ page: https://central.owncloud.org/c/faq
+.. _FAQ category: https://central.owncloud.org/c/faq
 .. _the ownCloud User mailing list: 
    https://mailman.owncloud.org/mailman/listinfo/user
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/9.1/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/9.0/developer_manual/bugtracker/index.html
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
