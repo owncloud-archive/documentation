@@ -7,7 +7,7 @@ refer to our community support channels:
 
 * `The ownCloud Forums`_
 
-.. note:: The ownCloud forums have a `FAQ page`_ where each topic corresponds 
+.. note:: The ownCloud forums have a `FAQ category`_ where each topic corresponds 
    to typical mistakes or frequently occurring issues
 
 * `The ownCloud User mailing list`_
