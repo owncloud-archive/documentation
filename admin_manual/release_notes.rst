@@ -2,6 +2,82 @@
 ownCloud |version| Release Notes
 ================================
 
+Changes in 9.1
+--------------
+
+**General**
+
+* Background jobs (cron) can now run in parallel
+* Update notifications in client via API - You can now be notified in your desktop client about available updates for core and apps. The notifications are made available via the notifications API.
+* Multi-bucket support for primary objectstore integration
+
+**Authentication**
+
+* Pluggable authentication: plugin system that supports different authentication schemes
+* Token-based authentication
+* Ability to invalidate sessions
+* List connected browsers/devices in the personal settings page. Allows the user to disconnect browsers/devices.
+* Device-specific passwords/tokens, can be generated in the personal page and revoked
+* Disable users and automatically revoke their sessions
+* Detect disabled LDAP users or password changes and revoke their sessions
+* Log in with email address
+* Configuration option to enforce token-based login outside the web UI
+* Two Factor authentication plug-in system
+* OCC command added to (temporarily) disable/enable two-factor authentication for single users
+
+Note: the current desktop and mobile client versions do not support two-factor yet, this will be added later. It is already possible to generate a device specific password and enter that in the current client versions.
+
+**Files app**
+
+* Ability to toggle displaying hidden files
+* Remember sort order
+* Permalinks for internal shares
+* Visual cue when dragging in files app
+* Autoscroll file list when dragging files
+* Upload progress estimate
+
+**Federated sharing**
+
+* Ability to create federated shares with CRUDS permissions
+* Resharing a federated share does not create a chain of shares any more but connects the share owner's server to the reshare recipient
+
+**External storage**
+
+* UTF-8 NFD encoding compatibility support for NFD file names stored directly on external storages (new mount option in external storage admin page)
+* Direct links to the configuration pages for setting up a GDrive or Dropbox app for use with ownCloud
+* Some performance and memory usage improvements for GDrive, stream download and chunk upload
+* Performance and memory usage improvements for Dropbox with stream download
+* GDrive library update provides exponential backoff which will reduce rate limit errors
+
+**Minor additions**
+
+* Support for print style sheets
+* Command line based update will now be suggested if the instance is bigger to avoid potential timeouts
+* Web updater will be disabled if LDAP or shibboleth are installed
+* DB/app update process now shows better progress information
+* Added occ files:scan --unscanned to only scan folders that haven't yet been explored on external storages
+* Chunk cache TTL can now be configured
+* Added warning for wrongly configured database transactions, helps prevent "database is locked" issues
+* Use a capped memory cache to reduce memory usage especially in background jobs and the file scanner
+* Allow login by email
+* Respect CLASS property in calendar events
+* Allow addressbook export using VCFExportPlugin
+* Birthdays are also generated based on shared addressbooks
+
+**For developers**
+
+* New DAV endpoint with a new chunking protocol aiming to solve many issues like timeouts (not used by clients yet)
+* New webdav property for share permissions
+* Background repair steps can be specified info.xml
+* Background jobs (cron) can now be declared in info.xml
+* Apps can now define repair steps to run at install/uninstall time
+* Export contact images via sabre dav plugin
+* Sabre DAV's browser plugin is available in debug mode to allow easier development around webdav
+
+**Technical debt**
+
+* PSR-4 autoloading forced for OC\ and OCP\, optional for OCA\ docs at https://doc.owncloud.org/server/9.1/developer_manual/app/classloader.html
+* More cleanup of the sharing code (ongoing)
 
 Changes in 9.0
 --------------
@@ -349,9 +425,9 @@ risk of data loss. To prevent this, follow these steps.
 
 In your ownCloud server configuration file, ``owncloud\config\config.php``, set 
 ``config_is_read_only`` to true.
-    
+* 
 Set the ``config.php`` file to read-only.
-    
+* 
 When you make server updates ``config.php`` must be made writeable. When your 
 updates are completed re-set it to read-only.
 
