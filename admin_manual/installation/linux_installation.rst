@@ -2,7 +2,7 @@
 Preferred Linux Installation Method
 ===================================
 
-Changes in 9.0
+Changes in |version|
 --------------
 
 Linux distribution packages (from `Open Build Service`_) have been divided into 
@@ -30,7 +30,7 @@ Split packages are available for the following Linux distributions:
 ``owncloud-deps``. You will have to install your own LAMP stack first. This 
 allows you to create your own custom LAMP stack without dependency conflicts 
 with the ownCloud package. Browse 
-`<http://download.owncloud.org/download/repositories/9.0/owncloud/>`_ to find 
+`<http://download.owncloud.org/download/repositories/9.1/owncloud/>`_ to find 
 the ``owncloud-files`` package for your distro:
 
 * CentOS 6
@@ -59,14 +59,14 @@ Repos: Stable or Version?
 You may use either of the following repositories for ownCloud 9:
 
 * `<https://download.owncloud.org/download/repositories/stable/owncloud/>`_
-* `<https://download.owncloud.org/download/repositories/9.0/owncloud/>`_
+* `<https://download.owncloud.org/download/repositories/9.1/owncloud/>`_
 
 When you use the Stable repo, you never have to change it as it always tracks 
 the current stable ownCloud version through all major releases: 8.2, 9.0, 
 and so on. (Major releases are indicated by the second number, so 8.0, 8.1, 
 8.2, and 9.0 were all major releases.)
 
-If you wish to track a specific major release, such as 8.2 or 9.0, then use 
+If you wish to track a specific major release, such as 9.0 or 9.1, then use 
 that repo. That way you won't accidentally find yourself looking at an upgrade 
 to the next major release before you're ready.
 
