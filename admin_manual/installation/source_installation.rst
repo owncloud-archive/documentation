@@ -131,7 +131,7 @@ Apache and MariaDB, by issuing the following commands in a terminal::
     apt install php7.0-intl php7.0-mcrypt php-imagick
     apt install php7.0-zip php7.0-xml php7.0-mbstring
 
-The remaining steps are analogus to the installation on Ubuntu 14.04 as shown below.
+The remaining steps are analogous to the installation on Ubuntu 14.04 as shown below.
 
 Example Installation on Ubuntu 14.04 LTS Server
 -----------------------------------------------
