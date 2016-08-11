@@ -502,9 +502,9 @@ app, and then run ``encryption:enable``::
    
 ``encryption:change-key-storage-root`` is for moving your encryption keys to a 
 different folder. It takes one argument, ``newRoot``, which defines your new 
-root folder::
+root folder. The folder must exist, and the path is relative to your root ownCloud directory::
 
- sudo -u www-data php occ encryption:change-key-storage-root /etc/oc-keys
+ sudo -u www-data php occ encryption:change-key-storage-root ../../etc/oc-keys
  
 You can see the current location of your keys folder::
 
