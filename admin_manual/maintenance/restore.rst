@@ -2,54 +2,49 @@
 Restoring ownCloud
 ==================
 
-To restore an ownCloud installation there are three main things you need to 
-restore:
+When you install ownCloud from packages, follow these steps to restore your ownCloud installation. Start with a fresh ownCloud package installation in a new, empty directory. Then restore these items from your backup (see :doc:`backup`):
 
-#. The configuration directory
-#. The data directory
-#. The database
+#. Your ``config/`` directory.
+#. Your ``data/`` directory.
+#. Your ownCloud database.
+#. Your custom theme files, if you have any. (See `Theming ownCloud <https://doc.owncloud.org/server/9.2/developer_manual/core/theming.html>`_)
 
-.. note:: You must have both the database and data directory. You cannot 
-   complete restoration unless you have both of these.
+When you install ownCloud from the source tarballs you may safely restore your entire ownCloud installation from backup, with the exception of your ownCloud database. Databases cannot be copied, but you must use the database tools to make a correct restoration.
 
-When you have completed your restoration, see the ``Setting Strong Directory 
-Permissions`` section of :doc:`../installation/installation_wizard`.
+When you have completed your restoration, see :ref:`Setting Strong Permissions <strong_perms_label>`.
 
-Restore Folders
----------------
+Restore Directories
+-------------------
 
-.. note:: This guide assumes that your previous backup is called 
-   "owncloud-dirbkp"
+Simply copy your configuration and data folder to your ownCloud environment. You could use this command, which restores the backup example in :doc:`backup`::
 
-Simply copy your configuration and data folder (or even your whole ownCloud 
-install and 
-data folder) to your ownCloud environment. You could use this command::
-
-    rsync -Aax owncloud-dirbkp/ owncloud/
+    rsync -Aax config data /var/www/owncloud/
+    
+There are many ways to restore normal files from backups, and you may use whatever method you are accustomed to.
 
 Restore Database
 ----------------
 
 .. note:: This guide assumes that your previous backup is called 
-   "owncloud-sqlbkp.bak"
+   "owncloud-dbbackup.bak"
 
 MySQL
 ^^^^^
 
 MySQL is the recommended database engine. To restore MySQL::
 
-    mysql -h [server] -u [username] -p[password] [db_name] < owncloud-sqlbkp.bak
+    mysql -h [server] -u [username] -p[password] [db_name] < owncloud-dbbackup.bak
 
 SQLite
 ^^^^^^
 ::
 
     rm data/owncloud.db
-    sqlite3 data/owncloud.db < owncloud-sqlbkp.bak
+    sqlite3 data/owncloud.db < owncloud-dbbackup.bak
 
 PostgreSQL
 ^^^^^^^^^^
 ::
 
     PGPASSWORD="password" pg_restore -c -d owncloud -h [server] -U [username] 
-    owncloud-sqlbkp.bak
+    owncloud-dbbackup.bak
