@@ -137,3 +137,58 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
 
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS 
 mounts.
+
+
+=================
+SMB Notifications
+=================
+
+The SMB protocol allows to register for notifications on filechanges on
+the remote storage server. Notifications are a performant strategy to
+detect changes made directly on the files.
+
+The ownCloud server needs to know about changes of files on integrated storages, so that the changed files will be synced to desktop sync clients. While files changed through ownCloud web or sync clients also get updated their metadata in the filecache, this is not possible if files get changed directly on the storage.
+Whitout notifications polling for changes is needed, but scanning the whole SMB storage is not performant.
+
+On the server commandline a notification listener can be started in an
+extra thread. The listener marks changed files then in the filecache and
+a backgroundjob updates the metadata.
+
+Note: Make sure your background jobs are running as cronjobs.
+
+Setup Notifcations for a SMB Share
+----------------------------------
+
+After you configured a SMB share to integrate your storage in ownCloud,
+start the listener:
+
+::
+
+    occ wnd:listen <host> <share> <username> [password]
+
+One Listener for many Shares
+----------------------------
+
+As admin you can setup a SMB share for all your users with a ``$user``
+template variable in the root path. Using a service user you can listen
+to the common share path.
+
+Example:
+
+Share ``/home`` contains folders for every user, e.g. ``/home/alice``
+and ``/home/bob``. So the admin configures external storage
+
+-  Folder name: home
+-  Storage Type: Windows Network Drive
+-  Authentication: Log-in credentials, save in database
+-  Configuration
+   ``host: "172.18.16.220", share: "home", root: "$user", domain: ""``
+
+And starts the wnd:listen thread
+
+::
+
+    occ wnd:listen 172.18.16.220 home ServiceUser Password
+
+Changes made by Bob or Alice made directly on the storage are now
+detected by the ownCloud server.
