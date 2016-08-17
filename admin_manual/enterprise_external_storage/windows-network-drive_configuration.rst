@@ -150,14 +150,35 @@ The ownCloud server needs to know about changes of files on integrated storages 
 
 To create a new SMB notification, start a listener on your ownCloud server with ``occ``. The listener marks changed files, and a background job updates the file metadata.
 
-Setup Notifcations for an SMB Share
------------------------------------
+Setup Notifications for an SMB Share
+------------------------------------
 
-If you don't already have an SMB share, you must create one. Then start the listener with this command, like example for Ubuntu Linux::
+If you don't already have an SMB share, you must create one. Then start the listener with this command, like this example for Ubuntu Linux::
 
     sudo -u www-data php occ wnd:listen <host> <share> <username> [password]
     
-The ``host`` is your remote SMB server. ``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. 
+The ``host`` is your remote SMB server. ``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. By default there is no output. Enable verbosity to see the notifications::
+ 
+  $ sudo -u www-data php occ wnd:listen -v server share useraccount
+  Please enter the password to access the share: 
+  File removed : Capirotes/New Text Document.txt
+  File modified : Capirotes
+  File added : Capirotes/New Text Document.txt
+  File modified : Capirotes
+  File renamed : old name : Capirotes/New Text Document.txt
+  File renamed : new name : Capirotes/New Document.txt
+  
+Enable increased verbosity to see debugging messages, including which storages are updated and timing::
+  
+  $ sudo -u www-data php occ wnd:listen -v server share useraccount
+  Please enter the password to access the share: 
+  notification received in 1471450242
+  File removed : Capirotes/New Document.txt
+  found 1 related storages from mount id 1
+  updated storage wnd::admin@server/share// from mount id 1 -> removed internal path : Capirotes/New Document.txt
+  found 1 related storages from mount id 3
+  updated storage wnd::administrador@server/share// from mount id 3 -> removed internal path : Capirotes/New Document.txt
+  found 1 related storages from mount id 2
 
 See :doc:`../configuration_server/occ_command` for detailed help with ``occ``.
 
@@ -165,18 +186,18 @@ One Listener for Many Shares
 ----------------------------
 
 As the ownCloud server admin you can setup an SMB share for all of your users with a ``$user``
-template variable in the root path. Using a service user you can listen to the common share path.
+template variable in the root path. By using a ServiceUser you can listen to the common share path. The ServiceUser is any user with access to the share. You might create a special read-only user account to use in this case.
 
 Example:
 
 Share ``/home`` contains folders for every user, e.g. ``/home/alice``
-and ``/home/bob``. So the admin configures external storage with these values:
+and ``/home/bob``. So the admin configures the Windows Network Drive external storage with these values:
 
 -  Folder name: home
 -  Storage Type: Windows Network Drive
 -  Authentication: Log-in credentials, save in database
 -  Configuration
-   ``host: "172.18.16.220", share: "home", root: "$user", domain: ""``
+   ``host: "172.18.16.220", share: "home", remote subfolder: "$user", domain: ""``
 
 Then starts the ``wnd:listen`` thread::
 
