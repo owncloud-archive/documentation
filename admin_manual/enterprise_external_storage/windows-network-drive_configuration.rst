@@ -148,7 +148,7 @@ The SMB protocol supports registering for notifications of file changes on remot
 
 The ownCloud server needs to know about changes of files on integrated storages so that the changed files will be synced to the ownCloud server, and to desktop sync clients. Files changed through the ownCloud Web interface or sync clients are automatically updated in the ownCloud filecache, but this is not possible when files are changed directly on remote SMB storage mounts. 
 
-To create a new SMB notification, start a listener on your ownCloud server with ``occ``. The listener marks changed files, and a background job updates the file metadata.
+To create a new SMB notification, start a listener on your ownCloud server with ``occ wnd:listen``. The listener marks changed files, and a background job updates the file metadata.
 
 Setup Notifications for an SMB Share
 ------------------------------------
@@ -170,7 +170,7 @@ The ``host`` is your remote SMB server. ``share`` is the share name, and ``usern
   
 Enable increased verbosity to see debugging messages, including which storages are updated and timing::
   
-  $ sudo -u www-data php occ wnd:listen -v server share useraccount
+  $ sudo -u www-data php occ wnd:listen -vvv server share useraccount
   Please enter the password to access the share: 
   notification received in 1471450242
   File removed : Capirotes/New Document.txt
