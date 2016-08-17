@@ -138,45 +138,39 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS 
 mounts.
 
-
 =================
 SMB Notifications
 =================
 
-The SMB protocol allows to register for notifications on filechanges on
-the remote storage server. Notifications are a performant strategy to
-detect changes made directly on the files.
+The SMB protocol supports registering for notifications of file changes on remote Windows SMB storage servers. Notifications are more efficient than polling for changes, as polling requires scanning the whole SMB storage. ownCloud supports SMB notifications with an ``occ`` command, ``occ wnd:listen``.
 
-The ownCloud server needs to know about changes of files on integrated storages, so that the changed files will be synced to desktop sync clients. While files changed through ownCloud web or sync clients also get updated their metadata in the filecache, this is not possible if files get changed directly on the storage.
-Whitout notifications polling for changes is needed, but scanning the whole SMB storage is not performant.
+.. Note:: The notifier only works with remote storages on Windows servers. It does not work reliably with Linux servers due to technical limitations.
 
-On the server commandline a notification listener can be started in an
-extra thread. The listener marks changed files then in the filecache and
-a backgroundjob updates the metadata.
+The ownCloud server needs to know about changes of files on integrated storages so that the changed files will be synced to the ownCloud server, and to desktop sync clients. Files changed through the ownCloud Web interface or sync clients are automatically updated in the ownCloud filecache, but this is not possible when files are changed directly on remote SMB storage mounts. 
 
-Note: Make sure your background jobs are running as cronjobs.
+To create a new SMB notification, start a listener on your ownCloud server with ``occ``. The listener marks changed files, and a background job updates the file metadata.
 
-Setup Notifcations for a SMB Share
-----------------------------------
+Setup Notifcations for an SMB Share
+-----------------------------------
 
-After you configured a SMB share to integrate your storage in ownCloud,
-start the listener:
+If you don't already have an SMB share, you must create one. Then start the listener with this command, like example for Ubuntu Linux::
 
-::
+    sudo -u www-data php occ wnd:listen <host> <share> <username> [password]
+    
+The ``host`` is your remote SMB server. ``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. 
 
-    occ wnd:listen <host> <share> <username> [password]
+See :doc:`../configuration_server/occ_command` for detailed help with ``occ``.
 
-One Listener for many Shares
+One Listener for Many Shares
 ----------------------------
 
-As admin you can setup a SMB share for all your users with a ``$user``
-template variable in the root path. Using a service user you can listen
-to the common share path.
+As the ownCloud server admin you can setup an SMB share for all of your users with a ``$user``
+template variable in the root path. Using a service user you can listen to the common share path.
 
 Example:
 
 Share ``/home`` contains folders for every user, e.g. ``/home/alice``
-and ``/home/bob``. So the admin configures external storage
+and ``/home/bob``. So the admin configures external storage with these values:
 
 -  Folder name: home
 -  Storage Type: Windows Network Drive
@@ -184,11 +178,8 @@ and ``/home/bob``. So the admin configures external storage
 -  Configuration
    ``host: "172.18.16.220", share: "home", root: "$user", domain: ""``
 
-And starts the wnd:listen thread
+Then starts the ``wnd:listen`` thread::
 
-::
+    sudo -u www-data occ wnd:listen 172.18.16.220 home ServiceUser Password
 
-    occ wnd:listen 172.18.16.220 home ServiceUser Password
-
-Changes made by Bob or Alice made directly on the storage are now
-detected by the ownCloud server.
+Changes made by Bob or Alice made directly on the storage are now detected by the ownCloud server.
