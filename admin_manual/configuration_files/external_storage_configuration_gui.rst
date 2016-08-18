@@ -133,13 +133,15 @@ on your network!
 .. figure:: external_storage/images/user_mounts.png
    :alt: Checkboxes to allow users to mount external storage services.
 
-Adding Files to External Storages
----------------------------------
+Detecting Files Added to External Storages
+------------------------------------------
 
 We recommend configuring the background job **Webcron** or
 **Cron** (see :doc:`../configuration_server/background_jobs_configuration`)
 to enable ownCloud to automatically detect files added to your external 
-storages.
+storages. 
+
+.. Note:: You cannot share files on external storage mounts when you select the **Log-in credentials, save in session** authentication mechanism. However, there is a workaround, and that is to use Ajax cron mode. See :ref:`password_auth_workaround_label` for more information. 
 
 ownCloud may not always be able to find out what has been
 changed remotely (files changed without going through ownCloud), especially
