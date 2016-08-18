@@ -10,8 +10,8 @@ as documented in our instructions for the `Manual Installation on Linux <https:/
 
 The package installation is for single-server setups only.
 
-Changes in |version|
---------------
+Changes in ownCloud 9
+---------------------
 
 Linux distribution packages (from `Open Build Service`_) have been divided into 
 multiple packages for ownCloud 9: ``owncloud-deps`` and ``owncloud-files``. 
@@ -48,7 +48,6 @@ ownCloud packages with dependencies are available for the following Linux distri
 * CentOS 7
 * SLES 12
 * openSUSE 13.2, Leap 42.1
-
 
 Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If 
 you use Fedora, use the tar archive with your own LAMP stack. openSUSE 
@@ -146,4 +145,3 @@ on how to correctly configure your environment if you have binary logging enable
 
 .. _Open Build Service: 
    https://download.owncloud.org/download/repositories/9.0/owncloud/
-   
