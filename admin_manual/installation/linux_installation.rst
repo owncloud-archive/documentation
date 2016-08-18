@@ -23,7 +23,7 @@ The ``owncloud-deps`` packages install all dependencies: Apache, PHP, and MySQL.
 ``owncloud-deps`` is not intended to be installed by itself, but rather is 
 pulled in by the metapackage ``owncloud``. 
 
-Install the metapackage``owncloud`` to get a complete installation with all dependencies.
+Install the metapackage ``owncloud`` to get a complete installation with all dependencies.
 
 ``owncloud-files`` is available for the following distributions, but not 
 ``owncloud-deps``.
