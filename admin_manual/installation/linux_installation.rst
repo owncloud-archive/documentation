@@ -5,13 +5,13 @@ Preferred Linux Installation Method
 For production environments, we recommend the installation from the tar archive. 
 This applies in particular to scenarios, where webserver, storage and database are on separate machines. 
 In this constellation, all dependencies and requirements are managed by the package management 
-of your OS, while the ownCloud code itself is maintained in a sequence of simple steps 
+of your operating system, while the ownCloud code itself is maintained in a sequence of simple steps 
 as documented in our instructions for the `Manual Installation on Linux <https://doc.owncloud.com/server/9.0/admin_manual/installation/source_installation.html>`_ and the `Manual ownCloud Upgrade <https://doc.owncloud.com/server/9.0/admin_manual/maintenance/manual_upgrade.html>`_.
 
 The package installation is for single-server setups only.
 
-Changes in |version|
---------------
+Changes in ownCloud 9
+---------------------
 
 Linux distribution packages (from `Open Build Service`_) have been divided into 
 multiple packages for ownCloud 9: ``owncloud-deps`` and ``owncloud-files``. 
@@ -49,7 +49,6 @@ ownCloud packages with dependencies are available for the following Linux distri
 * SLES 12
 * openSUSE 13.2, Leap 42.1
 
-
 Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If 
 you use Fedora, use the tar archive with your own LAMP stack. openSUSE 
 users can rely on LEAP packages for Tumbleweed.
@@ -67,7 +66,7 @@ supported platforms.
 Repos: Stable or Major Release?
 -------------------------------
 
-You may use either of the following repositories for ownCloud 9:
+You may use either of the following repositories for ownCloud 9.1:
 
 * `<https://download.owncloud.org/download/repositories/stable/owncloud/>`_
 * `<https://download.owncloud.org/download/repositories/9.1/owncloud/>`_
