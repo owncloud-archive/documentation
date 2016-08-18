@@ -19,6 +19,8 @@ parameters, but is used as a placeholder for legacy storages that have not been
 migrated to the new system and do not take advantage of generic authentication
 mechanisms. The authentication parameters are provided directly by the backend.
 
+.. _password_auth_workaround_label:
+
 Password-based Mechanisms
 -------------------------
 
@@ -31,6 +33,8 @@ on the server, but rather in the user session, giving increased security. The
 drawbacks are that sharing is disabled when this mechanism is in use, as 
 ownCloud has no access to the storage credentials, and background file scanning 
 does not work.
+
+.. Note:: There is a workaround that allows sharing when using **Log-in credentials, save in session**, and that is using Ajax cron mode. (See :doc:`../../configuration_server/background_jobs_configuration`.)
 
 Public-key Mechanisms
 ---------------------
