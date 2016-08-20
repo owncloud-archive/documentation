@@ -13,7 +13,7 @@ If you are unfamiliar with this pattern, watch the following videos:
 
 Dependency Injection
 ====================
-Dependency Injection sounds pretty complicated but it just means: Don't put new dependencies in your constructor or methods but pass them in. So this:a
+Dependency Injection sounds pretty complicated but it just means: Don't put new dependencies in your constructor or methods but pass them in. So this:
 
 .. code-block:: php
 
