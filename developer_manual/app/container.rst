@@ -13,7 +13,7 @@ If you are unfamiliar with this pattern, watch the following videos:
 
 Dependency Injection
 ====================
-Dependency Injection sounds pretty complicated but it just means: Don't put new dependencies in your constructor or methods but pass them in. So this:
+Dependency Injection sounds pretty complicated but it just means: Don't put new dependencies in your constructor or methods but pass them in. So this:a
 
 .. code-block:: php
 
@@ -191,7 +191,7 @@ So basically the following is now possible:
 
   $class2 instanceof MyTestClass2;  // true
   $class2->class instanceof MyTestClass;  // true
-  $class2->appName === 'appname';  // true
+  $class2->appName === 'myapp';  // true
   $class2 === $app->getContainer()->query('OCA\MyApp\MyTestClass2');  // true
 
 .. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
