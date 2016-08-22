@@ -9,7 +9,7 @@ browsers are:
 * Firefox 14+
 * Chrome 18+
 * Safari 5+
-* IE9+ (except Compatibility Mode)
+* IE11+ (except Compatibility Mode)
 
   .. figure:: images/oc_connect.png
      :alt: ownCloud login screen.

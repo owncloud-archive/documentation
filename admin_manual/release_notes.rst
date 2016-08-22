@@ -8,8 +8,13 @@ Changes in 9.1
 **General**
 
 * Background jobs (cron) can now run in parallel
-* Update notifications in client via API - You can now be notified in your desktop client about available updates for core and apps. The notifications are made available via the notifications API.
+* Update notifications in client via API - You can now be notified in your desktop client
+  about available updates for core and apps. The notifications are made available via the
+  notifications API.
 * Multi-bucket support for primary objectstore integration
+* Support for Internet Explorer below version 11 was dropped
+* Symlinks pointing outside of the datadir are disallowed. Please use the :doc:`configuration_files/external_storage_configuration_gui`
+  with the :doc:`configuration_files/external_storage/local` storage backend instead.
 
 **Authentication**
 
@@ -25,7 +30,9 @@ Changes in 9.1
 * Two Factor authentication plug-in system
 * OCC command added to (temporarily) disable/enable two-factor authentication for single users
 
-Note: the current desktop and mobile client versions do not support two-factor yet, this will be added later. It is already possible to generate a device specific password and enter that in the current client versions.
+.. note:: The current desktop and mobile client versions do not support two-factor yet, this
+   will be added later. It is already possible to generate a device specific password and
+   enter that in the current client versions.
 
 **Files app**
 
@@ -39,11 +46,13 @@ Note: the current desktop and mobile client versions do not support two-factor y
 **Federated sharing**
 
 * Ability to create federated shares with CRUDS permissions
-* Resharing a federated share does not create a chain of shares any more but connects the share owner's server to the reshare recipient
+* Resharing a federated share does not create a chain of shares any more but connects the
+  share owner's server to the reshare recipient
 
 **External storage**
 
-* UTF-8 NFD encoding compatibility support for NFD file names stored directly on external storages (new mount option in external storage admin page)
+* UTF-8 NFD encoding compatibility support for NFD file names stored directly on external
+  storages (new mount option in external storage admin page)
 * Direct links to the configuration pages for setting up a GDrive or Dropbox app for use with ownCloud
 * Some performance and memory usage improvements for GDrive, stream download and chunk upload
 * Performance and memory usage improvements for Dropbox with stream download
