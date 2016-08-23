@@ -2,7 +2,6 @@
 Migrating to a Different Server
 ===============================
 
-
 If the need arises ownCloud can be migrated to a different server. A typical
 use case would be a hardware change or a migration from the virtual Appliance
 to a physical server. All migrations have to be performed with ownCloud
@@ -20,49 +19,24 @@ via a virtual hostname (a ``CNAME`` record in DNS) which can be pointed at
 the new location. It is also assumed that the authentication method
 (e.g. LDAP) remains the same after the migration.
 
-
 .. warning:: At NO TIME any changes to the **ORIGINAL** system are required
     **EXCEPT** putting ownCloud into maintenance mode.
 
-    This ensures, should anything unforseen happen you can go
+    This ensures, should anything unforeseen happen, you can go
     back to your existing installation and provide your users
     with a running ownCloud while debugging the problem.
 
+#.  Set up the new machine with your desired Linux distribution. At this point you can either install ownCloud manually via the compressed archive (see :doc:`../installation/source_installation`, or with your Linux package manager (see :doc:`../installation/linux_installation`).
 
-#.  Set up the new machine with the desired OS, install and configure the
-    Web server as well as PHP for ownCloud (e.g. permissions or file upload size
-    limits) and make sure the PHP version matches ownCloud supported
-    configuration and all relevant PHP extensions are installed. Also set up
-    the database and make sure it is an ownCloud supported configuration. If
-    your original machine was installed recently just copying that base
-    configuration is a safe best practice.
+#.  On the original machine turn on maintenance mode and then stop ownCloud. After waiting for 6-7 minutes for all sync clients to register the server as in maintenance mode, stop the application and/or Web server that serves ownCloud. (See :ref:`maintenance_commands_label`.)
 
+#.  Create a dump from the database and copy it to the new machine, and import it in the database (See :doc:`backup` and :doc:`restore`).
 
-#.  On the original machine then stop ownCloud. First activate the
-    maintenance mode. After waiting for 6-7 minutes for all sync clients to
-    register the server as in maintenance mode stop the application and/or
-    Web server that serves ownCloud.
-
-
-#.  Create a dump from the database and copy it to the new machine. There
-    import it in the database (See :doc:`backup` and :doc:`restore`).
-
-
-#.  Copy all files from your ownCloud instance, the ownCloud program files, the
-    data files, the log files and the configuration files, to the new
-    machine (See :doc:`backup` and :doc:`restore`). The data files should keep
-    their original timestamp (can be done by using ``rsync`` with ``-t`` option)
-    otherwise the clients will re-download all the files after the migration.
-    Depending on the original installation method and the OS the files are
-    located in different locations. On the new system make sure to pick the
-    appropriate locations. If you change any paths, make sure to adopt the paths
-    in the ownCloud config.php file. Note: This step might take several hours,
-    depending on your installation.
-
+#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backup` and :doc:`restore`). The data files should keep their original timestamp (can be done by using ``rsync`` with ``-t`` option) otherwise the clients will re-download all the files after the migration. This step might take several hours, depending on your installation.
 
 #.  While still having ownCloud in maintenance mode (confirm!) and **BEFORE**
     changing the ``CNAME`` record in the DNS start up the database, Web server /
-    application server on the new machine and point your web browser to the
+    application server on the new machine and point your Web browser to the
     migrated ownCloud instance. Confirm that you see the maintenance mode
     notice, that a logfile entry is written by both the Web server and
     ownCloud and that no error messages occur. Then take ownCloud out of
