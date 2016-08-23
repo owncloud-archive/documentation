@@ -6,6 +6,7 @@ ownCloud Server Configuration
    :maxdepth: 2
 
    security_setup_warnings
+   import_ssl_cert
    occ_command
    activity_configuration
    antivirus_configuration
