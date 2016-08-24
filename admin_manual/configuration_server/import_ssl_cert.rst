@@ -13,6 +13,10 @@ ownCloud has several methods for importing self-signed certificates so that you 
 
 Click the **Import root certificate** button to open a file picker. You can distribute copies of your SSL certificates to your users (via an ownCloud share!), or users can download them from their Web browsers. Click on the little padlock icon and click through until you see a **View Certificate** button, then keep going until you can download it. In Firefox and Chromium there is an **Export** button for downloading your own copy of a site's SSL certificate.
 
+.. figure:: images/import-ssl-cert-2.png
+
+ *Click "More information" in Firefox to import SSL certificate*
+
 Site-wide SSL Import
 --------------------
 
