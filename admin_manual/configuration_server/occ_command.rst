@@ -937,16 +937,15 @@ Trashbin
 .. note::
   This command is only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
-
-The ``trashbin:cleanup`` command removes the deleted files of the specified 
-users in a space-delimited list, or all users if none are specified.
-
-::
  
+::
+
  trashbin
   trashbin:cleanup   Remove deleted files
-  
-This example removes the deleted files of all users::  
+  trashbin:expire    Expires the users trashbin  
+
+The ``trashbin:cleanup`` command removes the deleted files of the specified 
+users in a space-delimited list, or all users if none are specified. This example removes all the deleted files of all users::  
   
   sudo -u www-data php occ trashbin:cleanup 
   Remove all deleted files
@@ -962,6 +961,8 @@ This example removes the deleted files of users molly and freda::
  sudo -u www-data php occ trashbin:cleanup molly freda
  Remove deleted files of   molly
  Remove deleted files of   freda
+ 
+``trashbin:expire`` deletes only expired files according to the ``trashbin_retention_obligation`` setting in ``config.php`` (see the Deleted Files section in :doc:`config_sample_php_parameters`). The default is to delete expired files for all users, or you may list users in a space-delimited list.
 
 .. _user_commands_label: 
  
@@ -1066,13 +1067,15 @@ Versions
   This command is only available when the "Versions" app (``files_versions``) is
   enabled.
 
-Use this command to delete file versions for specific users, or for all users 
-when none are specified::
- 
+::
+
  versions
   versions:cleanup   Delete versions
-  
-This example deletes all versions for all users::
+  versions:expire    Expires the users file versions  
+
+Use ``versions:cleanup`` to delete all older file versions for specific users (keeping the most recent versions), or for all users when none are specified.
+
+This example deletes all files versions for all users, except the most recent versions::
 
  sudo -u www-data php occ versions:cleanup
  Delete all versions
@@ -1085,9 +1088,11 @@ This example deletes all versions for all users::
 
 You can delete versions for specific users in a space-delimited list::
 
- sudo -u www-data php occ versions:cleanup
+ sudo -u www-data php occ versions:cleanup freda molly
  Delete versions of   freda
- Delete versions of   molly 
+ Delete versions of   molly
+ 
+``versions:expire`` Deletes only expired files according to the ``versions_retention_obligation`` setting in ``config.php`` (see the File versions section in :doc:`config_sample_php_parameters`). The default is to delete expired files for all users, or you may list users in a space-delimited list.
  
 .. _command_line_installation_label: 
  
@@ -1294,6 +1299,7 @@ To re-enable two-factor auth again use the following commmand::
 
 Disable Users
 -------------
+
 Admins can disable users via the occ command too::
 
  sudo -u www-data php occ user:disable <username>
