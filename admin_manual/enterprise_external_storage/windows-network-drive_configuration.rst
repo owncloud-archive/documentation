@@ -44,7 +44,7 @@ on obtaining it.
 You also need the Samba client installed on your Linux system. This is included in 
 all Linux distributions; on Debian, Ubuntu, and other Debian derivatives this 
 is ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is 
-``samba-client``.
+``samba-client``. You also need ``which`` and ``stdbuf``, which should be included in most Linux distributions.
 
 Creating a New Share
 --------------------
@@ -145,6 +145,8 @@ SMB Notifications
 The SMB protocol supports registering for notifications of file changes on remote Windows SMB storage servers. Notifications are more efficient than polling for changes, as polling requires scanning the whole SMB storage. ownCloud supports SMB notifications with an ``occ`` command, ``occ wnd:listen``.
 
 .. Note:: The notifier only works with remote storages on Windows servers. It does not work reliably with Linux servers due to technical limitations.
+
+Your ``smbclient`` versions needs to be 4.x, as older versions do not support notifications.
 
 The ownCloud server needs to know about changes of files on integrated storages so that the changed files will be synced to the ownCloud server, and to desktop sync clients. Files changed through the ownCloud Web interface or sync clients are automatically updated in the ownCloud filecache, but this is not possible when files are changed directly on remote SMB storage mounts. 
 
