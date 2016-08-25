@@ -44,7 +44,7 @@ on obtaining it.
 You also need the Samba client installed on your Linux system. This is included in 
 all Linux distributions; on Debian, Ubuntu, and other Debian derivatives this 
 is ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is 
-``samba-client``.
+``samba-client``. You also need ``which`` and ``stdbuf``, which should be included in most Linux distributions.
 
 Creating a New Share
 --------------------
@@ -137,3 +137,72 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
 
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS 
 mounts.
+
+=================
+SMB Notifications
+=================
+
+The SMB protocol supports registering for notifications of file changes on remote Windows SMB storage servers. Notifications are more efficient than polling for changes, as polling requires scanning the whole SMB storage. ownCloud supports SMB notifications with an ``occ`` command, ``occ wnd:listen``.
+
+.. Note:: The notifier only works with remote storages on Windows servers. It does not work reliably with Linux servers due to technical limitations.
+
+Your ``smbclient`` versions needs to be 4.x, as older versions do not support notifications.
+
+The ownCloud server needs to know about changes of files on integrated storages so that the changed files will be synced to the ownCloud server, and to desktop sync clients. Files changed through the ownCloud Web interface or sync clients are automatically updated in the ownCloud filecache, but this is not possible when files are changed directly on remote SMB storage mounts. 
+
+To create a new SMB notification, start a listener on your ownCloud server with ``occ wnd:listen``. The listener marks changed files, and a background job updates the file metadata.
+
+Setup Notifications for an SMB Share
+------------------------------------
+
+If you don't already have an SMB share, you must create one. Then start the listener with this command, like this example for Ubuntu Linux::
+
+    sudo -u www-data php occ wnd:listen <host> <share> <username> [password]
+    
+The ``host`` is your remote SMB server. ``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. By default there is no output. Enable verbosity to see the notifications::
+ 
+  $ sudo -u www-data php occ wnd:listen -v server share useraccount
+  Please enter the password to access the share: 
+  File removed : Capirotes/New Text Document.txt
+  File modified : Capirotes
+  File added : Capirotes/New Text Document.txt
+  File modified : Capirotes
+  File renamed : old name : Capirotes/New Text Document.txt
+  File renamed : new name : Capirotes/New Document.txt
+  
+Enable increased verbosity to see debugging messages, including which storages are updated and timing::
+  
+  $ sudo -u www-data php occ wnd:listen -vvv server share useraccount
+  Please enter the password to access the share: 
+  notification received in 1471450242
+  File removed : Capirotes/New Document.txt
+  found 1 related storages from mount id 1
+  updated storage wnd::admin@server/share// from mount id 1 -> removed internal path : Capirotes/New Document.txt
+  found 1 related storages from mount id 3
+  updated storage wnd::administrador@server/share// from mount id 3 -> removed internal path : Capirotes/New Document.txt
+  found 1 related storages from mount id 2
+
+See :doc:`../configuration_server/occ_command` for detailed help with ``occ``.
+
+One Listener for Many Shares
+----------------------------
+
+As the ownCloud server admin you can setup an SMB share for all of your users with a ``$user``
+template variable in the root path. By using a ServiceUser you can listen to the common share path. The ServiceUser is any user with access to the share. You might create a special read-only user account to use in this case.
+
+Example:
+
+Share ``/home`` contains folders for every user, e.g. ``/home/alice``
+and ``/home/bob``. So the admin configures the Windows Network Drive external storage with these values:
+
+-  Folder name: home
+-  Storage Type: Windows Network Drive
+-  Authentication: Log-in credentials, save in database
+-  Configuration
+   ``host: "172.18.16.220", share: "home", remote subfolder: "$user", domain: ""``
+
+Then starts the ``wnd:listen`` thread::
+
+    sudo -u www-data occ wnd:listen 172.18.16.220 home ServiceUser Password
+
+Changes made by Bob or Alice made directly on the storage are now detected by the ownCloud server.
