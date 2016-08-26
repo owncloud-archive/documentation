@@ -164,7 +164,9 @@ files described above.
 General upload issues
 ---------------------
 
-Various environmental factors could cause a restriction of the upload size. An example is
-the ``LVE Manager`` of ``CloudLinux`` which sets a ``I/O limit``. Some services like *Cloudflare*
-are also known to cause uploading issues. Other webserver modules like described in
-:doc:`../issues/general_troubleshooting` might cause additional problems.
+Various environmental factors could cause a restriction of the upload size. Examples are:
+
+* the ``LVE Manager`` of ``CloudLinux`` which sets a ``I/O limit``
+* some services like ``Cloudflare`` are also known to cause uploading issues
+* upload limits enforced by proxies used by your clients
+* other webserver modules like described in :doc:`../issues/general_troubleshooting`
