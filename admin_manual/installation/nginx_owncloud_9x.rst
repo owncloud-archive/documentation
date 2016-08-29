@@ -38,7 +38,7 @@ your nginx installation.
   
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this topic first.
-      # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+      #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
       add_header X-Content-Type-Options nosniff;
       add_header X-Frame-Options "SAMEORIGIN";
       add_header X-XSS-Protection "1; mode=block";
@@ -78,7 +78,7 @@ your nginx installation.
   
       # Uncomment if your server is build with the ngx_pagespeed module
       # This module is currently not supported.
-      # pagespeed off;
+      #pagespeed off;
   
       error_page 403 /core/templates/403.php;
       error_page 404 /core/templates/404.php;
@@ -119,7 +119,7 @@ your nginx installation.
           add_header Cache-Control "public, max-age=7200";
           # Add headers to serve security related headers (It is intended to have those duplicated to the ones above)
           # Before enabling Strict-Transport-Security headers please read into this topic first.
-          # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+          #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
           add_header X-Content-Type-Options nosniff;
           add_header X-Frame-Options "SAMEORIGIN";
           add_header X-XSS-Protection "1; mode=block";
@@ -166,7 +166,7 @@ your nginx installation.
   
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this topic first.
-      # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+      #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
       add_header X-Content-Type-Options nosniff;
       add_header X-Frame-Options "SAMEORIGIN";
       add_header X-XSS-Protection "1; mode=block";
@@ -185,8 +185,8 @@ your nginx installation.
   
       # The following 2 rules are only needed for the user_webfinger app.
       # Uncomment it if you're planning to use this app.
-      # rewrite ^/.well-known/host-meta /owncloud/public.php?service=host-meta last;
-      # rewrite ^/.well-known/host-meta.json /owncloud/public.php?service=host-meta-json last;
+      #rewrite ^/.well-known/host-meta /owncloud/public.php?service=host-meta last;
+      #rewrite ^/.well-known/host-meta.json /owncloud/public.php?service=host-meta-json last;
   
       location = /.well-known/carddav {
           return 301 $scheme://$host/owncloud/remote.php/dav;
@@ -208,7 +208,7 @@ your nginx installation.
   
           # Uncomment if your server is build with the ngx_pagespeed module
           # This module is currently not supported.
-          # pagespeed off;
+          #pagespeed off;
   
           error_page 403 /owncloud/core/templates/403.php;
           error_page 404 /owncloud/core/templates/404.php;
@@ -249,7 +249,7 @@ your nginx installation.
               add_header Cache-Control "public, max-age=7200";
               # Add headers to serve security related headers  (It is intended to have those duplicated to the ones above)
               # Before enabling Strict-Transport-Security headers please read into this topic first.
-              # add_header Strict-Transport-Security "max-age=15768000; includeSubDomains; preload;";
+              #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
               add_header X-Content-Type-Options nosniff;
               add_header X-Frame-Options "SAMEORIGIN";
               add_header X-XSS-Protection "1; mode=block";
