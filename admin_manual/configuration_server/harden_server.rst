@@ -94,14 +94,10 @@ Redirect all unencrypted traffic to HTTPS
 
 To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a 
 permanent redirect using the 301 status code. When using Apache this can be 
-achieved by a setting such as the following in the Apache VirtualHosts config:
+achieved by adding a setting such as the following in the Apache VirtualHosts 
+configuration containing the ``<VirtualHost *:80>`` entry::
 
-::
-
-  <VirtualHost *:80>
-     ServerName cloud.owncloud.com
-     Redirect permanent / https://cloud.owncloud.com/
-  </VirtualHost>
+  Redirect permanent / https://example.com/
 
 .. _enable-hsts-label:
 
@@ -115,18 +111,29 @@ connection to the ownCloud instance using HTTP, and it attempts to prevent site
 visitors from bypassing invalid certificate warnings.
 
 This can be achieved by setting the following settings within the Apache 
-VirtualHost file::
+VirtualHost file containing the ``<VirtualHost *:443>`` entry::
 
- <VirtualHost *:443>
-   ServerName cloud.owncloud.com
-     <IfModule mod_headers.c>
-       Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains; preload"
-     </IfModule>
-  </VirtualHost>
+  <IfModule mod_headers.c>
+    Header always set Strict-Transport-Security "max-age=15768000; includeSubDomains"
+  </IfModule>
+
+If you don't have access to your Apache configuration it is also possible to add this
+to the main ``.htaccess`` file shipped with ownCloud. Make sure you're adding it below
+the line::
+
+  #### DO NOT CHANGE ANYTHING ABOVE THIS LINE ####
   
-This example configuration will make all subdomains only accessible via HTTPS. If you have subdomains not accessible via HTTPS, remove ``includeSubdomains;``. 
+This example configuration will make all subdomains only accessible via HTTPS.
+If you have subdomains not accessible via HTTPS, remove ``includeSubDomains``.
 
-This requires the ``mod_headers`` extension in Apache.
+.. note:: This requires the ``mod_headers`` extension in Apache.
+
+When using nginx as a Web server an example is already included in the
+:doc:`../installation/nginx_owncloud_9x`::
+
+  #add_header Strict-Transport-Security "max-age=15768000; includeSubDomains";
+
+You need to remove the ``#`` and reload nginx to enable this change.
 
 Proper SSL configuration
 ************************
