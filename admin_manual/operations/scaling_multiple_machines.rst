@@ -28,7 +28,7 @@ structure placing the ownCloud code in the Apache root directory. The
 following components were installed on each application server:
 
 *   Apache
-*   PHP 5.4.x
+*   PHP 5.6+ or 7.0+
 *   PHP-GD
 *   PHP-XML
 *   PHP-MYSQL

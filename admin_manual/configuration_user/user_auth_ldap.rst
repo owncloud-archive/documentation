@@ -10,8 +10,8 @@ group memberships, quotas, and sharing permissions just like any other ownCloud
 user.
 
 .. note:: The PHP LDAP module is required; this is supplied by ``php5-ldap`` on 
-   Debian/Ubuntu, and ``php-ldap`` on CentOS/Red Hat/Fedora. PHP 5.4+ is 
-   required in ownCloud 8.1.
+   Debian/Ubuntu, and ``php-ldap`` on CentOS/Red Hat/Fedora. PHP 5.6+ or 7.0+ is 
+   required in ownCloud 9.1.
 
 The LDAP application supports:
 
@@ -624,7 +624,7 @@ Under normal circumstances, all users are never loaded at the same time.
 Typically the loading of users happens while page results are generated, in 
 steps of 30 until the limit is reached or no results are left. For this to 
 work on an oC-Server and LDAP-Server, **Paged Results** must be supported, 
-which presumes PHP >= 5.4.
+which presumes PHP >= 5.6.
 
 ownCloud remembers which user belongs to which LDAP-configuration. That means 
 each request will always be directed to the right server unless a user is 

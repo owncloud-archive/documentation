@@ -15,8 +15,7 @@ Cache Warnings
 configure a memcache if available." ownCloud supports multiple php caching
 extentions:
 
-* APC (PHP 5.4 only)
-* APCu (PHP 5.5+, minimum required PHP extension version 4.0.6)
+* APCu
 * Memcached
 * Redis (minimum required php extension version: 2.2.5)
 
