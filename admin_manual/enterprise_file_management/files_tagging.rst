@@ -9,27 +9,31 @@ The Workflow App should be enabled by default (Apps page), and the three
 configuration modules visible on your ownCloud Admin page. 
 
 See `Tagging Files 
-<https://doc.owncloud.com/server/9.0/user_manual/files/access_webgui.html>`_ in 
+<https://doc.owncloud.com/server/9.2/user_manual/files/access_webgui.html>`_ in 
 the ownCloud User manual to learn how to apply and filter tags on files.
 
 Tag Manager
 -----------
 
-The Tag Manager is for creating new tags, editing existing tags, and deleting 
-tags. Tags may be made **Visible and assignable by all users**, 
-**Not-assignable by normal users**, or **Invisible to normal users**.
+The Tag Manager is for creating new tags, editing existing tags, and deleting tags. Tags may be marked as **Visible**, **Restricted**, or **Invisible**.
 
-**Visible and assignable all users** means that users may see, rename. and 
-apply admin-created tags to files and folders.
+**Visible** means that all users may see, rename, and apply these tags to files and folders.
 
-**Not-assignable by normal users** means tags are read-only, and users cannot 
-assign them to files or folders.
+**Restricted** means tags are assignable and editable only to the user groups that you select. Other users can filter files by restricted tags, but cannot tag files with them or rename them. The tags are marked (restricted).
 
-**Invisible to normal users** means visible only to ownCloud admins.
+**Invisible** means visible only to ownCloud admins.
+
+Use the **Collaborative tag management** module on your ownCloud admin page to edit and create tags.   
 
 .. figure:: images/workflow-1.png
    :alt: Tag Manager.
-  
+   
+This is what your tags look like in the **Tags** view on your files page. Non-admin users will not see invisible tags, but they will see visible and restricted tags.   
+   
+.. figure:: images/workflow-5.png
+   :alt: Tag Manager. 
+
+   
 Automatic Tagging
 -----------------
 

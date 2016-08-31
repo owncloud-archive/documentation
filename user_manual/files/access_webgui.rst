@@ -14,14 +14,22 @@ Tagging Files
 -------------
 
 You can assign tags to files. To create tags, open a file to the Details view. 
-Then type your tags. To enter more than one tag press the return key after 
+Then type your tag name. To enter more than one tag press the return key after 
 creating each tag. All tags are system tags, and are shared by all users on your 
 ownCloud server.
 
 .. figure:: ../images/files_page-7.png
    :alt: Creating file tags.
    
-Then use the Tags filter on the left sidebar to filter files by tags.
+Then use the **Tags** filter on the left sidebar of your Files page to filter files by tags. There are three types of tags: 
+
+**Visible** means that all users may see, rename, and apply these tags to files and folders.
+
+**Restricted** means tags are assignable and editable only to the user groups have permission to use them. Other users can filter files by restricted tags, but cannot tag files with them or rename them. The tags are marked (restricted).
+
+**Invisible** means visible only to ownCloud admins. 
+
+When you use the **Tag** filter on your Files page you'll see something like the following image. If you do not have Admin rights then you will not see any invisible tags.
 
 .. figure:: ../images/files_page-8.png
    :alt: Viewing file tags.
