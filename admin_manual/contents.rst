@@ -15,7 +15,6 @@ Table of Contents
     configuration_database/index
     configuration_mimetypes/index
     maintenance/index
-    operations/index
     issues/index
 
 Enterprise Edition Only
