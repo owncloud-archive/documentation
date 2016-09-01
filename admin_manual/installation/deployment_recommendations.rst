@@ -17,22 +17,19 @@ General Recommendations
 Consider setting up a scale-out deployment, or using Federated Cloud Sharing to 
 keep individual ownCloud instances to a manageable size.
 
-.. comment: Federating instances seems the best way to grow organically in 
-   an enterprise. A lookup server to tie all the instances together under a 
-   single domain is being worked on.
-
 * Operating system: Linux.
 * Web server: Apache 2.4.
+<<<<<<< HEAD
 * Database: MySQL/MariaDB.
 * PHP 5.5+. PHP 5.4 is the minimum supported version; note that it reached 
   end-of-life in September 2015 and is no longer supported by the PHP team. 
   Some Linux vendors, such as Red Hat, still support PHP 5.4.
   5.6+ is recommended. ``mod_php`` is the recommended Apache module because it 
   provides the best performance.
-
-.. comment: mod_php is easier to set up, php-fpm with apache event MPM seems to 
-   scale better under load and limited RAM restrictions: 
-   http://blog.bitnami.com/2014/06/performance-enhacements-for-apache-and.html
+=======
+* Database: MySQL/MariaDB with InnoDB storage engine (MyISAM is not supported, see: :ref:`db-storage-engine-label`)
+* PHP 5.6+.
+>>>>>>> 8783752... remove obsolete operations section, update sysrecs, InnoDB requirement
 
 Small Workgroups or Departments
 -------------------------------
@@ -76,7 +73,7 @@ Authentication via an existing LDAP or Active Directory server.
 * Database
    MySQL, MariaDB or PostgreSQL. We currently recommend MySQL / MariaDB, as our 
    customers have had good experiences when moving to a Galera cluster to 
-   scale the DB.
+   scale the DB. (InnoDB storage engine, MyISAM is not supported, see: :ref:`db-storage-engine-label`)
 
 * Backup
    Install owncloud, ownCloud data directory and database on Btrfs filesystem. 
@@ -167,24 +164,8 @@ Authentication via an existing LDAP or Active Directory server.
    Sticky session needs to be used because of local session management on the 
    application servers. 
 
-.. comment: (please add configuration details here)   
-.. comment: why sticky sessions? the nice thing about haproxy is that it can 
-   send requests to the application server with the least load. redis or 
-   memcached seem more appropriate. this is mid size already. the software 
-   stack should be the same as for L`_
-   Frank: Yes. But this only works if haproxy can read the http stream which 
-   means that we have to terminate SSL in the haproxy instead of the Web server. 
-   Totally possible. Whatever you prefer :-)
-   Jörn: AFAIK you need to do SSL offloading to do sticky sessions, because the 
-   load balancer has to look into the http stream or rely on the client IP to 
-   determine the Web server for the session. Not doing SSL offloading instead 
-   requires you to use a shared session (via memcached or redis) because the 
-   requests are distributed via round robin or least load. It allows you to 
-   scale out the ssl load by adding more applicaton servers. So ... I think it 
-   is exactly the other way round.
-
 * Database
-   MySQL/MariaDB Galera cluster with master-master replication.
+   MySQL/MariaDB Galera cluster with master-master replication. (InnoDB storage engine, MyISAM is not supported, see: :ref:`db-storage-engine-label`)
 
 * Backup
    Minimum daily backup without downtime. All MySQL/MariaDB statements should 
@@ -277,7 +258,7 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
    This runs two load balancers in front of the application servers.
 
 * Database
-   MySQL/MariaDB Galera Cluster with 4x master -- master replication.
+   MySQL/MariaDB Galera Cluster with 4x master -- master replication. (InnoDB storage engine, MyISAM is not supported, see: :ref:`db-storage-engine-label`)
 
 * Backup
    Minimum daily backup without downtime. All MySQL/MariaDB statements should 
@@ -418,23 +399,9 @@ deployments, we recommend MySQL/MariaDB in a master-slave deployment with a
 MySQL proxy in front of them to send updates to master, and selects to the 
 slave(s).
 
-.. comment: MySQL locks tables for schema updates and might even have to copy 
-   the whole table. That is pretty much a non-starter for migrations unless you 
-   are using a scale out deployment where you can apply the schema changes to 
-   each slave individually. Even then each migration might take several hours. 
-   Make sure you have enough disk space. You have been warned.
-
-.. comment: Currently, ownCloud uses the utf8 character set with utf8_bin 
-   collation on MySQL installations. As a result 4 byte UTF characters like 
-   emojis cannot be used. This can be fixed by [moving to 
-   utf8mb4/utf8mb4_bin](https://github.com/owncloud/core/issues/7030).
-
 The second best option is PostgreSQL (alter table does not lock table, which 
 makes migration less painful) although we have yet to find a customer who uses a 
 master-slave setup.
-
-.. comment: PostgreSQL may produce excessive amounts of dead tuples due to 
-   owncloud transactions preventing the execution of the autovacum process.
 
 What about the other DBMS?
 
@@ -449,16 +416,6 @@ File Storage
 
 While many customers are starting with NFS, sooner or later that requires scale-out storage. Currently the options are GPFS or GlusterFS, or an object store protocol like S3 (supported in Enterprise Edition only) or Swift. S3 also allows access to Ceph Storage.
 
-.. comment: A proof of concept implementation based on 
-   [phprados](https://github.com/ceph/phprados) that talks directly to a 
-   [ceph](http://ceph.com/) cluster without having to use temp files is [in 
-   development](https://github.com/owncloud/objectstore/pull/26).
-
-.. comment: NFS can be used but needs to be micro-managed to distribute users 
-   on multiple storages. If you want to go that route configure ldap to provide 
-   a custom home folder location. That allows you to move each users data 
-   folder to different nfs mounts.
-
 Session Storage
 ---------------
 
@@ -467,9 +424,6 @@ Session Storage
    
 * If Shibboleth is a requirement you must use Memcached, and it can also be 
   used to scale-out shibd session storage (see `Memcache StorageService`_).
-
-.. comment: High Availability / Failover deployment
-   Use Case: site replication -> different problem
 
 References
 ----------
