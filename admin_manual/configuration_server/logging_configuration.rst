@@ -51,5 +51,23 @@ All log information will be sent to your default syslog daemon.
     "logfile" => "",
     "loglevel" => "3",
 
+Conditional Logging Level Increase
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can configure the logging level to automatically increase to ``debug`` when one of three conditions are met:
+
+# ``shared_secret``: If a request parameter with the name ``log_secret`` is set to this value the condition is met.
+
+# ``users``: If the current request is done by one of the specified users, this condition is met.
+
+# ``apps``: If the log message is invoked by one of the specified apps, this condition is met'
+
+The following example demonstrates what all three conditions look like::
+
+ 'log.condition' => [
+	'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+	'users' => ['sample-user'],
+	'apps' => ['files'],
+ ],
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php
