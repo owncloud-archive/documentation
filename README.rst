@@ -20,9 +20,7 @@ This repository hosts four manuals:
 * **Administration Manual**
 * **Developers Manual** 
   
-Please work in the appropriate branch. Stable8 is 8.0, stable8.1 is 8.1, stable8.2 is 8.2, stable9 is 9.0, and master is version 9.1.
-
-Please wrap lines at 80 characters.
+Please work in the appropriate branch. Stable8 is 8.0, stable8.1 is 8.1, stable8.2 is 8.2, stable9 is 9.0, stable9.1 is 9.1, and master is 9.2.
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
