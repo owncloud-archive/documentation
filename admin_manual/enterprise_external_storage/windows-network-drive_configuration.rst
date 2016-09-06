@@ -56,12 +56,6 @@ the server address, the share name, and the folder you want to connect to.
    an existing folder.
 2. Then select your authentication method; See :doc:`enterprise_only_auth` for 
    complete information on the five available authentication methods.
-   
-.. figure:: images/wnd-2.png
-   :alt: WND mountpoint and auth.
-   
-   *Figure 2: WND mountpoint and authorization credentials.*    
-   
 3. Enter the address of the server that contains the WND share.
 4. The Windows share name.
 5. The root folder of the share. This is the folder name, or the 
@@ -72,14 +66,15 @@ the server address, the share name, and the folder you want to connect to.
    :doc:`../configuration_user/user_auth_ldap`.)
 6. Login credentials.
 7. Select users or groups with access to the share. The default is all users.
-8. Click the gear icon for additional mount options. Note that encryption is 
-   enabled by default, while sharing is not. Sharing is not available for all 
-   authorization methods; see :doc:`enterprise_only_auth`.
+8. Click the gear icon for additional mount options. Note that previews are 
+   enabled by default, while sharing is not (see figure 2). Sharing is not available for all 
+   authorization methods; see :doc:`enterprise_only_auth`. For large storages with many files 
+   you may want to disable prewviews, because this can significantly increase performance.
 
 .. figure:: images/wnd-3.png
    :alt: WND server and credentials.
 
-   *Figure 3: WND server, credentials, and additional mount options.*  
+   *Figure 2: WND server, credentials, and additional mount options.*  
 
 Your changes are saved automatically.
 
