@@ -8,6 +8,13 @@ Development Environment
 
 Please follow the steps on this page to set up your development environment.
 
+Basic tools
+===========
+
+To be able to develop with ownCloud and also run unit tests, you will need to install `Node.js <https://nodejs.org>`_.
+
+Other required tools will be automatically installed by composer.
+
 Set up Web server and database
 ==============================
 
@@ -48,15 +55,18 @@ Check out the code
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
-Install the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_
-
-After the development tool installation make the directory writable::
+Make the directory writable::
 
   sudo chmod o+rw /var/www
   
 Then install ownCloud from git::
 
-  ocdev setup --dir /var/www/<folder> base
+  git clone https://github.com/owncloud/core.git
+
+Run make to pull in dependencies::
+
+  cd /var/www/core
+  make
 
 where <folder> is the folder where you want to install ownCloud.
 
@@ -89,24 +99,6 @@ To disable JavaScript and CSS caching debugging has to be enabled by setting ``d
       'debug' => true,
       ... configuration goes here ...
   );
-
-Keep the code up-to-date
-------------------------
-
-If you have more than one repository cloned, it can be time consuming to do the same the action to all repositories one by one. To solve this, you can use the following command template::
-
-  find . -maxdepth <DEPTH> -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && <GIT COMMAND>' \;
-
-then, e.g. to pull all changes in all repositories, you only need this::
-
-  find . -maxdepth 3 -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && git pull --rebase' \;
-
-or to prune all merged branches, you would execute this::
-
-  find . -maxdepth 3 -type d -name .git -exec sh -c 'cd "{}"/../ && pwd && git remote prune origin' \;
-
-It is even easier if you create alias from these commands in case you want to avoid retyping those each time you need them.
-
 
 .. _GitHub: https://github.com/owncloud
 .. _GitHub Help Page: https://help.github.com/
