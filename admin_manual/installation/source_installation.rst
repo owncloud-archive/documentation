@@ -122,6 +122,8 @@ If ``mod_webdav`` is enabled you must disable it for ownCloud. (See
 Example Installation on Ubuntu 14.04 LTS Server
 -----------------------------------------------
 
+.. note:: See `Manual installation details for multiple distros, ownCloud 9.0 and 9.1 <https://github.com/owncloud/documentation/wiki/Manual%20installation%20details%20for%20multiple%20distros,%20ownCloud%209.0%20and%209.1>`_ for installation hints for RHEL 7.2 and SLES 12.
+
 On a machine running a pristine Ubuntu 14.04 LTS server, install the
 required and recommended modules for a typical ownCloud installation, using
 Apache and MariaDB, by issuing the following commands in a terminal::
