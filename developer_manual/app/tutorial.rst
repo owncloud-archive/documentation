@@ -11,10 +11,6 @@ Setup
 =====
 After the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://owncloud.org/install/>`_ or cloning it directly from GitHub::
 
-    ocdev setup core --dir owncloud  --branch $BRANCH
-
-.. note:: $BRANCH is the desired ownCloud branch (e.g. stable7 for ownCloud 7, stable8 for ownCloud 8, etc)
-
 First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **owncloud/config/config.php** file::
 
     <?php
