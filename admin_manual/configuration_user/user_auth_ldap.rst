@@ -417,8 +417,8 @@ Expert Settings
 
 .. figure:: ../images/ldap-expert.png
 
-In the Expert Settings fundamental behavior can be adjusted to your needs. The
-configuration should be well-tested before starting production use.
+.. warning:: In the Expert Settings fundamental behavior can be adjusted to your needs. The
+    configuration should be well-tested before starting production use.
 
 Internal Username:
   The internal username is the identifier in ownCloud for LDAP users. By default
