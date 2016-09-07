@@ -19,17 +19,8 @@ keep individual ownCloud instances to a manageable size.
 
 * Operating system: Linux.
 * Web server: Apache 2.4.
-<<<<<<< HEAD
-* Database: MySQL/MariaDB.
-* PHP 5.5+. PHP 5.4 is the minimum supported version; note that it reached 
-  end-of-life in September 2015 and is no longer supported by the PHP team. 
-  Some Linux vendors, such as Red Hat, still support PHP 5.4.
-  5.6+ is recommended. ``mod_php`` is the recommended Apache module because it 
-  provides the best performance.
-=======
 * Database: MySQL/MariaDB with InnoDB storage engine (MyISAM is not supported, see: :ref:`db-storage-engine-label`)
 * PHP 5.6+.
->>>>>>> 8783752... remove obsolete operations section, update sysrecs, InnoDB requirement
 
 Small Workgroups or Departments
 -------------------------------

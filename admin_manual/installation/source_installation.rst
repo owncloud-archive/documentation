@@ -124,23 +124,6 @@ The InnoDB storage engine is required, and MyISAM is not supported, see: :ref:`d
   
 .. _ubuntu_installation_label:  
 
-<<<<<<< HEAD
-=======
-Example Installation on Ubuntu 16.04 LTS Server
------------------------------------------------
-
-On a machine running a pristine Ubuntu 16.04 LTS server, install the
-required and recommended modules for a typical ownCloud installation, using
-Apache and MariaDB, by issuing the following commands in a terminal::
-
-    apt-get install apache2 mariadb-server libapache2-mod-php7.0
-    apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl
-    apt-get install php7.0-intl php7.0-mcrypt php-imagick
-    apt-get install php7.0-zip php7.0-xml php7.0-mbstring
-
-The remaining steps are analogous to the installation on Ubuntu 14.04 as shown below.
-
->>>>>>> 8783752... remove obsolete operations section, update sysrecs, InnoDB requirement
 Example Installation on Ubuntu 14.04 LTS Server
 -----------------------------------------------
 
