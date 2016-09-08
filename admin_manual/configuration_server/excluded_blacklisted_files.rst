@@ -66,16 +66,27 @@ If you have a snapshot-capable storage or filesystem where snapshots are enabled
    file_2
    ...
    
-Example entries in ``config.php`` look like this::
+Example ``excluded_directories`` entries in ``config.php`` look like this::
 
  'excluded_directories' =>
 	array (
 		'.snapshot',
 		'~snapshot',
-		'/home',
-		'/pictures',
+		'dir1',
+		'dir2',
 	),
 	
+Note that these are not pathnames, but directory names without any slashes. Excluding ``dir1`` excludes::
+
+ /home/dir1 
+ /etc/stuff/dir1
+ 
+But not::
+
+ /home/.dir1 
+ /etc/stuff/mydir1	
+	
+Example ``blacklisted_files`` entries in ``config.php`` look like this::
 	
  'blacklisted_files' => 
         array (
