@@ -10,7 +10,7 @@ Definitions of terms
 :**Excluded**:
   Existing directories on your ownCloud server, including external storage mounts, that are excluded from being processed by ownCloud. In effect they are invisible to ownCloud.
 
-Both types are defined in ``config.php``. Blacklisted and excluded files are not scanned by ownCloud, not viewed, not synced, and cannot be created, renamed, deleted, or accessed via direct path input from a file explorer. Even when a filepath is entered manually via a file explorer the path cannot be accessed. Excluded directories and blacklisted files are skipped when residing on an external storage and moved to the trashbin. 
+Both types are defined in ``config.php``. Blacklisted and excluded files are not scanned by ownCloud, not viewed, not synced, and cannot be created, renamed, deleted, or accessed via direct path input from a file explorer. Even when a filepath is entered manually via a file explorer, the path cannot be accessed.  
 
 For example configurations please see ``owncloud/config/config.sample.php``.
 
