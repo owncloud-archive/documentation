@@ -60,7 +60,7 @@ You can configure the logging level to automatically increase to ``debug`` when 
 
 # ``users``: If the current request is done by one of the specified users, this condition is met.
 
-# ``apps``: If the log message is invoked by one of the specified apps, this condition is met'
+# ``apps``: If the log message is invoked by one of the specified apps, this condition is met.
 
 The following example demonstrates what all three conditions look like::
 
