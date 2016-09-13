@@ -25,7 +25,7 @@ Please note that the mailing list should not be used for bug reports, as it is h
 
 
 
-.. _Issue submission guidelines: https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues
+.. _Issue submission guidelines: https://github.com/owncloud/core/blob/master/.github/CONTRIBUTING.md#submitting-issues
 .. _Core repository:  https://github.com/owncloud/core/issues
 .. _Client repository: https://github.com/owncloud/client/issues
 .. _main github repository: https://github.com/owncloud
