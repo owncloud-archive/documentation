@@ -37,7 +37,7 @@ General considerations
 * You need a `github account <https://github.com>`_ to contribute to bug triaging.
 * If you are not familiar with the github issue tracker interface (which is used by ownCloud to handle bug reports), you `may find this guide useful <https://guides.github.com/features/issues/>`_.
 * You will initially only be able to comment on issues. The ability to close issues or assign labels will be given liberally to those who have shown to be willing and able to contribute. Just ask on IRC!
-* Read `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ so you know what a good report should look like and where things belong. The `issue template <https://raw.github.com/owncloud/core/master/issue_template.md>`_ asks specifically for some information developers need to solve issues.
+* Read `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/.github/CONTRIBUTING.md#submitting-issues>`_ so you know what a good report should look like and where things belong. The `issue template <https://raw.github.com/owncloud/core/master/.github/issue_template.md>`_ asks specifically for some information developers need to solve issues.
 * It might even be fixed, sometimes! It can also be fruitful to contact the `developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're triaging bugs and share what problem you bumped into. Or just ask on the test-pilots mailing list.
 * To ensure no two people are working on the same issue, we ask you to simply add a comment like "I am triaging this" in the issue you want to work on, and when done, before or after executing the triaging actions, note similarly that you're done.
 
@@ -96,7 +96,7 @@ Determining if the report is complete
 -------------------------------------
 Now that you know that the bug report is unique, and that is not an external issue, you need to check all the needed information is there.
 
-Check `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/CONTRIBUTING.md#submitting-issues>`_ and make sure bug reports comply with it! The information asked in the `issue template <https://raw.github.com/owncloud/core/master/issue_template.md>`_ is needed for developers to solve issues.
+Check `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/.github/CONTRIBUTING.md#submitting-issues>`_ and make sure bug reports comply with it! The information asked in the `issue template <https://raw.github.com/owncloud/core/master/.github/issue_template.md>`_ is needed for developers to solve issues.
 
 Once you added a request for more information, add a #needinfo tag.
 
