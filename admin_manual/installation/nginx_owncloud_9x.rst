@@ -108,7 +108,7 @@ your nginx installation.
       }
   
       location ~ ^/(?:updater|ocs-provider)(?:$|/) {
-          try_files $uri/ =404;
+          try_files $uri $uri/ =404;
           index index.php;
       }
   
