@@ -36,9 +36,8 @@ does not work.
 
 .. Note:: There is a workaround that allows background file scanning when using
    **Log-in credentials, save in session**, and that is using Ajax cron mode.
-   (See :doc:`../../configuration_server/background_jobs_configuration`.). Be
-   aware that this Ajax cron mode need user actively browsing the WebGUI of
-   ownCloud.
+   (See :doc:`../../configuration_server/background_jobs_configuration`.) Be
+   aware that the Ajax cron mode is triggered by browsing the ownCloud Web GUI.
 
 Public-key Mechanisms
 ---------------------
