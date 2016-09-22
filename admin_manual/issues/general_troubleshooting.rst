@@ -309,6 +309,11 @@ Using Pound reverse-proxy/load balancer
 Misconfigured Web server
   Your Web server is misconfigured and blocks the needed DAV methods.
   Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
+  
+Client Sync Stalls
+------------------
+
+One known reason is stray locks. These should expire automatically after an hour. If stray locks don't expire, make sure that you are running system cron and not Ajax cron. (See :doc:`../configuration_server/background_jobs_configuration`.) See `<https://github.com/owncloud/core/issues/22116>`_ for some discussion of this issue.  
 
 Other issues
 ------------
