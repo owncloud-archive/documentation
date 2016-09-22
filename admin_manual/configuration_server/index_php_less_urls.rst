@@ -5,7 +5,7 @@ Since ownCloud 9.0.3 you need to explicitly configure and enable index.php-less 
 (e.g. https://example.com/apps/files/ instead of https://example.com/index.php/apps/files/).
 The following documentation provides the needed steps to configure this for the ``Apache``
 Web server. These steps are not necessary when using nginx as a web server because it is already
-enabled in the :doc:`../installation/nginx_owncloud_9x`.
+enabled in the :doc:`../installation/nginx_examples`.
 
 Prerequisites
 -------------
