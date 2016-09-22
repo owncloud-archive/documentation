@@ -42,7 +42,8 @@ configuration report with the :ref:`occ config command
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/9.1/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/9.2/developer_manual/bugtracker/index.html
+
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
@@ -306,6 +307,11 @@ Using Pound reverse-proxy/load balancer
 Misconfigured Web server
   Your Web server is misconfigured and blocks the needed DAV methods.
   Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
+  
+Client Sync Stalls
+------------------
+
+One known reason is stray locks. These should expire automatically after an hour. If stray locks don't expire, make sure that you are running system cron and not Ajax cron. (See :doc:`../configuration_server/background_jobs_configuration`.) See `<https://github.com/owncloud/core/issues/22116>`_ for some discussion of this issue.
 
 Other issues
 ------------
