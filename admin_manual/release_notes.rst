@@ -21,6 +21,9 @@ Changes in 9.1
 * Support for Internet Explorer below version 11 was dropped
 * Symlinks pointing outside of the datadir are disallowed. Please use the :doc:`configuration_files/external_storage_configuration_gui`
   with the :doc:`configuration_files/external_storage/local` storage backend instead.
+* Removed ``dav:migrate-calendars`` and ``dav:migrate-addressbooks`` commands for ``occ``.
+  Users planning to upgrade from oC 9.0 or below to oC 9.1 needs to make sure that their
+  Calendars and Adressbooks are correctly migrated **before** continuing to upgrade to 9.1.
 
 **Authentication**
 
@@ -107,9 +110,15 @@ Home folder rule is enforced in the user_ldap application in new ownCloud instal
 
 The Calendar and Contacts apps have been rewritten and the CalDAV and CardDAV backends of these
 apps were merged into ownCloud core. During the upgrade existing Calendars and Addressbooks
-are automatically migrated. As a fallback for failed upgrades or an option to test a migration
-``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available via the
-``occ`` command. See :doc:`configuration_server/occ_command`.
+are automatically migrated (except when using the the ``IMAP user backend``). As a fallback
+for failed upgrades, when using the ``IMAP user backend`` or as an option to test a migration
+``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available
+(**only in oC 9.0**) via the ``occ`` command. See :doc:`configuration_server/occ_command`.
+
+.. warning:: After upgrading to ownCloud 9.0 and **before** continuing to upgrade to 9.1 make sure
+   that all of your and your users Calendars and Addressbooks are migrated correctly. Especially
+   when using the ``IMAP user backend`` (other user backends might be also affected) you need to
+   manually run the mentioned ``occ`` migration commands described above.
 
 Updates on systems with large datasets will take longer, due to the addition of checksums to the
 oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
