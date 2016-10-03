@@ -6,7 +6,7 @@ For production environments, we recommend the installation from the tar archive.
 This applies in particular to scenarios, where the Web server, storage and database are on separate machines. 
 In this constellation, all dependencies and requirements are managed by the package management 
 of your operating system, while the ownCloud code itself is maintained in a sequence of simple steps 
-as documented in our instructions for the :doc:`Manual Installation on Linux <source_installation.html>`_ and the :doc:`Manual ownCloud Upgrade <../maintenance/manual_upgrade.html>`_.
+as documented in our instructions for the :doc:`Manual Installation on Linux <source_installation>` and the :doc:`Manual ownCloud Upgrade <../maintenance/manual_upgrade>`.
 
 The package installation is for single-server setups only.
 
