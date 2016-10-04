@@ -311,7 +311,12 @@ Misconfigured Web server
 Client Sync Stalls
 ------------------
 
-One known reason is stray locks. These should expire automatically after an hour. If stray locks don't expire, make sure that you are running system cron and not Ajax cron. (See :doc:`../configuration_server/background_jobs_configuration`.) See `<https://github.com/owncloud/core/issues/22116>`_ for some discussion of this issue.
+One known reason is stray locks. These should expire automatically after an hour. If stray
+locks don't expire (identified by e.g. repeated ``file.txt is locked`` and/or ``Exception\\\\FileLocked``
+messages in your :file:`data/owncloud.log`), make sure that you are running system cron and
+not Ajax cron (See :doc:`../configuration_server/background_jobs_configuration`).
+See `<https://github.com/owncloud/core/issues/22116>`_ and `<https://central.owncloud.org/t/file-is-locked-how-to-unlock/985>`_
+for some discussion and additional info of this issue.
 
 Other issues
 ------------
