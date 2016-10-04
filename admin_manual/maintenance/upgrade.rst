@@ -21,7 +21,11 @@ There are three ways to upgrade your ownCloud server:
   repositories to maintain their ownCloud servers, rather than the Open Build 
   Service. Please see :doc:`../enterprise_installation/linux_installation` for 
   more information.
-  
+
+.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
+   please have a look at the :doc:`../release_notes` of oC 9.0 for important info
+   about the needed migration steps during that upgrade.
+
 When an update is available for your ownCloud server, you will see a 
 notification at the top of your ownCloud Web interface. When you click the 
 notification it brings you here, to this page.
