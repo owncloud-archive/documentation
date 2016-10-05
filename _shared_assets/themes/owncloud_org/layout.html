@@ -53,6 +53,7 @@
 
 {# Sidebar: Rework into our Bootstrap nav section. #}
 {% macro navBar() %}
+
 <header class="banner navbar navbar-default navbar-static-top" role="banner">
   <div class="container">
     <div class="navbar-header">
@@ -63,7 +64,10 @@
         <span class="icon-bar"></span>
       </button>
        <a class="brand" href="http://owncloud.org/" rel="home" title="ownCloud.org"><img class="logo" src="{{ pathto('_static/img/logo_owncloud.svg', 1) }}" itemprop="logo"></a>
+       
     </div>
+    
+
 
     <nav class="collapse navbar-collapse" role="navigation">
       <ul id="menu-header" class="nav navbar-nav">
@@ -74,10 +78,13 @@
         <li class="menu-contribute"><a href="https://owncloud.org/contribute/">Contribute</a>
         <li class="menu-support"><a href="https://owncloud.org/support">Support</a></li>
         <li class="menu-commercial"><a target="_blank" href="https://owncloud.com">Enterprise Edition</a></li>
-        <li class="menu-install"><a href="https://owncloud.org/install/">Download</a></li>
-      </ul>
+        <li class="menu-install"><a href="https://owncloud.org/install/">Download</a></li></ul>     
     </nav>
   </div>
+       <ul id="menu-alert"  class="nav navbar-nav"> 
+        <li class="alert alert-error"> <font size="5"><font color="FFFF33">This documents an older, unsupported version of ownCloud. Please see our <a href="https://owncloud.org/install/"><font color="00FFFF">installation page</a></font> for information on current ownCloud versions, and <a href="https://doc.owncloud.org/"><font color="00FFFF">ownCloud Documentation</a></font> for the current ownCloud manuals.</a></font></font>. </li>
+      </ul>
+
 </header>
 {% endmacro %}
 
