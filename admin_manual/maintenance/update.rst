@@ -8,6 +8,10 @@ such as shared hosting, for installations with a smaller number of users
 and data, and it automates updating 
 :doc:`manual installations <../installation/source_installation>`.
 
+.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
+   please have a look at the :doc:`../release_notes` of oC 9.0 for important info
+   about the needed migration steps during that upgrade.
+
 New in 9.0, the Updater app has :ref:`command-line options <updater_cli_label>`.
 
 .. note:: The Updater app is **not enabled and not supported** in ownCloud 

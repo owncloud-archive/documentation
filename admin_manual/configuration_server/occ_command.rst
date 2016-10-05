@@ -386,14 +386,9 @@ migrate addressbooks from 8.2 when you upgrade to 9.0::
  dav
   dav:create-addressbook        Create a dav addressbook
   dav:create-calendar           Create a dav calendar
-  dav:migrate-addressbooks      Migrate addressbooks from the contacts  
-                                app to core
-  dav:migrate-calendars         Migrate calendars from the calendar app to 
-                                core
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
   dav:sync-system-addressbook   Synchronizes users to the system 
                                 addressbook
-                                   
                                       
 The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is 
 ``dav:create-addressbook [user] [name]``. This example creates the addressbook 
