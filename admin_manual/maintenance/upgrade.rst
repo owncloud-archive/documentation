@@ -81,11 +81,77 @@ designation. **Install unsupported apps at your own risk**. Then, before the
 upgrade, all 3rd party apps must be disabled. After the upgrade is complete you 
 may re-enable them.
 
-.. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/8.2/owncloud/
-   
 .. _owncloud.org/install/:
-   https://owncloud.org/install/  
+   https://owncloud.org/install/
+
+Previous ownCloud Releases
+--------------------------
+
+You'll find previous ownCloud releases in the `ownCloud Server Changelog 
+<https://owncloud.org/changelog/>`_.
+
+Reverse Upgrade
+---------------
+
+If you need to reverse your upgrade, see :doc:`restore`.
+
+Troubleshooting
+---------------
+
+When upgrading ownCloud and you are running MySQL or MariaDB with binary 
+logging enabled, your upgrade may fail with these errors in your MySQL/MariaDB log::
+
+ An unhandled exception has been thrown:
+ exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1665 
+ Cannot execute statement: impossible to write to binary log since 
+ BINLOG_FORMAT = STATEMENT and at least one table uses a storage engine limited 
+ to row-based logging. InnoDB is limited to row-logging when transaction 
+ isolation level is READ COMMITTED or READ UNCOMMITTED.' 
+
+Please refer to :ref:`db-binlog-label` on how to correctly configure your 
+environment.
+
+Occasionally, *files do not show up after a upgrade*. A rescan of the files can 
+help::
+
+ sudo -u www-data php console.php files:scan --all
+
+See `the owncloud.org support page <https://owncloud.org/support>`_ for further
+resources for both home and enterprise users.
+
+Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the 
+process taking too long and encountering a PHP time-out. Stop the upgrade 
+process this way::
+
+ sudo -u www-data php occ maintenance:mode --off
+  
+Then start the manual process::
+  
+ sudo -u www-data php occ upgrade
+
+If this does not work properly, try the repair function::
+
+ sudo -u www-data php occ maintenance:repair
+
+.. _migration_test_label:
+
+Migration Test
+--------------
+
+Before completing the upgrade, ownCloud first runs a simulation by copying all 
+database tables to new tables, and then performs the upgrade on them, to ensure 
+that the upgrade will complete correctly. The copied tables are deleted after 
+the upgrade. This takes twice as much time, which on large installations can be 
+many hours, so you can omit this step (by risking a failed upgrade) with the
+``--skip-migration-test`` option, like this example on CentOS::
+
+ $ sudo -u apache php occ upgrade --skip-migration-test
+
+or this example on Ubuntu::
+
+ $ sudo -u www-data php occ upgrade --skip-migration-test
+
+See :doc:`../configuration_server/occ_command` to learn more.
 
 Encryption migration from oC 7.0 to 8.0 and 8.0 to 8.1
 ------------------------------------------------------
