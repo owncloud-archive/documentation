@@ -61,7 +61,7 @@ The other way is by entering your ``config.php`` file and changing
     
      sudo -u apache php occ upgrade
 
-  Optionally disable the :ref:`<migration_test_label>` which might take a
+  Optionally disable the :ref:`migration_test_label` which might take a
   long time on large installations.
 
   See :doc:`../configuration_server/occ_command` to learn more.

@@ -89,7 +89,7 @@ This example is for Ubuntu Linux::
 
      $ sudo -u www-data php occ upgrade
  
-Optionally disable the :ref:`<migration_test_label>` which might take a
+Optionally disable the :ref:`migration_test_label` which might take a
 long time on large installations.
 
 See :doc:`../configuration_server/occ_command` to learn more.

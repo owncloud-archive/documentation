@@ -17,7 +17,7 @@ upgrade. These are the basic steps to upgrading ownCloud:
 * Make a :doc:`fresh backup <backup>`.
 * Upgrade your ownCloud packages.
 * Run :ref:`occ upgrade <command_line_upgrade_label>` (Optionally disable the
-  :ref:`<migration_test_label>` which might take a long time on large installations).
+  :ref:`migration_test_label` which might take a long time on large installations).
 * :ref:`Apply strong permissions <strong_perms_label>` to your 
   ownCloud directories.
 * Take your ownCloud server out of :ref:`maintenance mode 
@@ -70,7 +70,7 @@ This example is for CentOS/RHEL/Fedora::
 
  sudo -u apache php occ upgrade
 
-Optionally disable the :ref:`<migration_test_label>` which might take a
+Optionally disable the :ref:`migration_test_label` which might take a
 long time on large installations.
 
 See :doc:`../configuration_server/occ_command` to learn more.
