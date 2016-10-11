@@ -16,9 +16,8 @@ upgrade. These are the basic steps to upgrading ownCloud:
   apps.
 * Make a :doc:`fresh backup <backup>`.
 * Upgrade your ownCloud packages.
-* Run :ref:`occ upgrade <command_line_upgrade_label>` (optionally disabling the 
-  :ref:`migration test   
-  <migration_test_label>`).
+* Run :ref:`occ upgrade <command_line_upgrade_label>` (The optional parameter to skip migration
+  tests was removed from oC 9.2. See :ref:`migration_test_label` for background information).
 * :ref:`Apply strong permissions <strong_perms_label>` to your 
   ownCloud directories.
 * Take your ownCloud server out of :ref:`maintenance mode 
@@ -69,16 +68,12 @@ user. This example is for Debian/Ubuntu::
 
 This example is for CentOS/RHEL/Fedora::
 
- sudo -u apache php occ upgrade 
+ sudo -u apache php occ upgrade
 
-.. _migration_test_label:
+The optional parameter to skip migration tests during this step was removed in oC 9.2.
+See :ref:`migration_test_label` for background information.
 
-Migration Test
---------------
-
-Previous versions of ownCloud included a migration test. ownCloud first ran a migration simulation by copying the ownCloud database and performing the upgrade on the copy, to ensure that the migration would succeed. Then the copied tables were deleted after the upgrade was completed. This doubled the upgrade time, so admins could skip this test with ``php occ upgrade --skip-migration-test``.
-
-The migration test has been removed from ownCloud 9.2. ownCloud server admins should have current backups before migration, and rely on backups to correct any problems from the migration.
+See :doc:`../configuration_server/occ_command` to learn more.
 
 Setting Strong Directory Permissions
 ------------------------------------

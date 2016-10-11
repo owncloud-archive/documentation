@@ -88,8 +88,9 @@ steps:
 This example is for Ubuntu Linux::
 
      $ sudo -u www-data php occ upgrade
- 
-See :doc:`../configuration_server/occ_command` to learn more.
+
+The optional parameter to skip migration tests during this step was removed in oC 9.2.
+See :ref:`migration_test_label` for more information.
 
 8.  It runs for a few minutes, and when it is finished displays a success 
     message, which disappears after a short time.

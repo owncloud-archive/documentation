@@ -60,6 +60,11 @@ The other way is by entering your ``config.php`` file and changing
     example on CentOS Linux::
     
      sudo -u apache php occ upgrade
+
+  The optional parameter to skip migration tests during this step was removed in oC 9.2.
+  See :ref:`migration_test_label` for background information.
+
+  See :doc:`../configuration_server/occ_command` to learn more.
      
 11. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 
@@ -75,57 +80,5 @@ correct. Go to the Apps page and review the core apps to make sure the right
 ones are enabled. Re-enable your third-party apps. Then apply strong 
 permissions to your ownCloud directories (:ref:`strong_perms_label`).
 
-Previous ownCloud Releases
---------------------------
-
-You'll find previous ownCloud releases in the `ownCloud Server Changelog 
-<https://owncloud.org/changelog/>`_.
-
-Reverse Upgrade
----------------
-
-If you need to reverse your upgrade, see :doc:`restore`.
-
-Troubleshooting
----------------
-
-When upgrading ownCloud and you are running MySQL or MariaDB with binary 
-logging 
-enabled, your upgrade may fail with these errors in your MySQL/MariaDB log::
-
- An unhandled exception has been thrown:
- exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1665 
- Cannot execute statement: impossible to write to binary log since 
- BINLOG_FORMAT = STATEMENT and at least one table uses a storage engine limited 
- to row-based logging. InnoDB is limited to row-logging when transaction 
- isolation level is READ COMMITTED or READ UNCOMMITTED.' 
-
-Please refer to :ref:`db-binlog-label` on how to correctly configure your 
-environment.
-
-Occasionally, *files do not show up after a upgrade*. A rescan of the files can 
-help::
-
- sudo -u www-data php console.php files:scan --all
-
-See `the owncloud.org support page <https://owncloud.org/support>`_ for further
-resources for both home and enterprise users.
-
-Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the 
-process taking too long and encountering a PHP time-out. Stop the upgrade 
-process this way::
-
- sudo -u www-data php occ maintenance:mode --off
-  
-Then start the manual process::
-  
- sudo -u www-data php occ upgrade
-
-If this does not work properly, try the repair function::
-
- sudo -u www-data php occ maintenance:repair
-
-
 .. _owncloud.org/install/:
-   https://owncloud.org/install/  
-  
+   https://owncloud.org/install/
