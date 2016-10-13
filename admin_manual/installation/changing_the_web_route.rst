@@ -1,48 +1,23 @@
-======================
-Changing the Web Route
-======================
+==========================
+Changing Your ownCloud URL
+==========================
 
-This admin manual assumes that the owncloud server shall be accessible under the web route
-``/owncloud`` -- this is also where the Linux packages make the server appear. You can change this in your Web server configuration, for example from ``https://example.com/owncloud/`` to ``https://example.com/``.
+This admin manual assumes that the ownCloud server is already accessible under the Web route
+``/owncloud``, which is the default at installation, e.g. ``https://example.com/owncloud``. You can change this in your Web server configuration, for example from ``https://example.com/owncloud/`` to ``https://example.com/``. 
 
-Basic system administrator and Apache configuration knowledge is prerequisite.
-Several configuration files need to be kept in sync when changing the Web route location.
+On Debian/Ubuntu Linux edit these files:
 
-On an Ubuntu-14.04 system the following files are typically involved:
-
-- ``/etc/apache2/conf-enabled/owncloud.conf``
+- ``/etc/apache2/sites-enabled/owncloud.conf``
 - ``/var/www/owncloud/config/config.php``
-- ``/var/www/owncloud/.htaccess``
 
-Example: Moving from /owncloud to /
------------------------------------
+Edit the ``Alias`` in ``/etc/apache2/sites-enabled/owncloud.conf`` to alias your ownCloud directory to the Web server root::
+ 
+ Alias / "/var/www/owncloud/"
 
-    Edit the file /etc/apache2/conf-enabled/owncloud.conf to say::
+Edit the ``overwrite.cli.url`` parameter in ``/var/www/owncloud/config/config.php``::
 
-      Alias / "/var/www/owncloud/"
+ 'overwrite.cli.url' => 'http://localhost/',
+ 
+Restart Apache, and now you can access ownCloud from either ``https://example.com/`` or ``https://localhost/``. Note that you will not be able to run any other virtual hosts, as ownCloud is aliased to your Web root.
 
-    Edit /var/www/owncloud/config/config.php to say::
-
-      'overwrite.cli.url' => 'http://localhost/',
-
-    Edit the file /var/www/owncloud/.htaccess to say::
-
-      ...
-      #### DO NOT CHANGE ANYTHING ABOVE THIS LINE ####
-      ...
-      <IfModule mod_rewrite.c>
-        RewriteBase /
-      ...
-    
-
-    Optionally also set your document root, though this is generally not needed or recommended.
-    Edit the file ``/etc/apache2/sites-enabled/000-default.conf to say``::
-
-      DocumentRoot /var/www/owncloud
-
-.. Note:: Since owncloud version 9.0.2 we support short URLs without ``index.php``. The rewrite mechanisms
-  involved a RewriteBase rule in ``.htaccess`` which is auto-generated when
-  owncloud is first started. Depending on the exact way owncloud was installed (upgrade or fresh,
-  plain tar archive, or packages) you may or may not find a RewriteBase in your ``.htaccess`` files.
-  If it is not yet there, make sure to double check once the ownCloud server is up and running.
-
+On CentOS/Fedora/Red Hat, edit ``/etc/httpd/conf.d/owncloud.conf`` and ``/var/www/html/owncloud/config/config.php``, then restart Apache.
