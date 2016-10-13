@@ -7,7 +7,7 @@ Is the default database for ownCloud Server, but is not available and not suppor
 for the ownCloud Enterprise edition.
 
 SQLite will be installed by the ownCloud packages and all the necessary dependencies
-will be satisfied.  See Manual Installation on Linux for a detailed listing of
+will be satisfied.  See :doc:`source_installation` for a detailed listing of
 required and optional PHP modules.
 
 If you used the packages to install ownCloud, you may "Finish Setup" with no
