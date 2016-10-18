@@ -118,6 +118,28 @@ All API methods need to be marked with `PHPDoc <http://en.wikipedia.org/wiki/PHP
     // ...
   }
 
+All member variables of a class needs to be type annotated within a single line DocComment using 
+`PHPDoc <http://en.wikipedia.org/wiki/PHPDoc>`_ markup. An example would be:
+
+.. code-block:: php
+
+	<?php
+	
+	class Foo {
+		/** @var \OC_Defaults */
+		private $defaults;
+		/** @var \OCP\IRequest */
+		private $request;
+	
+		/**
+		 * @param \OC_Defaults $defaults
+		 * @param \OCP\IRequest $request
+		 */
+		public function __construct(\OC_Defaults $defaults, \OCP\IRequest $request) {
+			$this->defaults = $defaults;
+			$this->request = $request;
+		}
+	}
 Objects, Functions, Arrays & Variables
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Use Pascal case for Objects, Camel case for functions and variables. If you set
