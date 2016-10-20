@@ -138,9 +138,9 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS 
 mounts.
 
-=================
-SMB Notifications
-=================
+==============================
+Windows Network Drive Listener
+==============================
 
 The SMB protocol supports registering for notifications of file changes on remote Windows SMB storage servers. Notifications are more efficient than polling for changes, as polling requires scanning the whole SMB storage. ownCloud supports SMB notifications with an ``occ`` command, ``occ wnd:listen``.
 
@@ -206,3 +206,8 @@ Then starts the ``wnd:listen`` thread::
     sudo -u www-data occ wnd:listen 172.18.16.220 home ServiceUser Password
 
 Changes made by Bob or Alice made directly on the storage are now detected by the ownCloud server.
+
+Running the WND Listener as a Service
+-------------------------------------
+
+See `Configuring wnd:listen to run as a service <https://github.com/owncloud/documentation/wiki/Configuring-wnd:listen-to-run-as-a-service>`_ in the documentation wiki for tips on running the listenera as a service via cron, and by creating a Systemd startup script.
