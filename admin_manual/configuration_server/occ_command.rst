@@ -1232,18 +1232,24 @@ tar archives, and before you complete the upgrade.
 
 List all options, like this example on CentOS Linux::
 
- sudo -u apache php occ upgrade -h
+ sudo -u www-data php occ upgrade -h
+ Usage:
+  upgrade [options]
 
  Options:
- --no-app-disable       skips the disable of third party apps
- --help (-h)            Display this help message.
- --quiet (-q)           Do not output any message.
- --verbose (-v|vv|vvv)  Increase the verbosity of messages: 1 for normal output, 
-   2 for more verbose output and 3 for debug.
- --version (-V)         Display this application version.
- --ansi                 Force ANSI output.
- --no-ansi              Disable ANSI output.
- --no-interaction (-n)  Do not ask any interactive question
+      --no-app-disable  skips the disable of third party apps
+  -h, --help            Display this help message
+  -q, --quiet           Do not output any message
+  -V, --version         Display this application version
+      --ansi            Force ANSI output
+      --no-ansi         Disable ANSI output
+  -n, --no-interaction  Do not ask any interactive question
+      --no-warnings     Skip global warnings, show command output only
+  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+ Help:
+  run upgrade routines after installation of a new release. The release has to be installed before.
+
 
 When you are performing an update or upgrade on your ownCloud server (see the 
 Maintenance section of this manual), it is better to use ``occ`` to perform the 
