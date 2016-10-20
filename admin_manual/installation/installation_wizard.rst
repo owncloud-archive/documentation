@@ -57,27 +57,93 @@ and must be owned by your HTTP user (see
 Database Choice
 ---------------
 
-SQLite is the default database for ownCloud Server (it is not available and not supported
-in the ownCloud Enterprise edition), and it is good only for testing and lightweight single-user
-setups without client synchronization. Supported databases are MySQL, MariaDB,
-Oracle 11g (ownCloud Enterprise edition only), and PostgreSQL, and we recommend 
-:doc:`MySQL/MariaDB <system_requirements>`. Your database and PHP connectors 
-must be installed before you run the Installation Wizard. When you install 
-ownCloud from packages all the necessary dependencies will be satisfied (see 
-:doc:`source_installation` for a detailed listing of required and optional PHP 
-modules). You will need the root database login, or any administrator login that 
-has permissions to create and modify databases, and then enter any name you want 
-for your ownCloud database.
+When installing ownCloud Server & ownCloud Enterprise editions the administrator
+may choose one of 3 supported database products.
 
-After you enter your root or administrator login for your database, the 
-installer creates a special database user with privileges limited to the 
-ownCloud database. Then ownCloud needs only the special ownCloud database 
-user, and drops the root dB login. This user is named for your ownCloud admin 
-user, with an ``oc_`` prefix, and then given a random password. The ownCloud 
-database user and password are written into ``config.php``::
+SQLite
+^^^^^^
+Is the default database for ownCloud Server, but is not available and not supported
+for the ownCloud Enterprise edition.
 
-  'dbuser' => 'oc_molly',
-  'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',  
+SQLite will be installed by the ownCloud packages and all the necessary dependencies
+will be satisfied.  See see :doc:`source_installation` for a detailed listing of
+required and optional PHP modules.
+
+If you used the packages to install ownCloud, you may "Finish Setup" with no
+additional steps to configure ownCloud using the SQLite database for limited use.
+
+Please note that SQLite is good only for testing and lightweight single user setups.
+There is no client synchronization support.  Therefore, other devices will not be able
+to synchronize with the data stored in an ownCloud SQLite database.
+
+MYSQL/MariaDB
+^^^^^^^^^^^^^
+Is the ownCloud recommended database. See :doc:`MySQL/MariaDB <system_requirements>`.
+It may be used with either ownCloud Server or ownCloud Enterprise editions.
+
+First you should install the recommended MySQL/MariaDB database.  Use package: 
+  ``sudo apt-get install mariadb-server``
+
+If you have an administrator login that has permissions to create and modify databases,
+you may choose "Storage & Database".  Then enter your database administrator name, 
+password and any name you want for your ownCloud database.
+
+Otherwise, use these steps to create temporary database administrator account.
+
+  | ``sudo mysql --user=root mysql``
+  |
+  | ``CREATE USER 'dbadmin'@'localhost' IDENTIFIED BY 'Apassword';``
+  | ``GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'localhost' WITH GRANT OPTION;``
+  | ``FLUSH PRIVILEGES;``
+  |
+  | ``exit``
+
+PostgreSQL
+^^^^^^^^^^
+Is also supported by ownCloud.
+
+To install PostgreSQL, use the apt-get (or other apt-driving) command: 
+	``sudo apt-get install postgresql``
+
+You may view more information about the PostgreSQL database system at: 
+  ``http://www.postgresql.org``
+
+In order to allow ownCloud access to the database, create a known password for the
+default user "postgres" added when the database is installed.
+	
+  | ``sudo -i -u postgres psql``
+  |	
+  | ``postgres=# \password``
+  | ``Enter new password:`` 
+  | ``Enter it again:``
+  | ``postgres=# \q``
+  |	
+  | ``exit``
+
+Oracle11g
+^^^^^^^^^
+Is only supported for the ownCloud Enterprise edition.
+
+
+Database Setup By ownCloud
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+Your database and PHP connectors must be installed before you run the Installation Wizard
+by clicking the "Finish setup" button.
+
+After you enter your temporary or root administrator login for your database, the installer
+creates a special database user with privileges limited to the ownCloud database. Then ownCloud
+needs only this special ownCloud database user and drops the temporary or root database login. 
+
+This new user is named from your ownCloud admin user, with an ``oc_`` prefix, and then given a
+random password.  The ownCloud database user and password are written into ``config.php``::
+
+| For MySQL/MariaDB:
+|   ``'dbuser' => 'oc_dbadmin',``
+|   ``'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',``
+|
+| For PostgreSQL:
+|   ``'dbuser' => 'oc_postgres',``
+|   ``'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',``
 
 Click Finish Setup, and start using your new ownCloud server. 
 
