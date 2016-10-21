@@ -1,0 +1,25 @@
+{
+  "maxReviewers": 3,
+  "numFilesToCheck": 5,
+  "userBlacklist": [
+    "owncloud-bot",
+    "scrutinizer-auto-fixer",
+    "owncloud-news-gitter-bot",
+    "th3fallen",
+    "zander",
+    "icewind1991",
+    "schiessle",
+    "LukasReschke",
+    "blizzz",
+    "jancborchardt",
+    "nickvergessen",
+    "Xenopathic",
+    "MorrisJobke",
+    "rullzer",
+    "georgehrke",
+    "ChristophWurst",
+    "jospoortvliet",
+    "karlitschek",
+    "BernhardPosselt"
+  ]
+}
