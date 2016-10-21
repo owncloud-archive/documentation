@@ -15,6 +15,9 @@ Before being able to use index.php-less URLs you need to enable the ``mod_rewrit
 within the vhost of your Web server is needed. Please have a look at the ``Apache`` manual
 for how to enable and configure these.
 
+Furthermore these instructions are only working when using Apache together with the ``mod_php``
+Apache module for PHP. Other modules like ``php-fpm`` or ``mod_fastcgi`` are unsupported.
+
 Configuration steps
 -------------------
 
