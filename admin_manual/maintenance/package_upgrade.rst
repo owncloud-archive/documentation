@@ -9,24 +9,24 @@ The best method for keeping ownCloud current on Linux servers is by configuring
 your system to use ownCloud's `Open Build Service`_ repository. Then stay 
 current by using your Linux package manager to install fresh ownCloud packages. 
 After installing upgraded packages you must run a few more steps to complete 
-the 
-upgrade. These are the basic steps to upgrading ownCloud:
+the upgrade. These are the basic steps to upgrading ownCloud:
 
-* :doc:`Disable <../installation/apps_management_installation>` all third-party 
-  apps.
+.. warning:: Make sure that you don't skip a major release when upgrading via repositories.
+   For example you can't upgrade from 8.1.x to 9.0.x directly as you would skip the 8.2.x
+   major release. See :ref:`skipped_release_upgrade_label` for more information.
+
+* :doc:`Disable <../installation/apps_management_installation>` all third-party apps.
 * Make a :doc:`fresh backup <backup>`.
 * Upgrade your ownCloud packages.
 * Run :ref:`occ upgrade <command_line_upgrade_label>` (The optional parameter to skip migration
   tests was removed from oC 9.2. See :ref:`migration_test_label` for background information).
-* :ref:`Apply strong permissions <strong_perms_label>` to your 
-  ownCloud directories.
-* Take your ownCloud server out of :ref:`maintenance mode 
-  <maintenance_commands_label>`.  
+* :ref:`Apply strong permissions <strong_perms_label>` to your ownCloud directories.
+* Take your ownCloud server out of :ref:`maintenance mode <maintenance_commands_label>`.  
 * Re-enable third-party apps.
 
-.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
-   please have a look at the :doc:`../release_notes` of oC 9.0 for important info
-   about the needed migration steps during that upgrade.
+.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Addressbooks
+   please have a look at the :ref:`9.0 release notes<9.0_release_notes_label>` for
+   important information about the needed migration steps during that upgrade.
 
 Upgrade Tips
 ------------
@@ -81,29 +81,25 @@ Setting Strong Directory Permissions
 After upgrading, verify that your ownCloud directory permissions are set 
 according to :ref:`strong_perms_label`.
 
-If the upgrade fails, then you must try a manual upgrade.
-
 .. _Open Build Service: 
    https://download.owncloud.org/download/repositories/stable/owncloud/
-   
-.. _skipped_release_upgrade_label:  
+
+.. _skipped_release_upgrade_label:
    
 Upgrading Across Skipped Releases
 ---------------------------------
 
-It is best to update your ownCloud installation with every new point release, 
-and to never skip any major releases. If you have skipped any major releases you 
-can bring your ownCloud current with these steps:
+It is best to update your ownCloud installation with every new point release (e.g. 8.1.10), 
+and to never skip any major releases (e.g. don't skip 8.2.x between 8.1.x and 9.0.x). If you
+have skipped any major releases you can bring your ownCloud current with these steps:
 
-#. Add the repository of your current version
-#. Upgrade your current version to the latest point release
-#. Add the repo of the next major release
-#. Upgrade your current version to the next major release
-#. Run upgrade routine
-#. Repeat from step 3 until you reach the last available major release
+#. Add the repository of your current version (e.g. 8.1.x)
+#. Upgrade your current version to the latest point release (e.g. 8.1.10) via your package manager
+#. Run the ``occ upgrade`` routine (see Upgrade Quickstart above)
+#. Add the repository of the next major release (e.g. 8.2.x)
+#. Upgrade your current version to the next major release (e.g. 8.2.8) via your package manager
+#. Run the ``occ upgrade`` routine (see Upgrade Quickstart above)
+#. Repeat from step 4 until you reach the last available major release (e.g. 9.1.x)
 
-You'll find previous ownCloud releases in the `ownCloud Server Changelog 
+You'll find repositories of previous ownCloud major releases in the `ownCloud Server Changelog 
 <https://owncloud.org/changelog/>`_.
-
-If upgrading via your package manager fails, then you must perform a 
-:doc:`manual_upgrade`.
