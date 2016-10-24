@@ -304,6 +304,11 @@ To test your email configuration, save your email address in your personal
 settings and then use the **Send email** button in the *Email Server* section
 of the Admin settings page.
 
+Using Self-Signed Certificates
+------------------------------
+
+When using self-signed certificates on the remote SMTP server the certificate
+must be imported into ownCloud. Please refer to :doc:`import_ssl_cert` for more information.
 
 Troubleshooting
 ---------------

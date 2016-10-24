@@ -18,7 +18,7 @@ access by entering specific users or groups in the **Available for** field.
 
 Optionally, ownCloud can use FTPS (FTP over SSL) by checking **Secure ftps://**. 
 This requires additional configuration with your root certificate if the FTP 
-server uses a self-signed certificate.
+server uses a self-signed certificate (See :doc:`../../configuration_server/import_ssl_cert`).
 
 .. figure:: images/ftp.png
    :alt: ownCloud GUI FTP configuration. 
