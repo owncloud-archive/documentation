@@ -7,7 +7,7 @@ Changes in 9.2
 
 * Supported PHP versions are 5.6+ and 7.0+. 
 * The upgrade migration test has been removed; see :ref:`migration_test_label`.
-
+* Requires to use at least desktop client version 2.0 by default.
 
 Changes in 9.1
 --------------
