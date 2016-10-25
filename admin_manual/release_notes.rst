@@ -2,6 +2,7 @@
 ownCloud |version| Release Notes
 ================================
 
+.. _9.0_release_notes_label:
 
 Changes in 9.0
 --------------
@@ -192,7 +193,7 @@ Remote Federated Cloud Share Cannot be Reshared With Local Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with
-your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration`
+your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` 
 to learn more about federated cloud sharing)
 
 Manually Migrate Encryption Keys after Upgrade
@@ -359,13 +360,11 @@ Protecting ownCloud on IIS from Data Loss
 Under certain circumstances, running your ownCloud server on IIS could be at 
 risk of data loss. To prevent this, follow these steps.
 
-In your ownCloud server configuration file, ``owncloud\config\config.php``, set 
-``config_is_read_only`` to true.
-    
-Set the ``config.php`` file to read-only.
-    
-When you make server updates ``config.php`` must be made writeable. When your 
-updates are completed re-set it to read-only.
+* In your ownCloud server configuration file, ``owncloud\config\config.php``, set 
+  ``config_is_read_only`` to true.
+* Set the ``config.php`` file to read-only.
+* When you make server updates ``config.php`` must be made writeable. When your 
+  updates are completed re-set it to read-only.
 
 Antivirus App Modes
 ^^^^^^^^^^^^^^^^^^^
