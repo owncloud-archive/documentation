@@ -98,6 +98,8 @@ Changes in 9.1
 * PSR-4 autoloading forced for OC\ and OCP\, optional for OCA\ docs at https://doc.owncloud.org/server/9.1/developer_manual/app/classloader.html
 * More cleanup of the sharing code (ongoing)
 
+.. _9.0_release_notes_label:
+
 Changes in 9.0
 --------------
 
