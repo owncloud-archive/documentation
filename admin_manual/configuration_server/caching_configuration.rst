@@ -28,7 +28,7 @@ of memcache that best fits your needs. The supported caching backends are:
    A local cache for systems running PHP 5.6 and up.
 * `Memcached <http://www.memcached.org/>`_ 
    Distributed cache for multi-server ownCloud installations.
-* `Redis <http://redis.io/>`_, PHP module 2.2.5 and up required.
+* `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
    For distributed caching.
    
 Memcaches must be explicitly configured in ownCloud 8.1 and up by installing 
@@ -109,7 +109,7 @@ as a local cache for :doc:`Transactional File Locking
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
-The Redis PHP module must be version 2.2.5+. If you are running a Linux 
+The Redis PHP module must be version 2.2.6+. If you are running a Linux 
 distribution that does not package the supported versions of this module, or 
 does not package Redis at all, see :ref:`install_redis_label`.
 
@@ -214,7 +214,7 @@ These instructions are adaptable for any distro that does not package the
 supported version, or that does not package Redis at all, such as SUSE Linux 
 Enterprise Server and Red Hat Enterprise Linux.
 
-The Redis PHP module must be at least version 2.2.5. Please note that 
+The Redis PHP module must be at least version 2.2.6. Please note that 
 the Redis PHP module versions 2.2.5 - 2.2.7 will only work for:
   
 ::
