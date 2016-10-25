@@ -450,13 +450,11 @@ Protecting ownCloud on IIS from Data Loss
 Under certain circumstances, running your ownCloud server on IIS could be at 
 risk of data loss. To prevent this, follow these steps.
 
-In your ownCloud server configuration file, ``owncloud\config\config.php``, set 
-``config_is_read_only`` to true.
-* 
-Set the ``config.php`` file to read-only.
-* 
-When you make server updates ``config.php`` must be made writeable. When your 
-updates are completed re-set it to read-only.
+* In your ownCloud server configuration file, ``owncloud\config\config.php``, set 
+  ``config_is_read_only`` to true.
+* Set the ``config.php`` file to read-only.
+* When you make server updates ``config.php`` must be made writeable. When your 
+  updates are completed re-set it to read-only.
 
 Antivirus App Modes
 ^^^^^^^^^^^^^^^^^^^
