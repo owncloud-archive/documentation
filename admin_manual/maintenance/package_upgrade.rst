@@ -90,8 +90,8 @@ Upgrading Across Skipped Releases
 ---------------------------------
 
 It is best to update your ownCloud installation with every new point release (e.g. 8.1.10), 
-and to never skip any major releases (e.g. don't skip 8.2.x between 8.1.x and 9.0.x). If you
-have skipped any major releases you can bring your ownCloud current with these steps:
+and to never skip any major release (e.g. don't skip 8.2.x between 8.1.x and 9.0.x). If you
+have skipped any major release you can bring your ownCloud current with these steps:
 
 #. Add the repository of your current version (e.g. 8.1.x)
 #. Upgrade your current version to the latest point release (e.g. 8.1.10) via your package manager
