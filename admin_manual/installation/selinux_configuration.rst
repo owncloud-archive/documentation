@@ -6,7 +6,9 @@ SELinux Configuration
 
 When you have SELinux enabled on your Linux distribution, you may run into 
 permissions problems after a new ownCloud installation, and see ``permission 
-denied`` errors in your ownCloud logs. 
+denied`` errors in your ownCloud logs.
+
+When you are testing ownCloud or troubleshooting, 
 
 The following settings should work for most SELinux systems that use the 
 default distro profiles. Run these commands as root, and remember to adjust the filepaths 
@@ -33,7 +35,7 @@ this execute the following commands as root after uninstalling ownCloud::
  
  restorecon -Rv '/var/www/html/owncloud/'
  
-Note: The assets folder is only required if JavaScript and CSS Asset Management is enabled. ('asset-pipeline.enabled' => true, in config.php)
+Note: The assets folder is only required if JavaScript and CSS Asset Management is enabled. (``asset-pipeline.enabled' => true,`` in ``config.php``)
 
 If you have customized SELinux policies and these examples do not work, you must give the 
 HTTP server write access to these directories::
@@ -43,10 +45,21 @@ HTTP server write access to these directories::
  /var/www/html/owncloud/apps
  /var/www/html/owncloud/assets
  
+Enable updates via the web interface
+------------------------------------
+
+To enable updates via the ownCloud web interface, you may need this to enable writing to the ownCloud directories::
+
+ setsebool httpd_unified on
+ 
+When the update is completed, disable write access::
+
+ setsebool -P  httpd_unified  off
+ 
 Disallow write access to the whole web directory
 ------------------------------------------------
 
-For security reasons it's suggested to disable write access to all folders in /var/www/ (default):
+For security reasons it's suggested to disable write access to all folders in /var/www/ (default)::
 
  setsebool -P  httpd_unified  off
 
@@ -75,7 +88,7 @@ the app store. To allow this access use the following setting::
 Allow access to network memcache
 --------------------------------
 
-This setting is not required if httpd_can_network_connect is already on
+This setting is not required if ``httpd_can_network_connect`` is already on::
 
  setsebool -P httpd_can_network_memcache on
 
@@ -97,14 +110,14 @@ If you have placed your datadir on a CIFS/SMB share use the following setting::
 Allow access to FuseFS
 ----------------------
 
-If your owncloud data folder resides on a Fuse Filesystem (e.g. EncFS etc), this setting is required as well:
+If your owncloud data folder resides on a Fuse Filesystem (e.g. EncFS etc), this setting is required as well::
 
  setsebool -P httpd_use_fusefs on
  
 Allow access to GPG for Rainloop
 --------------------------------
 
-If you use a the rainloop webmail client app which supports GPG/PGP, you might need this:
+If you use a the rainloop webmail client app which supports GPG/PGP, you might need this::
 
  setsebool -P httpd_use_gpg on
 
@@ -116,3 +129,12 @@ For general Troubleshooting of SELinux and its profiles try to install the packa
  sealert -a /var/log/audit/audit.log > /path/to/mylogfile.txt
 
 to get a report which helps you configuring your SELinux profiles.
+
+Another tool for troubleshooting is to enable a single ruleset for your ownCloud directory::
+
+ semanage fcontext -a -t httpd_sys_rw_content_t '/var/www/html/owncloud(/.*)?'
+ restorecon -RF /var/www/html/owncloud
+ 
+It is much stronger security to have a more fine-grained ruleset as in the examples at the beginning, so use this only for testing and troubleshooting. It has a similar effect to disabling SELinux, so don't use it on production systems. 
+
+See this `discussion on GitHub <https://github.com/owncloud/documentation/pull/2693>`_ to learn more about configuring SELinux correctly for ownCloud.
