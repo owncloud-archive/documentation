@@ -211,13 +211,14 @@ Use APCu for local caching, Redis for file locking::
 Large Organization, Clustered Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use Redis for everything except local memcache::
+Use Redis for everything except local memcache. Use the server's IP address or hostname so that it is accessible to other hosts::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
   'memcache.locking' => '\OC\Memcache\Redis',
   'memcache.local' => '\OC\Memcache\APCu',
   'redis' => array(
-       'host' => 'localhost',
+       'host' => 'server1',  //hostname example
+       'host' => '12.34.56.78',  //IP address example
        'port' => 6379,
         ),
 
@@ -240,13 +241,7 @@ These instructions are adaptable for any distro that does not package the
 supported version, or that does not package Redis at all, such as SUSE Linux 
 Enterprise Server and Red Hat Enterprise Linux.
 
-The Redis PHP module must be at least version 2.2.6. Please note that 
-the Redis PHP module versions 2.2.5 - 2.2.7 will only work for:
-  
-::
-   
-   PHP version 6.0.0 or older
-   PHP version 5.2.0 or newer
+The Redis PHP module must be at least version 2.2.6.
   
 See `<https://pecl.php.net/package/redis>`_
 
