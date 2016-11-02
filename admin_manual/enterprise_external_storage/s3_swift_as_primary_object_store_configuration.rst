@@ -107,6 +107,28 @@ into the virtual filesystem. The class to be used is ``OCA\ObjectStore\S3``:
         ],
     ],
 
+S3 Multibucket Configuration
+-----------------------------
+
+ownCloud 9.1+ has multibucket support for S3 object stores::
+
+ 'objectstore_multibucket' => [
+    'class' => 'OCA\ObjectStore\S3',
+    'arguments' => [
+        'autocreate' => true,
+        'options' => [
+            'version' => '2006-03-01',
+            'region'  => 'eu-central-1',
+            'credentials' => [
+                'key' => 'EJ39ITYZEUH5BGWDRUFY',
+                'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
+            ],
+        ],
+    ],
+ ],
+
+    
+    
 OpenStack Swift
 ~~~~~~~~~~~~~~~
 
