@@ -159,7 +159,7 @@ If you don't already have an SMB share, you must create one. Then start the list
 
     sudo -u www-data php occ wnd:listen <host> <share> <username> [password]
     
-The ``host`` is your remote SMB server. ``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. By default there is no output. Enable verbosity to see the notifications::
+The ``host`` is your remote SMB server, which must be exactly the same as the server name in your WND configuration on your ownCloud Admin page. ``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. By default there is no output. Enable verbosity to see the notifications::
  
   $ sudo -u www-data php occ wnd:listen -v server share useraccount
   Please enter the password to access the share: 
