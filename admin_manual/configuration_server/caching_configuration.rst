@@ -218,7 +218,8 @@ Use Redis for everything except local memcache::
   'memcache.locking' => '\OC\Memcache\Redis',
   'memcache.local' => '\OC\Memcache\APCu',
   'redis' => array(
-       'host' => 'localhost',
+       'host' => 'server1',  //hostname example
+       'host' => '12.34.56.78',  //IP address example
        'port' => 6379,
         ),
 
