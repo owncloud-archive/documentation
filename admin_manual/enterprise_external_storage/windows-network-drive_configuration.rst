@@ -37,7 +37,7 @@ Installation
 Enable the Windows Network Drive app on your ownCloud Apps page. Then there are 
 a few dependencies to install.
 
-You must install ``php-smbclient``. This should be included in most Linux distributions. See `eduardok/libsmbclient-php <https://github.com/eduardok/libsmbclient-php>`_ if your distribution does not include it; this provides source archives and instructions how to install binary packages.
+You must install ``php-smbclient`` version 0.8.0+. This should be included in most Linux distributions. See `eduardok/libsmbclient-php <https://github.com/eduardok/libsmbclient-php>`_ if your distribution does not include it; this provides source archives and instructions how to install binary packages.
 
 You also need the Samba client installed on your Linux system. This is included in 
 all Linux distributions; on Debian, Ubuntu, and other Debian derivatives this 

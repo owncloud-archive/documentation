@@ -85,7 +85,7 @@ Required for specific apps:
 * PHP module imap (for external user authentication)
 * PHP module smbclient  (SMB/CIFS integration)
   
-.. note:: SMB/Windows Network Drive mounts require the PHP module smbclient; see see 
+.. note:: SMB/Windows Network Drive mounts require the PHP module smbclient version 0.8.0+; see
   :doc:`../configuration_files/external_storage/smb`.
 
 Recommended for specific apps (*optional*):
