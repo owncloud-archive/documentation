@@ -5,12 +5,12 @@ SMB/CIFS
 ownCloud can connect to Windows file servers or other SMB-compatible servers
 with the SMB/CIFS backend.
 
-.. note:: The SMB/CIFS backend requires ``smbclient`` or 
-   the PHP smbclient module to be installed on the ownCloud server. The PHP 
-   smbclient module is preferred, but either will work. These 
-   should be included in any Linux distribution. (See `PECL smbclient 
-   <https://pecl.php.net/package/smbclient>`_ if your distro does not include 
-   them.)
+.. note:: The SMB/CIFS backend requires the PHP smbclient module to be installed on the ownCloud server. This should be included in any Linux distribution; on Debian, Ubuntu, CentOS, and Fedora it is ``php-smbclient``. See `eduardok/libsmbclient-php <https://github.com/eduardok/libsmbclient-php>`_ if your distribution does not include it; this provides source archives and instructions how to install binary packages.
+
+You also need the Samba client installed on your Linux system. This is included in 
+all Linux distributions; on Debian, Ubuntu, and other Debian derivatives this 
+is ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is 
+``samba-client``. You also need ``which`` and ``stdbuf``, which should be included in most Linux distributions.
 
 You need the following information:
 

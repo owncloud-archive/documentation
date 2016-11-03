@@ -42,7 +42,7 @@ The ownCloud .tar archive contains all of the required PHP modules. This section
 lists all required and optional PHP modules.  Consult the `PHP manual 
 <http://php.net/manual/en/extensions.php>`_ for more information on modules. 
 Your Linux distribution should have packages for all required modules. You can 
-check the precense of a module by typing ``php -m | grep -i <module_name>``. 
+check the presence of a module by typing ``php -m | grep -i <module_name>``. 
 If you get a result, the module is present.
 
 Required:
@@ -80,11 +80,13 @@ Database connectors (pick the one for your database:)
 
 Required for specific apps:
 
-* PHP module ldap (for LDAP integration)
-* PHP module smbclient  (SMB/CIFS integration, see 
-  :doc:`../configuration_files/external_storage/smb`)
-* PHP module ftp (for FTP storage / external user authentication)
-* PHP module imap (for external user authentication)
+ * PHP module ldap (for LDAP integration)
+ * PHP module ftp (for FTP storage / external user authentication)
+ * PHP module imap (for external user authentication)
+ * PHP module smbclient  (SMB/CIFS integration)
+
+.. note:: SMB/Windows Network Drive mounts require the PHP module smbclient; see 
+  :doc:`../configuration_files/external_storage/smb`.
 
 Recommended for specific apps (*optional*):
 
