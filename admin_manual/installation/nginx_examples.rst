@@ -115,16 +115,17 @@ your nginx installation.
       error_page 404 /core/templates/404.php;
   
       location = / {
+          # Uncomment if you are going to use Windows WebDav client
           # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
-          if ($http_user_agent = DavClnt) {
-              set $WinWebDav A;
-          }
-          if ($request_method = OPTIONS) {
-              set $WinWebDav "${WinWebDav}B";
-          }
-          if ($WinWebDav = AB) {
-              return 401;
-          }
+          #if ($http_user_agent = DavClnt) {
+          #    set $WinWebDav A;
+          #}
+          #if ($request_method = OPTIONS) {
+          #    set $WinWebDav "${WinWebDav}B";
+          #}
+          #if ($WinWebDav = AB) {
+          #    return 401;
+          #}
       }
   
       location / {
