@@ -116,7 +116,13 @@ your nginx installation.
   
       location = / {
           # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
+          if ($http_user_agent = DavClnt) {
+              set $WinWebDav A;
+          }
           if ($request_method = OPTIONS) {
+              set $WinWebDav "${WinWebDav}B";
+          }
+          if ($WinWebDav = AB) {
               return 401;
           }
       }
