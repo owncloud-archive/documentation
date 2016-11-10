@@ -114,10 +114,10 @@ your nginx installation.
       error_page 403 /core/templates/403.php;
       error_page 404 /core/templates/404.php;
   
-      # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
       location = / {
+          # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
           if ($request_method = OPTIONS) {
-              return 301 $scheme://$server_name/remote.php/webdav/;
+              return 401;
           }
       }
   
