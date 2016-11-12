@@ -147,7 +147,7 @@ your nginx installation.
       # Make sure it is BELOW the PHP block
       location ~* \.(?:css|js)$ {
           try_files $uri /index.php$uri$is_args$args;
-          add_header Cache-Control "public, max-age=7200";
+          add_header Cache-Control "max-age=15778463";
           # Add headers to serve security related headers (It is intended to have those duplicated to the ones above)
           # Before enabling Strict-Transport-Security headers please read into this topic first.
           #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
@@ -277,7 +277,7 @@ your nginx installation.
           # Make sure it is BELOW the PHP block
           location ~* \.(?:css|js)$ {
               try_files $uri /owncloud/index.php$uri$is_args$args;
-              add_header Cache-Control "public, max-age=7200";
+              add_header Cache-Control "max-age=15778463";
               # Add headers to serve security related headers  (It is intended to have those duplicated to the ones above)
               # Before enabling Strict-Transport-Security headers please read into this topic first.
               #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
