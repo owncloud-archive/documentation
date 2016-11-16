@@ -1,3 +1,5 @@
+.. _coding_style_guidelines_label:
+
 Coding Style & General Guidelines
 =================================
 
