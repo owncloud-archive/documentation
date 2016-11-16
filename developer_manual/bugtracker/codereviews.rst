@@ -41,7 +41,7 @@ How will it work?
 
 Examples
 --------
-Read our `coding guidelines`_ for information on what a good pull request and
+Read our :ref:`coding_style_guidelines_label` for information on what a good pull request and
 good ownCloud code looks like.
 
 These are two examples that are considered to be good examples of how pull
@@ -55,8 +55,7 @@ Questions?
 
 Feel free to drop a line on the `mailing list`_ or join us on `IRC`_.
 
-.. _core repository: https://GitHub.com/owncloud/core
+.. _core repository: https://github.com/owncloud/core
 .. _continuous integration server: https://ci.owncloud.org/
 .. _mailing list: https://mailman.owncloud.org/mailman/listinfo/devel
 .. _IRC: http://webchat.freenode.net/?channels=owncloud-dev
-.. _coding guidelines: ../general/codingguidelines
