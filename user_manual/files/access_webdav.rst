@@ -445,7 +445,7 @@ Error 0x80070043 "The network name cannot be found." while adding a network driv
 
 Solution
 ^^^^^^^^
-Make Windows service **WebClient** starts "Automatically":
+Make Windows service **WebClient** start automatically:
 
 1. Open **Control Panel**.
 2. Go to **Administrative Tools**.
