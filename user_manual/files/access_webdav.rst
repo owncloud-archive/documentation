@@ -439,6 +439,28 @@ Solution
 
 Workarounds are documented in the KB2668751_ article.
 
+Problem
+^^^^^^^
+Error 0x80070043 "The network name cannot be found." while adding a network drive.
+
+Solution
+^^^^^^^^
+Make Windows service **WebClient** start automatically:
+
+1. Open **Control Panel**.
+2. Go to **Administrative Tools**.
+3. Launch **Services**.
+4. Find **WebClient** service.
+5. Right-click on it and choose **Properties**.
+6. Select **Startup type**: **Automatic**.
+7. Click **OK** button.
+
+Or in command prompt (as Admin)::
+
+ sc config "WebClient" start=auto
+ sc start "WebClient"
+
+More details `here <https://github.com/owncloud/documentation/pull/2668>`_.
 
 Accessing Files Using cURL
 --------------------------
