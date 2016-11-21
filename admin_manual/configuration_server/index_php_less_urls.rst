@@ -18,6 +18,12 @@ for how to enable and configure these.
 Furthermore these instructions are only working when using Apache together with the ``mod_php``
 Apache module for PHP. Other modules like ``php-fpm`` or ``mod_fastcgi`` are unsupported.
 
+Finally the user running your Web server (e.g. ``www-data``) needs to be able to write into the
+``.htaccess`` file shipped within the ownCloud root directory (e.g. ``/var/www/owncloud/.htaccess``).
+If you have applied :ref:`strong_perms_label` the user might be unable to write into this
+file and the needed update will fail. You need to revert this strong permissions temporarily by
+following the steps described in :ref:`set_updating_permissions_label`.
+
 Configuration steps
 -------------------
 
