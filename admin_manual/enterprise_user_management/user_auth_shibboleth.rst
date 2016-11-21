@@ -92,7 +92,7 @@ Further Shibboleth specific configuration as defined in
 	<Location ~ \
 	"/oc-shib/(status.php$\
 	|index.php/s/\
-	|public.php$\
+	|public.php\
 	|cron.php$\
 	|core/img/\
 	|index.php/apps/files_sharing/ajax/publicpreview.php$\
