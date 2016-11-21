@@ -29,6 +29,7 @@
    filesystem
    users
    two-factor-provider
+   extstorage
    hooks
    backgroundjobs
    logging
@@ -110,6 +111,7 @@ Create database tables, run Sql queries, store/retrieve configuration informatio
 * :doc:`database`
 * :doc:`configuration`
 * :doc:`filesystem`
+* :doc:`extstorage`
 
 Authentication & Users
 ----------------------
