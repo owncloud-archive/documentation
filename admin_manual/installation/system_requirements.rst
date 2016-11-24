@@ -14,10 +14,10 @@ Recommended Setup for Running ownCloud
 
 For best performance, stability, support, and full functionality we recommend:
 
-* Ubuntu 16.04
-* MySQL/MariaDB
-* PHP 5.6 +
-* Apache 2.4 with mod_php
+* Operating system: Ubuntu 16.04 LTS.
+* Web server: Apache 2.4.
+* Database: MySQL/MariaDB with InnoDB storage engine (MyISAM is not supported, see: :    ref:`db-storage-engine-label`)
+* PHP 7.
 
 Supported Platforms
 -------------------
