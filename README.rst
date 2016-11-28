@@ -82,7 +82,7 @@ Linux / OS X
 
 First, make sure that the following are installed:
 
-* Python 2
+* Python
 * Python Image Library (PIL) - (the package is called something like ``python-pillow``)
 * Sphinx (e.g. ``sudo yum install python-sphinx``),
   on Mac: ``sudo easy_install Sphinx``
