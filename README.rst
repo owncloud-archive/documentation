@@ -14,7 +14,7 @@ See the `Style Guide <https://github.com/owncloud/documentation/blob/master/styl
 Manuals
 -------
 
-This repository hosts four manuals:
+This repository hosts three manuals:
 
 * **Users' Manual**
 * **Administration Manual**
@@ -82,7 +82,7 @@ Linux / OS X
 
 First, make sure that the following are installed:
 
-* Python 2 (2.6.0 or better, Python 3 is not yet supported!)
+* Python 2
 * Python Image Library (PIL) - (the package is called something like ``python-pillow``)
 * Sphinx (e.g. ``sudo yum install python-sphinx``),
   on Mac: ``sudo easy_install Sphinx``
@@ -152,7 +152,7 @@ make it part of this documentation collection, follow these steps:
 Prerequisites
 ^^^^^^^^^^^^^
 
-1. Install Python 2.x
+1. Install Python
 2. Install odt2sphinx (``easy_install odt2sphinx``)
 3. Install GCC/clang (`Xcode command line tools`_ required on Mac OS)
 
