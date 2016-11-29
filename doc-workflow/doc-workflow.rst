@@ -13,7 +13,7 @@ Quickstart
 
 The documentation publishing workflow operates in this order:
 
-Git > Sphinx > GitHub > Jenkins > doc.owncloud.com and doc.owncloud.com
+Git > Sphinx > GitHub > Jenkins > doc.owncloud.com and doc.owncloud.org
 
 Clone the appropriate ownCloud GitHub repos to your PC.
 Branch the appropriate repo, and then write and edit the docs using Sphinx/RST.
