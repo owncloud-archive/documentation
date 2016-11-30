@@ -42,8 +42,21 @@ The README on https://github.com/owncloud/documentation has instructions for set
 All Documentation Repos
 -----------------------
 
-Admin, User, and Developer manuals
+The technical writer is the boss of these repos.
+
+Admin, User, and Developer manuals. 
  https://github.com/owncloud/documentation
+  
+Index page for doc.owncloud.com The technical writer is the boss of this repo.
+ https://github.com/owncloud/doc-index-com
+ 
+Index page for doc.owncloud.org The technical writer is the boss of this repo.
+ https://github.com/owncloud/doc-index-org
+ 
+Documentation Wiki, any GitHub member can contribute
+ https://github.com/owncloud/documentation/wiki 
+ 
+The manuals are integrated into the following repos, so the technical writer follows their rules for publishing changes.
  
 Android app manual 
  https://github.com/owncloud/android
@@ -56,12 +69,6 @@ iOS app manual
  
 Branded clients manual
  https://github.com/owncloud/branded_clients
-
-Index page for doc.owncloud.com 
- https://github.com/owncloud/doc-index-com
- 
-Index page for doc.owncloud.org
- https://github.com/owncloud/doc-index-org
  
 The master config.sample.php
  https://github.com/owncloud/core/tree/master/config
@@ -71,17 +78,9 @@ https://doc.owncloud.org/server/9.2/admin_manual/configuration_server/config_sam
 ownCloud Appliance admin manual
  https://github.com/owncloud/enterprise/tree/master/appliance/vagrant/oc9ee
  
-Enterprise installation READMEs on customer.owncloud.com/customer 
-
 Enterprise documentation repo. This is obsolete and not used, but enterprise support people still post issues here. 
  https://github.com/owncloud/documentation-enterprise
  
-Documenation Wiki, any GitHub member can contribute
- https://github.com/owncloud/documentation/wiki
- 
-
-
-
  
 
  
