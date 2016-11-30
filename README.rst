@@ -129,7 +129,7 @@ The Arch Linux way
 * sudo pacman -S community/python2-sphinx
 * aur/sphinxcontrib-phpdomain from AUR
 * sudo pacman -S extra/texlive-core texlive-latexextra
-* cd user_manual
+* cd manual/user
 * make latexpdf
 * PDFVIEWER _build/latex/ownCloudUserManual.pdf
 
