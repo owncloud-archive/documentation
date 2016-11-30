@@ -213,6 +213,9 @@ these modules:
 Troubleshooting WebDAV
 ----------------------
 
+General troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^
+
 ownCloud uses SabreDAV, and the SabreDAV documentation is comprehensive and 
 helpful.
 
@@ -237,6 +240,30 @@ See:
 There is also a well maintained FAQ thread available at the `ownCloud Forums 
 <https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852>`_
 which contains various additional information about WebDAV problems.
+
+Error 0x80070043 "The network name cannot be found." while adding a network drive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The windows native WebDAV client might fail with the following error message::
+
+    Error 0x80070043 "The network name cannot be found." while adding a network drive
+
+A known workaround for this issue is to update your Web server configuration. For Apache
+you need to add something like the following (please update the path accordingly) to your 
+main Web server / Vhost configuration or the ``.htaccess`` placed in your document root::
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} ^(/)$ [NC]
+    RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
+    RewriteRule .* https://%{SERVER_NAME}/owncloud/remote.php/webdav/ [R=301,L]
+
+For nginx an example config addition could be::
+
+    location = / {
+        if ($http_user_agent = DavClnt) {
+            return 401;
+        }
+    }
 
 Troubleshooting Contacts & Calendar
 -----------------------------------
