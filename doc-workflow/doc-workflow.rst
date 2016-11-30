@@ -47,10 +47,10 @@ The technical writer is the boss of these repos.
 Admin, User, and Developer manuals. 
  https://github.com/owncloud/documentation
   
-Index page for doc.owncloud.com The technical writer is the boss of this repo.
+Index page for doc.owncloud.com 
  https://github.com/owncloud/doc-index-com
  
-Index page for doc.owncloud.org The technical writer is the boss of this repo.
+Index page for doc.owncloud.org 
  https://github.com/owncloud/doc-index-org
  
 Documentation Wiki, any GitHub member can contribute
