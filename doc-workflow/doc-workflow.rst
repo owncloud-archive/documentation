@@ -66,7 +66,7 @@ Index page for doc.owncloud.org
 The master config.sample.php
  https://github.com/owncloud/core/tree/master/config
  
-https://doc.owncloud.org/server/9.2/admin_manual/configuration_server/config_sample_php_parameters.html is manually generated from the master config.sample.php with the conversion script at https://github.com/MorrisJobke/ownCloud-config-converter
+https://doc.owncloud.org/server/9.2/admin_manual/configuration_server/config_sample_php_parameters.html is manually generated from the master config.sample.php with the conversion script at https://github.com/MorrisJobke/ownCloud-config-converter Download the conversion script, make the conversion to ``config_sample_php_parameters.rst``, and then push it to GitHub like any other document.
 
 ownCloud Appliance admin manual
  https://github.com/owncloud/enterprise/tree/master/appliance/vagrant/oc9ee
