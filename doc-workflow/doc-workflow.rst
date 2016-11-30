@@ -86,7 +86,10 @@ Enterprise documentation repo. This is obsolete and not used, but enterprise sup
  
 The repository for owncloud.org is https://github.com/owncloud/owncloud.org. owncloud.com has its own separate system somewhere. I have been marking obsolete manuals with an "Unsupported" banner. The .org site templates are in the ``_shared_assets`` directory. See https://github.com/owncloud/documentation/commit/26022bb489218120977592409755152e63973d19 for example code, and https://doc.owncloud.org/server/8.0/user_manual/ to see how it looks. The manuals are left up because they come up in Google searches, so the banner tells users where to find current manuals.
 
+Obsolete Pages
+--------------
 
+When you remove manual pages or change the paths, the old pages remain on the server. This is a problem because the obsolete pages come up in Google searches. Keep track of these pages and open a ticket with the sysadmin team to delete them from the server. (There may be a way to do this in Jenkins.)
 
  
 
