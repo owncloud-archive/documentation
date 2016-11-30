@@ -228,3 +228,30 @@ On CentOS and Fedora, the ``yum`` command shows available and installed version
 information::
 
  yum search php-pecl-redis
+ 
+Redis Errors in Large Instances
+-------------------------------
+
+*Redis log: [] # WARNING: The TCP backlog setting of 20480 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of...*
+
+Newer versions of Redis have their own backlog set to 511 and you will need this to be higher if you have many connections.
+In high requests-per-second environments you need an high backlog in order to avoid slow clients connections issues. Note that the Linux kernel will silently truncate it to the value of ``/proc/sys/net/core/somaxconn``, so make sure to raise both the value of ``somaxconn`` and ``tcp_max_syn_backlog`` in order to get the desired effect.
+
+To fix this warning you have to set a new configuration to ``/etc/rc.local`` so that the setting will persist upon reboot::
+
+ $~: sudo nano /etc/rc.local 
+ sysctl -w net.core.somaxconn=65535
+
+When you reboot the next time, the new setting will allow 65535 connections instead of the default value.
+
+*Redis log: [] # WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This will create latency and memory usage issues with Redis.*
+
+When a Linux kernel has Transparent Huge Pages enabled, Redis incurs a big latency penalty after the fork call is used in order to persist on disk. Huge pages are the cause of the following issue:
+
+    Fork is called, two processes with shared huge pages are created.
+    In a busy instance, a few event loops runs will cause commands to target a few thousand of pages, causing the copy-on-write of almost the whole process memory.
+    This will result in big latency and big memory usage.
+
+Make sure to disable transparent huge pages using the following command::
+
+ echo never > /sys/kernel/mm/transparent_hugepage/enabled
