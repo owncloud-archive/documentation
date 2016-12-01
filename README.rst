@@ -35,7 +35,7 @@ Please work in the appropriate branch.
 Spelling and Capitalization Conventions
 ---------------------------------------
 
-For detailed information, please refer to `the ownCloud Style Guide ./style_guide.rst`_.
+For detailed information, please refer to :doc:`the ownCloud Style Guide ./style_guide.rst`_.
 Otherwise, source files are written using the `Sphinx Documentation Generator
 <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
