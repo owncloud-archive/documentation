@@ -38,7 +38,8 @@ License
 -------
 
 All documentation in this repository is licensed under the Creative Commons
-Attribution 3.0 Unported license (`CC BY 3.0`_).
+Attribution 3.0 Unported license (`CC BY 3.0`_). You can find a local copy of 
+the license in `LICENSE ./LICENSE`.
 
 .. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
 
