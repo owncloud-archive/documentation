@@ -148,7 +148,7 @@ Alternatively, you can run ``./bin/unix/install-dependencies/archlinux.sh``.
 Windows
 ^^^^^^^
 
-Running ``setup.cmd`` will install Python 2.7 and install all dependencies.
+Running ``./bin/windows/setup.cmd`` will install Python 2.7 and install all dependencies.
 Enter any manual and clicking the "Build HTML" shortcut will create a HTML
 build. Likewise, "Build PDF" will build the PDF using the more lightweight,
 but feature-incomplete RST2PDF tool. The results are in ``_build/html`` and
