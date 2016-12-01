@@ -20,7 +20,14 @@ This repository hosts three manuals:
 * **Administration Manual**
 * **Developers Manual** 
   
-Please work in the appropriate branch. Stable8 is 8.0, stable8.1 is 8.1, stable8.2 is 8.2, stable9 is 9.0, stable9.1 is 9.1, and master is 9.2.
+Please work in the appropriate branch. 
+
+* Stable8 is 8.0
+* Stable8.1 is 8.1
+* Stable8.2 is 8.2
+* Stable9 is 9.0
+* Stable9.1 is 9.1
+* Master is 9.2
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
@@ -28,11 +35,11 @@ Please work in the appropriate branch. Stable8 is 8.0, stable8.1 is 8.1, stable8
 Spelling and Capitalization Conventions
 ---------------------------------------
 
-As this grows it may be moved to its own page.
-
-* ownCloud Apps Store
-* synchronize
-* Web (Web page, Web site)
+For detailed information, please refer to `the ownCloud Style Guide ./style_guide.rst`_.
+Otherwise, source files are written using the `Sphinx Documentation Generator
+<http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
+<http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
+from GitHub.
 
 License
 -------
@@ -43,13 +50,6 @@ the license in `LICENSE ./LICENSE`.
 
 .. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
 
-Style
------
-
-Source files are written using the `Sphinx Documentation Generator
-<http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
-<http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
-from GitHub.
 Contributing
 ------------
 
@@ -210,6 +210,15 @@ Process
 2. Run ``odt2sphinx my.docx``
 3. Move the resulting ``rst`` files in place and reference them
 4. Wrap text lines at 80 chars, apply markup fixes
+
+Then run the following commands to build the documentation::
+
+  cd user_manual && make latexpdf
+
+If you’re not on a headless box, then you can use `okular <https://en.opensuse.org/Okular>`_ 
+to view the generated documentation by using the following command::
+
+* okular _build/latex/ownCloudUserManual.pdf
 
 .. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
 .. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
