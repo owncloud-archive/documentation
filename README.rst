@@ -2,14 +2,14 @@
 ownCloud Documentation
 ======================
 
-Documentation is published on `<https://doc.owncloud.org>`_ and 
-`<https://doc.owncloud.com>`_.
+This repository stores the official documentation for ownCloud. Here, you will 
+find all the information that you need to both contribute to the official
+documentation. 
 
-The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is 
-available for tips, tricks, edge cases, and anyone who wants to contribute more 
-easily, without having to learn Git and Sphinx.
-
-See the `Style Guide <https://github.com/owncloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
+The documentation is published on `<https://doc.owncloud.org>`_ and 
+`<https://doc.owncloud.com>`_. A `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ 
+is available for tips, tricks, edge cases, and anyone who wants 
+to contribute more easily, without having to learn Git and Sphinx.
 
 Manuals
 -------
