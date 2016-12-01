@@ -117,7 +117,7 @@ After that, install the base dependencies, by running the following commands::
   sudo zypper in python-Sphinx python-rst2pdf python-sphinxcontrib-phpdomain \
     texlive-pdfjam texlive-threeparttable texlive-wrapfig texlive-multirow
 
-Alternatively, you can run ``./bin/install-dependencies/opensuse.sh``.
+Alternatively, you can run ``./bin/unix/install-dependencies/opensuse.sh``.
 
 The Debian/Ubuntu way
 ~~~~~~~~~~~~~~~~~~~~~
@@ -128,7 +128,7 @@ running the following commands::
   sudo apt-get install python-pil python-sphinx python-sphinxcontrib.phpdomain \
     rst2pdf texlive-fonts-recommended texlive-latex-extra texlive-latex-recommended
 
-Alternatively, you can run ``./bin/install-dependencies/debian-ubuntu.sh``.
+Alternatively, you can run ``./bin/unix/install-dependencies/debian-ubuntu.sh``.
 
 The Arch Linux way
 ~~~~~~~~~~~~~~~~~~
@@ -143,7 +143,7 @@ running the following commands::
 
   sudo easy_install -U sphinxcontrib-phpdomain
 
-Alternatively, you can run ``./bin/install-dependencies/archlinux.sh``.
+Alternatively, you can run ``./bin/unix/install-dependencies/archlinux.sh``.
 
 Windows
 ^^^^^^^
@@ -162,7 +162,8 @@ following commands::
 
   cd user_manual && make latexpdf
 
-The generated documentation will be located in ``_build/latex/``.
+You can also run ``./bin/unix/build-docs.sh`` as well. The generated 
+documentation will be located in ``_build/latex/``.
 
 Viewing The Documentation
 --------------------------
