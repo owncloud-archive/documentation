@@ -39,6 +39,11 @@ Required software:
 
 The README on https://github.com/owncloud/documentation has instructions for setting up your build environment.
 
+Release Updates
+---------------
+
+Sphinx/RST supports some variable substitutions, for example see the title in ``admin_manual/index.rst``, where the version is pulled from ``conf.py.``. However, there are some URLs that have to be manually updated; ``grep`` is your best friend for finding these. 
+
 Tracking Tasks
 --------------
 
