@@ -32,10 +32,10 @@ Please work in the appropriate branch.
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
 
-Spelling and Capitalization Conventions
----------------------------------------
+Style Guide
+-----------
 
-For detailed information, please refer to :doc:`the ownCloud Style Guide ./style_guide.rst`_.
+For detailed information, please refer to `the ownCloud Style Guide <style_guide.rst>`_.
 Otherwise, source files are written using the `Sphinx Documentation Generator
 <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
