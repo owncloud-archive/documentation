@@ -39,6 +39,11 @@ Required software:
 
 The README on https://github.com/owncloud/documentation has instructions for setting up your build environment.
 
+Tracking Tasks
+--------------
+
+Put everything in a GitHub issue. When anyone suggests a correction, have them open an issue. (Even better is they create a pull request.) You can assign people to Issues, give them milestones, labels, and sort and filter them.
+
 All Documentation Repos
 -----------------------
 
