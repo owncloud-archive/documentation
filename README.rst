@@ -109,13 +109,11 @@ architecture. For detailed instructions, refer to `the SUSE documentation <https
 As an example, if you are using openSUSE 42.1, then you would run the following
 commands::
 
-  sudo zypper addrepo http://download.opensuse.org/repositories/devel:languages:python/openSUSE_Leap_42.1/devel:languages:python.repo \
-    && sudo zypper refresh
+  sudo zypper addrepo http://download.opensuse.org/repositories/devel:languages:python/openSUSE_Leap_42.1/devel:languages:python.repo && sudo zypper refresh
 
 After that, install the base dependencies, by running the following commands::
 
-  sudo zypper in python-Sphinx python-rst2pdf python-sphinxcontrib-phpdomain \
-    texlive-pdfjam texlive-threeparttable texlive-wrapfig texlive-multirow
+  sudo zypper in python-Sphinx python-rst2pdf python-sphinxcontrib-phpdomain texlive-pdfjam texlive-threeparttable texlive-wrapfig texlive-multirow
 
 Alternatively, you can run ``./bin/unix/install-dependencies/opensuse.sh``.
 
@@ -125,8 +123,7 @@ The Debian/Ubuntu way
 To build the manual, first install the base dependencies, by 
 running the following commands::
 
-  sudo apt-get install python-pil python-sphinx python-sphinxcontrib.phpdomain \
-    rst2pdf texlive-fonts-recommended texlive-latex-extra texlive-latex-recommended
+  sudo apt-get install python-pil python-sphinx python-sphinxcontrib.phpdomain rst2pdf texlive-fonts-recommended texlive-latex-extra texlive-latex-recommended
 
 Alternatively, you can run ``./bin/unix/install-dependencies/debian-ubuntu.sh``.
 
@@ -136,11 +133,9 @@ The Arch Linux way
 To build the manual, first install the base dependencies, by 
 running the following commands::
 
-  sudo pacman-key --noconfirm --refresh-keys && \ 
-  sudo pacman --noconfirm -Syy && \ 
-  sudo pacman --noconfirm -S community/python2-rst2pdf community/python2-sphinx \ 
-    extra/texlive-core texlive-latexextra 
-
+  sudo pacman-key --noconfirm --refresh-keys 
+  sudo pacman --noconfirm -Syy 
+  sudo pacman --noconfirm -S community/python2-rst2pdf community/python2-sphinx extra/texlive-core texlive-latexextra 
   sudo easy_install -U sphinxcontrib-phpdomain
 
 Alternatively, you can run ``./bin/unix/install-dependencies/archlinux.sh``.

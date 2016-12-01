@@ -10,10 +10,12 @@
 ## Author: Matthew Setter <msetter@owncloud.com>
 ##
 
+set -e
+
 function install_dependencies()
 {
-  sudo pacman-key --refresh-keys && \ 
-  sudo pacman --noconfirm -Syy && \ 
+  sudo pacman-key --refresh-keys 
+  sudo pacman --noconfirm -Syy 
   sudo pacman --noconfirm -S community/python2-rst2pdf community/python2-sphinx extra/texlive-core texlive-latexextra 
   sudo easy_install -U sphinxcontrib-phpdomain
 }

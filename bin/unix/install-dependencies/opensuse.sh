@@ -10,10 +10,12 @@
 ## Author: Matthew Setter <msetter@owncloud.com>
 ##
 
+set -e
+
 function install_dependencies()
 {
     # first check if the repository's already been added
-    zypper lr | grep devel_languages_python &>/dev/null
+    zypper lr | grep --silent devel_languages_python
 
     if [ "$?" -eq 1 ]; then
         echo "Adding the devel:languages:python repository to the available repository list"
@@ -26,14 +28,4 @@ function install_dependencies()
     echo "Dependencies installed."
 }
 
-function build_documentation() 
-{
-    echo "Building the documentation..."
-
-    cd user_manual && make latexpdf && cd -
-
-    echo "Documentation built."
-}
-
 install_dependencies
-build_documentation
