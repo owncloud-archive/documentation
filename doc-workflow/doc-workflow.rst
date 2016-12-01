@@ -44,6 +44,13 @@ Tracking Tasks
 
 Put everything in a GitHub issue. When anyone suggests a correction, have them open an issue. (Even better is they create a pull request.) You can assign people to Issues, give them milestones, labels, and sort and filter them.
 
+Document Formats
+----------------
+
+The build system creates HTML pages and PDF manuals. ``conf.py`` controls version numbers, titles, and build options. Read the ``Makefile`` to see the complete list of output formats and commands.
+
+The PDF manuals have formatting problems because they are generated from the same source files as the HTML pages. On the Web sites images resize automatically according to window size. But the PDFs print the original image size, and image placement in LaTex is always "fun". The solution may be to separate the HTML and PDF builds, if there is ever time and resources.
+
 All Documentation Repos
 -----------------------
 
