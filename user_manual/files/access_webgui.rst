@@ -10,6 +10,14 @@ system ask your server administrator.
 .. figure:: ../images/files_page.png
    :alt: The Files view screen.
    
+Folder Permalinks
+-----------------
+
+Click the share icon on any folder to open the details window on the right. At the top next to the file or folder name click the little chain link icon to expose a permalink. You can give this permalink to any users on your ownCloud server that you have shared the file or folder with. The link remains valid even if the file is renamed.
+
+.. figure:: ../images/permalink.png
+   :alt: File permalink.
+   
 Tagging Files
 -------------
 
