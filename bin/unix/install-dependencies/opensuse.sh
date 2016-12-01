@@ -14,12 +14,10 @@ set -e
 
 function install_dependencies()
 {
-    # first check if the repository's already been added
-    zypper lr | grep --silent devel_languages_python
-
-    if [ "$?" -eq 1 ]; then
+    # first check if the repository's already been added and add it if not
+    if ! zypper lr | grep --silent devel_languages_python; then
         echo "Adding the devel:languages:python repository to the available repository list"
-        sudo zypper addrepo --refresh http://download.opensuse.org/repositories/devel:languages:python/openSUSE_Leap_42.1/devel:languages:python.repo;
+        sudo zypper addrepo --refresh http://download.opensuse.org/repositories/devel:languages:python/openSUSE_Leap_42.1/devel:languages:python.repo
     fi;
 
     echo "Installing required platform dependencies..."
