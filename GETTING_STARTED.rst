@@ -46,7 +46,8 @@ Required Software
 #. Git
 #. Sphinx Documentation Generator and Python
 #. Python Image Library (PIL)
-#. Sphinx PHPDomain
+#. Sphinx PHPDomain (python-sphinxcontrib.phpdomain)
+#. sphinx-build
 #. rst2pdf
 #. LaTex. Install the whole works, which is several hundred megabytes.
 #. VPN client, such as OpenVPN
