@@ -60,12 +60,10 @@ create a branch for fixing an issue in the tracker.
     To ssh://git@github.com/owncloud/documentation.git
        b5583aa..4f51698  HEAD -> master
 
-To send a pull request, you have two options.
-
-If using GitHub, you can do the pull request from there. Navigate to
-your repository, select the branch you just created, and then select the
-"Pull Request" button in the upper right. Select the user/organization
-"owncloud/documentation" as the recipient.
+To send a `pull request <https://help.github.com/articles/creating-a-pull-request/>`_ 
+when using GitHub, navigate to your repository, select the branch you just created, 
+and then select the "Pull Request" button in the upper right. Select the 
+user/organization "owncloud/documentation" as the recipient.
 
 What Branch To Issue The Pull Request Against?
 ----------------------------------------------
@@ -77,6 +75,20 @@ Which branch should you issue a pull request against?
 - For new features, or fixes that introduce new elements to the public API (such
   as new public methods or properties), issue the pull request against the
   "develop" branch.
+
+When creating the Pull Request, please keep the recommendations of `this post <https://github.com/blog/1943-how-to-write-the-perfect-pull-request>`_
+ in mind. To save time, here is a slightly revised version of the core
+ points:
+
+* Include the purpose of this Pull Request
+* Consider providing an overview of why the change is being made
+* Consider including any relevant links. 
+* Please don't assume that anyone has any familiarity with the project's history
+* Remember that anyone in the company could be reading the Pull Request
+* Be explicit about what feedback you want. 
+* Be explicit about when you want feedback. 
+* @mention individuals that you specifically want in the discussion and why
+* @mention teams that you want to involved in the discussion and why
 
 Branch Cleanup
 --------------
