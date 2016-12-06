@@ -4,8 +4,8 @@ Accessing your Files Using the ownCloud Web Interface
 
 You can access your ownCloud files with the ownCloud Web interface and create, 
 preview, edit, delete, share, and re-share files. Your ownCloud administrator 
-has the option to disable these features, so if any of them are missing on your 
-system ask your server administrator.
+has the option to disable these features. So, if any of them are missing on your 
+system, ask your server administrator.
 
 .. figure:: ../images/files_page.png
    :alt: The Files view screen.
@@ -13,7 +13,8 @@ system ask your server administrator.
 Folder Permalinks
 -----------------
 
-Click the share icon on any folder to open the details window on the right. At the top next to the file or folder name click the little chain link icon to expose a permalink. You can give this permalink to any users on your ownCloud server that you have shared the file or folder with. The link remains valid even if the file is renamed.
+Click the share icon on any folder to open the details window on the right. 
+At the top, next to the file or folder, name click the little chain link icon to expose a permalink. You can give this permalink to any users on your ownCloud server that you have shared the file or folder with. The link remains valid even if the file is renamed.
 
 .. figure:: ../images/permalink.png
    :alt: File permalink.
