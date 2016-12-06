@@ -36,6 +36,18 @@ If this is the first time provisioning the virtual machine, it may take a while
 to download the base box, as it’s based on Ubuntu 16.04. However, after it’s 
 been provisioned, then it should be relatively quick to boot.
 
+Once the virtual machine is running, you can follow the following instructions 
+to ssh in to it and build the documentation::
+
+    # ssh in to the virtual machine
+    vagrant ssh
+
+    # run the script to build all the manuals
+    . /opt/documentation/bin/unix/build_manuals.sh
+
+Note: As Vagrant maps the root directory of the project to a directory on its local 
+filesystem, the manuals will be created locally for you automatically.
+
 Building Manually
 -----------------
 
