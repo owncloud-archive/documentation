@@ -2,8 +2,8 @@
 Accessing your Files Using the ownCloud Web Interface
 =====================================================
 
-You can access your ownCloud files with the ownCloud Web interface and create, 
-preview, edit, delete, share, and re-share files. Your ownCloud administrator 
+You can access your ownCloud files with the ownCloud Web interface and *create*, 
+*preview*, *edit*, *delete*, *share*, and *re-share* files. Your ownCloud administrator 
 has the option to disable these features. So, if any of them are missing on your 
 system, ask your server administrator.
 
@@ -14,7 +14,8 @@ Folder Permalinks
 -----------------
 
 Click the share icon on any folder to open the details window on the right. 
-At the top, next to the file or folder, name click the little chain link icon to expose a permalink. You can give this permalink to any users on your ownCloud server that you have shared the file or folder with. The link remains valid even if the file is renamed.
+At the top, next to the file or folder name, click the little chain link icon to expose a permalink. 
+You can give this permalink to any user on your ownCloud server, that you have shared the file or folder with. The link remains valid even if the file is renamed.
 
 .. figure:: ../images/permalink.png
    :alt: File permalink.
@@ -30,24 +31,31 @@ ownCloud server.
 .. figure:: ../images/files_page-7.png
    :alt: Creating file tags.
    
-Then use the **Tags** filter on the left sidebar of your Files page to filter files by tags. There are three types of tags: 
+Then use the **Tags** filter on the left sidebar of your Files page to filter files by tags. 
+There are three types of tags: 
 
-**Visible** means that all users may see, rename, and apply these tags to files and folders.
+============== ==================================================================================
+Tag            Description
+============== ==================================================================================
+**Visible**    Means that all users may see, rename, and apply these tags to files and folders.
+**Restricted** Means tags are assignable and editable only to the user groups have permission 
+               to use them. Other users can filter files by restricted tags, but cannot tag files 
+               with them or rename them. The tags are marked (restricted).
+**Invisible**  Means visible only to ownCloud admins. 
+============== ==================================================================================
 
-**Restricted** means tags are assignable and editable only to the user groups have permission to use them. Other users can filter files by restricted tags, but cannot tag files with them or rename them. The tags are marked (restricted).
-
-**Invisible** means visible only to ownCloud admins. 
-
-When you use the **Tag** filter on your Files page you'll see something like the following image. If you do not have Admin rights then you will not see any invisible tags.
+When you use the **Tag** filter on your Files page, you'll see something like the following image. 
 
 .. figure:: ../images/files_page-8.png
    :alt: Viewing file tags.
  
+.. note:: If you do not have admin rights, then you will not see any invisible tags.
+
 Comments
 --------
  
-Use the Details view to add and read comments on any file or folder. Comments 
-are visible to everyone who has access to the file.
+Use the Details view to add and read comments on any file or folder. 
+Comments are visible to everyone who has access to the file.
 
 .. figure:: ../images/file_menu_comments_2.png
    :alt: Creating and viewing comments.
@@ -55,10 +63,15 @@ are visible to everyone who has access to the file.
 Video Player
 ------------
 
-You can play videos in ownCloud with the Video Player app by simply clicking on 
-the file. Video streaming by the native ownCloud video player depends on your Web browser 
-and the video format. If your ownCloud administrator has enabled video 
-streaming, and it doesn't work in your Web browser, it may be a browser issue. See https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility for supported multimedia formats in Web browsers. 
+You can play videos in ownCloud with the Video Player app, 
+by simply clicking on the file. 
+Video streaming by the native ownCloud video player depends on your Web browser 
+and the video’s format. 
+
+If your ownCloud administrator has enabled video streaming, 
+and it doesn't work in your Web browser, it may be a browser issue. 
+See `the media formats browser compatability guide <https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility>`_ 
+for the supported multimedia formats in most web browsers. 
 
 .. figure:: ../images/video_player_2.png
    :alt: Watching a movie.
@@ -66,9 +79,9 @@ streaming, and it doesn't work in your Web browser, it may be a browser issue. S
 File Controls
 -------------
    
-ownCloud can display thumbnail previews for image files, MP3 covers, 
-and text files, if this enabled by your server administrator. Hover your cursor 
-over a file or folder to expose the controls for the following operations:
+ownCloud can display thumbnail previews for image files, MP3 covers, and text files, 
+if this enabled by your server administrator. 
+Hover your cursor over a file or folder to expose the controls for the following operations:
 
 Favorites
   Click the star to the left of the file icon to mark it as a favorite, and 
@@ -96,15 +109,21 @@ Share
    
 You have five share permissions:
  
-* Can share; allows the users you share with to re-share.
-* Can edit; allows the users you share with to edit your shared files, and to collaborate using the Documents app.
-* Create; allows the users you share with to create new files and add them to the share.
-* Change; allows uploading a new version of a shared file and replacing it.
-* Delete; allows the users you share with to delete shared files.
+========== =====================================================================
+Permission Description
+========== =====================================================================
+Can share  Allows the users you share with to re-share
+Can edit   Allows the users you share with to edit your shared files, 
+           and to collaborate using the Documents app
+Create     Allows the users you share with to create new files 
+           and add them to the share
+Change     Allows uploading a new version of a shared file and replacing it
+Delete     Allows the users you share with to delete shared files
+========== =====================================================================
 
 Overflow Menu  
   The Overflow menu (three dots) displays file details, and allows you to 
-  rename, download, or delete files.
+  *rename*, *download*, or *delete* files.
   
 .. figure:: ../images/files_page-3.png
    :alt: Overflow menu.
@@ -116,10 +135,12 @@ Overflow Menu
    
 The **Settings** gear icon at the lower left allows you to show or hide hidden 
 files in your ownCloud Web interface. These are also called dotfiles, because 
-they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating 
-system to hide these files in your file browsers, unless you choose to display 
-them. Usually these are configuration files, so having the option to hide them 
-reduces clutter.
+they are prefixed with a dot, e.g. ``.mailfile``. 
+
+The dot tells your operating system to hide these files in your file browsers, 
+unless you choose to display them. 
+Usually these are configuration files, 
+so having the option to hide them reduces clutter.
 
 .. figure:: ../images/hidden_files.png
    :alt: Hiding or displaying hidden files. 
