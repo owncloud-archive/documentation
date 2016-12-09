@@ -1,0 +1,3086 @@
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (TeX Live 2013/Debian) (format=pdflatex 2016.12.5)  9 DEC 2016 08:16
+entering extended mode
+ restricted \write18 enabled.
+ %&-line parsing enabled.
+**ownCloud_Server_Administration_Manual.tex
+(./ownCloud_Server_Administration_Manual.tex
+LaTeX2e <2011/06/27>
+Babel <3.9h> and hyphenation patterns for 2 languages loaded.
+(./sphinxmanual.cls
+Document Class: sphinxmanual 2009/06/02 Document class (Sphinx manual)
+(/usr/share/texlive/texmf-dist/tex/latex/base/report.cls
+Document Class: report 2007/10/19 v1.4h Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
+)
+\c@part=\count79
+\c@chapter=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+\c@figure=\count86
+\c@table=\count87
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+))
+(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
+Package: inputenc 2008/03/30 v1.1d Input encoding file
+\inpenc@prehook=\toks14
+\inpenc@posthook=\toks15
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/utf8.def
+File: utf8.def 2008/04/05 v1.1m UTF-8 support for inputenc
+Now handling font encoding OML ...
+... no UTF-8 mapping file for font encoding OML
+Now handling font encoding T1 ...
+... processing UTF-8 mapping file for font encoding T1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.dfu
+File: t1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00AB (decimal 171)
+   defining Unicode char U+00BB (decimal 187)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C0 (decimal 192)
+   defining Unicode char U+00C1 (decimal 193)
+   defining Unicode char U+00C2 (decimal 194)
+   defining Unicode char U+00C3 (decimal 195)
+   defining Unicode char U+00C4 (decimal 196)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00C7 (decimal 199)
+   defining Unicode char U+00C8 (decimal 200)
+   defining Unicode char U+00C9 (decimal 201)
+   defining Unicode char U+00CA (decimal 202)
+   defining Unicode char U+00CB (decimal 203)
+   defining Unicode char U+00CC (decimal 204)
+   defining Unicode char U+00CD (decimal 205)
+   defining Unicode char U+00CE (decimal 206)
+   defining Unicode char U+00CF (decimal 207)
+   defining Unicode char U+00D0 (decimal 208)
+   defining Unicode char U+00D1 (decimal 209)
+   defining Unicode char U+00D2 (decimal 210)
+   defining Unicode char U+00D3 (decimal 211)
+   defining Unicode char U+00D4 (decimal 212)
+   defining Unicode char U+00D5 (decimal 213)
+   defining Unicode char U+00D6 (decimal 214)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00D9 (decimal 217)
+   defining Unicode char U+00DA (decimal 218)
+   defining Unicode char U+00DB (decimal 219)
+   defining Unicode char U+00DC (decimal 220)
+   defining Unicode char U+00DD (decimal 221)
+   defining Unicode char U+00DE (decimal 222)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E0 (decimal 224)
+   defining Unicode char U+00E1 (decimal 225)
+   defining Unicode char U+00E2 (decimal 226)
+   defining Unicode char U+00E3 (decimal 227)
+   defining Unicode char U+00E4 (decimal 228)
+   defining Unicode char U+00E5 (decimal 229)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00E7 (decimal 231)
+   defining Unicode char U+00E8 (decimal 232)
+   defining Unicode char U+00E9 (decimal 233)
+   defining Unicode char U+00EA (decimal 234)
+   defining Unicode char U+00EB (decimal 235)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F0 (decimal 240)
+   defining Unicode char U+00F1 (decimal 241)
+   defining Unicode char U+00F2 (decimal 242)
+   defining Unicode char U+00F3 (decimal 243)
+   defining Unicode char U+00F4 (decimal 244)
+   defining Unicode char U+00F5 (decimal 245)
+   defining Unicode char U+00F6 (decimal 246)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+00F9 (decimal 249)
+   defining Unicode char U+00FA (decimal 250)
+   defining Unicode char U+00FB (decimal 251)
+   defining Unicode char U+00FC (decimal 252)
+   defining Unicode char U+00FD (decimal 253)
+   defining Unicode char U+00FE (decimal 254)
+   defining Unicode char U+00FF (decimal 255)
+   defining Unicode char U+0102 (decimal 258)
+   defining Unicode char U+0103 (decimal 259)
+   defining Unicode char U+0104 (decimal 260)
+   defining Unicode char U+0105 (decimal 261)
+   defining Unicode char U+0106 (decimal 262)
+   defining Unicode char U+0107 (decimal 263)
+   defining Unicode char U+010C (decimal 268)
+   defining Unicode char U+010D (decimal 269)
+   defining Unicode char U+010E (decimal 270)
+   defining Unicode char U+010F (decimal 271)
+   defining Unicode char U+0110 (decimal 272)
+   defining Unicode char U+0111 (decimal 273)
+   defining Unicode char U+0118 (decimal 280)
+   defining Unicode char U+0119 (decimal 281)
+   defining Unicode char U+011A (decimal 282)
+   defining Unicode char U+011B (decimal 283)
+   defining Unicode char U+011E (decimal 286)
+   defining Unicode char U+011F (decimal 287)
+   defining Unicode char U+0130 (decimal 304)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0132 (decimal 306)
+   defining Unicode char U+0133 (decimal 307)
+   defining Unicode char U+0139 (decimal 313)
+   defining Unicode char U+013A (decimal 314)
+   defining Unicode char U+013D (decimal 317)
+   defining Unicode char U+013E (decimal 318)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0143 (decimal 323)
+   defining Unicode char U+0144 (decimal 324)
+   defining Unicode char U+0147 (decimal 327)
+   defining Unicode char U+0148 (decimal 328)
+   defining Unicode char U+014A (decimal 330)
+   defining Unicode char U+014B (decimal 331)
+   defining Unicode char U+0150 (decimal 336)
+   defining Unicode char U+0151 (decimal 337)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+0154 (decimal 340)
+   defining Unicode char U+0155 (decimal 341)
+   defining Unicode char U+0158 (decimal 344)
+   defining Unicode char U+0159 (decimal 345)
+   defining Unicode char U+015A (decimal 346)
+   defining Unicode char U+015B (decimal 347)
+   defining Unicode char U+015E (decimal 350)
+   defining Unicode char U+015F (decimal 351)
+   defining Unicode char U+0160 (decimal 352)
+   defining Unicode char U+0161 (decimal 353)
+   defining Unicode char U+0162 (decimal 354)
+   defining Unicode char U+0163 (decimal 355)
+   defining Unicode char U+0164 (decimal 356)
+   defining Unicode char U+0165 (decimal 357)
+   defining Unicode char U+016E (decimal 366)
+   defining Unicode char U+016F (decimal 367)
+   defining Unicode char U+0170 (decimal 368)
+   defining Unicode char U+0171 (decimal 369)
+   defining Unicode char U+0178 (decimal 376)
+   defining Unicode char U+0179 (decimal 377)
+   defining Unicode char U+017A (decimal 378)
+   defining Unicode char U+017B (decimal 379)
+   defining Unicode char U+017C (decimal 380)
+   defining Unicode char U+017D (decimal 381)
+   defining Unicode char U+017E (decimal 382)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201A (decimal 8218)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+   defining Unicode char U+201E (decimal 8222)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+2039 (decimal 8249)
+   defining Unicode char U+203A (decimal 8250)
+   defining Unicode char U+2423 (decimal 9251)
+)
+Now handling font encoding OT1 ...
+... processing UTF-8 mapping file for font encoding OT1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ot1enc.dfu
+File: ot1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A1 (decimal 161)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00B8 (decimal 184)
+   defining Unicode char U+00BF (decimal 191)
+   defining Unicode char U+00C5 (decimal 197)
+   defining Unicode char U+00C6 (decimal 198)
+   defining Unicode char U+00D8 (decimal 216)
+   defining Unicode char U+00DF (decimal 223)
+   defining Unicode char U+00E6 (decimal 230)
+   defining Unicode char U+00EC (decimal 236)
+   defining Unicode char U+00ED (decimal 237)
+   defining Unicode char U+00EE (decimal 238)
+   defining Unicode char U+00EF (decimal 239)
+   defining Unicode char U+00F8 (decimal 248)
+   defining Unicode char U+0131 (decimal 305)
+   defining Unicode char U+0141 (decimal 321)
+   defining Unicode char U+0142 (decimal 322)
+   defining Unicode char U+0152 (decimal 338)
+   defining Unicode char U+0153 (decimal 339)
+   defining Unicode char U+2013 (decimal 8211)
+   defining Unicode char U+2014 (decimal 8212)
+   defining Unicode char U+2018 (decimal 8216)
+   defining Unicode char U+2019 (decimal 8217)
+   defining Unicode char U+201C (decimal 8220)
+   defining Unicode char U+201D (decimal 8221)
+)
+Now handling font encoding OMS ...
+... processing UTF-8 mapping file for font encoding OMS
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/omsenc.dfu
+File: omsenc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+)
+Now handling font encoding OMX ...
+... no UTF-8 mapping file for font encoding OMX
+Now handling font encoding U ...
+... no UTF-8 mapping file for font encoding U
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+02C6 (decimal 710)
+   defining Unicode char U+02DC (decimal 732)
+   defining Unicode char U+200C (decimal 8204)
+   defining Unicode char U+2026 (decimal 8230)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2423 (decimal 9251)
+))
+   defining Unicode char U+00A0 (decimal 160)
+
+(/usr/share/texlive/texmf-dist/tex/latex/cmap/cmap.sty
+Package: cmap 2008/03/06 v1.0h CMap support: searchable PDF
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
+Package: fontenc 2005/09/27 v1.99g Standard LaTeX package
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/t1enc.def
+File: t1enc.def 2005/09/27 v1.99g Standard LaTeX file
+LaTeX Font Info:    Redeclaring font encoding T1 on input line 43.
+)<<t1.cmap>>)
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2013/12/03 3.9h The Babel package
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel-english/english.ldf
+Language: english 2012/08/20 v3.3p English support from the babel system
+
+(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
+File: babel.def 2013/12/03 3.9h Babel common definitions
+\babel@savecnt=\count88
+\U@D=\dimen103
+)
+\l@british = a dialect from \language\l@english 
+\l@UKenglish = a dialect from \language\l@english 
+\l@canadian = a dialect from \language\l@american 
+\l@australian = a dialect from \language\l@british 
+\l@newzealand = a dialect from \language\l@british 
+))
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
+Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
+) (./fncychap.sty
+Package: fncychap 2007/07/30 v1.34 LaTeX package (Revised chapters)
+\RW=\skip43
+\mylen=\skip44
+\myhi=\skip45
+\px=\skip46
+\py=\skip47
+\pyy=\skip48
+\pxx=\skip49
+\c@AlphaCnt=\count89
+\c@AlphaDecCnt=\count90
+)
+(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
+Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
+\LTleft=\skip50
+\LTright=\skip51
+\LTpre=\skip52
+\LTpost=\skip53
+\LTchunksize=\count91
+\LTcapwidth=\dimen104
+\LT@head=\box26
+\LT@firsthead=\box27
+\LT@foot=\box28
+\LT@lastfoot=\box29
+\LT@cols=\count92
+\LT@rows=\count93
+\c@LT@tables=\count94
+\c@LT@chunks=\count95
+\LT@p@ftn=\toks16
+) (./sphinx.sty
+Package: sphinx 2010/01/15 LaTeX package (Sphinx markup)
+
+(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
+\fancy@headwidth=\skip54
+\f@ncyO@elh=\skip55
+\f@ncyO@erh=\skip56
+\f@ncyO@olh=\skip57
+\f@ncyO@orh=\skip58
+\f@ncyO@elf=\skip59
+\f@ncyO@erf=\skip60
+\f@ncyO@olf=\skip61
+\f@ncyO@orf=\skip62
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/textcomp.sty
+Package: textcomp 2005/09/27 v1.99g Standard LaTeX package
+Package textcomp Info: Sub-encoding information:
+(textcomp)               5 = only ISO-Adobe without \textcurrency
+(textcomp)               4 = 5 + \texteuro
+(textcomp)               3 = 4 + \textohm
+(textcomp)               2 = 3 + \textestimated + \textcurrency
+(textcomp)               1 = TS1 - \textcircled - \t
+(textcomp)               0 = TS1 (full)
+(textcomp)             Font families with sub-encoding setting implement
+(textcomp)             only a restricted character set as indicated.
+(textcomp)             Family '?' is the default used for unknown fonts.
+(textcomp)             See the documentation for details.
+Package textcomp Info: Setting ? sub-encoding to TS1/1 on input line 71.
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.def
+File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
+Now handling font encoding TS1 ...
+... processing UTF-8 mapping file for font encoding TS1
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1enc.dfu
+File: ts1enc.dfu 2008/04/05 v1.1m UTF-8 support for inputenc
+   defining Unicode char U+00A2 (decimal 162)
+   defining Unicode char U+00A3 (decimal 163)
+   defining Unicode char U+00A4 (decimal 164)
+   defining Unicode char U+00A5 (decimal 165)
+   defining Unicode char U+00A6 (decimal 166)
+   defining Unicode char U+00A7 (decimal 167)
+   defining Unicode char U+00A8 (decimal 168)
+   defining Unicode char U+00A9 (decimal 169)
+   defining Unicode char U+00AA (decimal 170)
+   defining Unicode char U+00AC (decimal 172)
+   defining Unicode char U+00AE (decimal 174)
+   defining Unicode char U+00AF (decimal 175)
+   defining Unicode char U+00B0 (decimal 176)
+   defining Unicode char U+00B1 (decimal 177)
+   defining Unicode char U+00B2 (decimal 178)
+   defining Unicode char U+00B3 (decimal 179)
+   defining Unicode char U+00B4 (decimal 180)
+   defining Unicode char U+00B5 (decimal 181)
+   defining Unicode char U+00B6 (decimal 182)
+   defining Unicode char U+00B7 (decimal 183)
+   defining Unicode char U+00B9 (decimal 185)
+   defining Unicode char U+00BA (decimal 186)
+   defining Unicode char U+00BC (decimal 188)
+   defining Unicode char U+00BD (decimal 189)
+   defining Unicode char U+00BE (decimal 190)
+   defining Unicode char U+00D7 (decimal 215)
+   defining Unicode char U+00F7 (decimal 247)
+   defining Unicode char U+0192 (decimal 402)
+   defining Unicode char U+02C7 (decimal 711)
+   defining Unicode char U+02D8 (decimal 728)
+   defining Unicode char U+02DD (decimal 733)
+   defining Unicode char U+0E3F (decimal 3647)
+   defining Unicode char U+2016 (decimal 8214)
+   defining Unicode char U+2020 (decimal 8224)
+   defining Unicode char U+2021 (decimal 8225)
+   defining Unicode char U+2022 (decimal 8226)
+   defining Unicode char U+2030 (decimal 8240)
+   defining Unicode char U+2031 (decimal 8241)
+   defining Unicode char U+203B (decimal 8251)
+   defining Unicode char U+203D (decimal 8253)
+   defining Unicode char U+2044 (decimal 8260)
+   defining Unicode char U+204E (decimal 8270)
+   defining Unicode char U+2052 (decimal 8274)
+   defining Unicode char U+20A1 (decimal 8353)
+   defining Unicode char U+20A4 (decimal 8356)
+   defining Unicode char U+20A6 (decimal 8358)
+   defining Unicode char U+20A9 (decimal 8361)
+   defining Unicode char U+20AB (decimal 8363)
+   defining Unicode char U+20AC (decimal 8364)
+   defining Unicode char U+20B1 (decimal 8369)
+   defining Unicode char U+2103 (decimal 8451)
+   defining Unicode char U+2116 (decimal 8470)
+   defining Unicode char U+2117 (decimal 8471)
+   defining Unicode char U+211E (decimal 8478)
+   defining Unicode char U+2120 (decimal 8480)
+   defining Unicode char U+2122 (decimal 8482)
+   defining Unicode char U+2126 (decimal 8486)
+   defining Unicode char U+2127 (decimal 8487)
+   defining Unicode char U+212E (decimal 8494)
+   defining Unicode char U+2190 (decimal 8592)
+   defining Unicode char U+2191 (decimal 8593)
+   defining Unicode char U+2192 (decimal 8594)
+   defining Unicode char U+2193 (decimal 8595)
+   defining Unicode char U+2329 (decimal 9001)
+   defining Unicode char U+232A (decimal 9002)
+   defining Unicode char U+2422 (decimal 9250)
+   defining Unicode char U+25E6 (decimal 9702)
+   defining Unicode char U+25EF (decimal 9711)
+   defining Unicode char U+266A (decimal 9834)
+))
+LaTeX Info: Redefining \oldstylenums on input line 266.
+Package textcomp Info: Setting cmr sub-encoding to TS1/0 on input line 281.
+Package textcomp Info: Setting cmss sub-encoding to TS1/0 on input line 282.
+Package textcomp Info: Setting cmtt sub-encoding to TS1/0 on input line 283.
+Package textcomp Info: Setting cmvtt sub-encoding to TS1/0 on input line 284.
+Package textcomp Info: Setting cmbr sub-encoding to TS1/0 on input line 285.
+Package textcomp Info: Setting cmtl sub-encoding to TS1/0 on input line 286.
+Package textcomp Info: Setting ccr sub-encoding to TS1/0 on input line 287.
+Package textcomp Info: Setting ptm sub-encoding to TS1/4 on input line 288.
+Package textcomp Info: Setting pcr sub-encoding to TS1/4 on input line 289.
+Package textcomp Info: Setting phv sub-encoding to TS1/4 on input line 290.
+Package textcomp Info: Setting ppl sub-encoding to TS1/3 on input line 291.
+Package textcomp Info: Setting pag sub-encoding to TS1/4 on input line 292.
+Package textcomp Info: Setting pbk sub-encoding to TS1/4 on input line 293.
+Package textcomp Info: Setting pnc sub-encoding to TS1/4 on input line 294.
+Package textcomp Info: Setting pzc sub-encoding to TS1/4 on input line 295.
+Package textcomp Info: Setting bch sub-encoding to TS1/4 on input line 296.
+Package textcomp Info: Setting put sub-encoding to TS1/5 on input line 297.
+Package textcomp Info: Setting uag sub-encoding to TS1/5 on input line 298.
+Package textcomp Info: Setting ugq sub-encoding to TS1/5 on input line 299.
+Package textcomp Info: Setting ul8 sub-encoding to TS1/4 on input line 300.
+Package textcomp Info: Setting ul9 sub-encoding to TS1/4 on input line 301.
+Package textcomp Info: Setting augie sub-encoding to TS1/5 on input line 302.
+Package textcomp Info: Setting dayrom sub-encoding to TS1/3 on input line 303.
+Package textcomp Info: Setting dayroms sub-encoding to TS1/3 on input line 304.
+
+Package textcomp Info: Setting pxr sub-encoding to TS1/0 on input line 305.
+Package textcomp Info: Setting pxss sub-encoding to TS1/0 on input line 306.
+Package textcomp Info: Setting pxtt sub-encoding to TS1/0 on input line 307.
+Package textcomp Info: Setting txr sub-encoding to TS1/0 on input line 308.
+Package textcomp Info: Setting txss sub-encoding to TS1/0 on input line 309.
+Package textcomp Info: Setting txtt sub-encoding to TS1/0 on input line 310.
+Package textcomp Info: Setting lmr sub-encoding to TS1/0 on input line 311.
+Package textcomp Info: Setting lmdh sub-encoding to TS1/0 on input line 312.
+Package textcomp Info: Setting lmss sub-encoding to TS1/0 on input line 313.
+Package textcomp Info: Setting lmssq sub-encoding to TS1/0 on input line 314.
+Package textcomp Info: Setting lmvtt sub-encoding to TS1/0 on input line 315.
+Package textcomp Info: Setting qhv sub-encoding to TS1/0 on input line 316.
+Package textcomp Info: Setting qag sub-encoding to TS1/0 on input line 317.
+Package textcomp Info: Setting qbk sub-encoding to TS1/0 on input line 318.
+Package textcomp Info: Setting qcr sub-encoding to TS1/0 on input line 319.
+Package textcomp Info: Setting qcs sub-encoding to TS1/0 on input line 320.
+Package textcomp Info: Setting qpl sub-encoding to TS1/0 on input line 321.
+Package textcomp Info: Setting qtm sub-encoding to TS1/0 on input line 322.
+Package textcomp Info: Setting qzc sub-encoding to TS1/0 on input line 323.
+Package textcomp Info: Setting qhvc sub-encoding to TS1/0 on input line 324.
+Package textcomp Info: Setting futs sub-encoding to TS1/4 on input line 325.
+Package textcomp Info: Setting futx sub-encoding to TS1/4 on input line 326.
+Package textcomp Info: Setting futj sub-encoding to TS1/4 on input line 327.
+Package textcomp Info: Setting hlh sub-encoding to TS1/3 on input line 328.
+Package textcomp Info: Setting hls sub-encoding to TS1/3 on input line 329.
+Package textcomp Info: Setting hlst sub-encoding to TS1/3 on input line 330.
+Package textcomp Info: Setting hlct sub-encoding to TS1/5 on input line 331.
+Package textcomp Info: Setting hlx sub-encoding to TS1/5 on input line 332.
+Package textcomp Info: Setting hlce sub-encoding to TS1/5 on input line 333.
+Package textcomp Info: Setting hlcn sub-encoding to TS1/5 on input line 334.
+Package textcomp Info: Setting hlcw sub-encoding to TS1/5 on input line 335.
+Package textcomp Info: Setting hlcf sub-encoding to TS1/5 on input line 336.
+Package textcomp Info: Setting pplx sub-encoding to TS1/3 on input line 337.
+Package textcomp Info: Setting pplj sub-encoding to TS1/3 on input line 338.
+Package textcomp Info: Setting ptmx sub-encoding to TS1/4 on input line 339.
+Package textcomp Info: Setting ptmj sub-encoding to TS1/4 on input line 340.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/fancybox/fancybox.sty
+Package: fancybox 2010/05/15 1.4
+
+Style option: `fancybox' v1.4 <2010/05/15> (tvz)
+\@fancybox=\box30
+\shadowsize=\dimen105
+\@Sbox=\box31
+\do@VerbBox=\toks17
+\the@fancyput=\toks18
+\this@fancyput=\toks19
+\EndVerbatimTokens=\toks20
+\Verbatim@Outfile=\write3
+\Verbatim@Infile=\read1
+) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
+\ttl@box=\box32
+\beforetitleunit=\skip63
+\aftertitleunit=\skip64
+\ttl@plus=\dimen106
+\ttl@minus=\dimen107
+\ttl@toksa=\toks21
+\titlewidth=\dimen108
+\titlewidthlast=\dimen109
+\titlewidthfirst=\dimen110
+)
+(./tabulary.sty
+Package: tabulary 2008/12/01 v0.9 tabulary package (DPC)
+ (/usr/share/texlive/texmf-dist/tex/latex/tools/array.sty
+Package: array 2008/09/09 v2.4c Tabular extension package (FMi)
+\col@sep=\dimen111
+\extrarowheight=\dimen112
+\NC@list=\toks22
+\extratabsurround=\skip65
+\backup@length=\skip66
+)
+\TY@count=\count96
+\TY@linewidth=\dimen113
+\tymin=\dimen114
+\tymax=\dimen115
+\TY@tablewidth=\dimen116
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip67
+
+For additional information on amsmath, use the `?' option.
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks23
+\ex@=\dimen117
+))
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen118
+)
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count97
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count98
+\leftroot@=\count99
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count100
+\DOTSCASE@=\count101
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box33
+\strutbox@=\box34
+\big@size=\dimen119
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count102
+\c@MaxMatrixCols=\count103
+\dotsspace@=\muskip10
+\c@parentequation=\count104
+\dspbrk@lvl=\count105
+\tag@help=\toks24
+\row@=\count106
+\column@=\count107
+\maxfields@=\count108
+\andhelp@=\toks25
+\eqnshift@=\dimen120
+\alignsep@=\dimen121
+\tagshift@=\dimen122
+\tagwidth@=\dimen123
+\totwidth@=\dimen124
+\lineht@=\dimen125
+\@envbody=\toks26
+\multlinegap=\skip68
+\multlinetaggap=\skip69
+\mathdisplay@stack=\toks27
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
+Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
+)
+(/usr/share/texlive/texmf-dist/tex/latex/framed/framed.sty
+Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
+\OuterFrameSep=\skip70
+\fb@frw=\dimen126
+\fb@frh=\dimen127
+\FrameRule=\dimen128
+\FrameSep=\dimen129
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/color.sty
+Package: color 2005/11/14 v1.0j Standard LaTeX Color (DPC)
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package color Info: Driver file: pdftex.def on input line 130.
+
+(/usr/share/texlive/texmf-dist/tex/latex/pdftex-def/pdftex.def
+File: pdftex.def 2011/05/27 v0.06d Graphics/color for pdfTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2010/04/08 v1.3 Providing info/warning/error messages (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
+)
+\Gread@gobject=\count109
+))
+(/usr/share/texlive/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+Package: fancyvrb 2008/02/07
+
+Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
+<2008/02/07> (tvz) (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
+\KV@toks@=\toks28
+)
+\FV@CodeLineNo=\count110
+\FV@InFile=\read2
+\FV@TabBox=\box35
+\c@FancyVerbLine=\count111
+\FV@StepNumber=\count112
+\FV@OutFile=\write4
+) (/usr/share/texlive/texmf-dist/tex/latex/threeparttable/threeparttable.sty
+Package: threeparttable 2003/06/13  v 3.0
+\@tempboxb=\box36
+)
+(/usr/share/texlive/texmf-dist/tex/latex/mdwtools/footnote.sty
+Package: footnote 1997/01/28 1.13 Save footnotes around boxes
+\fn@notes=\box37
+\fn@width=\dimen130
+)
+(/usr/share/texlive/texmf-dist/tex/latex/wrapfig/wrapfig.sty
+\wrapoverhang=\dimen131
+\WF@size=\dimen132
+\c@WF@wrappedlines=\count113
+\WF@box=\box38
+\WF@everypar=\toks29
+Package: wrapfig 2003/01/31  v 3.6
+)
+(/usr/share/texlive/texmf-dist/tex/latex/parskip/parskip.sty
+Package: parskip 2001/04/09 non-zero parskip adjustments
+)
+(/usr/share/texlive/texmf-dist/tex/latex/base/alltt.sty
+Package: alltt 1997/06/16 v2.0g defines alltt environment
+)
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
+File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
+)
+Package graphics Info: Driver file: pdftex.def on input line 91.
+)
+\Gin@req@height=\dimen133
+\Gin@req@width=\dimen134
+)
+(/usr/share/texlive/texmf-dist/tex/plain/misc/pdfcolor.tex)
+\distancetoright=\skip71
+\py@argswidth=\skip72
+\py@noticelength=\skip73
+\lineblockindentation=\skip74
+\image@box=\box39
+\image@width=\dimen135
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hyperref.sty
+Package: hyperref 2012/11/06 v6.83m Hypertext links for LaTeX
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-hyperref.sty
+Package: hobsub-hyperref 2012/05/28 v1.13 Bundle oberdiek, subset hyperref (HO)
+
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/hobsub-generic.sty
+Package: hobsub-generic 2012/05/28 v1.13 Bundle oberdiek, subset generic (HO)
+Package: hobsub 2012/05/28 v1.13 Construct package bundles (HO)
+Package hobsub Info: Skipping package `infwarerr' (already loaded).
+Package hobsub Info: Skipping package `ltxcmds' (already loaded).
+Package: ifluatex 2010/03/01 v1.3 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
+Package ifvtex Info: VTeX not detected.
+Package: intcalc 2007/09/27 v1.1 Expandable calculations with integers (HO)
+Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
+Package ifpdf Info: pdfTeX in PDF mode is detected.
+Package: etexcmds 2011/02/16 v1.5 Avoid name clashes with e-TeX commands (HO)
+Package etexcmds Info: Could not find \expanded.
+(etexcmds)             That can mean that you are not using pdfTeX 1.50 or
+(etexcmds)             that some package has redefined \expanded.
+(etexcmds)             In the latter case, load this package earlier.
+Package: kvsetkeys 2012/04/25 v1.16 Key value parser (HO)
+Package: kvdefinekeys 2011/04/07 v1.3 Define keys (HO)
+Package: pdftexcmds 2011/11/29 v0.20 Utility functions of pdfTeX for LuaTeX (HO
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+Package: pdfescape 2011/11/25 v1.13 Implements pdfTeX's escape features (HO)
+Package: bigintcalc 2012/04/08 v1.3 Expandable calculations on big integers (HO
+)
+Package: bitset 2011/01/30 v1.1 Handle bit-vector datatype (HO)
+Package: uniquecounter 2011/01/30 v1.2 Provide unlimited unique counter (HO)
+)
+Package hobsub Info: Skipping package `hobsub' (already loaded).
+Package: letltxmacro 2010/09/02 v1.4 Let assignment for LaTeX macros (HO)
+Package: hopatch 2012/05/28 v1.2 Wrapper for package hooks (HO)
+Package: xcolor-patch 2011/01/30 xcolor patch
+Package: atveryend 2011/06/30 v1.8 Hooks at the very end of document (HO)
+Package atveryend Info: \enddocument detected (standard20110627).
+Package: atbegshi 2011/10/05 v1.16 At begin shipout hook (HO)
+Package: refcount 2011/10/16 v3.4 Data extraction from label references (HO)
+Package: hycolor 2011/01/30 v1.7 Color options for hyperref/bookmark (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
+Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/auxhook.sty
+Package: auxhook 2011/03/04 v1.3 Hooks for auxiliary files (HO)
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2011/06/30 v3.11 Key value format for package options (HO)
+)
+\@linkdim=\dimen136
+\Hy@linkcounter=\count114
+\Hy@pagecounter=\count115
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/pd1enc.def
+File: pd1enc.def 2012/11/06 v6.83m Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+)
+\Hy@SavedSpaceFactor=\count116
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/hyperref.cfg
+File: hyperref.cfg 2002/06/06 v1.2 hyperref configuration of TeXLive
+)
+Package hyperref Info: Option `colorlinks' set `true' on input line 4319.
+Package hyperref Info: Option `breaklinks' set `true' on input line 4319.
+Package hyperref Info: Hyper figures OFF on input line 4443.
+Package hyperref Info: Link nesting OFF on input line 4448.
+Package hyperref Info: Hyper index ON on input line 4451.
+Package hyperref Info: Plain pages OFF on input line 4458.
+Package hyperref Info: Backreferencing OFF on input line 4463.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4688.
+\c@Hy@tempcnt=\count117
+
+(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip11
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5041.
+\XeTeXLinkMargin=\dimen137
+\Fld@menulength=\count118
+\Field@Width=\dimen138
+\Fld@charsize=\dimen139
+Package hyperref Info: Hyper figures OFF on input line 6295.
+Package hyperref Info: Link nesting OFF on input line 6300.
+Package hyperref Info: Hyper index ON on input line 6303.
+Package hyperref Info: backreferencing OFF on input line 6310.
+Package hyperref Info: Link coloring ON on input line 6313.
+Package hyperref Info: Link coloring with OCG OFF on input line 6320.
+Package hyperref Info: PDF/A mode OFF on input line 6325.
+LaTeX Info: Redefining \ref on input line 6365.
+LaTeX Info: Redefining \pageref on input line 6369.
+\Hy@abspage=\count119
+\c@Item=\count120
+\c@Hfootnote=\count121
+)
+
+Package hyperref Message: Driver (autodetected): hpdftex.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/hpdftex.def
+File: hpdftex.def 2012/11/06 v6.83m Hyperref driver for pdfTeX
+\Fld@listcount=\count122
+\c@bookmark@seq@number=\count123
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/rerunfilecheck.sty
+Package: rerunfilecheck 2011/04/15 v1.7 Rerun checks for auxiliary files (HO)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
+82.
+)
+\Hy@SectionHShift=\skip75
+)
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/hypcap.sty
+Package: hypcap 2011/02/16 v1.11 Adjusting the anchors of captions (HO)
+)
+\DUlineblockindent=\skip76
+)
+(/usr/share/texlive/texmf-dist/tex/latex/multirow/multirow.sty
+\bigstrutjot=\dimen140
+)
+(/usr/share/texlive/texmf-dist/tex/latex/morefloats/morefloats.sty
+Package: morefloats 2012/01/28 v1.0f Raise limit of unprocessed floats (HMM; DH
+)
+Package morefloats Info: Maximum number of possible floats asked for: 36.
+(morefloats)             LaTeX might run out of memory before this
+(morefloats)             (in which case it will notify you).
+(morefloats)              on input line 171.
+\bx@S=\insert233
+\bx@T=\insert232
+\bx@U=\insert231
+\bx@V=\insert230
+\bx@W=\insert229
+\bx@X=\insert228
+\bx@Y=\insert227
+\bx@Z=\insert226
+\bx@AA=\insert225
+\bx@AB=\insert224
+\bx@AC=\insert223
+\bx@AD=\insert222
+\bx@AE=\insert221
+\bx@AF=\insert220
+\bx@AG=\insert219
+\bx@AH=\insert218
+\bx@AI=\insert217
+\bx@AJ=\insert216
+)
+\@indexfile=\write5
+\openout5 = `ownCloud_Server_Administration_Manual.idx'.
+
+
+Writing index file ownCloud_Server_Administration_Manual.idx
+(./ownCloud_Server_Administration_Manual.aux)
+\openout1 = `ownCloud_Server_Administration_Manual.aux'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 117.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 117.
+
+
+(/usr/share/texlive/texmf-dist/tex/latex/base/ts1cmr.fd
+File: ts1cmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 117.
+LaTeX Font Info:    ... okay on input line 117.
+LaTeX Font Info:    Try loading font information for T1+ptm on input line 117.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1ptm.fd
+File: t1ptm.fd 2001/06/04 font definitions for T1/ptm.
+)
+(/usr/share/texlive/texmf-dist/tex/context/base/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count124
+\scratchdimen=\dimen141
+\scratchbox=\box40
+\nofMPsegments=\count125
+\nofMParguments=\count126
+\everyMPshowfont=\toks30
+\MPscratchCnt=\count127
+\MPscratchDim=\dimen142
+\MPnumerator=\count128
+\makeMPintoPDFobject=\count129
+\everyMPtoPDFconversion=\toks31
+) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2010/02/09 v2.5 Base part for package epstopdf
+
+(/usr/share/texlive/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2010/08/19 v1.1 Manage graphics extensions (HO)
+)
+Package grfext Info: Graphics extension search list:
+(grfext)             [.png,.pdf,.jpg,.mps,.jpeg,.jbig2,.jb2,.PNG,.PDF,.JPG,.JPE
+G,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 452.
+
+(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
+e
+))
+\AtBeginShipoutBox=\box41
+Package hyperref Info: Link coloring ON on input line 117.
+
+(/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
+Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
+
+(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
+Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
+)
+\c@section@level=\count130
+)
+LaTeX Info: Redefining \ref on input line 117.
+LaTeX Info: Redefining \pageref on input line 117.
+LaTeX Info: Redefining \nameref on input line 117.
+
+(./ownCloud_Server_Administration_Manual.out)
+(./ownCloud_Server_Administration_Manual.out)
+\@outlinefile=\write6
+\openout6 = `ownCloud_Server_Administration_Manual.out'.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 120--120
+
+ []
+
+<logo-blue.pdf, id=423, 43.362pt x 25.696pt>
+File: logo-blue.pdf Graphic file (type pdf)
+ <use logo-blue.pdf>
+Package pdftex.def Info: logo-blue.pdf used on input line 120.
+(pdftex.def)             Requested size: 43.36188pt x 25.69592pt.
+File: logo-blue.pdf Graphic file (type pdf)
+
+<use logo-blue.pdf>
+Package pdftex.def Info: logo-blue.pdf used on input line 120.
+(pdftex.def)             Requested size: 43.36188pt x 25.69592pt.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 120.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1phv.fd
+File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
+)
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 120.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <17.28> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 120.
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <17.28> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 120.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <17.28> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 120.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 120.
+<<ot1.cmap>><<oml.cmap>><<oms.cmap>><<omx.cmap>> [1
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map} <./logo-blue.pdf>] [2
+
+]
+(./ownCloud_Server_Administration_Manual.toc
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <10> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 2.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 222.
+ [1
+
+] [2])
+\tf@toc=\write7
+\openout7 = `ownCloud_Server_Administration_Manual.toc'.
+
+
+Adding blank page after the table of contents.
+[3] [4]
+Chapter 1.
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 125.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <14.4> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 125.
+LaTeX Font Info:    Font shape `T1/ptm/bx/n' in size <24.88> not available
+(Font)              Font shape `T1/ptm/b/n' tried instead on input line 125.
+LaTeX Font Info:    Try loading font information for TS1+ptm on input line 141.
+
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/ts1ptm.fd
+File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
+) [1
+
+
+] [2
+
+]
+Chapter 2.
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 230.
+(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+) [3] [4]
+Underfull \hbox (badness 10000) in paragraph at lines 400--401
+[]\T1/ptm/m/n/10 PSR-4 au-toload-ing forced for OCand OCP, op-tional for OCAdoc
+s at
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 423--429
+
+ []
+
+[5]
+Underfull \hbox (badness 10000) in paragraph at lines 454--455
+[]\T1/ptm/m/n/10 PHP 5.6.11+ breaks the LDAP wiz-ard with a `Could not con-nect
+ to LDAP' er-ror. See
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 485--488
+\T1/pcr/m/n/10 version 4.0.6 is installed, for stability and performance reason
+s we recommend
+ []
+
+[6]
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 569.
+ [7] [8] [9]
+Underfull \hbox (badness 10000) in paragraph at lines 735--737
+[]\T1/ptm/m/n/10 In your own-Cloud server con-fig-u-ra-tion file, \T1/pcr/m/n/1
+0 owncloud\config\config.php\T1/ptm/m/n/10 , set
+ []
+
+[10] [11] [12]
+Chapter 3.
+[13
+
+] [14
+
+]
+Chapter 4.
+[15] <deprecs-1.png, id=718, 376.40625pt x 85.31876pt>
+File: deprecs-1.png Graphic file (type png)
+ <use deprecs-1.png>
+Package pdftex.def Info: deprecs-1.png used on input line 1014.
+(pdftex.def)             Requested size: 376.40532pt x 85.31853pt.
+File: deprecs-1.png Graphic file (type png)
+
+<use deprecs-1.png>
+Package pdftex.def Info: deprecs-1.png used on input line 1014.
+(pdftex.def)             Requested size: 376.40532pt x 85.31853pt.
+ [16] [17 <./deprecs-1.png>]
+<deprecs-2.png, id=747, 797.98125pt x 260.975pt>
+File: deprecs-2.png Graphic file (type png)
+ <use deprecs-2.png>
+Package pdftex.def Info: deprecs-2.png used on input line 1162.
+(pdftex.def)             Requested size: 797.9793pt x 260.97437pt.
+File: deprecs-2.png Graphic file (type png)
+
+<use deprecs-2.png>
+Package pdftex.def Info: deprecs-2.png used on input line 1162.
+(pdftex.def)             Requested size: 469.755pt x 153.63145pt.
+ [18 <./deprecs-2.png>]
+<deprecs-3.png, id=759, 846.16125pt x 1016.79875pt>
+File: deprecs-3.png Graphic file (type png)
+ <use deprecs-3.png>
+Package pdftex.def Info: deprecs-3.png used on input line 1331.
+(pdftex.def)             Requested size: 846.1592pt x 1016.79628pt.
+File: deprecs-3.png Graphic file (type png)
+
+<use deprecs-3.png>
+Package pdftex.def Info: deprecs-3.png used on input line 1331.
+(pdftex.def)             Requested size: 469.755pt x 564.48515pt.
+ [19] [20 <./deprecs-3.png>] [21] [22] [23]
+Underfull \hbox (badness 10000) in paragraph at lines 1674--1679
+[]\T1/ptm/m/n/10 You will have to in-stall your own LAMP stack first. This al-l
+ows you to cre-ate your own
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1674--1679
+\T1/ptm/m/n/10 cus-tom LAMP stack with-out de-pen-dency con-flicts with the own
+-Cloud pack-age. Browse
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1674--1679
+[][]\T1/ptm/m/n/10 http://download.owncloud.org/download/repositories/9.1/owncl
+oud/[][] to find the \T1/pcr/m/n/10 owncloud-files \T1/ptm/m/n/10 pack-age
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1730--1734
+
+ []
+
+[24] [25] <install-wizard-a.png, id=845, 251.43938pt x 351.56343pt>
+File: install-wizard-a.png Graphic file (type png)
+
+<use install-wizard-a.png>
+Package pdftex.def Info: install-wizard-a.png used on input line 1843.
+(pdftex.def)             Requested size: 251.43875pt x 351.56256pt.
+File: install-wizard-a.png Graphic file (type png)
+ <use install-wizard-a.png>
+Package pdftex.def Info: install-wizard-a.png used on input line 1843.
+(pdftex.def)             Requested size: 251.43875pt x 351.56256pt.
+
+<install-wizard-a1.png, id=852, 281.55188pt x 420.06938pt>
+File: install-wizard-a1.png Graphic file (type png)
+
+<use install-wizard-a1.png>
+Package pdftex.def Info: install-wizard-a1.png used on input line 1876.
+(pdftex.def)             Requested size: 281.55118pt x 420.06836pt.
+File: install-wizard-a1.png Graphic file (type png)
+ <use install-wizard-a1.png>
+Package pdftex.def Info: install-wizard-a1.png used on input line 1876.
+(pdftex.def)             Requested size: 281.55118pt x 420.06836pt.
+ [26 <./install-wizard-a.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1917--1919
+[]\T1/pcr/m/n/10 sudo apt-get
+ []
+
+[27 <./install-wizard-a1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 1945--1947
+[]\T1/pcr/m/n/10 sudo apt-get install
+ []
+
+
+Overfull \hbox (5.5125pt too wide) in paragraph at lines 1948--1950
+[]\T1/pcr/m/n/10 http://www.postgresql.org 
+ []
+
+<install-wizard-a2.png, id=873, 483.30562pt x 357.58594pt>
+File: install-wizard-a2.png Graphic file (type png)
+
+<use install-wizard-a2.png>
+Package pdftex.def Info: install-wizard-a2.png used on input line 2009.
+(pdftex.def)             Requested size: 483.30444pt x 357.58505pt.
+File: install-wizard-a2.png Graphic file (type png)
+ <use install-wizard-a2.png>
+Package pdftex.def Info: install-wizard-a2.png used on input line 2009.
+(pdftex.def)             Requested size: 469.755pt x 347.57271pt.
+ [28]
+<install-wizard-a4.png, id=881, 546.54187pt x 274.02374pt>
+File: install-wizard-a4.png Graphic file (type png)
+
+<use install-wizard-a4.png>
+Package pdftex.def Info: install-wizard-a4.png used on input line 2040.
+(pdftex.def)             Requested size: 546.54053pt x 274.02307pt.
+File: install-wizard-a4.png Graphic file (type png)
+ <use install-wizard-a4.png>
+Package pdftex.def Info: install-wizard-a4.png used on input line 2040.
+(pdftex.def)             Requested size: 469.755pt x 235.5262pt.
+ [29 <./install-wizard-a2.png>] [30 <./install-wizard-a4.png>] [31]
+Underfull \hbox (badness 10000) in paragraph at lines 2264--2265
+[]\T1/ptm/m/n/10 Restart Apache, and now you can ac-cess own-Cloud from ei-ther
+ \T1/pcr/m/n/10 https://example.com/ \T1/ptm/m/n/10 or
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2266--2267
+[]\T1/ptm/m/n/10 On Cen-tOS/Fedora/Red Hat, edit \T1/pcr/m/n/10 /etc/httpd/conf
+.d/owncloud.conf \T1/ptm/m/n/10 and
+ []
+
+[32] <oc_admin_app_page.png, id=915, 499.11469pt x 288.3272pt>
+File: oc_admin_app_page.png Graphic file (type png)
+
+<use oc_admin_app_page.png>
+Package pdftex.def Info: oc_admin_app_page.png used on input line 2287.
+(pdftex.def)             Requested size: 499.11345pt x 288.32648pt.
+File: oc_admin_app_page.png Graphic file (type png)
+ <use oc_admin_app_page.png>
+Package pdftex.def Info: oc_admin_app_page.png used on input line 2287.
+(pdftex.def)             Requested size: 469.755pt x 271.37515pt.
+ [33 <./oc_admin_app_page.png>] [34] [35] [36] [37] [38]
+Underfull \hbox (badness 10000) in paragraph at lines 2767--2775
+\T1/ptm/m/n/10 low-ing PHP ex-ten-sions: \T1/pcr/m/n/10 bcmath bz2 calendar Cor
+e ctype date dba dom ereg exif
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2767--2775
+\T1/pcr/m/n/10 fileinfo filter ftp gettext hash iconv libxml mbstring mhash ope
+nssl pcre
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2767--2775
+\T1/pcr/m/n/10 Phar posix Reflection session shmop SimpleXML soap sockets SPL s
+tandard
+ []
+
+[39] [40] [41] [42] <community-vm-console.png, id=1024, 730.73pt x 473.77pt>
+File: community-vm-console.png Graphic file (type png)
+
+<use community-vm-console.png>
+Package pdftex.def Info: community-vm-console.png used on input line 3154.
+(pdftex.def)             Requested size: 730.72821pt x 473.76884pt.
+File: community-vm-console.png Graphic file (type png)
+ <use community-vm-console.png>
+Package pdftex.def Info: community-vm-console.png used on input line 3154.
+(pdftex.def)             Requested size: 469.755pt x 304.56361pt.
+
+<community-vm-splash.png, id=1025, 1473.505pt x 1204.5pt>
+File: community-vm-splash.png Graphic file (type png)
+
+<use community-vm-splash.png>
+Package pdftex.def Info: community-vm-splash.png used on input line 3180.
+(pdftex.def)             Requested size: 1473.50142pt x 1204.49707pt.
+File: community-vm-splash.png Graphic file (type png)
+ <use community-vm-splash.png>
+Package pdftex.def Info: community-vm-splash.png used on input line 3180.
+(pdftex.def)             Requested size: 469.755pt x 383.99593pt.
+ [43] [44 <./community-vm-console.png (PNG copy)> <./community-vm-splash.png>]
+Underfull \hbox (badness 8038) in paragraph at lines 3254--3255
+[]\T1/ptm/m/n/10 Note: The as-sets folder is only re-quired if JavaScript and C
+SS As-set Man-age-ment is en-abled.
+ []
+
+[45] [46] [47] [48]
+Underfull \vbox (badness 10000) detected at line 3573
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3573
+ []
+
+[49] [50]
+Underfull \vbox (badness 10000) detected at line 3704
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 3704
+ []
+
+[51] [52]
+LaTeX Font Info:    Font shape `T1/pcr/bx/n' in size <10> not available
+(Font)              Font shape `T1/pcr/b/n' tried instead on input line 3800.
+ [53] [54] [55] [56]
+Chapter 5.
+<security-setup-warning-1.png, id=1140, 497.60907pt x 134.75343pt>
+File: security-setup-warning-1.png Graphic file (type png)
+
+<use security-setup-warning-1.png>
+Package pdftex.def Info: security-setup-warning-1.png used on input line 4085.
+(pdftex.def)             Requested size: 497.60785pt x 134.7531pt.
+File: security-setup-warning-1.png Graphic file (type png)
+ <use security-setup-warning-1.png>
+Package pdftex.def Info: security-setup-warning-1.png used on input line 4085.
+(pdftex.def)             Requested size: 469.755pt x 127.21312pt.
+ [57
+
+ <./security-setup-warning-1.png>] [58]
+<import-ssl-cert-1.png, id=1174, 173.14688pt x 73.77562pt>
+File: import-ssl-cert-1.png Graphic file (type png)
+
+<use import-ssl-cert-1.png>
+Package pdftex.def Info: import-ssl-cert-1.png used on input line 4225.
+(pdftex.def)             Requested size: 173.14645pt x 73.77542pt.
+File: import-ssl-cert-1.png Graphic file (type png)
+ <use import-ssl-cert-1.png>
+Package pdftex.def Info: import-ssl-cert-1.png used on input line 4225.
+(pdftex.def)             Requested size: 173.14645pt x 73.77542pt.
+
+<import-ssl-cert-2.png, id=1175, 299.61937pt x 143.78719pt>
+File: import-ssl-cert-2.png Graphic file (type png)
+
+<use import-ssl-cert-2.png>
+Package pdftex.def Info: import-ssl-cert-2.png used on input line 4233.
+(pdftex.def)             Requested size: 299.61864pt x 143.78683pt.
+File: import-ssl-cert-2.png Graphic file (type png)
+ <use import-ssl-cert-2.png>
+Package pdftex.def Info: import-ssl-cert-2.png used on input line 4233.
+(pdftex.def)             Requested size: 299.61864pt x 143.78683pt.
+ [59 <./import-ssl-cert-1.png>] [60 <./import-ssl-cert-2.png>] [61] [62] [63] [
+64] [65] [66] [67]
+[68] [69]
+Underfull \hbox (badness 10000) in paragraph at lines 5085--5087
+[]\T1/ptm/m/n/10 These com-mands repli-cate the func-tion-al-ity in the own-Clo
+ud Web GUI, plus two new fea-tures:
+ []
+
+[70] [71] [72] [73]
+Underfull \hbox (badness 10000) in paragraph at lines 5353--5358
+\T1/ptm/m/n/10 mime-types found in \T1/pcr/m/n/10 config/mimetypemapping.json\T
+1/ptm/m/n/10 . Run this com-mand af-ter mod-i-fy-ing
+ []
+
+[74] [75] [76] [77] [78] [79] [80] [81]
+<antivirus-app.png, id=1364, 356.0803pt x 127.22531pt>
+File: antivirus-app.png Graphic file (type png)
+ <use antivirus-app.png>
+Package pdftex.def Info: antivirus-app.png used on input line 5991.
+(pdftex.def)             Requested size: 356.07944pt x 127.22499pt.
+File: antivirus-app.png Graphic file (type png)
+
+<use antivirus-app.png>
+Package pdftex.def Info: antivirus-app.png used on input line 5991.
+(pdftex.def)             Requested size: 356.07944pt x 127.22499pt.
+
+<antivirus-logging.png, id=1365, 367.3725pt x 54.9553pt>
+File: antivirus-logging.png Graphic file (type png)
+
+<use antivirus-logging.png>
+Package pdftex.def Info: antivirus-logging.png used on input line 6002.
+(pdftex.def)             Requested size: 367.37158pt x 54.95515pt.
+File: antivirus-logging.png Graphic file (type png)
+ <use antivirus-logging.png>
+Package pdftex.def Info: antivirus-logging.png used on input line 6002.
+(pdftex.def)             Requested size: 367.37158pt x 54.95515pt.
+
+<antivirus-config.png, id=1366, 320.69812pt x 164.86594pt>
+File: antivirus-config.png Graphic file (type png)
+
+<use antivirus-config.png>
+Package pdftex.def Info: antivirus-config.png used on input line 6009.
+(pdftex.def)             Requested size: 320.69733pt x 164.86551pt.
+File: antivirus-config.png Graphic file (type png)
+ <use antivirus-config.png>
+Package pdftex.def Info: antivirus-config.png used on input line 6009.
+(pdftex.def)             Requested size: 320.69733pt x 164.86551pt.
+ [82] [83 <./antivirus-app.png> <./antivirus-logging.png> <./antivirus-config.p
+ng (PNG copy)>]
+<antivirus-daemon-socket.png, id=1377, 322.20375pt x 167.12437pt>
+File: antivirus-daemon-socket.png Graphic file (type png)
+
+<use antivirus-daemon-socket.png>
+Package pdftex.def Info: antivirus-daemon-socket.png used on input line 6044.
+(pdftex.def)             Requested size: 322.20296pt x 167.12395pt.
+File: antivirus-daemon-socket.png Graphic file (type png)
+ <use antivirus-daemon-socket.png>
+Package pdftex.def Info: antivirus-daemon-socket.png used on input line 6044.
+(pdftex.def)             Requested size: 322.20296pt x 167.12395pt.
+File: antivirus-daemon-socket.png Graphic file (type png)
+
+<use antivirus-daemon-socket.png>
+Package pdftex.def Info: antivirus-daemon-socket.png used on input line 6062.
+(pdftex.def)             Requested size: 322.20296pt x 167.12395pt.
+File: antivirus-daemon-socket.png Graphic file (type png)
+ <use antivirus-daemon-socket.png>
+Package pdftex.def Info: antivirus-daemon-socket.png used on input line 6062.
+(pdftex.def)             Requested size: 322.20296pt x 167.12395pt.
+
+<antivirus-executable.png, id=1378, 319.1925pt x 170.13562pt>
+File: antivirus-executable.png Graphic file (type png)
+
+<use antivirus-executable.png>
+Package pdftex.def Info: antivirus-executable.png used on input line 6071.
+(pdftex.def)             Requested size: 319.19171pt x 170.1352pt.
+File: antivirus-executable.png Graphic file (type png)
+ <use antivirus-executable.png>
+Package pdftex.def Info: antivirus-executable.png used on input line 6071.
+(pdftex.def)             Requested size: 319.19171pt x 170.1352pt.
+ [84 <./antivirus-daemon-socket.png>] [85 <./antivirus-executable.png (PNG copy
+)>] [86] [87]
+[88] [89] [90] [91] [92] [93]
+Underfull \hbox (badness 6380) in paragraph at lines 6782--6784
+[]\T1/ptm/m/n/10 For the \T1/pcr/m/n/10 sendmail \T1/ptm/m/n/10 op-tion you nee
+d an in-stalled and work-ing email sys-tem on the server, with
+ []
+
+[94] [95] [96] [97]
+LaTeX Font Info:    Font shape `T1/ptm/bx/it' in size <10> not available
+(Font)              Font shape `T1/ptm/b/it' tried instead on input line 7188.
+ [98] [99] [100] [101] [102] [103] [104] [105] [106]
+Underfull \hbox (badness 10000) in paragraph at lines 7963--7965
+[]\T1/ptm/m/n/10 If you con-fig-ure these also con-sider set-ting \T1/ptm/m/it/
+10 for-warded_for_headers \T1/ptm/m/n/10 which oth-er-wise de-faults to
+ []
+
+[107] <smtp-config-wizard.png, id=1544, 499.11469pt x 252.945pt>
+File: smtp-config-wizard.png Graphic file (type png)
+
+<use smtp-config-wizard.png>
+Package pdftex.def Info: smtp-config-wizard.png used on input line 8096.
+(pdftex.def)             Requested size: 499.11345pt x 252.94438pt.
+File: smtp-config-wizard.png Graphic file (type png)
+ <use smtp-config-wizard.png>
+Package pdftex.def Info: smtp-config-wizard.png used on input line 8096.
+(pdftex.def)             Requested size: 469.755pt x 238.07324pt.
+ [108]
+<smtp-config-smtp.png, id=1550, 514.17094pt x 248.42813pt>
+File: smtp-config-smtp.png Graphic file (type png)
+
+<use smtp-config-smtp.png>
+Package pdftex.def Info: smtp-config-smtp.png used on input line 8141.
+(pdftex.def)             Requested size: 514.1697pt x 248.42752pt.
+File: smtp-config-smtp.png Graphic file (type png)
+ <use smtp-config-smtp.png>
+Package pdftex.def Info: smtp-config-smtp.png used on input line 8141.
+(pdftex.def)             Requested size: 469.755pt x 226.97214pt.
+
+<smtp-config-php-sendmail.png, id=1551, 488.57532pt x 181.42781pt>
+File: smtp-config-php-sendmail.png Graphic file (type png)
+
+<use smtp-config-php-sendmail.png>
+Package pdftex.def Info: smtp-config-php-sendmail.png used on input line 8164.
+(pdftex.def)             Requested size: 488.57413pt x 181.42737pt.
+File: smtp-config-php-sendmail.png Graphic file (type png)
+ <use smtp-config-php-sendmail.png>
+Package pdftex.def Info: smtp-config-php-sendmail.png used on input line 8164.
+(pdftex.def)             Requested size: 469.755pt x 174.44278pt.
+ [109 <./smtp-config-wizard.png>] [110 <./smtp-config-smtp.png> <./smtp-config-
+php-sendmail.png>] [111]
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <9> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 8302.
+ [112] [113] [114]
+LaTeX Font Info:    Font shape `T1/pcr/m/it' in size <9> not available
+(Font)              Font shape `T1/pcr/m/sl' tried instead on input line 8503.
+ [115] [116] [117]
+<external-sites-1.png, id=1621, 829.59938pt x 593.21625pt>
+File: external-sites-1.png Graphic file (type png)
+
+<use external-sites-1.png>
+Package pdftex.def Info: external-sites-1.png used on input line 8718.
+(pdftex.def)             Requested size: 829.59737pt x 593.2148pt.
+File: external-sites-1.png Graphic file (type png)
+ <use external-sites-1.png>
+Package pdftex.def Info: external-sites-1.png used on input line 8718.
+(pdftex.def)             Requested size: 469.755pt x 335.90099pt.
+
+<external-sites-2.png, id=1622, 596.2275pt x 206.7725pt>
+File: external-sites-2.png Graphic file (type png)
+
+<use external-sites-2.png>
+Package pdftex.def Info: external-sites-2.png used on input line 8736.
+(pdftex.def)             Requested size: 596.22604pt x 206.77199pt.
+File: external-sites-2.png Graphic file (type png)
+ <use external-sites-2.png>
+Package pdftex.def Info: external-sites-2.png used on input line 8736.
+(pdftex.def)             Requested size: 469.755pt x 162.91307pt.
+ [118 <./external-sites-1.png>] <external-sites-3.png, id=1629, 262.9825pt x 31
+4.17375pt>
+File: external-sites-3.png Graphic file (type png)
+
+<use external-sites-3.png>
+Package pdftex.def Info: external-sites-3.png used on input line 8744.
+(pdftex.def)             Requested size: 262.98184pt x 314.17297pt.
+File: external-sites-3.png Graphic file (type png)
+ <use external-sites-3.png>
+Package pdftex.def Info: external-sites-3.png used on input line 8744.
+(pdftex.def)             Requested size: 262.98184pt x 314.17297pt.
+ [119 <./external-sites-2.png> <./external-sites-3.png>]
+<external-sites-4.png, id=1636, 702.625pt x 571.13374pt>
+File: external-sites-4.png Graphic file (type png)
+
+<use external-sites-4.png>
+Package pdftex.def Info: external-sites-4.png used on input line 8766.
+(pdftex.def)             Requested size: 702.62328pt x 571.13235pt.
+File: external-sites-4.png Graphic file (type png)
+ <use external-sites-4.png>
+Package pdftex.def Info: external-sites-4.png used on input line 8766.
+(pdftex.def)             Requested size: 469.755pt x 381.85587pt.
+
+<external-sites-5.png, id=1637, 702.625pt x 571.13374pt>
+File: external-sites-5.png Graphic file (type png)
+
+<use external-sites-5.png>
+Package pdftex.def Info: external-sites-5.png used on input line 8773.
+(pdftex.def)             Requested size: 702.62328pt x 571.13235pt.
+File: external-sites-5.png Graphic file (type png)
+ <use external-sites-5.png>
+Package pdftex.def Info: external-sites-5.png used on input line 8773.
+(pdftex.def)             Requested size: 469.755pt x 381.85587pt.
+ [120 <./external-sites-4.png>] [121 <./external-sites-5.png>] [122] [123] [124
+] [125] [126] [127]
+[128]
+Underfull \hbox (badness 10000) in paragraph at lines 9318--9321
+[]\T1/ptm/m/n/10 To take ad-van-tage of this fea-ture, you must cre-ate a con-f
+ig-u-ra-tion file, called
+ []
+
+[129] [130] [131]
+Underfull \hbox (badness 10000) in paragraph at lines 9533--9538
+\T1/ptm/m/n/10 Since own-Cloud 9.0.3 you need to ex-plic-itly con-fig-ure and e
+n-able index.php-less URLs (e.g.
+ []
+
+[132] [133] [134
+
+]
+Chapter 6.
+<users-config.png, id=1774, 635.37375pt x 224.33812pt>
+File: users-config.png Graphic file (type png)
+ <use users-config.png>
+Package pdftex.def Info: users-config.png used on input line 9645.
+(pdftex.def)             Requested size: 635.3722pt x 224.33757pt.
+File: users-config.png Graphic file (type png)
+
+<use users-config.png>
+Package pdftex.def Info: users-config.png used on input line 9645.
+(pdftex.def)             Requested size: 469.755pt x 165.86725pt.
+ <users-config-1.png, id=1775, 186.6975pt x 191.9672pt>
+File: users-config-1.png Graphic file (type png)
+
+<use users-config-1.png>
+Package pdftex.def Info: users-config-1.png used on input line 9653.
+(pdftex.def)             Requested size: 186.69704pt x 191.96672pt.
+File: users-config-1.png Graphic file (type png)
+ <use users-config-1.png>
+Package pdftex.def Info: users-config-1.png used on input line 9653.
+(pdftex.def)             Requested size: 186.69704pt x 191.96672pt.
+
+<users-config-2.png, id=1776, 178.41656pt x 164.86594pt>
+File: users-config-2.png Graphic file (type png)
+
+<use users-config-2.png>
+Package pdftex.def Info: users-config-2.png used on input line 9662.
+(pdftex.def)             Requested size: 178.4161pt x 164.86551pt.
+File: users-config-2.png Graphic file (type png)
+ <use users-config-2.png>
+Package pdftex.def Info: users-config-2.png used on input line 9662.
+(pdftex.def)             Requested size: 178.4161pt x 164.86551pt.
+ [135 <./users-config.png>]
+[136 <./users-config-1.png> <./users-config-2.png>]
+<users-create.png, id=1785, 410.2828pt x 185.94469pt>
+File: users-create.png Graphic file (type png)
+ <use users-create.png>
+Package pdftex.def Info: users-create.png used on input line 9712.
+(pdftex.def)             Requested size: 410.2818pt x 185.94421pt.
+File: users-create.png Graphic file (type png)
+
+<use users-create.png>
+Package pdftex.def Info: users-create.png used on input line 9712.
+(pdftex.def)             Requested size: 410.2818pt x 185.94421pt.
+ [137 <./users-create.png>]
+<users-groups.png, id=1794, 605.26125pt x 166.37157pt>
+File: users-groups.png Graphic file (type png)
+ <use users-groups.png>
+Package pdftex.def Info: users-groups.png used on input line 9779.
+(pdftex.def)             Requested size: 605.25975pt x 166.37114pt.
+File: users-groups.png Graphic file (type png)
+
+<use users-groups.png>
+Package pdftex.def Info: users-groups.png used on input line 9779.
+(pdftex.def)             Requested size: 469.755pt x 129.12447pt.
+ [138 <./users-groups.png>] [139] [140] [141]
+Underfull \hbox (badness 10000) in paragraph at lines 10088--10092
+
+ []
+
+<ldap-wizard-1-server.png, id=1834, 602.25pt x 312.16624pt>
+File: ldap-wizard-1-server.png Graphic file (type png)
+
+<use ldap-wizard-1-server.png>
+Package pdftex.def Info: ldap-wizard-1-server.png used on input line 10120.
+(pdftex.def)             Requested size: 602.24852pt x 312.16548pt.
+File: ldap-wizard-1-server.png Graphic file (type png)
+ <use ldap-wizard-1-server.png>
+Package pdftex.def Info: ldap-wizard-1-server.png used on input line 10120.
+(pdftex.def)             Requested size: 469.755pt x 243.49821pt.
+ [142]
+<ldap-wizard-2-user.png, id=1841, 602.25pt x 391.4625pt>
+File: ldap-wizard-2-user.png Graphic file (type png)
+
+<use ldap-wizard-2-user.png>
+Package pdftex.def Info: ldap-wizard-2-user.png used on input line 10200.
+(pdftex.def)             Requested size: 602.24852pt x 391.46153pt.
+File: ldap-wizard-2-user.png Graphic file (type png)
+ <use ldap-wizard-2-user.png>
+Package pdftex.def Info: ldap-wizard-2-user.png used on input line 10200.
+(pdftex.def)             Requested size: 469.755pt x 305.35146pt.
+ [143 <./ldap-wizard-1-server.png>] [144 <./ldap-wizard-2-user.png>]
+<ldap-wizard-3-login.png, id=1852, 602.25pt x 335.2525pt>
+File: ldap-wizard-3-login.png Graphic file (type png)
+
+<use ldap-wizard-3-login.png>
+Package pdftex.def Info: ldap-wizard-3-login.png used on input line 10249.
+(pdftex.def)             Requested size: 602.24852pt x 335.25168pt.
+File: ldap-wizard-3-login.png Graphic file (type png)
+ <use ldap-wizard-3-login.png>
+Package pdftex.def Info: ldap-wizard-3-login.png used on input line 10249.
+(pdftex.def)             Requested size: 469.755pt x 261.50612pt.
+
+<ldap-wizard-4-group.png, id=1853, 602.25pt x 312.16624pt>
+File: ldap-wizard-4-group.png Graphic file (type png)
+
+<use ldap-wizard-4-group.png>
+Package pdftex.def Info: ldap-wizard-4-group.png used on input line 10305.
+(pdftex.def)             Requested size: 602.24852pt x 312.16548pt.
+File: ldap-wizard-4-group.png Graphic file (type png)
+ <use ldap-wizard-4-group.png>
+Package pdftex.def Info: ldap-wizard-4-group.png used on input line 10305.
+(pdftex.def)             Requested size: 469.755pt x 243.49821pt.
+ [145 <./ldap-wizard-3-login.png>]
+<ldap-advanced-1-connection.png, id=1860, 472.01344pt x 442.65375pt>
+File: ldap-advanced-1-connection.png Graphic file (type png)
+
+<use ldap-advanced-1-connection.png>
+Package pdftex.def Info: ldap-advanced-1-connection.png used on input line 1036
+5.
+(pdftex.def)             Requested size: 472.01228pt x 442.65265pt.
+File: ldap-advanced-1-connection.png Graphic file (type png)
+ <use ldap-advanced-1-connection.png>
+Package pdftex.def Info: ldap-advanced-1-connection.png used on input line 1036
+5.
+(pdftex.def)             Requested size: 469.755pt x 440.54529pt.
+
+[146 <./ldap-wizard-4-group.png>] [147 <./ldap-advanced-1-connection.png>]
+<ldap-advanced-2-directory.png, id=1871, 468.24937pt x 511.15968pt>
+File: ldap-advanced-2-directory.png Graphic file (type png)
+
+<use ldap-advanced-2-directory.png>
+Package pdftex.def Info: ldap-advanced-2-directory.png used on input line 10434
+.
+(pdftex.def)             Requested size: 468.24821pt x 511.15842pt.
+File: ldap-advanced-2-directory.png Graphic file (type png)
+ <use ldap-advanced-2-directory.png>
+Package pdftex.def Info: ldap-advanced-2-directory.png used on input line 10434
+.
+(pdftex.def)             Requested size: 468.24821pt x 511.15842pt.
+
+[148] [149 <./ldap-advanced-2-directory.png>]
+<ldap-advanced-3-attributes.png, id=1881, 602.25pt x 327.2225pt>
+File: ldap-advanced-3-attributes.png Graphic file (type png)
+
+<use ldap-advanced-3-attributes.png>
+Package pdftex.def Info: ldap-advanced-3-attributes.png used on input line 1054
+7.
+(pdftex.def)             Requested size: 602.24852pt x 327.2217pt.
+File: ldap-advanced-3-attributes.png Graphic file (type png)
+ <use ldap-advanced-3-attributes.png>
+Package pdftex.def Info: ldap-advanced-3-attributes.png used on input line 1054
+7.
+(pdftex.def)             Requested size: 469.755pt x 255.24251pt.
+
+[150] <ldap-expert.png, id=1887, 602.25pt x 579.16376pt>
+File: ldap-expert.png Graphic file (type png)
+ <use ldap-expert.png>
+Package pdftex.def Info: ldap-expert.png used on input line 10605.
+(pdftex.def)             Requested size: 602.24852pt x 579.16234pt.
+File: ldap-expert.png Graphic file (type png)
+
+<use ldap-expert.png>
+Package pdftex.def Info: ldap-expert.png used on input line 10605.
+(pdftex.def)             Requested size: 469.755pt x 451.76358pt.
+ [151 <./ldap-advanced-3-attributes.png>] [152 <./ldap-expert.png>] <ldap-fetch
+ed-avatar.png, id=1898, 223.51546pt x 163.91135pt>
+File: ldap-fetched-avatar.png Graphic file (type png)
+
+<use ldap-fetched-avatar.png>
+Package pdftex.def Info: ldap-fetched-avatar.png used on input line 10701.
+(pdftex.def)             Requested size: 223.5149pt x 163.91093pt.
+File: ldap-fetched-avatar.png Graphic file (type png)
+ <use ldap-fetched-avatar.png>
+Package pdftex.def Info: ldap-fetched-avatar.png used on input line 10701.
+(pdftex.def)             Requested size: 223.5149pt x 163.91093pt.
+ [153] [154 <./ldap-fetched-avatar.png>] [155]
+Underfull \hbox (badness 10000) in paragraph at lines 10906--10911
+[]\T1/ptm/m/n/10 The back-ground pro-cess ex-am-ines 50 users at a time, and ru
+ns at the in-ter-val you con-fig-ured
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 10906--10911
+\T1/ptm/m/n/10 with \T1/pcr/m/n/10 ldapUserCleanupInterval\T1/ptm/m/n/10 . For 
+ex-am-ple, if you have 200 LDAP users and your
+ []
+
+[156]
+Underfull \hbox (badness 6016) in paragraph at lines 10944--10946
+[]\T1/ptm/m/n/10 Then you can run \T1/pcr/m/n/10 sudo -u www-data php occ user:
+delete aaliyah_brown \T1/ptm/m/n/10 to delete user
+ []
+
+[157]
+Underfull \hbox (badness 10000) in paragraph at lines 11009--11011
+[]\T1/ptm/m/n/10 POST \T1/pcr/m/n/10 http://admin:secret@example.com/ocs/v1.php
+/cloud/users -d
+ []
+
+[158] [159]
+Underfull \hbox (badness 10000) in paragraph at lines 11176--11178
+[]\T1/ptm/m/n/10 PUT \T1/pcr/m/n/10 PUT http://admin:secret@example.com/ocs/v1.
+php/cloud/users/Frank -d
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 11183--11185
+[]\T1/ptm/m/n/10 PUT \T1/pcr/m/n/10 PUT http://admin:secret@example.com/ocs/v1.
+php/cloud/users/Frank -d
+ []
+
+[160] [161]
+Underfull \hbox (badness 10000) in paragraph at lines 11345--11347
+[]\T1/ptm/m/n/10 POST \T1/pcr/m/n/10 http://admin:secret@example.com/ocs/v1.php
+/cloud/users/Frank/groups
+ []
+
+[162]
+Overfull \hbox (7.59428pt too wide) in paragraph at lines 11469--11472
+[]\T1/ptm/m/n/10 POST \T1/pcr/m/n/10 https://admin:secret@example.com/ocs/v1.ph
+p/cloud/users/Frank/subadmins
+ []
+
+[163]
+Overfull \hbox (20.91435pt too wide) in paragraph at lines 11529--11532
+[]\T1/ptm/m/n/10 DELETE \T1/pcr/m/n/10 https://admin:secret@example.com/ocs/v1.
+php/cloud/users/Frank/subadmins
+ []
+
+
+Overfull \hbox (2.5844pt too wide) in paragraph at lines 11582--11584
+[]\T1/ptm/m/n/10 GET \T1/pcr/m/n/10 https://admin:secret@example.com/ocs/v1.php
+/cloud/users/Frank/subadmins 
+ []
+
+[164] [165]
+Underfull \hbox (badness 10000) in paragraph at lines 11704--11706
+[]\T1/ptm/m/n/10 POST \T1/pcr/m/n/10 http://admin:secret@example.com/ocs/v1.php
+/cloud/groups -d
+ []
+
+[166]
+Overfull \hbox (20.5844pt too wide) in paragraph at lines 11805--11807
+[]\T1/ptm/m/n/10 GET \T1/pcr/m/n/10 https://admin:secret@example.com/ocs/v1.php
+/cloud/groups/mygroup/subadmins 
+ []
+
+[167] [168] [169]
+Overfull \hbox (1.59428pt too wide) in paragraph at lines 12030--12031
+[]\T1/ptm/m/n/10 POST \T1/pcr/m/n/10 http://admin:secret@example.com/ocs/v1.php
+/cloud/apps/files_texteditor 
+ []
+
+
+Overfull \hbox (14.91435pt too wide) in paragraph at lines 12074--12075
+[]\T1/ptm/m/n/10 DELETE \T1/pcr/m/n/10 http://admin:secret@example.com/ocs/v1.p
+hp/cloud/apps/files_texteditor 
+ []
+
+[170] [171] [172
+
+]
+Chapter 7.
+<sharing-files-1.png, id=2080, 473.51906pt x 304.88907pt>
+File: sharing-files-1.png Graphic file (type png)
+
+<use sharing-files-1.png>
+Package pdftex.def Info: sharing-files-1.png used on input line 12142.
+(pdftex.def)             Requested size: 473.51788pt x 304.88832pt.
+File: sharing-files-1.png Graphic file (type png)
+ <use sharing-files-1.png>
+Package pdftex.def Info: sharing-files-1.png used on input line 12142.
+(pdftex.def)             Requested size: 469.755pt x 302.4738pt.
+ [173] [174 <./sharing-files-1.png>] <sharing-files-2.png, id=2095, 276.28218pt
+ x 337.26pt>
+File: sharing-files-2.png Graphic file (type png)
+
+<use sharing-files-2.png>
+Package pdftex.def Info: sharing-files-2.png used on input line 12251.
+(pdftex.def)             Requested size: 276.2815pt x 337.25917pt.
+File: sharing-files-2.png Graphic file (type png)
+ <use sharing-files-2.png>
+Package pdftex.def Info: sharing-files-2.png used on input line 12251.
+(pdftex.def)             Requested size: 276.2815pt x 337.25917pt.
+ [175 <./sharing-files-2.png>] <federation-0.png, id=2104, 473.51906pt x 188.20
+313pt>
+File: federation-0.png Graphic file (type png)
+
+<use federation-0.png>
+Package pdftex.def Info: federation-0.png used on input line 12300.
+(pdftex.def)             Requested size: 473.51788pt x 188.20265pt.
+File: federation-0.png Graphic file (type png)
+ <use federation-0.png>
+Package pdftex.def Info: federation-0.png used on input line 12300.
+(pdftex.def)             Requested size: 469.755pt x 186.7122pt.
+
+<federation-2.png, id=2105, 585.68813pt x 238.64156pt>
+File: federation-2.png Graphic file (type png)
+ <use federation-2.png>
+Package pdftex.def Info: federation-2.png used on input line 12315.
+(pdftex.def)             Requested size: 585.68669pt x 238.64096pt.
+File: federation-2.png Graphic file (type png)
+
+<use federation-2.png>
+Package pdftex.def Info: federation-2.png used on input line 12315.
+(pdftex.def)             Requested size: 469.755pt x 191.41235pt.
+ <federation-3.png, id=2106, 207.02344pt x 155.83218pt>
+File: federation-3.png Graphic file (type png)
+
+<use federation-3.png>
+Package pdftex.def Info: federation-3.png used on input line 12327.
+(pdftex.def)             Requested size: 207.02292pt x 155.8318pt.
+File: federation-3.png Graphic file (type png)
+ <use federation-3.png>
+Package pdftex.def Info: federation-3.png used on input line 12327.
+(pdftex.def)             Requested size: 207.02292pt x 155.8318pt.
+ [176 <./federation-0.png>]
+[177 <./federation-2.png> <./federation-3.png>]
+<federation-1.png, id=2125, 382.42876pt x 230.36063pt>
+File: federation-1.png Graphic file (type png)
+ <use federation-1.png>
+Package pdftex.def Info: federation-1.png used on input line 12348.
+(pdftex.def)             Requested size: 382.42781pt x 230.36005pt.
+File: federation-1.png Graphic file (type png)
+
+<use federation-1.png>
+Package pdftex.def Info: federation-1.png used on input line 12348.
+(pdftex.def)             Requested size: 382.42781pt x 230.36005pt.
+
+<create_public_share-6.png, id=2127, 341.02406pt x 154.32657pt>
+File: create_public_share-6.png Graphic file (type png)
+
+<use create_public_share-6.png>
+Package pdftex.def Info: create_public_share-6.png used on input line 12364.
+(pdftex.def)             Requested size: 341.02322pt x 154.32617pt.
+File: create_public_share-6.png Graphic file (type png)
+ <use create_public_share-6.png>
+Package pdftex.def Info: create_public_share-6.png used on input line 12364.
+(pdftex.def)             Requested size: 341.02322pt x 154.32617pt.
+
+<create_public_share-8.png, id=2128, 637.63219pt x 310.15875pt>
+File: create_public_share-8.png Graphic file (type png)
+
+<use create_public_share-8.png>
+Package pdftex.def Info: create_public_share-8.png used on input line 12374.
+(pdftex.def)             Requested size: 637.63063pt x 310.15799pt.
+File: create_public_share-8.png Graphic file (type png)
+ <use create_public_share-8.png>
+Package pdftex.def Info: create_public_share-8.png used on input line 12374.
+(pdftex.def)             Requested size: 469.755pt x 228.5011pt.
+ [178 <./federation-1.png> <./create_public_share-6.png>]
+<create_public_share-9.png, id=2134, 423.08063pt x 195.73125pt>
+File: create_public_share-9.png Graphic file (type png)
+
+<use create_public_share-9.png>
+Package pdftex.def Info: create_public_share-9.png used on input line 12383.
+(pdftex.def)             Requested size: 423.07959pt x 195.73076pt.
+File: create_public_share-9.png Graphic file (type png)
+ <use create_public_share-9.png>
+Package pdftex.def Info: create_public_share-9.png used on input line 12383.
+(pdftex.def)             Requested size: 423.07959pt x 195.73076pt.
+
+<create_public_share-10.png, id=2135, 712.16063pt x 316.18124pt>
+File: create_public_share-10.png Graphic file (type png)
+
+<use create_public_share-10.png>
+Package pdftex.def Info: create_public_share-10.png used on input line 12391.
+(pdftex.def)             Requested size: 712.15889pt x 316.18047pt.
+File: create_public_share-10.png Graphic file (type png)
+ <use create_public_share-10.png>
+Package pdftex.def Info: create_public_share-10.png used on input line 12391.
+(pdftex.def)             Requested size: 469.755pt x 208.55965pt.
+ [179 <./create_public_share-8.png> <./create_public_share-9.png>] [180 <./crea
+te_public_share-10.png>] [181] <admin_filehandling-1.png, id=2171, 461.725pt x 
+128.48pt>
+File: admin_filehandling-1.png Graphic file (type png)
+
+<use admin_filehandling-1.png>
+Package pdftex.def Info: admin_filehandling-1.png used on input line 12637.
+(pdftex.def)             Requested size: 461.72388pt x 128.47968pt.
+File: admin_filehandling-1.png Graphic file (type png)
+ <use admin_filehandling-1.png>
+Package pdftex.def Info: admin_filehandling-1.png used on input line 12637.
+(pdftex.def)             Requested size: 461.72388pt x 128.47968pt.
+ [182]
+<admin_filehandling-2.png, id=2180, 366.36874pt x 91.34125pt>
+File: admin_filehandling-2.png Graphic file (type png)
+
+<use admin_filehandling-2.png>
+Package pdftex.def Info: admin_filehandling-2.png used on input line 12645.
+(pdftex.def)             Requested size: 366.36784pt x 91.34102pt.
+File: admin_filehandling-2.png Graphic file (type png)
+ <use admin_filehandling-2.png>
+Package pdftex.def Info: admin_filehandling-2.png used on input line 12645.
+(pdftex.def)             Requested size: 366.36784pt x 91.34102pt.
+ [183 <./admin_filehandling-1.png> <./admin_filehandling-2.png>]
+<documents_app_enable.png, id=2191, 264.99pt x 301.8778pt>
+File: documents_app_enable.png Graphic file (type png)
+
+<use documents_app_enable.png>
+Package pdftex.def Info: documents_app_enable.png used on input line 12715.
+(pdftex.def)             Requested size: 264.98935pt x 301.87706pt.
+File: documents_app_enable.png Graphic file (type png)
+ <use documents_app_enable.png>
+Package pdftex.def Info: documents_app_enable.png used on input line 12715.
+(pdftex.def)             Requested size: 264.98935pt x 301.87706pt.
+
+<documents_apply_test.png, id=2192, 701.62125pt x 230.8625pt>
+File: documents_apply_test.png Graphic file (type png)
+
+<use documents_apply_test.png>
+Package pdftex.def Info: documents_apply_test.png used on input line 12727.
+(pdftex.def)             Requested size: 701.61952pt x 230.86192pt.
+File: documents_apply_test.png Graphic file (type png)
+ <use documents_apply_test.png>
+Package pdftex.def Info: documents_apply_test.png used on input line 12727.
+(pdftex.def)             Requested size: 469.755pt x 154.57138pt.
+ [184 <./documents_app_enable.png>] <skeleton-files.png, id=2199, 451.6875pt x 
+374.90062pt>
+File: skeleton-files.png Graphic file (type png)
+
+<use skeleton-files.png>
+Package pdftex.def Info: skeleton-files.png used on input line 12765.
+(pdftex.def)             Requested size: 451.68639pt x 374.8997pt.
+File: skeleton-files.png Graphic file (type png)
+ <use skeleton-files.png>
+Package pdftex.def Info: skeleton-files.png used on input line 12765.
+(pdftex.def)             Requested size: 451.68639pt x 374.8997pt.
+ [185 <./documents_apply_test.png>] <skeleton-files1.png, id=2205, 451.6875pt x
+ 286.06876pt>
+File: skeleton-files1.png Graphic file (type png)
+
+<use skeleton-files1.png>
+Package pdftex.def Info: skeleton-files1.png used on input line 12769.
+(pdftex.def)             Requested size: 451.68639pt x 286.06805pt.
+File: skeleton-files1.png Graphic file (type png)
+ <use skeleton-files1.png>
+Package pdftex.def Info: skeleton-files1.png used on input line 12769.
+(pdftex.def)             Requested size: 451.68639pt x 286.06805pt.
+ [186 <./skeleton-files.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 12798--12801
+
+ []
+
+<enable-app.png, id=2213, 448.67625pt x 146.79843pt>
+File: enable-app.png Graphic file (type png)
+ <use enable-app.png>
+Package pdftex.def Info: enable-app.png used on input line 12806.
+(pdftex.def)             Requested size: 448.67516pt x 146.79807pt.
+File: enable-app.png Graphic file (type png)
+
+<use enable-app.png>
+Package pdftex.def Info: enable-app.png used on input line 12806.
+(pdftex.def)             Requested size: 448.67516pt x 146.79807pt.
+ <add_storage.png, id=2214, 526.96875pt x 231.86626pt>
+File: add_storage.png Graphic file (type png)
+
+<use add_storage.png>
+Package pdftex.def Info: add_storage.png used on input line 12818.
+(pdftex.def)             Requested size: 526.96745pt x 231.86568pt.
+File: add_storage.png Graphic file (type png)
+ <use add_storage.png>
+Package pdftex.def Info: add_storage.png used on input line 12818.
+(pdftex.def)             Requested size: 469.755pt x 206.70349pt.
+ [187 <./skeleton-files1.png>]
+<auth_mechanism.png, id=2223, 616.55344pt x 180.675pt>
+File: auth_mechanism.png Graphic file (type png)
+
+<use auth_mechanism.png>
+Package pdftex.def Info: auth_mechanism.png used on input line 12834.
+(pdftex.def)             Requested size: 616.55193pt x 180.67455pt.
+File: auth_mechanism.png Graphic file (type png)
+ <use auth_mechanism.png>
+Package pdftex.def Info: auth_mechanism.png used on input line 12834.
+(pdftex.def)             Requested size: 469.755pt x 137.65903pt.
+
+<applicable.png, id=2224, 295.1025pt x 239.89626pt>
+File: applicable.png Graphic file (type png)
+ <use applicable.png>
+Package pdftex.def Info: applicable.png used on input line 12856.
+(pdftex.def)             Requested size: 295.10176pt x 239.89566pt.
+File: applicable.png Graphic file (type png)
+
+<use applicable.png>
+Package pdftex.def Info: applicable.png used on input line 12856.
+(pdftex.def)             Requested size: 295.10176pt x 239.89566pt.
+ [188 <./enable-app.png> <./add_storage.png>]
+<mount_options.png, id=2230, 347.79938pt x 144.54pt>
+File: mount_options.png Graphic file (type png)
+ <use mount_options.png>
+Package pdftex.def Info: mount_options.png used on input line 12889.
+(pdftex.def)             Requested size: 347.79852pt x 144.53963pt.
+File: mount_options.png Graphic file (type png)
+
+<use mount_options.png>
+Package pdftex.def Info: mount_options.png used on input line 12889.
+(pdftex.def)             Requested size: 347.79852pt x 144.53963pt.
+ [189 <./auth_mechanism.png> <./applicable.png>]
+<amazons3.png, id=2238, 520.94624pt x 261.22594pt>
+File: amazons3.png Graphic file (type png)
+ <use amazons3.png>
+Package pdftex.def Info: amazons3.png used on input line 12932.
+(pdftex.def)             Requested size: 520.94498pt x 261.22528pt.
+File: amazons3.png Graphic file (type png)
+
+<use amazons3.png>
+Package pdftex.def Info: amazons3.png used on input line 12932.
+(pdftex.def)             Requested size: 469.755pt x 235.55954pt.
+ [190 <./mount_options.png>]
+<dropbox.png, id=2249, 227.34938pt x 238.64156pt>
+File: dropbox.png Graphic file (type png)
+ <use dropbox.png>
+Package pdftex.def Info: dropbox.png used on input line 12961.
+(pdftex.def)             Requested size: 227.34882pt x 238.64096pt.
+File: dropbox.png Graphic file (type png)
+
+<use dropbox.png>
+Package pdftex.def Info: dropbox.png used on input line 12961.
+(pdftex.def)             Requested size: 227.34882pt x 238.64096pt.
+ <dropbox-1.png, id=2250, 333.49594pt x 176.15813pt>
+File: dropbox-1.png Graphic file (type png)
+
+<use dropbox-1.png>
+Package pdftex.def Info: dropbox-1.png used on input line 12968.
+(pdftex.def)             Requested size: 333.49512pt x 176.15768pt.
+File: dropbox-1.png Graphic file (type png)
+ <use dropbox-1.png>
+Package pdftex.def Info: dropbox-1.png used on input line 12968.
+(pdftex.def)             Requested size: 333.49512pt x 176.15768pt.
+
+<dropbox-2.png, id=2251, 421.575pt x 202.50656pt>
+File: dropbox-2.png Graphic file (type png)
+ <use dropbox-2.png>
+Package pdftex.def Info: dropbox-2.png used on input line 12976.
+(pdftex.def)             Requested size: 421.57396pt x 202.50604pt.
+File: dropbox-2.png Graphic file (type png)
+
+<use dropbox-2.png>
+Package pdftex.def Info: dropbox-2.png used on input line 12976.
+(pdftex.def)             Requested size: 421.57396pt x 202.50604pt.
+ <dropbox-3.png, id=2252, 203.25937pt x 94.85437pt>
+File: dropbox-3.png Graphic file (type png)
+
+<use dropbox-3.png>
+Package pdftex.def Info: dropbox-3.png used on input line 12983.
+(pdftex.def)             Requested size: 203.25887pt x 94.85413pt.
+File: dropbox-3.png Graphic file (type png)
+ <use dropbox-3.png>
+Package pdftex.def Info: dropbox-3.png used on input line 12983.
+(pdftex.def)             Requested size: 203.25887pt x 94.85413pt.
+ [191 <./amazons3.png> <./dropbox.png>]
+[192 <./dropbox-1.png> <./dropbox-2.png> <./dropbox-3.png>]
+<dropbox-4.png, id=2263, 451.6875pt x 247.67531pt>
+File: dropbox-4.png Graphic file (type png)
+ <use dropbox-4.png>
+Package pdftex.def Info: dropbox-4.png used on input line 12994.
+(pdftex.def)             Requested size: 451.68639pt x 247.6747pt.
+File: dropbox-4.png Graphic file (type png)
+
+<use dropbox-4.png>
+Package pdftex.def Info: dropbox-4.png used on input line 12994.
+(pdftex.def)             Requested size: 451.68639pt x 247.6747pt.
+ <dropbox-6.png, id=2264, 526.96875pt x 70.01157pt>
+File: dropbox-6.png Graphic file (type png)
+
+<use dropbox-6.png>
+Package pdftex.def Info: dropbox-6.png used on input line 13010.
+(pdftex.def)             Requested size: 526.96745pt x 70.01138pt.
+File: dropbox-6.png Graphic file (type png)
+ <use dropbox-6.png>
+Package pdftex.def Info: dropbox-6.png used on input line 13010.
+(pdftex.def)             Requested size: 469.755pt x 62.41371pt.
+
+<dropbox-5.png, id=2265, 340.27126pt x 220.57407pt>
+File: dropbox-5.png Graphic file (type png)
+ <use dropbox-5.png>
+Package pdftex.def Info: dropbox-5.png used on input line 13019.
+(pdftex.def)             Requested size: 340.27042pt x 220.57352pt.
+File: dropbox-5.png Graphic file (type png)
+
+<use dropbox-5.png>
+Package pdftex.def Info: dropbox-5.png used on input line 13019.
+(pdftex.def)             Requested size: 340.27042pt x 220.57352pt.
+ [193 <./dropbox-4.png> <./dropbox-6.png>]
+<ftp.png, id=2275, 526.96875pt x 158.09062pt>
+File: ftp.png Graphic file (type png)
+ <use ftp.png>
+Package pdftex.def Info: ftp.png used on input line 13061.
+(pdftex.def)             Requested size: 526.96745pt x 158.09023pt.
+File: ftp.png Graphic file (type png)
+ <use ftp.png>
+Package pdftex.def Info: ftp.png used on input line 13061.
+(pdftex.def)             Requested size: 469.755pt x 140.93419pt.
+
+[194 <./dropbox-5.png> <./ftp.png>]
+<google-drive.png, id=2285, 254.45062pt x 191.9672pt>
+File: google-drive.png Graphic file (type png)
+ <use google-drive.png>
+Package pdftex.def Info: google-drive.png used on input line 13094.
+(pdftex.def)             Requested size: 254.45pt x 191.96672pt.
+File: google-drive.png Graphic file (type png)
+
+<use google-drive.png>
+Package pdftex.def Info: google-drive.png used on input line 13094.
+(pdftex.def)             Requested size: 254.45pt x 191.96672pt.
+ <google-drive1.png, id=2286, 367.3725pt x 169.38281pt>
+File: google-drive1.png Graphic file (type png)
+
+<use google-drive1.png>
+Package pdftex.def Info: google-drive1.png used on input line 13103.
+(pdftex.def)             Requested size: 367.37158pt x 169.38239pt.
+File: google-drive1.png Graphic file (type png)
+ <use google-drive1.png>
+Package pdftex.def Info: google-drive1.png used on input line 13103.
+(pdftex.def)             Requested size: 367.37158pt x 169.38239pt.
+
+<google-drive2.png, id=2287, 485.56406pt x 308.65312pt>
+File: google-drive2.png Graphic file (type png)
+
+<use google-drive2.png>
+Package pdftex.def Info: google-drive2.png used on input line 13110.
+(pdftex.def)             Requested size: 485.56287pt x 308.65236pt.
+File: google-drive2.png Graphic file (type png)
+ <use google-drive2.png>
+Package pdftex.def Info: google-drive2.png used on input line 13110.
+(pdftex.def)             Requested size: 469.755pt x 298.60193pt.
+
+<google-drive3.png, id=2288, 206.27063pt x 161.10187pt>
+File: google-drive3.png Graphic file (type png)
+
+<use google-drive3.png>
+Package pdftex.def Info: google-drive3.png used on input line 13120.
+(pdftex.def)             Requested size: 206.27011pt x 161.10147pt.
+File: google-drive3.png Graphic file (type png)
+ <use google-drive3.png>
+Package pdftex.def Info: google-drive3.png used on input line 13120.
+(pdftex.def)             Requested size: 206.27011pt x 161.10147pt.
+
+<google-drive4.png, id=2289, 508.14844pt x 185.19188pt>
+File: google-drive4.png Graphic file (type png)
+
+<use google-drive4.png>
+Package pdftex.def Info: google-drive4.png used on input line 13128.
+(pdftex.def)             Requested size: 508.14719pt x 185.1914pt.
+File: google-drive4.png Graphic file (type png)
+ <use google-drive4.png>
+Package pdftex.def Info: google-drive4.png used on input line 13128.
+(pdftex.def)             Requested size: 469.755pt x 171.20653pt.
+
+<google-drive5.png, id=2290, 481.04718pt x 155.07938pt>
+File: google-drive5.png Graphic file (type png)
+
+<use google-drive5.png>
+Package pdftex.def Info: google-drive5.png used on input line 13135.
+(pdftex.def)             Requested size: 481.046pt x 155.07898pt.
+File: google-drive5.png Graphic file (type png)
+ <use google-drive5.png>
+Package pdftex.def Info: google-drive5.png used on input line 13135.
+(pdftex.def)             Requested size: 469.755pt x 151.44194pt.
+
+<google-drive6.png, id=2291, 412.54124pt x 485.56406pt>
+File: google-drive6.png Graphic file (type png)
+
+<use google-drive6.png>
+Package pdftex.def Info: google-drive6.png used on input line 13143.
+(pdftex.def)             Requested size: 412.54024pt x 485.56287pt.
+File: google-drive6.png Graphic file (type png)
+ <use google-drive6.png>
+Package pdftex.def Info: google-drive6.png used on input line 13143.
+(pdftex.def)             Requested size: 412.54024pt x 485.56287pt.
+
+<google-drive8.png, id=2292, 322.95656pt x 502.87875pt>
+File: google-drive8.png Graphic file (type png)
+
+<use google-drive8.png>
+Package pdftex.def Info: google-drive8.png used on input line 13154.
+(pdftex.def)             Requested size: 322.95576pt x 502.87752pt.
+File: google-drive8.png Graphic file (type png)
+ <use google-drive8.png>
+Package pdftex.def Info: google-drive8.png used on input line 13154.
+(pdftex.def)             Requested size: 322.95576pt x 502.87752pt.
+ [195 <./google-drive.png> <./google-drive1.png>] [196 <./google-drive2.png> <.
+/google-drive3.png> <./google-drive4.png>] [197 <./google-drive5.png> <./google
+-drive6.png>]
+<google-drive9.png, id=2306, 472.76625pt x 514.17094pt>
+File: google-drive9.png Graphic file (type png)
+
+<use google-drive9.png>
+Package pdftex.def Info: google-drive9.png used on input line 13172.
+(pdftex.def)             Requested size: 472.76509pt x 514.1697pt.
+File: google-drive9.png Graphic file (type png)
+ <use google-drive9.png>
+Package pdftex.def Info: google-drive9.png used on input line 13172.
+(pdftex.def)             Requested size: 469.755pt x 510.90591pt.
+
+<google-drive10.png, id=2307, 367.3725pt x 225.09094pt>
+File: google-drive10.png Graphic file (type png)
+
+<use google-drive10.png>
+Package pdftex.def Info: google-drive10.png used on input line 13180.
+(pdftex.def)             Requested size: 367.37158pt x 225.09038pt.
+File: google-drive10.png Graphic file (type png)
+ <use google-drive10.png>
+Package pdftex.def Info: google-drive10.png used on input line 13180.
+(pdftex.def)             Requested size: 367.37158pt x 225.09038pt.
+ [198 <./google-drive8.png>]
+[199 <./google-drive9.png>]
+<google-drive11.png, id=2318, 767.86874pt x 297.36093pt>
+File: google-drive11.png Graphic file (type png)
+
+<use google-drive11.png>
+Package pdftex.def Info: google-drive11.png used on input line 13188.
+(pdftex.def)             Requested size: 767.86687pt x 297.3602pt.
+File: google-drive11.png Graphic file (type png)
+ <use google-drive11.png>
+Package pdftex.def Info: google-drive11.png used on input line 13188.
+(pdftex.def)             Requested size: 469.755pt x 181.91623pt.
+
+<google-drive12.png, id=2319, 381.67593pt x 317.68687pt>
+File: google-drive12.png Graphic file (type png)
+
+<use google-drive12.png>
+Package pdftex.def Info: google-drive12.png used on input line 13200.
+(pdftex.def)             Requested size: 381.675pt x 317.68608pt.
+File: google-drive12.png Graphic file (type png)
+ <use google-drive12.png>
+Package pdftex.def Info: google-drive12.png used on input line 13200.
+(pdftex.def)             Requested size: 381.675pt x 317.68608pt.
+
+<google-drive13.png, id=2320, 492.33937pt x 161.85469pt>
+File: google-drive13.png Graphic file (type png)
+
+<use google-drive13.png>
+Package pdftex.def Info: google-drive13.png used on input line 13208.
+(pdftex.def)             Requested size: 492.33815pt x 161.85428pt.
+File: google-drive13.png Graphic file (type png)
+ <use google-drive13.png>
+Package pdftex.def Info: google-drive13.png used on input line 13208.
+(pdftex.def)             Requested size: 469.755pt x 154.43776pt.
+ [200 <./google-drive10.png> <./google-drive11.png>] [201 <./google-drive12.png
+> <./google-drive13.png>]
+<local.png, id=2334, 499.8675pt x 94.10156pt>
+File: local.png Graphic file (type png)
+ <use local.png>
+Package pdftex.def Info: local.png used on input line 13249.
+(pdftex.def)             Requested size: 499.86627pt x 94.10132pt.
+File: local.png Graphic file (type png)
+ <use local.png>
+Package pdftex.def Info: local.png used on input line 13249.
+(pdftex.def)             Requested size: 469.755pt x 88.43536pt.
+
+<openstack.png, id=2337, 488.57532pt x 272.51813pt>
+File: openstack.png Graphic file (type png)
+ <use openstack.png>
+Package pdftex.def Info: openstack.png used on input line 13288.
+(pdftex.def)             Requested size: 488.57413pt x 272.51746pt.
+File: openstack.png Graphic file (type png)
+
+<use openstack.png>
+Package pdftex.def Info: openstack.png used on input line 13288.
+(pdftex.def)             Requested size: 469.755pt x 262.0261pt.
+ <rackspace.png, id=2338, 491.58656pt x 210.03468pt>
+File: rackspace.png Graphic file (type png)
+
+<use rackspace.png>
+Package pdftex.def Info: rackspace.png used on input line 13308.
+(pdftex.def)             Requested size: 491.58536pt x 210.03416pt.
+File: rackspace.png Graphic file (type png)
+ <use rackspace.png>
+Package pdftex.def Info: rackspace.png used on input line 13308.
+(pdftex.def)             Requested size: 469.755pt x 200.7144pt.
+ [202 <./local.png>] [203 <./openstack.png> <./rackspace.png>]
+File: auth_mechanism.png Graphic file (type png)
+ <use auth_mechanism.png>
+Package pdftex.def Info: auth_mechanism.png used on input line 13355.
+(pdftex.def)             Requested size: 616.55193pt x 180.67455pt.
+File: auth_mechanism.png Graphic file (type png)
+ <use auth_mechanism.png>
+Package pdftex.def Info: auth_mechanism.png used on input line 13355.
+(pdftex.def)             Requested size: 469.755pt x 137.65903pt.
+
+Underfull \hbox (badness 6220) in paragraph at lines 13358--13361
+[]\T1/ptm/m/n/10 After gen-er-at-ing your keys, you need to copy your new pub-l
+ic key to the des-ti-na-tion server to
+ []
+
+[204] <smb.png, id=2366, 685.8122pt x 123.46124pt>
+File: smb.png Graphic file (type png)
+ <use smb.png>
+Package pdftex.def Info: smb.png used on input line 13423.
+(pdftex.def)             Requested size: 685.81053pt x 123.46092pt.
+File: smb.png Graphic file (type png)
+ <use smb.png>
+Package pdftex.def Info: smb.png used on input line 13423.
+(pdftex.def)             Requested size: 469.755pt x 84.56854pt.
+
+<webdav.png, id=2372, 486.31688pt x 141.52875pt>
+File: webdav.png Graphic file (type png)
+ <use webdav.png>
+Package pdftex.def Info: webdav.png used on input line 13459.
+(pdftex.def)             Requested size: 486.31569pt x 141.5284pt.
+File: webdav.png Graphic file (type png)
+
+<use webdav.png>
+Package pdftex.def Info: webdav.png used on input line 13459.
+(pdftex.def)             Requested size: 469.755pt x 136.70827pt.
+ <user_mounts.png, id=2377, 301.8778pt x 212.29312pt>
+File: user_mounts.png Graphic file (type png)
+
+<use user_mounts.png>
+Package pdftex.def Info: user_mounts.png used on input line 13487.
+(pdftex.def)             Requested size: 301.87706pt x 212.2926pt.
+File: user_mounts.png Graphic file (type png)
+ <use user_mounts.png>
+Package pdftex.def Info: user_mounts.png used on input line 13487.
+(pdftex.def)             Requested size: 301.87706pt x 212.2926pt.
+ [205 <./smb.png>] [206 <./webdav.png> <./user_mounts.png>] <auth_rsa.png, id=2
+397, 863.225pt x 133.49875pt>
+File: auth_rsa.png Graphic file (type png)
+
+<use auth_rsa.png>
+Package pdftex.def Info: auth_rsa.png used on input line 13571.
+(pdftex.def)             Requested size: 863.2229pt x 133.4984pt.
+File: auth_rsa.png Graphic file (type png)
+ <use auth_rsa.png>
+Package pdftex.def Info: auth_rsa.png used on input line 13571.
+(pdftex.def)             Requested size: 469.755pt x 72.6484pt.
+
+<dropbox-oc.png, id=2398, 484.81125pt x 78.2925pt>
+File: dropbox-oc.png Graphic file (type png)
+ <use dropbox-oc.png>
+Package pdftex.def Info: dropbox-oc.png used on input line 13585.
+(pdftex.def)             Requested size: 484.81006pt x 78.2923pt.
+File: dropbox-oc.png Graphic file (type png)
+
+<use dropbox-oc.png>
+Package pdftex.def Info: dropbox-oc.png used on input line 13585.
+(pdftex.def)             Requested size: 469.755pt x 75.86478pt.
+ [207 <./auth_rsa.png>] [208 <./dropbox-oc.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 13652--13668
+
+ []
+
+<encryption3.png, id=2414, 489.32813pt x 313.17pt>
+File: encryption3.png Graphic file (type png)
+ <use encryption3.png>
+Package pdftex.def Info: encryption3.png used on input line 13692.
+(pdftex.def)             Requested size: 489.32692pt x 313.16922pt.
+File: encryption3.png Graphic file (type png)
+
+<use encryption3.png>
+Package pdftex.def Info: encryption3.png used on input line 13692.
+(pdftex.def)             Requested size: 469.755pt x 300.64932pt.
+ <encryption1.png, id=2415, 357.58594pt x 140.77594pt>
+File: encryption1.png Graphic file (type png)
+
+<use encryption1.png>
+Package pdftex.def Info: encryption1.png used on input line 13701.
+(pdftex.def)             Requested size: 357.58505pt x 140.77557pt.
+File: encryption1.png Graphic file (type png)
+ <use encryption1.png>
+Package pdftex.def Info: encryption1.png used on input line 13701.
+(pdftex.def)             Requested size: 357.58505pt x 140.77557pt.
+
+<encryption14.png, id=2416, 443.40656pt x 191.9672pt>
+File: encryption14.png Graphic file (type png)
+ <use encryption14.png>
+Package pdftex.def Info: encryption14.png used on input line 13710.
+(pdftex.def)             Requested size: 443.40547pt x 191.96672pt.
+File: encryption14.png Graphic file (type png)
+
+<use encryption14.png>
+Package pdftex.def Info: encryption14.png used on input line 13710.
+(pdftex.def)             Requested size: 443.40547pt x 191.96672pt.
+ <encryption15.png, id=2417, 392.96812pt x 184.43906pt>
+File: encryption15.png Graphic file (type png)
+
+<use encryption15.png>
+Package pdftex.def Info: encryption15.png used on input line 13719.
+(pdftex.def)             Requested size: 392.96715pt x 184.4386pt.
+File: encryption15.png Graphic file (type png)
+ <use encryption15.png>
+Package pdftex.def Info: encryption15.png used on input line 13719.
+(pdftex.def)             Requested size: 392.96715pt x 184.4386pt.
+
+<encryption9.png, id=2418, 226.59656pt x 93.34875pt>
+File: encryption9.png Graphic file (type png)
+ <use encryption9.png>
+Package pdftex.def Info: encryption9.png used on input line 13739.
+(pdftex.def)             Requested size: 226.596pt x 93.34851pt.
+File: encryption9.png Graphic file (type png)
+
+<use encryption9.png>
+Package pdftex.def Info: encryption9.png used on input line 13739.
+(pdftex.def)             Requested size: 226.596pt x 93.34851pt.
+ [209] [210 <./encryption3.png> <./encryption1.png> <./encryption14.png>] <encr
+yption10.png, id=2434, 466.74374pt x 246.9225pt>
+File: encryption10.png Graphic file (type png)
+
+<use encryption10.png>
+Package pdftex.def Info: encryption10.png used on input line 13766.
+(pdftex.def)             Requested size: 466.7426pt x 246.92188pt.
+File: encryption10.png Graphic file (type png)
+ <use encryption10.png>
+Package pdftex.def Info: encryption10.png used on input line 13766.
+(pdftex.def)             Requested size: 466.7426pt x 246.92188pt.
+
+<encryption7.png, id=2435, 379.4175pt x 161.10187pt>
+File: encryption7.png Graphic file (type png)
+ <use encryption7.png>
+Package pdftex.def Info: encryption7.png used on input line 13774.
+(pdftex.def)             Requested size: 379.41656pt x 161.10147pt.
+File: encryption7.png Graphic file (type png)
+
+<use encryption7.png>
+Package pdftex.def Info: encryption7.png used on input line 13774.
+(pdftex.def)             Requested size: 379.41656pt x 161.10147pt.
+ <encryption8.png, id=2436, 350.81062pt x 95.6072pt>
+File: encryption8.png Graphic file (type png)
+
+<use encryption8.png>
+Package pdftex.def Info: encryption8.png used on input line 13783.
+(pdftex.def)             Requested size: 350.80975pt x 95.60695pt.
+File: encryption8.png Graphic file (type png)
+ <use encryption8.png>
+Package pdftex.def Info: encryption8.png used on input line 13783.
+(pdftex.def)             Requested size: 350.80975pt x 95.60695pt.
+
+<encryption12.png, id=2437, 452.69125pt x 252.945pt>
+File: encryption12.png Graphic file (type png)
+ <use encryption12.png>
+Package pdftex.def Info: encryption12.png used on input line 13790.
+(pdftex.def)             Requested size: 452.69014pt x 252.94438pt.
+File: encryption12.png Graphic file (type png)
+
+<use encryption12.png>
+Package pdftex.def Info: encryption12.png used on input line 13790.
+(pdftex.def)             Requested size: 452.69014pt x 252.94438pt.
+ [211 <./encryption15.png> <./encryption9.png>] [212 <./encryption10.png> <./en
+cryption7.png> <./encryption8.png>] [213 <./encryption12.png>] [214] [215] [216
+]
+<preview_images.png, id=2483, 286.82156pt x 346.29375pt>
+File: preview_images.png Graphic file (type png)
+
+<use preview_images.png>
+Package pdftex.def Info: preview_images.png used on input line 14112.
+(pdftex.def)             Requested size: 286.82085pt x 346.2929pt.
+File: preview_images.png Graphic file (type png)
+ <use preview_images.png>
+Package pdftex.def Info: preview_images.png used on input line 14112.
+(pdftex.def)             Requested size: 286.82085pt x 346.2929pt.
+ [217 <./preview_images.png>]
+[218] <trashbin-1.png, id=2498, 700.11563pt x 295.85532pt>
+File: trashbin-1.png Graphic file (type png)
+
+<use trashbin-1.png>
+Package pdftex.def Info: trashbin-1.png used on input line 14297.
+(pdftex.def)             Requested size: 700.11392pt x 295.85458pt.
+File: trashbin-1.png Graphic file (type png)
+ <use trashbin-1.png>
+Package pdftex.def Info: trashbin-1.png used on input line 14297.
+(pdftex.def)             Requested size: 469.755pt x 198.51094pt.
+ [219] [220 <./trashbin-1.png>]
+Chapter 8.
+[221
+
+] [222] [223] [224] [225] [226] [227] [228
+
+]
+Chapter 9.
+[229] [230]
+Chapter 10.
+[231
+
+]
+Underfull \hbox (badness 10000) in paragraph at lines 15050--15055
+
+ []
+
+[232]
+Underfull \hbox (badness 10000) in paragraph at lines 15071--15078
+
+ []
+
+[233] [234]
+Underfull \hbox (badness 10000) in paragraph at lines 15217--15222
+
+ []
+
+<upgrade-1.png, id=2643, 309.40594pt x 347.79938pt>
+File: upgrade-1.png Graphic file (type png)
+ <use upgrade-1.png>
+Package pdftex.def Info: upgrade-1.png used on input line 15264.
+(pdftex.def)             Requested size: 309.40518pt x 347.79852pt.
+File: upgrade-1.png Graphic file (type png)
+
+<use upgrade-1.png>
+Package pdftex.def Info: upgrade-1.png used on input line 15264.
+(pdftex.def)             Requested size: 309.40518pt x 347.79852pt.
+ [235]
+Underfull \hbox (badness 10000) in paragraph at lines 15332--15337
+
+ []
+
+[236 <./upgrade-1.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 15370--15372
+[]\T1/ptm/m/n/10 Makes a copy of your cur-rent own-Cloud in-stance, ex-cept for
+ your data di-rec-tory, to
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15374--15376
+[]\T1/ptm/m/n/10 Moves all di-rec-to-ries ex-cept \T1/pcr/m/n/10 data\T1/ptm/m/
+n/10 , \T1/pcr/m/n/10 config \T1/ptm/m/n/10 and \T1/pcr/m/n/10 themes \T1/ptm/m
+/n/10 from the cur-rent in-stance to
+ []
+
+<upgrade-2.png, id=2679, 253.69781pt x 274.02374pt>
+File: upgrade-2.png Graphic file (type png)
+ <use upgrade-2.png>
+Package pdftex.def Info: upgrade-2.png used on input line 15426.
+(pdftex.def)             Requested size: 253.69719pt x 274.02307pt.
+File: upgrade-2.png Graphic file (type png)
+
+<use upgrade-2.png>
+Package pdftex.def Info: upgrade-2.png used on input line 15426.
+(pdftex.def)             Requested size: 253.69719pt x 274.02307pt.
+ [237] [238 <./upgrade-2.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 15573--15578
+
+ []
+
+[239]
+Underfull \hbox (badness 10000) in paragraph at lines 15610--15613
+\T1/ptm/b/n/10 Note:  \T1/ptm/m/n/10 En-ter-prise users must down-load their ne
+w own-Cloud archives from their ac-counts on
+ []
+
+[240] [241] [242]
+Chapter 11.
+[243
+
+] <phpinfo.png, id=2793, 252.19218pt x 149.8097pt>
+File: phpinfo.png Graphic file (type png)
+ <use phpinfo.png>
+Package pdftex.def Info: phpinfo.png used on input line 15909.
+(pdftex.def)             Requested size: 252.19156pt x 149.80931pt.
+File: phpinfo.png Graphic file (type png)
+
+<use phpinfo.png>
+Package pdftex.def Info: phpinfo.png used on input line 15909.
+(pdftex.def)             Requested size: 252.19156pt x 149.80931pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 15921--15925
+
+ []
+
+[244 <./phpinfo.png>]
+Underfull \hbox (badness 10000) in paragraph at lines 15975--15981
+[]\T1/pcr/m/n/10 No basic authentication headers were found \T1/ptm/m/n/10 -> T
+his er-ror is shown in your
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 15975--15981
+\T1/pcr/m/n/10 data/owncloud.log \T1/ptm/m/n/10 file. Some Apache mod-ules like
+ \T1/pcr/m/n/10 mod_fastcgi\T1/ptm/m/n/10 , \T1/pcr/m/n/10 mod_fcgid \T1/ptm/m/
+n/10 or
+ []
+
+[245] [246] [247] [248]
+<code-integrity-notification.png, id=2855, 512.91624pt x 80.3pt>
+File: code-integrity-notification.png Graphic file (type png)
+
+<use code-integrity-notification.png>
+Package pdftex.def Info: code-integrity-notification.png used on input line 163
+03.
+(pdftex.def)             Requested size: 512.915pt x 80.29979pt.
+File: code-integrity-notification.png Graphic file (type png)
+ <use code-integrity-notification.png>
+Package pdftex.def Info: code-integrity-notification.png used on input line 163
+03.
+(pdftex.def)             Requested size: 469.755pt x 73.5436pt.
+
+<code-integrity-admin.png, id=2856, 1024.82875pt x 144.54pt>
+File: code-integrity-admin.png Graphic file (type png)
+
+<use code-integrity-admin.png>
+Package pdftex.def Info: code-integrity-admin.png used on input line 16323.
+(pdftex.def)             Requested size: 1024.82625pt x 144.53963pt.
+File: code-integrity-admin.png Graphic file (type png)
+ <use code-integrity-admin.png>
+Package pdftex.def Info: code-integrity-admin.png used on input line 16323.
+(pdftex.def)             Requested size: 469.755pt x 66.2532pt.
+ [249 <./code-integrity-notification.png> <./code-integrity-admin.png>]
+Underfull \vbox (badness 10000) detected at line 16423
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 16423
+ []
+
+[250] [251]
+Underfull \hbox (badness 10000) in paragraph at lines 16482--16485
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 16545--16546
+[]\T1/pcr/m/n/10 Certificate is not valid for required scope. (Requested: %s,
+ []
+
+[252]
+Chapter 12.
+[253
+
+] [254] [255] <oracle-1.png, id=2930, 417.56pt x 536.0025pt>
+File: oracle-1.png Graphic file (type png)
+
+<use oracle-1.png>
+Package pdftex.def Info: oracle-1.png used on input line 16841.
+(pdftex.def)             Requested size: 417.60355pt x 535.98482pt.
+ [256] [257 <./oracle-1.png>] [258]
+<ownbrander-1.png, id=2953, 197.23688pt x 103.13531pt>
+File: ownbrander-1.png Graphic file (type png)
+ <use ownbrander-1.png>
+Package pdftex.def Info: ownbrander-1.png used on input line 16960.
+(pdftex.def)             Requested size: 197.23637pt x 103.13504pt.
+File: ownbrander-1.png Graphic file (type png)
+
+<use ownbrander-1.png>
+Package pdftex.def Info: ownbrander-1.png used on input line 16960.
+(pdftex.def)             Requested size: 197.23637pt x 103.13504pt.
+ [259 <./ownbrander-1.png>]
+<ownbrander-11.png, id=2970, 197.23688pt x 103.13531pt>
+File: ownbrander-11.png Graphic file (type png)
+
+<use ownbrander-11.png>
+Package pdftex.def Info: ownbrander-11.png used on input line 17019.
+(pdftex.def)             Requested size: 197.23637pt x 103.13504pt.
+File: ownbrander-11.png Graphic file (type png)
+ <use ownbrander-11.png>
+Package pdftex.def Info: ownbrander-11.png used on input line 17019.
+(pdftex.def)             Requested size: 197.23637pt x 103.13504pt.
+
+<webbrander-1.png, id=2971, 454.69875pt x 386.94562pt>
+File: webbrander-1.png Graphic file (type png)
+ <use webbrander-1.png>
+Package pdftex.def Info: webbrander-1.png used on input line 17030.
+(pdftex.def)             Requested size: 454.69763pt x 386.94467pt.
+File: webbrander-1.png Graphic file (type png)
+
+<use webbrander-1.png>
+Package pdftex.def Info: webbrander-1.png used on input line 17030.
+(pdftex.def)             Requested size: 454.69763pt x 386.94467pt.
+ [260 <./ownbrander-11.png>] [261 <./webbrander-1.png>]
+<auth_backends-2.png, id=2986, 301.8778pt x 122.70844pt>
+File: auth_backends-2.png Graphic file (type png)
+
+<use auth_backends-2.png>
+Package pdftex.def Info: auth_backends-2.png used on input line 17146.
+(pdftex.def)             Requested size: 301.87706pt x 122.70813pt.
+File: auth_backends-2.png Graphic file (type png)
+ <use auth_backends-2.png>
+Package pdftex.def Info: auth_backends-2.png used on input line 17146.
+(pdftex.def)             Requested size: 301.87706pt x 122.70813pt.
+
+<auth_backends.png, id=2987, 218.31563pt x 109.1578pt>
+File: auth_backends.png Graphic file (type png)
+ <use auth_backends.png>
+Package pdftex.def Info: auth_backends.png used on input line 17154.
+(pdftex.def)             Requested size: 218.31508pt x 109.15753pt.
+File: auth_backends.png Graphic file (type png)
+
+<use auth_backends.png>
+Package pdftex.def Info: auth_backends.png used on input line 17154.
+(pdftex.def)             Requested size: 218.31508pt x 109.15753pt.
+ [262]
+<ldap-home-connector-1.png, id=2994, 345.54094pt x 125.71968pt>
+File: ldap-home-connector-1.png Graphic file (type png)
+
+<use ldap-home-connector-1.png>
+Package pdftex.def Info: ldap-home-connector-1.png used on input line 17203.
+(pdftex.def)             Requested size: 345.54008pt x 125.71936pt.
+File: ldap-home-connector-1.png Graphic file (type png)
+ <use ldap-home-connector-1.png>
+Package pdftex.def Info: ldap-home-connector-1.png used on input line 17203.
+(pdftex.def)             Requested size: 345.54008pt x 125.71936pt.
+ [263 <./auth_backends-2.png> <./auth_backends.png>]
+<ldap-home-connector-2.png, id=3001, 316.18124pt x 354.57469pt>
+File: ldap-home-connector-2.png Graphic file (type png)
+
+<use ldap-home-connector-2.png>
+Package pdftex.def Info: ldap-home-connector-2.png used on input line 17211.
+(pdftex.def)             Requested size: 316.18047pt x 354.57382pt.
+File: ldap-home-connector-2.png Graphic file (type png)
+ <use ldap-home-connector-2.png>
+Package pdftex.def Info: ldap-home-connector-2.png used on input line 17211.
+(pdftex.def)             Requested size: 316.18047pt x 354.57382pt.
+
+<ldap-home-connector-3.png, id=3002, 358.33875pt x 340.27126pt>
+File: ldap-home-connector-3.png Graphic file (type png)
+
+<use ldap-home-connector-3.png>
+Package pdftex.def Info: ldap-home-connector-3.png used on input line 17216.
+(pdftex.def)             Requested size: 358.33788pt x 340.27042pt.
+File: ldap-home-connector-3.png Graphic file (type png)
+ <use ldap-home-connector-3.png>
+Package pdftex.def Info: ldap-home-connector-3.png used on input line 17216.
+(pdftex.def)             Requested size: 358.33788pt x 340.27042pt.
+ [264 <./ldap-home-connector-1.png> <./ldap-home-connector-2.png>] [265 <./ldap
+-home-connector-3.png>] <sharepoint-1.png, id=3017, 414.04688pt x 100.12407pt>
+File: sharepoint-1.png Graphic file (type png)
+
+<use sharepoint-1.png>
+Package pdftex.def Info: sharepoint-1.png used on input line 17263.
+(pdftex.def)             Requested size: 414.04585pt x 100.12381pt.
+File: sharepoint-1.png Graphic file (type png)
+ <use sharepoint-1.png>
+Package pdftex.def Info: sharepoint-1.png used on input line 17263.
+(pdftex.def)             Requested size: 414.04585pt x 100.12381pt.
+
+<sharepoint-2.png, id=3018, 489.32813pt x 61.73062pt>
+File: sharepoint-2.png Graphic file (type png)
+ <use sharepoint-2.png>
+Package pdftex.def Info: sharepoint-2.png used on input line 17272.
+(pdftex.def)             Requested size: 489.32692pt x 61.73045pt.
+File: sharepoint-2.png Graphic file (type png)
+
+<use sharepoint-2.png>
+Package pdftex.def Info: sharepoint-2.png used on input line 17272.
+(pdftex.def)             Requested size: 469.755pt x 59.26259pt.
+ <sharepoint-3.png, id=3019, 354.32375pt x 182.6825pt>
+File: sharepoint-3.png Graphic file (type png)
+
+<use sharepoint-3.png>
+Package pdftex.def Info: sharepoint-3.png used on input line 17289.
+(pdftex.def)             Requested size: 354.32288pt x 182.68204pt.
+File: sharepoint-3.png Graphic file (type png)
+ <use sharepoint-3.png>
+Package pdftex.def Info: sharepoint-3.png used on input line 17289.
+(pdftex.def)             Requested size: 354.32288pt x 182.68204pt.
+
+<sharepoint-4.png, id=3020, 347.79938pt x 52.69687pt>
+File: sharepoint-4.png Graphic file (type png)
+ <use sharepoint-4.png>
+Package pdftex.def Info: sharepoint-4.png used on input line 17305.
+(pdftex.def)             Requested size: 347.79852pt x 52.69673pt.
+File: sharepoint-4.png Graphic file (type png)
+
+<use sharepoint-4.png>
+Package pdftex.def Info: sharepoint-4.png used on input line 17305.
+(pdftex.def)             Requested size: 347.79852pt x 52.69673pt.
+ [266 <./sharepoint-1.png> <./sharepoint-2.png> <./sharepoint-3.png>] <wnd-1.pn
+g, id=3028, 401.24907pt x 316.93407pt>
+File: wnd-1.png Graphic file (type png)
+ <use wnd-1.png>
+Package pdftex.def Info: wnd-1.png used on input line 17365.
+(pdftex.def)             Requested size: 401.24808pt x 316.93329pt.
+File: wnd-1.png Graphic file (type png)
+
+<use wnd-1.png>
+Package pdftex.def Info: wnd-1.png used on input line 17365.
+(pdftex.def)             Requested size: 401.24808pt x 316.93329pt.
+ [267 <./sharepoint-4.png>] [268 <./wnd-1.png>]
+<wnd-2.png, id=3044, 451.6875pt x 187.45032pt>
+File: wnd-2.png Graphic file (type png)
+ <use wnd-2.png>
+Package pdftex.def Info: wnd-2.png used on input line 17411.
+(pdftex.def)             Requested size: 451.68639pt x 187.44984pt.
+File: wnd-2.png Graphic file (type png)
+ <use wnd-2.png>
+Package pdftex.def Info: wnd-2.png used on input line 17411.
+(pdftex.def)             Requested size: 451.68639pt x 187.44984pt.
+
+[269 <./wnd-2.png>] <wnd-3.png, id=3061, 490.83376pt x 258.21469pt>
+File: wnd-3.png Graphic file (type png)
+
+<use wnd-3.png>
+Package pdftex.def Info: wnd-3.png used on input line 17445.
+(pdftex.def)             Requested size: 490.83255pt x 258.21405pt.
+File: wnd-3.png Graphic file (type png)
+ <use wnd-3.png>
+Package pdftex.def Info: wnd-3.png used on input line 17445.
+(pdftex.def)             Requested size: 469.755pt x 247.13467pt.
+ [270 <./wnd-3.png>] [271]
+Underfull \hbox (badness 10000) in paragraph at lines 17600--17602
+[]\T1/ptm/m/n/10 Configuration \T1/pcr/m/n/10 host: "172.18.16.220", share: "ho
+me", remote subfolder:
+ []
+
+[272] [273] [274] <jive_config.png, id=3101, 813.79031pt x 593.96906pt>
+File: jive_config.png Graphic file (type png)
+
+<use jive_config.png>
+Package pdftex.def Info: jive_config.png used on input line 17795.
+(pdftex.def)             Requested size: 813.78833pt x 593.9676pt.
+File: jive_config.png Graphic file (type png)
+ <use jive_config.png>
+Package pdftex.def Info: jive_config.png used on input line 17795.
+(pdftex.def)             Requested size: 469.755pt x 342.86185pt.
+ [275]
+Overfull \hbox (85.85942pt too wide) in paragraph at lines 17906--17906
+[][]\T1/ptm/m/n/10 https://mycompany.jiveon.com/api/core/v3/[][]|  
+ []
+
+[276 <./jive_config.png>] <jive_2.png, id=3114, 312.16624pt x 288.07625pt>
+File: jive_2.png Graphic file (type png)
+
+<use jive_2.png>
+Package pdftex.def Info: jive_2.png used on input line 17917.
+(pdftex.def)             Requested size: 234.14316pt x 216.08301pt.
+ [277] [278 <./jive_2.png>] [279] [280]
+Underfull \hbox (badness 6364) in paragraph at lines 18161--18164
+[]\T1/ptm/m/n/10 If your server is un-der a port dif-fer-ent than the 80, you'l
+l need to spec-ify it. Take ^^P
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 18166--18169
+[]\T1/ptm/m/n/10 If your server isn't un-der the root URL, you can also spec-if
+y the cor-rect path: ^^P
+ []
+
+[281]
+Underfull \hbox (badness 10000) in paragraph at lines 18262--18264
+[]
+ []
+
+[282] [283] [284]
+Underfull \vbox (badness 10000) detected at line 18541
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 18541
+ []
+
+[285] <shib-gui5.png, id=3201, 414.79968pt x 551.05875pt>
+File: shib-gui5.png Graphic file (type png)
+ <use shib-gui5.png>
+Package pdftex.def Info: shib-gui5.png used on input line 18556.
+(pdftex.def)             Requested size: 414.79868pt x 551.05739pt.
+File: shib-gui5.png Graphic file (type png)
+
+<use shib-gui5.png>
+Package pdftex.def Info: shib-gui5.png used on input line 18556.
+(pdftex.def)             Requested size: 414.79868pt x 551.05739pt.
+ [286] [287 <./shib-gui5.png>]
+<shib-gui6.png, id=3214, 320.69812pt x 336.50719pt>
+File: shib-gui6.png Graphic file (type png)
+ <use shib-gui6.png>
+Package pdftex.def Info: shib-gui6.png used on input line 18609.
+(pdftex.def)             Requested size: 320.69733pt x 336.50635pt.
+File: shib-gui6.png Graphic file (type png)
+
+<use shib-gui6.png>
+Package pdftex.def Info: shib-gui6.png used on input line 18609.
+(pdftex.def)             Requested size: 320.69733pt x 336.50635pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 18613--18617
+[]\T1/ptm/m/n/10 In own-Cloud 8.1 the Shib-bo-leth en-vi-ron-ment vari-able map
+-ping was stored in
+ []
+
+[288 <./shib-gui6.png>] <shib-gui1.png, id=3222, 374.90062pt x 262.73157pt>
+File: shib-gui1.png Graphic file (type png)
+
+<use shib-gui1.png>
+Package pdftex.def Info: shib-gui1.png used on input line 18651.
+(pdftex.def)             Requested size: 374.8997pt x 262.73091pt.
+File: shib-gui1.png Graphic file (type png)
+ <use shib-gui1.png>
+Package pdftex.def Info: shib-gui1.png used on input line 18651.
+(pdftex.def)             Requested size: 374.8997pt x 262.73091pt.
+
+<shib-gui4.png, id=3223, 451.6875pt x 376.40625pt>
+File: shib-gui4.png Graphic file (type png)
+ <use shib-gui4.png>
+Package pdftex.def Info: shib-gui4.png used on input line 18661.
+(pdftex.def)             Requested size: 451.68639pt x 376.40532pt.
+File: shib-gui4.png Graphic file (type png)
+
+<use shib-gui4.png>
+Package pdftex.def Info: shib-gui4.png used on input line 18661.
+(pdftex.def)             Requested size: 451.68639pt x 376.40532pt.
+
+Underfull \hbox (badness 10000) in paragraph at lines 18672--18676
+\T1/ptm/m/n/10 Users of stan-dard Web-DAV clients can use an al-ter-na-tive Web
+-DAV Url, for ex-am-ple
+ []
+
+[289 <./shib-gui1.png>] [290 <./shib-gui4.png>]
+<shibboleth-personal.png, id=3238, 604.2575pt x 229.85875pt>
+File: shibboleth-personal.png Graphic file (type png)
+
+<use shibboleth-personal.png>
+Package pdftex.def Info: shibboleth-personal.png used on input line 18677.
+(pdftex.def)             Requested size: 604.25603pt x 229.85817pt.
+File: shibboleth-personal.png Graphic file (type png)
+ <use shibboleth-personal.png>
+Package pdftex.def Info: shibboleth-personal.png used on input line 18677.
+(pdftex.def)             Requested size: 469.755pt x 178.69284pt.
+ [291 <./shibboleth-personal.png>] [292] <files-drop-1.png, id=3255, 462.22687p
+t x 194.97844pt>
+File: files-drop-1.png Graphic file (type png)
+
+<use files-drop-1.png>
+Package pdftex.def Info: files-drop-1.png used on input line 18858.
+(pdftex.def)             Requested size: 462.22574pt x 194.97795pt.
+File: files-drop-1.png Graphic file (type png)
+ <use files-drop-1.png>
+Package pdftex.def Info: files-drop-1.png used on input line 18858.
+(pdftex.def)             Requested size: 462.22574pt x 194.97795pt.
+
+<files-drop-2.png, id=3256, 243.15843pt x 91.09032pt>
+File: files-drop-2.png Graphic file (type png)
+ <use files-drop-2.png>
+Package pdftex.def Info: files-drop-2.png used on input line 18862.
+(pdftex.def)             Requested size: 243.15784pt x 91.09007pt.
+File: files-drop-2.png Graphic file (type png)
+
+<use files-drop-2.png>
+Package pdftex.def Info: files-drop-2.png used on input line 18862.
+(pdftex.def)             Requested size: 243.15784pt x 91.09007pt.
+ <files-drop-3.png, id=3257, 520.94624pt x 240.9pt>
+File: files-drop-3.png Graphic file (type png)
+
+<use files-drop-3.png>
+Package pdftex.def Info: files-drop-3.png used on input line 18870.
+(pdftex.def)             Requested size: 520.94498pt x 240.8994pt.
+File: files-drop-3.png Graphic file (type png)
+ <use files-drop-3.png>
+Package pdftex.def Info: files-drop-3.png used on input line 18870.
+(pdftex.def)             Requested size: 469.755pt x 217.2307pt.
+ [293 <./files-drop-1.png> <./files-drop-2.png>] <files-drop-4.png, id=3266, 36
+2.85562pt x 115.93312pt>
+File: files-drop-4.png Graphic file (type png)
+
+<use files-drop-4.png>
+Package pdftex.def Info: files-drop-4.png used on input line 18880.
+(pdftex.def)             Requested size: 362.85474pt x 115.93283pt.
+File: files-drop-4.png Graphic file (type png)
+ <use files-drop-4.png>
+Package pdftex.def Info: files-drop-4.png used on input line 18880.
+(pdftex.def)             Requested size: 362.85474pt x 115.93283pt.
+
+<files-drop-5.png, id=3267, 590.205pt x 444.91219pt>
+File: files-drop-5.png Graphic file (type png)
+ <use files-drop-5.png>
+Package pdftex.def Info: files-drop-5.png used on input line 18890.
+(pdftex.def)             Requested size: 590.20355pt x 444.91109pt.
+File: files-drop-5.png Graphic file (type png)
+
+<use files-drop-5.png>
+Package pdftex.def Info: files-drop-5.png used on input line 18890.
+(pdftex.def)             Requested size: 469.755pt x 354.11761pt.
+ <files-drop-6.png, id=3268, 544.28343pt x 483.30562pt>
+File: files-drop-6.png Graphic file (type png)
+
+<use files-drop-6.png>
+Package pdftex.def Info: files-drop-6.png used on input line 18898.
+(pdftex.def)             Requested size: 544.2821pt x 483.30444pt.
+File: files-drop-6.png Graphic file (type png)
+ <use files-drop-6.png>
+Package pdftex.def Info: files-drop-6.png used on input line 18898.
+(pdftex.def)             Requested size: 469.755pt x 417.1244pt.
+
+<files-drop-7.png, id=3269, 288.3272pt x 365.11406pt>
+File: files-drop-7.png Graphic file (type png)
+ <use files-drop-7.png>
+Package pdftex.def Info: files-drop-7.png used on input line 18906.
+(pdftex.def)             Requested size: 288.32648pt x 365.11316pt.
+File: files-drop-7.png Graphic file (type png)
+
+<use files-drop-7.png>
+Package pdftex.def Info: files-drop-7.png used on input line 18906.
+(pdftex.def)             Requested size: 288.32648pt x 365.11316pt.
+ [294 <./files-drop-3.png> <./files-drop-4.png>] [295 <./files-drop-5.png>] [29
+6 <./files-drop-6.png>] [297 <./files-drop-7.png>]
+<workflow-1.png, id=3289, 295.85532pt x 286.82156pt>
+File: workflow-1.png Graphic file (type png)
+ <use workflow-1.png>
+Package pdftex.def Info: workflow-1.png used on input line 18936.
+(pdftex.def)             Requested size: 295.85458pt x 286.82085pt.
+File: workflow-1.png Graphic file (type png)
+
+<use workflow-1.png>
+Package pdftex.def Info: workflow-1.png used on input line 18936.
+(pdftex.def)             Requested size: 295.85458pt x 286.82085pt.
+ <workflow-5.png, id=3290, 179.16937pt x 134.00063pt>
+File: workflow-5.png Graphic file (type png)
+
+<use workflow-5.png>
+Package pdftex.def Info: workflow-5.png used on input line 18943.
+(pdftex.def)             Requested size: 179.16893pt x 134.00027pt.
+File: workflow-5.png Graphic file (type png)
+ <use workflow-5.png>
+Package pdftex.def Info: workflow-5.png used on input line 18943.
+(pdftex.def)             Requested size: 179.16893pt x 134.00027pt.
+ [298 <./workflow-1.png> <./workflow-5.png>] <workflow-2.png, id=3296, 283.0575
+pt x 221.32687pt>
+File: workflow-2.png Graphic file (type png)
+
+<use workflow-2.png>
+Package pdftex.def Info: workflow-2.png used on input line 18959.
+(pdftex.def)             Requested size: 283.0568pt x 221.32631pt.
+File: workflow-2.png Graphic file (type png)
+ <use workflow-2.png>
+Package pdftex.def Info: workflow-2.png used on input line 18959.
+(pdftex.def)             Requested size: 283.0568pt x 221.32631pt.
+
+<workflow-3.png, id=3297, 429.10312pt x 241.65282pt>
+File: workflow-3.png Graphic file (type png)
+ <use workflow-3.png>
+Package pdftex.def Info: workflow-3.png used on input line 18967.
+(pdftex.def)             Requested size: 429.10207pt x 241.65222pt.
+File: workflow-3.png Graphic file (type png)
+
+<use workflow-3.png>
+Package pdftex.def Info: workflow-3.png used on input line 18967.
+(pdftex.def)             Requested size: 429.10207pt x 241.65222pt.
+ <workflow-4.png, id=3298, 384.6872pt x 118.94438pt>
+File: workflow-4.png Graphic file (type png)
+
+<use workflow-4.png>
+Package pdftex.def Info: workflow-4.png used on input line 18982.
+(pdftex.def)             Requested size: 384.68625pt x 118.94408pt.
+File: workflow-4.png Graphic file (type png)
+ <use workflow-4.png>
+Package pdftex.def Info: workflow-4.png used on input line 18982.
+(pdftex.def)             Requested size: 384.68625pt x 118.94408pt.
+ [299 <./workflow-2.png> <./workflow-3.png>] <logging-1.png, id=3304, 365.86688
+pt x 151.3153pt>
+File: logging-1.png Graphic file (type png)
+ <use logging-1.png>
+Package pdftex.def Info: logging-1.png used on input line 19026.
+(pdftex.def)             Requested size: 365.86598pt x 151.31493pt.
+File: logging-1.png Graphic file (type png)
+
+<use logging-1.png>
+Package pdftex.def Info: logging-1.png used on input line 19026.
+(pdftex.def)             Requested size: 365.86598pt x 151.31493pt.
+ [300 <./workflow-4.png>]
+<firewall-1.png, id=3314, 503.63156pt x 235.63031pt>
+File: firewall-1.png Graphic file (type png)
+ <use firewall-1.png>
+Package pdftex.def Info: firewall-1.png used on input line 19070.
+(pdftex.def)             Requested size: 503.63033pt x 235.62973pt.
+File: firewall-1.png Graphic file (type png)
+
+<use firewall-1.png>
+Package pdftex.def Info: firewall-1.png used on input line 19070.
+(pdftex.def)             Requested size: 469.755pt x 219.7811pt.
+ [301 <./logging-1.png> <./firewall-1.png>]
+<firewall-2.png, id=3322, 545.03625pt x 409.53pt>
+File: firewall-2.png Graphic file (type png)
+ <use firewall-2.png>
+Package pdftex.def Info: firewall-2.png used on input line 19083.
+(pdftex.def)             Requested size: 545.03493pt x 409.52899pt.
+File: firewall-2.png Graphic file (type png)
+
+<use firewall-2.png>
+Package pdftex.def Info: firewall-2.png used on input line 19083.
+(pdftex.def)             Requested size: 469.755pt x 352.96379pt.
+ [302 <./firewall-2.png>]
+<firewall-3.png, id=3329, 521.95pt x 220.825pt>
+File: firewall-3.png Graphic file (type png)
+ <use firewall-3.png>
+Package pdftex.def Info: firewall-3.png used on input line 19193.
+(pdftex.def)             Requested size: 521.94872pt x 220.82445pt.
+File: firewall-3.png Graphic file (type png)
+
+<use firewall-3.png>
+Package pdftex.def Info: firewall-3.png used on input line 19193.
+(pdftex.def)             Requested size: 469.755pt x 198.74402pt.
+ [303]
+Underfull \hbox (badness 7595) in paragraph at lines 19234--19236
+[]\T1/ptm/m/n/10 In this ex-am-ple con-fig-u-ra-tion you need to re-place the e
+x-am-ple User Agent strings, for ex-am-ple
+ []
+
+
+Underfull \hbox (badness 7308) in paragraph at lines 19271--19273
+[]\T1/ptm/m/n/10 All branded clients - vis-i-ble when at least one of \T1/pcr/m
+/n/10 android_branded\T1/ptm/m/n/10 , \T1/pcr/m/n/10 ios_branded \T1/ptm/m/n/10
+ or
+ []
+
+[304 <./firewall-3.png>]
+<config-report-1.png, id=3346, 351.56343pt x 112.16907pt>
+File: config-report-1.png Graphic file (type png)
+
+<use config-report-1.png>
+Package pdftex.def Info: config-report-1.png used on input line 19323.
+(pdftex.def)             Requested size: 351.56256pt x 112.16878pt.
+File: config-report-1.png Graphic file (type png)
+ <use config-report-1.png>
+Package pdftex.def Info: config-report-1.png used on input line 19323.
+(pdftex.def)             Requested size: 351.56256pt x 112.16878pt.
+
+(./ownCloud_Server_Administration_Manual.ind)
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 19332.
+ [305 <./config-report-1.png>]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 19332.
+
+(./ownCloud_Server_Administration_Manual.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 19332.
+
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 19332
+.
+Package rerunfilecheck Info: File `ownCloud_Server_Administration_Manual.out' h
+as not changed.
+(rerunfilecheck)             Checksum: 84ABC0581030C2ED9F97639B975A4992;7584.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 19332.
+ ) 
+Here is how much of TeX's memory you used:
+ 12023 strings out of 495028
+ 212689 string characters out of 6181497
+ 282121 words of memory out of 5000000
+ 13672 multiletter control sequences out of 15000+600000
+ 73410 words of font info for 75 fonts, out of 8000000 for 9000
+ 15 hyphenation exceptions out of 8191
+ 38i,12n,51p,876b,503s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/share/texliv
+e/texmf-dist/fonts/type1/urw/courier/ucrb8a.pfb></usr/share/texlive/texmf-dist/
+fonts/type1/urw/courier/ucrr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/u
+rw/courier/ucrro8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/
+uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8a.pfb>
+</usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share/
+texlive/texmf-dist/fonts/type1/urw/times/utmb8a.pfb></usr/share/texlive/texmf-d
+ist/fonts/type1/urw/times/utmbi8a.pfb></usr/share/texlive/texmf-dist/fonts/type
+1/urw/times/utmr8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/times/utm
+ri8a.pfb>
+Output written on ownCloud_Server_Administration_Manual.pdf (311 pages, 4833806
+ bytes).
+PDF statistics:
+ 3634 PDF objects out of 4296 (max. 8388607)
+ 3097 compressed objects within 31 object streams
+ 1146 named destinations out of 1200 (max. 500000)
+ 1593 words of extra memory for PDF output out of 10000 (max. 10000000)
+

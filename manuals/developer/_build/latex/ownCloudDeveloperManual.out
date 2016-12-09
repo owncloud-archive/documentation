@@ -1,0 +1,52 @@
+\BOOKMARK [0][-]{chapter.1}{Table of Contents}{}% 1
+\BOOKMARK [1][-]{section.1.1}{General Contributor Guidelines}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Changelog}{chapter.1}% 3
+\BOOKMARK [1][-]{section.1.3}{Tutorial}{chapter.1}% 4
+\BOOKMARK [1][-]{section.1.4}{Create an app}{chapter.1}% 5
+\BOOKMARK [1][-]{section.1.5}{Navigation and Pre-App configuration}{chapter.1}% 6
+\BOOKMARK [1][-]{section.1.6}{App Metadata}{chapter.1}% 7
+\BOOKMARK [1][-]{section.1.7}{Classloader}{chapter.1}% 8
+\BOOKMARK [1][-]{section.1.8}{Request lifecycle}{chapter.1}% 9
+\BOOKMARK [1][-]{section.1.9}{Routing}{chapter.1}% 10
+\BOOKMARK [1][-]{section.1.10}{Middleware}{chapter.1}% 11
+\BOOKMARK [1][-]{section.1.11}{Container}{chapter.1}% 12
+\BOOKMARK [1][-]{section.1.12}{Controllers}{chapter.1}% 13
+\BOOKMARK [1][-]{section.1.13}{RESTful API}{chapter.1}% 14
+\BOOKMARK [1][-]{section.1.14}{Templates}{chapter.1}% 15
+\BOOKMARK [1][-]{section.1.15}{JavaScript}{chapter.1}% 16
+\BOOKMARK [1][-]{section.1.16}{CSS}{chapter.1}% 17
+\BOOKMARK [1][-]{section.1.17}{Translation}{chapter.1}% 18
+\BOOKMARK [1][-]{section.1.18}{Database Schema}{chapter.1}% 19
+\BOOKMARK [1][-]{section.1.19}{Database Access}{chapter.1}% 20
+\BOOKMARK [1][-]{section.1.20}{Configuration}{chapter.1}% 21
+\BOOKMARK [1][-]{section.1.21}{Filesystem}{chapter.1}% 22
+\BOOKMARK [1][-]{section.1.22}{Usermanagement}{chapter.1}% 23
+\BOOKMARK [1][-]{section.1.23}{Two-factor Providers}{chapter.1}% 24
+\BOOKMARK [1][-]{section.1.24}{External storage backends}{chapter.1}% 25
+\BOOKMARK [1][-]{section.1.25}{Hooks}{chapter.1}% 26
+\BOOKMARK [1][-]{section.1.26}{Background Jobs \(Cron\)}{chapter.1}% 27
+\BOOKMARK [1][-]{section.1.27}{Logging}{chapter.1}% 28
+\BOOKMARK [1][-]{section.1.28}{Testing}{chapter.1}% 29
+\BOOKMARK [1][-]{section.1.29}{App store publishing}{chapter.1}% 30
+\BOOKMARK [1][-]{section.1.30}{Code Signing}{chapter.1}% 31
+\BOOKMARK [1][-]{section.1.31}{App Development}{chapter.1}% 32
+\BOOKMARK [1][-]{section.1.32}{Android Application Development}{chapter.1}% 33
+\BOOKMARK [1][-]{section.1.33}{iOS Application Development}{chapter.1}% 34
+\BOOKMARK [1][-]{section.1.34}{Translation}{chapter.1}% 35
+\BOOKMARK [1][-]{section.1.35}{Unit-Testing}{chapter.1}% 36
+\BOOKMARK [1][-]{section.1.36}{Theming ownCloud}{chapter.1}% 37
+\BOOKMARK [1][-]{section.1.37}{Getting started}{chapter.1}% 38
+\BOOKMARK [1][-]{section.1.38}{Creating and activating a new theme}{chapter.1}% 39
+\BOOKMARK [1][-]{section.1.39}{Structure}{chapter.1}% 40
+\BOOKMARK [1][-]{section.1.40}{Notes for Updates}{chapter.1}% 41
+\BOOKMARK [1][-]{section.1.41}{How to change images and the logo}{chapter.1}% 42
+\BOOKMARK [1][-]{section.1.42}{How to change translations}{chapter.1}% 43
+\BOOKMARK [1][-]{section.1.43}{How to change names, slogans and URLs}{chapter.1}% 44
+\BOOKMARK [1][-]{section.1.44}{Testing the new theme out}{chapter.1}% 45
+\BOOKMARK [1][-]{section.1.45}{App config}{chapter.1}% 46
+\BOOKMARK [1][-]{section.1.46}{External API}{chapter.1}% 47
+\BOOKMARK [1][-]{section.1.47}{OCS Share API}{chapter.1}% 48
+\BOOKMARK [1][-]{section.1.48}{Core Development}{chapter.1}% 49
+\BOOKMARK [1][-]{section.1.49}{ownCloud Test Pilots}{chapter.1}% 50
+\BOOKMARK [1][-]{section.1.50}{Bugtracker}{chapter.1}% 51
+\BOOKMARK [1][-]{section.1.51}{Help and Communication}{chapter.1}% 52
