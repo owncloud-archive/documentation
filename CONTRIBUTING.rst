@@ -76,9 +76,9 @@ Which branch should you issue a pull request against?
   as new public methods or properties), issue the pull request against the
   "develop" branch.
 
-When creating the Pull Request, please keep the recommendations of `this post <https://github.com/blog/1943-how-to-write-the-perfect-pull-request>`_
- in mind. To save time, here is a slightly revised version of the core
- points:
+When creating the Pull Request, please keep the recommendations of `this post <https://github.com/blog/1943-how-to-write-the-perfect-pull-request>`_ 
+in mind. To save time, here is a slightly revised version of the core
+points:
 
 * Include the purpose of this Pull Request
 * Consider providing an overview of why the change is being made
