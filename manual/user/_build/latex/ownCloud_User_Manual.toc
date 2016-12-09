@@ -1,0 +1,119 @@
+\select@language {english}
+\contentsline {chapter}{\numberline {1}ownCloud 9.2 User Manual Introduction}{1}{chapter.1}
+\contentsline {chapter}{\numberline {2}What's New for Users in ownCloud 9.2}{3}{chapter.2}
+\contentsline {chapter}{\numberline {3}The ownCloud Web Interface}{5}{chapter.3}
+\contentsline {section}{\numberline {3.1}Navigating the Main User Interface}{5}{section.3.1}
+\contentsline {chapter}{\numberline {4}Files \& Synchronization}{9}{chapter.4}
+\contentsline {section}{\numberline {4.1}Accessing your Files Using the ownCloud Web Interface}{9}{section.4.1}
+\contentsline {subsection}{\numberline {4.1.1}Tagging Files}{9}{subsection.4.1.1}
+\contentsline {subsection}{\numberline {4.1.2}Comments}{10}{subsection.4.1.2}
+\contentsline {subsection}{\numberline {4.1.3}Video Player}{12}{subsection.4.1.3}
+\contentsline {subsection}{\numberline {4.1.4}File Controls}{12}{subsection.4.1.4}
+\contentsline {subsection}{\numberline {4.1.5}Previewing Files}{15}{subsection.4.1.5}
+\contentsline {subsection}{\numberline {4.1.6}Navigating Inside Your ownCloud}{15}{subsection.4.1.6}
+\contentsline {subsection}{\numberline {4.1.7}Sharing Status Icons}{15}{subsection.4.1.7}
+\contentsline {subsection}{\numberline {4.1.8}Creating or Uploading Files and Directories}{15}{subsection.4.1.8}
+\contentsline {subsection}{\numberline {4.1.9}Selecting Files or Folders}{16}{subsection.4.1.9}
+\contentsline {subsection}{\numberline {4.1.10}Filtering the Files View}{16}{subsection.4.1.10}
+\contentsline {subsection}{\numberline {4.1.11}Moving Files}{17}{subsection.4.1.11}
+\contentsline {subsection}{\numberline {4.1.12}Change in Share Expiration Date}{17}{subsection.4.1.12}
+\contentsline {subsection}{\numberline {4.1.13}Creating or Connecting to a Federation Share Link}{17}{subsection.4.1.13}
+\contentsline {section}{\numberline {4.2}Accessing ownCloud Files Using WebDAV}{17}{section.4.2}
+\contentsline {subsection}{\numberline {4.2.1}ownCloud Desktop and Mobile Clients}{17}{subsection.4.2.1}
+\contentsline {subsection}{\numberline {4.2.2}WebDAV Configuration}{18}{subsection.4.2.2}
+\contentsline {subsection}{\numberline {4.2.3}Accessing Files Using Linux}{18}{subsection.4.2.3}
+\contentsline {subsubsection}{Nautilus File Manager}{18}{subsubsection*.3}
+\contentsline {subsubsection}{Accessing Files with KDE and Dolphin File Manager}{19}{subsubsection*.4}
+\contentsline {subsection}{\numberline {4.2.4}Creating WebDAV Mounts on the Linux Command Line}{20}{subsection.4.2.4}
+\contentsline {subsection}{\numberline {4.2.5}Known Issues}{21}{subsection.4.2.5}
+\contentsline {subsubsection}{Problem}{21}{subsubsection*.5}
+\contentsline {subsubsection}{Solution}{21}{subsubsection*.6}
+\contentsline {subsubsection}{Problem}{22}{subsubsection*.7}
+\contentsline {subsubsection}{Solution}{22}{subsubsection*.8}
+\contentsline {subsection}{\numberline {4.2.6}Accessing Files Using Mac OS X}{22}{subsection.4.2.6}
+\contentsline {subsection}{\numberline {4.2.7}Accessing Files Using Microsoft Windows}{24}{subsection.4.2.7}
+\contentsline {subsubsection}{Mapping Drives With the Command Line}{24}{subsubsection*.9}
+\contentsline {subsubsection}{Mapping Drives With Windows Explorer}{24}{subsubsection*.10}
+\contentsline {subsection}{\numberline {4.2.8}Accessing Files Using Cyberduck}{25}{subsection.4.2.8}
+\contentsline {subsection}{\numberline {4.2.9}Accessing public shares over WebDAV}{26}{subsection.4.2.9}
+\contentsline {subsection}{\numberline {4.2.10}Known Problems}{26}{subsection.4.2.10}
+\contentsline {subsubsection}{Problem}{26}{subsubsection*.11}
+\contentsline {subsubsection}{Solution 1}{26}{subsubsection*.12}
+\contentsline {subsubsection}{Solution 2}{26}{subsubsection*.13}
+\contentsline {subsubsection}{Problem}{26}{subsubsection*.14}
+\contentsline {subsubsection}{Solution}{26}{subsubsection*.15}
+\contentsline {subsubsection}{Problem}{27}{subsubsection*.16}
+\contentsline {subsubsection}{Solution}{27}{subsubsection*.17}
+\contentsline {subsubsection}{Problem}{27}{subsubsection*.18}
+\contentsline {subsubsection}{Solution}{27}{subsubsection*.19}
+\contentsline {subsubsection}{Problem}{27}{subsubsection*.20}
+\contentsline {subsubsection}{Solution}{27}{subsubsection*.21}
+\contentsline {subsubsection}{Problem}{28}{subsubsection*.22}
+\contentsline {subsubsection}{Solution}{28}{subsubsection*.23}
+\contentsline {subsection}{\numberline {4.2.11}Accessing Files Using cURL}{28}{subsection.4.2.11}
+\contentsline {section}{\numberline {4.3}Gallery App}{29}{section.4.3}
+\contentsline {subsection}{\numberline {4.3.1}Custom Configuration}{29}{subsection.4.3.1}
+\contentsline {subsubsection}{Features}{29}{subsubsection*.24}
+\contentsline {subsubsection}{Setup}{32}{subsubsection*.25}
+\contentsline {subsubsection}{Format}{32}{subsubsection*.26}
+\contentsline {subsubsection}{Structure}{32}{subsubsection*.27}
+\contentsline {subsubsection}{Supported Variables}{33}{subsubsection*.28}
+\contentsline {subsection}{\numberline {4.3.2}Notes}{34}{subsection.4.3.2}
+\contentsline {subsection}{\numberline {4.3.3}Examples}{34}{subsection.4.3.3}
+\contentsline {subsection}{\numberline {4.3.4}Possible Future Extensions}{35}{subsection.4.3.4}
+\contentsline {subsection}{\numberline {4.3.5}Keeping Up With New Features}{35}{subsection.4.3.5}
+\contentsline {section}{\numberline {4.4}Managing Deleted Files}{35}{section.4.4}
+\contentsline {subsection}{\numberline {4.4.1}Quotas}{35}{subsection.4.4.1}
+\contentsline {subsection}{\numberline {4.4.2}What Happens When Shared Files Are Deleted}{35}{subsection.4.4.2}
+\contentsline {subsection}{\numberline {4.4.3}How the Deleted Files app Manages Storage Space}{35}{subsection.4.4.3}
+\contentsline {section}{\numberline {4.5}Desktop and Mobile Synchronization}{36}{section.4.5}
+\contentsline {subsection}{\numberline {4.5.1}Mobile Clients}{36}{subsection.4.5.1}
+\contentsline {section}{\numberline {4.6}Encrypting Your ownCloud Files}{36}{section.4.6}
+\contentsline {subsection}{\numberline {4.6.1}Using Encryption}{36}{subsection.4.6.1}
+\contentsline {subsection}{\numberline {4.6.2}Sharing Encrypted Files}{37}{subsection.4.6.2}
+\contentsline {subsubsection}{Recovery Key Password}{37}{subsubsection*.29}
+\contentsline {subsection}{\numberline {4.6.3}Files Not Encrypted}{38}{subsection.4.6.3}
+\contentsline {subsubsection}{Change Private Key Password}{38}{subsubsection*.30}
+\contentsline {section}{\numberline {4.7}Using Federation Shares}{38}{section.4.7}
+\contentsline {subsection}{\numberline {4.7.1}Creating a New Federation Share}{38}{subsection.4.7.1}
+\contentsline {subsection}{\numberline {4.7.2}Creating a New Federated Cloud Share via Email}{39}{subsection.4.7.2}
+\contentsline {section}{\numberline {4.8}Making Anonymous Uploads (Enterprise Only)}{41}{section.4.8}
+\contentsline {subsection}{\numberline {4.8.1}Setting Up Your Own File Drop}{41}{subsection.4.8.1}
+\contentsline {subsection}{\numberline {4.8.2}Uploading Files}{42}{subsection.4.8.2}
+\contentsline {section}{\numberline {4.9}Large File Uploads}{42}{section.4.9}
+\contentsline {section}{\numberline {4.10}Storage Quota}{44}{section.4.10}
+\contentsline {section}{\numberline {4.11}Version Control}{44}{section.4.11}
+\contentsline {chapter}{\numberline {5}Contacts \& Calendar}{47}{chapter.5}
+\contentsline {section}{\numberline {5.1}Using the Contacts App}{47}{section.5.1}
+\contentsline {section}{\numberline {5.2}Using the Calendar App}{47}{section.5.2}
+\contentsline {section}{\numberline {5.3}iOS - Synchronize iPhone/iPad}{47}{section.5.3}
+\contentsline {subsection}{\numberline {5.3.1}Calendar}{47}{subsection.5.3.1}
+\contentsline {subsection}{\numberline {5.3.2}Address book}{48}{subsection.5.3.2}
+\contentsline {section}{\numberline {5.4}Synchronizing with OS X}{48}{section.5.4}
+\contentsline {section}{\numberline {5.5}Synchronizing with KDE SC}{49}{section.5.5}
+\contentsline {section}{\numberline {5.6}Thunderbird - Synchronize Addressbook}{53}{section.5.6}
+\contentsline {subsection}{\numberline {5.6.1}Addressbook}{53}{subsection.5.6.1}
+\contentsline {section}{\numberline {5.7}Troubleshooting}{54}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}BlackBerry OS 10.2}{54}{subsection.5.7.1}
+\contentsline {chapter}{\numberline {6}Collaborative Document Editing}{55}{chapter.6}
+\contentsline {section}{\numberline {6.1}The main interface}{55}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Create or Upload a Document}{55}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Edit a Document}{55}{subsection.6.1.2}
+\contentsline {subsubsection}{Collaboratively Editing a Document}{56}{subsubsection*.31}
+\contentsline {subsection}{\numberline {6.1.3}Delete a Document}{56}{subsection.6.1.3}
+\contentsline {subsection}{\numberline {6.1.4}Share a Document}{57}{subsection.6.1.4}
+\contentsline {chapter}{\numberline {7}Setting Your Preferences}{59}{chapter.7}
+\contentsline {chapter}{\numberline {8}Manage Connected Browsers and Devices}{63}{chapter.8}
+\contentsline {section}{\numberline {8.1}Managing Connected Browsers}{63}{section.8.1}
+\contentsline {section}{\numberline {8.2}Managing Devices}{64}{section.8.2}
+\contentsline {chapter}{\numberline {9}External Storage}{67}{chapter.9}
+\contentsline {section}{\numberline {9.1}Configuring External Storage}{67}{section.9.1}
+\contentsline {section}{\numberline {9.2}Connecting to SharePoint (Enterprise only)}{67}{section.9.2}
+\contentsline {subsection}{\numberline {9.2.1}Accessing SharePoint Folders}{67}{subsection.9.2.1}
+\contentsline {subsection}{\numberline {9.2.2}Personal Page}{67}{subsection.9.2.2}
+\contentsline {chapter}{\numberline {10}Using the Bookmarks App}{69}{chapter.10}
+\contentsline {section}{\numberline {10.1}The main interface}{69}{section.10.1}
+\contentsline {subsection}{\numberline {10.1.1}Add a bookmark}{69}{subsection.10.1.1}
+\contentsline {subsection}{\numberline {10.1.2}Edit/Delete a bookmark}{69}{subsection.10.1.2}
+\contentsline {subsection}{\numberline {10.1.3}Search}{70}{subsection.10.1.3}
+\contentsline {section}{\numberline {10.2}The Bookmarklet}{70}{section.10.2}
