@@ -4,7 +4,7 @@
 # that much simpler than it was before. It isn't a particularly
 # sophisticated script, definitely not that defensive, yet.
 #
-# Title: build_manuals - Build the three ownCloud documentation manuals 
+# Title: build_manuals - Build the three ownCloud documentation manuals
 # Synopsis: build_manuals [-c|-h|-v] REGEX
 # Date: 2016-12-06
 # Version: 1.0
@@ -25,35 +25,33 @@ cd documentation >/dev/null
 ##
 build()
 {
-  if [ -x "$1" ]; then 
+  if [ -x "$1" ]; then
     echo "No manual name provided. Require at least this to build a manual."
     return
   fi
 
+  if [ ! -d "manuals/${dir}" ]; then
+    echo "  ${dir} manual not available. Skipping."
+  fi
+
   DIR=$1
 
-  # Uppercase first char for presentation purposes 
-  DIR_NAME=$(echo "${DIR}" | sed -e "s/\b\(.\)/\u\1/g")
+  cd "manuals/${DIR}" &>/dev/null
 
-  cd "${DIR}_manual" &>/dev/null
-
-  echo "  building the ${DIR_NAME} manual..."
-  make latexpdf &> build.log
+  echo "  building the ${DIR} manual..."
+  make latexpdf #&> build.log
   echo "  finished building the ${DIR} manual"
-  echo 
+  echo
 
-  cd - &>/dev/null 
+  cd - &>/dev/null
 }
 
-echo "building all the MANUALS."
-echo
+echo "Building all the manuals."
 
 ## Build all the manuals
 for dir in "${MANUALS[@]}"
 do
-  if [ -d "${dir}_manual" ]; then
-    build $dir
-  fi
+    build "${dir}"
 done
 
-echo "finished building all the manuals"
+echo "Finished building all the manuals"
