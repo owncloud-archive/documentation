@@ -4,14 +4,22 @@ Background Jobs (Cron)
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Background/cron jobs are usually registered in the :file:`appinfo/app.php` by using the **addRegularTask** method, the class and the method to run:
+Background/cron jobs should be registered in the :file:`appinfo/install.php` and :file:`appinfo/update.php`. Previously this was mostly done in :file:`appinfo/app.php`, but that causes a query on each page load.
+Background jobs have to implement the ``OCP\BackgroundJob\IJob`` interface, then you can simply add them to the JobList object.
 
 .. code-block:: php
 
     <?php
-    \OCP\Backgroundjob::addRegularTask('\OCA\MyApp\Cron\SomeTask', 'run');
+    \OC::$server->getJobList()->add('\OCA\MyApp\Cron\SomeTask', ['some' => 'additional arguments']);
 
-The class for the above example would live in :file:`cron/sometask.php`. Try to keep the method as small as possible because its hard to test static methods. Simply reuse the app container and execute a service that was registered in it.
+The class for the above example would live in :file:`cron/sometask.php`. If you load your container in :file:`appinfo/app.php` and you use a full namespaced class name for the job, the class is loaded from the container and you can use full dependency injection.
+
+.. code-block:: php
+
+    <?php
+    new \OCP\AppFramework\App('myapp');
+
+In your job, you only have to implement the **run** method, where you get the arguments from the **add** call passed in:
 
 .. code-block:: php
 
@@ -20,13 +28,9 @@ The class for the above example would live in :file:`cron/sometask.php`. Try to 
 
     use \OCA\MyApp\AppInfo\Application;
 
-    class SomeTask {
+    class SomeTask implements \OCP\BackgroundJob\IJob {
 
-        public static function run() {
-            $app = new Application();
-            $container = $app->getContainer();
-            $container->query('SomeService')->run();
-        }
+        // For default implementation look at \OC\BackgroundJob\Job
 
     }
 
