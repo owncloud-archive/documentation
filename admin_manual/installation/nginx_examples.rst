@@ -135,7 +135,7 @@ your nginx installation.
           fastcgi_param front_controller_active true;
           fastcgi_pass php-handler;
           fastcgi_intercept_errors on;
-          fastcgi_request_buffering off;
+          fastcgi_request_buffering off; #Available since nginx 1.7.11
       }
   
       location ~ ^/(?:updater|ocs-provider)(?:$|/) {
@@ -265,7 +265,7 @@ your nginx installation.
               fastcgi_param front_controller_active true;
               fastcgi_pass php-handler;
               fastcgi_intercept_errors on;
-              fastcgi_request_buffering off;
+              fastcgi_request_buffering off; #Available since nginx 1.7.11
           }
   
           location ~ ^/owncloud/(?:updater|ocs-provider)(?:$|/) {
