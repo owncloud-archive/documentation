@@ -3,7 +3,7 @@ ownCloud Documentation
 ======================
 
 This repository stores the official documentation for ownCloud. Here, you will 
-find all the information that you need to both contribute to the official
+find all the information that you need to contribute to the official
 documentation. 
 
 The documentation is published on `<https://doc.owncloud.org>`_ and 
