@@ -13,7 +13,7 @@ features:
 
 Supported file formats are `.odt`, `.doc`, and `.docx`.
 
-The main interface
+The Main Interface
 ------------------
 
 .. image:: images/oc_documents.png
