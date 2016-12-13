@@ -27,7 +27,7 @@ Please work in the appropriate branch.
 * Stable8.2 is 8.2
 * Stable9 is 9.0
 * Stable9.1 is 9.1
-* Master is 9.2
+* Master is 10.0
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
