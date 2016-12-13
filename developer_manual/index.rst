@@ -34,10 +34,10 @@ Table of Contents
     :maxdepth: 2
 
     general/index
-    app/index
     android_library/index
-    ios_library/index
+    app/index
     core/index
+    ios_library/index
     testing/index
     bugtracker/index
     commun/index

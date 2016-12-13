@@ -26,9 +26,9 @@ Please make sure you have set up a development environment:
 Core Related Docs
 -----------------
 
+* :doc:`configfile`
+* :doc:`externalapi`
+* :doc:`ocs-share-api`
+* :doc:`theming`
 * :doc:`translation`
 * :doc:`unit-testing`
-* :doc:`theming`
-* :doc:`configfile`
-* :doc:`ocs-share-api`
-* :doc:`externalapi`

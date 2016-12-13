@@ -53,8 +53,8 @@ Then, please make sure you have set up a development environment:
 
 Before starting to write an app please read the security and coding guidelines:
 
-* :doc:`../general/security`
 * :doc:`../general/codingguidelines`
+* :doc:`../general/security`
 
 After this you can start with the tutorial
 
@@ -80,38 +80,9 @@ Create a new app:
 
 Inner parts of an app:
 
-* :doc:`init`
 * :doc:`info`
 * :doc:`classloader`
-
-Requests
---------
-How a request is being processed:
-
-* :doc:`request`
-* :doc:`routes`
-* :doc:`middleware`
-* :doc:`container`
-* :doc:`controllers` | :doc:`api`
-
-View
-----
-The app's presentation layer:
-
-* :doc:`templates`
-* :doc:`js`
-* :doc:`css`
-* :doc:`l10n`
-
-Storage
--------
-Create database tables, run Sql queries, store/retrieve configuration information and access the filesystem:
-
-* :doc:`schema`
-* :doc:`database`
-* :doc:`configuration`
-* :doc:`filesystem`
-* :doc:`extstorage`
+* :doc:`init`
 
 Authentication & Users
 ----------------------
@@ -123,17 +94,17 @@ Writing a two-factor auth provider:
 
 * :doc:`two-factor-provider`
 
-Hooks
------
-Listen on events like user creation and execute code:
-
-* :doc:`hooks`
-
 Background Jobs
 ---------------
 Periodically run code in the background:
 
 * :doc:`backgroundjobs`
+
+Hooks
+-----
+Listen on events like user creation and execute code:
+
+* :doc:`hooks`
 
 Logging
 -------
@@ -141,14 +112,44 @@ Log to the :file:`data/owncloud.log`:
 
 * :doc:`logging`
 
+PHPDoc Class Documentation
+--------------------------
+ownCloud class and function documentation:
+
+* `ownCloud App API <https://api.owncloud.org/namespaces/OCP.html>`_
+
+Requests
+--------
+How a request is being processed:
+
+* :doc:`container`
+* :doc:`controllers` 
+* :doc:`middleware`
+* :doc:`api`
+* :doc:`request`
+* :doc:`routes`
+
+Storage
+-------
+Create database tables, run Sql queries, store/retrieve configuration information and access the filesystem:
+
+* :doc:`configuration`
+* :doc:`database`
+* :doc:`extstorage`
+* :doc:`filesystem`
+* :doc:`schema`
+
 Testing
 -------
 Write automated tests to ensure stability and ease maintenance:
 
 * :doc:`testing`
 
-PHPDoc Class Documentation
---------------------------
-ownCloud class and function documentation:
+View
+----
+The app's presentation layer:
 
-* `ownCloud App API <https://api.owncloud.org/namespaces/OCP.html>`_
+* :doc:`css`
+* :doc:`js`
+* :doc:`l10n`
+* :doc:`templates`
