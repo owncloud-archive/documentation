@@ -9,11 +9,11 @@ Table of Contents
     
     index
     whats_new
-    webinterface
+    web_interface
     files/index
     pim/index
     documents
-    userpreferences
+    user_preferences
     session_management
     external_storage/index
     
