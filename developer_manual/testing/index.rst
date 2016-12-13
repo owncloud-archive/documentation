@@ -9,7 +9,7 @@ ownCloud Test Pilots
 
 The ownCloud Test Pilots help to test and improve different server and client setups with ownCloud.
 
-Why do you want to join
+Why Do You Want To Join
 -----------------------
 There are many different setups and people have different interests. If we want ownCloud to run well on NginX for instance someone has to test this configuration.
 
@@ -20,11 +20,11 @@ Another benefit is a closer relationship to the developers: **You know what peop
 If you want you will be listed as an active contributor on the `owncloud.org <https://owncloud.org>`_ page.
 
 
-Who can join
+Who Can Join
 ------------
 Anyone who is interested in improving the quality on his/her setup and is willing to communicate with developers and other testers.
 
-How do you join
+How Do You Join
 ---------------
 Simply register on the `testpilot mailing list <https://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and send an introduction of your personal setup and interests to `testpilots@owncloud.org <testpilots@owncloud.org>`_
 
@@ -35,13 +35,13 @@ For further questions or help you can also send a mail to:
 * freitag@owncloud.com (IRC: dragotin)
 * posselt@owncloud.com (IRC: Raydiation)
 
-What do you do
+What Do You Do
 --------------
 You will receive mails from the mailinglist and also from the bug tracker if developers need your help. Also there will be announcements of new releases and preview releases on the mailing list which give you the possibility to test releases early on and help developers to fix them.
 
 We are looking forward to working with you :)
 
-How do you test
+How Do You Test
 ---------------
 Testing follows these steps:
 

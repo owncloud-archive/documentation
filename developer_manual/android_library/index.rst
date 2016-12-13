@@ -10,7 +10,7 @@ automatically uploading pictures and videos to ownCloud.
 For third party application developers, ownCloud offers the ownCloud Android
 library under the MIT license.
 
-Android ownCloud Client development
+Android ownCloud Client Development
 -----------------------------------
 
 If you are interested in working on the ownCloud android client, you can find

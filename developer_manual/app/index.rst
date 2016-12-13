@@ -68,7 +68,7 @@ For enhanced security it is also possible to sign your code:
 
 * :doc:`code_signing`
 
-App development
+App Development
 ===============
 Take a look at the changes in this version:
 

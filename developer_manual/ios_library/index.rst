@@ -8,7 +8,7 @@ automatically uploading pictures and videos to ownCloud.
 For third party application developers, ownCloud offers the ownCloud iOS
 library under the MIT license.
 
-iOS ownCloud Client development
+iOS ownCloud Client Development
 -----------------------------------
 
 If you are interested in working on the ownCloud iOS client, you can find

@@ -23,7 +23,7 @@ Please make sure you have set up a development environment:
 
 * :doc:`../general/devenv`
 
-Core related docs
+Core Related Docs
 -----------------
 
 * :doc:`translation`
