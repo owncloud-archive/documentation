@@ -1,8 +1,8 @@
 .. _index:
 
-===========================================
-ownCloud |version| User Manual Introduction
-===========================================
+============
+Introduction
+============
 
 **Welcome to ownCloud: your self-hosted file sync and share solution.**
 
@@ -19,10 +19,10 @@ using the ownCloud Desktop Sync Client, Android app, or iOS app. To learn more
 about the ownCloud desktop and mobile clients, please refer to their respective 
 manuals:
 
-* `ownCloud Desktop Client`_
-* `ownCloud Android App`_
-* `ownCloud iOS App`_ 
+* `The Desktop Client`_
+* `The Android App`_
+* `The iOS App`_ 
 
-.. _`ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.1/
-.. _`ownCloud Android App`: https://doc.owncloud.org/android/
-.. _`ownCloud iOS App`: https://doc.owncloud.org/ios/
+.. _`The Desktop Client`: https://doc.owncloud.org/desktop/2.1/
+.. _`The Android App`: https://doc.owncloud.org/android/
+.. _`The iOS App`: https://doc.owncloud.org/ios/
