@@ -44,14 +44,12 @@ Curl
 ~~~~
 
 .. literalinclude:: examples/curl/list-all-shares.sh
-   :caption: List all shares for the current user
    :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: examples/php/list-all-shares.php
-   :caption: List all shares for the current user
    :language: php
    :linenos:
 
@@ -59,7 +57,6 @@ Ruby
 ~~~~
 
 .. literalinclude:: examples/ruby/list-all-shares.ruby
-   :caption: List all shares for the current user
    :language: ruby
    :linenos:
 
@@ -67,7 +64,6 @@ Go
 ~~
 
 .. literalinclude:: examples/go/list-all-shares.go
-   :caption: List all shares for the current user
    :language: go
    :linenos:
 
@@ -79,7 +75,6 @@ output similar to the following:
 
 .. literalinclude::
    examples/responses/not-authorised-response.xml
-   :caption: Example of a "Not Authorised" response
    :language: xml
    :linenos:
 
@@ -88,7 +83,6 @@ output similar to the following:
 
 .. literalinclude::
    examples/responses/shares/get-all-shares-success-no-shares.xml
-   :caption: Example of retrieving all shares where no shares are available
    :language: xml
    :linenos:
 
@@ -129,7 +123,6 @@ Curl
 ~~~~
 
 .. literalinclude:: examples/curl/list-share-details.sh
-   :caption: List details about a specific share, including reshares
    :language: bash
    :linenos:
 
@@ -137,7 +130,6 @@ PHP
 ~~~~
 
 .. literalinclude:: examples/php/list-share-details.php
-   :caption: List details about a specific share, including reshares
    :language: php
    :linenos:
 
@@ -145,7 +137,6 @@ Ruby
 ~~~~
 
 .. literalinclude:: examples/ruby/list-share-details.ruby
-   :caption: List details about a specific share, including reshares
    :language: ruby
    :linenos:
 
@@ -153,7 +144,6 @@ Go
 ~~
 
 .. literalinclude:: examples/php/list-share-details.go
-   :caption: List details about a specific share, including reshares
    :language: go
    :linenos:
 
@@ -161,12 +151,10 @@ Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: examples/responses/list-share-details-failure.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
 .. literalinclude:: examples/responses/list-share-details-success.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
@@ -219,7 +207,6 @@ Curl
 ~~~~
 
 .. literalinclude:: examples/curl/get-share-info.sh
-   :caption: Get information about a known share
    :language: bash
    :linenos:
 
@@ -227,7 +214,6 @@ PHP
 ~~~~
 
 .. literalinclude:: examples/php/get-share-info.php
-   :caption: Get information about a known share
    :language: php
    :linenos:
 
@@ -235,7 +221,6 @@ Ruby
 ~~~~
 
 .. literalinclude:: examples/ruby/get-share-info.ruby
-   :caption: Get information about a known share
    :language: ruby
    :linenos:
 
@@ -243,7 +228,6 @@ Go
 ~~
 
 .. literalinclude:: examples/php/get-share-info.go
-   :caption: Get information about a known share
    :language: go
    :linenos:
 
@@ -251,45 +235,19 @@ Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: examples/responses/get-share-info-failure.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
 .. literalinclude:: examples/responses/get-share-info-success.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
 Response Attributes
 ^^^^^^^^^^^^^^^^^^^
 
-====================== ========================================================
-Attribute              Description
-====================== ========================================================
-id
-share_type
-uid_owner
-displayname_owner
-permissions
-stime
-parent
-expiration
-token
-uid_file_owner
-displayname_file_owner
-path
-item_type
-mimetype
-storage_id
-storage
-item_source
-file_source
-file_parent
-file_target
-share_with
-share_with_displayname
-mail_send
-====================== ========================================================
+For details about the elements in the XML response payload please refer to
+:ref:`the Response Attributes section <_ocs-share-api__create-share_response-attributes>` 
+of the Create a New Share section below.
 
 .. _ocs-share-api__create-share:
 
@@ -308,8 +266,8 @@ Function Arguments
 Argument     Type    Description 
 ============ ======= ==========================================================
 path         string  path to the file/folder which should be shared
-shareType    int     0 = user; 1 = group; 3 = public link; 
-                     6 = federated cloud share
+shareType    int     The type of the share. This can be one of: 0 = user, 
+                     1 = group, 3 = public link, 6 = federated cloud share
 shareWith    string  user / group id with which the file should be shared
 publicUpload boolean allow public upload to a public shared folder
 password     string  password to protect public link Share with
@@ -342,7 +300,6 @@ Curl
 ~~~~
 
 .. literalinclude:: examples/curl/create-share.sh
-   :caption: Create a new share
    :language: bash
    :linenos:
 
@@ -350,7 +307,6 @@ PHP
 ~~~~
 
 .. literalinclude:: examples/php/create-share.php
-   :caption: Create a new share
    :language: php
    :linenos:
 
@@ -358,7 +314,6 @@ Ruby
 ~~~~
 
 .. literalinclude:: examples/ruby/create-share.ruby
-   :caption: Create a new share
    :language: ruby
    :linenos:
 
@@ -366,7 +321,6 @@ Go
 ~~
 
 .. literalinclude:: examples/php/create-share.go
-   :caption: Create a new share 
    :language: go
    :linenos:
 
@@ -374,46 +328,59 @@ Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: examples/responses/create-share-failure.xml
-   :caption: Example Failure Response because of an unknown share type
    :language: xml
    :linenos:
 
 .. literalinclude:: examples/responses/create-share-success.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
+.. _ocs-share-api__create-share_response-attributes:
+   
 Response Attributes
 ^^^^^^^^^^^^^^^^^^^
 
-====================== ========================================================
-Attribute              Description
-====================== ========================================================
-id
-share_type
-uid_owner
-displayname_owner
-permissions
-stime
-parent
-expiration
-token
-uid_file_owner
-displayname_file_owner
-path
-item_type
-mimetype
-storage_id
-storage
-item_source
-file_source
-file_parent
-file_target
-share_with
-share_with_displayname
-url
-mail_send
-====================== ========================================================
+====================== ======== ========================================================
+Attribute              Type Description
+====================== ======== ========================================================
+id                     int      The share’s unique id.
+share_type             int      The share’s type. This can be one of: 0 = user, 
+                                1 = group, 3 = public link, and 6 = federated cloud 
+                                share
+uid_owner              string   The username of the owner of the share.
+displayname_owner      string   The display name of the owner of the share.
+permissions            octal    The permission attribute set on the file. This can be
+                                of: 1 = Read, 2 = Update, 4 = Create, 8 = Delete, 
+                                16 = Share, or 31 = All permissions. The default is 31, 
+                                and for public shares is 1.
+stime                  int      The UNIX timestamp when the share was created.
+parent                 int      The unique id of the parent share.
+expiration             string   The UNIX timestamp when the share expires.
+token                  string   The public link to the item being shared.
+uid_file_owner         string   The unique id of the user that owns the file or folder 
+                                being shared.
+displayname_file_owner string   The display name of the user that owns the file or 
+                                folder being shared. 
+path                   string   The path to the shared file or folder.
+item_type              string   The type of the object being shared. This can be one
+                                of `file` or `folder`.
+mimetype               string   The `RFC-compliant mimetype <https://tools.ietf.org/html/rfc2045>`_ 
+                                of the file. 
+storage_id             string
+storage                int
+item_source            int      The unique node id of the item being shared.
+file_source            int      The unique node id of the item being shared.
+file_parent            int      The unique node id of the parent node of the item 
+                                being shared.
+file_target            string   The name of the shared file.
+share_with             string   The uid of the receiver of the file. This is either a
+                                GID (group id) if it is being shared with a group or a 
+                                UID (user id) if the share is shared with a user
+share_with_displayname string   The display name of the receiver of the file.
+url                    string
+mail_send              int      Whether the recipient was notified, by mail, about the 
+                                share being shared with them.
+====================== ======== ========================================================
 
 .. _ocs-share-api__delete-share:
 
@@ -448,7 +415,6 @@ Curl
 ~~~~
 
 .. literalinclude:: examples/curl/delete-share.sh
-   :caption: Delete an existing share
    :language: bash
    :linenos:
 
@@ -456,7 +422,6 @@ PHP
 ~~~~
 
 .. literalinclude:: examples/php/delete-share.php
-   :caption: Delete an existing share
    :language: php
    :linenos:
 
@@ -464,7 +429,6 @@ Ruby
 ~~~~
 
 .. literalinclude:: examples/ruby/delete-share.ruby
-   :caption: Delete an existing share
    :language: ruby
    :linenos:
 
@@ -472,7 +436,6 @@ Go
 ~~
 
 .. literalinclude:: examples/php/delete-share.go
-   :caption: Delete an existing share
    :language: go
    :linenos:
 
@@ -480,12 +443,10 @@ Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: examples/responses/delete-share-success.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
 .. literalinclude:: examples/responses/delete-share-failure.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
@@ -541,7 +502,6 @@ Curl
 ~~~~
 
 .. literalinclude:: examples/curl/update-share.sh
-   :caption: Update an existing share
    :language: bash
    :linenos:
 
@@ -549,7 +509,6 @@ PHP
 ~~~~
 
 .. literalinclude:: examples/php/update-share.php
-   :caption: Update an existing share
    :language: php
    :linenos:
 
@@ -557,7 +516,6 @@ Ruby
 ~~~~
 
 .. literalinclude:: examples/ruby/update-share.ruby
-   :caption: Update an existing share
    :language: ruby
    :linenos:
 
@@ -565,7 +523,6 @@ Go
 ~~
 
 .. literalinclude:: examples/php/update-share.go
-   :caption: Update an existing share
    :language: go
    :linenos:
 
@@ -573,12 +530,10 @@ Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: examples/responses/update-share-failure.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
 .. literalinclude:: examples/responses/update-share-success.xml
-   :caption: Example Failure Response
    :language: xml
    :linenos:
 
