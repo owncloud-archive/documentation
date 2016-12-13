@@ -2,9 +2,6 @@
 Help and Communication
 ======================
 
-.. toctree::
-   :maxdepth: 2
-
 Mailing lists
 -------------
 Communicate via mail on our `mailing lists <https://mailman.owncloud.org>`_.
@@ -17,7 +14,6 @@ Chat with us on `IRC <http://www.irchelp.org/>`_. All channels are on **irc.free
 * Testing: **#owncloud-testing**
 * Development: **#owncloud-dev**
 * Design: **#owncloud-design**
-
 
 Maintainers
 -----------
