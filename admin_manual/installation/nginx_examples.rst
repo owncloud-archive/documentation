@@ -582,3 +582,29 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    Your thumbnails should appear more or less immediately.
 *  ``htop`` will not show up additional load while processing, compared to 
    the high load before.
+
+Prevent access log entries when accessing thumbnails
+====================================================
+When using Gallery or Galleryplus, any access to a thumbnail of a picture will be logged.
+This can cause a massive log quanity making log reading challenging. With this approach,
+you can disable access logging for those thumbnails.
+
+1. **Create a map directive outside your server block like**
+
+   (Adopt the path queried according your needs.)
+
+::
+
+     # do not access log to gallery thumbnails, flooding access logs only, error will be logged anyway
+     map $request_uri $loggable {
+             default 1;
+             ~*\/apps\/gallery\/thumbnails           0;
+             ~*\/apps\/galleryplus\/thumbnails       0;
+     }
+
+
+2. **Inside your server block where you define your logs**
+
+::
+
+     access_log /path-to-your-log combined if=$loggable;
