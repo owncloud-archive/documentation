@@ -43,27 +43,27 @@ Code Example
 Curl
 ~~~~
 
-.. literalinclude:: examples/curl/list-all-shares.sh
+.. literalinclude:: ../examples/curl/list-all-shares.sh
    :linenos:
 
 PHP
 ~~~~
 
-.. literalinclude:: examples/php/list-all-shares.php
+.. literalinclude:: ../examples/php/list-all-shares.php
    :language: php
    :linenos:
 
 Ruby
 ~~~~
 
-.. literalinclude:: examples/ruby/list-all-shares.ruby
+.. literalinclude:: ../examples/ruby/list-all-shares.rb
    :language: ruby
    :linenos:
 
 Go
 ~~
 
-.. literalinclude:: examples/go/list-all-shares.go
+.. literalinclude:: ../examples/go/list-all-shares.go
    :language: go
    :linenos:
 
@@ -74,7 +74,7 @@ If the user that you’re connecting with is not authorized, then you will see
 output similar to the following:
 
 .. literalinclude::
-   examples/responses/not-authorised-response.xml
+   ../examples/responses/not-authorised-response.xml
    :language: xml
    :linenos:
 
@@ -82,7 +82,7 @@ If the user that you’re connecting with is authorized, then you will see
 output similar to the following:
 
 .. literalinclude::
-   examples/responses/shares/get-all-shares-success-no-shares.xml
+   ../examples/responses/shares/get-all-shares-success-no-shares.xml
    :language: xml
    :linenos:
 
@@ -97,7 +97,7 @@ Get all shares from a given file or folder.
 * Method: `GET`
 
 Request Attributes
-~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^
 
 ========= ======= =============================================================
 Attribute Type    Description
@@ -122,39 +122,39 @@ Code Example
 Curl
 ~~~~
 
-.. literalinclude:: examples/curl/list-share-details.sh
+.. literalinclude:: ../examples/curl/list-share-details.sh
    :language: bash
    :linenos:
 
 PHP
 ~~~~
 
-.. literalinclude:: examples/php/list-share-details.php
+.. literalinclude:: ../examples/php/list-share-details.php
    :language: php
    :linenos:
 
 Ruby
 ~~~~
 
-.. literalinclude:: examples/ruby/list-share-details.ruby
+.. literalinclude:: ../examples/ruby/list-share-details.rb
    :language: ruby
    :linenos:
 
 Go
 ~~
 
-.. literalinclude:: examples/php/list-share-details.go
+.. literalinclude:: ../examples/go/list-share-details.go
    :language: go
    :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: examples/responses/list-share-details-failure.xml
+.. literalinclude:: ../examples/responses/shares/list-share-details-failure.xml
    :language: xml
    :linenos:
 
-.. literalinclude:: examples/responses/list-share-details-success.xml
+.. literalinclude:: ../examples/responses/shares/list-share-details-success.xml
    :language: xml
    :linenos:
 
@@ -206,39 +206,39 @@ Code Example
 Curl
 ~~~~
 
-.. literalinclude:: examples/curl/get-share-info.sh
+.. literalinclude:: ../examples/curl/get-share-info.sh
    :language: bash
    :linenos:
 
 PHP
 ~~~~
 
-.. literalinclude:: examples/php/get-share-info.php
+.. literalinclude:: ../examples/php/get-share-info.php
    :language: php
    :linenos:
 
 Ruby
 ~~~~
 
-.. literalinclude:: examples/ruby/get-share-info.ruby
+.. literalinclude:: ../examples/ruby/get-share-info.rb
    :language: ruby
    :linenos:
 
 Go
 ~~
 
-.. literalinclude:: examples/php/get-share-info.go
+.. literalinclude:: ../examples/go/get-share-info.go
    :language: go
    :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: examples/responses/get-share-info-failure.xml
+.. literalinclude:: ../examples/responses/shares/get-share-info-failure.xml
    :language: xml
    :linenos:
 
-.. literalinclude:: examples/responses/get-share-info-success.xml
+.. literalinclude:: ../examples/responses/shares/get-share-info-success.xml
    :language: xml
    :linenos:
 
@@ -246,7 +246,7 @@ Response Attributes
 ^^^^^^^^^^^^^^^^^^^
 
 For details about the elements in the XML response payload please refer to
-:ref:`the Response Attributes section <_ocs-share-api__create-share_response-attributes>` 
+:ref:`the Response Attributes section <ocs-share-api__create-share_response-attributes>` 
 of the Create a New Share section below.
 
 .. _ocs-share-api__create-share:
@@ -274,6 +274,7 @@ password     string  password to protect public link Share with
 permissions  int     1 = read; 2 = update; 4 = create; 8 = delete;
                      16 = share; 31 = all (default: 31, for public shares: 1)
 ============ ======= ==========================================================
+
 Mandatory fields: shareType, path and shareWith for shareType 0 or 1.
 
 Returns
@@ -299,39 +300,39 @@ Code Example
 Curl
 ~~~~
 
-.. literalinclude:: examples/curl/create-share.sh
+.. literalinclude:: ../examples/curl/create-share.sh
    :language: bash
    :linenos:
 
 PHP
 ~~~~
 
-.. literalinclude:: examples/php/create-share.php
+.. literalinclude:: ../examples/php/create-share.php
    :language: php
    :linenos:
 
 Ruby
 ~~~~
 
-.. literalinclude:: examples/ruby/create-share.ruby
+.. literalinclude:: ../examples/ruby/create-share.rb
    :language: ruby
    :linenos:
 
 Go
 ~~
 
-.. literalinclude:: examples/php/create-share.go
+.. literalinclude:: ../examples/go/create-share.go
    :language: go
    :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: examples/responses/create-share-failure.xml
+.. literalinclude:: ../examples/responses/shares/create-share-failure.xml
    :language: xml
    :linenos:
 
-.. literalinclude:: examples/responses/create-share-success.xml
+.. literalinclude:: ../examples/responses/shares/create-share-success.xml
    :language: xml
    :linenos:
 
@@ -341,7 +342,7 @@ Response Attributes
 ^^^^^^^^^^^^^^^^^^^
 
 ====================== ======== ========================================================
-Attribute              Type Description
+Attribute              Type     Description
 ====================== ======== ========================================================
 id                     int      The share’s unique id.
 share_type             int      The share’s type. This can be one of: 0 = user, 
@@ -385,7 +386,7 @@ mail_send              int      Whether the recipient was notified, by mail, abo
 .. _ocs-share-api__delete-share:
 
 Delete A Share
-------------
+--------------
 
 Remove the given share.
 
@@ -414,39 +415,39 @@ Code Example
 Curl
 ~~~~
 
-.. literalinclude:: examples/curl/delete-share.sh
+.. literalinclude:: ../examples/curl/delete-share.sh
    :language: bash
    :linenos:
 
 PHP
 ~~~~
 
-.. literalinclude:: examples/php/delete-share.php
+.. literalinclude:: ../examples/php/delete-share.php
    :language: php
    :linenos:
 
 Ruby
 ~~~~
 
-.. literalinclude:: examples/ruby/delete-share.ruby
+.. literalinclude:: ../examples/ruby/delete-share.rb
    :language: ruby
    :linenos:
 
 Go
 ~~
 
-.. literalinclude:: examples/php/delete-share.go
+.. literalinclude:: ../examples/go/delete-share.go
    :language: go
    :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: examples/responses/delete-share-success.xml
+.. literalinclude:: ../examples/responses/shares/delete-share-success.xml
    :language: xml
    :linenos:
 
-.. literalinclude:: examples/responses/delete-share-failure.xml
+.. literalinclude:: ../examples/responses/shares/delete-share-failure.xml
    :language: xml
    :linenos:
 
@@ -461,7 +462,7 @@ Update a given share. Only one value can be updated per request.
 * Method: `PUT`
 
 Request Arguments
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 ============ ======= ==================================================
 Argument     Type    Description
@@ -469,7 +470,7 @@ Argument     Type    Description
 share_id     int     The share’s unique id
 permissions  int     Update permissions 
                      (see :ref:`the create share section 
-                     <_ocs-share-api__create-share>` above)
+                     <ocs-share-api__create-share>` above)
 password     string  Updated password for public link Share
 publicUpload boolean Enable (true) / disable (false) 
                      public upload for public shares.
@@ -501,39 +502,39 @@ Code Example
 Curl
 ~~~~
 
-.. literalinclude:: examples/curl/update-share.sh
+.. literalinclude:: ../examples/curl/update-share.sh
    :language: bash
    :linenos:
 
 PHP
 ~~~~
 
-.. literalinclude:: examples/php/update-share.php
+.. literalinclude:: ../examples/php/update-share.php
    :language: php
    :linenos:
 
 Ruby
 ~~~~
 
-.. literalinclude:: examples/ruby/update-share.ruby
+.. literalinclude:: ../examples/ruby/update-share.rb
    :language: ruby
    :linenos:
 
 Go
 ~~
 
-.. literalinclude:: examples/php/update-share.go
+.. literalinclude:: ../examples/go/update-share.go
    :language: go
    :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. literalinclude:: examples/responses/update-share-failure.xml
+.. literalinclude:: ../examples/responses/shares/update-share-failure.xml
    :language: xml
    :linenos:
 
-.. literalinclude:: examples/responses/update-share-success.xml
+.. literalinclude:: ../examples/responses/shares/update-share-success.xml
    :language: xml
    :linenos:
 
