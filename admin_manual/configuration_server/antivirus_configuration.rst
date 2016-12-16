@@ -22,22 +22,26 @@ a log message, or deleting the file.
 ownCloud doesn’t support a file cache of previously scanned files.
 
 Configuring the ClamAV Antivirus Scanner
-========================================
+----------------------------------------
 
 You can configure your ownCloud server to automatically run a virus scan on
-newly-uploaded files with the Antivirus App for Files. The Antivirus App for
-Files integrates the open source anti-virus engine `ClamAV
-<http://www.clamav.net/index.html>`_  with ownCloud. ClamAV detects all forms
-of malware including Trojan horses, viruses, and worms, and it operates on all
-major file types including Windows, Linux, and Mac files, compressed files,
-executables, image files, Flash, PDF, and many others. ClamAV's Freshclam
-daemon automatically updates its malware signature database at scheduled
-intervals.
+newly-uploaded files using the `Antivirus App for Files`_. The Antivirus App for
+Files integrates the open source anti-virus engine `ClamAV`_  with ownCloud.
 
-ClamAV runs on Linux and any Unix-type operating system, and Microsoft Windows.
-However, it has only been tested with ownCloud on Linux, so these instructions
-are for Linux systems. You must first install ClamAV, and then install and
+ClamAV detects all forms of malware including Trojan horses, viruses, and worms.
+What’s more, it operates on all the key operating systems, including Windows,
+Linux, and Mac files, and can scan compressed files, executables, image
+files, Flash, PDF, as well as many others.
+
+`ClamAV's Freshclam daemon` automatically updates its malware signature database
+at scheduled intervals. ClamAV runs on Linux and any Unix-type operating system,
+and Microsoft Windows. You must first install ClamAV, and then install and
 configure the Antivirus App for Files on ownCloud.
+
+.. important:: Operating System Note
+
+ownCloud has only been tested with ownCloud on Linux, so these instructions
+are for Linux systems.
 
 Installing ClamAV
 -----------------
@@ -46,8 +50,10 @@ As always, the various Linux distributions manage installing and configuring
 ClamAV in different ways.
 
 Debian, Ubuntu, Linux Mint
-  On Debian and Ubuntu systems, and their many variants, install ClamAV with
-  these commands::
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On Debian and Ubuntu systems, and their many variants, install ClamAV with these
+commands::
 
     apt-get install clamav clamav-daemon
 
@@ -58,8 +64,10 @@ it's a good idea to review the ClamAV documentation and your settings in
 ``freshclam.conf`` until you get any kinks worked out.
 
 Red Hat 7, CentOS 7
-  On Red Hat 7 and related systems you must install the Extra Packages for
-  Enterprise Linux (EPEL) repository, and then install ClamAV::
+^^^^^^^^^^^^^^^^^^^
+
+On Red Hat 7 and related systems, you must install the Extra Packages for
+Enterprise Linux (EPEL) repository, and then install ClamAV::
 
    yum install epel-release
    yum install clamav clamav-scanner clamav-scanner-systemd clamav-server
@@ -71,7 +79,7 @@ ClamAV. Both files are well-commented, and ``man clamd.conf`` and ``man
 freshclam.conf`` explain all the options.  Refer to ``/etc/passwd`` and
 ``/etc/group`` when you need to verify the ClamAV user and group.
 
-First edit ``/etc/freshclam.conf`` and configure your options.
+First, edit ``/etc/freshclam.conf`` and configure your options.
 ``freshclam`` updates your malware database, so you want it to run frequently to
 get updated malware signatures. Run it manually post-installation to download
 your first set of malware signatures::
@@ -100,7 +108,8 @@ and ``freshclam.conf`` until it is running the way you want.
 Enabling the Antivirus App for Files
 ------------------------------------
 
-Simply go to your ownCloud Apps page to enable it.
+To enable the Antivirus App for Files, go to your ownCloud Apps page to enable
+it.
 
 .. figure:: ../images/antivirus-app.png
 
@@ -112,57 +121,74 @@ Everything.
 
 .. figure:: ../images/antivirus-logging.png
 
-Now find your Antivirus Configuration panel on your Admin page.
+Now, find your *Antivirus Configuration* panel on your Admin page.
 
 .. figure:: ../images/antivirus-config.png
 
 ClamAV runs in one of three modes:
 
-* Daemon (Socket): ClamAV is running on the same server as ownCloud. The ClamAV
-  daemon, ``clamd``, runs in the background. When there is no activity ``clamd``
-  places a minimal load on your system. If your users upload large volumes of
-  files you will see high CPU usage.
+**Daemon (Socket)** 
 
-* Daemon: ClamAV is running on a different server. This is a good option
-  for ownCloud servers with high volumes of file uploads.
+In this mode, ClamAV runs in the background on the same server as the ownCloud
+installation. When there is no activity ``clamd`` places a minimal load on your
+system. However, if your users upload large volumes of files, you will see high
+CPU usage. So, please keep this in mind.
 
-* Executable: ClamAV is running on the same server as ownCloud, and the
-  ``clamscan`` command is started and then stopped with each file upload.
-  ``clamscan`` is slow and not always reliable for on-demand usage; it is
-  better to use one of the daemon modes.
+**Daemon: ClamAV** 
+
+In this mode, ClamAv runs on a different server. This is a good option for
+ownCloud servers with high volumes of file uploads.
+
+**Executable** 
+
+In this mode, ClamAV runs on the same server as the ownCloud installation, and
+the ``clamscan`` command only runs when a file is uploaded. ``clamscan`` is slow
+and not always reliable for on-demand usage; it is better to use one of the
+daemon modes.
 
 Daemon (Socket)
-  ownCloud should detect your ``clamd`` socket and fill in the ``Socket``
-  field. This is the ``LocalSocket`` option in ``clamd.conf``. You can
-  run ``netstat`` to verify::
+^^^^^^^^^^^^^^^
+
+ownCloud should detect your ``clamd`` socket and fill in the ``Socket``
+field. This is the ``LocalSocket`` option in ``clamd.conf``. You can
+run ``netstat`` to verify::
 
    netstat -a|grep clam
    unix 2 [ ACC ] STREAM LISTENING 15857 /var/run/clamav/clamd.ctl
 
   .. figure:: ../images/antivirus-daemon-socket.png
 
-  The ``Stream Length`` value sets the number of bytes read in one pass.
-  10485760 bytes, or ten megabytes, is the default. This value should be 
-  no larger than the PHP ``memory_limit`` settings, or physical memory if 
-  ``memory_limit`` is set to -1 (no limit).
+The ``Stream Length`` value sets the number of bytes read in one pass.
+10485760 bytes, or ten megabytes, is the default. This value should be 
+no larger than the PHP ``memory_limit`` settings, or physical memory if 
+``memory_limit`` is set to -1 (no limit).
 
-  ``Action for infected files found while scanning`` gives you the choice of
-  logging any alerts without deleting the files, or immediately deleting
-  infected files.
+``Action for infected files found while scanning`` gives you the choice of
+logging any alerts without deleting the files, or immediately deleting
+infected files.
 
 Daemon
-  For the Daemon option you need the hostname or IP address of the remote
-  server running ClamAV, and the server's port number.
+^^^^^^
+
+For the Daemon option, you need the hostname or IP address of the remote
+server running ClamAV and the server's port number.
 
   .. figure:: ../images/antivirus-daemon-socket.png
 
 Executable
-  The Executable option requires the path to ``clamscan``, which is the
-  interactive ClamAV scanning command. ownCloud should find it automatically.
+^^^^^^^^^^
+
+The Executable option requires the path to ``clamscan``, which is the
+interactive ClamAV scanning command. ownCloud should find it automatically.
 
   .. figure:: ../images/antivirus-executable.png
 
 When you are satisfied with how ClamAV is operating, you might want to go
 back and change all of your logging to less verbose levels.
 
+.. Page Links
+
+.. _Antivirus App for Files: https://github.com/owncloud/files_antivirus 
+.. _ClamAV: http://www.clamav.net/index.html
+.. _ClamAV's Freshclam daemon: https://linux.die.net/man/1/freshclam
 
