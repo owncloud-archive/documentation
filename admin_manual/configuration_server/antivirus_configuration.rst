@@ -1,3 +1,26 @@
+=====================
+Virus Scanner Support
+=====================
+
+Overview
+--------
+
+`ClamAV`_ is the only officially supported virus scanner for use with ownCloud.
+But before you go about installing and configuring it, here is a bit of
+background which may be handy to know.
+
+Files are checked when they are uploaded and updated (whether that’s when
+they’re edited or saved), but *not* when they are downloaded. 
+
+To do so, the ownCloud Antivirus extension sends files as streams to ClamAV,
+which in turn scans them and returns a scan result. Based on the result
+returned, an appropriate response is then taken by ownCloud, such as recording
+a log message, or deleting the file. 
+
+.. important:: File Cache
+
+ownCloud doesn’t support a file cache of previously scanned files.
+
 Configuring the ClamAV Antivirus Scanner
 ========================================
 
