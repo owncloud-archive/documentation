@@ -203,9 +203,66 @@ interactive ClamAV scanning command. ownCloud should find it automatically.
 When you are satisfied with how ClamAV is operating, you might want to go
 back and change all of your logging to less verbose levels.
 
+Rule Configuration
+^^^^^^^^^^^^^^^^^^
+
+ownCloud provides the abilility to customise how ownCloud reacts to the
+response provided by a ClamAV scan. To do so, under `Admin -> Antivirus
+Configuration -> Advanced`, which you can see in the screenshot below, you can
+view and change the existing rules. You can also add new ones. 
+
+  .. figure:: images/anti-virus-configuration-rules.png
+
+Rules can match on either an exit status (e.g., `0`, `1`, or `40`) or
+a pattern in the string returned from ClamAV (e.g., `/.*: (.*) FOUND$/`). 
+
+.. _update-an-existing-rule:
+
+Update An Existing Rule
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To match on an exit status, change the "**Match by**" dropdown list to
+"**Scanner exit status**" and in the "**Scanner exit status or signature to
+search**" field, add the status code to match on. 
+
+To match on the scanner’s output, change the "**Match by**" dropdown list to
+"**Scanner output**" and in the "**Scanner exit status or signature to
+search**" field, add the regular expression to match against the scanner’s
+output. 
+
+Then, while not mandatory, add a description of what the status or scan output
+means. After that, set what ownCloud should do when the exit status or regular
+expression you set matches the value returned by ClamAV. To do so change the
+value of the dropdown in the "**Mark as**" column. 
+
+The dropdown supports the following three options:
+
+========= ==========================================
+Option    Description
+========= ==========================================
+Clean     The file is clean, and contains no viruses
+Infected  The file contains a virus
+Unchecked No action should be taken
+========= ==========================================
+
+With all these changes made, click the check mark on the lefthand side of the
+"**Match by**" column, to confirm the change to the rule. 
+
+Add A New Rule
+~~~~~~~~~~~~~~
+
+To add a new rule, click the button marked "Add a rule" at the bottom left of
+the rules table. Then follow the process outlined in :ref:`Update An Existing
+Rule <update-an-existing-rule>`. 
+
+Delete An Existing Rule
+~~~~~~~~~~~~~~~~~~~~~~~
+
+To delete an existing rule, click the rubbish bin icon on the far right-hand
+side of the rule that you want to delete.
+
 .. Page Links
 
 .. _Antivirus App for Files: https://github.com/owncloud/files_antivirus 
 .. _ClamAV: http://www.clamav.net/index.html
 .. _ClamAV's Freshclam daemon: https://linux.die.net/man/1/freshclam
-
