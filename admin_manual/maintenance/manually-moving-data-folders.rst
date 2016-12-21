@@ -41,6 +41,21 @@ run the SQL below:
 
 Hardcoded Database Path Variables 
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The other area to check is the `oc_jobs` table. The logrotate process may have
+hard-coded a non-standard (or old) value for the data path. To check it, run the
+SQL below and see if any results are returned:
+
+.. code-block::
+
+  SELECT * FROM oc_jobs WHERE class = 'OC\Log\Rotate';
+
+If any are, run the SQL below to update them, changing the value as appropriate.
+
+.. code-block::
+
+  UPDATE oc_jobs SET argument = '/your/new/data/path' 
+    WHERE id = <id of the incorrect record>;
+
 
 One thing worth noting is that individual apps may reference the data directory
 separate from the core system configuration. If so, then you will need to find
