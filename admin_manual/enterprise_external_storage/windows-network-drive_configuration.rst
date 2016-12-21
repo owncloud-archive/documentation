@@ -155,7 +155,7 @@ always work the first time. If you encounter issues using it, then try the
 following troubleshooting steps:
 
 1. Check the connection with smbclient_ on the commandline of the ownCloud server
-2. If you are connecting to `Federated Cloud Shares`_, be aware that the shares are case-sensitive
+2. If you are connecting to `Distributed File Shares`_ (DFS), be aware that the shares are case-sensitive
 
 Take the example of attempting to connect to the share named `MyData` using
 ``occ wnd:listen``. Running the following command would work
@@ -173,7 +173,7 @@ However, running this command would not:
    su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata mydata svc_owncloud password'
 
 .. _smbclient: https://www.samba.org/samba/docs/man/manpages-3/smbclient.1.html
-.. _Federated Cloud Shares: https://doc.owncloud.com/server/9.1/user_manual/files/federated_cloud_sharing.html#using-federation-shares
+.. _Distributed File Shares: https://en.wikipedia.org/wiki/Distributed_File_System_(Microsoft)
 
 Setup Notifications for an SMB Share
 ------------------------------------
