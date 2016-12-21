@@ -22,7 +22,7 @@ connecting to them via:
 - A socket
 - Streaming the data from the commandline via a pipe with a configured executable
 
-Files are checked when they are either uploaded or updated ,whether that’s when
+Files are checked when they are either uploaded or updated, whether that’s when
 they’re edited or saved, but *not* when they are downloaded. 
 
 The ownCloud Antivirus extension sends files as streams to a ClamAV
@@ -31,7 +31,7 @@ the same network) which in turn scans them and returns a scan result.
 
 ownCloud evaluates either the exit code returned from ClamAV or parses the
 stdout response to retrieve the result of the scan. Based on ownCloud’s
-evaluation of the reponse, an appropriate response is then taken, such as
+evaluation of the response, an appropriate response is then taken, such as
 recording a log message, or deleting the file. 
 
 .. important:: File Cache
