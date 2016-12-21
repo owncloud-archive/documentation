@@ -1,6 +1,6 @@
-======================
-How To Create An Issue
-======================
+===============================
+How To Get Something Documented
+===============================
 
 If you want to create an issue in the repository, please follow this guide, to
 ensure that your ticket has the greatest likelihood of being actioned.
