@@ -2,47 +2,54 @@
 Installing ownCloud From the Command Line
 =========================================
 
-It is now possible to install ownCloud entirely from the command line. This is 
-convenient for scripted operations, headless servers, and sysadmins who prefer 
-the command line. There are three stages to installing ownCloud via the command 
-line:
+ownCloud can be installed entirely from the command line. This is convenient for
+scripted operations and for systems administrators who prefer using the command
+line over a GUI. 
 
-1. Download and install the ownCloud code via your package manager, or download 
-and unpack the tarball in the appropriate directories. (See 
-:doc:`linux_installation` and :doc:`source_installation`.)
+To install ownCloud, first `download the source`_ (whether community or
+enterprise) directly from ownCloud, and then unpack (decompress) the tarball
+into the appropriate directory.
 
-2. Change the ownership of your ``owncloud`` directory to your HTTP user, like 
-this example for Debian/Ubuntu. You must run ``occ`` as your HTTP user; see 
-:ref:`http_user_label`::
+With that done, you next need to set your webserver user to be the owner of
+your, unpacked, ``owncloud`` directory, as in the example below.::
 
  $ sudo chown -R www-data:www-data /var/www/owncloud/
 
-3. Use the ``occ`` command to complete your installation. This takes the place 
-of running the graphical Installation Wizard::
+With those steps completed, next use the ``occ`` command, from the root
+directory of the ownCloud source, to perform the installation. This removes the
+need to run the graphical Installation Wizard. Here’s an example of how to do
+it::
 
+ # Assuming you’ve unpacked the source to /var/www/owncloud/
  $ cd /var/www/owncloud/
- $ sudo -u www-data php occ  maintenance:install --database 
- "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
- "password" --admin-user "admin" --admin-pass "password" 
- ownCloud is not installed - only a limited number of commands are available
- ownCloud was successfully installed
- 
-Note that you must change to the root ownCloud directory, as in the example 
-above, to run ``occ  maintenance:install``, or the installation will fail with 
-a PHP fatal error message.
+ $ sudo -u www-data php occ maintenance:install \ 
+    --database "mysql" --database-name "owncloud" \
+    --database-user "root" --database-pass "password" \
+    --admin-user "admin" --admin-pass "password" 
 
-Supported databases are::
+.. NOTE::
+   You must run ``occ`` as your HTTP user. See :ref:`http_user_label`
 
- - sqlite (SQLite3 - ownCloud Community edition only)
- - mysql (MySQL/MariaDB)
- - pgsql (PostgreSQL)
- - oci (Oracle - ownCloud Enterprise edition only)
+.. TIP::
+   If you want to use a directory other than the default (which is `data` inside
+   the root ownCloud directory), you can also supply the `--data-dir` switch.
+   For example, if you were using the command above and you wanted the data
+   directory to be `/opt/owncloud/data`, then add `--data-dir
+   /opt/owncloud/data` to the command.
+
+.. NOTE::
+   Supported databases are::
+
+   - SQLite3 (ownCloud Community edition only)
+   - MySQL (MySQL/MariaDB)
+   - PgSQL (PostgreSQL)
+   - Oracle (ownCloud Enterprise edition only)
  
 See :ref:`command_line_installation_label` for more information.
 
-Finally, apply the correct strong permissions to your ownCloud files and 
-directories (see :ref:`strong_perms_label`). This is an extremely important 
-step. It helps protect your ownCloud installation, and ensures that it will run 
+When the command completes, apply the correct permissions to your ownCloud files
+and directories (see :ref:`strong_perms_label`). This is extremely important, as
+it helps protect your ownCloud installation and ensure that it will operate
 correctly.
 
 BINLOG_FORMAT = STATEMENT
@@ -58,3 +65,7 @@ If your ownCloud installation fails and you see this in your ownCloud log::
  UNCOMMITTED.'
 
 See :ref:`db-binlog-label`.
+
+.. Links
+
+.. _download the source: https://owncloud.org/install/#instructions-server 
