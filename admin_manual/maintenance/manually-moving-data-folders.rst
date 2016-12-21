@@ -29,18 +29,17 @@ To save time, here's the commands which you can copy and use::
    If you're on Centos, try `service httpd stop` and `service httpd start`.
    If you're on Debian/Ubuntu try `sudo service apache2 stop` and `sudo service apache2 start`
 
-Updating The Database Manually
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Fix Hardcoded Database Path Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to manually change the location of the data folder in the database,
 run the SQL below:
 
 .. code-block::
    
-  UPDATE oc_storages SET id='local::/var/www/owncloud/data' WHERE id='local::/mnt/owncloud'
+  UPDATE oc_storages SET id='local::/var/www/owncloud/data' 
+    WHERE id='local::/mnt/owncloud'
 
-Hardcoded Database Path Variables 
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 The other area to check is the `oc_jobs` table. The logrotate process may have
 hard-coded a non-standard (or old) value for the data path. To check it, run the
 SQL below and see if any results are returned:
@@ -56,6 +55,8 @@ If any are, run the SQL below to update them, changing the value as appropriate.
   UPDATE oc_jobs SET argument = '/your/new/data/path' 
     WHERE id = <id of the incorrect record>;
 
+Fix Application Settings 
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 One thing worth noting is that individual apps may reference the data directory
 separate from the core system configuration. If so, then you will need to find
