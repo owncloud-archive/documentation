@@ -32,6 +32,25 @@ Please work in the appropriate branch.
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
 
+How To Create An Issue
+----------------------
+
+For detailed information on how to create an issue in the documentation
+repository, please refer to `the "How To Create An Issue" guide
+<CREATING_ISSUES.rst>`_. 
+
+This process overrides **all** previous practices, and aims to formalise and
+simplify the process of creating requests for change within the ownCloud
+documentation. 
+
+Issues should no longer be created in any of the other ownCloud repositories.
+Doing so makes it too difficult and time-intensive to stay on top of all the
+requests for change relating to documentation. 
+
+What’s more, issues created in other repositories may be closed without being
+actioned (though more than likely they’ll be gently requested to be recreated
+within this repository).
+
 Style Guide
 -----------
 
