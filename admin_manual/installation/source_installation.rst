@@ -70,16 +70,16 @@ Required
 
 Database connectors (pick the one for your database:)
 
-* sqlite (>= 3, usually not recommended for performance reasons)
 * pdo_mysql (MySQL/MariaDB)
 * pgsql (requires PostgreSQL >= 9.0)
+* sqlite (>= 3, usually not recommended for performance reasons)
 
 Required For Specific Apps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* ldap (for LDAP integration)
 * ftp (for FTP storage / external user authentication)
 * imap (for external user authentication)
+* ldap (for LDAP integration)
 * smbclient  (SMB/CIFS integration)
   
 .. note:: SMB/Windows Network Drive mounts require the PHP module smbclient version 0.8.0+; see
@@ -91,10 +91,10 @@ Optional
 ========= =====================================================================
 Extension Reason
 ========= =====================================================================
+bz2       Required for extraction of apps
 curl      Highly recommended, as some functionality, such as HTTP user 
           authentication, depends on this
 fileinfo  Highly recommended, as it enhances file analysis performance
-bz2       Required for extraction of apps
 intl      Increases language translation performance and fixes sorting of
           non-ASCII characters
 mcrypt    Increases file encryption performance
