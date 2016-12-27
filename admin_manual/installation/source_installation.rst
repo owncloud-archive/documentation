@@ -38,86 +38,118 @@ Apache and MariaDB, using `the ownCloud .tar archive
 Prerequisites
 -------------
 
-The ownCloud .tar archive contains all of the required PHP modules. This section 
-lists all required and optional PHP modules.  Consult the `PHP manual 
-<http://php.net/manual/en/extensions.php>`_ for more information on modules. 
-Your Linux distribution should have packages for all required modules. You can 
-check the presence of a module by typing ``php -m | grep -i <module_name>``. 
-If you get a result, the module is present.
+The ownCloud tar archive contains all of the required PHP third-party libraries.
+So, no extra ones are required. However, ownCloud does require that PHP has
+a set of extensions installed, enabled, and configured. 
 
-Required:
+This section lists both the required and optional PHP extensions. If you need
+further information about a particular extension, please consult the relevant
+section of `the extensions section of the PHP manual
+<http://php.net/manual/en/extensions.php>`_. 
+
+If you are using a Linux distribution it should have packages for all the
+required extensions. You can check the presence of a module by typing ``php -m
+| grep -i <module_name>``. If you get a result, the module is present.
+
+Required
+^^^^^^^^
 
 * php5 (>= 5.6)
-* PHP module ctype
-* PHP module dom
-* PHP module GD
-* PHP module iconv
-* PHP module JSON
-* PHP module libxml (Linux package libxml2 must be >=2.7.0)
-* PHP module mb multibyte
-* PHP module posix
-* PHP module SimpleXML
-* PHP module XMLWriter
-* PHP module zip
-* PHP module zlib
+* ctype
+* dom
+* GD
+* iconv
+* JSON
+* libxml (Linux package libxml2 must be >=2.7.0)
+* mb multibyte
+* posix
+* SimpleXML
+* XMLWriter
+* zip
+* zlib
 
 Database connectors (pick the one for your database:)
 
-* PHP module sqlite (>= 3, usually not recommended for performance reasons)
-* PHP module pdo_mysql (MySQL/MariaDB)
-* PHP module pgsql (requires PostgreSQL >= 9.0)
+* sqlite (>= 3, usually not recommended for performance reasons)
+* pdo_mysql (MySQL/MariaDB)
+* pgsql (requires PostgreSQL >= 9.0)
 
-*Recommended* packages:
+Required For Specific Apps
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* PHP module curl (highly recommended, some functionality, e.g. HTTP user
-  authentication, depends on this)
-* PHP module fileinfo (highly recommended, enhances file analysis performance)
-* PHP module bz2 (recommended, required for extraction of apps)
-* PHP module intl (increases language translation performance and fixes sorting 
-  of non-ASCII characters)
-* PHP module mcrypt (increases file encryption performance)
-* PHP module openssl (required for accessing HTTPS resources)
-
-Required for specific apps:
-
-* PHP module ldap (for LDAP integration)
-* PHP module ftp (for FTP storage / external user authentication)
-* PHP module imap (for external user authentication)
-* PHP module smbclient  (SMB/CIFS integration)
+* ldap (for LDAP integration)
+* ftp (for FTP storage / external user authentication)
+* imap (for external user authentication)
+* smbclient  (SMB/CIFS integration)
   
 .. note:: SMB/Windows Network Drive mounts require the PHP module smbclient version 0.8.0+; see
   :doc:`../configuration_files/external_storage/smb`.
 
-Recommended for specific apps (*optional*):
+Optional
+^^^^^^^^
 
-* PHP module exif (for image rotation in pictures app)
-* PHP module gmp (for SFTP storage)
+========= =====================================================================
+Extension Reason
+========= =====================================================================
+curl      Highly recommended, as some functionality, such as HTTP user 
+          authentication, depends on this
+fileinfo  Highly recommended, as it enhances file analysis performance
+bz2       Required for extraction of apps
+intl      Increases language translation performance and fixes sorting of
+          non-ASCII characters
+mcrypt    Increases file encryption performance
+openssl   Required for accessing HTTPS resources
+========= =====================================================================
 
-For enhanced server performance (*optional*) select one of the following 
-memcaches:
+Recommended
+^^^^^^^^^^^
 
-* PHP module apc
-* PHP module apcu
-* PHP module memcached
-* PHP module redis (>= 2.2.6+, required for Transactional File Locking)
+For Specific Apps
+~~~~~~~~~~~~~~~~~
+
+========= =====================================================================
+Extension Reason
+========= =====================================================================
+exif      For image rotation in pictures app
+gmp       For SFTP storage
+========= =====================================================================
+
+For Server Performance
+~~~~~~~~~~~~~~~~~~~~~~
+
+For enhanced server performance consider installing one of the following cache
+extensions:
+
+* apc
+* apcu
+* memcached
+* redis (>= 2.2.6+, required for transactional file locking)
 
 See :doc:`../configuration_server/caching_configuration` to learn how to select 
 and configure a memcache.
 
-For preview generation (*optional*):
+For Preview Generation
+~~~~~~~~~~~~~~~~~~~~~~
 
-* PHP module imagick
+* imagick
 * avconv or ffmpeg
 * OpenOffice or LibreOffice
 
-For command line processing (*optional*):
+For Command Line Processing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
+========= =====================================================================
+Extension Reason
+========= =====================================================================
+pcntl     Enables command interruption by pressing ``ctrl-c``
+========= =====================================================================
 
-You don’t need the WebDAV module for your Web server (i.e. Apache’s 
-``mod_webdav``), as ownCloud has a built-in WebDAV server of its own, SabreDAV. 
-If ``mod_webdav`` is enabled you must disable it for ownCloud. (See 
-:ref:`apache_configuration_label` for an example configuration.)
+.. NOTE::
+
+  You don’t need the WebDAV module for your Web server (i.e. Apache’s
+  ``mod_webdav``), as ownCloud has a built-in WebDAV server of its own, `SabreDAV`_.
+  If ``mod_webdav`` is enabled you must disable it for ownCloud. (See
+  :ref:`apache_configuration_label` for an example configuration.)
 
 MySQL/MariaDB Require InnoDB
 ----------------------------
@@ -454,3 +486,7 @@ Other Web Servers
 
 `Univention Corporate Server installation 
 <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+
+.. Links
+
+.. _SabreDav: http://sabre.io/
