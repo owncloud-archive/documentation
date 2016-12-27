@@ -8,8 +8,8 @@ Overview
 `ClamAV`_ is the only _officially_ supported virus scanner available for use
 with ownCloud. However, other anti-virus software can be used, so long as they: 
 
-- Can receive data streams via pipe on the commandline and return an exit code 
-- Return a parsable result, on stdout 
+- Can receive data streams via pipe on the command-line and return an exit code
+- Return a parsable result, on stdout
 
 How ClamAV Works With ownCloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -20,7 +20,7 @@ connecting to them via:
 
 - A url and port
 - A socket
-- Streaming the data from the commandline via a pipe with a configured executable
+- Streaming the data from the command-line via a pipe with a configured executable
 
 Files are checked when they are either uploaded or updated, whether that’s when
 they’re edited or saved, but *not* when they are downloaded. 
@@ -151,7 +151,7 @@ installation. When there is no activity ``clamd`` places a minimal load on your
 system. However, if your users upload large volumes of files, you will see high
 CPU usage. So, please keep this in mind.
 
-**Daemon: ClamAV** 
+**Daemon Via Host:Port**
 
 In this mode, ClamAv runs on a different server. This is a good option for
 ownCloud servers with high volumes of file uploads.
@@ -206,8 +206,8 @@ back and change all of your logging to less verbose levels.
 Rule Configuration
 ^^^^^^^^^^^^^^^^^^
 
-ownCloud provides the abilility to customise how ownCloud reacts to the
-response provided by a ClamAV scan. To do so, under `Admin -> Antivirus
+ownCloud provides the ability to customize how ownCloud reacts to the
+response provided by an anti-virus scan. To do so, under `Admin -> Antivirus
 Configuration -> Advanced`, which you can see in the screenshot below, you can
 view and change the existing rules. You can also add new ones. 
 
