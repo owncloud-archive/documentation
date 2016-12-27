@@ -13,7 +13,7 @@ somewhere else, here is a manual process that you can take to make it happen.
    - You're using Apache as your webserver
 
 1. Stop Apache
-2. Use rsync to sync the files from the current folder to the new one the folders -> 
+2. Use rsync to sync the files from the current folder to the new one 
 3. Create a symbolic link from the new directory to the old one 
 4. Double-check `the directory permissions`_ on the new directory 
 5. Restart Apache
