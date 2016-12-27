@@ -35,7 +35,7 @@ Fix Hardcoded Database Path Variables
 If you want to manually change the location of the data folder in the database,
 run the SQL below:
 
-.. code-block::
+.. code-block:: sql
    
   UPDATE oc_storages SET id='local::/var/www/owncloud/data' 
     WHERE id='local::/mnt/owncloud'
@@ -44,13 +44,13 @@ The other area to check is the `oc_jobs` table. The logrotate process may have
 hard-coded a non-standard (or old) value for the data path. To check it, run the
 SQL below and see if any results are returned:
 
-.. code-block::
+.. code-block:: sql
 
   SELECT * FROM oc_jobs WHERE class = 'OC\Log\Rotate';
 
 If any are, run the SQL below to update them, changing the value as appropriate.
 
-.. code-block::
+.. code-block:: sql
 
   UPDATE oc_jobs SET argument = '/your/new/data/path' 
     WHERE id = <id of the incorrect record>;
@@ -65,7 +65,7 @@ which applications do this, and change them as needed.
 For example, if you listed the application configuration by running `occ
 config:list`, then you might see output similar to that below:
 
-.. code-block::
+.. code-block:: json
 
   {
       "apps": {
@@ -82,7 +82,7 @@ Here, the "fictitious" application references the data directory as being set to
 `var/www/owncloud/data`. So you would have to change the value by using the
 `config:app:set` option. Here's an example of how you would update the setting:
 
-.. code-block::
+.. code-block:: console
 
   occ config:app:set --value /mnt/owncloud fictitious datadir
 
