@@ -85,17 +85,21 @@ files, if this enabled by your server administrator. Hover your cursor over
 a file or folder to expose the controls for the following operations:
 
 Favorites
-  Click the star to the left of the file icon to mark it as a favorite, and 
-  quickly find all of your favorites with the Favorites filter on the left 
-  sidebar.
+~~~~~~~~~
+
+Click the star to the left of the file icon to mark it as a favorite, and
+quickly find all of your favorites with the Favorites filter on the left
+sidebar.
   
 .. figure:: ../images/files_page-1.png
    :alt: Marking Favorite files.
   
 Share
-  Share the file or folder with a group or other users, and create public 
-  shares with hyperlinks. You can also see who you have shared with already, 
-  and revoke shares by clicking the trash can icon. 
+~~~~~
+
+Share the file or folder with a group or other users, and create public shares
+with hyperlinks. You can also see who you have shared with already, and revoke
+shares by clicking the trash can icon. 
   
 .. note:: New in 9.0, you can see all re-shares of your original file shares.
 
