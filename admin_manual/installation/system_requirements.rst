@@ -5,14 +5,16 @@ System Requirements
 Memory
 ------
 
-Memory requirements for running an ownCloud server are greatly variable, 
-depending on the numbers of users and files, and volume of server activity. 
-ownCloud needs a minimum of 128MB RAM, and we recommend a minimum of 512MB.
+Memory requirements for running an ownCloud server are greatly variable,
+depending on the numbers of users and files, and volume of server activity.
+ownCloud officially requires a minimum of 128MB RAM. But, we recommend
+a minimum of 512MB.
 
 Recommended Setup for Running ownCloud
 --------------------------------------
 
-For best performance, stability, support, and full functionality we recommend:
+For *best performance*, *stability*, *support*, and *full functionality* we
+officially recommend and support:
 
 ================= =============================================================
 Platform          Options
@@ -27,7 +29,7 @@ Supported Platforms
 -------------------
 
 If you are not able to use one or more of the above tools, the following
-options are also supported.
+options are also supported. 
 
 Server
 ^^^^^^
@@ -87,8 +89,8 @@ ownCloud.
 Database Requirements for MySQL / MariaDB
 -----------------------------------------
 
-The following is currently required if you're running ownCloud together with a MySQL / MariaDB database:
+The following are currently required if you're running ownCloud together with a MySQL or MariaDB database:
 
 * Disabled or BINLOG_FORMAT = MIXED configured Binary Logging (See: :ref:`db-binlog-label`)
-* InnoDB storage engine (MyISAM is not supported, see: :ref:`db-storage-engine-label`)
+* InnoDB storage engine (The MyISAM storage engine is not supported, see: :ref:`db-storage-engine-label`)
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
