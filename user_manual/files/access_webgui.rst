@@ -36,14 +36,16 @@ ownCloud server.
 Then use the **Tags** filter on the left sidebar of your Files page to filter
 files by tags. There are three types of tags: 
 
-**Visible** means that all users may see, rename, and apply these tags to files
-and folders.
-
-**Restricted** means tags are assignable and editable only to the user groups
-have permission to use them. Other users can filter files by restricted tags,
-but cannot tag files with them or rename them. The tags are marked (restricted).
-
-**Invisible** means visible only to ownCloud admins. 
+========== ====================================================================
+Tag        Description
+========== ====================================================================
+Visible    All users may see, rename, and apply these tags to files and folders
+Restricted Tags are assignable and editable only to the users and groups which
+           have permission to use them. Other users can filter files by 
+           restricted tags, but cannot tag files with them or rename them. 
+           The tags are marked (restricted)
+Invisible  Visible only to ownCloud admins
+========== ====================================================================
 
 When you use the **Tag** filter on your Files page you'll see something like the
 following image. If you do not have Admin rights then you will not see any
@@ -108,11 +110,17 @@ Share
    
 You have five share permissions:
  
-* Can share; allows the users you share with to re-share.
-* Can edit; allows the users you share with to edit your shared files, and to collaborate using the Documents app.
-* Create; allows the users you share with to create new files and add them to the share.
-* Change; allows uploading a new version of a shared file and replacing it.
-* Delete; allows the users you share with to delete shared files.
+========== ===================================================================
+Permission Definition
+========== ===================================================================
+Can share  Allows the users you share with to re-share
+Can edit   Allows the users you share with to edit your shared files, and to 
+           collaborate using the Documents app
+Create     Allows the users you share with to create new files and add them 
+           to the share
+Change     Allows uploading a new version of a shared file and replacing it
+Delete     Allows the users you share with to delete shared files
+========== ===================================================================
 
 Overflow Menu  
   The Overflow menu (three dots) displays file details, and allows you to 
