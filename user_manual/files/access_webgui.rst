@@ -1,40 +1,341 @@
-=====================================================
+======================================================
 Accessing your Files Using the ownCloud Web Interface
-=====================================================
+======================================================
 
-You can access your ownCloud files with the ownCloud Web interface and create, 
-preview, edit, delete, share, and re-share files. Your ownCloud administrator 
-has the option to disable these features, so if any of them are missing on your 
-system ask your server administrator.
+You can access your ownCloud files with the ownCloud Web interface, as well as
+create, preview, edit, delete, share, and re-share files. 
+
+.. IMPORTANT::
+   Your ownCloud administrator has the option to disable these features. If any
+   of them are missing on your system ask your server administrator.
 
 .. figure:: ../images/files_page.png
    :alt: The Files view screen.
+  
+File Controls
+-------------
    
-Folder Permalinks
------------------
+ownCloud can display thumbnail previews for image files, MP3 covers, and text
+files, if this enabled by your server administrator. The available file controls
+include:
 
-Click the share icon on any folder to open the details window on the right. At
-the top next to the file or folder name click the little chain link icon to
-expose a permalink. You can give this permalink to any users on your ownCloud
-server that you have shared the file or folder with. The link remains valid even
-if the file is renamed.
+- `Marking Favorites`_
+- `Sharing Files`_
+- `The Overflow Menu`_
+
+Hover your cursor over a file or folder to expose the controls, as in the image
+below.
+  
+.. figure:: ./images/files_file-controls.png
+   :alt: File controls
+
+Marking Favorites
+~~~~~~~~~~~~~~~~~
+
+Click the star to the left of the file icon to mark it as a favorite, and
+quickly find all of your favorites with the Favorites filter on the left
+sidebar.
+  
+.. figure:: ./images/files_mark-as-favorite.png
+   :alt: Marking files as favorites.
+  
+Sharing Files
+~~~~~~~~~~~~~
+
+The sharing files control is a shortcut to the file and folder sharing
+functionality within ownCloud. ownCloud sharing supports:
+
+- Sharing files and folders with users or groups 
+- Creating public shares with hyperlinks 
+- Listing recipients of existing shares
+- Deleting existing shares 
+  
+.. note:: New in 9.0: you can see all re-shares of your original file shares.
+
+The Overflow Menu  
+~~~~~~~~~~~~~~~~~
+
+The Overflow Menu allows you to:
+
+- Display file details
+- Rename files
+- Download files
+- Delete files
+  
+.. figure:: ../images/files_page-3.png
+   :alt: Overflow menu.
+   
+   The Details view shows Activities, Sharing, and Versions information. 
+  
+.. figure:: ../images/files_page-4.png
+   :alt: Details screen.  
+
+Navigating Inside Your ownCloud
+--------------------------------
+
+Navigating through folders in ownCloud is as simple as clicking on a folder to 
+open it and using the back button on your browser to move to a previous level. 
+ownCloud also provides a navigation bar at the top of the Files field for quick 
+navigation.
+
+Create or Upload Files and Directories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Upload or create new files or folders directly in an ownCloud folder by clicking 
+on the *New* button in the Files app.
+
+.. figure:: ../images/files_page-6.png
+   :alt: The New file/folder/upload menu.
+
+The *New* button provides the following options:
+
+========= ======================================================================
+Option    Description
+========= ======================================================================
+Up arrow  Upload files from your computer into ownCloud. You can also upload 
+          files by dragging and dropping them from your file manager.
+Text file Creates a new text file and adds the file to your current folder.
+Folder    Creates a new folder in the current folder.
+========= ======================================================================
+  
+Select Files or Folders
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can select one or more files or folders by clicking on their checkboxes.  To
+select all files in the current directory, click on the checkbox located at the
+top of the files listing.
+
+When you select multiple files, you can delete all of them, or download them as
+a ZIP file by using the ``Delete`` or ``Download`` buttons that appear at the
+top.
+
+.. note:: If the ``Download`` button is not visible, the administrator has
+   disabled this feature.
+
+Filter the Files View
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The right sidebar on the Files page contains several filters for quickly sorting 
+and managing your files.
+
+================== =============================================================
+Option             Description
+================== =============================================================
+All files          The default view; displays all files that you have access to
+Favorites          Files or folders marked with the yellow star 
+Shared with you    Displays all files shared with you by another user or group
+Shared with others Displays all files that you have shared with other users or 
+                   groups
+Shared by link     Displays all files that are shared by you via public link
+External Storage   Files that you have access to on external storage devices 
+                   and services such as Dropbox, Google, and Amazon S3
+================== =============================================================
+
+Move Files
+~~~~~~~~~~~~
+
+You can move files and folders by dragging and dropping them into any directory.
+   
+Share Files
+-------------
+
+Clicking the share icon on any file or folder opens the Details view on the
+right, where the Share tab has focus. 
+
+Sharing Status Icons
+~~~~~~~~~~~~~~~~~~~~
+
+Any folder that has been shared is marked with the ``Shared`` overlay icon. 
+Public link shares are marked with a chain link. Un-shared folders are blank.
+
+.. figure:: ../images/files_page-5.png
+   :alt: Share status icons.
+
+If your ownCloud server is the Enterprise edition, you may also have access to
+Sharepoint and Windows Network Drive file shares. These have special status
+icons. An icon with a red plugin and background means you have to enter a login
+to get access to the share.
+
+.. figure:: ../images/users-overlays-win-net-drive.png
+
+.. figure:: ../images/users-overlays-sharepoint.png
+
+Create A Share
+~~~~~~~~~~~~~~
+
+To share a file or folder, immediately below the Share tab, you will see a text
+field. In this field, you can enter any number of users (whether local to your
+ownCloud server or remote) or groups who you would like to share the file or
+folder with.
+
+If username auto-completion is enabled, when you start typing the user or group
+name ownCloud will automatically complete it for you, if possible.
+
+After a file or folder has been shared, `Share Permissions`_ can be set on
+it. In the image below, you can see that the directory "event-Photos" is shared
+with the user "pierpont", who can *share*, *edit*, *create*, *change*, and
+*delete* the directory.
+  
+.. figure:: ../images/files_page-2.png
+   :alt: Sharing files.
+
+Update A Share
+~~~~~~~~~~~~~~
+
+To change any of the properties of a share, again, you first need to view the
+Share tab. From there, you can:
+
+- Delete a user’s access to a share
+- Give more users access to a share
+- Change a user’s share permissions
+- Add or remove password protection
+- Set or remove a share’s expiration date
+
+As this functionality is already described in other parts of the `Sharing
+Files`_ section, it won’t be specifically covered here.
+
+Delete A Share
+~~~~~~~~~~~~~~
+
+Despite the name of this section, you don’t actually delete a share. Rather
+what you do is remove the access of user’s to whom it’s already been shared
+with. When all users access to a shared resource has been removed, the resource
+is no longer shared. 
+
+To do that, you need to click on the rubbish bin icon, on the far right-hand
+side of the name of each user it’s been shared with, who should no longer have
+access to it.
+
+Password Protect A Files
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+It’s also possible to password protect shared files and folders. If you want to
+do so, then you need to enable this functionality. Specifically, click the
+checkbox labeled "*Password protect*" under the "*Share Link*" section. 
+
+When you do so, you’ll see a password field appear. In there, add the password
+that the user will need to enter to access the shared resource and press the
+return key.
+
+View Permalinks
+~~~~~~~~~~~~~~~
+
+Part-way down the share details window, you will see a checkbox with the label
+"*Share link*". Check the checkbox to expose the file or folder’s permalink. You
+can give this permalink to users on your ownCloud server that you have shared
+the file or folder with. The link remains valid even if the file is renamed.
 
 .. figure:: ../images/permalink.png
    :alt: File permalink.
+
+To save time and effort in sharing a permalink with someone, you can enter
+their email address in the notification field. This is the field that has the
+placeholder text "Email link to person". Enter the person’s email and press
+return and they will receive an email notification, containing the permalink.
+
+.. NOTE:: This is only available if your administrator has enabled email
+   notifications
+
+Change The Share Expiration Date
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In older versions of ownCloud, you could set an expiration date on both local 
+and public shares. Since the most recent version three, key, changes have been
+made: 
+
+- You can *only* set an expiration date on public shares
+- Local shares do not expire when public shares expire 
+- A local share can only be "expired" (or deleted) by click the trash can icon
+
+Create or Connect to Federation Share Links
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Federated Cloud Sharing allows you to mount file shares from remote ownCloud
+servers, and manage them just like a local share. In ownCloud 8 the process
+for creating a new sharing link is easier and more streamlined. See
+:doc:`federated_cloud_sharing` to learn to how to create and connect to new
+Federated Cloud shares.
+
+Share Permissions
+~~~~~~~~~~~~~~~~~
+
+Shares can have a combination of the following five permission types:
+ 
+========== ===================================================================
+Permission Definition
+========== ===================================================================
+can share  Allows the users you share with to re-share
+can edit   Allows the users you share with to edit your shared files, and to 
+           collaborate using the Documents app
+create     Allows the users you share with to create new files and add them 
+           to the share
+change     Allows uploading a new version of a shared file and replacing it
+delete     Allows the users you share with to delete shared files
+========== ===================================================================
    
-Tagging Files
+Tag Files
 -------------
 
-You can assign tags to files. To create tags, open a file to the Details view.
-Then type your tag name. To enter more than one tag press the return key after
-creating each tag. All tags are system tags, and are shared by all users on your
-ownCloud server.
+.. figure:: ./images/file-popup-menu.png
+   :alt: Files popup menu.
+
+In ownCloud, you can assign one or more tags to files and folders. To do so, go
+to the "**Details**" view, inside `The Overflow Menu`_. There, you’ll see a text
+field, with the placeholder text "**Collaborative tags**" if no tags have yet
+been added, below the file’s icon, name, and other details. 
+
+In that field, type the tag’s name, which can be composed of one or multiple
+words, and press the return key to complete it. If you want to use multiple
+words, there is no need to use single or double-quotes. Type as many words as
+you want for the tag, and when you press the return key, your tag will be
+completed.
+
+.. NOTE::
+   All tags are system tags, so they are shared by all users on your ownCloud
+   server.
 
 .. figure:: ../images/files_page-7.png
    :alt: Creating file tags.
-   
-Then use the **Tags** filter on the left sidebar of your Files page to filter
-files by tags. There are three types of tags: 
+
+When you place the cursor inside the tags field, and as you type the tag name,
+a list of the system tags will appear. If you type a new tag name, the visible
+tags list will be filtered, based on the text that you’ve typed. 
+
+If you see a tag in the list which is what you had intended to type, or is
+a better fit than what you had in mind, click on it, and it will be added to the
+file or folder’s tag list. This can save you a lot of time and effort.
+
+Untag a File or Folder
+~~~~~~~~~~~~~~~~~~~~~~
+
+If a file or folder is already tagged, the tag names in the popup list will have
+a check mark to the left of the tag’s name. To remove that tag from the file or
+folder, click the tag’s name. You will see that the check mark disappears.
+
+Edit Tags
+~~~~~~~~~
+
+To edit a tag, click the pencil icon on the far right-hand side of the tag’s
+name, in the tags popup list. This will display a text box, containing the tag’s
+name. Be sure that you want to change the tag’s name, as it will be updated for
+all users.
+
+Delete Tags
+~~~~~~~~~~~
+
+To delete a tag, as above, click the pencil icon on the far right-hand side of
+the tag’s name, in the tags popup list. Next to the text box containing the
+tag’s name, you will also see a delete icon. 
+
+Click this to remove the tag from
+the system tag’s list. As with renaming a tag, remember that deleting a tag
+removes it for all users. So please be sure that you want to do this.
+
+Filter By Tag
+~~~~~~~~~~~~~
+
+To filter by tag, use the **Tags** filter on the left sidebar of the Files
+page. There are three types of tags: 
 
 ========== ====================================================================
 Tag        Description
@@ -56,212 +357,76 @@ invisible tags.
  
 Comments
 --------
- 
-Use the Details view to add and read comments on any file or folder. Comments
-are visible to everyone who has access to the file.
+
+In ownCloud, you can add one or more comments on both files and folders. This
+section describes how to add, edit, and delete comments.
+
+Add Comments
+~~~~~~~~~~~~
+
+Use the Details view, in The Overflow Menu, to add and read comments on any
+file or folder. Comments are visible to everyone who has access to the file or
+folder. To add a comment, as in the example below, click the **Comments** tab
+in the Details view, write a comment in the New Comment field, and click
+"Post".
 
 .. figure:: ../images/file_menu_comments_2.png
    :alt: Creating and viewing comments.
-  
-Video Player
-------------
 
-You can play videos in ownCloud with the Video Player app by simply clicking on
-the file. Video streaming by the native ownCloud video player depends on your
-Web browser and the video format. If your ownCloud administrator has enabled
-video streaming, and it doesn't work in your Web browser, it may be a browser
-issue. See
+Edit Comments
+~~~~~~~~~~~~~
+
+To edit an existing comment on a file or folder, hover the mouse over the
+comment and you will see a pencil icon appear. By clicking on the pencil, the
+*"Edit Comment"* field will appear, pre-filled with the comment text. Change
+the text as necessary and click *"Save"*. If you change your mind, just click
+*"Cancel"*.
+
+Delete Comments
+~~~~~~~~~~~~~~~
+
+To delete an existing comment on a file or folder, as with editing comments,
+hover the mouse over the comment and you will see a pencil icon appear. Click
+the pencil, and a rubbish bin icon appear on the far right-hand side of the
+comment author’s name, above the *"Edit Comment"* text field. Click the rubbish
+bin, and the comment will be deleted after a few seconds.
+
+Play Videos 
+-----------
+
+You can play videos in ownCloud with the Video Player app, by clicking once on
+the file. Please note, video streaming by the native ownCloud video player
+depends on your Web browser and the video’s format. 
+
+If your ownCloud administrator has enabled video streaming, and it doesn't work
+in your Web browser, it may be a browser-related issue. See
 https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility
 for supported multimedia formats in Web browsers. 
 
 .. figure:: ../images/video_player_2.png
    :alt: Watching a movie.
-  
-File Controls
--------------
    
-ownCloud can display thumbnail previews for image files, MP3 covers, and text
-files, if this enabled by your server administrator. Hover your cursor over
-a file or folder to expose the controls for the following operations:
-
-Favorites
-~~~~~~~~~
-
-Click the star to the left of the file icon to mark it as a favorite, and
-quickly find all of your favorites with the Favorites filter on the left
-sidebar.
-  
-.. figure:: ../images/files_page-1.png
-   :alt: Marking Favorite files.
-  
-Share
-~~~~~
-
-Share the file or folder with a group or other users, and create public shares
-with hyperlinks. You can also see who you have shared with already, and revoke
-shares by clicking the trash can icon. 
-  
-.. note:: New in 9.0, you can see all re-shares of your original file shares.
-
-  If username auto-completion 
-  is enabled, when you start typing the user or group name ownCloud will 
-  automatically complete it for you. If your administrator has enabled email 
-  notifications, you can send an email notification of the new share from the 
-  sharing screen.
-  
-.. figure:: ../images/files_page-2.png
-   :alt: Sharing files.
+Settings
+--------
    
-You have five share permissions:
- 
-========== ===================================================================
-Permission Definition
-========== ===================================================================
-Can share  Allows the users you share with to re-share
-Can edit   Allows the users you share with to edit your shared files, and to 
-           collaborate using the Documents app
-Create     Allows the users you share with to create new files and add them 
-           to the share
-Change     Allows uploading a new version of a shared file and replacing it
-Delete     Allows the users you share with to delete shared files
-========== ===================================================================
+The **Settings** gear icon, in the lower left-hand corner of the ownCloud
+window, allows you to show or hide hidden files in your ownCloud Web
+interface. These are also called dotfiles, because they are prefixed with
+a dot, e.g. ``.mailfile``. 
 
-Overflow Menu  
-  The Overflow menu (three dots) displays file details, and allows you to 
-  rename, download, or delete files.
-  
-.. figure:: ../images/files_page-3.png
-   :alt: Overflow menu.
-   
-   The Details view shows Activities, Sharing, and Versions information. 
-  
-.. figure:: ../images/files_page-4.png
-   :alt: Details screen.  
-   
-The **Settings** gear icon at the lower left allows you to show or hide hidden 
-files in your ownCloud Web interface. These are also called dotfiles, because 
-they are prefixed with a dot, e.g. ``.mailfile``. The dot tells your operating 
-system to hide these files in your file browsers, unless you choose to display 
-them. Usually these are configuration files, so having the option to hide them 
-reduces clutter.
+The dot tells your operating system to hide these files in your file browsers,
+unless you choose to display them. Usually, these are configuration files, so
+having the option to hide them reduces clutter.
 
 .. figure:: ../images/hidden_files.png
    :alt: Hiding or displaying hidden files. 
  
-Previewing Files
-----------------
+Preview Files
+-------------
 
 You can display uncompressed text files, OpenDocument files, videos, and image 
-files in the ownCloud embedded viewers by clicking on the file name. There may 
-be other file types you can preview if your ownCloud administrator has enabled 
-them. If ownCloud cannot display a file, it starts a download process and 
-downloads the file to your computer. 
+files in the ownCloud embedded viewers by clicking on the file name. 
 
-Navigating Inside Your ownCloud
--------------------------------
-
-Navigating through folders in ownCloud is as simple as clicking on a folder to 
-open it and using the back button on your browser to move to a previous level. 
-ownCloud also provides a navigation bar at the top of the Files field for quick 
-navigation.
-
-Sharing Status Icons
---------------------
-
-Any folder that has been shared is marked with the ``Shared`` overlay icon. 
-Public link shares are marked with a chain link. Un-shared folders are blank.
-
-.. figure:: ../images/files_page-5.png
-   :alt: Share status icons.
-
-If your ownCloud server is the Enterprise edition, you may also have access to
-Sharepoint and Windows Network Drive file shares. These have special status
-icons. An icon with a red plugin and background means you have to enter a login
-to get access to the share.
-
-.. figure:: ../images/users-overlays-win-net-drive.png
-
-.. figure:: ../images/users-overlays-sharepoint.png
-
-Creating or Uploading Files and Directories
--------------------------------------------
-
-Upload or create new files or folders directly in an ownCloud folder by clicking 
-on the *New* button in the Files app.
-
-.. figure:: ../images/files_page-6.png
-   :alt: The New file/folder/upload menu.
-
-The *New* button provides the following options:
-
-Up arrow
-  Upload files from your computer into ownCloud. You can also upload files by 
-  dragging and dropping them from your file manager.
-
-Text file
-  Creates a new text file and adds the file to your current folder.
-  
-Folder
-  Creates a new folder in the current folder.
-  
-Selecting Files or Folders
---------------------------
-
-You can select one or more files or folders by clicking on their checkboxes.  To
-select all files in the current directory, click on the checkbox located at the
-top of the files listing.
-
-When you select multiple files, you can delete all of them, or download them as
-a ZIP file by using the ``Delete`` or ``Download`` buttons that appear at the
-top.
-
-.. note:: If the ``Download`` button is not visible, the administrator has
-   disabled this feature.
-
-Filtering the Files View
-------------------------
-
-The right sidebar on the Files page contains several filters for quickly sorting 
-and managing your files.
-
-All files
-  The default view; displays all files that you have access to.
-  
-Favorites
-  Files or folders marked with the yellow star. 
-
-Shared with you
-  Displays all files shared with you by another user or group.
-
-Shared with others
-  Displays all files that you have shared with other users or groups.
-
-Shared by link
-  Displays all files that are shared by you via public link.
-  
-External Storage
-  Files that you have access to on external storage devices and services such 
-  as Dropbox, Google, and Amazon S3.
-
-Moving Files
-------------
-
-You can move files and folders by dragging and dropping them into any directory.
-
-
-Change in Share Expiration Date
--------------------------------
-
-In older versions of ownCloud, you could set an expiration date on both local 
-and public shares. Now you can set an expiration date only on public shares, 
-and local shares do not expire when public shares expire. The only way to 
-"expire" a local share is to click the trash can icon to un-share your files.
-
-Creating or Connecting to a Federation Share Link
--------------------------------------------------
-
-Federated Cloud Sharing allows you to mount file shares from remote ownCloud 
-servers, and manage them just like a local share. In ownCloud 8 the process for 
-creating a new sharing link is easier and more streamlined. See 
-:doc:`federated_cloud_sharing` to learn to how to create and connect to new 
-Federated Cloud shares.
+There may be other file types you can preview if your ownCloud administrator has
+enabled them. If ownCloud cannot display a file, it starts a download process
+and downloads the file to your computer. 
