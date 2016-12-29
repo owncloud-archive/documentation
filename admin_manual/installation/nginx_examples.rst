@@ -346,7 +346,7 @@ or CSS (.css) files via gzip could also cause such issues.
 Not all of my contacts are synchronized
 =======================================
 
-Check your server timeouts! It turns out that CardDAV sync often fail silently if the request runs into timeouts. With PHP-FPM you might see a "CoreDAVHTTPStatusErrorDomain error 504" which is an "HTTP504 Gateway timeout" error. To solve this, first check the `default_socket_timeout` setting in /etc/php/7.0/fpm/php.ini and increase the above `fastcgi_read_timeout` accordingly. Depending on your server's performance a timeout of 180s should be sufficient to sync an addressbook of ~1000 contacts.
+Check your server timeouts! It turns out that CardDAV sync often fail silently if the request runs into timeouts. With PHP-FPM you might see a "CoreDAVHTTPStatusErrorDomain error 504" which is an "HTTP504 Gateway timeout" error. To solve this, first check the ``default_socket_timeout`` setting in ``/etc/php/7.0/fpm/php.ini`` and increase the above ``fastcgi_read_timeout`` accordingly. Depending on your server's performance a timeout of 180s should be sufficient to sync an addressbook of ~1000 contacts.
 
 Performance Tuning
 ==================
