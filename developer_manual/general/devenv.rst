@@ -87,6 +87,33 @@ or::
 After the clone Open http://localhost/core (or the corresponding URL) in your web browser to set up your instance.
 
 Enabling debug mode
+Command-Line Automation
+-----------------------
+
+If you’re keen to save as much time and effort as possible then take advantage
+of the automation available in the most recent version of ownCloud, via `Make`_. 
+
+Below are the available commands, including the target name and a short
+description of what each of them does.
+
+================== ============================================================
+Target             Description
+================== ============================================================
+make               Pulls in both Composer and Bower dependencies
+make clean         Cleans up dependencies. This is useful for starting over or 
+                   when switching to older branches
+make dist          Builds a minimal owncloud-core tarball with only core apps
+                   in `build/dist/core`, stripped of unwanted files
+make docs          Builds the JavaScript documentation using `JSDoc`_
+make test          Runs all of the test targets 
+make test-external Runs one of the external storage tests, and is configurable 
+                   through make variables
+make test-js       Runs the Javascript unit tests, replacing `./autotest-js.sh`
+make test-php      Runs the PHPUnit tests with SQLite as the datasource. This 
+                   replaces `./autotest.sh sqlite`  and is configurable through 
+                   make variables
+================== ============================================================
+
 -------------------
 .. _debugmode:
 
@@ -103,3 +130,7 @@ To disable JavaScript and CSS caching debugging has to be enabled by setting ``d
 .. _GitHub: https://github.com/owncloud
 .. _GitHub Help Page: https://help.github.com/
 
+.. Links
+
+.. _Make: https://www.gnu.org/software/make/
+.. _JSDoc: http://usejsdoc.org
