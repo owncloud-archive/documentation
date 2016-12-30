@@ -12,21 +12,17 @@ create, preview, edit, delete, share, and re-share files.
 .. figure:: ../images/files_page.png
    :alt: The Files view screen.
 
-   The ownCloud Files UI.
+   The ownCloud Files view UI.
   
 File Controls
 -------------
    
-ownCloud can display thumbnail previews for image files, MP3 covers, and text
-files, if this enabled by your server administrator. The available file controls
-include:
+When you mouseover, or hover, over a file in the Files view, as in the image
+below, ownCloud displays three file controls. These are:
 
 - `Marking Favorites`_
 - `Sharing Files`_
 - `The Overflow Menu`_
-
-Hover your cursor over a file or folder to expose the controls, as in the image
-below.
   
 .. figure:: ../images/files_file-controls.png
    :alt: File controls
@@ -59,7 +55,7 @@ The Overflow Menu
 
 The Overflow Menu allows you to:
 
-- Display file details
+- Display file details 
 - Rename files
 - Download files
 - Delete files
@@ -67,12 +63,30 @@ The Overflow Menu allows you to:
 .. figure:: ../images/files_page-3.png
    :alt: Overflow menu.
    
-   The Details view shows Activities, Sharing, and Versions information. 
+Display File Details
+^^^^^^^^^^^^^^^^^^^^
+
+When you display details about a file, by clicking "Details" in the Overflow Menu, a set of tabs (or views) are available. These are:
+
+================= =============================================================
+View              Description
+================= =============================================================
+Details           This shows details about a file, such as its name, size, 
+                  and when it was created or last updated.
+Activity          This shows a history of activity on the file, such as when 
+                  it was created, updated, and shared.
+Sharing           It’s here that shares are managed. To know more, refer to 
+                  the `Share Files`_ section.
+Version           This shows a history of all the versions of the file. This is
+                  not available for folders.
+================= =============================================================
+  
+You can see an example of the Activity view in the image below.
   
 .. figure:: ../images/files_page-4.png
    :alt: Details screen.  
 
-Navigating Inside Your ownCloud
+Navigating Inside ownCloud
 --------------------------------
 
 Navigating through folders in ownCloud is as simple as clicking on a folder to 
@@ -80,8 +94,8 @@ open it and using the back button on your browser to move to a previous level.
 ownCloud also provides a navigation bar at the top of the Files field for quick 
 navigation.
 
-Create or Upload Files and Directories
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Create and Upload Files and Directories
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Upload or create new files or folders directly in an ownCloud folder by clicking 
 on the *New* button in the Files app.
@@ -158,9 +172,7 @@ Sharepoint and Windows Network Drive file shares. These have special status
 icons. An icon with a red plugin and background means you have to enter a login
 to get access to the share.
 
-.. figure:: ../images/users-overlays-win-net-drive.png
-
-.. figure:: ../images/users-overlays-sharepoint.png
+.. figure:: ../images/files_share-options.png
 
 Create A Share
 ~~~~~~~~~~~~~~
@@ -426,8 +438,10 @@ having the option to hide them reduces clutter.
 Preview Files
 -------------
 
-You can display uncompressed text files, OpenDocument files, videos, and image 
-files in the ownCloud embedded viewers by clicking on the file name. 
+ownCloud can display thumbnail previews for image files, MP3 covers, and text
+files, if this enabled by your server administrator. You can also display
+uncompressed text files, OpenDocument files, videos, and image files in the
+ownCloud embedded viewers by clicking on the file name. 
 
 There may be other file types you can preview if your ownCloud administrator has
 enabled them. If ownCloud cannot display a file, it starts a download process
