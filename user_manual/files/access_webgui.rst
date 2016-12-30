@@ -26,7 +26,7 @@ include:
 Hover your cursor over a file or folder to expose the controls, as in the image
 below.
   
-.. figure:: ./images/files_file-controls.png
+.. figure:: ../images/files_file-controls.png
    :alt: File controls
 
 Marking Favorites
@@ -36,7 +36,7 @@ Click the star to the left of the file icon to mark it as a favorite, and
 quickly find all of your favorites with the Favorites filter on the left
 sidebar.
   
-.. figure:: ./images/files_mark-as-favorite.png
+.. figure:: ../images/files_mark-as-favorite.png
    :alt: Marking files as favorites.
   
 Sharing Files
