@@ -11,6 +11,8 @@ create, preview, edit, delete, share, and re-share files.
 
 .. figure:: ../images/files_page.png
    :alt: The Files view screen.
+
+   The ownCloud Files UI.
   
 File Controls
 -------------
