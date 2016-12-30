@@ -276,7 +276,7 @@ delete     Allows the users you share with to delete shared files
 Tag Files
 -------------
 
-.. figure:: ./images/file-popup-menu.png
+.. figure:: ../images/file_popup-menu.png
    :alt: Files popup menu.
 
 In ownCloud, you can assign one or more tags to files and folders. To do so, go
