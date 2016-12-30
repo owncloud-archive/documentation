@@ -387,7 +387,7 @@ Delete Comments
 
 To delete an existing comment on a file or folder, as with editing comments,
 hover the mouse over the comment and you will see a pencil icon appear. Click
-the pencil, and a rubbish bin icon appear on the far right-hand side of the
+the pencil, and a rubbish bin icon appears on the far right-hand side of the
 comment author’s name, above the *"Edit Comment"* text field. Click the rubbish
 bin, and the comment will be deleted after a few seconds.
 
