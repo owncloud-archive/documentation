@@ -206,7 +206,7 @@ To do that, you need to click on the rubbish bin icon, on the far right-hand
 side of the name of each user it’s been shared with, who should no longer have
 access to it.
 
-Password Protect A Files
+Password Protect Files
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 It’s also possible to password protect shared files and folders. If you want to
@@ -245,7 +245,7 @@ made:
 
 - You can *only* set an expiration date on public shares
 - Local shares do not expire when public shares expire 
-- A local share can only be "expired" (or deleted) by click the trash can icon
+- A local share can only be "expired" (or deleted) by clicking the trash can icon
 
 Create or Connect to Federation Share Links
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
