@@ -98,7 +98,7 @@ your nginx installation.
           return 301 $scheme://$host/remote.php/dav;
       }
   
-      location /.well-known/acme-challenge { }
+      location ^~ /.well-known/acme-challenge { }
   
       # set max upload size
       client_max_body_size 512M;
