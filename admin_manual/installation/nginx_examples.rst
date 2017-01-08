@@ -138,11 +138,6 @@ your nginx installation.
           fastcgi_request_buffering off; #Available since nginx 1.7.11
       }
   
-      location ~ ^/(?:updater|ocs-provider)(?:$|/) {
-          try_files $uri $uri/ =404;
-          index index.php;
-      }
-  
       # Adding the cache control header for js and css files
       # Make sure it is BELOW the PHP block
       location ~* \.(?:css|js)$ {
@@ -166,6 +161,12 @@ your nginx installation.
           # Optional: Don't log access to other assets
           access_log off;
       }
+  
+      location ~ ^/(?:updater|ocs-provider)(?:$|/) {
+          try_files $uri $uri/ =404;
+          index index.php;
+      }
+  
   }
 
 ownCloud in a subdir of nginx
@@ -279,11 +280,6 @@ your nginx installation such as /owncloud or /cloud. The following configuration
               fastcgi_request_buffering off; #Available since nginx 1.7.11
           }
   
-          location ~ ^/owncloud/(?:updater|ocs-provider)(?:$|/) {
-              try_files $uri $uri/ =404;
-              index index.php;
-          }
-  
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
           location ~* /owncloud(\/.*\.(?:css|js)) {
@@ -308,6 +304,12 @@ your nginx installation such as /owncloud or /cloud. The following configuration
               # Optional: Don't log access to other assets
               access_log off;
           }
+  
+          location ~ ^/owncloud/(?:updater|ocs-provider)(?:$|/) {
+              try_files $uri $uri/ =404;
+              index index.php;
+          }
+  
       }
   }
 
