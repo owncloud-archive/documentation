@@ -67,7 +67,7 @@ the server address, the share name, and the folder you want to connect to.
 8. Click the gear icon for additional mount options. Note that previews are 
    enabled by default, while sharing is not (see figure 2). Sharing is not available for all 
    authorization methods; see :doc:`enterprise_only_auth`. For large storages with many files 
-   you may want to disable prewviews, because this can significantly increase performance.
+   you may want to disable previews, because this can significantly increase performance.
 
 .. figure:: images/wnd-3.png
    :alt: WND server and credentials.
