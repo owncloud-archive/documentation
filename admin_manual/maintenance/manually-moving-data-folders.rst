@@ -26,8 +26,10 @@ To save time, here's the commands which you can copy and use::
   apachectl -k graceful 
 
 .. NOTE:: 
-   If you're on Centos, try `service httpd stop` and `service httpd start`.
-   If you're on Debian/Ubuntu try `sudo service apache2 stop` and `sudo service apache2 start`
+   If you're on CentOS/Fedora, try `systemctl restart httpd`.
+   If you're on Debian/Ubuntu try `sudo systemctl restart apache2`
+   To learn more about the systemctl command, please refer to `the systemd
+   essentials guide`_
 
 Fix Hardcoded Database Path Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -89,3 +91,4 @@ Here, the "fictitious" application references the data directory as being set to
 .. Links
 
 .. _the directory permissions: https://doc.owncloud.org/server/9.1/admin_manual/installation/installation_wizard.html#strong-perms-label
+.. _the systemd essentials guide: https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal
