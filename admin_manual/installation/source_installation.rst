@@ -10,11 +10,11 @@ server up-to-date.
 .. note:: Enterprise customers should refer to  
    :doc:`../enterprise_installation/linux_installation`
 
-If there are no packages for your Linux distribution, or you prefer installing 
-from the source tarball, you can setup ownCloud from scratch using a classic 
-LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides a 
-complete walk-through for installing ownCloud on Ubuntu 14.04 LTS Server with 
-Apache and MariaDB, using `the ownCloud .tar archive 
+If there are no packages for your Linux distribution, or you prefer installing
+from the source tarball, you can setup ownCloud from scratch using a classic
+LAMP stack (Linux, Apache, MySQL/MariaDB, PHP). This document provides
+a complete walk-through for installing ownCloud on Ubuntu 14.04 LTS Server with
+Apache and MariaDB, using `the ownCloud .tar archive
 <https://owncloud.org/install/>`_.
 
 * :ref:`prerequisites_label`
@@ -122,7 +122,8 @@ If ``mod_webdav`` is enabled you must disable it for ownCloud. (See
 MySQL/MariaDB Require InnoDB
 ----------------------------
 
-The InnoDB storage engine is required, and MyISAM is not supported, see: :ref:`db-storage-engine-label`.
+The InnoDB storage engine is required, and MyISAM is not supported, see:
+:ref:`db-storage-engine-label`.
   
 .. _ubuntu_installation_label:  
 
@@ -138,7 +139,8 @@ Apache and MariaDB, by issuing the following commands in a terminal::
     apt-get install php7.0-intl php7.0-mcrypt php-imagick
     apt-get install php7.0-zip php7.0-xml php7.0-mbstring
 
-The remaining steps are analogous to the installation on Ubuntu 14.04 as shown below.
+The remaining steps are analogous to the installation on Ubuntu 14.04 as shown
+below.
 
 Example Installation on Ubuntu 14.04 LTS Server
 -----------------------------------------------
@@ -228,10 +230,10 @@ See :ref:`db-binlog-label`.
 Apache Web Server Configuration
 -------------------------------
 
-On Debian, Ubuntu, and their derivatives, Apache installs with a useful 
-configuration so all you have to do is create a 
-:file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in 
-it, replacing the **Directory** and other filepaths with your own filepaths::
+On Debian, Ubuntu, and their derivatives, Apache installs with a useful
+configuration so all you have to do is create
+a :file:`/etc/apache2/sites-available/owncloud.conf` file with these lines in
+it, replacing the **Directory** and other file paths with your own file paths::
    
   Alias /owncloud "/var/www/owncloud/"
    
@@ -280,8 +282,8 @@ Additional Apache Configurations
 
     Satisfy Any
 
-* When using SSL, take special note of the ServerName. You should specify one in 
-  the  server configuration, as well as in the CommonName field of the 
+* When using SSL, take special note of the ``ServerName``. You should specify one in 
+  the  server configuration, as well as in the `CommonName` field of the 
   certificate. If you want your ownCloud to be reachable via the internet, then 
   set both of these to the domain you want to reach your ownCloud server.
 
@@ -289,7 +291,7 @@ Additional Apache Configurations
 
      service apache2 restart
 
-* If you're running ownCloud in a subdirectory and want to use CalDAV or 
+* If you're running ownCloud in a sub-directory and want to use CalDAV or 
   CardDAV clients make sure you have configured the correct 
   :ref:`service-discovery-label` URLs.
 
@@ -303,7 +305,7 @@ Enabling SSL
           user's logins and data in transit.
 
 Apache installed under Ubuntu comes already set-up with a simple
-self-signed certificate. All you have to do is to enable the ssl module and
+self-signed certificate. All you have to do is to enable the ``ssl`` module and
 the default site. Open a terminal and run::
 
      a2enmod ssl
@@ -365,7 +367,7 @@ php.ini Configuration Notes
    issues logging in to ownCloud via the WebUI.
 
 Keep in mind that changes to ``php.ini`` may have to be configured in more than one 
-ini file. This can be the case, for example, for the ``date.timezone`` setting.
+INI file. This can be the case, for example, for the ``date.timezone`` setting.
 
 **php.ini - used by the Web server:**
 ::
@@ -389,10 +391,10 @@ php-fpm Configuration Notes
 **System environment variables**
 
 When you are using ``php-fpm``, system environment variables like 
-PATH, TMP or others are not automatically populated in the same way as 
+``PATH``, ``TMP`` or others are not automatically populated in the same way as 
 when using ``php-cli``. A PHP call like ``getenv('PATH');`` can therefore 
 return an empty result. So you may need to manually configure environment 
-variables in the appropropriate ``php-fpm`` ini/config file. 
+variables in the appropriate ``php-fpm`` ini/config file. 
 
 Here are some example root paths for these ini/config files:
 
@@ -402,8 +404,9 @@ Here are some example root paths for these ini/config files:
 | ``/etc/php5/fpm/`` | ``/etc/php-fpm.d/``   |
 +--------------------+-----------------------+ 
 
-In both examples, the ini/config file is called ``www.conf``, and depending on 
-the distro version or customizations you have made, it may be in a subdirectory.
+In both examples, the ``ini/config`` file is called ``www.conf``, and depending
+on the distribution or customizations which you have made, it may be in
+a sub-directory.
 
 Usually, you will find some or all of the environment variables 
 already in the file, but commented out like this::
@@ -424,10 +427,10 @@ confirm your paths, for example::
 If any of your system environment variables are not present in the file then 
 you must add them.
 
-When you are using shared hosting or a control panel to manage your ownCloud VM 
-or server, the configuration files are almost certain to be located somewhere 
-else, for security and flexibility reasons, so check your documentation for the 
-correct locations.
+When you are using shared hosting or a control panel to manage your ownCloud
+virtual machine or server, the configuration files are almost certain to be
+located somewhere else, for security and flexibility reasons, so check your
+documentation for the correct locations.
 
 Please keep in mind that it is possible to create different settings for 
 ``php-cli`` and ``php-fpm``, and for different domains and Web sites. 
