@@ -12,9 +12,11 @@ your other ownCloud files and folders.
 
 They are labeled with a little four-pane Windows-style icon, and the left pane
 of your Files page includes a Windows Network Drive filter. Figure 1 shows
-a new Windows Network Drive share marked with red warnings. These indicate that
-ownCloud cannot connect to the share because it requires the user to login, it
-is not available, or there is an error in the configuration. 
+a new Windows Network Drive share marked with red warnings. 
+
+These indicate that ownCloud cannot connect to the share because it requires
+the user to login, it is not available, or there is an error in the
+configuration. 
 
 .. figure:: images/wnd-1.png
    :alt: Windows Network Drive share on your Files page.
@@ -186,9 +188,6 @@ However, running this command would not:
    
    su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata mydata svc_owncloud password'
 
-.. _smbclient: https://www.samba.org/samba/docs/man/manpages-3/smbclient.1.html
-.. _Distributed File Shares: https://en.wikipedia.org/wiki/Distributed_File_System_(Microsoft)
-
 Setup Notifications for an SMB Share
 ------------------------------------
 
@@ -261,4 +260,10 @@ Running the WND Listener as a Service
 See `Configuring wnd:listen to run as a service
 <https://github.com/owncloud/documentation/wiki/Configuring-wnd:listen-to-run-as-a-service>`_
 in the documentation wiki for tips on running the listener as a service via
-cron, and by creating a Systemd startup script.
+cron, and by creating a `systemd`_ startup script.
+
+.. Links
+   
+.. _systemd: https://en.wikipedia.org/wiki/Systemd
+.. _smbclient: https://www.samba.org/samba/docs/man/manpages-3/smbclient.1.html
+.. _Distributed File Shares: https://en.wikipedia.org/wiki/Distributed_File_System_(Microsoft)
