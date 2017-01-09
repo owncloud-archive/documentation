@@ -359,7 +359,12 @@ SELinux-enabled distributions such as Fedora and CentOS.
 php.ini Configuration Notes
 ---------------------------
 
-Keep in mind that changes to ``php.ini`` may have to be configured on more than one 
+.. IMPORTANT:: 
+   From ownCloud 9.1.2, ensure that you have `session.auto_start
+   = 0 <php_session_autostart` in your configuration. If not, you may have
+   issues logging in to ownCloud via the WebUI.
+
+Keep in mind that changes to ``php.ini`` may have to be configured in more than one 
 ini file. This can be the case, for example, for the ``date.timezone`` setting.
 
 **php.ini - used by the Web server:**
@@ -454,3 +459,7 @@ Other Web Servers
 
 `Univention Corporate Server installation 
 <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+
+.. Links
+   
+.. _php_session_autostart: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
