@@ -149,7 +149,7 @@ polling for changes, as polling requires scanning the whole SMB storage.
 ownCloud supports SMB notifications with an ``occ`` command, ``occ
 wnd:listen``.
 
-.. Note:: The notifier only works with remote storages on Windows servers. It
+.. Note:: The notifier only works with remote storage on Windows servers. It
    does not work reliably with Linux servers due to technical limitations.
 
 Your ``smbclient`` versions needs to be 4.x, as older versions do not support
@@ -157,9 +157,11 @@ notifications.
 
 The ownCloud server needs to know about changes to files on integrated storage
 so that the changed files will be synced to the ownCloud server, and to desktop
-sync clients. Files changed through the ownCloud Web interface or sync clients
-are automatically updated in the ownCloud file cache, but this is not possible
-when files are changed directly on remote SMB storage mounts. 
+sync clients. 
+
+Files changed through the ownCloud Web interface or sync clients are
+automatically updated in the ownCloud file cache, but this is not possible when
+files are changed directly on remote SMB storage mounts. 
 
 To create a new SMB notification, start a listener on your ownCloud server with
 ``occ wnd:listen``. The listener marks changed files, and a background job
