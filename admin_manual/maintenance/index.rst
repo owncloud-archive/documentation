@@ -13,3 +13,4 @@ Maintenance
    manual_upgrade
    restore
    migrating
+   manually-moving-data-folders

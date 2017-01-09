@@ -32,7 +32,7 @@ Configuring an SMTP Server
 You need the following information from your mailserver administrator to 
 connect ownCloud to a remote SMTP server:
 
-* Encryption type: None, SSL, or TLS
+* Encryption type: None, SSL/TLS or STARTTLS
 
 * The From address you want your outgoing ownCloud mails to use
 
@@ -184,10 +184,9 @@ used:
 If the SMTP server only accepts secure connections you can choose between
 the following two variants:
 
-SSL
-^^^
-A secure connection will be initiated using the outdated SMTPS protocol
-which uses the port 465/tcp:
+SSL/TLS
+^^^^^^^
+A secure connection will be initiated using SSL/TLS via SMTPS on the default port 465/tcp:
 
 ::
 
@@ -196,10 +195,9 @@ which uses the port 465/tcp:
     "mail_smtphost"     => "smtp.server.dom:465",
     "mail_smtpsecure"   => 'ssl',
 
-TLS
-^^^
-A secure connection will be initiated using the STARTTLS protocol which
-uses the default port 25/tcp:
+STARTTLS
+^^^^^^^^
+A secure connection will be initiated using STARTTLS via SMTP on the default port 25/tcp:
 
 ::
 
@@ -207,6 +205,18 @@ uses the default port 25/tcp:
 
     "mail_smtphost"     => "smtp.server.dom",
     "mail_smtpsecure"   => 'tls',
+
+An alternative is the port 587/tcp (recommended):
+
+::
+
+  <?php
+
+    "mail_smtphost"     => "smtp.server.dom:587",
+    "mail_smtpsecure"   => 'tls',
+
+Authentication
+^^^^^^^^^^^^^^
 
 And finally it is necessary to configure if the SMTP server requires
 authentication, if not, the default values can be taken as is.
@@ -304,6 +314,11 @@ To test your email configuration, save your email address in your personal
 settings and then use the **Send email** button in the *Email Server* section
 of the Admin settings page.
 
+Using Self-Signed Certificates
+------------------------------
+
+When using self-signed certificates on the remote SMTP server the certificate
+must be imported into ownCloud. Please refer to :doc:`import_ssl_cert` for more information.
 
 Troubleshooting
 ---------------
@@ -373,24 +388,22 @@ listening on localhost port 25.
  tcp    0      0    127.0.0.1:25    0.0.0.0:*        LISTEN   2245/exim4
  tcp    0      0    127.0.0.1:3306  0.0.0.0:*        LISTEN   1524/mysqld
 
-*  25/tcp is unencrypted smtp 
+*  25/tcp is unencrypted smtp
 
 * 110/tcp/udp is unencrypted pop3 
 
 * 143/tcp/udp is unencrypted imap4
 
-* 465/tcp is encrypted ssmtp
+* 465/tcp is encrypted smtps
 
 * 993/tcp/udp is encrypted imaps
       
 * 995/tcp/udp is encrypted pop3s 
 
+**Question**: How can I determine if the SMTP server supports SMTPS?
 
-**Question**: How can I determine if the SMTP server supports the outdated SMTPS 
-protocol?
-
-**Answer**: A good indication that the SMTP server supports the SMTPS protocol 
-is that it is listening on port **465**. 
+**Answer**: A good indication that the SMTP server supports SMTPS is that it
+is listening on port **465**.
 
 **Question**: How can I determine what authorization and encryption protocols 
 the mail server supports?

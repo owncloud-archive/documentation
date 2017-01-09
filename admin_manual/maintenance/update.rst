@@ -8,6 +8,10 @@ such as shared hosting, for installations with a smaller number of users
 and data, and it automates updating 
 :doc:`manual installations <../installation/source_installation>`.
 
+.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
+   please have a look at the :doc:`../release_notes` of oC 9.0 for important info
+   about this migration.
+
 New in 9.0, the Updater app has :ref:`command-line options <updater_cli_label>`.
 
 .. note:: The Updater app is **not enabled and not supported** in ownCloud 
@@ -84,17 +88,9 @@ steps:
 This example is for Ubuntu Linux::
 
      $ sudo -u www-data php occ upgrade
- 
-Before completing the upgrade, ownCloud first runs a simulation by copying all 
-database tables to new tables, and then performs the upgrade on them, to ensure 
-that the upgrade will complete correctly. The copied tables are deleted after 
-the upgrade. This takes twice as much time, which on large installations can be 
-many hours, so you can omit this step with the ``--skip-migration-test`` 
-option, like this example on Ubuntu::
 
- $ sudo -u www-data php occ upgrade --skip-migration-test 
-
-See :doc:`../configuration_server/occ_command` to learn more.
+The optional parameter to skip migration tests during this step was removed in oC 9.2.
+See :ref:`migration_test_label` for more information.
 
 8.  It runs for a few minutes, and when it is finished displays a success 
     message, which disappears after a short time.

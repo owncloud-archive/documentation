@@ -37,9 +37,7 @@ Installation
 Enable the Windows Network Drive app on your ownCloud Apps page. Then there are 
 a few dependencies to install.
 
-You must install the ownCloud ``php5-libsmbclient`` binary; please refer to the README in 
-your `customer.owncloud.com <https://customer.owncloud.com/>`_ account for instructions 
-on obtaining it.
+You must install ``php-smbclient`` version 0.8.0+. This should be included in most Linux distributions. See `eduardok/libsmbclient-php <https://github.com/eduardok/libsmbclient-php>`_ if your distribution does not include it; this provides source archives and instructions how to install binary packages.
 
 You also need the Samba client installed on your Linux system. This is included in 
 all Linux distributions; on Debian, Ubuntu, and other Debian derivatives this 
@@ -133,9 +131,9 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS 
 mounts.
 
-=================
-SMB Notifications
-=================
+==============================
+Windows Network Drive Listener
+==============================
 
 The SMB protocol supports registering for notifications of file changes on remote Windows SMB storage servers. Notifications are more efficient than polling for changes, as polling requires scanning the whole SMB storage. ownCloud supports SMB notifications with an ``occ`` command, ``occ wnd:listen``.
 
@@ -147,6 +145,31 @@ The ownCloud server needs to know about changes of files on integrated storages 
 
 To create a new SMB notification, start a listener on your ownCloud server with ``occ wnd:listen``. The listener marks changed files, and a background job updates the file metadata.
 
+Windows network drive connections and setup of ``occ wnd:listen`` often does not
+always work the first time. If you encounter issues using it, then try the
+following troubleshooting steps:
+
+1. Check the connection with smbclient_ on the commandline of the ownCloud server
+2. If you are connecting to `Distributed File Shares`_ (DFS), be aware that the shares are case-sensitive
+
+Take the example of attempting to connect to the share named `MyData` using
+``occ wnd:listen``. Running the following command would work
+
+.. highlight::
+   :linenos:
+  
+   su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata MyData svc_owncloud password'
+
+However, running this command would not:
+
+.. highlight::
+   :linenos:
+   
+   su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata mydata svc_owncloud password'
+
+.. _smbclient: https://www.samba.org/samba/docs/man/manpages-3/smbclient.1.html
+.. _Distributed File Shares: https://en.wikipedia.org/wiki/Distributed_File_System_(Microsoft)
+
 Setup Notifications for an SMB Share
 ------------------------------------
 
@@ -154,7 +177,7 @@ If you don't already have an SMB share, you must create one. Then start the list
 
     sudo -u www-data php occ wnd:listen <host> <share> <username> [password]
     
-The ``host`` is your remote SMB server. ``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. By default there is no output. Enable verbosity to see the notifications::
+The ``host`` is your remote SMB server, which must be exactly the same as the server name in your WND configuration on your ownCloud Admin page. ``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. By default there is no output. Enable verbosity to see the notifications::
  
   $ sudo -u www-data php occ wnd:listen -v server share useraccount
   Please enter the password to access the share: 
@@ -201,3 +224,8 @@ Then starts the ``wnd:listen`` thread::
     sudo -u www-data occ wnd:listen 172.18.16.220 home ServiceUser Password
 
 Changes made by Bob or Alice made directly on the storage are now detected by the ownCloud server.
+
+Running the WND Listener as a Service
+-------------------------------------
+
+See `Configuring wnd:listen to run as a service <https://github.com/owncloud/documentation/wiki/Configuring-wnd:listen-to-run-as-a-service>`_ in the documentation wiki for tips on running the listenera as a service via cron, and by creating a Systemd startup script.

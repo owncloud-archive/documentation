@@ -7,7 +7,7 @@ PHP unit testing
 Getting PHPUnit
 ~~~~~~~~~~~~~~~
 
-ownCloud uses PHPUnit >= 3.7 for unit testing.
+ownCloud uses PHPUnit >= 4.8 for unit testing.
 
 To install it, either get it via your packagemanager::
 
@@ -116,17 +116,17 @@ adjust your php.ini and file rights.
 
 Running unit tests for the ownCloud core project
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The core project provides a script that runs all the core unit tests using different database backends like sqlite, mysql, pgsql, oci (for Oracle)::
+The core project provides a script that runs all the core unit tests using the specified database backend like sqlite, mysql, pgsql, oci (for Oracle), the default is sqlite::
 
-  ./autotest.sh
+  make test-php
 
-To run tests only for sqlite::
+To run tests only for mysql::
 
-  ./autotest.sh sqlite
+  make test-php TEST_DATABASE=mysql
 
-To run a specific test suite (note that the test file path is relative to the "tests" directory)::
+To run a specific test suite
 
-  ./autotest.sh sqlite lib/share/share.php
+  make test-php TEST_DATABASE=mysql TEST_PHP_SUITE=tests/lib/share/share.php
 
 Further Reading
 ~~~~~~~~~~~~~~~
@@ -155,7 +155,7 @@ Running all tests
 
 To run all tests, just run::
 
-  ./autotest-js.sh
+  make test-js
 
 This will also automatically set up your test environment.
 

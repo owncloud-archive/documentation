@@ -34,7 +34,10 @@ drawbacks are that sharing is disabled when this mechanism is in use, as
 ownCloud has no access to the storage credentials, and background file scanning 
 does not work.
 
-.. Note:: There is a workaround that allows sharing when using **Log-in credentials, save in session**, and that is using Ajax cron mode. (See :doc:`../../configuration_server/background_jobs_configuration`.)
+.. Note:: There is a workaround that allows background file scanning when using
+   **Log-in credentials, save in session**, and that is using Ajax cron mode.
+   (See :doc:`../../configuration_server/background_jobs_configuration`.) Be
+   aware that the Ajax cron mode is triggered by browsing the ownCloud Web GUI.
 
 Public-key Mechanisms
 ---------------------

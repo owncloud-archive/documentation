@@ -28,7 +28,7 @@ of memcache that best fits your needs. The supported caching backends are:
    A local cache for systems running PHP 5.6 and up.
 * `Memcached <http://www.memcached.org/>`_ 
    Distributed cache for multi-server ownCloud installations.
-* `Redis <http://redis.io/>`_, PHP module 2.2.5 and up required.
+* `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
    For distributed caching.
    
 Memcaches must be explicitly configured in ownCloud 8.1 and up by installing 
@@ -109,7 +109,7 @@ as a local cache for :doc:`Transactional File Locking
 <../configuration_files/files_locking_transactional>` because it guarantees 
 that cached objects are available for as long as they are needed.
 
-The Redis PHP module must be version 2.2.5+. If you are running a Linux 
+The Redis PHP module must be version 2.2.6+. If you are running a Linux 
 distribution that does not package the supported versions of this module, or 
 does not package Redis at all, see :ref:`install_redis_label`.
 
@@ -185,13 +185,14 @@ Use APCu for local caching, Redis for file locking::
 Large Organization, Clustered Setup
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Use Redis for everything except local memcache::
+Use Redis for everything except local memcache. Use the server's IP address or hostname so that it is accessible to other hosts::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
   'memcache.locking' => '\OC\Memcache\Redis',
   'memcache.local' => '\OC\Memcache\APCu',
   'redis' => array(
-       'host' => 'localhost',
+       'host' => 'server1',  //hostname example
+       'host' => '12.34.56.78',  //IP address example
        'port' => 6379,
         ),
 
@@ -214,13 +215,7 @@ These instructions are adaptable for any distro that does not package the
 supported version, or that does not package Redis at all, such as SUSE Linux 
 Enterprise Server and Red Hat Enterprise Linux.
 
-The Redis PHP module must be at least version 2.2.5. Please note that 
-the Redis PHP module versions 2.2.5 - 2.2.7 will only work for:
-  
-::
-   
-   PHP version 6.0.0 or older
-   PHP version 5.2.0 or newer
+The Redis PHP module must be at least version 2.2.6.
   
 See `<https://pecl.php.net/package/redis>`_
 

@@ -423,8 +423,8 @@ Expert Settings
 .. figure:: ../images/ldap-expert.png
    :alt: Expert settings.
 
-In the Expert Settings fundamental behavior can be adjusted to your needs. The
-configuration should be well-tested before starting production use.
+.. warning:: In the Expert Settings fundamental behavior can be adjusted to your needs. The
+    configuration should be well-tested before starting production use.
 
 Internal Username:
   The internal username is the identifier in ownCloud for LDAP users. By default
@@ -523,7 +523,7 @@ Troubleshooting, Tips and Tricks
 --------------------------------
 
 SSL Certificate Verification (LDAPS, TLS)
------------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 A common mistake with SSL certificates is that they may not be known to PHP.
 If you have trouble with certificate validation make sure that
@@ -540,14 +540,14 @@ If you have trouble with certificate validation make sure that
   636)
 
 Microsoft Active Directory
---------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Compared to earlier ownCloud versions, no further tweaks need to be done to
 make ownCloud work with Active Directory. ownCloud will automatically find the
 correct configuration in the set-up process.
 
 memberOf / Read MemberOf permissions
-------------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 If you want to use ``memberOf`` within your filter you might need to give your
 querying user the permissions to use it. For Microsoft Active Directory this
@@ -555,7 +555,7 @@ is described `here <https://serverfault.com/questions/167371/what-permissions-ar
 -required-for-enumerating-users-groups-in-active-directory/167401#167401>`_.
 
 Duplicating Server Configurations
----------------------------------
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 In case you have a working configuration and want to create a similar one or
 "snapshot" configurations before modifying them you can do the following:
@@ -570,41 +570,15 @@ In case you have a working configuration and want to create a similar one or
 
 Now you can modify and enable the configuration.
 
-ownCloud LDAP Internals
------------------------
+Performance tips
+----------------
 
-Some parts of how the LDAP backend works are described here.
-
-User and Group Mapping
-^^^^^^^^^^^^^^^^^^^^^^
-
-In ownCloud the user or group name is used to have all relevant information in
-the database assigned. To work reliably a permanent internal user name and
-group name is created and mapped to the LDAP DN and UUID. If the DN changes in
-LDAP it will be detected, and there will be no conflicts.
-
-Those mappings are done in the database table ``ldap_user_mapping`` and
-``ldap_group_mapping``. The user name is also used for the user's folder (except
-if something else is specified in *User Home Folder Naming Rule*), which
-contains files and meta data.
-
-As of ownCloud 5 the internal user name and a visible display name are separated.
-This is not the case for group names, yet, i.e. a group name cannot be altered.
-
-That means that your LDAP configuration should be good and ready before putting
-it into production. The mapping tables are filled early, but as long as you are
-testing, you can empty the tables any time. Do not do this in production.
+See the documentation wiki for `additional LDAP tips and tricks <https://github.com/owncloud/documentation/wiki/LDAP-Tips-for-Active-Directory-and-openLDAP>`_. The following performance tips are standard for inmproving LDAP performance. 
 
 Caching
 ^^^^^^^
 
-The LDAP cache has changed in ownCloud 8.1. There is no more file cache, but 
-only a memory cache, and you must install and configure the memory cache (see 
-:doc:`../configuration_server/caching_configuration`). The ownCloud  **Cache**
-helps to speed up user interactions and sharing. It is populated on demand,
-and remains populated until the **Cache Time-To-Live** for each unique request
-expires. User logins are not cached, so if you need to improve login times set
-up a slave LDAP server to share the load.
+Using caching to speed up lookups. See :doc:`../configuration_server/caching_configuration`). The ownCloud cache is populated on demand, and remains populated until the **Cache Time-To-Live** for each unique request expires. User logins are not cached, so if you need to improve login times set up a slave LDAP server to share the load.
 
 You can adjust the **Cache Time-To-Live** value to balance performance and 
 freshness of LDAP data. All LDAP requests will be cached for 10 minutes by 
@@ -630,6 +604,48 @@ ownCloud remembers which user belongs to which LDAP-configuration. That means
 each request will always be directed to the right server unless a user is 
 defunct, for example due to a server migration or unreachable server. In this 
 case the other servers will also receive the request.
+
+LDAP indexing
+^^^^^^^^^^^^^
+
+Turn on indexing. Deciding which attributes to index depends on your configuration, and which LDAP server you are using. See `openLDAP Indexes <http://www.openldap.org/doc/admin24/tuning.html#Indexes>`_ for openLDAP, and `How to Index an Attribute in Active Directory <https://technet.microsoft.com/en-us/library/aa995762(v=exchg.65).aspx>`_ for Active Directory. The openLDAP howto is especially useful for figuring out which attributes to index.
+
+Use precise base DNs
+^^^^^^^^^^^^^^^^^^^^
+
+The more precise your base DN, the faster LDAP can search because it has fewer branches to search.
+
+
+Use precise filters
+^^^^^^^^^^^^^^^^^^^
+
+Use good filters to further define the scope of LDAP searches, and to intelligently direct your server where to search, rather than forcing it to perform needlessly-general searches. 
+
+
+ownCloud LDAP Internals
+-----------------------
+
+Some parts of how the LDAP backend works are described here.
+
+User and Group Mapping
+^^^^^^^^^^^^^^^^^^^^^^
+
+In ownCloud the user or group name is used to have all relevant information in
+the database assigned. To work reliably a permanent internal user name and
+group name is created and mapped to the LDAP DN and UUID. If the DN changes in
+LDAP it will be detected, and there will be no conflicts.
+
+Those mappings are done in the database table ``ldap_user_mapping`` and
+``ldap_group_mapping``. The user name is also used for the user's folder (except
+if something else is specified in *User Home Folder Naming Rule*), which
+contains files and meta data.
+
+As of ownCloud 5 the internal user name and a visible display name are separated.
+This is not the case for group names, yet, i.e. a group name cannot be altered.
+
+That means that your LDAP configuration should be good and ready before putting
+it into production. The mapping tables are filled early, but as long as you are
+testing, you can empty the tables any time. Do not do this in production.
 
 Handling with Backup Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^

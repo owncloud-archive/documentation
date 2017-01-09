@@ -5,7 +5,7 @@ Since ownCloud 9.0.3 you need to explicitly configure and enable index.php-less 
 (e.g. https://example.com/apps/files/ instead of https://example.com/index.php/apps/files/).
 The following documentation provides the needed steps to configure this for the ``Apache``
 Web server. These steps are not necessary when using nginx as a web server because it is already
-enabled in the :doc:`../installation/nginx_owncloud_9x`.
+enabled in the :doc:`../installation/nginx_examples`.
 
 Prerequisites
 -------------
@@ -14,6 +14,15 @@ Before being able to use index.php-less URLs you need to enable the ``mod_rewrit
 ``mod_env`` Apache modules. Furthermore a configured ``AllowOverride All`` directive
 within the vhost of your Web server is needed. Please have a look at the ``Apache`` manual
 for how to enable and configure these.
+
+Furthermore these instructions are only working when using Apache together with the ``mod_php``
+Apache module for PHP. Other modules like ``php-fpm`` or ``mod_fastcgi`` are unsupported.
+
+Finally the user running your Web server (e.g. ``www-data``) needs to be able to write into the
+``.htaccess`` file shipped within the ownCloud root directory (e.g. ``/var/www/owncloud/.htaccess``).
+If you have applied :ref:`strong_perms_label` the user might be unable to write into this
+file and the needed update will fail. You need to revert this strong permissions temporarily by
+following the steps described in :ref:`set_updating_permissions_label`.
 
 Configuration steps
 -------------------

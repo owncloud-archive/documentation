@@ -42,7 +42,8 @@ configuration report with the :ref:`occ config command
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/9.1/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/9.2/developer_manual/bugtracker/index.html
+
 .. TODO ON RELEASE: Update version number above on release
 
 General Troubleshooting
@@ -212,6 +213,9 @@ these modules:
 Troubleshooting WebDAV
 ----------------------
 
+General troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^
+
 ownCloud uses SabreDAV, and the SabreDAV documentation is comprehensive and 
 helpful.
 
@@ -236,6 +240,30 @@ See:
 There is also a well maintained FAQ thread available at the `ownCloud Forums 
 <https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852>`_
 which contains various additional information about WebDAV problems.
+
+Error 0x80070043 "The network name cannot be found." while adding a network drive
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The windows native WebDAV client might fail with the following error message::
+
+    Error 0x80070043 "The network name cannot be found." while adding a network drive
+
+A known workaround for this issue is to update your Web server configuration. For Apache
+you need to add something like the following (please update the path accordingly) to your 
+main Web server / Vhost configuration or the ``.htaccess`` placed in your document root::
+
+    RewriteEngine On
+    RewriteCond %{REQUEST_URI} ^(/)$ [NC]
+    RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
+    RewriteRule .* https://%{SERVER_NAME}/owncloud/remote.php/webdav/ [R=301,L]
+
+For nginx an example config addition could be::
+
+    location = / {
+        if ($http_user_agent = DavClnt) {
+            return 401;
+        }
+    }
 
 Troubleshooting Contacts & Calendar
 -----------------------------------
@@ -306,6 +334,16 @@ Using Pound reverse-proxy/load balancer
 Misconfigured Web server
   Your Web server is misconfigured and blocks the needed DAV methods.
   Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
+  
+Client Sync Stalls
+------------------
+
+One known reason is stray locks. These should expire automatically after an hour. If stray
+locks don't expire (identified by e.g. repeated ``file.txt is locked`` and/or ``Exception\\\\FileLocked``
+messages in your :file:`data/owncloud.log`), make sure that you are running system cron and
+not Ajax cron (See :doc:`../configuration_server/background_jobs_configuration`).
+See `<https://github.com/owncloud/core/issues/22116>`_ and `<https://central.owncloud.org/t/file-is-locked-how-to-unlock/985>`_
+for some discussion and additional info of this issue.
 
 Other issues
 ------------

@@ -202,7 +202,7 @@ ownCloud offers three simple checks:
 
 Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
 
-Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
+Additionally always check if the user has the right to perform that action.
 
 Sensitive data exposure
 -----------------------

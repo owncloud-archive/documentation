@@ -94,9 +94,7 @@ Using Self-Signed Certificates
 ------------------------------
 
 When using self-signed certificates for external storage mounts the certificate
-must be imported into the personal settings of the user. Please refer to 
-`ownCloud HTTPS External Mount 
-<http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html>`_
+must be imported into ownCloud. Please refer to :doc:`../configuration_server/import_ssl_cert`
 for more information.
 
 Available storage backends
@@ -141,7 +139,10 @@ We recommend configuring the background job **Webcron** or
 to enable ownCloud to automatically detect files added to your external 
 storages. 
 
-.. Note:: You cannot share files on external storage mounts when you select the **Log-in credentials, save in session** authentication mechanism. However, there is a workaround, and that is to use Ajax cron mode. See :ref:`password_auth_workaround_label` for more information. 
+.. Note:: You cannot scan/detect changed files on external storage mounts when you select
+   the **Log-in credentials, save in session** authentication mechanism. However, there is
+   a workaround, and that is to use Ajax cron mode. See :ref:`password_auth_workaround_label`
+   for more information.
 
 ownCloud may not always be able to find out what has been
 changed remotely (files changed without going through ownCloud), especially

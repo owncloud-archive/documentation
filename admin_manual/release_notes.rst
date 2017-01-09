@@ -5,8 +5,9 @@ ownCloud |version| Release Notes
 Changes in 9.2
 --------------
 
-Supported PHP versions are 5.6+ and 7.0+. 
-
+* Supported PHP versions are 5.6+ and 7.0+. 
+* The upgrade migration test has been removed; see :ref:`migration_test_label`.
+* Requires to use at least desktop client version 2.0 by default.
 
 Changes in 9.1
 --------------
@@ -21,6 +22,9 @@ Changes in 9.1
 * Support for Internet Explorer below version 11 was dropped
 * Symlinks pointing outside of the datadir are disallowed. Please use the :doc:`configuration_files/external_storage_configuration_gui`
   with the :doc:`configuration_files/external_storage/local` storage backend instead.
+* Removed ``dav:migrate-calendars`` and ``dav:migrate-addressbooks`` commands for ``occ``.
+  Users planning to upgrade from oC 9.0 or below to oC 9.1 needs to make sure that their
+  Calendars and Adressbooks are correctly migrated **before** continuing to upgrade to 9.1.
 
 **Authentication**
 
@@ -94,6 +98,8 @@ Changes in 9.1
 * PSR-4 autoloading forced for OC\ and OCP\, optional for OCA\ docs at https://doc.owncloud.org/server/9.1/developer_manual/app/classloader.html
 * More cleanup of the sharing code (ongoing)
 
+.. _9.0_release_notes_label:
+
 Changes in 9.0
 --------------
 
@@ -107,9 +113,15 @@ Home folder rule is enforced in the user_ldap application in new ownCloud instal
 
 The Calendar and Contacts apps have been rewritten and the CalDAV and CardDAV backends of these
 apps were merged into ownCloud core. During the upgrade existing Calendars and Addressbooks
-are automatically migrated. As a fallback for failed upgrades or an option to test a migration
-``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available via the
-``occ`` command. See :doc:`configuration_server/occ_command`.
+are automatically migrated (except when using the the ``IMAP user backend``). As a fallback
+for failed upgrades, when using the ``IMAP user backend`` or as an option to test a migration
+``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available
+(**only in oC 9.0**) via the ``occ`` command. See :doc:`configuration_server/occ_command`.
+
+.. warning:: After upgrading to ownCloud 9.0 and **before** continuing to upgrade to 9.1 make sure
+   that all of your and your users Calendars and Addressbooks are migrated correctly. Especially
+   when using the ``IMAP user backend`` (other user backends might be also affected) you need to
+   manually run the mentioned ``occ`` migration commands described above.
 
 Updates on systems with large datasets will take longer, due to the addition of checksums to the
 oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
@@ -438,13 +450,11 @@ Protecting ownCloud on IIS from Data Loss
 Under certain circumstances, running your ownCloud server on IIS could be at 
 risk of data loss. To prevent this, follow these steps.
 
-In your ownCloud server configuration file, ``owncloud\config\config.php``, set 
-``config_is_read_only`` to true.
-* 
-Set the ``config.php`` file to read-only.
-* 
-When you make server updates ``config.php`` must be made writeable. When your 
-updates are completed re-set it to read-only.
+* In your ownCloud server configuration file, ``owncloud\config\config.php``, set 
+  ``config_is_read_only`` to true.
+* Set the ``config.php`` file to read-only.
+* When you make server updates ``config.php`` must be made writeable. When your 
+  updates are completed re-set it to read-only.
 
 Antivirus App Modes
 ^^^^^^^^^^^^^^^^^^^

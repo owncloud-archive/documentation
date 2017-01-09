@@ -2,169 +2,82 @@
 ownCloud Documentation
 ======================
 
-Documentation is published on `<https://doc.owncloud.org>`_ and 
-`<https://doc.owncloud.com>`_.
+This repository stores the official documentation for ownCloud. Here, you will 
+find all the information that you need to contribute to the official
+documentation. 
 
-The `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ is 
-available for tips, tricks, edge cases, and anyone who wants to contribute more 
-easily, without having to learn Git and Sphinx.
-
-See the `Style Guide <https://github.com/owncloud/documentation/blob/master/style_guide.rst>`_ for formatting and style conventions.
+The documentation is published on `<https://doc.owncloud.org>`_ and 
+`<https://doc.owncloud.com>`_. A `documentation Wiki <https://github.com/owncloud/documentation/wiki>`_ 
+is available for tips, tricks, edge cases, and anyone who wants 
+to contribute more easily, without having to learn Git and Sphinx.
 
 Manuals
 -------
 
-This repository hosts four manuals:
+This repository hosts three manuals:
 
 * **Users' Manual**
 * **Administration Manual**
 * **Developers Manual** 
   
-Please work in the appropriate branch. Stable8 is 8.0, stable8.1 is 8.1, stable8.2 is 8.2, stable9 is 9.0, and master is version 9.1.
+Please work in the appropriate branch. 
 
-Please wrap lines at 80 characters.
+* Stable8 is 8.0
+* Stable8.1 is 8.1
+* Stable8.2 is 8.2
+* Stable9 is 9.0
+* Stable9.1 is 9.1
+* Master is 9.2
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/owncloud/core/tree/master/config>`_
 
-Spelling and Capitalization Conventions
----------------------------------------
+How To Create An Issue
+----------------------
 
-As this grows it may be moved to its own page.
+For detailed information on how to create an issue in the documentation
+repository, please refer to `the "How To Create An Issue" guide
+<CREATING_ISSUES.rst>`_. 
 
-* ownCloud Apps Store
-* synchronize
-* Web (Web page, Web site)
+This process overrides **all** previous practices, and aims to formalise and
+simplify the process of creating requests for change within the ownCloud
+documentation. 
 
-License
--------
+Issues should no longer be created in any of the other ownCloud repositories.
+Doing so makes it too difficult and time-intensive to stay on top of all the
+requests for change relating to documentation. 
 
-All documentation in this repository is licensed under the Creative Commons
-Attribution 3.0 Unported license (`CC BY 3.0`_).
+What’s more, issues created in other repositories may be closed without being
+actioned (though more than likely they’ll be gently requested to be recreated
+within this repository).
 
-.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
+Style Guide
+-----------
 
-Style
------
-
-Source files are written using the `Sphinx Documentation Generator
+For detailed information, please refer to `the ownCloud Style Guide <style_guide.rst>`_.
+Otherwise, source files are written using the `Sphinx Documentation Generator
 <http://sphinx.pocoo.org/>`_. The syntax follows the `reStructuredText
 <http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
 
-Editing
+License
 -------
 
-Contributing to the documentation requires a Github account. Make sure you are 
-working in the correct branch for your version of ownCloud or client apps. 
-If your edits pertain to multiple manual versions, be prepared to backport as 
-needed.
+All documentation in this repository is licensed under `the Creative Commons
+Attribution 3.0 Unported license <http://creativecommons.org/licenses/by/3.0/deed.en_US>`_. 
+You can find a local copy of the license in `LICENSE <LICENSE>`_.
 
-To edit a document, you can edit the .rst files on your local system, or work 
-directly on Github. The latter is only suitable for small fixes and improvements 
-because substantial editing efforts can better be controlled on your local PC. 
+Contributing
+------------
 
-The best way is to install a complete Sphinx build environment and work on your 
-local PC. You will be able to make your own local builds, which is the fastest 
-and best way to preview for errors. Sphinx will report syntax errors, missing 
-images, and formatting errors. The Github preview is not complete and misses 
-many mistakes. Create a new branch against the master or stable branch you are 
-editing, make your edits, then push your new branch to Github and open a new PR. 
+To know how to contribute to this repository, please refer to `the contributing guide <CONTRIBUTING.rst>`_.
 
-To edit on Github, fork the repository (see top-right of the screen, under
-your username). You will then be able to make changes easily. Once done, 
-you can create a pull request and get the changes reviewed and back into
-the official repository.
+Building The Documentation
+--------------------------
 
-Building
---------
+For detailed information, please refer to `the build guide <BUILD.rst>`_.
 
-Linux / OS X
-^^^^^^^^^^^^
+Importing Files
+---------------
 
-First, make sure that the following are installed:
-
-* Python 2 (2.6.0 or better, Python 3 is not yet supported!)
-* Python Image Library (PIL) - (the package is called something like ``python-pillow``)
-* Sphinx (e.g. ``sudo yum install python-sphinx``),
-  on Mac: ``sudo easy_install Sphinx``
-* Sphinx PHPDomain (e.g. ``sudo easy_install sphinxcontrib-phpdomain``)
-* rst2pdf (e.g. ``sudo easy_install rst2pdf``)
-* If you're on Arch Linux, the build script is called sphinx-build2 which
-  will fail. You will need to provide a link to the expected script name::
-
-     sudo ln -s /usr/bin/sphinx-build2 /usr/bin/sphinx-build
-
-...then enter any manual directory, then run ``make html``. The result can
-be found in the ``_build/html`` subdirectory.  PDFs can be built with the
-``make latexpdf`` command and are found in _build/latex/ directory.
-
-The openSUSE way
-~~~~~~~~~~~~~~~~
-* sudo zypper in python-Sphinx
-* sudo zypper in python-rst2pdf
-* sudo zypper in python-sphinxcontrib-phpdomain # requires repository "devel:languages:python"
-* sudo zypper in pdfjam   # pull in latexpdf and all of texlive
-* sudo zypper in texlive-threeparttable
-* sudo zypper in texlive-wrapfig
-* sudo zypper in texlive-multirow
-* cd user_manual
-* make latexpdf
-* okular _build/latex/ownCloudUserManual.pdf
-
-The Debian/Ubuntu way
-~~~~~~~~~~~~~~~~~~~~~
-* sudo apt-get install python-pil
-* sudo apt-get install python-sphinx
-* sudo apt-get install python-sphinxcontrib.phpdomain
-* sudo apt-get install rst2pdf
-* sudo apt-get install texlive-fonts-recommended
-* sudo apt-get install texlive-latex-extra
-* sudo apt-get install texlive-latex-recommended
-* cd user_manual
-* make latexpdf
-* evince _build/latex/ownCloudUserManual.pdf
-
-The Arch Linux way
-~~~~~~~~~~~~~~~~~~
-* sudo pacman -S community/python2-rst2pdf
-* sudo pacman -S community/python2-sphinx
-* aur/sphinxcontrib-phpdomain from AUR
-* sudo pacman -S extra/texlive-core texlive-latexextra
-* cd user_manual
-* make latexpdf
-* PDFVIEWER _build/latex/ownCloudUserManual.pdf
-
-Windows
-^^^^^^^
-
-Running ``setup.cmd`` will install Python 2.7 and install all dependencies.
-
-Enter any manual and clicking the "Build HTML" shortcut will create a HTML
-build. Likewise, "Build PDF" will build the PDF using the more lightweight,
-but feature-incomplete RST2PDF tool. The results are in ``_build/html`` and
-``_build/pdf`` respectively.
-
-Importing Word and OpenDocument files
--------------------------------------
-
-Sometimes, existing documentation might be in Word or LibreOffice documents. To
-make it part of this documentation collection, follow these steps:
-
-Prerequisites
-^^^^^^^^^^^^^
-
-1. Install Python 2.x
-2. Install odt2sphinx (``easy_install odt2sphinx``)
-3. Install GCC/clang (`Xcode command line tools`_ required on Mac OS)
-
-Process
-^^^^^^^
-
-1. ``doc/docx`` files need to be stored as odt first
-2. Run ``odt2sphinx my.docx``
-3. Move the resulting ``rst`` files in place and reference them
-4. Wrap text lines at 80 chars, apply markup fixes
-
-.. _CC BY 3.0: http://creativecommons.org/licenses/by/3.0/deed.en_US
-.. _`Xcode command line tools`: http://stackoverflow.com/questions/9329243/xcode-4-4-and-later-install-command-line-tools
+For detailed information, please refer to `the importing files guide <importing_files.rst>`_.

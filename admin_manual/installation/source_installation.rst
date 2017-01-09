@@ -42,7 +42,7 @@ The ownCloud .tar archive contains all of the required PHP modules. This section
 lists all required and optional PHP modules.  Consult the `PHP manual 
 <http://php.net/manual/en/extensions.php>`_ for more information on modules. 
 Your Linux distribution should have packages for all required modules. You can 
-check the precense of a module by typing ``php -m | grep -i <module_name>``. 
+check the presence of a module by typing ``php -m | grep -i <module_name>``. 
 If you get a result, the module is present.
 
 Required:
@@ -81,10 +81,12 @@ Database connectors (pick the one for your database:)
 Required for specific apps:
 
 * PHP module ldap (for LDAP integration)
-* PHP module smbclient  (SMB/CIFS integration, see 
-  :doc:`../configuration_files/external_storage/smb`)
 * PHP module ftp (for FTP storage / external user authentication)
 * PHP module imap (for external user authentication)
+* PHP module smbclient  (SMB/CIFS integration)
+  
+.. note:: SMB/Windows Network Drive mounts require the PHP module smbclient version 0.8.0+; see
+  :doc:`../configuration_files/external_storage/smb`.
 
 Recommended for specific apps (*optional*):
 
@@ -97,7 +99,7 @@ memcaches:
 * PHP module apc
 * PHP module apcu
 * PHP module memcached
-* PHP module redis (>= 2.2.5, required for Transactional File Locking)
+* PHP module redis (>= 2.2.6+, required for Transactional File Locking)
 
 See :doc:`../configuration_server/caching_configuration` to learn how to select 
 and configure a memcache.
@@ -116,6 +118,11 @@ You don’t need the WebDAV module for your Web server (i.e. Apache’s
 ``mod_webdav``), as ownCloud has a built-in WebDAV server of its own, SabreDAV. 
 If ``mod_webdav`` is enabled you must disable it for ownCloud. (See 
 :ref:`apache_configuration_label` for an example configuration.)
+
+MySQL/MariaDB Require InnoDB
+----------------------------
+
+The InnoDB storage engine is required, and MyISAM is not supported, see: :ref:`db-storage-engine-label`.
   
 .. _ubuntu_installation_label:  
 
@@ -126,10 +133,10 @@ On a machine running a pristine Ubuntu 16.04 LTS server, install the
 required and recommended modules for a typical ownCloud installation, using
 Apache and MariaDB, by issuing the following commands in a terminal::
 
-    apt install apache2 mariadb-server libapache2-mod-php7.0
-    apt install php7.0-gd php7.0-json php7.0-mysql php7.0-curl
-    apt install php7.0-intl php7.0-mcrypt php-imagick
-    apt install php7.0-zip php7.0-xml php7.0-mbstring
+    apt-get install apache2 mariadb-server libapache2-mod-php7.0
+    apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl
+    apt-get install php7.0-intl php7.0-mcrypt php-imagick
+    apt-get install php7.0-zip php7.0-xml php7.0-mbstring
 
 The remaining steps are analogous to the installation on Ubuntu 14.04 as shown below.
 

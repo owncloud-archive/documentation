@@ -6,7 +6,7 @@ For production environments, we recommend the installation from the tar archive.
 This applies in particular to scenarios, where the Web server, storage and database are on separate machines. 
 In this constellation, all dependencies and requirements are managed by the package management 
 of your operating system, while the ownCloud code itself is maintained in a sequence of simple steps 
-as documented in our instructions for the `Manual Installation on Linux <https://doc.owncloud.com/server/9.0/admin_manual/installation/source_installation.html>`_ and the `Manual ownCloud Upgrade <https://doc.owncloud.com/server/9.0/admin_manual/maintenance/manual_upgrade.html>`_.
+as documented in our instructions for the :doc:`Manual Installation on Linux <source_installation>` and the :doc:`Manual ownCloud Upgrade <../maintenance/manual_upgrade>`.
 
 The package installation is for single-server setups only.
 
@@ -14,7 +14,9 @@ Changes in ownCloud 9
 ---------------------
 
 Linux distribution packages (from `Open Build Service`_) have been divided into 
-multiple packages for ownCloud 9: ``owncloud-deps`` and ``owncloud-files``. 
+multiple packages for ownCloud 9: ``owncloud``, ``owncloud-deps`` and ``owncloud-files``. 
+
+Install the metapackage ``owncloud`` to get a complete installation with all dependencies.
 
 The ``owncloud-files`` package installs only ownCloud, without Apache, database, 
 or PHP dependencies. 
@@ -23,10 +25,9 @@ The ``owncloud-deps`` packages install all dependencies: Apache, PHP, and MySQL.
 ``owncloud-deps`` is not intended to be installed by itself, but rather is 
 pulled in by the metapackage ``owncloud``. 
 
-Install the metapackage ``owncloud`` to get a complete installation with all dependencies.
-
 ``owncloud-files`` is available for the following distributions, but not 
 ``owncloud-deps``.
+
 You will have to install your own LAMP stack first. This 
 allows you to create your own custom LAMP stack without dependency conflicts 
 with the ownCloud package. Browse 
@@ -144,5 +145,5 @@ on how to correctly configure your environment if you have binary logging enable
 
 
 .. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/9.0/owncloud/
+   https://download.owncloud.org/download/repositories/9.2/owncloud/
    

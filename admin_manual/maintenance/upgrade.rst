@@ -21,7 +21,11 @@ There are three ways to upgrade your ownCloud server:
   repositories to maintain their ownCloud servers, rather than the Open Build 
   Service. Please see :doc:`../enterprise_installation/linux_installation` for 
   more information.
-  
+
+.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
+   please have a look at the :doc:`../release_notes` of oC 9.0 for important info
+   about the needed migration steps during that upgrade.
+
 When an update is available for your ownCloud server, you will see a 
 notification at the top of your ownCloud Web interface. When you click the 
 notification it brings you here, to this page.
@@ -77,11 +81,71 @@ designation. **Install unsupported apps at your own risk**. Then, before the
 upgrade, all 3rd party apps must be disabled. After the upgrade is complete you 
 may re-enable them.
 
-.. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/8.2/owncloud/
-   
 .. _owncloud.org/install/:
    https://owncloud.org/install/  
+
+Previous ownCloud Releases
+--------------------------
+
+You'll find previous ownCloud releases in the `ownCloud Server Changelog 
+<https://owncloud.org/changelog/>`_.
+
+Reverse Upgrade
+---------------
+
+If you need to reverse your upgrade, see :doc:`restore`.
+
+Troubleshooting
+---------------
+
+When upgrading ownCloud and you are running MySQL or MariaDB with binary 
+logging enabled, your upgrade may fail with these errors in your MySQL/MariaDB log::
+
+ An unhandled exception has been thrown:
+ exception 'PDOException' with message 'SQLSTATE[HY000]: General error: 1665 
+ Cannot execute statement: impossible to write to binary log since 
+ BINLOG_FORMAT = STATEMENT and at least one table uses a storage engine limited 
+ to row-based logging. InnoDB is limited to row-logging when transaction 
+ isolation level is READ COMMITTED or READ UNCOMMITTED.' 
+
+Please refer to :ref:`db-binlog-label` on how to correctly configure your 
+environment.
+
+Occasionally, *files do not show up after a upgrade*. A rescan of the files can 
+help::
+
+ sudo -u www-data php console.php files:scan --all
+
+See `the owncloud.org support page <https://owncloud.org/support>`_ for further
+resources for both home and enterprise users.
+
+Sometimes, ownCloud can get *stuck in a upgrade*. This is usually due to the 
+process taking too long and encountering a PHP time-out. Stop the upgrade 
+process this way::
+
+ sudo -u www-data php occ maintenance:mode --off
+  
+Then start the manual process::
+  
+ sudo -u www-data php occ upgrade
+
+If this does not work properly, try the repair function::
+
+ sudo -u www-data php occ maintenance:repair
+
+.. _migration_test_label:
+
+Migration Test
+--------------
+
+Previous versions of ownCloud included a migration test. ownCloud first ran a migration
+simulation by copying the ownCloud database and performing the upgrade on the copy, to
+ensure that the migration would succeed. Then the copied tables were deleted after the
+upgrade was completed. This doubled the upgrade time, so admins could skip this test
+(by risking a failed upgrade) with ``php occ upgrade --skip-migration-test``.
+
+The migration test has been removed from ownCloud 9.2. ownCloud server admins should have
+current backups before migration, and rely on backups to correct any problems from the migration.
 
 Encryption migration from oC 7.0 to 8.0 and 8.0 to 8.1
 ------------------------------------------------------

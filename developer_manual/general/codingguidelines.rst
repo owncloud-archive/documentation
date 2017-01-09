@@ -1,3 +1,5 @@
+.. _coding_style_guidelines_label:
+
 Coding Style & General Guidelines
 =================================
 
@@ -12,7 +14,7 @@ General
 * New features are always developed in a branch and only merged to master once they are fully done.
 * Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * It is best to start working based on an issue - create one if there is none. You describe what you want to do, ask feedback on the direction you take it and take it from there.
-* When you are finished, use the merge request function on Github to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See `the code review page for more information <../bugtracker/codereviews.html>`_
+* When you are finished, use the merge request function on Github to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See :doc:`the code review page for more information <../bugtracker/codereviews.rst>`
 * It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
 * Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. ownCloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
 * We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <https://owncloud.org/contribute/agreement/>`_.
@@ -32,10 +34,12 @@ The most important labels and their meaning:
 * #p1-urgent #p2-high #p3-medium #p4-low signify the priority of the bug.
 * #Junior Job - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in ownCloud
 * Tags showing the state of the issue or PR, numbered 1-6:
+
  * #1 - To develop - ready to start development on this
  * #2 - Developing - development in progress
  * #3 - To Review - ready for review
  * #4 - To Release - reviewed PR that awaits unfreeze of a branch to get merged
+
 * App tags: #app:files #app:user_ldap #app:files_versions and so on. These tags indicate the app that is impacted by the issue or which the PR is related to
 * Settings tags: #settings:personal #settings:apps #settings:admin and so on. These tags indicate the settings area that is impacted by the issue or which the PR is related to
 * db tags: #db:mysql #db:sqlite #db:postgresql and so on. These tags indicate the database that is impacted by the issue or which the PR is related to
@@ -43,8 +47,8 @@ The most important labels and their meaning:
 * Component tags: #comp:filesystem #comp:javascript and so on. These tags indicate the components of ownCloud impacted by the issue or which the PR is related to
 * Development tool tags: #dev:unit_testing #dev:public_API and so on. These tags indicate development-specific tools like those for testing and public developer-facing API's impacted by the issue or which the PR is related
 * Feature tags: #feature:something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
-* #triage - this issue *has to be* `triaged <../bugtracker/triaging.html>`_
-* #needs info - this issue needs further information from the reporter, see `triaging <../bugtracker/triaging.html>`_ old tag is #clarification request, please don't use that one anymore.
+* #triage - this issue *has to be* :doc:`triaged <../bugtracker/triaging.rst>`
+* #needs info - this issue needs further information from the reporter, see :doc:`triaging <../bugtracker/triaging.rst>` old tag is #clarification request, please don't use that one anymore.
 * #discussion - this issue needs to be discussed
 * #security - this is a security related issue
 * #windows server - this is related to windows server

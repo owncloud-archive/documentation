@@ -386,14 +386,9 @@ migrate addressbooks from 8.2 when you upgrade to 9.0::
  dav
   dav:create-addressbook        Create a dav addressbook
   dav:create-calendar           Create a dav calendar
-  dav:migrate-addressbooks      Migrate addressbooks from the contacts  
-                                app to core
-  dav:migrate-calendars         Migrate calendars from the calendar app to 
-                                core
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
   dav:sync-system-addressbook   Synchronizes users to the system 
                                 addressbook
-                                   
                                       
 The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is 
 ``dav:create-addressbook [user] [name]``. This example creates the addressbook 
@@ -851,12 +846,15 @@ Use these commands when you upgrade ownCloud, manage encryption, perform
 backups and other tasks that require locking users out until you are finished::
 
  maintenance
-  maintenance:mimetype:update-db       Update database mimetypes and update 
-                                       filecache
-  maintenance:mimetype:update-js       Update mimetypelist.js
-  maintenance:mode                     set maintenance mode
-  maintenance:repair                   repair this installation
-  maintenance:singleuser               set single user mode
+  maintenance:data-fingerprint        update the systems data-fingerprint after 
+                                      a backup is restored
+  maintenance:mimetype:update-db      Update database mimetypes and update 
+                                      filecache
+  maintenance:mimetype:update-js      Update mimetypelist.js
+  maintenance:mode                    set maintenance mode
+  maintenance:repair                  repair this installation
+  maintenance:singleuser              set single user mode
+  maintenance:update:htaccess         Updates the .htaccess file
 
 ``maintenance:mode`` locks the sessions of all logged-in users, including 
 administrators, and displays a status screen warning that the server is in 
@@ -878,6 +876,10 @@ Turn it off when you're finished::
 
  sudo -u www-data php occ maintenance:singleuser --off
  Single user mode disabled
+ 
+Run ``maintenance:data-fingerprint`` to tell desktop and mobile clients that a 
+server backup has been restored. Users will be prompted to resolve any 
+conflicts between newer and older file versions.
 
 The ``maintenance:repair`` command runs automatically during upgrades to clean 
 up the database, so while you can run it manually there usually isn't a need 
@@ -1230,24 +1232,24 @@ tar archives, and before you complete the upgrade.
 
 List all options, like this example on CentOS Linux::
 
- sudo -u apache php occ upgrade -h
+ sudo -u www-data php occ upgrade -h
  Usage:
- upgrade [--skip-migration-test] [--dry-run] [--no-app-disable]
+  upgrade [options]
 
  Options:
- --skip-migration-test  skips the database schema migration simulation and 
-    update directly
- --dry-run              only runs the database schema migration simulation, do 
-   not actually update
- --no-app-disable       skips the disable of third party apps
- --help (-h)            Display this help message.
- --quiet (-q)           Do not output any message.
- --verbose (-v|vv|vvv)  Increase the verbosity of messages: 1 for normal output, 
-   2 for more verbose output and 3 for debug.
- --version (-V)         Display this application version.
- --ansi                 Force ANSI output.
- --no-ansi              Disable ANSI output.
- --no-interaction (-n)  Do not ask any interactive question
+      --no-app-disable  skips the disable of third party apps
+  -h, --help            Display this help message
+  -q, --quiet           Do not output any message
+  -V, --version         Display this application version
+      --ansi            Force ANSI output
+      --no-ansi         Disable ANSI output
+  -n, --no-interaction  Do not ask any interactive question
+      --no-warnings     Skip global warnings, show command output only
+  -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+ Help:
+  run upgrade routines after installation of a new release. The release has to be installed before.
+
 
 When you are performing an update or upgrade on your ownCloud server (see the 
 Maintenance section of this manual), it is better to use ``occ`` to perform the 
@@ -1298,18 +1300,7 @@ or to use in a bug report::
  Update failed
  Turned off maintenance mode
 
-Before completing the upgrade, ownCloud first runs a simulation by copying all 
-database tables to new tables, and then performs the upgrade on them, to ensure 
-that the upgrade will complete correctly. The copied tables are deleted after 
-the upgrade. This takes twice as much time, which on large installations can be 
-many hours, so you can omit this step with the ``--skip-migration-test`` 
-option::
-
- sudo -u www-data php occ upgrade --skip-migration-test
-
-You can perform this simulation manually with the ``--dry-run`` option::
-
- sudo -u www-data php occ upgrade --dry-run
+In ownCloud 9.2 the migration simulation has been removed, so the ``--skip-migration-test`` and ``--dry-run`` commands are no longer available.
 
 .. _two_factor_auth_label:
 
