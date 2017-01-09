@@ -29,7 +29,6 @@ To save time, here's the commands which you can copy and use::
    If you're on CentOS/Fedora, try `systemctl restart httpd`.
    If you're on Debian/Ubuntu try `sudo systemctl restart apache2`
    To learn more about the systemctl command, please refer to `the systemd
-   essentials guide`_
 
 Fix Hardcoded Database Path Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
