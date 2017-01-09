@@ -87,7 +87,7 @@ the server address, the share name, and the folder you want to connect to.
 .. figure:: images/wnd-3.png
    :alt: WND server and credentials.
 
-   *Figure 2: WND server, credentials, and additional mount options.*  
+   *Figure 3: WND server, credentials, and additional mount options.*  
 
 Your changes are saved automatically.
 
