@@ -62,6 +62,12 @@ the server address, the share name, and the folder you want to connect to.
    an existing folder.
 2. Then select your authentication method; See :doc:`enterprise_only_auth` for 
    complete information on the five available authentication methods.
+   
+.. figure:: images/wnd2.png
+   :alt: WND mountpoint and auth.
+   
+   *Figure 2: WND mountpoint and authorization credentials.*
+   
 3. Enter the address of the server that contains the WND share.
 4. The Windows share name.
 5. The root folder of the share. This is the folder name, or the 
