@@ -50,7 +50,7 @@ Creating a New Share
 When you create a new WND share you need the login credentials for the share, 
 the server address, the share name, and the folder you want to connect to. 
 
-1. First enter the ownCloud mountpoint for your new WND share. This must not be 
+1. First enter the ownCloud mount point for your new WND share. This must not be 
    an existing folder.
 2. Then select your authentication method; See :doc:`enterprise_only_auth` for 
    complete information on the five available authentication methods.
@@ -141,7 +141,7 @@ The SMB protocol supports registering for notifications of file changes on remot
 
 Your ``smbclient`` versions needs to be 4.x, as older versions do not support notifications.
 
-The ownCloud server needs to know about changes of files on integrated storages so that the changed files will be synced to the ownCloud server, and to desktop sync clients. Files changed through the ownCloud Web interface or sync clients are automatically updated in the ownCloud filecache, but this is not possible when files are changed directly on remote SMB storage mounts. 
+The ownCloud server needs to know about changes to files on integrated storage so that the changed files will be synced to the ownCloud server, and to desktop sync clients. Files changed through the ownCloud Web interface or sync clients are automatically updated in the ownCloud file cache, but this is not possible when files are changed directly on remote SMB storage mounts. 
 
 To create a new SMB notification, start a listener on your ownCloud server with ``occ wnd:listen``. The listener marks changed files, and a background job updates the file metadata.
 
@@ -149,7 +149,7 @@ Windows network drive connections and setup of ``occ wnd:listen`` often does not
 always work the first time. If you encounter issues using it, then try the
 following troubleshooting steps:
 
-1. Check the connection with smbclient_ on the commandline of the ownCloud server
+1. Check the connection with smbclient_ on the command line of the ownCloud server
 2. If you are connecting to `Distributed File Shares`_ (DFS), be aware that the shares are case-sensitive
 
 Take the example of attempting to connect to the share named `MyData` using
@@ -188,7 +188,7 @@ The ``host`` is your remote SMB server, which must be exactly the same as the se
   File renamed : old name : Capirotes/New Text Document.txt
   File renamed : new name : Capirotes/New Document.txt
   
-Enable increased verbosity to see debugging messages, including which storages are updated and timing::
+Enable increased verbosity to see debugging messages, including which storage is updated and timing::
   
   $ sudo -u www-data php occ wnd:listen -vvv server share useraccount
   Please enter the password to access the share: 
@@ -228,4 +228,4 @@ Changes made by Bob or Alice made directly on the storage are now detected by th
 Running the WND Listener as a Service
 -------------------------------------
 
-See `Configuring wnd:listen to run as a service <https://github.com/owncloud/documentation/wiki/Configuring-wnd:listen-to-run-as-a-service>`_ in the documentation wiki for tips on running the listenera as a service via cron, and by creating a Systemd startup script.
+See `Configuring wnd:listen to run as a service <https://github.com/owncloud/documentation/wiki/Configuring-wnd:listen-to-run-as-a-service>`_ in the documentation wiki for tips on running the listener as a service via cron, and by creating a Systemd startup script.
