@@ -50,17 +50,19 @@ library. Note that, in many cases, the underlying library might not support some
 operations and might need extra code to work this around.
 
 .. NOTE::
-   When extending StorageAdapter, it is best to also implement some methods
-   like ``rename``, and ``isCreatable`` etc, for performance reasons. If you
-   don’t, your storage backend will still work. But it will likely be slower,
-   because the default method would use a stream copy + delete for rename.
+   When extending StorageAdapter, it is good practice to implement all methods,
+   except ``getConnection``, i.e., any method that interacts with files, for
+   performance reasons. If you don’t, your storage backend will still work.
+   But, it will likely not perform as well as it could. In the case of the
+   ``rename`` method, this is because it uses a combination of a stream copy
+   plus a delete for renaming a file.
 
 Stat/metadata cache
 -------------------
 
 To create a mature implementation, we need to consider stat and metadata
 caching. Within a single PHP request, ownCloud might call the same storage
-methods repeatedly, due to different checks which it need to carry out. As
+methods repeatedly, due to different checks which it needs to carry out. As
 a result, there is the potential to incur significant overhead, when working
 with the underlying filesystem. 
 
