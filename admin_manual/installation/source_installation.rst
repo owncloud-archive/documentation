@@ -63,8 +63,7 @@ Extensions
 Name                Description
 =================== ===========================================================
 `Ctype`_            For character type checking
-`cURL`_             Highly recommended, as some functionality, such as HTTP 
-                    user authentication, depends on it
+`cURL`_             Used for aspects of HTTP user authentication 
 `DOM`_              For operating on XML documents through the DOM API
 `GD`_               For creating and manipulating image files in a variety of 
                     different image formats, including GIF, PNG, JPEG, WBMP, 
@@ -127,6 +126,7 @@ Extension   Reason
             non-ASCII characters
 `Mcrypt`_   Increases file encryption performance
 `OpenSSL`_  Required for accessing HTTPS resources
+`imagick`_  Required for creating and modifying images
 =========== =====================================================================
 
 Recommended
@@ -148,10 +148,9 @@ For Server Performance
 For enhanced server performance consider installing one of the following cache
 extensions:
 
-* apc
-* apcu
-* memcached
-* redis (>= 2.2.6+, required for transactional file locking)
+* `apcu`_
+* `memcached`_
+* `redis`_ (>= 2.2.6+, required for transactional file locking)
 
 See :doc:`../configuration_server/caching_configuration` to learn how to select 
 and configure a memcache.
@@ -159,9 +158,8 @@ and configure a memcache.
 For Preview Generation
 ~~~~~~~~~~~~~~~~~~~~~~
 
-* imagick
-* avconv or ffmpeg
-* OpenOffice or LibreOffice
+* `avconv`_ or `ffmpeg`_
+* `OpenOffice`_ or `LibreOffice`_
 
 For Command Line Processing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -560,7 +558,18 @@ Other Web Servers
 .. _sftp: https://secure.php.net/manual/de/book.ssh2.php
 .. _smbclient: https://pecl.php.net/package/smbclient
 .. _sqlite: https://secure.php.net/manual/en/ref.sqlite.php
+.. _apcu: https://secure.php.net/manual/en/book.apcu.php
+.. _memcached: https://secure.php.net/manual/en/book.memcached.php
+.. _redis: https://pecl.php.net/package/redis
+.. _imagick: https://secure.php.net/manual/en/book.imagick.php
 
 .. PHP Configuration Links
    
 .. _php_session_autostart: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
+   
+.. Executable Links
+   
+.. _avconv: https://libav.org/
+.. _ffmpeg: https://ffmpeg.org/
+.. _OpenOffice: https://www.openoffice.org/
+.. _LibreOffice: https://www.libreoffice.org/
