@@ -63,10 +63,14 @@ Extensions
 Name                Description
 =================== ===========================================================
 `Ctype`_            For character type checking
+`cURL`_             Highly recommended, as some functionality, such as HTTP 
+                    user authentication, depends on it
 `DOM`_              For operating on XML documents through the DOM API
 `GD`_               For creating and manipulating image files in a variety of 
                     different image formats, including GIF, PNG, JPEG, WBMP, 
                     and XPM.
+HASH Message        For working with message digests (hash).
+Digest Framework
 `iconv`_            For working with the iconv character set conversion 
                     facility.
 `JSON`_             For working with the JSON data-interchange format.
@@ -74,6 +78,7 @@ Name                Description
                     _XMLWriter_ extensions to work. It requires that libxml2, 
                     version 2.7.0 or higher, is installed.
 `Multibyte String`_ For working with multibyte character encoding schemes.
+`PDO`_              This is required for the pdo_msql function to work. 
 `POSIX`_            For working with UNIX POSIX functionality.
 `SimpleXML`_        For working with XML files as objects.
 `XMLWriter`_        For generating streams or files of XML data.
@@ -117,8 +122,6 @@ Optional
 Extension   Reason
 =========== =====================================================================
 `Bzip2`_    Required for extraction of applications
-`cURL`_     Highly recommended, as some functionality, such as HTTP user 
-            authentication, depends on it
 `Fileinfo`_ Highly recommended, as it enhances file analysis performance
 `intl`_     Increases language translation performance and fixes sorting of
             non-ASCII characters
@@ -525,12 +528,14 @@ Other Web Servers
 .. _Fileinfo: https://php.net/manual/en/book.fileinfo.php
 .. _GD: https://php.net/manual/en/book.image.php
 .. _GMP: https://php.net/manual/en/book.gmp.php
+.. _HASH: https://secure.php.net/manual/en/book.hash.php
 .. _Iconv: https://php.net/manual/en/book.iconv.php
 .. _JSON: https://php.net/manual/en/book.json.php
 .. _Mcrypt: https://php.net/manual/en/book.mcrypt.php
 .. _Multibyte String: https://php.net/manual/en/book.mbstring.php
 .. _OpenSSL: https://php.net/manual/en/book.openssl.php
 .. _PCNTL: https://secure.php.net/manual/en/book.pcntl.php
+.. _PDO: https://secure.php.net/manual/en/book.pdo.php
 .. _POSIX: https://php.net/manual/en/book.posix.php
 .. _SimpleXML: https://php.net/manual/en/book.simplexml.php
 .. _XMLWriter: https://php.net/manual/en/book.xmlwriter.php
@@ -538,12 +543,12 @@ Other Web Servers
 .. _Zlib: https://php.net/manual/en/book.zlib.php
 .. _cURL: https://php.net/manual/en/book.curl.php
 .. _ftp: https://secure.php.net/manual/en/book.ftp.php
-.. _sftp: https://secure.php.net/manual/de/book.ssh2.php
 .. _imap: https://secure.php.net/manual/en/book.imap.php
 .. _intl: https://php.net/manual/en/book.intl.php
 .. _ldap: https://secure.php.net/manual/en/book.ldap.php
 .. _libxml: https://php.net/manual/en/book.libxml.php
 .. _pdo_mysql: https://secure.php.net/manual/en/ref.pdo-mysql.php
 .. _pgsql: https://secure.php.net/manual/en/ref.pgsql.php
+.. _sftp: https://secure.php.net/manual/de/book.ssh2.php
 .. _smbclient: https://pecl.php.net/package/smbclient
 .. _sqlite: https://secure.php.net/manual/en/ref.sqlite.php
