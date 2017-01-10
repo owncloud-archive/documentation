@@ -38,9 +38,9 @@ Apache and MariaDB, using `the ownCloud .tar archive
 Prerequisites
 -------------
 
-The ownCloud tar archive contains all of the required PHP third-party libraries.
-So, no extra ones are required. However, ownCloud does require that PHP has
-a set of extensions installed, enabled, and configured. 
+The ownCloud tar archive contains all of the required third-party PHP
+libraries. As a result, no extra ones are required. However, ownCloud does
+require that PHP has a set of extensions installed, enabled, and configured. 
 
 This section lists both the required and optional PHP extensions. If you need
 further information about a particular extension, please consult the relevant
@@ -54,33 +54,58 @@ required extensions. You can check the presence of a module by typing ``php -m
 Required
 ^^^^^^^^
 
-* php5 (>= 5.6)
-* ctype
-* dom
-* GD
-* iconv
-* JSON
-* libxml (Linux package libxml2 must be >=2.7.0)
-* mb multibyte
-* posix
-* SimpleXML
-* XMLWriter
-* zip
-* zlib
+PHP >= 5.6
 
-Database connectors (pick the one for your database:)
+Extensions
+~~~~~~~~~~
 
-* pdo_mysql (MySQL/MariaDB)
-* pgsql (requires PostgreSQL >= 9.0)
-* sqlite (>= 3, usually not recommended for performance reasons)
+=================== ===========================================================
+Name                Description
+=================== ===========================================================
+`Ctype`_            For character type checking
+`DOM`_              For operating on XML documents through the DOM API
+`GD`_               For creating and manipulating image files in a variety of 
+                    different image formats, including GIF, PNG, JPEG, WBMP, 
+                    and XPM.
+`iconv`_            For working with the iconv character set conversion 
+                    facility.
+`JSON`_             For working with the JSON data-interchange format.
+`libxml`_           This is required for the _DOM_, _libxml_, _SimpleXML_, and 
+                    _XMLWriter_ extensions to work. It requires that libxml2, 
+                    version 2.7.0 or higher, is installed.
+`Multibyte String`_ For working with multibyte character encoding schemes.
+`POSIX`_            For working with UNIX POSIX functionality.
+`SimpleXML`_        For working with XML files as objects.
+`XMLWriter`_        For generating streams or files of XML data.
+`Zip`_              For reading and writing ZIP compressed archives and the 
+                    files inside them.
+`Zlib`_             For reading and writing gzip (.gz) compressed files.
+=================== ===========================================================
+
+Database Connectors
+~~~~~~~~~~~~~~~~~~~
+
+============ ====================================================================
+Name         Description
+============ ====================================================================
+`pdo_mysql`_ For working with MySQL & MariaDB.
+`pgsql`_     For working with PostgreSQL. It requires PostgreSQL 9.0 or above.
+`sqlite`_    For working with SQLite. It requires SQLite 3 or above. This is, 
+             usually, not recommended, for performance reasons.
+============ ====================================================================
 
 Required For Specific Apps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-* ftp (for FTP storage / external user authentication)
-* imap (for external user authentication)
-* ldap (for LDAP integration)
-* smbclient  (SMB/CIFS integration)
+============ ====================================================================
+Name         Description
+============ ====================================================================
+`ftp`_       For working with FTP storage
+`sftp`_      For working with SFTP storage
+`imap`_      For IMAP integration
+`ldap`_      For LDAP integration
+`smbclient`_ For SMB/CIFS integration
+============ ====================================================================
   
 .. note:: SMB/Windows Network Drive mounts require the PHP module smbclient version 0.8.0+; see
   :doc:`../configuration_files/external_storage/smb`.
@@ -88,18 +113,18 @@ Required For Specific Apps
 Optional
 ^^^^^^^^
 
-========= =====================================================================
-Extension Reason
-========= =====================================================================
-bz2       Required for extraction of apps
-curl      Highly recommended, as some functionality, such as HTTP user 
-          authentication, depends on this
-fileinfo  Highly recommended, as it enhances file analysis performance
-intl      Increases language translation performance and fixes sorting of
-          non-ASCII characters
-mcrypt    Increases file encryption performance
-openssl   Required for accessing HTTPS resources
-========= =====================================================================
+=========== =====================================================================
+Extension   Reason
+=========== =====================================================================
+`Bzip2`_    Required for extraction of applications
+`cURL`_     Highly recommended, as some functionality, such as HTTP user 
+            authentication, depends on it
+`Fileinfo`_ Highly recommended, as it enhances file analysis performance
+`intl`_     Increases language translation performance and fixes sorting of
+            non-ASCII characters
+`Mcrypt`_   Increases file encryption performance
+`OpenSSL`_  Required for accessing HTTPS resources
+=========== =====================================================================
 
 Recommended
 ^^^^^^^^^^^
@@ -110,8 +135,8 @@ For Specific Apps
 ========= =====================================================================
 Extension Reason
 ========= =====================================================================
-exif      For image rotation in pictures app
-gmp       For SFTP storage
+`Exif`_   For image rotation in the pictures app
+`GMP`_    For working with arbitrary-length integers
 ========= =====================================================================
 
 For Server Performance
@@ -141,7 +166,7 @@ For Command Line Processing
 ========= =====================================================================
 Extension Reason
 ========= =====================================================================
-pcntl     Enables command interruption by pressing ``ctrl-c``
+`PCNTL`_  Enables command interruption by pressing ``ctrl-c``
 ========= =====================================================================
 
 .. NOTE::
@@ -490,3 +515,35 @@ Other Web Servers
 .. Links
 
 .. _SabreDav: http://sabre.io/
+
+.. PHP Extension Links
+
+.. _Bzip2: https://php.net/manual/en/book.bzip2.php
+.. _Ctype: https://secure.php.net/manual/en/book.ctype.php
+.. _DOM: https://secure.php.net/manual/en/book.dom.php
+.. _Exif: https://php.net/manual/en/book.exif.php
+.. _Fileinfo: https://php.net/manual/en/book.fileinfo.php
+.. _GD: https://php.net/manual/en/book.image.php
+.. _GMP: https://php.net/manual/en/book.gmp.php
+.. _Iconv: https://php.net/manual/en/book.iconv.php
+.. _JSON: https://php.net/manual/en/book.json.php
+.. _Mcrypt: https://php.net/manual/en/book.mcrypt.php
+.. _Multibyte String: https://php.net/manual/en/book.mbstring.php
+.. _OpenSSL: https://php.net/manual/en/book.openssl.php
+.. _PCNTL: https://secure.php.net/manual/en/book.pcntl.php
+.. _POSIX: https://php.net/manual/en/book.posix.php
+.. _SimpleXML: https://php.net/manual/en/book.simplexml.php
+.. _XMLWriter: https://php.net/manual/en/book.xmlwriter.php
+.. _Zip: https://php.net/manual/en/book.zip.php 
+.. _Zlib: https://php.net/manual/en/book.zlib.php
+.. _cURL: https://php.net/manual/en/book.curl.php
+.. _ftp: https://secure.php.net/manual/en/book.ftp.php
+.. _sftp: https://secure.php.net/manual/de/book.ssh2.php
+.. _imap: https://secure.php.net/manual/en/book.imap.php
+.. _intl: https://php.net/manual/en/book.intl.php
+.. _ldap: https://secure.php.net/manual/en/book.ldap.php
+.. _libxml: https://php.net/manual/en/book.libxml.php
+.. _pdo_mysql: https://secure.php.net/manual/en/ref.pdo-mysql.php
+.. _pgsql: https://secure.php.net/manual/en/ref.pgsql.php
+.. _smbclient: https://pecl.php.net/package/smbclient
+.. _sqlite: https://secure.php.net/manual/en/ref.sqlite.php
