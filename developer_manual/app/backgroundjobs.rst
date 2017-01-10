@@ -14,7 +14,7 @@ Create a job class
 ==================
 
 The first step is to create a job class, which will provide the job functionality. 
-For this example, we will call it: :file:`cron/sometask.php`. 
+For this example, we will call it: :file:`lib/Cron/SomeTask.php`. 
 The class only needs to define one, static, method called ``run``. 
 In this example, we’re retrieving a service from the container, and in turn
 calling its ``run`` method.
@@ -42,10 +42,24 @@ created, as a background job.:
         <job>\OCA\MyApp\Cron\SomeTask</job>
     </background-jobs>
 
+Testing
+=======
+
+To test the job classes, you can run Cron manually, as in the example below:
+
+    sudo -u http php cron.php
+
+After doing so, you will need to reset the job to allow it to be run, manually, again. 
+To do this, go to the database and run the following SQL query:
+
+.. code-block: sql
+
+    UPDATE oc_jobs SET last_run=0,last_checked=0,reserved_at=0;
+
 Is The Cron Service Running?
 ============================
 
-Don’t forget to add the ownCloud Cron process in the web server’s `crontab`_. To do this, first open the web server’s crontab for editing by running::
+Finally, don’t forget to add the ownCloud Cron process in the web server’s `crontab`_. To do this, first open the web server’s crontab for editing by running::
 
     # In this example ``http`` is the web server user
     sudo crontab -u http -e
