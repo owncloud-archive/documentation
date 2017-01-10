@@ -98,7 +98,7 @@ your nginx installation.
           return 301 $scheme://$host/remote.php/dav;
       }
   
-      location /.well-known/acme-challenge { }
+      location ^~ /.well-known/acme-challenge { }
   
       # set max upload size
       client_max_body_size 512M;
@@ -171,14 +171,14 @@ your nginx installation.
 ownCloud in a subdir of nginx
 =============================
 
-The following config should be used when ownCloud is placed within a subdir of 
-your nginx installation.
+The following config should be used when ownCloud is not in your webroot but placed under a different contextroot of 
+your nginx installation such as /owncloud or /cloud. The following configuration assumes it is placed under ``/owncloud``.
 
 ::
 
   upstream php-handler {
       server 127.0.0.1:9000;
-      #server unix:/var/run/php5-fpm.sock;
+      #server unix:/var/run/php7-fpm.sock;
   }
   
   server {
@@ -194,7 +194,15 @@ your nginx installation.
   
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
       ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
-  
+      ssl_session_timeout 5m;
+      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+      ssl_ciphers "-ALL:EECDH+AES256:EDH+AES256:AES256-SHA:EECDH+AES:EDH+AES:!ADH:!NULL:!aNULL:!eNULL:!EXPORT:!LOW:!MD5:!3DES:!PSK:!SRP:!DSS:!AESGCM:!RC4";
+      ssl_dhparam /etc/nginx/dh4096.pem;
+      ssl_prefer_server_ciphers on;
+      keepalive_timeout    70;
+      ssl_stapling on;
+      ssl_stapling_verify on;
+
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this topic first.
       #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
@@ -229,7 +237,7 @@ your nginx installation.
       location /.well-known/acme-challenge { }
   
       location ^~ /owncloud {
-  
+          root /var/www/owncloud/;
           # set max upload size
           client_max_body_size 512M;
           fastcgi_buffers 64 4K;
@@ -256,13 +264,16 @@ your nginx installation.
           }
   
           location ~ ^/owncloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
-              fastcgi_split_path_info ^(.+\.php)(/.*)$;
+              fastcgi_split_path_info ^/owncloud(.+\.php)(/.*)$;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+              fastcgi_param SCRIPT_NAME $fastcgi_script_name; # necessary for owncloud to detect the contextroot https://github.com/owncloud/core/blob/master/lib/private/AppFramework/Http/Request.php#L597
               fastcgi_param PATH_INFO $fastcgi_path_info;
               fastcgi_param HTTPS on;
               fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
-              fastcgi_param front_controller_active true;
+              # EXPERIMENTAL: active the following if you need to get rid of the 'index.php' in the URLs
+              #fastcgi_param front_controller_active true;
+              fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
               fastcgi_pass php-handler;
               fastcgi_intercept_errors on;
               fastcgi_request_buffering off; #Available since nginx 1.7.11
@@ -275,8 +286,8 @@ your nginx installation.
   
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
-          location ~* \.(?:css|js)$ {
-              try_files $uri /owncloud/index.php$uri$is_args$args;
+          location ~* /owncloud(\/.*\.(?:css|js)) {
+              try_files $1 /owncloud/index.php$1$is_args$args;
               add_header Cache-Control "max-age=15778463";
               # Add headers to serve security related headers  (It is intended to have those duplicated to the ones above)
               # Before enabling Strict-Transport-Security headers please read into this topic first.
@@ -291,8 +302,9 @@ your nginx installation.
               access_log off;
           }
   
-          location ~* \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg)$ {
-              try_files $uri /owncloud/index.php$uri$is_args$args;
+          location ~* /owncloud(/.*\.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg|map)) {
+              try_files $1 /owncloud/index.php$1$is_args$args;
+              add_header Cache-Control "public, max-age=7200";
               # Optional: Don't log access to other assets
               access_log off;
           }
@@ -330,6 +342,11 @@ block shown above not located **below** the::
 
 block. Other custom configurations like caching JavaScript (.js)
 or CSS (.css) files via gzip could also cause such issues.
+
+Not all of my contacts are synchronized
+=======================================
+
+Check your server timeouts! It turns out that CardDAV sync often fails silently if the request runs into timeouts. With PHP-FPM you might see a "CoreDAVHTTPStatusErrorDomain error 504" which is an "HTTP504 Gateway timeout" error. To solve this, first check the ``default_socket_timeout`` setting in ``/etc/php/7.0/fpm/php.ini`` and increase the above ``fastcgi_read_timeout`` accordingly. Depending on your server's performance a timeout of 180s should be sufficient to sync an addressbook of ~1000 contacts.
 
 Performance Tuning
 ==================
