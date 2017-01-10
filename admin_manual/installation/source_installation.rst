@@ -126,7 +126,7 @@ Extension   Reason
             non-ASCII characters
 `Mcrypt`_   Increases file encryption performance
 `OpenSSL`_  Required for accessing HTTPS resources
-`imagick`_  Required for creating and modifying images
+`imagick`_  Required for creating and modifying images and preview thumbnails
 =========== =====================================================================
 
 Recommended
