@@ -4,36 +4,58 @@ Background Jobs (Cron)
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Background/cron jobs are usually registered in the :file:`appinfo/app.php` by using the **addRegularTask** method, the class and the method to run:
+ownCloud supports background job functionality (otherwise known as `Cron jobs`_).
+To create them requires two steps to be completed:
 
-.. code-block:: php
+- Create a job class
+- Register the class with ownCloud
 
-    <?php
-    \OCP\Backgroundjob::addRegularTask('\OCA\MyApp\Cron\SomeTask', 'run');
+Create a job class
+==================
 
-The class for the above example would live in :file:`cron/sometask.php`. Try to keep the method as small as possible because its hard to test static methods. Simply reuse the app container and execute a service that was registered in it.
+The first step is to create a job class, which will provide the job functionality. 
+For this example, we will call it: :file:`cron/sometask.php`. 
+The class only needs to define one, static, method called ``run``. 
+In this example, we’re retrieving a service from the container, and in turn
+calling its ``run`` method.
 
-.. code-block:: php
+.. NOTE:: 
+   Try to keep the method as small as possible, because its hard to test static
+   methods.
 
-    <?php
-    namespace OCA\MyApp\Cron;
+.. literalinclude:: ../examples/cron/SomeTask.php
+   :language: php
+   :linenos:
 
-    use \OCA\MyApp\AppInfo\Application;
+Register the class with ownCloud
+================================
 
-    class SomeTask {
+Next, you need to register the job as a background job. 
+This is done in :file:`appinfo/info.xml` by adding a job element, containing the
+name of the job class, to the ``background-jobs`` element. 
+The example below shows how to add the ``SomeTask`` class, which we just
+created, as a background job.:
 
-        public static function run() {
-            $app = new Application();
-            $container = $app->getContainer();
-            $container->query('SomeService')->run();
-        }
+.. code-block:: xml
+   
+    <background-jobs>
+        <job>\OCA\MyApp\Cron\SomeTask</job>
+    </background-jobs>
 
-    }
+Is The Cron Service Running?
+============================
 
-Dont forget to configure the cron service on the server by executing::
+Don’t forget to add the ownCloud Cron process in the web server’s `crontab`_. To do this, first open the web server’s crontab for editing by running::
 
+    # In this example ``http`` is the web server user
     sudo crontab -u http -e
 
-where **http** is your Web server user, and add::
+Then, add the ownCloud Cron process to the crontab, for example, like so::
 
     */15  *  *  *  * php -f /srv/http/owncloud/cron.php
+    
+
+.. Links
+   
+.. _Cron jobs: https://en.wikipedia.org/wiki/Cron
+.. _crontab: http://www.adminschoice.com/crontab-quick-reference
