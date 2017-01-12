@@ -38,86 +38,144 @@ Apache and MariaDB, using `the ownCloud .tar archive
 Prerequisites
 -------------
 
-The ownCloud .tar archive contains all of the required PHP modules. This section 
-lists all required and optional PHP modules.  Consult the `PHP manual 
-<http://php.net/manual/en/extensions.php>`_ for more information on modules. 
-Your Linux distribution should have packages for all required modules. You can 
-check the presence of a module by typing ``php -m | grep -i <module_name>``. 
-If you get a result, the module is present.
+The ownCloud tar archive contains all of the required third-party PHP
+libraries. As a result, no extra ones are required. However, ownCloud does
+require that PHP has a set of extensions installed, enabled, and configured. 
 
-Required:
+This section lists both the required and optional PHP extensions. If you need
+further information about a particular extension, please consult the relevant
+section of `the extensions section of the PHP manual
+<http://php.net/manual/en/extensions.php>`_. 
 
-* php5 (>= 5.6)
-* PHP module ctype
-* PHP module dom
-* PHP module GD
-* PHP module iconv
-* PHP module JSON
-* PHP module libxml (Linux package libxml2 must be >=2.7.0)
-* PHP module mb multibyte
-* PHP module posix
-* PHP module SimpleXML
-* PHP module XMLWriter
-* PHP module zip
-* PHP module zlib
+If you are using a Linux distribution it should have packages for all the
+required extensions. You can check the presence of a module by typing ``php -m
+| grep -i <module_name>``. If you get a result, the module is present.
 
-Database connectors (pick the one for your database:)
+Required
+^^^^^^^^
 
-* PHP module sqlite (>= 3, usually not recommended for performance reasons)
-* PHP module pdo_mysql (MySQL/MariaDB)
-* PHP module pgsql (requires PostgreSQL >= 9.0)
+PHP >= 5.6
 
-*Recommended* packages:
+Extensions
+~~~~~~~~~~
 
-* PHP module curl (highly recommended, some functionality, e.g. HTTP user
-  authentication, depends on this)
-* PHP module fileinfo (highly recommended, enhances file analysis performance)
-* PHP module bz2 (recommended, required for extraction of apps)
-* PHP module intl (increases language translation performance and fixes sorting 
-  of non-ASCII characters)
-* PHP module mcrypt (increases file encryption performance)
-* PHP module openssl (required for accessing HTTPS resources)
+=================== ===========================================================
+Name                Description
+=================== ===========================================================
+`Ctype`_            For character type checking
+`cURL`_             Used for aspects of HTTP user authentication 
+`DOM`_              For operating on XML documents through the DOM API
+`GD`_               For creating and manipulating image files in a variety of 
+                    different image formats, including GIF, PNG, JPEG, WBMP, 
+                    and XPM.
+HASH Message        For working with message digests (hash).
+Digest Framework
+`iconv`_            For working with the iconv character set conversion 
+                    facility.
+`JSON`_             For working with the JSON data-interchange format.
+`libxml`_           This is required for the _DOM_, _libxml_, _SimpleXML_, and 
+                    _XMLWriter_ extensions to work. It requires that libxml2, 
+                    version 2.7.0 or higher, is installed.
+`Multibyte String`_ For working with multibyte character encoding schemes.
+`PDO`_              This is required for the pdo_msql function to work. 
+`POSIX`_            For working with UNIX POSIX functionality.
+`SimpleXML`_        For working with XML files as objects.
+`XMLWriter`_        For generating streams or files of XML data.
+`Zip`_              For reading and writing ZIP compressed archives and the 
+                    files inside them.
+`Zlib`_             For reading and writing gzip (.gz) compressed files.
+=================== ===========================================================
 
-Required for specific apps:
+Database Connectors
+~~~~~~~~~~~~~~~~~~~
 
-* PHP module ldap (for LDAP integration)
-* PHP module ftp (for FTP storage / external user authentication)
-* PHP module imap (for external user authentication)
-* PHP module smbclient  (SMB/CIFS integration)
+============ ====================================================================
+Name         Description
+============ ====================================================================
+`pdo_mysql`_ For working with MySQL & MariaDB.
+`pgsql`_     For working with PostgreSQL. It requires PostgreSQL 9.0 or above.
+`sqlite`_    For working with SQLite. It requires SQLite 3 or above. This is, 
+             usually, not recommended, for performance reasons.
+============ ====================================================================
+
+Required For Specific Apps
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+============ ====================================================================
+Name         Description
+============ ====================================================================
+`ftp`_       For working with FTP storage
+`sftp`_      For working with SFTP storage
+`imap`_      For IMAP integration
+`ldap`_      For LDAP integration
+`smbclient`_ For SMB/CIFS integration
+============ ====================================================================
   
 .. note:: SMB/Windows Network Drive mounts require the PHP module smbclient version 0.8.0+; see
   :doc:`../configuration_files/external_storage/smb`.
 
-Recommended for specific apps (*optional*):
+Optional
+^^^^^^^^
 
-* PHP module exif (for image rotation in pictures app)
-* PHP module gmp (for SFTP storage)
+=========== =====================================================================
+Extension   Reason
+=========== =====================================================================
+`Bzip2`_    Required for extraction of applications
+`Fileinfo`_ Highly recommended, as it enhances file analysis performance
+`intl`_     Increases language translation performance and fixes sorting of
+            non-ASCII characters
+`Mcrypt`_   Increases file encryption performance
+`OpenSSL`_  Required for accessing HTTPS resources
+`imagick`_  Required for creating and modifying images and preview thumbnails
+=========== =====================================================================
 
-For enhanced server performance (*optional*) select one of the following 
-memcaches:
+Recommended
+^^^^^^^^^^^
 
-* PHP module apc
-* PHP module apcu
-* PHP module memcached
-* PHP module redis (>= 2.2.6+, required for Transactional File Locking)
+For Specific Apps
+~~~~~~~~~~~~~~~~~
+
+========= =====================================================================
+Extension Reason
+========= =====================================================================
+`Exif`_   For image rotation in the pictures app
+`GMP`_    For working with arbitrary-length integers
+========= =====================================================================
+
+For Server Performance
+~~~~~~~~~~~~~~~~~~~~~~
+
+For enhanced server performance consider installing one of the following cache
+extensions:
+
+* `apcu`_
+* `memcached`_
+* `redis`_ (>= 2.2.6+, required for transactional file locking)
 
 See :doc:`../configuration_server/caching_configuration` to learn how to select 
 and configure a memcache.
 
-For preview generation (*optional*):
+For Preview Generation
+~~~~~~~~~~~~~~~~~~~~~~
 
-* PHP module imagick
-* avconv or ffmpeg
-* OpenOffice or LibreOffice
+* `avconv`_ or `ffmpeg`_
+* `OpenOffice`_ or `LibreOffice`_
 
-For command line processing (*optional*):
+For Command Line Processing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
+========= =====================================================================
+Extension Reason
+========= =====================================================================
+`PCNTL`_  Enables command interruption by pressing ``ctrl-c``
+========= =====================================================================
 
-You don’t need the WebDAV module for your Web server (i.e. Apache’s 
-``mod_webdav``), as ownCloud has a built-in WebDAV server of its own, SabreDAV. 
-If ``mod_webdav`` is enabled you must disable it for ownCloud. (See 
-:ref:`apache_configuration_label` for an example configuration.)
+.. NOTE::
+
+  You don’t need the WebDAV module for your Web server (i.e. Apache’s
+  ``mod_webdav``), as ownCloud has a built-in WebDAV server of its own, `SabreDAV`_.
+  If ``mod_webdav`` is enabled you must disable it for ownCloud. (See
+  :ref:`apache_configuration_label` for an example configuration.)
 
 MySQL/MariaDB Require InnoDB
 ----------------------------
@@ -490,6 +548,54 @@ Other Web Servers
 <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
 
 .. Links
+
+.. _SabreDav: http://sabre.io/
+
+.. PHP Extension Links
+
+.. _Bzip2: https://php.net/manual/en/book.bzip2.php
+.. _Ctype: https://secure.php.net/manual/en/book.ctype.php
+.. _DOM: https://secure.php.net/manual/en/book.dom.php
+.. _Exif: https://php.net/manual/en/book.exif.php
+.. _Fileinfo: https://php.net/manual/en/book.fileinfo.php
+.. _GD: https://php.net/manual/en/book.image.php
+.. _GMP: https://php.net/manual/en/book.gmp.php
+.. _HASH: https://secure.php.net/manual/en/book.hash.php
+.. _Iconv: https://php.net/manual/en/book.iconv.php
+.. _JSON: https://php.net/manual/en/book.json.php
+.. _Mcrypt: https://php.net/manual/en/book.mcrypt.php
+.. _Multibyte String: https://php.net/manual/en/book.mbstring.php
+.. _OpenSSL: https://php.net/manual/en/book.openssl.php
+.. _PCNTL: https://secure.php.net/manual/en/book.pcntl.php
+.. _PDO: https://secure.php.net/manual/en/book.pdo.php
+.. _POSIX: https://php.net/manual/en/book.posix.php
+.. _SimpleXML: https://php.net/manual/en/book.simplexml.php
+.. _XMLWriter: https://php.net/manual/en/book.xmlwriter.php
+.. _Zip: https://php.net/manual/en/book.zip.php 
+.. _Zlib: https://php.net/manual/en/book.zlib.php
+.. _cURL: https://php.net/manual/en/book.curl.php
+.. _ftp: https://secure.php.net/manual/en/book.ftp.php
+.. _imap: https://secure.php.net/manual/en/book.imap.php
+.. _intl: https://php.net/manual/en/book.intl.php
+.. _ldap: https://secure.php.net/manual/en/book.ldap.php
+.. _libxml: https://php.net/manual/en/book.libxml.php
+.. _pdo_mysql: https://secure.php.net/manual/en/ref.pdo-mysql.php
+.. _pgsql: https://secure.php.net/manual/en/ref.pgsql.php
+.. _sftp: https://secure.php.net/manual/de/book.ssh2.php
+.. _smbclient: https://pecl.php.net/package/smbclient
+.. _sqlite: https://secure.php.net/manual/en/ref.sqlite.php
+.. _apcu: https://secure.php.net/manual/en/book.apcu.php
+.. _memcached: https://secure.php.net/manual/en/book.memcached.php
+.. _redis: https://pecl.php.net/package/redis
+.. _imagick: https://secure.php.net/manual/en/book.imagick.php
+
+.. PHP Configuration Links
    
-.. _session.auto_start: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
-.. _enable_post_data_reading: http://php.net/manual/en/ini.core.php#ini.enable-post-data-reading
+.. _php_session_autostart: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
+   
+.. Executable Links
+   
+.. _avconv: https://libav.org/
+.. _ffmpeg: https://ffmpeg.org/
+.. _OpenOffice: https://www.openoffice.org/
+.. _LibreOffice: https://www.libreoffice.org/
