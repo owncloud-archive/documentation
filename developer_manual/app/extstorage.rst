@@ -49,13 +49,24 @@ For this example we mapped the available storage methods to the ones from the
 library. Note that, in many cases, the underlying library might not support some
 operations and might need extra code to work this around.
 
-.. NOTE::
-   When extending StorageAdapter, it is good practice to implement all methods,
-   except ``getConnection``, i.e., any method that interacts with files, for
-   performance reasons. If you don’t, your storage backend will still work.
-   But, it will likely not perform as well as it could. In the case of the
-   ``rename`` method, this is because it uses a combination of a stream copy
-   plus a delete for renaming a file.
+When extending StorageAdapter, it is good practice to implement the following
+methods, for performance reasons: 
+
+- file_exists
+- filetype
+- fopen
+- getId
+- mkdir
+- opendir
+- rmdir
+- stat
+- touch
+- unlink
+
+If you don’t, your storage backend will still work. But, it will likely not
+perform as well as it could. In the case of the ``rename`` method, this is
+because it uses a combination of a stream copy plus a delete for renaming
+a file.
 
 Stat/metadata cache
 -------------------
@@ -183,3 +194,4 @@ external storage section.
 .. _Flysystem adapter: https://flysystem.thephpleague.com/creating-an-adapter/
 .. _FTP storage adapter: https://github.com/owncloud/files_external_ftp/blob/master/lib/Storage/FTP.php#L27
 .. _OAuth: https://en.wikipedia.org/wiki/OAuth
+
