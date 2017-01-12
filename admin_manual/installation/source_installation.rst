@@ -419,13 +419,39 @@ SELinux-enabled distributions such as Fedora and CentOS.
 php.ini Configuration Notes
 ---------------------------
 
-.. IMPORTANT:: 
-   From ownCloud 9.1.2, ensure that you have `session.auto_start
-   = 0 <php_session_autostart` in your configuration. If not, you may have
-   issues logging in to ownCloud via the WebUI.
+From ownCloud 9.1.2, several core PHP settings have to be configured correctly,
+otherwise ownCloud may not work properly. These are all listed here.
 
-Keep in mind that changes to ``php.ini`` may have to be configured in more than one 
-INI file. This can be the case, for example, for the ``date.timezone`` setting.
+session.auto_start && enable_post_data_reading
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Ensure that `session.auto_start`_ and `enable_post_data_reading`_ are set to
+``0`` or ``Off`` in your configuration. If not, you may have issues logging in
+to ownCloud via the WebUI, where you see the error: "*Access denied. CSRF check
+failed*".
+
+session.save_path
+^^^^^^^^^^^^^^^^^
+
+In addition to setting ``session.auto_start`` and ``enable_post_data_reading``
+correctly, ensure that, if ``session.save_handler`` is set to ``files``, that
+``session.save_path`` is set to a path on the filesystem which the web server
+process, or process which PHP is running as, can read from and write to.
+
+post_max_size  
+^^^^^^^^^^^^^
+
+Please ensure that you have ``post_max_size`` configured with *at least* the minimum 
+amount of memory for use with ownCloud, which is 512 MB. 
+
+.. IMPORTANT::
+   Please be careful when you set this value if you use the byte value shortcut as it is very specific.  
+   Use `K` for kilobyte, `M` for megabyte and `G` for gigabyte. `KB`, `MB`, and `GB` **do not work!**
+
+.. NOTE::
+   Keep in mind that changes to ``php.ini`` may have to be configured in more
+   than one ini file. This can be the case, for example, for the
+   ``date.timezone`` setting.
 
 **php.ini - used by the Web server:**
 ::
