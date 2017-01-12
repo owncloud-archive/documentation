@@ -971,8 +971,12 @@ This example removes the deleted files of users molly and freda::
 User Commands
 -------------
 
-The ``user`` commands create and remove users, reset passwords, display a simple 
-report showing how many users you have, and when a user was last logged in::
+The ``user`` commands provide a range of functionality for managing ownCloud
+users. This includes: creating and removing users, resetting user passwords,
+displaying a report which shows how many users you have, and when a user was
+last logged in. 
+
+The full list, of commands is::
 
  user
   user:add                            adds a user
@@ -984,6 +988,8 @@ report showing how many users you have, and when a user was last logged in::
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
 
+Creating Users
+^^^^^^^^^^^^^^
 
 You can create a new user with their display name, login name, and any group 
 memberships with the ``user:add`` command. The syntax is::
@@ -1005,7 +1011,11 @@ login name. This example adds new user Layla Smith, and adds her to the
    User "layla" added to group "users"
    User "layla" added to group "db-admins"
 
-Go to your Users page, and you will see your new user.   
+After the command is completed, go to your Users page, and you will see your new
+user.   
+
+Setting A User's Password
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``password-from-env`` allows you to set the user's password from an environment 
 variable. This prevents the password from being exposed to all users via the 
@@ -1039,16 +1049,69 @@ You may also use ``password-from-env`` to reset passwords::
    layla'
    Successfully reset password for layla
    
-You can delete users::
+Deleting A User
+^^^^^^^^^^^^^^^
+
+To delete a user, you use the ``user:delete`` command, as in the example below.::
 
  sudo -u www-data php occ user:delete fred
    
-View a user's most recent login::   
+   
+Finding The User's Last Login
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To view a user's most recent login, use the ``user:lastseen`` command, as in the
+example below::   
    
  sudo -u www-data php occ user:lastseen layla 
    layla's last login: 09.01.2015 18:46
 
-Read user settings::
+User Application Settings
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To manage application settings for a user, use the ``user:setting``
+command. This command provides the ability to:
+
+- Retrieve all settings for an application
+- Retrieve a single setting
+- Set a setting value
+- Delete a setting
+
+If you run the command and pass the help switch (``--help``), you will see the
+following output, in your terminal::
+
+  $ ./occ user:setting --help
+  Usage:
+    user:setting [options] [--] <uid> [<app>] [<key>]
+
+  Arguments:
+    uid                                User ID used to login
+    app                                Restrict the settings to a given app [default: ""]
+    key                                Setting key to set, get or delete [default: ""]
+
+If you’re new to the ``user:setting`` command, the descriptions for the ``app``
+and ``key`` arguments may not be completely transparent. So, here’s a lengthier
+description of both.
+
+======== ======================================================================
+Argument Description
+======== ======================================================================
+app      When an value is supplied, ``user:setting`` limits the settings 
+         displayed, to those for that, specific, application — assuming that 
+         the application is installed, and that there are settings available 
+         for it. Some example applications are "core", "files_trashbin", and 
+         "user_ldap". A complete list, unfortunately, cannot be supplied, as it 
+         is impossible to know the entire list of applications which a user 
+         could, potentially, install.
+key      This value specifies the setting key to be manipulated (set, 
+         retrieved, or deleted) by the ``user:setting`` command.
+======== ======================================================================
+
+Retrieving User Settings
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+To retrieve all settings for a user, you need to call the ``user:setting``
+command and supply the user’s username, as in the example below.::
 
  sudo -u www-data php occ user:setting layla
    - core:
@@ -1058,24 +1121,50 @@ Read user settings::
    - settings:
      - email: layla@example.tld
 
-Filter by app::
+Here, we see that the user has settings for the application ``core``, when they
+last logged in, and what their email address is. 
+
+To retrieve the user’s settings for a specific application, you have to supply
+the username and the application’s name, which you want to retrieve the settings
+for; such as in the example below::
 
  sudo -u www-data php occ user:setting layla core
-   - core:
+  - core:
      - lang: en
 
-Get a single setting::
+In the output, you can see that one setting is in effect, ``lang``, which is set
+to ``en``. To retrieve the value of a single application for a user, use the
+``user:setting`` command, as in the example below.::
 
  sudo -u www-data php occ user:setting layla core lang
- en
+ 
+This will display the value for that setting, such as ``en``.
 
-Set a setting::
+Setting A Setting
+~~~~~~~~~~~~~~~~~
+
+To set a setting, you need to supply four things; these are: 
+
+- the username
+- the application (or setting category)
+- the ``--value`` switch
+- the, quoted, value for that setting
+
+Here’s an example of how you would set the email address of the user ``layla``.::
 
  sudo -u www-data php occ user:setting layla settings email --value "new-layla@example.tld"
 
-Delete a setting::
+Deleting A Setting
+~~~~~~~~~~~~~~~~~~
+
+Deleting a setting is quite similar to setting a setting. In this case, you
+supply the username, application (or setting category) and key as above. Then,
+in addition, you supply the ``--delete`` flag.::
 
  sudo -u www-data php occ user:setting layla settings email --delete
+
+Generating A User Count Report
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Generate a simple report that counts all users, including users on external user
 authentication servers such as LDAP::
