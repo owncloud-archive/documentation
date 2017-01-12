@@ -60,7 +60,34 @@ The most important labels and their meaning:
 * #privacy - refers to issues that might lead to privacy concerns
 * #won't fix - This problem won't be fixed (can be for a wide variety of reasons...)
 
-If you want a label not in the list above, please first discuss on the mailing list.
+Severity Level Labels
+^^^^^^^^^^^^^^^^^^^^^
+
+To better understand which severity level to apply, if any, here is
+a description of each of the four respective labels.
+
+============== ================================================================
+Label          Description
+============== ================================================================
+#sev1-critical The operation is in production and is mission critical to the 
+               business. The product is inoperable and the situation is 
+               resulting in a total disruption of work. There is no workaround 
+               available.
+#sev2-high     Operations are severely restricted. Important features are 
+               unavailable, although work can continue in a limited fashion.
+               A workaround is available.
+#sev3-medium   The product does not work as designed resulting in a minor loss 
+               of usage. A workaround is available.
+#sev4-low      There is no loss of service. This may be a request for 
+               documentation, general information, product enhancement request, 
+               etc.
+============== ================================================================
+
+Don’t See The Label You Need?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you want a label not in the list above, please first discuss on the mailing
+list.
 
 Coding
 ------
