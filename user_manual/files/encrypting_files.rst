@@ -113,7 +113,10 @@ If you need to restore files from backup, which were backed up when encryption
 was enabled, here’s how to do it.
 
 .. NOTE:: 
-   This is effective from at least version v8.2.7 of ownCloud onwards.
+   This is effective from at least version v8.2.7 of ownCloud onwards. Also,
+   this is **not officially supported**. ownCloud officially supports either
+   restoring the full backup or restoring nothing — not restoring individual
+   parts of it.
 
 1. Restore the file from backup
 2. Restore the file's encryption keys from backup
@@ -136,3 +139,5 @@ This process might not be suitable across all environments.
 If it’s not suitable for yours, you might need to run an OCC command that does
 the scanning. 
 But, that will require the user's password or recovery key.
+
+
