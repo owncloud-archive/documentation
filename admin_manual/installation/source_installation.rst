@@ -419,14 +419,16 @@ SELinux-enabled distributions such as Fedora and CentOS.
 php.ini Configuration Notes
 ---------------------------
 
-From ownCloud 9.1.2, several core PHP settings have to be configured correctly,
-otherwise ownCloud may not work properly. These are all listed here.
+Several core PHP settings have to be configured correctly, otherwise ownCloud may
+not work properly. Known settings causing issues are listed here. Please note that
+there might be other settings causing unwanted behaviours. In general it is recommended
+to keep the ``php.ini`` at their defaults.
 
 session.auto_start && enable_post_data_reading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ensure that `session.auto_start`_ and `enable_post_data_reading`_ are set to
-``0`` or ``Off`` in your configuration. If not, you may have issues logging in
+Ensure that `session.auto_start`_ is set to ``0`` or ``Off`` and `enable_post_data_reading`_
+to ``1`` or ``On`` in your configuration. If not, you may have issues logging in
 to ownCloud via the WebUI, where you see the error: "*Access denied. CSRF check
 failed*".
 
@@ -591,7 +593,8 @@ Other Web Servers
 
 .. PHP Configuration Links
    
-.. _php_session_autostart: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
+.. _session.auto_start: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
+.. _enable_post_data_reading: https://secure.php.net/manual/en/ini.core.php#ini.enable-post-data-reading
    
 .. Executable Links
    
