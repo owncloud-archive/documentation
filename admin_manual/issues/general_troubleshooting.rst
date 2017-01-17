@@ -153,6 +153,28 @@ Some common problems / error messages found in your logfiles as described above:
   failing. Information on how to correctly configure your environment can be
   found at the `forums <https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819>`_.
 
+Missing Data Directory
+----------------------
+
+During the normal course of operations, the ownCloud data directory may be
+temporarily unavailable for a variety of reasons. 
+These can include network timeouts on mounted network disks, unintentional
+unmounting of the partition on which the directory sits, or a corruption of the
+RAID setup. 
+If you have experienced this, here’s how ownCloud works and what you can expect.
+
+During normal operation, ownCloud's data directory contains a hidden file, named ``.ocdata``.
+The purpose of this file is for setups where the data folder is mounted (such as via NFS) and for some reason the mount disappeared.
+If the directory isn’t available, the data folder would, in effect, be completely empty and the ".ocdata" would be missing.
+When this happens, ownCloud will return a `503 Service not available`_ error, to prevent clients believing that the files are gone.
+
+.. NOTE: Regarding display of the installation page
+
+   The ownCloud installation page will **not** be displayed if the data
+   directory is missing. As the installation-related details are stored in
+   "config.php", it’s only if ``config/config.php`` is missing that the
+   installation page would appear again.
+
 Troubleshooting Web server and PHP problems
 -------------------------------------------
 
@@ -352,3 +374,7 @@ Some services like *Cloudflare* can cause issues by minimizing JavaScript
 and loading it only when needed. When having issues like a not working
 login button or creating new users make sure to disable such services
 first.
+
+.. Links
+   
+.. _503 Service not available: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error
