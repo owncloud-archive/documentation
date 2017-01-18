@@ -173,6 +173,33 @@ You may change your Recovery Key password.
 .. figure:: images/encryption12.png
 
 .. _occ_encryption_label:
+   
+Changing The Recovery Key Password
+----------------------------------
+
+If you have misplaced your recovery key password and need need to replace it,
+here’s what you need to do:
+
+1. Delete the recovery key from both ``data/owncloud_private_keys`` and
+   ``data/public-keys``
+2. Edit your database table ``oc_appconfig`` and remove the rows with the config
+   keys ``recoveryKeyId`` and ``recoveryAdminEnabled`` for the appid
+   ``files_encryption``
+3. Login as admin and activate the recovery key again with a new password. This
+   will generate a new key pair
+4. All users who used the original recovery key will need to disable it and
+   enable it again. This deletes the old recovery share keys from their files
+   and encrypts their files with the new recovery key
+
+.. NOTE:: 
+   You can only change the recovery key password if you know the original. This
+   is by design, as only admins who know the recovery key password should be
+   able to change it. If not, admins could hijack the recovery key from each
+   other
+   
+.. WARNING:: 
+   Replacing the recovery key will mean that all users will lose the possibility
+   to recover their files until they have applied the new recovery key
 
 occ Encryption Commands
 -----------------------
