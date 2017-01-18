@@ -172,7 +172,7 @@ ownCloud in a subdir of nginx
 =============================
 
 The following config should be used when ownCloud is not in your webroot but placed under a different contextroot of 
-your nginx installation such as /owncloud or /cloud. The following configuration assumes it is placed under ``/owncloud``.
+your nginx installation such as /owncloud or /cloud. The following configuration assumes it is placed under ``/owncloud`` and that you have ``'overwritewebroot' => '/owncloud',`` set in your ``config/config.php``.
 
 ::
 
