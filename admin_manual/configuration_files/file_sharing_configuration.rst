@@ -2,9 +2,11 @@
 File Sharing
 ============
 
-ownCloud users can share files with their ownCloud groups and other users on 
-the same ownCloud server, with ownCloud users on :doc:`other ownCloud servers <federated_cloud_sharing_configuration>`, and create public shares for people who are not 
-ownCloud users. You have control of a number of user permissions on file shares:
+From version 8.2, ownCloud users can share files with their ownCloud groups and
+other users on the same ownCloud server, with ownCloud users on :doc:`other
+ownCloud servers <federated_cloud_sharing_configuration>`, and create public
+shares for people who are not ownCloud users. 
+You have control of a number of user permissions on file shares:
 
 * Allow users to share files
 * Allow users to create public shares
