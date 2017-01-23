@@ -177,7 +177,7 @@ You may change your Recovery Key password.
 Changing The Recovery Key Password
 ----------------------------------
 
-If you have misplaced your recovery key password and need need to replace it,
+If you have misplaced your recovery key password and need to replace it,
 here’s what you need to do:
 
 1. Delete the recovery key from both ``data/owncloud_private_keys`` and
