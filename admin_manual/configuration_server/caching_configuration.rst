@@ -40,6 +40,36 @@ You may use both a local and a distributed cache. Recommended caches are APCu
 and Redis. After installing and enabling your chosen memcache, verify that it is 
 active by running :ref:`label-phpinfo`.
 
+Caching Exceptions
+------------------
+
+If ownCloud is configured to use either Memcached or Redis as a memory cache,
+please be aware that you may encounter issues with functionality. 
+When these occur, it is usually a result of PHP being incorrectly configured, or
+the relevant PHP extension not being available.
+
+In the table below, you can see all of the known reasons for reduced or broken
+functionality related to caching.
+
++---------------------------------------------+------------------------------------------------------------------+
+| Setup/Configuration                         | Result                                                           |
++=============================================+==================================================================+
+| If file locking is enabled, but the locking | The application will not be usable                               |
+| cache class is missing, then an exception   |                                                                  |
+| will appear in the web UI                   |                                                                  |
++---------------------------------------------+------------------------------------------------------------------+
+| If file locking is enabled and the locking  | There will be a white page/exception in web UI. It               |
+| cache is configured, but the PHP module     | will be a full page issue, and the application will not be       |
+| missing.                                    | usable                                                           |
++---------------------------------------------+------------------------------------------------------------------+
+| All enabled, but the Redis server is not    | The application will be usable. But any file operation will      |
+| running                                     | return a **"500 Redis went away"** exception                     |
++---------------------------------------------+------------------------------------------------------------------+
+| If Memcache is configured for "local" and   | There will be a white page and an exception written to the logs, |
+| "distributed", but the class is missing     | This is because autoloading needs the missing class. So there is |
+|                                             | no way to show a page                                            |
++---------------------------------------------+------------------------------------------------------------------+
+    
 APCu
 ----
 
@@ -63,26 +93,31 @@ Refresh your ownCloud admin page, and the cache warning should disappear.
 Memcached
 ---------
 
-Memcached is a reliable oldtimer for shared caching on distributed servers, 
-and performs well with ownCloud with one exception: it is not suitable to use 
-with :doc:`Transactional File Locking <../configuration_files/files_locking_transactional>`
-because it does not store locks, and data can disappear from the cache at any time
-(Redis is the best memcache for this). 
+Memcached is a reliable old-timer for shared caching on distributed servers. 
+It performs well with ownCloud with one exception: it is not suitable to use
+with :doc:`Transactional File Locking
+<../configuration_files/files_locking_transactional>`.
+This is because it does not store locks, and data can disappear from the cache
+at any time.
+Given that, Redis is the best memory cache to use. 
 
 .. note:: Be sure to install the **memcached** PHP module, and not memcache, as 
    in the following examples. ownCloud supports only the **memcached** PHP 
    module.
 
-Setting up Memcached is easy. On Debian/Ubuntu/Mint install ``memcached`` and 
-``php5-memcached``. The installer will automatically start ``memcached`` and 
-configure it to launch at startup.
+Setting Up Memcached
+~~~~~~~~~~~~~~~~~~~~
 
-On Red Hat/CentOS/Fedora install ``memcached`` and 
-``php-pecl-memcached``. It will not start automatically, so you must use 
-your service manager to start ``memcached``, and to launch it at boot as a 
-daemon.
+On Debian/Ubuntu/Mint install ``memcached`` and ``php5-memcached``. 
+The installer will automatically start ``memcached`` and configure it to launch
+at startup.
+
+On Red Hat/CentOS/Fedora install ``memcached`` and ``php-pecl-memcached``. 
+It will not start automatically, so you must use your service manager to start
+``memcached``, and to launch it at boot as a daemon.
  
-You can verify that the Memcached daemon is running with ``ps ax``::
+You can verify that the Memcached daemon is running using the command: ``ps
+ax``, as follows::
 
  ps ax | grep memcached
  19563 ? Sl 0:02 /usr/bin/memcached -m 64 -p 11211 -u memcache -l 
