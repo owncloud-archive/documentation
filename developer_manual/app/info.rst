@@ -16,7 +16,6 @@ The :file:`appinfo/info.xml` contains metadata about the app:
       <version>1.0</version>
       <licence>AGPL</licence>
       <author>Your Name</author>
-      <requiremin>5</requiremin>
       <namespace>YourAppsNamespace</namespace>
 
       <types>
@@ -97,10 +96,6 @@ If a proprietary/non AGPL compatible licence should be used, the `ownCloud Enter
 author
 ------
 **Required**: The name of the app author or authors.
-
-requiremin
-----------
-Required if not added in the **<dependencies>** tag. The minimal version of ownCloud.
 
 namespace
 ---------
@@ -197,8 +192,9 @@ Defines the required target operating system the app can run on. Valid values ar
 
 owncloud
 --------
-Defines minimum and maximum versions of the ownCloud core. In case undefined the values will be taken from the tag 'requiremin'.
+Defines minimum and maximum versions of the ownCloud core. 
 
+.. important:: This will be mandatory from version 11 onwards.
 
 Deprecated
 ==========
