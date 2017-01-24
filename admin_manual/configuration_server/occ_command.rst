@@ -733,6 +733,8 @@ you can run the following LDAP commands with ``occ``::
                                 LDAP anymore, but have remnants in 
                                 ownCloud.
   ldap:test-config              tests an LDAP configuration
+  ldap:update-group             update the specified group membership
+                                information stored locally
 
 Search for an LDAP user, using this syntax::
 
@@ -869,6 +871,26 @@ the server::
  
 ``ldap:show-remnants`` is for cleaning up the LDAP mappings table, and is 
 documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
+
+``ldap:update-group`` updates the specified group membership information stored
+locally.
+
+The command takes the format::
+
+  ldap:update-group <groupID> <groupID <groupID> ...>
+
+The command allows for running a manual group sync on one or more groups,
+instead of having to wait for group syncing to occur.
+If users have been added or removed from these groups in LDAP, ownCloud will
+update its details.
+If a group was deleted in LDAP, ownCloud will also delete the local mapping
+info about this group.
+
+.. note::
+   New groups in LDAP won't be synced with this command.
+   The LDAP TTL configuration (by default 10 minutes) still applies. This means
+   that recently deleted groups from LDAP might be considered as "active" and
+   might not be deleted in ownCloud immediately.
 
 .. _logging_commands_label:
 
