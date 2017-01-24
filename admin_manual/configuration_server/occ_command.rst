@@ -799,7 +799,68 @@ example that sets search attributes::
  
  sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch 
  "cn;givenname;sn;displayname;mail"
- 
+
+The command takes the format::
+
+  ldap:set-config <configID> <configKey> <configValue>
+
+All of the available keys, along with default values for `configValue`, are
+listed in the table below.
+
+================================ ==============================================
+Configuration                    Setting
+================================ ==============================================
+hasMemberOfFilterSupport
+hasPagedResultSupport
+homeFolderNamingRule
+lastJpegPhotoLookup              0 
+ldapAgentName                    `cn=admin,dc=owncloudqa,dc=com`
+ldapAgentPassword                *\**
+ldapAttributesForGroupSearch
+ldapAttributesForUserSearch
+ldapBackupHost
+ldapBackupPort
+ldapBase                         `dc=owncloudqa,dc=com`
+ldapBaseGroups                   `dc=owncloudqa,dc=com `
+ldapBaseUsers                    `dc=owncloudqa,dc=com`
+ldapCacheTTL                     600 
+ldapConfigurationActive          1
+ldapDynamicGroupMemberURL
+ldapEmailAttribute
+ldapExperiencedAdmin             0 
+ldapExpertUUIDGroupAttr
+ldapExpertUUIDUserAttr
+ldapExpertUsernameAttr                                                                            ldapGroupDisplayName             `cn`
+ldapGroupFilter                                                                                  ldapGroupFilterGroups
+ldapGroupFilterMode              0
+ldapGroupFilterObjectclass
+ldapGroupMemberAssocAttr         `uniqueMember`
+ldapHost                         `ldap://host`
+ldapIgnoreNamingRules
+ldapLoginFilter                  `(&((objectclass=inetOrgPerson))(uid=%uid))`
+ldapLoginFilterAttributes
+ldapLoginFilterEmail             0
+ldapLoginFilterMode              0
+ldapLoginFilterUsername          1
+ldapNestedGroups                 0
+ldapOverrideMainServer
+ldapPagingSize                   500
+ldapPort                         389
+ldapQuotaAttribute
+ldapQuotaDefault
+ldapTLS                          0
+ldapUserDisplayName              `displayName`
+ldapUserDisplayName2
+ldapUserFilter                   `((objectclass=inetOrgPerson))`
+ldapUserFilterGroups
+ldapUserFilterMode               0
+ldapUserFilterObjectclass        `inetOrgPerson`
+ldapUuidGroupAttribute           `auto`
+ldapUuidUserAttribute            `auto`
+turnOffCertCheck                 0
+useMemberOfToDetectMembership    1
+================================ ==============================================
+
 ``ldap:test-config`` tests whether your configuration is correct and can bind to 
 the server::
 
