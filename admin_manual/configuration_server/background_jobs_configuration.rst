@@ -61,6 +61,17 @@ You can verify if the cron job has been added and scheduled by executing::
 
 Please refer to `the crontab man page`_ for the exact command syntax.
 
+Parallel Task Execution
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Regardless of the approach which you take, since ownCloud 9.1, Cron jobs can be run in parallel. This is done by running ``cron.php`` multiple times.
+Depending on the process which you’re automating, this may not be necessary.
+However, for longer-running tasks, such as those which are LDAP related, it may be very beneficial.
+
+There is no way to do so via the ownCloud UI.
+But, the most direct way to do so, is by opening three console tabs and in each one run ``php cron.php``. 
+Each of these processes would acquire their own list of jobs to process without overlap any other.
+
 .. Links
 
 .. _easyCron: http://www.easycron.com/
