@@ -735,9 +735,10 @@ Most of the time though it makes sense to also allow normal users to access the 
 
 To turn off checks the following *Annotations* can be added before the controller:
 
-* **@NoAdminRequired**: Also users that are not admins can access the page
-* **@NoCSRFRequired**: Don't check the CSRF token (use this wisely since you might create a security hole, to understand what it does see :doc:`../general/security`)
-* **@PublicPage**: Everyone can access the page without having to log in
+* ``@NoAdminRequired``: Also users that are not admins can access the page
+* ``@NoSubAdminRequired``: Allow normal users access to the page
+* ``@NoCSRFRequired``: Don't check the CSRF token (use this wisely since you might create a security hole, to understand what it does see :doc:`../general/security`)
+* ``@PublicPage``: Everyone can access the page without having to log in
 
 A controller method that turns off all checks would look like this:
 
