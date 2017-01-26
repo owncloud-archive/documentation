@@ -61,7 +61,7 @@ To connect a controller and a route the controller has to be registered in the :
     }
 
 Every controller requires the app name and the request object to be passed to their parent constructor. 
-This can be down as shown in the example code above. 
+This can be done as shown in the example code above. 
 
 .. note: 
    The important part is not the class name, but rather the string which is
@@ -563,7 +563,7 @@ Streamed and Lazily Rendered Responses
 
 By default all responses are rendered at once and sent as a string through middleware. 
 In certain cases this is not a desirable behavior, for instance if you want to stream a file in order to save memory. 
-To do that use the now available ``OCP\\AppFramework\\Http\\StreamResponse`` class:
+To do that, use the ``OCP\\AppFramework\\Http\\StreamResponse`` class:
 
 .. code-block:: php
 
