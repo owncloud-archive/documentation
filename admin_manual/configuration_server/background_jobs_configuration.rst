@@ -1,4 +1,4 @@
-Defining Background Jobs
+Background Jobs
 ========================
 A system like ownCloud sometimes requires tasks to be done on a regular basis without the need for user interaction or hindering ownCloud performance. For that purpose, as a system administrator, you can define background jobs (for example, database clean-ups) which are executed without any need for user interaction.
 
@@ -58,6 +58,48 @@ You can verify if the cron job has been added and scheduled by executing::
 
 .. note:: On some systems it might be required to call **php-cli** instead of **php**.
 
-.. note:: Please refer to the crontab man page for the exact command syntax.
+Available Background Jobs
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+A number of existing background jobs are available to be run just for specific tasks. 
+
+These are:
+
+ExpireTrash
+^^^^^^^^^^^
+
+The ExpireTrash job, contained in ``OCA\Files_Trashbin\BackgroundJob\ExpireTrash``, will remove any file in the ownCloud trash bin which is older than the specified maximum file retention time.  
+It can be run, as follows, using the OCC command::
+
+  occ trashbin:expire
+
+ExpireVersions 
+^^^^^^^^^^^^^^
+
+The ExpireVersions job, contained in ``OCA\Files_Versions\BackgroundJob\ExpireVersions``, will expire versions of files which are older than the specified maximum version retention time.
+It can be run, as follows, using the OCC command::
+
+  occ versions:expire
+
+SyncJob (CardDAV)
+^^^^^^^^^^^^^^^^^
+
+The CardDAV SyncJob, contained in ``OCA\DAV\CardDAV\SyncJob``, syncs the local
+system address book, updating any existing contacts, and deleting any expired
+contacts.
+It can be run, as follows, using the OCC command::
+
+  occ dav:sync-system-addressbook
+
+SyncJob (Federation)
+^^^^^^^^^^^^^^^^^^^^
+
+OCA\Federation\SyncJob 
+
+It can be run, as follows, using the OCC command::
+
+  occ federation:sync-addressbooks
+
+.. Links
 
 .. _easyCron: http://www.easycron.com/
