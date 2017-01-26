@@ -1503,3 +1503,51 @@ which are older then the number of days that is set for ``activity_expire_days``
 	'wnd.logging.enable' => true,
 
 This enables debug logs for the windows_network_drive app.
+
+Overriding Existing Parameter Values Using Environment Variables
+----------------------------------------------------------------
+
+ownCloud supports overriding existing configuration values for the web UI,
+command line, and Cron environments, using `environment variables`_.
+Doing so avoids the need to storing credentials, and other *private* data,  data
+which you never want to leak out, in either code or source repositories. 
+What’s more, by taking this approach, code changes aren’t required to deploy to
+multiple environments.
+
+To set override an existing setting, you need to export an environment variable,
+which has the same name as the one which you want to override, prefixed with
+``OC_``. 
+For example, if you wanted to override the value of ``dbname``, you would set
+the environment variable ``OC_dbname``.
+
+Below are examples of setting an environment variable in the Apache and Nginx
+web servers, and for when running command line scripts. 
+
+Apache Web Server
+~~~~~~~~~~~~~~~~~
+
+::
+
+  # Inside a virtual host configuration
+  SetEnv OC_dbname owncloud_database_name
+  
+Nginx Web Server (php-fpm)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+  location / {
+      fastcgi_param OC_dbname owncloud_database_name
+  }
+
+Command Line
+~~~~~~~~~~~~
+
+::
+
+  # export the variable into the environment before launching the Cron script
+  export OC_dbname=owncloud_database_name php -d variables_order=EGPCS cron.php
+
+.. Links
+   
+  .. _environment variables: https://12factor.net/config 
