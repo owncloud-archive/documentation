@@ -1514,7 +1514,7 @@ which you never want to leak out, in either code or source repositories.
 What’s more, by taking this approach, code changes aren’t required to deploy to
 multiple environments.
 
-To set override an existing setting, you need to export an environment variable,
+To override an existing setting, you need to export an environment variable,
 which has the same name as the one which you want to override, prefixed with
 ``OC_``. 
 For example, if you wanted to override the value of ``dbname``, you would set
