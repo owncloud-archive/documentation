@@ -37,7 +37,8 @@ Webcron
 ~~~~~~~
 
 By registering your ownCloud ``cron.php`` script address as an external webcron service (for example, easyCron_), you ensure that background jobs are executed regularly. 
-To use this type of service, your server you must be able to access your server using the Internet. For example::
+To use this type of service, your external webcron service must be able to access your ownCloud server using the Internet. 
+For example::
 
   URL to call: http[s]://<domain-of-your-server>/owncloud/cron.php
 
@@ -70,7 +71,7 @@ However, for longer-running tasks, such as those which are LDAP related, it may 
 
 There is no way to do so via the ownCloud UI.
 But, the most direct way to do so, is by opening three console tabs and in each one run ``php cron.php``. 
-Each of these processes would acquire their own list of jobs to process without overlap any other.
+Each of these processes would acquire their own list of jobs to process without overlapping any other.
 
 .. Links
 
