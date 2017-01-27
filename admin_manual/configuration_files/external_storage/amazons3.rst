@@ -8,6 +8,8 @@ To connect your Amazon S3 buckets to ownCloud, you will need:
 - S3 secret key
 - Bucket name
 
+.. note:: ownCloud 8.2+ supports the EU (Frankfurt) region.
+
 In the **Folder name** field enter a local folder name for your S3 mountpoint. 
 If this does not exist it will be created.
 
