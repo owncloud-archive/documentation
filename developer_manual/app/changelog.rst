@@ -39,6 +39,16 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
 
 .. note:: Deprecations on interfaces also affect the implementing classes!
 
+Deprecation Policy
+------------------
+
+- An API added in one version of ownCloud only needs to be maintained as long as
+that version is not End of Life (EOL)
+- An API can be removed completely in a future version of ownCloud if the
+release date of the version is later than the EOL date of the previous version
+- Before removing an API completely, it needs to deprecated for at least a year.
+This is done by adding `@deprecated` tags.
+
 11.1
 ----
 * **OCP\\App::setActiveNavigationEntry** has been deprecated in favour of **\\OCP\\INavigationManager**
