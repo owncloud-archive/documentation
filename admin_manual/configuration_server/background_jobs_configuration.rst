@@ -65,7 +65,7 @@ Available Background Jobs
 
 A number of existing background jobs are available to be run just for specific tasks. 
 
-These are:
+While not exhaustive, these include:
 
 ExpireTrash
 ^^^^^^^^^^^
