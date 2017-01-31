@@ -71,13 +71,6 @@ you can set the following parameters inside the :file:`config/config.php`.
     "overwritecondaddr" => "^10\.0\.0\.1$",
   );
 
-With an apache as reverse proxy (ssl-proxy.tld) you can use this configuration:
-
-::
-
-  ProxyPass "/domain.tld/owncloud" "http://domain.tld/owncloud"
-  ProxyPassReverse "/domain.tld/owncloud" "http://domain.tld/owncloud"
-
 .. note:: If you want to use the SSL proxy during installation you have to
   create the :file:`config/config.php` otherwise you have to extend the existing
   **$CONFIG** array.
