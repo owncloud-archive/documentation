@@ -7,7 +7,7 @@ creating your own cloud of ownClouds. You can create direct share links with
 users on other ownCloud servers.
 
 .. important:: 
-   Sharing to federated groups is not supported.
+   Sharing to groups from federated ownCloud instances is not supported.
 
 Creating a New Federation Share
 -------------------------------
