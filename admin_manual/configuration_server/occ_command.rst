@@ -733,6 +733,8 @@ you can run the following LDAP commands with ``occ``::
                                 LDAP anymore, but have remnants in 
                                 ownCloud.
   ldap:test-config              tests an LDAP configuration
+  ldap:update-group             update the specified group membership
+                                information stored locally
 
 Search for an LDAP user, using this syntax::
 
@@ -799,7 +801,68 @@ example that sets search attributes::
  
  sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch 
  "cn;givenname;sn;displayname;mail"
- 
+
+The command takes the format::
+
+  ldap:set-config <configID> <configKey> <configValue>
+
+All of the available keys, along with default values for `configValue`, are
+listed in the table below.
+
+================================ ==============================================
+Configuration                    Setting
+================================ ==============================================
+hasMemberOfFilterSupport
+hasPagedResultSupport
+homeFolderNamingRule
+lastJpegPhotoLookup              0 
+ldapAgentName                    `cn=admin,dc=owncloudqa,dc=com`
+ldapAgentPassword                *\**
+ldapAttributesForGroupSearch
+ldapAttributesForUserSearch
+ldapBackupHost
+ldapBackupPort
+ldapBase                         `dc=owncloudqa,dc=com`
+ldapBaseGroups                   `dc=owncloudqa,dc=com `
+ldapBaseUsers                    `dc=owncloudqa,dc=com`
+ldapCacheTTL                     600 
+ldapConfigurationActive          1
+ldapDynamicGroupMemberURL
+ldapEmailAttribute
+ldapExperiencedAdmin             0 
+ldapExpertUUIDGroupAttr
+ldapExpertUUIDUserAttr
+ldapExpertUsernameAttr                                                                            ldapGroupDisplayName             `cn`
+ldapGroupFilter                                                                                  ldapGroupFilterGroups
+ldapGroupFilterMode              0
+ldapGroupFilterObjectclass
+ldapGroupMemberAssocAttr         `uniqueMember`
+ldapHost                         `ldap://host`
+ldapIgnoreNamingRules
+ldapLoginFilter                  `(&((objectclass=inetOrgPerson))(uid=%uid))`
+ldapLoginFilterAttributes
+ldapLoginFilterEmail             0
+ldapLoginFilterMode              0
+ldapLoginFilterUsername          1
+ldapNestedGroups                 0
+ldapOverrideMainServer
+ldapPagingSize                   500
+ldapPort                         389
+ldapQuotaAttribute
+ldapQuotaDefault
+ldapTLS                          0
+ldapUserDisplayName              `displayName`
+ldapUserDisplayName2
+ldapUserFilter                   `((objectclass=inetOrgPerson))`
+ldapUserFilterGroups
+ldapUserFilterMode               0
+ldapUserFilterObjectclass        `inetOrgPerson`
+ldapUuidGroupAttribute           `auto`
+ldapUuidUserAttribute            `auto`
+turnOffCertCheck                 0
+useMemberOfToDetectMembership    1
+================================ ==============================================
+
 ``ldap:test-config`` tests whether your configuration is correct and can bind to 
 the server::
 
@@ -808,6 +871,26 @@ the server::
  
 ``ldap:show-remnants`` is for cleaning up the LDAP mappings table, and is 
 documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
+
+``ldap:update-group`` updates the specified group membership information stored
+locally.
+
+The command takes the format::
+
+  ldap:update-group <groupID> <groupID <groupID> ...>
+
+The command allows for running a manual group sync on one or more groups,
+instead of having to wait for group syncing to occur.
+If users have been added or removed from these groups in LDAP, ownCloud will
+update its details.
+If a group was deleted in LDAP, ownCloud will also delete the local mapping
+info about this group.
+
+.. note::
+   New groups in LDAP won't be synced with this command.
+   The LDAP TTL configuration (by default 10 minutes) still applies. This means
+   that recently deleted groups from LDAP might be considered as "active" and
+   might not be deleted in ownCloud immediately.
 
 .. _logging_commands_label:
 

@@ -2,11 +2,19 @@
 ownCloud Deployment Recommendations
 ===================================
 
-What is the best way to install and maintain ownCloud? The answer to that is 
-*"it depends"* because every ownCloud customer has their own 
-particular needs and IT infrastructure. ownCloud and the LAMP stack are 
-highly-configurable, so we will present three typical scenarios and make 
-best-practice recommendations for both software and hardware.
+What is the best way to install and maintain ownCloud? 
+The answer to that is: *"it depends"*, because every ownCloud customer has their own 
+particular needs and IT infrastructure. 
+ownCloud and the LAMP stack are highly-configurable. 
+Given that, in this document we present three typical scenarios and make best-practice recommendations for both software and hardware.
+
+.. note:: 
+   The recommendations presented here are based on a standard ownCloud
+   installation, one without any particular apps, themes, or code changes. But,
+   server load is dependent upon on the number of clients, files, user activity,
+   as well as other usage patterns. Given that, these recommendations are only
+   a rule of thumb based on our experience, as well as that of one of our
+   customers.
 
 General Recommendations
 -----------------------
