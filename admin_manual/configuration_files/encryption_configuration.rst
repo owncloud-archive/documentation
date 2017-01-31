@@ -116,6 +116,28 @@ storage.
 
 .. figure:: images/encryption15.png
 
+Enabling Master Key Based Encryption
+------------------------------------
+
+To enable master key based encryption:
+
+1. Enable the default encryption module app, using the following command::
+
+  php occ app:enable encryption
+
+2. Then enable encryption, using the following command :: 
+
+  php occ encryption:enable
+
+3. Then enable the master key, using the following command::
+
+  php occ encryption:enable-master-key
+
+.. note:: 
+   When LDAP is configured with a `User Home Folder Naming Rule`_ encryption
+   does have some issues. This is a known bug and we are working hard on
+   resolving this issue.
+
 Sharing Encrypted Files
 -----------------------
 
@@ -372,3 +394,7 @@ You must run ``occ`` as your HTTP user; see
 
 When you are finished, take your ownCloud server out of 
 ``maintenance:singleuser`` mode.
+
+.. Links
+   
+.. _User Home Folder Naming Rule: https://doc.owncloud.com/server/9.1/admin_manual/configuration_user/user_auth_ldap.html#special-attributes
