@@ -133,11 +133,6 @@ To enable master key based encryption:
 
   php occ encryption:enable-master-key
 
-.. note:: 
-   When LDAP is configured with a `User Home Folder Naming Rule`_ encryption
-   does have some issues. This is a known bug and we are working hard on
-   resolving this issue.
-
 Sharing Encrypted Files
 -----------------------
 
