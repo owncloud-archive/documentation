@@ -1,94 +1,105 @@
-Integration tests
-============
+=================
+Integration Tests
+=================
 
-Using Behat to test core 
-----------------
+The Test Directory Structure
+----------------------------
 
-Tests location and structure
-~~~~~~~~~~~~~~~~~~~~~~
-
-In core repository we can find this structure:
+This is the structure of integration directory inside `the core repository's`_ ``build`` directory:
 
 .. code-block:: bash
+
     build
     ├── integration
-    │   ├── composer.json
-    │   ├── composer.lock
-    │   ├── config
-    │   │   └── behat.yml
-    │   ├── data
-    │   │   └── textfile.txt
-    │   ├── features
-    │   │   ├── feature files (behat gherkin files)
-    │   │   └── bootstrap
-    │   │       └── Contexts and traits (php files)
-    │   ├── federation_features
-    │   │   └── federated.feature (feature on a separated context)
-    │   ├── run.sh
-    │   ├── vendor
+    │   ├── composer.json
+    │   ├── composer.lock
+    │   ├── config
+    │   │   └── behat.yml
+    │   ├── data
+    │   │   └── textfile.txt
+    │   ├── features
+    │   │   ├── feature files (behat gherkin files)
+    │   │   └── bootstrap
+    │   │       └── Contexts and traits (php files)
+    │   ├── federation_features
+    │   │   └── federated.feature (feature on a separated context)
+    │   ├── run.sh
+    │   ├── vendor
 
-Let's detail each part.
+Here’s a short description of each component of the directory.
 
-- "composer.json" and "composer.lock":
-    These files store the required dependencies for the integration tests, libraries like sabredav, guzzle or behat are tracked here.
+``composer.json`` and ``composer.lock``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Folder "config":
-    Here is located the behat.yml file which sets up the integration tests execution.
+These files store the required dependencies for the integration tests. This can include libraries such as sabredav, guzzle, or behat.
 
-    In this file we can add new contexts and new features.
+``config/``
+~~~~~~~~~~~
 
-    Example of a part of behat.yml:
+This directory contains ``behat.yml`` which sets up the integration tests.
+In this file we can add new contexts and new features.
+Here's an example configuration:
 
-  .. code-block:: yaml
-      default:
-        autoload:
-          '': %paths.base%/../features/bootstrap
-        suites:
-          default:
-            paths:
-              - %paths.base%/../features
-            contexts:
-              - FeatureContext:
-                  baseUrl:  http://localhost:8080/ocs/
-                  admin:
-                    - admin
-                    - admin
-                  regular_user_password: 123456
-              - CommentsContext:
-                  baseUrl: http://localhost:8080
+.. code-block:: yaml
 
+    default:
+      autoload:
+        '': %paths.base%/../features/bootstrap
+      suites:
+        default:
+          paths:
+            + %paths.base%/../features
+          contexts:
+            + FeatureContext:
+                baseUrl:  http://localhost:8080/ocs/
+                admin:
+                  + admin
+                  + admin
+                regular_user_password: 123456
+            + CommentsContext:
+                baseUrl: http://localhost:8080
 
-- Folder "data":
-  This folder is used in some tests to store temporary data.
+``data/``
+~~~~~~~~~
 
-- Folder "features":
-  Here there are stored the behat's feature files. Those files contain the test cases, called scenarios.
-  They use the Gherkin language to define the scenarios.
+This folder can be used in tests to store temporary data.
 
-- Folder "feature/bootstrap":
-  In this folder are located all the behat Contexts. These contexts contain the php classes required to run the scenarios. Every feature file has to have a Context associated. In contexts live the code which is run when behat parses the steps of each scenario.
+``features/``
+~~~~~~~~~~~~~
 
-- Script "run.sh":
-  This script runs the tests suites. To use it we need to use the web server user (www-data|apache).
+This directory stores `Behat's feature files`_. 
+These contain the Behat's test cases, called scenarios, which use the Gherkin language.
 
+``feature/bootstrap``
+~~~~~~~~~~~~~~~~~~~~~
 
-Process to add a new feature
-~~~~~~~~~~~~~~~~~~~~~~
+This folder contains all the Behat contexts. 
+Contexts contain the PHP code required to run Behat's scenarios. 
+Every feature file has to have at least one context associated with it. 
 
-Creation of a new feature file is recommended when the task to test is independent enough from the rest of features.
+``run.sh``
+~~~~~~~~~~
+  
+This script runs the tests suites. 
+To use it we need to use the web server user, which is normally ``www-data`` or ``apache``.
 
-Create a new file for the context, naming it TaskToTestContext.php.
+How to Add a New Feature
+------------------------
 
-This is an snippet for creating a new context:
+Creation of a new feature file is recommended when the task being tested is independent enough from the existing features.
+In this section, we'll step through the creation of a hypothetical feature.
 
-.. code-block::php
+The first thing we need to do is create a new file for the context; we'll name it TaskToTestContext.php.
+In the file, we'll add the code snippet below:
+
+.. code-block:: php
+
     <?php
 
     use Behat\Behat\Context\Context;
     use Behat\Behat\Context\SnippetAcceptingContext;
 
     require __DIR__ . '/../../vendor/autoload.php';
-
 
     /**
      * Example Context.
@@ -97,18 +108,19 @@ This is an snippet for creating a new context:
       use Webdav;
     }
 
-Each scenario underlying code belonging to the new feature to test should be added here.
-
+Each scenario relating to the new feature being tested should be added here.
 To add a function to run as a scenario step, do the following:
 
-- Use a @When @Given or @Then statement at the beginning.
-- For parameters you could use either the regular expressions way or the :variable way. But using colons is preferred.
-- Document all the parameters of the function an their expected type.
+- Use a ``@When``, ``@Given``, or ``@Then`` statement at the beginning.
+- For parameters you could use either regular expressions or use a ``:variable``. But, using colons is preferred.
+- Document all the parameters of the function and their expected type.
 - Be careful to write the exact sentence that you will write in the gherkin code. Behat won't parse it properly otherwise.
 
-Example code:
 
-.. code-block::php
+Here’s example code for a scenario:
+
+.. code-block:: php
+
   /**
    * @When Sending a :method to :url with requesttoken
    * @param string $method
@@ -117,13 +129,16 @@ Example code:
   public function exampleFunction($method, $url) {
 
 
-Add a new feature file to features folder. The name should be task-to-test.feature.
+Following this, add a new feature file to ``features/`` folder. 
+The name should be in the format: ``<task-to-test>.feature``.
+The content of this file should be Gherkin code. 
+You can use all the sentences available in the rest of core contexts, just use the appropriate trait in your context. 
 
-The content of this file should be gherkin code. You can use all the sentences available in the rest of core contexts, just use the apropiate trait in your context. For example "use Webdav;" for using webdav related functions.
-
+For example "use Webdav;" for using WebDAV related functions.
 Lets show an example of a feature file with scenarios:
 
-..code-block::
+.. code-block:: yaml
+
     Feature: provisioning
       Background:
         Given using api version "1"
@@ -134,34 +149,43 @@ Lets show an example of a feature file with scenarios:
         Then the OCS status code should be "998"
         And the HTTP status code should be "200"
 
-At the beginning we can see the feature name Feature: provisioning and some variables set in the Background section. This sentence 'Given using api version "1"' corresponds with the use of the v1 of the provisioning API.
+- ``Feature``: gives the feature its name, in this case: ``provisioning``.
+- ``Background``: gives contextual information on assumptions which the feature makes, what it relates to, and other aspects so that the scenario can be properly understood.
+- ``Scenario``: contains the core information about a test scenario in human-readable language, so that you can understand what the code will have to do for the scenario to have been successfully implemented. 
 
-A scenario requires three parts, "Given", "When" and "Then" sections. "Given" and "Then" can have several sentences joined together by "And", but "Then" statement should be just one. And this should be the function to test. The other parts are preconditions and postconditions of the test. 
+A scenario requires three parts, ``"Given"``, ``"When"``, and ``"Then"`` sections. 
+``"Given"`` and ``"Then"`` can have several sentences joined together by ``"And"``, but ``"Then"`` statements should just have one. 
+And this should be the function to test. 
+The other parts are preconditions and post-conditions of the test. 
 
-To be able to run your new feature tests you'll have to add a new context to config/behat.yml file.
-In the Contexts section add your new context:
+To be able to run your new feature tests you'll have to add a new context to ``config/behat.yml`` file.
+To do so, in the ``contexts`` section add your new context:
 
-..code-block::
-        contexts:
-              - TaskToTestContext:
-                  baseUrl:  http://localhost:8080/ocs/
+.. code-block:: yaml
 
-After the name add all the variables required for your context. In this example we add just the required baseUrl variable.
+    contexts:
+          * TaskToTestContext:
+              baseUrl:  http://localhost:8080/ocs/
 
-For running your new tests just do (assuming that your web user is www-data):
+After the name, add all the variables required for your context. 
+In this example we add just the required ``baseUrl`` variable.
+With that done, we're now ready to run the tests. 
+To do so, assuming that your web user is ``www-data``, run the following command::
 
-sudo -u www-data ./run.sh features/task-to-test.feature
+  sudo -u www-data ./run.sh features/task-to-test.feature
 
-It will show you the results of the tests.
+If you want to use an alternative home name using the ``env`` variable add to the execution ``OC_TEST_ALT_HOME=1``, as in the following example:
 
-If you want to use an alternative home name using the env variable add to the execution OC_TEST_ALT_HOME=1.
-sudo -u www-data OC_TEST_ALT_HOME=1 ./run.sh features/task-to-test.feature
+  sudo -u www-data OC_TEST_ALT_HOME=1 ./run.sh features/task-to-test.feature
 
-If you want to have encryption enabled add OC_TEST_ENCRYPTION_ENABLED=1.
-sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/task-to-test.feature
+If you want to have encryption enabled add ``OC_TEST_ENCRYPTION_ENABLED=1``, as in the following example:
 
+  sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/task-to-test.feature
 
+For more information on Behat, and how to write integration tests using it, check out `the online documentation`_.
 
-Here are some useful links about how to write integration tests with Behat:
-
-- http://behat.org/en/latest/guides.html
+.. Links
+   
+.. _the core repository's: https://github.com/owncloud/core
+.. _Behat's feature files: http://docs.behat.org/en/v2.5/guides/1.gherkin.html
+.. _the online documentation: http://behat.org/en/latest/guides.html
