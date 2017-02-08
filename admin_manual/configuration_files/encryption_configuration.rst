@@ -133,12 +133,10 @@ To enable master key based encryption:
 
   php occ encryption:enable-master-key
 
-.. note:: 
-   
-   Master key mode has to be setup in a newly created instance.
-   When doing so, however, you may encounter the following warning:
-   *Warning: Only available for fresh installations with no existing encrypted data! There is also no way to disable it again. Do you want to continue? (y/n)*
+.. note::
 
+   Master key mode has to be setup in a newly created instance.
+   
 Sharing Encrypted Files
 -----------------------
 
