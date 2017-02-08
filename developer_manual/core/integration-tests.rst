@@ -162,7 +162,6 @@ To be able to run your new feature tests you'll have to add a new context to ``c
 To do so, in the ``contexts`` section add your new context:
 
 .. code-block:: yaml
-
     contexts:
           * TaskToTestContext:
               baseUrl:  http://localhost:8080/ocs/
@@ -170,7 +169,31 @@ To do so, in the ``contexts`` section add your new context:
 After the name, add all the variables required for your context. 
 In this example we add just the required ``baseUrl`` variable.
 With that done, we're now ready to run the tests. 
-To do so, assuming that your web user is ``www-data``, run the following command::
+
+
+Running integration tests
+~~~~~~~~~~~~~~~~~~~~~~
+
+To run the tests you need to install owncloud before. Having a clear database before is a good idea.
+
+Being $installation_path the location where you cloned core repository, this is a simple guide to have a clear environment for running tests:
+
+When cloning the core repository, if you are using master branch (>10.0) please remember to run make as web user. If you are in a previous versions, remember to run `git submodule update --init --recursive` to get submodules before installing the server.  You'll need to have composer and mysql previously installed in your machine.
+
+..code-block::bash
+    #Remove current configuration (if existing)
+    sudo rm -rf $installation_path/data/*
+    sudo rm -rf $installation_path/config/*
+    #Remove existing 'owncloud' database 
+    mysql -u root -h localhost -e "drop database owncloud"
+    mysql -u root -h localhost -e "drop user oc_admin"
+    mysql -u root -h localhost -e "drop user oc_admin@localhost"
+    #Install owncloud server with the cli
+    sudo -u www-data $installation_path/occ maintenance:install --database='mysql' --database-name='owncloud' --database-user='root' --database-pass='' --admin-user='admin' --admin-pass='admin'
+
+
+
+Now you should be able to run the tests, go to build/integration folder and, assuming that your web user is ``www-data``, run the following command::
 
   sudo -u www-data ./run.sh features/task-to-test.feature
 
