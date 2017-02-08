@@ -138,6 +138,27 @@ At the beginning we can see the feature name Feature: provisioning and some vari
 
 A scenario requires three parts, "Given", "When" and "Then" sections. "Given" and "Then" can have several sentences joined together by "And", but "Then" statement should be just one. And this should be the function to test. The other parts are preconditions and postconditions of the test. 
 
+To be able to run your new feature tests you'll have to add a new context to config/behat.yml file.
+In the Contexts section add your new context:
+
+..code-block::
+        contexts:
+              - TaskToTestContext:
+                  baseUrl:  http://localhost:8080/ocs/
+
+After the name add all the variables required for your context. In this example we add just the required baseUrl variable.
+
+For running your new tests just do (assuming that your web user is www-data):
+
+sudo -u www-data ./run.sh features/task-to-test.feature
+
+It will show you the results of the tests.
+
+If you want to use an alternative home name using the env variable add to the execution OC_TEST_ALT_HOME=1.
+sudo -u www-data OC_TEST_ALT_HOME=1 ./run.sh features/task-to-test.feature
+
+If you want to have encryption enabled add OC_TEST_ENCRYPTION_ENABLED=1.
+sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/task-to-test.feature
 
 
 
