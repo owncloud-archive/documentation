@@ -109,8 +109,37 @@ The images and logos available in the ownCloud default theme are:
 ==================================================== ==================================================
 Description                                          Location
 ==================================================== ==================================================
-The logo at the login-page above the credentials-box ``owncloud/themes/default/core/img/logo.svg``
-The logo in the left upper corner after login        ``owncloud/themes/default/core/img/logo-wide.svg``
+The logo at the login-page above the credentials-box ``owncloud/core/img/logo-icon.svg``
+The logo in the left upper corner after login        ``owncloud/core/img/logo-icon.svg``
+All files folder image                               ``owncloud/core/img/folder.svg``
+Favorites star image                                 ``owncloud/core/img/star.svg``
+Shared with you/others image                         ``owncloud/core/img/share.svg``
+Shared by link image                                 ``owncloud/core/img/public.svg``
+Tags image                                           ``owncloud/core/img/tag.svg``
+Deleted files image                                  ``owncloud/core/img/delete.svg``
+Settings image                                       ``owncloud/core/img/actions/settings.svg``
+Search image                                         ``owncloud/core/img/actions/search-white.svg``
+Breadcrumbs home image                               ``owncloud/core/img/places/home.svg``
+Breadcrumbs separator                                ``owncloud/core/img/breadcrumb.svg``
+Admin menu - Dropdown arrow                          ``owncloud/core/img/actions/caret.svg``
+Admin menu - Personal image                          ``owncloud/settings/img/personal.svg``
+Admin menu - Users image                             ``owncloud/settings/img/users.svg``
+Admin menu - Help image                              ``owncloud/settings/img/help.svg``
+Admin menu - Admin image                             ``owncloud/settings/img/admin.svg``
+Admin menu - Logout image                            ``owncloud/core/img/actions/logout.svg``
+Apps menu - Files image                              ``owncloud/apps/files/img/app.svg``
+Apps menu - Plus image                               ``owncloud/settings/img/apps.svg``
+==================================================== ==================================================
+
+On the Personal Page
+^^^^^^^^^^^^^^^^^^^^
+
+==================================================== ==================================================
+Description                                          Location
+==================================================== ==================================================
+Upload image                                         ``owncloud/core/img/actions/upload.svg``
+Folder image                                         ``owncloud/core/img/filetypes/folder.svg``
+Trash can image                                      ``owncloud/core/img/actions/delete.svg``
 ==================================================== ==================================================
 
 2. Create a New Logo
