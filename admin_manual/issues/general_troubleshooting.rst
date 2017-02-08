@@ -219,6 +219,7 @@ these modules:
 * mod_dav
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured 
   correctly)
+* mod_proxy_html (can cause broken PDF downloads)
 
 2. NginX
 
