@@ -85,10 +85,12 @@ A number of existing background jobs are available to be run just for specific t
    If the number of users in your installation ranges between 1,000 and 3,000, or if you’re using LDAP
    and it becomes a bottleneck, then admins can delete several entries in the `oc_jobs` table and replace
    them with the corresponding `occ` command, which you can see here:
+
    * `OCA\Files_Trashbin\BackgroundJob\ExpireTrash` -> `occ trashbin:expire`
    * `OCA\Files_Versions\BackgroundJob\ExpireVersions` -> `occ versions:expire`
    * `OCA\DAV\CardDAV\SyncJob` -> `occ dav:sync-system-addressbook`
    * `OCA\Federation\SyncJob` -> `occ federation:sync-addressbooks`
+
    If used, these should be scheduled to run on a daily basis.
 
 While not exhaustive, these include:
