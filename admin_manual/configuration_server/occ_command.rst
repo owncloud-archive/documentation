@@ -1000,6 +1000,29 @@ Remove a certificate::
 
  sudo -u www-data php occ security:remove [certificate name]
 
+.. _sharing_commands_label:
+
+Sharing
+-------
+
+As of ownCloud 9.0, there is an occ command to cleanup orphaned remote storages.
+To explain why this is necessary, a little background is required.
+While shares are able to be deleted as a normal matter of course, remote storages with "shared::" are not included in this process.
+
+This might not, normally, be a problem.
+However, if a user has reshared a remote share which has been deleted it will.
+This is because when the original share is deleted, the remote re-share reference is not.
+Internally, the fileid will remain in the file cache and storage for that file will not be deleted.
+
+As a result, any user(s) who the share was reshared with will now get an errer when trying to access that file or folder.
+That's why the command is available.
+
+So, to cleanup all orphaned remote storages, run it as follows::
+
+  sudo -u www-data php sharing:cleanup-remote-storages
+
+You can also set it up to run as :ref:`a background job <background-jobs-header>`
+
 .. _shibboleth_label:
 
 Shibboleth Modes (Enterprise Edition only)

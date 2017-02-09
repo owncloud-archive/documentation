@@ -1,3 +1,5 @@
+.. _background-jobs-header:
+
 Background Jobs
 ========================
 
