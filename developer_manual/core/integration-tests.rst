@@ -170,30 +170,44 @@ After the name, add all the variables required for your context.
 In this example we add just the required ``baseUrl`` variable.
 With that done, we're now ready to run the tests. 
 
+Running Integration Tests
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Running integration tests
-~~~~~~~~~~~~~~~~~~~~~~
+This is a concise guide to running integration tests on ownCloud 10.0.
+Before you can do so, you need to meet a few prerequisites available; these are
 
-To run the tests you need to install owncloud before. Having a clear database before is a good idea.
+- ownCloud 
+- Composer 
+- MySQL
 
-Being $installation_path the location where you cloned core repository, this is a simple guide to have a clear environment for running tests:
+If you are using an earlier version, remember to:
 
-When cloning the core repository, if you are using master branch (>10.0) please remember to run make as web user. If you are in a previous versions, remember to run `git submodule update --init --recursive` to get submodules before installing the server.  You'll need to have composer and mysql previously installed in your machine.
+1. Run ``make`` as your webserver's user in the root directory of the project.
+2. Run ``git submodule update --init --recursive``. This retrieves the repository's sub-modules before installing the server.  
 
-..code-block::bash
-    #Remove current configuration (if existing)
+.. NOTE: 
+   Having a clean database is a also good idea.
+
+Now that the prerequisites are satisfied, and assuming that ``$installation_path`` is the location where you cloned the ``ownCloud/core`` repository, the following commands will prepare the installation for running the integration tests.
+
+..code-block:: bash
+
+    # Remove current configuration (if existing)
     sudo rm -rf $installation_path/data/*
     sudo rm -rf $installation_path/config/*
-    #Remove existing 'owncloud' database 
+    
+    # Remove existing 'owncloud' database 
     mysql -u root -h localhost -e "drop database owncloud"
     mysql -u root -h localhost -e "drop user oc_admin"
     mysql -u root -h localhost -e "drop user oc_admin@localhost"
-    #Install owncloud server with the cli
-    sudo -u www-data $installation_path/occ maintenance:install --database='mysql' --database-name='owncloud' --database-user='root' --database-pass='' --admin-user='admin' --admin-pass='admin'
+    
+    # Install owncloud server with the cli
+    sudo -u www-data $installation_path/occ maintenance:install \
+      --database='mysql' --database-name='owncloud' --database-user='root' \
+      --database-pass='' --admin-user='admin' --admin-pass='admin'
 
-
-
-Now you should be able to run the tests, go to build/integration folder and, assuming that your web user is ``www-data``, run the following command::
+With the installtion prepared, you should now be able to run the tests. 
+Go to the ``build/integration`` folder and, assuming that your web user is ``www-data``, run the following command::
 
   sudo -u www-data ./run.sh features/task-to-test.feature
 
