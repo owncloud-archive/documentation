@@ -1021,6 +1021,8 @@ So, to cleanup all orphaned remote storages, run it as follows::
 
   sudo -u www-data php sharing:cleanup-remote-storages
 
+You can also set it up to run as :ref:`a background job <background-jobs-header>`
+
 .. _shibboleth_label:
 
 Shibboleth Modes (Enterprise Edition only)
