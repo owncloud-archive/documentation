@@ -180,10 +180,8 @@ Before you can do so, you need to meet a few prerequisites available; these are
 - Composer 
 - MySQL
 
-If you are using an earlier version, remember to:
 
-1. Run ``make`` as your webserver's user in the root directory of the project.
-2. Run ``git submodule update --init --recursive``. This retrieves the repository's sub-modules before installing the server.  
+After cloning core, run ``make`` as your webserver's user in the root directory of the project.
 
 .. NOTE: 
    Having a clean database is a also good idea.
