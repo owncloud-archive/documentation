@@ -116,6 +116,27 @@ storage.
 
 .. figure:: images/encryption15.png
 
+Enabling Master Key Based Encryption
+------------------------------------
+
+To enable master key based encryption:
+
+1. Enable the default encryption module app, using the following command::
+
+  php occ app:enable encryption
+
+2. Then enable encryption, using the following command :: 
+
+  php occ encryption:enable
+
+3. Then enable the master key, using the following command::
+
+  php occ encryption:enable-master-key
+
+.. note::
+
+   Master key mode has to be setup in a newly created instance.
+   
 Sharing Encrypted Files
 -----------------------
 
