@@ -393,7 +393,3 @@ You must run ``occ`` as your HTTP user; see
 
 When you are finished, take your ownCloud server out of 
 ``maintenance:singleuser`` mode.
-
-.. Links
-   
-.. _User Home Folder Naming Rule: https://doc.owncloud.com/server/9.1/admin_manual/configuration_user/user_auth_ldap.html#special-attributes
