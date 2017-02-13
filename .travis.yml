@@ -1,0 +1,33 @@
+sudo: required
+language: python
+
+branches:
+  only:
+    - master
+    - /^stable\d+(\.\d+)?$/
+
+env:
+  global:
+    DIR=developer_manual
+
+install:
+  - sudo apt-get install -y python-pip
+  - sudo apt-get install -y texlive texlive-latex-recommended texlive-latex-extra texlive-fonts-recommended texlive-lang*
+  - sudo apt-get install -y git wget
+  - sudo apt-get install -y python-sphinx
+#RUN pip install sphinx_bootstrap_theme
+  - sudo pip install sphinxcontrib-phpdomain
+  - sudo apt-get install -y python-reportlab
+  - sudo apt-get install -y rst2pdf
+
+script:
+  - cd $DIR
+  - make html-all
+  - make latexpdf
+
+matrix:
+  include:
+    - env: DIR=admin_manual
+    - env: DIR=user_manual
+    - env: DIR=developer_manual
+
