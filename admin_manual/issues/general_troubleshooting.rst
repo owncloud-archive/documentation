@@ -196,7 +196,7 @@ Web server and ownCloud itself.
 * The logfile of ownCloud is located in the data directory 
   ``/var/www/owncloud/data/owncloud.log``.
 
-Web server and PHP modules
+Web Server and PHP Modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. note:: Lighttpd is not supported with ownCloud, and some ownCloud features 
@@ -208,17 +208,16 @@ these modules:
 
 1. Apache
 
-* mod_pagespeed
-* mod_evasive
-* mod_security
-* mod_reqtimeout
-* mod_deflate
 * libapache2-mod-php5filter (use libapache2-mod-php5 instead)
-* mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm 
-  instead)
 * mod_dav
-* mod_xsendfile / X-Sendfile (causing broken downloads if not configured 
-  correctly)
+* mod_deflate
+* mod_evasive
+* mod_pagespeed
+* mod_proxy_html (can cause broken PDF downloads)
+* mod_reqtimeout
+* mod_security
+* mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm instead)
+* mod_xsendfile / X-Sendfile (causing broken downloads if not configured correctly)
 
 2. NginX
 

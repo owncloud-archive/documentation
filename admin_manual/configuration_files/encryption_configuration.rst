@@ -97,9 +97,27 @@ Uncheck it to avoid encrypting your home storage.
 
 .. figure:: images/encryption15.png
 
-How To Share Encrypted Files
-----------------------------
+Enabling Master Key Based Encryption
+------------------------------------
 
+To enable master key based encryption:
+
+1. Enable the default encryption module app, using the following command::
+
+  php occ app:enable encryption
+
+2. Then enable encryption, using the following command :: 
+
+  php occ encryption:enable
+
+3. Then enable the master key, using the following command::
+
+  php occ encryption:enable-master-key
+
+.. note::
+
+   Master key mode has to be setup in a newly created instance.
+   
 After encryption is enabled, your users must also log out and log back in to generate their personal encryption keys. 
 They will see a yellow warning banner that says "Encryption App is enabled, but your keys are not initialized, please log-out and log-in again." 
 

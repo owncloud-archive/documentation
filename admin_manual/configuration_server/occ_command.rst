@@ -11,7 +11,7 @@ setting, and more.
 :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
 run it as your HTTP user** to ensure that the correct permissions are maintained 
 on your ownCloud files and directories. In ownCloud 8.2+ you may run it from 
-any directory (specifying the filepath); in previous releases it had to be 
+any directory (specifying the file path); in previous releases it had to be 
 run from the :file:`owncloud/` directory.
 
 occ Command Directory
@@ -206,7 +206,7 @@ If your app has issues, you'll see output like this::
     called
     line   49: OC_Util - Static method of private class must not be called
 
-You can get the full filepath to an app::
+You can get the full file path to an app::
     
     sudo -u www-data php occ app:getpath notifications
     /var/www/owncloud/apps/notifications
@@ -248,8 +248,8 @@ The ``config`` commands are used to configure the ownCloud server::
   config:app:delete      Delete an app config value
   config:app:get         Get an app config value
   config:app:set         Set an app config value
-  config:import          Import a list of configs
-  config:list            List all configs
+  config:import          Import a list of configuration settings
+  config:list            List all configuration settings
   config:system:delete   Delete a system config value
   config:system:get      Get a system config value
   config:system:set      Set a system config value
@@ -380,15 +380,15 @@ before. If you want to be notified in that case, set the
 Dav Commands
 ------------
   
-A set of commands to create addressbooks, calendars, and to 
-migrate addressbooks from 8.2 when you upgrade to 9.0::
+A set of commands to create address books, calendars, and to 
+migrate address books from 8.2 when you upgrade to 9.0::
 
  dav
-  dav:create-addressbook        Create a dav addressbook
+  dav:create-addressbook        Create a dav address book
   dav:create-calendar           Create a dav calendar
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
   dav:sync-system-addressbook   Synchronizes users to the system 
-                                addressbook
+                                address book
                                       
 The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is 
 ``dav:create-addressbook [user] [name]``. This example creates the addressbook 
@@ -405,7 +405,7 @@ Molly will immediately see these on her Calendar and Contacts pages.
 In 9.0, the CalDAV server has been integrated into core. Your existing 
 calendars and contacts should migrate automatically when you upgrade. If 
 something goes wrong you can try a manual migration. First delete any 
-partially-migrated calendars or addressbooks. Then run this 
+partially-migrated calendars or address books. Then run this 
 command to migrate user's contacts::
 
  sudo -u www-data php occ dav:migrate-addressbooks [user]
@@ -419,7 +419,7 @@ See `ownCloud 9.0 - calendar migration analysis
 for help with troubleshooting and reporting problems. 
 
 ``dav:sync-birthday-calendar`` adds all birthdays to your calendar from 
-addressbooks shared with you. This example syncs to your calendar from user 
+address books shared with you. This example syncs to your calendar from user 
 bernie::
 
  sudo -u www-data php occ dav:sync-birthday-calendar bernie
@@ -551,9 +551,9 @@ Federation Sync
   This command is only available when the "Federation" app (``federation``) is
   enabled.
  
-Synchronize the addressbooks of all federated ownCloud servers::
+Synchronize the address books of all federated ownCloud servers::
 
- federation:sync-addressbooks  Synchronizes addressbooks of all 
+ federation:sync-addressbooks  Synchronizes address books of all 
                                federated clouds
 
 In ownCloud 9.+, servers connected with federation shares can share user 
@@ -755,7 +755,7 @@ User search attributes are set with ``ldap:set-config``
 (below). For example, if your search attributes are 
 ``givenName`` and ``sn`` you can find users by first name + last name very 
 quickly. For example, you'll find Terri Hanson by searching for ``te ha``. 
-Trailing whitespaces are ignored.
+Trailing whitespace is ignored.
  
 Check if an LDAP user exists. This works only if the ownCloud server is 
 connected to an LDAP server::
@@ -1000,6 +1000,29 @@ Remove a certificate::
 
  sudo -u www-data php occ security:remove [certificate name]
 
+.. _sharing_commands_label:
+
+Sharing
+-------
+
+As of ownCloud 9.0, there is an occ command to cleanup orphaned remote storages.
+To explain why this is necessary, a little background is required.
+While shares are able to be deleted as a normal matter of course, remote storages with "shared::" are not included in this process.
+
+This might not, normally, be a problem.
+However, if a user has reshared a remote share which has been deleted it will.
+This is because when the original share is deleted, the remote re-share reference is not.
+Internally, the fileid will remain in the file cache and storage for that file will not be deleted.
+
+As a result, any user(s) who the share was reshared with will now get an errer when trying to access that file or folder.
+That's why the command is available.
+
+So, to cleanup all orphaned remote storages, run it as follows::
+
+  sudo -u www-data php sharing:cleanup-remote-storages
+
+You can also set it up to run as :ref:`a background job <background-jobs-header>`
+
 .. _shibboleth_label:
 
 Shibboleth Modes (Enterprise Edition only)
@@ -1027,7 +1050,7 @@ Trashbin
 
  trashbin
   trashbin:cleanup   Remove deleted files
-  trashbin:expire    Expires the users trashbin  
+  trashbin:expire    Expires the users trash bin  
 
 The ``trashbin:cleanup`` command removes the deleted files of the specified 
 users in a space-delimited list, or all users if none are specified. This example removes all the deleted files of all users::  

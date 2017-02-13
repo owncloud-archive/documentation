@@ -48,3 +48,36 @@ PostgreSQL
 
     PGPASSWORD="password" pg_dump [db_name] -h [server] -U [username] -f owncloud-dbbackup_`date +"%Y%m%d"`.bak
 
+Restoring Files From Backup When Encryption Is Enabled
+------------------------------------------------------
+
+If you need to restore files from backup, which were backed up when encryption
+was enabled, here’s how to do it.
+
+.. NOTE:: 
+   This is effective from at least version v8.2.7 of ownCloud onwards. Also,
+   this is **not officially supported**. ownCloud officially supports either
+   restoring the full backup or restoring nothing — not restoring individual
+   parts of it.
+
+1. Restore the file from backup
+2. Restore the file's encryption keys from backup
+3. Run ``occ files:scan``; this makes the scanner find it. Note that, in the DB
+   it will (1) have the "size" set to the encrypted size, which is wrong (and
+   bigger) and (2) the "encrypted" flag will be set to 0
+4. Update the "encrypted" flag to 1 in the DB to all *files* under
+   ``files/path``, but **not** directories. Setting the flag to 1 tells the
+   encryption application that the file is encrypted and needs to be processed.
+   
+.. NOTE::
+   There's no need to update the encrypted flag for files in either
+   "files_versions" or "files_trashbin", because these aren't scanned or found
+   by ``occ files:scan``.
+   
+5. Download the file once as the user; the file's size will be corrected
+   automatically
+
+This process might not be suitable across all environments. 
+If it’s not suitable for yours, you might need to run an OCC command that does
+the scanning. 
+But, that will require the user's password or recovery key.
