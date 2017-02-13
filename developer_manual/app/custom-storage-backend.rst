@@ -2,6 +2,8 @@
 Create Custom Storage Backends
 ==============================
 
+.. _custom-storage-backends:
+
 .. sectionauthor:: Matthew Setter <msetter@owncloud.com>
 
 The preferred way for applications to create new storage backends, from version 8.0 onward, is to create a subclass of ``\OC\Files\Storage\Common`` and implement the abstract methods.
@@ -16,50 +18,66 @@ Required Methods
 All storage backends sub-classing the common storage backend must implement the
 following methods:
 
-=============================== ====================================================
-Method                          Description
-=============================== ====================================================
-``mkdir($path)``                Create a new folder on the storage.
-``rmdir($path)``                Delete an existing folder on the storage.
-``opendir($path)``              Open a directory handle.
-``stat($path)``                 Get metadata for the file or folder. The returned
-                                array should, at least, contain `mtime` and `size`.
-``filetype($path)``             Return the file type; either `file` or ``dir``.
-``file_exists($path)``          Check if a file or folder exists.
-``unlink($path)``               Remove a file or folder. This isn't only for
-                                deleting files, unlike PHP's unlink method.
-``fopen($path, $mode)``         Open a file handle for a file
-``touch($path, $mtime = null)`` Update the mtime of a file or folder. If `$mtime`
-                                is omitted the current time should be used.
-=============================== ====================================================
++---------------------------------+-------------------------------------------------------------+
+| Method                          |  Description                                                |
++=================================+=============================================================+
+| ``mkdir($path)``                | Creates a new folder on the storage.                        |
++---------------------------------+-------------------------------------------------------------+
+| ``rmdir($path)``                | Deletes an existing folder on the storage.                  |
++---------------------------------+-------------------------------------------------------------+
+| ``opendir($path)``              | Opens a directory handle.                                   |
++---------------------------------+-------------------------------------------------------------+
+| ``stat($path)``                 | Retrieves the metadata for the file or folder. The returned |
+|                                 | array should, at least, contain ``mtime`` and ``size``.     |
++---------------------------------+-------------------------------------------------------------+
+| ``filetype($path)``             | Returns the file type; either ``file`` or ``dir``.          |
++---------------------------------+-------------------------------------------------------------+
+| ``file_exists($path)``          | Checks if a file or folder exists.                          |
++---------------------------------+-------------------------------------------------------------+
+| ``unlink($path)``               | Removes a file or folder. This isn't only for               |
+|                                 | deleting files, unlike PHP's unlink method.                 |
++---------------------------------+-------------------------------------------------------------+
+| ``fopen($path, $mode)``         | Opens a file handle for a file                              |
++---------------------------------+-------------------------------------------------------------+
+| ``touch($path, $mtime = null)`` | Updates the mtime of a file or folder. If ``$mtime``        |
+|                                 | is omitted the current time should be used.                 |
++---------------------------------+-------------------------------------------------------------+
 
 Suggested Methods
 -----------------
 
-The common storage backends provide fallback implementations for a number of methods for storage backends to make it easier to implement.
+The common storage backends provide fallback implementations for a number of methods to make them easier to implement.
 However, some of fallback implementations are either inefficient or don't always provide the correct result for custom storage backends.
+Given that, please consider overriding one or more of the following methods:
 
-==================================== =======================================================
-Method                               Description
-==================================== =======================================================
-``rename($sourcePath, $targetPath)`` Rename a file. The default implementation uses ``copy``
-                                     and ``unlink`` which is very inefficient.
-``copy($sourcePath, $targetPath)``   Copy a file. The default implementation copies using
-                                     streams. This is inefficient for remote storages as it
-                                     downloads and re-uploads the file.
-``isReadable($path)``                Check if a file is readable (defaults to true if the
-                                     file exists).
-``isUpdatable($path)``               Check if a file or folder can be updated. This
-                                     includes being written to or renamed. It defaults to
-                                     true if the file exists.
-``isCreatable($path)``               Check if new files can be created in a folder
-                                     It defaults to ``isUpdatable($path)``.
-``isDeletable($path)``               Check if a file can be deleted. It defaults to
-                                     ``isUpdatable($path)``.
-``isSharable($path)``                Check if a file can be shared. It defaults to
-                                     ``isReadable($path)``.
-``free_space($path)``                Check the free space on the storage in bits.
-==================================== =======================================================
++--------------------------------------+--------------------------------------------------------------+
+| Method                               |  Description                                                 |
++======================================+==============================================================+
+| ``rename($sourcePath, $targetPath)`` | Renames a file. The default implementation uses ``copy``     |
+|                                      | and ``unlink`` which is very inefficient.                    |
++--------------------------------------+--------------------------------------------------------------+
+| ``copy($sourcePath, $targetPath)``   | Copies a file. The default implementation copies using       |
+|                                      | streams. This is inefficient for remote storages as it       |
+|                                      | downloads and re-uploads the file.                           |
++--------------------------------------+--------------------------------------------------------------+
+| ``isReadable($path)``                | Checks if a file is readable. It defaults to ``true`` if the |
+|                                      | file exists.                                                 |
++--------------------------------------+--------------------------------------------------------------+
+| ``isUpdatable($path)``               | Checks if a file or folder can be updated. This              |
+|                                      | includes being written to or renamed. It defaults to         |
+|                                      | ``true`` if the file exists.                                 |
++--------------------------------------+--------------------------------------------------------------+
+| ``isCreatable($path)``               | Checks if new files can be created in a folder               |
+|                                      | It defaults to ``isUpdatable($path)``.                       |
++--------------------------------------+--------------------------------------------------------------+
+| ``isDeletable($path)``               | Checks if a file can be deleted. It defaults to              |
+|                                      | ``isUpdatable($path)``.                                      |
++--------------------------------------+--------------------------------------------------------------+
+| ``isSharable($path)``                | Checks if a file can be shared. It defaults to               |
+|                                      | ``isReadable($path)``.                                       |
++--------------------------------------+--------------------------------------------------------------+
+| ``free_space($path)``                | Checks the free space on the storage in bits.                |
++--------------------------------------+--------------------------------------------------------------+
 
 Other Useful Methods
 ---------------------
@@ -67,49 +85,54 @@ Other Useful Methods
 The default implementation for the following methods are good for most storage backends.
 But, providing an alternate implementation *can* improve user experience.
 
-=================================== =====================================================
-Method                              Description
-=================================== =====================================================
-``file_put_contents($path, $data)`` Store a file on the storage. Defaults to using
-                                    ``fopen($path, 'w')``.
-``file_get_contents($path)``        Get a file from the storage. Defaults to using
-                                    ``fopen($path, 'r')``.
-``getMimeType($path)``              Get the mimetype of a file or folder. Defaults to
-                                    guessing the mimetype from the extension, the
-                                    mimetype of a folder is _required_ to be
-                                    ``'httpd/unix-directory'``.
-``hasUpdated($path, $time)``        Check if a file or folder has been updated since
-                                    ``$time``. If you're certain the files on the
-                                    storage will not be updated outside of ownCloud you
-                                    can always return ``false`` to increase performance.
-``getETag($path)``                  Get the `Etag`_ for a file or folder.
-``verifyPath($path, $fileName)``    Check if a filename is valid for the storage
-                                    backend (defaults to checking for invalid
-                                    characters or names for the server
-                                    platform).
-=================================== =====================================================
++-------------------------------------+---------------------------------------------------------+
+| Method                              | Description                                             |
++=====================================+=========================================================+
+| ``file_put_contents($path, $data)`` | Stores a file on the storage. It defaults to using      |
+|                                     | ``fopen($path, 'w')``.                                  |
++-------------------------------------+---------------------------------------------------------+
+| ``file_get_contents($path)``        | Retrieves a file from storage. Defaults to using        |
+|                                     | ``fopen($path, 'r')``.                                  |
++-------------------------------------+---------------------------------------------------------+
+| ``getMimeType($path)``              | Retrieves the mimetype of a file or folder. Defaults to |
+|                                     | guessing the mimetype from the extension. The           |
+|                                     | mimetype of a folder is _required_ to be                |
+|                                     | ``'httpd/unix-directory'``.                             |
++-------------------------------------+---------------------------------------------------------+
+| ``hasUpdated($path, $time)``        | Checks if a file or folder has been updated since       |
+|                                     | ``$time``. If you're certain the files on the           |
+|                                     | storage will not be updated outside of ownCloud you     |
+|                                     | can always return ``false`` to increase performance.    |
++-------------------------------------+---------------------------------------------------------+
+| ``getETag($path)``                  | Retrieves the `Etag`_ for a file or folder.             |
++-------------------------------------+---------------------------------------------------------+
+| ``verifyPath($path, $fileName)``    | Checks if a filename is valid for the storage           |
+|                                     | backend. It defaults to checking for invalid            |
+|                                     | characters or names for the server                      |
+|                                     | platform.                                               |
++-------------------------------------+---------------------------------------------------------+
 
 Copying and Moving Between Storage Backends
 -------------------------------------------
 
-When copying or moving files between different storages it will default to using a stream copy between the storages.
+When copying or moving files between different storages a stream copy is used by default.
 This works well for copying between different types of storages, such as from local to SMB.
-But, there are cases where a more efficient copy is possible between two storage, such as between two SMB storages on the same server.
+But, there are cases where a more efficient copy is possible, such as between two SMB storages on the same server.
+In these cases, storage backends can override the cross-storage behavior by overriding the following methods:
 
-In these cases, storage backends can override the cross storage behavior by overwriting the following methods:
-
-- copyFromStorage(\OCP\Files\Storage $sourceStorage, $sourceInternalPath, $targetInternalPath, $preserveMtime = false);
-- moveFromStorage(\OCP\Files\Storage $sourceStorage, $sourceInternalPath ,$targetInternalPath);
+- ``copyFromStorage(\OCP\Files\Storage $sourceStorage, $sourceInternalPath, $targetInternalPath, $preserveMtime = false);``
+- ``moveFromStorage(\OCP\Files\Storage $sourceStorage, $sourceInternalPath ,$targetInternalPath);``
 
 Working With Streams
 --------------------
 
-Both ``fopen`` and ``opendir`` require storage backends to return native php streams for maximum compatibility, ownCloud comes with several classes make it easier for storage backends to create native php streams for backends not supported by PHP's own `streamWrapper`_.
+Both ``fopen()`` and ``opendir()`` require storage backends to return native PHP streams for maximum compatibility. 
+ownCloud comes with several classes which make it easier for storage backends to create native PHP streams for backends not supported by PHP's own `streamWrapper`_.
 
 IteratorDirectory
 ~~~~~~~~~~~~~~~~~
 
-``Icewind\Streams\IteratorDirectory`` allows creating a directory handle from an array or iterator.
+``Icewind\Streams\IteratorDirectory`` allows for creating a directory handle from an array or iterator.
 
 .. code-block:: php
 
@@ -119,8 +142,8 @@ IteratorDirectory
 CallbackWrapper
 ~~~~~~~~~~~~~~~
 
-``Icewind\Streams\CallbackWrapper`` wraps an existing file handle, and allows hooking into file reads and writes, and closing streams. 
-The most common use case for this class in storage backends is for implementing ``fopen`` with writable streams. 
+``Icewind\Streams\CallbackWrapper`` wraps an existing file handle, and allows for hooking into file reads and writes, and closing streams. 
+The most common use case for this class in storage backends is for implementing ``fopen()`` with writable streams. 
 This is because writing to and closing streams happens outside the storage implementation.
 As a result, the storage backend needs a way to upload the changed file back to the backend. 
 This can be done by attaching a close-callback to a stream for a temporary file.
@@ -137,24 +160,22 @@ This can be done by attaching a close-callback to a stream for a temporary file.
 Storage Wrappers
 ----------------
 
-Besides implementing a complete custom storage backend, ownCloud allows for modifying the behavior of an existing storage by applying a wrapper to a storage.
-
+Besides implementing a complete custom storage backend, ownCloud allows for modifying the behavior of an existing storage by applying a wrapper to it.
 Storage wrappers need to implement the full storage API methods. 
 Examples of storage wrappers are
 
-* The Quota wrapper. This changes the behavior of `free_space` by limiting the free space returned by the wrapped storage to a configured maximum 
-* The Encryption wrapper (available since version 8.1). This encrypts and decrypts the data on the fly, by overwriting ``file_put_contents``, ``file_get_contents``, and ``fopen``.
+* **The Quota wrapper.** This changes the behavior of `free_space` by limiting the free space returned by the wrapped storage to a configured maximum 
+* **The Encryption wrapper**. Available since version 8.1, this encrypts and decrypts the data on the fly by overwriting ``file_put_contents``, ``file_get_contents``, and ``fopen``.
 
-While implementing a storage wrapper, the wrapped storage is available as ``$this->storage``.
-Storage wrappers can either be applied globally to all used storages using ``\OC\Files\Filesystem::addStorageWrapper($name, $wrapper)``, or to a specific storage, while mounting the storage from the app.
-
-Implementing a storage wrapper is done by sub-classing ``\OC\Files\Storage\Wrapper\Wrapper`` and overwriting any of its methods
+When implementing a storage wrapper, the wrapped storage is available as ``$this->storage``.
+Storage wrappers can either be applied globally to all used storages using ``\OC\Files\Filesystem::addStorageWrapper($name, $wrapper)`` or to a specific storage, while mounting the storage from the app.
+Implementing a storage wrapper is done by sub-classing ``\OC\Files\Storage\Wrapper\Wrapper`` and overwriting any of its methods.
 
 Global Storage Wrappers
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-For globally applying a storage wrapper, you provide a callback which will be called for each used storage. 
-The callback can than determine if a wrapper should be applied to the given storage based on the storage or mountpoint, or whether it needs to return the storage unwrapped.
+For using a storage wrapper globally, you provide a callback which will be called for each used storage. 
+The callback can than determine if a wrapper should be applied to the given storage, based on the storage or mountpoint, or whether it needs to return the storage unwrapped.
 
 .. code-block:: php
 
@@ -169,8 +190,8 @@ The callback can than determine if a wrapper should be applied to the given stor
 Wrappers for a Single Storage
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Sometimes an app can avoid having to create a custom storage backend by instead modifying the behavior of an existing storage backend. 
-ownCloud comes with a few generic storage wrappers which might be useful for this, which include ``PermissionsMask`` and ``Jail``.
+Sometimes an app can avoid having to create a custom storage backend by instead modifying the behavior of an existing one. 
+ownCloud comes with a few generic storage wrappers which might be useful when doing so, which include ``PermissionsMask`` and ``Jail``.
 
 PermissionsMask
 ^^^^^^^^^^^^^^^
@@ -202,8 +223,8 @@ Jail
 A Note on instanceof()
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Since storage wrappers wrap an existing storage instead of sub-classing it using PHP's internal ``instanceof`` is not possible to determine if the storage is a specific class.
-Instead you need to call the ``instanceOfStorage`` method on the class with the fully classified class name as argument.
+Since storage wrappers wrap an existing storage instead of sub-classing it, it is not possible to determine if the storage is a specific class using PHP's ``instanceof`` operator.
+Instead, you need to call the ``instanceOfStorage()`` method on the class with the fully-qualified class name.
 
 .. code-block:: php
 
@@ -222,8 +243,8 @@ Instead you need to call the ``instanceOfStorage`` method on the class with the 
 Mounting Storages
 -----------------
 
-For an app to add it's storages to the filesystem it should implement a mount provider and register it to the filesystem.
-Implementing mount providers is done by implementing the ``\OCP\Files\Config\IMountProvider`` interface which contains the ``getMountsForUser(IUser $user, IStorageFactory $storageFactory)`` which should return a list of mountpoints that should be created for a user.
+For an app to add its storages to the filesystem it should implement a mount provider and register it with the filesystem.
+Implementing mount providers is done by implementing the ``\OCP\Files\Config\IMountProvider`` interface, containing the ``getMountsForUser(IUser $user, IStorageFactory $storageFactory)`` method, which returns a list of mountpoints that should be created for a user.
 
 .. code-block:: php
 
@@ -242,7 +263,8 @@ Implementing mount providers is done by implementing the ``\OCP\Files\Config\IMo
   }
 
 
-Registering a mount provider should be done from an app's ``appinfo/app.php``, note that any mount provider registered after the filesystem is setup for a user will not be called for that user again.
+Registering a mount provider should be done from an app's ``appinfo/app.php``. 
+Note that any mount provider registered after the filesystem is setup for a user will not be called again for that user.
 
 .. code-block:: php
 
