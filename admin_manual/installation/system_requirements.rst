@@ -46,9 +46,8 @@ Web Server
 
 Databases
 ^^^^^^^^^
-
 - Oracle 11g (**Enterprise edition only**)
-- PostgreSQL
+
 
 Hypervisors 
 ^^^^^^^^^^^
