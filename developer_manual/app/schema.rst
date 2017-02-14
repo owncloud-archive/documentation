@@ -4,34 +4,32 @@ Database Migrations
 
 .. sectionauthor:: Thomas Müller <thomas.mueller@tmit.eu>
 
-ownCloud uses migration steps to perform any kind of changes between versions. In most cases these changes are changes
-to the database schema but it is not only limited to them.
+ownCloud uses migration steps to perform any changes between versions. 
+In most cases, these changes are changes to the database schema, but it is not only limited to them.
+Therefore we support three kinds of migration steps: simple, SQL and schema.
 
-Therefore we support three kinds of migration steps: simple, sql and schema.
+There are currently three supported migration types:
 
-There are currently 3 types of migrations supported:
+- **Simple.** This allows general migration steps to be executed. These are quite similar to the `migration repair steps <https://doc.owncloud.org/api/classes/OCP.Migration.IRepairStep.html>`_.
+- **SQL.** This allows you to create a list of executable SQL commands.
+- **Schema.** This allows migration via schema migration operations.
 
-- simple: this allows general migration steps to be executed - pretty similar to the `repair steps <https://doc.owncloud.org/api/classes/OCP.Migration.IRepairStep.html>`_
-- sql: this allows you to add a list of sql commands to be executed
-- schema: migration steps of this kind allow various schema migration operations.
-
-Starting with ownCloud 10 this is the preferred way to perform any kind of migrations and is enabled by default within core.
-Any app which wants to use this mechanism has to enable it in :file:`appinfo/info.xml` by adding
+Starting with ownCloud 10, this is the preferred way to perform any kind of migrations and is enabled by default within core.
+Any app which wants to use this mechanism has to enable it in :file:`appinfo/info.xml`, by adding the following:
 
 .. code-block:: xml
 
   <use-migrations>true</use-migrations>
 
+As soon as migrations are enabled, any existing :file:`appinfo/database.xml` will be ignored, when the app is upgraded and all outstanding migrations will be executed.
 
-As soon as migrations are enabled any existing :file:`appinfo/database.xml` will be ignored on upgrade of the app.
-Instead all migration steps which have not yet been executed will be executed.
+.. note:: 
+   It is still necessary to increment the application's version number to trigger the execution of migrations.
 
-It is still necessary to increment the apps version number to trigger the execution of steps.
+How to Create a Migration
+=========================
 
-How to develop a migration
-==========================
-
-1. Enable migrations by adding the xml tag to :file:`appinfo/info.xml`
+1. Enable migrations by adding the XML tag to :file:`appinfo/info.xml`
 
 .. code-block:: xml
 
@@ -41,9 +39,12 @@ How to develop a migration
 
 .. code-block:: bash
 
-  ./occ migrations:generate app-name {simple, sql, schema}
+  ./occ migrations:generate app-name {simple, SQL, schema}
 
-A simple migration step skeleton looks like this:
+A Simple Migration Step
+~~~~~~~~~~~~~~~~~~~~~~~
+
+The simple migration step skeleton looks like this:
 
 .. code-block:: php
 
@@ -57,7 +58,6 @@ A simple migration step skeleton looks like this:
      * Auto-generated migration step: Please modify to your needs!
      */
     class Version20170213125339 implements ISimpleMigration {
-
         /**
          * @param IOutput $out
          */
@@ -66,7 +66,10 @@ A simple migration step skeleton looks like this:
         }
     }
 
-A sql migration step skeleton looks like this:
+A SQL Migration Step
+~~~~~~~~~~~~~~~~~~~~
+
+A SQL migration step skeleton looks like this:
 
 .. code-block:: php
 
@@ -90,12 +93,17 @@ A sql migration step skeleton looks like this:
         }
     }
 
-Within the sql() you can generate any number of sql commands which are returned as array. The statements are executed
-after the method returns. Please do not directly execute any statements on the database parameter.
-The parameter $connection can be used to e.g. get the database platform or to test if tables exist.
+Within the ``sql()`` method you can generate any number of SQL commands. 
+The generated commands will be returned as an array, and the statements will be executed afterward. 
 
-In order to allow cross compatible sql code please use the platform object or generate sql commands for each supported
-database system.
+.. note:: 
+   Please do not execute any generated SQL statements directly on the database.
+
+The parameter ``$connection`` can be used to retrieve a database platform object or to test if tables exist.
+In order to create cross-compatible SQL code, please use the platform object or generate SQL commands for each supported database system.
+
+A Schema Migration Step
+~~~~~~~~~~~~~~~~~~~~~~~
 
 A schema migration step skeleton looks like this:
 
@@ -111,40 +119,35 @@ A schema migration step skeleton looks like this:
      * Auto-generated migration step: Please modify to your needs!
      */
     class Version20170213125427 implements ISchemaMigration {
-
         public function changeSchema(Schema $schema, array $options) {
             // auto-generated - please modify it to your needs
         }
     }
 
-Within the changeSchema() method you can use the `Class Schema <http://www.doctrine-project.org/api/dbal/2.5/class-Doctrine.DBAL.Schema.Schema.html>`_
-to manipulate the existing database schema. This is the preferred way to manipulate the schema.
+Within the ``changeSchema()`` method, you can use the `Class Schema <http://www.doctrine-project.org/api/dbal/2.5/class-Doctrine.DBAL.Schema.Schema.html>`_ to manipulate the existing database schema. 
+This is the preferred way to manipulate the schema.
 
-
-3. Test your migration step by executing
+3. Test your migration step
 
 .. code-block:: bash
 
    ./occ migrations:execute dav 20161130090952
 
-Because all migration steps will be executed upon installation there is no explicit need for unit tests.
+Because all migration steps will be executed upon installation, there is no explicit need for unit tests.
 
-4. Bring the migration live
+4. Deploy the migration(s)
 
-For the real app upgrade process the app version has to be increased to trigger the migrations.
-This will apply all steps which have not yet been executed.
+To trigger the migrations, the app version has to be increased.
+Doing so applies all steps which have not yet been executed.
 
-
-
-===============
-Database Schema
-===============
+How to Update the Database Schema
+=================================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-ownCloud uses a database abstraction layer on top of either PDO, depending on the availability of PDO on the server.
-
-The database schema is inside :file:`appinfo/database.xml` in MDB2's `XML scheme notation <http://www.wiltonhotel.com/_ext/pear/docs/MDB2/docs/xml_schema_documentation.html>`_ where the placeholders \*dbprefix* (\*PREFIX* in your SQL) and \*dbname* can be used for the configured database table prefix and database name.
+ownCloud uses a database abstraction layer on top of `PDO`_, depending on its availability on the server.
+The database schema is contained in :file:`appinfo/database.xml`, and uses MDB2's `XML scheme notation <http://www.wiltonhotel.com/_ext/pear/docs/MDB2/docs/xml_schema_documentation.html>`_.
+The placeholders \*dbprefix* (\*PREFIX* in your SQL) and \*dbname* can be used for the configured database table prefix and database name.
 
 An example database XML file would look like this:
 
@@ -188,4 +191,9 @@ An example database XML file would look like this:
   </table>
   </database>
 
-To update the tables used by the app, simply adjust the database.xml file and increase the app version number in :file:`appinfo/info.xml` to trigger an update.
+To update the tables used by the app: adjust the ``database.xml`` file to reflect the changes which you want to make. 
+Then, increment the app version number in :file:`appinfo/info.xml` to trigger an update.
+
+.. links
+   
+.. _PDO: https://secure.php.net/manual/en/book.pdo.php
