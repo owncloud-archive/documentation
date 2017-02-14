@@ -19,3 +19,11 @@ available, or broken it is likely that the operation will fail either at the
 beginning, or in the middle of the copy. 
 Other reasons for this message can be that, when writing to external storage,
 the connection took too long to respond or the network connection was flaky.
+
+Sharing sidebar does not show "Shared with you by ..." for remote shares 
+-------------------------------------------------------------------------
+
+In some scenarios, when users share folders and files with each other they cannot be scanned.
+There are a variety of reasons why this happen, which can include firewalls and broken servers. 
+In these situations, when the initial scan did not complete successfully, the mount point cannot appear in the ownCloud web UI. 
+This is because ownCloud was not able to generate a matching file cache entry, nor retrieve any metadata about whether it's a folder or file (mime type), etc.
