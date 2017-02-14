@@ -25,10 +25,10 @@ To save time, here's the commands which you can copy and use::
   ln -s /mnt/owncloud /www/owncloud/data
   apachectl -k graceful 
 
-.. NOTE:: 
-   If you're on CentOS/Fedora, try `systemctl restart httpd`.
-   If you're on Debian/Ubuntu try `sudo systemctl restart apache2`
-   To learn more about the systemctl command, please refer to `the systemd
+.. note:: 
+   If you're on CentOS/Fedora, try ``systemctl restart httpd``.
+   If you're on Debian/Ubuntu try ``sudo systemctl restart apache2``
+   To learn more about the systemctl command, please refer to `the systemd essentials guide`_
 
 Fix Hardcoded Database Path Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
