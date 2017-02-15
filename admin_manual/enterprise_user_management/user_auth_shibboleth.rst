@@ -180,7 +180,7 @@ In **Single sign-on only** mode the app checks if the environment variable for
 the Shibboleth session, by default **Shib-Session-Id**, is set. If that is the 
 case it will take the value of the environment variable as the ``uid``, by 
 default ``eppn``, and check if a user is known by that ``uid``. In effect, this 
-allows another user backend, eg. the LDAP app, to provide the ``displayname``, 
+allows another user backend, e.g., the LDAP app, to provide the ``displayname``, 
 ``email`` and ``avatar``.
 
  .. note:: As an example the IdP can send the **sAMAccountName** which the
@@ -265,7 +265,7 @@ WebDAV Support
 --------------
 
 Users of standard WebDAV clients can use an alternative
-WebDAV Url, for example ``https://cloud.example.com/remote.php/nonshib-webdav/``
+WebDAV URL, for example ``https://cloud.example.com/remote.php/nonshib-webdav/``
 to log in with their username and password. The password is generated on the
 Personal settings page.
 
@@ -273,7 +273,7 @@ Personal settings page.
 
 .. note:: In **Single sign-on only** mode the alternative WebDAV Url feature 
    will not work, as we have no way to store the WebDAV password. Instead the 
-   normal WebDAV endpoint can be omittet from the Shibboleth authentication, 
+   normal WebDAV endpoint can be omitted from the Shibboleth authentication, 
    allowing WebDAV clients to use normal username and password based 
    authentication. That includes the desktop and mobile clients.
 
@@ -375,7 +375,7 @@ different implications to take into account:
 Keep in mind that ownCloud will derive the home folder from the ``uid``, unless
 a home folder naming rule is in place. The only truly stable attribute is the
 ``objectGUID``, so that should be used. If not for the ``uid`` then at least as
-the home folder naming rule. The tradeoff here is that if you want to use
+the home folder naming rule. The trade off here is that if you want to use
 ``windows_network_drive`` you are bound to the ``sAMAccountName``, as that is
 used as the login.
 
