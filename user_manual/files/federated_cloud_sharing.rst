@@ -24,7 +24,7 @@ In reality, there’s only one.
 *In effect* there are three — all owned by the original sharer (James). 
 
 The key point to keep in mind is that when a share is re-shared, it’s shared, internally, on behalf of the original owner.
-To keep track of all this, during the share process reference are created between the shares, that show: 
+To keep track of all this, during the share process references are created between the shares, that show: 
 
 * James was the original owner of the shared resource
 * James shared a copy with Mary and Mary re-shared a copy with Paul.
