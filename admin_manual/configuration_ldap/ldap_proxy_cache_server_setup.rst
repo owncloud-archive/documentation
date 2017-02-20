@@ -53,53 +53,7 @@ With OpenLDAP installed and running, you now need to configure the server.
 One way of doing so, is to create a configuration file.
 So, open ``/etc/ldap/slapd.conf`` with your text editor of choice, and add the following configuration to it. 
 
-::
-
-  include /etc/ldap/schema/core.schema
-  include /etc/ldap/schema/cosine.schema
-  include /etc/ldap/schema/nis.schema
-  include /etc/ldap/schema/inetorgperson.schema
-
-  pidfile /var/run/slapd/slapd.pid
-  argsfile /var/run/slapd/slapd.args
-
-  loglevel any
-
-  modulepath /usr/lib/ldap
-  moduleload back_ldap.la
-  moduleload back_mdb.la
-  moduleload rwm
-
-  sizelimit 500
-  tool-threads 1
-
-  backend ldap
-
-  database ldap
-  readonly yes
-  protocol-version 3
-  rebind-as-user
-  
-  # ------------------- CHANGE ME ------------------- #
-
-  uri "ldap://YOUR_AD_URL_OR_IP:389"       # Hostname or IP Address of your Active Directory server
-  suffix "dc=ad,dc=YOUR_DOMAIN,dc=com"     # Your domain's search suffix
-  rootdn "dc=ad,dc=YOUR_DOMAIN,dc=com"     # Your domain's root dn
-
-  # ------------------- CHANGE ME ------------------- #
-
-  overlay rwm
-  rwm-map attribute uid sAMAccountName
-  rwm-map attribute mail proxyAddresses
-  moduleload pcache.la
-
-  overlay pcache
-  pcache mdb 100000 1 1000 100
-  pcacheAttrset 0 *
-  pcacheTemplate (sn=) 0 3600
-  pcacheTemplate (cn=) 0 3600
-  pcachePersist TRUE
-  directory /var/lib/ldap
+.. literalinclude:: examples/single-server.slapd.conf
 
 .. note::
   This configuration only caches queries from a single Active Directory server.
@@ -121,17 +75,17 @@ With that done, restart OpenLDAP by running the following command::
 
    service slapd restart
 
-.. note::
-   If you see warnings in the console output, they are not crucial.
-
 4. Perform a Test Search
 ------------------------
 
 Now that the server's installed, configured, and running, we next need to perform a search. 
 This will check that records are being correctly cached.
-To do so, replace ``ldap://localhost`` and ``dc=YOUR_DOMAIN`` in the command below with values from your Active Directory server configuration, and then run it.::
+To do so, update the command below with values from your Active Directory server configuration, and then run it.::
 
   ldapsearch -H ldap://localhost -x -b "cn=users,dc=ad,dc=YOUR_DOMAIN,dc=com" -D "cn=users,dc=ad,dc=YOUR_DOMAIN,dc=com"  -LLL "(sn=Name)" -w "Password"
+
+.. note::
+   If you see warnings in the console output, they are not crucial.
 
 5. Check the Logs 
 -----------------
@@ -141,62 +95,14 @@ To check, run the following command.::
 
   tail -f /var/log/syslog | grep QUERY
 
-If you see results, then the setup works. 
+If you see results including: ``"Query cachable"`` and ``"Query answered (x) times"``, then the setup works. 
 
 Cache Multiple Active Directory Servers
 ---------------------------------------
 
-If you have more than one that you want to cache, in ``/etc/ldap/slapd.conf`` add the following configuration instead, adjusting as necessary.::
+If you have more than one that you want to cache, in ``/etc/ldap/slapd.conf`` add the following configuration instead, adjusting as necessary.
 
-  include			/etc/ldap/schema/core.schema
-  include			/etc/ldap/schema/cosine.schema
-  include			/etc/ldap/schema/nis.schema
-  include			/etc/ldap/schema/inetorgperson.schema
-
-  pidfile			/var/run/slapd/slapd.pid
-  argsfile			/var/run/slapd/slapd.args
-
-  loglevel			any
-
-  modulepath		/usr/lib/ldap
-  moduleload		rwm
-  moduleload		pcache.la
-  moduleload		back_ldap.la
-  moduleload		back_mdb.la
-  moduleload		back_meta.la
-
-  sizelimit			500
-  tool-threads		1
-
-  database			meta
-  norefs			yes
-
-  # ------------------- CHANGE ME ------------------- #
-
-  suffix			"dc=YOUR_DOMAIN,dc=com" 
-  rootdn			"cn=admin,dc=YOUR_DOMAIN,dc=com" 
-  rootpw			"Password" 
-  overlay			pcache 
-  uri				"ldap://YOUR_FIRST_AD_URL_OR_IP:389/cn=users,dc=ad,dc=YOUR_DOMAIN,dc=com" 
-  suffixmassage		"cn=users,dc=ad,dc=YOUR_DOMAIN,dc=com" "cn=users,dc=ad,dc=YOUR_DOMAIN,dc=com"
-  idassert-bind		bindmethod=simple
-                    binddn="CN=ldapsearch,cn=users,dc=ad,DC=YOUR_DOMAIN,dc=com"
-                    credentials="Password"
-
-  uri				"ldap://YOUR_FIRST_AD_URL_OR_IP:389/cn=users,dc=int,dc=YOUR_DOMAIN,dc=com" 
-  suffixmassage		"cn=users,dc=int,dc=YOUR_DOMAIN,dc=com" "cn=users,dc=int,dc=YOUR_DOMAIN,dc=com" 
-  idassert-bind		bindmethod=simple
-                    binddn="cn=Administrator,cn=Users,dc=ad,dc=YOUR_DOMAIN,dc=com"
-                    credentials="Password"
-
-  # ------------------- CHANGE ME ------------------- #
-
-  pcache			mdb 100000 1 1000 100
-  pcacheAttrset		0 *
-  pcacheTemplate	(sn=) 0 3600
-  pcacheTemplate	(cn=) 0 3600
-  pcachePersist		TRUE
-  directory			/var/lib/ldap
+.. literalinclude:: examples/multi-server.slapd.conf
 
 .. Links
    
