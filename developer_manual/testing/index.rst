@@ -71,7 +71,7 @@ as much as you can about why it doesn't and use that for a bug report.
 
 This is the stage where you should see if your issue is already reported by checking the issue
 tracker. It might even be fixed, sometimes! It can also be fruitful to contact the
-`developers on irc <webchat.freenode.net/#owncloud-dev>_`. Tell them you're testing ownCloud
+`developers on irc <webchat.freenode.net/#owncloud-dev>`_. Tell them you're testing ownCloud
 and share what problem you bumped into. Or just ask on the test-pilots mailing list.
 
 Finally, if the issue you bump into is a clear bug and the developers are not aware of it, file it as a new issue. See :doc:`../bugtracker/index`
