@@ -47,7 +47,7 @@ Testing follows these steps:
 * Set up your testing environment
 * Pick something to test
 * Test it
-* Back to step 2 until something unexpected/bad happens
+* Go Back to step 2 until something unexpected/bad happens
 * Check if what you found is really a bug
 * File the bug
 
