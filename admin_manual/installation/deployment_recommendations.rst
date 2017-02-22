@@ -351,7 +351,7 @@ Cons:
 * Currently DB filecache table will grow rapidly, making migrations painful in 
   case the table is altered.
 
-What About Nginx / PHP-FPM?
+What About NGINX / PHP-FPM?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Could be used instead of HAproxy as the load balancer.
@@ -383,8 +383,8 @@ as SUSE Linux Enterprise Server.
 Web server
 ^^^^^^^^^^
 
-Taking Apache and Nginx as the contenders, Apache with mod_php is currently the 
-best option, as Nginx does not support all features necessary for enterprise 
+Taking Apache and NGINX as the contenders, Apache with mod_php is currently the 
+best option, as NGINX does not support all features necessary for enterprise 
 deployments. Mod_php is recommended instead of PHP_FPM, because in scale-out 
 deployments separate PHP pools are simply not necessary.
 

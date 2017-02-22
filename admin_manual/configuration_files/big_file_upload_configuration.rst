@@ -75,19 +75,19 @@ Apache with mod_fcgid
    Setting ``FcgidMaxRequestInMem`` significantly higher than normal may no longer be
    necessary, once bug #51747 is fixed.
 
-nginx
+NGINX
 ^^^^^
 * `client_max_body_size <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size>`_
 * `fastcgi_read_timeout <http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout>`_
 * `client_body_temp_path <http://nginx.org/en/docs/http/ngx_http_core_module.html#client_body_temp_path>`_
 
-Since nginx 1.7.11 a new config option `fastcgi_request_buffering
+Since NGINX 1.7.11 a new config option `fastcgi_request_buffering
 <https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering>`_
-is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your nginx config
+is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your NGINX config
 might help with timeouts during the upload. Furthermore it helps if you're running out of
 disc space on the tmp partition of your system.
 
-For more info how to configure nginx to raise the upload limits see also `this
+For more info how to configure NGINX to raise the upload limits see also `this
 <https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
 wiki entry.
 
@@ -97,7 +97,7 @@ wiki entry.
    performance, place these on a separate hard drive that is dedicated to 
    swap and temp storage.
    
-If your site is behind a nginx frontend (for example a loadbalancer): 
+If your site is behind a NGINX frontend (for example a loadbalancer): 
 
 By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the frontend.
 
