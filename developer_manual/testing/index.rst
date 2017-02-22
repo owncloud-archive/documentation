@@ -58,7 +58,7 @@ releases unless you have a backup somewhere!
 
 Start by installing ownCloud, either on real hardware or in a VM.
 
-You can find instructions for installation in the` documentation `<https://doc.owncloud.org/server/latest/admin&#95;manual/installation/>`_.
+You can find instructions for installation in the` documentation `<https://doc.owncloud.org/server/latest/admin_manual/installation/>`_.
 
 Please note that we are still working on the documentation and if you bump into a problem, you can
 `help us fix it <https://github.com/owncloud/documentation>`_. Small things can be edited straight on github.
@@ -71,7 +71,7 @@ as much as you can about why it doesn't and use that for a bug report.
 
 This is the stage where you should see if your issue is already reported by checking the issue
 tracker. It might even be fixed, sometimes! It can also be fruitful to contact the
-`developers on irc <webchat.freenode.net/#owncloud-dev>_`. Tell them you're testing ownCloud
+`developers on irc <webchat.freenode.net/#owncloud-dev>`_. Tell them you're testing ownCloud
 and share what problem you bumped into. Or just ask on the test-pilots mailing list.
 
 Finally, if the issue you bump into is a clear bug and the developers are not aware of it, file it as a new issue. See :doc:`../bugtracker/index`
