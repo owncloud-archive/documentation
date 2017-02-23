@@ -1,18 +1,18 @@
 ============================
-nginx Example Configurations
+NGINX Example Configurations
 ============================
 
-This page covers example nginx configurations to use with running an ownCloud 
-server. Note that nginx is not officially supported, and this page is 
+This page covers example NGINX configurations to use with running an ownCloud 
+server. Note that NGINX is not officially supported, and this page is 
 community-maintained. (Thank you, contributors!)
 
--  You need to insert the following code into **your nginx configuration file.**
+-  You need to insert the following code into **your NGINX configuration file.**
 -  The configuration assumes that ownCloud is installed in 
    ``/var/www/owncloud`` and that it is accessed via 
    ``http(s)://cloud.example.com``.
 -  Adjust **server_name**, **root**, **ssl_certificate** and 
    **ssl_certificate_key** to suit your needs.
--  Make sure your SSL certificates are readable by the server (see `nginx HTTP 
+-  Make sure your SSL certificates are readable by the server (see `NGINX HTTP 
    SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
 -  ``add_header`` statements are only taken from the current level and are not 
    cascaded from or to a different level. All necessary ``add_header`` 
@@ -40,11 +40,11 @@ data in transit.
 -  Remove **ssl_certificate** and **ssl_certificate_key**.
 -  Remove **fastcgi_params HTTPS on;**
 
-ownCloud in the webroot of nginx
+ownCloud in the webroot of NGINX
 ================================
 
 The following config should be used when ownCloud is placed in the webroot of 
-your nginx installation.
+your NGINX installation.
 
 ::
 
@@ -135,7 +135,7 @@ your nginx installation.
           fastcgi_param front_controller_active true;
           fastcgi_pass php-handler;
           fastcgi_intercept_errors on;
-          fastcgi_request_buffering off; #Available since nginx 1.7.11
+          fastcgi_request_buffering off; #Available since NGINX 1.7.11
       }
   
       location ~ ^/(?:updater|ocs-provider)(?:$|/) {
@@ -168,11 +168,10 @@ your nginx installation.
       }
   }
 
-ownCloud in a subdir of nginx
+ownCloud in a subdir of NGINX
 =============================
 
-The following config should be used when ownCloud is not in your webroot but placed under a different contextroot of 
-your nginx installation such as /owncloud or /cloud. The following configuration assumes it is placed under ``/owncloud`` and that you have ``'overwritewebroot' => '/owncloud',`` set in your ``config/config.php``.
+The following config should be used when ownCloud is not in your webroot but placed under a different contextroot of your NGINX installation such as /owncloud or /cloud. The following configuration assumes it is placed under ``/owncloud`` and that you have ``'overwritewebroot' => '/owncloud',`` set in your ``config/config.php``.
 
 ::
 
@@ -276,7 +275,7 @@ your nginx installation such as /owncloud or /cloud. The following configuration
               fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
               fastcgi_pass php-handler;
               fastcgi_intercept_errors on;
-              fastcgi_request_buffering off; #Available since nginx 1.7.11
+              fastcgi_request_buffering off; #Available since NGINX 1.7.11
           }
   
           location ~ ^/owncloud/(?:updater|ocs-provider)(?:$|/) {
@@ -317,7 +316,7 @@ Suppressing Log Messages
 If you're seeing meaningless messages in your logfile, for example `client 
 denied by server configuration: /var/www/data/htaccesstest.txt 
 <https://central.owncloud.org/t/htaccesstest-txt-errors-in-logfiles/831>`_,
-add this section to your nginx configuration to suppress them::
+add this section to your NGINX configuration to suppress them::
 
         location = /data/htaccesstest.txt {
           allow all;
@@ -328,7 +327,7 @@ add this section to your nginx configuration to suppress them::
 JavaScript (.js) or CSS (.css) files not served properly
 ========================================================
 
-A common issue with custom nginx configs is that JavaScript (.js)
+A common issue with custom NGINX configs is that JavaScript (.js)
 or CSS (.css) files are not served properly leading to a 404 (File not found)
 error on those files and a broken webinterface.
 
@@ -356,27 +355,27 @@ Performance Tuning
 `nginx (+1.9.5) <ngx_http_http2_module 
 <http://nginx.org/en/docs/http/ngx_http_v2_module.html>`_
 
-To use http_v2 for nginx you have to check two things:
+To use http_v2 for NGINX you have to check two things:
 
    1.) be aware that this module is not built in by default due to a dependency 
    to the openssl version used on your system. It will be enabled with the 
    ``--with-http_v2_module`` configuration parameter during compilation. The 
    dependency should be checked automatically. You can check the presence of 
    http_v2 with ``nginx -V 2>&1 | grep http_v2 -o``. An example of how to 
-   compile nginx can be found in section "Configure nginx with the 
+   compile NGINX can be found in section "Configure NGINX with the 
    ``nginx-cache-purge`` module" below.
    
-   2.) When you have used SPDY before, the nginx config has to be changed from 
+   2.) When you have used SPDY before, the NGINX config has to be changed from 
    ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
 
-nginx: caching ownCloud gallery thumbnails
+NGINX: caching ownCloud gallery thumbnails
 ==========================================
 
-One of the optimizations for ownCloud when using nginx as the Web server is to 
-combine FastCGI caching with "Cache Purge", a `3rdparty nginx module 
+One of the optimizations for ownCloud when using NGINX as the Web server is to 
+combine FastCGI caching with "Cache Purge", a `3rdparty NGINX module 
 <http://wiki.nginx.org/3rdPartyModules>`_  that adds the ability to purge 
 content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. This mechanism 
-speeds up thumbnail presentation as it shifts requests to nginx and minimizes 
+speeds up thumbnail presentation as it shifts requests to NGINX and minimizes 
 php invocations which otherwise would take place for every thumbnail presented 
 every time.
  
@@ -384,25 +383,25 @@ The following procedure is based on an Ubuntu 14.04 system. You may need to
 adapt it according your OS type and release.
 
 .. note::
-   Unlike Apache, nginx does not dynamically load modules. All modules needed 
-   must be compiled into nginx. This is one of the reasons for nginx´s 
-   performance. It is expected to have an already running nginx installation 
+   Unlike Apache, NGINX does not dynamically load modules. All modules needed 
+   must be compiled into NGINX. This is one of the reasons for NGINX´s 
+   performance. It is expected to have an already running NGINX installation 
    with a working configuration set up as described in the ownCloud 
    documentation.
 
-nginx module check
+NGINX module check
 ==================
 
-As a first step, it is necessary to check if your nginx installation has the 
+As a first step, it is necessary to check if your NGINX installation has the 
 ``nginx cache purge`` module compiled in::
  
  nginx -V 2>&1 | grep ngx_cache_purge -o
  
 If your output contains ``ngx_cache_purge``, you can continue with the 
-configuration, otherwise you need to manually compile nginx with the module 
+configuration, otherwise you need to manually compile NGINX with the module 
 needed.
 
-Compile nginx with the ``nginx-cache-purge`` module
+Compile NGINX with the ``nginx-cache-purge`` module
 ===================================================
 
 1. **Preparation:**
@@ -423,13 +422,13 @@ distribution name)::
 Then run ``sudo apt-get update``
 
 .. note:: If you're not overly cautious and wish to install the latest and 
-   greatest nginx packages and features, you may have to install nginx from its 
-   mainline repository. From the nginx homepage: "In general, you should 
-   deploy nginx from its mainline branch at all times." If you would like to 
-   use standard nginx from the latest mainline branch but without compiling in 
+   greatest NGINX packages and features, you may have to install NGINX from its 
+   mainline repository. From the NGINX homepage: "In general, you should 
+   deploy NGINX from its mainline branch at all times." If you would like to 
+   use standard NGINX from the latest mainline branch but without compiling in 
    any additional modules, just run ``sudo apt-get install nginx``.   
 
-2. **Download the nginx source from the ppa repository**
+2. **Download the NGINX source from the ppa repository**
 
 ::
 
@@ -473,7 +472,7 @@ The parameters may now look like::
    --with-ipv6 \
    --add-module=$(MODULESDIR)/ngx_cache_purge
 
-4. **Compile and install nginx**
+4. **Compile and install NGINX**
 
 ::
 
@@ -491,28 +490,28 @@ The parameters may now look like::
     
 It should now show: ``ngx_cache_purge``
     
-Show nginx version including all features compiled and installed::
+Show NGINX version including all features compiled and installed::
 
    nginx -V 2>&1 | sed s/" --"/"\n\t--"/g
 
-6. **Mark nginx to be blocked from further updates via apt-get**
+6. **Mark NGINX to be blocked from further updates via apt-get**
 
 ::
 
    sudo dpkg --get-selections | grep nginx
     
-For every nginx component listed run ``sudo apt-mark hold <component>``   
+For every NGINX component listed run ``sudo apt-mark hold <component>``   
 
-7. **Regular checks for nginx updates**
+7. **Regular checks for NGINX updates**
 
-Do a regular visit on the `nginx news page <http://nginx.org>`_ and proceed 
+Do a regular visit on the `NGINX news page <http://nginx.org>`_ and proceed 
 in case of updates with items 2 to 5.
 
-Configure nginx with the ``nginx-cache-purge`` module
+Configure NGINX with the ``nginx-cache-purge`` module
 =====================================================
 
 1. **Preparation**
-   Create a directory where nginx will save the cached thumbnails. Use any 
+   Create a directory where NGINX will save the cached thumbnails. Use any 
    path that fits to your environment. Replace ``{path}`` in this example with 
    your path created:
    
@@ -574,7 +573,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    
 .. note:: Note regarding the ``fastcgi_pass`` parameter:
    Use whatever fits your configuration. In the example above, an ``upstream`` 
-   was defined in an nginx global configuration file.
+   was defined in an NGINX global configuration file.
    This may look like::
        
      upstream php-handler {
