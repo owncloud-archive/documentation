@@ -97,6 +97,23 @@ Uncheck it to avoid encrypting your home storage.
 
 .. figure:: images/encryption15.png
 
+Enabling Encryption From the Command-line
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To enable encryption via the command-line, involves two commands. 
+These are:
+
+::
+
+  # Enables the default encryption module app
+  php occ app:enable encryption
+  
+  # Enables encryption
+  php occ encryption:enable
+
+.. note::
+   Please note, the commands have to be run in this order.
+
 Enabling Master Key Based Encryption
 ------------------------------------
 
