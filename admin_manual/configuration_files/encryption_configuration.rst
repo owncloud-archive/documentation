@@ -40,6 +40,9 @@ Directory                        Description
                                  external storage.
 ================================ ==============================================
   
+.. note::
+   You can move the keys to a different location. To do so, refer to the `Move Key Location`_ section of the documentation.
+  
 When encryption is enabled, all files are encrypted and decrypted by the 
 ownCloud application, and stored encrypted on your remote storage.
 This protects your data on externally hosted storage. 
@@ -291,6 +294,9 @@ View current location of keys::
 
  occ encryption:show-key-storage-root
  Current key storage root:  default storage location (data/) 
+
+Move Key Location
+~~~~~~~~~~~~~~~~~
 
 Move keys to a different root folder, either locally or on a different server. 
 The folder must already exist, be owned by root and your HTTP group, and be restricted to root and your HTTP group. 
