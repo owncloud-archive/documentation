@@ -166,8 +166,8 @@ storage mount, see :ref:`external_storage_mount_options_label`
 
 .. _enable-file-recovery-key:
 
-Enabling Users File Recovery Keys
-----------------------------------
+How To Enable Users File Recovery Keys
+--------------------------------------
 
 If you lose your ownCloud password, then you lose access to your encrypted 
 files. If one of your users loses their ownCloud password their files are 
@@ -229,8 +229,11 @@ occ Encryption Commands
 
 If you have shell access you may use the ``occ`` command to perform encryption 
 operations, and you have additional options such as decryption and creating a 
-single master encryption key. See :ref:`encryption_label`  for detailed 
-instructions on using ``occ``.
+single master encryption key. 
+See :ref:`encryption_label`  for detailed instructions on using ``occ``.
+
+View Current Encryption Status
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Get the current status of encryption and the loaded encryption module::
 
@@ -246,7 +249,10 @@ page::
 
  Default module: OC_DEFAULT_MODULE
  
-List the available encryption modules::
+List Available Encryption Modules
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To list the available encryption modules::
 
  occ encryption:list-modules
   - OC_DEFAULT_MODULE: Default encryption module [default*]
@@ -258,11 +264,12 @@ module is OC_DEFAULT_MODULE)::
  
 The [module ID] is taken from the ``encryption:list-modules`` command.
 
-Encrypt all data files for all users. For performance reasons, when you enable 
-encryption on an ownCloud server only new and changed files are encrypted. This 
-command gives you the option to encrypt all files. You must first put your 
-ownCloud server into single-user mode to prevent any user activity until 
-encryption is completed::
+Encrypt and Decrypt Data Files For All Users
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For performance reasons, when you enable encryption on an ownCloud server only new and changed files are encrypted. 
+This command gives you the option to encrypt all files. 
+You must first put your ownCloud server into single-user mode to prevent any user activity until encryption is completed::
 
  occ maintenance:singleuser
  Single user mode is currently enabled
@@ -303,10 +310,12 @@ that the new folder is relative to your ``occ`` directory::
     4 [============================]
  Key storage root successfully changed to ../../../etc/keys
  
-Create a new master key. Use this when you have a single-sign on 
-infrastructure.  Use this only on fresh installations with no existing data, or 
-on systems where encryption has not already been enabled. It is not possible to 
-disable it::
+Create a New Master Key
+~~~~~~~~~~~~~~~~~~~~~~~
+ 
+Create a new master key. Use this when you have a single-sign-on infrastructure. 
+Use this only on fresh installations with no existing data, or on systems where encryption has not already been enabled. 
+It is not possible to disable it::
 
  occ encryption:enable-master-key
  
