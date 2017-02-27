@@ -37,7 +37,7 @@ ownCloud config ``config.php``.
 Unconvertible Tables
 --------------------
 
-If you updated your ownCloud installation old tables, which are not used anymore, might still exist. 
+If you updated your ownCloud installation then the old tables, which are not used anymore, might still exist. 
 The converter will tell you which ones.
 
 ::
