@@ -12,7 +12,7 @@ Run the conversion
 ------------------
 
 First setup the new database, here called "new_db_name".
-In ownCloud root folder call
+In **ownCloud root folder** call
 
 ::
 
