@@ -57,7 +57,7 @@ The ownCloud admin and the storage admin will see only encrypted files when brow
 Before Enabling Encryption
 --------------------------
 
-Plan be very careful before enabling encryption because it is not reversible via the ownCloud Web interface. 
+Plan very carefully before enabling encryption, because it is not reversible via the ownCloud Web interface. 
 As a result, if you lose your encryption keys your files are not recoverable. 
 Always have backups of your encryption keys stored in a safe location, and consider enabling all recovery options.
 
@@ -274,11 +274,18 @@ Note that the new folder is relative to your ``occ`` directory::
 Create a New Master Key
 ~~~~~~~~~~~~~~~~~~~~~~~
  
-Create a new master key. Use this when you have a single-sign-on infrastructure. 
-Use this only on fresh installations with no existing data, or on systems where encryption has not already been enabled. 
-It is not possible to disable it::
+Use this when you have:
 
- occ encryption:enable-master-key
+* A single-sign-on infrastructure
+* A fresh installation with no existing data
+* Systems where encryption has not already been enabled 
+
+::
+
+  occ encryption:enable-master-key
+
+.. important::
+   It is not possible to disable it.
  
 Disabling Encryption
 --------------------
