@@ -537,6 +537,12 @@ in the ``owncloud/.user.ini`` file.
 
 .. _other_HTTP_servers_label:
 
+**No basic authentication headers were found**
+
+This error is shown in your ``data/owncloud.log`` file. 
+Some Apache modules like ``mod_fastcgi``, ``mod_fcgid`` or ``mod_proxy_fcgi`` are not passing the needed authentication headers to PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is failing. 
+Information on how to correctly configure your environment can be found `in the forums`_.
+
 Other Web Servers
 -----------------
 
@@ -602,3 +608,7 @@ Other Web Servers
 .. _ffmpeg: https://ffmpeg.org/
 .. _OpenOffice: https://www.openoffice.org/
 .. _LibreOffice: https://www.libreoffice.org/
+
+.. Forum Links
+   
+.. _in the forums: https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819
