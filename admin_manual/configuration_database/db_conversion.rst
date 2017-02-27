@@ -4,7 +4,7 @@ Converting Database Type
 
 SQLite is good for testing ownCloud, as well as small, single-user, ownCloud servers. 
 But, **it does not scale** for large, multi-user sites.
-If you have an existing ownCloud installation which uses SQLite, and you want to convert to a more performing database, such as *MySQL*, *MariaDB* or *PostgreSQL*, you can use :ref:`the ownCloud command line tool: occ <database_conversion_label>`. 
+If you have an existing ownCloud installation which uses SQLite, and you want to convert to a better performing database, such as *MySQL*, *MariaDB* or *PostgreSQL*, you can use :ref:`the ownCloud command line tool: occ <database_conversion_label>`. 
 
 .. note:: ownCloud Enterprise edition does not support SQLite.
 
