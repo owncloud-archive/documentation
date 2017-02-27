@@ -3,83 +3,88 @@ Encryption Configuration
 ========================
 
 The primary purpose of the ownCloud server-side encryption is to protect users' 
-files on remote storage, such as Dropbox and Google Drive, and to do it easily 
-and seamlessly from within ownCloud.
+files when they're located on remote storages, such as Dropbox and Google Drive, and to do it easily and seamlessly from within ownCloud.
 
-In ownCloud 9.0 the server-side encryption separates encryption of local and 
-remote storage. This allows you to encrypt remote storage, such as Dropbox and 
-Google, without having to also encrypt your home storage on your ownCloud 
-server.
+From ownCloud 9.0, server-side encryption for local and 
+remote storages can operate independently of each other. 
+By doing so, you can encrypt a remote storage *without* having to also encrypt your home storage on your ownCloud server.
 
 .. note:: Starting with ownCloud 9.0 we support Authenticated Encryption for all
    newly encrypted files. See https://hackerone.com/reports/108082 for more 
    technical information about the impact.
    
-   For maximum security make sure to configure external storage with "Check for 
-   changes: Never". This will let ownCloud ignore new files not added via ownCloud, 
-   so a malicious external storage administrator could not add new files to the 
-   storage without your knowledge. Of course, this is not wise if your external 
+   For maximum security make sure to configure external storage with "*Check for 
+   changes: Never*". This will let ownCloud ignore new files not added via ownCloud. 
+   By doing so, a malicious external storage administrator cannot add new files to the 
+   storage without your knowledge. However, this is not wise *if* your external 
    storage is subject to legitimate external changes.
 
-ownCloud server-side encryption encrypts files stored on the ownCloud server, 
-and files on remote storage that is connected to your ownCloud server. 
+ownCloud's server-side encryption encrypts files stored on the ownCloud server 
+and files on remote storages that are connected to your ownCloud server. 
 Encryption and decryption are performed on the ownCloud server. All files sent 
-to remote storage will be encrypted by the ownCloud server, and upon retrieval, 
-decrypted before serving them to you and anyone you have shared them with.
+to remote storage will be encrypted by the ownCloud server and
+decrypted before serving them to you or anyone whom you have shared them with.
 
-.. note:: Encrypting files increases their size by roughly 35%, so you must 
-   take this into account when you are provisioning storage and setting 
-   storage quotas. User's quotas are based on the unencrypted file size, and 
-   not the encrypted file size.
+.. note:: Encrypting files increases their size by roughly 35%. Remember to
+   take this into account when you are both provisioning storage and setting
+   storage quotas. Secondly user quotas are based on the *unencrypted* file
+   size — **not** the encrypted size.
 
-When files on external storage are encrypted in ownCloud, you cannot share them 
-directly from the external storage services, but only through ownCloud sharing 
-because the key to decrypt the data never leaves the ownCloud server.
+When files on an external storage are encrypted in ownCloud, you cannot share them 
+directly from the external storage services, only through ownCloud sharing. 
+This is because the key to decrypt the data **never** leaves the ownCloud server.
 
-ownCloud's server-side encryption generates a strong encryption key, which is 
-unlocked by user's passwords. Your users don't need to track an extra 
-password, but simply log in as they normally do. It encrypts only the contents 
-of files, and not filenames and directory structures.
+ownCloud's server-side encryption generates a strong encryption key, which is
+unlocked by users' passwords. As a result, your users don't need to track an
+extra password. All they need to do is log in as they normally would. ownCloud,
+transparently, encrypts only the contents of files, and not filenames and directory
+structures.
 
-You should regularly backup all encryption keys to prevent permanent data loss. 
+.. important:: 
+   You should regularly backup all encryption keys to prevent permanent data loss. 
+
 The encryption keys are stored in the following directories:
 
-``data/<user>/files_encryption`` 
-  Users' private keys and all other keys necessary to decrypt the users' files
-``data/files_encryption``
-  private keys and all other keys necessary to decrypt the files stored on a
-  system wide external storage
+================================ ================================================
+Location                        
+================================ ================================================
+``data/<user>/files_encryption`` Users' private keys and all other keys necessary 
+                                 to decrypt the users' files
+``data/files_encryption``        Private keys and all other keys necessary to 
+                                 decrypt the files stored on a system wide 
+                                 external storage
+================================ ================================================
   
-When encryption is enabled, all files are encrypted and decrypted by the 
-ownCloud application, and stored encrypted on your remote storage.
-This protects your data on externally hosted storage. The ownCloud 
-admin and the storage admin will see only encrypted files when browsing backend 
+When encryption is enabled, all files are encrypted and decrypted by the ownCloud application, and stored encrypted on your remote storage.
+This protects your data when hosted on external storages. 
+The ownCloud admin and the storage admin will see only encrypted files when browsing backend 
 storage.  
   
-.. warning:: Encryption keys are stored only on the ownCloud server, eliminating
-   exposure of your data to third-party storage providers. The encryption app 
-   does **not** protect your data if your ownCloud server is compromised, and it
-   does not prevent ownCloud administrators from reading user's files. This 
-   would require client-side encryption, which this app does not provide. If 
-   your ownCloud server is not connected to any external storage services then 
-   it is better to use other encryption tools, such as file-level or 
-   whole-disk encryption. 
+.. warning:: 
+   Encryption keys are stored only on the ownCloud server, eliminating exposure
+   of your data to third-party storage providers. The encryption app does
+   **not** protect your data if your ownCloud server is compromised, and it
+   does not prevent ownCloud administrators from reading user's files. This
+   would require client-side encryption, which this app does not provide. If
+   your ownCloud server is not connected to any external storage services then
+   it is better to use other encryption tools, such as `file-level or
+   whole-disk encryption`_. 
    
-   Note also that SSL terminates at or before Apache on the ownCloud server, and 
-   all files will exist in an unencrypted state between the SSL connection 
-   termination and the ownCloud code that encrypts and decrypts files. This is 
-   also potentially exploitable by anyone with administrator access to your 
-   server. Read `How ownCloud uses encryption to protect your data 
-   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your- 
+   Note also that SSL terminates at or before Apache on the ownCloud server. As
+   a result, all files will exist in *an unencrypted state* between the SSL
+   connection termination and the ownCloud code that encrypts and decrypts the
+   files. This is potentially exploitable by anyone with administrator access
+   to your server. Read `How ownCloud uses encryption to protect your data
+   <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-
    data/>`_ for more information.
    
 Before Enabling Encryption
 --------------------------
 
-Plan very carefully before enabling encryption because it is not reversible via 
-the ownCloud Web interface. If you lose your encryption keys your files are not 
-recoverable. Always have backups of your encryption keys stored in a safe 
-location, and consider enabling all recovery options.
+Plan be very careful before enabling encryption, because it is not reversible
+via the ownCloud Web interface. As a result, if you lose your encryption keys
+your files are not recoverable. Always have backups of your encryption keys
+stored in a safe location, and consider enabling all recovery options.
 
 You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
 
@@ -88,31 +93,30 @@ You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
 Enabling Encryption
 -------------------
 
-ownCloud encryption consists of two parts. The base encryption system is 
-enabled and disabled on your Admin page. First you must enable this, and then 
-select an encryption module to load. Currently the only available encryption 
-module is the ownCloud Default Encryption Module.
+ownCloud encryption consists of two parts. 
+The base encryption system is enabled and disabled on your Admin page. 
+First you must enable this, and then select an encryption module to load. 
+Currently the only available encryption module is the ownCloud Default Encryption Module.
 
-First go to the **Server-side encryption** section of your Admin page and check 
-**Enable server-side encryption**. You have one last chance to change your mind.
+Then, go to the **Server-side encryption** section of your Admin page and check **Enable server-side encryption**. 
+Here, you have one last chance to change your mind.
 
 .. figure:: images/encryption3.png
 
-After clicking the **Enable Encryption** button you see the message "No 
-encryption module loaded, please load a encryption module in the app menu", so 
-go to your Apps page to enable the ownCloud Default Encryption Module.
+After clicking the **Enable Encryption** button, you will see the message "*No 
+encryption module loaded, please load a encryption module in the app menu*". 
+Now, you need to go to your Apps page to enable the ownCloud Default Encryption Module.
 
 .. figure:: images/encryption1.png
 
-Return to your Admin page to see the ownCloud Default Encryption 
-Module added to the module selector, and automatically selected. Now you must 
-log out and then log back in to initialize your encryption keys.
+When that’s done, return to your Admin page, where you will see that the ownCloud Default Encryption Module has been added to the module selector, and automatically selected. 
+Now you must log out and then log back in to initialize your encryption keys.
 
 .. figure:: images/encryption14.png
 
-When you log back in, there is a checkbox for enabling encryption on your home 
-storage. This is checked by default. Un-check to avoid encrypting your home 
-storage.
+When you log back in, there will be a checkbox for enabling encryption on your home storage. 
+This is checked by default. 
+Un-check it to avoid encrypting your home storage.
 
 .. figure:: images/encryption15.png
 
@@ -140,54 +144,46 @@ To enable master key based encryption:
 Sharing Encrypted Files
 -----------------------
 
-After encryption is enabled your users must also log out and log back in to 
-generate their personal encryption keys. They will see a yellow warning banner 
-that says "Encryption App is enabled but your keys are not initialized, please 
-log-out and log-in again." 
+After encryption is enabled your users must also log out and log back in to generate their personal encryption keys. 
+They will see a yellow warning banner that says "*Encryption App is enabled but your keys are not initialized, please log-out and log-in again.*" 
 
-Share owners may need to re-share files after encryption is enabled; users 
-trying to access the share will see a message advising them to ask the share 
-owner to re-share the file with them. For individual shares, un-share and 
-re-share the file. For group shares, share with any individuals who can't access 
-the share. This updates the encryption, and then the share owner can remove the 
-individual shares.
+In addition, share owners may need to re-share files after encryption is enabled. 
+Users trying to access the share will see a message advising them to ask the share owner to re-share the file with them. 
+For individual shares, un-share and re-share the file. 
+For group shares, share with any individuals who can't access the share. 
+This updates the encryption, and then the share owner can remove the individual shares.
 
 .. figure:: images/encryption9.png
 
 Encrypting External Mountpoints
 -------------------------------
 
-You and your users can encrypt individual external mountpoints. You must have 
-external storage enabled on your Admin page, and enabled for your users.
+You and your users can encrypt individual external mountpoints. 
+You must have external storage enabled on your Admin page, and enabled for your users.
 
-Encryption settings can be configured in the mount options for an external
-storage mount, see :ref:`external_storage_mount_options_label`
-(:doc:`external_storage_configuration_gui`)
+Encryption settings can be configured in the mount options for an external storage mount; see :ref:`external_storage_mount_options_label` (:doc:`external_storage_configuration_gui`)
 
 .. _enable-file-recovery-key:
 
 How To Enable Users File Recovery Keys
 --------------------------------------
 
-If you lose your ownCloud password, then you lose access to your encrypted 
-files. If one of your users loses their ownCloud password their files are 
-unrecoverable. You cannot reset their password in the normal way; you'll see a 
-yellow banner warning "Please provide an admin recovery password, otherwise all 
-user data will be lost".
+If you lose your ownCloud password, then you lose access to your encrypted files. 
+If one of your users loses their ownCloud password their files are unrecoverable. 
+You cannot reset their password in the normal way however. 
 
-To avoid all this, create a Recovery Key. Go to the Encryption section of your 
-Admin page and set a recovery key password.
+You'll see a yellow banner warning "Please provide an admin recovery password, otherwise all user data will be lost".
+To avoid all this, create a Recovery Key. 
+To do so, go to the Encryption section of your Admin page and set a recovery key password.
 
 .. figure:: images/encryption10.png
 
-Then your users have the option of enabling password recovery on their Personal 
-pages. If they do not do this, then the Recovery Key won't work for them.
+Then your users have the option of enabling password recovery on their Personal pages. 
+If they do not do this, then the Recovery Key won't work for them.
 
 .. figure:: images/encryption7.png
 
-For users who have enabled password recovery, give them a new password and 
-recover access to their encrypted files by supplying the Recovery Key on the 
-Users page.
+For users who have enabled password recovery, give them a new password and recover access to their encrypted files, by supplying the Recovery Key on the Users page.
 
 .. figure:: images/encryption8.png
 
@@ -200,8 +196,7 @@ You may change your Recovery Key password.
 Changing The Recovery Key Password
 ----------------------------------
 
-If you have misplaced your recovery key password and need to replace it,
-here’s what you need to do:
+If you have misplaced your recovery key password and need to replace it, here’s what you need to do:
 
 1. Delete the recovery key from both ``data/owncloud_private_keys`` and
    ``data/public-keys``
@@ -227,22 +222,20 @@ here’s what you need to do:
 occ Encryption Commands
 -----------------------
 
-If you have shell access you may use the ``occ`` command to perform encryption 
-operations, and you have additional options such as decryption and creating a 
-single master encryption key. 
+If you have shell access you may use the ``occ`` command to perform encryption operations. 
+You also have additional options such as decryption and creating a single master encryption key. 
 See :ref:`encryption_label`  for detailed instructions on using ``occ``.
 
 View Current Encryption Status
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Get the current status of encryption and the loaded encryption module::
+Get the current encryption status and the loaded encryption module::
 
  occ encryption:status
   - enabled: false                 
   - defaultModule: OC_DEFAULT_MODULE
 
-This is equivalent to checking **Enable server-side encryption** on your Admin
-page::
+This is equivalent to checking **Enable server-side encryption** on your Admin page::
 
  occ encryption:enable
  Encryption enabled
@@ -257,8 +250,7 @@ To list the available encryption modules::
  occ encryption:list-modules
   - OC_DEFAULT_MODULE: Default encryption module [default*]
 
-Select a different default Encryption module (currently the only available 
-module is OC_DEFAULT_MODULE)::
+Select a different default Encryption module (currently the only available module is ``OC_DEFAULT_MODULE``)::
 
  occ encryption:set-default-module [Module ID]. 
  
@@ -278,7 +270,7 @@ Then run ``occ``::
 
  occ encryption:encrypt-all
  
- You are about to start to encrypt all files stored in your ownCloud.
+ You are about to start encrypting all files stored in your ownCloud.
  It will depend on the encryption module you use which files get encrypted.
  Depending on the number and size of your files this can take some time.
  Please make sure that no users access their files during this process!
@@ -402,3 +394,7 @@ You must run ``occ`` as your HTTP user; see
 
 When you are finished, take your ownCloud server out of 
 ``maintenance:singleuser`` mode.
+
+.. Links
+   
+.. _file-level or whole-disk encryption: http://blog.vormetric.com/2015/06/23/locking-down-data-full-disk-encryption-vs-file-level-encryption/
