@@ -1,33 +1,54 @@
 Unit-Testing
 ============
 
-PHP unit testing
-----------------
+PHP Unit Tests
+--------------
+
+ownCloud uses PHPUnit >= 4.8 for unit testing PHP code.
 
 Getting PHPUnit
 ~~~~~~~~~~~~~~~
 
-ownCloud uses PHPUnit >= 4.8 for unit testing.
+There are three ways to install it:
 
-To install it, either get it via your packagemanager::
+1. Use Composer
 
+::
+
+  composer require phpunit/phpunit
+
+2. Use your package manager (if you’re using a Linux distribution) 
+
+::
+
+  # When using a Debian-based distribution
   sudo apt-get install phpunit
 
-or install it manually::
+3. Install it manually
+
+::
 
   wget https://phar.phpunit.de/phpunit.phar
   chmod +x phpunit.phar
   sudo mv phpunit.phar /usr/local/bin/phpunit
 
-After the installation the ''phpunit'' command is available::
+After the installation the command ``phpunit`` is available
+
+::
 
   phpunit --version
+  
+.. important::
+   Please be aware that PHPUnit 6.0 and above require PHP 7.0.
   
 And you can update it using::
 
   phpunit --self-update
+  
+.. note::
+   This option is not supported from PHPUnit 6.0 onward. If you’re using this version or higher, please use either Composer or your package manager to upgrade to the latest version.
 
-You can find more information in the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
+You can find more information in `the PHPUnit documentation`_.
 
 Writing PHP unit tests
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -190,3 +211,7 @@ Here are some useful links about how to write unit tests with Jasmine and Sinon:
 - Jasmine: http://pivotal.github.io/jasmine
 - Sinon (for mocking and stubbing): http://sinonjs.org/ 
 
+
+.. links
+   
+.. _the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
