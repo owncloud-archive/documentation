@@ -9,15 +9,16 @@ By doing so, you can encrypt a remote storage *without* also having to encrypt y
 
 .. note:: Starting with ownCloud 9.0 we support Authenticated Encryption for all newly encrypted files. See https://hackerone.com/reports/108082 for more technical information about the impact.
    
-   For maximum security make sure to configure external storage with "*Check for changes: Never*." 
+For maximum security make sure to configure external storage with "*Check for changes: Never*." 
 This will let ownCloud ignore new files not added via ownCloud. 
-By doing so, a malicious external storage administrator cannot add new files to the storage without your knowledge. However, this is not wise *if* your external storage is subject to legitimate external changes.
+By doing so, a malicious external storage administrator cannot add new files to the storage without your knowledge. 
+However, this is not wise *if* your external storage is subject to legitimate external changes.
 
 ownCloud's server-side encryption encrypts files stored on the ownCloud server and files on remote storages that are connected to your ownCloud server. 
-Encryption and decryption are performed on the ownCloud server. All files sent to remote storage will be encrypted by the ownCloud server and decrypted before serving them to you or anyone whom you have shared them with.
+Encryption and decryption are performed on the ownCloud server. 
+All files sent to remote storage will be encrypted by the ownCloud server and decrypted before serving them to you or anyone whom you have shared them with.
 
-.. note:: 
-   Encrypting files increases their size by roughly 35%. Remember to take this into account when you are both provisioning storage and setting storage quotas. Secondly, user quotas are based on the *unencrypted* file size — **not** the encrypted size.
+.. note:: Encrypting files increases their size by roughly 35%. Remember to take this into account when you are both provisioning storage and setting storage quotas. Secondly, user quotas are based on the *unencrypted* file size — **not** the encrypted size.
 
 When files on an external storage are encrypted in ownCloud, you cannot share them directly from the external storage services, only through ownCloud sharing. 
 This is because the key to decrypt the data **never** leaves the ownCloud server.
@@ -118,13 +119,13 @@ To enable master key based encryption:
 
 .. note::
 
-   Master key mode has to be setup in a newly created instance.
+   The master key mode has to be set up in a newly created instance.
    
 Sharing Encrypted Files
 -----------------------
 
 After encryption is enabled, your users must also log out and log back in to generate their personal encryption keys. 
-They will see a yellow warning banner that says *"Encryption App is enabled, but your keys are not initialized, please log-out and log-in again."*
+They will see a yellow warning banner that says "*Encryption App is enabled, but your keys are not initialized. Please log-out and log-in again.*" 
 
 Also, share owners may need to re-share files after encryption is enabled. 
 Users who are trying to access the share will see a message advising them to ask the share owner to re-share the file with them. 
@@ -139,7 +140,6 @@ Encrypting External Mountpoints
 
 You and your users can encrypt individual external mount points. 
 You must have external storage enabled on your Admin page, and enabled for your users.
-
 Encryption settings can be configured in the mount options for an external storage mount; see :ref:`external_storage_mount_options_label` (:doc:`external_storage_configuration_gui`)
 
 .. _enable-file-recovery-key:
@@ -151,7 +151,7 @@ If you lose your ownCloud password, then you lose access to your encrypted files
 If one of your users loses their ownCloud password, their files are unrecoverable. 
 You cannot reset their password in the normal way, however. 
 
-You'll see a yellow banner warning *"Please provide an admin recovery password, otherwise all user data will be lost"*.
+You'll see a yellow banner warning "Please provide an admin recovery password; otherwise, all user data will be lost."
 To avoid all this, create a Recovery Key. 
 To do so, go to the Encryption section of your Admin page and set a recovery key password.
 
@@ -175,10 +175,10 @@ You may change your Recovery Key password.
 Changing The Recovery Key Password
 ----------------------------------
 
-If you have misplaced your recovery key password and need to replace it, here's what you need to do:
+If you have misplaced your recovery key password and need to replace it, here’s what you need to do:
 
 1. Delete the recovery key from both ``data/owncloud_private_keys`` and ``data/public-keys``
-2. Edit your database table ``oc_appconfig`` and remove the rows with the config keys ``recoveryKeyId`` and ``recoveryAdminEnabled`` for the ``appid`` ``files_encryption``
+2. Edit your database table ``oc_appconfig`` and remove the rows with the config keys ``recoveryKeyId`` and ``recoveryAdminEnabled`` for the appid ``files_encryption``
 3. Login as admin and activate the recovery key again with a new password. This will generate a new key pair
 4. All users who used the original recovery key will need to disable it and enable it again. This deletes the old recovery share keys from their files and encrypts their files with the new recovery key
 
@@ -344,8 +344,11 @@ This example is for Red Hat/CentOS/Fedora Linux::
 
  $ sudo -u apache php occ encryption:migrate
  
-You must run ``occ`` as your HTTP user; see :doc:`../configuration_server/occ_command`.
-When you are finished, take your ownCloud server out of ``maintenance:singleuser`` mode.
+You must run ``occ`` as your HTTP user; see 
+:doc:`../configuration_server/occ_command`.
+
+When you are finished, take your ownCloud server out of 
+``maintenance:singleuser`` mode.
 
 .. Links
    
