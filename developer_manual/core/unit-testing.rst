@@ -9,6 +9,15 @@ ownCloud uses PHPUnit >= 4.8 for unit testing PHP code.
 Getting PHPUnit
 ~~~~~~~~~~~~~~~
 
+ownCloud >= 10.0
+^^^^^^^^^^^^^^^^
+
+If you are using ownCloud 10.0 or higher, running ``make test-php`` or ``make`` in your terminal from the root directory will install a local version of PHPUnit inside of ``lib/composer`` and run the test suite.
+
+ownCloud < 10.0
+^^^^^^^^^^^^^^^
+
+If you are on any version earlier than 10.0 you have to setup PHPUnit (and run the tests) manually. 
 There are three ways to install it:
 
 1. Use Composer
@@ -54,6 +63,7 @@ Writing PHP unit tests
 ~~~~~~~~~~~~~~~~~~~~~~
 
 To get started, do the following:
+
  - Create a directory called ``tests`` in the top level of your application
  - Create a php file in the directory and ``require_once`` your class which you want to test.
 
@@ -107,8 +117,8 @@ In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
 
 Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods,
 when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method
-from the TestCase. These methods set up important stuff and clean up the system after the test,
-so the next test can run without side effects, like remaining files and entries in the file cache, etc.
+from ``TestCase``. 
+These methods set up important stuff and clean up the system after the test, so the next test can run without side effects, like remaining files and entries in the file cache, etc.
 
 For more resources on PHPUnit visit: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
