@@ -136,7 +136,7 @@ Setting Up Google Drive and Dropbox Connections
 
 When an external storage is created which uses either Google Drive or Dropbox, a link to the respective configuration page is available, next to the service name. 
 
-.. figure:: external_storage/images/external-storage-google-drive-and-dropbox-configuration.png
+.. figure:: images/external-storage-google-drive-and-dropbox-configuration.png
    :alt: Links to Google Drive and Dropbox app configuration pages.
 
 In the screenshot above, you can see that two external storage connections have been created, but not configured. 
