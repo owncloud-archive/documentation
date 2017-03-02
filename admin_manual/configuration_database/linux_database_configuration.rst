@@ -4,9 +4,9 @@ Database Configuration
 
 ownCloud requires a database in which administrative data is stored. The following databases are currently supported:
 
-* `MySQL <http://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_
-* `PostgreSQL <http://www.postgresql.org/>`_
-* `Oracle <http://www.oracle.com/>`_ (ownCloud Enterprise edition only)
+* :ref:`MySQL / MariaDB <db-binlog-label>`
+* :ref:`PostgreSQL <db-postgresql-label>`
+* :ref:`Oracle <db-oracle-database-setup>` (ownCloud Enterprise edition only)
 
 The MySQL or MariaDB databases are the recommended database engines.
 
@@ -143,6 +143,7 @@ this:
     "dbhost"        => "localhost",
     "dbtableprefix" => "oc_",
 
+.. _db-postgresql-label:
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
