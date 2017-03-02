@@ -1,33 +1,63 @@
 Unit-Testing
 ============
 
-PHP Unit Testing
-----------------
+PHP Unit Tests
+--------------
+
+ownCloud uses PHPUnit >= 4.8 for unit testing PHP code.
 
 Getting PHPUnit
 ~~~~~~~~~~~~~~~
 
-ownCloud uses PHPUnit >= 4.8 for unit testing.
+ownCloud >= 10.0
+^^^^^^^^^^^^^^^^
 
-To install it, either get it via your package manager::
+If you are using ownCloud 10.0 or higher, running ``make test-php`` or ``make`` in your terminal from the root directory will install a local version of PHPUnit inside of ``lib/composer`` and run the test suite.
 
+ownCloud < 10.0
+^^^^^^^^^^^^^^^
+
+If you are on any version earlier than 10.0 you have to setup PHPUnit (and run the tests) manually. 
+There are three ways to install it:
+
+1. Use Composer
+
+::
+
+  composer require phpunit/phpunit
+
+2. Use your package manager (if you’re using a Linux distribution) 
+
+::
+
+  # When using a Debian-based distribution
   sudo apt-get install phpunit
 
-or install it manually::
+3. Install it manually
+
+::
 
   wget https://phar.phpunit.de/phpunit.phar
   chmod +x phpunit.phar
   sudo mv phpunit.phar /usr/local/bin/phpunit
 
-After the installation the ''phpunit'' command is available::
+After the installation the command ``phpunit`` is available
+
+::
 
   phpunit --version
+  
+.. important::
+   Please be aware that PHPUnit 6.0 and above require PHP 7.0.
   
 And you can update it using::
 
   phpunit --self-update
+  
+.. note::
+   This option is not supported from PHPUnit 6.0 onward. If you’re using this version or higher, please use either Composer or your package manager to upgrade to the latest version.
 
-You can find more information in the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
+You can find more information in `the PHPUnit documentation`_.
 
 Writing PHP Unit tests
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -87,9 +117,7 @@ In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
   phpunit tests/testaddtwo.php
 
 
-Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods,
-when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method
-from the ``TestCase``. 
+Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods, when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method from the ``TestCase``. 
 These methods set up important stuff and clean up the system after the test so that the next test can run without side effects, such as clearing files and entries from the file cache, etc.
 For more resources on writing tests for PHPUnit visit `the writing tests section`_ of the PHPUnit documentation. 
 
