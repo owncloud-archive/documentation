@@ -578,7 +578,7 @@ See the documentation wiki for `additional LDAP tips and tricks <https://github.
 Caching
 ^^^^^^^
 
-Using caching to speed up lookups. See :doc:`../configuration_server/caching_configuration`). The ownCloud cache is populated on demand, and remains populated until the **Cache Time-To-Live** for each unique request expires. User logins are not cached, so if you need to improve login times set up a slave LDAP server to share the load.
+Using caching to speed up lookups. See :doc:`../configuration_server/caching_configuration`. The ownCloud cache is populated on demand, and remains populated until the **Cache Time-To-Live** for each unique request expires. User logins are not cached, so if you need to improve login times set up a slave LDAP server to share the load.
 
 You can adjust the **Cache Time-To-Live** value to balance performance and 
 freshness of LDAP data. All LDAP requests will be cached for 10 minutes by 
