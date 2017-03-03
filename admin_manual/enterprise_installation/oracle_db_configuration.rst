@@ -1,3 +1,5 @@
+.. _db-oracle-database-setup:
+
 =====================
 Oracle Database Setup
 =====================
