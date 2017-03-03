@@ -36,12 +36,12 @@ Here’s an example of the bare minimum which the file needs to contain:
   <?xml version="1.0"?>
   <info>
       <id>theme-example</id>
-      <name>Enterprise ownCloud Theme</name>
+      <name>Example Theme</name>
       <types>
           <theme/>
       </types>
       <dependencies>
-        <owncloud min-version="9.2" max-version="10" />
+        <owncloud min-version="10" max-version="10" />
       </dependencies>
   </info>
 
@@ -52,22 +52,24 @@ And here’s a longer, more complete example:
   <?xml version="1.0"?>
   <info>
       <id>theme-example</id>
-      <name>Enterprise ownCloud Theme</name>
-      <description>This App provides the enterprise ownCloud theme.</description>
+      <name>Example Theme</name>
+      <description>This App provides the ownCloud theme.</description>
       <licence>AGPL</licence>
-      <author>Philipp Schaffrath</author>
+      <author>John Doe</author>
       <version>0.0.1</version>
       <types>
           <theme/>
       </types>
       <dependencies>
-          <owncloud min-version="9.2" max-version="10" />
+          <owncloud min-version="10" max-version="10" />
       </dependencies>
   </info>
 
-The value of the ``id`` element needs to be the name of your theme’s folder. We recommend that it always be prefixed with ``theme-``. The main reason for doing so, is that when being viewed in the ownCloud Admin dashboard, it's clear that it’s a theme, not an application. 
+The value of the ``id`` element needs to be the name of your theme’s folder. 
+We recommend that it always be prefixed with ``theme-``. 
+The main reason for doing so, is that it is alphabetically sorted in a terminal when handling app folders. 
 
-The ``type`` element needs to be the same as is listed above.
+The ``type`` element needs to be the same as is listed above, so that ownCloud knows to handle the app as a theme.
 The dependencies element needs to be present to set the minimum and maximum versions of ownCloud which are supported. If it’s not present, a warning will be displayed in ownCloud 10 and an error will be thrown in the upcoming ownCloud 11.
 
 While the remaining elements are optional, they help when working with the theme in the ownCloud Admin dashboard. 
@@ -77,16 +79,9 @@ How to Override Images
 ----------------------
 
 Any image, such as the default logo, can be overridden by including one with the same path structure in your theme.
-For example, let’s say that you want to replace the logo on the login-page above the credentials-box which, by default is has the path: ``owncloud/core/img/logo-icon.svg``.
-To override it, assuming that your custom theme was called ``theme-example`` (*which will be assumed for the remainder of the theming documentation*), add a new file with the following path: ``owncloud/apps/theme-example/img/logo-icon.svg``.
+For example, let’s say that you want to replace the logo on the login-page above the credentials-box which, by default has the path: ``owncloud/core/img/logo-icon.svg``.
+To override it, assuming that your custom theme was called ``theme-example`` (*which will be assumed for the remainder of the theming documentation*), add a new file with the following path: ``owncloud/apps/theme-example/core/img/logo-icon.svg``.
 After the theme is activated, this image will override the default one.
-
-.. note::
-   ownCloud supports the following image file formats:
-
-     - Scalable Vector Graphics
-     - Portable Network Graphics
-     - JPEG
 
 Default Image Paths
 ~~~~~~~~~~~~~~~~~~~
@@ -129,40 +124,6 @@ How to Override the Default Colors
 ----------------------------------
 
 To override the default style sheet, create a new CSS style sheet in your theme, in the theme’s ``css`` directory, called ``styles.css``.
-
-To override the background in the login page and the blue header bar on the main navigation page, visible once you log in to ownCloud, you need to override the CSS ``body-login`` element , which you can see the default definition of below. 
-It implements a `CSS gradient`_ with support for a range of browsers, both old and new. 
-
-.. note: 
-   Not all browsers support CSS gradients.
-   To find out which do, and which don’t, check `the guide on Can I Use`_.
-
-.. code-block:: css
-
-  /* HEADERS */
-  ...
-  body-login {
-   /* Old browsers */
-   background: #745bca;
-   /* FF3.6+ */
-   background: -moz-linear-gradient(top, #947bea 0%, #745bca 100%);
-   /* Chrome,Safari4+ */
-   background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #947bea), color-stop(100%, #745bca));
-   /* Chrome10+,Safari5.1+ */
-   background: -webkit-linear-gradient(top, #947bea 0%, #745bca 100%);
-   /* Opera11.10+ */
-   background: -o-linear-gradient(top, #947bea 0%, #745bca 100%);
-   /* IE10+ */
-   background: -ms-linear-gradient(top, #947bea 0%, #745bca 100%);
-   /* W3C */
-   background: linear-gradient(top, #947bea 0%, #745bca 100%);
-   /* IE6-9 */
-   filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#947bea', endColorstr='#745bca', GradientType=0 );
-  }
-
-When changing the gradient what you most likely want to do is change ``#35537a`` and ``#ld2d42`` to the colors of your choice. 
-``#35537a``, is the top color of the gradient at the login screen. 
-``#ld2d42``, is the bottom color of the gradient at the login screen.
 
 How to Override Translations
 ----------------------------
