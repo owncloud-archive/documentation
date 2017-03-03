@@ -12,7 +12,13 @@ Getting PHPUnit
 ownCloud >= 10.0
 ^^^^^^^^^^^^^^^^
 
-If you are using ownCloud 10.0 or higher, running ``make test-php`` or ``make`` in your terminal from the root directory will install a local version of PHPUnit inside of ``lib/composer`` and run the test suite.
+If you are using ownCloud 10.0 or higher, running ``make`` in your terminal from the ``webroot`` directory will prepare everything for testing. 
+This will install beside necessary dependencies, a local version of PHPUnit at ``<webroot>/lib/composer/phpunit/phpunit``.
+
+- Run ``make help`` to get a list of parameters
+- To update your testing environment run ``make clean`` and ``make`` again.
+- Take care that the php phpunit file in the path provided has the executable permission set.
+
 
 ownCloud < 10.0
 ^^^^^^^^^^^^^^^
@@ -58,6 +64,19 @@ And you can update it using::
    This option is not supported from PHPUnit 6.0 onward. If you’re using this version or higher, please use either Composer or your package manager to upgrade to the latest version.
 
 You can find more information in `the PHPUnit documentation`_.
+
+Running PHP Unit tests for ownCloud >= 10.0
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are existing tests provided by ownCoud which are ready to run.
+
+- Change into ``webroot`` and run ``make help`` to see tests and parameters available.
+
+Testing apps
+
+- To run test for a specific app with the provided PHPUnit version, change into ``<webroot>/apps/<appnname>/<testfolder>`` and call ``<webroot>/lib/composer/phpunit/phpunit/phpunit`` plus optinal parameters when needed.
+
+
 
 Writing PHP Unit tests
 ~~~~~~~~~~~~~~~~~~~~~~
