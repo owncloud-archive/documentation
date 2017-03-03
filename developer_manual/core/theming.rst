@@ -136,9 +136,8 @@ To do so:
 1. Create the ``l10n`` folder inside your theme, for the app that you want to override.
 2. In the ``l10n`` folder, create the translation file for the language that you want to customize.
 
-For example, if you want to override the German translation of "Download" in the ``files`` app, then you need to create the file ``owncloud/app/theme-example/l10n/de.js``.
-
-You then need to put the following code in the file:
+For example, if you want to overwrite the German translation of *"Download"* in the files app, you would create the file ``owncloud/apps/theme-example/apps/files/l10n/de_DE.js``. Note that the structure is the same as for images. You just mimic the original file location inside your theme.
+You would then put the following code in the file:
 
 .. code-block:: js
 
@@ -150,7 +149,7 @@ You then need to put the following code in the file:
     "nplurals=2; plural=(n != 1);"
   );
 
-Finally, you need to create another file ``owncloud/app/theme-example/l10n/de.json`` with the same translations that look like this:
+You then need to create a second translation file, ``owncloud/apps/theme-example/apps/files/l10n/de_DE.json``, which looks like this:
 
 .. code-block:: json
 
@@ -161,7 +160,8 @@ Finally, you need to create another file ``owncloud/app/theme-example/l10n/de.js
     "pluralForm" :"nplurals=2; plural=(n != 1);"
   }
 
-Both files (``.js`` and ``.json``) are needed with the same translations, because the first is needed to enable translations in the JavaScript code and the second one is read by the PHP code and provides the data for translated terms.
+Both files (``.js`` and ``.json``) are needed. 
+The first is needed to enable translations in the JavaScript code and the second one is read by the PHP code and provides the data for translated terms.
 
 .. note: 
    Only the changed strings need to be added to that file. 
