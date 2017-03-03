@@ -154,12 +154,15 @@ If so, you'll see a yellow banner warning:
 
   Please provide an admin recovery password; otherwise, all user data will be lost.
 
-To avoid all this, create a Recovery Key. To do so, go to the Encryption section of your Admin page and set a recovery key password.
+To avoid all this, create a Recovery Key. 
+To do so, go to the Encryption section of your Admin page and set a recovery key password.
 
 .. figure:: images/encryption10.png
 
-Then your users have the option of enabling password recovery on their Personal pages. 
-If they do not do this, then the Recovery Key won't work for them.
+You then need to ask your users to opt-in to the Recovery Key. 
+For the users to do this, they need to go to the "**Personal**" page and enable the recovery key.
+This signals that they are OK that the admin might have a way to decrypt their data for recovery reasons.
+If they do *not* do this, then the Recovery Key won't work for them.
 
 .. figure:: images/encryption7.png
 
