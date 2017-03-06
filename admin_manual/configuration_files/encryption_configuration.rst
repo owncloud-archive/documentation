@@ -147,18 +147,22 @@ Encryption settings can be configured in the mount options for an external stora
 How To Enable Users File Recovery Keys
 --------------------------------------
 
-If you lose your ownCloud password, then you lose access to your encrypted files. 
-If one of your users loses their ownCloud password, their files are unrecoverable. 
-You cannot reset their password in the normal way, however. 
+Once a user has encrypted their files, if they lose their ownCloud password, then they lose access to their encrypted files, as their files will be unrecoverable. 
+It is not possible, when user files are encrypted, to reset a user’s password using the standard reset process. 
 
-You'll see a yellow banner warning "Please provide an admin recovery password; otherwise, all user data will be lost."
+If so, you'll see a yellow banner warning: 
+
+  Please provide an admin recovery password; otherwise, all user data will be lost.
+
 To avoid all this, create a Recovery Key. 
 To do so, go to the Encryption section of your Admin page and set a recovery key password.
 
 .. figure:: images/encryption10.png
 
-Then your users have the option of enabling password recovery on their Personal pages. 
-If they do not do this, then the Recovery Key won't work for them.
+You then need to ask your users to opt-in to the Recovery Key. 
+For the users to do this, they need to go to the "**Personal**" page and enable the recovery key.
+This signals that they are OK that the admin might have a way to decrypt their data for recovery reasons.
+If they do *not* do this, then the Recovery Key won't work for them.
 
 .. figure:: images/encryption7.png
 
@@ -171,6 +175,10 @@ You may change your Recovery Key password.
 .. figure:: images/encryption12.png
 
 .. _occ_encryption_label:
+   
+.. note::
+   Sharing a recovery key with a user group is **not** supported.
+   This is only supported with :ref:`the master key <create-a-master-key>`.
    
 Changing The Recovery Key Password
 ----------------------------------
@@ -271,6 +279,8 @@ Note that the new folder is relative to your ``occ`` directory::
     4 [============================]
  Key storage root successfully changed to ../../../etc/keys
  
+.. _create-a-master-key:
+ 
 Create a New Master Key
 ~~~~~~~~~~~~~~~~~~~~~~~
  
@@ -291,15 +301,31 @@ Disabling Encryption
 --------------------
 
 You may disable encryption only with ``occ``. 
-Make sure you have backups of all encryption keys, including users'. 
-Put your ownCloud server into single-user mode, and then disable your encryption module with this command::
+Make sure you have backups of all the encryption keys, including those for all users. 
+When you do, put your ownCloud server into single-user mode, and then disable your encryption module with this command:
+
+::
 
  occ maintenance:singleuser --on
  occ encryption:disable
+
+.. warning:: 
+   Encryption cannot be disabled without the user’s password or :ref:`file recovery key <enable-file-recovery-key>`.
+   If you don't have access to at least one of these then there is no way to decrypt all files. 
  
-Take it out of single-user mode when you are finished::
+Then, take it out of single-user mode when you are finished with this command:
+
+::
 
  occ maintenance:singleuser --off
+ 
+It is possible to disable encryption with the file recovery key, *if* every user uses them.
+If so, :ref:`"decrypt all" <encryption_label>` will use it to decrypt all files.
+
+.. note::
+   It is **not** planned to move this to the next user login or a background job. 
+   If that was done, then login passwords would need to be stored in the
+   database, which could be a security issue. 
 
 Files Not Encrypted
 -------------------
