@@ -174,11 +174,6 @@ Encryption settings can be configured in the mount options for an external stora
 .. _enable-file-recovery-key:
 
 How To Enable Users File Recovery Keys
-<<<<<<< HEAD
-=======
---------------------------------------
->>>>>>> Fix up section header underline that is too short
-
 --------------------------------------
 
 Once a user has encrypted their files, if they lose their ownCloud password, then they lose access to their encrypted files, as their files will be unrecoverable. 
