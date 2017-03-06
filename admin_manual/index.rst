@@ -51,6 +51,6 @@ respective manuals:
 * `ownCloud iOS App`_ 
 
 .. _`ownCloud User Manual`: https://doc.owncloud.org/server/10.0/user_manual/
-.. _`ownCloud Desktop Client`: https://doc.owncloud.org/desktop/10.0/
+.. _`ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.3/
 .. _`ownCloud Android App`: https://doc.owncloud.org/android/
 .. _`ownCloud iOS App`: https://doc.owncloud.org/ios/
