@@ -174,6 +174,10 @@ Encryption settings can be configured in the mount options for an external stora
 .. _enable-file-recovery-key:
 
 How To Enable Users File Recovery Keys
+<<<<<<< HEAD
+=======
+--------------------------------------
+>>>>>>> Fix up section header underline that is too short
 
 --------------------------------------
 
