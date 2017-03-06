@@ -21,6 +21,7 @@ The following breaking changes usually do only affect applications which misuse 
 
 Features
 ========
+
 * There is a new :doc:`OCSResponse and OCSController <controllers>` which allows you to easily migrate OCS code to the App Framework. This was added purely for compatibility reasons and the preferred way of doing APIs is using a :doc:`api`
 * You can now stream files in PHP by using the built in :doc:`StreamResponse <controllers>`.
 * For more advanced usecases you can now implement the :doc:`CallbackResponse <controllers>` interface which allows your response to do its own response rendering
@@ -42,12 +43,9 @@ This is a deprecation roadmap which lists all current deprecation targets and wi
 Deprecation Policy
 ------------------
 
-- An API added in one version of ownCloud only needs to be maintained as long as
-that version is not End of Life (EOL)
-- An API can be removed completely in a future version of ownCloud if the
-release date of the version is later than the EOL date of the previous version
-- Before removing an API completely, it needs to deprecated for at least a year.
-This is done by adding `@deprecated` tags.
+- An API added in one version of ownCloud only needs to be maintained as long as that version is not End of Life (EOL)
+- An API can be removed completely in a future version of ownCloud if the release date of the version is later than the EOL date of the previous version
+- Before removing an API completely, it needs to deprecated for at least a year. This is done by adding `@deprecated` tags.
 
 11.1
 ----

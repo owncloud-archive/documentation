@@ -199,14 +199,14 @@ Recommendations Based on Type of Deployment
 -------------------------------------------
 
 Small/Private Home Server
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Only use APCu::
 
     'memcache.local' => '\OC\Memcache\APCu',
 
 Small Organization, Single-server Setup
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use APCu for local caching, Redis for file locking::
 
@@ -218,7 +218,7 @@ Use APCu for local caching, Redis for file locking::
         ),
 
 Large Organization, Clustered Setup
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Use Redis for everything except local memcache. Use the server's IP address or hostname so that it is accessible to other hosts::
 
@@ -232,7 +232,7 @@ Use Redis for everything except local memcache. Use the server's IP address or h
         ),
 
 Additional notes for Redis vs. APCu on Memory Caching
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 APCu is faster at local caching than Redis. If you have enough memory, use APCu for Memory Caching
 and Redis for File Locking. If you are low on memory, use Redis for both.

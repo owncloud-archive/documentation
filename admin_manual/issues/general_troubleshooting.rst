@@ -42,7 +42,7 @@ configuration report with the :ref:`occ config command
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/9.2/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/10.0/developer_manual/bugtracker/index.html
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -219,7 +219,7 @@ these modules:
 * mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm instead)
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured correctly)
 
-2. NginX
+2. NGINX
 
 * ngx_pagespeed
 * HttpDavModule
@@ -278,7 +278,7 @@ main Web server / Vhost configuration or the ``.htaccess`` placed in your docume
     RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
     RewriteRule .* https://%{SERVER_NAME}/owncloud/remote.php/webdav/ [R=301,L]
 
-For nginx an example config addition could be::
+For NGINX an example config addition could be::
 
     location = / {
         if ($http_user_agent = DavClnt) {

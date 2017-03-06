@@ -134,7 +134,7 @@ After you enter your temporary or root administrator login for your database, th
 creates a special database user with privileges limited to the ownCloud database. Then ownCloud
 needs only this special ownCloud database user and drops the temporary or root database login. 
 
-This new user is named from your ownCloud admin user, with an oc_ prefix, and then given a
+This new user is named from your ownCloud admin user, with an ``oc_`` prefix, and then given a
 random password.  The ownCloud database user and password are written into config.ph:
 
 | For MySQL/MariaDB:

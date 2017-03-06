@@ -112,6 +112,8 @@ Create database tables, run Sql queries, store/retrieve configuration informatio
 * :doc:`configuration`
 * :doc:`filesystem`
 * :doc:`extstorage`
+* :doc:`custom-storage-backend`
+* :doc:`custom-cache-backend`
 
 Authentication & Users
 ----------------------

@@ -384,32 +384,33 @@ Special Attributes
    :alt: Special Attributes.
 
 Quota Field:
-  ownCloud can read an LDAP attribute and set the user quota according to its
-  value. Specify the attribute here, and it will return human-readable values, 
-  e.g. "2 GB". Any quota set in LDAP overrides quotas set on the ownCloud user 
+  The name of the LDAP attribute to retrieve the user quota limit from, e.g., ``ownCloudQuota``. *Note:* any quota set in LDAP overrides quotas set in ownCloud's user 
   management page.
 
-  * Example: *ownCloudQuota*
-
 Quota Default:
-  Override ownCloud default quota for LDAP users who do not have a quota set in 
-  the Quota Field.
-
-  * Example: *15 GB*
+  Override ownCloud's default quota *for LDAP users* who do not have a quota set in 
+  the Quota Field, e.g., ``15 GB``.
 
 Email Field:
-  Set the user's email from their LDAP attribute. Leave it empty for default 
+  Set the user's email from an LDAP attribute, e.g., ``mail``. Leave it empty for default 
   behavior.
-
-  * Example: *mail*
 
 User Home Folder Naming Rule:
   By default, the ownCloud server creates the user directory in your ownCloud 
-  data directory and gives it the ownCloud username, .e.g ``/var/www/owncloud/data/alice``. You may want to override this setting and name it after an LDAP
-  attribute value. The attribute can also return an absolute path, e.g. 
+  data directory and gives it the ownCloud username, e.g., ``/var/www/owncloud/data/alice``. You may want to override this setting and name it after an LDAP
+  attribute value, e.g., ``cn``. The attribute can also return an absolute path, e.g. 
   ``/mnt/storage43/alice``. Leave it empty for default behavior.
 
-  * Example: *cn*
+Please bear in mind the following, when using these fields to assign user quota limits. 
+It should help to alleviate any, potential, confusion.
+
+1. After installation ownCloud uses an unlimited quota by default.
+2. Administrators can modify this value, at any time, in the user management page.
+3. However, when an LDAP quota is set it will override any values set in ownCloud.
+4. If an LDAP per/attribute quota is set, it will override the LDAP Quota Default value.
+
+.. note:: 
+   Administrators are not allowed to modify the user quota limit in the user management page when steps 3 or 4 are in effect. At this point, updates are only possible via LDAP.
 
 In new ownCloud installations (8.0.10, 8.1.5, 8.2.0 and up) the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.
 
@@ -578,7 +579,7 @@ See the documentation wiki for `additional LDAP tips and tricks <https://github.
 Caching
 ^^^^^^^
 
-Using caching to speed up lookups. See :doc:`../configuration_server/caching_configuration`). The ownCloud cache is populated on demand, and remains populated until the **Cache Time-To-Live** for each unique request expires. User logins are not cached, so if you need to improve login times set up a slave LDAP server to share the load.
+Using caching to speed up lookups. See :doc:`../configuration_server/caching_configuration`. The ownCloud cache is populated on demand, and remains populated until the **Cache Time-To-Live** for each unique request expires. User logins are not cached, so if you need to improve login times set up a slave LDAP server to share the load.
 
 You can adjust the **Cache Time-To-Live** value to balance performance and 
 freshness of LDAP data. All LDAP requests will be cached for 10 minutes by 

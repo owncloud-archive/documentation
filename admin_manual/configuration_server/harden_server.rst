@@ -128,12 +128,12 @@ If you have subdomains not accessible via HTTPS, remove ``includeSubDomains``.
 
 .. note:: This requires the ``mod_headers`` extension in Apache.
 
-When using nginx as a Web server an example is already included in the
+When using NGINX as a Web server an example is already included in the
 :doc:`../installation/nginx_examples`::
 
   #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
 
-You need to remove the ``#`` and reload nginx to enable this change.
+You need to remove the ``#`` and reload NGINX to enable this change.
 
 Proper SSL configuration
 ************************

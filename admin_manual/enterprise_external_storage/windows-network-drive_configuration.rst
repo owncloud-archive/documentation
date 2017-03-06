@@ -63,7 +63,7 @@ the server address, the share name, and the folder you want to connect to.
 2. Then select your authentication method; See :doc:`enterprise_only_auth` for 
    complete information on the five available authentication methods.
    
-.. figure:: images/wnd2.png
+.. figure:: images/wnd-2.png
    :alt: WND mountpoint and auth.
    
    *Figure 2: WND mountpoint and authorization credentials.*
@@ -182,17 +182,11 @@ following troubleshooting steps:
    shares are case-sensitive
 
 Take the example of attempting to connect to the share named `MyData` using
-``occ wnd:listen``. Running the following command would work
-
-.. highlight::
-   :linenos:
+``occ wnd:listen``. Running the following command would work::
   
    su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata MyData svc_owncloud password'
 
-However, running this command would not:
-
-.. highlight::
-   :linenos:
+However, running this command would not::
    
    su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata mydata svc_owncloud password'
 

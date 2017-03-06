@@ -131,6 +131,19 @@ on your network!
 .. figure:: external_storage/images/user_mounts.png
    :alt: Checkboxes to allow users to mount external storage services.
 
+Setting Up Google Drive and Dropbox Connections
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When an external storage is created which uses either Google Drive or Dropbox, a link to the respective configuration page is available, next to the service name. 
+
+.. figure:: images/external-storage-google-drive-and-dropbox-configuration.png
+   :alt: Links to Google Drive and Dropbox app configuration pages.
+
+In the screenshot above, you can see that two external storage connections have been created, but not configured. 
+One goes to Google Drive, the other to Dropbox. 
+If you click the cog icon next to the name of either, the respective app configuration page will open in a new tab, or a new window. 
+From there, you can manage the configuration and obtain the respective credentials needed for configuring the connection.
+
 Detecting Files Added to External Storages
 ------------------------------------------
 
