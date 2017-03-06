@@ -1,1 +1,3 @@
 permissionsmode: 775
+webuser: www-data
+webgroup: www-data
