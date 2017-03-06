@@ -42,7 +42,7 @@ configuration report with the :ref:`occ config command
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/9.2/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/10.0/developer_manual/bugtracker/index.html
 
 .. TODO ON RELEASE: Update version number above on release
 

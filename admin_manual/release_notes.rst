@@ -2,8 +2,8 @@
 ownCloud |version| Release Notes
 ================================
 
-Changes in 9.2
---------------
+Changes in 10.0
+---------------
 
 * Supported PHP versions are 5.6+ and 7.0+. 
 * The upgrade migration test has been removed; see :ref:`migration_test_label`.
