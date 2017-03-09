@@ -1507,18 +1507,12 @@ This enables debug logs for the windows_network_drive app.
 Overriding Existing Parameter Values Using Environment Variables
 ----------------------------------------------------------------
 
-ownCloud supports overriding existing configuration values for the web UI,
-command line, and Cron environments, using `environment variables`_.
-Doing so avoids the need to storing credentials, and other *private* data,  data
-which you never want to leak out, in either code or source repositories. 
-What’s more, by taking this approach, code changes aren’t required to deploy to
-multiple environments.
+ownCloud supports the ability to override the *web UI*, *command line*, and *Cron* environments’ settings by using `environment variables`_.
+By doing so, you avoid the need to store credentials and other sensitive data (such as secret keys), which you never want to store in code, and which can potentially leak out. 
+What’s more, by using environment variables, you do not have to manage configurations (e.g., database connections) for different server environments, because environment variables store this information for you.
 
-To override an existing setting, you need to export an environment variable,
-which has the same name as the one which you want to override, prefixed with
-``OC_``. 
-For example, if you wanted to override the value of ``dbname``, you would set
-the environment variable ``OC_dbname``.
+To override an existing setting, you need to export an environment variable which has the same name as the one which you want to override, prefixed with ``OC_``. 
+For example, if you wanted to override the value of ``dbname``, you would set the environment variable ``OC_dbname``.
 
 Below are examples of setting an environment variable in the Apache and Nginx
 web servers, and for when running command line scripts. 
