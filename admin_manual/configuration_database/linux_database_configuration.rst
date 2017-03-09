@@ -80,11 +80,10 @@ Configuring a MySQL or MariaDB Database
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
-* That you have installed and enabled the pdo_mysql extension in PHP
-
+* That you have installed and enabled the ``pdo_mysql`` extension in PHP
 * That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as ownCloud).
 
-.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.
+.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace MySQL with anything.
 
 The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this:
 
@@ -144,6 +143,36 @@ this:
     "dbtableprefix" => "oc_",
 
 .. _db-postgresql-label:
+
+Configure MySQL for 4-byte Unicode Support
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For supporting such features as emoji, you have to both enable 4-byte Unicode support in MySQL (instead of the default 3) as well as in ownCloud. 
+To do so:
+
+1. In ``config/config.sample.php`` set ``mysql.utf8mb4`` to true
+2. In your MySQL configuration, add the configuration settings below. If you already have them configured, update them to reflect the values specified:
+
+:: 
+
+  [mysqld]
+  innodb_large_prefix=ON
+  innodb_file_format=Barracuda
+  innodb_file_per_table=ON
+
+When this is done, tables in MySQL will be created with a:
+
+- ``utf8mb4`` character set.
+- ``utf8mb4_bin`` collation.
+- ``row_format`` of compressed.
+
+For more information, please refer the following links:
+
+* https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
+* https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
+* http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
+* http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
+* http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
@@ -347,3 +376,5 @@ Useful SQL commands
 
   MySQL     : quit
   PostgreSQL: \q
+   
+
