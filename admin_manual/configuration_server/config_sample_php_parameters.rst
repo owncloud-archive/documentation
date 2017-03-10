@@ -1508,7 +1508,7 @@ Overriding Existing Parameter Values Using Environment Variables
 ----------------------------------------------------------------
 
 ownCloud supports the ability to override the *web UI*, *command line*, and *Cron* environments’ settings by using `environment variables`_.
-By doing so, you avoid the need to store credentials and other sensitive data (such as secret keys), which you never want to store in code, and which can potentially leak out. 
+By doing so, you avoid the need to store credentials and other sensitive data in code. 
 What’s more, by using environment variables, you do not have to manage configurations (e.g., database connections) for different server environments, because environment variables store this information for you.
 
 To override an existing setting, you need to export an environment variable which has the same name as the one which you want to override, prefixed with ``OC_``. 
