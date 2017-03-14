@@ -5,11 +5,11 @@ Integration Tests
 The Test Directory Structure
 ----------------------------
 
-This is the structure of integration directory inside `the core repository's`_ ``build`` directory:
+This is the structure of integration directory inside `the core repository's`_ ``tests`` directory:
 
 .. code-block:: bash
 
-    build
+    tests
     ├── integration
     │   ├── composer.json
     │   ├── composer.lock
