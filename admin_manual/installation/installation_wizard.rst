@@ -28,7 +28,6 @@ to use the :doc:`occ Command <../configuration_server/occ_command>`.
 
 * :ref:`Data Directory Location <data_directory_location_label>`
 * :ref:`Database Choice <database_choice_label>`
-* :ref:`Trusted Domains <trusted_domains_label>`
 * :ref:`Setting Strong Permissions <strong_perms_label>`
 
 .. _data_directory_location_label:
@@ -153,34 +152,6 @@ Click Finish Setup, and start using your new ownCloud server.
    :alt: ownCloud welcome screen after a successful installation
 
 Now we will look at some important post-installation steps.
-
-.. _trusted_domains_label: 
-
-Trusted Domains
----------------
-
-All URLs used to access your ownCloud server must be whitelisted in your 
-``config.php`` file, under the ``trusted_domains`` setting. Users 
-are allowed to log into ownCloud only when they point their browsers to a 
-URL that is listed in the ``trusted_domains`` setting. You may use IP addresses 
-and domain names. A typical configuration looks like this::
-
- 'trusted_domains' => 
-   array (
-    0 => 'localhost', 
-    1 => 'server1.example.com', 
-    2 => '192.168.1.50',
- ),
-
-The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long 
-as you have access to the physical server you can always log in. In the event 
-that a load balancer is in place there will be no issues as long as it sends 
-the correct X-Forwarded-Host header. When a user tries a URL that 
-is not whitelisted the following error appears:
-
-.. figure:: images/install-wizard-a4.png
-   :scale: 75%
-   :alt: Error message when URL is not whitelisted
   
 .. _strong_perms_label:
  
