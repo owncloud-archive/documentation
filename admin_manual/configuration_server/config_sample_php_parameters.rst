@@ -841,14 +841,6 @@ file system path to the app folder. The key ``url`` defines the HTTP Web path
 to that folder, starting from the ownCloud webroot. The key ``writable``
 indicates if a Web server can write files to that folder.
 
-::
-
-	'appcodechecker' => true,
-
-Checks an app before install whether it uses private APIs instead of the
-proper public APIs. If this is set to true it will only allow to install or
-enable apps that pass this check.
-
 
 
 
