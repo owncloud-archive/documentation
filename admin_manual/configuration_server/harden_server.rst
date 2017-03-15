@@ -199,6 +199,40 @@ Administrators can verify whether this security change is active by accessing a
 static resource served by the Web server and verify that the above mentioned 
 security headers are shipped.
 
+Use Fail2Ban
+------------
+
+Another approach to hardening the server(s) on which your ownCloud installation rest is using an intrusion detection system. 
+An excellent one is `Fail2Ban`_.
+Fail2Ban is designed to protect servers from brute force attacks. 
+It works by monitoring log files (such as those for *ssh*, *web*, *mail*, and *log* servers) for certain patterns, specific to each server, and taking actions should those patterns be found. 
+
+Actions include banning the IP from which the detected actions are being made from. 
+This serves to both make the process more difficult as well as to prevent DDOS-style attacks.
+However, after a predefined time period, the banned IP is normally un-banned again. 
+
+This helps if the login attempts were genuine, so the user doesn't lock themselves out permanently. 
+An example of such an action is users attempting to brute force login to a server via ssh.
+In this case, Fail2Ban would look for something similar to the following in ``/var/log/auth.log``.
+
+:: 
+
+    Mar 15 11:17:37 yourhost sshd[10912]: input_userauth_request: invalid user audra [preauth]
+    Mar 15 11:17:37 yourhost sshd[10912]: pam_unix(sshd:auth): check pass; user unknown
+    Mar 15 11:14:51 yourhost sshd[10835]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=221.194.44.231  user=root
+    Mar 15 11:14:57 yourhost sshd[10837]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=221.194.44.231  user=root
+    Mar 15 11:14:59 yourhost sshd[10837]: Failed password for root from 221.194.44.231 port 46838 ssh2
+    Mar 15 11:15:04 yourhost sshd[10837]: message repeated 2 times: [ Failed password for root from 221.194.44.231 port 46838 ssh2]
+    Mar 15 11:15:04 yourhost sshd[10837]: Received disconnect from 221.194.44.231: 11:  [preauth]
+
+.. note:: 
+   If you’re not familiar with what’s going on, this snippet highlights a number of failed login attempts being made.
+
+A complete installation guide is outside the bounds of this documentation. 
+However, this `short guide from Digital Ocean`_ should get you started.
+
 .. _Mozilla SSL Configuration Generator: https://mozilla.github.io/server-side-tls/ssl-config-generator/
 .. _Qualys SSL Labs Tests: https://www.ssllabs.com/ssltest/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
+.. _Fail2Ban: https://www.fail2ban.org/wiki/index.php/Main_Page
+.. _short guide from Digital Ocean: https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04
