@@ -1,3 +1,6 @@
 permissionsmode: 775
 webuser: www-data
 webgroup: www-data
+servername: default.com 
+directoryroot: /var/www/default/html
+directoryindex: index.html index.htm
