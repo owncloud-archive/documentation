@@ -201,7 +201,7 @@ To do so, go to the Encryption section of your Admin page and set a recovery key
 .. figure:: images/encryption10.png
 
 You then need to ask your users to opt-in to the Recovery Key. 
-For the users to do this, they need to go to the "**Personal**" page and enable the recovery key.
+For the users to do this, they need to go to the ``Settings`` page, and from there, navigate to the ``Admin -> Encryption`` and enable the recovery key, by providing a recovery key password.
 This signals that they are OK that the admin might have a way to decrypt their data for recovery reasons.
 If they do *not* do this, then the Recovery Key won't work for them.
 
