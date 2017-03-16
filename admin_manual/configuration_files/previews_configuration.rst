@@ -49,17 +49,17 @@ Set the configuration option ``enable_previews`` in config.php to ``false``:
 Maximum preview size:
 ~~~~~~~~~~~~~~~~~~~~~
 
-There are two configuration options to set the maximum size of a preview.
+There are two configuration options for setting the maximum size (in pixels) of a preview. 
+These are ``preview_max_x`` which represents the x-axis and ``preview_max_y`` which represents the y-axis.
+In ``config/config.sample.php``, which you can see below, both options are set to to a default of 2048. 
 
 ::
 
   <?php
-    'preview_max_x' => null,
-    'preview_max_y' => null,
+    'preview_max_x' => 2048,
+    'preview_max_y' => 2048,
 
-By default, both options are set to null. 'Null' is equal to no limit.
-Numeric values represent the size in pixels. The following code limits previews
-to a maximum size of 100×100px:
+The following example would limit previews to a maximum size of 100px × 100px:
 
 ::
 
@@ -67,7 +67,8 @@ to a maximum size of 100×100px:
     'preview_max_x' => 100,
     'preview_max_y' => 100,
 
-'preview_max_x' represents the x-axis and 'preview_max_y' represents the y-axis.
+.. note::
+  If you want no limit applied for one or both of these values then set them to null.
 
 Maximum scale factor:
 ~~~~~~~~~~~~~~~~~~~~~
