@@ -1,0 +1,49 @@
+overlay		pcache
+pcache		hdb 100000 12 1000 100
+directory       /var/lib/ldap
+pcachePersist	TRUE
+
+###OpenLDAP_Templates
+pcacheAttrset	0 1.1
+pcacheTemplate	(|(cn=*)) 0 3600
+pcacheTemplate  (|(objectClass=)) 0 3600
+pcacheTemplate	(objectClass=*) 0 3600
+pcacheTemplate	(|(objectClass=person)) 0 3600
+pcacheTemplate	(&(|(objectClass=organizationalPerson))) 0 3600
+
+
+pcacheAttrset	1 distinguishedName uid uid memberof displayName jpegphoto 
+#pcacheAttrset	1 distinguishedName uid uid member displayname
+pcacheTemplate	(&(|(objectClass=))(uid=)) 1 3600
+pcacheTemplate	(&(|(objectClass=))(displayName=*)(displayName=)) 1 3600
+pcacheTemplate	(&(|(objectClass=))(displayName=*)(displayName=*)) 1 3600
+pcacheTemplate	(&(objectClass=)(cn=)) 1 3600
+
+
+pcacheAttrset	2 cn distinguishedName
+pcacheTemplate	(&(&(|(objectClass=))(|(cn=)))(cn=)) 2 3600
+pcacheTemplate	(&(&(|(objectClass=))(|(cn=)))(cn=*)) 2 3600
+pcacheTemplate	(&(&(|(objectClass=))(|(cn=)))(memberUid=)) 2 3600
+pcacheTemplate	(&(&(|(objectClass=)(objectClass=)))(cn=*)) 2 3600
+
+
+pcacheAttrset	3 sn
+pcacheTemplate	(objectClass=*) 3 3600
+
+pcacheAttrset	4 uid
+pcacheTemplate	(objectClass=*) 4 3600
+
+pcacheAttrset	5 distinguishedName uid uid memberuid sn
+pcacheTemplate	(&(|(objectClass=))(sn=*)(sn=*)) 5 3600
+
+pcacheAttrset	6 distinguishedName uid uid memberuid sn jpegphoto
+pcacheTemplate	(&(|(objectClass=))(uid=)) 6 3600
+
+pcacheAttrset	7 displayname
+pcacheTemplate	(objectClass=*) 7 3600
+
+pcacheAttrset	8 gidNumber
+pcacheTemplate	(objectClass=*) 8 3600
+
+pcacheAttrset	9 entryuuid
+pcacheTemplate	(objectClass=*) 9 3600
