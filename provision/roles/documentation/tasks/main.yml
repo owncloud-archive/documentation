@@ -37,18 +37,9 @@
   ufw: rule=allow port=22020 proto=tcp
   become: true
 
-- name: Configure the default nginx server block
+- name: Configure the NGINX server blocks for the manuals
   sudo: true
-  template: src=nginx.default.conf dest=/etc/nginx/sites-available/default
-    owner={{ webuser }}
-    group={{ webgroup }}
-    mode=0755
-  notify:
-    - restart nginx
-
-- name: Configure the nginx server block for the admin manual
-  sudo: true
-  template: src=nginx.admin-manual.conf dest=/etc/nginx/sites-available/admin-manual
+  template: src=owncloud.manuals.conf dest=/etc/nginx/sites-available/owncloud.manuals
     owner={{ webuser }}
     group={{ webgroup }}
     mode=0755
@@ -56,35 +47,7 @@
     - restart nginx
 
 - name: link nginx partner-portal vhost in sites-enabled
-  action: file src=/etc/nginx/sites-available/admin-manual dest=/etc/nginx/sites-enabled/admin-manual state=link
-  notify:
-    - restart nginx
-
-- name: Configure the nginx server block for the developer manual
-  sudo: true
-  template: src=nginx.developer-manual.conf dest=/etc/nginx/sites-available/developer-manual
-    owner={{ webuser }}
-    group={{ webgroup }}
-    mode=0755
-  notify:
-    - restart nginx
-
-- name: link nginx partner-portal vhost in sites-enabled
-  action: file src=/etc/nginx/sites-available/developer-manual dest=/etc/nginx/sites-enabled/developer-manual state=link
-  notify:
-    - restart nginx
-
-- name: Configure the nginx server block for the user manual
-  sudo: true
-  template: src=nginx.user-manual.conf dest=/etc/nginx/sites-available/user-manual
-    owner={{ webuser }}
-    group={{ webgroup }}
-    mode=0755
-  notify:
-    - restart nginx
-
-- name: link nginx partner-portal vhost in sites-enabled
-  action: file src=/etc/nginx/sites-available/user-manual dest=/etc/nginx/sites-enabled/user-manual state=link
+  action: file src=/etc/nginx/sites-available/owncloud.manuals dest=/etc/nginx/sites-enabled/owncloud-manuals state=link
   notify:
     - restart nginx
 
