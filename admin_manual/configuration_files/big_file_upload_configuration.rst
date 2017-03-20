@@ -2,21 +2,17 @@
 Uploading big files > 512MB
 ===========================
 
-The default maximum file size for uploads is 512MB. You can increase this 
-limit up to what your filesystem and operating system allows. There are certain 
-hard limits that cannot be exceeded:
+The default maximum file size for uploads, in ownCloud, is 512MB. 
+You can increase this limit up to the maximum file size which your filesystem, operating system, or other software allows, for example:
 
-* < 2GB on 32Bit OS-architecture
-* < 2GB on Windows (32Bit and 64Bit)
-* < 2GB with Server Version 4.5 or older
+* < 2GB on a 32Bit OS-architecture
 * < 2GB with IE6 - IE8
 * < 4GB with IE9 - IE11
+ 
+64-bit filesystems have much higher limits. 
+Please consult the documentation for your filesystem.
 
-64-bit filesystems have much higher limits; consult the documentation for your 
-filesystem.
-
-.. note:: The ownCloud sync client is not affected by these upload limits
-   as it is uploading files in smaller chunks.
+.. note:: The ownCloud sync client itself however is able to upload files of any size, as it uploads files by transmitting them in small chunks. But, it can never exceed the maximum file size limits of the remote host.
 
 System Configuration
 --------------------
