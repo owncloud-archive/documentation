@@ -51,18 +51,6 @@ Log <https://mariadb.com/kb/en/mariadb/overview-of-the-binary-log/>`_ and `The
 Binary Log <https://dev.mysql.com/doc/refman/5.6/en/binary-log.html>`_ for 
 detailed information.
 
-.. _db-transaction-label:
-
-MySQL / MariaDB "READ COMMITED" transaction isolation level
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-As discussed above ownCloud is using the ``TRANSACTION_READ_COMMITTED`` transaction isolation
-level. Some database configurations are enforcing other transaction isolation levels. To avoid
-data loss under high load scenarios (e.g. by using the sync client with many clients/users and
-many parallel operations) you need to configure the transaction isolation level accordingly.
-Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html>`_
-for detailed information.
-
 .. _db-storage-engine-label:
 
 MySQL / MariaDB storage engine
