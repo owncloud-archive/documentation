@@ -6,6 +6,7 @@ Background
 ----------
 
 To reduce network traffic overhead and avoid problems either logging in or performing user searches while sharing, it's an excellent idea to implement an LDAP proxy cache.
+
 An LDAP proxy cache server, similar to other kinds of caching servers, is a special type of LDAP replica. It can cache a range of LDAP records, often resulting in improved LDAP server performance.
 
 Specifically, the records which need to be cached, for improved ownCloud performance, are:
@@ -96,6 +97,16 @@ To check, run the following command.::
   tail -f /var/log/syslog | grep QUERY
 
 If you see results including: ``"Query cachable"`` and ``"Query answered (x) times"``, then the setup works. 
+
+6. Configure ownCloud Ldap App
+
+Login as ownCloud Admin
+
+Enable the LDAP app
+
+Go to administration, LDAP
+
+Configure Server, User, Loginfilter, Groups, Advanced Tab, Expert Tab
 
 Cache Multiple Active Directory Servers
 ---------------------------------------
