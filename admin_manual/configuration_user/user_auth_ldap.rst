@@ -2,7 +2,7 @@
 User Authentication with LDAP
 =============================
 
-.. warning:: Please check advanced and expert configuration carefully before starting production use.
+.. warning:: Please check both the advanced and expert configurations carefully before using in production
 
 ownCloud ships with an LDAP application to allow LDAP users (including Active 
 Directory) to appear in your ownCloud user listings. These users will 
