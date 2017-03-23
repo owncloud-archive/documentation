@@ -175,7 +175,7 @@ interface, as in the example below:
 
   :include: examples/storage-backend/OCA/MyStorageApp/AppInfo/Application.php
 
-Then in :file:"appinfo/app.php" instantiate the ``Application`` class:
+Then in :file:`appinfo/app.php` instantiate the ``Application`` class:
 
 .. code-block:: php
 
