@@ -43,7 +43,6 @@ filesystem operations required by ownCloud, using a fictitious library called
 
 .. literalinclude:: ../examples/storage-backend/OCA/MyStorageApp/Storage/MyStorage.php
      :language: php
-     :linenos:
 
 For this example we mapped the available storage methods to the ones from the
 library. Note that, in many cases, the underlying library might not support some
@@ -97,7 +96,6 @@ do that, create a class that extends from ``\\OCP\\Files\\External\\Backend``:
 
 .. literalinclude:: ../examples/storage-backend/OCA/MyStorageApp/Backend/MyStorageBackend.php
      :language: php
-     :linenos:
 
 Definition parameters
 ---------------------
@@ -175,7 +173,7 @@ interface, as in the example below:
 
   :include: examples/storage-backend/OCA/MyStorageApp/AppInfo/Application.php
 
-Then in :file:"appinfo/app.php" instantiate the ``Application`` class:
+Then in :file:`appinfo/app.php` instantiate the ``Application`` class:
 
 .. code-block:: php
 
