@@ -1,6 +1,6 @@
-============================================================
-ownCloud |version| Server Administration Manual Introduction
-============================================================
+============
+Introduction
+============
 
 Introduction
 ------------
