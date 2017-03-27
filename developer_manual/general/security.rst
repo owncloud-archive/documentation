@@ -9,29 +9,67 @@ This guideline highlights some of the most common security problems and how to p
 
 .. note:: All App Framework security features depend on the call of the controller through :php:meth:`OCA\\AppFramework\\App::main`. If the controller method is executed directly, no security checks are being performed!
 
-SQL Injection
--------------
-`SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
+Auth bypass / Privilege escalations
+-----------------------------------
 
-To prevent this, always use prepared queries:
+Auth bypass/privilege escalations happen when a user is able to perform unauthorized actions.
+
+ownCloud offers three simple checks:
+
+* **OCP\\JSON::checkLoggedIn()**: Checks if the logged in user is logged in
+* **OCP\\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
+* **OCP\\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
+
+Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
+
+Additionally always check if the user has the right to perform that action.
+
+Clickjacking
+------------
+
+`Clickjacking <http://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete an user account)
+
+To prevent such attacks ownCloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
+
+This is already built into ownCloud if :php:class:`OC_Template`.
+
+Code executions / File inclusions
+---------------------------------
+Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
+
+Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the following functions:
+
+* **include()**
+* **require()**
+* **require_once()**
+* **eval()**
+* **fopen()**
+
+.. note:: Also **never** allow the user to upload files into a folder which is reachable from the URL!
+
+**DON'T**
 
 .. code-block:: php
 
   <?php
-  $sql = 'SELECT * FROM `users` WHERE `id` = ?';
-  $query = \OCP\DB::prepare($sql);
-  $params = array(1);
-  $result = $query->execute($params);
+  require("/includes/" . $_GET['file']);
 
-If the App Framework is used, write SQL queries like this in the a class that extends the Mapper:
+.. note:: If you have to pass user input to a potentially dangerous function, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
+
+Cross site request forgery
+--------------------------
+Using `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that he did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
+
+.. note:: Submitting a form is also a POST/GET request!
+
+To prevent CSRF in an app, be sure to call the following method at the top of all your files:
 
 .. code-block:: php
 
   <?php
-  // inside a child mapper class
-  $sql = 'SELECT * FROM `users` WHERE `id` = ?';
-  $params = array(1);
-  $result = $this->execute($sql, $params);
+  OCP\JSON::callCheck();
+
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
 
 Cross site scripting
 --------------------
@@ -98,38 +136,6 @@ An even better way to make your app safer is to use the jQuery built-in function
 
 It may also be wise to choose a proper JavaScript framework like AngularJS which automatically  handles the JavaScript escaping for you.
 
-Clickjacking
-------------
-
-`Clickjacking <http://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete an user account)
-
-To prevent such attacks ownCloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
-
-This is already built into ownCloud if :php:class:`OC_Template`.
-
-Code executions / File inclusions
----------------------------------
-Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
-
-Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the following functions:
-
-* **include()**
-* **require()**
-* **require_once()**
-* **eval()**
-* **fopen()**
-
-.. note:: Also **never** allow the user to upload files into a folder which is reachable from the URL!
-
-**DON'T**
-
-.. code-block:: php
-
-  <?php
-  require("/includes/" . $_GET['file']);
-
-.. note:: If you have to pass user input to a potentially dangerous function, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
-
 Directory Traversal
 -------------------
 Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
@@ -189,40 +195,34 @@ PHP offers the following functions to escape user input:
   <?php
   system('ls '.escapeshellarg($_GET['dir']));
 
-Auth bypass / Privilege escalations
------------------------------------
-
-Auth bypass/privilege escalations happen when a user is able to perform unauthorized actions.
-
-ownCloud offers three simple checks:
-
-* **OCP\\JSON::checkLoggedIn()**: Checks if the logged in user is logged in
-* **OCP\\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
-* **OCP\\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
-
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
-
-Additionally always check if the user has the right to perform that action.
-
 Sensitive data exposure
 -----------------------
 
 Always store user data or configuration files in safe locations, e.g. **owncloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
 
-Cross site request forgery
---------------------------
-Using `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that he did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
+SQL Injection
+-------------
+`SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
 
-.. note:: Submitting a form is also a POST/GET request!
-
-To prevent CSRF in an app, be sure to call the following method at the top of all your files:
+To prevent this, always use prepared queries:
 
 .. code-block:: php
 
   <?php
-  OCP\JSON::callCheck();
+  $sql = 'SELECT * FROM `users` WHERE `id` = ?';
+  $query = \OCP\DB::prepare($sql);
+  $params = array(1);
+  $result = $query->execute($params);
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
+If the App Framework is used, write SQL queries like this in the a class that extends the Mapper:
+
+.. code-block:: php
+
+  <?php
+  // inside a child mapper class
+  $sql = 'SELECT * FROM `users` WHERE `id` = ?';
+  $params = array(1);
+  $result = $this->execute($sql, $params);
 
 Unvalidated redirects
 ---------------------

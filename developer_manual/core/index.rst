@@ -16,8 +16,8 @@
 Core Development
 =================
 
-Intro
------
+Introduction
+------------
 
 Please make sure you have set up a development environment:
 
