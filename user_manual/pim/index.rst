@@ -9,8 +9,8 @@ their respective Apps > Productivity entries.
 .. toctree::
    :maxdepth: 1
    
-   contacts
    calendar
+   contacts
    sync_ios
    sync_osx
    sync_kde
