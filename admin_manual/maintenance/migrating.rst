@@ -29,3 +29,95 @@ To start, let us be specific about the use case. A configured ownCloud instance 
 
 #.  Change the ``CNAME`` entry in the DNS to point your users to the new
     location.
+
+
+
+
+Example
+
+Note: For this example to work, you need ssh on both servers and the PermitRootLogin to be set to "yes" on the new server.
+
+Install SSH
+
+apt install openssh-server openssh-client -y
+
+nano /etc/ssh/sshd_config
+...
+PermitRootLogin yes
+...
+
+1. Install ownCloud
+
+2. Maintenance mode
+
+cd /var/www/owncloud/
+
+sudo -u www-data php occ maintenance:mode --on
+
+wait for 6-7 min
+
+service apache2 stop
+
+3. Export and Import the database
+
+cd /var/www/owncloud/
+
+Export on original server:
+
+SYNOPSIS
+
+mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > owncloud-dbbackup_`date +"%Y%m%d"`.bak
+
+Example:
+
+mysqldump --lock-tables -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
+
+Parameters are set when creating database for ownCloud:
+
+CREATE DATABASE IF NOT EXISTS owncloud;
+GRANT ALL PRIVILEGES ON owncloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+
+Export command:
+
+rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
+
+Import on New Server:
+
+mysql -h localhost -u admin -ppassword owncloud < owncloud-dbbackup.bak
+
+4. Copy data, config to new server
+
+rsync -Aaxt config data root@new_server_address:/var/www/owncloud 
+
+IMPORTANT!
+You must keep the data/ directory’s original filepath. Do not change this!
+
+5. Maintenance off
+
+- ownCloud in maintenance mode (check)
+
+- start up the database
+
+service mysql start
+
+- start up Web server / application server on the new machine
+
+service apache2 start
+
+- point your Web browser to the migrated ownCloud instance
+
+localhost/owncloud
+
+-confirm that you see the maintenance mode notice (check)
+
+- no error messages occur (check)
+
+-take ownCloud out of maintenance mode (on new server)
+
+sudo -u www-data php occ maintenance:mode --off
+
+- log in as admin and confirm normal function of ownCloud
+
+
+6.
+Change the CNAME entry in the DNS to point your users to the new location.
