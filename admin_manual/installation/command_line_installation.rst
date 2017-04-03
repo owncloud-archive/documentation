@@ -1,5 +1,5 @@
 =========================================
-Installing ownCloud From the Command Line
+Installing ownCloud from the Command Line
 =========================================
 
 ownCloud can be installed entirely from the command line. This is convenient for
