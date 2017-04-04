@@ -27,7 +27,9 @@ Our community is made up of several groups of individuals and organizations whic
 * Contributors, or those who add value to the project through improving ownCloud software and its services
 * Users, or those who add value to the project through their support as consumers of ownCloud software
 
-This Code of Conduct reflects the agreed standards of behavior for members of the ownCloud community, in any forum, mailing list, wiki, web site, IRC channel, public meeting or private correspondence within the context of the ownCloud team and its services. The community acts according to the standards written down in this Code of Conduct and will defend these standards for the benefit of the community. Leaders of any group, such as moderators of mailing lists, IRC channels, forums, etc., will exercise the right to suspend access to any person who persistently breaks our shared Code of Conduct.
+This Code of Conduct reflects the agreed standards of behavior for members of the ownCloud community, in any forum, mailing list, wiki, web site, IRC channel, public meeting or private correspondence within the context of the ownCloud team and its services. 
+
+The community acts according to the standards written down in this Code of Conduct and will defend these standards for the benefit of the community. Leaders of any group, such as moderators of mailing lists, IRC channels, forums, etc., will exercise the right to suspend access to any person who persistently breaks our shared Code of Conduct.
 
 Be collaborative
 ----------------
@@ -52,7 +54,9 @@ As a contributor, ensure that you give full credit for the work of others and be
 Be pragmatic
 ------------
 
-ownCloud is a pragmatic community. We value tangible results over having the last word in a discussion. We defend our core values like freedom and respectful collaboration, but we don’t let arguments about minor issues get in the way of achieving more important results. We are open to suggestions and welcome solutions regardless of their origin. When in doubt support a solution which helps getting things done over one which has theoretical merits, but isn’t being worked on. Use the tools and methods which help getting the job done. Let decisions be taken by those who do the work.
+ownCloud is a pragmatic community. We value tangible results over having the last word in a discussion. We defend our core values like freedom and respectful collaboration, but we don’t let arguments about minor issues get in the way of achieving more important results. 
+
+We are open to suggestions and welcome solutions regardless of their origin. When in doubt support a solution which helps getting things done over one which has theoretical merits, but isn’t being worked on. Use the tools and methods which help getting the job done. Let decisions be taken by those who do the work.
 
 As a user, remember that contributors work hard on their part of ownCloud and take great pride in it. If you are frustrated your problems are more likely to be resolved if you can give accurate and well-mannered information to all concerned.
 

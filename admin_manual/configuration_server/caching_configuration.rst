@@ -6,7 +6,7 @@ You can significantly improve your ownCloud server performance with memory
 caching, where frequently-requested objects are stored in memory for faster 
 retrieval. There are two types of caches to use: a PHP opcode cache, which is 
 commonly called *opcache*, and data caching for your Web server. If you do not 
-install and enable a local memcache you will see a warning on your ownCloud 
+install and enable a local memory cache you will see a warning on your ownCloud 
 admin page. **A memcache is not required and you may safely ignore the warning 
 if you prefer.**
 
@@ -31,13 +31,13 @@ of memcache that best fits your needs. The supported caching backends are:
 * `Redis <http://redis.io/>`_, PHP module 2.2.6 and up required.
    For distributed caching.
    
-Memcaches must be explicitly configured in ownCloud 8.1 and up by installing 
+Memory caches must be explicitly configured in ownCloud 8.1 and up by installing 
 and enabling your desired cache, and then adding the appropriate entry to 
 ``config.php`` (See :doc:`config_sample_php_parameters` for an overview of
 all possible config parameters).
 
 You may use both a local and a distributed cache. Recommended caches are APCu 
-and Redis. After installing and enabling your chosen memcache, verify that it is 
+and Redis. After installing and enabling your chosen memory cache, verify that it is 
 active by running :ref:`label-phpinfo`.
 
 Caching Exceptions
@@ -78,7 +78,8 @@ distributions it is enabled by default. However, it does
 not bundle a data cache. APCu is a data cache, and it is available in most 
 Linux distributions. On Red Hat/CentOS/Fedora systems running PHP 5.6 and up 
 install ``php-pecl-apcu``. On Debian/Ubuntu/Mint systems install ``php5-apcu``.
-On Ubuntu 14.04LTS, the APCu version is 4.0.2, which is too old to use with ownCloud. ownCloud requires 4.0.6+. You may install 4.0.7 from Ubuntu backports with this command::
+On Ubuntu 14.04LTS, the APCu version is 4.0.2, which is too old to use with ownCloud. 
+ownCloud requires 4.0.6+. You may install 4.0.7 from Ubuntu backports with this command::
 
   apt-get install php5-apcu/trusty-backports
    
@@ -125,7 +126,7 @@ ax``, as follows::
 
 Restart your Web server, add the appropriate entries to your 
 ``config.php``, and refresh your ownCloud admin page. This example uses APCu 
-for the local cache, Memcached as the distributed memcache, and lists all the 
+for the local cache, Memcached as the distributed memory cache, and lists all the 
 servers in the shared cache pool with their port numbers::
 
  'memcache.local' => '\OC\Memcache\APCu',
@@ -220,7 +221,8 @@ Use APCu for local caching, Redis for file locking::
 Large Organization, Clustered Setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use Redis for everything except local memcache. Use the server's IP address or hostname so that it is accessible to other hosts::
+Use Redis for everything except a local memory cache. 
+Use the server's IP address or hostname so that it is accessible to other hosts::
 
   'memcache.distributed' => '\OC\Memcache\Redis',
   'memcache.locking' => '\OC\Memcache\Redis',

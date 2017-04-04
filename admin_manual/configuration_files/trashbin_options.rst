@@ -2,7 +2,7 @@
 Managing the Trashbin
 =====================
 
-The ownCloud Trashbin (``files_trashbin``) permanently deletes files according to users' storage quotas and age of files. When a user deletes a file it is not immediately removed from your ownCloud server, but goes into the Trashbin. Then the user has the options to un-delete the file, or to delete it permanently.
+The ownCloud Trashbin (``files_trashbin``) permanently deletes files according to users' storage quotas and file ages. When a user deletes a file it is not immediately removed from your ownCloud server, but goes into the Trashbin. Then the user has the options to un-delete the file, or to delete it permanently.
 
 .. figure:: images/trashbin-1.png
 
@@ -28,7 +28,7 @@ This example removes the deleted files of user2 and user4::
   Remove deleted files of user2
   Remove deleted files of user4
 
-``trashbin:expire`` deletes only expired files according to the ``trashbin_retention_obligation`` setting in ``config.php``. The default setting is ``auto``, which keeps files in the trashbin for 30 days, then deletes the oldest files as space is needed to keep users within their storage quotas. Files may not be deleted if the space is not needed.
+``trashbin:expire`` deletes only expired files according to the ``trashbin_retention_obligation`` setting in ``config.php``. The default setting is ``auto``, which keeps files in the Trashbin for 30 days, then deletes the oldest files as space is needed to keep users within their storage quotas. Files may not be deleted if the space is not needed.
 
 The default is to delete expired files for all users, or you may list users in a space-delimited list::
 

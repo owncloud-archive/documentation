@@ -17,7 +17,7 @@ Current editions of ownCloud manuals are always available online at
 
 ownCloud server is available in three editions:
 
-* The free community-supported Server. This is the core server for all editions.
+* The free community-supported server. This is the core server for all editions.
 * The Standard Subscription for customers who want paid support for the core 
   Server, without Enterprise applications.
 * The Enterprise Subscription provides paid support for the Enterprise Edition. 

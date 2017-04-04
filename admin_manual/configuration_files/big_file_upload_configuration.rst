@@ -85,7 +85,7 @@ Since NGINX 1.7.11 a new config option `fastcgi_request_buffering
 <https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering>`_
 is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your NGINX config
 might help with timeouts during the upload. Furthermore it helps if you're running out of
-disc space on the tmp partition of your system.
+disc space on the ``/tmp`` partition of your system.
 
 For more info how to configure NGINX to raise the upload limits see also `this
 <https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx>`_
@@ -132,7 +132,7 @@ will return memory-related errors:
 Configuring ownCloud
 --------------------
 
-As an alternative to the ``upload_tmp_dir`` of PHP (e.g. if you don't have access to your
+As an alternative to the ``upload_tmp_dir`` of PHP (e.g., if you don't have access to your
 ``php.ini``) you can also configure a temporary location for uploaded files by using the
 ``tempdirectory`` setting in your ``config.php`` (See :doc:`../configuration_server/config_sample_php_parameters`).
 
@@ -159,8 +159,8 @@ this input box.
 
 To be able to use this input box you need to make sure that:
 
-* your Web server is be able to use the ``.htaccess`` file shipped by ownCloud (Apache only)
-* the user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
+* Your Web server is be able to use the ``.htaccess`` file shipped by ownCloud (Apache only)
+* The user your Web server is running as has write permissions to the files ``.htaccess`` and ``.user.ini``
 
 :ref:`strong_perms_label` might prevent write access to these files. As an admin you need
 to decide between the ability to use the input box and a more secure ownCloud installation
@@ -172,7 +172,7 @@ General upload issues
 
 Various environmental factors could cause a restriction of the upload size. Examples are:
 
-* the ``LVE Manager`` of ``CloudLinux`` which sets a ``I/O limit``
-* some services like ``Cloudflare`` are also known to cause uploading issues
-* upload limits enforced by proxies used by your clients
-* other webserver modules like described in :doc:`../issues/general_troubleshooting`
+* The ``LVE Manager`` of ``CloudLinux`` which sets a ``I/O limit``
+* Some services like ``Cloudflare`` are also known to cause uploading issues
+* Upload limits enforced by proxies used by your clients
+* Other webserver modules like described in :doc:`../issues/general_troubleshooting`
