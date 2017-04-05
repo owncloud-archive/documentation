@@ -368,8 +368,8 @@ same trusted environment.
 No Federated Cloud Sharing with Shibboleth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Federated Cloud Sharing (formerly Server-to-Server file sharing)does not work 
-with Shibboleth .
+Federated Cloud Sharing (formerly Server-to-Server file sharing) does not work 
+with Shibboleth.
 
 .. https://github.com/owncloud/user_shibboleth/issues/28
 
@@ -420,7 +420,7 @@ at the beginning of the attribute value only. This provides better performance
 and a better user experience.
 
 Substring searches can still be performed by prepending the search term with 
-"*".For example, a search for ``te`` will find Terri, but not Nate::
+"*". For example, a search for ``te`` will find Terri, but not Nate::
  
  occ ldap:search "te"
 
@@ -482,8 +482,8 @@ Because of limitations in ``phpseclib``, you cannot upload files larger than
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Setting user quotas to ``unlimited`` on an ownCloud installation that has 
-unreliable free disk space reporting-- for example, on a shared hosting 
-provider-- may cause file uploads to fail with a "Not Enough Space Available" 
+unreliable free disk space reporting -- for example, on a shared hosting 
+provider -- may cause file uploads to fail with a "Not Enough Space Available" 
 error. A workaround is to set file quotas for all users instead of 
 ``unlimited``.
 
