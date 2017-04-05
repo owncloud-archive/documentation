@@ -32,89 +32,106 @@ To start, let us be specific about the use case. A configured ownCloud instance 
 
 
 
+=================
+Example migration
+=================
 
-Example
+.. note:: For this example to work, you need **ssh** on both servers and the **PermitRootLogin** to be set to "yes" on the new server.
 
-Note: For this example to work, you need ssh on both servers and the PermitRootLogin to be set to "yes" on the new server.
+Install SSH::
 
-Install SSH
+   apt install openssh-server openssh-client -y
 
-apt install openssh-server openssh-client -y
+Edit SSH-Config::
 
-nano /etc/ssh/sshd_config
-...
-PermitRootLogin yes
-...
+   nano /etc/ssh/sshd_config
 
-1. Install ownCloud
+Change PermitRootLogin to yes::
 
-2. Maintenance mode
+   PermitRootLogin yes
 
-cd /var/www/owncloud/
+=========
+Migration
+=========
 
-sudo -u www-data php occ maintenance:mode --on
+1. Install ownCloud on new server
 
-wait for 6-7 min
+2. Put original server in maintenance mode:
 
-service apache2 stop
+Go in owncloud dir::
+
+      cd /var/www/owncloud/
+
+
+Switch to maintenance mode::
+
+      sudo -u www-data php occ maintenance:mode --on
+
+
+wait for 6-7 min and stop apache2::
+
+   service apache2 stop
 
 3. Export and Import the database
 
-cd /var/www/owncloud/
+Go in owncloud dir::
 
-Export on original server:
+      cd /var/www/owncloud/
 
-SYNOPSIS
+Export on original server
 
-mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > owncloud-dbbackup_`date +"%Y%m%d"`.bak
+SYNOPSIS::
 
-Example:
+   mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > owncloud-dbbackup_`date +"%Y%m%d"`.bak
 
-mysqldump --lock-tables -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
+Example::
 
-Parameters are set when creating database for ownCloud:
+   mysqldump --lock-tables -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
 
-CREATE DATABASE IF NOT EXISTS owncloud;
-GRANT ALL PRIVILEGES ON owncloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
+.. note:: Parameters are set when creating database for ownCloud
 
-Export command:
+::
 
-rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
+   CREATE DATABASE IF NOT EXISTS owncloud;
+   GRANT ALL PRIVILEGES ON owncloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
 
-Import on New Server:
+Export command::
 
-mysql -h localhost -u admin -ppassword owncloud < owncloud-dbbackup.bak
+   rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
 
-4. Copy data, config to new server
+Import on new server::
 
-rsync -Aaxt config data root@new_server_address:/var/www/owncloud 
+   mysql -h localhost -u admin -ppassword owncloud < owncloud-dbbackup.bak
 
-IMPORTANT!
-You must keep the data/ directory’s original filepath. Do not change this!
+4. Copy data, config to new server::
 
-5. Maintenance off
+      rsync -Aaxt config data root@new_server_address:/var/www/owncloud 
+
+.. warning:: You must keep the data/ directory’s original filepath. Do not change this!
+
+5. Put new server out of maintenace mode:
 
 - ownCloud in maintenance mode (check)
 
-- start up the database
+- start up the database::
 
-service mysql start
+     service mysql start
 
-- start up Web server / application server on the new machine
+- start up Web server / application server on the new machine::
 
-service apache2 start
+   service apache2 start
 
-- point your Web browser to the migrated ownCloud instance
+- point your Web browser to the migrated ownCloud instance::
 
-localhost/owncloud
+   localhost/owncloud
 
 -confirm that you see the maintenance mode notice (check)
 
 - no error messages occur (check)
 
--take ownCloud out of maintenance mode (on new server)
+-take ownCloud out of maintenance mode (on new server)::
 
-sudo -u www-data php occ maintenance:mode --off
+   sudo -u www-data php occ maintenance:mode --off
 
 - log in as admin and confirm normal function of ownCloud
 
