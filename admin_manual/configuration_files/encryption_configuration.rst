@@ -196,7 +196,7 @@ How To Change The Recovery Key Password
 
 If you misplace your recovery key password, follow these steps to delete the old recovery share keys and encrypt your files with a new recovery key:
 
-1. Delete the recovery key from both ``data/owncloud_private_keys`` and ``data/public-keys''
+1. Delete the recovery key from both ``data/owncloud_private_keys`` and ``data/public-keys``
 2. Edit the table ``oc_appconfig`` and remove the rows with the config keys: ``recoveryKeyId`` and ``recoveryAdminEnabled`` for the appid: ``files_encryption``
 3. Login as admin and activate the recovery key again with a new password. This
    will generate a new key pair
