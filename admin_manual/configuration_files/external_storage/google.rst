@@ -50,7 +50,7 @@ Now you must create your credentials, so click on **Go to credentials**.
    :alt: Create Client ID screen.
    
 For some reason Google warns us again that we need to create credentials. We 
-will use 0Auth 2.0.
+will use OAuth 2.0.
 
 .. figure:: images/google-drive6.png
    :alt: Another warning to create credentials.

@@ -1,6 +1,6 @@
-==========================
-The ownCloud Web Interface
-==========================
+=================
+The Web Interface
+=================
 
 You can connect to your ownCloud server using any Web browser; just point it to 
 your ownCloud server and enter your username and password. Supported Web 
