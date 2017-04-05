@@ -70,13 +70,13 @@ supported memory caches.
 If you are on Ubuntu you can follow `this guide  
 <https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
 
-Learn more about Reds at `Redis <http://redis.io/>`_. Memcached, the popular 
+Learn more about `Redis <http://redis.io/>`_. Memcached, the popular 
 distributed memory caching system, is not suitable for the new file locking 
 because it is not designed to store locks, and data can disappear from the cache 
 at any time. Redis is a key-value store, and it guarantees that cached objects 
 are available for as long as they are needed.
 
-Debian Jesse users, please see this `Github discussion 
-<https://github.com/owncloud/core/issues/20675>`_ if you have problems with 
+Debian Jessie users, please see this `Github discussion 
+<https://github.com/owncloud/core/issues/20675#issuecomment-159202901>`_ if you have problems with 
 LDAP authentication.
 
