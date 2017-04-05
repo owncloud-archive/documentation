@@ -125,11 +125,11 @@ Import on new server::
 
    localhost/owncloud
 
--confirm that you see the maintenance mode notice (check)
+- confirm that you see the maintenance mode notice (check)
 
 - no error messages occur (check)
 
--take ownCloud out of maintenance mode (on new server)::
+- take ownCloud out of maintenance mode (on new server)::
 
    sudo -u www-data php occ maintenance:mode --off
 
