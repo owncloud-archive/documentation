@@ -33,10 +33,10 @@ locking does not prevent this. Rather, it prevents simultaneous file saving.
 File locking is enabled by default, using the database locking backend. This 
 places a significant load on your database. Using ``memcache.locking`` relieves 
 the database load and improves performance. Admins of ownCloud servers with 
-heavy workloads should install a memcache. (See 
-:doc:`../configuration_server/caching_configuration`)  
+heavy workloads should install a memory cache. (See 
+:doc:`../configuration_server/caching_configuration`.)  
 
-To use a memcache with Transactional File Locking, you must install the Redis 
+To use a memory cache with Transactional File Locking, you must install the Redis 
 server and corresponding PHP module. After installing Redis you must enter a 
 configuration in your ``config.php`` file like this example::
 
@@ -65,7 +65,7 @@ recommended if Redis is running on the same system as ownCloud) use this example
         ),
    
 See ``config.sample.php`` to see configuration examples for Redis, and for all 
-supported memcaches.
+supported memory caches.
 
 If you are on Ubuntu you can follow `this guide  
 <https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 

@@ -23,26 +23,11 @@ See :doc:`../configuration_server/occ_command` to learn more about ``occ``.
 
 Some common mimetypes that may be useful in creating aliases are:
 
-image
-  Generic image
-
-image/vector
-  Vector image
-
-audio
-  Generic audio file
-
-x-office/document
-  Word processed document
-
-x-office/spreadsheet
-  Spreadsheet
-
-x-office/presentation
-  Presentation
-
-text
-  Generic text document
-
-text/code
-  Source code
+- ``image`` - Generic image
+- ``image/vector`` - Vector image
+- ``audio`` - Generic audio file
+- ``x-office/document`` - Word processed document
+- ``x-office/spreadsheet`` - Spreadsheet
+- ``x-office/presentation`` - Presentation
+- ``text`` - Generic text document
+- ``text/code`` - Source code

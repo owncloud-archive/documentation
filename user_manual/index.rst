@@ -1,8 +1,8 @@
 .. _index:
 
-===========================================
-ownCloud |version| User Manual Introduction
-===========================================
+============
+Introduction
+============
 
 **Welcome to ownCloud: your self-hosted file sync and share solution.**
 

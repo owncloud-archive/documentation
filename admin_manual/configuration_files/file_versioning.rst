@@ -37,7 +37,7 @@ Additional options are:
     versions according to expiration rules
  
 * ``D1, D2``    
-    Keep versions for at least D1 days and delete when they exceed D2 days.
+    Keep versions for at least ``D1`` days and delete when they exceed ``D2`` days.
 
 * ``disabled``  
     Disable Versions; no files will be deleted.

@@ -18,25 +18,25 @@ Before you go about installing and configuring it, here is a bit of background
 which may be handy to know. ownCloud integrates with anti-virus tools by
 connecting to them via:
 
-- A url and port
+- A URL and port
 - A socket
 - Streaming the data from the command-line via a pipe with a configured executable
 
-Files are checked when they are either uploaded or updated, whether that’s when
-they’re edited or saved, but *not* when they are downloaded. 
+Files are checked when they are either uploaded or updated, whether that's when
+they're edited or saved, but *not* when they are downloaded. 
 
 The ownCloud Antivirus extension sends files as streams to a ClamAV
 service (which can be on the same ownCloud server or on another server within
 the same network) which in turn scans them and returns a scan result. 
 
 ownCloud evaluates either the exit code returned from ClamAV or parses the
-stdout response to retrieve the result of the scan. Based on ownCloud’s
+stdout response to retrieve the result of the scan. Based on ownCloud's
 evaluation of the response, an appropriate response is then taken, such as
 recording a log message, or deleting the file. 
 
 .. important:: File Cache
 
-ownCloud doesn’t support a file cache of previously scanned files.
+ownCloud doesn't support a file cache of previously scanned files.
 
 Configuring the ClamAV Antivirus Scanner
 ----------------------------------------
@@ -46,7 +46,7 @@ newly-uploaded files using the `Antivirus App for Files`_. The Antivirus App for
 Files integrates the open source anti-virus engine `ClamAV`_  with ownCloud.
 
 ClamAV detects all forms of malware including Trojan horses, viruses, and worms.
-What’s more, it operates on all the key operating systems, including Windows,
+What's more, it operates on all the key operating systems, including Windows,
 Linux, and Mac files, and can scan compressed files, executables, image
 files, Flash, PDF, as well as many others.
 
@@ -153,7 +153,7 @@ CPU usage. So, please keep this in mind.
 
 **Daemon Via Host:Port**
 
-In this mode, ClamAv runs on a different server. This is a good option for
+In this mode, ClamAV runs on a different server. This is a good option for
 ownCloud servers with high volumes of file uploads.
 
 **Executable** 
@@ -207,14 +207,14 @@ Rule Configuration
 ^^^^^^^^^^^^^^^^^^
 
 ownCloud provides the ability to customize how ownCloud reacts to the
-response provided by an anti-virus scan. To do so, under `Admin -> Antivirus
-Configuration -> Advanced`, which you can see in the screenshot below, you can
+response provided by an anti-virus scan. To do so, under ``Admin -> Antivirus
+Configuration -> Advanced``, which you can see in the screenshot below, you can
 view and change the existing rules. You can also add new ones. 
 
   .. figure:: images/anti-virus-configuration-rules.png
 
-Rules can match on either an exit status (e.g., `0`, `1`, or `40`) or
-a pattern in the string returned from ClamAV (e.g., `/.*: (.*) FOUND$/`). 
+Rules can match on either an exit status (e.g., 0, 1, or 40) or
+a pattern in the string returned from ClamAV (e.g., ``/.*: (.*) FOUND$/``). 
 
 .. _update-an-existing-rule:
 
@@ -225,9 +225,9 @@ To match on an exit status, change the "**Match by**" dropdown list to
 "**Scanner exit status**" and in the "**Scanner exit status or signature to
 search**" field, add the status code to match on. 
 
-To match on the scanner’s output, change the "**Match by**" dropdown list to
+To match on the scanner's output, change the "**Match by**" dropdown list to
 "**Scanner output**" and in the "**Scanner exit status or signature to
-search**" field, add the regular expression to match against the scanner’s
+search**" field, add the regular expression to match against the scanner's
 output. 
 
 Then, while not mandatory, add a description of what the status or scan output
@@ -245,7 +245,7 @@ Infected  The file contains a virus
 Unchecked No action should be taken
 ========= ==========================================
 
-With all these changes made, click the check mark on the lefthand side of the
+With all these changes made, click the check mark on the left-hand side of the
 "**Match by**" column, to confirm the change to the rule. 
 
 Add A New Rule

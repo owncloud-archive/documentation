@@ -11,9 +11,9 @@ features:
 * Share and edit files in the browser, and then share them inside ownCloud or 
   through a public link.
 
-Supported file formats are `.odt`, `.doc`, and `.docx`. `.odt` is supported 
+Supported file formats are ``.odt``, ``.doc``, and ``.docx``. ``.odt`` is supported 
 natively in ownCloud, and you must have LibreOffice or OpenOffice installed on 
-the ownCloud server to convert `.doc`, and `.docx` documents.
+the ownCloud server to convert ``.doc``, and ``.docx`` documents.
   
 Enabling the Documents App
 --------------------------
@@ -41,11 +41,11 @@ Troubleshooting
 
 If the mentioned test fails please make sure that:
 
-* the PHP functions ``escapeshellarg`` and ``shell_exec`` are not disabled in your
+* The PHP functions ``escapeshellarg`` and ``shell_exec`` are not disabled in your
   PHP configuration
-* the libreoffice/openoffice binary is within your PATH and is executeable for the
+* The LibreOffice/OpenOffice binary is within your PATH and is executable for the
   HTTP user
-* your SELinux configuration is not blocking the execution of the binary
-* the PHP ``open_basedir`` is correctly configured to allow the access to the binary
+* Your SELinux configuration is not blocking the execution of the binary
+* The PHP ``open_basedir`` is correctly configured to allow the access to the binary
 
 More hints why the test is failing can be found in your ``data/owncloud.log``.

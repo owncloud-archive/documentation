@@ -15,13 +15,6 @@ To be able to develop with ownCloud and also run unit tests, you will need to in
 
 Other required tools will be automatically installed by composer.
 
-Set Up Web Server And Database
-==============================
-
-First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
-
-.. TODO ON RELEASE: Update version number above on release
-
 Get The Source
 ==============
 
@@ -134,3 +127,11 @@ To disable JavaScript and CSS caching debugging has to be enabled by setting ``d
 
 .. _Make: https://www.gnu.org/software/make/
 .. _JSDoc: http://usejsdoc.org
+
+Set Up Web Server And Database
+==============================
+
+First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
+
+.. TODO ON RELEASE: Update version number above on release
+
