@@ -1,5 +1,5 @@
 ==========================================
-External Storage Authentication mechanisms
+External Storage Authentication Mechanisms
 ==========================================
 
 ownCloud storage backends accept one or more authentication schemes such as 
