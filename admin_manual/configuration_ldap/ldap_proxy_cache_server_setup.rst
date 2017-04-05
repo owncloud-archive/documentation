@@ -142,23 +142,24 @@ Next, enter the dn of the user, you want to log in with and in the next line ent
 
 Then you can click on "detect base dn" or enter it manualy. then click on "test base dn".
 
-If you fullfill all requirement you should get a green light and "configuration ok" message.
+If you fullfill all the requirements you should get a green light and "configuration ok" message.
 
 
 Configure Users
 
 Select the objectclass for the users, for example "user".
 
-Verify your settings, you will see the number of users being found.
+Verify your settings; where you will see the number of users being found.
 
 
 Configure Login Attributes
 
-A configuration appears by default, adjusted to the users configuration, 
-if required, adjust the login paramethers additional login attributes.
+A configuration appears by default, adjusted it to your users configuration. 
+
+If required, adjust the login paramethers additional login attributes.
 
 
-You can check users with any of the allowed login options. You can adjust them or let them the way they are.
+You can check users with any of the allowed login options. You can adjust them or leave them the way they are.
 
 
 Configure Groups
@@ -172,7 +173,7 @@ Configuration Active shoud be selected.
 
 Adjust the Cache TTL (time to live) value as required.   
 
-Owncloud usualy autoselects the best settings for each AD configuration.
+ownCloud usualy autoselects the best settings for each AD configuration.
 
 Check if the Group-Member association is "Member (AD)".
 That's important for the users being shown in their respective groups.
@@ -185,16 +186,16 @@ Configure Expert
 "Internal Username Attribute" 
 
 Here we need to set "cn" for the users being shown with their unique name. 
-If you leve that field empty, each user will get a unique uid as a string of numbers and letters.
+If you leave that field empty, each user will get a unique uid as a string of numbers and letters.
 
 Clear the Username and Groupname Mapping and test your configuration by clicking on the buttons below.
 
 
-Go to admin, Users and check if all your users are listed properly and shown in the right groups.
+Navigate to Admin -> Users and check if all your users are listed properly, and shown in the right groups.
 
-Go to the homepage of your owncloud server and try to share something with one of your users
+Go to the homepage of your ownCloud server and try to share something with one of your users
 
-If everything is set up correctly, you now have a LDAP proxy server to your active directory that will
+If everything is set up correctly, you now have an LDAP proxy server to your active directory that will
 
 reduce the network traffic by caching the searches your perform.
 
