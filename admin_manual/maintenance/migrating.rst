@@ -88,7 +88,7 @@ Example::
 
    mysqldump --lock-tables -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
 
-.. note:: Parameters are set when creating database for ownCloud
+.. note:: (just a reminder) Parameters you need for the command above were set when creating database for ownCloud
 
 ::
 
