@@ -73,7 +73,7 @@ Before Enabling Encryption
 --------------------------
 
 Plan very carefully before enabling encryption, because it is not reversible via the ownCloud Web interface. 
-If you lose your encryption keys, your files are *not* recoverable. 
+If you lose your encryption keys, your files are **not** recoverable. 
 Always have backups of your encryption keys stored in a safe location, and consider enabling all recovery options.
 
 You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
@@ -148,7 +148,19 @@ To enable master key based encryption:
 .. note::
 
    The master key mode has to be set up in a newly created instance.
+  
+4. Encrypt all data
+
+::
+  
+  php occ encryption:encrypt-all
+
+.. note::
    
+   This is not typically required, as the master key is often enabled at install time. 
+   As a result, when enabling it, there should be no data to encrypt. 
+   But, in case it's being enabled after install, and the installation does have files which are unencrypted, encrypt-all can be used to encrypt them.
+  
 Sharing Encrypted Files
 -----------------------
 

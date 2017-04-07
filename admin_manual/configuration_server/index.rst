@@ -1,6 +1,6 @@
-=============================
-ownCloud Server Configuration
-=============================
+====================
+Server Configuration
+====================
 
 .. toctree::
    :maxdepth: 2

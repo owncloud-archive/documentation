@@ -149,7 +149,7 @@ When you use SQLite as your ownCloud database, your ``config.php`` looks like
 this after installation. The SQLite database is stored in your ownCloud
 ``data/`` directory. SQLite is a simple, lightweight embedded database that
 is good for testing and for simple installations, but for production ownCloud
-systems you should use MySQL, MariaDB, or PosgreSQL.
+systems you should use MySQL, MariaDB, or PostgreSQL.
 
 ::
 
@@ -295,13 +295,13 @@ skeleton files.
 
 The ``user_backends`` app (which needs to be enabled first) allows you to
 configure alternate authentication backends. Supported backends are:
-IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
+IMAP (``OC_User_IMAP``), SMB (``OC_User_SMB``), and FTP (``OC_User_FTP``).
 
 ::
 
 	'lost_password_link' => 'https://example.org/link/to/password/reset',
 
-If your user backend does not allow to reset the password (e.g. when it's a
+If your user backend does not allow to reset the password (e.g., when it's a
 read-only user backend like LDAP), you can specify a custom link, where the
 user is redirected to, when clicking the "reset password" link after a failed
 login-attempt.
@@ -413,7 +413,6 @@ the SMTP server.
 
 Proxy Configurations
 --------------------
-
 
 ::
 
@@ -1503,3 +1502,45 @@ which are older then the number of days that is set for ``activity_expire_days``
 	'wnd.logging.enable' => true,
 
 This enables debug logs for the windows_network_drive app.
+
+Overriding Existing Parameter Values Using Environment Variables
+----------------------------------------------------------------
+
+ownCloud supports the ability to override the *web UI*, *command line*, and *Cron* environments’ settings by using `environment variables`_.
+By doing so, you avoid the need to store credentials and other sensitive data in code. 
+What’s more, by using environment variables, you do not have to manage configurations (e.g., database connections) for different server environments, because environment variables store this information for you.
+
+To override an existing setting, you need to export an environment variable which has the same name as the one which you want to override, prefixed with ``OC_``. 
+For example, if you wanted to override the value of ``dbname``, you would set the environment variable ``OC_dbname``.
+
+Below are examples of setting an environment variable in the Apache and Nginx
+web servers, and for when running command line scripts. 
+
+Apache Web Server
+~~~~~~~~~~~~~~~~~
+
+::
+
+  # Inside a virtual host configuration
+  SetEnv OC_dbname owncloud_database_name
+  
+Nginx Web Server (php-fpm)
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+  location / {
+      fastcgi_param OC_dbname owncloud_database_name
+  }
+
+Command Line
+~~~~~~~~~~~~
+
+::
+
+  # export the variable into the environment before launching the Cron script
+  export OC_dbname=owncloud_database_name php -d variables_order=EGPCS cron.php
+
+.. Links
+   
+  .. _environment variables: https://12factor.net/config 

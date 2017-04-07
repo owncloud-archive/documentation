@@ -72,8 +72,8 @@ Desktop
 Mobile 
 ^^^^^^
 
-- iOS 7+
-- Android 4+
+- iOS 9.0+
+- Android 4.0+
 
 Web Browser 
 ^^^^^^^^^^^

@@ -10,7 +10,7 @@ to your users for various events like:
 * A file or folder has been deleted
 
 Users can see actions (delete, add, modify) that happen to files they have access to.
-Sharing actions are only visible to the sharer and sharee.
+Sharing actions are only visible to the sharer and recipient.
 
 Enabling the Activity App
 -------------------------
@@ -29,4 +29,4 @@ Furthermore it is recommended to configure the background job ``Webcron`` or
 
 There is also a configuration option ``activity_expire_days`` available in your
 ``config.php`` (See :doc:`config_sample_php_parameters`) which allows
-you to clean-up older activies from the database.
+you to clean-up older activities from the database.

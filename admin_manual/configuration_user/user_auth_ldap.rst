@@ -2,6 +2,8 @@
 User Authentication with LDAP
 =============================
 
+.. warning:: Please check both the advanced and expert configurations carefully before using in production
+
 ownCloud ships with an LDAP application to allow LDAP users (including Active 
 Directory) to appear in your ownCloud user listings. These users will 
 authenticate to ownCloud with their LDAP credentials, so you don't have to 
@@ -376,6 +378,16 @@ Group Member association:
   have a very valid reason and know what you are doing.
 
   * Example: *uniquemember*
+
+Nested Groups:
+  This makes the LDAP connector aware that groups could be stored inside existing group records. 
+  By default a group will only contain users, so enabling this option isn't necessary.
+  However, if groups are contained inside groups, and this option is not enabled, any groups contained within other groups will be ignored and not returned in search results.
+
+Paging Chunk Size:
+  This sets the maximum number of records able to be returned in a response when ownCloud requests data from LDAP.
+  If this value is greater than the limit of the underlying LDAP server (such as 3000 for Microsoft Active Directory) the LDAP server will reject the request and the search request will fail. 
+  Given that, it is important to set the requested chunk size to a value no larger than that which the underlying LDAP server supports.
 
 Special Attributes
 ^^^^^^^^^^^^^^^^^^

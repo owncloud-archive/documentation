@@ -13,13 +13,13 @@ To start, let us be specific about the use case. A configured ownCloud instance 
     back to your existing installation and provide your users
     with a running ownCloud while debugging the problem.
 
-#.  Set up the new machine with your desired Linux distribution. At this point you can either install ownCloud manually via the compressed archive (see :doc:`../installation/source_installation`, or with your Linux package manager (see :doc:`../installation/linux_installation`).
+#.  Set up the new machine with your desired Linux distribution. At this point you can either install ownCloud manually via the compressed archive (see :doc:`../installation/source_installation`), or with your Linux package manager (see :doc:`../installation/linux_installation`).
 
 #.  On the original machine turn on maintenance mode and then stop ownCloud. After waiting for 6-7 minutes for all sync clients to register the server as in maintenance mode, stop the application and/or Web server that serves ownCloud. (See :ref:`maintenance_commands_label`.)
 
-#.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :doc:`backup` and :doc:`restore`).
+#.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :doc:`backup-database` and :doc:`restore-database`).
 
-#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backup` and :doc:`restore`). 
+#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backing-up-the-config-and-data-directories` and :doc:`restore-directories`). 
 
 .. note:: You must keep the ``data/`` directory's original filepath. Do not change this!
 
