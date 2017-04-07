@@ -11,6 +11,8 @@
       - tar
       - gzip
       - bzip2
+      - inotify-tools
+      - nginx
       - python-pil 
       - python-sphinx 
       - python-sphinxcontrib.phpdomain 
@@ -26,3 +28,26 @@
 - name: Allow ssh
   ufw: rule=allow port=22 proto=tcp
   become: true
+
+- name: Allow ssh
+  ufw: rule=allow port=80 proto=tcp
+  become: true
+
+- name: Allow ssh
+  ufw: rule=allow port=22020 proto=tcp
+  become: true
+
+- name: Configure the NGINX server blocks for the manuals
+  sudo: true
+  template: src=owncloud.manuals.conf dest=/etc/nginx/sites-available/owncloud.manuals
+    owner={{ webuser }}
+    group={{ webgroup }}
+    mode=0755
+  notify:
+    - restart nginx
+
+- name: link nginx partner-portal vhost in sites-enabled
+  action: file src=/etc/nginx/sites-available/owncloud.manuals dest=/etc/nginx/sites-enabled/owncloud-manuals state=link
+  notify:
+    - restart nginx
+

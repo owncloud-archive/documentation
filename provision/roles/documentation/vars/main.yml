@@ -1,1 +1,10 @@
 permissionsmode: 775
+webuser: www-data
+webgroup: www-data
+servername_admin: admin.manual.localdomain 
+servername_developer: developer.manual.localdomain 
+servername_user: user.manual.localdomain 
+directoryroot_admin: /opt/documentation/admin_manual/_build/html/org/
+directoryroot_developer: /opt/documentation/developer_manual/_build/html/org/
+directoryroot_user: /opt/documentation/user_manual/_build/html/org/
+directoryindex: index.html index.htm
