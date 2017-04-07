@@ -138,3 +138,5 @@ Import on new server::
 
 6.
 Change the CNAME entry in the DNS to point your users to the new location.
+
+.. note:: If you have not only migrated phyiscally from server to server but also use a new domain name to access your instance, you need to update (add the new domain) the Trusted Domain setting in config.php at the target server.
