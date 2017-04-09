@@ -46,7 +46,7 @@ operations.
 
 The other is to change the BINLOG_FORMAT = STATEMENT in your database 
 configuration file, or possibly in your database startup script, to 
-BINLOG_FORMAT = MIXED. See `Overview of the Binary 
+BINLOG_FORMAT = MIXED or BINLOG_FORMAT = ROW. See `Overview of the Binary 
 Log <https://mariadb.com/kb/en/mariadb/overview-of-the-binary-log/>`_ and `The 
 Binary Log <https://dev.mysql.com/doc/refman/5.6/en/binary-log.html>`_ for 
 detailed information.
