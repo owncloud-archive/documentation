@@ -107,7 +107,7 @@ Import on new server::
 
       rsync -Aaxt config data root@new_server_address:/var/www/owncloud 
 
-.. warning:: You must keep the data/ directory’s original filepath. Do not change this!
+.. warning:: If you want to move your datadirectory to another location at the target server, it is advised to do this as a second step. Please see the datadirectory migration document <link> for more details.
 
 5. Put new server out of maintenace mode:
 
