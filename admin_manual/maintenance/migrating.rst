@@ -135,6 +135,16 @@ Import on new server::
 
 - log in as admin and confirm normal function of ownCloud
 
+6. Reverse the changes you made to the SSH-Config:
+
+Edit SSH-Config::
++
++   nano /etc/ssh/sshd_config
++
++Change PermitRootLogin to no::
++
++   PermitRootLogin no
+
 
 6.
 Change the CNAME entry in the DNS to point your users to the new location.
