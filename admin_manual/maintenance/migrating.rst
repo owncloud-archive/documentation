@@ -107,7 +107,7 @@ Import on new server::
 
       rsync -Aaxt config data root@new_server_address:/var/www/owncloud 
 
-.. warning:: If you want to move your datadirectory to another location at the target server, it is advised to do this as a second step. Please see the datadirectory migration document <link> for more details.
+.. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do this as a second step. Please see the datadirectory migration [document](https://doc.owncloud.com/server/10.0/admin_manual/maintenance/manually-moving-data-folders.html) for more details.
 
 5. Put new server out of maintenace mode:
 
