@@ -120,7 +120,7 @@ that ownCloud has previously been installed.
 Configuration Wizard
 --------------------
 
-.. image:: ../images/oracle-1.png
+.. image:: ../../images/oracle-1.png
     :width: 5.778in
     :height: 7.4165in
 
