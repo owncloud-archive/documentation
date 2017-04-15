@@ -90,6 +90,6 @@ Database Requirements for MySQL / MariaDB
 
 The following are currently required if you're running ownCloud together with a MySQL or MariaDB database:
 
-* Disabled or ``BINLOG_FORMAT = MIXED or BINLOG_FORMAT = ROW`` configured Binary Logging (See: :ref:`db-binlog-label`)
+* Disabled or ``BINLOG_FORMAT = MIXED`` or ``BINLOG_FORMAT = ROW`` configured Binary Logging (See: :ref:`db-binlog-label`)
 * InnoDB storage engine (The MyISAM storage engine is not supported, see: :ref:`db-storage-engine-label`)
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
