@@ -400,7 +400,7 @@ latency significantly.
 .. https://github.com/owncloud/core/issues/10900
 
 application Store is Back
-^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The ownCloud application Store has been re-enabled in ownCloud 8. Note that third-party apps 
 are not supported.
@@ -457,7 +457,7 @@ risk of data loss. To prevent this, follow these steps.
   updates are completed re-set it to read-only.
 
 Antivirus application Modes
-^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Antivirus application offers three modes for running the ClamAV anti-virus scanner: 
 as a daemon on the ownCloud server, a daemon on a remote server, or an 
@@ -552,7 +552,7 @@ it not suitable for multiple-user installations or managing large numbers of
 files.
 
 No application Store
-^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^
 
 The application Store is disabled for the Enterprise Edition.
 
