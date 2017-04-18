@@ -68,11 +68,21 @@ Desktop
 
 - Windows 7+
 - Mac OS X 10.7+ (64-bit only)
-- Linux (CentOS 6.5, 7 (7 is 64-bit only)
-- Ubuntu 12.04+
-- Fedora 20+
-- openSUSE 12.3+
-- Debian 7 & 8
+
+
+- Ubuntu 16.10
+- Ubuntu 16.04
+- Ubuntu 14.04
+- Debian 7.0
+- Debian 8.0
+- CentOS 7
+- Fedora 24
+- Fedora 25
+- openSUSE Leap 42.1
+- openSUSE Leap 42.2
+
+.. note::
+   For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
 
 Mobile 
 ^^^^^^
@@ -98,3 +108,7 @@ The following are currently required if you're running ownCloud together with a 
 * Disabled or ``BINLOG_FORMAT = MIXED`` or ``BINLOG_FORMAT = ROW`` configured Binary Logging (See: :ref:`db-binlog-label`)
 * InnoDB storage engine (The MyISAM storage engine is not supported, see: :ref:`db-storage-engine-label`)
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
+
+.. Links
+   
+.. _LTS: https://wiki.ubuntu.com/LTS
