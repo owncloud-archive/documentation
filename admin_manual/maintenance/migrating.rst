@@ -99,6 +99,10 @@ were set when creating database for ownCloud with this command)
 
 Do not execute this command, because it's just a reminder.
 
+You can also find the values for the mysqldump command in your config.php at your owncloud directory.
+
+[server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
+
 Export command::
 
    rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
