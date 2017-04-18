@@ -65,10 +65,10 @@ General
 * New features are always developed in a branch and only merged to master once they are fully done.
 * Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * It is best to start working based on an issue - create one if there is none. You describe what you want to do, ask feedback on the direction you take it and take it from there.
-* When you are finished, use the merge request function on Github to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See :doc:`the code review page for more information <../bugtracker/codereviews.rst>`
+* When you are finished, use the merge request function on Github to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See :doc:`the code review page for more information <../bugtracker/codereviews>`
 * It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
 * Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. ownCloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
-* We need a signed contributor agreement from you to commit into the core repository (apps don't need that). All the information is in our `Contributor agreement FAQ <https://owncloud.org/contribute/agreement/>`_.
+
 
 Labels
 ------
@@ -98,8 +98,8 @@ The most important labels and their meaning:
 * Component tags: #comp:filesystem #comp:javascript and so on. These tags indicate the components of ownCloud impacted by the issue or which the PR is related to
 * Development tool tags: #dev:unit_testing #dev:public_API and so on. These tags indicate development-specific tools like those for testing and public developer-facing API's impacted by the issue or which the PR is related
 * Feature tags: #feature:something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to
-* #triage - this issue *has to be* :doc:`triaged <../bugtracker/triaging.rst>`
-* #needs info - this issue needs further information from the reporter, see :doc:`triaging <../bugtracker/triaging.rst>` old tag is #clarification request, please don't use that one anymore.
+* #triage - this issue *has to be* :doc:`triaged <../bugtracker/triaging>`
+* #needs info - this issue needs further information from the reporter, see :doc:`triaging <../bugtracker/triaging>` old tag is #clarification request, please don't use that one anymore.
 * #discussion - this issue needs to be discussed
 * #security - this is a security related issue
 * #windows server - this is related to windows server
