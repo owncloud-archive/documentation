@@ -2,6 +2,8 @@
 How To Manually Move a Data Directory
 =====================================
 
+.. _datadir_move_label:
+
 If you need to move your ownCloud data directory from its current location to
 somewhere else, here is a manual process that you can take to make it happen.
 
