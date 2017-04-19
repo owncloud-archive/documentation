@@ -38,7 +38,7 @@ MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended datab
 
 
 
-Examle::
+Example::
 
       mysqldump --lock-tables -h localhost -u username -ppassword owncloud > owncloud-dbbackup_`date +"%Y%m%d"`.bak
 
