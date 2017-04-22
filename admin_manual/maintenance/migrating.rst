@@ -113,7 +113,7 @@ Import on new server::
 
 4. Copy data, config to new server::
 
-      rsync -Aaxt config data root@new_server_address:/var/www/owncloud 
+      rsync -Aavxt config data root@new_server_address:/var/www/owncloud 
 
 .. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do this as a second step. Please see the datadirectory migration document :ref:`datadir_move_label` for more details.
 
