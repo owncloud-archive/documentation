@@ -1093,6 +1093,7 @@ The full list, of commands is::
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
+  user:sync                           Sync local users with an external backend service
 
 Creating Users
 ^^^^^^^^^^^^^^
@@ -1286,6 +1287,40 @@ authentication servers such as LDAP::
  |                  |    |
  | user directories | 2  |
  +------------------+----+
+ 
+Syncing User Accounts
+^^^^^^^^^^^^^^^^^^^^^
+
+This command syncs users stored in external backend services, such as _LDAP_, _Shibboleth_, and _Samba_, with ownCloud’s internal user database.
+
+.. note:: 
+   It’s also `one of the commands`_ that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
+
+It’s not essential to run it regularly, unless you have a large number of users who change on a semi-regular basis.
+What’s more, the job is only necessary to pick up changes from a backend with users who don't log in regularly.
+
+Below are examples of how to use the command with an LDAP, Samba, and Shibboleth backend.
+
+LDAP
+~~~~
+
+::
+
+  sudo -u www-data ./occ user:sync "OCA\User_LDAP\User_LDAP"
+
+Samba
+~~~~~
+
+::
+
+  sudo -u www-data ./occ user:sync "OCA\User\SMB" -vvv
+
+Shibboleth
+~~~~~~~~~~
+
+::
+
+  sudo -u www-data ./occ user:sync "OCA\User_Shibboleth\UserBackend"
  
 .. _versions_label:
  
@@ -1527,3 +1562,7 @@ Use the following command to enable the user again::
  sudo -u www-data php occ user:enable <username>
 
 Note that once users are disabled, their connected browsers will be disconnected.
+
+.. links
+   
+.. _one of the commands: :ref:`Available Background Jobs`
