@@ -68,13 +68,26 @@ Configure your sharing policy on your Admin page in the Sharing section.
 Transferring Files to Another User
 ----------------------------------
 
-You may transfer files from one user to another with ``occ``. This is useful 
-when you have to remove a user. Be sure to transfer the files before you delete 
-the user!  This transfers all files from user1 to user2, and the shares and 
-metadata info associated with those files (shares, tags, comments, etc). 
-Trashbin contents are not transferred::
+You may transfer files from one user to another with ``occ``. 
+The command transfers either all or a limited set of files from one user to another. 
+It also transfers the shares and metadata info associated with those files (*shares*, *tags*, and *comments*, etc). 
+This is useful when you have transfer a user’s files to another user before you delete them. 
+
+.. important:: 
+   Trashbin contents are not transferred.
+
+Here is an example of how to transfer all files from one user to another.
+
+::
 
  occ files:transfer-ownership user1 user2
+
+Here is an example of how to transfer *a limited group* of files from one user to another.
+In this example, ``"folder_name"`` is the name of the folder which you want to transfer ownership of — as well as all files and folders within it — between the two nominated users.
+
+::
+
+ occ files:transfer-ownership --path="folder_name" user1 user2
  
 (See :doc:`../configuration_server/occ_command` for a complete ``occ`` 
 reference.) 
