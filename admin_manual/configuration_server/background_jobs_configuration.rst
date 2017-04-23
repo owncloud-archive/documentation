@@ -79,8 +79,8 @@ The advantage of this mechanism, however, is that it does not require access to 
 The disadvantage of this mechanism, when compared to the `Webcron`_ service, is that it requires regular visits to the page for it to be triggered.
 
 .. note:: Especially when using the Activity App or external storages, where new
-   files are added, updated, or deleted one of the two methods below should be
-   preferred.
+   files are added, updated, or deleted one of the other methods should be
+   used.
 
 Parallel Task Execution
 ~~~~~~~~~~~~~~~~~~~~~~~
