@@ -131,6 +131,13 @@ But, if it’s not, click "**Show disabled apps**", find it in the list, and cli
 
 .. figure:: ../images/antivirus-app.png
 
+You can also configure it from the command-line, by running the following
+command:
+
+::
+
+  
+
 Configuring ClamAV within ownCloud
 ----------------------------------
 
@@ -204,8 +211,16 @@ You can also add new ones.
 
   .. figure:: images/anti-virus-configuration-rules.png
 
-Rules can match on either an exit status (e.g., 0, 1, or 40) or
-a pattern in the string returned from ClamAV (e.g., ``/.*: (.*) FOUND$/``). 
+.. note:: The default ruleset for ClamAV is populated automatically.
+
+Rules can match on either an exit status (e.g., `0`, `1`, or `40`) or a pattern in the string returned from ClamAV (e.g., ``/.*: (.*) FOUND$/``). 
+
+Here are some points to bear in mind about rules:
+
+- Scanner exit status rules are used to handle errors when ClamAV is run in CLI mode while
+- scanner output rules are used in daemon/socket mode.
+- Daemon output is parsed by regexp.
+- In case there are no matching rules, the status is: ``Unknown``, and a warning will be logged.
 
 .. _update-an-existing-rule:
 
