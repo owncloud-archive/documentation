@@ -16,33 +16,29 @@ These actions can include garbage collecting of temporary files or checking for 
 Cron Jobs
 ---------
 
-You can schedule Cron jobs in three ways: `AJAX`_, `Webcron`_, or `Cron`_. 
+You can schedule Cron jobs in three ways: `Cron`_, `Webcron`_, or `AJAX`_. 
 These can all be configured in the admin settings menu. 
-The default method is to use AJAX.  
 However, the recommended method is to use Cron.  
 The following sections describe the differences between each method.
 
-AJAX
-~~~~
+There are a number of things to keep in mind when choosing an automation
+option: 
 
-The AJAX scheduling method is the default option. 
-However, it is also the *least* reliable. 
-Each time a user visits the ownCloud page, a single background job is executed. 
-The advantage of this mechanism, however, is that it does not require access to the system nor registration with a third party service. 
-The disadvantage of this mechanism, when compared to the `Webcron`_ service, is that it requires regular visits to the page for it to be triggered.
+Firstly, while the default method is AJAX, though the preferred way is to use Cron.
+The reason for this distinction is that AJAX is easier to get up and running. 
+As a result, it makes sense (often times) to accept it in the interests of expediency.
 
-.. note:: Especially when using the Activity App or external storages, where new
-   files are added, updated, or deleted one of the two methods below should be
-   preferred.
+However, doing so is known to cause issues, such as backlogs and potentially not running every job on a heavily-loaded system.
+What’s more, an increasing amount of ownCloud automation has been migrated from Ajax to Cron in recent versions.
+For this reason, we encourage you to not use it for too long — especially if your site is rapidly growing.
 
-Webcron
-~~~~~~~
+Secondly, while Webcron is better than Ajax, it too has limitations. 
+For example, running Webcron will only remove a single item from the job queue,
+not all of them.
+Cron, however, will clear the entire queue.
 
-By registering your ownCloud ``cron.php`` script address as an external webcron service (for example, easyCron_), you ensure that background jobs are executed regularly. 
-To use this type of service, your external webcron service must be able to access your ownCloud server using the Internet. 
-For example::
-
-  URL to call: http[s]://<domain-of-your-server>/owncloud/cron.php
+.. note:: 
+   It’s for this reason that we encourage you to use Cron — if at all possible.
 
 Cron
 ~~~~
@@ -63,6 +59,28 @@ You can verify if the cron job has been added and scheduled by executing::
 .. note:: You have to make sure that ``php`` is found by ``cron``. Best practice is to expressly add the full path like ``/usr/bin/php``. On some systems it might be necessary to call **php-cli** instead of **php**.
 
 Please refer to `the crontab man page`_ for the exact command syntax.
+
+Webcron
+~~~~~~~
+
+By registering your ownCloud ``cron.php`` script address as an external webcron service (for example, easyCron_), you ensure that background jobs are executed regularly. 
+To use this type of service, your external webcron service must be able to access your ownCloud server using the Internet. 
+For example::
+
+  URL to call: http[s]://<domain-of-your-server>/owncloud/cron.php
+
+AJAX
+~~~~
+
+The AJAX scheduling method is the default option. 
+However, it is also the *least* reliable. 
+Each time a user visits the ownCloud page, a single background job is executed. 
+The advantage of this mechanism, however, is that it does not require access to the system nor registration with a third party service. 
+The disadvantage of this mechanism, when compared to the `Webcron`_ service, is that it requires regular visits to the page for it to be triggered.
+
+.. note:: Especially when using the Activity App or external storages, where new
+   files are added, updated, or deleted one of the other methods should be
+   used.
 
 Parallel Task Execution
 ~~~~~~~~~~~~~~~~~~~~~~~
