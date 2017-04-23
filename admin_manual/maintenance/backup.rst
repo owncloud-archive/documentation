@@ -7,7 +7,7 @@ When you backup your ownCloud server, there are four things that you need to cop
 #. Your ``config/`` directory.
 #. Your ``data/`` directory.
 #. Your ownCloud database.
-#. Your custom theme files, if you have any. (See `Theming ownCloud <https://doc.owncloud.org/server/10.0/developer_manual/core/theming.html>`_)
+#. Your custom theme files, if you have any. (See `Theming ownCloud <https://doc.owncloud.org/server/9.1/developer_manual/core/theming.html>`_)
 
 When you install your ownCloud server from our `Open Build Service <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ packages (or from distro packages, which we do not recommend) **do not backup your ownCloud server files**, which are the other files in your ``owncloud/`` directory such as ``core/``, ``3rdparty/``, ``apps/``, ``assets/``, ``lib/``, and all the rest of the ownCloud files. If you restore these files from backup they may not be in sync with the current package versions, and will fail the code integrity check. This may also cause other errors, such as white pages.
 
