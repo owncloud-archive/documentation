@@ -116,8 +116,8 @@ hit the hardest for updates.
 Next, edit ``/etc/clamd.d/scan.conf``. When you're finished you must enable
 the ``clamd`` service file and start ``clamd``::
 
-  systemctl enable clamd@scan.service
-  systemctl start clamd@scan.service
+  systemctl enable clamav-daemon.service
+  systemctl start clamav-daemon.service
 
 That should take care of everything. Enable verbose logging in ``scan.conf``
 and ``freshclam.conf`` until it is running the way you want.
