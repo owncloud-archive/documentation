@@ -40,8 +40,8 @@ run the SQL below:
 
 .. code-block:: sql
    
-  UPDATE oc_storages SET id='local::/var/www/owncloud/data' 
-    WHERE id='local::/mnt/owncloud'
+  UPDATE oc_storages SET id='local::/mnt/owncloud' 
+    WHERE id='local::/var/www/owncloud/data'
 
 The other area to check is the `oc_jobs` table. The logrotate process may have
 hard-coded a non-standard (or old) value for the data path. To check it, run the
