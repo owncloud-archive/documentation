@@ -327,10 +327,6 @@ Additional Apache Configurations
     a2enmod dir
     a2enmod mime
   
-  If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
-  
-    a2enmod setenvif
-
 * You must disable any server-configured authentication for ownCloud, as it 
   uses Basic authentication internally for DAV services. If you have turned on 
   authentication on a parent folder (via e.g. an ``AuthType Basic``
@@ -541,7 +537,7 @@ in the ``owncloud/.user.ini`` file.
 
 This error is shown in your ``data/owncloud.log`` file. 
 Some Apache modules like ``mod_fastcgi``, ``mod_fcgid`` or ``mod_proxy_fcgi`` are not passing the needed authentication headers to PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is failing. 
-Information on how to correctly configure your environment can be found `in the forums`_.
+Information on how to correctly configure your environment can be found `in the forums`_ but we generally recommend against the use of these modules and recommend mod_php instead.
 
 Other Web Servers
 -----------------

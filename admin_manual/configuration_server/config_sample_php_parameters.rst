@@ -149,7 +149,7 @@ When you use SQLite as your ownCloud database, your ``config.php`` looks like
 this after installation. The SQLite database is stored in your ownCloud
 ``data/`` directory. SQLite is a simple, lightweight embedded database that
 is good for testing and for simple installations, but for production ownCloud
-systems you should use MySQL, MariaDB, or PosgreSQL.
+systems you should use MySQL, MariaDB, or PostgreSQL.
 
 ::
 
@@ -295,13 +295,13 @@ skeleton files.
 
 The ``user_backends`` app (which needs to be enabled first) allows you to
 configure alternate authentication backends. Supported backends are:
-IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
+IMAP (``OC_User_IMAP``), SMB (``OC_User_SMB``), and FTP (``OC_User_FTP``).
 
 ::
 
 	'lost_password_link' => 'https://example.org/link/to/password/reset',
 
-If your user backend does not allow to reset the password (e.g. when it's a
+If your user backend does not allow to reset the password (e.g., when it's a
 read-only user backend like LDAP), you can specify a custom link, where the
 user is redirected to, when clicking the "reset password" link after a failed
 login-attempt.
@@ -413,7 +413,6 @@ the SMTP server.
 
 Proxy Configurations
 --------------------
-
 
 ::
 

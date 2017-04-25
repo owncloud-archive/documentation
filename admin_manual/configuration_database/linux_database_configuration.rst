@@ -26,7 +26,7 @@ MySQL / MariaDB with Binary Logging Enabled
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ownCloud is currently using a ``TRANSACTION_READ_COMMITTED`` transaction isolation
-to avoid data loss under high load scenarios (e.g. by using the sync client with
+to avoid data loss under high load scenarios (e.g., by using the sync client with
 many clients/users and many parallel operations). This requires a disabled or
 correctly configured binary logging when using MySQL or MariaDB. Your system is
 affected if you see the following in your log file during the installation or
@@ -46,7 +46,7 @@ operations.
 
 The other is to change the BINLOG_FORMAT = STATEMENT in your database 
 configuration file, or possibly in your database startup script, to 
-BINLOG_FORMAT = MIXED. See `Overview of the Binary 
+BINLOG_FORMAT = MIXED or BINLOG_FORMAT = ROW. See `Overview of the Binary 
 Log <https://mariadb.com/kb/en/mariadb/overview-of-the-binary-log/>`_ and `The 
 Binary Log <https://dev.mysql.com/doc/refman/5.6/en/binary-log.html>`_ for 
 detailed information.
@@ -58,7 +58,7 @@ MySQL / MariaDB "READ COMMITED" transaction isolation level
 
 As discussed above ownCloud is using the ``TRANSACTION_READ_COMMITTED`` transaction isolation
 level. Some database configurations are enforcing other transaction isolation levels. To avoid
-data loss under high load scenarios (e.g. by using the sync client with many clients/users and
+data loss under high load scenarios (e.g., by using the sync client with many clients/users and
 many parallel operations) you need to configure the transaction isolation level accordingly.
 Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html>`_
 for detailed information.
@@ -68,7 +68,7 @@ for detailed information.
 MySQL / MariaDB storage engine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since ownCloud 7 only InnoDB is supported as a storage engine. There are some shared hosters that
+Since ownCloud 7 only InnoDB is supported as a storage engine. There are some shared hosts who
 do not support InnoDB and only MyISAM. Running ownCloud on such an environment is not supported.
 
 Parameters
@@ -80,7 +80,7 @@ Configuring a MySQL or MariaDB Database
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
-* That you have installed and enabled the pdo_mysql extension in PHP
+* That you have installed and enabled the ``pdo_mysql`` extension in PHP
 
 * That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as ownCloud).
 
@@ -149,8 +149,7 @@ PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
 
 If you decide to use a PostgreSQL database make sure that you have installed
-and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/pgsql.ini` could look
-like this:
+and enabled the PostgreSQL extension in PHP. The PHP configuration in :file:`/etc/php5/conf.d/pgsql.ini` could look like this:
 
 ::
 
@@ -199,14 +198,14 @@ this:
     "dbhost"        => "/var/run/postgresql",
     "dbtableprefix" => "oc_",
 
-.. note:: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note, that no password is specified, because this authentication method doesn't use a password.
+.. note:: The host actually points to the socket that is used to connect to the database. Using localhost here will not work if PostgreSQL is configured to use peer authentication. Also note, that no password is specified, because this authentication method doesn't use a password.
 
 If you use another authentication method (not peer), you'll need to use the following steps to get the database setup:
 Now you need to create a database user and the database itself by using the
 PostgreSQL command line interface. The database tables will be created by
 ownCloud when you login for the first time.
 
-To start the postgres command line mode use::
+To start the PostgreSQL command line mode use::
 
   psql -hlocalhost -Upostgres
 
@@ -253,7 +252,7 @@ also possible that the server is dropping a packet that is too large. Please
 refer to the manual of your database for how to raise the configuration options 
 ``wait_timeout`` and/or ``max_allowed_packet``.
 
-Some shared hosters are not allowing the access to these config options. For such
+Some shared hosts are not allowing the access to these config options. For such
 systems ownCloud is providing a ``dbdriveroptions`` configuration option within your
 :file:`config/config.php` where you can pass such options to the database driver.
 Please refer to :doc:`../configuration_server/config_sample_php_parameters` for an example.

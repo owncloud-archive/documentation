@@ -27,25 +27,9 @@ Our community is made up of several groups of individuals and organizations whic
 * Contributors, or those who add value to the project through improving ownCloud software and its services
 * Users, or those who add value to the project through their support as consumers of ownCloud software
 
-This Code of Conduct reflects the agreed standards of behavior for members of the ownCloud community, in any forum, mailing list, wiki, web site, IRC channel, public meeting or private correspondence within the context of the ownCloud team and its services. The community acts according to the standards written down in this Code of Conduct and will defend these standards for the benefit of the community. Leaders of any group, such as moderators of mailing lists, IRC channels, forums, etc., will exercise the right to suspend access to any person who persistently breaks our shared Code of Conduct.
+This Code of Conduct reflects the agreed standards of behavior for members of the ownCloud community, in any forum, mailing list, wiki, web site, IRC channel, public meeting or private correspondence within the context of the ownCloud team and its services. 
 
-Be considerate
---------------
-
-Your actions and work will affect and be used by other people and you in turn will depend on the work and actions of others. Any decision you take will affect other community members, and we expect you to take those consequences into account when making decisions.
-
-As a contributor, ensure that you give full credit for the work of others and bear in mind how your changes affect others. It is also expected that you try to follow the development schedule and guidelines.
-
-As a user, remember that contributors work hard on their part of ownCloud and take great pride in it. If you are frustrated your problems are more likely to be resolved if you can give accurate and well-mannered information to all concerned.
-
-Be respectful
--------------
-
-In order for the ownCloud community to stay healthy its members must feel comfortable and accepted. Treating one another with respect is absolutely necessary for this. In a disagreement, in the first instance assume that people mean well.
-
-We do not tolerate personal attacks, racism, sexism or any other form of discrimination. Disagreement is inevitable, from time to time, but respect for the views of others will go a long way to winning respect for your own view. Respecting other people, their work, their contributions and assuming well-meaning motivation will make community members feel comfortable and safe and will result in motivation and productivity.
-
-We expect members of our community to be respectful when dealing with other contributors, users and communities. Remember that ownCloud is an international project and that you may be unaware of important aspects of other cultures.
+The community acts according to the standards written down in this Code of Conduct and will defend these standards for the benefit of the community. Leaders of any group, such as moderators of mailing lists, IRC channels, forums, etc., will exercise the right to suspend access to any person who persistently breaks our shared Code of Conduct.
 
 Be collaborative
 ----------------
@@ -60,19 +44,30 @@ Contributors on every project come and go. When you leave or disengage from the 
 
 As a user, your feedback is important, as is its form. Poorly thought out comments can cause pain and the demotivation of other community members, but considerate discussion of problems can bring positive results. An encouraging word works wonders.
 
+Be considerate
+--------------
+
+Your actions and work will affect and be used by other people and you in turn will depend on the work and actions of others. Any decision you take will affect other community members, and we expect you to take those consequences into account when making decisions.
+
+As a contributor, ensure that you give full credit for the work of others and bear in mind how your changes affect others. It is also expected that you try to follow the development schedule and guidelines.
+
 Be pragmatic
 ------------
 
-ownCloud is a pragmatic community. We value tangible results over having the last word in a discussion. We defend our core values like freedom and respectful collaboration, but we don’t let arguments about minor issues get in the way of achieving more important results. We are open to suggestions and welcome solutions regardless of their origin. When in doubt support a solution which helps getting things done over one which has theoretical merits, but isn’t being worked on. Use the tools and methods which help getting the job done. Let decisions be taken by those who do the work.
+ownCloud is a pragmatic community. We value tangible results over having the last word in a discussion. We defend our core values like freedom and respectful collaboration, but we don’t let arguments about minor issues get in the way of achieving more important results. 
 
-Support others in the community
--------------------------------
+We are open to suggestions and welcome solutions regardless of their origin. When in doubt support a solution which helps getting things done over one which has theoretical merits, but isn’t being worked on. Use the tools and methods which help getting the job done. Let decisions be taken by those who do the work.
 
-Our community is made strong by mutual respect, collaboration and pragmatic, responsible behavior. Sometimes there are situations where this has to be defended and other community members need help.
+As a user, remember that contributors work hard on their part of ownCloud and take great pride in it. If you are frustrated your problems are more likely to be resolved if you can give accurate and well-mannered information to all concerned.
 
-If you witness others being attacked, think first about how you can offer them personal support. If you feel that the situation is beyond your ability to help individually, go privately to the victim and ask if some form of official intervention is needed. Similarly you should support anyone who appears to be in danger of burning out, either through work-related stress or personal problems.
+Be respectful
+-------------
 
-When problems do arise, consider respectfully reminding those involved of our shared Code of Conduct as a first action. Leaders are defined by their actions, and can help set a good example by working to resolve issues in the spirit of this Code of Conduct before they escalate.
+In order for the ownCloud community to stay healthy its members must feel comfortable and accepted. Treating one another with respect is absolutely necessary for this. In a disagreement, in the first instance assume that people mean well.
+
+We do not tolerate personal attacks, racism, sexism or any other form of discrimination. Disagreement is inevitable, from time to time, but respect for the views of others will go a long way to winning respect for your own view. Respecting other people, their work, their contributions and assuming well-meaning motivation will make community members feel comfortable and safe and will result in motivation and productivity.
+
+We expect members of our community to be respectful when dealing with other contributors, users and communities. Remember that ownCloud is an international project and that you may be unaware of important aspects of other cultures.
 
 Get support from others in the community
 ----------------------------------------
@@ -84,3 +79,12 @@ Think deeply before turning a disagreement into a public dispute. If necessary r
 This document is licensed under the Creative Commons Attribution – Share Alike 3.0 License.
 
 The authors of this document would like to thank the ownCloud community and those who have worked to create such a dynamic environment to share in and who offered their thoughts and wisdom in the authoring of this document. We would also like to thank other vibrant communities that have helped shape this document with their own examples, especially KDE.
+
+Support others in the community
+-------------------------------
+
+Our community is made strong by mutual respect, collaboration and pragmatic, responsible behavior. Sometimes there are situations where this has to be defended and other community members need help.
+
+If you witness others being attacked, think first about how you can offer them personal support. If you feel that the situation is beyond your ability to help individually, go privately to the victim and ask if some form of official intervention is needed. Similarly you should support anyone who appears to be in danger of burning out, either through work-related stress or personal problems.
+
+When problems do arise, consider respectfully reminding those involved of our shared Code of Conduct as a first action. Leaders are defined by their actions, and can help set a good example by working to resolve issues in the spirit of this Code of Conduct before they escalate.

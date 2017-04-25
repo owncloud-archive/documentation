@@ -1,6 +1,6 @@
-================================
-ownCloud |version| Release Notes
-================================
+=============
+Release Notes
+=============
 
 Changes in 10.0
 ---------------
@@ -20,11 +20,11 @@ Changes in 9.1
   notifications API.
 * Multi-bucket support for primary objectstore integration
 * Support for Internet Explorer below version 11 was dropped
-* Symlinks pointing outside of the datadir are disallowed. Please use the :doc:`configuration_files/external_storage_configuration_gui`
+* Symlinks pointing outside of the data directory are disallowed. Please use the :doc:`configuration_files/external_storage_configuration_gui`
   with the :doc:`configuration_files/external_storage/local` storage backend instead.
 * Removed ``dav:migrate-calendars`` and ``dav:migrate-addressbooks`` commands for ``occ``.
-  Users planning to upgrade from oC 9.0 or below to oC 9.1 needs to make sure that their
-  Calendars and Adressbooks are correctly migrated **before** continuing to upgrade to 9.1.
+  Users planning to upgrade from ownCloud 9.0 or below to ownCloud 9.1 needs to make sure that their
+  calendars and address books are correctly migrated **before** continuing to upgrade to 9.1.
 
 **Authentication**
 
@@ -63,7 +63,7 @@ Changes in 9.1
 
 * UTF-8 NFD encoding compatibility support for NFD file names stored directly on external
   storages (new mount option in external storage admin page)
-* Direct links to the configuration pages for setting up a GDrive or Dropbox app for use with ownCloud
+* Direct links to the configuration pages for setting up a GDrive or Dropbox application for use with ownCloud
 * Some performance and memory usage improvements for GDrive, stream download and chunk upload
 * Performance and memory usage improvements for Dropbox with stream download
 * GDrive library update provides exponential backoff which will reduce rate limit errors
@@ -73,8 +73,8 @@ Changes in 9.1
 * Support for print style sheets
 * Command line based update will now be suggested if the instance is bigger to avoid potential timeouts
 * Web updater will be disabled if LDAP or shibboleth are installed
-* DB/app update process now shows better progress information
-* Added occ files:scan --unscanned to only scan folders that haven't yet been explored on external storages
+* DB/application update process now shows better progress information
+* Added ``occ files:scan --unscanned`` to only scan folders that haven't yet been explored on external storages
 * Chunk cache TTL can now be configured
 * Added warning for wrongly configured database transactions, helps prevent "database is locked" issues
 * Use a capped memory cache to reduce memory usage especially in background jobs and the file scanner
@@ -90,12 +90,12 @@ Changes in 9.1
 * Background repair steps can be specified info.xml
 * Background jobs (cron) can now be declared in info.xml
 * Apps can now define repair steps to run at install/uninstall time
-* Export contact images via sabre dav plugin
+* Export contact images via Sabre DAV plugin
 * Sabre DAV's browser plugin is available in debug mode to allow easier development around webdav
 
 **Technical debt**
 
-* PSR-4 autoloading forced for OC\ and OCP\, optional for OCA\ docs at https://doc.owncloud.org/server/9.1/developer_manual/app/classloader.html
+* PSR-4 autoloading forced for ``OC\`` and ``OCP\``, optional for ``OCA\`` docs at https://doc.owncloud.org/server/9.1/developer_manual/app/classloader.html
 * More cleanup of the sharing code (ongoing)
 
 .. _9.0_release_notes_label:
@@ -113,10 +113,10 @@ Home folder rule is enforced in the user_ldap application in new ownCloud instal
 
 The Calendar and Contacts apps have been rewritten and the CalDAV and CardDAV backends of these
 apps were merged into ownCloud core. During the upgrade existing Calendars and Addressbooks
-are automatically migrated (except when using the the ``IMAP user backend``). As a fallback
+are automatically migrated (except when using the ``IMAP user backend``). As a fallback
 for failed upgrades, when using the ``IMAP user backend`` or as an option to test a migration
 ``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available
-(**only in oC 9.0**) via the ``occ`` command. See :doc:`configuration_server/occ_command`.
+(**only in ownCloud 9.0**) via the ``occ`` command. See :doc:`configuration_server/occ_command`.
 
 .. warning:: After upgrading to ownCloud 9.0 and **before** continuing to upgrade to 9.1 make sure
    that all of your and your users Calendars and Addressbooks are migrated correctly. Especially
@@ -124,7 +124,7 @@ for failed upgrades, when using the ``IMAP user backend`` or as an option to tes
    manually run the mentioned ``occ`` migration commands described above.
 
 Updates on systems with large datasets will take longer, due to the addition of checksums to the
-oC database. See `<https://github.com/owncloud/core/issues/22747>`_.
+ownCloud database. See `<https://github.com/owncloud/core/issues/22747>`_.
 
 Linux packages are available from our `official download repository <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ .
 New in 9.0: split packages. ``owncloud`` installs ownCloud plus dependencies, including Apache
@@ -138,8 +138,8 @@ New option for the ownCloud admin to enable or disable sharing on individual ext
 Enterprise 9.0
 --------------
 
-owncloud-enterprise packages are no longer available for CentOS6, RHEL6, 
-Debian7, or any version of Fedora. A new package, owncloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/
+owncloud-enterprise packages are no longer available for CentOS 6, RHEL6, 
+Debian 7, or any version of Fedora. A new package, owncloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/
 
 Changes in 8.2
 --------------
@@ -216,7 +216,7 @@ ownCloud server is no longer automatic, requiring installation of
 your desired cache backend and configuration in 
 ``config.php`` (see :doc:`configuration_server/caching_configuration`.) 
 
-The OC_User_HTTP backend has been removed. Administrators are encouraged to use 
+The ``OC_User_HTTP`` backend has been removed. Administrators are encouraged to use 
 the ``user_webdavauth`` application instead.
 
 ownCloud ships now with its own root certificate bundle derived from Mozilla's 
@@ -244,19 +244,19 @@ via the ``preview_max_x`` and ``preview_max_y`` switches in ``config.php``.
 
 The ownCloud 8 server is not supported on any version of Windows.
 
-The 8.1.0 release has a minor bug which makes app updates fail at first try. Reload the
+The 8.1.0 release has a minor bug which makes application updates fail at first try. Reload the
 apps page and try again, and the update will succeed.
 
 The ``forcessl`` option within the ``config.php`` and the ``Enforce SSL`` option 
 within the Admin-Backend was removed. This now needs to be configured like 
 described in :ref:`use_https_label`.
 
-WebDAV file locking was removed in oC 8.1 which causes Finder on Mac OS X to mount WebDAV read-only.
+WebDAV file locking was removed in ownCloud 8.1 which causes Finder on Mac OS X to mount WebDAV read-only.
 
 Enterprise 8.1 Only
 -------------------
 
-The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
+The SharePoint Drive application does not verify the SSL certificate of the SharePoint 
 server or the ownCloud server, as it is expected that both devices are in the 
 same trusted environment.
 
@@ -289,7 +289,7 @@ to learn more about federated cloud sharing)
 Manually Migrate Encryption Keys after Upgrade
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you are using the Encryption app and upgrading from older versions of 
+If you are using the Encryption application and upgrading from older versions of 
 ownCloud to ownCloud 8.0, you must manually migrate your encryption keys.
 See :ref:`upgrading_encryption_label`.
 
@@ -354,7 +354,7 @@ Google Drive may fail with a 500 internal server error.
 Encrypting Large Numbers of Files
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When you activate the Encryption app on a running server that has large numbers 
+When you activate the Encryption application on a running server that has large numbers 
 of files, it is possible that you will experience timeouts. It is best to 
 activate encryption at installation, before accumulating large numbers of files 
 on your ownCloud server.
@@ -368,7 +368,7 @@ Enterprise 8.0 Only
 Sharepoint Drive SSL Not Verified
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
+The SharePoint Drive application does not verify the SSL certificate of the SharePoint 
 server or the ownCloud server, as it is expected that both devices are in the 
 same trusted environment.
 
@@ -392,17 +392,17 @@ the SWIFT mount through ownCloud are listed correctly in both locations.
 SWIFT Objectstore Incompatible with Encryption App
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The current SWIFT implementation is incompatible with any app that uses direct 
+The current SWIFT implementation is incompatible with any application that uses direct 
 file I/O and circumvents the ownCloud virtual filesystem. Using the Encryption 
-app on a SWIFT object store incurs twice as many HTTP requests and increases 
+application on a SWIFT object store incurs twice as many HTTP requests and increases 
 latency significantly.
 
 .. https://github.com/owncloud/core/issues/10900
 
-App Store is Back
-^^^^^^^^^^^^^^^^^
+application Store is Back
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ownCloud App Store has been re-enabled in oC 8. Note that third-party apps 
+The ownCloud application Store has been re-enabled in ownCloud 8. Note that third-party apps 
 are not supported.
 
 ownCloud 7 Release Notes
@@ -456,10 +456,10 @@ risk of data loss. To prevent this, follow these steps.
 * When you make server updates ``config.php`` must be made writeable. When your 
   updates are completed re-set it to read-only.
 
-Antivirus App Modes
-^^^^^^^^^^^^^^^^^^^
+Antivirus application Modes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Antivirus App offers three modes for running the ClamAV anti-virus scanner: 
+The Antivirus application offers three modes for running the ClamAV anti-virus scanner: 
 as a daemon on the ownCloud server, a daemon on a remote server, or an 
 executable mode that calls ``clamscan`` on the local server. We recommend using 
 one of the daemon modes, as they are the most reliable.
@@ -499,15 +499,13 @@ No More Expiration Date On Local Shares
 
 In older versions of ownCloud, you could set an expiration date on both local 
 and public shares. Now you can set an expiration date only on public shares, 
-and 
-local shares do not expire when public shares expire.
+and local shares do not expire when public shares expire.
 
 Zero Quota Not Read-Only
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Setting a user's storage quota should be the equivalent of read-only, however, 
-users can 
-still create empty files.
+users can still create empty files.
 
 Enterprise 7 Only
 -----------------
@@ -525,18 +523,18 @@ client, which is included in all Linux distributions.
 
 ``php5-libsmbclient`` is also required, and there may be issues with older 
 versions of ``libsmbclient``; see Using External Storage > Installing and 
-Configuring the Windows Network Drive App in the Enterprise Admin manual for 
+Configuring the Windows Network Drive application in the Enterprise Admin manual for 
 more information. 
 
 By default CentOS has activated SELinux, and the ``httpd`` process can not make 
-outgoing network connections. This will cause problems with curl, ldap and samba 
+outgoing network connections. This will cause problems with curl, LDAP and samba 
 libraries. Again, see Using External Storage > Installing and Configuring the 
-Windows Network Drive App in the Enterprise Admin manual for instructions.
+Windows Network Drive application in the Enterprise Admin manual for instructions.
 
 Sharepoint Drive SSL
 ^^^^^^^^^^^^^^^^^^^^
 
-The SharePoint Drive app does not verify the SSL certificate of the SharePoint 
+The SharePoint Drive application does not verify the SSL certificate of the SharePoint 
 server or the ownCloud server, as it is expected that both devices are in the 
 same trusted environment.
 
@@ -553,10 +551,10 @@ SQLite is no longer an installation option for ownCloud Enterprise Edition, as
 it not suitable for multiple-user installations or managing large numbers of 
 files.
 
-No App Store
-^^^^^^^^^^^^
+No application Store
+^^^^^^^^^^^^^^^^^^^^
 
-The App Store is disabled for the Enterprise Edition.
+The application Store is disabled for the Enterprise Edition.
 
 LDAP Home Connector Linux Only
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

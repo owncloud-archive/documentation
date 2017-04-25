@@ -17,20 +17,50 @@ To start, let us be specific about the use case. A configured ownCloud instance 
 
 #.  On the original machine turn on maintenance mode and then stop ownCloud. After waiting for 6-7 minutes for all sync clients to register the server as in maintenance mode, stop the application and/or Web server that serves ownCloud. (See :ref:`maintenance_commands_label`.)
 
-#.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :doc:`backup` and :doc:`restore`).
+#.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :doc:`backup-database` and :doc:`restore-database`).
 
-#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backup` and :doc:`restore`). 
+#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backing-up-the-config-and-data-directories` and :doc:`restore-directories`). 
 
 .. note:: You must keep the ``data/`` directory's original filepath. Do not change this!
 
-5. The data files should keep their original timestamp (can be done by using ``rsync`` with ``-t`` option) otherwise the clients will re-download all the files after the migration. This step might take several hours, depending on your installation.
+#. The data files should keep their original timestamp (can be done by using ``rsync`` with ``-t`` option) otherwise the clients will re-download all the files after the migration. This step might take several hours, depending on your installation.
 
 #.  With ownCloud still in maintenance mode (confirm!) and **BEFORE** changing the ``CNAME`` record in the DNS start up the database, Web server / application server on the new machine and point your Web browser to the migrated ownCloud instance. Confirm that you see the maintenance mode notice, that a logfile entry is written by both the Web server and ownCloud and that no error messages occur. Then take ownCloud out of maintenance mode and repeat. Log in as admin and confirm normal function of ownCloud.
 
 #.  Change the ``CNAME`` entry in the DNS to point your users to the new
     location.
+    
+With the ``CNAME`` updated, you now need to updated the trusted domains.
+    
+.. _trusted_domains_label: 
 
+Trusted Domains
+---------------
 
+All URLs used to access your ownCloud server must be whitelisted in your 
+``config.php`` file, under the ``trusted_domains`` setting. 
+Users are allowed to log into ownCloud only when they point their browsers to a URL that is listed in the ``trusted_domains`` setting. 
+
+.. note:: 
+   This setting is important when changing or moving to a new domain name.
+
+You may use IP addresses and domain names. 
+A typical configuration looks like this::
+
+ 'trusted_domains' => 
+   array (
+    0 => 'localhost', 
+    1 => 'server1.example.com', 
+    2 => '192.168.1.50',
+ ),
+
+The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long as you have access to the physical server you can always log in. 
+In the event that a load balancer is in place there will be no issues as long as it sends the correct X-Forwarded-Host header. 
+When a user tries a URL that is not whitelisted the following error appears:
+
+.. figure:: images/install-wizard-a4.png
+   :scale: 75%
+   :alt: Error message when URL is not whitelisted
 
 =================
 Example migration

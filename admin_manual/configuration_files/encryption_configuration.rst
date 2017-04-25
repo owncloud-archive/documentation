@@ -73,8 +73,10 @@ Before Enabling Encryption
 --------------------------
 
 Plan very carefully before enabling encryption, because it is not reversible via the ownCloud Web interface. 
-If you lose your encryption keys, your files are *not* recoverable. 
+If you lose your encryption keys, your files are **not** recoverable. 
 Always have backups of your encryption keys stored in a safe location, and consider enabling all recovery options.
+
+.. warning:: Consider there are 2 different encryptions and they are **not compatible**. There is Basic encryption and Master Key Based encryption. 
 
 You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
 
@@ -121,6 +123,8 @@ These are:
 
 .. note::
    Please note, the commands have to be run in this order.
+
+.. warning:: If you already have Basic encryption enabled - you **must not** enable Master Key Based encryption.
 
 Enabling Master Key Based Encryption
 ------------------------------------

@@ -30,8 +30,8 @@ Please notice that the ownCloud preview system comes already with sensible
 defaults, and therefore it is usually unnecessary to adjust those configuration 
 values. 
 
-Disabling previews:
-~~~~~~~~~~~~~~~~~~~
+Disabling previews
+~~~~~~~~~~~~~~~~~~
 
 Under certain circumstances, for example if the server has limited 
 resources, you might want to consider disabling the generation of previews. 
@@ -46,8 +46,8 @@ Set the configuration option ``enable_previews`` in config.php to ``false``:
   <?php
     'enable_previews' => false,
 
-Maximum preview size:
-~~~~~~~~~~~~~~~~~~~~~
+Maximum preview size
+~~~~~~~~~~~~~~~~~~~~
 
 There are two configuration options for setting the maximum size (in pixels) of a preview. 
 These are ``preview_max_x`` which represents the x-axis and ``preview_max_y`` which represents the y-axis.
@@ -59,7 +59,7 @@ In ``config/config.sample.php``, which you can see below, both options are set t
     'preview_max_x' => 2048,
     'preview_max_y' => 2048,
 
-The following example would limit previews to a maximum size of 100px × 100px:
+The following example would limit previews to a maximum size of 100 px × 100 px:
 
 ::
 
@@ -70,8 +70,8 @@ The following example would limit previews to a maximum size of 100px × 100px:
 .. note::
   If you want no limit applied for one or both of these values then set them to null.
 
-Maximum scale factor:
-~~~~~~~~~~~~~~~~~~~~~
+Maximum scale factor
+~~~~~~~~~~~~~~~~~~~~
 
 If a lot of small pictures are stored on the ownCloud instance and the preview 
 system generates blurry previews, you might want to consider setting a maximum 
