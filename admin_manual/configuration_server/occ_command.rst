@@ -629,10 +629,21 @@ one must be specified.
 entries that have no matching entries in the storage table. 
 
 You may transfer all files and shares from one user to another. This is useful 
-before removing a user::
+before removing a user. 
+
+For example, to move all files from ``<source-user>`` to ``<destination-user>``, use the following command:
+
+::
 
  sudo -u www-data php occ files:transfer-ownership <source-user>
  <destination-user>
+
+You can also move a limited set of files from ``<source-user>`` to ``<destination-user>``, by making use of the ``--path`` switch, as in the example below. 
+In it, only files (and folders) under ``data/folders/to/move`` will be moved.
+
+::
+
+ sudo -u www-data php occ files:transfer-ownership --path="data/folders/to/move" <source-user> <destination-user>
 
 .. _files_external_label:
 
