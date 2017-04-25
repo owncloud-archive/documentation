@@ -36,7 +36,18 @@ To start, let us be specific about the use case. A configured ownCloud instance 
 Example migration
 =================
 
-.. note:: For this example to work, you need **ssh** on both servers and the **PermitRootLogin** to be set to "yes" on the new server.
+.. note:: For this example to work, you need this on both servers:
+
+* Ubuntu 16.04
+* SSH
+* PermitRootLogin set to "yes"
+* network
+
+optional:
+
+* Domain Name
+* modules: smb-client nfs-common rpcbin
+
 
 Install SSH::
 
@@ -55,6 +66,8 @@ Migration
 =========
 
 1. Install ownCloud on new server
+
+If you have NAS, then you will need the ```smb-client nfs-common rpcbin``` modules.
 
 2. Put original server in maintenance mode:
 
@@ -78,7 +91,7 @@ Go in owncloud dir::
 
       cd /var/www/owncloud/
 
-Export on original server
+Backup the database:
 
 SYNOPSIS::
 
@@ -88,22 +101,10 @@ Example::
 
    mysqldump --lock-tables -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
 
-.. note:: (just a reminder: Parameters you need for the command above
-
-were set when creating database for ownCloud with this command)
-
-::
-
-   CREATE DATABASE IF NOT EXISTS owncloud;
-   GRANT ALL PRIVILEGES ON owncloud.* TO 'username'@'localhost' IDENTIFIED BY 'password';
-
-Do not execute this command, because it's just a reminder.
-
-You can also find the values for the mysqldump command in your config.php at your owncloud directory.
-
+.. note:: You can find the values for the mysqldump command in your config.php at your owncloud directory.
 [server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
 
-Export command::
+Export on original server::
 
    rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
 
@@ -143,15 +144,16 @@ Import on new server::
 
 - log in as admin and confirm normal function of ownCloud
 
+- if you have a domain name, and want your ownCloud server to have a SSL certificate, we recommend certbot.
 6. Reverse the changes you made to the SSH-Config:
 
 Edit SSH-Config::
-+
-+   nano /etc/ssh/sshd_config
-+
-+Change PermitRootLogin to no::
-+
-+   PermitRootLogin no
+
+   nano /etc/ssh/sshd_config
+
+Change PermitRootLogin to no::
+
+   PermitRootLogin no
 
 
 6.
