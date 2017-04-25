@@ -8,7 +8,12 @@ Memory
 Memory requirements for running an ownCloud server are greatly variable,
 depending on the numbers of users and files, and volume of server activity.
 ownCloud officially requires a minimum of 128MB RAM. But, we recommend
-a minimum of 512MB.
+a minimum of 512MB. 
+
+.. note:: *Consideration for low memory environments*
+   
+  Scanning of files is committed internally in 10k files chunks. 
+  Based on tests, server memory usage for scanning greater than 10k files uses about 75MB of additional memory.
 
 Recommended Setup for Running ownCloud
 --------------------------------------
