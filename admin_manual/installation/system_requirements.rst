@@ -16,7 +16,7 @@ For best performance, stability, support, and full functionality we recommend:
 
 * Ubuntu 16.04
 * MySQL/MariaDB
-* PHP 5.4 +
+* PHP 7.0
 * Apache 2.4 with mod_php
 
 Supported Platforms
@@ -27,7 +27,7 @@ Supported Platforms
   LTS, 14.04 LTS, 14.10)
 * Web server: Apache 2 with mod_php
 * Databases: MySQL/MariaDB 5.5+; Oracle 11g (ownCloud Enterprise edition only); PostgreSQL
-* PHP 5.4 + required
+* PHP: Minimum 5.6, maximum 7.0
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
 * Desktop: Windows XP SP3 (EoL Q2 2015), Windows 7+, Mac OS X 10.7+ (64-bit 
   only), Linux (CentOS 6.5, 7 (7 is 64-bit only), Ubuntu 12.04 LTS, 14.04 LTS, 
