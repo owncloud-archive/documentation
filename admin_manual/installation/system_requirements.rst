@@ -17,7 +17,7 @@ For best performance, stability, support, and full functionality we recommend:
 * Operating system: Ubuntu 16.04 LTS.
 * Web server: Apache 2.4.
 * Database: MySQL/MariaDB with InnoDB storage engine (MyISAM is not supported, see: :    ref:`db-storage-engine-label`)
-* PHP 7.
+* PHP 7.0
 
 Supported Platforms
 -------------------
@@ -25,7 +25,7 @@ Supported Platforms
 * Server: Linux (Debian 7 and 8, SUSE Linux Enterprise Server 12 and 12 SP1, Red Hat Enterprise Linux/Centos 6.5 and 7 (7 is 64-bit only), Ubuntu 14.04 LTS, 16.04 LTS)
 * Web server: Apache 2.4 with mod_php
 * Databases: MySQL/MariaDB 5.5+; Oracle 11g (ownCloud Enterprise edition only); PostgreSQL
-* PHP 5.4 + required
+* PHP: Minimum 5.6, maximum 7.0
 * Hypervisors: Hyper-V, VMware ESX, Xen, KVM
 * Desktop: Windows 7+, Mac OS X 10.7+ (64-bit 
   only), Linux (CentOS 6.5, 7 (7 is 64-bit only), Ubuntu 12.04+, Fedora 20+, openSUSE 12.3+, Debian 7 & 8).
