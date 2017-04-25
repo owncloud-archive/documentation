@@ -17,9 +17,9 @@ To start, let us be specific about the use case. A configured ownCloud instance 
 
 #.  On the original machine turn on maintenance mode and then stop ownCloud. After waiting for 6-7 minutes for all sync clients to register the server as in maintenance mode, stop the application and/or Web server that serves ownCloud. (See :ref:`maintenance_commands_label`.)
 
-#.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :doc:`backup-database` and :doc:`restore-database`).
+#.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :ref:`backup_database_label` and :ref:`restore_database_label`).
 
-#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backing-up-the-config-and-data-directories` and :doc:`restore-directories`). 
+#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backing-up-the-config-and-data-directories` and :ref:`restore_directories_label`). 
 
 .. note:: You must keep the ``data/`` directory's original filepath. Do not change this!
 
@@ -58,7 +58,7 @@ The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long as
 In the event that a load balancer is in place there will be no issues as long as it sends the correct X-Forwarded-Host header. 
 When a user tries a URL that is not whitelisted the following error appears:
 
-.. figure:: images/install-wizard-a4.png
+.. figure:: ../installation/images/install-wizard-a4.png
    :scale: 75%
    :alt: Error message when URL is not whitelisted
 

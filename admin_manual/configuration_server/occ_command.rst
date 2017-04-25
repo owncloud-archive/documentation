@@ -823,7 +823,7 @@ ldapAttributesForUserSearch
 ldapBackupHost
 ldapBackupPort
 ldapBase                         `dc=owncloudqa,dc=com`
-ldapBaseGroups                   `dc=owncloudqa,dc=com `
+ldapBaseGroups                   `dc=owncloudqa,dc=com`
 ldapBaseUsers                    `dc=owncloudqa,dc=com`
 ldapCacheTTL                     600 
 ldapConfigurationActive          1
