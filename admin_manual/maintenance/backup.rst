@@ -15,6 +15,8 @@ When you install ownCloud from the source tarballs this will not be an issue, an
 
 To restore your ownCloud installation from backup, see :doc:`restore` .
 
+.. _backing_up_the_config_and_data_directories_label:
+
 Backing Up the config/ and data/ Directories
 --------------------------------------------
 
@@ -23,6 +25,8 @@ Simply copy your ``config/`` and ``data/`` folder to a place outside of your own
     rsync -Aax config data /oc-backupdir/
     
 There are many ways to backup normal files, and you may use whatever method you are accustomed to.    
+
+.. _backup_database_label:
 
 Backup Database
 ---------------
