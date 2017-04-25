@@ -1306,7 +1306,7 @@ LDAP
 
 ::
 
-  sudo -u www-data ./occ user:sync "OCA\User_LDAP\User_LDAP"
+  sudo -u www-data ./occ user:sync "OCA\User_LDAP\User_Proxy"
 
 Samba
 ~~~~~
