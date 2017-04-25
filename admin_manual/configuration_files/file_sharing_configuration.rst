@@ -71,7 +71,7 @@ Transferring Files to Another User
 You may transfer files from one user to another with ``occ``. 
 The command transfers either all or a limited set of files from one user to another. 
 It also transfers the shares and metadata info associated with those files (*shares*, *tags*, and *comments*, etc). 
-This is useful when you have transfer a user’s files to another user before you delete them. 
+This is useful when you have to transfer a user's files to another user before you delete them. 
 
 .. important:: 
    Trashbin contents are not transferred.
