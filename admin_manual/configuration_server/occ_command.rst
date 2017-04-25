@@ -1296,10 +1296,10 @@ This command syncs users stored in external backend services, such as _LDAP_, _S
 .. note:: 
    It’s also `one of the commands`_ that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
 
-It’s not essential to run it regularly, unless you have a large number of users who change on a semi-regular basis.
-What’s more, the job is only necessary to pick up changes from a backend with users who don't log in regularly.
+It’s not essential to run it regularly, unless you have a large number of users who’s account properties.
+Specifically, the job picks up changes from alternative user backends, such as LDAP where properties like ``cn`` or ``display name`` have changed.
 
-Below are examples of how to use the command with an LDAP, Samba, and Shibboleth backend.
+Below are examples of how to use the command with an *LDAP*, *Samba*, and *Shibboleth* backend.
 
 LDAP
 ~~~~
