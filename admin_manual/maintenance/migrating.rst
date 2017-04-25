@@ -125,14 +125,21 @@ Backup the database:
 
 SYNOPSIS::
 
-   mysqldump --lock-tables -h [server] -u [username] -p[password] [db_name] > owncloud-dbbackup_`date +"%Y%m%d"`.bak
+   mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] > owncloud-dbbackup_`date +"%Y%m%d"`.bak
 
 Example::
 
-   mysqldump --lock-tables -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
+   mysqldump --single-transaction -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
 
 .. note:: You can find the values for the mysqldump command in your config.php at your owncloud directory.
 [server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
+
+.. note:: For InnoDB tables only:
+The --single-transaction flag will start a transaction before running. Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.
+
+For Mixed MyISAM / InnoDB tables:
+Either dumping your MyISAM tables separately from InnoDB tables or use --lock-tables instead of --single-transaction to guarantee the database is in a consistent state when using mysqldump.
+
 
 Export on original server::
 
