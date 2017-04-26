@@ -83,7 +83,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 * That you have installed and enabled the ``pdo_mysql`` extension in PHP
 * That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as ownCloud).
 
-.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace MySQL with anything.
+.. note:: MariaDB is backwards compatible with MySQL.  All instructions work for both, so you will not need to replace or revise any, existing, MySQL client commands.
 
 The PHP configuration in :file:`/etc/php5/conf.d/mysql.ini` could look like this:
 
