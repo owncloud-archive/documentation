@@ -15,6 +15,8 @@ Changes in 10.0
     * FTP external storage moved to a separate app (https://marketplace.owncloud.com/apps/files_external_ftp)
     * "Local" storage type can now be disabled by sysadmin in config.php (to prevent users mounting the local file system)
 
+Full changelog: https://github.com/owncloud/core/wiki/ownCloud-10.0-Features
+
 Changes in 9.1
 --------------
 
