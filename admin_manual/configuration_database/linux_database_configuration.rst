@@ -148,7 +148,10 @@ Configure MySQL for 4-byte Unicode Support
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 For supporting such features as emoji, you have to enable 4-byte Unicode support in MySQL (instead of the default 3) *and* in ownCloud. 
-To do so:
+If you have a new installation, you don’t need to do anything, as mb4 support is checked during setup, and used if available.
+If it’s available, ownCloud is configured to use it. 
+
+However, if you have an existing installation that you need to convert to use 4-byte Unicode support, then you need to do two things:
 
 1. In your MySQL configuration, add the configuration settings below. If you already have them configured, update them to reflect the values specified:
 
@@ -159,19 +162,28 @@ To do so:
   innodb_file_format=Barracuda
   innodb_file_per_table=ON
 
+Then, run the following command:
+
+::
+
+  ./occ db:convert-mysql-charset
+
 When this is done, tables will be created with a:
 
 - ``utf8mb4`` character set.
 - ``utf8mb4_bin`` collation.
 - ``row_format`` of compressed.
 
-For more information, please either refer to lines 1084 to 1108 in ``config/config.sample.php``, or the following links:
+For more information, please either refer to lines 1126 to 1156 in ``config/config.sample.php``, or have a read through the following links:
 
 * https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
 * https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
 * http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
 * http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
 * http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
+
+.. note:: 
+   This is not required for new installations, only existing ones, as mb4 support is checked during setup, and used if available.
 
 PostgreSQL Database
 ~~~~~~~~~~~~~~~~~~~
