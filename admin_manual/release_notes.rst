@@ -5,9 +5,17 @@ Release Notes
 Changes in 10.0
 ---------------
 
-* Supported PHP versions are 5.6+ and 7.0+. 
-* The upgrade migration test has been removed; see :ref:`migration_test_label`.
-* Requires to use at least desktop client version 2.0 by default.
+* PHP 7.1 support added (supported PHP versions are 5.6 and 7.0+)
+* The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option "--skip-migration-tests" removed from update command)
+* Requires to use the latest desktop client version 2.3
+* Third party apps are not disabled anymore when upgrading
+* User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts)
+* LDAP app is not released with ownCloud 10.0.0 and will be released on the marketplace after some more QA
+* External storages
+    * FTP external storage moved to a separate app (https://marketplace.owncloud.com/apps/files_external_ftp)
+    * "Local" storage type can now be disabled by sysadmin in config.php (to prevent users mounting the local file system)
+
+Full changelog: https://github.com/owncloud/core/wiki/ownCloud-10.0-Features
 
 Changes in 9.1
 --------------
