@@ -10,7 +10,7 @@ Changes in 10.0
 * Requires to use the latest desktop client version 2.3
 * Settings design rework: Admin, personal pages and app management are now merged together into a single "Settings" entry
 * Third party apps are not disabled anymore when upgrading
-* DB Migrations for seamless/improved update process added (enables skipping major versions when upgrading after 10.0)
+* Database migrations for seamless/improved update process added (enables skipping major versions when upgrading after 10.0)
 * Ability to disable users in the user management panel added (users are prevented from logging in but the account stays as it is and can be enabled again) 
 * User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts)
 * Ability to split app logs (e.g. auditing) and owncloud.log (see https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/config_sample_php_parameters.html#logging)
