@@ -84,6 +84,13 @@ during installation and update, so you shouldn't need to change it.
 
 ::
 
+	'version.hide' => false,
+
+While hardening an ownCloud instance hiding the version information in status.php
+can be a legitimate step. Please consult the documentation before enabling this.
+
+::
+
 	'dbtype' => 'sqlite',
 
 Identifies the database used with this installation. See also config option
@@ -278,6 +285,18 @@ which can be used as passwords on their clients.
 
 ::
 
+	'csrf.disabled' => false,
+
+Disable ownCloud's built-in CSRF protection mechanism.
+
+In some specific setups CSRF protection is handled in the environment, e.g.,
+running F5 ASM. In these cases the built-in mechanism is not needed and can be disabled.
+Generally speaking, however, this config switch should be left unchanged.
+
+WARNING: leave this as is if you're not sure what it does
+
+::
+
 	'skeletondirectory' => '/path/to/owncloud/core/skeleton',
 
 The directory where the skeleton files are located. These files will be
@@ -295,13 +314,13 @@ skeleton files.
 
 The ``user_backends`` app (which needs to be enabled first) allows you to
 configure alternate authentication backends. Supported backends are:
-IMAP (``OC_User_IMAP``), SMB (``OC_User_SMB``), and FTP (``OC_User_FTP``).
+IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
 
 ::
 
 	'lost_password_link' => 'https://example.org/link/to/password/reset',
 
-If your user backend does not allow to reset the password (e.g., when it's a
+If your user backend does not allow to reset the password (e.g. when it's a
 read-only user backend like LDAP), you can specify a custom link, where the
 user is redirected to, when clicking the "reset password" link after a failed
 login-attempt.
@@ -413,6 +432,7 @@ the SMTP server.
 
 Proxy Configurations
 --------------------
+
 
 ::
 
@@ -698,10 +718,19 @@ The default value is ``ownCloud``.
 
 ::
 
-	'log.condition' => [
-		'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-		'users' => ['sample-user'],
-		'apps' => ['files'],
+	'log.conditions' => [
+	        [
+			'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+			'users' => ['user1'],
+			'apps' => ['files_texteditor'],
+			'logfile' => '/tmp/test.log'
+	        ],
+	        [
+			'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+			'users' => ['user1'],
+			'apps' => ['gallery'],
+			'logfile' => '/tmp/gallery.log'
+	        ],
 	],
 
 Log condition for log level increase based on conditions. Once one of these
@@ -715,6 +744,9 @@ Supported conditions:
                this condition is met
  - ``apps``:   if the log message is invoked by one of the specified apps,
                this condition is met
+ - ``logfile``: the log message invoked by the specified apps get redirected to
+	   this logfile, this condition is met
+	   Note: Not applicapable when using syslog.
 
 Defaults to an empty array.
 
@@ -800,22 +832,14 @@ Experimental apps are not checked for security issues and are new or known
 to be unstable and under heavy development. Installing these can cause data
 loss or security breaches.
 
-::
-
-	'apps_paths' => array(
-		array(
-			'path'=> '/var/www/owncloud/apps',
-			'url' => '/apps',
-			'writable' => true,
-		),
-	),
-
 Use the ``apps_paths`` parameter to set the location of the Apps directory,
 which should be scanned for available apps, and where user-specific apps
 should be installed from the Apps store. The ``path`` defines the absolute
 file system path to the app folder. The key ``url`` defines the HTTP Web path
 to that folder, starting from the ownCloud webroot. The key ``writable``
 indicates if a Web server can write files to that folder.
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
 
 ::
 
@@ -1075,19 +1099,43 @@ Memory caching backend for distributed data
 
 ::
 
-	'redis' => array(
+	'redis' => [
 		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
 		'port' => 6379,
 		'timeout' => 0.0,
 		'password' => '', // Optional, if not defined no password will be used.
 		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
-	),
+	],
 
-Connection details for redis to use for memory caching.
+Connection details for redis to use for memory caching in a single server configuration.
 
 For enhanced security it is recommended to configure Redis
 to require a password. See http://redis.io/topics/security
 for more information.
+
+::
+
+	'redis.cluster' => [
+		'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
+			'localhost:7000',
+			'localhost:7001'
+		],
+		'timeout' => 0.0,
+		'read_timeout' => 0.0,
+		'failover_mode' => \RedisCluster::FAILOVER_DISTRIBUTE
+	],
+
+Connection details for a Redis Cluster
+
+Only for use with Redis Clustering, for Sentinel-based setups use the single
+server configuration above, and perform HA on the hostname.
+
+Redis Cluster support requires the php module phpredis in version 3.0.0 or higher.
+
+Available failover modes:
+ - \\RedisCluster::FAILOVER_NONE - only send commands to master nodes (default)
+ - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable
+ - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
 
 ::
 
@@ -1150,9 +1198,9 @@ Using Object Store with ownCloud
 
 ::
 
-	'objectstore' => array(
+	'objectstore' => [
 		'class' => 'OC\\Files\\ObjectStore\\Swift',
-		'arguments' => array(
+		'arguments' => [
 			// trystack will user your facebook id as the user name
 			'username' => 'facebook100000123456789',
 			// in the trystack dashboard go to user -> settings -> API Password to
@@ -1160,6 +1208,8 @@ Using Object Store with ownCloud
 			'password' => 'Secr3tPaSSWoRdt7',
 			// must already exist in the objectstore, name can be different
 			'container' => 'owncloud',
+			// prefix to prepend to the fileid, default is 'oid:urn:'
+			'objectPrefix' => 'oid:urn:',
 			// create the container if it does not exist. default is false
 			'autocreate' => true,
 			// required, dev-/trystack defaults to 'RegionOne'
@@ -1173,8 +1223,8 @@ Using Object Store with ownCloud
 			'serviceName' => 'swift',
 			// The Interface / url Type, optional
 			'urlType' => 'internal'
-		),
-	),
+		],
+	],
 
 This example shows how to configure ownCloud to store all files in a
 swift object storage.
@@ -1229,6 +1279,40 @@ can be 'WAL' or 'DELETE' see for more details https://www.sqlite.org/wal.html
 
 ::
 
+	'mysql.utf8mb4' => false,
+
+During setup, if requirements are met (see below), this setting is set to true
+and MySQL can handle 4 byte characters instead of 3 byte characters.
+
+If you want to convert an existing 3-byte setup into a 4-byte setup please
+set the parameters in MySQL as mentioned below run the migration command:
+ ./occ db:convert-mysql-charset
+The config setting will be set automatically after a successful run.
+
+Consult the documentation for more details.
+
+MySQL requires a special setup for longer indexes (> 767 bytes) which are
+needed:
+
+[mysqld]
+innodb_large_prefix=ON
+innodb_file_format=Barracuda
+innodb_file_per_table=ON
+
+Tables will be created with
+ * character set: utf8mb4
+ * collation:     utf8mb4_bin
+ * row_format:    compressed
+
+See:
+https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
+https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
+https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
+http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
+http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
+
+::
+
 	'supportedDatabases' => array(
 		'sqlite',
 		'mysql',
@@ -1273,6 +1357,23 @@ WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
 ::
 
+	'excluded_directories' =>
+		array (
+			'.snapshot',
+			'~snapshot',
+		),
+
+Exclude specific directory names and disallow scanning, creating and renaming
+using these names. Case insensitive.
+
+Excluded directory names are queried at any path part like at the beginning,
+in the middle or at the end and will not be further processed if found.
+Please see the documentation for details and examples.
+Use when the storage backend supports eg snapshot directories to be excluded.
+WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
+
+::
+
 	'share_folder' => '/',
 
 Define a default folder for shared files and folders other than root.
@@ -1294,7 +1395,7 @@ AES-256-CFB are supported.
 
 ::
 
-	'minimum.supported.desktop.version' => '1.7.0',
+	'minimum.supported.desktop.version' => '2.0.0',
 
 The minimum ownCloud desktop client version that will be allowed to sync with
 this server instance. All connections made from earlier clients will be denied
@@ -1335,25 +1436,6 @@ By default ownCloud will store the part files created during upload in the
 same storage as the upload target. Setting this to false will store the part
 files in the root of the users folder which might be required to work with certain
 external storage setups that have limited rename capabilities.
-
-::
-
-	'asset-pipeline.enabled' => false,
-
-All css and js files will be served by the Web server statically in one js
-file and one css file if this is set to ``true``. This improves performance.
-
-::
-
-	'assetdirectory' => '/var/www/owncloud',
-
-The parent of the directory where css and js assets will be stored if
-pipelining is enabled; this defaults to the ownCloud directory. The assets
-will be stored in a subdirectory of this directory named 'assets'. The
-server *must* be configured to serve that directory as $WEBROOT/assets.
-
-You will only likely need to change this if the main ownCloud directory
-is not writeable by the Web server in your configuration.
 
 ::
 
@@ -1480,6 +1562,14 @@ configuration. DO NOT ADD THIS SWITCH TO YOUR CONFIGURATION!
 
 If you, brave person, have read until here be aware that you should not
 modify *ANY* settings in this file without reading the documentation.
+
+::
+
+	'files_external_allow_create_new_local' => false,
+
+Set this property to true if you want to enable the files_external local mount Option.
+
+Default: false
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
