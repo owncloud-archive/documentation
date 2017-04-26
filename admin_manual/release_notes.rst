@@ -8,13 +8,8 @@ Changes in 10.0
 * PHP 7.1 support added (supported PHP versions are 5.6 and 7.0+)
 * The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option "--skip-migration-tests" removed from update command)
 * Requires to use the latest desktop client version 2.3
-* Settings design rework: Admin, personal pages and app management are now merged together into a single "Settings" entry
 * Third party apps are not disabled anymore when upgrading
-* Database migrations for seamless/improved update process added (enables skipping major versions when upgrading after 10.0)
-* Ability to disable users in the user management panel added (users are prevented from logging in but the account stays as it is and can be enabled again) 
 * User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts)
-* Ability to split app logs (e.g. auditing) and owncloud.log (see https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/config_sample_php_parameters.html#logging)
-* Transferral of file ownership and shares now works for individual folders (occ transfer ownership with --path option; see https://doc.owncloud.com/server/10.0/admin_manual/configuration_files/file_sharing_configuration.html#transferring-files-to-another-user)
 * LDAP app is not released with ownCloud 10.0.0 and will be released on the marketplace after some more QA
 * External storages
     * FTP external storage moved to a separate app (files_external_ftp)
