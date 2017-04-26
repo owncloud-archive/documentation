@@ -161,7 +161,7 @@ Import on new server::
 
 - start up the database::
 
-     service mysql start
+    service mysql start
 
 - start up Web server / application server on the new machine::
 
