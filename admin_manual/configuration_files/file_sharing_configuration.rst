@@ -68,13 +68,31 @@ Configure your sharing policy on your Admin page in the Sharing section.
 Transferring Files to Another User
 ----------------------------------
 
-You may transfer files from one user to another with ``occ``. This is useful 
-when you have to remove a user. Be sure to transfer the files before you delete 
-the user!  This transfers all files from user1 to user2, and the shares and 
-metadata info associated with those files (shares, tags, comments, etc). 
-Trashbin contents are not transferred::
+You may transfer files from one user to another with ``occ``. 
+The command transfers either all or a limited set of files from one user to another. 
+It also transfers the shares and metadata info associated with those files (*shares*, *tags*, and *comments*, etc). 
+This is useful when you have to transfer a user's files to another user before you delete them. 
 
- occ files:transfer-ownership user1 user2
+.. important:: 
+   Trashbin contents are not transferred.
+
+Here is an example of how to transfer all files from one user to another.
+
+::
+
+ occ files:transfer-ownership <source-user> <destination-user>
+
+Here is an example of how to transfer *a limited group* a single folder from one user to another.
+In it, ``folder/to/move``, and any file and folder inside it will be moved to ``<destination-user>``. 
+
+::
+
+  sudo -u www-data php occ files:transfer-ownership --path="folder/to/move" <source-user> <destination-user>
+
+When using this command keep two things in mind: 
+
+1. The directory provided to the ``--path`` switch **must** exist inside ``data/<source-user>/files``.
+2. The directory (and its contents) won’t be moved as is between the users. It’ll be moved inside the destination user’s ``files`` directory, and placed in a directory which follows the format: ``transferred from <source-user> on <timestamp>``. Using the example above, it will be stored under: ``data/<destination-user>/files/transferred from <source-user> on 20170426_124510/``
  
 (See :doc:`../configuration_server/occ_command` for a complete ``occ`` 
 reference.) 
