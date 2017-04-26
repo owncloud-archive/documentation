@@ -15,9 +15,7 @@ Changes in 10.0
 * User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts)
 * Ability to split app logs (e.g. auditing) and owncloud.log (see https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/config_sample_php_parameters.html#logging)
 * Transferral of file ownership and shares now works for individual folders (occ transfer ownership with --path option; see https://doc.owncloud.com/server/10.0/admin_manual/configuration_files/file_sharing_configuration.html#transferring-files-to-another-user)
-* LDAP
-    * App is not released with ownCloud 10.0.0 and will be released on the marketplace after some more QA
-    * New config.php option to allow LDAP medial searching (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/config_sample_php_parameters.html#ldap)
+* LDAP app is not released with ownCloud 10.0.0 and will be released on the marketplace after some more QA
 * External storages
     * FTP external storage moved to a separate app (files_external_ftp)
     * "Local" storage type can now be disabled by sysadmin in config.php (to prevent users mounting the local file system)
