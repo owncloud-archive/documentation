@@ -80,14 +80,19 @@ Here is an example of how to transfer all files from one user to another.
 
 ::
 
- occ files:transfer-ownership user1 user2
+ occ files:transfer-ownership <source-user> <destination-user>
 
-Here is an example of how to transfer *a limited group* of files from one user to another.
-In this example, ``"folder_name"`` is the name of the folder which you want to transfer ownership of — as well as all files and folders within it — between the two nominated users.
+Here is an example of how to transfer *a limited group* a single folder from one user to another.
+In it, ``folder/to/move``, and any file and folder inside it will be moved to ``<destination-user>``. 
 
 ::
 
- occ files:transfer-ownership --path="folder_name" user1 user2
+  sudo -u www-data php occ files:transfer-ownership --path="folder/to/move" <source-user> <destination-user>
+
+When using this command keep two things in mind: 
+
+1. The directory provided to the ``--path`` switch **must** exist inside ``data/<source-user>/files``.
+2. The directory (and its contents) won’t be moved as is between the users. It’ll be moved inside the destination user’s ``files`` directory, and placed in a directory which follows the format: ``transferred from <source-user> on <timestamp>``. Using the example above, it will be stored under: ``data/<destination-user>/files/transferred from <source-user> on 20170426_124510/``
  
 (See :doc:`../configuration_server/occ_command` for a complete ``occ`` 
 reference.) 

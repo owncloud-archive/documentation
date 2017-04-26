@@ -635,15 +635,19 @@ For example, to move all files from ``<source-user>`` to ``<destination-user>``,
 
 ::
 
- sudo -u www-data php occ files:transfer-ownership <source-user>
- <destination-user>
+ sudo -u www-data php occ files:transfer-ownership <source-user> <destination-user>
 
-You can also move a limited set of files from ``<source-user>`` to ``<destination-user>``, by making use of the ``--path`` switch, as in the example below. 
-In it, only files (and folders) under ``data/folders/to/move`` will be moved.
+You can also move a limited set of files from ``<source-user>`` to ``<destination-user>`` by making use of the ``--path`` switch, as in the example below. 
+In it, ``folder/to/move``, and any file and folder inside it will be moved to ``<destination-user>``. 
 
 ::
 
- sudo -u www-data php occ files:transfer-ownership --path="data/folders/to/move" <source-user> <destination-user>
+  sudo -u www-data php occ files:transfer-ownership --path="folder/to/move" <source-user> <destination-user>
+
+When using this command keep two things in mind: 
+
+1. The directory provided to the ``--path`` switch **must** exist inside ``data/<source-user>/files``.
+2. The directory (and its contents) won’t be moved as is between the users. It’ll be moved inside the destination user’s ``files`` directory, and placed in a directory which follows the format: ``transferred from <source-user> on <timestamp>``. Using the example above, it will be stored under: ``data/<destination-user>/files/transferred from <source-user> on 20170426_124510/``
 
 .. _files_external_label:
 
