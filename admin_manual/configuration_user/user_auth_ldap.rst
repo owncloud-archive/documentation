@@ -409,9 +409,12 @@ Email Field:
 
 User Home Folder Naming Rule:
   By default, the ownCloud server creates the user directory in your ownCloud 
-  data directory and gives it the ownCloud username, e.g., ``/var/www/owncloud/data/alice``. You may want to override this setting and name it after an LDAP
-  attribute value, e.g., ``cn``. The attribute can also return an absolute path, e.g. 
-  ``/mnt/storage43/alice``. Leave it empty for default behavior.
+  data directory and gives it the ownCloud username, e.g., ``/var/www/owncloud/data/alice`` 
+  if your data directory is set to be ``/var/www/owncloud/data``.
+
+  You may want to override this setting and name it after an LDAP
+  attribute value, e.g., ``cn``. The attribute can return either an absolute path, e.g. 
+  ``/mnt/storage43/alice`` or a relative path which must not begin with a ``/``, e.g. CloudUsers/CookieMonster. This relative path is then created inside the data directory (e.g. ``/var/www/owncloud/data/CloudUsers/CookieMonster``). Leave it empty for default behavior.
 
 Please bear in mind the following, when using these fields to assign user quota limits. 
 It should help to alleviate any, potential, confusion.
