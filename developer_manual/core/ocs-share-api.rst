@@ -44,28 +44,24 @@ Curl
 ~~~~
 
 .. literalinclude:: ../examples/curl/list-all-shares.sh
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/list-all-shares.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/list-all-shares.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/list-all-shares.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,7 +72,6 @@ output similar to the following:
 .. literalinclude::
    ../examples/responses/not-authorised-response.xml
    :language: xml
-   :linenos:
 
 If the user that you’re connecting with is authorized, then you will see
 output similar to the following:
@@ -84,7 +79,6 @@ output similar to the following:
 .. literalinclude::
    ../examples/responses/shares/get-all-shares-success-no-shares.xml
    :language: xml
-   :linenos:
 
 .. _ocs-share-api__get-shares-from-file-folder:
 
@@ -124,39 +118,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/list-share-details.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/list-share-details.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/list-share-details.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/list-share-details.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/list-share-details-failure.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/list-share-details-success.xml
    :language: xml
-   :linenos:
 
 Status Codes
 ^^^^^^^^^^^^
@@ -208,39 +196,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/get-share-info.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/get-share-info.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/get-share-info.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/get-share-info.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/get-share-info-failure.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/get-share-info-success.xml
    :language: xml
-   :linenos:
 
 Response Attributes
 ^^^^^^^^^^^^^^^^^^^
@@ -302,39 +284,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/create-share.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/create-share.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/create-share.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/create-share.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/create-share-failure.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/create-share-success.xml
    :language: xml
-   :linenos:
 
 .. _ocs-share-api__create-share_response-attributes:
    
@@ -417,39 +393,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/delete-share.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/delete-share.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/delete-share.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/delete-share.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/delete-share-success.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/delete-share-failure.xml
    :language: xml
-   :linenos:
 
 .. _ocs-share-api__update-share:
 
@@ -504,39 +474,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/update-share.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/update-share.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/update-share.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/update-share.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/update-share-failure.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/update-share-success.xml
    :language: xml
-   :linenos:
 
 Federated Cloud Shares
 ======================
