@@ -247,6 +247,8 @@ Function Arguments
 ============ ======= ==========================================================
 Argument     Type    Description 
 ============ ======= ==========================================================
+name         string  a (human-readable) name for the share, which can be up to
+                     64 characters in length
 path         string  path to the file/folder which should be shared
 shareType    int     The type of the share. This can be one of: 0 = user, 
                      1 = group, 3 = public link, 6 = federated cloud share
@@ -357,6 +359,8 @@ share_with_displayname string   The display name of the receiver of the file.
 url                    string
 mail_send              int      Whether the recipient was notified, by mail, about the 
                                 share being shared with them.
+name                   string   A (human-readable) name for the share, which can be up 
+                                to 64 characters in length
 ====================== ======== ========================================================
 
 .. _ocs-share-api__delete-share:
@@ -437,6 +441,8 @@ Request Arguments
 ============ ======= ==================================================
 Argument     Type    Description
 ============ ======= ==================================================
+name         string  A (human-readable) name for the share, which can 
+                     be up to 64 characters in length
 share_id     int     The share’s unique id
 permissions  int     Update permissions 
                      (see :ref:`the create share section 
