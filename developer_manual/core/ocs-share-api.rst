@@ -273,7 +273,7 @@ Code Description
 100  Successful
 400  Unknown share type
 403  Public upload was disabled by the admin
-404  File couldn't be shared
+404  File or folder couldn't be shared
 ==== =======================================
 
 Code Example
@@ -382,7 +382,7 @@ Status Codes
 Code Description
 ==== ========================
 100  Successful
-404  File couldn't be deleted
+404  Share couldn't be deleted
 ==== ========================
 
 Code Example
@@ -445,7 +445,7 @@ password     string  Updated password for public link Share
 publicUpload boolean Enable (true) / disable (false) 
                      public upload for public shares.
 expireDate   string  Set an expire date for public link shares. 
-                     This argument expects a well-formated date string, 
+                     This argument expects a well-formatted date string, 
                      such as: 'YYYY-MM-DD'
 ============ ======= ==================================================
 
@@ -540,7 +540,7 @@ Code Description
 Get Information About A Known Federated Cloud Share
 ---------------------------------------------------
 
-Get information about a given received federated cloud that was sent from a remote instance.
+Get information about a given received federated cloud share that was sent from a remote instance.
 
 * Syntax: `/remote_shares/<share_id>`
 * Method: `GET`
