@@ -347,6 +347,8 @@ storage_id             string
 storage                int
 item_source            int      The unique node id of the item being shared.
 file_source            int      The unique node id of the item being shared.
+                                (for legacy reasons item_source and file_source
+                                attributes have the same value)
 file_parent            int      The unique node id of the parent node of the item 
                                 being shared.
 file_target            string   The name of the shared file.
