@@ -11,6 +11,8 @@ Changes in 10.0
 * Third party apps are not disabled anymore when upgrading
 * User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts)
 * LDAP app is not released with ownCloud 10.0.0 and will be released on the marketplace after some more QA
+* files_drop app is not shipped anymore as it's integrated with core now. Since migrations are not possible you will have to reconfigure your drop folders (in the 'Public Link' section of the sharing dialog of the respective folders).
+* SAML/Shibboleth with device-specific app passwords: No migration possible; Users need to regenerate device-specific app passwords in the WebUI and enter those in their clients.
 * External storages
     * FTP external storage moved to a separate app (https://marketplace.owncloud.com/apps/files_external_ftp)
     * "Local" storage type can now be disabled by sysadmin in config.php (to prevent users mounting the local file system)
