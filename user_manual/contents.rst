@@ -10,10 +10,8 @@ Table of Contents
     index
     whats_new
     pim/index
-    documents
     external_storage/index
     files/index
     session_management
     webinterface
     userpreferences
-    
