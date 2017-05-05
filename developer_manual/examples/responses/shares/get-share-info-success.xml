@@ -29,6 +29,7 @@
       <file_target></file_target>
       <share_with>user@example.com</share_with>
       <share_with_displayname>user@example.com</share_with_displayname>
+      <name>ownCloud Manual</name>
       <mail_send>0</mail_send>
     </element>
   </data>
