@@ -90,6 +90,12 @@ Edit SSH-Config::
 Change PermitRootLogin to yes::
 
    PermitRootLogin yes
+   
+Restart the ssh service::
+
+   service ssh stop
+   service ssh start
+
 
 =========
 Migration
