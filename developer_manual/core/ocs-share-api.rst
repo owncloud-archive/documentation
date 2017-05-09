@@ -262,7 +262,16 @@ expireDate   string  Set an expire date for public link shares.
                      such as: ``'YYYY-MM-DD'``
 ============ ======= ==========================================================
 
-Mandatory fields: shareType, path and shareWith for shareType 0 or 1.
+.. note:: Things to remember about public link shares
+
+   - Files will only ever have the **read** permission set
+   - Folders will have **read**, **update**, **create**, and **delete** set
+   - Public link shares **cannot** be shared with users and groups
+   - Public link shares are not available if public link sharing is enabled by the administrator
+
+.. note:: **Mandatory Fields**
+
+   ``shareType``, ``path`` and ``shareWith`` are mandatory if ``shareType`` is set to 0 or 1
 
 Returns
 ^^^^^^^
