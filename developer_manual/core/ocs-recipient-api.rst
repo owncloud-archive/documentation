@@ -1,8 +1,8 @@
-==========================
-OCS Recipient (Sharee) API
-==========================
+=================
+OCS Recipient API
+=================
 
-The OCS Recipient (Share**e**) API is a new OCS endpoint that is used by the share dialog autocomplete process, when you pick a user or group to share to. 
+The OCS Recipient API is a new OCS endpoint that is used by the share dialog autocomplete process, when you pick a user or group to share to. 
 
 The base URL for all calls to the share API is: 
 *<owncloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1/sharees?format=json*
@@ -10,6 +10,14 @@ The base URL for all calls to the share API is:
 Get Shares Recipients
 ---------------------
 
+.. _ocs-recipient-api__get-all-shares:
+   
+Get All Shares
+--------------
+
+Get all shares from the user.
+
+* Syntax: `/shares`
 * Method: `GET`
 
 Query Attributes
@@ -72,4 +80,3 @@ Go
 
 .. literalinclude:: ../examples/go/delete-share.go
    :language: go
-

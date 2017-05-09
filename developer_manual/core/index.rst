@@ -11,6 +11,7 @@
    configfile
    externalapi
    ocs-share-api
+   ocs-recipient-api
 
 =================
 Core Development
@@ -32,4 +33,5 @@ Core related docs
 * :doc:`theming`
 * :doc:`configfile`
 * :doc:`ocs-share-api`
+* :doc:`ocs-recipient-api`
 * :doc:`externalapi`
