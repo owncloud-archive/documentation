@@ -257,9 +257,21 @@ publicUpload boolean allow public upload to a public shared folder
 password     string  password to protect public link Share with
 permissions  int     1 = read; 2 = update; 4 = create; 8 = delete;
                      16 = share; 31 = all (default: 31, for public shares: 1)
+expireDate   string  Set an expire date for public link shares. 
+                     This argument expects a well-formatted date string, 
+                     such as: ``'YYYY-MM-DD'``
 ============ ======= ==========================================================
 
-Mandatory fields: shareType, path and shareWith for shareType 0 or 1.
+.. note:: Things to remember about public link shares
+
+   - Files will only ever have the **read** permission set
+   - Folders will have **read**, **update**, **create**, and **delete** set
+   - Public link shares **cannot** be shared with users and groups
+   - Public link shares are not available if public link sharing is enabled by the administrator
+
+.. note:: **Mandatory Fields**
+
+   ``shareType``, ``path`` and ``shareWith`` are mandatory if ``shareType`` is set to 0 or 1
 
 Returns
 ^^^^^^^
