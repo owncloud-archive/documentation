@@ -62,3 +62,141 @@ When a user tries a URL that is not whitelisted the following error appears:
    :scale: 75%
    :alt: Error message when URL is not whitelisted
 
+=======
+Example
+=======
+
+.. note:: For this example to work, you need this on both servers:
+
+* Ubuntu 16.04
+* SSH
+* PermitRootLogin set to "yes"
+
+optional:
+
+* Domain name (for Let's Encrypt)
+* Modules: smb-client nfs-common rpcbin (for WND)
+
+
+Install SSH::
+
+   apt install ssh -y
+
+Edit ssh-config (enable root ssh login)::
+
+   nano /etc/ssh/sshd_config
+
+Change PermitRootLogin to "yes"::
+
+   PermitRootLogin yes
+   
+Restart ssh service::
+
+   service ssh stop
+   service ssh start
+
+Install ownCloud on new server
+
+=========
+Migration
+=========
+
+1. Put original server in maintenance mode:
+
+Go in owncloud dir::
+
+      cd /var/www/owncloud/
+
+Switch to maintenance mode::
+
+      sudo -u www-data php occ maintenance:mode --on
+
+wait for 6-7 min and stop apache2::
+
+   service apache2 stop
+
+2. Transfer the database
+
+Go in owncloud dir::
+
+      cd /var/www/owncloud/
+
+Backup the database::
+
+   mysqldump --single-transaction -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
+
+.. note:: You can find the values for the mysqldump command in your config.php at your owncloud directory.
+[server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
+
+.. note:: For InnoDB tables only:
+The --single-transaction flag will start a transaction before running. Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.
+
+For Mixed MyISAM / InnoDB tables:
+Either dumping your MyISAM tables separately from InnoDB tables or use --lock-tables instead of --single-transaction to guarantee the database is in a consistent state when using mysqldump.
+
+
+Export the database **to** new server::
+
+   rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
+
+Import the database **on** new server::
+
+   mysql -h localhost -u admin -ppassword owncloud < owncloud-dbbackup.bak
+
+3. Copy data, config to new server::
+
+      rsync -Aavxt config data root@new_server_address:/var/www/owncloud 
+
+.. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do this as a second step. Please see the datadirectory migration document :ref:`datadir_move_label` for more details.
+
+4. Finish the migration:
+
+On new server:
+
+- verify that owncloud is in maintenance mode::
+
+    sudo -u www-data php occ maintenance:mode
+
+- start up the database::
+
+    service mysql start
+
+- start up web / application server on the new machine::
+
+   service apache2 start
+
+- point your web browser to the migrated ownCloud instance::
+
+   localhost/owncloud
+
+- confirm that you see the maintenance mode notice (check)
+
+- no error messages occur (check)
+
+- take ownCloud out of maintenance mode::
+
+   sudo -u www-data php occ maintenance:mode --off
+
+- log in as admin and confirm normal function of ownCloud
+
+- if you have a domain name, and you want a SSL certificate, we recommend certbot.
+
+5. Reverse the changes you made to the ssh-config:
+
+Edit ssh-config::
+
+   nano /etc/ssh/sshd_config
+
+Change PermitRootLogin to "no"::
+
+   PermitRootLogin no
+
+Restart ssh service::
+
+   service ssh stop
+   service ssh start
+
+6.
+Change the CNAME entry in the DNS to point your users to the new location.
+
+.. note:: If you have not only migrated phyiscally from server to server but also use a new domain name to access your instance, you need to update (add the new domain) the Trusted Domain setting in config.php at the target server.
