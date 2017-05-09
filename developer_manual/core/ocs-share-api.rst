@@ -247,19 +247,20 @@ Function Arguments
 ============ ======= ==========================================================
 Argument     Type    Description 
 ============ ======= ==========================================================
-name         string  a (human-readable) name for the share, which can be up to
-                     64 characters in length
-path         string  path to the file/folder which should be shared
+name         string  A (human-readable) name for the share, which can be up to
+                     64 characters in length.
+path         string  The path to the file or folder which should be shared.
 shareType    int     The type of the share. This can be one of: 0 = user, 
                      1 = group, 3 = public link, 6 = federated cloud share
-shareWith    string  user / group id with which the file should be shared
-publicUpload boolean allow public upload to a public shared folder
-password     string  password to protect public link Share with
-permissions  int     1 = read; 2 = update; 4 = create; 8 = delete;
+shareWith    string  The user or group id with which the file should be shared.
+publicUpload boolean Whether to allow public upload to a public shared folder.
+password     string  The password to protect public link share with.
+permissions  int     The permissions to set on the share. 
+                     1 = read; 2 = update; 4 = create; 8 = delete;
                      16 = share; 31 = all (default: 31, for public shares: 1)
-expireDate   string  Set an expire date for public link shares. 
-                     This argument expects a well-formatted date string, 
-                     such as: ``'YYYY-MM-DD'``
+expireDate   string  An expire date for public link shares. 
+                     This argument expects a date string in the following 
+                     format ``'YYYY-MM-DD'``.
 ============ ======= ==========================================================
 
 .. note:: Things to remember about public link shares
