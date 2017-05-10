@@ -271,8 +271,8 @@ Requirements:
 Set Up test
 ~~~~~~~~~~~
 - place the selenium standalone server jar file and the webdriver(s) somewhere in the same folder
-- start the selinium server ``java -jar selenium-server-standalone-3.0.1.jar -port 4445``
-- set following environment variables:
+- start the selenium server ``java -jar selenium-server-standalone-3.0.1.jar -port 4445``
+- set the following environment variables:
   - SRV_HOST_NAME (the hostname where ownCloud runs)
   - SRV_HOST_URL (path if ownCloud does not run in the root of the host)
   - SRV_HOST_PORT (port of your webserver)
@@ -296,6 +296,6 @@ Set Up test
 Known issues
 ~~~~~~~~~~~~
 
-- webdriver for current Firefox is not working correctly, so we need to test on 47.0.2 and to use selenium server 2.53.1 for it
+- the webdriver for the current Firefox is not working correctly, so we need to test on 47.0.2 and to use selenium server 2.53.1 for it
   - download and install version 47.0.2 of firefox from here: https://ftp.mozilla.org/pub/firefox/releases/47.0.2/
   - download version 2.53.2 of selenium webdriver from here: https://selenium-release.storage.googleapis.com/index.html?path=2.53/
