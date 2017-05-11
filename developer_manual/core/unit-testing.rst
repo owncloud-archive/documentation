@@ -260,8 +260,8 @@ UI testing in Core with selenium
 
 Requirements:
 ~~~~~~~~~~~~~
-- ownCloud >= 10.0 (make sure you have an running instance of ownCloud complete setup)
-- admin user called "admin" with the password "admin"
+- ownCloud >= 10.0 (make sure you have an running instance of ownCloud completely setup)
+- An admin user called "admin" with the password "admin"
 - no self-signed SSL certificates
 - testing utils (running ``make`` in your terminal from the ``webroot`` directory will install them)
 - Selenium standalone server (download Selenium standalone server jar from http://docs.seleniumhq.org/download/)
@@ -273,10 +273,10 @@ Set Up test
 - place the selenium standalone server jar file and the webdriver(s) somewhere in the same folder
 - start the selenium server ``java -jar selenium-server-standalone-3.0.1.jar -port 4445``
 - set the following environment variables:
-  - SRV_HOST_NAME (the hostname where ownCloud runs)
-  - SRV_HOST_URL (path if ownCloud does not run in the root of the host)
-  - SRV_HOST_PORT (port of your webserver)
-  - BROWSER (chrome, firefox, internet explorer)
+  - ``SRV_HOST_NAME`` (the hostname where ownCloud runs)
+  - ``SRV_HOST_URL`` (path if ownCloud does not run in the root of the host)
+  - ``SRV_HOST_PORT`` (port of your webserver)
+  - ``BROWSER`` (chrome, firefox, internet explorer)
 
   e.g. to test an instance running on http://localhost/owncloud-core with chrome do:
 
@@ -288,14 +288,14 @@ Set Up test
     export BROWSER=chrome
 
 
-- if you don't have a webserver already running start php development server with:
+- if you don't have a webserver already running start the PHP development server with:
   ``bash tests/travis/start_php_dev_server.sh`` (leave SRV_HOST_URL empty in that case. ``export SRV_HOST_URL=""``)
-  The server will bind to: $SRV_HOST_NAME:$SRV_HOST_PORT
-- run tests: ``bash tests/travis/start_behat_tests.sh``
+  The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``
+- run the tests: ``bash tests/travis/start_behat_tests.sh``
 
 Known issues
 ~~~~~~~~~~~~
 
-- the webdriver for the current Firefox is not working correctly, so we need to test on 47.0.2 and to use selenium server 2.53.1 for it
-  - download and install version 47.0.2 of firefox from here: https://ftp.mozilla.org/pub/firefox/releases/47.0.2/
+- the webdriver for the current version of Firefox is not working correctly, so we need to test on 47.0.2 and to use selenium server 2.53.1 for it
+  - download and install version 47.0.2 of Firefox from here: https://ftp.mozilla.org/pub/firefox/releases/47.0.2/
   - download version 2.53.2 of selenium webdriver from here: https://selenium-release.storage.googleapis.com/index.html?path=2.53/
