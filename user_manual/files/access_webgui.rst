@@ -300,7 +300,7 @@ Here's how to use it.
 Creating Custom Groups
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Assuming that your ownCloud administrator's already `enabled custom groups`; under the admin menu, in the top right-hand corner, click "**Settings**" (1).
+Assuming that your ownCloud administrator's already `enabled custom groups`_; under the admin menu, in the top right-hand corner, click "**Settings**" (1).
 Then, in the main menu on the settings page, in "**Personal**" section, click the option: "**Customgroups**" (2).
 This will take you to the "**Custom Groups**" admin page. 
 
@@ -507,3 +507,7 @@ ownCloud embedded viewers by clicking on the file name.
 There may be other file types you can preview if your ownCloud administrator has
 enabled them. If ownCloud cannot display a file, it starts a download process
 and downloads the file to your computer. 
+
+.. Links
+   
+.. _enabled custom groups: https://doc.owncloud.com/server/10.0/admin_manual/configuration_user/user_configuration.html#enabling-custom-groups
