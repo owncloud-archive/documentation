@@ -18,8 +18,7 @@ a minimum of 512MB.
 Recommended Setup for Running ownCloud
 --------------------------------------
 
-For *best performance*, *stability*, *support*, and *full functionality* we
-officially recommend and support:
+For *best performance*, *stability*, *support*, and *full functionality* we officially recommend and support:
 
 ================= =============================================================
 Platform          Options
@@ -69,6 +68,8 @@ Desktop
 - Windows 7+
 - Mac OS X 10.7+ (64-bit only)
 
+For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
+These are:
 
 - Ubuntu 16.10
 - Ubuntu 16.04
@@ -80,9 +81,6 @@ Desktop
 - Fedora 25
 - openSUSE Leap 42.1
 - openSUSE Leap 42.2
-
-.. note::
-   For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
 
 Mobile 
 ^^^^^^
