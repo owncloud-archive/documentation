@@ -75,7 +75,7 @@ Details           This shows details about a file, such as its name, size,
                   and when it was created or last updated.
 Activity          This shows a history of activity on the file, such as when 
                   it was created, updated, and shared.
-Sharing           It’s here that shares are managed. To know more, refer to 
+Sharing           It's here that shares are managed. To know more, refer to 
                   the `Share Files`_ section.
 Version           This shows a history of all the versions of the file. This is
                   not available for folders.
@@ -193,41 +193,65 @@ with the user "pierpont", who can *share*, *edit*, *create*, *change*, and
 .. figure:: ../images/files_page-2.png
    :alt: Sharing files.
 
+Sharing Files with Guest Users
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Users can also share files and folders with guest users. 
+To do so, your ownCloud administrator will need to have installed the Guest application.
+
+If it's already installed, in the "**User and Groups**" field of the Sharing panel, type the username or email address of a user who is not already a user in your ownCloud installation.
+You will then see a popup appear with the suffix ``(guest)`` appear, as in the screenshot below.
+
+.. image:: ../images/guest-users/share-with-guest-users.png
+   :alt: Sharing with guest users.
+   
+After you click the username in the list, you'll see a modal dialog appear, where you can add the new user to the list of guest users. 
+
+.. image:: ../images/guest-users/add-user-to-guests.png
+   :alt: Add a guest user modal dialog.
+
+The Name field will be pre-filled with the username you supplied. 
+All you need to do is add the user's email address, and click "**Save and Share**".
+After you do that, the content will be shared with the user with all permissions applied, except for the ability to share with other users.
+
+.. image:: ../images/guest-users/content-shared-with-guest-user.png
+   :alt: Content shared with a guest user.
+
 Update A Share
 ~~~~~~~~~~~~~~
 
 To change any of the properties of a share, again, you first need to view the
 Share tab. From there, you can:
 
-- Delete a user’s access to a share
+- Delete a user's access to a share
 - Give more users access to a share
-- Change a user’s share permissions
+- Change a user's share permissions
 - Add or remove password protection
-- Set or remove a share’s expiration date
+- Set or remove a share's expiration date
 
 As this functionality is already described in other parts of the `Sharing
-Files`_ section, it won’t be specifically covered here.
+Files`_ section, it won't be specifically covered here.
 
 Delete A Share
 ~~~~~~~~~~~~~~
 
-Despite the name of this section, you don’t actually delete a share. Rather
-what you do is remove the access of user’s to whom it’s already been shared
+Despite the name of this section, you don't actually delete a share. Rather
+what you do is remove the access of user's to whom it's already been shared
 with. When all users access to a shared resource has been removed, the resource
 is no longer shared. 
 
 To do that, you need to click on the rubbish bin icon, on the far right-hand
-side of the name of each user it’s been shared with, who should no longer have
+side of the name of each user it's been shared with, who should no longer have
 access to it.
 
 Password Protect Files
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-It’s also possible to password protect shared files and folders. If you want to
+It's also possible to password protect shared files and folders. If you want to
 do so, then you need to enable this functionality. Specifically, click the
 checkbox labeled "*Password protect*" under the "*Share Link*" section. 
 
-When you do so, you’ll see a password field appear. In there, add the password
+When you do so, you'll see a password field appear. In there, add the password
 that the user will need to enter to access the shared resource and press the
 return key.
 
@@ -235,7 +259,7 @@ View Permalinks
 ~~~~~~~~~~~~~~~
 
 Part-way down the share details window, you will see a checkbox with the label
-"*Share link*". Check the checkbox to expose the file or folder’s permalink. You
+"*Share link*". Check the checkbox to expose the file or folder's permalink. You
 can give this permalink to users on your ownCloud server that you have shared
 the file or folder with. The link remains valid even if the file is renamed.
 
@@ -244,7 +268,7 @@ the file or folder with. The link remains valid even if the file is renamed.
 
 To save time and effort in sharing a permalink with someone, you can enter
 their email address in the notification field. This is the field that has the
-placeholder text "Email link to person". Enter the person’s email and press
+placeholder text "Email link to person". Enter the person's email and press
 return and they will receive an email notification, containing the permalink.
 
 .. NOTE:: This is only available if your administrator has enabled email
@@ -294,11 +318,11 @@ Tag Files
    :alt: Files popup menu.
 
 In ownCloud, you can assign one or more tags to files and folders. To do so, go
-to the "**Details**" view, inside `The Overflow Menu`_. There, you’ll see a text
+to the "**Details**" view, inside `The Overflow Menu`_. There, you'll see a text
 field, with the placeholder text "**Collaborative tags**" if no tags have yet
-been added, below the file’s icon, name, and other details. 
+been added, below the file's icon, name, and other details. 
 
-In that field, type the tag’s name, which can be composed of one or multiple
+In that field, type the tag's name, which can be composed of one or multiple
 words, and press the return key to complete it. If you want to use multiple
 words, there is no need to use single or double-quotes. Type as many words as
 you want for the tag, and when you press the return key, your tag will be
@@ -313,36 +337,36 @@ completed.
 
 When you place the cursor inside the tags field, and as you type the tag name,
 a list of the system tags will appear. If you type a new tag name, the visible
-tags list will be filtered, based on the text that you’ve typed. 
+tags list will be filtered, based on the text that you've typed. 
 
 If you see a tag in the list which is what you had intended to type, or is
 a better fit than what you had in mind, click on it, and it will be added to the
-file or folder’s tag list. This can save you a lot of time and effort.
+file or folder's tag list. This can save you a lot of time and effort.
 
 Untag a File or Folder
 ~~~~~~~~~~~~~~~~~~~~~~
 
 If a file or folder is already tagged, the tag names in the popup list will have
-a check mark to the left of the tag’s name. To remove that tag from the file or
-folder, click the tag’s name. You will see that the check mark disappears.
+a check mark to the left of the tag's name. To remove that tag from the file or
+folder, click the tag's name. You will see that the check mark disappears.
 
 Edit Tags
 ~~~~~~~~~
 
-To edit a tag, click the pencil icon on the far right-hand side of the tag’s
-name, in the tags popup list. This will display a text box, containing the tag’s
-name. Be sure that you want to change the tag’s name, as it will be updated for
+To edit a tag, click the pencil icon on the far right-hand side of the tag's
+name, in the tags popup list. This will display a text box, containing the tag's
+name. Be sure that you want to change the tag's name, as it will be updated for
 all users.
 
 Delete Tags
 ~~~~~~~~~~~
 
 To delete a tag, as above, click the pencil icon on the far right-hand side of
-the tag’s name, in the tags popup list. Next to the text box containing the
-tag’s name, you will also see a delete icon. 
+the tag's name, in the tags popup list. Next to the text box containing the
+tag's name, you will also see a delete icon. 
 
 Click this to remove the tag from
-the system tag’s list. As with renaming a tag, remember that deleting a tag
+the system tag's list. As with renaming a tag, remember that deleting a tag
 removes it for all users. So please be sure that you want to do this.
 
 Filter By Tag
@@ -402,7 +426,7 @@ Delete Comments
 To delete an existing comment on a file or folder, as with editing comments,
 hover the mouse over the comment and you will see a pencil icon appear. Click
 the pencil, and a rubbish bin icon appears on the far right-hand side of the
-comment author’s name, above the *"Edit Comment"* text field. Click the rubbish
+comment author's name, above the *"Edit Comment"* text field. Click the rubbish
 bin, and the comment will be deleted after a few seconds.
 
 Play Videos 
@@ -410,7 +434,7 @@ Play Videos
 
 You can play videos in ownCloud with the Video Player app, by clicking once on
 the file. Please note, video streaming by the native ownCloud video player
-depends on your Web browser and the video’s format. 
+depends on your Web browser and the video's format. 
 
 If your ownCloud administrator has enabled video streaming, and it doesn't work
 in your Web browser, it may be a browser-related issue. See
