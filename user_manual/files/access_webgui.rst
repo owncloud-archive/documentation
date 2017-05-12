@@ -249,6 +249,21 @@ return and they will receive an email notification, containing the permalink.
 
 .. NOTE:: This is only available if your administrator has enabled email
    notifications
+   
+Share a Private Link
+~~~~~~~~~~~~~~~~~~~~
+
+Another way to share a file or folder with someone is via a private link. 
+It’s a handy way of creating a permanent link for yourself or to make accessing a file or folder, within a share, more efficient. 
+To access the private link, in the Sharing Panel for a file or folder, next to its name you’ll see a small link icon (1), as in the screenshot below. 
+
+.. image:: ../images/private-link/private-link.png
+   :alt: Obtaining a private link for a shared file or folder
+
+If you click it, a new textbox will appear above the "**Collaborative tags**" field, populated with the link’s URI (2). 
+
+.. note:: 
+   Only people who have access to the file or folder can use the link.
 
 Change The Share Expiration Date
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
