@@ -32,6 +32,7 @@ occ Command Directory
 * :ref:`ldap_commands_label`
 * :ref:`logging_commands_label`
 * :ref:`maintenance_commands_label`
+* :ref:`reports_commands_label`
 * :ref:`security_commands_label`
 * :ref:`shibboleth_label`
 * :ref:`trashbin_label`
@@ -990,6 +991,35 @@ with changed mimetypes found in ``config/mimetypemapping.json``. Run this
 command after modifying ``config/mimetypemapping.json``. If you change a 
 mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the 
 change to existing files.
+
+.. _reports_commands_label:
+   
+Reports
+-------
+
+If you're working with ownCloud support and need to send them a configuration summary, you can generate it using the ``configreport:generate`` command. 
+This command generates the same JSON-based report as the Admin Config Report, which you can access under ``admin -> Settings -> Admin -> Help & Tips -> Download ownCloud config report``.
+
+From the command-line in the root directory of your ownCloud installation, run it as your webserver user as follows, (assuming your webserver user is www-data):
+
+::
+
+  sudo -u www-data occ configreport:generate
+
+This will generate the report and send it to STDOUT. 
+You can optionally pipe the output to a file and then attach it to an email to ownCloud support, by running the following command:
+
+::
+
+  sudo -u www-data occ configreport:generate > generated-config-report.txt
+
+Alternatively, you could generate the report and email it all in one command, by running:
+
+::
+
+  sudo -u www-data occ configreport:generate | mail -s "configuration report" \ 
+      -r <the email address to send from> \
+      support@owncloud.com
 
 .. _security_commands_label:
 
