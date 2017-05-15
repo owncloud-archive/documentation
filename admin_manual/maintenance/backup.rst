@@ -20,7 +20,7 @@ To restore your ownCloud installation from backup, see :doc:`restore` .
 Backing Up the config/ and data/ Directories
 --------------------------------------------
 
-Simply copy your ``config/`` and ``data/`` folder to a place outside of your ownCloud environment. This example uses ``rsync`` to copy the two directories to ``/backupdir``::
+Simply copy your ``config/`` and ``data/`` folder to a place outside of your ownCloud environment. This example uses ``rsync`` to copy the two directories to ``/oc-backupdir``::
 
     rsync -Aax config data /oc-backupdir/
     
@@ -38,13 +38,13 @@ MySQL/MariaDB
 
 MySQL or MariaDB, which is a drop-in MySQL replacement, is the recommended database engine. To backup MySQL/MariaDB::
 
-    mysqldump --single-transaction -h [server] -u [username] -p[password] [db_name] > owncloud-dbbackup_`date +"%Y%m%d"`.bak
+    mysqldump --single-transaction -h [server] -u [username] -p [password] [db_name] > owncloud-dbbackup_`date +"%Y%m%d"`.bak
 
 
 
 Example::
 
-      mysqldump --single-transaction -h localhost -u username -ppassword owncloud > owncloud-dbbackup_`date +"%Y%m%d"`.bak
+      mysqldump --single-transaction -h localhost -u username -p password owncloud > owncloud-dbbackup_`date +"%Y%m%d"`.bak
 
 
 SQLite
@@ -71,11 +71,11 @@ was enabled, here’s how to do it.
    restoring the full backup or restoring nothing — not restoring individual
    parts of it.
 
-1. Restore the file from backup
-2. Restore the file's encryption keys from backup
+1. Restore the file from backup.
+2. Restore the file's encryption keys from backup.
 3. Run ``occ files:scan``; this makes the scanner find it. Note that, in the DB
    it will (1) have the "size" set to the encrypted size, which is wrong (and
-   bigger) and (2) the "encrypted" flag will be set to 0
+   bigger) and (2) the "encrypted" flag will be set to 0.
 4. Update the "encrypted" flag to 1 in the DB to all *files* under
    ``files/path``, but **not** directories. Setting the flag to 1 tells the
    encryption application that the file is encrypted and needs to be processed.
@@ -86,7 +86,7 @@ was enabled, here’s how to do it.
    by ``occ files:scan``.
    
 5. Download the file once as the user; the file's size will be corrected
-   automatically
+   automatically.
 
 This process might not be suitable across all environments. 
 If it’s not suitable for yours, you might need to run an OCC command that does
