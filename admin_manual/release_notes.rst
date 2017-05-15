@@ -186,6 +186,9 @@ value; if there is not one then use empty quotes, ``""``. (See
 Users of the Linux Package need to update their repository setup as described
 in this `blogpost <https://owncloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
 
+There are some scalability and performance regressions in 8.2.0 especially for
+large systems. 8.2.1 will have these fixed.
+
 Changes in 8.1
 --------------
 
