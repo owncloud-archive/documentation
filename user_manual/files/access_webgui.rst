@@ -231,30 +231,11 @@ When you do so, you’ll see a password field appear. In there, add the password
 that the user will need to enter to access the shared resource and press the
 return key.
 
-View Permalinks
-~~~~~~~~~~~~~~~
-
-Part-way down the share details window, you will see a checkbox with the label
-"*Share link*". Check the checkbox to expose the file or folder’s permalink. You
-can give this permalink to users on your ownCloud server that you have shared
-the file or folder with. The link remains valid even if the file is renamed.
-
-.. figure:: ../images/permalink.png
-   :alt: File permalink.
-
-To save time and effort in sharing a permalink with someone, you can enter
-their email address in the notification field. This is the field that has the
-placeholder text "Email link to person". Enter the person’s email and press
-return and they will receive an email notification, containing the permalink.
-
-.. NOTE:: This is only available if your administrator has enabled email
-   notifications
-   
-Share a Private Link
+Using Private Links
 ~~~~~~~~~~~~~~~~~~~~
 
-Another way to share a file or folder with someone is via a private link. 
-It’s a handy way of creating a permanent link for yourself or to make accessing a file or folder, within a share, more efficient. 
+Another way to access a file or folder is via a private link. 
+It’s a handy way of creating a permanent link for yourself or to point others to a file or folder, within a share, more efficiently. 
 To access the private link, in the Sharing Panel for a file or folder, next to its name you’ll see a small link icon (1), as in the screenshot below. 
 
 .. image:: ../images/private-link/private-link.png
