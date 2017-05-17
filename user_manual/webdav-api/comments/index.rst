@@ -2,13 +2,25 @@
 Comments API
 ============
 
-The comments API allows for :ref:`listing <list_comments_label>`, :ref:`creating <create_comments_label>`, :ref:`updating <update_comments_label>` and :ref:`deleting <delete_comments_label>` comments on files and folders stored in ownCloud.
+The comments API allows for the following functionality files and folders stored in ownCloud:
+
+- :ref:`listing comments <list_comments_label>`
+- :ref:`creating comments <create_comments_label>`
+- :ref:`updating comments <update_comments_label>`
+- :ref:`deleting comments <delete_comments_label>`
+
 It provides all of the functionality available through the UI, from the command-line.
 
 .. _list_comments_label:
 
 List Comments
 -------------
+
+========================================== ============ ============
+Request Path                               Method       Content Type
+========================================== ============ ============
+``remote.php/dav/comments/files/<fileid>`` ``PROPFIND`` ``text/xml``
+========================================== ============ ============
 
 To retrieve a list of all comments, whether, for a file or folder, you need to make an authenticated ``PROPFIND`` request, and supply it with the path to the file or folder that you want to retrieve the comments of, as in the example below.
 
@@ -80,6 +92,12 @@ I've called it ``report-propfind.xml`` in the example below.
 Create Comments
 ---------------
 
+========================================== ======== ====================
+Request Path                               Method   Content Type
+========================================== ======== ====================
+``remote.php/dav/comments/files/<fileid>`` ``POST`` ``application/json``
+========================================== ======== ====================
+
 To create a comment, you need to send an authenticated ``POST`` request with a JSON body containing the details of the comment to create.
 The example below shows how to create a comment on the file with the file id 4.
 
@@ -117,6 +135,12 @@ However, it will have an ``HTTP/1.1 201 Created`` status.
 
 Update Comments
 ---------------
+
+====================================================== ============= ============
+Request Path                                           Method        Content Type
+====================================================== ============= ============
+``remote.php/dav/comments/files/<fileid>/<commentid>`` ``PROPPATCH`` ``text/xml``
+====================================================== ============= ============
 
 To update an existing comment, you need to send an authenticated ``PROPPATCH`` request and provide a ``PROPFIND`` XML element in the body. 
 
@@ -178,10 +202,26 @@ If something goes wrong, you should receive a response similar to the following
       <s:message>This should never happen (famous last words)</s:message>
     </d:error>
 
+If the tag is not available, then you will receive the following response, along with an ``HTTP/1.1 404 Not Found`` status code.
+
+.. code-block:: xml
+   
+   <?xml version="1.0" encoding="utf-8"?>
+   <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">
+     <s:exception>Sabre\DAV\Exception\NotFound</s:exception>
+     <s:message/>
+   </d:error>
+
 .. _delete_comments_label:
 
 Delete Comments
 ---------------
+
+====================================================== ========== ==============
+Request Path                                           Method     Content Type
+====================================================== ========== ==============
+``remote.php/dav/comments/files/<fileid>/<commentid>`` ``DELETE`` ``text/plain``
+====================================================== ========== ==============
 
 To delete a comment, send an authenticated ``DELETE`` request, specifying the path to the comment that you want to delete. 
 
@@ -189,8 +229,8 @@ To delete a comment, send an authenticated ``DELETE`` request, specifying the pa
 
   curl -u username:password -X DELETE 'http://localhost/remote.php/dav/comments/files/4/5'  
 
-If the comment was successfully deleted, no response body would be returned.
-However, if the comment does not exist, then the following response will be returned.
+If the comment was successfully deleted, no response body would be returned, but an ``HTTP/1.1 204 No Content`` status code will be returned.
+However, if the comment does not exist, then the following response will be returned, along with an ``HTTP/1.1 404 Not Found`` status code.
 
 .. code-block:: xml
    
