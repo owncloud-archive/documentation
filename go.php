@@ -12,12 +12,12 @@ $mapping = array(
     'admin-provisioning-api'  => '/admin_manual/configuration_user/user_provisioning_api.html',
     'admin-source_install'    => '/admin_manual/installation/source_installation.html',
     'admin-backup'            => '/admin_manual/maintenance/backup.html',
-    
+
     'admin-monitoring'        => '/admin_manual/operations/considerations_on_monitoring.html',
     'admin-performance'       => '/admin_manual/configuration_server/performance_tuning.html',
     'admin-config'            => '/admin_manual/configuration_server/config_sample_php_parameters.html',
     'admin-db-conversion'     => '/admin_manual/configuration_database/db_conversion.html',
-    'admin-security'          => '/admin_manual/configuration_server/hardening.html', 
+    'admin-security'          => '/admin_manual/configuration_server/hardening.html',
     'admin-enterprise-license' => '/admin_manual/enterprise_installation/license_keys_installation.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
@@ -34,13 +34,11 @@ $mapping = array(
 
 ############# Do not edit below this line #################
 
-$from = $_GET['to'];
+$from = isset($_GET['to']) ? $_GET['to'] : '';
 $proto = isset($_SERVER['HTTPS']) ? 'https' : 'http';
-$port = $_SERVER['SERVER_PORT'];
-$port = ($port !== '80' && $port !== '443') ? ":$port" : '';
-$name = $_SERVER['SERVER_NAME'];
+$name = $_SERVER['HTTP_HOST'];
 $path = dirname($_SERVER['REQUEST_URI']);
-$location = "$proto://$name$port$path";
+$location = "$proto://$name$path";
 
 header('HTTP/1.1 302 Moved Temporarily');
 if (array_key_exists($from, $mapping)) {
@@ -54,4 +52,3 @@ if (array_key_exists($from, $mapping)) {
         header('Location: ' . $location . '/user_manual');
     }
 }
-
