@@ -307,7 +307,7 @@ To create a new custom group, in the text field at the top where you see the pla
 After a moment or two, you’ll see the new custom group appear in the groups list.
 
 .. note::
-   Please be aware that custom groups are only visible to you, not to anyone else.
+   Please be aware that custom groups are only visible to every member of the group, but not to anyone else outside the group.
 
 Managing Group Members
 ~~~~~~~~~~~~~~~~~~~~~~
