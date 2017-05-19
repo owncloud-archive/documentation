@@ -522,6 +522,8 @@ To get the properties of files in the root folder:
       </d:response>
     </d:multistatus>
     
+.. _webdav_api_retrieve_fileid_label:
+    
 To get the file id of a file, regardless of location, you need to make a PROPFIND request. 
 This request requires two things:
 
