@@ -254,7 +254,7 @@ Retrieve the Tag Ids and Metadata of a Given File
 ======================================================== ======== ============
 Request Path                                             Method   Content Type
 ======================================================== ======== ============
-``remote.php/dav/systemtags-relations/files/<fileidid>`` PROPFIND ``text/xml``
+``remote.php/dav/systemtags-relations/files/<fileid>``   PROPFIND ``text/xml``
 ======================================================== ======== ============
 
 To retrieve the tag ids and metadata of a given file, send an authenticated ``PROPFIND`` request, specifying the path to the file to retrieve the information from. 
@@ -337,7 +337,7 @@ Assign a Tag to a File
 ================================================================ ====== ================
 Request Path                                                     Method Content Type
 ================================================================ ====== ================
-``remote.php/dav/systemtags-relations/files/<tagid>/<fileidid>`` PUT    ``text/xml``
+``remote.php/dav/systemtags-relations/files/<tagid>/<fileid>`` PUT    ``text/xml``
 ================================================================ ====== ================
 
 To assign a tag to a file, send an authenticated ``PUT`` request specifying the path to the file to tag.
@@ -365,7 +365,7 @@ Unassign a Tag From a File
 ================================================================ ====== ================
 Request Path                                                     Method Content Type
 ================================================================ ====== ================
-``remote.php/dav/systemtags-relations/files/<fileidid>/<tagid>`` DELETE ``text/xml``
+``remote.php/dav/systemtags-relations/files/<fileid>/<tagid>`` DELETE ``text/xml``
 ================================================================ ====== ================
 
 To un-assign or remove a tag from a file, send an authenticated ``DELETE`` request specifying the path to the file and the tag to remove.
@@ -391,7 +391,7 @@ Create and Assign a Tag at the Same Time
 ======================================================== ====== ================
 Request Path                                             Method Content Type
 ======================================================== ====== ================
-``remote.php/dav/systemtags-relations/files/<fileidid>`` POST   application/json
+``remote.php/dav/systemtags-relations/files/<fileid>`` POST   application/json
 ======================================================== ====== ================
    
 In addition to assigning existing tags to a file, you can also create a new tag and assign it to a file in one request.
