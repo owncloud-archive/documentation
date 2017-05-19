@@ -2,9 +2,6 @@
 Introduction
 ============
 
-Introduction
-------------
-
 Welcome to the ownCloud Server Administration Guide. This guide describes 
 administration tasks for ownCloud, the flexible open source file synchronization 
 and sharing solution. ownCloud includes the ownCloud server, which runs on 
