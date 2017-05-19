@@ -123,7 +123,7 @@ Parameter     Type   Description
    The comment is attributed to the user making the request.
    
 .. note::
-   To retrieve a file id, refer to :ref:`the relevant section of the documentation <webdav_api_retrieve_fileid_label>`
+   To retrieve a file id, refer to the `relevant section of the documentation`_.
 
 Response
 ~~~~~~~~
@@ -239,3 +239,7 @@ However, if the comment does not exist, then the following response will be retu
      <s:exception>Sabre\DAV\Exception\NotFound</s:exception>
      <s:message/>
    </d:error>
+   
+.. Links
+   
+.. _relevant section of the documentation: https://doc.owncloud.com/server/10.0/user_manual/files/access_webdav.html#webdav_api_retrieve_fileid
