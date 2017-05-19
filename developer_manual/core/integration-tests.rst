@@ -207,7 +207,7 @@ Now that the prerequisites are satisfied, and assuming that ``$installation_path
       --database-pass='' --admin-user='admin' --admin-pass='admin'
 
 With the installation prepared, you should now be able to run the tests. 
-Go to the ``build/integration`` folder and, assuming that your web user is ``www-data``, run the following command::
+Go to the ``tests/integration`` folder and, assuming that your web user is ``www-data``, run the following command::
 
   sudo -u www-data ./run.sh features/task-to-test.feature
 

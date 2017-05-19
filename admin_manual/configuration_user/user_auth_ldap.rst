@@ -414,7 +414,7 @@ User Home Folder Naming Rule:
 
   You may want to override this setting and name it after an LDAP
   attribute value, e.g., ``cn``. The attribute can return either an absolute path, e.g. 
-  ``/mnt/storage43/alice`` or a relative path which must not begin with a ``/``, e.g. CloudUsers/CookieMonster. This relative path is then created inside the data directory (e.g. ``/var/www/owncloud/data/CloudUsers/CookieMonster``). Leave it empty for default behavior.
+  ``/mnt/storage43/alice`` or a relative path which must not begin with a ``/``, e.g. ``CloudUsers/CookieMonster``. This relative path is then created inside the data directory (e.g. ``/var/www/owncloud/data/CloudUsers/CookieMonster``). Leave it empty for default behavior.
 
 Please bear in mind the following, when using these fields to assign user quota limits. 
 It should help to alleviate any, potential, confusion.
