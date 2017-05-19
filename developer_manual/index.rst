@@ -40,5 +40,6 @@ Table of Contents
     commun/index
     mobile_development/index
     testing/index
+    webdav_api/tags
 
 ..   test
