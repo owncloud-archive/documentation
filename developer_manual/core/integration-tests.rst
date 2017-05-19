@@ -162,6 +162,7 @@ To be able to run your new feature tests you'll have to add a new context to ``c
 To do so, in the ``contexts`` section add your new context:
 
 .. code-block:: yaml
+
     contexts:
           * TaskToTestContext:
               baseUrl:  http://localhost:8080/ocs/
@@ -201,11 +202,12 @@ Now that the prerequisites are satisfied, and assuming that ``$installation_path
     
     # Install owncloud server with the cli
     sudo -u www-data $installation_path/occ maintenance:install \
+      
       --database='mysql' --database-name='owncloud' --database-user='root' \
       --database-pass='' --admin-user='admin' --admin-pass='admin'
 
-With the installtion prepared, you should now be able to run the tests. 
-Go to the ``build/integration`` folder and, assuming that your web user is ``www-data``, run the following command::
+With the installation prepared, you should now be able to run the tests. 
+Go to the ``tests/integration`` folder and, assuming that your web user is ``www-data``, run the following command::
 
   sudo -u www-data ./run.sh features/task-to-test.feature
 

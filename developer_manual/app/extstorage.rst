@@ -25,7 +25,7 @@ Configure the filesystem type
 First, the :file:`/appinfo/info.xml` must be adjusted to specify the ``type`` as:
 ``filesystem``. For example:
 
-.. literalinclude:: ../examples/storage-backend/appinfo/info.xml
+.. literalinclude:: ../examples/storage-backend/storage-backend/appinfo/info.xml
      :language: xml
      :linenos:
 

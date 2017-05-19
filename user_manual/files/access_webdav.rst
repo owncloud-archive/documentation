@@ -521,7 +521,60 @@ To get the properties of files in the root folder:
         </d:propstat>
       </d:response>
     </d:multistatus>
+    
+.. _webdav_api_retrieve_fileid_label:
+    
+To get the file id of a file, regardless of location, you need to make a PROPFIND request. 
+This request requires two things:
 
+1. A PROPFIND XML element in the body of the request method.
+2. The path to the file that you want to find out more about
+
+Here’s an example PROPFIND XML element, which we’ll store as ``propfind-fileid.xml``.
+
+.. code-block:: xml
+   
+   <?xml version="1.0"?>
+   <a:propfind xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
+       <!-- retrieve the file's id -->
+       <a:prop><oc:fileid/></a:prop>
+   </a:propfind>
+
+
+.. note:: 
+   You could pass this directly to the Curl request. However, it can often be easier to create, maintain, and to share, if it's created in a standalone file.
+
+With the file created, make the request by running the following Curl command:
+
+.. code-block:: xml
+
+   curl -u username:password -X PROPFIND \
+     -H "Content-Type: text/xml" \
+     --data-binary "@propfind-fileid.xml" \
+     'http://localhost/remote.php/dav/files/admin/Photos/San%20Francisco.jpg'
+
+This will return an XML response payload similar to the following example.
+It contains the relative path to the file and the fileid of the file.
+
+.. code-block:: xml
+   
+   <?xml version="1.0"?>
+   <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
+     <d:response>
+       <d:href>/remote.php/dav/files/admin/Photos/San%20Francisco.jpg</d:href>
+       <d:propstat>
+         <d:prop>
+           <oc:fileid>4</oc:fileid>
+         </d:prop>
+         <d:status>HTTP/1.1 200 OK</d:status>
+       </d:propstat>
+     </d:response>
+   </d:multistatus>
+
+.. note:: 
+   The example above’s been formatted for readability, using `xmllint`_, which
+   is part of libxml2. To format it as it is listed above, pipe the previous command to
+   ``xmllint --format -``.
 
 .. _KB2668751: https://support.microsoft.com/kb/2668751
 .. _KB2123563: https://support.microsoft.com/kb/2123563
@@ -533,3 +586,4 @@ To get the properties of files in the root folder:
 .. _Android devices: https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite
 .. _iPhones: https://itunes.apple.com/app/webdav-navigator/id382551345
 .. _BlackBerry devices: http://appworld.blackberry.com/webstore/content/46816
+.. _xmllint: http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint
