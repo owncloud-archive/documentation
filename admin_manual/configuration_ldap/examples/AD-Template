@@ -1,0 +1,39 @@
+overlay		rwm
+
+rwm-map		attribute uid sAMAccountName
+rwm-map		attribute dn distinguishedName
+
+overlay		glue
+
+overlay		pcache
+pcache		hdb 100000 12 1000 100
+directory       /var/lib/ldap
+pcachePersist	TRUE
+
+###AD_Templates
+pcacheAttrset	0 displayname
+pcacheTemplate	(objectClass=*) 0 3600
+
+pcacheAttrset	1 1.1
+pcacheTemplate	(objectClass=*) 1 3600
+
+pcacheAttrset	2 memberOf
+pcacheTemplate	(objectClass=*) 2 3600
+
+#pcacheAttrset	3 distinguishedName uid uid memberOf displayname jpegphoto
+#pcacheAttrset	3 *
+#pcacheTemplate	(&(|(objectClass=*))(uid=*)) 3 3600
+
+#attr=dn uid samaccountname memberof 1.1 1.1 displayname 1.1 jpegphoto thumbnailphoto
+
+pcacheAttrset	4 gidNumber
+pcacheTemplate	(objectClass=*) 4 3600
+
+pcacheAttrset	5 distinguishedName uid memberof displayname
+pcacheTemplate	(&(&(|(objectclass=*)))(displayname=*)(displayname=*)) 5 3600
+
+pcacheAttrset	6 1.1
+pcacheTemplate	(&(|(objectclass=USER))) 6 3600
+
+pcacheAttrset	7 cn distinguishedName
+pcacheTemplate	(&(&(|(objectclass=*)))(cn=*)) 7 3600
