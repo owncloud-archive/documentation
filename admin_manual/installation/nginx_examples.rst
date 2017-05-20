@@ -36,8 +36,8 @@ SSL/TLS to encrypt all of your server traffic, and to protect user's logins and
 data in transit.
 
 -  Remove the server block containing the redirect
--  Change **listen 443 ssl** to **listen 80;**
--  Remove **ssl_certificate** and **ssl_certificate_key**.
+-  Change **listen 443 ssl http2** to **listen 80;**
+-  Remove all **ssl_** entries.
 -  Remove **fastcgi_params HTTPS on;**
 
 ownCloud in the webroot of NGINX
@@ -46,26 +46,47 @@ ownCloud in the webroot of NGINX
 The following config should be used when ownCloud is placed in the webroot of 
 your NGINX installation.
 
-::
+.. code-block:: nginx
 
   upstream php-handler {
       server 127.0.0.1:9000;
+      # Depending on your used PHP version
       #server unix:/var/run/php5-fpm.sock;
+      #server unix:/var/run/php7-fpm.sock;
   }
 
   server {
       listen 80;
       server_name cloud.example.com;
+
+      # For Lets Encrypt, this needs to be served via HTTP
+      location /.well-known/acme-challenge/ {
+          root /var/www/owncloud; # Specify here where the challenge file is placed
+      }
+
       # enforce https
-      return 301 https://$server_name$request_uri;
+      location / {
+          return 301 https://$server_name$request_uri;
+      }
   }
   
   server {
-      listen 443 ssl;
+      listen 443 ssl http2;
       server_name cloud.example.com;
   
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
       ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+
+      # Example SSL/TLS configuration. Please read into the manual of
+      # nginx before applying these.
+      ssl_session_timeout 5m;
+      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
+      ssl_ciphers "-ALL:EECDH+AES256:EDH+AES256:AES256-SHA:EECDH+AES:EDH+AES:!ADH:!NULL:!aNULL:!eNULL:!EXPORT:!LOW:!MD5:!3DES:!PSK:!SRP:!DSS:!AESGCM:!RC4";
+      ssl_dhparam /etc/nginx/dh4096.pem;
+      ssl_prefer_server_ciphers on;
+      keepalive_timeout    70;
+      ssl_stapling on;
+      ssl_stapling_verify on;
   
       # Add headers to serve security related headers
       # Before enabling Strict-Transport-Security headers please read into this topic first.
@@ -98,13 +119,13 @@ your NGINX installation.
           return 301 $scheme://$host/remote.php/dav;
       }
   
-      location ^~ /.well-known/acme-challenge { }
-  
       # set max upload size
       client_max_body_size 512M;
       fastcgi_buffers 64 4K;
   
       # Disable gzip to avoid the removal of the ETag header
+      # Enabling gzip would also make your server vulnerable to BREACH
+      # if no additional measures are done. See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=773332
       gzip off;
   
       # Uncomment if your server is build with the ngx_pagespeed module
@@ -129,10 +150,12 @@ your NGINX installation.
           fastcgi_split_path_info ^(.+\.php)(/.*)$;
           include fastcgi_params;
           fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+          fastcgi_param SCRIPT_NAME $fastcgi_script_name; # necessary for owncloud to detect the contextroot https://github.com/owncloud/core/blob/v10.0.0/lib/private/AppFramework/Http/Request.php#L603
           fastcgi_param PATH_INFO $fastcgi_path_info;
           fastcgi_param HTTPS on;
           fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
           fastcgi_param front_controller_active true;
+          fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
           fastcgi_pass php-handler;
           fastcgi_intercept_errors on;
           fastcgi_request_buffering off; #Available since NGINX 1.7.11
@@ -145,7 +168,7 @@ your NGINX installation.
   
       # Adding the cache control header for js and css files
       # Make sure it is BELOW the PHP block
-      location ~* \.(?:css|js)$ {
+      location ~ \.(?:css|js)$ {
           try_files $uri /index.php$uri$is_args$args;
           add_header Cache-Control "max-age=15778463";
           # Add headers to serve security related headers (It is intended to have those duplicated to the ones above)
@@ -161,7 +184,8 @@ your NGINX installation.
           access_log off;
       }
   
-      location ~* \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg)$ {
+      location ~ \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg|map)$ {
+          add_header Cache-Control "public, max-age=7200";
           try_files $uri /index.php$uri$is_args$args;
           # Optional: Don't log access to other assets
           access_log off;
@@ -173,26 +197,39 @@ ownCloud in a subdir of NGINX
 
 The following config should be used when ownCloud is not in your webroot but placed under a different contextroot of your NGINX installation such as /owncloud or /cloud. The following configuration assumes it is placed under ``/owncloud`` and that you have ``'overwritewebroot' => '/owncloud',`` set in your ``config/config.php``.
 
-::
+.. code-block:: nginx
 
   upstream php-handler {
       server 127.0.0.1:9000;
+      # Depending on your used PHP version
+      #server unix:/var/run/php5-fpm.sock;
       #server unix:/var/run/php7-fpm.sock;
   }
   
   server {
       listen 80;
       server_name cloud.example.com;
+
+      # For Lets Encrypt, this needs to be served via HTTP
+      location /.well-known/acme-challenge/ {
+          root /var/www/owncloud; # Specify here where the challenge file is placed
+      }
+
       # enforce https
-      return 301 https://$server_name$request_uri;
+      location / {
+          return 301 https://$server_name$request_uri;
+      }
   }
   
   server {
-      listen 443 ssl;
+      listen 443 ssl http2;
       server_name cloud.example.com;
   
       ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
       ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
+
+      # Example SSL/TLS configuration. Please read into the manual of
+      # nginx before applying these.
       ssl_session_timeout 5m;
       ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
       ssl_ciphers "-ALL:EECDH+AES256:EDH+AES256:AES256-SHA:EECDH+AES:EDH+AES:!ADH:!NULL:!aNULL:!eNULL:!EXPORT:!LOW:!MD5:!3DES:!PSK:!SRP:!DSS:!AESGCM:!RC4";
@@ -233,15 +270,17 @@ The following config should be used when ownCloud is not in your webroot but pla
           return 301 $scheme://$host/owncloud/remote.php/dav;
       }
   
-      location /.well-known/acme-challenge { }
-  
       location ^~ /owncloud {
+
           root /var/www/owncloud/;
+
           # set max upload size
           client_max_body_size 512M;
           fastcgi_buffers 64 4K;
   
           # Disable gzip to avoid the removal of the ETag header
+          # Enabling gzip would also make your server vulnerable to BREACH
+          # if no additional measures are done. See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=773332
           gzip off;
   
           # Uncomment if your server is build with the ngx_pagespeed module
@@ -266,7 +305,7 @@ The following config should be used when ownCloud is not in your webroot but pla
               fastcgi_split_path_info ^/owncloud(.+\.php)(/.*)$;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-              fastcgi_param SCRIPT_NAME $fastcgi_script_name; # necessary for owncloud to detect the contextroot https://github.com/owncloud/core/blob/master/lib/private/AppFramework/Http/Request.php#L597
+              fastcgi_param SCRIPT_NAME $fastcgi_script_name; # necessary for owncloud to detect the contextroot https://github.com/owncloud/core/blob/v10.0.0/lib/private/AppFramework/Http/Request.php#L603
               fastcgi_param PATH_INFO $fastcgi_path_info;
               fastcgi_param HTTPS on;
               fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
@@ -285,7 +324,7 @@ The following config should be used when ownCloud is not in your webroot but pla
   
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
-          location ~* /owncloud(\/.*\.(?:css|js)) {
+          location ~ /owncloud(\/.*\.(?:css|js)) {
               try_files $1 /owncloud/index.php$1$is_args$args;
               add_header Cache-Control "max-age=15778463";
               # Add headers to serve security related headers  (It is intended to have those duplicated to the ones above)
@@ -301,7 +340,7 @@ The following config should be used when ownCloud is not in your webroot but pla
               access_log off;
           }
   
-          location ~* /owncloud(/.*\.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg|map)) {
+          location ~ /owncloud(/.*\.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg|map)) {
               try_files $1 /owncloud/index.php$1$is_args$args;
               add_header Cache-Control "public, max-age=7200";
               # Optional: Don't log access to other assets
@@ -333,7 +372,7 @@ error on those files and a broken webinterface.
 
 This could be caused by the::
 
-        location ~* \.(?:css|js)$ {
+        location ~ \.(?:css|js)$ {
 
 block shown above not located **below** the::
 
