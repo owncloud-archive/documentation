@@ -14,6 +14,7 @@ Changes in 10.0
 * files_drop app is not shipped anymore as it's integrated with core now. Since migrations are not possible you will have to reconfigure your drop folders (in the 'Public Link' section of the sharing dialog of the respective folders).
 * SAML/Shibboleth with device-specific app passwords: No migration possible; Users need to regenerate device-specific app passwords in the WebUI and enter those in their clients.
 * For security reasons status.php can now be configured in config.php to not return server version information anymore ('version.hide'; default ‘false’). As clients still depend on version information this is not yet recommended. The default will change to 'true' with 10.0.2 once clients are ready.
+* Order of owncloud.log entries changed a bit, please review any application (e.g. fail2ban rules) relying on this file
 * External storages
     * FTP external storage moved to a separate app (https://marketplace.owncloud.com/apps/files_external_ftp)
     * "Local" storage type can now be disabled by sysadmin in config.php (to prevent users mounting the local file system)
