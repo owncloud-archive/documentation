@@ -2,8 +2,65 @@
 Release Notes
 =============
 
-Changes in 10.0
----------------
+Changes in 10.0.1
+-----------------
+
+Hello ownCloud administrator, please read carfully to be prepared for updates and operations of your ownCloud setup.
+
+* New update path: ownCloud 10.0.1 contains migration logic to allow upgrades from 9.0 to 10.0.1 directly.
+* Marketplace: Please create an account for the new marketplace: https://marketplace.owncloud.com/
+  Access to optional ownCloud extensions and enterprise apps will be provided by the marketplace from now on.
+  Currently some apps are still shipped with the tarballs / packages and will be moved to the marketplace in the near future.
+* Apps: The following apps were already moved to the marketplace: **LDAP, gallery, activity, PDF viewer, text editor** 
+* Updates with marketplace: During the upgrade, enabled apps are also updated by fetching new versions directly from the marketplace. If during an update, sources for some apps are missing, and the ownCloud instance has no access to the marketplace, the adminstrator needs to disable these apps or manually download and provide the apps before updating.
+* App updates: Third party apps are not disabled anymore when upgrading
+* Upgrade migration test: The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option "--skip-migration-tests" removed from update command)
+
+**Settings**
+
+* Settings design: Admin, personal pages and app management are now merged together into a single "Settings" entry
+* Disable users: Ability to disable users in the user management panel added
+* Password Policy: Rules now not only apply to link passwords but also user passwords
+
+**Infrastructure**
+
+* Client: Please update to the latest desktop client version 2.3 (required)
+* Cron jobs: User account table has been reworked. CRON job for syncing with user backends e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts )
+* Logfiles: Ability to split app logs (e.g. auditing) and owncloud.log (see https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/config_sample_php_parameters.html#logging )
+
+**Known issues**
+
+1. Installing the ldap user backend will trigger the installation twice, causing an SQL error like
+```
+sudo -u www-data ./occ market:install user_ldap
+user_ldap: Installing new app ...
+user_ldap: An exception occurred while executing 'CREATE TABLE `ldap_user_mapping` (`ldap_dn` VARCHAR(255) DEFAULT '' NOT NULL, `owncloud_name` VARCHAR(255) DEFAULT '' NOT NULL, `directory_uuid` VARCHAR(255) DEFAULT '' NOT NULL, UNIQUE INDEX ldap_dn_users (`ldap_dn`), PRIMARY KEY(`owncloud_name`)) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin ENGINE = InnoDB ROW_FORMAT = compressed':
+
+SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ldap_user_mapping' already exists
+```
+This can be ignored. The app can be used after enabling it. When upgrading an existing ownCloud installation that already has user_ldap this error will not occur.
+Fixed with https://github.com/owncloud/core/pull/27982
+
+This could happen for other apps as well that use database.xml, same workaround.
+
+2. SAML authentication only works for users that have been synced to the account table with occ user:sync.
+We will reenable sso for ldap users with an update of the app in the market after completing internal testing.
+
+3. The web UI will prevent uninstalling apps marked as shipped, eg user_ldap. (see https://github.com/owncloud/core/issues/27983 )
+To uninstall disable the app with occ and rm the app directory.
+
+4. Moving files around in external storages, eg Windows Network Drive outside of ownCloud will invalidate the metadata.
+All shares, comments and tags on the moved files will get lost.
+
+5. Existing ldap users will only show up in the user management page and in the share dialog after they have been synced.
+The account table introduced in ownCloud 10.0.0 saves a lot of trips to LDAP (only password checks are left). LDAP user
+metadata in the account table will be updated when they log in or when the administrator runs `occ user:sync "OCA\User_LDAP\User_Proxy"`
+We recommend a nightly cron job to keep metadata of users not actively logging in up to date, see https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts
+
+6. Error pages will not use the configured theme but fall back to the community default.
+
+Changes in 10.0.0
+-----------------
 
 * PHP 7.1 support added (supported PHP versions are 5.6 and 7.0+)
 * The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option "--skip-migration-tests" removed from update command)
