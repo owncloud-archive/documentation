@@ -12,7 +12,7 @@ Getting PHPUnit
 ownCloud >= 10.0
 ^^^^^^^^^^^^^^^^
 
-If you are using ownCloud 10.0 or higher, running ``make`` in your terminal from the ``webroot`` directory will prepare everything for testing. 
+If you are using ownCloud 10.0 or higher, running ``make`` in your terminal from the ``webroot`` directory will prepare everything for testing.
 This will install beside necessary dependencies, a local version of PHPUnit at ``<webroot>/lib/composer/phpunit/phpunit``.
 
 - Run ``make help`` to get a list of parameters
@@ -23,7 +23,7 @@ This will install beside necessary dependencies, a local version of PHPUnit at `
 ownCloud < 10.0
 ^^^^^^^^^^^^^^^
 
-If you are on any version earlier than 10.0 you have to setup PHPUnit (and run the tests) manually. 
+If you are on any version earlier than 10.0 you have to setup PHPUnit (and run the tests) manually.
 There are three ways to install it:
 
 1. Use Composer
@@ -32,7 +32,7 @@ There are three ways to install it:
 
   composer require phpunit/phpunit
 
-2. Use your package manager (if you’re using a Linux distribution) 
+2. Use your package manager (if you’re using a Linux distribution)
 
 ::
 
@@ -52,14 +52,14 @@ After the installation the command ``phpunit`` is available
 ::
 
   phpunit --version
-  
+
 .. important::
    Please be aware that PHPUnit 6.0 and above require PHP 7.0.
-  
+
 And you can update it using::
 
   phpunit --self-update
-  
+
 .. note::
    This option is not supported from PHPUnit 6.0 onward. If you’re using this version or higher, please use either Composer or your package manager to upgrade to the latest version.
 
@@ -88,10 +88,10 @@ To get started, do the following:
 
 Then you can run the created test with ``phpunit``.
 
-.. note:: 
+.. note::
    If you use ownCloud functions in your class under test (i.e: OC::getUser()) you'll need to bootstrap ownCloud or use dependency injection.
 
-.. note:: 
+.. note::
    You'll most likely run your tests under a different user than the Web server. This might cause problems with your PHP settings (i.e., ``open_basedir``) and requires you to adjust your configuration.
 
 An example for a simple test would be:
@@ -136,9 +136,9 @@ In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
   phpunit tests/testaddtwo.php
 
 
-Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods, when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method from the ``TestCase``. 
+Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods, when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method from the ``TestCase``.
 These methods set up important stuff and clean up the system after the test so that the next test can run without side effects, such as clearing files and entries from the file cache, etc.
-For more resources on writing tests for PHPUnit visit `the writing tests section`_ of the PHPUnit documentation. 
+For more resources on writing tests for PHPUnit visit `the writing tests section`_ of the PHPUnit documentation.
 
 Bootstrapping ownCloud
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -167,7 +167,7 @@ adjust your php.ini and file rights.
   su -c "chmod a+rx data/"
   su -c "chmod a+w data/owncloud.log"
 
-Running Unit Tests for ownCloud Core 
+Running Unit Tests for ownCloud Core
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The core project provides a script that runs all the core unit tests using the specified database backend like ``sqlite``, ``mysql``, ``pgsql``, ``oci`` (for Oracle), the default is ``sqlite``
@@ -245,11 +245,62 @@ Documentation
 
 Here are some useful links about how to write unit tests with Jasmine and Sinon:
 
-- Karma test runner: http://karma-runner.github.io 
+- Karma test runner: http://karma-runner.github.io
 - Jasmine: http://pivotal.github.io/jasmine
-- Sinon (for mocking and stubbing): http://sinonjs.org/ 
+- Sinon (for mocking and stubbing): http://sinonjs.org/
 
 .. links
-   
+
 .. _the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
 .. _the writing tests section: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
+
+
+UI testing in Core with selenium
+--------------------------------
+
+Requirements:
+~~~~~~~~~~~~~
+- ownCloud >= 10.0 (make sure you have an running instance of ownCloud completely setup)
+- default language set to "en" (in ``config/config.php`` set ``'default_language' => 'en',``)
+- skeletondirectory set to ``<owncloud-base-folder>/tests/ui/skeleton``
+- An admin user called "admin" with the password "admin"
+- no self-signed SSL certificates
+- testing utils (running ``make`` in your terminal from the ``webroot`` directory will install them)
+- Selenium standalone server (download Selenium standalone server jar from http://docs.seleniumhq.org/download/)
+- browser installed that you would like to test on
+- webdriver for the browsers you want to test (e.g. download the chromedriver from: https://sites.google.com/a/chromium.org/chromedriver/ , firefox webdriver is included in the selenium server)
+
+Set Up test
+~~~~~~~~~~~
+- place the selenium standalone server jar file and the webdriver(s) somewhere in the same folder
+- start the selenium server ``java -jar selenium-server-standalone-3.0.1.jar -port 4445``
+- set the following environment variables:
+  - ``SRV_HOST_NAME`` (the hostname where ownCloud runs)
+  - ``SRV_HOST_URL`` (path if ownCloud does not run in the root of the host)
+  - ``SRV_HOST_PORT`` (port of your webserver)
+  - ``BROWSER`` (chrome, firefox, internet explorer)
+
+  e.g. to test an instance running on http://localhost/owncloud-core with chrome do:
+
+  ::
+
+    export SRV_HOST_NAME=localhost
+    export SRV_HOST_URL=owncloud-core
+    export SRV_HOST_PORT=80
+    export BROWSER=chrome
+
+
+- if you don't have a webserver already running start the PHP development server with:
+  ``bash tests/travis/start_php_dev_server.sh`` (leave SRV_HOST_URL empty in that case. ``export SRV_HOST_URL=""``)
+  The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``
+- run the tests: ``bash tests/travis/start_behat_tests.sh``
+
+  The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``)
+  To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_behat_tests.sh``
+
+Known issues
+~~~~~~~~~~~~
+
+- the webdriver for the current version of Firefox is not working correctly, so we need to test on 47.0.2 and to use selenium server 2.53.1 for it
+  - download and install version 47.0.2 of Firefox from here: https://ftp.mozilla.org/pub/firefox/releases/47.0.2/
+  - download version 2.53.2 of selenium webdriver from here: https://selenium-release.storage.googleapis.com/index.html?path=2.53/

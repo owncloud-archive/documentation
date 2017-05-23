@@ -49,14 +49,15 @@ This method enables the execution of scheduled jobs without the inherent limitat
 For example, to run a Cron job on a \*nix system every 15 minutes, under the default web server user (often, ``www-data`` or ``wwwrun``) you must set up the following Cron job to call the **cron.php** script::
 
   # crontab -u www-data -e
-  */15  *  *  *  * php -f /path/to/your/owncloud/cron.php
+  */15  *  *  *  * /usr/bin/php -f /path/to/your/owncloud/cron.php
 
 You can verify if the cron job has been added and scheduled by executing::
 
   # crontab -u www-data -l
-  */15  *  *  *  * php -f /path/to/your/owncloud/cron.php
+  */15  *  *  *  * /usr/bin/php -f /path/to/your/owncloud/cron.php
 
-.. note:: You have to make sure that ``php`` is found by ``cron``. Best practice is to expressly add the full path like ``/usr/bin/php``. On some systems it might be necessary to call **php-cli** instead of **php**.
+.. note:: 
+   You have to make sure that ``php`` is found by ``cron``, hence why we’ve deliberately added the full path to the PHP binary above (``/usr/bin/php``). On some systems it might be necessary to use **php-cli** instead of **php**.
 
 Please refer to `the crontab man page`_ for the exact command syntax.
 
