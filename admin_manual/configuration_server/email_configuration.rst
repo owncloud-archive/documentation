@@ -78,19 +78,25 @@ place, in your mail server configuration.
 Using Email Templates
 ---------------------
 
-Another useful new feature is editable email templates. Now you can edit 
-ownCloud's email templates on your Admin page. These are your available 
-templates:
+Another useful new feature is editable email templates. 
+Now you can edit ownCloud's email templates on your Admin page. 
+These are your available templates:
 
-* Sharing email (HTML) -- HTML version of emails notifying users of new file 
-  shares
-
-* Sharing email  (plain text fallback) -- Plain text email notifying users of new file shares
-
-* Lost password mail -- Password reset email for users who lose their passwords.
-
-* Activity notification mail -- Notification of activities that users have 
-  enabled in the Notifications section of their Personal pages.
+========================== ================ ========================================== ====================================================
+Email                      Format           Description                                File Location
+========================== ================ ========================================== ====================================================
+Activity notification mail plain text       Notification of activities that users have ``core/templates/mail.php``
+                                            enabled in the Notifications section of 
+                                            their Personal pages.
+Lost password mail                          Password reset email for users who lose    ``core/templates/lostpassword/email.php``
+                                            their passwords.
+New user email             HTML                                                        ``settings/templates/email.new_user.php``
+                           plain text                                                  ``settings/templates/email.new_user_plain_text.php``
+Public link share email    HTML             Notify users of new public link shares.    ``core/templates/mail.php``
+                           plain text                                                  ``core/templates/altmail.php``
+New file share email       HTML             Notify users of new file shares.           ``core/templates/internalmail.php``
+                           plain text                                                  ``core/templates/internalaltmail.php``
+========================== ================ ========================================== ====================================================
 
 In addition to providing the email templates, this feature enables you to apply 
 any preconfigured themes to the email.

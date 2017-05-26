@@ -187,3 +187,25 @@ download them from your ownCloud Files page, which compresses them into a zip
 file, or use a sync client to copy them to your local computer. See 
 :doc:`../configuration_files/file_sharing_configuration` to learn how to create 
 persistent file shares that survive user deletions.
+
+Enabling Custom Groups
+~~~~~~~~~~~~~~~~~~~~~~
+
+In previous versions of ownCloud, files and folders could only be shared with individual users or groups created by administrators. 
+This wasn't the most efficient way to work. 
+From ownCloud 10.0, users can create groups on-the-fly, through a feature called "Custom Groups", enabling them to share content in a more flexible way. 
+
+To enable Custom Groups: 
+
+1. From the ownCloud Market, which you can find in version 10.0 under the Apps menu, click "**Market**".
+2. Click "**Collaboration**" (1), to filter the list of available options and click the "**Custom groups**" application (2).
+
+.. image:: ../images/custom-groups/owncloud-market-custom-groups.png
+   :alt: The Custom Groups application in the ownCloud Market
+
+3. Click "**INSTALL**" in the bottom right-hand corner of the Custom Groups application. 
+
+.. image:: ../images/custom-groups/owncloud-market-custom-groups-install.png
+   :alt: Install the Custom Groups application from the ownCloud Market
+
+With this done, Custom Group functionality will be available in your ownCloud installation.

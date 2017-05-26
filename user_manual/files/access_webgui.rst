@@ -75,7 +75,7 @@ Details           This shows details about a file, such as its name, size,
                   and when it was created or last updated.
 Activity          This shows a history of activity on the file, such as when 
                   it was created, updated, and shared.
-Sharing           It’s here that shares are managed. To know more, refer to 
+Sharing           It's here that shares are managed. To know more, refer to 
                   the `Share Files`_ section.
 Version           This shows a history of all the versions of the file. This is
                   not available for folders.
@@ -199,35 +199,35 @@ Update A Share
 To change any of the properties of a share, again, you first need to view the
 Share tab. From there, you can:
 
-- Delete a user’s access to a share
+- Delete a user's access to a share
 - Give more users access to a share
-- Change a user’s share permissions
+- Change a user's share permissions
 - Add or remove password protection
-- Set or remove a share’s expiration date
+- Set or remove a share's expiration date
 
 As this functionality is already described in other parts of the `Sharing
-Files`_ section, it won’t be specifically covered here.
+Files`_ section, it won't be specifically covered here.
 
 Delete A Share
 ~~~~~~~~~~~~~~
 
-Despite the name of this section, you don’t actually delete a share. Rather
-what you do is remove the access of user’s to whom it’s already been shared
+Despite the name of this section, you don't actually delete a share. Rather
+what you do is remove the access of user's to whom it's already been shared
 with. When all users access to a shared resource has been removed, the resource
 is no longer shared. 
 
 To do that, you need to click on the rubbish bin icon, on the far right-hand
-side of the name of each user it’s been shared with, who should no longer have
+side of the name of each user it's been shared with, who should no longer have
 access to it.
 
 Password Protect Files
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-It’s also possible to password protect shared files and folders. If you want to
+It's also possible to password protect shared files and folders. If you want to
 do so, then you need to enable this functionality. Specifically, click the
 checkbox labeled "*Password protect*" under the "*Share Link*" section. 
 
-When you do so, you’ll see a password field appear. In there, add the password
+When you do so, you'll see a password field appear. In there, add the password
 that the user will need to enter to access the shared resource and press the
 return key.
 
@@ -283,6 +283,70 @@ change     Allows uploading a new version of a shared file and replacing it
 delete     Allows the users you share with to delete shared files
 ========== ===================================================================
    
+Custom Groups
+-------------
+
+In previous versions of ownCloud, if you wanted to share a file or a folder with more than one person, you had to share it  either with many people individually, or share to one or more groups. 
+However, you could only share with groups which your ownCloud administrator had already created. 
+
+This wasn't the most efficient way to work. 
+To address that, as of ownCloud 10.0, you can now create your own groups on-the-fly, through a feature called "Custom Groups". 
+Here's how to use it. 
+
+Creating Custom Groups
+~~~~~~~~~~~~~~~~~~~~~~
+
+Assuming that your ownCloud administrator's already `enabled custom groups`_; under the admin menu, in the top right-hand corner, click "**Settings**" (1).
+Then, in the main menu on the settings page, in "**Personal**" section, click the option: "**Customgroups**" (2).
+This will take you to the "**Custom Groups**" admin page. 
+
+.. image:: ../images/custom-groups/owncloud-create-custom-group-annotated.png
+   :alt: The Custom Groups administration panel
+
+To create a new custom group, in the text field at the top where you see the placeholder text: "**Group name**", add the group name and click "**Create group**".
+After a moment or two, you’ll see the new custom group appear in the groups list.
+
+.. note::
+   Please be aware of two things: 1) Custom groups are visible **only** to members of the group, but **not** to anyone outside the group and 2) ownCloud administrators can see and modify all custom groups of an instance.
+
+Managing Group Members
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../images/custom-groups/custom-group-manage-group-members.png
+   :alt: Manage members in a custom group
+
+To add or remove users in a custom group, click your role (1), which will likely be "**Member**" (at least at first), and you'll see a panel appear on the right-hand side listing the group's users and their roles. 
+In the "**Add user to this group field**" at the top of the panel (2), start typing the name of the user that you want to add. 
+
+After a moment or two, you'll see a list of users that match what you've typed appear (if there are any) in a popup list. 
+Click the one that you want, and they'll be added to the group. 
+Finally, you’ll see a confirmation at the top of the page (3), indicating that the user’s been added to the custom group.
+
+.. note:: 
+   Members can only use a group for sharing, whereas group admins can manage a group's members, change a group's name, change members' roles, and delete groups.
+
+Sharing with the Group
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../images/custom-groups/owncloud-share-to-custom-group.png
+   :alt: Sharing files and folders with custom groups
+
+To share a file or folder with your custom group, open the sharing panel (1). 
+Then, in the "**User and Groups**" field (2), type part of the name of the custom group and wait a moment or two. 
+
+The name of the group should be displayed in a popup list, which you can see in the screenshot above. 
+Click on it, and the file or folder will then be shared with your custom group with all permissions initially set.
+
+How to Change Group Names
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to change the name of the custom group, mouseover the group's name in the custom groups list, where you will see a pencil appear to the right of the existing name. 
+Click it, and a text field will appear, pre-populated with the existing name. 
+Change the name and click enter, and the name will be changed.
+
+.. image:: ../images/custom-groups/rename-custom-group.png
+   :alt: Rename a custom group
+
 Tag Files
 -------------
 
@@ -290,11 +354,11 @@ Tag Files
    :alt: Files popup menu.
 
 In ownCloud, you can assign one or more tags to files and folders. To do so, go
-to the "**Details**" view, inside `The Overflow Menu`_. There, you’ll see a text
+to the "**Details**" view, inside `The Overflow Menu`_. There, you'll see a text
 field, with the placeholder text "**Collaborative tags**" if no tags have yet
-been added, below the file’s icon, name, and other details. 
+been added, below the file's icon, name, and other details. 
 
-In that field, type the tag’s name, which can be composed of one or multiple
+In that field, type the tag's name, which can be composed of one or multiple
 words, and press the return key to complete it. If you want to use multiple
 words, there is no need to use single or double-quotes. Type as many words as
 you want for the tag, and when you press the return key, your tag will be
@@ -309,36 +373,36 @@ completed.
 
 When you place the cursor inside the tags field, and as you type the tag name,
 a list of the system tags will appear. If you type a new tag name, the visible
-tags list will be filtered, based on the text that you’ve typed. 
+tags list will be filtered, based on the text that you've typed. 
 
 If you see a tag in the list which is what you had intended to type, or is
 a better fit than what you had in mind, click on it, and it will be added to the
-file or folder’s tag list. This can save you a lot of time and effort.
+file or folder's tag list. This can save you a lot of time and effort.
 
 Untag a File or Folder
 ~~~~~~~~~~~~~~~~~~~~~~
 
 If a file or folder is already tagged, the tag names in the popup list will have
-a check mark to the left of the tag’s name. To remove that tag from the file or
-folder, click the tag’s name. You will see that the check mark disappears.
+a check mark to the left of the tag's name. To remove that tag from the file or
+folder, click the tag's name. You will see that the check mark disappears.
 
 Edit Tags
 ~~~~~~~~~
 
-To edit a tag, click the pencil icon on the far right-hand side of the tag’s
-name, in the tags popup list. This will display a text box, containing the tag’s
-name. Be sure that you want to change the tag’s name, as it will be updated for
+To edit a tag, click the pencil icon on the far right-hand side of the tag's
+name, in the tags popup list. This will display a text box, containing the tag's
+name. Be sure that you want to change the tag's name, as it will be updated for
 all users.
 
 Delete Tags
 ~~~~~~~~~~~
 
 To delete a tag, as above, click the pencil icon on the far right-hand side of
-the tag’s name, in the tags popup list. Next to the text box containing the
-tag’s name, you will also see a delete icon. 
+the tag's name, in the tags popup list. Next to the text box containing the
+tag's name, you will also see a delete icon. 
 
 Click this to remove the tag from
-the system tag’s list. As with renaming a tag, remember that deleting a tag
+the system tag's list. As with renaming a tag, remember that deleting a tag
 removes it for all users. So please be sure that you want to do this.
 
 Filter By Tag
@@ -398,7 +462,7 @@ Delete Comments
 To delete an existing comment on a file or folder, as with editing comments,
 hover the mouse over the comment and you will see a pencil icon appear. Click
 the pencil, and a rubbish bin icon appears on the far right-hand side of the
-comment author’s name, above the *"Edit Comment"* text field. Click the rubbish
+comment author's name, above the *"Edit Comment"* text field. Click the rubbish
 bin, and the comment will be deleted after a few seconds.
 
 Play Videos 
@@ -406,7 +470,7 @@ Play Videos
 
 You can play videos in ownCloud with the Video Player app, by clicking once on
 the file. Please note, video streaming by the native ownCloud video player
-depends on your Web browser and the video’s format. 
+depends on your Web browser and the video's format. 
 
 If your ownCloud administrator has enabled video streaming, and it doesn't work
 in your Web browser, it may be a browser-related issue. See
@@ -442,3 +506,7 @@ ownCloud embedded viewers by clicking on the file name.
 There may be other file types you can preview if your ownCloud administrator has
 enabled them. If ownCloud cannot display a file, it starts a download process
 and downloads the file to your computer. 
+
+.. Links
+   
+.. _enabled custom groups: https://doc.owncloud.com/server/10.0/admin_manual/configuration_user/user_configuration.html#enabling-custom-groups
