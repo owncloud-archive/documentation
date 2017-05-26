@@ -16,6 +16,9 @@ Hello ownCloud administrator, please read carefully to be prepared for updates a
 * **App updates:** Third party apps are not disabled anymore when upgrading.
 * **Upgrade migration test:** The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option ``--skip-migration-tests`` removed from update command).
 
+.. note::
+   The template editor app is not included in the 10.0.1 release due to technical reasons, but will be distributed via the marketplace. However, you can still :ref:`edit template files manually <using_email_templates_label>`. 
+
 Settings
 ~~~~~~~~
 
