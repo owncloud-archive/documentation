@@ -307,7 +307,7 @@ To create a new custom group, in the text field at the top where you see the pla
 After a moment or two, you’ll see the new custom group appear in the groups list.
 
 .. note::
-   Please be aware that custom groups are only visible to every member of the group, but not to anyone else outside the group.
+   Please be aware of two things: 1) Custom groups are visible **only** to members of the group, but **not** to anyone outside the group and 2) ownCloud administrators can see and modify all custom groups of an instance.
 
 Managing Group Members
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -321,6 +321,9 @@ In the "**Add user to this group field**" at the top of the panel (2), start typ
 After a moment or two, you'll see a list of users that match what you've typed appear (if there are any) in a popup list. 
 Click the one that you want, and they'll be added to the group. 
 Finally, you’ll see a confirmation at the top of the page (3), indicating that the user’s been added to the custom group.
+
+.. note:: 
+   Members can only use a group for sharing, whereas group admins can manage a group's members, change a group's name, change members' roles, and delete groups.
 
 Sharing with the Group
 ~~~~~~~~~~~~~~~~~~~~~~
