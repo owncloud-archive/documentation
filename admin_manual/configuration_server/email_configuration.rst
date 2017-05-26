@@ -74,6 +74,7 @@ In most cases the ``smtp`` option is best, because it removes the extra step of
 passing through PHP, and you can control all of your mail server options in one 
 place, in your mail server configuration.
 
+.. _using_email_templates_label:
 
 Using Email Templates
 ---------------------
