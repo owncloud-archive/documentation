@@ -200,7 +200,7 @@ Users can also share files and folders with guest users.
 To do so, your ownCloud administrator will need to have installed the Guest application.
 
 If it's already installed, in the "**User and Groups**" field of the Sharing panel, type the username or email address of a user who is not already a user in your ownCloud installation.
-You will then see a popup appear with the suffix ``(guest)`` appear, as in the screenshot below.
+You will then see a popup appear with the suffix ``(guest)``, as in the screenshot below.
 
 .. image:: ../images/guest-users/share-with-guest-users.png
    :alt: Sharing with guest users.
