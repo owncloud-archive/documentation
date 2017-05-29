@@ -1407,19 +1407,15 @@ You can delete versions for specific users in a space-delimited list::
 Command Line Installation
 -------------------------
 
-These commands are available only after you have downloaded and unpacked the 
-ownCloud archive, and taken no further installation steps.
+ownCloud can be installed entirely from the command line. 
+After downloading the tarball and copying ownCloud into the appropriate directories, or after installing ownCloud packages (See :doc:`../installation/linux_installation` and :doc:`../installation/source_installation`) you can use ``occ`` commands in place of running the graphical Installation Wizard.
 
-You can install ownCloud entirely from the command line. After downloading the 
-tarball and copying ownCloud into the appropriate directories, or 
-after installing ownCloud packages (See 
-:doc:`../installation/linux_installation` and 
-:doc:`../installation/source_installation`) you can use ``occ`` commands in 
-place of running the graphical Installation Wizard.
+.. note::
+   These instructions assume that you have a fully working and configured webserver. If not, please refer to the documentation on :ref:`configuring the Apache web server <apache_configuration_label>` for detailed instructions.
 
-Apply correct permissions to your ownCloud directories; see 
-:ref:`strong_perms_label`. Then choose your ``occ`` options. This lists your 
-available options::
+Apply correct permissions to your ownCloud directories; see :ref:`strong_perms_label`. 
+Then choose your ``occ`` options. 
+This lists your available options::
 
  sudo -u www-data php /var/www/owncloud/occ
  ownCloud is not installed - only a limited number of commands are available
