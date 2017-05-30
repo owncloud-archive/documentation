@@ -130,6 +130,13 @@ It can be run, as follows, using the OCC command::
 
   occ versions:expire
 
+.. WARNING:: 
+   Please take care when adding ``ExpireTrash`` and ``ExpireVersions`` as `Cron`_ jobs.
+   Make sure that they’re not started in parallel on multiple machines. 
+   Running in parallel on a single machine is fine. 
+   But, currently, there isn’t sufficient locking in place to prevent them from conflicting 
+   with each other if running in parallel across multiple machines. 
+
 SyncJob (CardDAV)
 ^^^^^^^^^^^^^^^^^
 
