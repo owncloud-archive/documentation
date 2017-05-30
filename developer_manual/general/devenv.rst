@@ -63,8 +63,6 @@ Run make to pull in dependencies::
   cd /var/www/core
   make
 
-where <folder> is the folder where you want to install ownCloud.
-
 Adjust rights::
 
   sudo chown -R www-data:www-data /var/www/core/data/
