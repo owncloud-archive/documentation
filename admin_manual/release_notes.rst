@@ -57,7 +57,7 @@ If it does please use the same workaround.
 2. SAML authentication only works for users that have been synced to the account table with ``occ user:sync``.
 We will re-enable SSO for LDAP users with an update of the app in the market after completing internal testing.
 
-3. The web UI will `prevent uninstalling apps marked as shipped`_, e.g., ``user_ldap``.
+3. The web UI will prevent uninstalling apps marked as shipped, e.g., ``user_ldap``.
 To uninstall, disable the app with occ and rm the app directory.
 
 4. Moving files around in external storages, e.g., Windows Network Drive, outside of ownCloud will invalidate the metadata.
