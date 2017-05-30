@@ -130,7 +130,7 @@ examples will assume that you are trying to sign an application named
    --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts``
 
 The occ tool will store a ``signature.json`` file within the ``appinfo`` folder 
-of your application. Then compress the application folder and upload it to 
+of your application. Then compress the application folder (``contacts.tar.gz``) and upload it to 
 apps.owncloud.com. Be aware that doing any changes to the application after it 
 has been signed requires another signing. So if you do not want to have some 
 files shipped remove them before running the signing command.
