@@ -884,9 +884,6 @@ the server::
 
  sudo -u www-data php occ ldap:test-config s01
  The configuration is valid and the connection could be established!
- 
-``ldap:show-remnants`` is for cleaning up the LDAP mappings table, and is 
-documented in :doc:`../configuration_user/user_auth_ldap_cleanup`.
 
 ``ldap:update-group`` updates the specified group membership information stored
 locally.
