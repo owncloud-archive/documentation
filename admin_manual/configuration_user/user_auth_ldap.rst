@@ -555,9 +555,10 @@ If you have trouble with certificate validation make sure that
 * Using LDAPS, also make sure that the port is correctly configured (by default
   636)
 
-* If you get the error "Lost connection to LDAP server" or "No connection to LDAP server" 
-  then check the owner and permissions of the certificate. It needs to be readable by the 
-  Apache group.
+* If you get the error "Lost connection to LDAP server" or "No connection to
+  LDAP server" double check the connection parameters and try connecting to
+  ldap with tools like `ldapsearch`. If using ldaps or TLS make sure the 
+  certificate is readable by the user that is used to serve ownCloud.
 
 Microsoft Active Directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
