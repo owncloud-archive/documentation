@@ -19,6 +19,7 @@ ownCloud Server Configuration
    knowledgebase_configuration
    language_configuration
    logging_configuration
+   moving_data_directory
    harden_server
    reverse_proxy_configuration
    search_configuration
