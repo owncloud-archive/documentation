@@ -192,6 +192,9 @@ For other means on how to receive support please take a look at
 https://owncloud.org/support/. After fixing these problems verify by clicking 
 "Rescan…".
 
+If you aren't able to click on those links mentioned above, you can reach the output
+of the code integrity check via '/settings/integrity/failed' or '/index.php/settings/integrity/failed'.
+
 .. note:: When using a FTP client to upload those files make sure it is using the
    ``Binary`` transfer mode instead of the ``ASCII`` transfer mode.
    
