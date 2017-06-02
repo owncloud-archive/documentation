@@ -17,3 +17,4 @@ Table of Contents
     configuration_user/index
     issues/index
     enterprise/index
+    enterprise/appliance/index
