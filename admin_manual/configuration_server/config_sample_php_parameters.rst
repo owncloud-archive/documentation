@@ -991,6 +991,21 @@ minutes. Setting it to 0 disables the feature.
 
 See command line (occ) methods ldap:show-remnants and user:delete
 
+::
+
+    'user_ldap.enable_medial_search' => true
+    
+Conditionally allow medial searches, or the ability to be able to search in the middle of strings. 
+By default, when you search for a user your input string will match the beginning of the username. For example, if your LDAP server has ``"erl"`` and ``"peter"`` as users and you search with ``"er"``, only ``"erl"`` will be shown.
+Enabling this option allows you to overcome this limitation. 
+In the example above, when this option is active, searching for "er" will find both users.
+
+.. note:: Before enabling this option, take into account the following things:
+
+  1. This option affects all LDAP connections. It isn't possible to enable this option for a specific connection.
+  2. This option could have a performance impact on big LDAP installations. Check your LDAP provider how to enable indexes for medial searches if they're supported but not active.
+  3. The option will work regardless of whether the LDAP server has an index for this. Small LDAP installations could have an acceptable performance with this option active even if the LDAP doesn't have that index active.
+
 Comments
 --------
 
