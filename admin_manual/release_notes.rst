@@ -29,7 +29,7 @@ Settings
 Infrastructure
 ~~~~~~~~~~~~~~
 
-* **Client:** You need to update to `the latest desktop client version`_ (2.3).
+* **Client:** You need to update to `the latest desktop client version`_.
 * **Cron jobs:** The user account table has been reworked. As a result the Cron job for `syncing user backends`_, e.g., LDAP, needs to be configured.
 * **Logfiles:** App logs, e.g., auditing and owncloud.log, can now be split, see: https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/config_sample_php_parameters.html#logging.
 
@@ -642,3 +642,9 @@ LDAP Home Connector Linux Only
 
 The LDAP Home Connector application requires Linux (with MySQL, MariaDB, 
 or PostgreSQL) to operate correctly.
+
+.. Links
+   
+.. _the latest desktop client version: https://doc.owncloud.com/desktop/latest/
+.. _syncing user backends: configuration_server/occ_command.html#syncing-user-accounts
+.. _the new marketplace: https://marketplace.owncloud.com
