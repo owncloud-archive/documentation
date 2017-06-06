@@ -70,12 +70,13 @@ Desktop
 - Mac OS X 10.7+ (64-bit only)
 
 
+- Ubuntu 17.04
 - Ubuntu 16.10
 - Ubuntu 16.04
 - Ubuntu 14.04
 - Debian 7.0
 - Debian 8.0
-- CentOS 7
+- CentOS 7 (64-bit only)
 - Fedora 24
 - Fedora 25
 - openSUSE Leap 42.1
