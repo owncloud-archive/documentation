@@ -26,6 +26,15 @@ All themes, whether copied or new, must meet two key criteria, these are:
 1. They must be located in a directory under the ``apps`` directory of your ownCloud installation.
 2. They require a configuration file called ``appinfo/info.xml`` to be present.
 
+.. note:: 
+   When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_.
+   This is slightly complicated by the fact that without the file a warning will be displayed. 
+   However, this is to be corrected in the next release, 10.0.3.
+
+.. note::
+   You only need to sign your theme if you are going to publish it as an app in `the marketplace`_. 
+   If you are only creating a private theme for your own ownCloud installation, then you can get rid of the signature file.
+
 appinfo/info.xml
 ~~~~~~~~~~~~~~~~
 
@@ -331,4 +340,5 @@ If you think a new section should be added to core however, please create a PR w
 .. _Safari: https://developer.apple.com/safari/tools/
 .. _the guide on Can I Use: http://caniuse.com/#feat=css-gradients
 .. _this example: https://github.com/owncloud/core/blob/master/lib/private/Settings/SettingsManager.php#L195   
-
+.. _signed: /app/code_signing.html
+.. _the marketplace: https://marketplace.owncloud.com
