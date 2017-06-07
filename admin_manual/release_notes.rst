@@ -36,7 +36,10 @@ Infrastructure
 Known Issues
 ~~~~~~~~~~~
 
-1. Installing the LDAP user backend will trigger the installation twice, causing an SQL error such as the following:
+Installing the LDAP user backend will trigger the installation twice 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This causes an SQL error such as the following:
 
 .. code-block:: console
 
@@ -47,6 +50,7 @@ Known Issues
 
    SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ldap_user_mapping' already exists
 
+
 This can be safely ignored. 
 And the app can be used after enabling it. 
 Please be aware that when upgrading an existing ownCloud installation that already has ``user_ldap`` this error will not occur.
@@ -54,28 +58,37 @@ It was fixed by https://github.com/owncloud/core/pull/27982.
 However, this could happen for other apps as well that use ``database.xml``.
 If it does please use the same workaround.
 
-2. SAML authentication only works for users that have been synced to the account table with ``occ user:sync``.
+SAML authentication only works for users synced with ``occ user:sync``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 We will re-enable SSO for LDAP users with an update of the app in the market after completing internal testing.
 
-3. The web UI will prevent uninstalling apps marked as shipped, e.g., ``user_ldap``.
+The web UI prevents uninstalling apps marked as shipped, e.g., ``user_ldap``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To uninstall, disable the app with occ and rm the app directory.
 
-4. Moving files around in external storages, e.g., Windows Network Drive, outside of ownCloud will invalidate the metadata.
+Moving files around in external storages outside of ownCloud will invalidate the metadata
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 All shares, comments, and tags on the moved files will be lost.
 
-5. Existing LDAP users will only show up in the user management page and in the share dialog *after* they have been synced.
+Existing LDAP users only show up in the user management page and the share dialog after being synced
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The account table introduced in ownCloud 10.0.0 significantly reduces LDAP communication overhead. 
 Password checks are yet to be accounted for. 
 LDAP user metadata in the account table will be updated when users log in or when the administrator runs ``occ user:sync "OCA\User_LDAP\User_Proxy"``.
 We recommend `setting up a nightly Cron job`_ to keep metadata of users not actively logging in up to date.
 
-6. Error pages will not use the configured theme but will instead fall back to the community default.
+Error pages will not use the configured theme but will instead fall back to the community default
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Changes in 10.0.0
 -----------------
 
 * PHP 7.1 support added (supported PHP versions are 5.6 and 7.0+)
-* The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option "--skip-migration-tests" removed from update command)
+* The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option ``"--skip-migration-tests"`` removed from update command)
 * Requires to use the latest desktop client version 2.3
 * Third party apps are not disabled anymore when upgrading
 * User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts)
@@ -217,7 +230,7 @@ New option for the ownCloud admin to enable or disable sharing on individual ext
 (see :ref:`external_storage_mount_options_label`). Sharing on such mountpoints is disabled by default.
 
 Enterprise 9.0
---------------
+~~~~~~~~~~~~~~
 
 owncloud-enterprise packages are no longer available for CentOS 6, RHEL6, 
 Debian 7, or any version of Fedora. A new package, owncloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/
@@ -334,8 +347,8 @@ described in :ref:`use_https_label`.
 
 WebDAV file locking was removed in ownCloud 8.1 which causes Finder on Mac OS X to mount WebDAV read-only.
 
-Enterprise 8.1 Only
--------------------
+Enterprise 8.1 
+~~~~~~~~~~~~~~
 
 The SharePoint Drive application does not verify the SSL certificate of the SharePoint 
 server or the ownCloud server, as it is expected that both devices are in the 
@@ -443,8 +456,8 @@ on your ownCloud server.
 .. https://github.com/owncloud/core/issues/10657
 
 
-Enterprise 8.0 Only
--------------------
+Enterprise 8.0
+~~~~~~~~~~~~~~
 
 Sharepoint Drive SSL Not Verified
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -486,8 +499,8 @@ application Store is Back
 The ownCloud application Store has been re-enabled in ownCloud 8. Note that third-party apps 
 are not supported.
 
-ownCloud 7 Release Notes
-------------------------
+Changes in 7.0
+--------------
 
 Manual LDAP Port Configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -588,8 +601,8 @@ Zero Quota Not Read-Only
 Setting a user's storage quota should be the equivalent of read-only, however, 
 users can still create empty files.
 
-Enterprise 7 Only
------------------
+Enterprise 7.0
+~~~~~~~~~~~~~~
 
 No Federated Cloud Sharing with Shibboleth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
