@@ -29,7 +29,7 @@ All themes, whether copied or new, must meet two key criteria, these are:
 .. note:: 
    When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_.
    This is slightly complicated by the fact that without the file a warning will be displayed. 
-   However, this is to be corrected in the next release, 10.0.2.
+   However, this is to be corrected in the next release, 10.0.3.
 
 .. note::
    You only need to sign your theme if you are going to publish it as an app in `the marketplace`_. 
