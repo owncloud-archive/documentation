@@ -178,13 +178,13 @@ To run tests on ``mysql`` or ``pgsql`` you need a database user called "oc_autot
 
 - ``CREATE DATABASE oc_autotest;``
 - ``CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud';``
-- ``grant all on oc_autotest.* to 'oc_autotest'@'localhost';``
+- ``GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost';``
 
 *for parallel executor support with EXECUTOR_NUMBER=0:* 
 
 - ``CREATE DATABASE oc_autotest0;``
 - ``CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud';``
-- ``grant all on oc_autotest0.* to 'oc_autotest0'@'localhost';``
+- ``GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost';``
 
 **PGSQL setup**
 
