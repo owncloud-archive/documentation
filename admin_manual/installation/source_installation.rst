@@ -382,6 +382,8 @@ To use ``occ`` see :doc:`command_line_installation`.
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
+.. _strong_perms_label:
+
 Set Strong Directory Permissions
 --------------------------------
 
