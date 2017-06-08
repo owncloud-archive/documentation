@@ -172,6 +172,34 @@ Running Unit Tests for ownCloud Core
 
 The core project provides a script that runs all the core unit tests using the specified database backend like ``sqlite``, ``mysql``, ``pgsql``, ``oci`` (for Oracle), the default is ``sqlite``
 
+To run tests on ``mysql`` or ``pgsql`` you need a database user called "oc_autotest" with the password "owncloud". This user need the privilege to create and delete the database called "oc_autotest".
+
+**MySQL setup**
+
+- ``CREATE DATABASE oc_autotest;``
+- ``CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud';``
+- ``grant all on oc_autotest.* to 'oc_autotest'@'localhost';``
+
+*for parallel executor support with EXECUTOR_NUMBER=0:* 
+
+- ``CREATE DATABASE oc_autotest0;``
+- ``CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud';``
+- ``grant all on oc_autotest0.* to 'oc_autotest0'@'localhost';``
+
+**PGSQL setup**
+
+- ``su - postgres``
+- ``createuser -P oc_autotest`` (enter password "owncloud")
+- ``psql -c 'ALTER USER oc_autotest CREATEDB;'`` (to give the user the priveleged to create databases)
+- to enable dropdb I decided to add following line to ``pg_hba.conf`` (this is not the safest way but fine for a testing machine): ``local	all	all	trust``
+
+*for parallel executor support with EXECUTOR_NUMBER=0:*
+
+- ``su - postgres``
+- ``createuser -P oc_autotest0`` (enter password "owncloud")
+- ``psql -c 'ALTER USER oc_autotest0 CREATEDB;'`` (to give the user the priveleged to create databases)
+
+**run tests**
 ::
 
   make test-php
