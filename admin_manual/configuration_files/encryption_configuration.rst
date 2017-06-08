@@ -126,6 +126,9 @@ These are:
 
 .. warning:: If you already have Basic encryption enabled - you **must not** enable Master Key Based encryption.
 
+
+.. _occ_encryption_label:
+
 Enabling Master Key Based Encryption
 ------------------------------------
 
@@ -218,8 +221,6 @@ For users who have enabled password recovery, give them a new password and recov
 You may change your recovery key password.
 
 .. figure:: images/encryption12.png
-
-.. _occ_encryption_label:
    
 
 .. note::
