@@ -5,7 +5,7 @@ Virus Scanner Support
 Overview
 --------
 
-`ClamAV`_ is the only _officially_ supported virus scanner available for use
+`ClamAV`_ is the only *officially* supported virus scanner available for use
 with ownCloud. However, other anti-virus software can be used, so long as they: 
 
 - Can receive data streams via pipe on the command-line and return an exit code
@@ -34,9 +34,9 @@ stdout response to retrieve the result of the scan. Based on ownCloud's
 evaluation of the response, an appropriate response is then taken, such as
 recording a log message, or deleting the file. 
 
-.. important:: File Cache
+.. note:: **File Cache**
 
-ownCloud doesn't support a file cache of previously scanned files.
+   ownCloud doesn't support a file cache of previously scanned files.
 
 Configuring the ClamAV Antivirus Scanner
 ----------------------------------------
@@ -55,10 +55,9 @@ at scheduled intervals. ClamAV runs on Linux and any Unix-type operating system,
 and Microsoft Windows. You must first install ClamAV, and then install and
 configure the Antivirus App for Files on ownCloud.
 
-.. important:: Operating System Note
+.. note:: **Operating System Note**
 
-ownCloud has only been tested with ownCloud on Linux, so these instructions
-are for Linux systems.
+   ownCloud has only been tested with ownCloud on Linux, so these instructions are for Linux systems.
 
 Installing ClamAV
 -----------------
