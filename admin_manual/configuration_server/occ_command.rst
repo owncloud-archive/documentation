@@ -1328,7 +1328,7 @@ authentication servers such as LDAP::
 Syncing User Accounts
 ^^^^^^^^^^^^^^^^^^^^^
 
-This command syncs users stored in external backend services, such as _LDAP_, _Shibboleth_, and _Samba_, with ownCloud’s internal user database.
+This command syncs users stored in external backend services, such as *LDAP*, *Shibboleth*, and *Samba*, with ownCloud’s internal user database.
 But, it’s not essential to run it regularly, unless you have a large number of users who’s account properties have changed in a backend outside of ownCloud.
 When run, it will pick up changes from alternative user backends, such as LDAP where properties like ``cn`` or ``display name`` have changed.
 
