@@ -1,6 +1,6 @@
-===================================
-Preferred Linux Installation Method
-===================================
+=============================
+Preferred Installation Method
+=============================
 
 For production environments, we recommend the installation from the tar archive. 
 This applies in particular to scenarios, where the Web server, storage and database are on separate machines. 
@@ -64,8 +64,8 @@ Installation Wizard to complete your installation. (see
 See the :doc:`system_requirements` for the recommended ownCloud setup and 
 supported platforms.
 
-Repos: Stable or Major Release?
--------------------------------
+Repositories
+------------
 
 You may use either of the following repositories for ownCloud 9.1:
 
@@ -84,31 +84,17 @@ to the next major release before you're ready.
 Installing ownCloud Enterprise Edition
 --------------------------------------
 
-See :doc:`../enterprise_installation/linux_installation` for instructions on 
+See :doc:`../enterprise/installation/install` for instructions on 
 installing ownCloud Enterprise edition.
 
-Downgrading Not Supported
--------------------------
+Downgrading
+-----------
 
 Downgrading is not supported and risks corrupting your data! If you want to 
 revert to an older ownCloud version, install it from scratch and then restore 
 your data from backup. Before doing this, file a support ticket (if you have 
 paid support) or ask for help in the ownCloud forums to see if your issue can be 
 resolved without downgrading.
-
-BINLOG_FORMAT = STATEMENT
--------------------------
-
-If your ownCloud installation fails and you see this in your ownCloud log::
-
- An unhandled exception has been thrown: exception ‘PDOException’ with message 
- 'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to 
- write to binary log since BINLOG_FORMAT = STATEMENT and at least one table 
- uses a storage engine limited to row-based logging. InnoDB is limited to 
- row-logging when transaction isolation level is READ COMMITTED or READ 
- UNCOMMITTED.'
-
-See :ref:`db-binlog-label`.
 
 Additional Installation Guides and Notes
 ----------------------------------------

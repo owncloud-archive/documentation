@@ -1,172 +1,168 @@
-===================
-Installation Wizard
-===================
+=======================
+The Installation Wizard
+=======================
 
 Quick Start
 -----------
 
-When ownCloud prerequisites are fulfilled and all ownCloud files are installed, 
-the last step to completing the installation is running the Installation 
-Wizard. 
-This is just three steps:
+When the ownCloud prerequisites are fulfilled and all ownCloud files are installed, the last step to completing the installation is running the Installation Wizard. 
+This involves just three steps:
 
-#. Point your Web browser to ``http://localhost/owncloud``
+#. Point your web browser to ``http://localhost/owncloud``
 #. Enter your desired administrator's username and password.
-#. Click **Finish Setup**.
+#. Click "Finish Setup".
 
 .. figure:: images/install-wizard-a.png
    :scale: 75%
    :alt: screenshot of the installation wizard   
    
-You're finished and can start using your new ownCloud server.   
+You're now finished and can start using your new ownCloud server.   
+Of course, there is much more that you *can* do to set up your ownCloud server for best performance and security. 
+In the following sections we will cover important installation and post-installation steps. 
+Note that you must follow the instructions in :ref:`Setting Strong Permissions <strong_perms_label>` in order to use the :doc:`occ Command <../configuration_server/occ_command>`.
 
-Of course, there is much more that you can do to set up your ownCloud server for 
-best performance and security. In the following sections we will cover important 
-installation and post-installation steps. Note that you must follow the 
-instructions in :ref:`Setting Strong Permissions <strong_perms_label>` in order 
-to use the :doc:`occ Command <../configuration_server/occ_command>`.
+In-Depth Guide
+--------------
 
-* :ref:`Data Directory Location <data_directory_location_label>`
-* :ref:`Database Choice <database_choice_label>`
-* :ref:`Setting Strong Permissions <strong_perms_label>`
+This section provides a more detailed guide to the installation wizard.
+Specifically, it is broken down into three steps:
+
+#. :ref:`Data Directory Location <data_directory_location_label>`
+#. :ref:`Database Choices <database_choice_label>`
+#. :ref:`Post-Installation Steps <post_installation_steps_label>`
 
 .. _data_directory_location_label:
 
 Data Directory Location
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
-Click **Storage and Database** to expose additional installation configuration 
+Click "Storage and Database" to expose additional installation configuration 
 options for your ownCloud data directory and database.
 
 .. figure:: images/install-wizard-a1.png
    :scale: 75%
    :alt: installation wizard with all options exposed
 
-You should locate your ownCloud data directory outside of your Web root if you 
-are using an HTTP server other than Apache, or you may wish to store your 
-ownCloud data in a different location for other reasons (e.g. on a storage 
-server). It is best to configure your data directory location at installation, 
-as it is difficult to move after installation. You may put it anywhere; in this 
-example is it located in ``/var/oc_data``. This directory must already exist, 
-and must be owned by your HTTP user (see 
-:ref:`strong_perms_label`).
+You should locate your ownCloud data directory outside of your Web root if you are using an HTTP server other than Apache, or you may wish to store your ownCloud data in a different location for other reasons (e.g. on a storage server). 
+
+It is best to configure your data directory location at installation, as it is difficult to move after installation. You may put it anywhere; in this example is it located in ``/var/oc_data``. 
+This directory must already exist, and must be owned by your HTTP user (see :ref:`strong_perms_label`).
 
 .. _database_choice_label:
 
-Database Choice
----------------
+Database Choices
+^^^^^^^^^^^^^^^^
 
-When installing ownCloud Server & ownCloud Enterprise editions the administrator
-may choose one of 3 supported database products.
+When installing ownCloud Server & ownCloud Enterprise editions the administrator may choose one of 4 supported database products.
+These are:
+
+- `SQLite`
+- `MYSQL/MariaDB`
+- `PostgreSQL`
+- `Oracle 11g` (Enterprise-edition only)
 
 SQLite
-^^^^^^
-Is the default database for ownCloud Server, but is not available and not supported
-for the ownCloud Enterprise edition.
+~~~~~~
 
-SQLite will be installed by the ownCloud packages and all the necessary dependencies
-will be satisfied.  See see :doc:`source_installation` for a detailed listing of
-required and optional PHP modules.
+SQLite is the default database for ownCloud Server — but is not supported by the ownCloud Enterprise edition.
 
-If you used the packages to install ownCloud, you may "Finish Setup" with no
-additional steps to configure ownCloud using the SQLite database for limited use.
+.. note::
+   SQLite is only good for testing and lightweight single user setups.
+   It has no client synchronization support, so other devices will not be able to synchronize with the data stored in an ownCloud SQLite database.
 
-Please note that SQLite is good only for testing and lightweight single user setups.
-There is no client synchronization support.  Therefore, other devices will not be able
-to synchronize with the data stored in an ownCloud SQLite database.
+SQLite will be installed by the ownCloud package and all the necessary dependencies will be satisfied.  
+If you used the package manager to install ownCloud, you may "Finish Setup" with no additional steps to configure ownCloud using the SQLite database for limited use.
 
 MYSQL/MariaDB
-^^^^^^^^^^^^^
-Is the ownCloud recommended database. See :doc:`MySQL/MariaDB <system_requirements>`.
+~~~~~~~~~~~~~
+
+MariaDB is the ownCloud recommended database. 
 It may be used with either ownCloud Server or ownCloud Enterprise editions.
+To install the recommended MySQL/MariaDB database, use the following command:
 
-First you should install the recommended MySQL/MariaDB database.  Use package: 
-  ``sudo apt-get install mariadb-server``
+::
 
-If you have an administrator login that has permissions to create and modify databases,
-you may choose "Storage & Database".  Then enter your database administrator name, 
-password and any name you want for your ownCloud database.
+  sudo apt-get install mariadb-server
 
-Otherwise, use these steps to create temporary database administrator account.
+If you have an administrator login that has permissions to create and modify databases, you may choose "Storage & Database".  
+Then, enter your database administrator username and password, and the name you want for your ownCloud database.
+Alternatively, you can use these steps to create a temporary database administrator account.
 
-  | ``sudo mysql --user=root mysql``
-  |
-  | ``CREATE USER 'dbadmin'@'localhost' IDENTIFIED BY 'Apassword';``
-  | ``GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'localhost' WITH GRANT OPTION;``
-  | ``FLUSH PRIVILEGES;``
-  |
-  | ``exit``
+:: 
+  
+  sudo mysql --user=root mysql
+  CREATE USER 'dbadmin'@'localhost' IDENTIFIED BY 'Apassword';
+  GRANT ALL PRIVILEGES ON *.* TO 'dbadmin'@'localhost' WITH GRANT OPTION;
+  FLUSH PRIVILEGES;
+  exit
+
+For more detailed information, see :doc:`MySQL/MariaDB <system_requirements>`.
 
 PostgreSQL
-^^^^^^^^^^
-Is also supported by ownCloud.
+~~~~~~~~~~
 
-To install PostgreSQL, use the apt-get (or other apt-driving) command: 
-	``sudo apt-get install postgresql``
+`PostgreSQL <http://www.postgresql.org>`_ is also supported by ownCloud.
+To install it, use the following command (or that of your preferred package manager): 
 
-You may view more information about the PostgreSQL database system at: 
-  ``http://www.postgresql.org``
+::
 
-In order to allow ownCloud access to the database, create a known password for the
-default user "postgres" added when the database is installed.
-	
-  | ``sudo -i -u postgres psql``
-  |	
-  | ``postgres=# \password``
-  | ``Enter new password:`` 
-  | ``Enter it again:``
-  | ``postgres=# \q``
-  |	
-  | ``exit``
+    sudo apt-get install postgresql
 
-Oracle11g
-^^^^^^^^^
-Is only supported for the ownCloud Enterprise edition.
+In order to allow ownCloud access to the database, create a known password for the default user, ``postgres``, which was added when the database was installed.
 
+::
+
+  sudo -i -u postgres psql
+  postgres=# \password
+  Enter new password: 
+  Enter it again:
+  postgres=# \q
+  exit
+
+Oracle 11g
+~~~~~~~~~~
+
+Oracle 11g is only supported for the ownCloud Enterprise edition.
 
 Database Setup By ownCloud
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
-Your database and PHP connectors must be installed before you run the Installation Wizard
-by clicking the "Finish setup" button.
 
-After you enter your temporary or root administrator login for your database, the installer
-creates a special database user with privileges limited to the ownCloud database. Then ownCloud
-needs only this special ownCloud database user and drops the temporary or root database login. 
+Your database and PHP connectors must be installed before you run the Installation Wizard by clicking the "Finish setup" button.
+After you enter your temporary or root administrator login for your database, the installer creates a special database user with privileges limited to the ownCloud database. 
 
-This new user is named from your ownCloud admin user, with an ``oc_`` prefix, and then given a
-random password.  The ownCloud database user and password are written into config.ph:
+Following this, ownCloud needs only this special ownCloud database user and drops the temporary or root database login. 
+This new user is named from your ownCloud admin user, with an ``oc_`` prefix, and given a random password.  
+The ownCloud database user and password are written into ``config.php``:
 
-| For MySQL/MariaDB:
-|   ``'dbuser' => 'oc_dbadmin',``
-|   ``'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',``
+For MySQL/MariaDB:
 
-| For PostgreSQL:
-|   ``'dbuser' => 'oc_postgres',``
-|   ``'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',``
+::
+
+  'dbuser' => 'oc_dbadmin',
+  'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',
+
+For PostgreSQL:
+
+::
+
+  'dbuser' => 'oc_postgres',
+  'dbpassword' => 'pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm',
 
 
-Click Finish Setup, and start using your new ownCloud server. 
-
-.. figure:: images/install-wizard-a2.png
-   :scale: 75%
-   :alt: ownCloud welcome screen after a successful installation
+Click Finish Setup, and you're ready to start using your new ownCloud server. 
+  
+.. _post_installation_steps_label:
+ 
+Post-Installation Steps
+-----------------------
 
 Now we will look at some important post-installation steps.
-  
-.. _strong_perms_label:
- 
-Setting Strong Directory Permissions
-------------------------------------
+For hardened security we recommend setting the permissions on your ownCloud directories as strictly as possible, and for proper server operations. 
+This should be done immediately after the initial installation and before running the setup. 
 
-For hardened security we recommend setting the permissions on your ownCloud 
-directories as strictly as possible, and for proper server operations. This 
-should be done immediately after the initial installation and before running the 
-setup. Your HTTP user must own the ``config/``, ``data/`` and ``apps/`` directories 
-so that you can configure ownCloud, create, modify and delete your data files, 
-and install apps via the ownCloud Web interface. 
+Your HTTP user must own the ``config/``, ``data/`` and ``apps/`` directories so that you can configure ownCloud, create, modify and delete your data files, and install apps via the ownCloud Web interface. 
 
-You can find your HTTP user in your HTTP server configuration files. Or you can 
-use :ref:`label-phpinfo` (Look for the **User/Group** line).
+You can find your HTTP user in your HTTP server configuration files, or you can use :ref:`label-phpinfo` (Look for the **User/Group** line).
 
 * The HTTP user and group in Debian/Ubuntu is ``www-data``.
 * The HTTP user and group in Fedora/CentOS is ``apache``.
@@ -231,11 +227,8 @@ different than the standard installation, then modify this script accordingly.
 This lists the recommended modes and ownership for your ownCloud directories 
 and files:
 
-* All files should be read-write for the file owner, read-only for the 
-  group owner, and zero for the world
-* All directories should be executable (because directories always need the 
-  executable bit set), read-write for the directory owner, and read-only for 
-  the group owner
+* All files should be read-write for the file owner, read-only for the group owner, and zero for the world
+* All directories should be executable (because directories always need the executable bit set), read-write for the directory owner, and read-only for the group owner
 * The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
@@ -246,6 +239,4 @@ and files:
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
   world
 
-These strong permissions prevent upgrading your ownCloud server; 
-see :ref:`set_updating_permissions_label` for a script to quickly change 
-permissions to allow upgrading.
+These strong permissions prevent upgrading your ownCloud server; see :ref:`set_updating_permissions_label` for a script to quickly change permissions to allow upgrading.

@@ -1,6 +1,6 @@
-============================
-NGINX Example Configurations
-============================
+===================
+NGINX Configuration
+===================
 
 This page covers example NGINX configurations to use with running an ownCloud 
 server. Note that NGINX is not officially supported, and this page is 
