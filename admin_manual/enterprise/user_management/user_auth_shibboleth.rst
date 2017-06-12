@@ -189,7 +189,7 @@ allows another user backend, e.g., the LDAP app, to provide the ``displayname``,
     environment variable and tries to find an LDAP user with that ``uid``. For 
     this to work the LDAP backend also needs to be configured to use the
     **sAMAccountName** as the **Internal Username Attribute** in the
-    :doc:`LDAP expert settings <../../configuration_user/user_auth_ldap>`.
+    :doc:`LDAP expert settings <../../configuration/user/user_auth_ldap>`.
 
  .. note:: In many scenarios Shibboleth is not intended to hide the user's
     password from the service provider, but only to implement SSO. If that is

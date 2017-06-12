@@ -23,7 +23,7 @@ to keep the ``php.ini`` at their defaults.
 session.auto_start && enable_post_data_reading
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Ensure that `session.auto_start`_ is set to ``0`` or ``Off`` and `enable_post_data_reading`_
+Ensure that ``session.auto_start`` is set to ``0`` or ``Off`` and ``enable_post_data_reading``
 to ``1`` or ``On`` in your configuration. If not, you may have issues logging in
 to ownCloud via the WebUI, where you see the error: "*Access denied. CSRF check
 failed*".
@@ -142,11 +142,5 @@ Information on how to correctly configure your environment can be found `in the 
 Other Web Servers
 -----------------
 
-:doc:`nginx_examples`
-
-
-`Other HTTP servers 
-<https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
-
-`Univention Corporate Server installation 
-<https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+- `Other HTTP servers <https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
+- `Univention Corporate Server installation <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_

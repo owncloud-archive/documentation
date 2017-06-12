@@ -129,7 +129,7 @@ Block by System Tag::
 Custom Configuration for Branded Clients
 ----------------------------------------
 
-If you are using :doc:`branded ownCloud clients <../enterprise_clients/index>`, 
+If you are using :doc:`branded ownCloud clients <../clients/index>`, 
 you may define ``firewall.branded_clients`` in your ``config.php`` to identify 
 your branded clients in the firewall **"User Device"** rule.
 

@@ -73,7 +73,7 @@ This example is for CentOS/RHEL/Fedora::
 The optional parameter to skip migration tests during this step was removed in oC 9.2.
 See :ref:`migration_test_label` for background information.
 
-See :doc:`../configuration_server/occ_command` to learn more.
+See :doc:`../configuration/server/occ_command` to learn more.
 
 Setting Strong Directory Permissions
 ------------------------------------
