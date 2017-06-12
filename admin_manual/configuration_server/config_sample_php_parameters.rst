@@ -1290,22 +1290,25 @@ Consult the documentation for more details.
 MySQL requires a special setup for longer indexes (> 767 bytes) which are
 needed:
 
-[mysqld]
-innodb_large_prefix=ON
-innodb_file_format=Barracuda
-innodb_file_per_table=ON
+::
+
+  [mysqld]
+  innodb_large_prefix=ON
+  innodb_file_format=Barracuda
+  innodb_file_per_table=ON
 
 Tables will be created with
- * character set: utf8mb4
- * collation:     utf8mb4_bin
- * row_format:    compressed
+ * character set: ``utf8mb4``
+ * collation:     ``utf8mb4_bin``
+ * row_format:    ``compressed``
 
 See:
-https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
-https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
-https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
-http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
-http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
+
+- https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
+- https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
+- https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
+- http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
+- http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
 
 ::
 
