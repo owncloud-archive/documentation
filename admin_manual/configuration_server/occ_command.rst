@@ -740,9 +740,6 @@ you can run the following LDAP commands with ``occ``::
   ldap:search                   executes a user or group search
   ldap:set-config               modifies an LDAP configuration
   ldap:show-config              shows the LDAP configuration
-  ldap:show-remnants            shows which users are not available on 
-                                LDAP anymore, but have remnants in 
-                                ownCloud.
   ldap:test-config              tests an LDAP configuration
   ldap:update-group             update the specified group membership
                                 information stored locally

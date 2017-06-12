@@ -985,11 +985,9 @@ Global settings used by LDAP User and Group Backend
 
 	'ldapUserCleanupInterval' => 51,
 
-defines the interval in minutes for the background job that checks user
-existence and marks them as ready to be cleaned up. The number is always
-minutes. Setting it to 0 disables the feature.
-
-See command line (occ) methods ldap:show-remnants and user:delete
+This defines the interval in minutes for the background job that checks user existence and marks them as ready to be cleaned up. 
+The number is always minutes. 
+Setting it to ``0`` disables the feature.
 
 Comments
 --------
