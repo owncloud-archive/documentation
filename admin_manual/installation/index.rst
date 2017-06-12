@@ -16,6 +16,5 @@ Installation
    changing_the_web_route
    apps_management_installation
    apps_supported
-   appliance_installation
    selinux_configuration
    nginx_configuration
