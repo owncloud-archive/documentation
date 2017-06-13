@@ -310,10 +310,10 @@ References
 .. _Maintenance: 
    https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html
 .. _User Authentication with LDAP:
-   https://doc.owncloud.org/server/9.0/admin_manual/configuration_user/    
+   https://doc.owncloud.org/server/10.0/admin_manual/configuration/user/    
    user_auth_ldap.html
 .. _Configuring Memory Caching:   
-   https://doc.owncloud.org/server/9.0/admin_manual/configuration_server/ 
+   https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/ 
    caching_configuration.html
 .. _ownCloud Server or Enterprise Edition:  
    https://owncloud.com/owncloud-server-or-enterprise-edition/

@@ -4,7 +4,7 @@ Maintenance Mode Configuration
 
 You must put your ownCloud server into maintenance mode before performing 
 upgrades, and for performing troubleshooting and maintenance. Please 
-see :doc:`../configuration_server/occ_command` to learn how to put your server into 
+see :doc:`../configuration/server/occ_command` to learn how to put your server into 
 the various maintenance modes (``maintenance:mode, maintenance:singleuser``, 
 and ``maintenance:repair``) with the ``occ`` command.
 

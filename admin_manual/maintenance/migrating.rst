@@ -124,14 +124,15 @@ Backup the database::
    mysqldump --single-transaction -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
 
 .. note:: You can find the values for the mysqldump command in your config.php at your owncloud directory.
-[server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
+   [server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
 
 .. note:: For InnoDB tables only:
-The --single-transaction flag will start a transaction before running. Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.
+   
+   The --single-transaction flag will start a transaction before running. Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.
 
-For Mixed MyISAM / InnoDB tables:
-Either dumping your MyISAM tables separately from InnoDB tables or use --lock-tables instead of --single-transaction to guarantee the database is in a consistent state when using mysqldump.
-
+.. note:: For Mixed MyISAM / InnoDB tables:
+   
+   Either dumping your MyISAM tables separately from InnoDB tables or use --lock-tables instead of --single-transaction to guarantee the database is in a consistent state when using mysqldump.
 
 Export the database **to** new server::
 
@@ -145,7 +146,7 @@ Import the database **on** new server::
 
       rsync -Aavxt config data root@new_server_address:/var/www/owncloud 
 
-.. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do this as a second step. Please see the datadirectory migration document :ref:`datadir_move_label` for more details.
+.. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do this as a second step. Please see the data directory migration document :ref:`datadir_move_label` for more details.
 
 4. Finish the migration:
 
@@ -194,7 +195,6 @@ Restart ssh service::
    service ssh stop
    service ssh start
 
-6.
-Change the CNAME entry in the DNS to point your users to the new location.
+6. Change the CNAME entry in the DNS to point your users to the new location.
 
 .. note:: If you have not only migrated phyiscally from server to server but also use a new domain name to access your instance, you need to update (add the new domain) the Trusted Domain setting in config.php at the target server.
