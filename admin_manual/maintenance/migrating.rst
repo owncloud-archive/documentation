@@ -19,7 +19,7 @@ To start, let us be specific about the use case. A configured ownCloud instance 
 
 #.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :ref:`backup_database_label` and :ref:`restore_database_label`).
 
-#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backing-up-the-config-and-data-directories` and :ref:`restore_directories_label`). 
+#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :ref:`restore_directories_label`). 
 
 .. note:: You must keep the ``data/`` directory's original filepath. Do not change this!
 
@@ -126,14 +126,15 @@ Backup the database::
    mysqldump --single-transaction -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
 
 .. note:: You can find the values for the mysqldump command in your config.php at your owncloud directory.
-[server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
+   [server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
 
 .. note:: For InnoDB tables only:
-The --single-transaction flag will start a transaction before running. Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.
+   
+   The --single-transaction flag will start a transaction before running. Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.
 
-For Mixed MyISAM / InnoDB tables:
-Either dumping your MyISAM tables separately from InnoDB tables or use --lock-tables instead of --single-transaction to guarantee the database is in a consistent state when using mysqldump.
-
+.. note:: For Mixed MyISAM / InnoDB tables:
+   
+   Either dumping your MyISAM tables separately from InnoDB tables or use --lock-tables instead of --single-transaction to guarantee the database is in a consistent state when using mysqldump.
 
 Export the database **to** new server::
 
@@ -147,7 +148,7 @@ Import the database **on** new server::
 
       rsync -Aavxt config data root@new_server_address:/var/www/owncloud 
 
-.. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do this as a second step. Please see the datadirectory migration document :ref:`datadir_move_label` for more details.
+.. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do this as a second step. Please see the data directory migration document :ref:`datadir_move_label` for more details.
 
 4. Finish the migration:
 

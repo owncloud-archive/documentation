@@ -19,7 +19,7 @@ There are three ways to upgrade your ownCloud server:
   preserving your existing ``data/`` and ``config/`` files.
 * Enterprise customers will use their Enterprise software 
   repositories to maintain their ownCloud servers, rather than the Open Build 
-  Service. Please see :doc:`../enterprise_installation/linux_installation` for 
+  Service. Please see :doc:`../enterprise/installation/install` for 
   more information.
 
 .. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks

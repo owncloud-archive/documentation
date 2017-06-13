@@ -19,7 +19,7 @@ This involves just three steps:
 You're now finished and can start using your new ownCloud server.   
 Of course, there is much more that you *can* do to set up your ownCloud server for best performance and security. 
 In the following sections we will cover important installation and post-installation steps. 
-Note that you must follow the instructions in :ref:`Setting Strong Permissions <strong_perms_label>` in order to use the :doc:`occ Command <../configuration_server/occ_command>`.
+Note that you must follow the instructions in :ref:`Setting Strong Permissions <strong_perms_label>` in order to use the :doc:`occ Command <../configuration/server/occ_command>`.
 
 In-Depth Guide
 --------------
