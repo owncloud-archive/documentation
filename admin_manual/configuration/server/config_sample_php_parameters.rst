@@ -289,11 +289,11 @@ which can be used as passwords on their clients.
 
 Disable ownCloud's built-in CSRF protection mechanism.
 
-In some specific setups CSRF protection is handled in the environment, e.g.,
-running F5 ASM. In these cases the built-in mechanism is not needed and can be disabled.
+In some specific setups CSRF protection is handled in the environment, e.g., by running F5 ASM. 
+In these cases the built-in mechanism is not needed and can be disabled.
 Generally speaking, however, this config switch should be left unchanged.
 
-WARNING: leave this as is if you're not sure what it does
+.. warning:: Leave this as is if you're not sure what it does.
 
 ::
 
@@ -1228,11 +1228,12 @@ exclusive access to the object store container because it only stores the
 binary data for each file. The metadata is currently kept in the local
 database for performance reasons.
 
-WARNING: The current implementation is incompatible with any app that uses
-direct file IO and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
+.. warning:: 
+   The current implementation is incompatible with any app that uses direct file
+   IO and circumvents our virtual filesystem. That includes Encryption and
+   Gallery. Gallery will store thumbnails directly in the filesystem and
+   encryption will cause severe overhead because key files need to be fetched in
+   addition to any requested file.
 
 One way to test is applying for a trystack account at http://trystack.org/
 
@@ -1351,7 +1352,7 @@ Using a higher value requires more time and CPU power to calculate the hashes
 Blacklist a specific file or files and disallow the upload of files
 with this name. ``.htaccess`` is blocked by default.
 
-WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
+.. warning:: Use this only if you know what you are doing.
 
 ::
 
@@ -1368,7 +1369,8 @@ Excluded directory names are queried at any path part like at the beginning,
 in the middle or at the end and will not be further processed if found.
 Please see the documentation for details and examples.
 Use when the storage backend supports eg snapshot directories to be excluded.
-WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
+
+.. warning:: Use this only if you know what you are doing.
 
 ::
 
@@ -1408,8 +1410,8 @@ clients or other unexpected results.
 
 	'quota_include_external_storage' => false,
 
-EXPERIMENTAL: option whether to include external storage in quota
-calculation, defaults to false.
+.. note:: 
+   The option of whether to include external storage in quota calculation defaults to false.
 
 ::
 
@@ -1594,7 +1596,7 @@ This enables debug logs for the windows_network_drive app.
 Overriding Existing Parameter Values Using Environment Variables
 ----------------------------------------------------------------
 
-ownCloud supports the ability to override the *web UI*, *command line*, and *Cron* environments’ settings by using `environment variables`_.
+ownCloud supports the ability to override the *web UI*, *command line*, and *Cron* environment settings by using environment variables.
 By doing so, you avoid the need to store credentials and other sensitive data in code. 
 What’s more, by using environment variables, you do not have to manage configurations (e.g., database connections) for different server environments, because environment variables store this information for you.
 
