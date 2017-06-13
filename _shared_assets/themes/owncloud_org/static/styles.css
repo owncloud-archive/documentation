@@ -387,6 +387,34 @@ li.next {
   max-width: 100%;
 }
 
+/* -- Start specific css for legibility -- */
+
+h2, h3, h4, h5, h6 {
+  font-weight: bold;
+  margin-top: 30px;
+}
+
+.page-content img {
+  margin-bottom: 25px;
+}
+
+.admonition.note {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+ul, ol {
+  margin-bottom: 20px;
+}
+
+/* Match all code highlight blocks, regardless of language */
+div[class*='highlight'] {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+
+/* -- End specific css for legibility -- */
+
 @media (min-width: 1200px) {
   .banner ul#menu-header.nav>li:not(.menu-install)>a {
 	width: auto;
