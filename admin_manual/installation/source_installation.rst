@@ -387,11 +387,8 @@ To use the graphical Installation Wizard see :doc:`installation_wizard`.
 Set Strong Directory Permissions
 --------------------------------
 
-After completing installation, you must immediately set the directory 
-permissions in your ownCloud installation as strictly as possible for stronger 
-security. Please refer to :ref:`strong_perms_label`.
-
-Now your ownCloud server is ready to use.
+After completing installation, you must immediately :ref:`set the directory permissions <post_installation_steps_label>` in your ownCloud installation as strictly as possible for stronger security. 
+After you do so, your ownCloud server will be ready to use.
 
 Configuration Notes and Tips
 ----------------------------
