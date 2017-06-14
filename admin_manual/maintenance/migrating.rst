@@ -19,9 +19,7 @@ To start, let us be specific about the use case. A configured ownCloud instance 
 
 #.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :ref:`backup_database_label` and :ref:`restore_database_label`).
 
-#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :ref:`restore_directories_label`). 
-
-.. note:: You must keep the ``data/`` directory's original filepath. Do not change this!
+#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backing-up-the-config-and-data-directories` and :ref:`restore_directories_label`). You must keep the ``data/`` directory's original filepath. Please, **do not change this!**
 
 #. The data files should keep their original timestamp (can be done by using ``rsync`` with ``-t`` option) otherwise the clients will re-download all the files after the migration. This step might take several hours, depending on your installation.
 
@@ -197,7 +195,6 @@ Restart ssh service::
    service ssh stop
    service ssh start
 
-6.
-Change the CNAME entry in the DNS to point your users to the new location.
+6. Change the CNAME entry in the DNS to point your users to the new location.
 
 .. note:: If you have not only migrated phyiscally from server to server but also use a new domain name to access your instance, you need to update (add the new domain) the Trusted Domain setting in config.php at the target server.
