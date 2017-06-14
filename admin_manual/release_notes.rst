@@ -42,12 +42,15 @@ Infrastructure
 
 * **Client:** You need to update to `the latest desktop client version`_.
 * **Cron jobs:** The user account table has been reworked. As a result the Cron job for `syncing user backends`_, e.g., LDAP, needs to be configured.
-* **Logfiles:** App logs, e.g., auditing and owncloud.log, can now be split, see: https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/config_sample_php_parameters.html#logging.
+* **Logfiles:** App logs, e.g., auditing and owncloud.log, can now be split, see: https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/config_sample_php_parameters.html#logging.
 
 Known Issues
-~~~~~~~~~~~
+~~~~~~~~~~~~
 
-1. Installing the LDAP user backend will trigger the installation twice, causing an SQL error such as the following:
+Installing the LDAP user backend will trigger the installation twice 
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This causes an SQL error such as the following:
 
 .. code-block:: console
 
@@ -58,6 +61,7 @@ Known Issues
 
    SQLSTATE[42S01]: Base table or view already exists: 1050 Table 'ldap_user_mapping' already exists
 
+
 This can be safely ignored. 
 And the app can be used after enabling it. 
 Please be aware that when upgrading an existing ownCloud installation that already has ``user_ldap`` this error will not occur.
@@ -65,22 +69,31 @@ It was fixed by https://github.com/owncloud/core/pull/27982.
 However, this could happen for other apps as well that use ``database.xml``.
 If it does please use the same workaround.
 
-2. SAML authentication only works for users that have been synced to the account table with ``occ user:sync``.
+SAML authentication only works for users synced with ``occ user:sync``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 We will re-enable SSO for LDAP users with an update of the app in the market after completing internal testing.
 
-3. The web UI will prevent uninstalling apps marked as shipped, e.g., ``user_ldap``.
+The web UI prevents uninstalling apps marked as shipped, e.g., ``user_ldap``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 To uninstall, disable the app with occ and rm the app directory.
 
-4. Moving files around in external storages, e.g., Windows Network Drive, outside of ownCloud will invalidate the metadata.
+Moving files around in external storages outside of ownCloud will invalidate the metadata
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 All shares, comments, and tags on the moved files will be lost.
 
-5. Existing LDAP users will only show up in the user management page and in the share dialog *after* they have been synced.
+Existing LDAP users only show up in the user management page and the share dialog after being synced
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 The account table introduced in ownCloud 10.0.0 significantly reduces LDAP communication overhead. 
 Password checks are yet to be accounted for. 
 LDAP user metadata in the account table will be updated when users log in or when the administrator runs ``occ user:sync "OCA\User_LDAP\User_Proxy"``.
 We recommend `setting up a nightly Cron job`_ to keep metadata of users not actively logging in up to date.
 
-6. Error pages will not use the configured theme but will instead fall back to the community default.
+Error pages will not use the configured theme but will instead fall back to the community default
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. _10.0.0_release_notes_label:
 
@@ -88,10 +101,10 @@ Changes in 10.0.0
 -----------------
 
 * PHP 7.1 support added (supported PHP versions are 5.6 and 7.0+)
-* The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option "--skip-migration-tests" removed from update command)
+* The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option ``"--skip-migration-tests"`` removed from update command)
 * Requires to use the latest desktop client version 2.3
 * Third party apps are not disabled anymore when upgrading
-* User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration_server/occ_command.html#syncing-user-accounts)
+* User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/occ_command.html#syncing-user-accounts)
 * LDAP app is not released with ownCloud 10.0.0 and will be released on the marketplace after some more QA
 * files_drop app is not shipped anymore as it's integrated with core now. Since migrations are not possible you will have to reconfigure your drop folders (in the 'Public Link' section of the sharing dialog of the respective folders).
 * SAML/Shibboleth with device-specific app passwords: No migration possible; Users need to regenerate device-specific app passwords in the WebUI and enter those in their clients.
@@ -116,8 +129,8 @@ Changes in 9.1
   notifications API.
 * Multi-bucket support for primary objectstore integration
 * Support for Internet Explorer below version 11 was dropped
-* Symlinks pointing outside of the data directory are disallowed. Please use the :doc:`configuration_files/external_storage_configuration_gui`
-  with the :doc:`configuration_files/external_storage/local` storage backend instead.
+* Symlinks pointing outside of the data directory are disallowed. Please use the :doc:`configuration/files/external_storage_configuration_gui`
+  with the :doc:`configuration/files/external_storage/local` storage backend instead.
 * Removed ``dav:migrate-calendars`` and ``dav:migrate-addressbooks`` commands for ``occ``.
   Users planning to upgrade from ownCloud 9.0 or below to ownCloud 9.1 needs to make sure that their
   calendars and address books are correctly migrated **before** continuing to upgrade to 9.1.
@@ -205,14 +218,14 @@ use .svg files. See `Changing favicon
 -favicon>`_ in the Developer Manual.
 
 Home folder rule is enforced in the user_ldap application in new ownCloud installations; see
-:doc:`configuration_user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
+:doc:`configuration/user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
 
 The Calendar and Contacts apps have been rewritten and the CalDAV and CardDAV backends of these
 apps were merged into ownCloud core. During the upgrade existing Calendars and Addressbooks
 are automatically migrated (except when using the ``IMAP user backend``). As a fallback
 for failed upgrades, when using the ``IMAP user backend`` or as an option to test a migration
 ``dav:migrate-calendars`` and/or ``dav:migrate-addressbooks`` scripts are available
-(**only in ownCloud 9.0**) via the ``occ`` command. See :doc:`configuration_server/occ_command`.
+(**only in ownCloud 9.0**) via the ``occ`` command. See :doc:`configuration/server/occ_command`.
 
 .. warning:: After upgrading to ownCloud 9.0 and **before** continuing to upgrade to 9.1 make sure
    that all of your and your users Calendars and Addressbooks are migrated correctly. Especially
@@ -232,7 +245,7 @@ New option for the ownCloud admin to enable or disable sharing on individual ext
 (see :ref:`external_storage_mount_options_label`). Sharing on such mountpoints is disabled by default.
 
 Enterprise 9.0
---------------
+~~~~~~~~~~~~~~
 
 owncloud-enterprise packages are no longer available for CentOS 6, RHEL6, 
 Debian 7, or any version of Fedora. A new package, owncloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/
@@ -254,7 +267,7 @@ so that ownCloud will detect remote file changes.
 
 XSendFile support has been removed, so there is no longer support for `serving 
 static files
-<https://doc.owncloud.org/server/8.1/admin_manual/configuration_files/
+<https://doc.owncloud.org/server/8.1/admin_manual/configuration/files/
 serving_static_files_configuration.html>`_ from your ownCloud server.
 
 LDAP issue: 8.2 uses the ``memberof`` attribute by default. If this is not 
@@ -268,7 +281,7 @@ the ``occ`` command, like this example on Ubuntu Linux::
  
 Run ``sudo -u www-data php occ ldap:show-config`` to find the correct ``sNN`` 
 value; if there is not one then use empty quotes, ``""``. (See 
-:doc:`configuration_server/occ_command`.)
+:doc:`configuration/server/occ_command`.)
 
 Users of the Linux Package need to update their repository setup as described
 in this `blogpost <https://owncloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
@@ -311,10 +324,10 @@ PHP or contact your vendor if you receive these errors.
 
 The persistent file-based cache (e.g. used by LDAP integration) has been dropped and 
 replaced with a memory-only cache, which must be explicitly configured. See 
-:doc:`configuration_user/user_auth_ldap`. Memory cache configuration for the 
+:doc:`configuration/user/user_auth_ldap`. Memory cache configuration for the 
 ownCloud server is no longer automatic, requiring installation of 
 your desired cache backend and configuration in 
-``config.php`` (see :doc:`configuration_server/caching_configuration`.) 
+``config.php`` (see :doc:`configuration/server/caching_configuration`.) 
 
 The ``OC_User_HTTP`` backend has been removed. Administrators are encouraged to use 
 the ``user_webdavauth`` application instead.
@@ -353,8 +366,8 @@ described in :ref:`use_https_label`.
 
 WebDAV file locking was removed in ownCloud 8.1 which causes Finder on Mac OS X to mount WebDAV read-only.
 
-Enterprise 8.1 Only
--------------------
+Enterprise 8.1 
+~~~~~~~~~~~~~~
 
 The SharePoint Drive application does not verify the SSL certificate of the SharePoint 
 server or the ownCloud server, as it is expected that both devices are in the 
@@ -366,7 +379,7 @@ Changes in 8.0
 --------------
 
 Manual LDAP Port Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you are configuring the LDAP user and group backend application, ownCloud 
 may not auto-detect the LDAP server's port number, so you will need to enter it 
@@ -375,38 +388,38 @@ manually.
 .. https://github.com/owncloud/core/pull/16748
 
 No Preview Icon on Text Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 There is no preview icon displayed for text files when the file contains fewer than six characters.
 
 .. https://github.com/owncloud/core/issues/16556#event-316503097
 
 Remote Federated Cloud Share Cannot be Reshared With Local Users
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you mount a Federated Cloud share from a remote ownCloud server, you cannot re-share it with
-your local ownCloud users. (See :doc:`configuration_files/federated_cloud_sharing_configuration` 
+your local ownCloud users. (See :doc:`configuration/files/federated_cloud_sharing_configuration` 
 to learn more about federated cloud sharing)
 
 Manually Migrate Encryption Keys after Upgrade
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you are using the Encryption application and upgrading from older versions of 
 ownCloud to ownCloud 8.0, you must manually migrate your encryption keys.
 See :ref:`upgrading_encryption_label`.
 
 Windows Server Not Supported
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Windows Server is not supported in ownCloud 8.
 
 PHP 5.3 Support Dropped
-^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~
 
 PHP 5.3 is not supported in ownCloud 8, and PHP 5.4 or better is required.
 
 Disable Apache Multiviews
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If Multiviews are enabled in your Apache configuration, this may cause problems 
 with content negotiation, so disable Multiviews by removing it from your Apache 
@@ -420,7 +433,7 @@ Delete ``Multiviews`` and restart Apache.
 .. https://github.com/owncloud/core/issues/9039
 
 ownCloud Does Not Follow Symlinks
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ownCloud's file scanner does not follow symlinks, which could lead to 
 infinite loops. To avoid this do not use soft or hard links in your ownCloud 
@@ -429,7 +442,7 @@ data directory.
 .. https://github.com/owncloud/core/issues/8976
 
 No Commas in Group Names
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Creating an ownCloud group with a comma in the group name causes ownCloud to 
 treat the group as two groups.
@@ -437,7 +450,7 @@ treat the group as two groups.
 .. https://github.com/owncloud/core/issues/10983
 
 Hebrew File Names Too Large on Windows
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 On Windows servers Hebrew file names grow to five times their original size 
 after being translated to Unicode.
@@ -445,7 +458,7 @@ after being translated to Unicode.
 .. https://github.com/owncloud/core/issues/8938
 
 Google Drive Large Files Fail with 500 Error
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Google Drive tries to download the entire file into memory, then write it to a 
 temp file, and then stream it to the client, so very large file downloads from 
@@ -454,7 +467,7 @@ Google Drive may fail with a 500 internal server error.
 .. https://github.com/owncloud/core/issues/8810
 
 Encrypting Large Numbers of Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you activate the Encryption application on a running server that has large numbers 
 of files, it is possible that you will experience timeouts. It is best to 
@@ -464,8 +477,8 @@ on your ownCloud server.
 .. https://github.com/owncloud/core/issues/10657
 
 
-Enterprise 8.0 Only
--------------------
+Enterprise 8.0
+~~~~~~~~~~~~~~
 
 Sharepoint Drive SSL Not Verified
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -513,7 +526,7 @@ Changes in 7.0
 --------------
 
 Manual LDAP Port Configuration
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you are configuring the LDAP user and group backend application, ownCloud 
 may not auto-detect the LDAP server's port number, so you will need to enter it 
@@ -522,7 +535,7 @@ manually.
 .. https://github.com/owncloud/core/pull/16748
 
 LDAP Search Performance Improved
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Prior to 7.0.4, LDAP searches were substring-based and would match search 
 attributes if the substring occurred anywhere in the attribute value. Rather, 
@@ -549,7 +562,7 @@ search attributes are ``givenName`` and ``sn`` you can find users by first name
 .. https://github.com/owncloud/core/issues/12647
 
 Protecting ownCloud on IIS from Data Loss
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Under certain circumstances, running your ownCloud server on IIS could be at 
 risk of data loss. To prevent this, follow these steps.
@@ -560,8 +573,8 @@ risk of data loss. To prevent this, follow these steps.
 * When you make server updates ``config.php`` must be made writeable. When your 
   updates are completed re-set it to read-only.
 
-Antivirus application Modes
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Antivirus Application Modes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The Antivirus application offers three modes for running the ClamAV anti-virus scanner: 
 as a daemon on the ownCloud server, a daemon on a remote server, or an 
@@ -569,14 +582,14 @@ executable mode that calls ``clamscan`` on the local server. We recommend using
 one of the daemon modes, as they are the most reliable.
 
 "Enable Only for Specific Groups" Fails
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some ownCloud applications have the option to be enabled only for certain 
 groups. However, when you select specific groups they do not get access to the 
 app.
 
 Changes to File Previews
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 For security and performance reasons, file previews are available only for 
 image files, covers of MP3 files, and text files, and have been disabled for 
@@ -584,13 +597,13 @@ all other filetypes. Files without previews are represented by generic icons
 according to their file types. 
 
 4GB Limit on SFTP Transfers
-^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Because of limitations in ``phpseclib``, you cannot upload files larger than 
 4GB over SFTP.
 
 "Not Enough Space Available" on File Upload
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Setting user quotas to ``unlimited`` on an ownCloud installation that has 
 unreliable free disk space reporting-- for example, on a shared hosting 
@@ -599,20 +612,20 @@ error. A workaround is to set file quotas for all users instead of
 ``unlimited``.
 
 No More Expiration Date On Local Shares
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In older versions of ownCloud, you could set an expiration date on both local 
 and public shares. Now you can set an expiration date only on public shares, 
 and local shares do not expire when public shares expire.
 
 Zero Quota Not Read-Only
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Setting a user's storage quota should be the equivalent of read-only, however, 
 users can still create empty files.
 
-Enterprise 7 Only
------------------
+Enterprise 7.0
+~~~~~~~~~~~~~~
 
 No Federated Cloud Sharing with Shibboleth
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -655,7 +668,7 @@ SQLite is no longer an installation option for ownCloud Enterprise Edition, as
 it not suitable for multiple-user installations or managing large numbers of 
 files.
 
-No application Store
+No Application Store
 ^^^^^^^^^^^^^^^^^^^^
 
 The application Store is disabled for the Enterprise Edition.

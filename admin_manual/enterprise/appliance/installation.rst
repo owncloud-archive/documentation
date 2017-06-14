@@ -23,7 +23,7 @@ It will ask you for the following details:
 
 - Email address
 - Download version (*ESXi*, *VirtualBox*, *VMware*, *KVM*)
-- You first, last, and company names, and your country of origin
+- Your first, last, and company names, and your country of origin
 
 .. image:: ../../images/enterprise/download-form.png
    :alt: The ownCloud X Trial Appliance download form.
@@ -72,6 +72,7 @@ Activate the Appliance
 When the wizard completes, the virtual machine will be almost ready to use.
 You then need only retrieve the license file from the email which was sent to you and upload it.
 The page to do that from can be found by opening your browser to the IP address of the virtual appliance, as you can see below.
+The installer may instruct you to use ``https://`` to access the activation page. If this gives an error in the browser, then remove the ``https://``.
 
 .. image:: ../../images/enterprise/activate-the-virtual-appliance.png
    :alt: Activate the ownCloud X Trial Appliance.

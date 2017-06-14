@@ -75,7 +75,7 @@ the server address, the share name, and the folder you want to connect to.
    ``Internal Username Attribute`` must be set to the ``samaccountname`` for 
    either the share or the root to work, and the user's home directory needs 
    to match the ``samaccountname``. (See 
-   :doc:`../../configuration_user/user_auth_ldap`.)
+   :doc:`../../configuration/user/user_auth_ldap`.)
 6. Login credentials.
 7. Select users or groups with access to the share. The default is all users.
 8. Click the gear icon for additional mount options. Note that previews are
@@ -226,7 +226,7 @@ is updated and timing::
   updated storage wnd::administrador@server/share// from mount id 3 -> removed internal path : Capirotes/New Document.txt
   found 1 related storages from mount id 2
 
-See :doc:`../configuration_server/occ_command` for detailed help with ``occ``.
+See :doc:`../../configuration/server/occ_command` for detailed help with ``occ``.
 
 One Listener for Many Shares
 ----------------------------
