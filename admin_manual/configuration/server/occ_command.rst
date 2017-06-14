@@ -176,11 +176,16 @@ enabled or disabled::
 
  sudo -u www-data php occ app:list
  
-Enable an app, for example the External Storage Support app::
+Enable an app, for example the Market app::
 
- sudo -u www-data php occ app:enable files_external
- files_external enabled
-   
+ sudo -u www-data php occ app:enable market
+ market enabled
+
+Disable an app::
+
+ sudo -u www-data php occ app:disable market
+ market disabled
+
 ``app:check-code`` has multiple checks: it checks if an app uses ownCloud's 
 public API (``OCP``) or private API (``OC_``), and it also checks for deprecated 
 methods and the validity of the ``info.xml`` file. By default all checks are 
