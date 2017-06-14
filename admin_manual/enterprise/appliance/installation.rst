@@ -23,7 +23,7 @@ It will ask you for the following details:
 
 - Email address
 - Download version (*ESXi*, *VirtualBox*, *VMware*, *KVM*)
-- You first, last, and company names, and your country of origin
+- Your first, last, and company names, and your country of origin
 
 .. image:: ../../images/enterprise/download-form.png
    :alt: The ownCloud X Trial Appliance download form.
