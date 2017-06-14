@@ -72,6 +72,7 @@ Activate the Appliance
 When the wizard completes, the virtual machine will be almost ready to use.
 You then need only retrieve the license file from the email which was sent to you and upload it.
 The page to do that from can be found by opening your browser to the IP address of the virtual appliance, as you can see below.
+The installer may instruct you to use ``https://`` to access the activation page. If this gives an error in the browser, then remove the ``https://``.
 
 .. image:: ../../images/enterprise/activate-the-virtual-appliance.png
    :alt: Activate the ownCloud X Trial Appliance.
