@@ -18,7 +18,8 @@ Before beginning an upgrade, please keep the following points in mind:
 - Upgrading is disruptive, as your ownCloud server will be put into :ref:`maintenance mode <maintenance_mode_label>`. 
 - Large installations may take several hours to complete the upgrade.
 - Downgrading **is not supported** as it risks corrupting your data. If you want to revert to an older ownCloud version, make a new, fresh installation and then restore your data from backup. Before doing this, file a support ticket (if you have paid support) or ask for help in the ownCloud forums to resolve your issue without downgrading.
-  
+- Metadata (i.e., shares) will be lost since the DB will not be restored.
+
 Prerequisites
 -------------
 
@@ -38,9 +39,12 @@ Upgrade Options
 
 There are three ways to upgrade your ownCloud server:
 
-1. Using your :doc:`Linux package manager <package_upgrade>` with our official ownCloud repositories. This is the recommended method. 
-2. Using the :doc:`Updater App <update>` (Server Edition only). This is recommended for shared hosters and for users who want an easy way to track different release channels. It is *not available* and *not supported* on the Enterprise edition.
-3. :doc:`Manually upgrading <manual_upgrade>` with the latest ownCloud release from `owncloud.org/install/`_. 
+#. Using the :doc:`Updater App <update>` (Server Edition only). This is recommended for shared hosters and for users who want an easy way to track different release channels. It is *not available* and *not supported* on the Enterprise edition. This is the recommended method.
+#. Using your :doc:`Linux package manager <package_upgrade>` with our official ownCloud repositories. 
+#. :doc:`Manually upgrading <manual_upgrade>` with the latest ownCloud release from `owncloud.org/install/`_. 
+
+.. note::
+   Please remember that in scale-out deployments (where your database is sitting somewehere else, not on the same machine as the webserver) using the package manager is going to install all the related dependencies, unless the `owncloud-enterprise-files` package is being used.
 
 .. note::
    Enterprise customers will use their Enterprise software repositories to maintain their ownCloud servers, rather than the Open Build Service. Please see :doc:`../enterprise/installation/install` for more information.
