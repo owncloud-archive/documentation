@@ -114,7 +114,7 @@ Name         Description
 ============ ====================================================================
   
 .. note:: SMB/Windows Network Drive mounts require the PHP module smbclient version 0.8.0+; see
-  :doc:`../configuration_files/external_storage/smb`.
+  :doc:`../configuration/files/external_storage/smb`.
 
 Optional
 ^^^^^^^^
@@ -154,7 +154,7 @@ extensions:
 * `memcached`_
 * `redis`_ (>= 2.2.6+, required for transactional file locking)
 
-See :doc:`../configuration_server/caching_configuration` to learn how to select 
+See :doc:`../configuration/server/caching_configuration` to learn how to select 
 and configure a memcache.
 
 For Preview Generation
@@ -387,11 +387,8 @@ To use the graphical Installation Wizard see :doc:`installation_wizard`.
 Set Strong Directory Permissions
 --------------------------------
 
-After completing installation, you must immediately set the directory 
-permissions in your ownCloud installation as strictly as possible for stronger 
-security. Please refer to :ref:`strong_perms_label`.
-
-Now your ownCloud server is ready to use.
+After completing installation, you must immediately :ref:`set the directory permissions <post_installation_steps_label>` in your ownCloud installation as strictly as possible for stronger security. 
+After you do so, your ownCloud server will be ready to use.
 
 Configuration Notes and Tips
 ----------------------------
@@ -544,14 +541,8 @@ Information on how to correctly configure your environment can be found `in the 
 Other Web Servers
 ^^^^^^^^^^^^^^^^^
 
-:doc:`nginx_examples`
-
-
-`Other HTTP servers 
-<https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
-
-`Univention Corporate Server installation 
-<https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+- `Other HTTP servers <https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
+- `Univention Corporate Server installation <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
 
 .. Links
 
