@@ -307,6 +307,32 @@ change     Allows uploading a new version of a shared file and replacing it
 delete     Allows the users you share with to delete shared files
 ========== ===================================================================
    
+Creating Upload-only Link Shares   
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you need to create upload-only, public, shares where users can upload files to a central location, but not be able to change any existing ones, nor see other files which already have been uploaded, this is available in ownCloud as of version 10.0.2.
+
+.. image:: ../images/sharing/create-upload-only-link-share.png
+   :alt: Creating Upload-only Link Shares
+
+To create one: 
+
+#. View the sharing panel of the folder that you want to share as upload-only, and under **"Public Links"** select **"Create public link"**.
+#. As with other shares, provide the name in the **"Link Name"** field.
+#. Check **"Allow editing"**, un-check **"Show file listing"**, and then un-check **"Allow editing"**.
+#. Finally, click **"Save"** to complete creation of the share. 
+
+Now, as with other public links, you can copy the link to the share and give it out, as and when necessary. 
+
+Using Upload-only Link Shares
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../images/sharing/use-upload-only-link-share.png
+   :alt: Using Upload-only Link Shares
+
+When users open the share link, they will see a page where they can either click to select files to share, or drag-and-drop files directly to share them. 
+After the file's been successfully uploaded, they’ll see (where possible) a preview of the file that has been uploaded.
+   
 Custom Groups
 -------------
 
