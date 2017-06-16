@@ -201,7 +201,13 @@ listener with this command, like this example for Ubuntu Linux::
 The ``host`` is your remote SMB server, which must be exactly the same as the
 server name in your WND configuration on your ownCloud Admin page. ``share`` is
 the share name, and ``username`` and ``password`` are the login credentials for
-the share. By default there is no output. Enable verbosity to see the
+the share. 
+
+.. note:: 
+   There are a number of ways in which you can supply a password. 
+   Please refer to :ref:`the Password Options section <password-options-label>` for full details.
+
+By default there is no output. Enable verbosity to see the
 notifications::
  
   $ sudo -u www-data php occ wnd:listen -v server share useraccount
@@ -263,6 +269,34 @@ See `Configuring wnd:listen to run as a service
 <https://github.com/owncloud/documentation/wiki/Configuring-wnd:listen-to-run-as-a-service>`_
 in the documentation wiki for tips on running the listener as a service via
 cron, and by creating a `systemd`_ startup script.
+
+
+.. _password-options-label:
+
+Password Options
+----------------
+
+There are three ways to supply a password:
+
+#. Interactively in response to a password prompt.
+#. Sent as a parameter to the command, e.g., ``occ wnd:listen host share username password``.
+#. Read from a file, using the ``--password-file`` switch to specify the file to read from. 
+#. Using 3rd party software to store and fetch the password. When using this option, the 3rd party app needs to show the password as plaintext on standard output.
+
+.. note::
+   If you use the ``--password-file`` switch, the entire contents of the file will be used for the password, so please be careful with newlines.
+
+.. warning::
+   If using ``--password-file`` make sure that the file is only readable by the
+   apache / www-data user and inaccessible from the web, in order to prevent
+   tampering or leaking of the information. The password won't be leaked to any
+   other user using ``ps``.
+
+Password Option Precedence
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If both the argument and the option are passed, e.g., ``occ wnd:listen host share username password --password-file=/tmp/pass``, then the ``--password-file`` option will take precedence.
+
 
 .. Links
    
