@@ -13,7 +13,7 @@ When you click the notification, it will bring you here.
 Before beginning an upgrade, please keep the following points in mind:
 
 - Review :doc:`the release notes </release_notes>` for important information about the needed migration steps during that upgrade to help ensure a smooth upgrade process.
-- Skipping major releases is not supported. However *you can* migrate from 8.2 or 9.0 straight to 10.0.   
+- Skipping major releases is not supported. However *you can* migrate from 9.0.9 straight to 10.0.   
 - Downgrading is not supported.
 - Upgrading is disruptive, as your ownCloud server will be put into :ref:`maintenance mode <maintenance_mode_label>`. 
 - Large installations may take several hours to complete the upgrade.
