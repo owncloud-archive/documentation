@@ -44,7 +44,7 @@ There are three ways to upgrade your ownCloud server:
 #. :doc:`Manually upgrading <manual_upgrade>` with the latest ownCloud release from `owncloud.org/install/`_. 
 
 .. note::
-   Please remember that in scale-out deployments (where your database is sitting somewehere else, not on the same machine as the webserver) using the package manager is going to install all the related dependencies, unless the `owncloud-enterprise-files` package is being used.
+   Please remember that in scale-out deployments (where your database is sitting somewehere else, not on the same machine as the webserver) using the package manager is going to install all the related dependencies, unless the ``owncloud-enterprise-files`` (for the Enterprise edition) or the ``owncloud-files`` (for the Community edition) package is being used.
 
 .. note::
    Enterprise customers will use their Enterprise software repositories to maintain their ownCloud servers, rather than the Open Build Service. Please see :doc:`../enterprise/installation/install` for more information.
