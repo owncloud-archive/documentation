@@ -35,7 +35,7 @@ How do you join
 
 Simply register on the `testpilot mailing list <https://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and send an introduction of your personal setup and interests to `testpilots@owncloud.org <testpilots@owncloud.org>`_
 
-You can also join the **#owncloud-testing** channel on **irc.freenode.net** but keep in mind that we may take longer to answer ;)
+You can also join the **#owncloud-testing** channel on **webchat.freenode.net** but keep in mind that we may take longer to answer ;)
 
 For further questions or help you can also send a mail to:
 
