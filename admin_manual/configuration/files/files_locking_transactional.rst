@@ -28,53 +28,7 @@ Rather, it prevents simultaneous file saving.
    must visit your Apps page to verify that it is disabled; the File Locking 
    app and Transactional File Locking cannot both operate at the same time.
   
-File locking is enabled by default, using the database locking backend. This 
-places a significant load on your database. Using ``memcache.locking`` relieves 
-the database load and improves performance. Admins of ownCloud servers with 
-heavy workloads should install a memory cache. (See 
-:doc:`../../configuration/server/caching_configuration`.)  
-
-To use a memory cache with Transactional File Locking, you must install the Redis 
-server and corresponding PHP module. After installing Redis you must enter a 
-configuration in your ``config.php`` file like this example::
-
-  'filelocking.enabled' => true,
-  'memcache.locking' => '\OC\Memcache\Redis',
-  'redis' => array(
-       'host' => 'localhost',
-       'port' => 6379,
-       'timeout' => 0.0,
-       'password' => '', // Optional, if not defined no password will be used.
-        ),
-
-.. note:: For enhanced security it is recommended to configure Redis to require
-   a password. See http://redis.io/topics/security for more information.
-
-If you want to configure Redis to listen on an Unix socket (which is
-recommended if Redis is running on the same system as ownCloud) use this example
-``config.php`` configuration::
-
-  'filelocking.enabled' => true,
-  'memcache.locking' => '\OC\Memcache\Redis',
-  'redis' => array(
-       'host' => '/var/run/redis/redis.sock',
-       'port' => 0,
-       'timeout' => 0.0,
-        ),
-   
-See ``config.sample.php`` to see configuration examples for Redis, and for all 
-supported memory caches.
-
-If you are on Ubuntu you can follow `this guide  
-<https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch. 
-
-Learn more about `Redis <http://redis.io/>`_. Memcached, the popular 
-distributed memory caching system, is not suitable for the new file locking 
-because it is not designed to store locks, and data can disappear from the cache 
-at any time. Redis is a key-value store, and it guarantees that cached objects 
-are available for as long as they are needed.
-
-Debian Jessie users, please see this `Github discussion 
-<https://github.com/owncloud/core/issues/20675#issuecomment-159202901>`_ if you have problems with 
-LDAP authentication.
+File locking is enabled by default, using the database locking backend. 
+This places a significant load on your database. Using ``memcache.locking`` relieves the database load and improves performance. 
+Admins of ownCloud servers with heavy workloads should install :doc:`a memory cache <../server/caching_configuration>`. 
 
