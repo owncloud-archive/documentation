@@ -949,6 +949,8 @@ backups and other tasks that require locking users out until you are finished::
   maintenance:singleuser              set single user mode
   maintenance:update:htaccess         Updates the .htaccess file
 
+.. _maintenance_mode_label:
+
 ``maintenance:mode`` locks the sessions of all logged-in users, including 
 administrators, and displays a status screen warning that the server is in 
 maintenance mode. Users who are not already logged in cannot log in until 

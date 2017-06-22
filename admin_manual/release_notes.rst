@@ -2,6 +2,17 @@
 Release Notes
 =============
 
+* :ref:`10.0.1_release_notes_label`
+* :ref:`10.0.0_release_notes_label`
+* :ref:`9.1_release_notes_label`
+* :ref:`9.0_release_notes_label`
+* :ref:`8.2_release_notes_label`
+* :ref:`8.1_release_notes_label`
+* :ref:`8.0_release_notes_label`
+* :ref:`7.0_release_notes_label`
+
+.. _10.0.1_release_notes_label:
+
 Changes in 10.0.1
 -----------------
 
@@ -84,6 +95,8 @@ We recommend `setting up a nightly Cron job`_ to keep metadata of users not acti
 Error pages will not use the configured theme but will instead fall back to the community default
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+.. _10.0.0_release_notes_label:
+
 Changes in 10.0.0
 -----------------
 
@@ -102,6 +115,8 @@ Changes in 10.0.0
     * "Local" storage type can now be disabled by sysadmin in config.php (to prevent users mounting the local file system)
 
 Full changelog: https://github.com/owncloud/core/wiki/ownCloud-10.0-Features
+
+.. _9.1_release_notes_label:
 
 Changes in 9.1
 --------------
@@ -235,6 +250,8 @@ Enterprise 9.0
 owncloud-enterprise packages are no longer available for CentOS 6, RHEL6, 
 Debian 7, or any version of Fedora. A new package, owncloud-enterprise-files, is available for all supported platforms, including the above. This new package comes without dependencies, and is installable on a larger number of platforms. System administrators must install their own LAMP stacks and databases. See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/
 
+.. _8.2_release_notes_label:
+
 Changes in 8.2
 --------------
 
@@ -268,6 +285,8 @@ value; if there is not one then use empty quotes, ``""``. (See
 
 Users of the Linux Package need to update their repository setup as described
 in this `blogpost <https://owncloud.org/blog/upgrading-to-owncloud-server-8-2/>`_.
+
+.. _8.1_release_notes_label:
 
 Changes in 8.1
 --------------
@@ -353,6 +372,8 @@ Enterprise 8.1
 The SharePoint Drive application does not verify the SSL certificate of the SharePoint 
 server or the ownCloud server, as it is expected that both devices are in the 
 same trusted environment.
+
+.. _8.0_release_notes_label:
 
 Changes in 8.0
 --------------
@@ -498,6 +519,8 @@ application Store is Back
 
 The ownCloud application Store has been re-enabled in ownCloud 8. Note that third-party apps 
 are not supported.
+
+.. _7.0_release_notes_label:
 
 Changes in 7.0
 --------------
