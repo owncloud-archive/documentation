@@ -8,26 +8,20 @@ Oracle Database Setup
     :maxdepth: 2
     :hidden:
 
-This document will cover the setup and preparation of the ownCloud server to
-support the use of Oracle as a backend database.  For the purposes of testing,
-we are using Oracle Enterprise Linux as both the Web server that
-will host ownCloud, and as a host for the Oracle Database.
+This document will cover the setup and preparation of the ownCloud server to support the use of Oracle as a backend database.  
+For the purposes of testing, we are using Oracle Enterprise Linux as both the Web server thatwill host ownCloud, and as a host for the Oracle Database.
 
 Outline of Steps
 ================
 
 This document will cover the following steps:
 
-* Setup of the ownCloud user in Oracle: This involves setting up a user space
-  in Oracle for setting up the ownCloud database.
-* Installing the Oracle Instant Client on the Web server (facilitating the
-  connection to the Oracle Database).
+* Setup of the ownCloud user in Oracle: This involves setting up a user space in Oracle for setting up the ownCloud database.
+* Installing the Oracle Instant Client on the Web server (facilitating the connection to the Oracle Database).
 * Compiling and installing the Oracle PHP Plugin oci8 module
 * Pointing ownCloud at the Oracle database in the initial setup process
 
-The document assumes that you already have your Oracle instance running, and
-have provisioned the needed resources. It also assumes that you have installed
-ownCloud with all of the prerequisites.
+The document assumes that you already have your Oracle instance running, and have provisioned the needed resources. It also assumes that you have installed ownCloud with all of the prerequisites.
 
 Configuring Oracle
 ==================
@@ -35,9 +29,8 @@ Configuring Oracle
 Setting up the User Space for ownCloud
 --------------------------------------
 
-Step one, if it has not already been completed by your :abbr:`DBA (DataBase Administrator)`, provision a user
-space on the Oracle instance for ownCloud.  This can be done by logging in as a
-DBA and running the script below:
+Step one, if it has not already been completed by your :abbr:`DBA (DataBase Administrator)`, provision a user space on the Oracle instance for ownCloud.  
+This can be done by logging in as a DBA and running the script below:
 
 ::
 
@@ -45,71 +38,42 @@ DBA and running the script below:
   ALTER USER owncloud DEFAULT TABLESPACE users TEMPORARY TABLESPACE temp QUOTA unlimited ON users;
   GRANT create session, create table, create procedure, create sequence, create trigger, create view, create synonym, alter session TO owncloud;
 
-Substitute an actual password for ``password``.  Items like TableSpace, Quota etc. will be determined by your DBA.
+Substitute an actual password for ``password``.  
+Items like *TableSpace*, *Quota* etc., will be determined by your DBA (database administrator).
 
-Downloading and Installing the Oracle Instant Client
-----------------------------------------------------
+Add OCI8 Client Support
+-----------------------
 
-As our example system is Oracle Enterprise Linux, it is
-necessary to go to the Oracle site and download the `Oracle Instant Client`_ for
-your OS Distribution.
+To install `the OCI8 extension`, you first need to download ``oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm`` and ``oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm`` `from Oracle`_, and install them using the following command:
 
-.. _Oracle Instant Client: http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html
+.. code-block:: console
 
-.. note:: Download the instant client and the instant client SDK and place them
-   in a directory on the server, in this example they are RPM packages.
+   rpm --install oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm \
+     oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm
 
-* Install the basic client from the RPM.  Use the ``rpm –ivh`` command
-* Install the SDK RPM package.  Use the ``rpm –ivh`` command
+With that done, you're now ready to install the OCI8 extension. 
+To do that, first add a configuration file for it by using the command below. 
 
-At this point, the Oracle Instant client is installed on the ownCloud Host (in
-the home directory).
+.. code-block:: console
+   
+   cat << EOF > /etc/opt/rh/rh-php70/php.d/20-oci8.ini
+   ; Oracle Instant Client Shared Object extension
+   extension=oci8.so
+   EOF
+   
+After that, build the extension by running the following command, providing: ``instantclient,/usr/lib/oracle/12.2/client64/lib`` when requested.
 
-Install the OCI8 PHP Extension:
--------------------------------
+.. code-block:: console
 
-The next step is to compile and install the OCI8 PHP extension for connectivity to the Oracle Database.
+   pecl install oci8
 
-* Create a folder for these bits on your server.
-* Download the latest version of the extension from `http://pecl.php.net/package/oci8 <http://pecl.php.net/package/oci8>`_.
-* Unpack the OCI8 PHP extension and copy it over to the server.
-* There should be two things in the folder:
-   * ``package.xml`` file
-   *  ``oci8-*.*.*`` folder (folder will change based on version of the extension you downloaded).
-* Build the OCI8 module.
-   * Change (``cd``) to the folder where you have copied the downloaded and uncompressed OCI8 bits.
-   * Run the following command (there will be a significant amount of output)::
+To confirm that it’s been installed and available in your PHP distribution, run the following command:
 
-      pecl build
+.. code-block:: console
+   
+   php -m | grep -i oci8
 
-  * Eventually the output will stop and ask for the *Oracle Home Directory*, just press enter.
-
-* Change directory::
-
-    cd oci8-<version number>
-
-* Type the following command::
-
-    ./configure –with-oci8=instantcleint,/usr/lib/oracle/<version number>/client64/lib
-
-* Again, there will be significant output
-* Enter the following command to compile: ``make``
-* At this time there should be a folder called modules in the ``oci8-<version_>`` folder.
-  Within this folder exists the ``oci8.so`` file.
-* Copy this to the directory where the modules are stored in the PHP install. It depends on
-  your distribution. This is the path for RHEL 6 and OEL 6::
-
-    cp oci8.so /usr/lib64/php/modules
-
-* Create an ``.ini`` file
-   * Navigate to the ``php.d`` directory: ``cd /etc/php.d``
-   * Edit a file called oci8.ini: ``vi oci8.ini``
-   * Make the file look as follows::
-
-      ; Oracle Instant Client Shared Object
-      extension=oci8.so
-
-   * Save the document
+When the process has completed, assuming that you don't encounter any errors, restart Apache and the extension is ready to use.
 
 Configure ownCloud
 ==================
@@ -214,3 +178,12 @@ On the machine where your Oracle database is installed, type::
 **Quit Database**::
 
   Oracle    : quit
+  
+.. Links
+
+.. _the Oracle site: http://www.oracle.com/technetwork/database/features/instant-client/index-097480.html
+.. _the OCI8 extension: https://secure.php.net/manual/en/book.oci8.php
+.. _APCu: https://pecl.php.net/package/APCu
+.. _Memcached: https://pecl.php.net/package/APCu
+.. _Redis: http://redis.io/
+.. _the Zend OPcache: https://secure.php.net/manual/en/book.opcache.php
