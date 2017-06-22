@@ -189,7 +189,7 @@ After cloning core, run ``make`` as your webserver's user in the root directory 
 
 Now that the prerequisites are satisfied, and assuming that ``$installation_path`` is the location where you cloned the ``ownCloud/core`` repository, the following commands will prepare the installation for running the integration tests.
 
-..code-block:: bash
+.. code-block:: bash
 
     # Remove current configuration (if existing)
     sudo rm -rf $installation_path/data/*
