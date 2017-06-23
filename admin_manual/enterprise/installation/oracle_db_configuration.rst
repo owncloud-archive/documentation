@@ -9,7 +9,6 @@ Oracle Database Setup
     :hidden:
 
 This document will cover the setup and preparation of the ownCloud server to support the use of Oracle as a backend database.  
-For the purposes of testing, we are using Oracle Enterprise Linux as both the Web server thatwill host ownCloud, and as a host for the Oracle Database.
 
 Outline of Steps
 ================
@@ -41,33 +40,85 @@ This can be done by logging in as a DBA and running the script below:
 Substitute an actual password for ``password``.  
 Items like *TableSpace*, *Quota* etc., will be determined by your DBA (database administrator).
 
-Add OCI8 Client Support
------------------------
+Add OCI8 Client Packages
+------------------------
 
-To install `the OCI8 extension`, you first need to download ``oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm`` and ``oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm`` `from Oracle`_, and install them using the following command:
+Installation of the OCI8 client is dependent on your distribution. 
+Given that, please use the relevant section below to find the relevant instructions to install the client.
+
+Ubuntu
+^^^^^^
+
+If you’re using Ubuntu, we recommend that you use `this very thorough guide` from the Ubuntu Community Wiki to install the OCI8 extension. 
+
+.. note::
+   This *should* work for other Debian-based distributions, however your mileage may vary.
+
+RedHat / Centos / Fedora
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+To install `the OCI8 extension` on a RedHat-based distribution, you first need to download two Oracle Instant Client packages:
+
+- Instant Client Package - Basic (``oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm``)
+- Instant Client Package - SDK (``oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm``)
+
+Then, to install them, use the following commands: 
 
 .. code-block:: console
 
    rpm --install oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm \
      oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm
 
-With that done, you're now ready to install the OCI8 extension. 
-To do that, first add a configuration file for it by using the command below. 
+Install the OCI8 PHP Extension
+------------------------------
 
-.. code-block:: console
-   
-   cat << EOF > /etc/opt/rh/rh-php70/php.d/20-oci8.ini
-   ; Oracle Instant Client Shared Object extension
-   extension=oci8.so
-   EOF
-   
-After that, build the extension by running the following command, providing: ``instantclient,/usr/lib/oracle/12.2/client64/lib`` when requested.
+With the Oracle packages installed you're now ready to install PHP’s OCI8 extension.
+
+.. note::
+   Provide: ``instantclient,/usr/lib/oracle/12.2/client64/lib`` when requested, or let it auto-detect the location (if possible).
 
 .. code-block:: console
 
    pecl install oci8
 
-To confirm that it’s been installed and available in your PHP distribution, run the following command:
+With the extension installed, you now need to configure it, by creating a configuration file for it. 
+You can do so using the command below, substituting ``FILE_PATH`` with one from the list below the command.
+
+.. code-block:: console
+   
+   cat << EOF > FILE_PATH
+   ; Oracle Instant Client Shared Object extension
+   extension=oci8.so
+   EOF
+
+Configuration File Paths
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+Debian & Ubuntu
+```````````````
+
+=========== ==========================================
+PHP Version Filename                                  
+=========== ==========================================
+5.6         ``/etc/php/5.6/apache2/conf.d/20-oci.ini``
+7.0         ``/etc/php/7.0/apache2/conf.d/20-oci.ini``
+7.1         ``/etc/php/7.1/apache2/conf.d/20-oci.ini``
+=========== ==========================================
+
+RedHat, Centos, & Fedora
+````````````````````````
+
+=========== ==========================================
+PHP Version Filename
+=========== ==========================================
+5.6         ``/etc/opt/rh/rh-php56/php.d/20-oci8.ini``
+7.0         ``/etc/opt/rh/rh-php70/php.d/20-oci8.ini``
+=========== ==========================================
+
+Validating the Extension
+------------------------
+
+With all that done, confirm that it’s been installed and available in your PHP distribution, run the following command:
 
 .. code-block:: console
    
@@ -89,19 +140,19 @@ Configuration Wizard
     :height: 7.4165in
 
 Database user
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 This is the user space created in step 2.1.
 In our Example this would be owncloud.
 
 
 Database password
-~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^
 
 Again this is defined in the script from section 2.1 above, or pre-configured and provided to you by your DBA.
 
 Database Name
-~~~~~~~~~~~~~
+^^^^^^^^^^^^^
 
 Represents the database or the service that has been pre-configured on the TSN Listener on the Database Server.
 This should also be provided by the DBA.
@@ -111,7 +162,7 @@ This is not like setting up with MySQL or SQL Server, where a database based on 
 The oci8 code will call this specific service and it must be active on the TSN Listener on your Oracle Database server.
 
 Database Table Space
-~~~~~~~~~~~~~~~~~~~~
+^^^^^^^^^^^^^^^^^^^^
 
 Provided by the DBA.
 In this example the users table space (as is seen in the user creation script above), was used.
@@ -187,3 +238,4 @@ On the machine where your Oracle database is installed, type::
 .. _Memcached: https://pecl.php.net/package/APCu
 .. _Redis: http://redis.io/
 .. _the Zend OPcache: https://secure.php.net/manual/en/book.opcache.php
+.. _this very thorough guide: https://help.ubuntu.com/community/Oracle%20Instant%20Client
