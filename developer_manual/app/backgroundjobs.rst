@@ -25,7 +25,6 @@ calling its ``run`` method.
 
 .. literalinclude:: ../examples/cron/SomeTask.php
    :language: php
-   :linenos:
 
 Register the class with ownCloud
 ================================
@@ -52,9 +51,9 @@ To test the job classes, you can run Cron manually, as in the example below:
 After doing so, you will need to reset the job to allow it to be run, manually, again. 
 To do this, go to the database and run the following SQL query:
 
-.. code-block: sql
+.. code-block:: sql
 
-    UPDATE oc_jobs SET last_run=0,last_checked=0,reserved_at=0;
+   UPDATE oc_jobs SET last_run=0,last_checked=0,reserved_at=0;
 
 Is The Cron Service Running?
 ============================
