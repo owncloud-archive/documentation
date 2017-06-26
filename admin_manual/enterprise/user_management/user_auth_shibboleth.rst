@@ -71,20 +71,28 @@ Further Shibboleth specific configuration as defined in
 	# Shibboleth
 	#
 	<Location /oc-shib>
-	  AuthType shibboleth
-	  ShibRequireSession On
-	  ShibUseHeaders Off
-	  ShibExportAssertion On
-	  require valid-user
+		AuthType shibboleth
+		ShibRequireSession On
+		ShibUseHeaders Off
+		ShibExportAssertion On
+		require valid-user
 	</Location>
 	
+	#
+	# Allow access to Sharing API (and others) without Shibboleth
+	#
+	<Location ~ "/ocs">
+		AuthType None
+		Require all granted
+	</Location>
+		
 	#
 	# Shibboleth is disabled for the following location to allow non
 	# shibboleth webdav access
 	#
 	<Location ~ "/oc-shib/remote.php/nonshib-webdav">
-	  AuthType None
-	  Require all granted
+		AuthType None
+		Require all granted
 	</Location>
 	
 	#
