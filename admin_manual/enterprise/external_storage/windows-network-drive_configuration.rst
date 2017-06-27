@@ -190,6 +190,8 @@ However, running this command would not::
    
    su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata mydata svc_owncloud password'
 
+.. _setup_notifications_for_smb_share-label::
+
 Setup Notifications for an SMB Share
 ------------------------------------
 
@@ -259,10 +261,100 @@ the ownCloud server.
 Running the WND Listener as a Service
 -------------------------------------
 
-See `Configuring wnd:listen to run as a service
-<https://github.com/owncloud/documentation/wiki/Configuring-wnd:listen-to-run-as-a-service>`_
-in the documentation wiki for tips on running the listener as a service via
-cron, and by creating a `systemd`_ startup script.
+There are several different approaches available to running the Windows Network Drive listener as a service.
+
+As a Cron Job
+~~~~~~~~~~~~~
+
+Firstly, create a new script called ``wnd-listen.sh`` and add the code below to it, adjusting the path to your ownCloud installation so that it’s specific to your installation.
+
+.. code-block:: bash
+
+   #!/bin/bash 
+   until php -f /var/www/owncloud/occ wnd:listen $@; do
+      echo "occ wnd:listen crashed with exit code $?.  Respawning.." >&2
+      sleep 1
+   done
+
+Then, make the script executable and ensure that it is owned by your HTTP user. 
+To do that, run the following commands, changing ``<HTTP_USER>`` as required.
+
+.. code-block:: console
+
+   chmod +x wnd-listen.sh
+   chown <HTTP_USER> wnd-listen.sh
+
+With the script completed, test it in debug mode by running it with the command ``./wnd-listen.sh``.
+The script will ask you for the password on every restart.
+For testing production environments add the password as a parameter.
+
+With the script tested, add a crontab entry to execute it on boot, e.g.:
+
+.. code-block:: console
+
+   @reboot www-data /usr/local/bin/wnd-listen.sh 10.0.0.100 Users sysOwnCloud password
+
+Using Systemd
+~~~~~~~~~~~~~
+
+To setup a Windows Network Drive listener using Systemd, firstly :ref:`setup a listener for each of your shares <setup_notifications_for_smb_share-label>`.
+In a high availability environment, however, setup only one listener per share; that way there is no redundancy for the listener(s). 
+
+.. note:: 
+   Your credentials will be in plain text — currently this is unavoidable.
+
+Then, create a systemd script for your Linux distribution.
+This process *should* work on any systemd distro, provided you change the paths/users accordingly.
+
+After that, create a ``owncloud-listener.service`` file in ``/etc/systemd/system/`` using your favorite text editor.
+Then, copy the contents below into the file.
+
+.. code-block:: ini
+
+   [Unit]
+   Description=ownCloud WND Listener
+   After=syslog.target network.target
+   Requires=httpd.service
+   [Service]
+   User=apache
+   Group=apache
+   WorkingDirectory=/var/www/html/owncloud
+   ExecStart=/usr/bin/php /var/www/html/owncloud/occ wnd:listen SERVER SHARE USER PASSWORD
+   Type=simple
+   StandardOutput=journal
+   StandardError=journal
+   SyslogIdentifier=%n
+   KillMode=process
+   RestartSec=1
+   Restart=on-failure
+   [Install]
+   WantedBy=multi-user.target
+
+With that done, make sure the file is owned by root and has the permissions ``644``. 
+You can do that using the following command:
+
+.. code-block:: console
+
+   chown root /etc/systemd/system/owncloud-listener.service
+   chmod 644 /etc/systemd/system/owncloud-listener.service
+
+Now, you can control your new service like any other, such as using the following command:
+
+.. code-block:: console
+
+   systemctl start owncloud-listener
+ 
+If you’re happy with it, you can configure the script to auto-start on boot, by using the following command.
+
+.. code-block:: console
+
+   systemctl enable owncloud-listener.service (or whatever you have named your file).
+
+.. note:: 
+   If you need multiple listeners, just change the name of the file and configure the ``ExecStart`` parameters accordingly.
+
+.. note::
+   This process is based on `a WND Listener Configuration on ownCloudCentral <https://central.owncloud.org/t/wnd-listener-configuration/3114>`_.
 
 .. Links
    
