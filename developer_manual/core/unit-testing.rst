@@ -326,6 +326,32 @@ Set Up test
   The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``)
   To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_behat_tests.sh``
 
+Skipping Tests
+~~~~~~~~~~~~~~
+If a UI test is known to fail because of an existing bug, then it is left in the test set but is skipped by default.
+Skip a test by tagging it ``@skip`` and then put another tag with text that describes the reason it is skipped. e.g.:
+
+::
+
+  @skip @quota-should-not-be-set-to-invalid-values-issue-1234
+  Scenario Outline: change quota to an invalid value
+
+Skipped tests are listed at the end of a default UI test run.
+
+You can locally run the skipped test(s). Run all skipped tests with:
+
+::
+
+  bash tests/travis/start_behat_tests.sh --tags @skip
+
+or run just a particular test by using its unique tag:
+
+::
+
+  bash tests/travis/start_behat_tests.sh --tags @quota-should-not-be-set-to-invalid-values-issue-1234
+
+When fixing the bug, remove these skip tags in the PR along with the bug fix code.
+
 Known issues
 ~~~~~~~~~~~~
 
