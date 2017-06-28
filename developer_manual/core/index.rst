@@ -7,6 +7,7 @@
 
    translation
    unit-testing
+   ui-testing
    theming
    configfile
    externalapi
@@ -29,6 +30,7 @@ Core related docs
 
 * :doc:`translation`
 * :doc:`unit-testing`
+* :doc:`ui-testing`
 * :doc:`integration-tests`
 * :doc:`theming`
 * :doc:`configfile`
