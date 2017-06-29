@@ -150,7 +150,7 @@ bugs
 
 category
 --------
-Category on the app store. Can be one of the following:
+Category on the ownCloud Marketplace. Can be one of the following:
 
 * multimedia
 * productivity
@@ -159,7 +159,7 @@ Category on the app store. Can be one of the following:
 
 ocsid
 -----
-The app's id on the app store, e.g.: https://apps.owncloud.com/content/show.php/QOwnNotes?content=168497 would have the ocsid **168497**. If given helps users to install and update the same app from the app store
+The app's id on the ownCloud Marketplace, e.g.: https://apps.owncloud.com/content/show.php/QOwnNotes?content=168497 would have the ocsid **168497**. If given helps users to install and update the same app from the ownCloud Marketplace
 
 Dependencies
 ============

@@ -1,12 +1,12 @@
-====================
-App store publishing
-====================
+===============================
+ownCloud Marketplace publishing
+===============================
 
 .. sectionauthor:: Jos Poortvliet <jospoortvliet@gmail.com>
 
-The ownCloud App Store
-----------------------
-The ownCloud app store is build into ownCloud to allow you to get your apps to users as easily and safely as possible. The app store and the process of publishing apps aims to be:
+The ownCloud ownCloud Marketplace
+---------------------------------
+The ownCloud Marketplace is build into ownCloud to allow you to get your apps to users as easily and safely as possible. The process of publishing apps aims to be:
 
 * secure
 * transparent
@@ -37,7 +37,7 @@ Requirements:
 
 .. * app is signed, identity verified
 
-App store:
+ownCloud Marketplace:
 
 * available in Apps page in separate category
 * sorted first in all overviews, 'Official' tag
@@ -68,9 +68,9 @@ Requirements:
 .. note:: **Developer trust**: The developer(s) is/are known in community; he/she has/have been active for a while, have met others at events and/or worked with others in various areas.
 .. note:: **security audits**: in practice this means that at least some of the code of this developer has been audited; either through another app by the same developer or with an earlier version of the app. And that the attitude of the developer towards these audits has been positive.
 
-App store:
+ownCloud Marketplace:
 
-* visible in app store by default
+* visible in ownCloud Marketplace by default
 * sorted above experimental apps
 * search results sorted by ratings
 * developer can directly push new versions to the store
@@ -89,7 +89,7 @@ Requirements:
 
 .. * app is signed but no verification has to be done
 
-App store:
+ownCloud Marketplace:
 
 * show up in Apps page provided user has enabled "allow installation of experimental apps" in the settings.
 * Warning about security and stability risks is shown for app
@@ -151,4 +151,4 @@ Respect the users
 * Apps must respect user privacy. IF user data is sent anywhere, this must be clearly explained and be kept to a minimum for the functioning of an app. Use proper security measures when needed.
 * App authors must provide means to contact them, be it through a bug tracker, forum or mail.
 
-Apps which break the guidelines will lose their 'approved' or 'official' state; and might be blocked from the app store altogether. This also has repercussions for the author, especially in case of security concerns, he/she might find themselves blocked from submitting applications.
+Apps which break the guidelines will lose their 'approved' or 'official' state; and might be blocked from the ownCloud Marketplace altogether. This also has repercussions for the author, especially in case of security concerns, he/she might find themselves blocked from submitting applications.
