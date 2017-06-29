@@ -34,13 +34,9 @@ your ownCloud Admin page, Personal page, or in ``config.php``.
 Adding Third Party Apps
 -----------------------
 
-Some apps are developed and supported by ownCloud directly. These have an 
-**Official** tag. Apps with the **Approved** tag are community-developed and 
-supported; they are maintained by trusted developers, and are under active 
-development. Only **Official** and **Approved** apps are linked on the Apps 
-page by default.
-
-Click the app name to view a description of the app and any of the app settings in the Application View field.  Clicking the **Enable** button will enable the app.  If the app is not part of the ownCloud installation, it will be downloaded from the ownCloud Marketplace, installed and enabled. 
+Click the app name to view a description of the app and any of the app settings in the Application View field. 
+Clicking the **Enable** button will enable the app. 
+If the app is not part of the ownCloud installation, it will be downloaded from the ownCloud Marketplace, installed and enabled. 
 
 Click the gear icon on the lower left to browse experimental apps in the `ownCloud Marketplace <https://marketplace.owncloud.com/>`_. Install experimental apps at your own risk.
 
