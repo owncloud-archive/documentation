@@ -78,7 +78,7 @@ Use this setting to allow LDAP connections::
 Allow access to remote network
 ------------------------------
 
-ownCloud requires access to remote networks for functions such as Server-to-Server sharing, external storages or the app store. 
+ownCloud requires access to remote networks for functions such as Server-to-Server sharing, external storages or the ownCloud Marketplace. 
 To allow this access use the following setting::
 
  setsebool -P httpd_can_network_connect on
