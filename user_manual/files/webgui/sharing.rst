@@ -154,6 +154,9 @@ change     Allows uploading a new version of a shared file and replacing it
 delete     Allows the users you share with to delete shared files
 ========== ===================================================================
    
+
+.. _create_upload_only_link_share_label:
+
 Creating Upload-only Link Shares   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
