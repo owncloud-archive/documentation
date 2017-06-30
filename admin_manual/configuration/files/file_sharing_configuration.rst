@@ -23,7 +23,8 @@ You have control of a number of user permissions on file shares:
 
 Configure your sharing policy on your Admin page in the Sharing section.
 
-.. figure:: images/sharing-files-1.png
+.. figure:: images/sharing-files-settings.png
+   :alt: ownCloud Sharing settings
 
 * Check ``Allow apps to use the Share API`` to enable users to share files. If 
   this is not checked, no users can create file shares.
@@ -36,6 +37,11 @@ Configure your sharing policy on your Admin page in the Sharing section.
 * Check ``Allow users to send mail notification for shared files`` to enable 
   sending notifications from ownCloud. (Your ownCloud server must be configured 
   to send mail)
+* Check ``Allow users to share file via social media`` to enable displaying of a set of links that allow for quickly sharing files and share links via *Twitter*, *Facebook*, *Google+*, *Disaspora*, and email.
+
+  .. figure:: images/sharing-files-via-social-media.png
+     :alt: ownCloud social media sharing links
+
 * Check ``Set default expiration date`` to set a default expiration date on 
   public shares.
 * Check ``Allow resharing`` to enable users to re-share files shared with them.
@@ -57,6 +63,7 @@ Configure your sharing policy on your Admin page in the Sharing section.
   groups can still receive shares, but not create any
 * Check ``Allow username autocompletion in share dialog`` to enable 
   auto-completion of ownCloud usernames.
+* Check ``Restrict enumeration to group members`` to restrict auto-completion of ownCloud usernames to only those users who are members of the same group(s) that the user is in.
 
 .. note:: ownCloud does not preserve the mtime (modification time) of 
    directories, though it does update the mtimes on files. See  
