@@ -6,7 +6,7 @@ Files & Synchronization
    :maxdepth: 1
 
    access_webdav
-   access_webgui
+   webgui/access_webgui
    desktop_mobile_sync
    encrypting_files
    gallery_app
