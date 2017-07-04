@@ -13,6 +13,8 @@ Cron jobs are commands or shell-based scripts that are scheduled to periodically
 ownCloud plug-in applications can register actions with ``cron.php`` automatically to take care of typical housekeeping operations. 
 These actions can include garbage collecting of temporary files or checking for newly updated files using ``filescan()`` on externally mounted file systems.
 
+.. _cron_job_label:
+
 Cron Jobs
 ---------
 
