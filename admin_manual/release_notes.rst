@@ -90,7 +90,7 @@ Existing LDAP users only show up in the user management page and the share dialo
 The account table introduced in ownCloud 10.0.0 significantly reduces LDAP communication overhead. 
 Password checks are yet to be accounted for. 
 LDAP user metadata in the account table will be updated when users log in or when the administrator runs ``occ user:sync "OCA\User_LDAP\User_Proxy"``.
-We recommend `setting up a nightly Cron job`_ to keep metadata of users not actively logging in up to date.
+We recommend :ref:`setting up a nightly Cron job <cron_job_label>` to keep metadata of users not actively logging in up to date.
 
 Error pages will not use the configured theme but will instead fall back to the community default
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
