@@ -203,7 +203,13 @@ listener with this command, like this example for Ubuntu Linux::
 The ``host`` is your remote SMB server, which must be exactly the same as the
 server name in your WND configuration on your ownCloud Admin page. ``share`` is
 the share name, and ``username`` and ``password`` are the login credentials for
-the share. By default there is no output. Enable verbosity to see the
+the share. 
+
+.. note:: 
+   There are a number of ways in which you can supply a password. 
+   Please refer to :ref:`the Password Options section <password-options-label>` for full details.
+
+By default there is no output. Enable verbosity to see the
 notifications::
  
   $ sudo -u www-data php occ wnd:listen -v server share useraccount
@@ -355,6 +361,58 @@ If you’re happy with it, you can configure the script to auto-start on boot, b
 
 .. note::
    This process is based on `a WND Listener Configuration on ownCloudCentral <https://central.owncloud.org/t/wnd-listener-configuration/3114>`_.
+
+
+.. _password-options-label:
+
+Password Options
+----------------
+
+There are three ways to supply a password:
+
+#. Interactively in response to a password prompt.
+#. Sent as a parameter to the command, e.g., ``occ wnd:listen host share username password``.
+#. Read from a file, using the ``--password-file`` switch to specify the file to read from. 
+#. Using 3rd party software to store and fetch the password. When using this option, the 3rd party app needs to show the password as plaintext on standard output.
+
+.. note::
+   If you use the ``--password-file`` switch, the entire contents of the file will be used for the password, so please be careful with newlines.
+
+.. warning::
+   If using ``--password-file`` make sure that the file is only readable by the
+   apache / www-data user and inaccessible from the web, in order to prevent
+   tampering or leaking of the information. The password won't be leaked to any
+   other user using ``ps``.
+
+3rd Party Software Examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+ cat /tmp/plainpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+
+This provides a bit more security because the ``/tmp/plainpass`` password should be owned by root and only root should be able to read the file (0400 permissions); Apache, particularly, shouldn't be able to read it. 
+It's expected that root will be the one to run this command. 
+
+.. code-block:: console
+
+ base64 -d /tmp/encodedpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+
+Similar to the previous example, but this time the contents are encoded in `Base64 format <https://www.base64decode.org/>`_ (there's not much security, but it has additional obfuscation).
+
+Third party password managers can also be integrated. 
+The only requirement is that they have to provide the password in plain text somehow. 
+If not, additional operations might be required to get the password as plain text and inject it in the listener. 
+
+As an example:
+
+  For a more complex test, which might be similar to a real scenario, you can use "pass" as a password manager. You can go through http://xmodulo.com/manage-passwords-command-line-linux.html to setup the keyring for whoever will fetch the password (probably root) and then use something like pass the-password-name | sudo -u www-data ./occ wnd:listen host share username --password-file=-.
+
+Password Option Precedence
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If both the argument and the option are passed, e.g., ``occ wnd:listen host share username password --password-file=/tmp/pass``, then the ``--password-file`` option will take precedence.
+
 
 .. Links
    
