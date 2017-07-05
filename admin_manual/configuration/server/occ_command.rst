@@ -1055,7 +1055,7 @@ However, if a user has reshared a remote share which has been deleted it will.
 This is because when the original share is deleted, the remote re-share reference is not.
 Internally, the fileid will remain in the file cache and storage for that file will not be deleted.
 
-As a result, any user(s) who the share was reshared with will now get an errer when trying to access that file or folder.
+As a result, any user(s) who the share was reshared with will now get an error when trying to access that file or folder.
 That's why the command is available.
 
 So, to cleanup all orphaned remote storages, run it as follows::
