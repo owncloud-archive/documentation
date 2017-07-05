@@ -199,9 +199,9 @@ In there, you need to define a class named ``OC_Theme`` and implement the method
 Each method must return a string. 
 The following methods are available:
 
-======================= ===============================================================
+======================= ==================================================================
 Method                  Description
-======================= ===============================================================
+======================= ==================================================================
 ``getAndroidClientUrl`` Returns the URL to Google Play for the Android Client.
 ``getBaseUrl``          Returns the base URL.
 ``getDocBaseUrl``       Returns the documentation URL.
@@ -209,8 +209,8 @@ Method                  Description
                         copyright notices.
 ``getName``             Returns the short name of the software.
 ``getHTMLName``         Returns the short name of the software containing HTML strings.
-``getiOSClientUrl``     Returns the URL to the App Store for the iOS Client.
-``getiTunesAppId``      Returns the AppId for the App Store for the iOS Client.
+``getiOSClientUrl``     Returns the URL to the ownCloud Marketplace for the iOS Client.
+``getiTunesAppId``      Returns the AppId for the ownCloud Marketplace for the iOS Client.
 ``getLogoClaim``        Returns the logo claim.
 ``getLongFooter``       Returns the long version of the footer.
 ``getMailHeaderColor``  Returns the mail header color.
@@ -218,7 +218,7 @@ Method                  Description
 ``getTitle``            Returns the title.
 ``getShortFooter``      Returns short version of the footer.
 ``getSlogan``           Returns the slogan.
-======================= ===============================================================
+======================= ==================================================================
 
 .. note:: 
    Only these methods are available in the templates, because we internally wrap around hardcoded method names.

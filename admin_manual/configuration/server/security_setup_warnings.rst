@@ -91,12 +91,12 @@ Outdated NSS / OpenSSL version
 ------------------------------
 
 "cURL is using an outdated OpenSSL version (OpenSSL/$version). Please update your 
-operating system or features such as installing and updating apps via the app store 
-or Federated Cloud Sharing will not work reliably."
+operating system or features such as installing and updating apps via the
+ownCloud Marketplace or Federated Cloud Sharing will not work reliably."
 
 "cURL is using an outdated NSS version (NSS/$version). Please update your operating 
-system or features such as installing and updating apps via the app store or Federated 
-Cloud Sharing will not work reliably."
+system or features such as installing and updating apps via the ownCloud
+Marketplace or Federated Cloud Sharing will not work reliably."
 
 There are known bugs in older OpenSSL and NSS versions leading to misbehaviour in 
 combination with remote hosts using SNI. A technology used by most of the HTTPS

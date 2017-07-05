@@ -46,8 +46,7 @@ version branch in version.php to something else than "stable".
 Is Code Signing Mandatory For Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Code signing is optional for all third-party applications. Applications 
-with a tag of "Official" on apps.owncloud.com require code signing.
+Code signing is optional for all third-party applications. 
 
 .. _code_signing_fix_warning_label:
 

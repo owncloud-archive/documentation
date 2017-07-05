@@ -814,7 +814,7 @@ Options for the Apps folder, Apps store, and App code checker.
 
 	'appstoreenabled' => true,
 
-When enabled, admins may install apps from the ownCloud app store.
+When enabled, admins may install apps from the ownCloud Marketplace.
 
 ::
 
