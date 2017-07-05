@@ -107,6 +107,7 @@ Hooks available in scope **\\OC\\User**:
 * **postCreateUser** (\\OC\\User\\User $user)
 * **preLogin** (string $user, string $password)
 * **postLogin** (\\OC\\User\\User $user)
+* **failedLogin** (string $user)
 * **logout** ()
 
 UserManager

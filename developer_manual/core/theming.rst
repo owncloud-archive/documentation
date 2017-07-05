@@ -26,6 +26,15 @@ All themes, whether copied or new, must meet two key criteria, these are:
 1. They must be located in a directory under the ``apps`` directory of your ownCloud installation.
 2. They require a configuration file called ``appinfo/info.xml`` to be present.
 
+.. note:: 
+   When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_.
+   This is slightly complicated by the fact that without the file a warning will be displayed. 
+   However, this is to be corrected in the next release, 10.0.3.
+
+.. note::
+   You only need to sign your theme if you are going to publish it as an app in `the marketplace`_. 
+   If you are only creating a private theme for your own ownCloud installation, then you can get rid of the signature file.
+
 appinfo/info.xml
 ~~~~~~~~~~~~~~~~
 
@@ -190,9 +199,9 @@ In there, you need to define a class named ``OC_Theme`` and implement the method
 Each method must return a string. 
 The following methods are available:
 
-======================= ===============================================================
+======================= ==================================================================
 Method                  Description
-======================= ===============================================================
+======================= ==================================================================
 ``getAndroidClientUrl`` Returns the URL to Google Play for the Android Client.
 ``getBaseUrl``          Returns the base URL.
 ``getDocBaseUrl``       Returns the documentation URL.
@@ -200,8 +209,8 @@ Method                  Description
                         copyright notices.
 ``getName``             Returns the short name of the software.
 ``getHTMLName``         Returns the short name of the software containing HTML strings.
-``getiOSClientUrl``     Returns the URL to the App Store for the iOS Client.
-``getiTunesAppId``      Returns the AppId for the App Store for the iOS Client.
+``getiOSClientUrl``     Returns the URL to the ownCloud Marketplace for the iOS Client.
+``getiTunesAppId``      Returns the AppId for the ownCloud Marketplace for the iOS Client.
 ``getLogoClaim``        Returns the logo claim.
 ``getLongFooter``       Returns the long version of the footer.
 ``getMailHeaderColor``  Returns the mail header color.
@@ -209,7 +218,7 @@ Method                  Description
 ``getTitle``            Returns the title.
 ``getShortFooter``      Returns short version of the footer.
 ``getSlogan``           Returns the slogan.
-======================= ===============================================================
+======================= ==================================================================
 
 .. note:: 
    Only these methods are available in the templates, because we internally wrap around hardcoded method names.
@@ -223,6 +232,7 @@ For core we do something like this to build the documentation link:
     return $this->getDocBaseUrl() . '/server/9.0/go.php?to=' . $key;
   }
 
+
 How to Test a Theme
 -------------------
 
@@ -230,6 +240,96 @@ There are different options for testing themes:
 
 * If you're using a tool like the Inspector tools inside Mozilla you can test out the CSS-Styles immediately inside the css-attributes, while you’re looking at the page.
 * If you have a development server, you can test out the effects in a live environment.
+
+Settings Page Registration
+--------------------------
+
+How Can an App Register a Section in the Admin or Personal Section?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As of ownCloud 10.0, apps must register admin and personal section settings in ``info.xml``.
+As a result, all calls to ``OC_App::registerPersonal`` and ``OC_App::registerAdmin`` should now be removed. 
+The settings panels of any apps that are still using these calls will now be rendered in the "Additional" section of the dashboard .
+
+For each panel an app wishes to register, two things are required: 
+
+1. An update to ``info.xml``
+2. A controller class
+
+Updating info.xml
+^^^^^^^^^^^^^^^^^
+
+First, an entry must be added into the ``<settings>`` element in ``info.xml``, specifying the class name responsible for rendering the panel. 
+These will be loaded automatically when an app is enabled. 
+For example, to register an admin and a personal section would require the following configuration..
+
+::
+
+  <settings>
+        <personal>OCA\MyApp\PersonalPanel::class</personal>
+        <admin>OCA\MyApp\AdminPanel::class</admin>
+  </settings>
+
+The Controller Class
+^^^^^^^^^^^^^^^^^^^^
+
+Next, a controller class which implements the ``OCP\Settings\ISettings`` interface must be created to represent the panel. 
+Doing so enforces that the necessary settings panel information is returned. 
+The interface specifies three methods:
+
+ - getSectionID
+ - getPanel
+ - getPriority
+
+**getSectionID:** This method returns the identifier of the section that this panel should be shown under. 
+ownCloud Server comes with a predefined list of sections which group related settings together; the intention of which is to improve the user experience. 
+This can be found here in `this example`_: 
+
+**getPanel:** This method returns the ``OCP\Template`` or ``OCP\TemplateReponse`` which is used to render the panel. 
+The method may also return ``null`` if the panel should not be shown to the user.
+
+**getPriority:** An integer between 0 and 100 representing the importance of the panel (higher is more important). 
+Most apps should return a value:
+
+- between 20 and 50 for general information. 
+- greater than 50 for security information and notices. 
+- lower than 20 for tips and debug output.
+
+Here’s an example implementation of a controller class for creating a personal panel in the security section.
+
+::
+
+    <?php
+
+    namespace OCA\YourApp
+
+    use OCP\Settings\ISettings;
+    use OCP\Template;
+
+    class PersonalPanel extends ISettings {
+    
+        const PRIORITY = 10;
+    
+        public function getSectionID() {
+            return 'security';
+        }
+
+        public function getPriority() {
+            return self::PRIORITY;
+        }
+
+        public function getPanel() {
+            // Set the template and assign a template variable
+            return (new Template('app-name', 'template-name'))->assign('var', 'value');
+        }
+    }
+
+Create Custom Sections
+~~~~~~~~~~~~~~~~~~~~~~
+
+At the moment, there is no provision for apps creating their own settings sections. 
+This is to encourage sensible and intelligent grouping of the settings panels which in turn should improve the overall user experience. 
+If you think a new section should be added to core however, please create a PR with the appropriate changes to ``OC\Settings\SettingsManager``.
 
 .. Links
    
@@ -239,3 +339,6 @@ There are different options for testing themes:
 .. _Mozilla Firefox: https://developer.mozilla.org/son/docs/Tools
 .. _Safari: https://developer.apple.com/safari/tools/
 .. _the guide on Can I Use: http://caniuse.com/#feat=css-gradients
+.. _this example: https://github.com/owncloud/core/blob/master/lib/private/Settings/SettingsManager.php#L195   
+.. _signed: /app/code_signing.html
+.. _the marketplace: https://marketplace.owncloud.com

@@ -109,16 +109,13 @@ upgrading <manual_upgrade>`.)
 Setting Permissions for Updating
 --------------------------------
    
-For hardened security we  highly recommend setting the permissions on your 
-ownCloud directory as strictly as possible. These commands should be executed 
-immediately after the initial installation. Please follow the steps in 
-:ref:`strong_perms_label`.
-    
-These strict permissions will prevent the Updater app from working, as it needs 
-your whole ownCloud directory to be owned by the HTTP user. Run this script to 
-set the appropriate permissions for updating. Replace the ``ocpath`` variable 
-with the path to your ownCloud directory, and replace the ``htuser`` and 
-``htgroup`` variables with your HTTP user and group.::
+For hardened security, we highly recommend setting the permissions on your ownCloud directory as strictly as possible, immediately after the initial installation.    
+However, these strict permissions will prevent the Updater app from working, as it needs your whole ownCloud directory to be owned by the HTTP user. 
+
+So to set the appropriate permissions for updating, run the code below. 
+Replace the ``ocpath`` variable with the path to your ownCloud directory, and replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group.
+
+::
 
     #!/bin/bash
     # Sets permissions of the owncloud instance for updating
@@ -129,16 +126,15 @@ with the path to your ownCloud directory, and replace the ``htuser`` and
     
     chown -R ${htuser}:${htgroup} ${ocpath}
 
-You can find your HTTP user in your HTTP server configuration files. Or you can 
-use :ref:`label-phpinfo` (Look for the **User/Group** line).
+You can find your HTTP user in your HTTP server configuration files. 
+Or you can use :ref:`label-phpinfo` (Look for the **User/Group** line).
 
 * The HTTP user and group in Debian/Ubuntu is ``www-data``.
 * The HTTP user and group in Fedora/CentOS is ``apache``.
 * The HTTP user and group in Arch Linux is ``http``.
 * The HTTP user in openSUSE is ``wwwrun``, and the HTTP group is ``www``.
 
-After the update is completed, re-apply the strong directory permissions 
-immediately by running the script in :ref:`strong_perms_label`.
+After the update is completed, re-apply :ref:`the strong directory permissions <post_installation_steps_label>` immediately.
 
 .. _updater_cli_label:
 

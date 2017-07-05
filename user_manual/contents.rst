@@ -5,15 +5,14 @@ Table of Contents
 =================
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
     
     index
     whats_new
-    webinterface
-    files/index
     pim/index
-    documents
-    userpreferences
-    session_management
     external_storage/index
-    
+    files/index
+    webdav-api/index
+    session_management
+    webinterface
+    userpreferences

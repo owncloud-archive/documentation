@@ -7,17 +7,19 @@
 
    translation
    unit-testing
+   ui-testing
    theming
    configfile
    externalapi
    ocs-share-api
+   ocs-recipient-api
 
 =================
 Core Development
 =================
 
-Intro
------
+Introduction
+------------
 
 Please make sure you have set up a development environment:
 
@@ -28,7 +30,10 @@ Core related docs
 
 * :doc:`translation`
 * :doc:`unit-testing`
+* :doc:`ui-testing`
+* :doc:`integration-tests`
 * :doc:`theming`
 * :doc:`configfile`
 * :doc:`ocs-share-api`
+* :doc:`ocs-recipient-api`
 * :doc:`externalapi`

@@ -4,23 +4,38 @@ Testing
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript can be tested by using `Karma <http://karma-runner.github.io/0.12/index.html>`_.
-
-
+All PHP classes can be tested with `PHPUnit <http://phpunit.de/>`_, JavaScript
+can be tested by using `Karma <http://karma-runner.github.io/0.12/index.html>`_.
 
 PHP
 ===
-The PHP tests go into the **tests/** directory. Unfortunately the classloader in core requires a running server (as in fully configured and setup up with a database connection). This is unfortunately too complicated and slow so a separate classloader has to be provided. If the app has been generated with the **ocdev startapp** command, the classloader is already present in the the **tests/** directory and PHPUnit can be run with::
+
+The PHP tests go into the **tests/** directory. Unfortunately the classloader in
+core requires a running server (as in a fully configured and running setup up
+with a database connection). This is, unfortunately, too complicated and slow so
+a separate classloader has to be provided. 
+
+If the app has been generated with the **ocdev startapp** command, the
+classloader is already present in the the **tests/** directory and PHPUnit can
+be run with::
 
     phpunit tests/
 
-When writing your own tests, please ensure that PHPUnit bootstraps from :file:`tests/bootstrap.php`, to set up various environment variables and autoloader registration correctly. Without this, you will see errors as the ownCloud autoloader security policy prevents access to the tests/ subdirectory. This can be configured in your :file:`phpunit.xml` file as follows:
+When writing your own tests, please ensure that PHPUnit bootstraps from
+:file:`tests/bootstrap.php`, to set up various environment variables and
+autoloader registration correctly. 
+
+Without this, you will see errors as the ownCloud autoloader security policy
+prevents access to the tests/ subdirectory. This can be configured in your
+:file:`phpunit.xml` file as follows:
 
 .. code-block:: xml
 
     <phpunit bootstrap="../../tests/bootstrap.php">
 
-PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly. Services that should be mocked can be replaced directly in the container.
+PHP classes should be tested by accessing them from the container to ensure that
+the container is wired up properly. Services that should be mocked can be
+replaced directly in the container.
 
 A test for the **AuthorStorage** class in :doc:`filesystem`:
 
@@ -93,7 +108,9 @@ would look like this:
 
     }
 
-Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods,
-when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method
-from the TestCase. These methods set up important stuff and clean up the system after the test,
-so the next test can run without side effects, like remaining files and entries in the file cache, etc.
+Make sure to extend the ``\Test\TestCase`` class with your test and always call
+the parent methods, when overwriting ``setUp()``, ``setUpBeforeClass()``,
+``tearDown()`` or ``tearDownAfterClass()`` method from the TestCase. These
+methods set up important stuff and clean up the system after the test, so the
+next test can run without side effects, like remaining files and entries in the
+file cache, etc.

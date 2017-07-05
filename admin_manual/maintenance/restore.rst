@@ -13,6 +13,8 @@ When you install ownCloud from the source tarballs you may safely restore your e
 
 When you have completed your restoration, see :ref:`Setting Strong Permissions <strong_perms_label>`.
 
+.. _restore_directories_label:
+
 Restore Directories
 -------------------
 
@@ -21,6 +23,8 @@ Simply copy your configuration and data folder to your ownCloud environment. You
     rsync -Aax config data /var/www/owncloud/
     
 There are many ways to restore normal files from backups, and you may use whatever method you are accustomed to.
+
+.. _restore_database_label:
 
 Restore Database
 ----------------
