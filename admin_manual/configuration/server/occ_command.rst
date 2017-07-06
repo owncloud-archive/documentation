@@ -4,8 +4,8 @@ Using the occ Command
 
 ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line 
 interface. You can perform many common server operations with ``occ``, such as 
-installing and upgrading ownCloud, manage users, encryption, passwords, LDAP 
-setting, and more.
+installing and upgrading ownCloud, managing users and groups, encryption, passwords, 
+LDAP setting, and more.
 
 ``occ`` is in the :file:`owncloud/` directory; for example 
 :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
@@ -27,6 +27,7 @@ occ Command Directory
 * :ref:`federation_sync_label`
 * :ref:`file_operations_label`
 * :ref:`files_external_label`
+* :ref:`group_commands_label`
 * :ref:`integrity_check_label`
 * :ref:`create_javascript_translation_files_label`
 * :ref:`ldap_commands_label`
@@ -688,6 +689,87 @@ and to copy external mount configurations to another ownCloud server.
 
 Added in 9.0.
 
+.. _group_commands_label:
+
+Group Commands
+--------------
+
+The ``group`` commands provide a range of functionality for managing ownCloud
+groups. This includes: creating and removing groups and managing group membership.
+Group names are case-sensitive, so "Finance" and "finance" are two different groups.
+
+The full list of commands is::
+
+ group
+  group:add                           adds a group
+  group:add-member                    add members to a group
+  group:delete                        deletes the specified group
+  group:remove-member                 remove member(s) from a group
+
+Creating Groups
+^^^^^^^^^^^^^^^
+
+You can create a new group with the ``group:add`` command. The syntax is::
+
+ group:add groupname
+
+This example adds a new group Finance:: 
+ 
+ sudo -u www-data php occ group:add Finance
+   Created group "Finance"
+
+Adding Members to Groups
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can add members to an existing group with the ``group:add-member`` command.
+Members must be existing users. The syntax is::
+
+ group:add-member [-m|--member [MEMBER]] <group>
+
+This example adds members aaron and julie to group Finance:: 
+
+ sudo -u www-data php occ group:add-member --member aaron --member julie Finance
+   User "aaron" added to group "Finance"
+   User "julie" added to group "Finance"
+
+You may attempt to add members that are already in the group, without error.
+This allows you to add members in a scripted way without needing to know if the
+user is already a member of the group. For example::
+
+ sudo -u www-data php occ group:add-member --member aaron --member julie --member fred Finance
+   User "aaron" is already a member of group "Finance"
+   User "julie" is already a member of group "Finance"
+   User fred" added to group "Finance"
+
+Removing Members from Groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can remove members from a group with the ``group:remove-member`` command.
+The syntax is::
+
+ group:remove-member [-m|--member [MEMBER]] <group>
+
+This example removes members aaron and julie from group Finance:: 
+
+ sudo -u www-data php occ group:remove-member --member aaron --member julie Finance
+   Member "aaron" removed from group "Finance"
+   Member "julie" removed from group "Finance"
+
+You may attempt to remove members that have already been removed from the group, 
+without error. This allows you to remove members in a scripted way without needing 
+to know if the user is still a member of the group. For example::
+
+ sudo -u www-data php occ group:remove-member --member aaron --member fred Finance
+   Member "aaron" could not be found in group "Finance"
+   Member "fred" removed from group "Finance"
+
+Deleting a Group
+^^^^^^^^^^^^^^^^^
+
+To delete a group, you use the ``group:delete`` command, as in the example below.::
+
+ sudo -u www-data php occ group:delete Finance
+   
 .. _integrity_check_label:
 
 Integrity Check
