@@ -45,7 +45,7 @@ App Development
 Introduction
 ============
 
-Before you start, please check if there already is a similar app in the `App Store <https://apps.owncloud.com>`_, or an official `ownCloud app <https://github.com/owncloud/core/wiki/Maintainers#apps-repo>`_ (see Apps Repo and Other app repos) that you could contribute to. Also, feel free to communicate your idea and plans to the `user mailing list <https://mailman.owncloud.org/mailman/listinfo/user>`_ or `developer mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ so other contributors might join in.
+Before you start, please check if there already is a similar app in the `ownCloud Marketplace <https://marketplace.owncloud.com/>`_, or an official `ownCloud app <https://marketplace.owncloud.com/publishers/owncloud>`_ (see Apps Repo and Other app repos) that you could contribute to. Also, feel free to communicate your idea and plans to the `user mailing list <https://mailman.owncloud.org/mailman/listinfo/user>`_ or `developer mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ so other contributors might join in.
 
 Then, please make sure you have set up a development environment:
 
@@ -60,7 +60,7 @@ After this you can start with the tutorial
 
 * :doc:`tutorial`
 
-Once you are ready for publishing, check out the app store process:
+Once you are ready for publishing, check out the ownCloud Marketplace process:
 
 * :doc:`publishing`
 

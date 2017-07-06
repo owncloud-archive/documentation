@@ -75,7 +75,7 @@ the server address, the share name, and the folder you want to connect to.
    ``Internal Username Attribute`` must be set to the ``samaccountname`` for 
    either the share or the root to work, and the user's home directory needs 
    to match the ``samaccountname``. (See 
-   :doc:`../../configuration_user/user_auth_ldap`.)
+   :doc:`../../configuration/user/user_auth_ldap`.)
 6. Login credentials.
 7. Select users or groups with access to the share. The default is all users.
 8. Click the gear icon for additional mount options. Note that previews are
@@ -190,6 +190,8 @@ However, running this command would not::
    
    su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata mydata svc_owncloud password'
 
+.. _setup_notifications_for_smb_share-label::
+
 Setup Notifications for an SMB Share
 ------------------------------------
 
@@ -201,7 +203,13 @@ listener with this command, like this example for Ubuntu Linux::
 The ``host`` is your remote SMB server, which must be exactly the same as the
 server name in your WND configuration on your ownCloud Admin page. ``share`` is
 the share name, and ``username`` and ``password`` are the login credentials for
-the share. By default there is no output. Enable verbosity to see the
+the share. 
+
+.. note:: 
+   There are a number of ways in which you can supply a password. 
+   Please refer to :ref:`the Password Options section <password-options-label>` for full details.
+
+By default there is no output. Enable verbosity to see the
 notifications::
  
   $ sudo -u www-data php occ wnd:listen -v server share useraccount
@@ -226,7 +234,7 @@ is updated and timing::
   updated storage wnd::administrador@server/share// from mount id 3 -> removed internal path : Capirotes/New Document.txt
   found 1 related storages from mount id 2
 
-See :doc:`../configuration_server/occ_command` for detailed help with ``occ``.
+See :doc:`../../configuration/server/occ_command` for detailed help with ``occ``.
 
 One Listener for Many Shares
 ----------------------------
@@ -259,10 +267,152 @@ the ownCloud server.
 Running the WND Listener as a Service
 -------------------------------------
 
-See `Configuring wnd:listen to run as a service
-<https://github.com/owncloud/documentation/wiki/Configuring-wnd:listen-to-run-as-a-service>`_
-in the documentation wiki for tips on running the listener as a service via
-cron, and by creating a `systemd`_ startup script.
+There are several different approaches available to running the Windows Network Drive listener as a service.
+
+As a Cron Job
+~~~~~~~~~~~~~
+
+Firstly, create a new script called ``wnd-listen.sh`` and add the code below to it, adjusting the path to your ownCloud installation so that it’s specific to your installation.
+
+.. code-block:: bash
+
+   #!/bin/bash 
+   until php -f /var/www/owncloud/occ wnd:listen $@; do
+      echo "occ wnd:listen crashed with exit code $?.  Respawning.." >&2
+      sleep 1
+   done
+
+Then, make the script executable and ensure that it is owned by your HTTP user. 
+To do that, run the following commands, changing ``<HTTP_USER>`` as required.
+
+.. code-block:: console
+
+   chmod +x wnd-listen.sh
+   chown <HTTP_USER> wnd-listen.sh
+
+With the script completed, test it in debug mode by running it with the command ``./wnd-listen.sh``.
+The script will ask you for the password on every restart.
+For testing production environments add the password as a parameter.
+
+With the script tested, add a crontab entry to execute it on boot, e.g.:
+
+.. code-block:: console
+
+   @reboot www-data /usr/local/bin/wnd-listen.sh 10.0.0.100 Users sysOwnCloud password
+
+Using Systemd
+~~~~~~~~~~~~~
+
+To setup a Windows Network Drive listener using Systemd, firstly :ref:`setup a listener for each of your shares <setup_notifications_for_smb_share-label>`.
+In a high availability environment, however, setup only one listener per share; that way there is no redundancy for the listener(s). 
+
+.. note:: 
+   Your credentials will be in plain text — currently this is unavoidable.
+
+Then, create a systemd script for your Linux distribution.
+This process *should* work on any systemd distro, provided you change the paths/users accordingly.
+
+After that, create a ``owncloud-listener.service`` file in ``/etc/systemd/system/`` using your favorite text editor.
+Then, copy the contents below into the file.
+
+.. code-block:: ini
+
+   [Unit]
+   Description=ownCloud WND Listener
+   After=syslog.target network.target
+   Requires=httpd.service
+   [Service]
+   User=apache
+   Group=apache
+   WorkingDirectory=/var/www/html/owncloud
+   ExecStart=/usr/bin/php /var/www/html/owncloud/occ wnd:listen SERVER SHARE USER PASSWORD
+   Type=simple
+   StandardOutput=journal
+   StandardError=journal
+   SyslogIdentifier=%n
+   KillMode=process
+   RestartSec=1
+   Restart=on-failure
+   [Install]
+   WantedBy=multi-user.target
+
+With that done, make sure the file is owned by root and has the permissions ``644``. 
+You can do that using the following command:
+
+.. code-block:: console
+
+   chown root /etc/systemd/system/owncloud-listener.service
+   chmod 644 /etc/systemd/system/owncloud-listener.service
+
+Now, you can control your new service like any other, such as using the following command:
+
+.. code-block:: console
+
+   systemctl start owncloud-listener
+ 
+If you’re happy with it, you can configure the script to auto-start on boot, by using the following command.
+
+.. code-block:: console
+
+   systemctl enable owncloud-listener.service (or whatever you have named your file).
+
+.. note:: 
+   If you need multiple listeners, just change the name of the file and configure the ``ExecStart`` parameters accordingly.
+
+.. note::
+   This process is based on `a WND Listener Configuration on ownCloudCentral <https://central.owncloud.org/t/wnd-listener-configuration/3114>`_.
+
+
+.. _password-options-label:
+
+Password Options
+----------------
+
+There are three ways to supply a password:
+
+#. Interactively in response to a password prompt.
+#. Sent as a parameter to the command, e.g., ``occ wnd:listen host share username password``.
+#. Read from a file, using the ``--password-file`` switch to specify the file to read from. 
+#. Using 3rd party software to store and fetch the password. When using this option, the 3rd party app needs to show the password as plaintext on standard output.
+
+.. note::
+   If you use the ``--password-file`` switch, the entire contents of the file will be used for the password, so please be careful with newlines.
+
+.. warning::
+   If using ``--password-file`` make sure that the file is only readable by the
+   apache / www-data user and inaccessible from the web, in order to prevent
+   tampering or leaking of the information. The password won't be leaked to any
+   other user using ``ps``.
+
+3rd Party Software Examples
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+ cat /tmp/plainpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+
+This provides a bit more security because the ``/tmp/plainpass`` password should be owned by root and only root should be able to read the file (0400 permissions); Apache, particularly, shouldn't be able to read it. 
+It's expected that root will be the one to run this command. 
+
+.. code-block:: console
+
+ base64 -d /tmp/encodedpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+
+Similar to the previous example, but this time the contents are encoded in `Base64 format <https://www.base64decode.org/>`_ (there's not much security, but it has additional obfuscation).
+
+Third party password managers can also be integrated. 
+The only requirement is that they have to provide the password in plain text somehow. 
+If not, additional operations might be required to get the password as plain text and inject it in the listener. 
+
+As an example:
+
+  For a more complex test, which might be similar to a real scenario, you can use "pass" as a password manager. You can go through http://xmodulo.com/manage-passwords-command-line-linux.html to setup the keyring for whoever will fetch the password (probably root) and then use something like pass the-password-name | sudo -u www-data ./occ wnd:listen host share username --password-file=-.
+
+Password Option Precedence
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If both the argument and the option are passed, e.g., ``occ wnd:listen host share username password --password-file=/tmp/pass``, then the ``--password-file`` option will take precedence.
+
 
 .. Links
    

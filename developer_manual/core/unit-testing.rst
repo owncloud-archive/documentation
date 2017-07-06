@@ -74,7 +74,7 @@ There are existing tests provided by ownCoud which are ready to run.
 
 Testing apps
 
-- To run test for a specific app with the provided PHPUnit version, change into ``<webroot>/apps/<appnname>/<testfolder>`` and call ``<webroot>/lib/composer/phpunit/phpunit/phpunit`` plus optinal parameters when needed.
+- To run test for a specific app with the provided PHPUnit version, change into ``<webroot>/apps/<appnname>/<testfolder>`` and call ``<webroot>/lib/composer/phpunit/phpunit/phpunit`` plus optional parameters when needed.
 
 
 
@@ -172,6 +172,34 @@ Running Unit Tests for ownCloud Core
 
 The core project provides a script that runs all the core unit tests using the specified database backend like ``sqlite``, ``mysql``, ``pgsql``, ``oci`` (for Oracle), the default is ``sqlite``
 
+To run tests on ``mysql`` or ``pgsql`` you need a database user called "oc_autotest" with the password "owncloud". This user needs the privilege to create and delete the database called "oc_autotest".
+
+**MySQL setup**
+
+- ``CREATE DATABASE oc_autotest;``
+- ``CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud';``
+- ``GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost';``
+
+*for parallel executor support with EXECUTOR_NUMBER=0:* 
+
+- ``CREATE DATABASE oc_autotest0;``
+- ``CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud';``
+- ``GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost';``
+
+**PGSQL setup**
+
+- ``su - postgres``
+- ``createuser -P oc_autotest`` (enter password "owncloud")
+- ``psql -c 'ALTER USER oc_autotest CREATEDB;'`` (to give the user the privileged to create databases)
+- to enable dropdb I decided to add following line to ``pg_hba.conf`` (this is not the safest way but fine for a testing machine): ``local	all	all	trust``
+
+*for parallel executor support with EXECUTOR_NUMBER=0:*
+
+- ``su - postgres``
+- ``createuser -P oc_autotest0`` (enter password "owncloud")
+- ``psql -c 'ALTER USER oc_autotest0 CREATEDB;'`` (to give the user the privileged to create databases)
+
+**run tests**
 ::
 
   make test-php
@@ -254,53 +282,3 @@ Here are some useful links about how to write unit tests with Jasmine and Sinon:
 .. _the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
 .. _the writing tests section: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
 
-
-UI testing in Core with selenium
---------------------------------
-
-Requirements:
-~~~~~~~~~~~~~
-- ownCloud >= 10.0 (make sure you have an running instance of ownCloud completely setup)
-- default language set to "en" (in ``config/config.php`` set ``'default_language' => 'en',``)
-- skeletondirectory set to ``<owncloud-base-folder>/tests/ui/skeleton``
-- An admin user called "admin" with the password "admin"
-- no self-signed SSL certificates
-- testing utils (running ``make`` in your terminal from the ``webroot`` directory will install them)
-- Selenium standalone server (download Selenium standalone server jar from http://docs.seleniumhq.org/download/)
-- browser installed that you would like to test on
-- webdriver for the browsers you want to test (e.g. download the chromedriver from: https://sites.google.com/a/chromium.org/chromedriver/ , firefox webdriver is included in the selenium server)
-
-Set Up test
-~~~~~~~~~~~
-- place the selenium standalone server jar file and the webdriver(s) somewhere in the same folder
-- start the selenium server ``java -jar selenium-server-standalone-3.0.1.jar -port 4445``
-- set the following environment variables:
-  - ``SRV_HOST_NAME`` (the hostname where ownCloud runs)
-  - ``SRV_HOST_URL`` (path if ownCloud does not run in the root of the host)
-  - ``SRV_HOST_PORT`` (port of your webserver)
-  - ``BROWSER`` (chrome, firefox, internet explorer)
-
-  e.g. to test an instance running on http://localhost/owncloud-core with chrome do:
-
-  ::
-
-    export SRV_HOST_NAME=localhost
-    export SRV_HOST_URL=owncloud-core
-    export SRV_HOST_PORT=80
-    export BROWSER=chrome
-
-
-- if you don't have a webserver already running start the PHP development server with:
-  ``bash tests/travis/start_php_dev_server.sh`` (leave SRV_HOST_URL empty in that case. ``export SRV_HOST_URL=""``)
-  The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``
-- run the tests: ``bash tests/travis/start_behat_tests.sh``
-
-  The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``)
-  To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_behat_tests.sh``
-
-Known issues
-~~~~~~~~~~~~
-
-- the webdriver for the current version of Firefox is not working correctly, so we need to test on 47.0.2 and to use selenium server 2.53.1 for it
-  - download and install version 47.0.2 of Firefox from here: https://ftp.mozilla.org/pub/firefox/releases/47.0.2/
-  - download version 2.53.2 of selenium webdriver from here: https://selenium-release.storage.googleapis.com/index.html?path=2.53/

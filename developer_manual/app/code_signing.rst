@@ -46,7 +46,7 @@ Is Code Signing Mandatory For Apps?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Code signing is optional for all third-party applications. Applications 
-with a tag of "Official" on apps.owncloud.com require code signing.
+with a tag of "Official" on https://marketplace.owncloud.com/ require code signing.
 
 Technical details
 -----------------
@@ -101,8 +101,8 @@ Having the certificate bundled within the ``signature.json`` file has the
 advantage that even if a developer loses their certificate, future updates can 
 still be ensured by having a new certificate issued.
 
-How Code Signing Affects Apps in the App Store
-----------------------------------------------
+How Code Signing Affects Apps in the ownCloud Marketplace
+---------------------------------------------------------
 
 - Apps which have an ``official`` tag **MUST** be code signed starting with 
   ownCloud 9.0. Unsigned ``official`` apps won't be installable anymore.
@@ -130,10 +130,10 @@ examples will assume that you are trying to sign an application named
    --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts``
 
 The occ tool will store a ``signature.json`` file within the ``appinfo`` folder 
-of your application. Then compress the application folder and upload it to 
-apps.owncloud.com. Be aware that doing any changes to the application after it 
-has been signed requires another signing. So if you do not want to have some 
-files shipped remove them before running the signing command.
+of your application. 
+Then compress the application folder, naming it ``contacts.tar.gz``, and upload it to https://marketplace.owncloud.com/. 
+Be aware that doing any changes to the application after it has been signed requires another signing. 
+So if you do not want to have some files shipped remove them before running the signing command.
 
 In case you lose your certificate please submit a new CSR as described above and 
 mention that you have lost the previous one. ownCloud will revoke the old 
@@ -141,7 +141,7 @@ certificate.
 
 If you maintain an app together with multiple people it is recommended to
 designate a release manager responsible for the signing process as well
-as the uploading to apps.owncloud.com. If there are cases where this is not 
+as the uploading to https://marketplace.owncloud.com/. If there are cases where this is not 
 feasible and multiple certificates are required ownCloud can create them on a 
 case by case basis. We do not recommend developers to share their private key.
 

@@ -442,7 +442,7 @@ This is all that is needed on the server side. Now let's progress to the client 
 
 Making things reusable and decoupling controllers from the database
 ===================================================================
-Let's say our app is now on the app store and and we get a request that we should save the files in the filesystem which requires access to the filesystem.
+Let's say our app is now on the ownCloud Marketplace and and we get a request that we should save the files in the filesystem which requires access to the filesystem.
 
 The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the **NoteController** class to use it. This is bad because a controller's only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called **Service**.
 

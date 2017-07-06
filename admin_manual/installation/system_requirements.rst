@@ -2,24 +2,10 @@
 System Requirements
 ===================
 
-Memory
-------
+Recommended Setup
+-----------------
 
-Memory requirements for running an ownCloud server are greatly variable,
-depending on the numbers of users and files, and volume of server activity.
-ownCloud officially requires a minimum of 128MB RAM. But, we recommend
-a minimum of 512MB. 
-
-.. note:: *Consideration for low memory environments*
-   
-  Scanning of files is committed internally in 10k files chunks. 
-  Based on tests, server memory usage for scanning greater than 10k files uses about 75MB of additional memory.
-
-Recommended Setup for Running ownCloud
---------------------------------------
-
-For *best performance*, *stability*, *support*, and *full functionality* we
-officially recommend and support:
+For best *performance*, *stability*, *support*, and *functionality*, we officially recommend and support:
 
 ================= =============================================================
 Platform          Options
@@ -30,11 +16,10 @@ Web server        Apache 2.4 with mod_php
 PHP Runtime       PHP (5.6+ or 7.0+)
 ================= =============================================================
 
-Supported Platforms
--------------------
+Other Supported Platforms
+-------------------------
 
-If you are not able to use one or more of the above tools, the following
-options are also supported. 
+If you are not able to use one or more of the above tools, the following options are also supported. 
 
 Server
 ^^^^^^
@@ -69,13 +54,13 @@ Desktop
 - Windows 7+
 - Mac OS X 10.7+ (64-bit only)
 
-
+- Ubuntu 17.04
 - Ubuntu 16.10
 - Ubuntu 16.04
 - Ubuntu 14.04
 - Debian 7.0
 - Debian 8.0
-- CentOS 7
+- CentOS 7 (64-bit only)
 - Fedora 24
 - Fedora 25
 - openSUSE Leap 42.1
@@ -101,8 +86,21 @@ Web Browser
 See :doc:`source_installation` for minimum software versions for installing
 ownCloud.
 
-Database Requirements for MySQL / MariaDB
------------------------------------------
+Memory Requirements
+-------------------
+
+Memory requirements for running an ownCloud server are greatly variable,
+depending on the numbers of users and files, and volume of server activity.
+ownCloud officially requires a minimum of 128MB RAM. But, we recommend
+a minimum of 512MB. 
+
+.. note:: *Consideration for low memory environments*
+   
+  Scanning of files is committed internally in 10k files chunks. 
+  Based on tests, server memory usage for scanning greater than 10k files uses about 75MB of additional memory.
+
+Database Requirements
+---------------------
 
 The following are currently required if you're running ownCloud together with a MySQL or MariaDB database:
 

@@ -19,9 +19,7 @@ To start, let us be specific about the use case. A configured ownCloud instance 
 
 #.  Create a dump from the database and copy it to the new machine, and import it into the new database (See :ref:`backup_database_label` and :ref:`restore_database_label`).
 
-#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backing-up-the-config-and-data-directories` and :ref:`restore_directories_label`). 
-
-.. note:: You must keep the ``data/`` directory's original filepath. Do not change this!
+#.  Copy ONLY your data, configuration and database files from your original ownCloud instance to the new machine (See :doc:`backing-up-the-config-and-data-directories` and :ref:`restore_directories_label`). You must keep the ``data/`` directory's original filepath. Please, **do not change this!**
 
 #. The data files should keep their original timestamp (can be done by using ``rsync`` with ``-t`` option) otherwise the clients will re-download all the files after the migration. This step might take several hours, depending on your installation.
 
@@ -62,141 +60,141 @@ When a user tries a URL that is not whitelisted the following error appears:
    :scale: 75%
    :alt: Error message when URL is not whitelisted
 
-=======
-Example
-=======
+=================
+Example Migration
+=================
 
-.. note:: For this example to work, you need this on both servers:
+.. note:: For this example to work, you need the following on both servers:
+   - Ubuntu 16.04
+   - SSH
+   - PermitRootLogin set to "yes"
 
-* Ubuntu 16.04
-* SSH
-* PermitRootLogin set to "yes"
-
-optional:
-
-* Domain name (for Let's Encrypt)
-* Modules: smb-client nfs-common rpcbin (for WND)
-
-
-Install SSH::
-
-   apt install ssh -y
-
-Edit ssh-config (enable root ssh login)::
-
-   nano /etc/ssh/sshd_config
-
-Change PermitRootLogin to "yes"::
-
-   PermitRootLogin yes
+Preparation::
    
-Restart ssh service::
-
+   #     Install ssh
+   #
+   apt install ssh -y
+   #
+   #     Edit ssh-config (enable root ssh login)
+   #
+   nano /etc/ssh/sshd_config
+   #
+   #     Change PermitRootLogin to "yes"
+   #
+   PermitRootLogin yes
+   #
+   #     Restart ssh service
+   #
    service ssh stop
+   #
    service ssh start
-
-Install ownCloud on new server
+   #
+   #     Install ownCloud on new server
 
 =========
 Migration
 =========
 
-1. Put original server in maintenance mode:
+1. Put original server in maintenance mode::
 
-Go in owncloud dir::
-
+      #     Go in owncloud dir
+      #
       cd /var/www/owncloud/
-
-Switch to maintenance mode::
-
+      #
+      #     Switch to maintenance mode
+      #
       sudo -u www-data php occ maintenance:mode --on
+      #
+      #     wait for 6-7 min and stop apache2
+      #
+      service apache2 stop
 
-wait for 6-7 min and stop apache2::
+2. Transfer the database::
 
-   service apache2 stop
-
-2. Transfer the database
-
-Go in owncloud dir::
-
+      #     Go in owncloud dir
+      #
       cd /var/www/owncloud/
-
-Backup the database::
-
-   mysqldump --single-transaction -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
+      #
+      #     Backup the database
+      #
+      mysqldump --single-transaction -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
+      #
+      #     Export the database **to** new server
+      #
+      rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
+      #
+      #     Import the database **on** new server
+      #
+      mysql -h localhost -u admin -ppassword owncloud < owncloud-dbbackup.bak
 
 .. note:: You can find the values for the mysqldump command in your config.php at your owncloud directory.
-[server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
+   [server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname.
 
-.. note:: For InnoDB tables only:
-The --single-transaction flag will start a transaction before running. Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.
+.. note:: For InnoDB tables only: The --single-transaction flag will start a transaction before running. 
+   Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.
 
-For Mixed MyISAM / InnoDB tables:
-Either dumping your MyISAM tables separately from InnoDB tables or use --lock-tables instead of --single-transaction to guarantee the database is in a consistent state when using mysqldump.
+.. note:: For Mixed MyISAM / InnoDB tables:
+   Either dumping your MyISAM tables separately from InnoDB tables or use --lock-tables
+   instead of --single-transaction to guarantee the database is in a consistent state when using mysqldump.
 
+3. Transfer data, config to new server
 
-Export the database **to** new server::
-
-   rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
-
-Import the database **on** new server::
-
-   mysql -h localhost -u admin -ppassword owncloud < owncloud-dbbackup.bak
-
-3. Copy data, config to new server::
-
+::
       rsync -Aavxt config data root@new_server_address:/var/www/owncloud 
 
-.. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do this as a second step. Please see the datadirectory migration document :ref:`datadir_move_label` for more details.
+.. warning:: If you want to move your datadirectory to another location on the target server, it is advised to do   
+   this as a second step. Please see the data directory migration document :ref:`datadir_move_label` for more details.
 
 4. Finish the migration:
 
-On new server:
+**On the new server**
 
-- verify that owncloud is in maintenance mode::
+::
 
-    sudo -u www-data php occ maintenance:mode
+      #     Verify that owncloud is in maintenance mode
+      #
+      sudo -u www-data php occ maintenance:mode
+      #
+      #     Start up the database
+      #
+      service mysql start
+      #
+      #     Start up web / application server on the new machine
+      #
+      service apache2 start
+      #
+      #     Point your web browser to the migrated ownCloud instance
+      #
+      localhost/owncloud
+      #
+      #     Confirm that you see the maintenance mode notice (check)
+      #
+      #     No error messages occur (check)
+      #
+      #     Take ownCloud out of maintenance mode
+      #
+      sudo -u www-data php occ maintenance:mode --off
+      #
+      #     Log in as admin and confirm normal function of ownCloud
+      #
+      #     If you have a domain name, and you want a SSL certificate, we recommend certbot.
 
-- start up the database::
+5. Reverse the changes you made to the ssh-config::
 
-    service mysql start
+      #     Edit ssh-config
+      #
+      nano /etc/ssh/sshd_config
+      #
+      #     Change PermitRootLogin to "no"
+      #
+      PermitRootLogin no
+      #
+      #     Restart ssh service
+      #
+      service ssh stop
+      #
+      service ssh start
 
-- start up web / application server on the new machine::
-
-   service apache2 start
-
-- point your web browser to the migrated ownCloud instance::
-
-   localhost/owncloud
-
-- confirm that you see the maintenance mode notice (check)
-
-- no error messages occur (check)
-
-- take ownCloud out of maintenance mode::
-
-   sudo -u www-data php occ maintenance:mode --off
-
-- log in as admin and confirm normal function of ownCloud
-
-- if you have a domain name, and you want a SSL certificate, we recommend certbot.
-
-5. Reverse the changes you made to the ssh-config:
-
-Edit ssh-config::
-
-   nano /etc/ssh/sshd_config
-
-Change PermitRootLogin to "no"::
-
-   PermitRootLogin no
-
-Restart ssh service::
-
-   service ssh stop
-   service ssh start
-
-6.
-Change the CNAME entry in the DNS to point your users to the new location.
+6. Change the CNAME entry in the DNS to point your users to the new location.
 
 .. note:: If you have not only migrated phyiscally from server to server but also use a new domain name to access your instance, you need to update (add the new domain) the Trusted Domain setting in config.php at the target server.

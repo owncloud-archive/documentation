@@ -26,6 +26,15 @@ All themes, whether copied or new, must meet two key criteria, these are:
 1. They must be located in a directory under the ``apps`` directory of your ownCloud installation.
 2. They require a configuration file called ``appinfo/info.xml`` to be present.
 
+.. note:: 
+   When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_.
+   This is slightly complicated by the fact that without the file a warning will be displayed. 
+   However, this is to be corrected in the next release, 10.0.3.
+
+.. note::
+   You only need to sign your theme if you are going to publish it as an app in `the marketplace`_. 
+   If you are only creating a private theme for your own ownCloud installation, then you can get rid of the signature file.
+
 appinfo/info.xml
 ~~~~~~~~~~~~~~~~
 
@@ -190,9 +199,9 @@ In there, you need to define a class named ``OC_Theme`` and implement the method
 Each method must return a string. 
 The following methods are available:
 
-======================= ===============================================================
+======================= ==================================================================
 Method                  Description
-======================= ===============================================================
+======================= ==================================================================
 ``getAndroidClientUrl`` Returns the URL to Google Play for the Android Client.
 ``getBaseUrl``          Returns the base URL.
 ``getDocBaseUrl``       Returns the documentation URL.
@@ -200,8 +209,8 @@ Method                  Description
                         copyright notices.
 ``getName``             Returns the short name of the software.
 ``getHTMLName``         Returns the short name of the software containing HTML strings.
-``getiOSClientUrl``     Returns the URL to the App Store for the iOS Client.
-``getiTunesAppId``      Returns the AppId for the App Store for the iOS Client.
+``getiOSClientUrl``     Returns the URL to the ownCloud Marketplace for the iOS Client.
+``getiTunesAppId``      Returns the AppId for the ownCloud Marketplace for the iOS Client.
 ``getLogoClaim``        Returns the logo claim.
 ``getLongFooter``       Returns the long version of the footer.
 ``getMailHeaderColor``  Returns the mail header color.
@@ -209,7 +218,7 @@ Method                  Description
 ``getTitle``            Returns the title.
 ``getShortFooter``      Returns short version of the footer.
 ``getSlogan``           Returns the slogan.
-======================= ===============================================================
+======================= ==================================================================
 
 .. note:: 
    Only these methods are available in the templates, because we internally wrap around hardcoded method names.
@@ -331,4 +340,5 @@ If you think a new section should be added to core however, please create a PR w
 .. _Safari: https://developer.apple.com/safari/tools/
 .. _the guide on Can I Use: http://caniuse.com/#feat=css-gradients
 .. _this example: https://github.com/owncloud/core/blob/master/lib/private/Settings/SettingsManager.php#L195   
-
+.. _signed: /app/code_signing.html
+.. _the marketplace: https://marketplace.owncloud.com
