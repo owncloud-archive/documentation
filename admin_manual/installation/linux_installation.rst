@@ -11,17 +11,17 @@ The package installation is for single-server setups only.
 Repositories
 ------------
 
-You may use either of the following repositories for ownCloud 9.1:
+You may use either of the following repositories for ownCloud 10.0:
 
 * `<https://download.owncloud.org/download/repositories/stable/owncloud/>`_
-* `<https://download.owncloud.org/download/repositories/9.1/owncloud/>`_
+* `<https://download.owncloud.org/download/repositories/10.0/owncloud/>`_
 
 When you use the Stable repo, you never have to change it as it always tracks 
-the current stable ownCloud version through all major releases: 8.2, 9.0, 
+the current stable ownCloud version through all major releases: 9.0, 9.1 
 and so on. (Major releases are indicated by the second number, so 8.0, 8.1, 
-8.2, and 9.0 were all major releases.)
+8.2, 9.0, and 9.1 were all major releases.)
 
-If you wish to track a specific major release, such as 9.0 or 9.1, then use 
+If you wish to track a specific major release, such as 9.1 or 10.0, then use 
 that repo. That way you won't accidentally find yourself looking at an upgrade 
 to the next major release before you're ready.
 
@@ -75,5 +75,5 @@ on how to correctly configure your environment if you have binary logging enable
 
 
 .. _Open Build Service: 
-   https://download.owncloud.org/download/repositories/9.2/owncloud/
+   https://download.owncloud.org/download/repositories/10.0/owncloud/
    
