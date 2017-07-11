@@ -2,6 +2,15 @@
 WebUI Overview
 ==============
 
+You can access your files with the ownCloud Web interface, as well as: *create*, *preview*, *edit*, *delete*, *share*, and *re-share* files. 
+
+.. IMPORTANT::
+   Your ownCloud administrator has the option to disable these features. If any
+   of them are missing on your system ask your server administrator.
+
+.. figure:: ../../images/files_page.png
+   :alt: The Files view screen.
+
 File Controls
 -------------
    
@@ -65,7 +74,7 @@ Details           This shows details about a file, such as its name, size,
 Activity          This shows a history of activity on the file, such as when 
                   it was created, updated, and shared.
 Sharing           It's here that shares are managed. To know more, refer to 
-                  the `Share Files`_ section.
+                  the `Sharing Files`_ section.
 Version           This shows a history of all the versions of the file. This is
                   not available for folders.
 ================= =============================================================

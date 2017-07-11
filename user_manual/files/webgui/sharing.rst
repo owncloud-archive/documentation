@@ -109,7 +109,7 @@ Another way to access a file or folder is via a private link.
 It’s a handy way of creating a permanent link for yourself or to point others to a file or folder, within a share, more efficiently. 
 To access the private link, in the Sharing Panel for a file or folder, next to its name you’ll see a small link icon (1), as in the screenshot below. 
 
-.. image:: ../../images/private-link/private-link.png
+.. image:: ../../images/public-link/private-link.png
    :alt: Obtaining a private link for a shared file or folder
 
 If you click it, a new textbox will appear above the "**Collaborative tags**" field, populated with the link’s URI (2). 
@@ -134,7 +134,7 @@ Creating or Connecting to Federation Share Links
 Federated Cloud Sharing allows you to mount file shares from remote ownCloud
 servers, and manage them just like a local share. In ownCloud 8 the process
 for creating a new sharing link is easier and more streamlined. See
-:doc:`federated_cloud_sharing` to learn to how to create and connect to new
+:doc:`../federated_cloud_sharing` to learn to how to create and connect to new
 Federated Cloud shares.
 
 Share Permissions
