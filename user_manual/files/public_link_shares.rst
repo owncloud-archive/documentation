@@ -5,7 +5,7 @@ Public Link Shares
 With ownCloud X (10.0), we introduced the ability to create multiple public links per file or folder.
 This offers a lot of flexibility for creating different kinds of share links for a single file or folder, such as _different passwords_, _expiry dates_, and _permissions_. 
 
-As of ownCloud version 10.0.2 you can create :ref:`upload-only public link shares <create_upload_only_link_share_label>`, where users can upload files to a central location, but not be able to change any existing ones, nor see other files which already have been uploaded.
+As of ownCloud version 10.0.2 you can create :ref:`Drop Folders <create_drop_folder_label>`, where users can upload files to a central location, but not be able to change any existing ones, nor see other files which already have been uploaded.
 
 Creating Public Link Shares   
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
