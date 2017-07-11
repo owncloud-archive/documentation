@@ -105,7 +105,7 @@ The app's presentation layer:
 
 Storage
 -------
-Create database tables, run Sql queries, store/retrieve configuration information and access the filesystem:
+Create database tables, run SQL queries, store/retrieve configuration information and access the filesystem:
 
 * :doc:`schema`
 * :doc:`database`
