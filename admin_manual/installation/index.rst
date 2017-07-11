@@ -12,6 +12,7 @@ Installation
    source_installation
    installation_wizard
    command_line_installation
+   configuration_notes_and_tips
    troubleshooting
    changing_the_web_route
    apps_management_installation

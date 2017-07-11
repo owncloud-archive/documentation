@@ -283,12 +283,12 @@ users can rely on LEAP packages for Tumbleweed.
 
 Follow the instructions on the download page to install ownCloud. Then run the 
 Installation Wizard to complete your installation. (see 
-:doc:`installation_wizard`).
+:doc:`installation/installation_wizard`).
 
 .. warning:: Do not move the folders provided by these packages after the 
    installation, as this will break updates.
 
-See the :doc:`system_requirements` for the recommended ownCloud setup and 
+See the :doc:`installation/system_requirements` for the recommended ownCloud setup and 
 supported platforms.
 
 Enterprise 9.0
@@ -731,3 +731,4 @@ or PostgreSQL) to operate correctly.
 .. _the latest desktop client version: https://doc.owncloud.com/desktop/latest/
 .. _syncing user backends: configuration_server/occ_command.html#syncing-user-accounts
 .. _the new marketplace: https://marketplace.owncloud.com
+.. _Open Build Service: https://download.owncloud.org/download/repositories/10.0/owncloud/
