@@ -56,6 +56,30 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
 To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_behat_tests.sh``.
 
+Running UI Tests for One Feature
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can run the UI tests for just a single feature by specifying the feature file:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/login.feature
+
+Running UI Tests for an App
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With the app installed, run the UI tests for the app by specifying the location of the app's ``behat.yml`` config file:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml
+
+Run UI the tests for just a single feature of the app by also specifying the feature file:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml --feature apps/files_texteditor/tests/ui/features/createtextfile.feature
+
 Skipping Tests
 ~~~~~~~~~~~~~~
 
