@@ -310,7 +310,7 @@ If you want to connect to Redis configured to listen on an Unix socket, which is
 
 Redis is very configurable; consult `the Redis documentation <http://redis.io/documentation>`_ to learn more.
 
-.. _transactional-file-locking-label::
+.. _transactional-file-locking-label:
 
 Memcached Configuration
 ~~~~~~~~~~~~~~~~~~~~~~~
