@@ -22,7 +22,12 @@ Set Up Test
 ~~~~~~~~~~~
 
 - Place the Selenium standalone server jar file and the web driver(s) somewhere in the same folder.
-- Start the Selenium server ``java -jar selenium-server-standalone-3.0.1.jar -port 4445``.
+- Start the Selenium server:
+
+.. code-block:: console
+
+  java -jar selenium-server-standalone-3.4.0.jar -port 4445
+
 - Set the following environment variables:
 
   - ``SRV_HOST_NAME`` (the hostname where ownCloud runs)
