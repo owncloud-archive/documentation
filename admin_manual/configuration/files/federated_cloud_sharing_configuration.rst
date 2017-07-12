@@ -39,7 +39,7 @@ is a few steps on the originating server.
 
 .. figure:: images/federation-0.png
    
-3. Now go to your Files page and select a folder to share. Click the share 
+4. Now go to your Files page and select a folder to share. Click the share 
    icon, and then enter the username and URL of the user on the remote ownCloud 
    server. In this example, that is ``freda@https://example.com/owncloud``. 
    When ownCloud verifies the link, it displays it with the **(remote)** label. 
@@ -47,7 +47,7 @@ is a few steps on the originating server.
 
 .. figure:: images/federation-2.png
 
-3. When the link is successfully completed, you have a single share option, 
+5. When the link is successfully completed, you have a single share option, 
    and that is **can edit**.
 
 .. figure:: images/federation-3.png
