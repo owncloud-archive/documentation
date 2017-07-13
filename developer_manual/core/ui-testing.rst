@@ -65,6 +65,12 @@ You can run the UI tests for just a single feature by specifying the feature fil
 
   bash tests/travis/start_behat_tests.sh --feature tests/ui/features/login.feature
 
+To run just a single scenario within a feature, specify the line number of the scenario:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/login.feature:<linenumber>
+
 Running UI Tests for an App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
