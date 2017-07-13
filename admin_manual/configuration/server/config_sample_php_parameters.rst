@@ -1131,6 +1131,10 @@ Available failover modes:
  - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable
  - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
 
+.. note::
+   Make sure that phpredis is properly configured to use Redis Cluster, before attempting to configure it in ownCloud. 
+   You can find all the information that you need to do so in the `phpredis' Redis Cluster documentation`_.
+
 ::
 
 	'memcached_servers' => array(
@@ -1636,4 +1640,6 @@ Command Line
 
 .. Links
    
-  .. _environment variables: https://12factor.net/config 
+.. _environment variables: https://12factor.net/config 
+.. _phpredis' Redis Cluster documentation: https://github.com/phpredis/phpredis/blob/develop/cluster.markdown
+     
