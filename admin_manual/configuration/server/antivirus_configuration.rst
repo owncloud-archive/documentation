@@ -36,6 +36,10 @@ Based on ownCloud’s evaluation of the response (or exit code) an appropriate a
 .. important::
    Files are checked when they are uploaded or updated (whether because they were edited or saved) but *not* when they are downloaded. And ownCloud doesn't support a file cache of previously scanned files.
 
+.. note::
+   Scanner exit status rules are used to handle errors when ClamAV is run in CLI mode. 
+   Scanner output rules are used in daemon/socket mode.
+
 Configuring the ClamAV Antivirus Scanner
 ----------------------------------------
 
@@ -107,6 +111,7 @@ Automating ClamAV Virus Database Updates
 
 To update your malware database and get the latest malware signatures, you need to run ``freshclam`` frequently. 
 Do this by running ``freshclam`` or ``sudo freshclam`` on Debian-based distributions.
+
 We recommend you do this, post-installation, to download your first set of malware signatures.
 If you want to adjust freshclam's behavior, edit ``/etc/clamav/freshclam.conf`` and make any changes you believe are necessary.
 
@@ -129,12 +134,11 @@ It should already be enabled.
 But, if it’s not, click "**Show disabled apps**", find it in the list, and click
 "**Enable**".
 
-.. figure:: ../images/antivirus-app.png
+.. figure:: ../../images/antivirus-app.png
 
-You can also configure it from the command-line, by running the following
-command:
+.. You can also configure it from the command-line, by running the following command:
 
-::
+.. ::
 
   
 
@@ -143,14 +147,14 @@ Configuring ClamAV within ownCloud
 
 Next, go to your ownCloud Admin page and set your ownCloud logging level to Everything.
 
-.. figure:: ../images/antivirus-logging.png
+.. figure:: ../../images/antivirus-logging.png
 
 Now, navigate to ``Settings -> Admin -> Additional``, where you’ll find the
 "**Antivirus Configuration**" panel.
 There, as below, you’ll see the configuration options which ownCloud will pass
 to ClamAV. 
 
-.. figure:: ../images/antivirus-config.png
+.. figure:: ../../images/antivirus-config.png
 
 Mode Configuration
 ^^^^^^^^^^^^^^^^^^
@@ -209,9 +213,7 @@ ownCloud provides the ability to customize how it reacts to the response given b
 To do so, under `Admin -> Antivirus Configuration -> Advanced`, which you can see in the screenshot below, you can view and change the existing rules. 
 You can also add new ones. 
 
-  .. figure:: images/anti-virus-configuration-rules.png
-
-.. note:: The default ruleset for ClamAV is populated automatically.
+.. figure:: images/anti-virus-configuration-rules.png
 
 Rules can match on either an exit status (e.g., `0`, `1`, or `40`) or a pattern in the string returned from ClamAV (e.g., ``/.*: (.*) FOUND$/``). 
 
@@ -223,6 +225,43 @@ Here are some points to bear in mind about rules:
 - In case there are no matching rules, the status is: ``Unknown``, and a warning will be logged.
 
 .. _update-an-existing-rule:
+
+Default Ruleset
+^^^^^^^^^^^^^^^
+
+The default rule set for ClamAV is populated automatically with the following rules:
+
+======================== ========================================================= =============
+Exit Status or Signature Description                                               Marks File As
+======================== ========================================================= =============
+0                                                                                  Clean
+1                                                                                  Infected
+40                       Unknown option passed                                     Unchecked
+50                       Database initialization error                             Unchecked
+52                       Not supported file type                                   Unchecked
+53                       Can’t open directory                                      Unchecked
+54                       Can’t open file                                           Unchecked
+55                       Error reading file                                        Unchecked
+56                       Can’t stat input file                                     Unchecked
+57                       Can’t get absolute path name of current working directory Unchecked
+58                       I/O error                                                 Unchecked  
+62                       Can’t initialize logger                                   Unchecked
+63                       Can’t create temporary files/directories                  Unchecked
+64                       Can’t write to temporary directory                        Unchecked
+70                       Can’t allocate memory (calloc)                            Unchecked
+71                       Can’t allocate memory (malloc)                            Unchecked
+``/.*: OK$/``                                                                      Clean
+``/.*: (.*) FOUND$/``                                                              Infected
+``/.*: (.*) ERROR$/``                                                              Unchecked
+======================== ========================================================= =============
+
+The rules are always checked in the following order: 
+
+1. Infected
+2. Error
+3. Clean
+
+In case there are no matching rules, the status would be ``Unknown`` and a warning would be logged.
 
 Update An Existing Rule
 ~~~~~~~~~~~~~~~~~~~~~~~~~
