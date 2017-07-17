@@ -190,7 +190,7 @@ However, running this command would not::
    
    su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata mydata svc_owncloud password'
 
-.. _setup_notifications_for_smb_share-label::
+.. _setup_notifications_for_smb_share-label:
 
 Setup Notifications for an SMB Share
 ------------------------------------

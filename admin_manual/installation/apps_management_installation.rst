@@ -18,7 +18,7 @@ To see the status of your installation's applications, go to your Apps page.
 .. figure:: ../images/oc_admin_app_page.png
    :alt: Apps page for enabling and disabling apps.
 
-There, you will see which apps are currently: _enabled_, _not enabled_, and _recommended_. 
+There, you will see which apps are currently: *enabled*, *not enabled*, and *recommended*. 
 You'll also see additional filters, such as Multimedia, Productivity, and Tool for finding 
 more apps quickly.
 
@@ -27,7 +27,7 @@ Managing Apps
 
 In the Apps page, you can enable or disable applications. 
 Some apps have configurable options on the Apps page, such as **Enable only for specific groups**, but mainly they are enabled or disabled here and are configured on 
-your ownCloud _Admin page_, _Personal page_, or in ``config.php``.
+your ownCloud *Admin page*, *Personal page*, or in ``config.php``.
 
 Adding Apps
 -----------

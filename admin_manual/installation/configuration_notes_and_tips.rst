@@ -4,16 +4,16 @@ Configuration Notes & Tips
 
 .. _selinux_tips_label:
 
-SELinux Configuration Tips
---------------------------
+SELinux
+^^^^^^^
 
 See :doc:`selinux_configuration` for a suggested configuration for 
 SELinux-enabled distributions such as Fedora and CentOS.
 
 .. _php_ini_tips_label:
 
-php.ini Configuration Notes
----------------------------
+php.ini
+^^^^^^^
 
 Several core PHP settings have to be configured correctly, otherwise ownCloud may
 not work properly. Known settings causing issues are listed here. Please note that
@@ -21,15 +21,15 @@ there might be other settings causing unwanted behaviours. In general it is reco
 to keep the ``php.ini`` at their defaults.
 
 session.auto_start && enable_post_data_reading
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Ensure that ``session.auto_start`` is set to ``0`` or ``Off`` and ``enable_post_data_reading``
+Ensure that `session.auto_start`_ is set to ``0`` or ``Off`` and `enable_post_data_reading`_
 to ``1`` or ``On`` in your configuration. If not, you may have issues logging in
 to ownCloud via the WebUI, where you see the error: "*Access denied. CSRF check
 failed*".
 
 session.save_path
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 In addition to setting ``session.auto_start`` and ``enable_post_data_reading``
 correctly, ensure that, if ``session.save_handler`` is set to ``files``, that
@@ -37,7 +37,7 @@ correctly, ensure that, if ``session.save_handler`` is set to ``files``, that
 process, or process which PHP is running as, can read from and write to.
 
 post_max_size  
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 Please ensure that you have ``post_max_size`` configured with *at least* the minimum 
 amount of memory for use with ownCloud, which is 512 MB. 
@@ -51,7 +51,9 @@ amount of memory for use with ownCloud, which is 512 MB.
    than one ini file. This can be the case, for example, for the
    ``date.timezone`` setting.
 
-**php.ini - used by the Web server:**
+php.ini - Used by the Web server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ::
 
    /etc/php5/apache2/php.ini
@@ -59,7 +61,9 @@ amount of memory for use with ownCloud, which is 512 MB.
    /etc/php5/fpm/php.ini
  or ...
 
-**php.ini - used by the php-cli and so by ownCloud CRON jobs:**
+php.ini - used by the php-cli and so by ownCloud CRON jobs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ::
 
   /etc/php5/cli/php.ini
@@ -67,10 +71,11 @@ amount of memory for use with ownCloud, which is 512 MB.
 
 .. _php_fpm_tips_label:
 
-PHP-FPM Configuration Notes
----------------------------
+PHP-FPM
+^^^^^^^
 
-**System environment variables**
+System Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 When you are using ``php-fpm``, system environment variables like 
 ``PATH``, ``TMP`` or others are not automatically populated in the same way as 
@@ -118,20 +123,23 @@ Please keep in mind that it is possible to create different settings for
 ``php-cli`` and ``php-fpm``, and for different domains and Web sites. 
 The best way to check your settings is with :ref:`label-phpinfo`.
 
-**Maximum upload size**
+Maximum Upload Size
+~~~~~~~~~~~~~~~~~~~
 
 If you want to increase the maximum upload size, you will also have to modify 
 your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and 
 ``post_max_size`` values. You will need to restart ``php5-fpm`` and your HTTP 
 server in order for these changes to be applied.
 
-**.htaccess notes for Apache**
+.htaccess Notes for Apache
+~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ownCloud comes with its own ``owncloud/.htaccess`` file. Because ``php-fpm`` can't 
 read PHP settings in ``.htaccess`` these settings and permissions must be set
 in the ``owncloud/.user.ini`` file.
 
-**No basic authentication headers were found**
+No basic authentication headers were found
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This error is shown in your ``data/owncloud.log`` file. 
 Some Apache modules like ``mod_fastcgi``, ``mod_fcgid`` or ``mod_proxy_fcgi`` are not passing the needed authentication headers to PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is failing. 
@@ -140,7 +148,13 @@ Information on how to correctly configure your environment can be found `in the 
 .. _other_http_servers_label:
 
 Other Web Servers
------------------
+^^^^^^^^^^^^^^^^^
 
 - `Other HTTP servers <https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
 - `Univention Corporate Server installation <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+
+.. Links
+ 
+.. _in the forums: https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819
+.. _session.auto_start: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
+.. _enable_post_data_reading: https://secure.php.net/manual/en/ini.core.php#ini.enable-post-data-reading

@@ -46,13 +46,13 @@ in ``Sharepoint Personal Configuration``. Then follow these steps to add your
 libraries:
 
 * Enter the name of your local mountpoint in the ``Local Folder Name`` column. 
-  This can be an existing folder, or automatically create a new one.
+This can be an existing folder, or automatically create a new one.
 
 * Enter your SharePoint server URL.
 
 * Click the little refresh icon to the left of the ``Document Library`` field. 
-  If your credentials and URL are correct you'll get a dropdown list of SharePoint 
-  libraries to choose from.
+If your credentials and URL are correct you'll get a dropdown list of SharePoint 
+libraries to choose from.
 
 * Select the document library you want to mount.
 

@@ -42,7 +42,33 @@ Anything that you see until you log out will be what that user would see.
 Ending an Impersonation
 -----------------------
 
-When you’re ready to stop impersonating the user, log out and you will return to your normal user session.
+When you're ready to stop impersonating the user, log out and you will return to your normal user session.
+
+Restrict Impersonation to Groups & Group administrators 
+-------------------------------------------------------
+
+As a security measure, the application lets ownCloud administrators restrict the ability to impersonate users to administrators of specific groups.
+When enabled and configured, only a group's administrator can impersonate members of their group.
+
+For example, if an ownCloud administrator restricts user impersonation only to the group: 'group1', then **only** 'group1'’s administrators can impersonate users belonging to 'group1'.
+No other users can impersonate other users.
+
+.. note::
+ ownCloud administrators can always impersonate all users of an ownCloud instance when the application is installed.
+
+To enable this option, in the administrator settings panel (``administrator -> Settings -> Admin``) in the "**Additional**" section, you'll see a section titled: "**Impersonate Settings**"; which you can see below.
+
+.. image:: ../images/apps/impersonate/impersonate-settings.png
+   :alt: Impersonate App settings
+
+Check the checkbox under that, and a textbox will appear. 
+If you click in the textbox, you will see a list of available groups on your ownCloud installation. 
+As you type, the list will filter down to only ones that match the text entered, as you can see below.
+
+.. image:: ../images/apps/impersonate/impersonate-add-groups.png
+   :alt: Restricting the ability to impersonate users to specific groups
+
+Choose one or more groups from the list, and they will be added to the textbox. 
 
 .. Links
    

@@ -4,8 +4,8 @@ Using the occ Command
 
 ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line 
 interface. You can perform many common server operations with ``occ``, such as 
-installing and upgrading ownCloud, manage users, encryption, passwords, LDAP 
-setting, and more.
+installing and upgrading ownCloud, managing users and groups, encryption, passwords, 
+LDAP setting, and more.
 
 ``occ`` is in the :file:`owncloud/` directory; for example 
 :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. **You must 
@@ -27,6 +27,7 @@ occ Command Directory
 * :ref:`federation_sync_label`
 * :ref:`file_operations_label`
 * :ref:`files_external_label`
+* :ref:`group_commands_label`
 * :ref:`integrity_check_label`
 * :ref:`create_javascript_translation_files_label`
 * :ref:`ldap_commands_label`
@@ -688,6 +689,139 @@ and to copy external mount configurations to another ownCloud server.
 
 Added in 9.0.
 
+.. _group_commands_label:
+
+Group Commands
+--------------
+
+The ``group`` commands provide a range of functionality for managing ownCloud
+groups. This includes: creating and removing groups and managing group membership.
+Group names are case-sensitive, so "Finance" and "finance" are two different groups.
+
+The full list of commands is::
+
+ group
+  group:add                           adds a group
+  group:add-member                    add members to a group
+  group:delete                        deletes the specified group
+  group:list                          list groups
+  group:list-members                  list group members
+  group:remove-member                 remove member(s) from a group
+
+Creating Groups
+^^^^^^^^^^^^^^^
+
+You can create a new group with the ``group:add`` command. The syntax is::
+
+ group:add groupname
+
+This example adds a new group Finance:: 
+ 
+ sudo -u www-data php occ group:add Finance
+   Created group "Finance"
+
+Listing Groups
+^^^^^^^^^^^^^^
+
+You can list the names of existing groups with the ``group:list`` command.
+The syntax is::
+
+  group:list [options] [<search-pattern>]
+
+Groups containing the ``search-pattern`` string are listed. Matching is 
+not case-sensitive. If you do not provide a search-pattern then all groups 
+are listed.
+
+This example lists groups containing the string finance:: 
+ 
+ sudo -u www-data php occ group:list finance
+  - All-Finance-Staff
+  - Finance
+  - Finance-Managers
+
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+
+ sudo -u www-data php occ --output=json_pretty group:list finance
+  [
+    "All-Finance-Staff",
+    "Finance",
+    "Finance-Managers"
+  ]
+
+Listing Group Members
+^^^^^^^^^^^^^^^^^^^^^
+
+You can list the user IDs of group members with the ``group:list-members`` command.
+The syntax is::
+
+  group:list-members [options] <group>
+
+This example lists members of the Finance group:: 
+ 
+ sudo -u www-data php occ group:list-members Finance
+  - aaron: Aaron Smith
+  - julie: Julie Jones
+
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+
+ sudo -u www-data php occ --output=json_pretty group:list-members Finance
+  {
+    "aaron": "Aaron Smith",
+    "julie": "Julie Jones"
+  }
+
+Adding Members to Groups
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can add members to an existing group with the ``group:add-member`` command.
+Members must be existing users. The syntax is::
+
+ group:add-member [-m|--member [MEMBER]] <group>
+
+This example adds members aaron and julie to group Finance:: 
+
+ sudo -u www-data php occ group:add-member --member aaron --member julie Finance
+   User "aaron" added to group "Finance"
+   User "julie" added to group "Finance"
+
+You may attempt to add members that are already in the group, without error.
+This allows you to add members in a scripted way without needing to know if the
+user is already a member of the group. For example::
+
+ sudo -u www-data php occ group:add-member --member aaron --member julie --member fred Finance
+   User "aaron" is already a member of group "Finance"
+   User "julie" is already a member of group "Finance"
+   User fred" added to group "Finance"
+
+Removing Members from Groups
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can remove members from a group with the ``group:remove-member`` command.
+The syntax is::
+
+ group:remove-member [-m|--member [MEMBER]] <group>
+
+This example removes members aaron and julie from group Finance:: 
+
+ sudo -u www-data php occ group:remove-member --member aaron --member julie Finance
+   Member "aaron" removed from group "Finance"
+   Member "julie" removed from group "Finance"
+
+You may attempt to remove members that have already been removed from the group, 
+without error. This allows you to remove members in a scripted way without needing 
+to know if the user is still a member of the group. For example::
+
+ sudo -u www-data php occ group:remove-member --member aaron --member fred Finance
+   Member "aaron" could not be found in group "Finance"
+   Member "fred" removed from group "Finance"
+
+Deleting a Group
+^^^^^^^^^^^^^^^^^
+
+To delete a group, you use the ``group:delete`` command, as in the example below.::
+
+ sudo -u www-data php occ group:delete Finance
+   
 .. _integrity_check_label:
 
 Integrity Check
@@ -1131,6 +1265,8 @@ The full list, of commands is::
   user:disable                        disables the specified user
   user:enable                         enables the specified user
   user:lastseen                       shows when the user was logged in last time
+  user:list                           list users
+  user:list-groups                    list groups for a user
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
@@ -1205,6 +1341,54 @@ To delete a user, you use the ``user:delete`` command, as in the example below.:
  sudo -u www-data php occ user:delete fred
    
    
+Listing Users
+^^^^^^^^^^^^^
+
+You can list existing users with the ``user:list`` command.
+The syntax is::
+
+  user:list [options] [<search-pattern>]
+
+User IDs containing the ``search-pattern`` string are listed. Matching is 
+not case-sensitive. If you do not provide a search-pattern then all users 
+are listed.
+
+This example lists user IDs containing the string ron:: 
+ 
+ sudo -u www-data php occ user:list ron
+  - aaron: Aaron Smith
+
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+
+ sudo -u www-data php occ --output=json_pretty user:list
+  {
+    "aaron": "Aaron Smith",
+    "herbert": "Herbert Smith",
+    "julie": "Julie Jones"
+  }
+
+Listing Group Membership of a User
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can list the group membership of a user with the ``user:list-groups`` command.
+The syntax is::
+
+  user:list-groups [options] <uid>
+
+This example lists group membership of user julie:: 
+ 
+ sudo -u www-data php occ user:list-groups julie
+  - Executive
+  - Finance
+
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+
+ sudo -u www-data php occ --output=json_pretty user:list-groups julie
+  [
+    "Executive",
+    "Finance"
+  ]
+
 Finding The User's Last Login
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 

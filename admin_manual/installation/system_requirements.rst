@@ -2,10 +2,13 @@
 System Requirements
 ===================
 
-Recommended Setup
------------------
+Officially Recommended & Supported Options
+------------------------------------------
 
-For best *performance*, *stability*, *support*, and *functionality*, we officially recommend and support:
+For *best performance*, *stability*, *support*, and *full functionality* we officially recommend and support:
+
+Server
+^^^^^^
 
 ================= =============================================================
 Platform          Options
@@ -16,10 +19,38 @@ Web server        Apache 2.4 with mod_php
 PHP Runtime       PHP (5.6+ or 7.0+)
 ================= =============================================================
 
-Other Supported Platforms
--------------------------
+Mobile 
+^^^^^^
 
-If you are not able to use one or more of the above tools, the following options are also supported. 
+- iOS 9.0+
+- Android 4.0+
+
+Web Browser 
+^^^^^^^^^^^
+
+- IE11+ (except Compatibility Mode)
+- Firefox 14+
+- Chrome 18+
+- Safari 5+
+
+Desktop
+^^^^^^^
+
+- Windows 7+
+- Mac OS X 10.7+ (**64-bit only**)
+- CentOS 7 (64-bit only)
+- Debian 7.0 & 8.0
+- Fedora 24 & 25
+- Ubuntu 16.10 & 17.04
+- openSUSE Leap 42.1 & 42.2
+
+.. note::
+   For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
+
+Alternaive (But Unsupported) Options
+------------------------------------
+
+If you are not able to use one or more of the above tools, the following options are also available. 
 
 Server
 ^^^^^^
@@ -32,13 +63,14 @@ Server
 Web Server
 ^^^^^^^^^^
 
-- Apache 2.4 with mod_php
+- NGINX with PHP-FPM 
 
 Databases
 ^^^^^^^^^
 
 - Oracle 11g (**Enterprise edition only**)
 - PostgreSQL
+- SQLite
 
 Hypervisors 
 ^^^^^^^^^^^
@@ -91,8 +123,7 @@ Memory Requirements
 
 Memory requirements for running an ownCloud server are greatly variable,
 depending on the numbers of users and files, and volume of server activity.
-ownCloud officially requires a minimum of 128MB RAM. But, we recommend
-a minimum of 512MB. 
+ownCloud officially requires a minimum of 128MB RAM. But, we recommend a minimum of 512MB. 
 
 .. note:: *Consideration for low memory environments*
    
