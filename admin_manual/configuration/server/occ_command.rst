@@ -1264,6 +1264,8 @@ The full list, of commands is::
   user:delete                         deletes the specified user
   user:disable                        disables the specified user
   user:enable                         enables the specified user
+  user:inactive                       reports users who are known to owncloud, 
+                                      but have not logged in for a certain number of days
   user:lastseen                       shows when the user was logged in last time
   user:list                           list users
   user:list-groups                    list groups for a user
@@ -1782,6 +1784,53 @@ Use the following command to enable the user again::
  sudo -u www-data php occ user:enable <username>
 
 Note that once users are disabled, their connected browsers will be disconnected.
+
+Finding Inactive Users
+^^^^^^^^^^^^^^^^^^^^^^
+
+To view a list of users who’ve not logged in for a given number of days, use the ``user:inactive`` command
+The example below searches for users inactive for five days, or more.
+
+.. code-block:: console
+   
+   sudo -u www-data php occ user:inactive 5 
+   
+By default, this will generate output in the following format:
+
+.. code-block:: console
+   
+   - 0:
+     - uid: admin
+     - displayName: admin
+     - inactiveSinceDays: 5
+
+You can see the user’s user id, display name, and the number of days they've been inactive.
+If you’re passing or piping this information to another application for further
+processing, you can also use the ``--output`` switch to change its format. 
+The switch supports three options, these are:
+
+======= =========================================================================
+Setting Description
+======= =========================================================================
+plain   This is the default format.
+json    This will render the output as a JSON-encoded, but not formatted, string.
+======= =========================================================================
+
+.. code-block:: json
+
+   [{"uid":"admin","displayName":"admin","inactiveSinceDays":5}]
+
+- **json_pretty:** This will render the output as a JSON-encoded string, formatted for ease of readability.
+
+.. code-block:: json
+
+   [
+       {
+           "uid": "admin",
+           "displayName": "admin",
+           "inactiveSinceDays": 5
+       }
+   ]
 
 .. links
    
