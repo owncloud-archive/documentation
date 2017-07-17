@@ -47,8 +47,8 @@ Desktop
 .. note::
    For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
 
-Alternaive (But Unsupported) Options
-------------------------------------
+Alternative (But Unsupported) Options
+-------------------------------------
 
 If you are not able to use one or more of the above tools, the following options are also available. 
 
