@@ -35,6 +35,9 @@ To save time, here's the commands which you can copy and use::
 Fix Hardcoded Database Path Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Update the oc_storages table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you want to manually change the location of the data folder in the database,
 run the SQL below:
 
@@ -42,6 +45,9 @@ run the SQL below:
    
   UPDATE oc_storages SET id='local::/mnt/owncloud' 
     WHERE id='local::/var/www/owncloud/data';
+
+Update the oc_accounts table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You next need to update the ``home`` column in the ``oc_accounts`` table. 
 This column contains the absolute path for user folders, e.g., ``/mnt/data/files/admin``.
@@ -51,6 +57,13 @@ Assuming that the new home directory is: ``/mnt/data/files/super-admin``, and th
    
   UPDATE oc_accounts SET home='/mnt/data/files/super-admin' 
     WHERE id=1;
+
+.. note:: 
+   Please don’t copy and paste this example verbatim — nor any of the others. 
+   It, and the others, are provided only as guides to what you should or could do. 
+
+Update the oc_jobs table
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 The next area to check is the `oc_jobs` table. 
 The logrotate process may have hard-coded a non-standard (or old) value for the data path. 
