@@ -42,7 +42,7 @@ configuration report with the :ref:`occ config command
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/9.2/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/10.0/developer_manual/bugtracker/index.html
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -68,7 +68,7 @@ ownCloud Logfiles
 In a standard ownCloud installation the log level is set to ``Normal``. To find 
 any issues you need to raise the log level to ``All`` in your ``config.php`` 
 file, or to **Everything** on your ownCloud Admin page. Please see 
-:doc:`../configuration_server/logging_configuration` for more information on 
+:doc:`../configuration/server/logging_configuration` for more information on 
 these log levels.
 
 Some logging - for example JavaScript console logging - needs debugging 
@@ -135,7 +135,7 @@ Some common problems / error messages found in your logfiles as described above:
   ``SQLite``
   which can't handle a lot of parallel requests. Please consider converting to
   another database like described in 
-  :doc:`../configuration_database/db_conversion`.
+  :doc:`../configuration/database/db_conversion`.
 * ``SQLSTATE[HY000]: General error: 2006 MySQL server has gone away`` -> Please
   refer to :ref:`db-troubleshooting-label` for more information.
 * ``SQLSTATE[HY000] [2002] No such file or directory`` -> There is a problem
@@ -219,7 +219,7 @@ these modules:
 * mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm instead)
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured correctly)
 
-2. NginX
+2. NGINX
 
 * ngx_pagespeed
 * HttpDavModule
@@ -278,7 +278,7 @@ main Web server / Vhost configuration or the ``.htaccess`` placed in your docume
     RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
     RewriteRule .* https://%{SERVER_NAME}/owncloud/remote.php/webdav/ [R=301,L]
 
-For nginx an example config addition could be::
+For NGINX an example config addition could be::
 
     location = / {
         if ($http_user_agent = DavClnt) {
@@ -315,9 +315,7 @@ and if running in a subfolder like ``owncloud``:
 
 For the first case the :file:`.htaccess` file shipped with ownCloud should do
 this work for your when running Apache. You only need to make sure that your
-Web server is using this file. When running NGINX please refer to
-:doc:`../installation/nginx_examples`.
-
+Web server is using this file.
 
 If your ownCloud instance is installed in a subfolder called ``owncloud`` and
 you're running Apache create or edit the :file:`.htaccess` file within the
@@ -362,7 +360,7 @@ Client Sync Stalls
 One known reason is stray locks. These should expire automatically after an hour. If stray
 locks don't expire (identified by e.g. repeated ``file.txt is locked`` and/or ``Exception\\\\FileLocked``
 messages in your :file:`data/owncloud.log`), make sure that you are running system cron and
-not Ajax cron (See :doc:`../configuration_server/background_jobs_configuration`).
+not Ajax cron (See :doc:`../configuration/server/background_jobs_configuration`).
 See `<https://github.com/owncloud/core/issues/22116>`_ and `<https://central.owncloud.org/t/file-is-locked-how-to-unlock/985>`_
 for some discussion and additional info of this issue.
 

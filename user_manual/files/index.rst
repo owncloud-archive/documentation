@@ -5,15 +5,14 @@ Files & Synchronization
 .. toctree::
    :maxdepth: 1
 
-   access_webgui
    access_webdav
-   gallery_app
-   deleted_file_management
+   webgui/index
+   public_link_shares
    desktop_mobile_sync
    encrypting_files
-   federated_cloud_sharing
-   file_drop
+   gallery_app
+   deleted_file_management
    large_file_upload
-   quota
-   version_control
    troubleshooting
+   federated_cloud_sharing
+   version_control

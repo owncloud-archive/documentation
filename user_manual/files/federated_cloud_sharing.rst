@@ -9,6 +9,26 @@ users on other ownCloud servers.
 .. important:: 
    Sharing to groups from federated ownCloud instances is not supported.
 
+How Federated Sharing Works
+---------------------------
+
+Federated sharing, conceptually, is not that sophisticated a concept. 
+Here's how it works.
+
+Say we have three users: *James*, *Mary*, and *Paul*.
+James has a folder (Majorca-Holiday-Pics) which he shares with Mary, who’s on a separate ownCloud instance.
+Mary, in turn, (re)shares the folder with Paul, who’s on the same ownCloud instance as Mary. 
+
+You might think that there are two — even three — copies of the shared folder. 
+In reality, there’s only one. 
+*In effect* there are three — all owned by the original sharer (James). 
+
+The key point to keep in mind is that when a share is re-shared, it’s shared, internally, on behalf of the original owner.
+To keep track of all this, during the share process references are created between the shares, that show: 
+
+* James was the original owner of the shared resource
+* James shared a copy with Mary and Mary re-shared a copy with Paul.
+
 Creating a New Federation Share
 -------------------------------
 

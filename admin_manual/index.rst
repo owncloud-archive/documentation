@@ -1,9 +1,6 @@
-============================================================
-ownCloud |version| Server Administration Manual Introduction
-============================================================
-
+============
 Introduction
-------------
+============
 
 Welcome to the ownCloud Server Administration Guide. This guide describes 
 administration tasks for ownCloud, the flexible open source file synchronization 
@@ -17,7 +14,7 @@ Current editions of ownCloud manuals are always available online at
 
 ownCloud server is available in three editions:
 
-* The free community-supported Server. This is the core server for all editions.
+* The free community-supported server. This is the core server for all editions.
 * The Standard Subscription for customers who want paid support for the core 
   Server, without Enterprise applications.
 * The Enterprise Subscription provides paid support for the Enterprise Edition. 
@@ -50,7 +47,7 @@ respective manuals:
 * `ownCloud Android App`_
 * `ownCloud iOS App`_ 
 
-.. _`ownCloud User Manual`: https://doc.owncloud.org/server/9.2/user_manual/
-.. _`ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.2/
+.. _`ownCloud User Manual`: https://doc.owncloud.org/server/10.0/user_manual/
+.. _`ownCloud Desktop Client`: https://doc.owncloud.org/desktop/2.3/
 .. _`ownCloud Android App`: https://doc.owncloud.org/android/
 .. _`ownCloud iOS App`: https://doc.owncloud.org/ios/

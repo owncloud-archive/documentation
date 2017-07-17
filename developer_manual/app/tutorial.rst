@@ -9,9 +9,13 @@ This tutorial will outline how to create a very simple notes app. The finished a
 
 Setup
 =====
-After the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. This can be done by either `downloading the zip from the website <https://owncloud.org/install/>`_ or cloning it directly from GitHub::
 
-First you want to enable debug mode to get proper error messages. To do that set ``debug`` to ``true`` in the **owncloud/config/config.php** file::
+After the `development tool <https://github.com/owncloud/ocdev/blob/master/README.rst#installation>`_ has been installed the :doc:`development environment needs to be set up <../general/devenv>`. 
+This can be done by either `downloading the zip from the website <https://owncloud.org/install/>`_ or cloning it directly from GitHub.
+First you want to enable debug mode to get proper error messages. 
+To do that set ``debug`` to ``true`` in the **owncloud/config/config.php** file
+
+::
 
     <?php
     $CONFIG = array (
@@ -438,7 +442,7 @@ This is all that is needed on the server side. Now let's progress to the client 
 
 Making things reusable and decoupling controllers from the database
 ===================================================================
-Let's say our app is now on the app store and and we get a request that we should save the files in the filesystem which requires access to the filesystem.
+Let's say our app is now on the ownCloud Marketplace and and we get a request that we should save the files in the filesystem which requires access to the filesystem.
 
 The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the **NoteController** class to use it. This is bad because a controller's only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called **Service**.
 

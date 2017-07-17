@@ -38,7 +38,7 @@ General considerations
 * If you are not familiar with the github issue tracker interface (which is used by ownCloud to handle bug reports), you `may find this guide useful <https://guides.github.com/features/issues/>`_.
 * You will initially only be able to comment on issues. The ability to close issues or assign labels will be given liberally to those who have shown to be willing and able to contribute. Just ask on IRC!
 * Read `our bug reporting guidelines <https://github.com/owncloud/core/blob/master/.github/CONTRIBUTING.md#submitting-issues>`_ so you know what a good report should look like and where things belong. The `issue template <https://raw.github.com/owncloud/core/master/.github/issue_template.md>`_ asks specifically for some information developers need to solve issues.
-* It might even be fixed, sometimes! It can also be fruitful to contact the :any:`developers on irc <irc://freenode/#owncloud-dev>`. Tell them you're triaging bugs and share what problem you bumped into. Or just ask on the test-pilots mailing list.
+* It might even be fixed, sometimes! It can also be fruitful to contact the `developers on irc <irc://freenode/#owncloud-dev>`_. Tell them you're triaging bugs and share what problem you bumped into. Or just ask on the test-pilots mailing list.
 * To ensure no two people are working on the same issue, we ask you to simply add a comment like "I am triaging this" in the issue you want to work on, and when done, before or after executing the triaging actions, note similarly that you're done.
 
     To be able to tag and close issues, you need to have access to the repository. For the core and sync app repositories this also means having signed the contributor agreement. However, this isn't really needed for triaging as you can comment after you're done triaging and somebody else can execute those actions.
@@ -52,7 +52,7 @@ Github offers several search queries which can be useful to find a list of bugs 
 * `Least commented issues <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+no%3Aassignee+no%3Amilestone+no%3Alabel+sort%3Acomments-asc+>`_
 * `Bugs which need info <https://github.com/issues?q=is%3Aissue+user%3Aowncloud+is%3Aopen+label%3A%22Needs+info%22+sort%3Acreated-asc+>`_
 
-But there are more methods. For example, if you are a user of ownCloud with a specific setup like using nginx as Web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
+But there are more methods. For example, if you are a user of ownCloud with a specific setup like using NGINX as Web server or dropbox as storage, or using the encryption app, you could look for bugs with these keywords. You can then use your knowledge of your installation and your installation itself to see if bugs are (still) valid or reproduce them.
 
 Once you have picked an issue, add a comment that you've started triaging:
 
@@ -86,7 +86,7 @@ When the issue is a feature request, you can be helpful in the same way: merge r
 
 Determining relevance of issue
 ------------------------------
-Not all issues are relevant for ownCloud. Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, nginx has problems Apache doesn't and Microsoft Server with IIS is not well supported. While external issues are not always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
+Not all issues are relevant for ownCloud. Bugs can be due to a specific configuration or unsupported platforms. Raspberry Pi's suffer from SQLite time-outs, NGINX has problems Apache doesn't and Microsoft Server with IIS is not well supported. While external issues are not always a reason to close a report, be sure that they are clear: does the user use the 'standard' platform? Ask for information if this is missing.
 
 Last but not least, the problem might be due to the user doing something that simply does not work. Your general ownCloud knowledge might be helpful here - if this is the case, you can often swiftly close the issue with a comment about what went wrong.
 
@@ -127,7 +127,7 @@ Collaboration
 =============
 You can just get started with bug triaging. But if you want, you can register on the `testpilot mailing list <https://mailman.owncloud.org/mailman/listinfo/testpilots>`_ and perhaps introduce yourself to `testpilots@owncloud.org <testpilots@owncloud.org>`_. On this list we announce and discuss testing and bug triaging related subjects.
 
-You can also join the **#owncloud-testing** channel on **irc.freenode.net** (:any:`link for IRC clients <irc://#owncloud-testing@freenode.net>` and `link to webchat <https://webchat.freenode.net/>`_) to ask questions but keep in mind that people aren't active 24/7 and it can occasionally take a while to get a response. Last but not least, ownCloud contributor `Jan Borchardt has a great guide for developers and triagers <https://gist.github.com/jancborchardt/6155185>`_ about dealing with issues, including some 'stock answers' and thoughts on how to deal with pull requests.
+You can also join the **#owncloud-testing** channel on **irc.freenode.net** (`link for IRC clients <irc://#owncloud-testing@freenode.net>`_ and `link to webchat <https://webchat.freenode.net/>`_) to ask questions but keep in mind that people aren't active 24/7 and it can occasionally take a while to get a response. Last but not least, ownCloud contributor `Jan Borchardt has a great guide for developers and triagers <https://gist.github.com/jancborchardt/6155185>`_ about dealing with issues, including some 'stock answers' and thoughts on how to deal with pull requests.
 
 For further questions or help you can also send a mail to:
 

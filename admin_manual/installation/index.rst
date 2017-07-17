@@ -7,13 +7,15 @@ Installation
 
    system_requirements
    deployment_recommendations
+   deployment_considerations
    linux_installation
+   source_installation
    installation_wizard
    command_line_installation
+   configuration_notes_and_tips
+   troubleshooting
    changing_the_web_route
    apps_management_installation
    apps_supported
-   source_installation
-   appliance_installation
    selinux_configuration
-   nginx_examples
+   nginx_configuration

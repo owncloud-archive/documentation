@@ -7,4 +7,5 @@ Issues and Troubleshooting
 
     general_troubleshooting
     code_signing
+    impersonate_users
     

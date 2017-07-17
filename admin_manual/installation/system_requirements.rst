@@ -5,11 +5,7 @@ System Requirements
 Officially Recommended & Supported Options
 ------------------------------------------
 
-Recommended Setup for Running ownCloud
---------------------------------------
-
-For *best performance*, *stability*, *support*, and *full functionality* we
-officially recommend and support:
+For *best performance*, *stability*, *support*, and *full functionality* we officially recommend and support:
 
 Server
 ^^^^^^
@@ -84,22 +80,65 @@ Hypervisors
 - Xen
 - KVM
 
+Desktop
+^^^^^^^
+
+- Windows 7+
+- Mac OS X 10.7+ (64-bit only)
+
+- Ubuntu 17.04
+- Ubuntu 16.10
+- Ubuntu 16.04
+- Ubuntu 14.04
+- Debian 7.0
+- Debian 8.0
+- CentOS 7 (64-bit only)
+- Fedora 24
+- Fedora 25
+- openSUSE Leap 42.1
+- openSUSE Leap 42.2
+
+.. note::
+   For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
+
+Mobile 
+^^^^^^
+
+- iOS 9.0+
+- Android 4.0+
+
+Web Browser 
+^^^^^^^^^^^
+
+- IE11+ (except Compatibility Mode)
+- Firefox 14+
+- Chrome 18+
+- Safari 5+
+
 See :doc:`source_installation` for minimum software versions for installing
 ownCloud.
 
-Memory
-------
+Memory Requirements
+-------------------
 
 Memory requirements for running an ownCloud server are greatly variable,
 depending on the numbers of users and files, and volume of server activity.
-ownCloud officially requires a minimum of 128MB RAM. But, we recommend
-a minimum of 512MB.
+ownCloud officially requires a minimum of 128MB RAM. But, we recommend a minimum of 512MB. 
 
-Database Requirements for MySQL / MariaDB
------------------------------------------
+.. note:: *Consideration for low memory environments*
+   
+  Scanning of files is committed internally in 10k files chunks. 
+  Based on tests, server memory usage for scanning greater than 10k files uses about 75MB of additional memory.
+
+Database Requirements
+---------------------
 
 The following are currently required if you're running ownCloud together with a MySQL or MariaDB database:
 
-* Disabled or BINLOG_FORMAT = MIXED configured Binary Logging (See: :ref:`db-binlog-label`)
+* Disabled or ``BINLOG_FORMAT = MIXED`` or ``BINLOG_FORMAT = ROW`` configured Binary Logging (See: :ref:`db-binlog-label`)
 * InnoDB storage engine (The MyISAM storage engine is not supported, see: :ref:`db-storage-engine-label`)
 * "READ COMMITED" transaction isolation level (See: :ref:`db-transaction-label`)
+
+.. Links
+   
+.. _LTS: https://wiki.ubuntu.com/LTS

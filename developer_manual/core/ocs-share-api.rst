@@ -44,28 +44,24 @@ Curl
 ~~~~
 
 .. literalinclude:: ../examples/curl/list-all-shares.sh
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/list-all-shares.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/list-all-shares.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/list-all-shares.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -76,7 +72,6 @@ output similar to the following:
 .. literalinclude::
    ../examples/responses/not-authorised-response.xml
    :language: xml
-   :linenos:
 
 If the user that you’re connecting with is authorized, then you will see
 output similar to the following:
@@ -84,7 +79,6 @@ output similar to the following:
 .. literalinclude::
    ../examples/responses/shares/get-all-shares-success-no-shares.xml
    :language: xml
-   :linenos:
 
 .. _ocs-share-api__get-shares-from-file-folder:
 
@@ -124,39 +118,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/list-share-details.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/list-share-details.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/list-share-details.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/list-share-details.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/list-share-details-failure.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/list-share-details-success.xml
    :language: xml
-   :linenos:
 
 Status Codes
 ^^^^^^^^^^^^
@@ -208,39 +196,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/get-share-info.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/get-share-info.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/get-share-info.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/get-share-info.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/get-share-info-failure.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/get-share-info-success.xml
    :language: xml
-   :linenos:
 
 Response Attributes
 ^^^^^^^^^^^^^^^^^^^
@@ -265,17 +247,32 @@ Function Arguments
 ============ ======= ==========================================================
 Argument     Type    Description 
 ============ ======= ==========================================================
-path         string  path to the file/folder which should be shared
+name         string  A (human-readable) name for the share, which can be up to
+                     64 characters in length.
+path         string  The path to the file or folder which should be shared.
 shareType    int     The type of the share. This can be one of: 0 = user, 
                      1 = group, 3 = public link, 6 = federated cloud share
-shareWith    string  user / group id with which the file should be shared
-publicUpload boolean allow public upload to a public shared folder
-password     string  password to protect public link Share with
-permissions  int     1 = read; 2 = update; 4 = create; 8 = delete;
+shareWith    string  The user or group id with which the file should be shared.
+publicUpload boolean Whether to allow public upload to a public shared folder.
+password     string  The password to protect public link share with.
+permissions  int     The permissions to set on the share. 
+                     1 = read; 2 = update; 4 = create; 8 = delete;
                      16 = share; 31 = all (default: 31, for public shares: 1)
+expireDate   string  An expire date for public link shares. 
+                     This argument expects a date string in the following 
+                     format ``'YYYY-MM-DD'``.
 ============ ======= ==========================================================
 
-Mandatory fields: shareType, path and shareWith for shareType 0 or 1.
+.. note:: Things to remember about public link shares
+
+   - Files will only ever have the **read** permission set
+   - Folders will have **read**, **update**, **create**, and **delete** set
+   - Public link shares **cannot** be shared with users and groups
+   - Public link shares are not available if public link sharing is enabled by the administrator
+
+.. note:: **Mandatory Fields**
+
+   ``shareType``, ``path`` and ``shareWith`` are mandatory if ``shareType`` is set to 0 or 1
 
 Returns
 ^^^^^^^
@@ -291,7 +288,7 @@ Code Description
 100  Successful
 400  Unknown share type
 403  Public upload was disabled by the admin
-404  File couldn't be shared
+404  File or folder couldn't be shared
 ==== =======================================
 
 Code Example
@@ -302,39 +299,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/create-share.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/create-share.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/create-share.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/create-share.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/create-share-failure.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/create-share-success.xml
    :language: xml
-   :linenos:
 
 .. _ocs-share-api__create-share_response-attributes:
    
@@ -371,6 +362,8 @@ storage_id             string
 storage                int
 item_source            int      The unique node id of the item being shared.
 file_source            int      The unique node id of the item being shared.
+                                (for legacy reasons item_source and file_source
+                                attributes have the same value)
 file_parent            int      The unique node id of the parent node of the item 
                                 being shared.
 file_target            string   The name of the shared file.
@@ -381,6 +374,8 @@ share_with_displayname string   The display name of the receiver of the file.
 url                    string
 mail_send              int      Whether the recipient was notified, by mail, about the 
                                 share being shared with them.
+name                   string   A (human-readable) name for the share, which can be up 
+                                to 64 characters in length
 ====================== ======== ========================================================
 
 .. _ocs-share-api__delete-share:
@@ -406,7 +401,7 @@ Status Codes
 Code Description
 ==== ========================
 100  Successful
-404  File couldn't be deleted
+404  Share couldn't be deleted
 ==== ========================
 
 Code Example
@@ -417,39 +412,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/delete-share.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/delete-share.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/delete-share.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/delete-share.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/delete-share-success.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/delete-share-failure.xml
    :language: xml
-   :linenos:
 
 .. _ocs-share-api__update-share:
 
@@ -467,6 +456,8 @@ Request Arguments
 ============ ======= ==================================================
 Argument     Type    Description
 ============ ======= ==================================================
+name         string  A (human-readable) name for the share, which can 
+                     be up to 64 characters in length
 share_id     int     The share’s unique id
 permissions  int     Update permissions 
                      (see :ref:`the create share section 
@@ -475,7 +466,7 @@ password     string  Updated password for public link Share
 publicUpload boolean Enable (true) / disable (false) 
                      public upload for public shares.
 expireDate   string  Set an expire date for public link shares. 
-                     This argument expects a well-formated date string, 
+                     This argument expects a well-formatted date string, 
                      such as: 'YYYY-MM-DD'
 ============ ======= ==================================================
 
@@ -504,39 +495,33 @@ Curl
 
 .. literalinclude:: ../examples/curl/update-share.sh
    :language: bash
-   :linenos:
 
 PHP
 ~~~~
 
 .. literalinclude:: ../examples/php/update-share.php
    :language: php
-   :linenos:
 
 Ruby
 ~~~~
 
 .. literalinclude:: ../examples/ruby/update-share.rb
    :language: ruby
-   :linenos:
 
 Go
 ~~
 
 .. literalinclude:: ../examples/go/update-share.go
    :language: go
-   :linenos:
 
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. literalinclude:: ../examples/responses/shares/update-share-failure.xml
    :language: xml
-   :linenos:
 
 .. literalinclude:: ../examples/responses/shares/update-share-success.xml
    :language: xml
-   :linenos:
 
 Federated Cloud Shares
 ======================
@@ -576,7 +561,7 @@ Code Description
 Get Information About A Known Federated Cloud Share
 ---------------------------------------------------
 
-Get information about a given received federated cloud that was sent from a remote instance.
+Get information about a given received federated cloud share that was sent from a remote instance.
 
 * Syntax: `/remote_shares/<share_id>`
 * Method: `GET`

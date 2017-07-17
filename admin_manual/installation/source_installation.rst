@@ -8,7 +8,7 @@ ownCloud engineers, and you can use your package manager to keep your ownCloud
 server up-to-date.
 
 .. note:: Enterprise customers should refer to  
-   :doc:`../enterprise_installation/linux_installation`
+   :doc:`../enterprise/installation/install`
 
 If there are no packages for your Linux distribution, or you prefer installing
 from the source tarball, you can setup ownCloud from scratch using a classic
@@ -19,7 +19,6 @@ Apache and MariaDB, using `the ownCloud .tar archive
 
 * :ref:`prerequisites_label`
 * :ref:`ubuntu_installation_label`
-* :ref:`binlog_format_label`
 * :ref:`apache_configuration_label`
 * :ref:`enabling_ssl_label`
 * :ref:`installation_wizard_label`
@@ -27,7 +26,7 @@ Apache and MariaDB, using `the ownCloud .tar archive
 * :ref:`selinux_tips_label`
 * :ref:`php_ini_tips_label`
 * :ref:`php_fpm_tips_label`
-* :ref:`other_HTTP_servers_label`
+* :ref:`other_http_servers_label`
 
 .. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and 
    Red Hat Enterprise Linux may need to set new rules to enable installing 
@@ -54,10 +53,13 @@ required extensions. You can check the presence of a module by typing ``php -m
 Required
 ^^^^^^^^
 
+PHP Version
+~~~~~~~~~~~
+
 PHP >= 5.6
 
-Extensions
-~~~~~~~~~~
+PHP Extensions
+~~~~~~~~~~~~~~
 
 =================== ===========================================================
 Name                Description
@@ -86,7 +88,7 @@ Digest Framework
 `Zlib`_             For reading and writing gzip (.gz) compressed files.
 =================== ===========================================================
 
-Database Connectors
+Database Extensions
 ~~~~~~~~~~~~~~~~~~~
 
 ============ ====================================================================
@@ -112,7 +114,7 @@ Name         Description
 ============ ====================================================================
   
 .. note:: SMB/Windows Network Drive mounts require the PHP module smbclient version 0.8.0+; see
-  :doc:`../configuration_files/external_storage/smb`.
+  :doc:`../configuration/files/external_storage/smb`.
 
 Optional
 ^^^^^^^^
@@ -152,7 +154,7 @@ extensions:
 * `memcached`_
 * `redis`_ (>= 2.2.6+, required for transactional file locking)
 
-See :doc:`../configuration_server/caching_configuration` to learn how to select 
+See :doc:`../configuration/server/caching_configuration` to learn how to select 
 and configure a memcache.
 
 For Preview Generation
@@ -177,31 +179,34 @@ Extension Reason
   If ``mod_webdav`` is enabled you must disable it for ownCloud. (See
   :ref:`apache_configuration_label` for an example configuration.)
 
-MySQL/MariaDB Require InnoDB
-----------------------------
+For MySQL/MariaDB
+^^^^^^^^^^^^^^^^^
 
 The InnoDB storage engine is required, and MyISAM is not supported, see:
 :ref:`db-storage-engine-label`.
   
 .. _ubuntu_installation_label:  
 
-Example Installation on Ubuntu 16.04 LTS Server
------------------------------------------------
+Required Packages
+-----------------
+
+Installing on Ubuntu 16.04 LTS Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On a machine running a pristine Ubuntu 16.04 LTS server, install the
 required and recommended modules for a typical ownCloud installation, using
 Apache and MariaDB, by issuing the following commands in a terminal::
 
-    apt-get install apache2 mariadb-server libapache2-mod-php7.0
-    apt-get install php7.0-gd php7.0-json php7.0-mysql php7.0-curl
-    apt-get install php7.0-intl php7.0-mcrypt php-imagick
-    apt-get install php7.0-zip php7.0-xml php7.0-mbstring
+    apt install -y apache2 mariadb-server libapache2-mod-php7.0 \
+    	php7.0-gd php7.0-json php7.0-mysql php7.0-curl \
+    	php7.0-intl php7.0-mcrypt php-imagick \
+    	php7.0-zip php7.0-xml php7.0-mbstring
 
 The remaining steps are analogous to the installation on Ubuntu 14.04 as shown
 below.
 
-Example Installation on Ubuntu 14.04 LTS Server
------------------------------------------------
+Installing on Ubuntu 14.04 LTS Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On a machine running a pristine Ubuntu 14.04 LTS server, install the
 required and recommended modules for a typical ownCloud installation, using
@@ -267,25 +272,9 @@ Now download the archive of the latest ownCloud version:
 On other HTTP servers it is recommended to install ownCloud outside of the 
 document root.
 
-.. _binlog_format_label:
-
-BINLOG_FORMAT = STATEMENT
--------------------------
-
-If your ownCloud installation fails and you see this in your ownCloud log::
-
- An unhandled exception has been thrown: exception ‘PDOException’ with message 
- 'SQLSTATE[HY000]: General error: 1665 Cannot execute statement: impossible to 
- write to binary log since BINLOG_FORMAT = STATEMENT and at least one table 
- uses a storage engine limited to row-based logging. InnoDB is limited to 
- row-logging when transaction isolation level is READ COMMITTED or READ 
- UNCOMMITTED.'
-
-See :ref:`db-binlog-label`.
-
 .. _apache_configuration_label:
    
-Apache Web Server Configuration
+Configure the Apache Web Server
 -------------------------------
 
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful
@@ -327,10 +316,6 @@ Additional Apache Configurations
     a2enmod dir
     a2enmod mime
   
-  If you're running ``mod_fcgi`` instead of the standard ``mod_php`` also enable::
-  
-    a2enmod setenvif
-
 * You must disable any server-configured authentication for ownCloud, as it 
   uses Basic authentication internally for DAV services. If you have turned on 
   authentication on a parent folder (via e.g. an ``AuthType Basic``
@@ -355,8 +340,8 @@ Additional Apache Configurations
 
 .. _enabling_ssl_label:
 
-Enabling SSL
-------------
+Enable SSL
+----------
 
 .. note:: You can use ownCloud over plain HTTP, but we strongly encourage you to
           use SSL/TLS to encrypt all of your server traffic, and to protect 
@@ -378,8 +363,8 @@ the default site. Open a terminal and run::
     
 .. _installation_wizard_label:
     
-Installation Wizard
--------------------
+Run the Installation Wizard
+---------------------------
 
 After restarting Apache you must complete your installation by running either 
 the graphical Installation Wizard, or on the command line with the ``occ`` 
@@ -397,92 +382,16 @@ To use ``occ`` see :doc:`command_line_installation`.
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
-Setting Strong Directory Permissions
-------------------------------------
+.. _strong_perms_label:
 
-After completing installation, you must immediately set the directory 
-permissions in your ownCloud installation as strictly as possible for stronger 
-security. Please refer to :ref:`strong_perms_label`.
+Set Strong Directory Permissions
+--------------------------------
 
-Now your ownCloud server is ready to use.
+After completing installation, you must immediately :ref:`set the directory permissions <post_installation_steps_label>` in your ownCloud installation as strictly as possible for stronger security. 
+After you do so, your ownCloud server will be ready to use.
 
-.. _selinux_tips_label:
-
-SELinux Configuration Tips
---------------------------
-
-See :doc:`selinux_configuration` for a suggested configuration for 
-SELinux-enabled distributions such as Fedora and CentOS.
-
-.. _php_ini_tips_label:
-
-php.ini Configuration Notes
----------------------------
-
-Several core PHP settings have to be configured correctly, otherwise ownCloud may
-not work properly. Known settings causing issues are listed here. Please note that
-there might be other settings causing unwanted behaviours. In general it is recommended
-to keep the ``php.ini`` at their defaults.
-
-session.auto_start && enable_post_data_reading
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Ensure that `session.auto_start`_ is set to ``0`` or ``Off`` and `enable_post_data_reading`_
-to ``1`` or ``On`` in your configuration. If not, you may have issues logging in
-to ownCloud via the WebUI, where you see the error: "*Access denied. CSRF check
-failed*".
-
-session.save_path
-^^^^^^^^^^^^^^^^^
-
-In addition to setting ``session.auto_start`` and ``enable_post_data_reading``
-correctly, ensure that, if ``session.save_handler`` is set to ``files``, that
-``session.save_path`` is set to a path on the filesystem which the web server
-process, or process which PHP is running as, can read from and write to.
-
-post_max_size  
-^^^^^^^^^^^^^
-
-Please ensure that you have ``post_max_size`` configured with *at least* the minimum 
-amount of memory for use with ownCloud, which is 512 MB. 
-
-.. IMPORTANT::
-   Please be careful when you set this value if you use the byte value shortcut as it is very specific.  
-   Use `K` for kilobyte, `M` for megabyte and `G` for gigabyte. `KB`, `MB`, and `GB` **do not work!**
-
-.. NOTE::
-   Keep in mind that changes to ``php.ini`` may have to be configured in more
-   than one ini file. This can be the case, for example, for the
-   ``date.timezone`` setting.
-
-**php.ini - used by the Web server:**
-::
-
-   /etc/php5/apache2/php.ini
- or
-   /etc/php5/fpm/php.ini
- or ...
-
-**php.ini - used by the php-cli and so by ownCloud CRON jobs:**
-::
-
-  /etc/php5/cli/php.ini
-
-
-
-.. _other_HTTP_servers_label:
-
-Other Web Servers
------------------
-
-:doc:`nginx_examples`
-
-
-`Other HTTP servers 
-<https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes>`_
-
-`Univention Corporate Server installation 
-<https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+.. note::
+ For further information on improving the quality of your ownCloud installation, please see the :doc:`configuration_notes_and_tips` guide.
 
 .. Links
 
@@ -525,11 +434,6 @@ Other Web Servers
 .. _memcached: https://secure.php.net/manual/en/book.memcached.php
 .. _redis: https://pecl.php.net/package/redis
 .. _imagick: https://secure.php.net/manual/en/book.imagick.php
-
-.. PHP Configuration Links
-   
-.. _session.auto_start: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
-.. _enable_post_data_reading: https://secure.php.net/manual/en/ini.core.php#ini.enable-post-data-reading
    
 .. Executable Links
    
@@ -537,3 +441,7 @@ Other Web Servers
 .. _ffmpeg: https://ffmpeg.org/
 .. _OpenOffice: https://www.openoffice.org/
 .. _LibreOffice: https://www.libreoffice.org/
+
+.. Forum Links
+   
+.. _in the forums: https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819

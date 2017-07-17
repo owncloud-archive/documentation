@@ -11,7 +11,7 @@ Always start by making a fresh backup and disabling all 3rd party apps.
 Put your server in maintenance mode. This prevents new logins, locks the 
 sessions of logged-in users, and displays a status screen so users know what is 
 happening. There are two ways to do this, and the preferred method is to use the 
-:doc:`occ command <../configuration_server/occ_command>`, which you must run as 
+:doc:`occ command <../configuration/server/occ_command>`, which you must run as 
 your HTTP user. This example is for Ubuntu Linux::
 
  sudo -u www-data php occ maintenance:mode --on
@@ -64,7 +64,7 @@ The other way is by entering your ``config.php`` file and changing
   The optional parameter to skip migration tests during this step was removed in oC 9.2.
   See :ref:`migration_test_label` for background information.
 
-  See :doc:`../configuration_server/occ_command` to learn more.
+  See :doc:`../configuration/server/occ_command` to learn more.
      
 11. The upgrade operation takes a few minutes to a few hours, depending on the 
     size of your installation. When it is finished you will see a success 

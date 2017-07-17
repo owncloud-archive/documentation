@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<ocs>
+ <meta>
+  <status>ok</status>
+  <statuscode>100</statuscode>
+  <message>OK</message>
+  <totalitems></totalitems>
+  <itemsperpage></itemsperpage>
+ </meta>
+ <data>
+  <exact>
+   <users/>
+   <groups/>
+   <remotes/>
+  </exact>
+  <users>
+   <element>
+    <label>admin</label>
+    <value>
+     <shareType>0</shareType>
+     <shareWith>admin</shareWith>
+    </value>
+   </element>
+   <element>
+    <label>user</label>
+    <value>
+     <shareType>0</shareType>
+     <shareWith>user</shareWith>
+    </value>
+   </element>
+  </users>
+  <groups/>
+  <remotes/>
+ </data>
+</ocs>

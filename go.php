@@ -27,7 +27,7 @@ $mapping = array(
     'admin-transactional-locking' => '/admin_manual/configuration_files/files_locking_transactional.html',
     'admin-code-integrity' => '/admin_manual/issues/code_signing.html',
     'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
-    
+
     'admin-enterprise-license' => '/admin_manual/enterprise_installation/license_keys_installation.html',
 
     'developer-theming'       => '/developer_manual/core/theming.html',
@@ -46,13 +46,11 @@ $mapping = array(
 
 ############# Do not edit below this line #################
 
-$from = $_GET['to'];
+$from = isset($_GET['to']) ? $_GET['to'] : '';
 $proto = isset($_SERVER['HTTPS']) ? 'https' : 'http';
-$port = $_SERVER['SERVER_PORT'];
-$port = ($port !== '80' && $port !== '443') ? ":$port" : '';
-$name = $_SERVER['SERVER_NAME'];
+$name = $_SERVER['HTTP_HOST'];
 $path = dirname($_SERVER['REQUEST_URI']);
-$location = "$proto://$name$port$path";
+$location = "$proto://$name$path";
 
 header('HTTP/1.1 302 Moved Temporarily');
 if (array_key_exists($from, $mapping)) {

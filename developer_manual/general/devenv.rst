@@ -15,20 +15,15 @@ To be able to develop with ownCloud and also run unit tests, you will need to in
 
 Other required tools will be automatically installed by composer.
 
-Set Up Web Server And Database
-==============================
-
-First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
-
-.. TODO ON RELEASE: Update version number above on release
-
 Get The Source
 ==============
 
 There are two ways to obtain ownCloud sources: 
 
 * Using the `stable version <https://doc.owncloud.org/server/9.0/admin_manual/#installation>`_
+
 .. TODO ON RELEASE: Update version number above on release
+
 * Using the development version from `GitHub`_ which will be explained below.
 
 To check out the source from `GitHub`_ you will need to install git (see `Setting up git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
@@ -67,8 +62,6 @@ Run make to pull in dependencies::
 
   cd /var/www/core
   make
-
-where <folder> is the folder where you want to install ownCloud.
 
 Adjust rights::
 
@@ -134,3 +127,11 @@ To disable JavaScript and CSS caching debugging has to be enabled by setting ``d
 
 .. _Make: https://www.gnu.org/software/make/
 .. _JSDoc: http://usejsdoc.org
+
+Set Up Web Server And Database
+==============================
+
+First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
+
+.. TODO ON RELEASE: Update version number above on release
+

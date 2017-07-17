@@ -98,7 +98,7 @@ Registering a two-factor auth provider
 You need to inform the ownCloud core that the app provides two-factor auth functionality. Two-factor
 providers are registered via ``info.xml``.
 
-.. code-block:: XML
+.. code-block:: xml
 
 	<two-factor-providers>
 		<provider>OCA\TwoFactor_Test\Provider\TwoFactorTestProvider</provider>

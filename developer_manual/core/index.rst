@@ -1,34 +1,18 @@
-.. _coreindex:
-
-
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-
-   translation
-   unit-testing
-   theming
-   configfile
-   externalapi
-   ocs-share-api
-
 =================
 Core Development
 =================
 
-Intro
------
+.. toctree::
+   :maxdepth: 2
 
-Please make sure you have set up a development environment:
-
-* :doc:`../general/devenv`
-
-Core related docs
------------------
-
-* :doc:`translation`
-* :doc:`unit-testing`
-* :doc:`theming`
-* :doc:`configfile`
-* :doc:`ocs-share-api`
-* :doc:`externalapi`
+   introduction
+   theming
+   configfile
+   translation
+   unit-testing
+   ui-testing
+   integration-tests
+   externalapi
+   ocs-share-api
+   ocs-recipient-api
+   ocs-capabilities

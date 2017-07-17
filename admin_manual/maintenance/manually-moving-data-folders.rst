@@ -1,3 +1,5 @@
+.. _datadir_move_label:
+
 =====================================
 How To Manually Move a Data Directory
 =====================================
@@ -25,10 +27,10 @@ To save time, here's the commands which you can copy and use::
   ln -s /mnt/owncloud /www/owncloud/data
   apachectl -k graceful 
 
-.. NOTE:: 
-   If you're on CentOS/Fedora, try `systemctl restart httpd`.
-   If you're on Debian/Ubuntu try `sudo systemctl restart apache2`
-   To learn more about the systemctl command, please refer to `the systemd
+.. note:: 
+   If you're on CentOS/Fedora, try ``systemctl restart httpd``.
+   If you're on Debian/Ubuntu try ``sudo systemctl restart apache2``
+   To learn more about the systemctl command, please refer to `the systemd essentials guide`_
 
 Fix Hardcoded Database Path Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -38,8 +40,8 @@ run the SQL below:
 
 .. code-block:: sql
    
-  UPDATE oc_storages SET id='local::/var/www/owncloud/data' 
-    WHERE id='local::/mnt/owncloud'
+  UPDATE oc_storages SET id='local::/mnt/owncloud' 
+    WHERE id='local::/var/www/owncloud/data'
 
 The other area to check is the `oc_jobs` table. The logrotate process may have
 hard-coded a non-standard (or old) value for the data path. To check it, run the
