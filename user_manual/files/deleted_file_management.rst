@@ -16,7 +16,7 @@ Quotas
 
 Deleted files are not counted against your storage quota. Only files that 
 originate with users count against their quotas, not files 
-shared with them that originate from other users. (See :doc:`quota` to learn 
+shared with them that originate from other users. (See :doc:`webgui/quota` to learn 
 more about quotas.)
 
 What Happens When Shared Files Are Deleted

@@ -296,6 +296,21 @@ Authentication via an existing LDAP or Active Directory server, or SAML.
    Enterprise Edition. (See `ownCloud Server or Enterprise Edition`_ for 
    comparisons of the ownCloud editions.)
    
+Known Issues
+------------
+
+Deadlocks When Using MariaDB Galera Cluster
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If you're using `MariaDB Galera Cluster`_ with your ownCloud installation, you may encounter deadlocks when you attempt to sync a large number of files. 
+You may also encounter database errors, such as this one:
+
+.. code-block:: console
+
+ SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction
+
+The issue, `identified by Michael Roth`_, is caused when MariaDB Galera cluster sends write requests to all servers in the cluster; `here is a detailed explanation`_.
+The solution is to send all write requests to a single server, instead of all of them.
 
 References
 ----------
@@ -333,3 +348,9 @@ References
    -as -a-session-handler-for-php-on-ubuntu-14-04
 .. _HAProxy documentation:
    http://www.haproxy.org/#docs
+   
+.. Links
+   
+.. _identified by Michael Roth: https://github.com/owncloud/core/issues/14757#issuecomment-223492913
+.. _MariaDB Galera Cluster: http://galeracluster.com
+.. _here is a detailed explanation: http://severalnines.com/blog/avoiding-deadlocks-galera-set-haproxy-single-node-writes-and-multi-node-reads

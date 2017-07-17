@@ -171,9 +171,7 @@ htmlhelp_basename = 'ownCloudServerAdminManual'
 
 # -- Options for LaTeX output --------------------------------------------------
 
-latex_elements = {'preamble': '\usepackage{morefloats}', 'figure_align': 'H',
-}
-
+latex_elements = {
 # latex_elements = {
 # The paper size ('letterpaper' or 'a4paper').
 #'papersize': 'letterpaper',
@@ -182,10 +180,21 @@ latex_elements = {'preamble': '\usepackage{morefloats}', 'figure_align': 'H',
 #'pointsize': '10pt',
 
 # Additional stuff for the LaTeX preamble.
+#'preamble': '\usepackage{morefloats}', 'figure_align': 'H',
+'preamble': "".join((
+    '\DeclareUnicodeCharacter{00A0}{ }',  # NO-BREAK SPACE
+    '\DeclareUnicodeCharacter{251C}{+}',  # BOX DRAWINGS LIGHT VERTICAL AND RIGHT
+    '\DeclareUnicodeCharacter{2514}{+}',  # BOX DRAWINGS LIGHT UP AND RIGHT
+)),
+}
+
+# Additional stuff for the LaTeX preamble.
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/manual]).
-latex_documents = [('contents', 'ownCloud_Server_Administration_Manual.tex', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'manual'),]
+latex_documents = [
+  ('contents', 'ownCloud_Server_Administration_Manual.tex', u'ownCloud Server Administration Manual', 
+   u'The ownCloud developers', 'manual'),]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
@@ -209,13 +218,15 @@ latex_logo = '../_shared_assets/static/logo-blue.pdf'
 
 # -- Options for pdf page output -----------------------------------------------
 
-pdf_documents = [('contents', u'owncloud Server Administration Manual', u'ownCloud Server Administration Manual', u'The ownCloud developers'),]
+pdf_documents = [('contents', u'owncloud Server Administration Manual', 
+                  u'ownCloud Server Administration Manual', u'The ownCloud developers'),]
 
 # -- Options for manual page output --------------------------------------------
 
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
-man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Administration Manual', [u'The ownCloud developers'], 1) ]
+man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Administration Manual', 
+               [u'The ownCloud developers'], 1) ]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
@@ -226,7 +237,9 @@ man_pages = [ ('contents', 'owncloudserveradminmanual', u'ownCloud Server Admini
 # Grouping the document tree into Texinfo files. List of tuples
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
-texinfo_documents = [ ('contents', 'ownCloud Server Admin Manual', u'ownCloud Server Administration Manual', u'The ownCloud developers', 'ownCloud', 'The ownCloud Server Administration Manual.', 'Miscellaneous'), ]
+texinfo_documents = [ ('contents', 'ownCloud Server Admin Manual', u'ownCloud Server Administration Manual', 
+                       u'The ownCloud developers', 'ownCloud', 'The ownCloud Server Administration Manual.', 
+                       'Miscellaneous'), ]
 
 # Documents to append as an appendix to all manuals.
 #texinfo_appendices = []

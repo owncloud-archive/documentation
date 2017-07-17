@@ -22,7 +22,12 @@ Set Up Test
 ~~~~~~~~~~~
 
 - Place the Selenium standalone server jar file and the web driver(s) somewhere in the same folder.
-- Start the Selenium server ``java -jar selenium-server-standalone-3.0.1.jar -port 4445``.
+- Start the Selenium server:
+
+.. code-block:: console
+
+  java -jar selenium-server-standalone-3.4.0.jar -port 4445
+
 - Set the following environment variables:
 
   - ``SRV_HOST_NAME`` (the hostname where ownCloud runs)
@@ -39,13 +44,52 @@ Set Up Test
     export SRV_HOST_PORT=80
     export BROWSER=chrome
 
-- If you don't have a webserver already running start the PHP development server with:
-  ``bash tests/travis/start_php_dev_server.sh`` (leave SRV_HOST_URL empty in that case. ``export SRV_HOST_URL=""``).
-  The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
-- Run the tests: ``bash tests/travis/start_behat_tests.sh``.
+- If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
+
+.. code-block:: console
+
+  bash tests/travis/start_php_dev_server.sh
+
+The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
+
+- Run the tests:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh
 
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
 To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_behat_tests.sh``.
+
+Running UI Tests for One Feature
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can run the UI tests for just a single feature by specifying the feature file:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/login.feature
+
+To run just a single scenario within a feature, specify the line number of the scenario:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/login.feature:<linenumber>
+
+Running UI Tests for an App
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With the app installed, run the UI tests for the app by specifying the location of the app's ``behat.yml`` config file:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml
+
+Run UI the tests for just a single feature of the app by also specifying the feature file:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml --feature apps/files_texteditor/tests/ui/features/createtextfile.feature
 
 Skipping Tests
 ~~~~~~~~~~~~~~

@@ -6,14 +6,13 @@ Files & Synchronization
    :maxdepth: 1
 
    access_webdav
-   webgui/access_webgui
+   webgui/index
+   public_link_shares
    desktop_mobile_sync
    encrypting_files
    gallery_app
    deleted_file_management
-   file_drop
    large_file_upload
-   quota
    troubleshooting
    federated_cloud_sharing
    version_control
