@@ -1277,28 +1277,36 @@ The full list, of commands is::
 Creating Users
 ^^^^^^^^^^^^^^
 
-You can create a new user with their display name, login name, and any group 
-memberships with the ``user:add`` command. The syntax is::
+You can create a new user with the ``user:add`` command.
+This command lets you set the following attributes:
 
- user:add [--password-from-env] [--display-name[="..."]] [-g|--group[="..."]] 
- uid
+- **uid:** The ``uid`` is the user's username and their login name
+- **display name:** This corresponds to the **Full Name** on the Users page in your ownCloud Web UI
+- **email address**
+- **group**
+- **login name**
+- **password**
 
-The ``display-name`` corresponds to the **Full Name** on the Users page in your 
-ownCloud Web UI, and the ``uid`` is their **Username**, which is their 
-login name. This example adds new user Layla Smith, and adds her to the 
+The command's syntax is:
+
+.. code-block:: console
+
+ user:add [--password-from-env] [--display-name [DISPLAY-NAME]] [--email [EMAIL]] [-g|--group [GROUP]] [--] <uid>
+
+This example adds new user Layla Smith, and adds her to the 
 **users** and **db-admins** groups. Any groups that do not exist are created:: 
  
- sudo -u www-data php occ user:add --display-name="Layla Smith" 
-   --group="users" --group="db-admins" layla
+ sudo -u www-data php occ user:add --display-name="Layla Smith" \
+   --group="users" --group="db-admins" --email=layla.smith@example.com layla
    Enter password: 
    Confirm password: 
    The user "layla" was created successfully
    Display name set to "Layla Smith"
+   Email address set to "layla.smith@example.com"
    User "layla" added to group "users"
    User "layla" added to group "db-admins"
 
-After the command is completed, go to your Users page, and you will see your new
-user.   
+After the command completes, go to your Users page, and you will see your new user. 
 
 Setting A User's Password
 ^^^^^^^^^^^^^^^^^^^^^^^^^
