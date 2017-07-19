@@ -729,6 +729,6 @@ or PostgreSQL) to operate correctly.
 .. Links
    
 .. _the latest desktop client version: https://doc.owncloud.com/desktop/latest/
-.. _syncing user backends: configuration_server/occ_command.html#syncing-user-accounts
+.. _syncing user backends: configuration/server/occ_command.html#syncing-user-accounts
 .. _the new marketplace: https://marketplace.owncloud.com
 .. _Open Build Service: https://download.owncloud.org/download/repositories/10.0/owncloud/
