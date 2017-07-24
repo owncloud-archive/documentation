@@ -14,13 +14,15 @@ Changes in the Linux Distribution Packages 9
 --------------------------------------------
 
 Linux distribution packages (from `Open Build Service`_) have been divided into 
-multiple packages for ownCloud 9: ``owncloud``, ``owncloud-deps`` and ``owncloud-files``. 
+multiple packages: ``owncloud``, ``owncloud-deps`` and ``owncloud-files``. 
 
+- **owncloud-files (recommended):** This package installs only ownCloud. It does not install *Apache*, *a database*, or any *PHP dependencies*. 
 - **owncloud:** This package installs ownCloud, complete with all dependencies.
-- **owncloud-files:** This package installs only ownCloud. It does not install *Apache*, *a database*, or any *PHP dependencies*. 
 - **owncloud-deps:** This packages install only ownCloud's dependencies (*Apache*, *PHP*, and *MySQL*). It is not intended to be installed by itself, but rather is pulled in by the ``owncloud`` metapackage. 
 
-``owncloud-files`` is available for the following distributions, but not ``owncloud-deps``.
+.. note:: The ``owncloud`` package is a meta-package that only installs ownCloud’s dependencies, such as Apache, and the required PHP modules. We don't recommend it, as it can be harmful, such as in environments where several applications are hosted simultaneously. As such we recommend using ``owncloud-files`` (which actually installs ownCloud) and further recommend administrators manage both the environment as well as `ownCloud's dependencies <https://doc.owncloud.org/server/10.0/admin_manual/installation/source_installation.html>`_.
+
+.. note:: ``owncloud-files`` is available for the following distributions, but not ``owncloud-deps``.
 
 You will have to install your own LAMP stack first. This 
 allows you to create your own custom LAMP stack without dependency conflicts 
