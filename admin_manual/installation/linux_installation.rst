@@ -37,15 +37,15 @@ the ``owncloud-files`` package for your distro:
 
 ownCloud packages with dependencies are available for the following Linux distributions:
 
-* Ubuntu 14.04, 16.04
-* Debian 8
-* RHEL 7
-* CentOS 7
-* SLES 12
-* openSUSE 13.2, Leap 42.1
+* Ubuntu 14.04 & 16.04
+* Debian 7 & 8
+* RHEL 6 & 7
+* CentOS 7.2 & 7.3
+* SLES 11SP4 & 12SP2
+* openSUSE Leap 42.2 & 42.3
 
-Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If 
-you use Fedora, use the tar archive with your own LAMP stack. openSUSE 
+Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. 
+If you use Fedora, use the tar archive with your own LAMP stack. openSUSE 
 users can rely on LEAP packages for Tumbleweed.
 
 Follow the instructions on the download page to install ownCloud. Then run the 
