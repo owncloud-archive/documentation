@@ -7,7 +7,7 @@ Database Access
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The basic way to run a database query is to use the database connection provided by **OCP\\IDBConnection**.
+The basic way to run a database query is to use the database connection provided by ``OCP\\IDBConnection``.
 Inside your database layer class you can now start running queries like:
 
 .. code-block:: php
@@ -48,7 +48,7 @@ Mappers
 
 The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.
 
-To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
+To generalize and simplify the problem, split code into resources and create an ``Entity`` and a ``Mapper`` class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
 
 To create a mapper, inherit from the mapper baseclass and call the parent constructor with the following parameters:
 

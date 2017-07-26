@@ -1,7 +1,7 @@
 Add a RESTful API (optional)
 ============================
 
-A :doc:`RESTful API <api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of ownCloud it is a good idea to add (and document!) your own RESTful API.
+A :doc:`RESTful API <../fundamentals/api>` allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of ownCloud it is a good idea to add, and document, your own RESTful API.
 
 Because we put our logic into the ``NoteService`` class it is very easy to reuse it. 
 The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for `CORS <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_ so your API can be accessed from other webapps.
@@ -115,6 +115,9 @@ All that is left is to connect the controller to a route and enable the built in
     ];
 
 .. note:: It is a good idea to version your API in your URL
+
+Testing the API
+---------------
 
 You can test the API by running a GET request with **curl**::
 

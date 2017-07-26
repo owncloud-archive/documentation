@@ -2,17 +2,19 @@
 Routes & Controllers
 ====================
 
+Routes
+------
+
 A typical web application consists of both server side and client side code. 
 The glue between those two parts are the URLs. 
+In the case of the own notes application, the following URLs will be used:
 
-In the case of the notes app, the following URLs will be used:
-
-* **GET /**: Returns the interface in HTML
-* **GET /notes**: Returns a list of all notes in JSON
-* **GET /notes/1**: Returns a note with the id 1 in JSON
+* **GET /**: Returns the interface in HTML format
+* **GET /notes**: Returns a list of all notes in JSON format
+* **GET /notes/1**: Returns a note with the id 1 in JSON format
 * **DELETE /notes/1**: Deletes a note with the id 1
-* **POST /notes**: Creates a new note by passing in JSON
-* **PUT /notes/1**: Updates a note with the id 1 by passing in JSON
+* **POST /notes**: Creates a new note by passing in JSON format
+* **PUT /notes/1**: Updates a note with the id 1 by passing in JSON format
 
 On the client side we can call these URLs with the following jQuery code:
 
@@ -37,8 +39,39 @@ On the client side we can call these URLs with the following jQuery code:
     });
 
 On the server side, we need to register a callback that is executed once the request comes in. 
-The callback itself will be a method on a :doc:`controller <controllers>` and the controller will be connected to the URL with a :doc:`route <routes>`. 
-The controller and route for the page are already set up in ``ownnotes/appinfo/routes.php``:
+The callback will be a method on a :doc:`controller <../fundamentals/controllers>` and the controller will be connected to the URL with a :doc:`route <../fundamentals/routes>`. 
+
+To do that, we create the routes configuration file: ``ownnotes/appinfo/routes.php``, which you can see the definition for below. 
+
+.. code-block:: php
+
+    <?php
+    return [
+        'routes' => [
+            ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+            ['name' => 'note#index', 'url' => '/notes', 'verb' => 'GET'],
+            ['name' => 'note#show', 'url' => '/notes/{id}', 'verb' => 'GET'],
+            ['name' => 'note#create', 'url' => '/notes', 'verb' => 'POST'],
+            ['name' => 'note#update', 'url' => '/notes/{id}', 'verb' => 'PUT'],
+            ['name' => 'note#destroy', 'url' => '/notes/{id}', 'verb' => 'DELETE']
+        ]
+    ];
+
+.. note:: A handy feature of routing in ownCloud is that as the final five routes are so similar, they can be abbreviated by adding a resource instead:
+
+  .. code-block:: php
+
+      <?php
+      return [
+          'resources' => [
+              'note' => ['url' => '/notes']
+          ],
+          'routes' => [
+              ['name' => 'page#index', 'url' => '/', 'verb' => 'GET']
+          ]
+      ];
+
+Let's look at the route below first, so that you get a better understanding of how they're composed.
 
 .. code-block:: php
 
@@ -47,10 +80,21 @@ The controller and route for the page are already set up in ``ownnotes/appinfo/r
         ['name' => 'page#index', 'url' => '/', 'verb' => 'GET']
     ]];
 
-This route calls the controller ``OCA\\OwnNotes\\PageController->index()`` method which is defined in ``ownnotes/lib/Controller/PageController.php``. 
-The controller returns a :doc:`template <templates>`, in this case ``ownnotes/templates/main.php``:
+This route (``/``) is accessible only via a GET request and is called ``page#index``.
+When called, the request will be handled by ``OCA\\OwnNotes\\PageController``'s ``index`` method. 
+The reason why is defined in the route's name. 
+The name is composed of the name of a controller and a method on that controller, separated by a hash symbol.
 
-.. note:: @NoAdminRequired and @NoCSRFRequired in the comments above the method turn off security checks, see :doc:`controllers`
+.. _routes_and_controllers_controllers_label:
+
+Controllers
+-----------
+
+The controller, more specifically the controller function, as in other MVC-based frameworks, is the central place of logic for a route (or action).
+These functions, as you would expect, can return a range of responses to the user, including: JSON, HTML, XML, and plain text; a redirect or 404 Not Found response, or the download of a file. 
+
+In the example below, we'll return an HTML response, based on the contents of a :doc:`template <../fundamentals/templates>` file, using the ``TemplateResponse`` object.
+The ``TemplateResponse`` object renders a template located in an application's templates directory. 
 
 .. code-block:: php
 
@@ -72,13 +116,25 @@ The controller returns a :doc:`template <templates>`, in this case ``ownnotes/te
          * @NoCSRFRequired
          */
         public function index() {
+            // Renders ownnotes/templates/main.php
             return new TemplateResponse('ownnotes', 'main');
         }
 
     }
 
-Since the route which returns the initial HTML has been taken care of, the controller which handles the AJAX requests for the notes needs to be set up. 
-Create the following file: ``ownnotes/lib/Controller/NoteController.php`` with the following content:
+The first argument to the constructor specifies which application’s template directory to search.
+The second argument specifies the template to use, minus file extension (``.php``).
+Templates are, effectively, not much more than the original PHP files, which were a combination of PHP and HTML.
+   
+.. note::
+   The ``OCP`` namespace maps to ``ownCloud/core/lib/public``.
+
+.. note:: 
+   The ``@NoAdminRequired`` and ``@NoCSRFRequired`` annotations in index's docblock above turn off security checks, as they're not necessary for this method. 
+   See :doc:`../fundamentals/controllers` for more information.
+
+With an initial overview of controllers (and templates) completed, we'll now create the core of a controller which handles AJAX requests for the application. 
+Create a new controller, called ``ownnotes/lib/Controller/NoteController.php``, with the following content:
 
 .. code-block:: php
 
@@ -142,39 +198,13 @@ Create the following file: ``ownnotes/lib/Controller/NoteController.php`` with t
 
     }
 
-.. note:: 
-   The parameters are extracted from the request body and the url using the controller method's variable names. 
-   Since PHP does not support type hints for primitive types such as ints and booleans, we need to add them as annotations in the comments. 
+You can see that it's largely the same as the ``PageController``, but with a range of CRUD methods.
+Take special note of ``show``, ``create``, ``update``, and ``destroy``.
+The parameters to these functions are extracted from the request body and the URL, using the controller method's variable names. 
+
+.. note::
+   Since PHP does not support type hints for primitive types, such as ints and booleans, we need to add them as annotations in the comments. 
    In order to type cast a parameter to an int, add ``@param int $parameterName``
-
-Now the controller methods need to be connected to the corresponding URLs in the ``ownnotes/appinfo/routes.php`` file:
-
-.. code-block:: php
-
-    <?php
-    return [
-        'routes' => [
-            ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
-            ['name' => 'note#index', 'url' => '/notes', 'verb' => 'GET'],
-            ['name' => 'note#show', 'url' => '/notes/{id}', 'verb' => 'GET'],
-            ['name' => 'note#create', 'url' => '/notes', 'verb' => 'POST'],
-            ['name' => 'note#update', 'url' => '/notes/{id}', 'verb' => 'PUT'],
-            ['name' => 'note#destroy', 'url' => '/notes/{id}', 'verb' => 'DELETE']
-        ]
-    ];
-
-Since those five routes are so common, they can be abbreviated by adding a resource instead:
-
-.. code-block:: php
-
-    <?php
-    return [
-        'resources' => [
-            'note' => ['url' => '/notes']
-        ],
-        'routes' => [
-            ['name' => 'page#index', 'url' => '/', 'verb' => 'GET']
-        ]
-    ];
-
-
+   
+We're not going to do anything further in this chapter.
+However, we'll flesh out the controller in the next chapter on database interaction.

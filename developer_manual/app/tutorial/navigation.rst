@@ -1,13 +1,13 @@
-=====================
-Creating a Navigation
-=====================
+==========================
+Creating a Navigation Menu
+==========================
 
-The template file ``ownnotes/templates/part.navigation.php`` contains the navigation. 
-ownCloud defines many handy :doc:`CSS styles <css>` which we are going to reuse to style the navigation. 
-Adjust the file to contain only the following code:
+A navigation menu is, effectively, another template,
+In our example, we’ll create it in ``ownnotes/templates/part.navigation.php``. 
 
-.. note:: 
-   ``$l->t()`` is used to make your strings :doc:`translatable <l10n>` and ``p()`` is used :doc:`to print escaped HTML <templates>`
+.. note::
+   ownCloud defines many handy :doc:`CSS styles <../fundamentals/css>` which we are going to reuse to style the navigation. 
+   Adjust the file to contain only the following code:
 
 .. code-block:: php
 

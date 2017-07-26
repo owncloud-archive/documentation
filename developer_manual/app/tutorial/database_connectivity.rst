@@ -2,7 +2,11 @@
 Database Connectivity
 =====================
 
-Now that the routes are set up and connected the notes should be saved in the database. To do that first create a :doc:`database schema <schema>` by creating **ownnotes/appinfo/database.xml**:
+The Database Schema
+-------------------
+
+Now that the application's routes and two controllers have been setup and wired together, we'll flesh out ``NotesController`` so that the notes can be saved in the database. 
+But to do that, we first need to create the :doc:`database schema <../fundamentals/database>` by creating ``ownnotes/appinfo/database.xml``, with the following content:
 
 .. code-block:: xml
 
@@ -47,29 +51,23 @@ Now that the routes are set up and connected the notes should be saved in the da
         </table>
     </database>
 
-To create the tables in the database, the :doc:`version tag <info>` in **ownnotes/appinfo/info.xml** needs to be increased:
+The schema consists of one table: ``ownnotes_notes``, which has four fields:
 
-.. code-block:: xml
+- **id:** An integer
+- **title:** A text field
+- **user_id:** A text field
+- **content:** A CLOB field
 
-    <?xml version="1.0"?>
-    <info>
-        <id>ownnotes</id>
-        <name>Own Notes</name>
-        <description>My first ownCloud app</description>
-        <licence>AGPL</licence>
-        <author>Your Name</author>
-        <version>0.0.2</version>
-        <namespace>OwnNotes</namespace>
-        <category>tool</category>
-        <dependencies>
-            <owncloud min-version="8" />
-        </dependencies>
-    </info>
+With the file created, the :ref:`version tag <appinfo_info_xml_label>` in ``ownnotes/appinfo/info.xml`` needs to be increased. 
+This causes ownCloud to trigger the update process when you next load (or reload) the ownCloud UI. 
+Part of the update process includes run database migrations, which will create the database table defined in the migration above.
 
-Reload the page to trigger the database migration.
+Data Entities
+-------------
 
-Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an :doc:`entity <database>` in **ownnotes/lib/Db/Note.php**:
-
+Now that the tables are created, we want to map the database search results to a PHP object. 
+That way, we're able to manage the data more precisely. 
+To do that, create an :doc:`entity <../fundamentals/database>` in new file, called: ``ownnotes/lib/Db/Note.php``:
 
 .. code-block:: php
 
@@ -77,7 +75,6 @@ Now that the tables are created we want to map the database result to a PHP obje
     namespace OCA\OwnNotes\Db;
 
     use JsonSerializable;
-
     use OCP\AppFramework\Db\Entity;
 
     class Note extends Entity implements JsonSerializable {
@@ -93,13 +90,22 @@ Now that the tables are created we want to map the database result to a PHP obje
                 'content' => $this->content
             ];
         }
+
     }
 
-.. note:: A field **id** is automatically set in the Entity base class
+.. note:: The ``id`` field exists in the ``Entity``
 
-We also define a **jsonSerializable** method and implement the interface to be able to transform the entity to JSON easily.
+We also define a ``jsonSerializable`` method and implement the interface, so that we're able to transform the entity to JSON, making it easy to persist and cache the information.
 
-Entities are returned from so called :doc:`Mappers <database>`. Let's create one in **ownnotes/lib/Db/NoteMapper.php** and add a **find** and **findAll** method:
+Data Mappers
+------------
+
+Entities are returned from so-called :doc:`data mappers <../fundamentals/database>`. 
+`Data mappers are`_:
+
+  A layer of Mappers (473) that moves data between objects and a database while keeping them independent of each other and the mapper itself.
+
+Let's create one in ``ownnotes/lib/Db/NoteMapper.php`` and add a ``find`` and ``findAll`` method:
 
 .. code-block:: php
 
@@ -127,14 +133,21 @@ Entities are returned from so called :doc:`Mappers <database>`. Let's create one
 
     }
 
-.. note:: The first parent constructor parameter is the database layer, the second one is the database table and the third is the entity on which the result should be mapped onto. Insert, delete and update methods are already implemented.
 
-Connect Database & Controllers
-------------------------------
+.. note:: 
+   The first parent constructor parameter is the database connection object (or database handle), the second one is the database table and the third is the entity which the result should be mapped onto. 
+   Insert, delete and update methods are already implemented.
 
-The mapper which provides the database access is finished and can be passed into the controller.
+Connecting Databases & Controllers
+----------------------------------
 
-You can pass in the mapper by adding it as a type hinted parameter. ownCloud will figure out how to :doc:`assemble them by itself <container>`. Additionally we want to know the userId of the currently logged in user. Simply add a **$UserId** parameter to the constructor (case sensitive!). To do that open **ownnotes/lib/Controller/NoteController.php** and change it to the following:
+Now the mapper is finished and can be passed into the controller.
+You can do so by adding it as a type-hinted parameter. 
+ownCloud will figure out how to :doc:`assemble them by itself <../fundamentals/container>`. 
+
+Additionally we want to know the ``userId`` of the currently logged in user. 
+To do so, add a ``$UserId`` parameter to the constructor, which is case-sensitive. 
+Open ``ownnotes/lib/Controller/NoteController.php`` and change it to the following:
 
 .. code-block:: php
 
@@ -162,87 +175,126 @@ You can pass in the mapper by adding it as a type hinted parameter. ownCloud wil
             $this->userId = $UserId;
         }
 
-        /**
-         * @NoAdminRequired
-         */
-        public function index() {
-            return new DataResponse($this->mapper->findAll($this->userId));
-        }
-
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
-        public function show($id) {
-            try {
-                return new DataResponse($this->mapper->find($id, $this->userId));
-            } catch(Exception $e) {
-                return new DataResponse([], Http::STATUS_NOT_FOUND);
-            }
-        }
-
-        /**
-         * @NoAdminRequired
-         *
-         * @param string $title
-         * @param string $content
-         */
-        public function create($title, $content) {
-            $note = new Note();
-            $note->setTitle($title);
-            $note->setContent($content);
-            $note->setUserId($this->userId);
-            return new DataResponse($this->mapper->insert($note));
-        }
-
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         * @param string $title
-         * @param string $content
-         */
-        public function update($id, $title, $content) {
-            try {
-                $note = $this->mapper->find($id, $this->userId);
-            } catch(Exception $e) {
-                return new DataResponse([], Http::STATUS_NOT_FOUND);
-            }
-            $note->setTitle($title);
-            $note->setContent($content);
-            return new DataResponse($this->mapper->update($note));
-        }
-
-        /**
-         * @NoAdminRequired
-         *
-         * @param int $id
-         */
-        public function destroy($id) {
-            try {
-                $note = $this->mapper->find($id, $this->userId);
-            } catch(Exception $e) {
-                return new DataResponse([], Http::STATUS_NOT_FOUND);
-            }
-            $this->mapper->delete($note);
-            return new DataResponse($note);
-        }
-
     }
 
-.. note:: The actual exceptions are **OCP\\AppFramework\\Db\\DoesNotExistException** and **OCP\\AppFramework\\Db\\MultipleObjectsReturnedException** but in this example we will treat them as the same. DataResponse is a more generic response than JSONResponse and also works with JSON.
+With the constructor defined, we now need to flesh out the rest of the methods, which we previously didn't define bodies for.
+In ``index``, below, we'll return a ``DataResponse`` object, which contains the result of using the Data Mapper's ``findAll`` method.
 
-This is all that is needed on the server side. Now let's progress to the client side.
+This method, which is supplied with the current user's id, retrieves all notes created by that user.
+A ``DataResponse`` object is used to return generic data responses. 
+It provides a more generic response than ``JSONResponse``, which also works with JSON data.
 
-Making things reusable and decoupling controllers from the database
--------------------------------------------------------------------
+.. code-block:: php
 
-Let's say our app is now on the ownCloud Marketplace and and we get a request that we should save the files in the filesystem which requires access to the filesystem.
+    /**
+     * @NoAdminRequired
+     */
+    public function index() {
+        return new DataResponse($this->mapper->findAll($this->userId));
+    }
 
-The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the **NoteController** class to use it. This is bad because a controller's only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called **Service**.
+Next, we'll flesh out the ``show`` function.
+This function will retrieve and return the details for a specific note.
+It does so by using the data mapper's find method, which is supplied with the note's and user's ids.
+If the note cannot be retrieved, then a ``DataResponse`` is returned, which results in a 404 Not Found response.
 
-Let's take the logic that was inside the controller and put it into a separate class inside **ownnotes/lib/Service/NoteService.php**:
+.. code-block:: php
+
+    /**
+     * @NoAdminRequired
+     *
+     * @param int $id
+     */
+    public function show($id) {
+        try {
+            return new DataResponse($this->mapper->find($id, $this->userId));
+        } catch(Exception $e) {
+            return new DataResponse([], Http::STATUS_NOT_FOUND);
+        }
+    }
+
+Next, we’ll flesh out the create method, so that we can create notes.
+This method receives the note’s title and content from the route and sets them, along with the current user’s id, on a new ``Note`` entity object.
+The function returns the result of calling the data mapper’s insert method, which attempts to persist the Note entity in the database.
+
+.. code-block:: php
+
+    /**
+     * @NoAdminRequired
+     *
+     * @param string $title
+     * @param string $content
+     */
+    public function create($title, $content) {
+        $note = new Note();
+        $note->setTitle($title);
+        $note->setContent($content);
+        $note->setUserId($this->userId);
+
+        return new DataResponse($this->mapper->insert($note));
+    }
+
+Next we’ll flesh out the `update` function, which updates an existing note.
+Similar to the ``create`` method, it receives the note’s id, title, and content from the route.
+It then attempts to retrieve the note, and throws an exception if it’s unable to do so.
+If it can retrieve it, it then updates the title and content, and returns the response from calling the data mapper’s ``update`` function.
+
+.. code-block:: php
+
+    /**
+     * @NoAdminRequired
+     *
+     * @param int $id
+     * @param string $title
+     * @param string $content
+     */
+    public function update($id, $title, $content) {
+        try {
+            $note = $this->mapper->find($id, $this->userId);
+        } catch(Exception $e) {
+            return new DataResponse([], Http::STATUS_NOT_FOUND);
+        }
+        $note->setTitle($title);
+        $note->setContent($content);
+        return new DataResponse($this->mapper->update($note));
+    }
+
+Finally, we’ll flesh out the ``destroy`` function, which deletes an existing note.
+This, like ``update``, will first attempt to retrieve a note, based on the supplied id, and throw an exception if it’s not able to be found.
+If it’s able to be found, it will then be passed to the data mapper’s ``delete`` function, which will delete the note from the database.
+
+.. code-block:: php
+
+    /**
+     * @NoAdminRequired
+     *
+     * @param int $id
+     */
+    public function destroy($id) {
+        try {
+            $note = $this->mapper->find($id, $this->userId);
+        } catch(Exception $e) {
+            return new DataResponse([], Http::STATUS_NOT_FOUND);
+        }
+        $this->mapper->delete($note);
+        return new DataResponse($note);
+    }
+   
+
+This is all that is needed on the server side. 
+Now let's progress to the client side.
+
+Decoupling Controllers and Increasing Reusability
+-------------------------------------------------
+
+Let's now say that our app is now on `the ownCloud Marketplace`, and we get a request that we should save the files in the filesystem which requires access to the filesystem.
+
+The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the ``NoteController`` class to use it. 
+
+This is bad, because a controller's only responsibility should be to deal with incoming HTTP requests and return HTTP responses. 
+If we need to change the controller because the data storage was changed the code is probably too tightly coupled. So we need to add another layer in between, a layer called ``Service``.
+
+Let's take the logic that was inside the controller and put it into a separate class inside ``ownnotes/lib/Service/NoteService.php``:
 
 .. code-block:: php
 
@@ -250,13 +302,10 @@ Let's take the logic that was inside the controller and put it into a separate c
     namespace OCA\OwnNotes\Service;
 
     use Exception;
-
     use OCP\AppFramework\Db\DoesNotExistException;
     use OCP\AppFramework\Db\MultipleObjectsReturnedException;
-
     use OCA\OwnNotes\Db\Note;
     use OCA\OwnNotes\Db\NoteMapper;
-
 
     class NoteService {
 
@@ -283,7 +332,7 @@ Let's take the logic that was inside the controller and put it into a separate c
             try {
                 return $this->mapper->find($id, $userId);
 
-            // in order to be able to plug in different storage backends like files
+            // In order to be able to plug in different storage backends like files
             // for instance it is a good idea to turn storage related exceptions
             // into service related exceptions so controllers and service users
             // have to deal with only one type of exception
@@ -323,7 +372,7 @@ Let's take the logic that was inside the controller and put it into a separate c
 
     }
 
-Following up create the exceptions in **ownnotes/lib/Service/ServiceException.php**:
+Following that, create an exception class in ``ownnotes/lib/Service/ServiceException.php``:
 
 .. code-block:: php
 
@@ -334,7 +383,7 @@ Following up create the exceptions in **ownnotes/lib/Service/ServiceException.ph
 
     class ServiceException extends Exception {}
 
-and **ownnotes/lib/Service/NotFoundException.php**:
+Then, create another one in ``ownnotes/lib/Service/NotFoundException.php``:
 
 .. code-block:: php
 
@@ -343,11 +392,12 @@ and **ownnotes/lib/Service/NotFoundException.php**:
 
     class NotFoundException extends ServiceException {}
 
+Remember how we had all those ugly try/catch blocks that where checking for ``DoesNotExistException`` and simply returned a 404 response? 
+Let's also refactor these into a reusable class. 
 
-Remember how we had all those ugly try catches that where checking for **DoesNotExistException** and simply returned a 404 response? Let's also put this into a reusable class. In our case we chose a `trait <http://php.net/manual/en/language.oop5.traits.php>`_ so we can inherit methods without having to add it to our inheritance hierarchy. This will be important later on when you've got controllers that inherit from the **ApiController** class instead.
-
-The trait is created in **ownnotes/lib/Controller/Errors.php**:
-
+Specifically, we’ll use a `trait <http://php.net/manual/en/language.oop5.traits.php>`_, so that we can inherit methods without having to create a large inheritance hierarchy. 
+This will be important later on when you've got controllers that inherit from the ``ApiController`` class instead.
+The trait is created in ``ownnotes/lib/Controller/Errors.php``:
 
 .. code-block:: php
 
@@ -356,12 +406,9 @@ The trait is created in **ownnotes/lib/Controller/Errors.php**:
     namespace OCA\OwnNotes\Controller;
 
     use Closure;
-
     use OCP\AppFramework\Http;
     use OCP\AppFramework\Http\DataResponse;
-
     use OCA\OwnNotes\Service\NotFoundException;
-
 
     trait Errors {
 
@@ -376,7 +423,7 @@ The trait is created in **ownnotes/lib/Controller/Errors.php**:
 
     }
 
-Now we can wire up the trait and the service inside the **NoteController**:
+Now we can wire up the trait and the service inside the ``NoteController``:
 
 .. code-block:: php
 
@@ -386,7 +433,6 @@ Now we can wire up the trait and the service inside the **NoteController**:
     use OCP\IRequest;
     use OCP\AppFramework\Http\DataResponse;
     use OCP\AppFramework\Controller;
-
     use OCA\OwnNotes\Service\NoteService;
 
     class NoteController extends Controller {
@@ -457,6 +503,9 @@ Now we can wire up the trait and the service inside the **NoteController**:
 
     }
 
-Great! Now the only reason that the controller needs to be changed is when request/response related things change.
+As a result of these changes, the only reason that the controller needs to be changed is when request/response related things change.
 
-
+.. Links
+   
+.. _Data mappers are: https://martinfowler.com/eaaCatalog/dataMapper.html
+.. _the ownCloud Marketplace: https://marketplace.owncloud.com/

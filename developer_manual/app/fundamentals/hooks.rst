@@ -6,7 +6,7 @@ Hooks
 
 Hooks are used to execute code before or after an event has occurred. 
 This is for instance useful to run cleanup code after users, groups or files have been deleted. 
-Hooks should be registered in the :doc:`app.php <init>`:
+Hooks should be registered in the :ref:`app.php <appinfo_info_xml_label>`:
 
 .. code-block:: php
 

@@ -1,8 +1,9 @@
 =======================
-Apply finishing touches
+Apply Finishing Touches
 =======================
 
-Now the only thing left is to style the textarea in a nicer fashion. To do that open ``ownnotes/css/style.css`` and replace the content with the following :doc:`CSS <css>` code:
+Now, the only thing left is to style the textarea in a nicer fashion. 
+To do that open ``ownnotes/css/style.css`` and replace the content with the following :doc:`CSS <../fundamentals/css>` code:
 
 .. code-block:: css
 
@@ -44,4 +45,3 @@ Now the only thing left is to style the textarea in a nicer fashion. To do that 
 Congratulations! 
 You've written your first ownCloud app. 
 You can now either try to further improve the tutorial notes app or start writing your own app.
-

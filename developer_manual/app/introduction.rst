@@ -2,12 +2,12 @@
 Introduction
 ============
 
-This section of the documentation will step you through how to develop an ownCloud application.
 ownCloud applications let you extend and build on the power of ownCloud, taking it in ways that work just for your specific use-case(s). 
 
 While not overly complex in nature, like any form of software development, it will take some time to become fully knowledgeable on the parts that make up and application, how they fit together, and how to make best use of them.
 
-This section of the documentation's been designed to make that process as simple and as effective as possible, by stepping you through the information in a tutorial-fashion.
+This section of the documentation's been designed to make that process as simple and as effective as possible, by both stepping you through the information in a tutorial-fashion, as well as providing you a significant amount of background technical knowledge.
+
 You'll learn how an application works by building one.
 It won't do absolutely everything that you could possibly hope to cover.
 But it will teach you the ins and outs of building one, providing links to further information, which you can work through later.

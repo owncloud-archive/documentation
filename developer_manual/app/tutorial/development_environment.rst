@@ -2,40 +2,32 @@
 The Core Application Files
 ==========================
 
-Any ownCloud application, at its most elementary, only needs a few files. 
-These are:
+Now that you know how the request life cycle works, let's look at the core
+application files. 
+Any ownCloud application, at its most elementary, only needs a few files and
+directories; these are:
 
 .. code-block:: console
 
     .
-    ├── appinfo
+    ├── appinfo                         # Contains app metadata and configuration
     │   ├── app.php
     │   ├── application.php
     │   ├── info.xml
     │   └── routes.php
-    └── lib
-        └── Controller
-            └── PageController.php
+    └── lib                             # Contains the application's class files
+        └── Controller                  # Contains the application's controllers
 
-Over the course of this documentation, we'll expand on this basic structure.
-However, here are a several of the commonly used directories, that you may see in other apps, and what they're for. 
+In addition to these, there are several additional, commonly used, directories: 
 
-* **appinfo/**: Contains app metadata and configuration
-* **css/**: Contains the CSS files
-* **js/**: Contains the JavaScript files
-* **lib/**: Contains the application's class files
-* **lib/Controller/**: Contains the application's controllers
-* **templates/**: Contains the templates
-* **tests/**: Contains the tests
+* ``css/``: Contains the CSS files
+* ``js/``: Contains the JavaScript files
+* ``templates/``: Contains the templates
+* ``tests/``: Contains the tests
 
-To create these, run the following code in your terminal:
+Now let's get an understanding of the core configuration files.
 
-.. code-block:: console
-   
-   mkdir -p testapp/{appinfo,lib/Controller}
-   touch appinfo/{app,application,routes}.php appinfo/info.xml lib/Controller/PageController.php
-
-Now let's look at the basic structure that you need.
+.. _appinfo_info_xml_label:
 
 appinfo/info.xml
 ~~~~~~~~~~~~~~~~
@@ -49,13 +41,13 @@ In ``appinfo/info.xml``, add the following XML, changing it as necessary:
    
    <?xml version="1.0"?>
    <info>
-       <id>testapp</id>
-       <name>Test App</name>
+       <id>ownnotes</id>
+       <name>Own Notes</name>
        <description>My first ownCloud App</description>
        <licence>AGPL</licence>
        <author>Your Name</author>
        <version>0.0.1</version>
-       <namespace>TestApp</namespace>
+       <namespace>OwnNotes</namespace>
        <category>tool</category>
        <dependencies>
            <owncloud min-version="9" />
@@ -63,7 +55,14 @@ In ``appinfo/info.xml``, add the following XML, changing it as necessary:
        </dependencies>
    </info>
 
-To learn more about the options able to be stored in this file, check out :doc:`the App Metadata section of the documentation <info>`.
+.. note::
+   Pay careful attention to the ``namespace`` element. 
+   This element defines the application's relative namespace. 
+   This namespace, in turn, sits inside a parent ownCloud namespace, called ``OCA``.
+   As the application’s namespace is ``OwnNotes``, then it’s fully-qualified
+   namespace is ``OCA\\OwnNotes``.
+
+To learn more about the options able to be stored in this file, check out :doc:`the App Metadata section of the documentation <../fundamentals/info>`.
         
 appinfo/app.php
 ~~~~~~~~~~~~~~~
@@ -88,24 +87,24 @@ To start off with, in ``appinfo/app.php``, add the following code:
        $urlGenerator = \OC::$server->getURLGenerator();
        return [
            // The string under which your app will be referenced in owncloud
-           'id' => 'testapp', 
+           'id' => 'ownnotes', 
 
            // The sorting weight for the navigation. 
            // The higher the number, the higher will it be listed in the navigation
            'order' => 10,
 
            // The route that will be shown on startup
-           'href' => $urlGenerator->linkToRoute('testapp.page.index'), 
+           'href' => $urlGenerator->linkToRoute('ownnotes.page.index'), 
 
            // The icon that will be shown in the navigation, located in img/
-           'icon' => $urlGenerator->imagePath('testapp', 'testapp.svg'),
+           'icon' => $urlGenerator->imagePath('ownnotes', 'ownnotes.svg'),
 
-           // The application’s title, used in the navigation & the settings page of your app
-           'name' => \OC::$server->getL10N('testapp')->t('Test App'),
+           // The application's title, used in the navigation & the settings page of your app
+           'name' => \OC::$server->getL10N('ownnotes')->t('Test App'),
        ];
    });
 
-It can also contain :doc:`backgroundjobs` and :doc:`hooks` registrations, as in the example below.
+It can also contain :doc:`../fundamentals/backgroundjobs` and :doc:`../fundamentals/hooks` registrations, as in the example below.
     
 .. code-block:: php
     
@@ -115,7 +114,7 @@ It can also contain :doc:`backgroundjobs` and :doc:`hooks` registrations, as in 
     // execute OCA\MyApp\Hooks\User::deleteUser before a user is being deleted
     \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
 
-It is also possible to include :doc:`js` or :doc:`css` for other apps, by placing the **addScript** or **addStyle** functions inside this file as well.
+It is also possible to include :doc:`../fundamentals/js` or :doc:`../fundamentals/css` for other apps, by placing the ``addScript`` or ``addStyle`` functions inside this file as well.
 However, this is strongly discouraged, because the file is loaded on each request, as well as for requests that do not return HTML, such as JSON and WebDAV.
 
 .. code-block:: php
@@ -136,7 +135,7 @@ In ``lib/Controller/PageController.php``, add the following code:
 .. code-block:: php
    
    <?php
-   namespace OCA\TestApp\Controller;
+   namespace OCA\ownnotes\Controller;
 
    use OCP\AppFramework\{
        Controller,
@@ -155,8 +154,8 @@ In ``lib/Controller/PageController.php``, add the following code:
        }
    }
 
-What we’re doing here is to create a minimalist controller with one action, index, which is what will handle the route that we’ll define shortly.
-The index function returns an array, which we’ll see next.
+What we're doing here is to create a minimalist controller with one action, index, which is what will handle the route that we'll define shortly.
+The index function returns an array, which we'll see next.
 
 appinfo/routes.php
 ~~~~~~~~~~~~~~~~~~
@@ -169,7 +168,7 @@ In ``appinfo/routes.php``, add the following code:
    
    <?php
 
-   namespace OCA\TestApp\AppInfo;
+   namespace OCA\ownnotes\AppInfo;
 
    $application = new Application();
    $application->registerRoutes($this, [
@@ -195,14 +194,14 @@ In ``appinfo/application.php``, add the following code:
 .. code-block:: php
 
    <?php
-   namespace OCA\TestApp\AppInfo;
+   namespace OCA\ownnotes\AppInfo;
 
    use \OCP\AppFramework\App;
-   use \OCA\TestApp\Controller\PageController;
+   use \OCA\ownnotes\Controller\PageController;
 
    class Application extends App {
        public function __construct(array $urlParams=array()){
-           parent::__construct('testapp', $urlParams);
+           parent::__construct('ownnotes', $urlParams);
 
            $container = $this->getContainer();
            $container->registerService('PageController', function($c) {
@@ -213,3 +212,13 @@ In ``appinfo/application.php``, add the following code:
            });
        }
    }
+
+Create the Core File & Directory Structure
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To create these, in a new directory that will be called `ownnotes`, run the following code in your terminal, from where you want to create the new project:
+
+.. code-block:: console
+   
+   mkdir -p ownnotes/{appinfo,lib/Controller}
+   touch appinfo/{app,application,routes}.php appinfo/info.xml lib/Controller/PageController.php

@@ -1,55 +1,98 @@
-=====================
-The Request Lifecycle
-=====================
+======================
+The Request Life Cycle
+======================
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Morris Jobke <hey@morrisjobke.de>
 
-A typical HTTP request consists of the following:
+Before we dive in to creating an application, it’s important to have an overview of how the request life cycle of an ownCloud application works.
 
-* **An URL**: e.g. /index.php/apps/myapp/something
-* **Request Parameters**: e.g. ?something=true&name=tom
-* **A Method**: e.g. GET
-* **Request headers**: e.g. Accept: application/json
+If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <../fundamentals/routes>`.
 
-The following sections will present an overview over how that request is being processed to provide an in depth view over how ownCloud works. If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining :doc:`your app's routes <routes>`.
+As with other web-based applications, it’s centered around an HTTP request, which typically consists of the following, four, components:
 
-Front controller
-================
-In the beginning, all requests are sent to ownCloud's :file:`index.php` which in turn executes :file:`lib/base.php`. This file inspects the HTTP headers and abstracts away differences between different Web servers and initializes the basic classes. Afterwards the basic apps are being loaded in the following order:
+* **A URL**: e.g. ``/index.php/apps/myapp/something``
+* **Request Parameters**: e.g. ``?something=true&name=tom``
+* **A Method**: e.g. ``GET``
+* **Request headers**: e.g. ``Accept: application/json``
 
-* Authentication backends
-* Filesystem
-* Logging
+These requests are, in turn, handled by five ownCloud components:
 
-The type of the app is determined by inspecting the app's :doc:`configuration file <info>` (:file:`appinfo/info.xml`). Loading apps means that the :doc:`main file <init>` (:file:`appinfo/app.php`) of each installed app is being loaded and executed. That means that if you want to execute code before a specific app is being run, you can place code in your app's :doc:`init` file.
+- `The Front Controller`_
+- `The Router`_
+- `Middleware`_
+- `The Dependency Injection Container`_
+- `The Controller`_
 
-Afterwards the following steps are performed:
+The Front Controller
+--------------------
 
-* Try to authenticate the user
-* Load and execute all the remaining apps' :doc:`init` files
-* Load and run all the routes in the apps' :file:`appinfo/routes.php`
-* Execute the router
+All requests are sent to ownCloud's Front Controller: :file:`index.php`, which in turn executes :file:`lib/base.php`. 
+This file: 
 
-Router
-======
-The router parses the :doc:`app's routing files <routes>` (:file:`appinfo/routes.php`), inspects the request's **method** and **url**, queries the controller from the :doc:`container` and then passes control to the dispatcher. The dispatcher is responsible for running the hooks (called Middleware) before and after the controller, executing the controller method and rendering the output.
+- Inspects the HTTP headers
+- Abstracts away differences between different web servers
+- Initializes the core classes 
+
+Following this, ownCloud then loads its core applications; these are:
+
+* The authentication backends
+* The filesystem handler
+* The logging handler
+
+With these three applications loaded, the remaining initialization steps are then executed. 
+These are:
+
+- Attempt to authenticate the user is made.
+- Load and execute all the remaining applications' main files. 
+
+  To do this, the application’s :ref:`main file <appinfo_info_xml_label>` (``appinfo/app.php``) is loaded and executed. 
+  If you want to execute code before your application is loaded, you need to place code in your app's main file.
+
+- Load all the routes in the applications' :file:`appinfo/routes.php`.
+- Execute the router.
+
+With the setup completed, ownCloud then handles the user's request.
+
+The Router
+----------
+
+The router:
+
+- Parses the application's :doc:`routing <../fundamentals/routes>` configuration file: :file:`appinfo/routes.php`
+- Inspects the request's method and URL 
+- Retrieves the handling `controller`_ from the :doc:`../fundamentals/container`
+- Passes control to the dispatcher 
+
+The dispatcher:
+
+- Handles the requested routes by running hooks, called `Middleware`_, before and after invoking the controller which handles the route
+- Executes the controller method
+- Renders the request's output
 
 Middleware
-==========
-A :doc:`Middleware <middleware>` is a convenient way to execute common tasks such as custom authentication before or after a :doc:`controller method <controllers>` is being run. You can execute code at the following locations:
+----------
 
-* before the call of the controller method
-* after the call of the controller method
-* after an exception is thrown (also if it is thrown from a middleware, e.g. if an authentication fails)
-* before the output is rendered
+:doc:`Middleware <../fundamentals/middleware>` is a convenient way to execute common tasks, such as custom authentication, before or after a :doc:`controller method <../fundamentals/controllers>` is executed. 
+You can execute middleware at the following locations:
 
-Container
-=========
-The :doc:`container` is the place where you define all of your classes and in particular all of your controllers. The container is responsible for assembling all of your objects (instantiating your classes) that should only have one single instance without relying on globals or singletons. If you want to know more about why you should use it and what the benefits are, read up on the topic in :doc:`container`.
+* Before calling the controller method
+* After calling the controller method
+* After an exception is thrown (also if it is thrown from middleware, e.g., if an authentication request fails)
+* Before the output is rendered
 
-Controller
-==========
+The Dependency Injection Container
+----------------------------------
 
-The :doc:`controller <controllers>` contains the code that you actually want to run after a request has come in. Think of it like a callback that is executed if everything before went fine. 
+The :doc:`Dependency Injection (DI) container <../fundamentals/container>` is where you define all the services (or dependencies) that your application will need; in particular, all of your application's controllers. 
+A key benefit of DI containers is that they handle all dependency instantiation. 
+This means that you no longer have to rely on either globals or singletons. 
 
-The controller returns a response which is then run through the middleware again (afterController and beforeOutput hooks are being run), HTTP headers are being set and the response's render method is being called and printed.
+The Controller
+--------------
+
+The :doc:`controller <../fundamentals/controllers>` contains the code that you actually want to run when a request has come in. 
+Think of it like a callback that is executed if everything before went fine. 
+The controller collects all the information necessary to perform the request, such as from the route and environment, and returns a response.
+
+This response is then run through follow-up middleware (``afterController`` and ``beforeOutput``) for final processing.
+When those steps are complete, HTTP headers are then set along with the body of the response to the client.

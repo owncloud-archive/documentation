@@ -285,30 +285,30 @@ Deprecated
 
 The following sections are just listed for reference and should not be used because
 
-- **public/remote**: Use :doc:`api` instead because you'll have to use :doc:`../core/externalapi` which is known to be buggy (works only properly with GET/POST)
+- **public/remote**: Use :doc:`api` instead because you'll have to use :doc:`../../core/externalapi` which is known to be buggy (works only properly with GET/POST)
 - **standalone/default_enable**: They tell core what do on setup, you will not be able to even activate your app if it has those entries. This should be replaced by a config file inside core.
 
 public
 ------
 
 Used to provide a public interface (requires no login) for the app. 
-The id is appended to the URL **/owncloud/index.php/public**. 
+The id is appended to the URL ``/owncloud/index.php/public``. 
 Example with id set to 'calendar'::
 
     /owncloud/index.php/public/calendar
 
-Also take a look at :doc:`../core/externalapi`.
+Also take a look at :doc:`../../core/externalapi`.
 
 remote
 ------
 
 Same as public but requires login. 
-The id is appended to the URL **/owncloud/index.php/remote**. 
+The id is appended to the URL ``/owncloud/index.php/remote``. 
 Example with id set to 'calendar'::
 
     /owncloud/index.php/remote/calendar
 
-Also take a look at :doc:`../core/externalapi`.
+Also take a look at :doc:`../../core/externalapi`.
 
 
 standalone
