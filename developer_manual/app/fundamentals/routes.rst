@@ -4,7 +4,8 @@ Routing
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Routes map an URL and a method to a controller method. Routes are defined inside :file:`appinfo/routes.php` by passing a configuration array to the ``registerRoutes`` method. 
+Routes map a URL and a method to a controller method. 
+Routes are defined inside :file:`appinfo/routes.php` by passing a configuration array to the ``registerRoutes`` method. 
 An example route would look like this:
 
 .. code-block:: php
@@ -13,17 +14,17 @@ An example route would look like this:
     namespace OCA\MyApp\AppInfo;
 
     $application = new Application();
-    $application->registerRoutes($this, array(
-        'routes' => array(
-            array('name' => 'page#index', 'url' => '/', 'verb' => 'GET'),
-        )
-    ));
+    $application->registerRoutes($this, [
+        'routes' => [
+            ['name' => 'page#index', 'url' => '/', 'verb' => 'GET'],
+        ]
+    ]);
 
 
 The route array contains the following parts:
 
-* **url**: The URL that is matched after ``/index.php/apps/myapp``
-* **name**: The controller and the method to call; ``page#index`` is being mapped to ``PageController->index()``, ``articles_api#drop_latest`` would be mapped to ``ArticlesApiController->dropLatest()``. The controller that matches the ``page#index`` name would have to be registered in the following way inside :file:`appinfo/application.php`:
+` ``url``: The URL that is matched after ``/index.php/apps/myapp``
+` ``name``: The controller and the method to call; ``page#index`` is being mapped to ``PageController->index()``, ``articles_api#drop_latest`` would be mapped to ``ArticlesApiController->dropLatest()``. The controller that matches the ``page#index`` name would have to be registered in the following way inside :file:`appinfo/application.php`:
 
   .. code-block:: php
 
@@ -31,13 +32,11 @@ The route array contains the following parts:
         namespace OCA\MyApp\AppInfo;
 
         use \OCP\AppFramework\App;
-
         use \OCA\MyApp\Controller\PageController;
-
 
         class Application extends App {
 
-            public function __construct(array $urlParams=array()){
+            public function __construct(array $urlParams=[]){
                 parent::__construct('myapp', $urlParams);
 
                 $container = $this->getContainer();
@@ -54,16 +53,17 @@ The route array contains the following parts:
             }
 
         }
-* **method** (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)
-* **requirements** (Optional): lets you match and extract URLs that have slashes in them (see **Matching suburls**)
-* **postfix** (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (**page#method** -> **myapp.page.method**) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id e.g.: **'name' => 'page#method', 'postfix' => 'test'** will yield the route id **myapp.page.methodtest**. This makes it possible to add more than one route/url for a controller method
-* **defaults** (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value par array
+
+` ``method`` (Optional, defaults to ``GET``): The HTTP method that should be matched, (e.g., ``GET``, ``POST``, ``PUT``, ``DELETE``, ``HEAD``, ``OPTIONS``, ``PATCH``)
+` ``requirements`` (Optional): lets you match and extract URLs that have slashes in them (see ``Matching suburls``)
+` ``postfix`` (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (``page#method`` -> ``myapp.page.method``) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id e.g.: ``'name' => 'page#method', 'postfix' => 'test'`` will yield the route id ``myapp.page.methodtest``. This makes it possible to add more than one route/url for a controller method
+` ``defaults`` (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key => value par array
 
 Extracting Values From the URL
 ------------------------------
 
-It is possible to extract values from the URL to allow RESTful URL design. 
-To extract a value, you have to wrap it inside curly braces:
+It is possible to extract values from the URL to allow for RESTful URL design. 
+To extract value, you have to wrap it inside curly braces:
 
 .. code-block:: php
 
@@ -72,7 +72,7 @@ To extract a value, you have to wrap it inside curly braces:
     // Request: GET /index.php/apps/myapp/authors/3
 
     // appinfo/routes.php
-    array('name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'),
+    ['name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'],
 
     // controller/authorcontroller.php
     class AuthorController {
@@ -83,15 +83,15 @@ To extract a value, you have to wrap it inside curly braces:
 
     }
 
-The identifier used inside the route is being passed into controller method by reflecting the method parameters. 
-So basically if you want to get the value ``{id}`` in your method, you need to add ``$id`` to your method parameters.
+The identifier used inside the route is being passed into the controller method by reflecting the method parameters. 
+To summarize, if you want to get the value of ``{id}`` in your method, you need to add ``$id`` to your method parameters.
 
-Matching Sub-URLS
+Matching Sub-URLs
 -----------------
 
-Sometimes its needed to match more than one URL fragment. 
-An example would be to match a request for all URLs that start with ``OPTIONS /index.php/apps/myapp/api``. 
-To do this, use the ``requirements`` parameter in your route which is an array containing pairs of ``'key' => 'regex'``:
+Sometimes you need to match more than one URL fragment. 
+An example of this would be to match a request for all URLs that start with ``OPTIONS /index.php/apps/myapp/api``. 
+To do this, use the ``requirements`` parameter in your route, which is an array containing pairs of ``'key' => 'regex'``:
 
 .. code-block:: php
 
@@ -100,8 +100,12 @@ To do this, use the ``requirements`` parameter in your route which is an array c
     // Request: OPTIONS /index.php/apps/myapp/api/my/route
 
     // appinfo/routes.php
-    array('name' => 'author_api#cors', 'url' => '/api/{path}', 'verb' => 'OPTIONS',
-          'requirements' => array('path' => '.+')),
+    [   
+      'name' => 'author_api#cors', 
+      'url' => '/api/{path}', 
+      'verb' => 'OPTIONS',
+      'requirements' => ['path' => '.+']
+    ],
 
     // controller/authorapicontroller.php
     class AuthorApiController {
@@ -127,12 +131,12 @@ Use the ``defaults`` parameter in your route which is an array containing pairs 
     // Request: GET /index.php/app/myapp/post
 
     // appinfo/routes.php
-    array(
+    [
         'name'     => 'post#index',
         'url'      => '/post/{page}',
         'verb'     => 'GET',
-        'defaults' => array('page' => 1) // this allows same url as /index.php/myapp/post/1
-    ),
+        'defaults' => ['page' => 1] // this allows same url as /index.php/myapp/post/1
+    ],
 
     // controller/postcontroller.php
     class PostController
@@ -163,16 +167,16 @@ The following routes:
     namespace OCA\MyApp\AppInfo;
 
     $application = new Application();
-    $application->registerRoutes($this, array(
-        'routes' => array(
-            array('name' => 'author#index', 'url' => '/authors', 'verb' => 'GET'),
-            array('name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'),
-            array('name' => 'author#create', 'url' => '/authors', 'verb' => 'POST'),
-            array('name' => 'author#update', 'url' => '/authors/{id}', 'verb' => 'PUT'),
-            array('name' => 'author#destroy', 'url' => '/authors/{id}', 'verb' => 'DELETE'),
+    $application->registerRoutes($this, [
+        'routes' => [
+            ['name' => 'author#index', 'url' => '/authors', 'verb' => 'GET'],
+            ['name' => 'author#show', 'url' => '/authors/{id}', 'verb' => 'GET'],
+            ['name' => 'author#create', 'url' => '/authors', 'verb' => 'POST'],
+            ['name' => 'author#update', 'url' => '/authors/{id}', 'verb' => 'PUT'],
+            ['name' => 'author#destroy', 'url' => '/authors/{id}', 'verb' => 'DELETE'],
             // your other routes here
-        )
-    ));
+        ]
+    ]);
 
 can be abbreviated by using the ``resources`` key:
 
@@ -182,20 +186,20 @@ can be abbreviated by using the ``resources`` key:
     namespace OCA\MyApp\AppInfo;
 
     $application = new Application();
-    $application->registerRoutes($this, array(
-        'resources' => array(
-            'author' => array('url' => '/authors')
-        ),
-        'routes' => array(
+    $application->registerRoutes($this, [
+        'resources' => [
+            'author' => ['url' => '/authors']
+        ],
+        'routes' => [
             // your other routes here
-        )
-    ));
+        ]
+    ]);
 
 Using the URLGenerator
 ----------------------
 
-Sometimes its useful to turn a route into a URL to make the code independent from the URL design or to generate an URL for an image in ``img/``. 
-For that specific use case, the ``ServerContainer`` provides a service that can be used in your container:
+Sometimes its useful to turn a route into a URL 1) to make the code independent from the URL design or to 2) generate an URL for an image in ``img/``. 
+For those use cases, the ``ServerContainer`` provides a service that can be used in your container:
 
 .. code-block:: php
 
@@ -203,13 +207,11 @@ For that specific use case, the ``ServerContainer`` provides a service that can 
     namespace OCA\MyApp\AppInfo;
 
     use \OCP\AppFramework\App;
-
     use \OCA\MyApp\Controller\PageController;
-
 
     class Application extends App {
 
-        public function __construct(array $urlParams=array()){
+        public function __construct(array $urlParams=[]){
             parent::__construct('myapp', $urlParams);
 
             $container = $this->getContainer();
@@ -246,8 +248,11 @@ Inside the ``PageController`` the URL generator can now be used to generate an U
 
         private $urlGenerator;
 
-        public function __construct($appName, IRequest $request,
-                                    IURLGenerator $urlGenerator) {
+        public function __construct(
+          $appName, 
+          IRequest $request,
+          IURLGenerator $urlGenerator
+        ) {
             parent::__construct($appName, $request);
             $this->urlGenerator = $urlGenerator;
         }
@@ -271,10 +276,11 @@ Inside the ``PageController`` the URL generator can now be used to generate an U
 
     }
 
-``URLGenerator`` is case sensitive, so ``appName`` must match ``exactly`` the name you use in :doc:`configuration <configuration>`.
+``URLGenerator`` is case-sensitive, so ``appName`` must match ``exactly`` the name you use in :doc:`configuration <configuration>`.
 If you use a camel-case name as *myCamelCaseApp*,
 
 .. code-block:: php
 
     <?php
     $route = 'myCamelCaseApp.author_api.do_something';
+

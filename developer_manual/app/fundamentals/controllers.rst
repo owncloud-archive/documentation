@@ -4,10 +4,11 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Controllers are used to connect :doc:`routes <routes>` with app logic. 
+Controllers are used to connect :doc:`routes <routes>` with application logic. 
 Think of them as callbacks that are executed once a request has come in. 
 Controllers are defined inside the ``lib/Controller/`` directory.
-To create a controller, extend the ``Controller`` class and create a method that should be executed on a request.
+To create a controller, extend the ``Controller`` class and create a method that should be executed to handle a request.
+
 Here is an example of how to do so.
 
 .. code-block:: php
@@ -25,7 +26,7 @@ Here is an example of how to do so.
         }
     }
 
-Connecting a Controller And a Route
+Connecting a Controller and a Route
 ====================================
 
 To connect a controller and a route the controller has to be registered in the :doc:`container` like this:
@@ -36,12 +37,11 @@ To connect a controller and a route the controller has to be registered in the :
     namespace OCA\MyApp\AppInfo;
 
     use OCP\AppFramework\App;
-
     use OCA\MyApp\Controller\AuthorApiController;
 
-    class Application extends App {
+    class Application extends application {
 
-        public function __construct(array $urlParams=array()) {
+        public function __construct(array $urlParams=[]) {
             parent::__construct('myapp', $urlParams);
 
             $container = $this->getContainer();
@@ -59,12 +59,11 @@ To connect a controller and a route the controller has to be registered in the :
         }
     }
 
-Every controller requires the app name and the request object to be passed to their parent constructor. 
+Every controller requires the application name and the request object to be passed to their parent constructor. 
 This can be done as shown in the example code above. 
 
 .. note::
-   The important part is not the class name, but rather the string which is
-   passed in as the first parameter of the ``registerService`` method.
+   The important part is not the class name, but rather the string which is passed in as the first parameter of the ``registerService`` method.
 
 The other part is the route name. 
 An example route name would look like this::
@@ -87,19 +86,19 @@ This name is processed in the following way:
     AuthorApiController
     someMethod
 
-4. Finally, retrieve the service listed under ``AuthorApiController`` from the container, look up the parameters of the ``someMethod`` method in the request, cast them if there are PHPDoc type annotations, and execute the ``someMethod`` method on the controller with those parameters.
+4. Finally, retrieve the service listed under ``AuthorApiController`` from the container, look up the parameters of the ``someMethod`` method in the request, cast them if there are `PHPDoc type annotations`, and execute the ``someMethod`` method on the controller with those parameters.
 
 Getting Request Parameters
 ==========================
 
 Parameters can be passed in many ways, including:
 
-` Extracting them from the URL using curly braces like ``{key}`` inside the URL (see :doc:`routes`)
+* Extracting them from the URL using curly braces like ``{key}`` inside the URL (see :doc:`routes`)
 * Appending them to the URL as a GET request (e.g. ``?something=true``)
-* Setting the form’s encoding type as ``application/x-www-form-urlencoded`` in a form request
+* Setting the form's encoding type as ``application/x-www-form-urlencoded`` in a form request
 * Setting the encoding type as ``application/json`` in a ``POST``, ``PATCH``, or ``PUT`` request
 
-These parameters can easily be accessed by adding them to the controller method.
+These parameters can be accessed by adding them to the controller method.
 For example:
 
 .. code-block:: php
@@ -146,7 +145,7 @@ Casting Parameters
 
 ``URL``, ``GET`` and ``application/x-www-form-urlencoded`` have the problem that every parameter is a string, meaning that ``?doMore=false`` would be passed in as the string ``'false'`` which is not what one would expect. 
 To cast these to the correct types, simply add a PHPDoc comment, in the form of ``@param type $name``.
-Here’s a comprehensive example showing all the options at once.
+Here's a comprehensive example showing all the options at once.
 
 .. code-block:: php
 
@@ -206,14 +205,14 @@ The first level keys will be used to pass in the arguments, e.g.::
             // $name = 'test'
             // $number = 3
             // $publisher = true
-            // $customFields = array("mail" => "test@example.com", "address" => "Somewhere")
+            // $customFields = ["mail" => "test@example.com", "address" => "Somewhere"]
         }
     }
 
 Reading Headers, Files, Cookies and Environment Variables
 ---------------------------------------------------------
 
-Headers, files, cookies and environment variables can be accessed directly from the request object:
+Headers, files, cookies, and environment variables can be accessed directly from the request object:
 
 .. code-block:: php
 
@@ -226,9 +225,9 @@ Headers, files, cookies and environment variables can be accessed directly from 
     class PageController extends Controller {
         public function someMethod() {
             $type = $this->request->getHeader('Content-Type');  // $_SERVER['HTTP_CONTENT_TYPE']
-            $cookie = $this->request->getCookie('myCookie');  // $_COOKIES['myCookie']
+            $cookie = $this->request->getCookie('myCookie');    // $_COOKIES['myCookie']
             $file = $this->request->getUploadedFile('myfile');  // $_FILES['myfile']
-            $env = $this->request->getEnv('SOME_VAR');  // $_ENV['SOME_VAR']
+            $env = $this->request->getEnv('SOME_VAR');          // $_ENV['SOME_VAR']
         }
     }
 
@@ -241,7 +240,8 @@ Reading and Writing Session Variables
 To set, get or modify session variables, the ``ISession`` object has to be injected into the controller.
 Then session variables can be accessed like this:
 
-.. note:: The session is closed automatically for writing, unless you add the @UseSession annotation!
+.. note:: 
+   The session is closed automatically for writing, unless you add the ``@UseSession`` annotation!
 
 .. code-block:: php
 
@@ -309,16 +309,16 @@ Cookies can be set or modified directly on the response class:
         public function invalidateCookie() {
             $response = new TemplateResponse(...);
             $response->invalidateCookie('foo');
-            $response->invalidateCookies(array('bar', 'bazinga'));
+            $response->invalidateCookies(['bar', 'bazinga']);
             return $response;
         }
    }
 
-
 Responses
 =========
 
-Similar to how every controller receives a request object, every controller method has to to return a Response. This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
+Similar to how every controller receives a request object, every controller method has to to return a Response. 
+This can be in the form of a ``Response`` subclass or in the form of a value that can be handled by a registered responder.
 
 JSON
 ----
@@ -335,7 +335,7 @@ Returning JSON is simple, just pass an array to a ``JSONResponse``:
 
     class PageController extends Controller {
         public function returnJSON() {
-            $params = array('test' => 'hi');
+            $params = ['test' => 'hi'];
             return new JSONResponse($params);
         }
     }
@@ -351,12 +351,13 @@ Because returning JSON is such an common task, there's even a shorter way to do 
 
     class PageController extends Controller {
         public function returnJSON() {
-            return array('test' => 'hi');
+            return ['test' => 'hi'];
         }
     }
 
 Why does this work? 
-Because the dispatcher sees that the controller did not return a subclass of a ``Response`` and asks the controller to turn the value into a ``Response``. That's where responders come in.
+Because the dispatcher sees that the controller did not return a subclass of a ``Response`` and asks the controller to turn the value into a ``Response``. 
+That's where responders come in.
 
 Responders
 ----------
@@ -373,7 +374,7 @@ or::
 
 The appropriate responder is being chosen by the following criteria:
 
-` First the dispatcher checks the Request if there is a ``format`` parameter, e.g.::
+- First the dispatcher checks the Request if there is a ``format`` parameter, e.g.::
 
     ?format=xml
 
@@ -381,11 +382,11 @@ or::
 
     /index.php/apps/myapp/authors.{format}
 
-` If there is none, take the ``Accept`` header, use the first mimetype and cut off ``application/``. In the following example the format would be XML::
+- If there is none, take the ``Accept`` header, use the first mimetype and cut off ``application/``. In the following example the format would be XML::
 
     Accept: application/xml, application/json
 
-` If there is no Accept header or the responder does not exist, format defaults to ``json``.
+- If there is no Accept header or the responder does not exist, format defaults to ``json``.
 
 By default there is only a responder for JSON but more can be added easily:
 
@@ -413,7 +414,7 @@ By default there is only a responder for JSON but more can be added easily:
                 }
             });
 
-            return array('test' => 'hi');
+            return ['test' => 'hi'];
         }
 
     }
@@ -442,7 +443,7 @@ This works for both normal responses and error responses.
             try {
                 return new DataResponse(calculate_hi());
             } catch (\Exception $ex) {
-                return new DataResponse(array('msg' => 'not found!'), Http::STATUS_NOT_FOUND);
+                return new DataResponse(['msg' => 'not found!'], Http::STATUS_NOT_FOUND);
             }
         }
 
@@ -455,11 +456,11 @@ Templates
 A :doc:`template <templates>` can be rendered by returning a ``TemplateResponse``. 
 A ``TemplateResponse`` takes the following parameters:
 
-* ``appName``: tells the template engine in which app the template should be located
+* ``appName``: tells the template engine in which application the template should be located
 * ``templateName``: the name of the template inside the ``template/`` folder without the .php extension
 * ``parameters``: optional array parameters that are available in the template through $_, e.g.::
 
-    array('key' => 'something')
+    ['key' => 'something']
 
 can be accessed through::
 
@@ -478,7 +479,7 @@ can be accessed through::
     class PageController extends Controller {
         public function index() {
             $templateName = 'main';  // will use templates/main.php
-            $parameters = array('key' => 'hi');
+            $parameters = ['key' => 'hi'];
             return new TemplateResponse($this->appName, $templateName, $parameters);
         }
     }
@@ -527,7 +528,7 @@ A file download can be triggered by returning a ``DownloadResponse``:
 Creating Custom Responses
 -------------------------
 
-If no premade Response fits the needed use case, its possible to extend the Response base class and custom Response. 
+If no premade ``Response`` object fits the needed use case, its possible to extend the ``Response`` base class and create a custom one. 
 The only thing that needs to be implemented is the ``render`` method which returns the result as string.
 Creating a custom ``XMLResponse`` class could look like this:
 
@@ -549,7 +550,7 @@ Creating a custom ``XMLResponse`` class could look like this:
 
         public function render() {
             $root = new SimpleXMLElement('<root/>');
-            array_walk_recursive($this->xml, array ($root, 'addChild'));
+            array_walk_recursive($this->xml, [$root, 'addChild']);
             return $xml->asXML();
         }
     }
@@ -600,7 +601,7 @@ Modifying the Content Security Policy
 -------------------------------------
 
 By default ownCloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy`_. 
-However if an app relies on third party media or other features which are forbidden by the current policy the policy can be relaxed.
+However if an application relies on third party media or other features which are forbidden by the current policy the policy can be relaxed.
 
 .. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN`_
 
@@ -652,7 +653,7 @@ OCS
    This is purely for compatibility reasons. If you are planning to offer an
    external API, go for a :doc:`api` instead.
 
-In order to ease migration from OCS API routes to the App Framework, an additional controller and response have been added. 
+In order to ease migration from OCS API routes to the application Framework, an additional controller and response have been added. 
 To migrate your API you can use the ``OCP\\AppFramework\\OCSController`` base class and return your data in the form of an array in the following way:
 
 .. code-block:: php
@@ -708,7 +709,7 @@ To return a ``JSONResponse`` signaling that the author with id 1 has not been fo
                 // try to get author with $id
 
             } catch (NotFoundException $ex) {
-                return new JSONResponse(array(), Http::STATUS_NOT_FOUND);
+                return new JSONResponse([], Http::STATUS_NOT_FOUND);
             }
         }
     }
@@ -756,3 +757,4 @@ A controller method that turns off all checks would look like this:
 .. _Content Security Policy: https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy
 .. _documentation provided by MDN: https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy
 .. _HTTP error code : https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error
+.. _PHPDoc type annotations: https://phpdoc.org/docs/latest/references/phpdoc/basic-syntax.html

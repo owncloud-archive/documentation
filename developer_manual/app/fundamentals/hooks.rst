@@ -24,9 +24,7 @@ The hook logic should be in a separate class that is being registered in the :do
     namespace OCA\MyApp\AppInfo;
 
     use \OCP\AppFramework\App;
-
     use \OCA\MyApp\Hooks\UserHooks;
-
 
     class Application extends App {
 

@@ -9,8 +9,8 @@ The following code was taken from the `two-factor test app`_.
 
 .. _`two-factor test app`: https://github.com/ChristophWurst/twofactor_test
 
-Implementing a Simple Two-Factor Authentication Provider
---------------------------------------------------------
+Implementing a Two-Factor Authentication Provider
+-------------------------------------------------
 
 Two-factor authentication providers must implement the ``OCP\Authentication\TwoFactorAuth\IProvider`` interface. 
 The example below shows a minimalist example of such a provider.

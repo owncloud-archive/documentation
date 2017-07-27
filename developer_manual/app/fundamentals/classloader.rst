@@ -4,14 +4,14 @@ The Classloader
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The classloader is provided by ownCloud and loads all your classes automatically. The only thing left to include by yourself are 3rdparty libraries. Those should be loaded in :file:`lib/AppInfo/Application.php`.
+The classloader is provided by ownCloud and loads all your classes automatically. The only thing left to include by yourself are 3rd party libraries. Those should be loaded in :file:`lib/AppInfo/Application.php`.
 
 PSR-4 Autoloading
 -----------------
 
 Since ownCloud 9.1 there is a PSR-4 autoloader in place. 
 The namespace ``\\OCA\\MyApp`` is mapped to :file:`/apps/myapp/lib/`. 
-Afterwards normal PSR-4 rules apply, so a folder is a namespace section in the same casing and the class name matches the file name.
+Afterward, normal PSR-4 rules apply, so a folder is a namespace section in the same casing and the class name matches the file name.
 
 If your ``appid`` can not be turned into the namespace by upper-casing the first character, you can specify it in your ``appinfo/info.xml`` by providing a field called ``namespace``. 
 The required namespace is the one which comes after the top level namespace ``OCA\\``, e.g.: for ``OCA\\MyBeautifulApp\\Some\\OtherClass`` the needed namespace would be ``MyBeautifulApp`` and would be added to the ``info.xml`` in the following way:
@@ -70,3 +70,4 @@ The legacy classloader, deprecated since 9.1, is still in place and works like t
     require_once '/apps/myapp/controller/pagecontroller.php';
 
 **In other words**: In order for the ``PageController`` class to be autoloaded, the class ``\\OCA\\MyApp\\Controller\\PageController`` needs to be stored in the :file:`/apps/myapp/controller/pagecontroller.php` 
+

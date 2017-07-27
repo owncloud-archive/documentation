@@ -178,7 +178,7 @@ Since all attributes should be protected, getters and setters are automatically 
     $author->setId(3);
     $author->getPhoneNumber()  // null
 
-Custom attribute to database column mapping
+Custom Attribute to Database Column Mapping
 -------------------------------------------
 
 By default each attribute will be mapped to a database column by a certain convention, e.g. ``phoneNumber`` will be mapped to the column ``phone_number`` and vice versa. 

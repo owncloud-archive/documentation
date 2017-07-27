@@ -17,7 +17,7 @@ Filesystem classes can be injected from the ``ServerContainer`` by calling the m
 
     class Application extends App {
 
-        public function __construct(array $urlParams=array()){
+        public function __construct(array $urlParams=[]){
             parent::__construct('myapp', $urlParams);
 
             $container = $this->getContainer();
@@ -36,7 +36,7 @@ Filesystem classes can be injected from the ``ServerContainer`` by calling the m
         }
     }
 
-Writing to a file
+Writing to a File
 =================
 
 All methods return a Folder object on which files and folders can be accessed, or filesystem operations can be performed relatively to their root. 
@@ -75,7 +75,7 @@ For instance for writing to ``owncloud/data/myfile.txt`` you should get the root
         }
     }
 
-Reading from a file
+Reading from a File
 ===================
 
 Files and folders can also be accessed by id, by calling the ``getById`` method on the folder.

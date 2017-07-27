@@ -16,7 +16,7 @@ The logger can be injected from the ``ServerContainer``:
 
     class Application extends App {
 
-        public function __construct(array $urlParams=array()){
+        public function __construct(array $urlParams=[]){
             parent::__construct('myapp', $urlParams);
 
             $container = $this->getContainer();
@@ -57,7 +57,7 @@ and then be used in the following way:
         }
 
         public function log($message) {
-            $this->logger->error($message, array('app' => $this->appName));
+            $this->logger->error($message, ['app' => $this->appName]);
         }
 
     }

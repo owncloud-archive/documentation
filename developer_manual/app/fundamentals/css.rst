@@ -13,7 +13,7 @@ The CSS files reside in the ``css/`` folder and should be included in the templa
   style('myapp', 'style');  // adds css/style.css
 
   // include multiple files for the same app
-  style('myapp', array('style', 'navigation'));  // adds css/style.css, css/navigation.css
+  style('myapp', ['style', 'navigation']);  // adds css/style.css, css/navigation.css
 
   // include vendor file (also allows vendor syntax)
   vendor_style('myapp', 'style');  // adds vendor/style.css
@@ -27,7 +27,7 @@ Web Components go into the ``component/`` folder and can be imported like this:
   component('myapp', 'tabs');  // adds component/tabs.html
   
   // include multiple files for the same app
-  component('myapp', array('tabs', 'forms'));  // adds component/tabs.html, component/forms.html
+  component('myapp', ['tabs', 'forms']);  // adds component/tabs.html, component/forms.html
   
   
 .. note:: 

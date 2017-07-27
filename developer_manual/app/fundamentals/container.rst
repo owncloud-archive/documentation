@@ -77,7 +77,7 @@ To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and
     /**
      * Define your dependencies in here
      */
-    public function __construct(array $urlParams=array()){
+    public function __construct(array $urlParams=[]){
       parent::__construct('myapp', $urlParams);
 
       $container = $this->getContainer();
@@ -261,7 +261,7 @@ The actual implementation needs to be wired up in the container:
       /**
        * Define your dependencies in here
        */
-      public function __construct(array $urlParams=array()){
+      public function __construct(array $urlParams=[]){
           parent::__construct('myapp', $urlParams);
 
           $container = $this->getContainer();

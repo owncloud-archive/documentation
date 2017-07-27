@@ -10,7 +10,7 @@ To create them requires two steps to be completed:
 - Create a job class
 - Register the class with ownCloud
 
-Create a job class
+Create a Job Class
 ==================
 
 The first step is to create a job class, which will provide the job functionality. 
@@ -26,7 +26,7 @@ calling its ``run`` method.
 .. literalinclude:: ../examples/cron/SomeTask.php
    :language: php
 
-Register the class with ownCloud
+Register the Class with ownCloud
 ================================
 
 Next, you need to register the job as a background job. 
