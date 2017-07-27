@@ -13,11 +13,18 @@ Server
 ================= =============================================================
 Platform          Options
 ================= =============================================================
-Operating System  Ubuntu 16.04
-Database          MySQL or MariaDB 5.5+
+Operating System  Ubuntu 16.04, Debian 7 and 8, SUSE Linux Enterprise Server 12 
+                  and 12 SP1, Red Hat Enterprise Linux/Centos 6.5 and 7 
+Database          MySQL or MariaDB 5.5+, Oracle 11g, PostgreSQL, & SQLite
 Web server        Apache 2.4 with mod_php
 PHP Runtime       PHP (5.6+ or 7.0+)
 ================= =============================================================
+
+.. note::
+   
+   - Red Hat Enterprise Linux & Centos 7 are 64-bit only.
+   - Oracle 11g is only supported for the Enterprise edition.
+   - SQLite is not encouraged for production use.
 
 Mobile 
 ^^^^^^
@@ -32,6 +39,14 @@ Web Browser
 - Firefox 14+
 - Chrome 18+
 - Safari 5+
+
+Hypervisors 
+^^^^^^^^^^^
+
+- Hyper-V
+- VMware ESX
+- Xen
+- KVM
 
 Desktop
 ^^^^^^^
@@ -52,71 +67,10 @@ Alternative (But Unsupported) Options
 
 If you are not able to use one or more of the above tools, the following options are also available. 
 
-Server
-^^^^^^
-
-- Debian 7 and 8
-- SUSE Linux Enterprise Server 12 and 12 SP1
-- Red Hat Enterprise Linux/Centos 6.5 and 7 (**7 is 64-bit only**)
-- Ubuntu 14.04 LTS
-
 Web Server
 ^^^^^^^^^^
 
 - NGINX with PHP-FPM 
-
-Databases
-^^^^^^^^^
-
-- Oracle 11g (**Enterprise edition only**)
-- PostgreSQL
-- SQLite
-
-Hypervisors 
-^^^^^^^^^^^
-
-- Hyper-V
-- VMware ESX
-- Xen
-- KVM
-
-Desktop
-^^^^^^^
-
-- Windows 7+
-- Mac OS X 10.7+ (64-bit only)
-
-- Ubuntu 17.04
-- Ubuntu 16.10
-- Ubuntu 16.04
-- Ubuntu 14.04
-- Debian 7.0
-- Debian 8.0
-- CentOS 7 (64-bit only)
-- Fedora 24
-- Fedora 25
-- openSUSE Leap 42.1
-- openSUSE Leap 42.2
-
-.. note::
-   For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
-
-Mobile 
-^^^^^^
-
-- iOS 9.0+
-- Android 4.0+
-
-Web Browser 
-^^^^^^^^^^^
-
-- IE11+ (except Compatibility Mode)
-- Firefox 14+
-- Chrome 18+
-- Safari 5+
-
-See :doc:`source_installation` for minimum software versions for installing
-ownCloud.
 
 Memory Requirements
 -------------------
