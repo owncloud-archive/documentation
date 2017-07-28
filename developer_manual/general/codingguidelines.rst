@@ -311,6 +311,7 @@ Control Structures
 PHP
 ---
 The ownCloud coding style guide is based on `PEAR Coding Standards <http://pear.php.net/manual/en/standards.php>`_.
+To check your PHP codestyle use `PHP Code Sniffer <https://github.com/squizlabs/PHP_CodeSniffer>`_ >= 3.0 with the ``phpcs.xml`` config file from the core branch. e.g. ``phpcs --standard=./phpcs.xml yourCode.php``
 
 Always use::
 
