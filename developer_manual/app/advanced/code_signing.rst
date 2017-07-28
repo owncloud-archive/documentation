@@ -34,19 +34,12 @@ process is optional.
 Is ownCloud Not Open Source Anymore?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The ownCloud project is open source and always will be. The code signing 
-process is optional, though highly recommended. The code check for the 
-core parts of ownCloud is enabled when the ownCloud release version branch has 
-been set to stable.
+The ownCloud project is open source and always will be. 
+The code signing process is now mandatory, if you want to upload your application to the ownCloud Marketplace. 
+The code check for the core parts of ownCloud is enabled when the ownCloud release version branch has been set to stable.
 
 For custom distributions of ownCloud it is recommended to change the release 
 version branch in version.php to something else than "stable".
-
-Is Code Signing Mandatory For Apps?
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-Code signing is optional for all third-party applications. Applications 
-with a tag of "Official" on https://marketplace.owncloud.com/ require code signing.
 
 Technical Details
 -----------------
@@ -98,7 +91,7 @@ Having the certificate bundled within the ``signature.json`` file has the advant
 How Code Signing Affects Apps in the ownCloud Marketplace
 ---------------------------------------------------------
 
-- Apps which have an ``official`` tag **MUST** be code signed starting with ownCloud 9.0. Unsigned ``official`` apps won't be installable anymore.
+- Unsigned apps can't be uploaded to the marketplace. They can be installed manually, but the warning: ``"Integrity check failed"``, will always be visible.
 - Apps which have been signed in a previous release **MUST** be code-signed in all future releases as well, otherwise the update will be refused.
 
 How to Get Your App Signed
