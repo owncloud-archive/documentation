@@ -18,6 +18,17 @@ Requirements
 - Browser installed that you would like to test on.
 - Web driver for the browsers that you want to test. You can download the Chrome driver from: https://sites.google.com/a/chromium.org/chromedriver/. The Firefox web driver is included in the selenium server.
 
+Overview
+~~~~~~~~
+
+Tests are divided into suites, enabling each suite to test some logical portion of the functionality
+and for the total elapsed run-time of a single suite to be reasonable (up to about 30 minutes).
+Smaller apps may have all tests in a single suite.
+
+Each suite consists of a number of features. Each feature is described in a ``*.feature`` file.
+There are a number of scenarios in each feature file. Each scenario has a number of scenario steps
+that define the steps taken to do the test.
+
 Set Up Test
 ~~~~~~~~~~~
 
@@ -61,6 +72,17 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
 To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_behat_tests.sh``.
 
+Running UI Tests for One Suite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can run the UI tests for just a single suite by specifying the suite name:
+
+.. code-block:: console
+
+  bash tests/travis/start_behat_tests.sh --suite files
+  
+The names of suites are found in the ``behat.yml`` file.
+
 Running UI Tests for One Feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -68,13 +90,13 @@ You can run the UI tests for just a single feature by specifying the feature fil
 
 .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/login.feature
+  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/other/login.feature
 
 To run just a single scenario within a feature, specify the line number of the scenario:
 
 .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/login.feature:<linenumber>
+  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/other/login.feature:<linenumber>
 
 Running UI Tests for an App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
