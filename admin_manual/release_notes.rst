@@ -244,53 +244,6 @@ See :doc:`installation/linux_installation`.
 New option for the ownCloud admin to enable or disable sharing on individual external mountpoints
 (see :ref:`external_storage_mount_options_label`). Sharing on such mountpoints is disabled by default.
 
-Installation
-~~~~~~~~~~~~
-
-Linux distribution packages (from `Open Build Service`_) have been divided into multiple packages for ownCloud 9: ``owncloud``, ``owncloud-deps`` and ``owncloud-files``. 
-
-Install the metapackage ``owncloud`` to get a complete installation with all dependencies.
-The ``owncloud-files`` package installs only ownCloud, without Apache, database, or PHP dependencies. 
-
-The ``owncloud-deps`` packages install all dependencies: Apache, PHP, and MySQL. 
-``owncloud-deps`` is not intended to be installed by itself, but rather is pulled in by the metapackage ``owncloud``. 
-
-``owncloud-files`` is available for the following distributions, but not ``owncloud-deps``.
-
-You will have to install your own LAMP stack first. 
-This allows you to create your own custom LAMP stack without dependency conflicts with the ownCloud package. 
-Browse `<http://download.owncloud.org/download/repositories/9.1/owncloud/>`_ to find the ``owncloud-files`` package for your distro:
-
-* Ubuntu 14.04, 16.04
-* Debian 7, 8
-* RHEL 6, 7
-* CentOS 6 SCL, 7
-* SLES 12, 12 SP1
-* openSUSE 13.2, Leap 42.1
-
-ownCloud packages with dependencies are available for the following Linux distributions:
-
-* Ubuntu 14.04, 16.04
-* Debian 8
-* RHEL 7
-* CentOS 7
-* SLES 12
-* openSUSE 13.2, Leap 42.1
-
-Repositories for Fedora, openSUSE Tumbleweed and Ubuntu 15.04 were dropped. If 
-you use Fedora, use the tar archive with your own LAMP stack. openSUSE 
-users can rely on LEAP packages for Tumbleweed.
-
-Follow the instructions on the download page to install ownCloud. Then run the 
-Installation Wizard to complete your installation. (see 
-:doc:`installation/installation_wizard`).
-
-.. warning:: Do not move the folders provided by these packages after the 
-   installation, as this will break updates.
-
-See the :doc:`installation/system_requirements` for the recommended ownCloud setup and 
-supported platforms.
-
 Enterprise 9.0
 ~~~~~~~~~~~~~~
 
@@ -729,6 +682,6 @@ or PostgreSQL) to operate correctly.
 .. Links
    
 .. _the latest desktop client version: https://doc.owncloud.com/desktop/latest/
-.. _syncing user backends: configuration_server/occ_command.html#syncing-user-accounts
+.. _syncing user backends: configuration/server/occ_command.html#syncing-user-accounts
 .. _the new marketplace: https://marketplace.owncloud.com
 .. _Open Build Service: https://download.owncloud.org/download/repositories/10.0/owncloud/

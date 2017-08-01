@@ -186,3 +186,19 @@ checkpoints::
  2 15 * * * sudo -u www-data php /path/to/owncloud/updater/application.php 
  upgrade:checkpoint --create > /dev/null 2>&1
  
+ 
+updater.secret value in config.php
+----------------------------------
+When running the updater, you will be prompted to add a hashed secret into your
+config.php file. On the updater web interface, you then need to enter the unhashed
+secret into the web form.
+
+In case you forgot your password/secret, you can re-create it by changing config.php. You can run this on your shell::
+
+  php -r 'echo password_hash("Enter a random password here", PASSWORD_DEFAULT)."\n";'
+  
+Please replace ``Enter a random password here`` with your own. Then add this into your config.php::
+
+  'updater.secret' => 'The value you got from the above hash command',
+
+

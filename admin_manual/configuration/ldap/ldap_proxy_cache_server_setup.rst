@@ -209,7 +209,7 @@ adjusting as necessary. The ownCloud LDAP app settings are the same as in sectio
 
 .. Links
    
-.. _ownCloud Doc: https://doc.owncloud.com/server/9.1/admin_manual/configuration_user/user_auth_ldap.html?highlight=ldap
+.. _ownCloud Doc: https://doc.owncloud.com/server/9.1/admin_manual/configuration/user/user_auth_ldap.html?highlight=ldap
 .. _LDAP server implementations: https://en.wikipedia.org/wiki/List_of_LDAP_software 
 .. _OpenLDAP: https://en.wikipedia.org/wiki/OpenLDAP
 

@@ -121,6 +121,9 @@ If you use a the rainloop webmail client app which supports GPG/PGP, you might n
 Troubleshooting
 ---------------
 
+General Troubleshooting
+^^^^^^^^^^^^^^^^^^^^^^^
+
 For general Troubleshooting of SELinux and its profiles try to install the package ``setroubleshoot`` and run::
 
  sealert -a /var/log/audit/audit.log > /path/to/mylogfile.txt
@@ -135,3 +138,13 @@ Another tool for troubleshooting is to enable a single ruleset for your ownCloud
 It is much stronger security to have a more fine-grained ruleset as in the examples at the beginning, so use this only for testing and troubleshooting. It has a similar effect to disabling SELinux, so don't use it on production systems. 
 
 See this `discussion on GitHub <https://github.com/owncloud/documentation/pull/2693>`_ to learn more about configuring SELinux correctly for ownCloud.
+
+Redis on RHEL 7 & Derivatives
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+On RHEL 7 and its derivatives, if you are using Redis for both local server cache and file locking and Redis is configured to listen on a Unix socket instead of a TCP/IP port (*which is recommended if Redis is running on the same system as ownCloud*) you must instruct SELinux to allow daemons to enable cluster mode.
+You can do this using the following command:
+
+.. code-block:: console
+
+   setsebool -P daemons_enable_cluster_mode 1

@@ -4,12 +4,13 @@ Command Line Installation
 
 ownCloud can be installed entirely from the command line. 
 This is convenient for scripted operations and for systems administrators who prefer using the command line over a GUI. 
-It involves 4 steps:
+It involves five steps:
 
-- Download and unpack the source
-- Install using the ``occ`` command
-- Set the correct owner and permissions
-- Optional post-installation considerations
+#. Ensure your server meets :ref:`the ownCloud prerequisites <prerequisites_label>`
+#. Download and unpack the source
+#. Install using the ``occ`` command
+#. Set the correct owner and permissions
+#. Optional post#.installation considerations
 
 Let's begin. To install ownCloud, first `download the source`_ (whether community or enterprise) directly from ownCloud, and then unpack (decompress) the tarball into the appropriate directory.
 

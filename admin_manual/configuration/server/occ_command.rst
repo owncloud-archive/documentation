@@ -704,8 +704,6 @@ The full list of commands is::
   group:add                           adds a group
   group:add-member                    add members to a group
   group:delete                        deletes the specified group
-  group:list                          list groups
-  group:list-members                  list group members
   group:remove-member                 remove member(s) from a group
 
 Creating Groups
@@ -719,56 +717,6 @@ This example adds a new group Finance::
  
  sudo -u www-data php occ group:add Finance
    Created group "Finance"
-
-Listing Groups
-^^^^^^^^^^^^^^
-
-You can list the names of existing groups with the ``group:list`` command.
-The syntax is::
-
-  group:list [options] [<search-pattern>]
-
-Groups containing the ``search-pattern`` string are listed. Matching is 
-not case-sensitive. If you do not provide a search-pattern then all groups 
-are listed.
-
-This example lists groups containing the string finance:: 
- 
- sudo -u www-data php occ group:list finance
-  - All-Finance-Staff
-  - Finance
-  - Finance-Managers
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty group:list finance
-  [
-    "All-Finance-Staff",
-    "Finance",
-    "Finance-Managers"
-  ]
-
-Listing Group Members
-^^^^^^^^^^^^^^^^^^^^^
-
-You can list the user IDs of group members with the ``group:list-members`` command.
-The syntax is::
-
-  group:list-members [options] <group>
-
-This example lists members of the Finance group:: 
- 
- sudo -u www-data php occ group:list-members Finance
-  - aaron: Aaron Smith
-  - julie: Julie Jones
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty group:list-members Finance
-  {
-    "aaron": "Aaron Smith",
-    "julie": "Julie Jones"
-  }
 
 Adding Members to Groups
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1110,6 +1058,10 @@ Run ``maintenance:data-fingerprint`` to tell desktop and mobile clients that a
 server backup has been restored. Users will be prompted to resolve any 
 conflicts between newer and older file versions.
 
+Run ``maintenance:data-fingerprint`` to tell desktop and mobile clients that a server backup has been restored. 
+This command changes the ETag for all files in the communication with sync clients, informing them that one or more files were modified.
+After the command completes, users will be prompted to resolve any conflicts between newer and older file versions.
+
 The ``maintenance:repair`` command runs automatically during upgrades to clean 
 up the database, so while you can run it manually there usually isn't a need 
 to::
@@ -1264,9 +1216,9 @@ The full list, of commands is::
   user:delete                         deletes the specified user
   user:disable                        disables the specified user
   user:enable                         enables the specified user
+  user:inactive                       reports users who are known to owncloud, 
+                                      but have not logged in for a certain number of days
   user:lastseen                       shows when the user was logged in last time
-  user:list                           list users
-  user:list-groups                    list groups for a user
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
@@ -1275,28 +1227,36 @@ The full list, of commands is::
 Creating Users
 ^^^^^^^^^^^^^^
 
-You can create a new user with their display name, login name, and any group 
-memberships with the ``user:add`` command. The syntax is::
+You can create a new user with the ``user:add`` command.
+This command lets you set the following attributes:
 
- user:add [--password-from-env] [--display-name[="..."]] [-g|--group[="..."]] 
- uid
+- **uid:** The ``uid`` is the user's username and their login name
+- **display name:** This corresponds to the **Full Name** on the Users page in your ownCloud Web UI
+- **email address**
+- **group**
+- **login name**
+- **password**
 
-The ``display-name`` corresponds to the **Full Name** on the Users page in your 
-ownCloud Web UI, and the ``uid`` is their **Username**, which is their 
-login name. This example adds new user Layla Smith, and adds her to the 
+The command's syntax is:
+
+.. code-block:: console
+
+ user:add [--password-from-env] [--display-name [DISPLAY-NAME]] [--email [EMAIL]] [-g|--group [GROUP]] [--] <uid>
+
+This example adds new user Layla Smith, and adds her to the 
 **users** and **db-admins** groups. Any groups that do not exist are created:: 
  
- sudo -u www-data php occ user:add --display-name="Layla Smith" 
-   --group="users" --group="db-admins" layla
+ sudo -u www-data php occ user:add --display-name="Layla Smith" \
+   --group="users" --group="db-admins" --email=layla.smith@example.com layla
    Enter password: 
    Confirm password: 
    The user "layla" was created successfully
    Display name set to "Layla Smith"
+   Email address set to "layla.smith@example.com"
    User "layla" added to group "users"
    User "layla" added to group "db-admins"
 
-After the command is completed, go to your Users page, and you will see your new
-user.   
+After the command completes, go to your Users page, and you will see your new user. 
 
 Setting A User's Password
 ^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1341,54 +1301,6 @@ To delete a user, you use the ``user:delete`` command, as in the example below.:
  sudo -u www-data php occ user:delete fred
    
    
-Listing Users
-^^^^^^^^^^^^^
-
-You can list existing users with the ``user:list`` command.
-The syntax is::
-
-  user:list [options] [<search-pattern>]
-
-User IDs containing the ``search-pattern`` string are listed. Matching is 
-not case-sensitive. If you do not provide a search-pattern then all users 
-are listed.
-
-This example lists user IDs containing the string ron:: 
- 
- sudo -u www-data php occ user:list ron
-  - aaron: Aaron Smith
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty user:list
-  {
-    "aaron": "Aaron Smith",
-    "herbert": "Herbert Smith",
-    "julie": "Julie Jones"
-  }
-
-Listing Group Membership of a User
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can list the group membership of a user with the ``user:list-groups`` command.
-The syntax is::
-
-  user:list-groups [options] <uid>
-
-This example lists group membership of user julie:: 
- 
- sudo -u www-data php occ user:list-groups julie
-  - Executive
-  - Finance
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty user:list-groups julie
-  [
-    "Executive",
-    "Finance"
-  ]
-
 Finding The User's Last Login
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -1782,6 +1694,53 @@ Use the following command to enable the user again::
  sudo -u www-data php occ user:enable <username>
 
 Note that once users are disabled, their connected browsers will be disconnected.
+
+Finding Inactive Users
+^^^^^^^^^^^^^^^^^^^^^^
+
+To view a list of users who’ve not logged in for a given number of days, use the ``user:inactive`` command
+The example below searches for users inactive for five days, or more.
+
+.. code-block:: console
+   
+   sudo -u www-data php occ user:inactive 5 
+   
+By default, this will generate output in the following format:
+
+.. code-block:: console
+   
+   - 0:
+     - uid: admin
+     - displayName: admin
+     - inactiveSinceDays: 5
+
+You can see the user’s user id, display name, and the number of days they've been inactive.
+If you’re passing or piping this information to another application for further
+processing, you can also use the ``--output`` switch to change its format. 
+The switch supports three options, these are:
+
+======= =========================================================================
+Setting Description
+======= =========================================================================
+plain   This is the default format.
+json    This will render the output as a JSON-encoded, but not formatted, string.
+======= =========================================================================
+
+.. code-block:: json
+
+   [{"uid":"admin","displayName":"admin","inactiveSinceDays":5}]
+
+- **json_pretty:** This will render the output as a JSON-encoded string, formatted for ease of readability.
+
+.. code-block:: json
+
+   [
+       {
+           "uid": "admin",
+           "displayName": "admin",
+           "inactiveSinceDays": 5
+       }
+   ]
 
 .. links
    
