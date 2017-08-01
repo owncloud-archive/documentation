@@ -1110,6 +1110,10 @@ Run ``maintenance:data-fingerprint`` to tell desktop and mobile clients that a
 server backup has been restored. Users will be prompted to resolve any 
 conflicts between newer and older file versions.
 
+Run ``maintenance:data-fingerprint`` to tell desktop and mobile clients that a server backup has been restored. 
+This command changes the ETag for all files in the communication with sync clients, informing them that one or more files were modified.
+After the command completes, users will be prompted to resolve any conflicts between newer and older file versions.
+
 The ``maintenance:repair`` command runs automatically during upgrades to clean 
 up the database, so while you can run it manually there usually isn't a need 
 to::
