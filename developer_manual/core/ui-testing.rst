@@ -72,6 +72,44 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
 To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_behat_tests.sh``.
 
+Running UI Tests using IPv6
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The test system must have (at least locally) functioning IPv6:
+
+- working loopback address ::1
+- a "real" routable IPv6 address (not just a link-local address)
+
+If you have a server set up that listens on both IPv4 and IPv6 (e.g. localhost on 127.0.0.1 and ::1) 
+then the UI tests will access the server via whichever protocol your operating system prefers. 
+If there are tests that specifically specify IPv4 or IPv6, then those will choose a suitable local 
+address to come from so that they access the server using the required IP version.
+
+If you are using the PHP dev server, then before starting it, in addition to the exports in the Set Up Test section, 
+specify where the IPv6 server should listen:
+
+.. code-block:: console
+
+  export IPV6_HOST_NAME=ip6-localhost
+
+Then both IPv4 and IPv6 PHP dev servers will be started by the script:
+
+.. code-block:: console
+
+  bash tests/travis/start_php_dev_server.sh
+
+If you want the tests to drive the UI over IPv6, then export an IPv6 name or address for ``SRV_HOST_NAME``
+and an IPv4 name or address for ``IPV4_HOST_NAME``:
+
+.. code-block:: console
+
+  export SRV_HOST_NAME=ip6-localhost
+  export IPV4_HOST_NAME=localhost
+
+Because not everyone will have functional IPv6 on their test system yet, tests that specifically 
+require IPv6 are tagged ``@skip @ipv6``. To run those tests, follow the section below on running 
+skipped tests and specify ``--tags @ipv6``.
+
 Running UI Tests for One Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
