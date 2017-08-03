@@ -320,7 +320,7 @@ To check all files in a folder (recursive) use: ``phpcs --standard=./phpcs.xml y
 A `git pre-commit hook <https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks>`_ is available `here <https://raw.githubusercontent.com/Ikke/git-precommit-phpcs/master/pre-commit>`_. Download and save the file in the ``.git/hooks`` folder of your owncloud project and change the ``PHPCS_STANDARD`` constant to the path of the ``phpcs.xml`` file.
 
 Start & closing
-^^^^^^^^
+^^^^^^^^^^^^^^^
 
 Always use::
 
