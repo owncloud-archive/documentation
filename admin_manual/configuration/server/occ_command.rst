@@ -33,6 +33,7 @@ occ Command Directory
 * :ref:`ldap_commands_label`
 * :ref:`logging_commands_label`
 * :ref:`maintenance_commands_label`
+* :ref:`market_commands_label`
 * :ref:`reports_commands_label`
 * :ref:`security_commands_label`
 * :ref:`shibboleth_label`
@@ -1074,6 +1075,25 @@ command after modifying ``config/mimetypemapping.json``. If you change a
 mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the 
 change to existing files.
 
+.. _market_commands_label:
+   
+Market
+------
+
+The ``market`` commands *install*, *list*, and *upgrade* applications from `the ownCloud Marketplace`.
+
+.. code-block:: console
+   
+  market
+    market:install    Install apps from the marketplace. If already installed and 
+                      an update is available the update will be installed.
+    market:list       Lists apps as available on the marketplace.
+    market:upgrade    Installs new app versions if available on the marketplace
+
+.. note::
+   The user running the update command, which will likely be your webserver user, needs write permission for the ``/apps`` folder. 
+   If they don’t have write permission, the command may report that the update was successful, but it may silently fail.
+
 .. _reports_commands_label:
    
 Reports
@@ -1745,3 +1765,4 @@ json    This will render the output as a JSON-encoded, but not formatted, string
 .. links
    
 .. _one of the commands: :ref:`Available Background Jobs`
+.. _the ownCloud Marketplace: https://marketplace.owncloud.com/
