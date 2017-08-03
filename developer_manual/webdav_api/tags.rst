@@ -337,7 +337,7 @@ Assign a Tag to a File
 ================================================================ ====== ================
 Request Path                                                     Method Content Type
 ================================================================ ====== ================
-``remote.php/dav/systemtags-relations/files/<tagid>/<fileid>``   PUT    ``text/xml``
+``remote.php/dav/systemtags-relations/files/<fileid>/<tagid>``   PUT    ``text/xml``
 ================================================================ ====== ================
 
 To assign a tag to a file, send an authenticated ``PUT`` request specifying the path to the file to tag.
