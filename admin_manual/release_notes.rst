@@ -47,6 +47,11 @@ Infrastructure
 Known Issues
 ~~~~~~~~~~~~
 
+Converting the Database Type doesn't work
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Converting a Database from e.g. ``SQLite`` to ``MySQL`` or ``PostgreSQL`` with the ``occ db:convert-type`` currently doesn't work. See https://github.com/owncloud/core/issues/27075 for more info.
+
 Installing the LDAP user backend will trigger the installation twice 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
