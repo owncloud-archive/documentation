@@ -26,7 +26,7 @@ Platform          Options
 Operating System  Ubuntu 16.04
 Database          MySQL or MariaDB 5.5+
 Web server        Apache 2.4 with mod_php
-PHP Runtime       PHP (5.6 or 7.0)
+PHP Runtime       PHP (5.4, 5.5, 5.6, and 7.0)
 ================= =============================================================
 
 Supported Platforms
