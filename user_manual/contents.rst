@@ -12,7 +12,6 @@ Table of Contents
     pim/index
     external_storage/index
     files/index
-    webdav-api/index
     session_management
     webinterface
     userpreferences
