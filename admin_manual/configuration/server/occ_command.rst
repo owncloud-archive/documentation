@@ -1453,7 +1453,7 @@ But, it’s not essential to run it regularly, unless you have a large number of
 When run, it will pick up changes from alternative user backends, such as LDAP where properties like ``cn`` or ``display name`` have changed.
 
 .. note:: 
-   It’s also `one of the commands`_ that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
+   It’s also :ref:`one of the commands <available_background_jobs_label>` that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
 
 Below are examples of how to use the command with an *LDAP*, *Samba*, and *Shibboleth* backend.
 
@@ -1764,5 +1764,4 @@ json    This will render the output as a JSON-encoded, but not formatted, string
 
 .. links
    
-.. _one of the commands: :ref:`Available Background Jobs`
 .. _the ownCloud Marketplace: https://marketplace.owncloud.com/
