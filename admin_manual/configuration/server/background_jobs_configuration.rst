@@ -96,6 +96,8 @@ There is no way to do so via the ownCloud UI.
 But, the most direct way to do so, is by opening three console tabs and in each one run ``php cron.php``. 
 Each of these processes would acquire their own list of jobs to process without overlapping any other.
 
+.. _available_background_jobs_label:
+
 Available Background Jobs
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
