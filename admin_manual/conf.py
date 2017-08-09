@@ -30,6 +30,10 @@ extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo', 'rst2pdf.pdfbuilder'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
 
+rst_prolog = """
+.. |name| replace:: ownCloud
+"""
+
 # The suffix of source filenames.
 source_suffix = '.rst'
 
