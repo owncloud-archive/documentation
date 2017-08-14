@@ -985,6 +985,26 @@ info about this group.
    that recently deleted groups from LDAP might be considered as "active" and
    might not be deleted in ownCloud immediately.
 
+**Configuring the LDAP Refresh Attribute Interval**
+
+You can configure the LDAP refresh attribute interval, but not with the ``ldap`` commands. 
+Instead, you need to use the ``config:app:set`` command, as in the following example, which takes a number of seconds to the ``--value`` switch::
+   
+  occ config:app:set user_ldap updateAttributesInterval --value=7200
+   
+In the example above, the interval is being set to 7200 seconds.
+Assuming the above example was used, the command would output the following:
+
+.. code-block:: console
+   
+  Config value updateAttributesInterval for app user_ldap set to 7200
+
+If you want to reset (or unset) the setting, then you can use the following command:
+
+.. code-block:: console
+   
+  occ config:app:delete user_ldap updateAttributesInterval
+
 .. _logging_commands_label:
 
 Logging Commands
