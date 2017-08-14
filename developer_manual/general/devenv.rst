@@ -12,8 +12,7 @@ Basic Tools
 ===========
 
 To be able to develop with ownCloud and also run unit tests, you will need to install `Node.js <https://nodejs.org>`_.
-
-Other required tools, `such as the required PHP modules`_, will be automatically installed by composer.
+Other required tools, `such as the required PHP modules`_, can be installed using composer.
 
 Get The Source
 ==============
@@ -131,10 +130,10 @@ To disable JavaScript and CSS caching debugging has to be enabled by setting ``d
 Set Up Web Server And Database
 ==============================
 
-First `set up your Web server and database <https://doc.owncloud.org/server/9.0/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your Web server and database <https://doc.owncloud.org/server/latest/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 .. TODO ON RELEASE: Update version number above on release
 
 .. Links
    
-.. _such as the required PHP modules: https://doc.owncloud.org/server/latest/admin_manual/installation/system_requirements.html
+.. _such as the required PHP modules: https://doc.owncloud.org/server/latest/admin_manual/installation/source_installation.html#installing-on-ubuntu-16-04-lts-server
