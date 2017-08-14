@@ -15,11 +15,8 @@ in a Linux environment.
 Limit on Password Length
 ------------------------
 
-ownCloud uses the bcrypt algorithm, and thus for security and performance 
-reasons, e.g. Denial of Service as CPU demand increases exponentially, it only 
-verifies the first 72 characters of passwords. This applies to all passwords 
-that you use in ownCloud: user passwords, passwords on link shares, and 
-passwords on external shares.
+ownCloud uses the `bcrypt`_ algorithm, and thus for security and performance reasons, e.g., denial of service as CPU demand increases exponentially, it only verifies the first 72 characters of passwords. 
+This applies to all passwords that you use in ownCloud: user passwords, passwords on link shares, and passwords on external shares.
 
 Operating system
 ----------------
@@ -229,3 +226,4 @@ However, this `short guide from Digital Ocean`_ should get you started.
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
 .. _Fail2Ban: https://www.fail2ban.org/wiki/index.php/Main_Page
 .. _short guide from Digital Ocean: https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04
+.. _bcrypt: https://en.m.wikipedia.org/wiki/Bcrypt
