@@ -70,3 +70,9 @@ The key **url** defines the HTTP web path to that folder, starting at the ownClo
                 "writable" => true,
         ),
     ),
+
+Manually Installing Apps
+------------------------
+
+To install an app manually (locally), instead of by using the Appstore, copy the app into the ownCloud app folder (``/path/to/owncloud/apps``). 
+The folder name of the app and the name of the app **must be identical**.
