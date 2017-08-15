@@ -324,12 +324,12 @@ Read-only slaves should be deployed on every application server for optimal scal
 Session Management
 ~~~~~~~~~~~~~~~~~~
 
-Redis should be used for the session management storage.
+:ref:`Redis <redis_configuration_label>` should be used for the session management storage.
 
 Caching
 ~~~~~~~
 
-Redis for distributed in-memory caching, see `Configuring Memory Caching`_.
+:ref:`Redis <redis_configuration_label>` for distributed in-memory caching, see `Configuring Memory Caching`_.
    
 Storage
 ~~~~~~~
@@ -343,7 +343,18 @@ ownCloud Edition
 
 Enterprise Edition. 
 See `ownCloud Server or Enterprise Edition`_ for comparisons of the ownCloud editions.
-   
+
+.. _redis_configuration_label:
+
+Redis Configuration
+~~~~~~~~~~~~~~~~~~~
+
+Redis in a master-slave configuration is `a hot failover setup`_, and is usually sufficient. 
+A slave can be omitted if high availability is provided via other means. 
+And when it is, in the event of a failure, restarting Redis typically occurs quickly enough. 
+Regarding Redis cluster, we don’t, usually, recommend it, as it requires a greater level of both maintenance and management in the case of failure.
+A single Redis server, however, just needs to be rebooted, in the event of failure.
+
 Known Issues
 ------------
 
@@ -405,3 +416,4 @@ References
 .. _Federated Cloud Sharing: https://doc.owncloud.org/server/latest/user_manual/files/federated_cloud_sharing.html
 .. _the official Apache documentation: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
 .. _master-master replication: https://mariadb.com/kb/en/mariadb/replication-cluster-multi-master/
+.. _a hot failover setup: http://searchwindowsserver.techtarget.com/definition/cold-warm-hot-server
