@@ -17,10 +17,12 @@ written.
 .. note::
    As of ownCloud 9.0, the File Firewall app cannot lock out administrators from the Web interface when      rules are misconfigured.
 
-Figure 1 shows an empty firewall configuration panel. Set your logging level to 
-**Failures Only** for debugging, and create a new ruleset by clicking the **Add 
-Group** button. After setting up your rules you must click the **Save Rules** 
-button.
+Figure 1 shows an empty firewall configuration panel. Set the logging level to 
+**Blocked Requests Only** to see blocked requests in the log. Set the logging 
+level to **All Requests** to also see allowed requests in the log for debugging. 
+
+Create a new ruleset by clicking the **Add Group** button. 
+After setting up your rules you must click the **Save Rules** button.
 
 .. figure:: images/firewall-1.png
    :alt: Empty File Firewall configuration panel.
