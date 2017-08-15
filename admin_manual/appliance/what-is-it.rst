@@ -1,8 +1,8 @@
-=================================
-What is the Enterprise Appliance?
-=================================
+======================
+What is the Appliance?
+======================
 
-If you don't know a lot about Linux, only have a small IT staff, or are your IT staff — even if that's only in your spare time — the ownCloud Enterprise Edition Appliance will let you get started using ownCloud quickly and easily.
+If you don't know a lot about Linux, only have a small IT staff, or are your IT staff — even if that's only in your spare time — the ownCloud X Appliance will let you get started using ownCloud quickly and easily.
 
 The Appliance:
 
