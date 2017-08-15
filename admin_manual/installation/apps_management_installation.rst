@@ -76,27 +76,3 @@ Manually Installing Apps
 
 To install an app manually (locally), instead of by using the Appstore, copy the app into the ownCloud app folder (``/path/to/owncloud/apps``). 
 The folder name of the app and the name of the app **must be identical**.
-
-Using Your Own Appstore
------------------------
-
-You can enable the installation of apps from your own apps store. 
-This requires that you can write to at least one of the configured apps directories.
-
-To enable installation from your own apps store:
-
-1. Set the ``appstoreenabled`` parameter to "true".
-   This parameter is used to enable your apps store in ownCloud.
-
-2. Set the ``appstoreurl`` to the URL of your ownCloud apps store.
-   This parameter is used to set the HTTP path to the ownCloud apps store. 
-   The appstore server must use :abbr:`OCS (Open Collaboration Services)`.
-
-.. code-block:: php
-
- <?php
-   
-   "appstoreenabled" => true,
-   "appstoreurl" => "https://api.owncloud.com/v1",
-   
-
