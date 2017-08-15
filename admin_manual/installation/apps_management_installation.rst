@@ -71,6 +71,12 @@ The key **url** defines the HTTP web path to that folder, starting at the ownClo
         ),
     ),
 
+Manually Installing Apps
+------------------------
+
+To install an app manually (locally), instead of by using the Appstore, copy the app into the ownCloud app folder (``/path/to/owncloud/apps``). 
+The folder name of the app and the name of the app **must be identical**.
+
 Using Your Own Appstore
 -----------------------
 
@@ -92,3 +98,5 @@ To enable installation from your own apps store:
    
    "appstoreenabled" => true,
    "appstoreurl" => "https://api.owncloud.com/v1",
+   
+
