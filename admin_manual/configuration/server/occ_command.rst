@@ -1031,7 +1031,7 @@ different log file path. Set your rotation by log file size in bytes with
 are ``owncloud``, ``Warning``, and ``UTC``. Available options are:
 
 * --backend [owncloud, syslog, errorlog]
-* --level [debug, info, warning, error]
+* --level [debug, info, warning, error, fatal]
 
 .. _maintenance_commands_label:
    
