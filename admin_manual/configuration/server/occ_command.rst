@@ -1513,9 +1513,8 @@ Versions
   versions:cleanup   Delete versions
   versions:expire    Expires the users file versions  
 
-Use ``versions:cleanup`` to delete all older file versions for specific users (keeping the most recent versions), or for all users when none are specified.
-
-This example deletes all files versions for all users, except the most recent versions::
+``versions:cleanup`` can delete all versioned files, as well as the ``files_versions`` folder, for either specific users, or for all users.
+The example below deletes all versioned files for all users::
 
  sudo -u www-data php occ versions:cleanup
  Delete all versions
