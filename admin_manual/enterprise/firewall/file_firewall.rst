@@ -3,7 +3,7 @@ File Firewall
 =============
 
 The File Firewall GUI enables you to create and manage firewall rule sets from 
-your ownCloud admin page, Security section. The File Firewall gives you finer-grained control of 
+your ownCloud admin page's Security section. The File Firewall gives you finer-grained control of 
 access and sharing, with rules for allowing or denying access, and restrictions 
 per group, upload size, client devices, IP address, time of day, and many more 
 criteria. For additional flexibility the File Firewall also supports regular 
