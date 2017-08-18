@@ -179,7 +179,7 @@ Changes in 9.1
 
 **Shibboleth**
 
-* The WebDAV endpoint was changed from /remote.php/webdav to /remote.php/dav. You need to check your Apache configuration if you have exceptions or rules for WebDAV configured.
+* The WebDAV endpoint was changed from ``/remote.php/webdav`` to ``/remote.php/dav``. You need to check your Apache configuration if you have exceptions or rules for WebDAV configured.
 
 **Minor additions**
 
