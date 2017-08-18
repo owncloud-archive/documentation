@@ -118,12 +118,12 @@ files and folders, where at least one of the parents has a given tag. Now you
 just need to add the tag to the folder or file, and then block the tag with the
 File Firewall.
 
-This example blocks access to any folder with the tag "Confidential".
+This example blocks access to any folder with the tag "Confidential" from outside access.
 
 Block by System Tag::
 
    System file tag:   is       "Confidential"
-   Subnet IPv4:       is not   "255.255.255.0/24"
+   IP Range (IPv4):   is not   "192.168.1.0/24"
 
 .. figure:: images/firewall-3.png
    :alt: Protecting files tagged with "Confidential" from outside access
