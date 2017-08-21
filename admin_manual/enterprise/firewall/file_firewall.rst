@@ -11,7 +11,7 @@ How the File Firewall Works
 
 Each firewall rule set consists of one or more conditions. 
 If a request matches all of the conditions, in at least one rule set, then the request is blocked by the firewall.
-However, if a request matches none of the conditions in any rule set, then the request is allowed by the firewall. 
+Otherwise, the request is allowed by the firewall. 
 
 .. note::
    The File Firewall app cannot lock out administrators from the web interface when rules are misconfigured.
@@ -20,7 +20,7 @@ Using the File Firewall
 -----------------------
 
 Figure 1 shows an empty firewall configuration panel. 
-Set your logging level to **Failures Only** for debugging, and create a new rule set by clicking the **Add Group** button. 
+Set your logging level to **Blocked Requests Only** for debugging, and create a new rule set by clicking the **Add Group** button. 
 After setting up your rules you must click the **Save Rules** button.
 
 .. figure:: images/firewall-1.png
@@ -129,7 +129,7 @@ The easiest way to block access to a folder, starting with ownCloud 9.0, is to u
 A new rule type was added which allows you to block access to files and folders, where at least one of the parents has a given tag. 
 
 Now you just need to add the tag to the folder or file, and then block the tag with the File Firewall.
-This example blocks access to any folder with the tag "Confidential".
+This example blocks access to any folder with the tag "Confidential" from outside access.
 
 Block by System Tag::
 
