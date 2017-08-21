@@ -134,7 +134,7 @@ This example blocks access to any folder with the tag "Confidential".
 Block by System Tag::
 
    System file tag:   is       "Confidential"
-   Subnet IPv4:       is not   "255.255.255.0/24"
+   IP Range (IPv4):   is not   "192.168.1.0/24"
 
 .. figure:: images/firewall-3.png
    :alt: Protecting files tagged with "Confidential" from outside access

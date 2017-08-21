@@ -173,10 +173,11 @@ The ``app`` commands list, enable, and disable apps::
                    (added in 9.0)
   app:list         List all available apps
 
-List all of your installed apps, and show whether they are 
-enabled or disabled::
+List all of your installed apps or optionally provide a search pattern to restrict 
+the list of apps to those whose name matches the given regular expression.
+The output shows whether they are enabled or disabled::
 
- sudo -u www-data php occ app:list
+ sudo -u www-data php occ app:list [<search-pattern>]
  
 Enable an app, for example the Market app::
 
@@ -1031,7 +1032,7 @@ different log file path. Set your rotation by log file size in bytes with
 are ``owncloud``, ``Warning``, and ``UTC``. Available options are:
 
 * --backend [owncloud, syslog, errorlog]
-* --level [debug, info, warning, error]
+* --level [debug, info, warning, error, fatal]
 
 .. _maintenance_commands_label:
    
