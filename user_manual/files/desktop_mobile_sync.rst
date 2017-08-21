@@ -17,7 +17,7 @@ have your latest files with you wherever you are.
 Its usage is documented separately in the `ownCloud Desktop Client Manual`_.
 
 .. _ownCloud Sync Client: https://owncloud.org/sync-client/
-.. _ownCloud Desktop Client Manual:  https://doc.owncloud.org/
+.. _ownCloud Desktop Client Manual:  https://doc.owncloud.com/desktop/latest/
 
 Mobile Clients
 --------------
