@@ -77,11 +77,6 @@ Request IP Range (IPv4) and IP Range (IPv6)
 
 The request's ``REMOTE_ADDR`` header (is|is not) matching the given IP range.
 
-Subnet (IPv4) and Subnet (IPv6)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-The request's ``SERVER_ADDR`` header (is|is not) matching the given IP range.
-
 File Size Upload
 ^^^^^^^^^^^^^^^^
 
@@ -105,8 +100,6 @@ rules using the following conditions:
 
 * IP Range (IPv4)
 * IP Range (IPv6)
-* Subnet (IPv4)
-* Subnet (IPv6)
 * User agent
 * User group
 * Request URL
