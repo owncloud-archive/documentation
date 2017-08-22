@@ -3,14 +3,14 @@ Mimetypes Management
 ====================
 
 ownCloud allows you to create aliases for mimetypes and map file extensions to a mimetype. 
-This allows administrators the ability to both change the existing icons that ownCloud uses to represent certain file types and folder, as well as to use custom icons for mimetypes and file extensions which ownCloud doesn't natively support. 
+These allow administrators the ability to change the existing icons that ownCloud uses to represent certain file types and folders, as well as to use custom icons for mimetypes and file extensions which ownCloud doesn't natively support. 
 This is handy in a variety of situations, such as when you might want a custom audio icon for audio mimetypes, instead of the default file icon.
 
 Mimetype Aliases
 ----------------
 
 ownCloud's default mimetype configuration is defined in ``owncloud/resources/config/mimetypealiases.dist.json``, which you can see a snippet of below. 
-The mimetype’s on the left and the icon used to represent that mimetype is on the right.
+The mimetype’s on the left, and the icon used to represent that mimetype is on the right.
 
 .. code-block:: json
    
@@ -84,7 +84,7 @@ Let’s step through an example, from start to finish, of changing the icon that
 3. Copy a new SVG icon to represent JSON files to ``core/img/filetypes``, calling it ``text-json.svg``.
 
 .. note:: 
-   The name and location of the file is important.
+   The name and location of the file are important.
    The location is because the ``core/img/filetypes`` directory stores the mimetype file icons.
    The name is important as it’s a rough mapping between the alias name and the icon’s file name, i.e., ``text/json`` becomes ``text-json``.
 
@@ -94,7 +94,7 @@ Let’s step through an example, from start to finish, of changing the icon that
    
   $ sudo -u www-data php occ maintenance:mimetype:update-js
   
-After doing so, whenever you view a folder that contains JSON files, or upload one, your new icon file will be used to represent the file, as in the image below.
+After doing so, whenever you view a folder that contains JSON files or upload one, your new icon file will be used to represent the file, as in the image below.
 
 .. figure:: ../../images/configuration/mimetypes/json-alias-after.png
    :alt: A replaced icon for JSON files
@@ -111,15 +111,15 @@ This is similar to ``resources/config/mimetypealiases.dist.json``, and also retu
 .. code-block:: json
    
    {
-	"3gp": ["video/3gpp"],
-	"7z": ["application/x-7z-compressed"],
-	"accdb": ["application/msaccess"],
-	"ai": ["application/illustrator"],
-	"apk": ["application/vnd.android.package-archive"],
-	"arw": ["image/x-dcraw"],
-	"avi": ["video/x-msvideo"],
-	"bash": ["text/x-shellscript"],
-	"json": ["application/json", "text/plain"],
+    "3gp": ["video/3gpp"],
+    "7z": ["application/x-7z-compressed"],
+    "accdb": ["application/msaccess"],
+    "ai": ["application/illustrator"],
+    "apk": ["application/vnd.android.package-archive"],
+    "arw": ["image/x-dcraw"],
+    "avi": ["video/x-msvideo"],
+    "bash": ["text/x-shellscript"],
+    "json": ["application/json", "text/plain"],
    }
 
 In the example above, you can see nine mimetypes mapped to file extensions.
@@ -142,4 +142,3 @@ Icon retrieval
 When an icon is retrieved for a mimetype, if the full mimetype cannot be found, the search will fallback to looking for the part before the slash. 
 Given a file with the mimetype ``image/my-custom-image``, if no icon exists for the full mimetype, the icon for ``image`` will be used instead. 
 This allows specialized mimetypes to fallback to generic icons when the relevant icons are unavailable.
-
