@@ -2,31 +2,50 @@
 Mimetypes Management
 ====================
 
+ownCloud allows you to create aliases for mimetypes and map file extensions to a mimetype. 
+This allows administrators the ability to both change the existing icons that ownCloud uses to represent certain file types and folder, as well as to use custom icons for mimetypes and file extensions which ownCloud doesn't natively support. 
+This is handy in a variety of situations, such as when you might want a custom audio icon for audio mimetypes, instead of the default file icon.
+
 Mimetype Aliases
 ----------------
 
-ownCloud allows you to create aliases for mimetypes so that you can display custom icons for files. 
-This is handy in a variety of situations, such as when you might want a nice audio icon for audio files, instead of the default file icon.
-
-ownCloud's default list is defined in ``owncloud/resources/config/mimetypealiases.dist.json``.
-Below you can see a snippet from the file, showing the mimetype on the left and the icon used on the right.
+ownCloud's default mimetype configuration is defined in ``owncloud/resources/config/mimetypealiases.dist.json``, which you can see a snippet of below. 
+The mimetype’s on the left and the icon used to represent that mimetype is on the right.
 
 .. code-block:: json
    
    {
     "application/coreldraw": "image",
-    "application/epub+zip": "text",
     "application/font-sfnt": "image",
     "application/font-woff": "image",
     "application/illustrator": "image",
+    "application/epub+zip": "text",
     "application/javascript": "text/code",
    }
 
-If you want to change or expand the icons used, create a copy of ``owncloud/config/mimetypealiases.json`` and either override the existing definitions or add custom aliases as required. 
-Some common mimetypes that may be useful in creating aliases are:
+Stepping through that file, you can see that:
+
+- the image icon is used to represent Corel Draw, SFNT and WOFF font files, and Adobe Illustrator files.
+- ePub files are represented by the text file icon.
+- JavaScript files are represented by the text/code icon.
+
+Changing Existing Icons and Using Custom Icons
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to change one or more of the existing icons which ownCloud uses, or if you want to expand the available list, here’s how to do so. 
+
+First, create a copy of ``resources/config/mimetypealiases.dist.json``, naming it ``mimetypealiases.json`` and storing it in ``config/``.
+This is required for two reasons:
+
+1. It will take precedence over the default file.
+2. The original file will get replaced on each ownCloud upgrade.
+
+Then, either override one or more existing definitions or add new, custom, aliases as required. 
 
 .. note::
    Please refer to `the ownCloud theming documentation <https://doc.owncloud.com/server/latest/developer_manual/core/theming.html>`_ for where to put the new image files.
+
+Some common mimetypes that may be useful in creating aliases are:
 
 ========================= =======================
 Mimetype                  Description
@@ -41,26 +60,53 @@ Mimetype                  Description
 ``text/code``             Source code
 ========================= =======================
 
-Once you have made changes to your ``mimetypealiases.json``, use :doc:`the occ command <../../configuration/server/occ_command>` to propagate the changes throughout your ownCloud installation. 
+Once you have made changes to ``config/mimetypealiases.json``, use :doc:`the occ command <../../configuration/server/occ_command>` to propagate the changes throughout your ownCloud installation. 
 Here is an example for Ubuntu Linux::
 
   $ sudo -u www-data php occ maintenance:mimetype:update-js
+  
+Example - Changing the JSON File Icon
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. note::
-   Make sure that you use the same syntax as in the default file.
+.. figure:: ../../images/configuration/mimetypes/json-alias-before.png
+   :alt: The default icon for JSON files
+
+Let’s step through an example, from start to finish, of changing the icon that ownCloud uses to represent JSON files, which you can see above.
+
+1. From the root directory of your ownCloud installation, copy ``resources/config/mimetypealiases.dist.json`` to ``/config/mimetypealiases.json``.
+
+2. Update the alias for ``application/json``, which you should find on line 8, to match the following, and save the file:
+
+.. code-block:: json
    
-.. danger::
-   Do not modify the original file, as it will be replaced whenever ownCloud is updated. 
+   "application/json": "text/json",
+
+3. Copy a new SVG icon to represent JSON files to ``core/img/filetypes``, calling it ``text-json.svg``.
+
+.. note:: 
+   The name and location of the file is important.
+   The location is because the ``core/img/filetypes`` directory stores the mimetype file icons.
+   The name is important as it’s a rough mapping between the alias name and the icon’s file name, i.e., ``text/json`` becomes ``text-json``.
+
+4. Run the following command to update the mimetype alias database.
+
+.. code-block:: console
+   
+  $ sudo -u www-data php occ maintenance:mimetype:update-js
+  
+After doing so, whenever you view a folder that contains JSON files, or upload one, your new icon file will be used to represent the file, as in the image below.
+
+.. figure:: ../../images/configuration/mimetypes/json-alias-after.png
+   :alt: A replaced icon for JSON files
 
 Mimetype Mapping
 ----------------
 
-ownCloud allows administrators to map a file extension to a mimetype. 
-For example, files ending in ``mp3`` map to ``audio/mpeg``. 
+ownCloud allows administrators to map a file extension to a mimetype, e.g., such as mapping files ending in ``mp3`` to ``audio/mpeg``. 
 Which then, in turn, allows ownCloud to show the audio icon.
 
-The default mimetype mapping is available in ``mimetypemapping.dist.json``, which returns a simple JSON array.
-In the example below, you can see eight mimetypes mapped to file extensions.
+The default file extension to mimetype mapping configuration is stored in ``resources/config/mimetypemapping.dist.json``. 
+This is similar to ``resources/config/mimetypealiases.dist.json``, and also returns a basic JSON array.
 
 .. code-block:: json
    
@@ -73,15 +119,19 @@ In the example below, you can see eight mimetypes mapped to file extensions.
 	"arw": ["image/x-dcraw"],
 	"avi": ["video/x-msvideo"],
 	"bash": ["text/x-shellscript"],
+	"json": ["application/json", "text/plain"],
    }
 
-If you want to update or extend the existing mapping, create a copy of ``mimetypemapping.dist.json`` and name it ``mimetypemapping.json``.
-This is require for two reasons:
+In the example above, you can see nine mimetypes mapped to file extensions.
+Each of them, except the last (``json``), maps a file extension to a mimetype. 
+Now take a look at the JSON example.
 
-1. It will take precedence over the default file.
-2. Administrators **should not update the original file**, as it will get replaced on each ownCloud upgrade.
+In this case, ownCloud will first check if a mimetype alias is defined for ``application/json``, in ``mimetypealiases.json``.
+If it is, it will use that icon.
+If not, then ownCloud will fall back to using the icon for ``text/plain``. 
 
-In this new file, make any changes required. 
+If you want to update or extend the existing mapping, as with updating the mimetype aliases, create a copy of ``resources/config/mimetypemapping.dist.json`` and name it ``mimetypemapping.json`` and storing it in ``config/``.
+Then, in this new file, make any changes required. 
 
 .. note::
    Please refer to `the ownCloud theming documentation <https://doc.owncloud.com/server/latest/developer_manual/core/theming.html>`_ for where to put the new image files.
