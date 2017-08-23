@@ -187,15 +187,15 @@ The InnoDB storage engine is required, and MyISAM is not supported, see:
   
 .. _ubuntu_installation_label:  
 
-Required Packages
------------------
+Install the Required Packages
+-----------------------------
 
-Installing on Ubuntu 16.04 LTS Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+On Ubuntu 16.04 LTS Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-On a machine running a pristine Ubuntu 16.04 LTS server, install the
-required and recommended modules for a typical ownCloud installation, using
-Apache and MariaDB, by issuing the following commands in a terminal::
+On a machine running a pristine Ubuntu 16.04 LTS server, install the required and recommended modules for a typical ownCloud installation, using Apache and MariaDB, by issuing the following commands in a terminal:
+
+::
 
     apt install -y apache2 mariadb-server libapache2-mod-php7.0 \
     	php7.0-gd php7.0-json php7.0-mysql php7.0-curl \
@@ -205,29 +205,103 @@ Apache and MariaDB, by issuing the following commands in a terminal::
 The remaining steps are analogous to the installation on Ubuntu 14.04 as shown
 below.
 
-Installing on Ubuntu 14.04 LTS Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+On Ubuntu 14.04 LTS Server
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 On a machine running a pristine Ubuntu 14.04 LTS server, install the
 required and recommended modules for a typical ownCloud installation, using
-Apache and MariaDB, by issuing the following commands in a terminal::
+Apache and MariaDB, by issuing the following commands in a terminal:
 
-    apt-get install apache2 mariadb-server libapache2-mod-php5
-    apt-get install php5-gd php5-json php5-mysql php5-curl
-    apt-get install php5-intl php5-mcrypt php5-imagick
+::
 
-* This installs the packages for the ownCloud core system. 
-  ``libapache2-mod-php5`` provides the following PHP extensions: ``bcmath bz2 
-  calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash 
+    apt-get install -y apache2 mariadb-server libapache2-mod-php5 \
+      php5-gd php5-json php5-mysql php5-curl \
+      php5-intl php5-mcrypt php5-imagick
+
+libapache2-mod-php5 provides the following PHP extensions: 
+
+  ``bcmath bz2 calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash 
   iconv libxml mbstring mhash openssl pcre Phar posix Reflection session shmop 
   SimpleXML soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx 
-  xml xmlreader xmlwriter zip zlib``. If you are planning 
-  on running additional apps, keep in mind that they might require additional 
-  packages.  See :ref:`prerequisites_label` for details.
+  xml xmlreader xmlwriter zip zlib``
 
-* At the installation of the MySQL/MariaDB server, you will be prompted to 
-  create a root password. Be sure to remember your password as you will need it 
-  during ownCloud database setup.
+If you are planning on running additional apps, keep in mind that you might require additional packages.  
+See :ref:`prerequisites_label` for details.
+
+.. note::
+   During the installation of the MySQL/MariaDB server, you will be prompted to create a root password. 
+   Be sure to remember your password as you will need it during ownCloud database setup.
+   
+Additional Extensions
+~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+  apt-get install -y php-apcu php-redis redis-server \
+    php7.0-ldap php-smbclient 
+
+RHEL (RedHat Enterprise Linux) 7.2
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Required Extensions
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+  # Enable the RHEL Server 7 repository
+  subscription-manager repos --enable rhel-server-rhscl-7-eus-rpms
+  
+  # Install the required packages
+  yum install httpd mariadb-server php55 php55-php \
+    php55-php-gd php55-php-mbstring php55-php-mysqlnd
+
+Optional Extensions
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+  yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+    php-pecl-apcu redis php-pecl-redis php55-php-ldap
+
+SLES (SUSE Linux Enterprise Server) 12
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Required Extensions
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+  zypper install apache2 apache2-mod_php5 php5-gd php5-json php5-curl \
+    php5-intl php5-mcrypt php5-zip php5-zlib
+
+Optional Extensions
+~~~~~~~~~~~~~~~~~~~
+
+::
+
+  zypper install php5-ldap
+
+APCu
+||||
+
+We are not aware of any officially supported APCu package for SLES 12.
+However, if you want or need to install it, then we suggest the following steps:
+
+::
+
+  wget http://download.opensuse.org/repositories/server:/php:/extensions/SLE_12_SP1/ server:php:extensions.repo -O /etc/zypp/repos.d/memcached.repo 
+  zypper refresh
+  zypper install php5-APCu
+
+Redis
+|||||
+
+The latest versions of Redis servers have shown to be incompatible with SLES 12. 
+Therefore it is currently recommended to download and install version 2.2.7 or a previous release from: https://pecl.php.net/package/redis.
+Keep in mind that version 2.2.5 is the minimum version which ownCloud supports.
+
+Install ownCloud
+----------------
 
 Now download the archive of the latest ownCloud version:
 
@@ -274,8 +348,8 @@ document root.
 
 .. _apache_configuration_label:
    
-Configure the Apache Web Server
--------------------------------
+Configure Apache Web Server
+---------------------------
 
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful
 configuration so all you have to do is create
