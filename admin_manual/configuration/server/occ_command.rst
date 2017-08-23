@@ -1469,12 +1469,16 @@ authentication servers such as LDAP::
 Syncing User Accounts
 ^^^^^^^^^^^^^^^^^^^^^
 
-This command syncs users stored in external backend services, such as *LDAP*, *Shibboleth*, and *Samba*, with ownCloud’s internal user database.
-But, it’s not essential to run it regularly, unless you have a large number of users who’s account properties have changed in a backend outside of ownCloud.
-When run, it will pick up changes from alternative user backends, such as LDAP where properties like ``cn`` or ``display name`` have changed.
+This command syncs users stored in external backend services, such as *LDAP*, *Shibboleth*, and *Samba*, with ownCloud's, internal, user database.
+However, it’s not essential to run it regularly, unless you have a large number of users whose account properties have changed in a backend outside of ownCloud.
+When run, it will pick up changes from alternative user backends, such as LDAP where properties like ``cn`` or ``display name`` have changed, and sync them with ownCloud's user database.
+If accounts are found that no longer exist in the external backend, you are given the choice of either removing or disabling the accounts. 
 
 .. note:: 
    It’s also :ref:`one of the commands <available_background_jobs_label>` that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
+
+.. note::
+   This command replaces the old ``show-remnants`` functionality, and brings the LDAP feature more in line with the rest of ownCloud's functionality.
 
 Below are examples of how to use the command with an *LDAP*, *Samba*, and *Shibboleth* backend.
 
