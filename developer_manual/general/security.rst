@@ -228,7 +228,7 @@ Unvalidated redirects
 ---------------------
 This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
 
-Always validate the URL before redirecting if the requested URL is on the same domain or an allowed resource.
+Before redirecting, always validate the URL if the requested URL is on the same domain or is an allowed resource.
 
 **DON'T**
 
