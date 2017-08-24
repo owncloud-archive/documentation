@@ -1,10 +1,11 @@
-========================================================
-Installing and Configuring the Windows Network Drive App
-========================================================
+===========================================================================
+Installing and Configuring the External Storage: Windows Network Drives App
+===========================================================================
 
-The Windows Network Drive app creates a control panel on your Admin page for seamless mounting of SMB/CIFS file shares on ownCloud servers.
+The "External Storage: Windows Network Drives" app creates a control panel in your Admin page for seamlessly integrating Windows and Samba/CIFS shared network drives as external storages.
 
-Any Windows file share and Samba servers on Linux and other Unix-type operating systems use the SMB/CIFS file-sharing protocol. The files and directories on the SMB/CIFS server will be visible on your Files page just like your other ownCloud files and folders. 
+Any Windows file share and Samba servers on Linux and other Unix-type operating systems use the SMB/CIFS file-sharing protocol. 
+The files and directories on the SMB/CIFS server will be visible on your Files page just like your other ownCloud files and folders. 
 
 They are labeled with a little four-pane Windows-style icon, and the left pane of your Files page includes a Windows Network Drive filter. 
 Figure 1 shows a new Windows Network Drive share marked with red warnings. 
@@ -25,16 +26,36 @@ Or, passwords are not stored and available only for the current session, which a
 Installation
 ------------
 
-Enable the Windows Network Drive app on your ownCloud Apps page. 
-Then there are a few dependencies to install.
+Install `the External Storage: Windows Network Drives app`_ from the ownCloud Market App or ownCloud Marketplace. 
+For it to work, there are a few dependencies to install.
 
-You must install ``php-smbclient`` version 0.8.0+, which should be included in most Linux distributions. 
-See `eduardok/libsmbclient-php <https://github.com/eduardok/libsmbclient-php>`_ if your distribution does not provide it; this provides source archives and instructions how to install binary packages.
+- A Samba client. This is included in all Linux distributions. On Debian, Ubuntu, and other Debian derivatives it is called ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is ``samba-client``. 
+- ``php-smbclient`` (version 0.8.0+). It should be included in most Linux distributions. You can use `eduardok/libsmbclient-php`_, if your distribution does not provide it.
+- ``which`` and ``stdbuf``. These should be included in most Linux distributions.
 
-You also need the Samba client installed on your Linux system, which is included in all Linux distributions.
-On Debian, Ubuntu, and other Debian derivatives it is called ``smbclient``. 
-On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is ``samba-client``. 
-You also need ``which`` and ``stdbuf``, which should be included in most Linux distributions.
+Example
+~~~~~~~
+
+Assuming that your ownCloud installation is on Ubuntu, then the following commands will install the required dependencies:
+
+.. code-block:: console
+   
+  # Install core packages
+  sudo apt-get update -y
+  sudo apt-get install -y smbclient coreutils
+  
+  # Install php-smbclient using PECL
+  pecl install smbclient
+  
+  # Install it from source
+  git clone git://github.com/eduardok/libsmbclient-php.git
+  cd libsmbclient-php ; phpize
+  ./configure
+  make
+  sudo make install
+  
+  # Enable the extension in your PHP installation
+  extension="smbclient.so"
 
 Creating a New Share
 --------------------
@@ -122,8 +143,7 @@ ownCloud supports SMB notifications with an ``occ`` command, ``occ wnd:listen``.
 .. Note:: The notifier only works with remote storage on Windows servers. It
    does not work reliably with Linux servers due to technical limitations.
 
-Your ``smbclient`` versions needs to be 4.x, as older versions do not support notifications.
-
+Your ``smbclient`` version needs to be 4.x, as older versions do not support notifications.
 The ownCloud server needs to know about changes to files on integrated storage so that the changed files will be synced to the ownCloud server, and to desktop sync clients. 
 
 Files changed through the ownCloud Web interface, or sync clients are automatically updated in the ownCloud file cache, but this is not possible when files are changed directly on remote SMB storage mounts. 
@@ -366,3 +386,5 @@ If both the argument and the option are passed, e.g., ``occ wnd:listen host shar
 .. _systemd: https://en.wikipedia.org/wiki/Systemd
 .. _smbclient: https://www.samba.org/samba/docs/man/manpages-3/smbclient.1.html
 .. _Distributed File Shares: https://en.wikipedia.org/wiki/Distributed_File_System_(Microsoft)
+.. _the External Storage\: Windows Network Drives app: https://marketplace.owncloud.com/apps/windows_network_drive
+.. _eduardok/libsmbclient-php: https://github.com/eduardok/libsmbclient-php
