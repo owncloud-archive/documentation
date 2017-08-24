@@ -21,9 +21,14 @@ You can see an example in the screenshot below.
 In the **Folder name** field enter the folder name that you want to appear on your ownCloud Files page.
 
 In the **Configuration** field enter the full file path of the directory you want to mount.
+In the **Available for** field enter the users or groups who have permission to access the mount;  by default all users have access.
 
-In the **Available for** field enter the users or groups who have permission to access the mount. 
-By default all users have access.
+In addition to these steps, you have to ensure that Local storage is enabled in your ownCloud installation’s ``config/config.php`` file.
+It should have the following configuration:
+
+.. code-block:: php
+
+  'files_external_allow_create_new_local' => 'true',
 
 .. note::
    See :doc:`../external_storage_configuration_gui` for additional mount options and information, and :doc:`auth_mechanisms` for more information on authentication schemes.
