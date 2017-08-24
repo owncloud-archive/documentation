@@ -576,8 +576,8 @@ File Operations
 ``occ`` has three commands for managing files in ownCloud::
 
  files
-  files:cleanup              cleanup filecache
-  files:scan                 rescan filesystem
+  files:cleanup              Deletes orphaned file cache entries.
+  files:scan                 Rescans the filesystem.
   files:transfer-ownership   All files and folders are moved to another 
                              user - shares are moved as well. (Added in 9.0)
  
