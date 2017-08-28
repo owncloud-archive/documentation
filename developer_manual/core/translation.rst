@@ -48,7 +48,7 @@ If you need to add variables to the translation strings do it like this:
 
 .. code-block:: php
 
-  $l->t('%s is available. Get <a href="%s">more information</a>', array($data['versionstring'], $data['web']));
+  $l->t('%s is available. Get <a href="%s">more information</a>', [$data['versionstring'], $data['web']]);
 
 Automated synchronization of translations
 -----------------------------------------
