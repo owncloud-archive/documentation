@@ -7,7 +7,6 @@ You can perform many common server operations with ``occ``, such as installing a
 
 ``occ`` is in the :file:`owncloud/` directory; for example :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. 
 **You must run it as your HTTP user** to ensure that the correct permissions are maintained on your ownCloud files and directories. 
-In ownCloud 8.2+ you may run it from any directory (specifying the file path); in previous releases it had to be run from the :file:`owncloud/` directory.
 
 occ Command Directory
 ---------------------
@@ -166,7 +165,6 @@ The ``app`` commands list, enable, and disable apps
   app:disable      disable an app
   app:enable       enable an app
   app:getpath      Get an absolute path to the app directory
-                   (added in 9.0)
   app:list         List all available apps
 
 List all of your installed apps or optionally provide a search pattern to restrict the list of apps to those whose name matches the given regular expression.
@@ -409,7 +407,7 @@ If you want to be notified in that case, set the ``--error-if-not-exists`` flag.
 Dav Commands
 ------------
   
-A set of commands to create address books, calendars, and to migrate address books from 8.2 when you upgrade to 9.0:
+A set of commands to create address books, calendars, and to migrate address books:
 
 ::
 
@@ -434,8 +432,6 @@ This example creates a new calendar for molly:
  sudo -u www-data php occ dav:create-calendar molly mollycal
  
 Molly will immediately see these on her Calendar and Contacts pages.
-
-In 9.0, the CalDAV server has been integrated into core. 
 Your existing calendars and contacts should migrate automatically when you upgrade. 
 If something goes wrong you can try a manual migration. 
 First delete any partially-migrated calendars or address books. 
@@ -450,8 +446,6 @@ Run this command to migrate calendars:
 ::
 
  sudo -u www-data php occ dav:migrate-calendars [user]
- 
-See `ownCloud 9.0 - calendar migration analysis <http://morrisjobke.de/2016/03/07/ownCloud-9.0-calendar-migration-analysis/>`_ for help with troubleshooting and reporting problems. 
 
 ``dav:sync-birthday-calendar`` adds all birthdays to your calendar from address books shared with you. 
 This example syncs to your calendar from user ``bernie``:
@@ -465,8 +459,6 @@ This example syncs to your calendar from user ``bernie``:
 ::
 
  sudo -u www-data php occ dav:sync-system-addressbook
- 
-Added in 9.0. 
 
 .. _database_conversion_label:  
   
@@ -611,7 +603,7 @@ File Operations
   files:cleanup              Deletes orphaned file cache entries.
   files:scan                 Rescans the filesystem.
   files:transfer-ownership   All files and folders are moved to another 
-                             user - shares are moved as well. (Added in 9.0)
+                             user - shares are moved as well.
  
 The ``files:scan`` command scans for new files and updates the file cache. 
 You may rescan all files, per-user, a space-delimited list of users, and limit the search path. 
@@ -684,8 +676,6 @@ When using this command keep two things in mind:
 
 Files External
 --------------
-
-These commands replace the ``data/mount.json`` configuration file used in ownCloud releases before 9.0.
 
 .. note::
   These commands are only available when the "External storage support" app
@@ -833,7 +823,7 @@ Verify your app:
   
 When it returns nothing, your app is signed correctly. 
 When it returns a message then there is an error. 
-See `Code Signing <https://doc.owncloud.org/server/9.0/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+See `Code Signing <https://doc.owncloud.org/server/latest/developer_manual/app/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 
 ``integrity:sign-core`` is for ownCloud core developers only.
 
@@ -1240,7 +1230,7 @@ Remove a certificate:
 Sharing
 -------
 
-As of ownCloud 9.0, there is an occ command to cleanup orphaned remote storages.
+This is an occ command to cleanup orphaned remote storages.
 To explain why this is necessary, a little background is required.
 While shares are able to be deleted as a normal matter of course, remote storages with "shared::" are not included in this process.
 
@@ -1801,8 +1791,6 @@ If there is an error it throws an exception, and the error is detailed in your o
  ServerNotAvailableException: LDAP server is not available
  Update failed
  Turned off maintenance mode
-
-In ownCloud 9.2 the migration simulation has been removed, so the ``--skip-migration-test`` and ``--dry-run`` commands are no longer available.
 
 .. _two_factor_auth_label:
 
