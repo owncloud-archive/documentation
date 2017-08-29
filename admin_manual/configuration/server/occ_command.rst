@@ -1577,6 +1577,15 @@ Shibboleth
 ::
 
   sudo -u www-data ./occ user:sync "OCA\User_Shibboleth\UserBackend"
+
+Syncing via cron job
+~~~~~~~~~~~~~~~~~~~~
+
+Here is an example for syncing with LDAP four times a day on Ubuntu:
+
+  crontab -e -u www-data
+  
+  * */6 * * * /usr/bin/php /var/www/owncloud/occ user:sync -vvv --missing-account-action="remove" -n "OCA\User_LDAP\User_Proxy"
  
 .. _versions_label:
  
