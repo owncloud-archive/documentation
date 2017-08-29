@@ -418,10 +418,12 @@ A set of commands to create address books, calendars, and to migrate address boo
   dav:sync-system-addressbook   Synchronizes users to the system 
                                 address book
                                       
-The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is ``dav:create-addressbook [user] [name]``. 
-This example creates the addressbook ``mollybook`` for the user molly:
+.. note::
+  These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
-::
+The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is 
+``dav:create-addressbook [user] [name]``. This example creates the addressbook 
+``mollybook`` for the user molly::
 
  sudo -u www-data php occ dav:create-addressbook molly mollybook
 
@@ -574,13 +576,7 @@ See :doc:`../../configuration/files/encryption_configuration` to learn more.
 Federation Sync
 ---------------
 
-.. note::
-  This command is only available when the "Federation" app (``federation``) is
-  enabled.
- 
-Synchronize the address books of all federated ownCloud servers:
-
-::
+Synchronize the address books of all federated ownCloud servers::
 
  federation:sync-addressbooks  Synchronizes address books of all 
                                federated clouds
@@ -591,6 +587,9 @@ Use this command to synchronize federated servers:
 ::
 
   sudo -u www-data php occ federation:sync-addressbooks
+  
+.. note::
+  This command is only available when the "Federation" app (``federation``) is enabled.
 
 .. _file_operations_label:
 
@@ -605,11 +604,13 @@ File Operations
   files:transfer-ownership   All files and folders are moved to another 
                              user - shares are moved as well.
  
-The ``files:scan`` command scans for new files and updates the file cache. 
-You may rescan all files, per-user, a space-delimited list of users, and limit the search path. 
-If not using ``--quiet``, statistics will be shown at the end of the scan:
+.. note::
+  These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
-::
+The ``files:scan`` command scans for new files and updates the file cache. You 
+may rescan all files, per-user, a space-delimited list of users, and limit the 
+search path. If not using ``--quiet``, statistics will be shown at the end of 
+the scan::
 
  sudo -u www-data php occ files:scan --help
    Usage:
@@ -677,9 +678,8 @@ When using this command keep two things in mind:
 Files External
 --------------
 
-.. note::
-  These commands are only available when the "External storage support" app
-  (``files_external``) is enabled.
+These commands replace the ``data/mount.json`` configuration file used in 
+ownCloud releases before 9.0.
 
 Commands for managing external storage::
 
@@ -699,7 +699,10 @@ These commands replicate the functionality in the ownCloud Web GUI, plus two new
 
 Use ``files_external:export`` to export all admin mounts to stdout, and ``files_external:export [user_id]`` to export the mounts of the specified ownCloud user. 
 
-Use ``files_external:import [filename]`` to import legacy JSON configurations, and to copy external mount configurations to another ownCloud server.
+.. note::
+  These commands are only available when the "External storage support" app
+  (``files_external``) is enabled.
+  It is not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
 .. _group_commands_label:
 
@@ -1163,6 +1166,9 @@ The ``market`` commands *install*, *list*, and *upgrade* applications from `the 
    The user running the update command, which will likely be your webserver user, needs write permission for the ``/apps`` folder. 
    If they don't have write permission, the command may report that the update was successful, but it may silently fail.
 
+.. note::
+  These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
+
 .. _reports_commands_label:
    
 Reports
@@ -1191,6 +1197,9 @@ Alternatively, you could generate the report and email it all in one command, by
   sudo -u www-data occ configreport:generate | mail -s "configuration report" \ 
       -r <the email address to send from> \
       support@owncloud.com
+
+.. note::
+  These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
 .. _security_commands_label:
 
@@ -1250,19 +1259,22 @@ So, to cleanup all orphaned remote storages, run it as follows:
 
 You can also set it up to run as :ref:`a background job <background-jobs-header>`
 
+.. note::
+  These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
+
 .. _shibboleth_label:
 
 Shibboleth Modes (Enterprise Edition only)
 ------------------------------------------
 
-.. note::
-  This command is only available when the "Shibboleth user backend" app
-  (``user_shibboleth``) is enabled.
-
 ``shibboleth:mode`` sets your Shibboleth mode to ``notactive``, 
 ``autoprovision``, or ``ssoonly``::
 
  shibboleth:mode [mode]
+
+.. note::
+  These commands are only available when the "Shibboleth user backend" app
+  (``user_shibboleth``) is enabled.
 
 .. _trashbin_label: 
 
@@ -1270,8 +1282,9 @@ Trashbin
 --------
 
 .. note::
-  This command is only available when the "Deleted files" app
+  These commands are only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
+  These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
  
 ::
 
@@ -1592,10 +1605,6 @@ Here is an example for syncing with LDAP four times a day on Ubuntu:
 Versions
 --------
 
-.. note::
-  This command is only available when the "Versions" app (``files_versions``) is
-  enabled.
-
 ::
 
  versions
@@ -1625,6 +1634,11 @@ You can delete versions for specific users in a space-delimited list:
 ``versions:expire`` deletes only expired files according to the ``versions_retention_obligation`` setting in ``config.php`` (see the File versions section in :doc:`config_sample_php_parameters`). 
 The default is to delete expired files for all users, or you may list users in a space-delimited list.
  
+.. note::
+  These commands are only available when the "Versions" app (``files_versions``) is
+  enabled.
+  These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
+
 .. _command_line_installation_label: 
  
 Command Line Installation
