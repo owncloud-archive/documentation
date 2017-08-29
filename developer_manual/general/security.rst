@@ -31,7 +31,7 @@ Clickjacking
 
 To prevent such attacks ownCloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
 
-This is already built into ownCloud if :php:class:`OC_Template`.
+This is already built into ownCloud if `ownCloud templates <https://doc.owncloud.org/server/latest/developer_manual/app/templates.html>`_ or `Twig Templates`_ are used.
 
 Code executions / File inclusions
 ---------------------------------
@@ -228,7 +228,7 @@ Unvalidated redirects
 ---------------------
 This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
 
-Always validate the URL before redirecting if the requested URL is on the same domain or an allowed resource.
+Before redirecting, always validate the URL if the requested URL is on the same domain or is an allowed resource.
 
 **DON'T**
 
@@ -247,3 +247,7 @@ Always validate the URL before redirecting if the requested URL is on the same d
 Getting help
 ------------
 If you need help to ensure that a function is secure please ask on our `mailing list <https://mailman.owncloud.org/mailman/listinfo/devel>`_ or on our IRC channel **#owncloud-dev** on **irc.freenode.net**.
+
+.. Links
+   
+.. _Twig Templates: https://twig.symfony.com/

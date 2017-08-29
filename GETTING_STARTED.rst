@@ -113,7 +113,7 @@ Branded clients manual       https://github.com/owncloud/branded_clients
 
 The master config.sample.php https://github.com/owncloud/core/tree/master/config
  
-https://doc.owncloud.org/server/9.2/admin_manual/configuration_server/config_sample_php_parameters.html is manually generated from the master config.sample.php with the conversion script at https://github.com/MorrisJobke/ownCloud-config-converter Download the conversion script, make the conversion to ``config_sample_php_parameters.rst``, and then push it to GitHub like any other document.
+https://doc.owncloud.org/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html is manually generated from the master config.sample.php with the conversion script at https://github.com/MorrisJobke/ownCloud-config-converter Download the conversion script, make the conversion to ``config_sample_php_parameters.rst``, and then push it to GitHub like any other document.
 
 =============================== ==========================================================================
 Manual                          Url
@@ -184,7 +184,7 @@ Branded clients manual       https://github.com/owncloud/branded_clients
 
 The master config.sample.php https://github.com/owncloud/core/tree/master/config
  
-https://doc.owncloud.org/server/9.2/admin_manual/configuration_server/config_sample_php_parameters.html is manually generated from the master config.sample.php with the conversion script at https://github.com/MorrisJobke/ownCloud-config-converter Download the conversion script, make the conversion to ``config_sample_php_parameters.rst``, and then push it to GitHub like any other document.
+https://doc.owncloud.org/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html is manually generated from the master config.sample.php with the conversion script at https://github.com/MorrisJobke/ownCloud-config-converter Download the conversion script, make the conversion to ``config_sample_php_parameters.rst``, and then push it to GitHub like any other document.
 
 =============================== ==========================================================================
 Manual                          Url

@@ -31,10 +31,24 @@ failed*".
 session.save_path
 ~~~~~~~~~~~~~~~~~
 
-In addition to setting ``session.auto_start`` and ``enable_post_data_reading``
-correctly, ensure that, if ``session.save_handler`` is set to ``files``, that
-``session.save_path`` is set to a path on the filesystem which the web server
-process, or process which PHP is running as, can read from and write to.
+In addition to setting ``session.auto_start`` and ``enable_post_data_reading`` correctly, ensure that, if ``session.save_handler`` is set to ``files``, that ``session.save_path`` is set to a path on the filesystem which **only** the web server process (or process which PHP is running as) can read from and write to.
+   
+This is especially important if your ownCloud installation is using a shared-hosting arrangement.
+In these situations, `session poisoning`_ can occur if all of the session files are stored in the same location. 
+Session poisoning is where one web application can manipulate data in the ``$_SESSION`` superglobal array of another. 
+
+When this happens, the original application has no way of knowing that this corruption has occurred and may not treat the data with any sense of suspicion. 
+You can `read through a thorough discussion of local session poisoning`_ if you'd like to know more.
+
+suhosin.session.cryptkey
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+When `suhosin.session.cryptkey`_ is enabled, session data will be transparently encrypted. 
+If enabled, there is less of a concern in storing application session files in the same location, as discussed in session.save_path. 
+Ideally, however, session files for each application should always be stored in a location specific to that application, and never stored collectively with any other.
+
+.. note::
+   This is only relevant if you’re using PHP 5.x.
 
 post_max_size  
 ~~~~~~~~~~~~~
@@ -158,3 +172,7 @@ Other Web Servers
 .. _in the forums: https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819
 .. _session.auto_start: https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start
 .. _enable_post_data_reading: https://secure.php.net/manual/en/ini.core.php#ini.enable-post-data-reading
+.. _session.save_handler: http://php.net/manual/en/session.configuration.php#ini.session.save-handler
+.. _session poisoning: https://en.wikipedia.org/wiki/Session_poisoning
+.. _read through a thorough discussion of local session poisoning: http://ha.xxor.se/2011/09/local-session-poisoning-in-php-part-1.html
+.. _suhosin.session.cryptkey: https://suhosin.org/stories/configuration.html#suhosin-session-cryptkey
