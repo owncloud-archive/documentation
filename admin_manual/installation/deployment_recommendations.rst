@@ -133,13 +133,11 @@ For Mid-sized Enterprises
 Recommended System Requirements
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-2 to 4 application servers.
-
-A cluster of two database servers.
-
-Storage on an NFS server.
-
-Authentication via an existing LDAP or Active Directory server.
+* 2 to 4 application servers.
+* A cluster of two database servers.
+* Storage on an NFS server.
+* Authentication via an existing LDAP or Active Directory server.
+* Transactional file locking via a Redis Server
 
 .. figure:: images/deprecs-2.png
    :alt: Network diagram for mid-sized enterprise.
@@ -208,6 +206,10 @@ Authentication via an existing LDAP or Active Directory server.
 * ownCloud Edition
    Enterprise Edition. (See `ownCloud Server or Enterprise Edition`_ for 
    comparisons of the ownCloud editions.)
+  
+* Transactional File Locking
+   - It prevents concurrent processes from accessing the same files at the same time. 
+   - It helps prevent side effects caused by concurrent operations.
 
 For Large Enterprises and Service Providers
 -------------------------------------------
