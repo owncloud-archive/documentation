@@ -1506,8 +1506,6 @@ Shibboleth
 Syncing via cron job
 ~~~~~~~~~~~~~~~~~~~~
 
-::
-
 Here is an example for syncing with LDAP four times a day on Ubuntu:
 
   crontab -e -u www-data
