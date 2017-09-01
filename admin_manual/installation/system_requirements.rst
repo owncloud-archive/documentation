@@ -56,7 +56,7 @@ Desktop
 - CentOS 7 (64-bit only)
 - Debian 7.0 & 8.0
 - Fedora 24 & 25
-- Ubuntu 16.10 & 17.04
+- Ubuntu 16.04 & 16.10 & 17.04
 - openSUSE Leap 42.1 & 42.2
 
 .. note::
