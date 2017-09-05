@@ -52,7 +52,7 @@ html-release:
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/release."
 
 html-org:
-	$(SPHINXBUILD) -b html -D html_theme='owncloud_org' $(ALLSPHINXOPTS) $(BUILDDIR)/html/org
+	$(SPHINXBUILD) -b html -t $(oc_version) -D html_theme='owncloud_org' $(ALLSPHINXOPTS) $(BUILDDIR)/html/org
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/org."
 
