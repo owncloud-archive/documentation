@@ -2,9 +2,11 @@
 Manual ownCloud Upgrade
 =======================
 
-.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
-   please have a look at the :doc:`../release_notes` of oC 9.0 for important info
-   about the needed migration steps during that upgrade.
+.. only:: version_9_1
+
+  .. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
+     please have a look at the :doc:`../release_notes` of oC 9.0 for important info
+     about the needed migration steps during that upgrade.
 
 Always start by making a fresh backup and disabling all 3rd party apps.
 
