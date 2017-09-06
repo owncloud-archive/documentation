@@ -15,4 +15,4 @@ Table of Contents
     maintenance/index
     issues/index
     enterprise/index
-    enterprise/appliance/index
+    appliance/index

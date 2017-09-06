@@ -8,9 +8,8 @@ Testing in Core with Selenium
 Requirements
 ~~~~~~~~~~~~
 
-- ownCloud >= 10.0. Make sure you have an running instance of ownCloud `completely setup <https://doc.owncloud.com/server/latest/admin_manual/installation/>`_.
+- ownCloud >= 10.0. Make sure you have a running instance of ownCloud `completely setup <https://doc.owncloud.com/server/latest/admin_manual/installation/>`_.
 - Default language set to ``en`` (in ``config/config.php`` set ``'default_language' => 'en',``).
-- ``skeletondirectory`` set to ``<owncloud-base-folder>/tests/ui/skeleton``.
 - An admin user called ``admin`` with the password ``admin``.
 - No self-signed SSL certificates.
 - Testing utils (running ``make`` in your terminal from the ``webroot`` directory will install them).

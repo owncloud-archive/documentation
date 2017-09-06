@@ -182,6 +182,10 @@ Changes in 9.1
 * Performance and memory usage improvements for Dropbox with stream download
 * GDrive library update provides exponential backoff which will reduce rate limit errors
 
+**Shibboleth**
+
+* The WebDAV endpoint was changed from ``/remote.php/webdav`` to ``/remote.php/dav``. You need to check your Apache configuration if you have exceptions or rules for WebDAV configured.
+
 **Minor additions**
 
 * Support for print style sheets
