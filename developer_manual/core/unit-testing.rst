@@ -251,11 +251,11 @@ This will also automatically set up your test environment.
 Debugging Tests in the Browser
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To debug tests in the browser, you need to run **Karma** in browser mode
+To debug tests in the browser, this will run **Karma** in browser mode
 
 ::
 
-  karma start tests/karma.config.js
+  make test-js-debug
 
 From there, open the URL http://localhost:9876 in a web browser.
 On that page, click on the "Debug" button.
