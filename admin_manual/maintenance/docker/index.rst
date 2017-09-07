@@ -12,16 +12,14 @@ The configuration:
 Installation on a Local Machine
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To use it, you first need to clone `the GitHub repository <https://github.com/owncloud-docker/server.git>`_. 
-Next, you then need to create a `.env` configuration file, which contains the
-required configuration settings. 
-
+To use it, first create a new project directory and download ``docker-compose.yml`` from `the ownCloud Docker GitHub repository <https://github.com/owncloud-docker/server.git>`_ into that new directory.
+Next, create a `.env` configuration file, which contains the required configuration settings.
 Only a few settings are required, these are:
 
 ================== ============================== =============
 Setting Name       Description                    Example
 ================== ============================== =============
-``VERSION``        The ownCloud version           ``10.0.2`` 
+``VERSION``        The ownCloud version           ``latest``
 ``DOMAIN``         The ownCloud domain            ``localhost``
 ``ADMIN_USERNAME`` The admin username             ``admin``
 ``ADMIN_PASSWORD`` The admin user's password      ``admin``
@@ -36,10 +34,15 @@ The example below shows how to use `Docker Compose <https://docs.docker.com/comp
    You can find instructions for using plain docker `in the GitHub repository <https://github.com/owncloud-docker/server#launch-with-plain-docker>`_.
 
 .. code-block:: console
-   
-   # Clone the repository
-   git clone https://github.com/owncloud-docker/server.git owncloud
-   
+
+   # Create a new project directory
+   mkdir owncloud-docker-server
+
+   cd owncloud-docker-server
+
+   # Copy docker-compose.yml from the GitHub repository
+   wget https://github.com/owncloud-docker/server/blob/master/docker-compose.yml
+
    cd owncloud
    
    # Create the environment configuration file
@@ -53,8 +56,8 @@ The example below shows how to use `Docker Compose <https://docs.docker.com/comp
    EOF
    
    # Build and start the container
-   docker-compose up -d --build
-   
+   docker-compose up -d
+
 When the process completes, then check that all the containers have successfully
 started, by running ``docker-compose ps``. 
 If they are all working correctly, you should expect to see output similar to
@@ -64,8 +67,8 @@ that below:
    
             Name                     Command               State                     Ports                    
    -------------------------------------------------------------------------------------------------------
-   server_db_1         /usr/bin/entrypoint /bin/s ...   Up      3306/tcp                                   
-   server_owncloud_1   /usr/local/bin/entrypoint  ...   Up      0.0.0.0:443->443/tcp, 0.0.0.0:8080->80/tcp 
+   server_db_1         /usr/bin/entrypoint /bin/s ...   Up      3306/tcp
+   server_owncloud_1   /usr/local/bin/entrypoint  ...   Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
    server_redis_1      /bin/s6-svscan /etc/s6           Up      6379/tcp
    
 In it, you can see that the database, ownCloud, and Redis containers are running, and that ownCloud is accessible via ports 443 and 8080 on the host machine.
@@ -89,8 +92,10 @@ The username and password are the admin username and password which you stored i
 .. note:: 
    The first time that you access the login page via HTTPS, a browser
    warning appears, as the SSL certificate in the Docker setup is self-signed.
-   
+   However, the self-signed certificate can be overwritten with a valid cert, within the host volume.
+
 Stopping the Containers
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Assuming you used docker-compose, as in the previous example, to stop the containers use ``docker-compose stop``.
+Alternatively, use ``docker-compose down`` to stop and remove containers, along with the related networks, images, and volumes.
