@@ -232,6 +232,16 @@ on. If no enabled apps are found it defaults to the Files app.
 
 ::
 
+    'defaultapp_path' => '',
+
+Set the default app path to open on login. For example if the default app is
+"external", set this to /1/ to default to the first External Site.  You can
+use a comma-separated list of paths to match up with the apps in defaultapp.
+e.g. if defaultapp='files,external' defaultapp_path='/?dir=accounting,/1/'
+
+
+::
+
 	'knowledgebaseenabled' => true,
 
 ``true`` enables the Help menu item in the user menu (top right of the
