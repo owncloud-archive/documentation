@@ -55,5 +55,9 @@ On this page, X-Frame-Options prevents the embedding.
 
 .. figure:: ../../images/external-sites-5.png
 
-There isn't much you can do about these issues, but if you're curious you can 
-see what is happening.
+You may use the "Site Target" dropdown to select how the external site opens.  
+For sites that block iframing with `X-Frame-Options`, you need to select either 
+"New Window" or "Replace Current Window" as the target in order to open them.
+
+For sites that allow iframing, you may open them inside the OwnCloud UI by 
+selecting "Inside OwnCloud Frame' (the default).
