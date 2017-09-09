@@ -64,6 +64,6 @@ selecting "Inside OwnCloud Frame' (the default).
 
  - '_self': Opens link inside the ownCloud iframe (default)
  - '_top': Replaces current ownCloud window with the link
- - '_blank': Opens link in a new window'
+ - '_blank': Opens link in a new window
 
 
