@@ -61,3 +61,9 @@ For sites that block iframing with `X-Frame-Options`, you need to select either
 
 For sites that allow iframing, you may open them inside the OwnCloud UI by 
 selecting "Inside OwnCloud Frame' (the default).
+
+ - '_self': Opens link inside the ownCloud iframe (default)
+ - '_top': Replaces current ownCloud window with the link
+ - '_blank': Opens link in a new window'
+
+
