@@ -1238,7 +1238,8 @@ Options:
 
 ::
 
-  --output	Output format (plain, json or json_pretty, default is plain)
+  --output	  Output format (plain, json or json_pretty, default is plain)
+  --with-details  Adds more details to the output
 
 Example 1:
 
@@ -1275,8 +1276,23 @@ Example 2:
     },
   ...
 
+Example 3:
 
+::
 
+  sudo  -uwww-data ./occ security:routes --with-details
+
+::
+
+  +---------------------------------------------+---------+-------------------------------------------------------+--------------------------------+
+  | Path                                        | Methods | Controller                                            | Annotations                    |
+  +---------------------------------------------+---------+-------------------------------------------------------+--------------------------------+
+  | /apps/files/api/v1/sorting                  | POST    | OCA\Files\Controller\ApiController::updateFileSorting | NoAdminRequired                |
+  | /apps/files/api/v1/thumbnail/{x}/{y}/{file} | GET     | OCA\Files\Controller\ApiController::getThumbnail      | NoAdminRequired,NoCSRFRequired |
+  ...  
+
+|
+  
 The following commands manage server-wide SSL certificates. 
 These are useful when you create federation shares with other ownCloud servers that use self-signed certificates.
 
