@@ -731,4 +731,3 @@ or PostgreSQL) to operate correctly.
 .. _syncing user backends: configuration/server/occ_command.html#syncing-user-accounts
 .. _the new marketplace: https://marketplace.owncloud.com
 .. _Open Build Service: https://download.owncloud.org/download/repositories/10.0/owncloud/
-.. _jjjkjkj: https://github.com/owncloud/core/blob/stable10/CHANGELOG.md
