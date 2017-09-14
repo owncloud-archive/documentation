@@ -23,18 +23,14 @@ Dear ownCloud administrator, please find below the changes and known issues of o
 
 * It is now possible to directly upgrade from 8.2.11 to 10.0.3 in a single upgrade process.
 * Added occ command to list routes which can help administrators setting up network firewall rules.
-* 'occ upgrade' is now verbose by default.
-    * Administrators may need to adjust scripts for automated setup/upgrade procedures that rely on 'occ upgrade' outputs.
+* 'occ upgrade' is now verbose by default. Administrators may need to adjust scripts for automated setup/upgrade procedures that rely on 'occ upgrade' outputs.
 
 * Reenabled medial search by default
     * Enables partial search in sharing dialog autocompletion (e.g. a user wants to share with the user "Peter": Entering "pe" will find the user, entering "ter" will only find the user if the option is enabled)
     * New default is set to enabled as there is no performance impact anymore due to the introduction of the user account table in ownCloud Server 10.0.1.
-    * Please check the setting. You need to disable it if the functionality is undesired.
+    * Please check the setting. You need to disable it explicitly if the functionality is undesired.
 
-* All database columns that use the fileid have been changed to bigint (64-bits).
-    * For large instances it is therefore highly recommended to upgrade in order to avoid reaching limits.
-
-* **Removed "themes" folder TODO: ask Philipp if still possible to use themes folder**
+* All database columns that use the fileid have been changed to bigint (64-bits). For large instances it is therefore highly recommended to upgrade in order to avoid reaching limits.
 
 * Upgrade and Market app information
     * Removed "appstoreenabled" setting from config.php. If you want to disable the app store / Marketplace integration, please disable the Market app.
@@ -46,9 +42,10 @@ Dear ownCloud administrator, please find below the changes and known issues of o
 
 **Known issues**
 
-* Setting up SFTP external storages with keypairs does not work.
-* If you have storage encryption enabled, the web UI for encryption will ask again what mode you want to operate with even if you already had a mode selected before. The administrator must select the mode they had selected before.
-* Uploading a folder in Chrome in a way that would overwrite an existing folder can randomly fail (race conditions).
+* Setting up SFTP external storages with keypairs does not work. https://github.com/owncloud/core/issues/28669
+* If you have storage encryption enabled, the web UI for encryption will ask again what mode you want to operate with even if you already had a mode selected before. The administrator must select the mode they had selected before. https://github.com/owncloud/core/issues/28985
+* Uploading a folder in Chrome in a way that would overwrite an existing folder can randomly fail (race conditions). https://github.com/owncloud/core/issues/28844
+* Federated shares can not be accepted in WebUI for SAML/Shibboleth users
 * When updating from ownCloud < 9.0 the CLI output may hang for some time (potentially up to 20 minutes for big instances) whilst sharing is updated. This can happen in a variety of places during the upgrade and is to be expected. Please be patient as the update is performed and the output will continue as normal.
 
 .. _10.0.1_release_notes_label:
