@@ -1225,12 +1225,79 @@ Alternatively, you could generate the report and email it all in one command, by
 Security
 --------
 
-Use these commands to manage server-wide SSL certificates. 
+
+Use these commands when you manage security related tasks
+
+Routes dispays all routes of ownCloud. You can use this information to grant strict access via firewalls, proxies or loadbalancers etc.
+
+::
+
+  security:routes [options]
+
+Options:
+
+::
+
+  --output	  Output format (plain, json or json_pretty, default is plain)
+  --with-details  Adds more details to the output
+
+Example 1:
+
+::
+
+  sudo  -uwww-data ./occ security:routes
+
+::
+
+  +-----------------------------------------------------------+-----------------+
+  | Path                                                      | Methods         |
+  +-----------------------------------------------------------+-----------------+
+  | /apps/federation/auto-add-servers                         | POST            |
+  | /apps/federation/trusted-servers                          | POST            |
+  | /apps/federation/trusted-servers/{id}                     | DELETE          |
+  | /apps/files/                                              | GET             |
+  | /apps/files/ajax/download.php                             |                 |
+  ...
+
+Example 2:
+
+::
+
+  sudo  -uwww-data ./occ security:routes --output=json_pretty
+
+::
+
+  [
+    {
+        "path": "\/apps\/federation\/auto-add-servers",
+        "methods": [
+            "POST"
+        ]
+    },
+  ...
+
+Example 3:
+
+::
+
+  sudo  -uwww-data ./occ security:routes --with-details
+
+::
+
+  +---------------------------------------------+---------+-------------------------------------------------------+--------------------------------+
+  | Path                                        | Methods | Controller                                            | Annotations                    |
+  +---------------------------------------------+---------+-------------------------------------------------------+--------------------------------+
+  | /apps/files/api/v1/sorting                  | POST    | OCA\Files\Controller\ApiController::updateFileSorting | NoAdminRequired                |
+  | /apps/files/api/v1/thumbnail/{x}/{y}/{file} | GET     | OCA\Files\Controller\ApiController::getThumbnail      | NoAdminRequired,NoCSRFRequired |
+  ...  
+
+|
+  
+The following commands manage server-wide SSL certificates. 
 These are useful when you create federation shares with other ownCloud servers that use self-signed certificates.
 
 ::
 
- security
   security:certificates         list trusted certificates
   security:certificates:import  import trusted certificate
   security:certificates:remove  remove trusted certificate
