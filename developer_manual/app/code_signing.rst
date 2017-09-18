@@ -44,7 +44,7 @@ Is Code Signing Mandatory For Apps?
 Code signing is optional for all third-party applications. 
 Applications with a tag of "Official" on https://marketplace.owncloud.com/ require code signing.
 
-Can I omit Code Signing for personal use and/or testing?
+Can I Omit Code Signing for Personal Use and/or Testing?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, simply delete the file signature.json from the appinfo folder.
