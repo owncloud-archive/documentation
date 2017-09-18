@@ -1238,7 +1238,7 @@ Options:
 
 ::
 
-  --output	  Output format (plain, json or json_pretty, default is plain)
+  --output	  Output format (plain, json or json-pretty, default is plain)
   --with-details  Adds more details to the output
 
 Example 1:
@@ -1263,7 +1263,7 @@ Example 2:
 
 ::
 
-  sudo  -uwww-data ./occ security:routes --output=json_pretty
+  sudo  -uwww-data ./occ security:routes --output=json-pretty
 
 ::
 
