@@ -366,7 +366,7 @@ You may also encounter database errors, such as this one:
 
 .. code-block:: console
 
- SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction
+  SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction
 
 The issue, `identified by Michael Roth`_, is caused when MariaDB Galera cluster sends write requests to all servers in the cluster; `here is a detailed explanation`_.
 The solution is to send all write requests to a single server, instead of all of them.
@@ -377,6 +377,8 @@ References
 - `Database High Availability`_
 - `Performance enhancements for Apache and PHP`_
 - `How to Set Up a Redis Server as a Session Handler for PHP on Ubuntu 14.04`_
+   
+.. Links
 
 .. _Maintenance: 
    https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html
@@ -400,11 +402,7 @@ References
 .. _How to Set Up a Redis Server as a Session Handler for PHP on Ubuntu 14.04: 
    https://www.digitalocean.com/community/tutorials/how-to-set-up-a-redis-server
    -as -a-session-handler-for-php-on-ubuntu-14-04
-.. _HAProxy documentation:
-   http://www.haproxy.org/#docs
-   
-.. Links
-   
+.. _HAProxy documentation: http://www.haproxy.org/#docs
 .. _identified by Michael Roth: https://github.com/owncloud/core/issues/14757#issuecomment-223492913
 .. _MariaDB Galera Cluster: http://galeracluster.com
 .. _here is a detailed explanation: http://severalnines.com/blog/avoiding-deadlocks-galera-set-haproxy-single-node-writes-and-multi-node-reads

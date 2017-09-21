@@ -26,7 +26,7 @@ Furthermore, during bug fixing the ownCloud developers often do not have the pos
 As a member of the Test Pilot Team you could act as a contact person for a particular area to help developers **fix the bugs you care about**. 
 Testing ownCloud before it is released is the best way of making sure it does what you need.
 
-Another benefit is a closer relationship with the developers, because you will know what people are responsible for which parts, and it will be easier to get help.
+Another benefit is a closer relationship with the developers, because you will know which people are responsible for which parts, and it will be easier to get help.
 
 If you want, you can also be listed as an active contributor on the `owncloud.org <https://owncloud.org>`_ page.
 

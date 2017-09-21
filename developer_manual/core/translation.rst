@@ -36,19 +36,23 @@ Translators will translate:
 
 Translating these individual strings results in  ``local filesystem`` and ``cloud`` losing case. The two white spaces surrounding ``or`` will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.
 
-Html on translation string:
+Html in translation strings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Html tags in translation strings is ugly but usually translators can handle this.
+Html tags can be kept out of translation strings like in the example below. Then the detail of the tags is uncoupled from the
+translation.
 
-What about variable in the strings?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+What about variables in the strings?
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you need to add variables to the translation strings do it like this:
 
 .. code-block:: php
 
-  $l->t('%s is available. Get <a href="%s">more information</a>', array($data['versionstring'], $data['web']));
+  $l->t('%1$s is available. Get %2$smore information%3$s', [$data['versionstring'], '<a href="' . $data['web']] . '">', '</a>');
+
+When there are multiple substitutions, number them. Then the translators have the chance to re-order them if they need to
+translate the whole sentence in a different word order.
 
 Automated synchronization of translations
 -----------------------------------------

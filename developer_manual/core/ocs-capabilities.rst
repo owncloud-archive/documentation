@@ -25,75 +25,84 @@ This will return a JSON response, similar to the example below, along with a sta
 
 .. code-block:: json
    
-   {
-      "ocs" : {
-         "data" : {
-            "capabilities" : {
-               "checksums" : {
-                  "supportedTypes" : [
-                     "SHA1"
-                  ],
-                  "preferredUploadType" : "SHA1"
-               },
-               "files" : {
-                  "blacklisted_files" : [
-                     ".htaccess"
-                  ],
-                  "bigfilechunking" : true,
-                  "versioning" : true,
-                  "undelete" : true
-               },
-               "core" : {
-                  "status" : {
-                     "version" : "10.0.0.12",
-                     "maintenance" : "false",
-                     "installed" : "true",
-                     "versionstring" : "10.0.0",
-                     "needsDbUpgrade" : "false",
-                     "productname" : "ownCloud",
-                     "edition" : "Community"
-                  },
-                  "pollinterval" : 60,
-                  "webdav-root" : "remote.php/webdav"
-               },
-               "files_sharing" : {
-                  "federation" : {
-                     "outgoing" : true,
-                     "incoming" : true
-                  },
-                  "api_enabled" : true,
-                  "user" : {
-                     "send_mail" : false
-                  },
-                  "public" : {
-                     "password" : {
-                        "enforced" : false
-                     },
-                     "upload" : true,
-                     "multiple" : true,
-                     "expire_date" : {
-                        "enabled" : false
-                     },
-                     "send_mail" : false,
-                     "enabled" : true
-                  },
-                  "resharing" : true,
-                  "group_sharing" : true
-               },
-               "notifications" : {
-                  "ocs-endpoints" : [
-                     "list",
-                     "get",
-                     "delete"
-                  ]
-               },
-               "dav" : {
-                  "chunking" : "1.0"
-               }
-            }
-         },
-      }
-   }
+	{
+	   "ocs" : {
+		  "data" : {
+			 "capabilities" : {
+				"notifications" : {
+				   "ocs-endpoints" : [
+					  "list",
+					  "get",
+					  "delete"
+				   ]
+				},
+				"files" : {
+				   "blacklisted_files" : [
+					  ".htaccess"
+				   ],
+				   "bigfilechunking" : true,
+				   "privateLinks" : true,
+				   "undelete" : true,
+				   "versioning" : true
+				},
+				"checksums" : {
+				   "preferredUploadType" : "SHA1",
+				   "supportedTypes" : [
+					  "SHA1"
+				   ]
+				},
+				"files_sharing" : {
+				   "default_permissions" : 31,
+				   "user" : {
+					  "send_mail" : false
+				   },
+				   "federation" : {
+					  "incoming" : true,
+					  "outgoing" : true
+				   },
+				   "resharing" : true,
+				   "user_enumeration" : {
+					  "enabled" : true,
+					  "group_members_only" : false
+				   },
+				   "api_enabled" : true,
+				   "group_sharing" : true,
+				   "share_with_group_members_only" : true,
+				   "public" : {
+					  "enabled" : true,
+					  "password" : {
+						 "enforced" : false
+					  },
+					  "multiple" : true,
+					  "social_share" : true,
+					  "send_mail" : false,
+					  "upload" : true,
+					  "expire_date" : {
+						 "enabled" : false
+					  },
+					  "supports_upload_only" : true
+				   }
+				},
+				"dav" : {
+				   "chunking" : "1.0"
+				},
+				"core" : {
+				   "webdav-root" : "remote.php/webdav",
+				   "status" : {
+					  "edition" : "Community",
+					  "installed" : "true",
+					  "needsDbUpgrade" : "false",
+					  "versionstring" : "10.0.3",
+					  "productname" : "ownCloud",
+					  "maintenance" : "false",
+					  "version" : "10.0.3.3"
+				   },
+				   "pollinterval" : 60
+				}
+			 }
+		  }
+	   }
+	}
    
 
 In the example, in the ``capabilities`` element, you can see that the server lists six capabilities, along with their settings, sub-settings, and their values.

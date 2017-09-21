@@ -17,7 +17,7 @@ Operating System  Ubuntu 16.04, Debian 7 and 8, SUSE Linux Enterprise Server 12
                   and 12 SP1, Red Hat Enterprise Linux/Centos 6.5 and 7 
 Database          MySQL or MariaDB 5.5+, Oracle 11g, PostgreSQL, & SQLite
 Web server        Apache 2.4 with mod_php
-PHP Runtime       PHP (5.6+ or 7.0+)
+PHP Runtime       PHP (5.6+, 7.0, & 7.1)
 ================= =============================================================
 
 .. note::
@@ -53,11 +53,11 @@ Desktop
 
 - Windows 7+
 - Mac OS X 10.7+ (**64-bit only**)
-- CentOS 7 (64-bit only)
-- Debian 7.0 & 8.0
-- Fedora 24 & 25
-- Ubuntu 16.10 & 17.04
-- openSUSE Leap 42.1 & 42.2
+- CentOS 6 & 7 (64-bit only)
+- Debian 7.0 & 8.0 & 9.0
+- Fedora 24 & 25 & 26
+- Ubuntu 16.04 & 16.10 & 17.04
+- openSUSE Leap 42.1 & 42.2 & 42.3
 
 .. note::
    For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.

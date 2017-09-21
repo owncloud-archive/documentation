@@ -115,6 +115,22 @@
 <meta name="theme-color" content="#1d2d44">
 <link rel="shortcut icon" href="https://owncloud.org/wp-content/themes/owncloudorgnew/assets/img/common/favicon.png" />
 <link rel="apple-touch-icon-precomposed" href="https://owncloud.org/wp-content/themes/owncloudorgnew/assets/img/common/favicon.png" />
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https//piwik.owncloud.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
 {% endblock %}
 
 {# Silence the sidebar's, relbar's #}
@@ -135,7 +151,7 @@
       <div class="col-md-5 col-md-offset-1">
       {% if theme_show_search %}
         <form class="headersearch" style="margin-bottom:-3px;" action="{{ pathto('search') }}" method="get">
-        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <input type="text" value="" name="q" id="q" class="form-control" />
         <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
         </form>
       {% endif %}
@@ -148,7 +164,7 @@
 							<div class="menu-support-container">
 								<ul id="menu-support" class="menu">
 									<ul>
-										
+
 <li><a href="{{ pathto(master_doc) }}">Table of Contents</a></li>
 									</ul>
                   {{ toctree(maxdepth=3) }}
@@ -166,7 +182,7 @@
 					</div>
 				</div>
 			</div>
-  </main>  
+  </main>
   </div>
 </div>
 {%- endblock %}
