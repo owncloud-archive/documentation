@@ -88,6 +88,11 @@ If you lose your encryption keys, your files are **not** recoverable.
 Always have backups of your encryption keys stored in a safe location, and consider enabling all recovery options.
 
 You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
+   
+.. warning:: You can't manage encryption without access to the command line. 
+   If your ownCloud installation is on a hosted environment and you don't have
+   access to the command line, you won’t be able to run :doc:`occ commands
+   <../server/occ_command>`. In this case, **don't enable encryption**! 
 
 .. _enable_encryption_label:
 
