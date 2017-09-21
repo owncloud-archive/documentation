@@ -46,36 +46,35 @@ All methods return a Folder object on which files and folders can be accessed, o
 
 .. code-block:: php
 
-    <?php
-    namespace OCA\MyApp\Storage;
+   <?php
+   namespace OCA\MyApp\Storage;
 
-    class AuthorStorage {
+   class AuthorStorage {
 
-        private $storage;
+       private $storage;
 
-        public function __construct($storage){
-            $this->storage = $storage;
-        }
+       public function __construct($storage){
+           $this->storage = $storage;
+       }
 
-        public function writeTxt($content) {
-            // check if file exists and write to it if possible
-            try {
-                try {
-                    $file = $this->storage->get('/myfile.txt');
-                } catch(\OCP\Files\NotFoundException $e) {
-                    $this->storage->touch('/myfile.txt');
-                    $file = $this->storage->get('/myfile.txt');
-                }
+       public function writeTxt($content) {
+           // check if file exists and write to it if possible
+           try {
+               try {
+                   $file = $this->storage->get('/myfile.txt');
+               } catch(\OCP\Files\NotFoundException $e) {
+                   $this->storage->newFile('/myfile.txt');
+               }
 
-                // the id can be accessed by $file->getId(); 
-                $file->putContent($content);
-        
-            } catch(\OCP\Files\NotPermittedException $e) {
-                // you have to create this exception by yourself ;)
-                throw new StorageException('Cant write to file');
-            }
-        }
-    }
+               // the id can be accessed by $file->getId();
+               $file->putContent($content);
+
+           } catch(\OCP\Files\NotPermittedException $e) {
+               // you have to create this exception by yourself ;)
+               throw new StorageException('Cant write to file');
+           }
+       }
+   }
 
 Reading from a file
 ===================
