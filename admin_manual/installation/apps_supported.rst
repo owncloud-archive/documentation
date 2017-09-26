@@ -35,13 +35,16 @@ AGPL Apps
 Enterprise-Only Apps
 --------------------
 
+* Admin Audit
+* Collaborative tag management
 * Enterprise License Key
-* Files Drop
 * File Firewall
 * LDAP Home Connector
 * Log user and Sharing actions (1 new app, replacing the 2 former logging apps)
 * Object Storage (S3)
+* Password Policy
 * SharePoint
 * Shibboleth (SAML)
 * Windows Network Drives (requires External Storage)
 * Workflow
+* ownCloud X Enterprise Theme
