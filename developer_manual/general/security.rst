@@ -6,14 +6,17 @@ Security Guidelines
 Introduction
 ------------
 
-These security guidelines are for core and application developers. 
-They give highlights some of the most common security problems and how to prevent them.
-They also give you some best practices and tips about security for ownCloud development.
-Please review your application, if it contains any of the following security holes.
+These security guidelines are for both core and application developers. 
+They:
 
-.. note:: **Program defensively**: for instance always check for CSRF or escape strings, even if you do not need it. This prevents future problems where you might miss a change that leads to a security hole.
+- highlight some of the most common security problems and how to prevent them.
+- give you some best practices and tips about security when developing with ownCloud.
 
-.. note:: All application Framework security features depend on the call of the controller through :php:meth:`OCA\\AppFramework\\App::main`. If the controller method is executed directly, no security checks are being performed!
+Please use them to assess how secure your application is.
+
+.. note:: **Program defensively**: for instance always check for CSRF or escape strings, even if you do not need it. Doing so prevents future problems where you might miss a change that leads to a security hole.
+
+.. note:: All application Framework security features depend on the call of the controller through :php:meth:`OCA\\AppFramework\\App::main`. If the controller method executes directly, security checks are not performed!
 
 General
 -------
@@ -21,7 +24,8 @@ General
 Source Code Analysis
 ~~~~~~~~~~~~~~~~~~~~
 
-Before releasing an application and after security-related changes, the complete source code **must** be scanned; we currently with `RIPS`_.
+Before releasing an application and after security-related changes, the complete source code **must** be scanned. 
+We currently use `RIPS`_ to perform scans.
 Affected Software:
 
 - Core
@@ -34,31 +38,29 @@ Architecture
 Security Related Comments in Source Code
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Security-related comments in source code are forbidden. 
-Source code means PHP code and especially JavaScript code.
-Security-related comments are:
+- Security-related comments in source code are forbidden. 
+  Source code means PHP code and especially JavaScript code.
+  Security-related comments are:
 
-- Usernames and passwords
-- Descriptions of processes and algorithms
+  - Usernames and passwords
+  - Descriptions of processes and algorithms
 
-.. TODO I've chased up Peter about the use of the minifier. I didn’t think it encrypted the information.
+- Before deploying your code, `use a minifier for JavaScript and CSS files`.
 
-Before deploying, use a minifier for JavaScript and CSS files.
+HTTP or HTTPS
+~~~~~~~~~~~~~
 
-Switch Between HTTP and HTTPS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-ownCloud should only be rendered with HTTPS. 
-A switch between HTTP and HTTPS in an application should be avoided, which avoids creating `mixed-content pages`_ and the problems which that can cause. 
-Don't use HTTP for the *stylesheet*, *image*, and *JavaScript* files, if the application itself is running under HTTPS.
+- Only use HTTPS for rendering content. 
+- Avoid switching between HTTP and HTTPS, which creates `mixed-content pages`_. 
 
 Security Related Actions
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-All security-related actions must take place on the server, which includes *validation*, *authentication*, and *authorization*. 
-Additional implementations on the client side are only useful for providing a better user experience. 
-Don't hard-code passwords or encryption keys in the source code. 
-They have to be in config files and should be user-generated.
+- All security-related actions must take place on the server. 
+  This includes *validation*, *authentication*, and *authorization*. 
+  Authorization implementations on the client side are only useful for providing a better user experience. 
+- Don't hard-code passwords or encryption keys in the source code. 
+  They have to be in config files and should be user-generated.
 
 Browser plugins
 ~~~~~~~~~~~~~~~
@@ -72,48 +74,49 @@ Don't use browser plugins such as:
 Least Privilege Principle
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Every application should only have the rights that it needs. 
-An application should not access core database tables. 
-If it needs data from these tables, it should call an API to retrieve it.
+- Every application should only have the rights that it needs. 
+- An application should not access core database tables. 
+  If it needs data from these tables, it should call an API endpoint to retrieve it.
 
 Error Messages and Error Pages
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Don't show sensitive information on error pages or in error messages. 
-Sensitive information includes:
+- Don't show sensitive information on error pages or in error messages. 
+  Sensitive information includes:
 
-- Username/password
-- E-Mail addresses
-- Version numbers
-- Paths
+  - Username/password
+  - E-Mail addresses
+  - Version numbers
+  - Paths
 
-Don't show information in error messages or on error pages, which is too detailed.
+- Don't show overly detailed information in error messages or on error pages.
 
-**Example:**
+  **Example:**
 
-If a user can't login, don't show an error like: "*Your password is wrong*". 
-Instead, show a message such as: "*There was an error with your credentials*". 
-If you print "*Your password is wrong*" then an attacker knows the username was a valid one in the ownCloud installation.
-Additionally, consider implementing a `CAPTCHA`_ to prevent brute force attacks, after five failed login attempts.
+  If a user can't login, don't show an error like: "*Your password is wrong*". 
+  Instead, show a message such as: "*There was an error with your credentials*". 
+  If you print "*Your password is wrong*" then an attacker knows the username was a valid one in the ownCloud installation.
+
+- Consider implementing a `CAPTCHA`_ to prevent brute force attacks, after five failed login attempts.
 
 Session ID Transport
 ~~~~~~~~~~~~~~~~~~~~
 
-Don't use a session id as a GET Parameter, because these persist in browser history.
-Use cookies instead.
+- Don't use a session id as a GET Parameter, because these persist in browser history.
+  Use cookies instead.
 
 New Session ID After a Successful Login
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-After a successful login, the session id should be regenerated to prevent `session fixation attacks`_. 
-If you have to switch between HTTPS and HTTP, you should change the session id, because an attacker could have already read the session id.
+- After a successful login, regenerate the session id to prevent `session fixation attacks`_. 
+- If you have to switch between HTTPS and HTTP, you should change the session id, because an attacker could have already read the session id.
 
-Access Protection With Authorization Check
-------------------------------------------
+Access Protection With Authorization Checks
+-------------------------------------------
 
-Every request to the server must perform a check if the user has the authorization to perform this request. 
-A client-side check is not recommended. 
-However, it can improve the user's experience.
+- Every request to the server must check if the user has the authorization to perform this request. 
+  We do not recommend running these on the client-side, as they can be avoided. 
+  However, client-side checks can improve the user's experience.
 
 Best Practices
 --------------
@@ -121,18 +124,18 @@ Best Practices
 Use of the eval Function 
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Don't use either PHP's or JavaScript's ``eval`` functions — especially not with user-supplied data.
+- Don't use either PHP's or JavaScript's ``eval`` functions — especially not with user-supplied data.
 
 Input Validation
 ~~~~~~~~~~~~~~~~
 
-All user-supplied data, ``$_SERVER``, and ``$_COOKIE`` variables **must** be validated. 
-All these contain data which can be changed (or forged) by the client.
-You should also sanitize any supplied script code. 
+- All user-supplied data, ``$_SERVER``, and ``$_COOKIE`` variables **must** be validated. 
+  All these contain data which can be changed (or forged) by the client.
+- Sanitize any supplied script code. 
 
 **Example:**
 
-If you expect to receive an integer id as a GET parameter, then always explicitly cast it into an integer using the cast operator ``(int)``, because all ``$_REQUEST`` parameter are strings. 
+If you expect to receive an integer id as a GET parameter, then always explicitly cast it into an integer using the cast operator ``(int)``, because all ``$_REQUEST`` parameters are strings. 
 However, if you expect text as a parameter, use `PHP's htmlspecialchars function`_ with ``ENT_QUOTES`` or ``strip_tags`` to prevent `Cross-site Scripting (XSS) attacks`_.
 
 .. code-block:: php
@@ -157,69 +160,69 @@ However, if you expect text as a parameter, use `PHP's htmlspecialchars function
   Test-Absatz. Anderer Text
   <p>Test-Absatz.</p> <a href="#fragment">Anderer Text</a>
 
-Please do the validation **before** all other actions.
+Do the validation **before** all other actions.
 
 Path Traversal and Path Manipulation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you need to access the file system, don't use user-supplied data to build path names. 
-You have to check the input parameters for null bytes (``\0``), the links to the current and parent directory on UNIX/Linux filesystems (``.`` and ``..``), and empty strings.
+- Don't use user-supplied data to build path names, if you need to access the file system. 
+  You have to check the input parameters for null bytes (``\0``), the links to the current and parent directory on UNIX/Linux filesystems (``.`` and ``..``), and empty strings.
 
 Prevent Command Injection
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Use `PHP's escapeshellarg() function`_, if your input parameters are arguments for `exec()`_, `popen()`_, `system()`_, or the backtick (`````) operator.
+- Use `PHP's escapeshellarg() function`_, if your input parameters are arguments for `exec()`_, `popen()`_, `system()`_, or the backtick (`````) operator.
 
-.. code-block:: php 
+  .. code-block:: php 
 
-  <?php
+    <?php
 
-  system('ls '.escapeshellarg($dir));
+    system('ls '.escapeshellarg($dir));
 
-If you don't know how many arguments your application receives, then use the PHP function `escapeshellcmd()`_ to escape the whole command.
+- If you do not know how many arguments your application receives, then use the PHP function `escapeshellcmd()`_ to escape the whole command.
 
-.. code-block:: php
+  .. code-block:: php
 
-  <?php
-  $command = './configure '.$_POST['configure_options'];
+    <?php
+    $command = './configure '.$_POST['configure_options'];
 
-  $escaped_command = escapeshellcmd($command);
+    $escaped_command = escapeshellcmd($command);
 
-  system($escaped_command);
+    system($escaped_command);
 
 Output Escaping
 ~~~~~~~~~~~~~~~
 
-All input parameters printed out in the response should be escaped. 
-Do not use ``print_unescaped()`` in ownCloud templates, use ``p()`` instead. 
-If you have to output text in JavaScript use ``$jQuery.text()``. 
-If you want to output HTML, use ``$jQuery.html()``. 
-A better option is to use a tool like `HTMLPurifier`_.
+- All input parameters printed out in the response should be escaped. 
+- Do not use ``print_unescaped()`` in ownCloud templates, use ``p()`` instead. 
+- Use ``$jQuery.text()``, if you have to output text in JavaScript . 
+- Use ``$jQuery.html()``, if you want to output HTML, . 
+  A better option is to use a tool like `HTMLPurifier`_.
 
 High Sensitive Information in GET Request
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You should not use sensitive information, like passwords or usernames, in unprotected requests. 
-All request with sensitive information should be protected with HTTPS.
+- You should not use sensitive information, like passwords or usernames, in unprotected requests. 
+- All requests containing sensitive information should be protected with HTTPS.
 
 Prevent HTTP-Header-Injection (HTTP Response Splitting)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To prevent `HTTP Response Splitting`_, you have to check all request variables for ``%0d`` (CR) and ``%0a`` (LF), if they are parameters provided to `PHP's header() function`_.
-This is because an attacker can deface your website, such as redirect the request to a phishing site or executing an XSS attack, by performing header manipulation.
+- To prevent `HTTP Response Splitting`_, check all request variables for ``%0d`` (CR) and ``%0a`` (LF), if they are parameters provided to `PHP's header() function`_.
+  This is because an attacker can deface your website, such as redirect the request to a phishing site or executing an XSS attack, by performing header manipulation.
 
 Changes on the Document Object Model (DOM)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If your code changes the DOM, then don't use unvalidated user input.
+Don't use unvalidated user input, if your code changes the DOM.
 
 .. warning:: You should never trust user input.
 
 Prevent SQL-Injection
 ~~~~~~~~~~~~~~~~~~~~~
 
-If you have to pass parameters to a SQL query, use the escape functions for your database system to prevent `SQL Injection attacks`_. 
-In ownCloud you must use the `QueryBuilder`_.
+- Use the escape functions for your database to prevent `SQL Injection attacks`_, if you have to pass parameters to a SQL query. 
+  In ownCloud you must use the `QueryBuilder`_.
 
 Data Storage
 ------------
@@ -227,19 +230,19 @@ Data Storage
 Persistent Storages on Client Side
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Don't save highly sensitive data in persistent storage on the client side. 
-Persistent data storage includes:
+- Don't save highly sensitive data in persistent storage on the client side. 
+  Persistent data storage includes:
 
-- `Persistent HTTP cookies`_
-- `Flash cookies`_
-- `HTML5 Web-Storage`_
-- `HTML5 Index DB`_
+  - `Persistent HTTP cookies`_
+  - `Flash cookies`_
+  - `HTML5 Web-Storage`_
+  - `HTML5 Index DB`_
 
 Release all Resources in Case of an Error
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-All resources, such as database and file locks, must be released when errors occur. 
-Doing so prevents the server from being subject to `denial-of-service (DOS) attacks`_.
+- All resources, such as database and file locks, must be released when errors occur. 
+  Doing so prevents the server from being subject to `denial-of-service (DOS) attacks`_.
 
 Cryptography
 ------------
@@ -247,36 +250,35 @@ Cryptography
 Symmetric Encryption Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you use symmetric encryption methods in your code, use the following encryption types:
+- If you use symmetric encryption methods in your code, use the following encryption types:
 
-- AES with a key length of 256
-- SERPENT with a key length of 256
+  - AES with a key length of 256
+  - SERPENT with a key length of 256
 
-For block ciphers use the following modes:
+- For block ciphers use the following modes:
 
-- CFB (cipher feedback mode)
-- CBC (cipher block chaining mode)
+  - CFB (cipher feedback mode)
+  - CBC (cipher block chaining mode)
 
-CFB mode requires an initialization vector (IV) to the respective cipher function. 
-Whereas in CBC mode, supplying one is optional.
-The IV must be unique and must be the same when encrypting and decrypting. 
-Use `the PHP crypt library`_ with `libmcrypt`_ greater 2.4.x.
+.. note:: 
+   CFB mode requires an initialization vector (IV) to the respective cipher
+   function. Whereas in CBC mode, supplying one is optional. The IV must be
+   unique and must be the same when encrypting and decrypting. Use `the PHP
+   crypt library`_ with `libmcrypt`_ greater 2.4.x.
 
 Asymmetric Encryption Methods
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you use asymmetric encryption methods, use the following encryption type:
-
-- RSA with key length 4096
+- If you use asymmetric encryption methods, use RSA encryption with a key length of 4096.
 
 Hash Algorithms
 ~~~~~~~~~~~~~~~
 
-If you need a hash function in PHP, use the SHA512 hash algorithm. 
-You can use `PHP's crypt() function`_, but only with a strong salt.
-Don't use *MD5*, *SHA1* or *SHA256*. 
-These types of algorithms are designed to be very fast and efficient. 
-However, with modern techniques and computer equipment, it has become trivial to brute force the output of these algorithms to discover the original input.
+- If you need a hash function in PHP, use the SHA512 hash algorithm. 
+- You can use `PHP's crypt() function`_, but only with a strong salt.
+- Don't use *MD5*, *SHA1* or *SHA256*. 
+  These types of algorithms are designed to be very fast and efficient. 
+  However, with modern techniques and computer equipment, it has become trivial to brute force the output of these algorithms to discover the original input.
 
 Cookies
 -------
@@ -284,18 +286,18 @@ Cookies
 Secure Flag
 ~~~~~~~~~~~
 
-If you use HTTPS to protect requests, then you have to use `the secure flag`_ for your cookies.
+- If you use HTTPS to protect requests, then use `the secure flag`_ for your cookies.
 
 HTTP Only
 ~~~~~~~~~
 
-If you don't have to access your cookie content in JavaScript, the set `the HttpOnly flag`_ on every cookie.
+- If you do not have to access your cookie content in JavaScript, then set `the HttpOnly flag`_ on every cookie.
 
 Path
 ~~~~
 
-If possible, set a path for a cookie. 
-Doing so ensures that the cookie is only valid for requests using the provided path.
+- If possible, set a path for a cookie. 
+  Doing so ensures that the cookie is only valid for requests using the provided path.
 
 Passwords
 ---------
@@ -305,37 +307,37 @@ The following chapter is not only for developers but also for admins and end-use
 Charset of Passwords 
 ~~~~~~~~~~~~~~~~~~~~~
 
-The charset of a password should contain *characters*, *numbers*, and *special characters*.
-Characters should be both upper and lowercase.
+- The charset of a password should contain *characters*, *numbers*, and *special characters*.
+- Characters should be both upper and lowercase.
 
 Password Length
 ~~~~~~~~~~~~~~~
 
-All password should have a minimum length of eight characters and contain numbers and special characters. 
-These requirements must be validated by the application.
+- All passwords should have a minimum length of eight characters and contain numbers and special characters. 
+  These requirements must be validated by the application.
 
 Password Quality
 ~~~~~~~~~~~~~~~~
 
-If the user can choose his password for the first time, the quality of a password should be displayed graphically.
+- If the user can choose his password for the first time, the quality of a password should be displayed graphically.
 
 Password Input
 ~~~~~~~~~~~~~~
 
-If a user can input his password into an input field, the input field **must** be of type "password". 
-If an error occurs, don't fill the password field automatically when displaying an error message.
+- If a user can input his password into an input field, the input field **must** be of type "password". 
+- If an error occurs, don't fill the password field automatically when displaying an error message.
 
 Save Passwords
 ~~~~~~~~~~~~~~
 
-Don't save passwords in clear text. 
-Use a `salted hash`_
+- Don't save passwords in clear text. 
+  Use a `salted hash`_
 
 Default and Initial Passwords
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Both default and initial passwords should be avoided. 
-If you have to use either, you have to make sure that the password is changed by the user on the first call to the application.
+- Avoid using both default and initial passwords. 
+  If you have to use either, you have to make sure that the password is changed by the user on the first call to the application.
 
 User Interface
 --------------
@@ -343,21 +345,21 @@ User Interface
 Input Auto-completion
 ~~~~~~~~~~~~~~~~~~~~~
 
-Auto-complete must be disabled for all input fields which receive sensitive data.
-Sensitive data includes:
+- Auto-complete must be disabled for all input fields which receive sensitive data.
+  Sensitive data includes:
 
-- Username
-- Password
-- Credit card information
-- Banking information
+  - Username
+  - Password
+  - Credit card information
+  - Banking information
 
-For text input fields use ``autocomplete="off"`` or use a dynamically generated field name.
+- For text input fields use ``autocomplete="off"`` or use a dynamically generated field name.
 
-For password fields use: 
+- For password fields use: 
 
-.. code-block:: 
+  .. code-block:: 
 
-  <input name="pass" type="password" autocomplete="new-password" />
+    <input name="pass" type="password" autocomplete="new-password" />
 
 Attack Vectors
 --------------
@@ -375,7 +377,6 @@ ownCloud offers three simple checks:
 These checks are already automatically performed, by the application framework, for each request. 
 If they are not required, they have to be *explicitly* turned off by using annotations above your controller method. 
 See :doc:`../app/controllers`.
-
 Additionally, always check if the user has the right to perform that action.
 
 Clickjacking
@@ -395,11 +396,11 @@ Code execution means that an attacker can include an arbitrary PHP file.
 This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
 Code executions and file inclusions can be easily prevented by never allowing user-input to run through the following functions:
 
-* **include()**
-* **require()**
-* **require_once()**
-* **eval()**
-* **fopen()**
+- **include()**
+- **require()**
+- **require_once()**
+- **eval()**
+- **fopen()**
 
 .. note:: 
    **Never** allow the user to upload files into a folder which is reachable from the URL!
@@ -453,9 +454,10 @@ Let's assume you use the following example in your application:
   <?php
   echo $_GET['username'];
 
-An attacker might now easily send the user a link to ``app.php?username=<script src="attacker.tld"></script>``, to overtake the user account. 
+An attacker might now easily send the user a link to ``app.php?username=<script src="attacker.tld"></script>``, to take control of the user account. 
 The same problem occurs when outputting content from the database, or any other location that is writable by users.
-Another attack vector that is often overlooked is XSS vulnerabilities in ``href`` attributes. HTML allows to execute JavaScript in ``href`` attributes like this::
+Another attack vector that is often overlooked is XSS vulnerabilities in ``href`` attributes. 
+HTML allows for executing JavaScript in ``href`` attributes like this::
 
     <a href="javascript:alert('xss')">
 
@@ -464,8 +466,8 @@ Doing so sanitizes input.
 Also **validate URLs to start with the expected protocol** (starts with "http" for instance)!
 
 .. note:: 
-   Should you ever require to print something unescaped, double check if it is necessary. 
-   If there is no other way (e.g., when including of subtemplates) use `print_unescaped`  with care.
+   Should you ever need to print something unescaped, double check if it is necessary. 
+   If there is no other way (e.g., when including sub-templates) use `print_unescaped`  with care.
 
 JavaScript
 ~~~~~~~~~~
@@ -646,3 +648,4 @@ If you need help to ensure that a function is secure, please ask on our `mailing
 .. _Cross-site Scripting (XSS) attacks: https://www.owasp.org/index.php/Cross-site_Scripting_(XSS) 
 .. _HTTP Response Splitting: https://www.owasp.org/index.php/HTTP_Response_Splitting
 .. _SQL Injection attacks: https://www.owasp.org/index.php/SQL_Injection
+.. _use a minifier for JavaScript and CSS files: http://www.minifier.org
