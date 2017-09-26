@@ -63,6 +63,12 @@ Authentication via an existing LDAP or Active Directory server.
 * Database
    MySQL, MariaDB or PostgreSQL. We currently recommend MySQL / MariaDB, as our customers have had good experiences when moving to a Galera cluster to scale the DB. (InnoDB storage engine, MyISAM is not supported, see: :ref:`db-storage-engine-label`)
 
+  .. warning:: 
+     If you are using MaxScale/Galera, then you need to use at least version 1.3.0.
+     In earlier versions, there is a bug where the value of ``last_insert_id`` is not routed to the master node. 
+     This bug can cause loops within ownCloud and corrupt database rows. 
+     You can find out more information `in the issue documentation`_.
+
 * Backup
    Install ownCloud, ownCloud data directory and database on Btrfs filesystem. Make regular snapshots at desired intervals for zero downtime backups. Mount DB partitions with the "nodatacow" option to prevent fragmentation.
  
@@ -296,3 +302,4 @@ References
 .. _identified by Michael Roth: https://github.com/owncloud/core/issues/14757#issuecomment-223492913
 .. _MariaDB Galera Cluster: http://galeracluster.com
 .. _here is a detailed explanation: http://severalnines.com/blog/avoiding-deadlocks-galera-set-haproxy-single-node-writes-and-multi-node-reads
+.. _in the issue documentation: https://jira.mariadb.org/browse/MXS-220
