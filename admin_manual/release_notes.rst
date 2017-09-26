@@ -46,6 +46,7 @@ Dear ownCloud administrator, please find below the changes and known issues of o
 * If you have storage encryption enabled, the web UI for encryption will ask again what mode you want to operate with even if you already had a mode selected before. The administrator must select the mode they had selected before. https://github.com/owncloud/core/issues/28985
 * Uploading a folder in Chrome in a way that would overwrite an existing folder can randomly fail (race conditions). https://github.com/owncloud/core/issues/28844
 * Federated shares can not be accepted in WebUI for SAML/Shibboleth users
+* For **MariaDB users**: Currently, Doctrine has no support for the breaking changes introduced in MariaDB 10.2.7, and above. If you are on MariaDB 10.2.7 or above, and have encountered the message "1067 Invalid default value for 'lastmodified'", `please apply this patch`_ to Doctrine. We expect this bug to be fixed in ownCloud 10.0.4.
 * When updating from ownCloud < 9.0 the CLI output may hang for some time (potentially up to 20 minutes for big instances) whilst sharing is updated. This can happen in a variety of places during the upgrade and is to be expected. Please be patient as the update is performed and the output will continue as normal.
 
 .. _10.0.1_release_notes_label:
@@ -731,3 +732,4 @@ or PostgreSQL) to operate correctly.
 .. _syncing user backends: configuration/server/occ_command.html#syncing-user-accounts
 .. _the new marketplace: https://marketplace.owncloud.com
 .. _Open Build Service: https://download.owncloud.org/download/repositories/10.0/owncloud/
+.. _please apply this patch: https://gist.github.com/VicDeo/bb0689104baeb5ad2371d3fdb1a013ac/raw/04bb98e08719a04322ea883bcce7c3e778e3afe1/DoctrineMariaDB102.patch
