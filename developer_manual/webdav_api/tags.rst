@@ -192,7 +192,7 @@ Below is an example ``PROPPATCH`` element, which changes the message text but le
    <a:propertyupdate xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
      <a:set>
          <a:prop>
-           <oc:name>This is an updated tag.</oc:name>
+           <oc:display-name>This is an updated tag.</oc:display-name>
          </a:prop>
      </a:set>
    </a:propertyupdate>
@@ -337,7 +337,7 @@ Assign a Tag to a File
 ================================================================ ====== ================
 Request Path                                                     Method Content Type
 ================================================================ ====== ================
-``remote.php/dav/systemtags-relations/files/<tagid>/<fileid>``   PUT    ``text/xml``
+``remote.php/dav/systemtags-relations/files/<fileid>/<tagid>``   PUT    ``text/xml``
 ================================================================ ====== ================
 
 To assign a tag to a file, send an authenticated ``PUT`` request specifying the path to the file to tag.

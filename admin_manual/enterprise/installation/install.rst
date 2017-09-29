@@ -44,7 +44,7 @@ Configuration
 
 Once you get your Enterprise license key, it needs to be copied to your ownCloud configuration file, ``config/config.php`` file like this example::
 
-  'license-key' => 'test-20150101-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-YYYYYY’,
+  'license-key' => 'test-20150101-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-YYYYYY',
 
 Each running instance of ownCloud requires a license key. 
 Keys will work across upgrades without issue, so new keys will not be required when you upgrade your ownCloud Enterprise to a new version.

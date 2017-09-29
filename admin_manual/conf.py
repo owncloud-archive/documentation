@@ -30,6 +30,10 @@ extensions = ['sphinxcontrib.phpdomain', 'sphinx.ext.todo', 'rst2pdf.pdfbuilder'
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_shared_assets/templates']
 
+rst_prolog = """
+.. |name| replace:: ownCloud
+"""
+
 # The suffix of source filenames.
 source_suffix = '.rst'
 
@@ -44,9 +48,9 @@ master_doc = 'contents'
 # built documents.
 #
 # The short X.Y version.
-version = '10.0.1'
+version = '10.0.3'
 # The full version, including alpha/beta/rc tags.
-release = '10.0.1'
+release = '10.0.3'
 
 # General information about the project.
 project = u'ownCloud %s Server Administration Manual' % (version)

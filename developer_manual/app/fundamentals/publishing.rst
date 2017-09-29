@@ -19,7 +19,7 @@ The process of publishing apps aims to be:
 * Fair
 * Easy to maintain
 
-Apps in the store are divided in three 'levels' of trust:
+Apps in the store are divided into three levels of trust:
 
 * Official
 * Approved
@@ -30,14 +30,15 @@ With each level come requirements and a position in the store.
 Official
 ^^^^^^^^
 
-Official apps are developed by and within the ownCloud community and its `Github <https://github.com/owncloud>`_ repository and offer functionality central to ownCloud. They are ready for serious use and can be considered a part of ownCloud.
+Official apps are developed by and within the ownCloud community and its `Github <https://github.com/owncloud>`_ repository and offer functionality central to ownCloud. 
+They are ready for serious use and can be considered a part of ownCloud.
 
 Requirements:
 
-* Developed in ownCloud github repo.
+* Developed in the ownCloud GitHub repo.
 * Minimum of 2 active maintainers and contributions from others.
 * Security audited and design reviewed.
-* App is at least 6 months old and has seen regular releases.
+* App is at least six months old and has seen regular releases.
 * Follows app guidelines.
 * Supports the same platforms and technologies mentioned in the release notes of the ownCloud version this app is made for.
 
@@ -45,28 +46,28 @@ Requirements:
 
 ownCloud Marketplace:
 
-* Available in Apps page in separate category.
+* Available in Apps page in a separate category.
 * Sorted first in all overviews, "Official" tag.
-* Shown as featured, on https://owncloud.org etc.
+* Shown as featured on https://owncloud.org, etc.
 * Major releases optionally featured on https://owncloud.org and sent to owncloud-announce list.
 * New versions/updates approved by at least one other person.
 
 .. note::
    Official apps include those that are part of the release tarball. 
-   We'd like to keep the tarball minimal so most official apps are not part of the standard installation.
+   We'd like to keep the tarball minimal, so most official apps are not part of the standard installation.
 
 Approved
 ^^^^^^^^
 
 Approved apps are developed by trusted developers and have passed a cursory security check. 
-They are actively maintained in an open code repository and their maintainers deem them to be stable for casual to normal use.
+They are actively maintained in an open code repository, and their maintainers deem them to be stable for casual to normal use.
 
 Requirements:
 
-* Code is developed in an open and version-managed code repository, ideally GitHub with git but other scm/hosting is OK.
+* Code is developed in an open and version-managed code repository, ideally GitHub, with git. But other VCS' and hosting options are also OK.
 * Minimum of one active developer/maintainer.
 * Minimum 5 ratings, average score 60/100 or better.
-* App is at least 3 months old.
+* App is at least three months old.
 * Follows app guidelines.
 * The developer is trusted.
 * App is subject to unannounced security audits.
@@ -74,9 +75,9 @@ Requirements:
 
 .. * app is signed, at least domain verified
 
-.. note:: **Developer trust**: The developer(s) is/are known in community; he/she has/have been active for a while, have met others at events and/or worked with others in various areas.
+.. note:: **Developer trust**: The developer(s) is/are known in the community; he/she has/have been active for a while, have met others at events and/or worked with others in various areas.
 
-.. note:: **Security audits**: in practice this means that at least some of the code of this developer has been audited; either through another app by the same developer or with an earlier version of the app. And that the attitude of the developer towards these audits has been positive.
+.. note:: **Security audits**: in practice, this means that at least some of the code of this developer has been audited; either through another app by the same developer or with an earlier version of the app. And that the attitude of the developer towards these audits has been positive.
 
 ownCloud Marketplace:
 
@@ -95,10 +96,10 @@ Requirements:
 
 * No malicious intent found from this developer at any time
 * 0 confirmed security problems
-* Less than 3 unconfirmed 'security flags'
+* Less than three unconfirmed 'security flags'
 * Rating over 20/100
 
-.. * app is signed but no verification has to be done
+.. * app is signed, but no verification has to be done
 
 ownCloud Marketplace:
 
@@ -123,13 +124,13 @@ The following categories are available for apps to be filed under:
 - Storage
 - Tools
 
-To make your app available under one of these categories please make sure to user the proper tag in your info.xml:
+To make your app available under one of these categories, please make sure to user the proper tag in your ``info.xml``:
 
 .. code-block:: xml
    
  <category>security</category>
 
-Note: For publishing themes this tag must be present but empty.
+Note: For publishing themes, this tag must be present but empty.
 
 .. code-block:: xml
 
@@ -158,12 +159,12 @@ Verified
 
 To get the "verified" label on your app, you must request a review. 
 We then will look into your app and check if it meets the ownCloud app development guidelines (see below).
-The advantages of verified apps are:
+The advantages of verified apps are that:
 
-- Labeled with "verified" badge
-- Available in apps page in separate category
-- Only verified apps can be displayed in the "featured" area
-- Major releases optionally featured on https://owncloud.org and sent to owncloud-announce list
+- they are labeled with "verified" badge.
+- they are available in apps page in separate category.
+- only verified apps can be displayed in the "featured" area.
+- major releases optionally featured on https://owncloud.org and sent to the owncloud-announce list.
 
 .. image:: ../../images/app/app-tile-verified.jpg
    :alt: ownCloud "Verified" tag
@@ -173,16 +174,16 @@ Trusted
 
 If your app reaches a rating level of 4 or higher based on 40 ratings or more it automatically gets the badge "trusted". 
 It represents a community oriented level of quality which makes it more attractive to other users.
-The advantages of trusted apps are:
+The advantages of trusted apps are that:
 
-- Labeled with "trusted" badge
-- User can filter by trusted apps
+- they are labeled with "trusted" badge.
+- the user can filter by trusted apps.
 
 App Review Process
 ------------------
 
 To request an app review go to "Account" > "My Products" > "Edit app" and click on the button "Request review". 
-Usually it takes 3-5 work days to review your app. 
+Usually, it takes 3-5 work days to review your app. 
 You will be notified about the result. 
 
 If it is successful, your app will get the "verified" badge.
@@ -199,8 +200,8 @@ Legal and Security
 
 - Apps can not use "ownCloud" in their name
 - Irregular and unannounced security audits of all apps can and will take place.
-- If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum 2 year ban from any ownCloud infrastructure.
-- Malicious intent includes deliberate spying on users by leaking user data to a third party system or adding a back door (like a hard-coded user account) to ownCloud. An unintentional security bug that gets fixed in time won’t be considered bad faith.
+- If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum two-year ban from any ownCloud infrastructure.
+- Malicious intent includes deliberate spying on users by leaking user data to a third party system or adding a back door (like a hard coded user account) to ownCloud. An unintentional security bug that gets fixed in time won’t be considered bad faith.
 - Apps do not violate any laws; it has to comply with copyright- and trademark law.
 - App authors have to respond timely to security concerns and not make ownCloud more vulnerable to attack.
 
@@ -210,39 +211,42 @@ Technical
 ^^^^^^^^^
 
 - Apps can only use the public ownCloud API
-- At time of the release of an app it can only be configured to be compatible with the latest ownCloud release +1
+- At time of the release of an app, it can only be configured to be compatible with the latest ownCloud release +1
 - Apps should not cause ownCloud to break, consume excessive memory or slow ownCloud down
-- Apps should not hamper functionality of ownCloud unless that is explicitly the goal of the app @DeepDiver1975 please review and update technical requirements to new marketplace requirements if changed
+- Apps should not hamper functionality of ownCloud unless that is explicitly the goal of the app
 
 Providing Information
 ^^^^^^^^^^^^^^^^^^^^^
 
-When uploading an app it should provide a professional and informative look. To do so, please consider the following:
+When uploading an app, it should provide a professional and informative look and feel. 
+To do so, please consider the following three points:
 
-- The title of your app can be up to 50 characters. Provide an unique name make it easy to users to identify the product. Do not include your developer and/or company name into the title.
-- The summary of your app can be up to 90 characters. Provide a short description. This gets displayed below the product title and on the product tiles
-- The description of your app can be up to 4000 characters and supports markdown. Provide all necessary, detailed information about your app. This should contain all information to convince the user to use/buy/download your app. So, don't get lost in technical details. Explain in simple, precise steps what the user will get. When writing, focus on the benefits your app offers.
+- The title of your app can be up to 50 characters. Provide a unique name, which makes it easy for users to identify the product. Do not include your developer and/or company name in the title.
+- The summary of your app can be up to 90 characters. Provide a short description. This will be displayed below the product titles.
+- The description of your app can be up to 4000 characters and supports Markdown formatting. It should, ideally, provide all the necessary information about your app — especially information necessary to convince the user to download, use, and buy your app. So, don't get lost in technical details. Explain in simple, yet precise, steps what the user will get. When writing, focus on the benefits your app offers.
 
 Images
 ^^^^^^
 
 - Provide meaningful images to your users.
-- For best results, images should be 1400px wide and should go with a roughly aspect ratio of 2:1
-- The first image provided in your apps info.xml will be used as preview image and gets displayed in the top area of your marketplace app page.
+- For best results, images should be 1400px wide and should go with a rough aspect ratio of 2:1
+- The first image provided in your apps info.xml will be used as the preview image and is displayed in the top area of your marketplace app page.
 
 Respect the Users
 ^^^^^^^^^^^^^^^^^
 
 - Apps have to follow design and HTML/CSS layout guidelines
 - Apps correctly clean up after themselves on uninstall and correctly handle up- and downgrades
-- Apps clearly communicate their intended purpose and active features, including features introduced through updates.
+- Apps communicate their intended purpose and active features, including features introduced through updates.
 - Apps respect the users’ choices and do not make unexpected changes, or limit users’ ability to revert them. For example, they do not remove other apps or disable settings.
-- Apps must respect user privacy. If user data is sent anywhere, this must be clearly explained and be kept to a minimum for the functioning of an app. Use proper security measures when needed.
+- Apps must respect user privacy. If user data is sent anywhere, this must be explained and be kept to a minimum for the functioning of an app. Use proper security measures when needed.
 
 Disclaimer
 ----------
 
-ownCloud reserves the right to block and/or delete any uploaded app which does not comply with the ownCloud quality standards. Additionally we reserve the right to ban publishers who attempt to and/or upload malicious code. This does not depend on whether it happens intentionally or not.
+ownCloud reserves the right to block and/or delete any uploaded app which does not comply with the ownCloud quality standards. 
+Additionally, we reserve the right to ban publishers who attempt to upload malicious code. 
+This does not depend on whether it happens intentionally or not.
 
 Available Products Tags
 -----------------------
@@ -279,3 +283,4 @@ dependencies  Min and max version of ownCloud platform your app works with. For 
 ============= =====================================================================================================
 
 For a complete list of tags see: https://doc.owncloud.org/server/latest/developer_manual/app/info.html.
+

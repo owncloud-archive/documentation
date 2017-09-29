@@ -68,7 +68,18 @@ The ownCloud admin and the storage admin will see only encrypted files when brow
    exploitable by anyone with administrator access to your server. For more
    information, read: `How ownCloud uses encryption to protect your data
    <https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/>`_.
-   
+  
+Encryption Types
+----------------
+
+ownCloud provides two encryption types:
+
+- **Basic encryption:** every user has their own private/public key pairs, and the private key is protected by the user's password.
+
+- **Master Key:** there is only one key (or key pair) and all files are encrypted using that key pair.
+
+.. warning:: These encryption types are **not compatible**. 
+  
 Before Enabling Encryption
 --------------------------
 
@@ -76,9 +87,12 @@ Plan very carefully before enabling encryption, because it is not reversible via
 If you lose your encryption keys, your files are **not** recoverable. 
 Always have backups of your encryption keys stored in a safe location, and consider enabling all recovery options.
 
-.. warning:: Consider there are 2 different encryptions and they are **not compatible**. There is Basic encryption and Master Key Based encryption. 
-
 You have more options via the ``occ`` command (see :ref:`occ_encryption_label`)
+   
+.. warning:: You can't manage encryption without access to the command line. 
+   If your ownCloud installation is on a hosted environment and you don't have
+   access to the command line, you won’t be able to run :doc:`occ commands
+   <../server/occ_command>`. In this case, **don't enable encryption**! 
 
 .. _enable_encryption_label:
 

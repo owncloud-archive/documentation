@@ -35,21 +35,44 @@ To save time, here's the commands which you can copy and use::
 Fix Hardcoded Database Path Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+Update the oc_storages table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
 If you want to manually change the location of the data folder in the database,
 run the SQL below:
 
 .. code-block:: sql
    
   UPDATE oc_storages SET id='local::/mnt/owncloud' 
-    WHERE id='local::/var/www/owncloud/data'
+    WHERE id='local::/var/www/owncloud/data';
 
-The other area to check is the `oc_jobs` table. The logrotate process may have
-hard-coded a non-standard (or old) value for the data path. To check it, run the
-SQL below and see if any results are returned:
+Update the oc_accounts table
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You next need to update the ``home`` column in the ``oc_accounts`` table. 
+This column contains the absolute path for user folders, e.g., ``/mnt/data/files/admin``.
+Assuming that the new home directory is: ``/mnt/data/files/super-admin``, and that the user’s id is 1, you could change it using the following SQL statement:
+
+.. code-block:: sql
+   
+  UPDATE oc_accounts SET home='/mnt/data/files/super-admin' 
+    WHERE id=1;
+
+.. note:: 
+   Please don’t copy and paste this example verbatim — nor any of the others. 
+   It, and the others, are provided only as guides to what you should or could do. 
+
+Update the oc_jobs table
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The next area to check is the `oc_jobs` table. 
+The logrotate process may have hard-coded a non-standard (or old) value for the data path. 
+To check it, run the SQL below and see if any results are returned:
 
 .. code-block:: sql
 
-  SELECT * FROM oc_jobs WHERE class = 'OC\Log\Rotate';
+  SELECT * FROM oc_jobs 
+    WHERE class = 'OC\Log\Rotate';
 
 If any are, run the SQL below to update them, changing the value as appropriate.
 

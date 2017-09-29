@@ -54,8 +54,6 @@ Don't bind your CSS too much to your HTML structure and try to avoid IDs. Also t
       display: inline-block;
   }
 
-**TBD**
-
 General
 -------
 
@@ -66,13 +64,15 @@ General
 * Software should work. We only put features into master when they are complete. It's better to not have a feature instead of having one that works poorly.
 * It is best to start working based on an issue - create one if there is none. You describe what you want to do, ask feedback on the direction you take it and take it from there.
 * When you are finished, use the merge request function on Github to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label "5 - ready for review" to it. You can also post your merge request to the mailing list to let people know. See :doc:`the code review page for more information <../bugtracker/codereviews>`
-* It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
+* It is essential to keep changes small and separate. The bigger a PR grows, the harder it is to complete a quick and efficient review. Given that, split larger changes up into smaller changes, where you can. For example, if you need a minor improvement, get it in first rather than adding it as part of a much larger piece of work.
 * Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. ownCloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.
-
 
 Labels
 ------
-We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done. Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on. It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to ownCloud.
+
+We assign labels to issues and pull requests to make it easier to find them as well as to signal what needs to be done with them. 
+Some of these are assigned by the developers, others by QA, bug triggers, project lead or maintainers and so on. 
+It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to ownCloud.
 
 The most important labels and their meaning:
 
@@ -114,8 +114,7 @@ The most important labels and their meaning:
 Severity Level Labels
 ^^^^^^^^^^^^^^^^^^^^^
 
-To better understand which severity level to apply, if any, here is
-a description of each of the four respective labels.
+To better understand which severity level to apply, if any, here is a description of each of the four severity labels.
 
 ============== ================================================================
 Label          Description
@@ -140,11 +139,10 @@ Don’t See The Label You Need?
 If you want a label not in the list above, please first discuss on the mailing
 list.
 
-
-
 JavaScript
 ----------
-In general take a look at `JSLint <http://www.jslint.com/lint.html>`_ without the whitespace rules.
+
+In general take a look at `JSLint <http://www.jslint.com/>`_ without the whitespace rules.
 
 * Use a :file:`js/main.js` or :file:`js/app.js` where your program is started
 * Complete every statement with a **;**
@@ -311,6 +309,16 @@ Control Structures
 PHP
 ---
 The ownCloud coding style guide is based on `PEAR Coding Standards <http://pear.php.net/manual/en/standards.php>`_.
+To check your PHP codestyle use `PHP Code Sniffer <https://github.com/squizlabs/PHP_CodeSniffer>`_ >= 3.0 with the ``phpcs.xml`` config file from the core branch.
+
+To check one file use: ``phpcs --standard=./phpcs.xml yourCode.php`` 
+
+To check all files in a folder (recursive) use: ``phpcs --standard=./phpcs.xml your/code/folder/``
+
+A `git pre-commit hook <https://git-scm.com/book/en/v2/Customizing-Git-Git-Hooks>`_ is available `here <https://raw.githubusercontent.com/Ikke/git-precommit-phpcs/master/pre-commit>`_. Download and save the file in the ``.git/hooks`` folder of your owncloud project and change the ``PHPCS_STANDARD`` constant to the path of the ``phpcs.xml`` file.
+
+Start & closing
+^^^^^^^^^^^^^^^
 
 Always use::
 
@@ -433,6 +441,7 @@ Control Structures
 
 Unit tests
 ^^^^^^^^^^
+
 Unit tests must always extend the ``\Test\TestCase`` class, which takes care
 of cleaning up the installation after the test.
 
@@ -462,14 +471,14 @@ with ``Data``.
 
 
 
-User interface
+User Interface
 --------------
-* Software should get out of the way. Do things automatically instead of offering configuration options.
-* Software should be easy to use. Show only the most important elements. Secondary elements only on hover or via Advanced function.
+
+* Software should not get in the way of what the user needs to do. It should do as much as possible automatically, instead of offering configuration options for the user to chose from.
+* Software should be easy to use. Show only the most important elements. Secondary elements should only appear as a result of a hovering the mouse over an element, or via choosing advanced functionality.
 * User data is sacred. Provide undo instead of asking for confirmation - `which might be dismissed <http://www.alistapart.com/articles/neveruseawarning/>`_
 * The state of the application should be clear. If something loads, provide feedback.
 * Do not adapt broken concepts (for example design of desktop apps) just for the sake of consistency. We aim to provide a better interface, so let's find out how to do that!
-* Regularly reset your installation to see how the first-run experience is like. And improve it.
+* Regularly reset your installation to see what the first-run experience looks like — then improve it!
 * Ideally do `usability testing <http://jancborchardt.net/usability-in-free-software>`_ to know how people use the software.
 * For further UX principles, read `Alex Faaborg from Mozilla <http://uxmag.com/articles/quantifying-usability>`_.
-
