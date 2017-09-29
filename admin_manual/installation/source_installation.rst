@@ -47,7 +47,7 @@ Required
 PHP Version
 ~~~~~~~~~~~
 
-PHP >= 5.6
+PHP >= 5.6 (ideally 7.0 or above)
 
 PHP Extensions
 ~~~~~~~~~~~~~~
@@ -70,7 +70,10 @@ Digest Framework
                     _XMLWriter_ extensions to work. It requires that libxml2, 
                     version 2.7.0 or higher, is installed.
 `Multibyte String`_ For working with multibyte character encoding schemes.
+`OpenSSL`_          For symmetric and asymmetric encryption and decryption, 
+                    PBKDF2, PKCS7, PKCS12, X509 and other crypto operations.
 `PDO`_              This is required for the pdo_msql function to work. 
+`Phar`_             For working with PHP Archives (.phar files).
 `POSIX`_            For working with UNIX POSIX functionality.
 `SimpleXML`_        For working with XML files as objects.
 `XMLWriter`_        For generating streams or files of XML data.
@@ -78,6 +81,11 @@ Digest Framework
                     files inside them.
 `Zlib`_             For reading and writing gzip (.gz) compressed files.
 =================== ===========================================================
+
+.. tip:: 
+   The *Phar*, *OpenSSL*, and *cUrl* extensions are mandatory if you want to use Make
+   `to setup your ownCloud environment`_, prior to running either the web
+   installation wizard, or the command line installer.
 
 Database Extensions
 ~~~~~~~~~~~~~~~~~~~
@@ -429,6 +437,7 @@ After you do so, your ownCloud server will be ready to use.
 .. Links
 
 .. _SabreDav: http://sabre.io/
+.. _to setup your ownCloud environment: https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html
 
 .. PHP Extension Links
 
@@ -447,6 +456,7 @@ After you do so, your ownCloud server will be ready to use.
 .. _OpenSSL: https://php.net/manual/en/book.openssl.php
 .. _PCNTL: https://secure.php.net/manual/en/book.pcntl.php
 .. _PDO: https://secure.php.net/manual/en/book.pdo.php
+.. _Phar: https://secure.php.net/manual/en/book.phar.php
 .. _POSIX: https://php.net/manual/en/book.posix.php
 .. _SimpleXML: https://php.net/manual/en/book.simplexml.php
 .. _XMLWriter: https://php.net/manual/en/book.xmlwriter.php
