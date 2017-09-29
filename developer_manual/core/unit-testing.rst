@@ -251,7 +251,8 @@ This will also automatically set up your test environment.
 Debugging Tests in the Browser
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To debug tests in the browser, this will run **Karma** in browser mode
+To debug tests in the browser, run the following command. 
+This will run Karma in browser mode.
 
 ::
 
