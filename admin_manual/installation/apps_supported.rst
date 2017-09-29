@@ -5,10 +5,10 @@ Supported Apps in ownCloud
 AGPL Apps
 ---------
 
-* Activity
-* AntiVirus
+* `Activity <https://marketplace.owncloud.com/apps/activity>`_
+* `Anti-Virus <https://marketplace.owncloud.com/apps/files_antivirus>`_
 * Collaborative Tags
-* Comments 
+* Comments
 * Encryption
 * External Sites
 * External Storage
@@ -23,7 +23,7 @@ AGPL Apps
 * Files Versions
 * Files VideoPlayer
 * First Run Wizard
-* Gallery
+* `Gallery <https://marketplace.owncloud.com/apps/gallery>`_
 * Notifications
 * Object Storage (Swift)
 * Provisioning API
@@ -35,16 +35,15 @@ AGPL Apps
 Enterprise-Only Apps
 --------------------
 
-* Admin Audit
-* Collaborative tag management
-* Enterprise License Key
-* File Firewall
-* LDAP Home Connector
-* Log user and Sharing actions (1 new app, replacing the 2 former logging apps)
-* Object Storage (S3)
-* Password Policy
-* SharePoint
-* Shibboleth (SAML)
-* Windows Network Drives (requires External Storage)
-* Workflow
-* ownCloud X Enterprise Theme
+* `Auditing <https://marketplace.owncloud.com/apps/admin_audit>`_
+* `Collaborative Tags Management <https://marketplace.owncloud.com/apps/systemtags_management>`_
+* `Enterprise License Key <https://marketplace.owncloud.com/apps/enterprise_key>`_
+* `File Firewall <https://marketplace.owncloud.com/apps/firewall>`_
+* `LDAP Home Connector <https://marketplace.owncloud.com/apps/files_ldap_home>`_
+* `Object Storage Support <https://marketplace.owncloud.com/apps/objectstore>`_
+* `Password Policy <https://marketplace.owncloud.com/apps/password_policy>`_
+* `External Storage: SharePoint <https://marketplace.owncloud.com/apps/sharepoint>`_
+* `SAML/Shibboleth User Backend <https://marketplace.owncloud.com/apps/user_shibboleth>`_
+* `Windows Network Drives (requires External Storage) <>`_
+* `Workflows <https://marketplace.owncloud.com/apps/workflow>`_
+* `ownCloud X Enterprise Theme <https://marketplace.owncloud.com/themes/theme-enterprise>`_
