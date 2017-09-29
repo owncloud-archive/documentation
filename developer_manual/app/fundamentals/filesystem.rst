@@ -61,8 +61,7 @@ For instance for writing to ``owncloud/data/myfile.txt`` you should get the root
                 try {
                     $file = $this->storage->get('/myfile.txt');
                 } catch(\OCP\Files\NotFoundException $e) {
-                    $this->storage->touch('/myfile.txt');
-                    $file = $this->storage->get('/myfile.txt');
+                    $file = $this->storage->newFile('/myfile.txt');
                 }
 
                 // the id can be accessed by $file->getId(); 
