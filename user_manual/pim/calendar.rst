@@ -9,6 +9,10 @@ You are welcome to add content to the Wiki document; all you
 need is a GitHub account.
 
 The default Calendar application is not able to be enabled. 
+If you attempt to enable it, you will see the following error:
+
+.. figure:: ../images/calendar/calendar-app-signature-could-not-get-checked-error.png
+
 To enable calendar functionality, you need to enable the Marketplace first.
 To do so, add the following line to ``config/config.php``, which connects your ownCloud instance with the Marketplace.
 
