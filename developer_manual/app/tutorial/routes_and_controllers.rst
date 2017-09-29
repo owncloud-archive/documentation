@@ -201,10 +201,6 @@ Create a new controller, called ``ownnotes/lib/Controller/NoteController.php``, 
 You can see that it's largely the same as the ``PageController``, but with a range of CRUD methods.
 Take special note of ``show``, ``create``, ``update``, and ``destroy``.
 The parameters to these functions are extracted from the request body and the URL, using the controller method's variable names. 
-
-.. note::
-   Since PHP does not support type hints for primitive types, such as ints and booleans, we need to add them as annotations in the comments. 
-   In order to type cast a parameter to an int, add ``@param int $parameterName``
    
 We're not going to do anything further in this chapter.
 However, we'll flesh out the controller in the next chapter on database interaction.
