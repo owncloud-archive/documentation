@@ -5,10 +5,17 @@ Encryption Configuration
 
 The primary purpose of the ownCloud server-side encryption is to protect users' files when they're located on remote storages, such as Dropbox and Google Drive, and to do it smoothly and seamlessly from within ownCloud.
 
-From ownCloud 9.0, server-side encryption for local and remote storages can operate independently of each other. 
-By doing so, you can encrypt a remote storage *without* also having to encrypt your home storage on your ownCloud server.
+.. only:: version_9_1
 
-.. note:: Starting with ownCloud 9.0 we support Authenticated Encryption for all newly encrypted files. See https://hackerone.com/reports/108082 for more technical information about the impact.
+  From ownCloud 9.0, server-side encryption for local and remote storages can operate independently of each other. 
+  By doing so, you can encrypt a remote storage *without* also having to encrypt your home storage on your ownCloud server.
+
+  .. note:: Starting with ownCloud 9.0 we support Authenticated Encryption for all newly encrypted files. See https://hackerone.com/reports/108082 for more technical information about the impact.
+
+.. only:: not version_9_1
+
+  Server-side encryption for local and remote storages can operate independently of each other. 
+  By doing so, you can encrypt a remote storage *without* also having to encrypt your home storage on your ownCloud server.
    
 For maximum security make sure to configure external storage with "*Check for changes: Never*." 
 This will let ownCloud ignore new files not added via ownCloud. 
