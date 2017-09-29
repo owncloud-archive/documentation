@@ -34,9 +34,9 @@ Set Up Test
 - Place the Selenium standalone server jar file and the web driver(s) somewhere in the same folder.
 - Start the Selenium server:
 
-.. code-block:: console
+  .. code-block:: console
 
-  java -jar selenium-server-standalone-3.4.0.jar -port 4445
+    java -jar selenium-server-standalone-3.4.0.jar -port 4445
 
 - Set the following environment variables:
 
@@ -63,9 +63,9 @@ Set Up Test
 
 - If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
 
-.. code-block:: console
+  .. code-block:: console
 
-  bash tests/travis/start_php_dev_server.sh
+    bash tests/travis/start_php_dev_server.sh
 
 The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 
@@ -76,9 +76,9 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 
 - Run the tests:
 
-.. code-block:: console
+  .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh
+    bash tests/travis/start_ui_tests.sh
 
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
 To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
