@@ -41,8 +41,11 @@ Set Up Test
 - Set the following environment variables:
 
   - ``SRV_HOST_NAME`` (the hostname where ownCloud runs)
+  - ``REMOTE_FED_SRV_HOST_NAME`` (alternative hostname for federation share tests, this should be an other IP/hostname of the same server)
   - ``SRV_HOST_URL`` (path if ownCloud does not run in the root of the host)
+  - ``REMOTE_FED_SRV_HOST_URL`` (path if the alternative ownCloud for federation share tests does not run in the root of the host)
   - ``SRV_HOST_PORT`` (port of your webserver)
+  - ``REMOTE_FED_SRV_HOST_PORT`` (alternative port of your webserver for federation share tests, this should be an other port of the same server)
   - ``BROWSER`` (chrome, firefox, internet explorer)
 
   e.g., to test an instance running on http://localhost/owncloud-core with Chrome do:
@@ -50,9 +53,13 @@ Set Up Test
   .. code-block:: console
 
     export SRV_HOST_NAME=localhost
+    export REMOTE_FED_SRV_HOST_NAME=127.0.0.1
     export SRV_HOST_URL=owncloud-core
+    export REMOTE_FED_SRV_HOST_URL=owncloud-core
     export SRV_HOST_PORT=80
+    export REMOTE_FED_SRV_HOST_PORT=80
     export BROWSER=chrome
+    
 
 - If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
 
@@ -61,6 +68,8 @@ Set Up Test
   bash tests/travis/start_php_dev_server.sh
 
 The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
+
+- To run the federation Sharing tests make sure you have configured HTTPS with valid certificates on both servers URLs (_`Import SSL certificates <https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/import_ssl_cert.html>`_) or do not offer HTTPS at all, then the federation sharing would use HTTP.
 
 - Run the tests:
 
