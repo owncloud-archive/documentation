@@ -9,13 +9,13 @@ Parameters
 
 Logging levels range from **DEBUG**, which logs all activity, to **FATAL**, which logs only fatal errors.
 
-* **0**: DEBUG: All activity; the most detailed logging.
-* **1**: INFO:  Activity such as user logins and file activities, plus warnings, errors, and fatal errors.
-* **2**: WARN:  Operations succeed, but with warnings of potential problems, plus errors and fatal errors.
-* **3**: ERROR: An operation fails, but other services and operations continue, plus fatal errors.
-* **4**: FATAL: The server stops.
+* **0**: DEBUG: Debug, informational, warning, and error messages, and fatal issues.
+* **1**: INFO:  Informational, warning, and error messages, and fatal issues.
+* **2**: WARN:  Warning, and error messages, and fatal issues.
+* **3**: ERROR: Error messages and fatal issues.
+* **4**: FATAL: Fatal issues only.
 
-By default the log level is set to **2** (WARN). Use **DEBUG** when you have a problem to diagnose, and then reset your log level to a less-verbose level as **DEBUG** outputs a lot of information, and can affect your server performance.
+By default the log level is set to **2** (WARN). Use **DEBUG** when you have a problem to diagnose, and then reset your log level to a less-verbose level, as **DEBUG** outputs a lot of information, and can affect your server performance.
 
 Logging level parameters are set in the :file:`config/config.php` file, or on the Admin page of your ownCloud Web GUI.
 
