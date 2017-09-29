@@ -34,39 +34,51 @@ Set Up Test
 - Place the Selenium standalone server jar file and the web driver(s) somewhere in the same folder.
 - Start the Selenium server:
 
-.. code-block:: console
+  .. code-block:: console
 
-  java -jar selenium-server-standalone-3.4.0.jar -port 4445
+    java -jar selenium-server-standalone-3.4.0.jar -port 4445
 
 - Set the following environment variables:
 
-  - ``SRV_HOST_NAME`` (the hostname where ownCloud runs)
-  - ``SRV_HOST_URL`` (path if ownCloud does not run in the root of the host)
-  - ``SRV_HOST_PORT`` (port of your webserver)
-  - ``BROWSER`` (chrome, firefox, internet explorer)
+  - ``SRV_HOST_NAME`` (The hostname where ownCloud runs)
+  - ``REMOTE_FED_SRV_HOST_NAME`` (An alternative hostname for federation share tests. This should be another IP/hostname on the same server)
+  - ``SRV_HOST_URL`` (The path, if ownCloud does not run in the root of the host)
+  - ``REMOTE_FED_SRV_HOST_URL`` (The path, if the alternative ownCloud for federation share tests does not run in the root of the host)
+  - ``SRV_HOST_PORT`` (The port of your webserver)
+  - ``REMOTE_FED_SRV_HOST_PORT`` (The alternative port of your webserver for federation share tests. This should be another port on the same server)
+  - ``BROWSER`` (Any one of ``chrome``, ``firefox``, ``internet explorer``)
 
   e.g., to test an instance running on http://localhost/owncloud-core with Chrome do:
 
   .. code-block:: console
 
     export SRV_HOST_NAME=localhost
+    export REMOTE_FED_SRV_HOST_NAME=127.0.0.1
     export SRV_HOST_URL=owncloud-core
+    export REMOTE_FED_SRV_HOST_URL=owncloud-core
     export SRV_HOST_PORT=80
+    export REMOTE_FED_SRV_HOST_PORT=80
     export BROWSER=chrome
+    
 
 - If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
 
-.. code-block:: console
+  .. code-block:: console
 
-  bash tests/travis/start_php_dev_server.sh
+    bash tests/travis/start_php_dev_server.sh
 
 The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 
+- To run the federation Sharing tests:
+
+  1. Make sure you have configured HTTPS with valid certificates on both servers URLs
+  2. `Import SSL certificates <https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/import_ssl_cert.html>`_ (or do not offer HTTPS).
+
 - Run the tests:
 
-.. code-block:: console
+  .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh
+    bash tests/travis/start_ui_tests.sh
 
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
 To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
