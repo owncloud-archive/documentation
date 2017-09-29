@@ -40,13 +40,13 @@ Set Up Test
 
 - Set the following environment variables:
 
-  - ``SRV_HOST_NAME`` (the hostname where ownCloud runs)
-  - ``REMOTE_FED_SRV_HOST_NAME`` (alternative hostname for federation share tests, this should be an other IP/hostname of the same server)
-  - ``SRV_HOST_URL`` (path if ownCloud does not run in the root of the host)
-  - ``REMOTE_FED_SRV_HOST_URL`` (path if the alternative ownCloud for federation share tests does not run in the root of the host)
-  - ``SRV_HOST_PORT`` (port of your webserver)
-  - ``REMOTE_FED_SRV_HOST_PORT`` (alternative port of your webserver for federation share tests, this should be an other port of the same server)
-  - ``BROWSER`` (chrome, firefox, internet explorer)
+  - ``SRV_HOST_NAME`` (The hostname where ownCloud runs)
+  - ``REMOTE_FED_SRV_HOST_NAME`` (An alternative hostname for federation share tests. This should be another IP/hostname on the same server)
+  - ``SRV_HOST_URL`` (The path, if ownCloud does not run in the root of the host)
+  - ``REMOTE_FED_SRV_HOST_URL`` (The path, if the alternative ownCloud for federation share tests does not run in the root of the host)
+  - ``SRV_HOST_PORT`` (The port of your webserver)
+  - ``REMOTE_FED_SRV_HOST_PORT`` (The alternative port of your webserver for federation share tests. This should be another port on the same server)
+  - ``BROWSER`` (Any one of ``chrome``, ``firefox``, ``internet explorer``)
 
   e.g., to test an instance running on http://localhost/owncloud-core with Chrome do:
 
@@ -69,7 +69,10 @@ Set Up Test
 
 The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 
-- To run the federation Sharing tests make sure you have configured HTTPS with valid certificates on both servers URLs (_`Import SSL certificates <https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/import_ssl_cert.html>`_) or do not offer HTTPS at all, then the federation sharing would use HTTP.
+- To run the federation Sharing tests:
+
+  1. Make sure you have configured HTTPS with valid certificates on both servers URLs
+  2. `Import SSL certificates <https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/import_ssl_cert.html>`_ (or do not offer HTTPS).
 
 - Run the tests:
 
