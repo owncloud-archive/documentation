@@ -46,6 +46,15 @@ However, here are three links that can help you find further information:
 - `Percona Tools for MySQL <https://tools.percona.com/wizard>`_
 - `Optimizing and Tuning MariaDB <https://mariadb.com/kb/en/optimization-and-tuning/>`_.
 
+Tune PostgreSQL
+---------------
+
+A comprehensive guide to tuning PostgreSQL is outside the scope of the ownCloud documentation. 
+However, here are three links that can help you find further information:
+
+- `Five Steps to PostgreSQL Performance <http://de.slideshare.net/PGExperts/five-steps-perform2013>`_
+- `Tuning the autovacuum proceff for tables with huge update workloads (oc_filecache) <http://grokbase.com/t/postgresql/pgsql-admin/103qcpdrpf/tuning-auto-vacuum-for-highly-active-tables#20100323hfs3jtjuaywwufukoqtexkpjti>`_
+
 Using Redis-based Transactional File Locking
 --------------------------------------------
 
