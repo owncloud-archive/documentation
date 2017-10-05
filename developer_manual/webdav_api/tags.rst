@@ -192,7 +192,7 @@ Below is an example ``PROPPATCH`` element, which changes the message text but le
    <a:propertyupdate xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
      <a:set>
          <a:prop>
-           <oc:name>This is an updated tag.</oc:name>
+           <oc:display-name>This is an updated tag.</oc:display-name>
          </a:prop>
      </a:set>
    </a:propertyupdate>

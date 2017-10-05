@@ -31,7 +31,8 @@ While you can go further, you need to install at least the following:
 - `unzip <https://linux.die.net/man/1/unzip>`_
 - `wget <https://www.gnu.org/software/wget/>`_
 
-As an example, here's how to do it on Ubuntu 16.04.
+Install Dependencies on Ubuntu 16.04
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
@@ -40,6 +41,20 @@ As an example, here's how to do it on Ubuntu 16.04.
 
   # Auto-install the required dependencies with a minimum of output
   sudo apt-get install -y -q wget make npm nodejs unzip git
+
+Install Dependencies on openSUSE Leap 42.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. code-block:: console
+
+  # Ensure that Zypper's cache is up to date
+  sudo zypper --non-interactive --quiet \
+     update --auto-agree-with-licenses --best-effort
+
+  # Auto-install the required dependencies with a minimum of output
+  sudo zypper --quiet --non-interactive install \
+      wget make nodejs6 nodejs-common unzip git 
+      npm6 phantomjs php7-curl php7-openssl openssl php7-phar
 
 Setup the Webserver and Database
 --------------------------------

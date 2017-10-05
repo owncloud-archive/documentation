@@ -2,6 +2,7 @@
 Release Notes
 =============
 
+* :ref:`10.0.3_release_notes_label`
 * :ref:`10.0.1_release_notes_label`
 * :ref:`10.0.0_release_notes_label`
 * :ref:`9.1_release_notes_label`
@@ -10,6 +11,43 @@ Release Notes
 * :ref:`8.1_release_notes_label`
 * :ref:`8.0_release_notes_label`
 * :ref:`7.0_release_notes_label`
+
+.. _10.0.3_release_notes_label:
+
+Changes in 10.0.3
+-----------------
+
+Dear ownCloud administrator, please find below the changes and known issues of ownCloud Server 10.0.3 that need your attention:
+
+**The full ownCloud Server 10.0.3 changelog can be found here: https://github.com/owncloud/core/blob/stable10/CHANGELOG.md**
+
+* It is now possible to directly upgrade from 8.2.11 to 10.0.3 in a single upgrade process.
+* Added occ command to list routes which can help administrators setting up network firewall rules.
+* 'occ upgrade' is now verbose by default. Administrators may need to adjust scripts for automated setup/upgrade procedures that rely on 'occ upgrade' outputs.
+
+* Reenabled medial search by default
+    * Enables partial search in sharing dialog autocompletion (e.g. a user wants to share with the user "Peter": Entering "pe" will find the user, entering "ter" will only find the user if the option is enabled)
+    * New default is set to enabled as there is no performance impact anymore due to the introduction of the user account table in ownCloud Server 10.0.1.
+    * Please check the setting. You need to disable it explicitly if the functionality is undesired.
+
+* All database columns that use the fileid have been changed to bigint (64-bits). For large instances it is therefore highly recommended to upgrade in order to avoid reaching limits.
+
+* Upgrade and Market app information
+    * Removed "appstoreenabled" setting from config.php. If you want to disable the app store / Marketplace integration, please disable the Market app.
+    * Added setting 'upgrade.automatic-app-update' to config.php to disable automatic app updates with 'occ upgrade' when Market app is enabled
+    * On upgrade from OC < 10 the Market app won't be enabled if "appstoreenabled"  was false in config.php.
+
+* Clustering: Better support of read only config file and apps folder
+* Default minimum desktop client version in config.php is now 2.2.4.
+
+**Known issues**
+
+* Setting up SFTP external storages with keypairs does not work. https://github.com/owncloud/core/issues/28669
+* If you have storage encryption enabled, the web UI for encryption will ask again what mode you want to operate with even if you already had a mode selected before. The administrator must select the mode they had selected before. https://github.com/owncloud/core/issues/28985
+* Uploading a folder in Chrome in a way that would overwrite an existing folder can randomly fail (race conditions). https://github.com/owncloud/core/issues/28844
+* Federated shares can not be accepted in WebUI for SAML/Shibboleth users
+* For **MariaDB users**: Currently, Doctrine has no support for the breaking changes introduced in MariaDB 10.2.7, and above. If you are on MariaDB 10.2.7 or above, and have encountered the message "1067 Invalid default value for 'lastmodified'", `please apply this patch`_ to Doctrine. We expect this bug to be fixed in ownCloud 10.0.4. For more information on the bug, `check out the related issue`_.
+* When updating from ownCloud < 9.0 the CLI output may hang for some time (potentially up to 20 minutes for big instances) whilst sharing is updated. This can happen in a variety of places during the upgrade and is to be expected. Please be patient as the update is performed and the output will continue as normal.
 
 .. _10.0.1_release_notes_label:
 
@@ -46,6 +84,11 @@ Infrastructure
 
 Known Issues
 ~~~~~~~~~~~~
+
+Converting the Database Type doesn't work
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Converting a Database from e.g. ``SQLite`` to ``MySQL`` or ``PostgreSQL`` with the ``occ db:convert-type`` currently doesn't work. See https://github.com/owncloud/core/issues/27075 for more info.
 
 Installing the LDAP user backend will trigger the installation twice 
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -176,6 +219,10 @@ Changes in 9.1
 * Some performance and memory usage improvements for GDrive, stream download and chunk upload
 * Performance and memory usage improvements for Dropbox with stream download
 * GDrive library update provides exponential backoff which will reduce rate limit errors
+
+**Shibboleth**
+
+* The WebDAV endpoint was changed from ``/remote.php/webdav`` to ``/remote.php/dav``. You need to check your Apache configuration if you have exceptions or rules for WebDAV configured.
 
 **Minor additions**
 
@@ -685,3 +732,5 @@ or PostgreSQL) to operate correctly.
 .. _syncing user backends: configuration/server/occ_command.html#syncing-user-accounts
 .. _the new marketplace: https://marketplace.owncloud.com
 .. _Open Build Service: https://download.owncloud.org/download/repositories/10.0/owncloud/
+.. _please apply this patch: https://gist.github.com/VicDeo/bb0689104baeb5ad2371d3fdb1a013ac/raw/04bb98e08719a04322ea883bcce7c3e778e3afe1/DoctrineMariaDB102.patch
+.. _check out the related issue: https://github.com/owncloud/core/issues/28695

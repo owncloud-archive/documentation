@@ -25,7 +25,7 @@ It will ask you for the following details:
 - Download version (*ESXi*, *VirtualBox*, *VMware*, *KVM*)
 - Your first, last, and company names, and your country of origin
 
-.. image:: ../../images/enterprise/download-form.png
+.. image:: ../images/appliance/download-form.png
    :alt: The ownCloud X Trial Appliance download form.
 
 After you've filled out the form, click "**DOWNLOAD OWNCLOUD**" to begin the download of the virtual appliance.
@@ -41,7 +41,7 @@ Install the Appliance
 Once you've downloaded the virtual appliance file, import it into your virtualization software, accept the T's & C's of the license agreement, and launch it.
 The example below shows this being done using VirtualBox.
 
-.. image:: ../../images/enterprise/import-the-virtual-appliance.png
+.. image:: ../images/appliance/import-the-virtual-appliance.png
    :alt: Importing the ownCloud X Trial Appliance OVA file into VirtualBox and accepting the software license agreement terms and conditions.
 
 .. _appliance-start-label:
@@ -74,7 +74,7 @@ You then need only retrieve the license file from the email which was sent to yo
 The page to do that from can be found by opening your browser to the IP address of the virtual appliance, as you can see below.
 The installer may instruct you to use ``https://`` to access the activation page. If this gives an error in the browser, then remove the ``https://``.
 
-.. image:: ../../images/enterprise/activate-the-virtual-appliance.png
+.. image:: ../images/appliance/activate-the-virtual-appliance.png
    :alt: Activate the ownCloud X Trial Appliance.
 
 .. _appliance-administer-label:
@@ -85,7 +85,7 @@ Administer the Appliance
 Once activated, you should be redirected to the appliance login page, which you can see below.
 Login using the password that you supplied during the configuration wizard earlier.
 
-.. image:: ../../images/enterprise/login-to-the-virtual-appliance.png
+.. image:: ../images/appliance/login-to-the-virtual-appliance.png
    :alt: Administer the ownCloud X Trial Appliance.
 
 .. note:: 
@@ -93,7 +93,7 @@ Login using the password that you supplied during the configuration wizard earli
 
 After you've done so, you will now be at the Univention management console, which you can see below.
 
-.. image:: ../../images/enterprise/univention-management-console.png
+.. image:: ../images/appliance/univention-management-console.png
    :alt: The Univention Management Console.
 
 The management console allows you to manage the virtual appliance (1), covering such areas as: *users*, *devices*, *domains*, and *software*.

@@ -49,6 +49,7 @@ There are three ways to upgrade your ownCloud server:
 .. note::
    Enterprise customers will use their Enterprise software repositories to maintain their ownCloud servers, rather than the Open Build Service. Please see :doc:`../enterprise/installation/install` for more information.
 
+
 Reverse Upgrade
 ---------------
 
@@ -110,3 +111,164 @@ Migrating from Debian to Official ownCloud Packages
 As of March 2016, Debian will not include ownCloud packages. Debian users can 
 migrate to the official ownCloud packages by following this guide, `Upgrading ownCloud on Debian Stable to official packages <https://owncloud.org/blog/upgrading-owncloud-on-debian-stable-to-official-packages/>`_.
 
+Upgrading from 9.10 to 10.0.2
+-----------------------------
+
+To upgrade ownCloud from version 9.10 to 10.0.2 requires just a few steps.
+In this guide, the following assumptions are made:
+
+#. ownCloud 10.0.2 is the latest version.
+#. Your existing installation is in ``/var/www/owncloud``.
+#. Your new installation is in ``/var/www/owncloud-10.0.2``.
+#. The commands are executed as the web server user, which is ``www-data``.
+#. Your ownCloud installation is run with *Apache 2*, *PHP 5.6*, and *Ubuntu 14.04*.
+
+Put ownCloud in Maintenance Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before you begin, enable maintenance mode in the existing ownCloud installation.
+You can do this by running the following command:
+
+.. code-block:: console
+   
+   cd /var/www/owncloud/
+   sudo -u www-data ./occ maintenance:mode --on
+
+Stop the Webserver
+~~~~~~~~~~~~~~~~~~
+
+Next, stop your web server. 
+To do this, run the following command:
+
+.. code-block:: console
+   
+   sudo service apache2 stop
+
+Get a Copy of ownCloud 10.0.2
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can download ownCloud 10 from several places. 
+However, the best place is <download.owncloud.org>. 
+To do so, run the following command:
+
+.. code-block:: console
+   
+   # Download and extract the code to /var/www/owncloud-10.0.2
+   wget -qO- https://download.owncloud.org/community/owncloud-10.0.2.tar.bz2 | \ 
+     tar --transform 's/^owncloud/owncloud-10.0.2/' -jxv -C /var/www/
+
+Copy config/config.php from the existing installation to the new source
+
+Next, copy config/config.php from the current installation to the new, 10.0.2, source.
+You can do this by running the following command:
+
+.. code-block:: console
+   
+   cp -v /var/www/owncloud/config/config.php /var/www/owncloud-10.0.2/config/config.php
+
+Update the web server configuration to use the new source 
+
+Let’s assume that Apache 2 is configured to serve ownCloud from a `VirtualHost`_ that has the following configuration:
+
+.. code-block:: console
+   
+   <VirtualHost *:80>
+
+     ServerName owncloud.app.localdomain
+     ServerAlias www.owncloud.app.localdomain
+     DocumentRoot /var/www/owncloud/
+     ErrorLog ${APACHE_LOG_DIR}/error.owncloud.log
+     CustomLog ${APACHE_LOG_DIR}/access.owncloud.log combined
+
+     Alias /owncloud "/var/www/owncloud/"
+
+     <Directory /var/www/owncloud/>
+       Options +FollowSymlinks
+       AllowOverride All
+
+      <IfModule mod_dav.c>
+       Dav off
+      </IfModule>
+
+      SetEnv HOME /var/www/owncloud
+      SetEnv HTTP_HOME /var/www/owncloud
+
+     </Directory>
+
+   </VirtualHost>
+   
+In that configuration, change the `Alias`_ and `DocumentRoot`_ directives to point to the ownCloud 10.0.2 source. 
+Specifically, change them to be as in the following example:
+
+.. code-block:: console
+
+   Alias /owncloud "/var/www/owncloud-10.0.0RC1/"
+   DocumentRoot /var/www/owncloud-10.0.0RC1/
+
+Run the Update Process
+~~~~~~~~~~~~~~~~~~~~~~
+
+You can update ownCloud either by using the Web UI or the command-line. 
+To update via the Web UI, open http://owncloud.app.localdomain in your web browser of choice.
+Alternatively, use the command-line tool, :ref:`occ <command_line_upgrade_label>`, to upgrade the installation.
+
+.. note::
+   ``occ`` offers many advantages, and far more functionality and flexibility than the Web UI. A key one is its scriptability.
+   
+To upgrade from the command-line, run:
+
+.. code-block:: console
+   
+   sudo -u www-data ./occ upgrade
+
+Depending on your installation, you should see output similar to the following:
+
+.. code-block:: console
+   
+   ownCloud or one of the apps require upgrade - only a limited number of commands are available
+   You may use your browser or the occ upgrade command to do the upgrade
+   Set log level to debug
+   Updating database schema
+   Updated database
+   Updating <dav> ...
+   Updated <dav> to 0.2.8
+   Drop old database tables
+
+    Done
+    28/28 [============================] 100%
+   Remove old (< 9.0) calendar/contact shares
+    Done
+    4/4 [============================] 100%
+   Fix permissions so avatars can be stored again
+    Done
+    2/2 [============================] 100%
+   Move user avatars outside the homes to the new location
+    Done
+    1/1 [============================] 100%
+   Update successful
+   Maintenance mode is kept active
+   Reset log level
+
+Disable Maintenance Mode
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Now that ownCloud is upgraded, disable maintenance mode using the following command:
+
+.. code-block:: console
+   
+   sudo -u www-data ./occ maintenance:mode --off
+
+Restart the Webserver
+~~~~~~~~~~~~~~~~~~~~~
+
+Finally, restart the web server, by running the following command:
+
+.. code-block:: console
+   
+   sudo service apache2 start
+   
+.. Links
+   
+.. _Alias: https://httpd.apache.org/docs/current/mod/mod_alias.html#alias
+.. _DocumentRoot: https://httpd.apache.org/docs/current/mod/core.html#documentroot
+.. _VirtualHost: https://httpd.apache.org/docs/current/mod/core.html#virtualhost
