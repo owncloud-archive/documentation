@@ -3,7 +3,7 @@ Manual ownCloud Upgrade
 =======================
 
 .. warning:: 
-   When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks, please have a look at the :doc:`../release_notes` of ownCloud 9.0 for important info about the needed migration steps during that upgrade.
+   When upgrading from oC 9.0 to 9.1 with existing Calendars or Addressbooks, please have a look at the :doc:`../release_notes` of ownCloud 9.0 for important info about the needed migration steps during that upgrade.
 
 Backup Your Existing Installation
 ---------------------------------
@@ -110,7 +110,24 @@ With all that done, restart your web server.
 
   sudo service apache2 start
 
-After the webserver's started, launch the upgrade process from the command line.
+Disable Core Apps
+~~~~~~~~~~~~~~~~~
+
+Before the upgrade can run, several apps need to be disabled, if they’re enabled, before the upgrade can succeed. 
+These are: *activity*, *files_pdfviewer*, *files_texteditor*, and *gallery*.
+The following command provides an example of how to do so.
+
+::
+
+  sudo -u www-data php occ app:disable activity
+  sudo -u www-data php occ app:disable files_pdfviewer
+  sudo -u www-data php occ app:disable files_texteditor
+  sudo -u www-data php occ app:disable gallery
+
+Start the Upgrade
+~~~~~~~~~~~~~~~~~
+
+With the apps disabled and the webserver started, launch the upgrade process from the command line.
 ::
     
   # Here is an example on CentOS Linux
@@ -125,7 +142,7 @@ The upgrade operation can take anywhere from a few minutes to a few hours, depen
 When it is finished you will see either a success message, or an error message which indicates why the process did not complete successfully.   
 
 Disable Maintenance Mode
-------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 Assuming your upgrade succeeded, next disable maintenance mode.
 The simplest way is by using occ from the command line.
@@ -139,7 +156,7 @@ Finalize the Installation
 
 With maintenance mode disabled, login and:
 
-- Check that the version number take reflects the new installation. It's visible at the bottom of your Admin page. 
+- Check that the version number reflects the new installation. It's visible at the bottom of your Admin page. 
 - Check that your other settings are correct. 
 - Go to the Apps page and review the core apps to make sure the right ones are enabled. 
 - Re-enable your third-party apps. 
