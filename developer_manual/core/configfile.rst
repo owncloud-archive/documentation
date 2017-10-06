@@ -44,6 +44,9 @@ App config
 
   /* Default app to load on login */
   "defaultapp" => "files",
+  
+  /* Default path to use when loading defaultapp on login, e.g. '/?dir=accounting' */
+  "defaultapp_path" => "",
 
   /* Enable the help menu item in the settings */
   "knowledgebaseenabled" => true,
