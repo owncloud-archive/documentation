@@ -16,3 +16,4 @@ Table of Contents
     issues/index
     enterprise/index
     appliance/index
+    faq/index
