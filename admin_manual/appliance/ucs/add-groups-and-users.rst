@@ -4,10 +4,18 @@ Adding Users and Groups in UCS for ownCloud
 
 If you want to add users and groups to your ownCloud installation via the UCS (Univention Corporate Server) UI, here’s a concise guide showing how. 
 
+Login to the Univention Management Console
+------------------------------------------
+
+After logging in to the Univention server, under "**Administration**", click the first option, labeled "**System and domain settings**". 
+
+.. image:: ../../images/appliance/ucs/ucs-owncloud-portal.png
+
+This takes you to the Univention Management Console.
+
 Create the User
 ---------------
 
-First, navigate to "**Favorites**".
 Once there, click "**Users**".
 
 .. image:: ../../images/appliance/ucs/step-1.png
