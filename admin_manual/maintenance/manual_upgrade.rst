@@ -46,29 +46,55 @@ Irrespective of the approach that you take, with those steps completed, next sto
 Download the Latest Installation
 --------------------------------
 
-Download and unpack the latest ownCloud Server release from `owncloud.org/install/`_ into an empty directory **outside** of your current installation.
-Unpacking the server release creates a new ``owncloud`` directory, populated with your new server files. 
-   
-.. note:: 
-   To unpack your new tarball, run ``tar xjf owncloud-[version].tar.bz2``.
+Download the latest ownCloud server release from `owncloud.org/install/`_ into an empty directory **outside** of your current installation.
     
 .. note:: 
    Enterprise users must download their new ownCloud archives from their accounts on `<https://customer.owncloud.com/owncloud/>`_.
 
-Then rename your current ownCloud directory, for example, from ``owncloud`` to ``owncloud-old``.
-Copy the newly unpacked ownCloud server directory and its contents, to the original location of your existing server, so that your installation remains in the existing location. 
-::
-
-  # Assumes that the new release was unpacked in /tmp/
-  mv /tmp/owncloud /var/www/
-
 Setup the New Installation
 --------------------------
 
-With the new source files in place of the old ones, next copy the ``config.php`` file from your old ownCloud directory to your new ownCloud directory.
+Not all installations are the same, so we encourage you to take one of two paths to upgrade your ownCloud installation. 
+These are the standard upgrade and the power user upgrade.
+
+If you're reasonably new to ownCloud, or not too familiar with upgrading an ownCloud installation, please follow the standard upgrade.
+Otherwise, take the approach that you're most comfortable with, likely the power
+user upgrade.
+
+.. note::
+   Regardless of which approach that you take, they will both assume that your existing ownCloud installation is located in the default location: ``/var/www/owncloud``.
+
+The Standard Upgrade
+~~~~~~~~~~~~~~~~~~~~
+
+Delete all files and folders in your existing ownCloud directory (``/var/www/owncloud``) — **except** ``data`` and ``config``. 
+
+.. attention:: Don't keep the ``apps`` directory.
+
+With those files deleted, extract the archive of the latest ownCloud server, over the top of your existing installation.
+
 ::
 
-  cp -v /var/www/owncloud-old/config/config.php /var/www/owncloud/config/config.php
+  # Extract the .tar.bz2 archive
+  tar -jxf owncloud-10.0.3.tar.bz2 -C /var/www/ --exclude config
+
+  # Extract the zip archive
+  unzip -q owncloud-10.0.3.zip -x "owncloud/config/*" -d /var/www/
+
+The Power User Upgrade
+~~~~~~~~~~~~~~~~~~~~~~
+
+Rename your current ownCloud directory, for example, from ``owncloud`` to ``owncloud-old``.
+Extract the unpacked ownCloud server directory and its contents to the location of your original ownCloud installation.
+::
+
+  # Assumes that the new release was unpacked into /tmp/
+  mv /tmp/owncloud /var/www/
+
+With the new source files now in place of the old ones, next copy the ``config.php`` file from your old ownCloud directory to your new ownCloud directory.
+::
+
+  cp /var/www/owncloud-old/config/config.php /var/www/owncloud/config/config.php
 
 If you keep your ``data/`` directory *inside* your ``owncloud/`` directory, copy it from your old version of ownCloud to your new version. 
 If you keep it *outside* of your ``owncloud/`` directory, then you don't have to do anything with it, because its location is configured in your original ``config.php``, and none of the upgrade steps touch it.
@@ -76,15 +102,15 @@ If you keep it *outside* of your ``owncloud/`` directory, then you don't have to
 If you are using 3rd party applications, look in your new ``/var/www/owncloud/apps/`` directory to see if they are there. 
 If not, copy them from your old ``apps/`` directory to your new one, and make sure that the directory permissions are the same as for the other ones.
 
+Upgrade the Installation
+------------------------
+
 With all that done, restart your web server.
 ::
 
   sudo service apache2 start
 
-Upgrade the Installation
-------------------------
-
-With the new setup in place, next launch the upgrade process from the command line.
+After the webserver's started, launch the upgrade process from the command line.
 ::
     
   # Here is an example on CentOS Linux
