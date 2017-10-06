@@ -123,12 +123,6 @@ In combination with the periodic checks of the sync client the following setting
 	KeepAliveTimeout 100
 	MaxKeepAliveRequests 200
 
-MPM
-~~~
-
-`Apache prefork`_ has to be used. 
-Don’t use threaded ``mpm`` with ``mod_php``, because PHP is currently not thread safe.
-
 Hostname Lookups
 ~~~~~~~~~~~~~~~~
 
@@ -151,4 +145,3 @@ However, keep `ErrorLog`_ set, so errors can be tracked down.
 .. _ErrorLog: https://httpd.apache.org/docs/2.4/logs.html#errorlog
 .. _KeepAlive: https://en.wikipedia.org/wiki/HTTP_persistent_connection
 .. _enable HTTP/2 support for Apache: https://httpd.apache.org/docs/2.4/howto/http2.html
-.. _Apache prefork: https://httpd.apache.org/docs/2.4/mod/prefork.html
