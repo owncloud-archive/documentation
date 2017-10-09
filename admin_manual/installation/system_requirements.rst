@@ -16,7 +16,7 @@ Platform          Options
 Operating System  Ubuntu 16.04, Debian 7 and 8, SUSE Linux Enterprise Server 12 
                   and 12 SP1, Red Hat Enterprise Linux/Centos 6.5 and 7 
 Database          MySQL or MariaDB 5.5+, Oracle 11g, PostgreSQL, & SQLite
-Web server        Apache 2.4 with mod_php
+Web server        Apache 2.4 with ``prefork`` :ref:`apache-mpm-label` and ``mod_php``
 PHP Runtime       PHP (5.6+, 7.0, & 7.1)
 ================= =============================================================
 

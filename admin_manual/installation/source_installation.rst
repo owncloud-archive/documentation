@@ -389,6 +389,14 @@ Additional Apache Configurations
 
 - If you're running ownCloud in a sub-directory and want to use CalDAV or CardDAV clients make sure you have configured the correct :ref:`service-discovery-label` URLs.
 
+.. _apache-mpm-label:
+
+Multi-Processing Module (MPM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`Apache prefork`_ has to be used. Don’t use a threaded ``MPM`` like ``event`` or ``worker`` with ``mod_php``,
+because PHP is currently `not thread safe`_.
+
 .. _enabling_ssl_label:
 
 Enable SSL
@@ -441,6 +449,8 @@ After you do so, your ownCloud server will be ready to use.
 
 .. _SabreDav: http://sabre.io/
 .. _to setup your ownCloud environment: https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html
+.. _Apache prefork: https://httpd.apache.org/docs/2.4/mod/prefork.html
+.. _not thread safe: https://secure.php.net/manual/en/install.unix.apache2.php
 
 .. PHP Extension Links
 
