@@ -44,6 +44,29 @@ The example below shows this being done using VirtualBox.
 .. image:: ../images/appliance/import-the-virtual-appliance.png
    :alt: Importing the ownCloud X Trial Appliance OVA file into VirtualBox and accepting the software license agreement terms and conditions.
 
+Don't Forget the IP Address!
+----------------------------
+
+At two points, during the installation process, the IP address of the virtual machine will be visible. 
+These are during domain and network configuration, and on the final screen of the installation process.
+An example of both screens is visible below.
+
+Please make sure that you take note of the IP address, so that you can either map it to a hostname locally, such as in an ``/etc/hosts`` file, or add `an A record`_ to it in a local DNS configuration.
+That way you should not have problems logging in after the installation is complete.
+
+The Domain and Network Configuration Screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../images/appliance/domain-and-network-configuration.png
+   :alt: Domain and network configuration screen
+   :align: center
+
+The Final Appliance Installation Screen
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../images/appliance/appliance-is-ready.png
+   :alt: Final appliance installation screen
+
 .. _appliance-start-label:
 
 Start the Appliance
@@ -112,4 +135,4 @@ You will also be able to access the ownCloud web interface (2).
 .. _the press release: https://owncloud.com/enterprise-appliance-production-faq/
 .. _purchase the license key: https://owncloud.com/contact
 .. _the ownCloud download page: https://owncloud.com/download
-
+.. _an A record: https://support.dnsimple.com/articles/differences-between-a-cname-alias-url/
