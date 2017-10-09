@@ -423,6 +423,9 @@ To enable this, temporarily change the ownership on your ownCloud directories to
 To use ``occ`` see :doc:`command_line_installation`. 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
+.. warning::
+   Please know that ownCloud's data directory **must be exclusive to ownCloud** and not be modified manually by any other process or user.
+
 .. _strong_perms_label:
 
 Set Strong Directory Permissions
