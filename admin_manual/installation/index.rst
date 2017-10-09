@@ -11,6 +11,7 @@ Installation
    linux_installation
    source_installation
    installation_wizard
+   docker/index
    command_line_installation
    configuration_notes_and_tips
    troubleshooting
