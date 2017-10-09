@@ -18,6 +18,7 @@ First, :doc:`backup <backup>` the following items:
 ::
 
   # This example assumes Ubuntu Linux and MariaDB
+
   cp -rv /var/www/owncloud /opt/backup/owncloud
   mysqldump <db_name> > /opt/backup/backup-file.sql
 

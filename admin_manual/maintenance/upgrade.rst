@@ -157,16 +157,33 @@ To do so, run the following command:
    wget -qO- https://download.owncloud.org/community/owncloud-10.0.2.tar.bz2 | \ 
      tar --transform 's/^owncloud/owncloud-10.0.2/' -jxv -C /var/www/
 
-Copy config/config.php from the existing installation to the new source
+Copy config/config.php to the New Source
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next, copy config/config.php from the current installation to the new, 10.0.2, source.
+Next, copy ``config/config.php`` from the current installation to the new, 10.0.2, source.
 You can do this by running the following command:
 
 .. code-block:: console
    
    cp -v /var/www/owncloud/config/config.php /var/www/owncloud-10.0.2/config/config.php
 
-Update the web server configuration to use the new source 
+If you use the default ownCloud data directory, then you need to copy it from the existing installation to the new source directory as well. 
+You can do this by running the following command:
+
+.. code-block:: console
+   
+   cp -rv /var/www/owncloud/data /var/www/owncloud-10.0.2/data
+
+If your data directory is located outside of the ownCloud installation directory, then you can safely skip this command.
+
+Update config/config.php (optional)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the data directory is inside the new ownCloud directory, you need to update ``config/config.php`` to point to it.
+In your editor of choice, open ``config/config.php`` and change the value of ``datadirectory`` to the new data directory location.
+
+Update the Web Server Configuration to Use the New Source 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Let’s assume that Apache 2 is configured to serve ownCloud from a `VirtualHost`_ that has the following configuration:
 
