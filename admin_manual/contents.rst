@@ -9,7 +9,6 @@ Table of Contents
     release_notes
     whats_new_admin
     installation/index
-    performance/index
     upgrading/index
     configuration/index
     maintenance/index
