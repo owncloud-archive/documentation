@@ -281,6 +281,14 @@ Additional Apache Configurations
   CardDAV clients make sure you have configured the correct 
   :ref:`service-discovery-label` URLs.
 
+.. _apache-mpm-label:
+
+Multi-Processing Module (MPM)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`Apache prefork`_ has to be used. Don’t use a threaded ``MPM`` like ``event`` or ``worker`` with ``mod_php``,
+because PHP is currently `not thread safe`_.
+
 .. _enabling_ssl_label:
 
 Enabling SSL
@@ -448,3 +456,8 @@ Other Web Servers
 
 `Univention Corporate Server installation 
 <https://github.com/owncloud/documentation/wiki/UCS-Installation>`_
+
+.. Links
+
+.. _Apache prefork: https://httpd.apache.org/docs/2.4/mod/prefork.html
+.. _not thread safe: https://secure.php.net/manual/en/install.unix.apache2.php

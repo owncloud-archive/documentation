@@ -142,10 +142,12 @@ Some common problems / error messages found in your logfiles as described above:
   accessing your SQLite database file in your data directory 
   (``data/owncloud.db``). Please check the permissions of this folder/file or 
   if it exists at all. If you're using MySQL please start your database.
-* ``Connection closed / Operation cancelled`` -> This could be caused by wrong 
-  ``KeepAlive`` settings within your Apache config. Make sure that 
-  ``KeepAlive`` is set to ``On`` and  also try to raise the limits of 
-  ``KeepAliveTimeout`` and  ``MaxKeepAliveRequests``.
+* ``Connection closed / Operation cancelled`` or ``expected filesize 4734206 got 458752``
+  -> This could be caused by wrong ``KeepAlive`` settings within your Apache config.
+  Make sure that ``KeepAlive`` is set to ``On`` and  also try to raise the limits of 
+  ``KeepAliveTimeout`` and  ``MaxKeepAliveRequests``. On Apache with ``mod_php`` using
+  a different :ref:`apache-mpm-label` then ``prefork`` could be another reason. Further
+  information is available at the `forums <https://central.owncloud.org/t/expected-filesize-xxx-got-yyy-0/816>`_.
 * ``No basic authentication headers were found`` -> This error is shown in your
   ``data/owncloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
