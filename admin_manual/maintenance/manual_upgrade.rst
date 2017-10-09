@@ -17,7 +17,7 @@ First, :doc:`backup <backup>` the following items:
 
 ::
 
-  # This example assumes Ubuntu Linux and MariaDb
+  # This example assumes Ubuntu Linux and MariaDB
   cp -rv /var/www/owncloud /opt/backup/owncloud
   mysqldump <db_name> > /opt/backup/backup-file.sql
 
@@ -71,15 +71,15 @@ Delete all files and folders in your existing ownCloud directory (``/var/www/own
 
 .. attention:: Don't keep the ``apps`` directory.
 
-With those files deleted, extract the archive of the latest ownCloud server, over the top of your existing installation.
+With those files and folders deleted, extract the archive of the latest ownCloud server, over the top of your existing installation.
 
 ::
 
   # Extract the .tar.bz2 archive
-  tar -jxf owncloud-10.0.3.tar.bz2 -C /var/www/ --exclude config
+  tar -jxf owncloud-10.0.3.tar.bz2 -C /var/www/
 
   # Extract the zip archive
-  unzip -q owncloud-10.0.3.zip -x "owncloud/config/*" -d /var/www/
+  unzip -q owncloud-10.0.3.zip -d /var/www/
 
 The Power User Upgrade
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -98,9 +98,6 @@ With the new source files now in place of the old ones, next copy the ``config.p
 
 If you keep your ``data/`` directory *inside* your ``owncloud/`` directory, copy it from your old version of ownCloud to your new version. 
 If you keep it *outside* of your ``owncloud/`` directory, then you don't have to do anything with it, because its location is configured in your original ``config.php``, and none of the upgrade steps touch it.
-
-If you are using 3rd party applications, look in your new ``/var/www/owncloud/apps/`` directory to see if they are there. 
-If not, copy them from your old ``apps/`` directory to your new one, and make sure that the directory permissions are the same as for the other ones.
 
 Upgrade the Installation
 ------------------------
@@ -134,7 +131,7 @@ With the apps disabled and the webserver started, launch the upgrade process fro
   sudo -u apache php occ upgrade
 
 .. note:: 
-   The optional parameter to skip migration tests during this step was removed in oC 9.2. 
+   The optional parameter to skip migration tests during this step was removed in oC 10.0. 
    See :ref:`migration_test_label` for background information. 
    See :doc:`../configuration/server/occ_command` to learn more about the occ command.
      
@@ -150,6 +147,12 @@ The simplest way is by using occ from the command line.
 ::
 
    sudo -u www-data php occ maintenance:mode --off
+
+Copy Old Apps
+~~~~~~~~~~~~~
+
+If you are using 3rd party applications, look in your new ``/var/www/owncloud/apps/`` directory to see if they are there. 
+If not, copy them from your old ``apps/`` directory to your new one, and make sure that the directory permissions are the same as for the other ones.
 
 Finalize the Installation
 -------------------------
