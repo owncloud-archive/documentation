@@ -16,28 +16,29 @@ benefits.
 
 .. _caching:
 
-Caching
--------
+Enable Memory Caching
+---------------------
 
 Caching improves performance by storing data, code, and other objects in memory. 
-Memory cache configuration for the ownCloud server is no longer automatic in 
-ownCloud 8.1 and up, but must be installed and configured. See      
-:doc:`caching_configuration`.
+Memory cache configuration for ownCloud is no longer automatically available from ownCloud 8.1 but must be installed and configured separately. 
+ownCloud supports `Redis`_, `APCu`_, and `Memcached`_ as memory caching backends.
+See :doc:`caching_configuration`, for further details.
 
-Tune Redis
-~~~~~~~~~~
-
-Here is a brief guide for tuning Redis to improve the performance of your ownCloud installation, when working with large instances.
-
-Using Redis-based Transactional File Locking
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Use Redis-based Transactional File Locking
+------------------------------------------
 
 File locking is enabled by default, using the database locking backend. 
-This places a significant load on your database. 
+However, this places a significant load on your database.
 See the section :doc:`../../configuration/files/files_locking_transactional` for how to configure ownCloud to use Redis-based Transactional File Locking.
 
+Redis Tuning
+------------
+
+Redis tuning improves both file locking (if used) and memory caching (when using Redis).
+Here is a brief guide for tuning Redis to improve the performance of your ownCloud installation, when working with sizeable instances.
+
 TCP-Backlog
-^^^^^^^^^^^
+~~~~~~~~~~~
 
 If you raised the TCP-backlog setting, the following warning appears in the Redis logs:
 
@@ -61,7 +62,7 @@ To fix this warning, set the value of ``net.core.somaxconn`` to ``65535`` in ``/
 After the next reboot, 65535 connections will be allowed, instead of the default value.
 
 Transparent Huge Pages (THP)
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you are experiencing latency problems with Redis, the following warning may appear in your Redis logs:
 
@@ -83,7 +84,7 @@ As a result, make sure to disable Transparent Huge Pages using the following com
  echo never > /sys/kernel/mm/transparent_hugepage/enabled
 
 Redis Latency Problems 
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 If you are having issues with Redis latency, please refer to `the official Redis guide`_ on how to handle them.
 
@@ -208,3 +209,6 @@ However, keep `ErrorLog`_ set, so errors can be tracked down.
 .. _ErrorLog: https://httpd.apache.org/docs/2.4/logs.html#errorlog
 .. _KeepAlive: https://en.wikipedia.org/wiki/HTTP_persistent_connection
 .. _enable HTTP/2 support for Apache: https://httpd.apache.org/docs/2.4/howto/http2.html
+.. _Redis: https://redis.io 
+.. _APCu: http://php.net/manual/en/intro.apcu.php
+.. _Memcached: https://memcached.org
