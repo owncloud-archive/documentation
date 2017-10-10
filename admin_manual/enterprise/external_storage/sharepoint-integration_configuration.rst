@@ -25,10 +25,10 @@ The supported authentication methods are:
 * Basic Auth
 * NTLM (Recommended)
    
-Creating a Sharepoint Mount
+Creating a SharePoint Mount
 ---------------------------
    
-Enable the Sharepoint app, and then enter the ``Admin`` panel to set up 
+Enable the SharePoint app, and then enter the ``Admin`` panel to set up 
 SharePoint connections in the ``SharePoint Drive Configuration`` section.
 
 Enter your SharePoint Listing credentials. These credentials are not 
@@ -71,11 +71,11 @@ own credentials will be used. Click Save, and you're done
 Enabling Users
 --------------
 
-You may allow your users to create their own Sharepoint mounts on their 
+You may allow your users to create their own SharePoint mounts on their 
 Personal pages, and allow sharing on these mounts.
 
 .. figure:: images/sharepoint-4.png
-   :alt: Allow user Sharepoint mounts.
+   :alt: Allow user SharePoint mounts.
 
 Note
 ----
@@ -92,8 +92,8 @@ Troubleshooting
 ---------------
 
 SharePoint unsharing is handled in the background via Cron. If you remove the 
-sharing option from a Sharepoint mount, it will take a little time for the 
-share to be removed, until the Cron job runs
+sharing option from a SharePoint mount, it will take a little time for the 
+share to be removed, until the Cron job runs.
 
 Logging
 ~~~~~~~
