@@ -91,6 +91,9 @@ ownCloud config file found in ``/owncloud/config/config.php``::
 Troubleshooting
 ---------------
 
+Unsharing
+~~~~~~~~~
+
 SharePoint unsharing is handled in the background via Cron. If you remove the 
 sharing option from a SharePoint mount, it will take a little time for the 
 share to be removed, until the Cron job runs.
@@ -103,6 +106,9 @@ Turn on SharePoint app logging by modifying ``config/config.php``, setting ``sha
 .. code-block:: php
 
  'sharepoint.logging.enable' => true,
+
+Mount Points
+~~~~~~~~~~~~
 
 Global mount points can't be accessed: You have to fill out your SharePoint 
 credentials as User on the personal settings page, or in the popup menu. These 
