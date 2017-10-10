@@ -95,7 +95,10 @@ SharePoint unsharing is handled in the background via Cron. If you remove the
 sharing option from a Sharepoint mount, it will take a little time for the 
 share to be removed, until the Cron job runs
 
-Turn on Sharepoint app logging by modifying the following line in :file:`apps/sharepoint/lib/sharepoint.php` to ``true``:
+Logging
+~~~~~~~
+
+Turn on SharePoint app logging by modifying ``config/config.php``, setting ``sharepoint.logging.enable`` to ``true``, as in the example below.
 
 .. code-block:: php
 
