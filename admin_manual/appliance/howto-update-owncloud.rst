@@ -32,7 +32,7 @@ If one is, as in the image below, click "**ownCloud**" which takes you to the ow
 
 .. image:: ../images/appliance/ucs/upgrade-owncloud/univention-software-update-dashboard.png
 
-When there, part-way down the page you’ll see the "**Manage local installation**" section. 
+When there, part-way down the page you'll see the "**Manage local installation**" section. 
 Under there, click "**UPGRADE**".
 
 .. image:: ../images/appliance/ucs/upgrade-owncloud/owncloud-app-ready-for-update.png   
@@ -103,26 +103,82 @@ When it is finished, you will have the latest version of ownCloud installed.
 Use the Command Line
 --------------------
 
-This is a documentation on how to upgrade the ownCloud App from 9.1.4 to 10.0.3 in UCS.
-First, login to your ownCloud X Appliance, either via ssh or directly on the server. 
-Then, there are two commands that you will need to run, to upgrade to the latest version of ownCloud:
-The process involves remove the old installation and install the new one in its place. 
-
-::
-
-  univention-app remove owncloud82
-  univention-app install owncloud
-
 .. note::  
    Your data and users will remain.
 
-There are also some optional commands which you can run.
-These are shown below.
+Upgrading from the command line is also available.
+To do so, login to your ownCloud X Appliance, either via ssh or directly on the server. 
+
+Is an Upgrade Available?
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+Once logged in, check if there is an upgrade available, by running the ``univention-app list`` command.
+
+The command lists the available versions of ownCloud, along with the installed version.
+For example, the example below shows that four versions of ownCloud, and that version ``10.0.1-20170523`` is installed.
+The output of the command lists the available versions in ascending order.
 
 ::
 
-  # When your system time is out of sync, which can cause errors on the update command.
-  timedatectl set-ntp true 
+  root@ucs-9446:~# univention-app list owncloud
+  owncloud
+    Name: ownCloud
+    Versions:
+      10.0.1-20170523
+        Installed: ucs-9446.setts.intranet
+      10.0.1-copy
+      10.0.1-testing
+      10.0.3-20170918
+  
+Another way to know if ownCloud is upgradable, is by running the command ``univention-app info``.
+This command lists information about the current state of the App Center itself.
+However, it also lists the currently installed version of ownCloud, along with if it's upgradable.
 
-  # When you change the scripts
-  univention-app update
+::
+
+  root@ucs-9446:~# univention-app info
+  UCS: 4.2-1 errata165
+  App Center compatibility: 4
+  Installed: 4.1/owncloud=10.0.1-20170523
+  Upgradable: owncloud
+  
+Upgrade ownCloud  
+~~~~~~~~~~~~~~~~
+
+If an upgrade is available, you need to run the ``univention-app upgrade``, as in the example below. 
+
+::
+
+  univention-app upgrade owncloud
+  
+This command takes some time to complete, primarily based on the appliance's network connection speed.
+However, it should not take more than a few minutes.
+
+Confirm That the Upgrade was Successful
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+After the upgrade has completed (if it was successful) as a sanity check, run ``univention-app info``, to confirm the currently installed version of ownCloud.  
+As in the example below, you should see that the installed version is now higher than before, and that ownCloud is no longer upgradable.
+
+::
+
+  root@ucs-9446:~# univention-app info
+  UCS: 4.2-1 errata165
+  App Center compatibility: 4
+  Installed: 4.1/owncloud=10.0.3-20170918
+  Upgradable: 
+  
+You can also run ``univention-app list owncloud`` again, as below, to ensure that the latest version has been installed.
+
+:: 
+
+  owncloud
+    Name: ownCloud
+    Versions:
+      10.0.1-20170523
+      10.0.1-copy
+      10.0.1-testing
+      10.0.3-20170918
+        Installed: ucs-9446.setts.intranet
+        
+After the upgrade completes, you can then login to ownCloud just as you usually would.
