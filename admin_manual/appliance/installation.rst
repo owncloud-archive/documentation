@@ -47,10 +47,14 @@ The example below shows this being done using VirtualBox.
 Don't Forget the IP Address!
 ----------------------------
 
-At two points, during the installation process, the IP address of the virtual machine will be visible. 
-These are during domain and network configuration, and on the final screen of the installation process.
-An example of both screens is visible below.
+At two points during the installation process, and one following it, the IP address of the virtual machine will be visible. 
+These appear:
 
+- During domain and network configuration 
+- On the final screen of the installation process
+- At the virtual machine’s login prompt. 
+
+An example of all three screens is visible below.
 Please make sure that you take note of the IP address, so that you can either map it to a hostname locally, such as in an ``/etc/hosts`` file, or add `an A record`_ to it in a local DNS configuration.
 That way you should not have problems logging in after the installation is complete.
 
@@ -66,6 +70,24 @@ The Final Appliance Installation Screen
 
 .. image:: ../images/appliance/appliance-is-ready.png
    :alt: Final appliance installation screen
+   
+.. note:: 
+   This screen is *also* visible when the virtual machine is finished booting.
+   
+The Virtual Machine Terminal Login
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This screen is visible after the installation is completed and when the virtual machine is booted. 
+If it is not immediately visible, click enter and it will be.
+
+.. image:: ../images/appliance/appliance-post-installation-screen.png
+   :alt: The virtual machine terminal login
+
+Note that only the IP address is highlighted, in the screenshot above. 
+This is for two reasons. 
+Firstly, the URL will be removed in future releases of the ownCloud X Appliance. 
+Secondly, using the IP address avoids the need to update your DNS configuration or ``/etc/hosts`` file.
+Please bear this in mind.
 
 .. _appliance-start-label:
 
