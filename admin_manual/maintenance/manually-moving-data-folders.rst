@@ -44,7 +44,7 @@ run the SQL below:
 .. code-block:: sql
    
   UPDATE oc_storages SET id='local::/mnt/owncloud' 
-    WHERE id='local::/var/www/owncloud/data';
+    WHERE id='local::/var/www/owncloud/data/';
 
 Update the oc_accounts table
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
