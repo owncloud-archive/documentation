@@ -8,19 +8,6 @@ The ability to do so is a feature delivered via an ownCloud app called `Imperson
 .. note::
    This functionality is available only to administrators.
 
-Installing the Application
---------------------------
-
-To install it, from the Market in your ownCloud installation, filter down the list of available apps to the **Tools** category, and in the filtered list click on the **Impersonate** app. 
-
-.. image:: ../images/apps/impersonate/impersonate-uninstalled.png 
-   :alt: The ownCloud Marketplace Impersonate app.
-
-In the bottom right-hand corner of the Impersonate app’s details click the blue ``Install`` button, and the app will install in your ownCloud installation shortly afterward
-
-.. image:: ../images/apps/impersonate/impersonate-installed.png 
-   :alt: The ownCloud Marketplace Impersonate app is installed.
-
 Impersonating a User
 --------------------
 
