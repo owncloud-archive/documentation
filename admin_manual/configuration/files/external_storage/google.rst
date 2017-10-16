@@ -93,7 +93,7 @@ to see complete information.
 Now you have everything you need to mount your Google Drive in ownCloud. 
 
 Go to the External Storage section of your Admin page, create your new folder 
-name, enter the Client ID and Client Secret. If you wish limit access to a single folder, simply enter the path to the disired folder, separated by '/'. Finally click **Grant Access**. Your 
+name, enter the Client ID and Client Secret. If you wish limit access to a single folder, simply enter the path to the desired folder, separated by '/'. Finally, click **Grant Access**. Your 
 consent page appears when ownCloud makes a successful connection. Click 
 **Allow**.
 
