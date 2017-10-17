@@ -42,6 +42,7 @@ Dear ownCloud administrator, please find below the changes and known issues of o
 
 **Known issues**
 
+* Added quotes in boolean result values of yourdomain/status.php output
 * Setting up SFTP external storages with keypairs does not work. https://github.com/owncloud/core/issues/28669
 * If you have storage encryption enabled, the web UI for encryption will ask again what mode you want to operate with even if you already had a mode selected before. The administrator must select the mode they had selected before. https://github.com/owncloud/core/issues/28985
 * Uploading a folder in Chrome in a way that would overwrite an existing folder can randomly fail (race conditions). https://github.com/owncloud/core/issues/28844
