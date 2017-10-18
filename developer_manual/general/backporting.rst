@@ -64,6 +64,16 @@ Assuming that you store the script in a file called ``backport.sh``, the command
 .. note:: 
    When doing this yourself, remember to adapt the commit hash and the target branch accordingly.
 
-When the script completes go to GitHub, where it will suggest that you make a PR from pushed branch. 
-Change the base branch, to be committed against, from ``master`` to ``stable10`` and continue.
+When the script completes, go to GitHub, where it will suggest that you make a PR from pushed branch. 
+Change the base branch to be committed against, from ``master`` to ``stable10`` and continue.
 
+In case you have installed the ``xdg-utils`` package, you can add at the end of the 
+script above following code which opens the PR to be finalized in your browser:
+
+.. code-block:: console
+
+  repo=`git remote -v | grep -m 1 "(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
+  branch=`git name-rev --name-only HEAD`
+  echo "Creating pull request for branch \"$branch\" in \"$repo\""
+  
+  xdg-open "https://github.com/$repo/pull/new/$targetBranch...$branch"
