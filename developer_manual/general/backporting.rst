@@ -25,29 +25,22 @@ The QA team will try to reproduce all the issues with the X.Y.Z-next-maintenance
 Steps
 -------
 
-Because pushing directly to particular branches of ownCloud like stable versions is forbidden,
-(eg. no direct push to origin/stable-xx) you need to create your own remote branch and set the 
-base for this PR correctly.
-Following example is a backport of commit ``123456`` in PR ``789`` to branch ``stable10``.
-Adopt the referenced commit-sha to be backported and the target branch accordingly.
+Because pushing directly to particular ownCloud branches is forbidden (e.g., ``origin/stable-xx``), you need to create your own remote branch, based off of the branch that you wish to backport to.
+However, doing so can involve a number of manual steps.
+To reduce the effort and time involved, use the script below instead.
 
-You can ease the process by using the script below.
-Assuming you name the script ``backport.sh``, the command would look like:
-``./backport.sh 123456 stable10``
-
-When done, go to GitHub and it will suggest that you make a PR from that branch. 
-Change the base to be comitted against from ``master`` to ``stable10`` and continue.
-
-.. code-block::
+.. code-block:: console
 
   #!/bin/bash
   set -e
+
   if [ "$#" -lt 2 ]; then
       echo "Illegal number of parameters"
       echo "  $0 <commit-sha> <targetBranchName>"
-      echo "Example: $0 123456789 stable10"
+      echo "  For example: $0 123456789 stable10"
       exit
   fi
+
   commit=$1
   targetBranch=$2
   echo "backporting $commit to $targetBranch"
@@ -61,4 +54,16 @@ Change the base to be comitted against from ``master`` to ``stable10`` and conti
   message=`git log -1 --pretty=%B`
   git commit --amend -m "[$targetBranch] $message"
   git push origin $targetBranch-$commit
+
+Assuming that you store the script in a file called ``backport.sh``, the command would be called as follows:
+
+.. code-block:: console
+
+  ./backport.sh 123456 stable10
+
+.. note:: 
+   When doing this yourself, remember to adapt the commit hash and the target branch accordingly.
+
+When the script completes go to GitHub, where it will suggest that you make a PR from pushed branch. 
+Change the base branch, to be committed against, from ``master`` to ``stable10`` and continue.
 
