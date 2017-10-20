@@ -594,8 +594,6 @@ Now you can modify and enable the configuration.
 Performance tips
 ----------------
 
-See the documentation wiki for `additional LDAP tips and tricks <https://github.com/owncloud/documentation/wiki/LDAP-Tips-for-Active-Directory-and-openLDAP>`_. The following performance tips are standard for inmproving LDAP performance. 
-
 Caching
 ^^^^^^^
 
