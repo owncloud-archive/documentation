@@ -1,9 +1,7 @@
 Reverse Proxy Configuration
 ===========================
 
-ownCloud can be run through a reverse proxy, which can cache static assets such
-as images, CSS or JS files, move the load of handling HTTPS to a different
-server or load balance between multiple servers.
+ownCloud can be run through a reverse proxy, which can cache static assets such as images, CSS, or Javascript files, move the load of handling HTTPS to a different server or load balance between multiple servers.
 
 Defining Trusted Proxies
 ------------------------
