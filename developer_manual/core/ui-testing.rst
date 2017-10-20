@@ -13,9 +13,9 @@ Requirements
 - An admin user called ``admin`` with the password ``admin``.
 - No self-signed SSL certificates.
 - Testing utils (running ``make`` in your terminal from the ``webroot`` directory will install them).
-- `Selenium standalone server <http://docs.seleniumhq.org/download/>`_.
+- `Selenium standalone server <http://docs.seleniumhq.org/download/>`_ version 3.6.0 or newer.
 - Browser installed that you would like to test on.
-- Web driver for the browsers that you want to test. You can download the Chrome driver from: https://sites.google.com/a/chromium.org/chromedriver/. The Firefox web driver is included in the selenium server.
+- `Web driver for the browsers that you want to test <http://www.seleniumhq.org/download/#thirdPartyDrivers>`_.
 
 Overview
 ~~~~~~~~
@@ -36,7 +36,7 @@ Set Up Test
 
   .. code-block:: console
 
-    java -jar selenium-server-standalone-3.4.0.jar -port 4445
+    java -jar selenium-server-standalone-3.6.0.jar -port 4445 -enablePassThrough false
 
 - Set the following environment variables:
 
@@ -47,6 +47,7 @@ Set Up Test
   - ``SRV_HOST_PORT`` (The port of your webserver)
   - ``REMOTE_FED_SRV_HOST_PORT`` (The alternative port of your webserver for federation share tests. This should be another port on the same server)
   - ``BROWSER`` (Any one of ``chrome``, ``firefox``, ``internet explorer``)
+  - ``BROWSER_VERSION`` (version of the browser you are using)
 
   e.g., to test an instance running on http://localhost/owncloud-core with Chrome do:
 
@@ -59,6 +60,7 @@ Set Up Test
     export SRV_HOST_PORT=80
     export REMOTE_FED_SRV_HOST_PORT=80
     export BROWSER=chrome
+    export BROWSER_VERSION="60.0"
     
 
 - If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
@@ -191,8 +193,9 @@ When fixing the bug, remove these skip tags in the PR along with the bug fix cod
 
 Known Issues
 ~~~~~~~~~~~~
+- Tests that are known not to work in specific browsers are tagged e.g. ``@skipOnFIREFOX47+`` or ``@skipOnINTERNETEXPLORER`` and will be skipped by the script automatically
 
-- The web driver for the current version of Firefox is not working correctly, so we need to test on 47.0.2 and to use selenium server 2.53.1 for it
+- The web driver for the current version of Firefox works differently to the old one. If you want to test FF < 56 you need to test on 47.0.2 and to use selenium server 2.53.1 for it
 
   - `Download and install version 47.0.2 of Firefox <https://ftp.mozilla.org/pub/firefox/releases/47.0.2/>`_. 
   - `Download version 2.53.2 of the Selenium web driver <https://selenium-release.storage.googleapis.com/index.html?path=2.53/>`_.
