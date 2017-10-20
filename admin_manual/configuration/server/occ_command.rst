@@ -721,6 +721,8 @@ The full list of commands is:
   group:add                           adds a group
   group:add-member                    add members to a group
   group:delete                        deletes the specified group
+  group:list                          list groups
+  group:list-members                  list group members
   group:remove-member                 remove member(s) from a group
 
 Creating Groups
@@ -737,6 +739,56 @@ This example adds a new group, called "Finance":
  
  sudo -u www-data php occ group:add Finance
    Created group "Finance"
+
+Listing Groups
+^^^^^^^^^^^^^^
+
+You can list the names of existing groups with the ``group:list`` command.
+The syntax is::
+
+  group:list [options] [<search-pattern>]
+
+Groups containing the ``search-pattern`` string are listed. Matching is 
+not case-sensitive. If you do not provide a search-pattern then all groups 
+are listed.
+
+This example lists groups containing the string finance:: 
+ 
+ sudo -u www-data php occ group:list finance
+  - All-Finance-Staff
+  - Finance
+  - Finance-Managers
+
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+
+ sudo -u www-data php occ --output=json_pretty group:list finance
+  [
+    "All-Finance-Staff",
+    "Finance",
+    "Finance-Managers"
+  ]
+
+Listing Group Members
+^^^^^^^^^^^^^^^^^^^^^
+
+You can list the user IDs of group members with the ``group:list-members`` command.
+The syntax is::
+
+  group:list-members [options] <group>
+
+This example lists members of the Finance group:: 
+ 
+ sudo -u www-data php occ group:list-members Finance
+  - aaron: Aaron Smith
+  - julie: Julie Jones
+
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+
+ sudo -u www-data php occ --output=json_pretty group:list-members Finance
+  {
+    "aaron": "Aaron Smith",
+    "julie": "Julie Jones"
+  }
 
 Adding Members to Groups
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1356,6 +1408,8 @@ The full list, of commands is:
   user:inactive                       reports users who are known to owncloud, 
                                       but have not logged in for a certain number of days
   user:lastseen                       shows when the user was logged in last time
+  user:list                           list users
+  user:list-groups                    list groups for a user
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
@@ -1444,6 +1498,54 @@ To delete a user, you use the ``user:delete`` command, as in the example below:
  sudo -u www-data php occ user:delete fred
    
    
+Listing Users
+^^^^^^^^^^^^^
+
+You can list existing users with the ``user:list`` command.
+The syntax is::
+
+  user:list [options] [<search-pattern>]
+
+User IDs containing the ``search-pattern`` string are listed. Matching is 
+not case-sensitive. If you do not provide a search-pattern then all users 
+are listed.
+
+This example lists user IDs containing the string ron:: 
+ 
+ sudo -u www-data php occ user:list ron
+  - aaron: Aaron Smith
+
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+
+ sudo -u www-data php occ --output=json_pretty user:list
+  {
+    "aaron": "Aaron Smith",
+    "herbert": "Herbert Smith",
+    "julie": "Julie Jones"
+  }
+
+Listing Group Membership of a User
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+You can list the group membership of a user with the ``user:list-groups`` command.
+The syntax is::
+
+  user:list-groups [options] <uid>
+
+This example lists group membership of user julie:: 
+ 
+ sudo -u www-data php occ user:list-groups julie
+  - Executive
+  - Finance
+
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+
+ sudo -u www-data php occ --output=json_pretty user:list-groups julie
+  [
+    "Executive",
+    "Finance"
+  ]
+
 Finding The User's Last Login
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
