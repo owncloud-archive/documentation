@@ -195,7 +195,7 @@ Known Issues
 ~~~~~~~~~~~~
 - Tests that are known not to work in specific browsers are tagged e.g. ``@skipOnFIREFOX47+`` or ``@skipOnINTERNETEXPLORER`` and will be skipped by the script automatically
 
-- The web driver for the current version of Firefox works differently to the old one. If you like to test FF < 56 you need to test on 47.0.2 and to use selenium server 2.53.1 for it
+- The web driver for the current version of Firefox works differently to the old one. If you want to test FF < 56 you need to test on 47.0.2 and to use selenium server 2.53.1 for it
 
   - `Download and install version 47.0.2 of Firefox <https://ftp.mozilla.org/pub/firefox/releases/47.0.2/>`_. 
   - `Download version 2.53.2 of the Selenium web driver <https://selenium-release.storage.googleapis.com/index.html?path=2.53/>`_.
