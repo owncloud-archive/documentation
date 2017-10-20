@@ -1,27 +1,20 @@
 JavaScript and CSS Asset Management
 ===================================
 
-In production environments, JavaScript and CSS files should be delivered in a concatenated and compressed format.
+In production environments, whether you're using HTTP/1.1 or HTTP/2, JavaScript and CSS files should be both compressed, and concatenated into as few files as possible.
+However, ownCloud doesn't do this for you. 
+Given that, here is a list of packages that can you can use to do compress and concatenate your files:
 
-ownCloud can automatically collect all JavaScript and CSS files, aggregate and compress them to then save the result in a folder called 'assets' which can be found in the folder where ownCloud has been installed. 
+- `JSCompress`_ (The JavaScript Compression Tool)
+- `Minify`_ (CSS and JavaScript minifier)
+- `minifier`_ (A simple tool for minifying CSS/JS without a big setup.)
+- `matthiasmullie/minify`_ (CSS & JavaScript minifier, in PHP)
+- `uglify-js`_ (A JavaScript parser, minifier, compressor and beautifier toolkit.)
 
-If your Web server has write access to your ownCloud installation, then the 'assets' folder will be automatically created for you, otherwise, you need to create it yourself before enabling that option and you must give write access to your Web server user.
-
-Assets found in that folder will from now on be served as static files by your Web server and will be automatically refreshed whenever ownCloud or one of its apps is updated.
-It's important to note that apps installed via git might not always update their version number with every commit and this could lead to an out-of-sync asset folder.
-It is not recommended to enable asset-pipelining when using apps pulled via git.
-
-
-Parameters
-----------
-
-::
-
-  <?php
-    $CONFIG = array (
-      ...
-      'asset-pipeline.enabled' => true,
-      ...
-    );
-
-You can set this parameter in the :file:`config/config.php`
+.. Links
+   
+.. _JSCompress: https://jscompress.com
+.. _Minify: https://www.minifier.org
+.. _minifier: https://www.npmjs.com/package/minifier
+.. _matthiasmullie/minify: https://github.com/matthiasmullie/minify
+.. _uglify-js: https://www.npmjs.com/package/uglify-js
