@@ -16,3 +16,14 @@ I'm the admin and I lost my password! What do I do now!
 -------------------------------------------------------
 
 See `the reset admin password documentation <https://doc.owncloud.org/server/10.0/admin manual/configuration user/reset admin password.html>`_.
+
+.. _faq_federated_system_label:
+
+What is a Federated System?
+---------------------------
+
+A Federated System is another ownCloud or `OpenCloudMesh`_ supporting cloud service. 
+
+.. Links
+   
+.. _OpenCloudMesh: https://oc.owncloud.com/opencloudmesh.html
