@@ -1,6 +1,6 @@
-===================
-ownCloud User Types
-===================
+==============
+ownCloud Roles
+==============
 
 ownCloud supports six user types.
 These are:
