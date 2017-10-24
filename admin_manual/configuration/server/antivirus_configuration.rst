@@ -40,6 +40,8 @@ Based on ownCloud’s evaluation of the response (or exit code) an appropriate a
    Scanner exit status rules are used to handle errors when ClamAV is run in CLI mode. 
    Scanner output rules are used in daemon/socket mode.
 
+.. _configure_clamav_antivirus_scanner_label:
+
 Configuring the ClamAV Antivirus Scanner
 ----------------------------------------
 
