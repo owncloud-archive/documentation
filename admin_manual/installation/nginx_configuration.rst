@@ -158,6 +158,7 @@ your NGINX installation.
           fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
           fastcgi_pass php-handler;
           fastcgi_intercept_errors on;
+          fastcgi_buffering off;
           fastcgi_request_buffering off; #Available since NGINX 1.7.11
       }
   
@@ -314,6 +315,7 @@ The following config should be used when ownCloud is not in your webroot but pla
               fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
               fastcgi_pass php-handler;
               fastcgi_intercept_errors on;
+              fastcgi_buffering off;
               fastcgi_request_buffering off; #Available since NGINX 1.7.11
           }
   
