@@ -6,7 +6,6 @@ There are two options to update an ownCloud installation hosted on an ownCloud X
 
 - `Use the Univention Management Console`_
 - `Use the Command Line`_
-- `Use the Web UI`_
 
 Use the Univention Management Console
 -------------------------------------
@@ -197,7 +196,7 @@ To do so, run the following commands:
 
   # Assumes that owncloud82 is the currently installed version
   univention-app remove owncloud82
+  univention-app update
   univention-app install owncloud
         
-One thing that is the same, is that you can update the apps on the appliance after the upgrade has completed, by running ``univention-app update``.
 And after the upgrade and updates are completed, you can then login to ownCloud and verify the upgrade.
