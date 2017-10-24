@@ -21,8 +21,8 @@ Anonymous
 
 - Is not a regular user.
 - Has access to specific content made available via public links.
-- Can be password-protected (optional, enforced, policy-enforced).
-- Can have an expiration date (optional, enforced, enforced dependent on password).
+  - Can be password-protected (optional, enforced, policy-enforced).
+  - Can have an expiration date (optional, enforced, enforced dependent on password).
 - Has no personal space
 - Has no file ownership (ownership of uploaded/created files is directed to sharer).
 - Has no use of clients.
@@ -38,10 +38,10 @@ Guest
 - Has no file ownership (ownership of uploaded/created files is directed to sharer).
 - Has access to shared space. The permissions are granted by the sharer.
 - Is not bound to the 'inviting user'.
-- Can log in as long as shares are available.
-- Becomes deactivated when no shares are left ('Shared with guests' filter).
-- Reactivated when a share is received.
-- Administrators will be able to automate user cleanup ("disabled for x days").
+  - Can log in as long as shares are available.
+  - Becomes deactivated when no shares are left ('Shared with guests' filter).
+  - Reactivated when a share is received.
+  - Administrators will be able to automate user cleanup ("disabled for x days").
 - Can use all clients.
 - Fully auditable in the enterprise edition.
 - Can be promoted to group administrator or administrator, but will still have no personal space.
