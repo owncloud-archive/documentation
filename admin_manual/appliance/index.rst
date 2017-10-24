@@ -7,4 +7,6 @@ The ownCloud X Appliance
 
    what-is-it
    installation
+   managing-ucs
+   clamav
 
