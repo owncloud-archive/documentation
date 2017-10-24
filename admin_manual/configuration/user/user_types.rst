@@ -11,6 +11,8 @@ These are:
 - `Federated User`_
 - `ownCloud Group Administrator`_
 - `ownCloud Administrator`_
+- `System Administrator`_
+- `Auditor`_
 
 The following information is not an in-depth guide, but more of a high-level overview of each type.
 
@@ -75,8 +77,32 @@ ownCloud Administrator
 ----------------------
 
 - Is a regular user (from LDAP, ownCloud user backend, or another backend).
-- Can configure ownCloud features via the UI (e.g., sharing settings, app-specific configurations, external storages for users).
-- Can manage users (add/remove, enable/disable, quota, group management).
-- Can restrict app usage to groups (where applicable).
+- Can configure ownCloud features via the UI, e.g., *sharing settings*, *app-specific configurations*, *external storages for users*.
+- Can manage users, such as adding and removing, enabling and disabling, quota and group management.
+- Can restrict app usage to groups, where applicable.
 - Configurable access to log files.
 - Mounting of external shares and local shares is disabled by default.
+
+System Administrator
+--------------------
+
+- Is not an ownCloud user.
+- Has access to ownCloud code (e.g., ``config.php`` and apps folders) and command-line tool (:doc:`occ <../server/occ_command>`).
+- Configures and maintains the ownCloud environment (*PHP*, *Webserver*, *DB*, *Storage*, *Redis*, *Firewall*, *Cron*, and *LDAP*, etc.).
+- Maintains ownCloud, such as *updates*, *backups*, and *installs extensions*.
+- Can manage users and groups, such as via :doc:`occ <../server/occ_command>`.
+- Has access to the master key when storage encryption is used.
+- **Storage admin:** Encryption at rest.
+- **DB admin:** Calendar/Contacts etc. DB entries not encrypted.
+
+Auditor
+-------
+
+- Is not an ownCloud user.
+- Conducts usage and compliance audits in enterprise scenarios.
+- App logs (especially `Auditlog`_) can be separated from ownCloud log.
+- **Best practice:** parse separated log to an external analyzing tool.
+
+.. Links
+   
+.. _Auditlog: https://marketplace.owncloud.com/apps/admin_audit
