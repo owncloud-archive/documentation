@@ -2,7 +2,7 @@
 How to Update ownCloud 
 ======================
 
-There are three options to update an ownCloud installation hosted on an ownCloud X Appliance:
+There are two options to update an ownCloud installation hosted on an ownCloud X Appliance:
 
 - `Use the Univention Management Console`_
 - `Use the Command Line`_
