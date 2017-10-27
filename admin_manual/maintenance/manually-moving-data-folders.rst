@@ -24,7 +24,7 @@ To save time, here's the commands which you can copy and use::
 
   apachectl -k stop 
   rsync -avz /var/www/owncloud/data /mnt/owncloud
-  ln -s /mnt/owncloud /www/owncloud/data
+  ln -s /mnt/owncloud /var/www/owncloud/data
   apachectl -k graceful 
 
 .. note:: 
@@ -44,7 +44,7 @@ run the SQL below:
 .. code-block:: sql
    
   UPDATE oc_storages SET id='local::/mnt/owncloud' 
-    WHERE id='local::/var/www/owncloud/data';
+    WHERE id='local::/var/www/owncloud/data/';
 
 Update the oc_accounts table
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^

@@ -45,6 +45,9 @@ options for your ownCloud data directory and database.
 
 You should locate your ownCloud data directory outside of your Web root if you are using an HTTP server other than Apache, or you may wish to store your ownCloud data in a different location for other reasons (e.g. on a storage server). 
 
+.. warning::
+   Please know that ownCloud's data directory **must be exclusive to ownCloud** and not be modified manually by any other process or user.
+
 It is best to configure your data directory location at installation, as it is difficult to move after installation. You may put it anywhere; in this example is it located in ``/var/oc_data``. 
 This directory must already exist, and must be owned by your HTTP user (see :ref:`strong_perms_label`).
 
@@ -189,7 +192,6 @@ Replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
 
  printf "Creating possible missing Directories\n"
  mkdir -p $ocdata
- mkdir -p $ocpath/assets
  mkdir -p $ocpath/updater
 
  printf "chmod Files and Directories\n"
@@ -201,7 +203,6 @@ Replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  printf "chown Directories\n"
  chown -R ${rootuser}:${htgroup} ${ocpath}/
  chown -R ${htuser}:${htgroup} ${ocpath}/apps/
- chown -R ${htuser}:${htgroup} ${ocpath}/assets/
  chown -R ${htuser}:${htgroup} ${ocpath}/config/
  chown -R ${htuser}:${htgroup} ${ocdata}/
  chown -R ${htuser}:${htgroup} ${ocpath}/themes/
@@ -232,7 +233,6 @@ and files:
 * The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
-* The :file:`assets/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP group]``
 * The :file:`data/.htaccess` file should be owned by ``root:[HTTP group]``
