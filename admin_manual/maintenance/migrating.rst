@@ -78,11 +78,6 @@ A typical configuration looks like this:
 
 The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long as you have access to the physical server you can always log in. 
 In the event that a load-balancer is in place, there will be no issues as long as it sends the correct ``X-Forwarded-Host`` header. 
-When a user tries a URL that is not whitelisted, the following error message will appear:
-
-.. figure:: ../installation/images/install-wizard-a4.png
-   :scale: 75%
-   :alt: Error message when URL is not whitelisted
 
 Example Migration
 -----------------
