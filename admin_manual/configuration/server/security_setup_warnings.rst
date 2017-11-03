@@ -36,7 +36,7 @@ Transactional file locking is disabled
 "Transactional file locking is disabled, this might lead to issues with race
 conditions."
 
-Please see :doc:`../../configuration/files/files_locking_transactional` on how
+Please see :ref:`Transactional File Locking <configuring_transactional_file_locking_label>` for how
 to correctly configure your environment for transactional file locking.
 
 You are accessing this site via HTTP
