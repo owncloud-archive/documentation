@@ -369,6 +369,8 @@ Use the server's IP address or hostname so that it is accessible to other hosts:
       'port' => 6379,
   ],
 
+.. _configuring_transactional_file_locking_label:
+
 Configuring Transactional File Locking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
