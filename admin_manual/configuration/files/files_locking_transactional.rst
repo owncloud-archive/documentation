@@ -23,9 +23,9 @@ locking does not prevent this.
 Rather, it prevents simultaneous file saving.
 
 .. note:: Transactional file locking is in ownCloud core, and replaces the old 
-   File Locking app. The File Locking app has been removed from ownCloud in 
+   File Locking app. The File Locking app was removed from ownCloud in 
    version 8.2.1. If your ownCloud server still has the File Locking app, you 
-   must visit your Apps page to verify that it is disabled; the File Locking 
+   **must** visit your Apps page to verify that it is disabled; the File Locking 
    app and Transactional File Locking cannot both operate at the same time.
   
 File locking is enabled by default, using the database locking backend. 
