@@ -6,7 +6,7 @@ Create Custom Storage Backends
 
 .. sectionauthor:: Matthew Setter <msetter@owncloud.com>
 
-The preferred way for applications to create new storage backends, from version 8.0 onward, is to create a subclass of ``\OC\Files\Storage\Common`` and implement the abstract methods.
+The preferred way for applications to create new storage backends is to create a subclass of ``\OC\Files\Storage\Common`` and implement the abstract methods.
 It's also possible to create storage backends by implementing the required interface.
 
 However, by sub-classing the common backend a lot of the boiler plate is taken care of.
@@ -165,7 +165,7 @@ Storage wrappers need to implement the full storage API methods.
 Examples of storage wrappers are
 
 * **The Quota wrapper.** This changes the behavior of `free_space` by limiting the free space returned by the wrapped storage to a configured maximum 
-* **The Encryption wrapper**. Available since version 8.1, this encrypts and decrypts the data on the fly by overwriting ``file_put_contents``, ``file_get_contents``, and ``fopen``.
+* **The Encryption wrapper**. This encrypts and decrypts the data on the fly by overwriting ``file_put_contents``, ``file_get_contents``, and ``fopen``.
 
 When implementing a storage wrapper, the wrapped storage is available as ``$this->storage``.
 Storage wrappers can either be applied globally to all used storages using ``\OC\Files\Filesystem::addStorageWrapper($name, $wrapper)`` or to a specific storage, while mounting the storage from the app.
