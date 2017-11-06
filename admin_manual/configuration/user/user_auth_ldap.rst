@@ -511,6 +511,12 @@ a look at the logs for further details."
 When the configuration test reports success, save your settings and check if the 
 users and groups are fetched correctly on the Users page.
 
+Syncing Users from the Command-Line
+-----------------------------------
+
+You can also sync users from an LDAP backend with your ownCloud database from the command-line, using the occ command. 
+To find out more information, check out the :ref:`syncing user accounts <syncing_user_accounts_label>` section of the occ documentation.
+
 ownCloud Avatar integration
 ---------------------------
 
