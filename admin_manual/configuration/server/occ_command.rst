@@ -1674,7 +1674,9 @@ Generate a simple report that counts all users, including users on external user
  |                  |    |
  | user directories | 2  |
  +------------------+----+
- 
+
+.. _syncing_user_accounts_label:
+
 Syncing User Accounts
 ^^^^^^^^^^^^^^^^^^^^^
 
