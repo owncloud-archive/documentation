@@ -40,6 +40,20 @@ data in transit.
 -  Remove all **ssl_** entries.
 -  Remove **fastcgi_params HTTPS on;**
 
+**Note 1:**
+
+| ``fastcgi_buffers 8 4K;``
+| Do not set the number of buffers over 63, in our example it is set to 8.
+| When exeeding, big file downloads can possibly consume a lot of system memory over time and cause problems especially on low-mem systems.
+
+**Note 2:**
+ 
+| ``fastcgi_ignore_headers X-Accel-Buffering;``
+| From ownCloud version 10.0.4 on, a header statement will be sent to nginx not to use buffers to avoid problems with problematic ``fastcgi_buffers`` values. See note above.
+| If these values are properly set and no problems are expected, you can turn on this statement to reenable buffering overriding the sent header.
+| In case you use an earlier version of ownCloud or can´t change the buffers, or you can´t remove a existing ignore header statement, you can explicitly set ``fastcgi_buffering off;``
+| These statements are used either or but not together.
+
 ownCloud in the webroot of NGINX
 ================================
 
@@ -121,7 +135,8 @@ your NGINX installation.
   
       # set max upload size
       client_max_body_size 512M;
-      fastcgi_buffers 64 4K;
+      fastcgi_buffers 8 4K;                     # Please see note 1
+      fastcgi_ignore_headers X-Accel-Buffering; # Please see note 2
   
       # Disable gzip to avoid the removal of the ETag header
       # Enabling gzip would also make your server vulnerable to BREACH
@@ -158,7 +173,6 @@ your NGINX installation.
           fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
           fastcgi_pass php-handler;
           fastcgi_intercept_errors on;
-          fastcgi_buffering off;
           fastcgi_request_buffering off; #Available since NGINX 1.7.11
       }
   
@@ -277,7 +291,9 @@ The following config should be used when ownCloud is not in your webroot but pla
 
           # set max upload size
           client_max_body_size 512M;
-          fastcgi_buffers 64 4K;
+          fastcgi_buffers 8 4K;                     # Please see note 1
+          fastcgi_ignore_headers X-Accel-Buffering; # Please see note 2
+  
   
           # Disable gzip to avoid the removal of the ETag header
           # Enabling gzip would also make your server vulnerable to BREACH
@@ -315,7 +331,6 @@ The following config should be used when ownCloud is not in your webroot but pla
               fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
               fastcgi_pass php-handler;
               fastcgi_intercept_errors on;
-              fastcgi_buffering off;
               fastcgi_request_buffering off; #Available since NGINX 1.7.11
           }
   
