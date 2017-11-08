@@ -1127,9 +1127,9 @@ server configuration above, and perform HA on the hostname.
 Redis Cluster support requires the php module phpredis in version 3.0.0 or higher.
 
 Available failover modes:
- - \\RedisCluster::FAILOVER_NONE - only send commands to master nodes (default)
- - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable
- - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
+ - ``\\RedisCluster::FAILOVER_NONE`` - only send commands to master nodes (default)
+ - ``\\RedisCluster::FAILOVER_ERROR`` - failover to slaves for read commands if master is unavailable
+ - ``\\RedisCluster::FAILOVER_DISTRIBUTE`` - randomly distribute read commands across master and slaves
 
 .. note::
    Make sure that phpredis is properly configured to use Redis Cluster, before attempting to configure it in ownCloud. 
@@ -1192,7 +1192,6 @@ completed within one day.
 
 Using Object Store with ownCloud
 --------------------------------
-
 
 ::
 
@@ -1257,7 +1256,6 @@ filesystem instead of the database to keep the share information.
 
 All other configuration options
 -------------------------------
-
 
 ::
 
