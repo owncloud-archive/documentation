@@ -3,6 +3,11 @@ Using the Calendar App
 ======================
 
 The Calendar application is not officially supported and is not enabled by default, in ownCloud |version|. 
+If you attempt to enable it, you will see the following error:
+
+.. figure:: ../images/calendar/calendar-app-signature-could-not-get-checked-error.png
+   :alt: Error message when attempting to enable the default calendar application.
+
 To enable it, you first need to enable the Marketplace.
 To do so, add the following line to ``config/config.php``. 
 This setting connects your ownCloud instance with `the ownCloud Marketplace`_.
