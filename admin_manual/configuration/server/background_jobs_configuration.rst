@@ -109,14 +109,26 @@ A number of existing background jobs are available to be run just for specific t
    and it becomes a bottleneck, then admins can delete several entries in the `oc_jobs` table and replace
    them with the corresponding `occ` command, which you can see here:
 
-   * `OCA\\Files_Trashbin\\BackgroundJob\\ExpireTrash` -> `occ trashbin:expire`
-   * `OCA\\Files_Versions\\BackgroundJob\\ExpireVersions` -> `occ versions:expire`
-   * `OCA\\DAV\CardDAV\\SyncJob` -> `occ dav:sync-system-addressbook`
-   * `OCA\\Federation\\SyncJob` -> `occ federation:sync-addressbooks`
+   * ``OCA\\DAV\\Command\\CleanupChunks`` -> ``occ dav:cleanup-chunks``
+   * ``OCA\\DAV\CardDAV\\SyncJob`` -> ``occ dav:sync-system-addressbook``
+   * ``OCA\\Federation\\SyncJob`` -> ``occ federation:sync-addressbooks``
+   * ``OCA\\Files_Trashbin\\BackgroundJob\\ExpireTrash`` -> ``occ trashbin:expire``
+   * ``OCA\\Files_Versions\\BackgroundJob\\ExpireVersions`` -> ``occ versions:expire``
 
    If used, these should be scheduled to run on a daily basis.
 
 While not exhaustive, these include:
+
+CleanupChunks
+^^^^^^^^^^^^^
+
+The CleanupChunks job, contained in ``OCA\\DAV\\Command\\CleanupChunks``, will clean up outdated chunks (uploaded files) more than a certain number of days old.
+By default, the command cleans up chunks more than two days old. However, the command also accepts the number of days as an argument.
+It can be run, as follows, using the OCC command
+
+::
+
+  occ dav:cleanup-chunks
 
 ExpireTrash
 ^^^^^^^^^^^
