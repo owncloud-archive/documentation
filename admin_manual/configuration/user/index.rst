@@ -11,3 +11,4 @@ User Management
     user_auth_ftp_smb_imap
     user_auth_ldap
     user_provisioning_api
+    user_roles
