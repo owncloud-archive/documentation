@@ -515,6 +515,8 @@ Encryption
   encryption:encrypt-all               Encrypt all files for all users
   encryption:list-modules              List all available encryption modules
   encryption:migrate                   initial migration to encryption 2.0
+  encryption:recreate-master-key       Replace existing master key with new one. 
+                                       Encrypt the file system with newly created master key.
   encryption:set-default-module        Set the encryption default module
   encryption:show-key-storage-root     Show current key storage root
   encryption:status                    Lists the current status of encryption
@@ -570,6 +572,8 @@ It is not possible to disable it.
 ``encryption:migrate`` migrates encryption keys after a major ownCloud version upgrade. 
 You may optionally specify individual users in a space-delimited list.
 See :doc:`../../configuration/files/encryption_configuration` to learn more.
+ 
+``encryption:recreate-master-key`` decrypts the ownCloud file system, replaces the existing master key with a new one, and encrypts the entire ownCloud file system with the new master key. Given the size of your ownCloud filesystem, this may take some time to complete. However, if your filesystem is quite small, then it will complete quite quickly. The ``-y`` switch can be supplied to automate acceptance of user input.
  
 .. _federation_sync_label:
  
