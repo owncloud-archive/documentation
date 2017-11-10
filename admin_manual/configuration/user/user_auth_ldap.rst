@@ -511,6 +511,23 @@ a look at the logs for further details."
 When the configuration test reports success, save your settings and check if the 
 users and groups are fetched correctly on the Users page.
 
+Syncing Users
+-------------
+
+You need to sync all LDAP users to your ownCloud database after they've been created, using :ref:`the occ command <syncing_user_accounts_label>`.
+Versions of ownCloud before 10.0 imported all users when the user page loaded, but this is no longer the case. 
+
+In versions of ownCloud from 10.0 onward, un-synced users *can* log in, **but** LDAP account changes won’t be reflected in ownCloud. 
+This includes user quotas and search option changes.
+
+Therefore, we recommend :ref:`creating a Cron job <cron_job_label>`, to automate regularly syncing LDAP users with your ownCloud database.
+
+How Often Should the Job Run?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This depends on the amount of users and speed of the update, but we recommend *at least* once per day. 
+You can run it more frequently, but doing so may generate too much load on the server.
+
 ownCloud Avatar integration
 ---------------------------
 
