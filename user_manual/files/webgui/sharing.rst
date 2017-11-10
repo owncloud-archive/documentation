@@ -40,6 +40,22 @@ with the user "pierpont", who can *share*, *edit*, *create*, *change*, and
 .. figure:: ../../images/files_page-2.png
    :alt: Sharing files.
 
+What Happens When Share Recipients Move Files and Folders?
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If a share recipient has "**can edit**" privileges and moves files or folders out of the share, ownCloud stores a backup copy of the moved file/folder in the Deleted Files (Trash) of the share's owner. 
+The user who moved the file/folder out of the share still has the original copy there, along with its attached metadata.
+
+That way, the files/folders are not permanently lost.
+By clicking the **Restore** link, next to the respective file or folder, ownCloud will restore these files/folders to their original location.
+
+.. figure:: ../../images/sharing/restore-files.png
+   :alt: Restore (backup) files from the Deleted Files directory.
+
+.. note:: 
+   Restoring files restores the backup copy for **all users**, including the user that
+   originally moved them, into the original folder. 
+
 Sharing Files with Guest Users
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -106,13 +122,13 @@ Using Private Links
 ~~~~~~~~~~~~~~~~~~~~
 
 Another way to access a file or folder is via a private link. 
-It’s a handy way of creating a permanent link for yourself or to point others to a file or folder, within a share, more efficiently. 
-To access the private link, in the Sharing Panel for a file or folder, next to its name you’ll see a small link icon (1), as in the screenshot below. 
+It's a handy way of creating a permanent link for yourself or to point others to a file or folder, within a share, more efficiently. 
+To access the private link, in the Sharing Panel for a file or folder, next to its name you'll see a small link icon (1), as in the screenshot below. 
 
 .. image:: ../../images/public-link/private-link.png
    :alt: Obtaining a private link for a shared file or folder
 
-If you click it, a new textbox will appear above the "**Collaborative tags**" field, populated with the link’s URI (2). 
+If you click it, a new textbox will appear above the "**Collaborative tags**" field, populated with the link's URI (2). 
 
 .. note:: 
    Only people who have access to the file or folder can use the link.
@@ -161,7 +177,7 @@ Creating Drop Folders
 ~~~~~~~~~~~~~~~~~~~~~
 
 As of ownCloud version 10.0.2, users can create upload-only, public shares (otherwise known as "Drop Folders"). 
-Drop Folders allow users to upload files to a central location, but don’t allow them to either see or change any existing files, which already have been uploaded.
+Drop Folders allow users to upload files to a central location, but don't allow them to either see or change any existing files, which already have been uploaded.
 
 .. image:: ../../images/sharing/create-drop-folder.png
    :alt: Create a Drop Folder
@@ -182,6 +198,6 @@ Using Drop Folders
    :alt: Using Drop Folders
 
 When users open the share link, they will see a page where they can either click to select files to share, or drag-and-drop files directly to share them. 
-After the file's been successfully uploaded, they’ll see (where possible) a preview of the file that has been uploaded.
+After the file's been successfully uploaded, they'll see (where possible) a preview of the file that has been uploaded.
    
 
