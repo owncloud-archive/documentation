@@ -2,7 +2,7 @@
 ownCloud Roles
 ==============
 
-ownCloud supports six user types.
+ownCloud supports eight user roles.
 These are:
 
 - `Anonymous`_
@@ -27,7 +27,7 @@ Anonymous
 - Has no file ownership (ownership of uploaded/created files is directed to sharer).
 - Has no use of clients.
 - Quota is that of the sharer.
-- Permissions are those granted by the sharer for specific content, e.g., *view-only*, *edit*, and *no file listing*.
+- Permissions are those granted by the sharer for specific content, e.g., *view-only*, *edit*, and *File Drop*.
 - Can only use file and viewer apps, such as `PDF Viewer <https://marketplace.owncloud.com/apps/files_pdfviewer>`_ and `Collabora Online <https://marketplace.owncloud.com/apps/richdocuments>`_.
 
 Guest
@@ -101,7 +101,7 @@ System Administrator
 - Maintains ownCloud, such as updates, backups, and installs extensions.
 - Can manage users and groups, such as via :doc:`occ <../server/occ_command>`.
 - Has access to the master key when storage encryption is used.
-- **Storage admin:** Encryption at rest.
+- **Storage admin:** Encryption at rest, which prevents the storage administrator from having access to data stored in ownCloud.
 - **DB admin:** Calendar/Contacts etc. DB entries not encrypted.
 
 Auditor
@@ -109,7 +109,7 @@ Auditor
 
 - Is not an ownCloud user.
 - Conducts usage and compliance audits in enterprise scenarios.
-- App logs (especially `Auditlog`_) can be separated from ownCloud log.
+- App logs (especially `Auditlog`_) can be separated from ownCloud log. This separates the Auditor and Sysadmin roles. An ``audit.log`` file can be enabled, which the Sysadmin can't access.
 - **Best practice:** parse separated log to an external analyzing tool.
 
 .. Links
