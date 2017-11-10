@@ -16,3 +16,9 @@
 /nbproject/*
 *.db
 *.snag
+
+# Exclude IDE files
+.idea
+
+# Exclude Vagrant files
+.vagrant
