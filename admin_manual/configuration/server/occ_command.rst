@@ -617,7 +617,7 @@ File Operations
   files:cleanup              Deletes orphaned file cache entries.
   files:scan                 Rescans the filesystem.
   files:transfer-ownership   All files and folders are moved to another 
-                             user - shares are moved as well.
+                             user - outgoing shares are moved as well (incoming shares are not moved as the sharing user holds the ownership of the respective files).
  
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
@@ -683,10 +683,11 @@ In it, ``folder/to/move``, and any file and folder inside it will be moved to ``
 
   sudo -u www-data php occ files:transfer-ownership --path="folder/to/move" <source-user> <destination-user>
 
-When using this command keep two things in mind: 
+When using this command, please keep in mind: 
 
 1. The directory provided to the ``--path`` switch **must** exist inside ``data/<source-user>/files``.
 2. The directory (and its contents) won't be moved as is between the users. It'll be moved inside the destination user's ``files`` directory, and placed in a directory which follows the format: ``transferred from <source-user> on <timestamp>``. Using the example above, it will be stored under: ``data/<destination-user>/files/transferred from <source-user> on 20170426_124510/``
+3. Currently file versions can't be transferred. Only the latest version of moved files will appear in the destination user's account.
 
 .. _files_external_label:
 
