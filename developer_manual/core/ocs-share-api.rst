@@ -260,7 +260,7 @@ permissions  int     The permissions to set on the share.
                      4 = create; 8 = delete; 16 = share.
 expireDate   string  An expire date for public link shares.
                      This argument expects a date string in the following
-                     format ``'YYYY=MM=DD'``.
+                     format ``'YYYY-MM-DD'``.
 ============ ======= ==========================================================
 
 .. note:: Things to remember about public link shares
