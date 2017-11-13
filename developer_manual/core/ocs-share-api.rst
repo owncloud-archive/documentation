@@ -257,7 +257,7 @@ publicUpload boolean Whether to allow public upload to a public shared folder.
 password     string  The password to protect public link share with.
 permissions  int     The permissions to set on the share.
                      1 = read (default for public shares); 2 = update;
-                     4 = create; 8 = delete; 16 = share.
+                     4 = create; 8 = delete; 15 = read/write.
 expireDate   string  An expire date for public link shares.
                      This argument expects a date string in the following
                      format ``'YYYY-MM-DD'``.
