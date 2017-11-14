@@ -2,6 +2,7 @@
 Release Notes
 =============
 
+* :ref:`10.0.4_release_notes_label`
 * :ref:`10.0.3_release_notes_label`
 * :ref:`10.0.1_release_notes_label`
 * :ref:`10.0.0_release_notes_label`
@@ -11,6 +12,61 @@ Release Notes
 * :ref:`8.1_release_notes_label`
 * :ref:`8.0_release_notes_label`
 * :ref:`7.0_release_notes_label`
+
+.. _10.0.4_release_notes_label:
+
+Changes in 10.0.4
+-----------------
+
+Dear ownCloud administrator, please find below the changes and known issues of ownCloud Server 10.0.4 that need your attention:
+
+**The full ownCloud Server 10.0.4 changelog can be found here: https://github.com/owncloud/core/blob/stable10/CHANGELOG.md**
+
+* **More granular sharing restrictions**
+The option "Restrict users to only share with users in their groups" in the admin sharing settings forces users to only be able to share with groups they are member of while simultaneously prohibiting to share with single users that do not belong to any of the users' groups. To make this more granular we split this option into two and added "Restrict users to only share with groups they are member of" which now differentiates between users and groups making it possible to force users to be able to share with all users of an installation but only with groups they are member of and vice versa. Please check if the new possibilities better suit your needs.
+
+- **Configurable solution for indistinguishable user display names**
+In the ownCloud sharing dialog users are displayed according to their display name. As users can choose their display name in self-service (can be disabled in config.php) and display names are not unique it is possible that a user can't distinguish sharing results. To cover this case the displayed user identifiers are now configurable. Administrators can configure to additionally display mail addresses or user ids. Please check if this new feature better suits your needs.
+
+- **Added "occ files:scan" repair mode to repair filecache inconsistencies**
+We recommend to use this command when directed to do so in the upgrade process (TODO more info)
+Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/issues/3446)**
+
+- **Detailed mode for "occ security:routes"**
+Administrators can use the output of this command when using a network firewall to check the appropriateness of configured rules or to get assistance when setting up.
+
+- **Added mode of operations to differentiate between single-instance or clustered setup**
+As ownCloud needs to behave differently when operating in a clustered setup we added a config.php option ``'operation.mode' => 'single-instance' or 'clustered-instance'``. 
+Currently the Market App (ownCloud Marketplace integration) does not support clustered setups and can do harm when used for installing or updating apps. The new config setting prevents this and other actions that are undesired in cluster mode.
+**Therefore when operating in a clustered setup it is mandatory to set this option.**
+Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/pull/3506)**
+
+- **Added occ dav:cleanup-chunks command to clean up expired uploads**
+When file uploads are interrupted by any reason already uploaded file parts (chunks) stay on the storage to be able to resume the file upload in a following upload run. Resuming an upload is only possible until the partial upload is expired and deleted, respectively. To cleanup chunks (expire and delete) originating from unfinished uploads administrators can use this newly introduced command. The expiry time default is two days but can be specified as a parameter of this command.
+**It is recommended to configure CRON to execute this background job regularly (it is not included in the regular ownCloud background jobs to give administrators more flexibility in scheduling)**. Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/pull/3522)**
+
+- **Administrators can now exclude files from integrity check in config.php**
+When administrators did intentional changes to the ownCloud code they now have the ability to exclude certain files from the integrity checker.
+Please check "config.sample.php" for the usage of ``'integrity.excluded.files'``. **DOC LINK??**
+
+- **All amazon locations support v4 now - v3 deprecated**
+Need input on relevance of deprecation for existing external storages and on description of this item @tomneedham
+
+- **Modified time value of files is now 64 bits long**
+Note: When upgrading to 10.0.4 migrations may increase update duration dependent on number of files.
+
+- **Updated minimum supported browser versions**
+Note: Users with outdated browsers might get warnings.
+
+- **10.0.3 known issues are solved**
+  - SFTP external storages with key pair mode work again
+  - Added support for MariaDB 10.2.7+
+  - Encryption panel in admin settings fixed to properly detect current mode after upgrade to ownCloud 10
+
+**Known issues**
+
+**Please add!**
+
 
 .. _10.0.3_release_notes_label:
 
