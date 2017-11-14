@@ -244,24 +244,39 @@ Share an existing file or folder with a user, a group, or as public link.
 Function Arguments
 ^^^^^^^^^^^^^^^^^^
 
-============ ======= ==========================================================
-Argument     Type    Description 
-============ ======= ==========================================================
-name         string  A (human-readable) name for the share, which can be up to
-                     64 characters in length.
-path         string  The path to the file or folder which should be shared.
-shareType    int     The type of the share. This can be one of: 0 = user, 
-                     1 = group, 3 = public link, 6 = federated cloud share
-shareWith    string  The user or group id with which the file should be shared.
-publicUpload boolean Whether to allow public upload to a public shared folder.
-password     string  The password to protect public link share with.
-permissions  int     The permissions to set on the share.
-                     1 = read (default for public shares); 2 = update;
-                     4 = create; 8 = delete; 15 = read/write.
-expireDate   string  An expire date for public link shares.
-                     This argument expects a date string in the following
-                     format ``'YYYY-MM-DD'``.
-============ ======= ==========================================================
++------------------------+----------+-----------------------------------------------------------+
+| Argument               | Type     | Description                                               |
++========================+==========+===========================================================+
+| name                   | string   | A (human-readable) name for the share, which can be up to |
+|                        |          | 64 characters in length.                                  |
++------------------------+----------+-----------------------------------------------------------+
+| path                   | string   | The path to the file or folder which should be shared.    |
++------------------------+----------+-----------------------------------------------------------+
+| shareType              | int      | The type of the share. This can be one of:                |
+|                        |          |                                                           |
+|                        |          | - 0 = user                                                |
+|                        |          | - 1 = group                                               |
+|                        |          | - 3 = public link                                         |
+|                        |          | - 6 = federated cloud share                               |
++------------------------+----------+-----------------------------------------------------------+
+| shareWith              | string   | The user or group id with which the file should be shared.|
++------------------------+----------+-----------------------------------------------------------+
+| publicUpload           | boolean  | Whether to allow public upload to a public shared folder. |
++------------------------+----------+-----------------------------------------------------------+
+| password               | string   | The password to protect public link share with.           |
++------------------------+----------+-----------------------------------------------------------+
+| permissions            | int      | The permissions to set on the share.                      |
+|                        |          |                                                           |
+|                        |          | - 1 = read (default for public shares);                   |
+|                        |          | - 2 = update;                                             |
+|                        |          | - 4 = create;                                             |
+|                        |          | - 8 = delete;                                             |
+|                        |          | - 15 = read/write.                                        |
++------------------------+----------+-----------------------------------------------------------+
+| expireDate             | string   | An expire date for public link shares.                    |
+|                        |          | This argument expects a date string in the following      |
+|                        |          | format ``'YYYY-MM-DD'``.                                  |
++------------------------+----------+-----------------------------------------------------------+
 
 .. note:: Things to remember about public link shares
 
@@ -328,55 +343,91 @@ Example Request Response Payloads
    :language: xml
 
 .. _ocs-share-api__create-share_response-attributes:
-   
+
 Response Attributes
 ^^^^^^^^^^^^^^^^^^^
 
-====================== ======== ========================================================
-Attribute              Type     Description
-====================== ======== ========================================================
-id                     int      The share’s unique id.
-share_type             int      The share’s type. This can be one of: 0 = user, 
-                                1 = group, 3 = public link, and 6 = federated cloud 
-                                share
-uid_owner              string   The username of the owner of the share.
-displayname_owner      string   The display name of the owner of the share.
-permissions            octal    The permission attribute set on the file. This can be
-                                of: 1 = Read, 2 = Update, 4 = Create, 8 = Delete, 
-                                16 = Share, or 31 = All permissions. The default is 31, 
-                                and for public shares is 1.
-stime                  int      The UNIX timestamp when the share was created.
-parent                 int      The unique id of the parent share.
-expiration             string   The UNIX timestamp when the share expires.
-token                  string   The public link to the item being shared.
-uid_file_owner         string   The unique id of the user that owns the file or folder 
-                                being shared.
-displayname_file_owner string   The display name of the user that owns the file or 
-                                folder being shared. 
-path                   string   The path to the shared file or folder.
-item_type              string   The type of the object being shared. This can be one
-                                of `file` or `folder`.
-mimetype               string   The `RFC-compliant mimetype <https://tools.ietf.org/html/rfc2045>`_ 
-                                of the file. 
-storage_id             string
-storage                int
-item_source            int      The unique node id of the item being shared.
-file_source            int      The unique node id of the item being shared.
-                                (for legacy reasons item_source and file_source
-                                attributes have the same value)
-file_parent            int      The unique node id of the parent node of the item 
-                                being shared.
-file_target            string   The name of the shared file.
-share_with             string   The uid of the receiver of the file. This is either a
-                                GID (group id) if it is being shared with a group or a 
-                                UID (user id) if the share is shared with a user
-share_with_displayname string   The display name of the receiver of the file.
-url                    string
-mail_send              int      Whether the recipient was notified, by mail, about the 
-                                share being shared with them.
-name                   string   A (human-readable) name for the share, which can be up 
-                                to 64 characters in length
-====================== ======== ========================================================
++------------------------+----------+-----------------------------------------------------------+
+| Argument               | Type     | Description                                               |
++========================+==========+===========================================================+
+| id                     | int      | The share's unique id.                                    |
++------------------------+----------+-----------------------------------------------------------+
+| share_type             | int      | The share's type. This can be one of:                     |
+|                        |          |                                                           |
+|                        |          | - 0 = user                                                |
+|                        |          | - 1 = group                                               |
+|                        |          | - 3 = public link                                         |
+|                        |          | - 6 = federated cloud share                               |
+|                        |          |                                                           |
++------------------------+----------+-----------------------------------------------------------+
+| uid_owner              | string   | The username of the owner of the share.                   |
++------------------------+----------+-----------------------------------------------------------+
+| displayname_owner      | string   | The display name of the owner of the share.               |
++------------------------+----------+-----------------------------------------------------------+
+| permissions            | octal    | The permission attribute set on the file. Options are:    |
+|                        |          |                                                           |
+|                        |          | - 1 = Read                                                |
+|                        |          | - 2 = Update                                              |
+|                        |          | - 4 = Create                                              |
+|                        |          | - 8 = Delete                                              |
+|                        |          | - 16 = Share                                              |
+|                        |          | - 31 = All permissions                                    |
+|                        |          |                                                           |
+|                        |          | The default is 31, and for public shares is 1.            |
++------------------------+----------+-----------------------------------------------------------+
+| stime                  | int      | The UNIX timestamp when the share was created.            |
++------------------------+----------+-----------------------------------------------------------+
+| parent                 | int      | The UNIX timestamp when the share was created.            |
++------------------------+----------+-----------------------------------------------------------+
+| expiration             | string   | The UNIX timestamp when the share expires.                |
++------------------------+----------+-----------------------------------------------------------+
+| token                  | string   | The public link to the item being shared.                 |
++------------------------+----------+-----------------------------------------------------------+
+| uid_file_owner         | string   | The unique id of the user that owns the file or folder    |
+|                        |          | being shared.                                             |
++------------------------+----------+-----------------------------------------------------------+
+| displayname_file_owner | string   | The display name of the user that owns the file or        |
+|                        |          | folder being shared.                                      |
++------------------------+----------+-----------------------------------------------------------+
+| path                   | string   | The path to the shared file or folder.                    |
++------------------------+----------+-----------------------------------------------------------+
+| item_type              | string   | The type of the object being shared. This can be one      |
+|                        |          | of `file` or `folder`.                                    |
++------------------------+----------+-----------------------------------------------------------+
+| mimetype               | string   | The `RFC-compliant mimetype`_ of the file.                |
++------------------------+----------+-----------------------------------------------------------+
+| storage_id             | string   |                                                           |
++------------------------+----------+-----------------------------------------------------------+
+| storage                | int      |                                                           |
++------------------------+----------+-----------------------------------------------------------+
+| item_source            | int      | The unique node id of the item being shared.              |
+|                        |          |                                                           |
++------------------------+----------+-----------------------------------------------------------+
+| file_source            | int      | The unique node id of the item being shared. For legacy   |
+|                        |          | reasons item_source and file_source attributes have the   |
+|                        |          | same value.                                               |
++------------------------+----------+-----------------------------------------------------------+
+| file_parent            | int      | The unique node id of the parent node of the item being   |
+|                        |          | shared.                                                   |
++------------------------+----------+-----------------------------------------------------------+
+| file_target            | int      | The name of the shared file.                              |
+|                        |          |                                                           |
++------------------------+----------+-----------------------------------------------------------+
+| share_with             | string   | The uid of the receiver of the file. This is either a GID |
+|                        |          | (group id) if it is being shared with a group or a UID    |
+|                        |          | (user id) if the share is shared with a user.             |
++------------------------+----------+-----------------------------------------------------------+
+| share_with_displayname | string   | The display name of the receiver of the file.             |
++------------------------+----------+-----------------------------------------------------------+
+| url                    | string   |                                                           |
+|                        |          |                                                           |
++------------------------+----------+-----------------------------------------------------------+
+| mail_send              | int      | Whether the recipient was notified, by mail, about the    |
+|                        |          | share being shared with them.                             |
++------------------------+----------+-----------------------------------------------------------+
+| name                   | string   | A (human-readable) name for the share, which can be up    |
+|                        |          | to 64 characters in length                                |
++------------------------+----------+-----------------------------------------------------------+
 
 .. _ocs-share-api__delete-share:
 
