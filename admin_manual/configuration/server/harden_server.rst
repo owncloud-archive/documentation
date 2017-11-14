@@ -284,7 +284,7 @@ After saving the file, restart Fail2ban by running the following command:
 
     service fail2ban restart
 
-To test that the new, ownCloud, configuration has been loaded, use the following command:
+To test that the new ownCloud configuration has been loaded, use the following command:
 
 ::
 
