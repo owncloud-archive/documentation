@@ -225,7 +225,8 @@ A clustered instance means that ownCloud is running on at least 2 nodes, if not 
 
 In single instance mode, all of the standard functionality, including *installing*, *updating*, and *removing* apps via the Marketplace are fully-supported.
 In clustered instance mode, *installing*, *updating*, and *removing* apps via the Marketplace **is not** supported. 
-In this mode, systems administrators need to apply any app changes across each node in the cluster manually.
+In this mode, systems administrators need to apply any app changes across each node in the cluster manually. Configuration
+management tools like Ansible, Chef or Puttet are recommended.
 
 To specify the mode of operation, adjust the configuration ``operation.mode`` setting accordingly. 
 The available values are ``clustered-instance`` and ``single-instance``.
