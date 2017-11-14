@@ -65,6 +65,8 @@ HASH Message        For working with message digests (hash).
 Digest Framework
 `iconv`_            For working with the iconv character set conversion 
                     facility.
+`intl`_             Increases language translation performance and fixes sorting of
+                    non-ASCII characters
 `JSON`_             For working with the JSON data-interchange format.
 `libxml`_           This is required for the _DOM_, _libxml_, _SimpleXML_, and 
                     _XMLWriter_ extensions to work. It requires that libxml2, 
@@ -123,8 +125,6 @@ Extension   Reason
 =========== =====================================================================
 `Bzip2`_    Required for extraction of applications
 `Fileinfo`_ Highly recommended, as it enhances file analysis performance
-`intl`_     Increases language translation performance and fixes sorting of
-            non-ASCII characters
 `Mcrypt`_   Increases file encryption performance
 `OpenSSL`_  Required for accessing HTTPS resources
 `imagick`_  Required for creating and modifying images and preview thumbnails
