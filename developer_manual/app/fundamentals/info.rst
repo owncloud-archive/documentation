@@ -11,25 +11,30 @@ In this section, you will find a complete example configuration, along with an e
 
   <?xml version="1.0"?>
   <info>
+      <!-- Mandatory fields -->
       <id>yourappname</id>
       <name>Your App</name>
       <description>Your application description</description>
       <version>1.0</version>
       <licence>AGPL</licence>
-      <author>Your Name</author>
-      <namespace>YourapplicationsNamespace</namespace>
+      <screenshot small-thumbnail="https://raw.githubusercontent.com/foo/myapp/master/screenshots/thumb.png"
+        >https://raw.githubusercontent.com/foo/myapp/master/screenshots/big.png</screenshot>
+      <!-- Category values available at: https://marketplace.owncloud.com/ajax/categories -->
+      <category>A category for the application. </category>
+      <summary>A summary of the application's purpose (max 90 chars)</summary>
 
       <types>
           <filesystem/>
       </types>
 
       <documentation>
-          <user>https://doc.owncloud.org</user>
-          <admin>https://doc.owncloud.org</admin>
-          <developer>https://doc.owncloud.org</developer>
+          <user>https://doc.owncloud.org/server/10.0/user_manual/pim/contacts.html</user>
+          <admin>https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/occ_command.html?highlight=contact#dav-commands</admin>
+          <developer>https://github.com/owncloud/contacts/blob/master/README.md</developer>
       </documentation>
 
-      <category>tool</category>
+      <author>Your Name</author>
+      <namespace>YourapplicationsNamespace</namespace>
       <website>https://owncloud.org</website>
       <bugs>https://github.com/owncloud/theapp/issues</bugs>
       <repository type="git">https://github.com/owncloud/theapplication.git</repository>
@@ -47,6 +52,18 @@ In this section, you will find a complete example configuration, along with an e
           <os>Linux</os>
           <owncloud min-version="6.0.4" max-version="8"/>
       </dependencies>
+      
+      <!-- For registering panels -->
+      <settings>
+          <admin>OCA\MyApp\Settings\Admin</admin>
+          <personal>OCA\MyApp\Settings\Personal</personal>
+      </settings>
+      
+      <!-- For registering settings sections -->
+      <settings-sections>
+	  	  <admin>OCA\MyApp\Settings\AdminSection</admin>
+		  <personal>OCA\MyApp\Settings\PersonalSection</personal>
+      </settings-sections>
 
       <!-- deprecated, but kept for reference -->
       <public>
