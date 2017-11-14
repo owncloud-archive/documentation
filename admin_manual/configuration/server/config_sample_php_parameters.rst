@@ -202,6 +202,24 @@ This example is from a new ownCloud installation using MariaDB::
 .. Generated content below. Don't change this.
 .. ALL_OTHER_SECTIONS_START
 
+.. _mode_of_operation_label:
+
+Mode of Operation 
+-----------------
+
+ownCloud can operate as either a single instance or as a clustered instance. 
+This operations mode has various impacts on ownCloud's behavior.
+
+A single instance, the default, means that ownCloud is running on a single node (likely, the most common operating mode). 
+A clustered instance means that ownCloud is running on at least 2 nodes, if not more. 
+
+In single instance mode, all of the standard functionality, including *installing*, *updating*, and *removing* apps via the Marketplace are fully-supported.
+In clustered instance mode, *installing*, *updating*, and *removing* apps via the Marketplace **is not** supported. 
+In this mode, systems administrators need to apply any app changes across each node in the cluster manually. Configuration
+management tools like Ansible, Chef or Puttet are recommended.
+
+To specify the mode of operation, adjust the configuration ``operation.mode`` setting accordingly. 
+The available values are ``clustered-instance`` and ``single-instance``.
 
 User Experience
 ---------------
