@@ -189,12 +189,12 @@ Administrators can verify whether this security change is active by accessing a
 static resource served by the Web server and verify that the above mentioned 
 security headers are shipped.
 
-Use Fail2Ban
+Use Fail2ban
 ------------
 
 Another approach to hardening the server(s) on which your ownCloud installation rest is using an intrusion detection system. 
-An excellent one is `Fail2Ban`_.
-Fail2Ban is designed to protect servers from brute force attacks. 
+An excellent one is `Fail2ban`_.
+Fail2ban is designed to protect servers from brute force attacks. 
 It works by monitoring log files (such as those for *ssh*, *web*, *mail*, and *log* servers) for certain patterns, specific to each server, and taking actions should those patterns be found. 
 
 Actions include banning the IP from which the detected actions are being made from. 
@@ -203,7 +203,7 @@ However, after a predefined time period, the banned IP is normally un-banned aga
 
 This helps if the login attempts were genuine, so the user doesn't lock themselves out permanently. 
 An example of such an action is users attempting to brute force login to a server via ssh.
-In this case, Fail2Ban would look for something similar to the following in ``/var/log/auth.log``.
+In this case, Fail2ban would look for something similar to the following in ``/var/log/auth.log``.
 
 :: 
 
@@ -218,12 +218,148 @@ In this case, Fail2Ban would look for something similar to the following in ``/v
 .. note:: 
    If you’re not familiar with what’s going on, this snippet highlights a number of failed login attempts being made.
 
-A complete installation guide is outside the bounds of this documentation. 
-However, this `short guide from Digital Ocean`_ should get you started.
+Using Fail2ban to secure an ownCloud login
+******************************************
+
+On Ubuntu, you can install Fail2ban using the following commands:
+
+::
+
+    apt update && apt upgrade
+    apt install fail2ban
+
+Fail2ban installs several default filters for *Apache*, *NGINX*, and various other services, but none for ownCloud. 
+Given that, we have to define our own filter.
+To do so, you first need to make sure that ownCloud uses your local timezone for writing log entries; otherwise, fail2ban cannot react appropriately to attacks. 
+To do this, edit your ``config.php`` file and add the following line:
+
+::
+
+    'logtimezone' => 'Europe/Berlin',
+
+.. note:: 
+   Adjust the timezone to the one that your server is located in, based on `PHP's list of supported timezones`_.
+
+This change takes effect as soon as you save ``config.php``. 
+You can test the change by:
+
+#. Entering false credentials at your ownCloud login screen
+#. Checking the timestamp of the resulting entry in ownCloud's log file.
+
+Next, define a new Fail2ban filter rule for ownCloud.
+To do so, create a new file called ``/etc/fail2ban/filter.d/owncloud.conf``, and insert the following configuration:
+
+::
+
+    [Definition]
+    failregex={.*Login failed: \'.*\' \(Remote IP: \'<HOST>\'\)"}
+    ignoreregex =
+
+This filter needs to be loaded when Fail2ban starts, so a further configuration entry is required to be added in ``/etc/fail2ban/jail.d/defaults-debian.conf``, which you can see below:
+
+::
+
+    [owncloud]
+    enabled = true
+    port = 80,443
+    protocol = tcp
+    filter = owncloud
+    maxretry = 3
+    bantime = 10800
+    logpath = /var/owncloud_data/owncloud.log
+
+This configuration:
+
+#. Enables the filter rules for TCP requests on ports 80 and 443. 
+#. Bans IPs for 10800 seconds (3 hours). 
+#. Sets the path to the log file to analyze for malicious logins
+
+.. note::
+  The most important part of the configuration is the ``logpath`` parameter. 
+  If this does not point to the correct log file, Fail2ban will either not work properly or refuse to start.
+
+After saving the file, restart Fail2ban by running the following command:
+
+::
+
+    service fail2ban restart
+
+To test that the new ownCloud configuration has been loaded, use the following command:
+
+::
+
+    fail2ban-client status
+
+If "owncloud" is listed in the console output, the filter is both loaded and active.
+If you want to test the filter, run the following command, adjusting the path to your ``owncloud.log``, if necessary:
+
+::
+
+    fail2ban-regex /var/owncloud_data/owncloud.log /etc/fail2ban/filter.d/owncloud.conf
+
+The output will look similar to the following, if you had one failed login attempt:
+
+::
+
+    fail2ban-regex /var/www/owncloud_data/owncloud.log /etc/fail2ban/filter.d/owncloud.conf
+
+    Running tests
+    =============
+
+    Use   failregex file : /etc/fail2ban/filter.d/owncloud.conf
+    Use         log file : /var/www/owncloud_data/owncloud.log
+
+
+    Results
+    =======
+
+    Failregex: 1 total
+    |-  #) [# of hits] regular expression
+    |   1) [1] {.*Login failed: \'.*\' \(Remote IP: \'<HOST>\'\)"}
+    `-
+
+    Ignoreregex: 0 total
+
+    Date template hits:
+    |- [# of hits] date format
+    |  [40252] ISO 8601
+    `-
+
+    Lines: 40252 lines, 0 ignored, 1 matched, 40251 missed
+
+The ``Failregex`` counter increments by 1 for every failed login attempt.
+To un-ban an IP, which was locked either during testing or unintentionally, use the following command:
+
+::
+
+    fail2ban-client set owncloud unbanip <IP>
+
+You can check the status of your ownCloud filter with the following command:
+
+::
+
+    fail2ban-client status owncloud
+
+This will produce an output similar to this:
+
+::
+
+    Status for the jail: owncloud
+    |- filter
+    |  |- File list:    /var/www/owncloud_data/owncloud.log
+    |  |- Currently failed: 1
+    |  `- Total failed: 7
+    `- action
+       |- Currently banned: 0
+       |  `- IP list:
+       `- Total banned: 1
+
+.. Links
 
 .. _Mozilla SSL Configuration Generator: https://mozilla.github.io/server-side-tls/ssl-config-generator/
 .. _Qualys SSL Labs Tests: https://www.ssllabs.com/ssltest/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
-.. _Fail2Ban: https://www.fail2ban.org/wiki/index.php/Main_Page
+.. _Fail2ban: https://www.fail2ban.org/wiki/index.php/Main_Page
 .. _short guide from Digital Ocean: https://www.digitalocean.com/community/tutorials/how-to-protect-ssh-with-fail2ban-on-ubuntu-14-04
 .. _bcrypt: https://en.m.wikipedia.org/wiki/Bcrypt
+.. _PHP's list of supported timezones: https://secure.php.net/manual/en/timezones.php
