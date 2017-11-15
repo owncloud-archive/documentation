@@ -24,14 +24,13 @@ Dear ownCloud administrator, please find below the changes and known issues in o
 
 * **More granular sharing restrictions**
 The "*Restrict users to only share with users in their groups*" option, in the Sharing settings, restricts users to only share with groups which they are a member of, while simultaneously prohibiting sharing with single users that do not belong to any of the users' groups.
-To make this more granular, we split this option into two parts and added "*Restrict users to only share with groups they are member of*", which differentiates between users and groups. Doing so makes it possible to restrict users from sharing with all users of an installation, limiting them to only being able to share with groups which they are a member of, and vice versa.
-Please check if the new possibilities better suit your needs.
+To make this more granular, we split this option into two parts and added "*Restrict users to only share with groups they are member of*", which differentiates between users and groups. Doing so makes it possible to restrict users from sharing with all users of an installation, limiting them to only being able to share with groups which they are a member of, and vice versa. Please check if the new possibilities better suit your needs.
 
 - **Configurable solution for indistinguishable user display names**
 The ownCloud sharing dialog displays users according to their display name. As users can choose their display name in self-service (which can be disabled in `config.php`) and display names are not unique, it is possible that a user can't distinguish sharing results. To cover this case the displayed user identifiers are now configurable. In the Sharing settings administrators can now configure the display of either mail addresses or user ids. Please check if this new feature better suits your needs.
 
 - **Added "occ files:scan" repair mode to repair filecache inconsistencies**
-We recommend to use this command when directed to do so in the upgrade process (TODO more info)
+We recommend to use this command when directed to do so in the upgrade process.
 Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/issues/3446)**
 
 - **Detailed mode for "occ security:routes"**
@@ -42,7 +41,7 @@ As ownCloud needs to behave differently when operating in a clustered setup vers
 For example:
 
 ```
-'operation.mode' => 'single-instance',
+'operation.mode' => 'clustered-instance',
 ```
 
 Currently the Market App (ownCloud Marketplace integration) does not support clustered setups and can do harm when used for installing or updating apps. The new config setting prevents this and other actions that are undesired in cluster mode.
@@ -51,16 +50,12 @@ Please check the ownCloud documentation for more information (https://doc.ownclo
 
 - **Added occ dav:cleanup-chunks command to clean up expired uploads**
 When file uploads are interrupted for any reason, already uploaded file parts (chunks) remain in the underlying storage so that the file upload can resume in a future upload attempt.
-
 However, resuming an upload is only possible until the partial upload is expired and deleted, respectively. To clean up chunks (expire and delete) originating from unfinished uploads, administrators can use this newly introduced command. The default expiry time is two days, but it can be specified as a parameter to the command.
-**It is recommended to configure CRON to execute this background job regularly**. It is not included in the regular ownCloud background jobs so that the administrators have more flexibility in scheduling it. Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/pull/3522)**
+**It is recommended to configure CRON to execute this background job regularly**. It is not included in the regular ownCloud background jobs so that the administrators have more flexibility in scheduling it. Please check the ownCloud documentation for more information (https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/background_jobs_configuration.html#cleanupchunks).
 
 - **Administrators can now exclude files from integrity check in config.php**
 When administrators did intentional changes to the ownCloud code they now have the ability to exclude certain files from the integrity checker.
-Please check "config.sample.php" for the usage of ``'integrity.excluded.files'``. **DOC LINK??**
-
-- **All Amazon locations support v4 now - v3 deprecated**
-Need input on relevance of deprecation for existing external storages and on description of this item @tomneedham
+Please check "config.sample.php" for the usage of ``'integrity.excluded.files'``.
 
 - **Modification time value of files is now 64 bits long**
 Note: When upgrading to 10.0.4 migrations may increase update duration dependent on number of files.
@@ -74,9 +69,6 @@ Note: Users with outdated browsers might get warnings. See the list of supported
   - Encryption panel in admin settings fixed to properly detect current mode after upgrade to ownCloud 10
 
 **Known issues**
-
-**Please add!**
-
 
 .. _10.0.3_release_notes_label:
 
