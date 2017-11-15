@@ -18,15 +18,17 @@ Release Notes
 Changes in 10.0.4
 -----------------
 
-Dear ownCloud administrator, please find below the changes and known issues of ownCloud Server 10.0.4 that need your attention:
+Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.4 that need your attention:
 
 **The full ownCloud Server 10.0.4 changelog can be found here: https://github.com/owncloud/core/blob/stable10/CHANGELOG.md**
 
 * **More granular sharing restrictions**
-The option "Restrict users to only share with users in their groups" in the admin sharing settings forces users to only be able to share with groups they are member of while simultaneously prohibiting to share with single users that do not belong to any of the users' groups. To make this more granular we split this option into two and added "Restrict users to only share with groups they are member of" which now differentiates between users and groups making it possible to force users to be able to share with all users of an installation but only with groups they are member of and vice versa. Please check if the new possibilities better suit your needs.
+The "*Restrict users to only share with users in their groups*" option, in the Sharing settings, restricts users to only share with groups which they are a member of, while simultaneously prohibiting sharing with single users that do not belong to any of the users' groups.
+To make this more granular, we split this option into two parts and added "*Restrict users to only share with groups they are member of*", which differentiates between users and groups. Doing so makes it possible to restrict users from sharing with all users of an installation, limiting them to only being able to share with groups which they are a member of, and vice versa.
+Please check if the new possibilities better suit your needs.
 
 - **Configurable solution for indistinguishable user display names**
-In the ownCloud sharing dialog users are displayed according to their display name. As users can choose their display name in self-service (can be disabled in config.php) and display names are not unique it is possible that a user can't distinguish sharing results. To cover this case the displayed user identifiers are now configurable. Administrators can configure to additionally display mail addresses or user ids. Please check if this new feature better suits your needs.
+In the ownCloud sharing dialog users are displayed according to their display name. As users can choose their display name in self-service (can be disabled in config.php) and display names are not unique it is possible that a user can't distinguish sharing results. To cover this case the displayed user identifiers are now configurable. In the Sharing settings administrators can now configure to additionally display mail addresses or user ids. Please check if this new feature better suits your needs.
 
 - **Added "occ files:scan" repair mode to repair filecache inconsistencies**
 We recommend to use this command when directed to do so in the upgrade process (TODO more info)
@@ -49,14 +51,14 @@ When file uploads are interrupted by any reason already uploaded file parts (chu
 When administrators did intentional changes to the ownCloud code they now have the ability to exclude certain files from the integrity checker.
 Please check "config.sample.php" for the usage of ``'integrity.excluded.files'``. **DOC LINK??**
 
-- **All amazon locations support v4 now - v3 deprecated**
+- **All Amazon locations support v4 now - v3 deprecated**
 Need input on relevance of deprecation for existing external storages and on description of this item @tomneedham
 
-- **Modified time value of files is now 64 bits long**
+- **Modification time value of files is now 64 bits long**
 Note: When upgrading to 10.0.4 migrations may increase update duration dependent on number of files.
 
 - **Updated minimum supported browser versions**
-Note: Users with outdated browsers might get warnings.
+Note: Users with outdated browsers might get warnings. See the list of supported browser versions: https://doc.owncloud.com/server/10.0/admin_manual/installation/system_requirements.html#web-browser
 
 - **10.0.3 known issues are solved**
   - SFTP external storages with key pair mode work again
