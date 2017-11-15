@@ -47,7 +47,7 @@ For example:
 
 Currently the Market App (ownCloud Marketplace integration) does not support clustered setups and can do harm when used for installing or updating apps. The new config setting prevents this and other actions that are undesired in cluster mode.
 **Therefore when operating in a clustered setup it is mandatory to set this option.**
-Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/pull/3506)**
+Please check the ownCloud documentation for more information (https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/config_sample_php_parameters.html#mode-of-operation).
 
 - **Added occ dav:cleanup-chunks command to clean up expired uploads**
 When file uploads are interrupted for any reason, already uploaded file parts (chunks) remain in the underlying storage so that the file upload can resume in a future upload attempt.
