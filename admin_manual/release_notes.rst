@@ -35,17 +35,25 @@ We recommend to use this command when directed to do so in the upgrade process (
 Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/issues/3446)**
 
 - **Detailed mode for "occ security:routes"**
-Administrators can use the output of this command when using a network firewall to check the appropriateness of configured rules or to get assistance when setting up.
+Administrators can use the output of this command when using a network firewall, to check the appropriateness of configured rules or to get assistance when setting up.
 
 - **Added mode of operations to differentiate between single-instance or clustered setup**
-As ownCloud needs to behave differently when operating in a clustered setup we added a config.php option ``'operation.mode' => 'single-instance' or 'clustered-instance'``. 
+As ownCloud needs to behave differently when operating in a clustered setup versus a single instance setup, the new `config.php` option `operation.mode` has been added. It can take one of two values: `single-instance` and `clustered-instance`.
+For example:
+
+```
+'operation.mode' => 'single-instance',
+```
+
 Currently the Market App (ownCloud Marketplace integration) does not support clustered setups and can do harm when used for installing or updating apps. The new config setting prevents this and other actions that are undesired in cluster mode.
 **Therefore when operating in a clustered setup it is mandatory to set this option.**
 Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/pull/3506)**
 
 - **Added occ dav:cleanup-chunks command to clean up expired uploads**
-When file uploads are interrupted by any reason already uploaded file parts (chunks) stay on the storage to be able to resume the file upload in a following upload run. Resuming an upload is only possible until the partial upload is expired and deleted, respectively. To cleanup chunks (expire and delete) originating from unfinished uploads administrators can use this newly introduced command. The expiry time default is two days but can be specified as a parameter of this command.
-**It is recommended to configure CRON to execute this background job regularly (it is not included in the regular ownCloud background jobs to give administrators more flexibility in scheduling)**. Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/pull/3522)**
+When file uploads are interrupted for any reason, already uploaded file parts (chunks) remain in the underlying storage so that the file upload can resume in a future upload attempt.
+
+However, resuming an upload is only possible until the partial upload is expired and deleted, respectively. To clean up chunks (expire and delete) originating from unfinished uploads, administrators can use this newly introduced command. The default expiry time is two days, but it can be specified as a parameter to the command.
+**It is recommended to configure CRON to execute this background job regularly**. It is not included in the regular ownCloud background jobs so that the administrators have more flexibility in scheduling it. Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/pull/3522)**
 
 - **Administrators can now exclude files from integrity check in config.php**
 When administrators did intentional changes to the ownCloud code they now have the ability to exclude certain files from the integrity checker.
