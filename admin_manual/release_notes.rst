@@ -28,7 +28,7 @@ To make this more granular, we split this option into two parts and added "*Rest
 Please check if the new possibilities better suit your needs.
 
 - **Configurable solution for indistinguishable user display names**
-In the ownCloud sharing dialog users are displayed according to their display name. As users can choose their display name in self-service (can be disabled in config.php) and display names are not unique it is possible that a user can't distinguish sharing results. To cover this case the displayed user identifiers are now configurable. In the Sharing settings administrators can now configure to additionally display mail addresses or user ids. Please check if this new feature better suits your needs.
+The ownCloud sharing dialog displays users according to their display name. As users can choose their display name in self-service (which can be disabled in `config.php`) and display names are not unique, it is possible that a user can't distinguish sharing results. To cover this case the displayed user identifiers are now configurable. In the Sharing settings administrators can now configure the display of either mail addresses or user ids. Please check if this new feature better suits your needs.
 
 - **Added "occ files:scan" repair mode to repair filecache inconsistencies**
 We recommend to use this command when directed to do so in the upgrade process (TODO more info)
