@@ -252,13 +252,65 @@ Any app which wants to use this mechanism has to enable it in :file:`appinfo/inf
 
   <use-migrations>true</use-migrations>
 
-As soon as migrations are enabled, any existing :file:`appinfo/database.xml` will be ignored, when the app is upgraded and all outstanding migrations will be executed.
+
+**Please Be Aware:** if migrations are enabled then :file:`appinfo/database.xml` is ignored. 
+From this point onwards, when an app is installed or upgraded, all outstanding migrations are executed. Below is a migration code sample for creating an application's core table. 
+
+.. code-block:: php
+   
+   <?php
+
+   namespace OCA\MyApp\Migrations;
+
+   use OCP\Migration\ISchemaMigration;
+   use Doctrine\DBAL\Schema\Schema;
+
+   /*
+    - Create initial tables for the app
+    */
+
+   class Version20171106150538 implements ISchemaMigration {
+
+       /** @var  string */
+       private $prefix;
+
+       /**
+        - @param Schema $schema
+        - @param [] $options
+        */
+       public function changeSchema(Schema $schema, array $options) {
+           $this->prefix = $options['tablePrefix'];
+
+           if (!$schema->hasTable("{$this->prefix}mytable")) {
+               $table = $schema->createTable("{$this->prefix}mytable");
+               $table->addColumn('id', 'integer', [
+                   'autoincrement' => true,
+                   'unsigned' => true,
+                   'notnull' => true,
+                   'length' => 11,
+               ]);
+               $table->addColumn('stringfield', 'string', [
+                   'length' => 255,
+                   'notnull' => false,
+               ]);
+               $table->addColumn('intfield', 'integer', [
+                   'unsigned' => true,
+                   'notnull' => true,
+                   'default' => 1,
+               ]);
+               $table->setPrimaryKey(['id']);
+               $table->addUniqueIndex(['stringfield'], 'mytable_index');
+           }
+       }
+   }
+
+You can see examples of how to create the three migration types in the next section.
 
 .. note:: 
    It is still necessary to increment the application's version number to trigger the execution of migrations.
 
 How to Create a Migration
--------------------------
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 1. Enable migrations by adding the XML tag to :file:`appinfo/info.xml`
 
