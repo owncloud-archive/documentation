@@ -147,11 +147,18 @@ Indicates whether the ownCloud instance was installed successfully; ``true``
 indicates a successful installation, and ``false`` indicates an unsuccessful
 installation.
 
+::
+
+    'operation.mode' => 'single-instance'
+    
+Indicates whether the ownCloud instance is running in :ref:`single or clustered instance mode <mode_of_operation_label>`.
+
 .. DEFAULT_SECTION_END
 .. Generated content above. Don't change this.
 
 Default config.php Examples
 ---------------------------
+
 When you use SQLite as your ownCloud database, your ``config.php`` looks like
 this after installation. The SQLite database is stored in your ownCloud
 ``data/`` directory. SQLite is a simple, lightweight embedded database that
@@ -173,10 +180,12 @@ systems you should use MySQL, MariaDB, or PostgreSQL.
     'dbtype' => 'sqlite3',
     'version' => '7.0.2.1',
     'installed' => true,
+    'operation.mode' => 'single-instance',
   );
 
-This example is from a new ownCloud installation using MariaDB::
+This example is from a new ownCloud installation using MariaDB
 
+::
 
   <?php
   $CONFIG = array (
@@ -197,6 +206,7 @@ This example is from a new ownCloud installation using MariaDB::
     'dbuser' => 'oc_carla',
     'dbpassword' => '67336bcdf7630dd80b2b81a413d07',
     'installed' => true,
+    'operation.mode' => 'single-instance',
   );
 
 .. Generated content below. Don't change this.
@@ -213,10 +223,10 @@ This operations mode has various impacts on ownCloud's behavior.
 A single instance, the default, means that ownCloud is running on a single node (likely, the most common operating mode). 
 A clustered instance means that ownCloud is running on at least 2 nodes, if not more. 
 
-In single instance mode, all of the standard functionality, including *installing*, *updating*, and *removing* apps via the Marketplace are fully-supported.
-In clustered instance mode, *installing*, *updating*, and *removing* apps via the Marketplace **is not** supported. 
-In this mode, systems administrators need to apply any app changes across each node in the cluster manually. Configuration
-management tools like Ansible, Chef or Puttet are recommended.
+In single instance mode, all of the standard functionality, including *installing*, *updating*, and *removing* apps via the Market App are fully-supported.
+In clustered instance mode, *installing*, *updating*, and *removing* apps via the Market App **are not** supported. 
+Systems administrators can, however, manually install or update apps from the marketplace, by adding them to the apps folder in each instance in the cluster.
+Configuration management tools like Ansible, Chef or Puppet are recommended.
 
 To specify the mode of operation, adjust the configuration ``operation.mode`` setting accordingly. 
 The available values are ``clustered-instance`` and ``single-instance``.
