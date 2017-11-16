@@ -236,15 +236,14 @@ Database Migrations
 
 .. sectionauthor:: Thomas Müller <thomas.mueller@tmit.eu>
 
-ownCloud uses migration steps to perform any changes between versions. 
-In most cases, these changes are changes to the database schema, but it is not only limited to them.
-Therefore we support three kinds of migration steps: simple, SQL and schema.
+ownCloud uses migration steps to perform database changes between releases. 
+In most cases, these changes relate to the core database schema. 
+However, other types of changes may be required.
+Therefore we support three kinds of migration steps, these are:
 
-There are currently three supported migration types:
-
-- **Simple.** This allows general migration steps to be executed. These are quite similar to the `migration repair steps <https://doc.owncloud.org/api/classes/OCP.Migration.IRepairStep.html>`_.
-- **SQL.** This allows you to create a list of executable SQL commands.
-- **Schema.** This allows migration via schema migration operations.
+- **Simple:** run general migration steps. These are quite similar to the `migration repair steps <https://doc.owncloud.org/api/classes/OCP.Migration.IRepairStep.html>`_.
+- **SQL:** create a list of executable SQL commands.
+- **Schema:** migration via schema migration operations.
 
 Starting with ownCloud 10, this is the preferred way to perform any kind of migrations and is enabled by default within core.
 Any app which wants to use this mechanism has to enable it in :file:`appinfo/info.xml`, by adding the following:
