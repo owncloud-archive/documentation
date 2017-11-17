@@ -55,10 +55,18 @@ Example
       0 => [
           "class"     => "OC_User_IMAP",
           "arguments" => [
-              0 => '{imap.gmail.com:993/imap/ssl}'
+              // The IMAP server to authenticate against
+              '{imap.gmail.com:993/imap/ssl}', 
+              // The domain to send email from
+              'example.com'
           ],
       ],
   ],
+  
+.. warning:: 
+   The second ``arguments`` parameter ensures that only users from that domain are allowed to login. 
+   When set, after a successful login, the domain will be stripped from the email address and the rest used as an ownCloud username. 
+   For example, if the email address is ``guest.user@example.com``, then ``guest.user`` will be the username used by ownCloud.
 
 SMB
 ---
