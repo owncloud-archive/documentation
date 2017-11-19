@@ -27,6 +27,7 @@ $mapping = array(
     'admin-code-integrity' => '/admin_manual/issues/code_signing.html',
     'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
     'admin-marketplace-apps' => '/admin_manual/upgrading/marketplace_apps.html',
+    'admin-logfiles' => '/admin_manual/issues/general_troubleshooting.html#logfiles',
 
     'admin-enterprise-license' => '/admin_manual/enterprise_installation/license_keys_installation.html',
 
