@@ -10,6 +10,7 @@ $mapping = array(
     'admin-external-storage'  => '/admin_manual/configuration/files/external_storage_configuration_gui.html',
     'admin-install'           => '/admin_manual/installation/index.html',
     'admin-ldap'              => '/admin_manual/configuration/user/user_auth_ldap.html',
+    'admin-logfiles'          => '/admin_manual/issues/general_troubleshooting.html#logfiles',
     'admin-provisioning-api'  => '/admin_manual/configuration/user/user_provisioning_api.html',
     'admin-sharing'           => '/admin_manual/configuration/files/file_sharing_configuration.html',
     'admin-sharing-federated' => '/admin_manual/configuration/files/federated_cloud_sharing_configuration.html',
