@@ -236,8 +236,8 @@ Database Migrations
 
 .. sectionauthor:: Thomas Müller <thomas.mueller@tmit.eu>
 
-ownCloud uses migration steps to perform database changes between releases. 
-In most cases, these changes relate to the core database schema. 
+ownCloud uses migration steps to perform changes between releases.
+In most cases, these changes relate to the core database schema.
 However, other types of changes may be required.
 Therefore we support three kinds of migration steps, these are:
 
