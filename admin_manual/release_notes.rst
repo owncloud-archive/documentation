@@ -70,6 +70,8 @@ Note: Users with outdated browsers might get warnings. See the list of supported
 
 **Known issues**
 
+Currently there are no known issues for ownCloud Server 10.0.4.
+
 .. _10.0.3_release_notes_label:
 
 Changes in 10.0.3
