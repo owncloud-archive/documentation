@@ -144,247 +144,243 @@ ownCloud supports SMB notifications with an ``occ`` command, ``occ wnd:listen``.
    does not work reliably with Linux servers due to technical limitations.
 
 Your ``smbclient`` version needs to be 4.x, as older versions do not support notifications.
-The ownCloud server needs to know about changes to files on integrated storage so that the changed files will be synced to the ownCloud server, and to desktop sync clients. 
+The ownCloud server needs to know about changes to files on integrated storage so that the changed files will be synced to the ownCloud server, and to desktop sync clients.
 
-Files changed through the ownCloud Web interface, or sync clients are automatically updated in the ownCloud file cache, but this is not possible when files are changed directly on remote SMB storage mounts. 
+Files changed through the ownCloud Web Interface, or sync clients are automatically updated in the ownCloud file cache, but this is not possible when files are changed directly on remote SMB storage mounts.
 
-To create a new SMB notification, start a listener on your ownCloud server with ``occ wnd:listen``. 
+To create a new SMB notification, start a listener on your ownCloud server with ``occ wnd:listen``.
 The listener marks changed files, and a background job updates the file metadata.
 
-Windows network drive connections and setup of ``occ wnd:listen`` often does not always work the first time. 
+Windows network drive connections and setup of ``occ wnd:listen`` often does not always work the first time.
 If you encounter issues using it, then try the following troubleshooting steps:
 
 1. Check the connection with smbclient_ on the command line of the ownCloud server
 2. If you are connecting to `Distributed File Shares`_ (DFS), be aware that the
    shares are case-sensitive
 
-Take the example of attempting to connect to the share named `MyData` using ``occ wnd:listen``. 
+Take the example of attempting to connect to the share named `MyData` using ``occ wnd:listen``.
 Running the following command would work::
-  
-   su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata MyData svc_owncloud password'
+
+   su www-data -s /bin/bash -c 'php /var/www/owncloud/occ ``wnd:listen`` dfsdata MyData svc_owncloud password'
 
 However, running this command would not::
-   
-   su www-data -s /bin/bash -c 'php /var/www/owncloud/occ wnd:listen dfsdata mydata svc_owncloud password'
 
-.. _setup_notifications_for_smb_share-label:
+   su www-data -s /bin/bash -c 'php /var/www/owncloud/occ ``wnd:listen`` dfsdata mydata svc_owncloud password'
 
-Setup Notifications for an SMB Share
-------------------------------------
+Setting Up the WND Listener
+---------------------------
 
-If you don't already have an SMB share, you must create one. 
-Then start the listener with this command, like this example for Ubuntu Linux::
+The WND listener for ownCloud 10 includes two different commands that need to be executed:
 
-    sudo -u www-data php occ wnd:listen <host> <share> <username> [password]
-    
-The ``host`` is your remote SMB server, which must be the same as the server name in your WND configuration on your ownCloud Admin page. 
-``share`` is the share name, and ``username`` and ``password`` are the login credentials for the share. 
+- `wnd:listen`_
+- `wnd:process-queue`_
+
+wnd:listen
+----------
+
+This listens and stores notifications in the database coming from one specific host and share. 
+It is intended to be run as a service.
+The command requires the host and share, which the listener will listen to, and the Windows/Samba account that will listen.
+The command does not produce any output by default, unless errors happen.
 
 .. note:: 
-   There are many ways in which you can supply a password. 
-   Please refer to :ref:`the Password Options section <password-options-label>` for full details.
+   You can increase the command's verbosity by using ``-vvv``. 
+   Doing so displays what the listener is doing, including a timestamp and the notifications received.
 
-By default there is no output. Enable verbosity to see the notifications::
- 
-  $ sudo -u www-data php occ wnd:listen -v server share useraccount
-  Please enter the password to access the share: 
-  File removed : Capirotes/New Text Document.txt
-  File modified : Capirotes
-  File added : Capirotes/New Text Document.txt
-  File modified : Capirotes
-  File renamed : old name : Capirotes/New Text Document.txt
-  File renamed : new name : Capirotes/New Document.txt
-  
-Enable increased verbosity to see debugging messages, including which storage is updated and timing::
-  
-  $ sudo -u www-data php occ wnd:listen -vvv server share useraccount
-  Please enter the password to access the share: 
-  notification received in 1471450242
-  File removed : Capirotes/New Document.txt
-  found 1 related storages from mount id 1
-  updated storage wnd::admin@server/share// from mount id 1 -> removed internal path : Capirotes/New Document.txt
-  found 1 related storages from mount id 3
-  updated storage wnd::administrador@server/share// from mount id 3 -> removed internal path : Capirotes/New Document.txt
-  found 1 related storages from mount id 2
+.. note::
+   Although the exact permissions required for the Windows account are unknown, read-only should be enough.
 
-See :doc:`../../configuration/server/occ_command` for detailed help with ``occ``.
+wnd:process-queue
+-----------------
 
-One Listener for Many Shares
+Processes the stored notifications for a given host and share.
+This process is intended to be run periodically as a Cron job, or via a similar mechanism.
+The command will process the notifications stored by the ``wnd:listen`` process, showing only errors by default.
+If you need more information, increase the verbosity by calling ``wnd:process-queue -vvv``.
+
+Basic Setup for One ownCloud Server
+-----------------------------------
+
+First, go to the admin settings and set up the required WND mounts.
+Be aware though, that there are some limitations.
+These are:
+
+- We need access to the Windows account password for the mounts to update the file cache properly. This means that "*login credentials, saved in session*" won't work with the listener. "*login credentials, saved in DB*" should work and could be the best replacement.
+- The ``$user`` placeholder in the share, such as ``//host/$user/path/to/root``, for providing a share which is accessible per/user won't work with the listener. This is because the listener won't scale, as you'll need to setup one listener per/share. As a result, you'll end up with too many listeners. An alternative is to provide a common share for the users and use the ``$user`` placeholder in the root, such as ``//host/share/$user/folder``.
+
+Second, start the ``wnd:listen`` process if it's not already started, ideally running it as a service.
+If it isn't running, no notification are stored.
+The listener stores the notifications.
+Any change in the mount point configuration, such as adding or removing new mounts, and logins by new users, won't affect the behavior, so there is no need to restart the listener in those cases.
+
+In case you have several mount point configurations, note that each listener attaches to one host and share.
+If there are several mount configurations targeting different shares, you'll need to spawn one listener for each.
+For example, if you have one configuration with ``10.0.0.2/share1`` and another with ``10.0.0.2/share2``, you'll need to spawn 2 listeners, one for the first configuration and another for the second.
+
+Third, run the ``wnd:process-queue`` periodically, usually via :ref:`a Cron job <cron_job_label>`.
+The command processes all the stored notifications for a specific host and share.
+If you have several, you could set up several Cron jobs, one for each host and share with different intervals, depending on the load or update urgency.
+As a simple example, you could run the command every 2 minutes for one server and every 5 minutes for another.
+
+As said, the command processes all the stored notifications, squeeze them and scan the resulting folders.
+The process might crash if there are too many notifications, or if it has too many storages to update.
+The ``--chunk-size`` option will help by making the command process all the notifications in buckets of that size.
+
+On the one hand the memory usage is reduced, on the other hand there is more network activity.
+We recommend using the option with a value high enough to process a large number of notifications, but not so large to crash the process.
+Between 200 and 500 should be fine, and we'll likely process all the notifications in one go.
+
+Optimizing wnd:process-queue
 ----------------------------
 
-As the ownCloud server admin, you can setup an SMB share for all of your users with a ``$user`` template variable in the root path. 
-By using a ServiceUser, you can listen to the common share path. 
-The ServiceUser is any user with access to the share. 
-You might create a special read-only user account to use in this case.
-
-Example
-~~~~~~~
-
-Share ``/home`` contains folders for every user, e.g., ``/home/alice`` and ``/home/bob``. 
-So the admin configures the Windows Network Drive external storage with these values:
-
-============== ===============================================================================
-Item           Description/Configuration
-============== ===============================================================================
-Folder name    home
-Storage Type   Windows Network Drive
-Authentication Log-in credentials, save in database
-Configuration  ``host: "172.18.16.220", share: "home", remote subfolder: "$user", domain: ""``
-============== ===============================================================================
-
-Then starts the ``wnd:listen`` thread::
-
-    sudo -u www-data occ wnd:listen 172.18.16.220 home ServiceUser Password
-
-Changes made by Bob or Alice made directly on the storage are now detected by the ownCloud server.
-
-Running the WND Listener as a Service
--------------------------------------
-
-There are several different approaches available to running the Windows Network Drive listener as a service.
-
-As a Cron Job
-~~~~~~~~~~~~~
-
-Firstly, create a new script called ``wnd-listen.sh`` and add the code below to it, adjusting the path to your ownCloud installation so that it’s specific to your installation.
-
-.. code-block:: bash
-
-   #!/bin/bash 
-   until php -f /var/www/owncloud/occ wnd:listen $@; do
-      echo "occ wnd:listen crashed with exit code $?.  Respawning.." >&2
-      sleep 1
-   done
-
-Then, make the script executable and ensure that it is owned by your HTTP user. 
-To do that, run the following commands, changing ``<HTTP_USER>`` as required.
-
-.. code-block:: console
-
-   chmod +x wnd-listen.sh
-   chown <HTTP_USER> wnd-listen.sh
-
-With the script completed, test it in debug mode by running it with the command ``./wnd-listen.sh``.
-The script will ask you for the password on every restart.
-For testing production environments, add the password as a parameter.
-With the script tested, add a crontab entry to execute it on boot, e.g.:
-
-.. code-block:: console
-
-   @reboot www-data /usr/local/bin/wnd-listen.sh 10.0.0.100 Users sysOwnCloud password
-
-Using Systemd
-~~~~~~~~~~~~~
-
-To setup a Windows Network Drive listener using Systemd, firstly :ref:`setup a listener for each of your shares <setup_notifications_for_smb_share-label>`.
-In a high availability environment, however, setup only one listener per share; that way there is no redundancy for the listener(s). 
-
 .. note:: 
-   Your credentials will be in plain text — currently, this is unavoidable.
+   Do not use this option if the process-queue is fast enough. 
+   The option has some drawbacks, specifically regarding password changes in the backend.
 
-Then, create a systemd script for your Linux distribution.
-This process *should* work on any systemd distro, provided you change the paths/users accordingly.
-After that, create a ``owncloud-listener.service`` file in ``/etc/systemd/system/`` using your favorite text editor.
-Then, copy the contents below into the file.
+``wnd:process-queue`` creates all the storages that need to be updated from scratch.
+To do so, we need to fetch all the users from all the backends (currently only the ones that have logged in at least once because the others won't have the storages that we'll need updates).
 
-.. code-block:: ini
+To optimize this, ``wnd:process-queue`` make use of two switches: "--serializer-type" and "--serializer-params".
+These serialize storages for later use, so that future executions don't need to fetch the users, saving precious time — especially for large organizations.
 
-   [Unit]
-   Description=ownCloud WND Listener
-   After=syslog.target network.target
-   Requires=httpd.service
-   [Service]
-   User=apache
-   Group=apache
-   WorkingDirectory=/var/www/html/owncloud
-   ExecStart=/usr/bin/php /var/www/html/owncloud/occ wnd:listen SERVER SHARE USER PASSWORD
-   Type=simple
-   StandardOutput=journal
-   StandardError=journal
-   SyslogIdentifier=%n
-   KillMode=process
-   RestartSec=1
-   Restart=on-failure
-   [Install]
-   WantedBy=multi-user.target
+======================= =======================================================================
+Switch                  Allowed Values 
+======================= =======================================================================
+``--serializer-type``   ``file``.  Other valid values may be added in the future, as more
+                        implementations are requested.
+``--serializer-params`` Depends on ``--serializer-type``, because those will be the parameters
+                        that the chosen serializer will use. For the ``file`` serializer, you 
+                        need to provide a file location in the host FS where the storages will 
+                        be serialized. You can use ``--serializer-params file=/tmp/file`` as an 
+                        example.
+======================= =======================================================================
 
-With that done, make sure the file is owned by root and has the permissions ``644``. 
-You can do that using the following command:
+While the specific behavior will depend on the serializer implementation, the overall behavior can be simplified as follows: 
 
-.. code-block:: console
+If the serializer’s data source (such as *a file*, *a database table*, or some *Redis keys*) has storage data, it uses that data to create the storages; otherwise, it creates the storages from scratch. 
 
-   chown root /etc/systemd/system/owncloud-listener.service
-   chmod 644 /etc/systemd/system/owncloud-listener.service
-
-Now, you can control your new service like any other, such as using the following command:
-
-.. code-block:: console
-
-   systemctl start owncloud-listener
- 
-If you’re happy with it, you can configure the script to auto-start on boot, by using the following command.
-
-.. code-block:: console
-
-   systemctl enable owncloud-listener.service (or whatever you have named your file).
-
-.. note:: 
-   If you need multiple listeners, just change the name of the file and configure the ``ExecStart`` parameters accordingly.
+After the storages are created, notifications are processed for the storages. 
+If the storages have been created from scratch, those storages are written in the data source so that they can be read on the next run.
 
 .. note::
-   This process is based on `a WND Listener Configuration on ownCloudCentral <https://central.owncloud.org/t/wnd-listener-configuration/3114>`_.
+   It's imperative to periodically clean up the data source to fetch fresh data, such as for new storages and updated passwords. There isn't a generic command to do this from ownCloud, because it depends on the specific serializer type. Though this option could be provided at some point if requested.
 
-.. _password-options-label:
+The File Serializer
+-------------------
 
-Password Options
-----------------
+The file serializer is a serializer implementation that can be used with the ``wnd:process-queue`` command.
+It requires an additional parameter where you can specify the location of the file containing the serialized storages. 
 
-There are three ways to supply a password:
+There are several things you should know about this serializer:
 
-#. Interactively in response to a password prompt.
-#. Sent as a parameter to the command, e.g., ``occ wnd:listen host share username password``.
-#. Read from a file, using the ``--password-file`` switch to specify the file to read. 
-#. Using 3rd party software to store and fetch the password. When using this option, the 3rd party app needs to show the password as plaintext on standard output.
+- The generated file contains the encrypted passwords for accessing the backend. This is necessary in order to avoid re-fetching the user information, when next accessing the storages.
+- The generated file is intended to be readable and writeable **only** for the web server user. Other users shouldn't have access to this file. Do not manually edit the file. You can remove the file if it contains obsolete information.
 
-.. note::
-   If you use the ``--password-file`` switch, the entire contents of the file will be used for the password, so please be careful with newlines.
+Usage Recommendations
+~~~~~~~~~~~~~~~~~~~~~
 
-.. warning::
-   If using ``--password-file`` make sure that the file is only readable by the apache / www-data user and inaccessible from the web, to prevent tampering or leaking of the information. The password won't be leaked to any other user using ``ps``.
+Number of Serializers
+^^^^^^^^^^^^^^^^^^^^^
 
-3rd Party Software Examples
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Only one file serializer should be used per server and share, as the serialized file has to be per server and share.
+Consider the following usage scenarios:
 
-.. code-block:: console
+- You have several Windows servers. Then you'll need to serialize to different files for each of server.
+- You have three shares: ``10.0.2.2/share1``, ``10.0.2.2/share2``, and ``10.0.10.20/share2``. Then you should use three different calls to ``wnd:process-queue``, changing the target file for the serializer for each one.
 
- cat /tmp/plainpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+Since the serialized file has to be per server and share, the serialized file has some checks to prevent misuse. 
+Specifically, if we detect you're trying to read the storages for another server and share from the file, the contents of the file won't be read and will fallback to creating the storage from scratch. 
+At this point, we'll then update the contents of that file with the new storage.
 
-This provides a bit more security because the ``/tmp/plainpass`` password should be owned by root and only root should be able to read the file (0400 permissions); Apache, particularly, shouldn't be able to read it. 
-It's expected that root will be the one to run this command. 
+Doing so, though, creates unneeded competition, where several process-queue will compete for the serializer file. 
+For example, let's say that you have two process-queues targeting the same serializer file. 
+After the first process creates the file the second process will notice that the file is no longer available.
+As a result, it will recreate the file with new content. 
 
-.. code-block:: console
+At this point the first process runs again and notices that the file isn't available and recreate the file again.
+When this happens, the serializer file's purpose isn't fulfilled
+As a result, we recommend the use of a different file per server and share.
 
- base64 -d /tmp/encodedpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+File Clean Up
+^^^^^^^^^^^^^
 
-Similar to the previous example, but this time the contents are encoded in `Base64 format <https://www.base64decode.org/>`_ (there's not much security, but it has additional obfuscation).
+The file will need to cleaned up from time to time. 
+The easiest way to do this is to remove the file when it is no longer needed.
+The file will be regenerated with fresh data the next execution if the serializer option is set.
 
-Third party password managers can also be integrated. 
-The only requirement is that they have to provide the password in plain text somehow. 
-If not, additional operations might be required to get the password as plain text and inject it in the listener. 
+Interaction Between Listener, Serializer, and Windows Password Lockout
+----------------------------------------------------------------------
 
-As an example:
+Windows supports `password lockout policies`_.
+If one is enabled on the server where an ownCloud share is located, and a user fails to enter their password correctly several times, they may be locked out and unable to access the share.
 
-For a more sophisticated test, which might be similar to a real scenario, you can use "pass" as a password manager. You can go through http://xmodulo.com/manage-passwords-command-line-linux.html to setup the keyring for whoever will fetch the password (probably root) and then use something like pass the-password-name | sudo -u www-data ./occ wnd:listen host share username --password-file=-.
+This is `a known issue`_ that prevents these two inter-operating correctly.
+Currently, the only viable solution is to ignore that feature and use the ``wnd:listen`` and ``wnd:process-queue``, without the serializer options.
 
-Password Option Precedence
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+There is also an additional issue to take into account though, which is that parallel runs of ``wnd:process-queue`` might lead to a user lockout.
+The reason for this is that several ``wnd:process-queue`` might use the same wrong password because it hasn't been updated by the time they fetch it.
 
-If both the argument and the option are passed, e.g., ``occ wnd:listen host share username password --password-file=/tmp/pass``, then the ``--password-file`` option will take precedence.
+As a result, it's recommended to force the execution serialization of that command to prevent this issue.
+You might want to use `Anacron`_, which seems to have an option for this scenario, or wrap the command with `flock`_.
+
+Multiple Server Setup
+---------------------
+
+Setups with several servers might have some difficulties in some scenarios:
+
+- The ``wnd:listen`` component *might* be duplicated among several servers. This shouldn't cause a problem, depending on the limitations of the underlying database engine. The supported database engines should be able to handle concurrent access and de-duplication.
+- The ``wnd:process-queue`` *should* also be able to run from any server, however limitations for concurrent executions still apply. As a result, you might need to serialized command execution of the ``wnd:process-queue`` among the servers (to avoid for the password lockout), which might not be possible or difficult to achieve. You might want to execute the command from just one specific server in this case.
+- ``wnd:process-queue`` + serializer. First, check the above section to know the interactions with the password lockout. Right now, the only option you have to set it up is to store the target file in a common location for all the server. We might need to provide a specific serializer for this scenario (based on Redis or DB)
+
+Basic Command Execution Examples
+--------------------------------
+
+::
+
+  sudo -u www-data ./occ ``wnd:listen`` host share username password
+  
+  sudo -u www-data ./occ ``wnd:process-queue`` host share
+  
+  sudo -u www-data ./occ ``wnd:process-queue`` host share -c 500
+  
+  sudo -u www-data ./occ ``wnd:process-queue`` host share -c 500 \
+      --serializer-type file \
+      --serializer-params file=/opt/oc/store
+  
+  sudo -u www-data ./occ ``wnd:process-queue`` host2 share2 -c 500 \
+      --serializer-type File \
+      --serializer-params file=/opt/oc/store2
+
+To set it up, make sure the listener is running as a system service: 
+
+::
+
+  sudo -u www-data ./occ ``wnd:listen`` host share username password
+
+Setup a Cron job or similar with something like the following two commands:
+
+::
+
+  sudo -u www-data ./occ wnd:process-queue host share -c 500 \
+      --serializer-type file \
+      --serializer-params file=/opt/oc/store1
+
+  rm -f /opt/oc/store1 # With a different schedule
+
+The first run will create the ``/opt/oc/store1`` with the serialized storages, the rest of the executions will use that file.
+The second Cron job, the one removing the file, will force the ``wnd:process-queue`` to refresh the data.
+
+It's intended to be run in a different schedule, so there are several executions of the ``wnd:process-queue`` fetching the data from the file.
+Note that the file can be removed manually at any time if it's needed (for example, the admin has reset some passwords, or has been notified about password changing).
 
 .. Links
-   
+
 .. _systemd: https://en.wikipedia.org/wiki/Systemd
 .. _smbclient: https://www.samba.org/samba/docs/man/manpages-3/smbclient.1.html
 .. _Distributed File Shares: https://en.wikipedia.org/wiki/Distributed_File_System_(Microsoft)
 .. _the External Storage\: Windows Network Drives app: https://marketplace.owncloud.com/apps/windows_network_drive
 .. _eduardok/libsmbclient-php: https://github.com/eduardok/libsmbclient-php
+.. _Anacron: http://www.thegeekstuff.com/2011/05/anacron-examples
+.. _flock: http://linuxaria.com/howto/linux-shell-introduction-to-flock
+.. _a known issue: https://github.com/owncloud/Windows_network_drive/issues/94
+.. _password lockout policy: https://technet.microsoft.com/en-us/library/dd277400.aspx
