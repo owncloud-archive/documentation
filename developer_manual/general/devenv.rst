@@ -156,7 +156,7 @@ Enable Debug Mode
 
 Now that ownCloud's available to your web server and the dependencies are installed, we strongly encourage you to disable JavaScript and CSS caching during development.
 This is so that when changes are made, they're immediately visible, not at some later stage when the respective caches expire.
-To do so, enable debug mode by setting ``debug`` to ``true`` in :file:`core/config/config.php`, as in the example below.
+To do so, enable debug mode by setting ``debug`` to ``true`` in :file:`config/config.php`, as in the example below.
 
 .. code-block:: php
 
