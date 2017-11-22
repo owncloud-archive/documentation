@@ -31,7 +31,7 @@ The ownCloud sharing dialog displays users according to their display name. As u
 
 - **Added "occ files:scan" repair mode to repair filecache inconsistencies**
 We recommend to use this command when directed to do so in the upgrade process.
-Please check the ownCloud documentation for more information. **LINK (https://github.com/owncloud/documentation/issues/3446)**
+Please check the ownCloud documentation for more information (https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/occ_command.html?highlight=occ#the-repair-option).
 
 - **Detailed mode for "occ security:routes"**
 Administrators can use the output of this command when using a network firewall, to check the appropriateness of configured rules or to get assistance when setting up.
