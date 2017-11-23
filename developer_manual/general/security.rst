@@ -357,7 +357,7 @@ Input Auto-completion
 
 - For password fields use: 
 
-  .. code-block:: 
+  .. code-block:: html
 
     <input name="pass" type="password" autocomplete="new-password" />
 
