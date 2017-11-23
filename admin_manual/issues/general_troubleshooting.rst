@@ -2,8 +2,7 @@
 General Troubleshooting
 =======================
 
-If you have trouble installing, configuring or maintaining ownCloud, please 
-refer to our community support channels:
+If you have trouble installing, configuring or maintaining ownCloud, please refer to our community support channels:
 
 * `The ownCloud Forums`_
 
