@@ -376,7 +376,7 @@ ownCloud offers three simple checks:
 
 These checks are already automatically performed, by the application framework, for each request. 
 If they are not required, they have to be *explicitly* turned off by using annotations above your controller method. 
-See :doc:`../app/controllers`.
+See :doc:`../app/fundamentals/controllers`.
 Additionally, always check if the user has the right to perform that action.
 
 Clickjacking
@@ -432,7 +432,7 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the application Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the @NoCSRFRequired annotation before the controller method, see :doc:`../app/controllers`
+If you are using the application Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the ``@NoCSRFRequired`` annotation before the controller method, see :doc:`../app/fundamentals/controllers`
 
 Cross site scripting
 ~~~~~~~~~~~~~~~~~~~~
