@@ -431,6 +431,9 @@ To enable this, temporarily change the ownership on your ownCloud directories to
 To use ``occ`` see :doc:`command_line_installation`. 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
+.. warning::
+   Please know that ownCloud's data directory **must be exclusive to ownCloud** and not be modified manually by any other process or user.
+
 .. _strong_perms_label:
 
 Set Strong Directory Permissions
@@ -445,6 +448,7 @@ After you do so, your ownCloud server will be ready to use.
 .. Links
 
 .. _SabreDav: http://sabre.io/
+.. _to setup your ownCloud environment: https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html
 .. _Apache prefork: https://httpd.apache.org/docs/2.4/mod/prefork.html
 .. _not thread safe: https://secure.php.net/manual/en/install.unix.apache2.php
 .. _to setup your ownCloud environment: https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html

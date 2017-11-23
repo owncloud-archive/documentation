@@ -35,10 +35,11 @@ Mobile
 Web Browser 
 ^^^^^^^^^^^
 
+- Edge (current version on Windows 10)
 - IE11+ (except Compatibility Mode)
-- Firefox 14+
-- Chrome 18+
-- Safari 5+
+- Firefox 55+ or 52 ESR
+- Chrome 61+
+- Safari 10+
 
 Hypervisors 
 ^^^^^^^^^^^

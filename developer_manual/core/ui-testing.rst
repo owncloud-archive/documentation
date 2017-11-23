@@ -34,7 +34,7 @@ Set Up Test
 - Place the Selenium standalone server jar file and the web driver(s) somewhere in the same folder.
 - Start the Selenium server:
 
-.. code-block:: console
+  .. code-block:: console
 
     java -jar selenium-server-standalone-3.6.0.jar -port 4445 -enablePassThrough false
 
@@ -54,27 +54,36 @@ Set Up Test
   .. code-block:: console
 
     export SRV_HOST_NAME=localhost
+    export REMOTE_FED_SRV_HOST_NAME=127.0.0.1
     export SRV_HOST_URL=owncloud-core
+    export REMOTE_FED_SRV_HOST_URL=owncloud-core
     export SRV_HOST_PORT=80
+    export REMOTE_FED_SRV_HOST_PORT=80
     export BROWSER=chrome
     export BROWSER_VERSION="60.0"
     
+
 - If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
 
-.. code-block:: console
+  .. code-block:: console
 
-  bash tests/travis/start_php_dev_server.sh
+    bash tests/travis/start_php_dev_server.sh
 
 The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 
+- To run the federation Sharing tests:
+
+  1. Make sure you have configured HTTPS with valid certificates on both servers URLs
+  2. `Import SSL certificates <https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/import_ssl_cert.html>`_ (or do not offer HTTPS).
+
 - Run the tests:
 
-.. code-block:: console
+  .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh
+    bash tests/travis/start_ui_tests.sh
 
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
-To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_behat_tests.sh``.
+To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
 
 Running UI Tests using IPv6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -121,7 +130,7 @@ You can run the UI tests for just a single suite by specifying the suite name:
 
 .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh --suite files
+  bash tests/travis/start_ui_tests.sh --suite files
   
 The names of suites are found in the ``behat.yml`` file.
 
@@ -132,13 +141,13 @@ You can run the UI tests for just a single feature by specifying the feature fil
 
 .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/other/login.feature
+  bash tests/travis/start_ui_tests.sh --feature tests/ui/features/other/login.feature
 
 To run just a single scenario within a feature, specify the line number of the scenario:
 
 .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh --feature tests/ui/features/other/login.feature:<linenumber>
+  bash tests/travis/start_ui_tests.sh --feature tests/ui/features/other/login.feature:<linenumber>
 
 Running UI Tests for an App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -147,13 +156,13 @@ With the app installed, run the UI tests for the app by specifying the location 
 
 .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml
+  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml
 
 Run UI the tests for just a single feature of the app by also specifying the feature file:
 
 .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml --feature apps/files_texteditor/tests/ui/features/createtextfile.feature
+  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml --feature apps/files_texteditor/tests/ui/features/createtextfile.feature
 
 Skipping Tests
 ~~~~~~~~~~~~~~
@@ -172,13 +181,13 @@ Run all skipped tests with:
 
 .. code-block:: console
 
-   bash tests/travis/start_behat_tests.sh --tags @skip
+   bash tests/travis/start_ui_tests.sh --tags @skip
 
 Or run just a particular test by using its unique tag:
 
 .. code-block:: console
 
-  bash tests/travis/start_behat_tests.sh --tags @quota-should-not-be-set-to-invalid-values-issue-1234
+  bash tests/travis/start_ui_tests.sh --tags @quota-should-not-be-set-to-invalid-values-issue-1234
 
 When fixing the bug, remove these skip tags in the PR along with the bug fix code.
 

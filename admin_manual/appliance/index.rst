@@ -7,6 +7,6 @@ The ownCloud X Appliance
 
    what-is-it
    installation
+   howto-update-owncloud
    managing-ucs
    clamav
-   howto-update-owncloud

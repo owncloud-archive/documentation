@@ -45,6 +45,9 @@ options for your ownCloud data directory and database.
 
 You should locate your ownCloud data directory outside of your Web root if you are using an HTTP server other than Apache, or you may wish to store your ownCloud data in a different location for other reasons (e.g. on a storage server). 
 
+.. warning::
+   Please know that ownCloud's data directory **must be exclusive to ownCloud** and not be modified manually by any other process or user.
+
 It is best to configure your data directory location at installation, as it is difficult to move after installation. You may put it anywhere; in this example is it located in ``/var/oc_data``. 
 This directory must already exist, and must be owned by your HTTP user (see :ref:`strong_perms_label`).
 
