@@ -6,3 +6,5 @@ WebDAV APIs
    :maxdepth: 1
 
    comments
+   tags
+   files_versions
