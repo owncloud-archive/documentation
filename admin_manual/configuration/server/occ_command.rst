@@ -30,6 +30,7 @@ occ Command Directory
 * :ref:`market_commands_label`
 * :ref:`reports_commands_label`
 * :ref:`security_commands_label`
+* :ref:`ransomware_commands_label`
 * :ref:`shibboleth_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
@@ -1412,6 +1413,18 @@ Remove a certificate:
 ::
 
  sudo -u www-data php occ security:certificates:remove [certificate name]
+
+.. _ransomware_commands_label:
+
+Ransomware
+-----------
+
+Use these commands to help recover from a Ransomware attack.
+
+::
+
+  occ ransomguard:scan <timestamp> <user>    Report all changes in a user's account, starting from timestamp.
+  occ ransomguard:restore <timestamp> <user> Revert all operations in a user account after a point in time.
 
 .. _sharing_commands_label:
 
