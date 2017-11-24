@@ -157,8 +157,7 @@ To do so, run the following command:
    wget -qO- https://download.owncloud.org/community/owncloud-10.0.2.tar.bz2 | \ 
      tar --transform 's/^owncloud/owncloud-10.0.2/' -jxv -C /var/www/
 
-Copy config/config.php to the New Source
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Copy config/config.php from the existing installation to the new source
 
 Next, copy ``config/config.php`` from the current installation to the new, 10.0.2, source.
 You can do this by running the following command:

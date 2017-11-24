@@ -2,8 +2,7 @@
 General Troubleshooting
 =======================
 
-If you have trouble installing, configuring or maintaining ownCloud, please 
-refer to our community support channels:
+If you have trouble installing, configuring or maintaining ownCloud, please refer to our community support channels:
 
 * `The ownCloud Forums`_
 
@@ -34,15 +33,6 @@ If you think you have found a bug in ownCloud, please:
 If you can't find a solution, please use our `bugtracker`_. You can generate a 
 configuration report with the :ref:`occ config command 
 <config_commands_label>`, with passwords automatically obscured.
-
-.. _the ownCloud Forums: https://central.owncloud.org
-.. _FAQ category: https://central.owncloud.org/c/faq
-.. _the ownCloud User mailing list: 
-   https://mailman.owncloud.org/mailman/listinfo/user
-.. _webchat: http://webchat.freenode.net/?channels=owncloud
-.. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
-.. _bugtracker: 
-   https://doc.owncloud.org/server/10.0/developer_manual/bugtracker/index.html
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -147,13 +137,13 @@ Some common problems / error messages found in your logfiles as described above:
   Make sure that ``KeepAlive`` is set to ``On`` and  also try to raise the limits of 
   ``KeepAliveTimeout`` and  ``MaxKeepAliveRequests``. On Apache with ``mod_php`` using
   a different :ref:`apache-mpm-label` then ``prefork`` could be another reason. Further
-  information is available at the `forums <https://central.owncloud.org/t/expected-filesize-xxx-got-yyy-0/816>`_.
+  information is available `in the forums <https://central.owncloud.org/t/expected-filesize-xxx-got-yyy-0/816>`_.
 * ``No basic authentication headers were found`` -> This error is shown in your
   ``data/owncloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
   PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is
-  failing. Information on how to correctly configure your environment can be
-  found at the `forums <https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819>`_.
+  failing. You can find more information on how to correctly configure your environment can be
+  found `at the forums <https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819>`_.
 
 Missing Data Directory
 ----------------------
@@ -377,3 +367,11 @@ first.
 .. Links
    
 .. _503 Service not available: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error
+.. _The ownCloud Forums: https://central.owncloud.org
+.. _FAQ category: https://central.owncloud.org/c/faq
+.. _the ownCloud User mailing list: 
+   https://mailman.owncloud.org/mailman/listinfo/user
+.. _webchat: http://webchat.freenode.net/?channels=owncloud
+.. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
+.. _bugtracker: 
+   https://doc.owncloud.org/server/10.0/developer_manual/bugtracker/index.html

@@ -53,7 +53,7 @@ Desktop
 ^^^^^^^
 
 - Windows 7+
-- Mac OS X 10.7+ (**64-bit only**)
+- Mac OS X 10.7+ (64-bit only)
 - CentOS 6 & 7 (64-bit only)
 - Debian 7.0 & 8.0 & 9.0
 - Fedora 24 & 25 & 26
