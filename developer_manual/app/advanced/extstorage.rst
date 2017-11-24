@@ -25,7 +25,7 @@ Configure the filesystem type
 First, the :file:`/appinfo/info.xml` must be adjusted to specify the ``type`` as:
 ``filesystem``. For example:
 
-.. literalinclude:: ../examples/storage-backend/storage-backend/appinfo/info.xml
+.. literalinclude:: ../../examples/storage-backend/storage-backend/appinfo/info.xml
      :language: xml
      :linenos:
 
@@ -41,7 +41,7 @@ Here’s an example of how you would create one that implements all the
 filesystem operations required by ownCloud, using a fictitious library called
 ``FakeStorageLib``.
 
-.. literalinclude:: ../examples/storage-backend/OCA/MyStorageApp/Storage/MyStorage.php
+.. literalinclude:: ../../examples/storage-backend/OCA/MyStorageApp/Storage/MyStorage.php
      :language: php
 
 For this example we mapped the available storage methods to the ones from the
@@ -94,7 +94,7 @@ Create the backend adapter
 After implementing the storage class, a backend adapter needs to be created. To
 do that, create a class that extends from ``\\OCP\\Files\\External\\Backend``:
 
-.. literalinclude:: ../examples/storage-backend/OCA/MyStorageApp/Backend/MyStorageBackend.php
+.. literalinclude:: ../../examples/storage-backend/OCA/MyStorageApp/Backend/MyStorageBackend.php
      :language: php
 
 Definition parameters

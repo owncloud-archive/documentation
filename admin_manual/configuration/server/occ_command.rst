@@ -692,7 +692,7 @@ As noted above, repairs can be performed for individual users, groups of users, 
 What’s more, repair scans can be run even if no files are known to need repairing and if one or more files are known to be in need of repair.
 Two examples of when files need repairing are:
 
-- If folders have the same entry twice in the web UI (known as a "_ghost folder_"), this can also lead to strange error messages in the desktop client.
+- If folders have the same entry twice in the web UI (known as a "*ghost folder*"), this can also lead to strange error messages in the desktop client.
 - If entering a folder doesn't seem to lead into that folder.
 
 The repair command needs to be run in single user mode. 
@@ -1826,6 +1826,8 @@ Syncing via cron job
 ~~~~~~~~~~~~~~~~~~~~
 
 Here is an example for syncing with LDAP four times a day on Ubuntu:
+
+::
 
   crontab -e -u www-data
   

@@ -1,5 +1,3 @@
-.. _appindex:
-
 ====================
 Fundamental Concepts
 ====================
@@ -25,5 +23,4 @@ Fundamental Concepts
    api
    hooks
    publishing
-
 
