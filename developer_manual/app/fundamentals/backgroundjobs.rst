@@ -23,7 +23,7 @@ calling its ``run`` method.
    Try to keep the method as small as possible, because its hard to test static
    methods.
 
-.. literalinclude:: ../examples/cron/SomeTask.php
+.. literalinclude:: ../../examples/cron/SomeTask.php
    :language: php
 
 Register the Class with ownCloud

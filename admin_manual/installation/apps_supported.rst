@@ -44,6 +44,6 @@ Enterprise-Only Apps
 * `Password Policy <https://marketplace.owncloud.com/apps/password_policy>`_
 * `External Storage: SharePoint <https://marketplace.owncloud.com/apps/sharepoint>`_
 * `SAML/Shibboleth User Backend <https://marketplace.owncloud.com/apps/user_shibboleth>`_
-* `Windows Network Drives (requires External Storage) <>`_
+* `Windows Network Drives (requires External Storage) <https://marketplace.owncloud.com/apps/windows_network_drive>`_
 * `Workflows <https://marketplace.owncloud.com/apps/workflow>`_
 * `ownCloud X Enterprise Theme <https://marketplace.owncloud.com/themes/theme-enterprise>`_

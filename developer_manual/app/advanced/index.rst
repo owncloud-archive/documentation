@@ -8,7 +8,9 @@ Advanced Concepts
    :maxdepth: 1
 
    custom-cache-backend
+   custom-storage-backend
    storage-backend
+   extstorage
    l10n
    two-factor-provider
    users
