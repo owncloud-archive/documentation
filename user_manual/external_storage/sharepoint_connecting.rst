@@ -45,20 +45,12 @@ SharePoint libraries that use the same authentication, enter your credentials
 in ``Sharepoint Personal Configuration``. Then follow these steps to add your 
 libraries:
 
-* Enter the name of your local mountpoint in the ``Local Folder Name`` column. 
-This can be an existing folder, or automatically create a new one.
-
-* Enter your SharePoint server URL.
-
-* Click the little refresh icon to the left of the ``Document Library`` field. 
-If your credentials and URL are correct you'll get a dropdown list of SharePoint 
-libraries to choose from.
-
-* Select the document library you want to mount.
-
-* Select "Use user credentials".
-
-* Click the ``Save`` button, and you're done
+- Enter the name of your local mountpoint in the ``Local Folder Name`` column. This can be an existing folder, or automatically create a new one.
+- Enter your SharePoint server URL.
+- Click the little refresh icon to the left of the ``Document Library`` field. If your credentials and URL are correct you'll get a dropdown list of SharePoint libraries to choose from.
+- Select the document library you want to mount.
+- Select "Use user credentials".
+- Click the ``Save`` button, and you're done
 
 You may elect to use different authentication credentials for some of your 
 SharePoint libraries. For these, you must first select ``use custom 

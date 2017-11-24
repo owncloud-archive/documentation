@@ -3,7 +3,7 @@ Migrating to a Different Server
 ===============================
 
 If the need arises, ownCloud can be migrated to a different server. 
-A typical use case would be a hardware change or a migration from :doc:`the Enterprise appliance <../enterprise/appliance/index>` to a physical server. 
+A typical use case would be a hardware change or a migration from :doc:`the Enterprise appliance <../appliance/index>` to a physical server. 
 All migrations have to be performed with ownCloud in maintenance mode. 
 Online migration is supported by ownCloud only when implementing industry-standard clustering and high-availability solutions **before** ownCloud is installed for the first time.
 

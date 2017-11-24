@@ -60,7 +60,7 @@ The router:
 
 - Parses the application's :doc:`routing <../fundamentals/routes>` configuration file: :file:`appinfo/routes.php`
 - Inspects the request's method and URL 
-- Retrieves the handling `controller`_ from the :doc:`../fundamentals/container`
+- Retrieves the handling :doc:`controller <../fundamentals/controllers>` from the :doc:`../fundamentals/container`
 - Passes control to the dispatcher 
 
 The dispatcher:
