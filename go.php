@@ -28,6 +28,7 @@ $mapping = array(
     'admin-setup-well-known-URL' => '/admin_manual/issues/general_troubleshooting.html#service-discovery',
     'admin-marketplace-apps' => '/admin_manual/upgrading/marketplace_apps.html',
     'admin-logfiles' => '/admin_manual/issues/general_troubleshooting.html#logfiles',
+    'admin-untrusted-domain' => '/admin_manual/maintenance/migrating.html#managing-trusted-domains',
 
     'admin-enterprise-license' => '/admin_manual/enterprise_installation/license_keys_installation.html',
 
