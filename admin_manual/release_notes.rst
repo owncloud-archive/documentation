@@ -68,6 +68,7 @@ Note: Users with outdated browsers might get warnings. See the list of supported
   - SFTP external storages with key pair mode work again https://github.com/owncloud/core/issues/29156
   - Added support for MariaDB 10.2.7+ https://github.com/owncloud/core/issues/29240
   - Encryption panel in admin settings fixed to properly detect current mode after upgrade to ownCloud 10 https://github.com/owncloud/core/issues/29049
+  - Removed double quotes from boolean values in status.php output https://github.com/owncloud/core/pull/29261
 
 **Known issues**
 
