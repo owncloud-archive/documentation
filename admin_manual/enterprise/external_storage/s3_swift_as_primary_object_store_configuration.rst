@@ -14,6 +14,9 @@ You can move your logfile by changing its location in ``config.php``. You may st
 
 Implications
 ------------
+This configuration needs to be applied before the first login of any user – including the 
+admin user. Otherwise, you will run into an error condition, because ownCloud cannot find 
+the user's files anymore.
 
 ownCloud in object store mode expects exclusive access to the object store 
 container, because it only stores the binary data for each file. The metadata 
