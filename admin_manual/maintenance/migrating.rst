@@ -24,7 +24,7 @@ How to Migrate
 --------------
 
 Firstly, set up the new machine with your desired Linux distribution. 
-At this point you can either :doc:`install ownCloud manually <../installation/source_installation>` via the compressed archive, or doc:`with your Linux package manager <../installation/linux_installation>`.
+At this point you can either :doc:`install ownCloud manually <../installation/source_installation>` via the compressed archive, or :doc:`with your Linux package manager <../installation/linux_installation>`.
 
 Then, on the original machine turn on maintenance mode and then stop ownCloud. 
 After waiting for 6 - 7 minutes for all sync clients to register that the server is in maintenance mode, ref:`stop the web server <maintenance_commands_label>` that is serving ownCloud.
