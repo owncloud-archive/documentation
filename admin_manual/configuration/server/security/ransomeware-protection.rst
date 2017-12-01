@@ -46,7 +46,7 @@ Ultimately there is a consensus that only one solution can provide future-proof 
 ownCloud Ransomware Protection will, therefore, record all changes on an ownCloud Server and allow administrators to rollback user data to a particular point in time, making use of ownCloud’s integrated Versioning and Trash bin features.
 
 Doing so allows all user data that is synchronized with the server to be rolled back to its state before the attack occurred.
-We expect that a combination of Ransomware prevention and protection should reduce risks to a minimum acceptable level.
+A combination of Ransomware prevention and protection reduces risks to a minimum acceptable level.
 
 Other Elements of Ransomware Protection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -78,13 +78,19 @@ Requirements
 Limitations
 ~~~~~~~~~~~
 
--  Ransomware Protection works with master-key based storage encryption. With credential-based storage encryption, only Ransomware Prevention (Blocking) works.
--  Rollback is not based on snapshots:
+- Ransomware Protection works with master-key based storage encryption. With credential-based storage encryption, only Ransomware Prevention (Blocking) works.
+- Rollback is not based on snapshots:
+
   * The `trash bin retention policy`_ may delete files, making them unrecoverable. To avoid this, set ``trashbin\_retention\_obligation`` to ``disabled``, or choose a conservative policy for trash bin retention. However, please be aware that this may increase storage requirements.
   * Trash bin items may be deleted by the user making them unrecoverable by Ransomware Protection => Users need to know this.
   * Versions have `a built-in "thin-out" policy`_ which makes it possible that required file versions are unrecoverable by Ransomware Protection. To help avoid this, set ``versions\_retention\_obligation`` to ``disabled`` or choose a conservative policy for version retention. Please be aware that this might increase your storage needs.
   * A specific version of a file that is needed for rollback might have been manually restored, making this version potentially unrecoverable by Ransomware Protection. Currently, after restoration the restored version `is not a version anymore`, e.g., the version is not present in versioning.
--  Contents in secondary storages, such as *Windows network drives*, *Dropbox*, and *Google Drive*, are unrecoverable by Ransomware Protection, because they do not have versioning or trash bin enabled in ownCloud.
+
+- Contents in secondary storages, such as *Windows network drives*, *Dropbox*, and *Google Drive*, are unrecoverable by Ransomware Protection, because they do not have versioning or trash bin enabled in ownCloud.
+- Rolling files forward is not *currently* supported or tested. Therefore it is vital to:
+
+  * Carefully decide the point in time to rollback to.
+  * To have proper backups to be able to conduct the rollback again, if necessary.
 
 .. Links
 
