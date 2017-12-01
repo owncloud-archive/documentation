@@ -1416,10 +1416,13 @@ Remove a certificate:
 
 .. _ransomware_commands_label:
 
-Ransomware
------------
+Ransomware Protection
+---------------------
 
-Use these commands to help recover from a Ransomware attack.
+Use these commands to help users recover from a Ransomware attack.
+You can find more information about the application :doc:`in the documentation <security/ransomeware-protection>`.
+
+.. note:: Ransomware Protection (which is an Enterprise app) needs to be installed and enabled to be able to use these commands.
 
 ::
 
