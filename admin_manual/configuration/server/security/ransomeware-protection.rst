@@ -16,7 +16,7 @@ About Ransomware Protection
 ---------------------------
 
 The app is tasked with *detecting*, *preventing*, and *reverting* anomalies.
-Anomalies are operations (including *create*, *update*, *delete*, and *move*) that are not intentionally conducted by the user.
+Anomalies are file operations (including *create*, *update*, *delete*, and *move*) that are not intentionally conducted by the user.
 It aims to do so in two ways: `prevention <ransomeware_prevention_label>`_, and `protection <ransomeware_protection_label>`_.
 
 .. _ransomeware_prevention_label:
@@ -71,9 +71,9 @@ Ransomguard Restorer ``occ ransomguard:restore <timestamp> <user>`` A command fo
 Requirements
 ~~~~~~~~~~~~
 
-#. **Ransomware Protection.** Records the move operations so that it can revert them in the case of an attack. Other operations are revertible using ownCloud's existing database tables.
+#. **Ransomware Protection.** Ransomware protection needs to be in operation before an attack occurs, as it needs to record file operations to be able to revert them, in case of an attack.
 #. **ownCloud Versions App.** Required to restore older file versions. The capabilities of Ransomware Protection depend on its configuration regarding version retention.
-#. **ownCloud Trash Bin App.** Required to restore deleted files. The capabilities of Ransomware Protection depend on its configuration regarding file deletion.
+#. **ownCloud Trash Bin App.** Required to restore deleted files. The capabilities of Ransomware Protection depend on its configuration regarding trash bin retention.
 
 Limitations
 ~~~~~~~~~~~
