@@ -142,7 +142,7 @@ Some common problems / error messages found in your logfiles as described above:
   ``data/owncloud.log`` file. Some Apache modules like ``mod_fastcgi``, ``mod_fcgid``
   or ``mod_proxy_fcgi`` are not passing the needed authentication headers to
   PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is
-  failing. You can find more information on how to correctly configure your environment can be
+  failing. More information on how to correctly configure your environment can be
   found `at the forums <https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819>`_.
 
 Missing Data Directory
