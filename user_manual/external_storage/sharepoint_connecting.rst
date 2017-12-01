@@ -40,12 +40,11 @@ the ``Admin added mount points`` section lists SharePoint mounts controlled by
 your ownCloud admin. If users have permissions to mount their own SharePoint 
 libraries you'll also see a ``Personal mount points`` section. 
 
-There are two types of authentication available to you. If you have multiple 
-SharePoint libraries that use the same authentication, enter your credentials 
-in ``Sharepoint Personal Configuration``. Then follow these steps to add your 
-libraries:
+There are two types of authentication available to you. 
+If you have multiple SharePoint libraries that use the same authentication, enter your credentials in ``Sharepoint Personal Configuration``. 
+Then follow these steps to add your libraries:
 
-- Enter the name of your local mountpoint in the ``Local Folder Name`` column. This can be an existing folder, or automatically create a new one.
+- Enter the name of your local mountpoint in the ``Local Folder Name`` column.
 - Enter your SharePoint server URL.
 - Click the little refresh icon to the left of the ``Document Library`` field. If your credentials and URL are correct you'll get a dropdown list of SharePoint libraries to choose from.
 - Select the document library you want to mount.
