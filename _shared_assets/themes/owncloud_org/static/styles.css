@@ -349,10 +349,10 @@ ul#menu-support.menu > ul li.toctree-l1.current {
   padding-bottom: 10px;
 }
 /* override the color of links */
-ul#menu-support.menu ul > li.current > a:hover,
-ul#menu-support.menu ul > li.current > a:focus,
-ul#menu-support.menu ul > li.current > a {
-  color: white;
+ul#menu-support.menu ul > li.current > a[class="reference internal"]:hover,
+ul#menu-support.menu ul > li.current > a[class="reference internal"]:focus,
+ul#menu-support.menu ul > li.current > a[class="reference internal"] {
+ font-style: italic;
 }
 /* override the color of the current link */
 ul#menu-support.menu ul > li.current > a.current {
