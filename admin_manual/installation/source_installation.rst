@@ -451,6 +451,7 @@ After you do so, your ownCloud server will be ready to use.
 .. _to setup your ownCloud environment: https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html
 .. _Apache prefork: https://httpd.apache.org/docs/2.4/mod/prefork.html
 .. _not thread safe: https://secure.php.net/manual/en/install.unix.apache2.php
+.. _to setup your ownCloud environment: https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html
 
 .. PHP Extension Links
 

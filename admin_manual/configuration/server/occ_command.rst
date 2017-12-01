@@ -1264,7 +1264,7 @@ If you change a mimetype, run ``maintenance:mimetype:update-db --repair-filecach
 Market
 ------
 
-The ``market`` commands *install*, *list*, and *upgrade* applications from `the ownCloud Marketplace`.
+The ``market`` commands *install*, *list*, and *upgrade* applications from `the ownCloud Marketplace`_.
 
 .. code-block:: console
    
@@ -1276,7 +1276,7 @@ The ``market`` commands *install*, *list*, and *upgrade* applications from `the 
 
 .. note::
    The user running the update command, which will likely be your webserver user, needs write permission for the ``/apps`` folder. 
-   If they don’t have write permission, the command may report that the update was successful, but it may silently fail.
+   If they don't have write permission, the command may report that the update was successful, but it may silently fail.
 
 .. note::
    These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
