@@ -29,6 +29,6 @@ But here is a concise approach:
 
 .. Links
    
-.. _the tarball: https://download.owncloud.org/community/owncloud-10.0.2.tar.bz2
-.. _the zip archive: https://download.owncloud.org/community/owncloud-10.0.2.zip
+.. _the tarball: https://download.owncloud.org/community/owncloud-10.0.4.tar.bz2
+.. _the zip archive: https://download.owncloud.org/community/owncloud-10.0.4.zip
 .. _the ownCloud marketplace: https://marketplace.owncloud.com/
