@@ -72,7 +72,7 @@ Note: Users with outdated browsers might get warnings. See the list of supported
 
 **Known issues**
 
-Currently there are no known issues for ownCloud Server 10.0.4.
+- The current Impersonate app (version 0.1.1) does not work with ownCloud Server 10.0.4. A bugfix release of the Impersonate app will follow soon.
 
 .. _10.0.3_release_notes_label:
 
