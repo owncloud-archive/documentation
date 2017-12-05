@@ -22,6 +22,7 @@ Server Configuration
    logging_configuration
    harden_server
    security/password-policy
+   security/ransomware-protection
    reverse_proxy_configuration 
    thirdparty_php_configuration
    js_css_asset_management_configuration
