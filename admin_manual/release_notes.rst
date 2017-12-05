@@ -4,6 +4,15 @@ ownCloud |version| Release Notes
 
 .. _9.0_release_notes_label:
 
+Changes in 9.0.11
+--------------
+Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 9.0.11 that need your attention:
+
+**The full ownCloud Server 9.0.11 changelog can be found here: https://owncloud.org/changelog/#latest9.0**
+
+**Added “occ files:scan” repair mode to repair filecache inconsistencies**
+We recommend to use this command when directed to do so in the upgrade process. Please check the ownCloud documentation for more information (https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/occ_command.html?highlight=occ#the-repair-option).
+
 Changes in 9.0
 --------------
 
