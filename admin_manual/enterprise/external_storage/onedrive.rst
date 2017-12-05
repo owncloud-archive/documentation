@@ -10,7 +10,7 @@ To use Microsoft OneDrive as an external storage option in ownCloud, you need to
 Create an Application Configuration
 -----------------------------------
 
-.. figure:: ../../../images/configuration/files/external_storage/onedrive/register-an-application.png
+.. figure:: images/onedrive/register-an-application.png
    :alt: Register a new OneDrive application.
 
 To create a new application: 
@@ -25,7 +25,7 @@ However, only a few of them are required for use with ownCloud.
 Application Password
 ~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../../../images/configuration/files/external_storage/onedrive/set-application-name.png
+.. figure:: images/onedrive/set-application-name.png
    :alt: Set the application's name.
 
 Under "*Application Secrets*", click "*Generate New Password*", which generates a password and displays it in a popup window.
@@ -42,13 +42,13 @@ Only one redirect URL field is visible at first, so click "*Add URL*" to add ano
 
 With two fields available, add two redirect URLs; one for ``settings/admin`` and one for ``settings/personal``, as you can see in the image below.
 
-.. figure:: ../../../images/configuration/files/external_storage/onedrive/set-redirect-urls.png
+.. figure:: images/onedrive/set-redirect-urls.png
    :alt: Set the redirect URLs.
 
 Application Permissions
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. figure:: ../../../images/configuration/files/external_storage/onedrive/set-permissions.png
+.. figure:: images/onedrive/set-permissions.png
    :alt: Open the application permissions dialog.
 
 Under "*Microsoft Graph Permissions*", click "*Add*" next to "*Application Permissions*". 
@@ -72,7 +72,7 @@ To do so:
 #. Set the credentials of your OneDrive application, and then accept the permissions.
 #. If everything is accepted, the mount points should appear, with a green status icon on the far left-hand side.
 
-.. figure:: ../../../images/configuration/files/external_storage/onedrive/configure-mountpoints.png
+.. figure:: images/onedrive/configure-mountpoints.png
    :alt: OneDrive mount points configuration
 
 To be able to use the occ command ``files\_onedrive:subscribe``, you need to have the variable ``overwrite.cli.url`` set in ``config/config.php``, as in this example:
