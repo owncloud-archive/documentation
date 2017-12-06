@@ -417,7 +417,7 @@ A set of commands to create address books, calendars, and to migrate address boo
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
   dav:sync-system-addressbook   Synchronizes users to the system 
                                 address book
-                                      
+
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
@@ -1365,7 +1365,6 @@ This command lets you set the following attributes:
 
 - **uid:** The ``uid`` is the user's username and their login name
 - **display name:** This corresponds to the **Full Name** on the Users page in your ownCloud Web UI
-- **email address**
 - **group**
 - **login name**
 - **password**
@@ -1374,7 +1373,7 @@ The command's syntax is:
 
 .. code-block:: console
 
- user:add [--password-from-env] [--display-name [DISPLAY-NAME]] [--email [EMAIL]] [-g|--group [GROUP]] [--] <uid>
+ user:add [--password-from-env] [--display-name [DISPLAY-NAME]] [-g|--group [GROUP]] [--] <uid>
 
 This example adds new user Layla Smith, and adds her to the **users** and **db-admins** groups. 
 Any groups that do not exist are created.
@@ -1387,7 +1386,6 @@ Any groups that do not exist are created.
    Confirm password: 
    The user "layla" was created successfully
    Display name set to "Layla Smith"
-   Email address set to "layla.smith@example.com"
    User "layla" added to group "users"
    User "layla" added to group "db-admins"
 
