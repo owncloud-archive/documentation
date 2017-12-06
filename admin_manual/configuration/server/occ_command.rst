@@ -554,7 +554,7 @@ You must first put your ownCloud server into :ref:`single-user mode<maintenance_
 
 ::
 
- sudo -u www-data php occ encryption:decrypt freda
+ sudo -u www-data php occ encryption:decrypt-all freda
 
 Users must have enabled recovery keys on their Personal pages. 
 You must first put your ownCloud server into :ref:`single-user mode <maintenance_commands_label>` to prevent any user activity until decryption is completed.
