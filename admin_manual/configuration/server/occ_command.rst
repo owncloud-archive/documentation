@@ -412,7 +412,6 @@ A set of commands to create address books, calendars, and to migrate address boo
 ::
 
  dav
-  dav:cleanup-chunks            Cleanup outdated chunks
   dav:create-addressbook        Create a dav address book
   dav:create-calendar           Create a dav calendar
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
@@ -421,20 +420,6 @@ A set of commands to create address books, calendars, and to migrate address boo
                                       
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
-
-``dav:cleanup-chunks`` cleans up outdated chunks (uploaded files) more than a certain number of days old.
-By default, the command cleans up chunks more than 2 days old. 
-However, by supplying the number of days to the command, the range can be increased.
-For example, in the example below, chunks older than 10 days will be removed.
-
-::
-
- sudo -u www-data php occ dav:cleanup-chunks 10
- 
- # example output
- Cleaning chunks older than 10 days(2017-11-08T13:13:45+00:00)
- Cleaning chunks for admin
-    0 [>---------------------------]
 
 The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is 
 ``dav:create-addressbook [user] [name]``. This example creates the addressbook 
