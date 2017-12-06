@@ -36,7 +36,6 @@ occ Command Directory
 * :ref:`versions_label`
 * :ref:`command_line_installation_label`
 * :ref:`command_line_upgrade_label`
-* :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
 
 .. _http_user_label:
@@ -1680,24 +1679,6 @@ If there is an error it throws an exception, and the error is detailed in your o
  ServerNotAvailableException: LDAP server is not available
  Update failed
  Turned off maintenance mode
-
-.. _two_factor_auth_label:
-
-Two-factor Authentication
--------------------------
-
-If a two-factor provider app is enabled, it is enabled for all users by default (though the provider can decide whether or not the user has to pass the challenge).
-In the case of an user losing access to the second factor (e.g., a lost phone with two-factor SMS verification), the admin can temporarily disable the two-factor check for that user via the occ command:
-
-::
-
- sudo -u www-data php occ twofactor:disable <username>
-
-To re-enable two-factor authentication again, use the following commmand:
-
-::
-
- sudo -u www-data php occ twofactor:enable <username>
 
 .. _disable_user_label:
 
