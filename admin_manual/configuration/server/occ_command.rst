@@ -244,7 +244,7 @@ The other two commands are:
 * ``background:cron``
 * ``background:webcron``
 
-See :doc:`../../configuration/server/background_jobs_configuration` to learn more.
+See :doc:`../../configuration_server/background_jobs_configuration` to learn more.
 
 .. _config_commands_label:
 
@@ -491,7 +491,7 @@ This is example converts SQLite to MySQL/MariaDB:
  sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 
  oc_database
 
-For a more detailed explanation see :doc:`../../configuration/database/db_conversion`.
+For a more detailed explanation see :doc:`../../configuration_database/db_conversion`.
 
 .. _encryption_label:
 
@@ -569,7 +569,7 @@ It is not possible to disable it.
 
 ``encryption:migrate`` migrates encryption keys after a major ownCloud version upgrade. 
 You may optionally specify individual users in a space-delimited list.
-See :doc:`../../configuration/files/encryption_configuration` to learn more.
+See :doc:`../../configuration_files/encryption_configuration` to learn more.
  
 .. _federation_sync_label:
  
@@ -1559,7 +1559,7 @@ This example adds new user Fred Jones:
  Display name set to "Fred Jones"
  User "fred" added to group "users" 
 
-You can reset any user's password, including administrators (see :doc:`../../configuration/user/reset_admin_password`):
+You can reset any user's password, including administrators (see :doc:`../../configuration_user/reset_admin_password`):
 
 ::
 
