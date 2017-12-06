@@ -1659,13 +1659,13 @@ Enabling verbosity displays timestamps:
 
  sudo -u www-data php occ upgrade -v
  ownCloud or one of the apps require upgrade - only a limited number of commands are available
- 2015-06-23T09:06:15+0000 Turned on maintenance mode
- 2015-06-23T09:06:15+0000 Checked database schema update
- 2015-06-23T09:06:15+0000 Checked database schema update for apps
- 2015-06-23T09:06:15+0000 Updated database
- 2015-06-23T09:06:15+0000 Updated <files_sharing> to 0.6.6
- 2015-06-23T09:06:15+0000 Update successful
- 2015-06-23T09:06:15+0000 Turned off maintenance mode
+ Turned on maintenance mode
+ Checked database schema update
+ Checked database schema update for apps
+ Updated database
+ Updated <files_sharing> to 0.6.6
+ Update successful
+ Turned off maintenance mode
 
 If there is an error it throws an exception, and the error is detailed in your ownCloud logfile, so you can use the log output to figure out what went wrong, or to use in a bug report.
 
