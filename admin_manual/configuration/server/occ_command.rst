@@ -100,8 +100,8 @@ Query your ownCloud server status::
 
  sudo -u www-data php occ status
    - installed: true
-   - version: 9.0.0.19
-   - versionstring: 9.0.0
+   - version: 9.1
+   - versionstring: 9.1
    - edition: 
 
 ``occ`` has *options*, *commands*, and *arguments*. 
