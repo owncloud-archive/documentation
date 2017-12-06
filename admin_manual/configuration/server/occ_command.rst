@@ -1354,12 +1354,8 @@ The full list, of commands is:
   user:inactive                       reports users who are known to owncloud, 
                                       but have not logged in for a certain number of days
   user:lastseen                       shows when the user was logged in last time
-  user:list                           list users
-  user:list-groups                    list groups for a user
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
-  user:setting                        Read and modify user settings
-  user:sync                           Sync local users with an external backend service
 
 Creating Users
 ^^^^^^^^^^^^^^
@@ -1442,55 +1438,6 @@ To delete a user, you use the ``user:delete`` command, as in the example below:
 ::
 
  sudo -u www-data php occ user:delete fred
-   
-   
-Listing Users
-^^^^^^^^^^^^^
-
-You can list existing users with the ``user:list`` command.
-The syntax is::
-
-  user:list [options] [<search-pattern>]
-
-User IDs containing the ``search-pattern`` string are listed. Matching is 
-not case-sensitive. If you do not provide a search-pattern then all users 
-are listed.
-
-This example lists user IDs containing the string ron:: 
- 
- sudo -u www-data php occ user:list ron
-  - aaron: Aaron Smith
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty user:list
-  {
-    "aaron": "Aaron Smith",
-    "herbert": "Herbert Smith",
-    "julie": "Julie Jones"
-  }
-
-Listing Group Membership of a User
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can list the group membership of a user with the ``user:list-groups`` command.
-The syntax is::
-
-  user:list-groups [options] <uid>
-
-This example lists group membership of user julie:: 
- 
- sudo -u www-data php occ user:list-groups julie
-  - Executive
-  - Finance
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty user:list-groups julie
-  [
-    "Executive",
-    "Finance"
-  ]
 
 Finding The User's Last Login
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1501,106 +1448,6 @@ To view a user's most recent login, use the ``user:lastseen`` command, as in the
    
  sudo -u www-data php occ user:lastseen layla 
    layla's last login: 09.01.2015 18:46
-
-User Application Settings
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To manage application settings for a user, use the ``user:setting`` command. 
-This command provides the ability to:
-
-- Retrieve all settings for an application
-- Retrieve a single setting
-- Set a setting value
-- Delete a setting
-
-If you run the command and pass the help switch (``--help``), you will see the following output, in your terminal:
-
-::
-
-  $ ./occ user:setting --help
-  Usage:
-    user:setting [options] [--] <uid> [<app>] [<key>]
-
-  Arguments:
-    uid                                User ID used to login
-    app                                Restrict the settings to a given app [default: ""]
-    key                                Setting key to set, get or delete [default: ""]
-
-If you're new to the ``user:setting`` command, the descriptions for the ``app`` and ``key`` arguments may not be completely transparent. 
-So, here's a lengthier description of both.
-
-======== ======================================================================
-Argument Description
-======== ======================================================================
-app      When an value is supplied, ``user:setting`` limits the settings 
-         displayed, to those for that, specific, application — assuming that 
-         the application is installed, and that there are settings available 
-         for it. Some example applications are "core", "files_trashbin", and 
-         "user_ldap". A complete list, unfortunately, cannot be supplied, as it 
-         is impossible to know the entire list of applications which a user 
-         could, potentially, install.
-key      This value specifies the setting key to be manipulated (set, 
-         retrieved, or deleted) by the ``user:setting`` command.
-======== ======================================================================
-
-Retrieving User Settings
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-To retrieve all settings for a user, you need to call the ``user:setting`` command and supply the user's username, as in the example below.
-
-::
-
- sudo -u www-data php occ user:setting layla
-   - core:
-     - lang: en
-   - login:
-     - lastLogin: 1465910968
-   - settings:
-     - email: layla@example.tld
-
-Here, we see that the user has settings for the application ``core``, when they last logged in, and what their email address is. 
-
-To retrieve the user's settings for a specific application, you have to supply the username and the application's name, which you want to retrieve the settings for; such as in the example below::
-
- sudo -u www-data php occ user:setting layla core
-  - core:
-     - lang: en
-
-In the output, you can see that one setting is in effect, ``lang``, which is set to ``en``. 
-To retrieve the value of a single application for a user, use the ``user:setting`` command, as in the example below.
-
-::
-
- sudo -u www-data php occ user:setting layla core lang
- 
-This will display the value for that setting, such as ``en``.
-
-Setting a Setting
-~~~~~~~~~~~~~~~~~
-
-To set a setting, you need to supply four things; these are: 
-
-- the username
-- the application (or setting category)
-- the ``--value`` switch
-- the, quoted, value for that setting
-
-Here's an example of how you would set the email address of the user ``layla``.
-
-::
-
- sudo -u www-data php occ user:setting layla settings email --value "new-layla@example.tld"
-
-Deleting a Setting
-~~~~~~~~~~~~~~~~~~
-
-Deleting a setting is quite similar to setting a setting. 
-In this case, you supply the username, application (or setting category) and key as above. 
-Then, in addition, you supply the ``--delete`` flag.
-
-::
-
- sudo -u www-data php occ user:setting layla settings email --delete
 
 Generating a User Count Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1620,54 +1467,6 @@ Generate a simple report that counts all users, including users on external user
  |                  |    |
  | user directories | 2  |
  +------------------+----+
-
-.. _syncing_user_accounts_label:
-
-Syncing User Accounts
-^^^^^^^^^^^^^^^^^^^^^
-
-This command syncs users stored in external backend services, such as *LDAP*, *Shibboleth*, and *Samba*, with ownCloud's, internal, user database.
-However, it's not essential to run it regularly, unless you have a large number of users whose account properties have changed in a backend outside of ownCloud.
-When run, it will pick up changes from alternative user backends, such as LDAP where properties like ``cn`` or ``display name`` have changed, and sync them with ownCloud's user database.
-If accounts are found that no longer exist in the external backend, you are given the choice of either removing or disabling the accounts. 
-
-.. note:: 
-   It's also :ref:`one of the commands <available_background_jobs_label>` that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
-
-.. note::
-   This command replaces the old ``show-remnants`` functionality, and brings the LDAP feature more in line with the rest of ownCloud's functionality.
-
-Below are examples of how to use the command with an *LDAP*, *Samba*, and *Shibboleth* backend.
-
-LDAP
-~~~~
-
-::
-
-  sudo -u www-data ./occ user:sync "OCA\User_LDAP\User_Proxy"
-
-Samba
-~~~~~
-
-::
-
-  sudo -u www-data ./occ user:sync "OCA\User\SMB" -vvv
-
-Shibboleth
-~~~~~~~~~~
-
-::
-
-  sudo -u www-data ./occ user:sync "OCA\User_Shibboleth\UserBackend"
-
-Syncing via cron job
-~~~~~~~~~~~~~~~~~~~~
-
-Here is an example for syncing with LDAP four times a day on Ubuntu:
-
-  crontab -e -u www-data
-  
-  * */6 * * * /usr/bin/php /var/www/owncloud/occ user:sync -vvv --missing-account-action="remove" -n "OCA\User_LDAP\User_Proxy"
  
 .. _versions_label:
  
