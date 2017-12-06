@@ -1348,7 +1348,6 @@ The full list, of commands is:
  user
   user:add                            adds a user
   user:delete                         deletes the specified user
-  user:disable                        disables the specified user
   user:enable                         enables the specified user
   user:inactive                       reports users who are known to owncloud, 
                                       but have not logged in for a certain number of days
@@ -1681,24 +1680,6 @@ If there is an error it throws an exception, and the error is detailed in your o
  Turned off maintenance mode
 
 .. _disable_user_label:
-
-Disable Users
--------------
-
-Admins can disable users via the occ command too:
-
-::
-
- sudo -u www-data php occ user:disable <username>
-
-Use the following command to enable the user again:
-
-::
-
- sudo -u www-data php occ user:enable <username>
-
-.. note::
-   Once users are disabled, their connected browsers will be disconnected.
 
 Finding Inactive Users
 ^^^^^^^^^^^^^^^^^^^^^^
