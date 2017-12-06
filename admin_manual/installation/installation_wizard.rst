@@ -205,7 +205,6 @@ Replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group::
  chown -R ${htuser}:${htgroup} ${ocpath}/apps/
  chown -R ${htuser}:${htgroup} ${ocpath}/config/
  chown -R ${htuser}:${htgroup} ${ocdata}/
- chown -R ${htuser}:${htgroup} ${ocpath}/themes/
  chown -R ${htuser}:${htgroup} ${ocpath}/updater/
 
  chmod +x ${ocpath}/occ
