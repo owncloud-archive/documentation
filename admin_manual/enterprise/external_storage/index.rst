@@ -10,4 +10,4 @@ External Storage
     sharepoint-integration_configuration
     windows-network-drive_configuration
     s3_swift_as_primary_object_store_configuration
-    
+    onedrive 
