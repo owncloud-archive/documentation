@@ -72,7 +72,8 @@ Note: Users with outdated browsers might get warnings. See the list of supported
 
 **Known issues**
 
-- The current Impersonate app (version 0.1.1) does not work with ownCloud Server 10.0.4. A bugfix release of the Impersonate app will follow soon.
+- Impersonate app 0.1.1 does not work with ownCloud Server 10.0.4. Please update to Impersonate 0.1.2 (https://marketplace.owncloud.com/apps/impersonate) to be able to use the feature with ownCloud 10.0.4.
+- Mounting ownCloud storage via davfs does not work https://github.com/owncloud/core/issues/29793
 
 .. _10.0.3_release_notes_label:
 
