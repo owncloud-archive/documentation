@@ -49,7 +49,7 @@ Account Locking
 ^^^^^^^^^^^^^^^
 
 The second line of defense is account locking. 
-If a client uploads a file which matches a pattern in the ransomware blacklist, the account will be locked (set as read-only) for client access (*create*, *change*, and *delete* operations) to prevent further malicious changes. 
+If a client uploads a file which matches a pattern in the ransomware blacklist, the account will be locked (set as read-only) for client access (*create*, *change*, *move*, and *delete* operations) to prevent further malicious changes. 
 
 Following this, clients receive an error (403 Access Forbidden) which notifies the user that the account is locked by Ransomware Protection.
 
@@ -58,11 +58,12 @@ Administrators can also manually lock user accounts, using the ``occ ransomguard
 
 .. note:: 
    When an account is locked, it will still be fully usable from the ownCloud web UI.
+   However, ownCloud Clients will see the account as set to read-only mode.
 
 Users will see a yellow notification banner in the ownCloud web UI directing them to "Personal Settings -> Security" ("*Locked by Ransomware Protection app. Unlock your account in the security settings panel.*"), where additional information is displayed and users can unlock their account when ransomware issues are resolved locally.
 
 .. note::  
-   Locking is enabled by default. If this is not desired, for whatever reason, an administrator can disable it in the "Admin -> Security" panel.
+   Locking is enabled by default. If this is not desired, an administrator can disable it in the "Admin -> Security" panel.
 
 .. _ransomware_protection_label:
 
@@ -107,10 +108,17 @@ Ransomguard Restorer            ``occ ransomguard:restore <timestamp> <user>`` A
 Requirements
 ~~~~~~~~~~~~
 
+Mandatory
+^^^^^^^^^
+
 #. **Ransomware Protection.** Ransomware protection needs to be in operation before an attack occurs, as it needs to record file operations to be able to revert them, in case of an attack.
 #. **ownCloud Versions App.** Required to restore older file versions. The capabilities of Ransomware Protection depend on its configuration regarding version retention.
 #. **ownCloud Trash Bin App.** Required to restore deleted files. The capabilities of Ransomware Protection depend on its configuration regarding trash bin retention.
-#. **Activity app.** This is only required for viewing activity logs.
+
+Optional
+^^^^^^^^
+
+#. **Activity app.** For viewing activity logs.
 
 Limitations
 ~~~~~~~~~~~
