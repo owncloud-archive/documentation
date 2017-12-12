@@ -18,7 +18,6 @@ Before beginning an upgrade, please keep the following points in mind:
 - Upgrading is disruptive, as your ownCloud server will be put into :ref:`maintenance mode <maintenance_mode_label>`. 
 - Large installations may take several hours to complete the upgrade.
 - Downgrading **is not supported** as it risks corrupting your data. If you want to revert to an older ownCloud version, make a new, fresh installation and then restore your data from backup. Before doing this, file a support ticket (if you have paid support) or ask for help in the ownCloud forums to resolve your issue without downgrading.
-- Metadata (i.e., shares) will be lost since the DB will not be restored.
 
 Prerequisites
 -------------
