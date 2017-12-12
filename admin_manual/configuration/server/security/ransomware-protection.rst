@@ -100,6 +100,9 @@ Ransomguard Scanner             ``occ ransomguard:scan <timestamp> <user>``    A
 Ransomguard Restorer            ``occ ransomguard:restore <timestamp> <user>`` A command for administrators to revert all
                                                                                operations in a user account that occurred after
                                                                                a certain point in time.
+Ransomguard Lock                ``occ ransomguard:lock <user>``                Set a user account as read-only. This prevents any 
+                                                                               further changes to the account.
+Ransomguard Unlock              ``occ ransomguard:unlock <user>``              Unlock a user account which was set to read-only. 
 =============================== ============================================== ========================================================
 
 .. note:: 
