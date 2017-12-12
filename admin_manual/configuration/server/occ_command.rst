@@ -1428,6 +1428,8 @@ You can find more information about the application :doc:`in the documentation <
 
   occ ransomguard:scan <timestamp> <user>    Report all changes in a user's account, starting from timestamp.
   occ ransomguard:restore <timestamp> <user> Revert all operations in a user account after a point in time.
+  occ ransomguard:lock <user>                Set a user account as read-only when malicious activity is suspected.
+  occ ransomguard:unlock <user>              Unlock a user account after ransomware issues have been resolved.
 
 .. _sharing_commands_label:
 
