@@ -28,7 +28,11 @@ Like other forms of cyberattack, Ransomware has a range of diverse characteristi
 On the one hand it makes them hard to detect and on the other makes them even harder to prevent.
 Recent ransomeware attacks either encrypt a user's files and add a certain file extension to them (e.g., ".crypt") or they replace the original files with an encrypted copy and a certain file extension.
 
-The first line of defense against such threats is a blacklist that blocks uploading files with file extensions known to originate from ransomeware.
+The first line of defense against such threats is a blacklist that blocks write access for file extensions known to originate from ransomeware.
+
+.. note:: 
+   Write access (e.g., moving and deleting files) is still possible for users, when they log in with their web browser.
+
 Ransomware Protection ships with `a static extension list`_ of around 1,500 file extensions.
 As new extensions are regularly created this list needs maintenance.
 Future releases of Ransomware Protection will include an updated list and the ability to update the list via syncing with `FSRM's API`_ by using :doc:`occ <../occ_command>`.
@@ -51,19 +55,24 @@ A combination of Ransomware prevention and protection reduces risks to a minimum
 Other Elements of Ransomware Protection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-==================== ============================================== ================================================
-Name                 Command                                        Description
-==================== ============================================== ================================================
-Ransomguard Scanner  ``occ ransomguard:scan <timestamp> <user>``    A command to scan the ownCloud database for
-                                                                    changes in order to discover anomalies in a 
-                                                                    user's account and their origin. It enables an 
-                                                                    administrator to determine the point in time
-                                                                    where undesired actions happened as a
-                                                                    prerequisite for restoration.
-Ransomguard Restorer ``occ ransomguard:restore <timestamp> <user>`` A command for administrators to revert all
-                                                                    operations in a user account that occurred after
-                                                                    a certain point in time.
-==================== ============================================== ================================================
+===================== ============================================== ========================================================
+Name                  Command (if applicable)                        Description
+===================== ============================================== ========================================================
+Ransomware Prevention                                                First line of defense against ransomware attacks.
+(Blocker)                                                            Ransomware Protection uses a file name pattern blacklist 
+                                                                     to prevent uploading files that have file extensions 
+                                                                     associated with ransomware (e.g. ".crypt") thereby 
+                                                                     preserving the original files on the ownCloud Server.
+Ransomguard Scanner  ``occ ransomguard:scan <timestamp> <user>``     A command to scan the ownCloud database for
+                                                                     changes in order to discover anomalies in a 
+                                                                     user's account and their origin. It enables an 
+                                                                     administrator to determine the point in time
+                                                                     where undesired actions happened as a
+                                                                     prerequisite for restoration.
+Ransomguard Restorer ``occ ransomguard:restore <timestamp> <user>``  A command for administrators to revert all
+                                                                     operations in a user account that occurred after
+                                                                     a certain point in time.
+===================== ============================================== ========================================================
 
 .. note:: 
    ``<timestamp>`` must be in `the Linux timestamp format`.
@@ -74,6 +83,7 @@ Requirements
 #. **Ransomware Protection.** Ransomware protection needs to be in operation before an attack occurs, as it needs to record file operations to be able to revert them, in case of an attack.
 #. **ownCloud Versions App.** Required to restore older file versions. The capabilities of Ransomware Protection depend on its configuration regarding version retention.
 #. **ownCloud Trash Bin App.** Required to restore deleted files. The capabilities of Ransomware Protection depend on its configuration regarding trash bin retention.
+#. **Activity app.** This is only required for viewing activity logs.
 
 Limitations
 ~~~~~~~~~~~
