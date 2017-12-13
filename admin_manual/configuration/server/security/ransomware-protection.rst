@@ -58,7 +58,7 @@ Administrators can also manually lock user accounts, using the ``occ ransomguard
 
 .. note:: 
    When an account is locked, it will still be fully usable from the ownCloud web UI.
-   However, ownCloud Clients will see the account as set to read-only mode.
+   However, ownCloud clients (as well as other WebDAV clients) will see the account as set to read-only mode.
 
 Users will see a yellow notification banner in the ownCloud web UI directing them to "Personal Settings -> Security" ("*Locked by Ransomware Protection app. Unlock your account in the security settings panel.*"), where additional information is displayed and users can unlock their account when ransomware issues are resolved locally.
 
