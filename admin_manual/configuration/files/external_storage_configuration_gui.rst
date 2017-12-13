@@ -123,13 +123,14 @@ may provide their own backends, which are not listed here.
 Allow Users to Mount External Storage
 -------------------------------------
 
-Check **Enable User External Storage** to allow your users to mount their own 
-external storage services, and check the backends you want to allow. Beware, as 
-this allows a user to make potentially arbitrary connections to other services 
-on your network!
+Check "*Allow users to mount external storage*" to allow your users to mount storages on external services.
+Then enable the backends you want to allow.
 
 .. figure:: external_storage/images/user_mounts.png
    :alt: Checkboxes to allow users to mount external storage services.
+
+.. warning:: 
+   Be careful with the choices that you enable, as it allows a user to make potentially arbitrary connections to other services on your network!
 
 Setting Up Google Drive and Dropbox Connections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

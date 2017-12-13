@@ -30,6 +30,7 @@ occ Command Directory
 * :ref:`market_commands_label`
 * :ref:`reports_commands_label`
 * :ref:`security_commands_label`
+* :ref:`ransomware_commands_label`
 * :ref:`shibboleth_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
@@ -530,6 +531,8 @@ Encryption
   encryption:encrypt-all               Encrypt all files for all users
   encryption:list-modules              List all available encryption modules
   encryption:migrate                   initial migration to encryption 2.0
+  encryption:recreate-master-key       Replace existing master key with new one. 
+                                       Encrypt the file system with newly created master key.
   encryption:set-default-module        Set the encryption default module
   encryption:show-key-storage-root     Show current key storage root
   encryption:status                    Lists the current status of encryption
@@ -586,6 +589,8 @@ It is not possible to disable it.
 You may optionally specify individual users in a space-delimited list.
 See :doc:`../../configuration/files/encryption_configuration` to learn more.
  
+``encryption:recreate-master-key`` decrypts the ownCloud file system, replaces the existing master key with a new one, and encrypts the entire ownCloud file system with the new master key. Given the size of your ownCloud filesystem, this may take some time to complete. However, if your filesystem is quite small, then it will complete quite quickly. The ``-y`` switch can be supplied to automate acceptance of user input.
+ 
 .. _federation_sync_label:
  
 Federation Sync
@@ -622,39 +627,54 @@ File Operations
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
-The ``files:scan`` command scans for new files and updates the file cache. You 
-may rescan all files, per-user, a space-delimited list of users, and limit the 
-search path. If not using ``--quiet``, statistics will be shown at the end of 
-the scan::
+The files:scan command
+^^^^^^^^^^^^^^^^^^^^^^
+
+The ``files:scan`` command 
+
+- Scans for new files.
+- Scans not fully scanned files.
+- Repairs file cache holes.
+- Updates the file cache.
+
+File scans can be performed per-user, for a space-delimited list of users, and for all users.  
+
+::
 
  sudo -u www-data php occ files:scan --help
-   Usage:
-   files:scan [-p|--path="..."] [-q|--quiet] [-v|vv|vvv --verbose] [--all] 
-   [user_id1] ... [user_idN]
+  Usage:
+    files:scan [options] [--] [<user_id>]...
 
- Arguments:
-   user_id               will rescan all files of the given user(s)
+  Arguments:
+    user_id                will rescan all files of the given user(s)
 
- Options:
-   --path                limit rescan to the user/path given
-   --all                 will rescan all files of all known users
-   --quiet               suppress any output
-   --verbose             files and directories being processed are shown 
-                         additionally during scanning
-   --unscanned           scan only previously unscanned files
+  Options:
+        --output[=OUTPUT]  Output format (plain, json or json_pretty, default is plain) [default: "plain"]
+    -p, --path=PATH        limit rescan to this path, eg. --path="/alice/files/Music", the user_id is determined by the path and the user_id parameter and --all are ignored
+    -q, --quiet            Do not output any message
+        --all              will rescan all files of all known users
+        --repair           will repair detached filecache entries (slow)
+        --unscanned        only scan files which are marked as not fully scanned
+    -h, --help             Display this help message
+    -V, --version          Display this application version
+        --ansi             Force ANSI output
+        --no-ansi          Disable ANSI output
+    -n, --no-interaction   Do not ask any interactive question
+        --no-warnings      Skip global warnings, show command output only
+    -v|vv|vvv, --verbose   Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+   
+.. note::
+  If not using ``--quiet``, statistics will be shown at the end of the scan.
 
-Verbosity levels of ``-vv`` or ``-vvv`` are automatically reset to ``-v``.
-With respect to the ``--unscanned`` option, in general there is a background job (through Cron) that will do that scan periodically.
-The ``--unscanned`` option makes it possible to trigger this from the CLI.
+The ``--path`` Option
+~~~~~~~~~~~~~~~~~~~~~
 
-When using the ``--path`` option, the path must consist of following components:
+When using the ``--path`` option, the path must be in one of the following formats:
 
 ::
 
   "user_id/files/path" 
-    or
   "user_id/files/mount_name"
-    or
   "user_id/files/mount_name/path"
 
 For example:
@@ -664,7 +684,32 @@ For example:
   --path="/alice/files/Music"
 
 In the example above, the user_id ``alice`` is determined implicitly from the path component given.
-The ``--path``, ``--all`` and ``[user_id]`` parameters and are exclusive - only one must be specified.
+The ``--path``, ``--all`` and ``[user_id]`` parameters are exclusive - only one must be specified.
+
+The ``--repair`` Option
+~~~~~~~~~~~~~~~~~~~~~~~
+
+As noted above, repairs can be performed for individual users, groups of users, and for all users in an ownCloud installation.
+What’s more, repair scans can be run even if no files are known to need repairing and if one or more files are known to be in need of repair.
+Two examples of when files need repairing are:
+
+- If folders have the same entry twice in the web UI (known as a "*ghost folder*"), this can also lead to strange error messages in the desktop client.
+- If entering a folder doesn't seem to lead into that folder.
+
+The repair command needs to be run in single user mode. 
+The following commands show how to enable single user mode, run a repair file scan, and then disable single user mode.
+
+::
+
+  sudo -u www-data php occ maintenance:singleuser --on
+  sudo -u www-data php occ files:scan --all --repair
+  sudo -u www-data php occ maintenance:singleuser --off
+
+.. note:: 
+   We strongly suggest that you backup the database before running this command.
+
+The files:cleanup command
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 ``files:cleanup`` tidies up the server's file cache by deleting all file entries that have no matching entries in the storage table. 
 You may transfer all files and shares from one user to another. 
@@ -1361,13 +1406,28 @@ Import a new certificate:
 
 ::
 
- sudo -u www-data php occ security:import /path/to/certificate
+ sudo -u www-data php occ security:certificates:import /path/to/certificate
  
 Remove a certificate:
 
 ::
 
- sudo -u www-data php occ security:remove [certificate name]
+ sudo -u www-data php occ security:certificates:remove [certificate name]
+
+.. _ransomware_commands_label:
+
+Ransomware Protection
+---------------------
+
+Use these commands to help users recover from a Ransomware attack.
+You can find more information about the application :doc:`in the documentation <security/ransomeware-protection>`.
+
+.. note:: Ransomware Protection (which is an Enterprise app) needs to be installed and enabled to be able to use these commands.
+
+::
+
+  occ ransomguard:scan <timestamp> <user>    Report all changes in a user's account, starting from timestamp.
+  occ ransomguard:restore <timestamp> <user> Revert all operations in a user account after a point in time.
 
 .. _sharing_commands_label:
 
@@ -1783,6 +1843,8 @@ Syncing via cron job
 
 Here is an example for syncing with LDAP four times a day on Ubuntu:
 
+::
+
   crontab -e -u www-data
   
   * */6 * * * /usr/bin/php /var/www/owncloud/occ user:sync -vvv --missing-account-action="remove" -n "OCA\User_LDAP\User_Proxy"
@@ -2086,6 +2148,7 @@ json    This will render the output as a JSON-encoded, but not formatted, string
        }
    ]
 
-.. links
+.. Links
    
 .. _the ownCloud Marketplace: https://marketplace.owncloud.com/
+   

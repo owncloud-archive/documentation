@@ -11,7 +11,7 @@ Unit Tests
 ----------
 
 A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.
-Because ownCloud uses :doc:`Dependency Injection <container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to ``ownnotes/tests/Unit/Controller/NoteControllerTest.php``:
+Because ownCloud uses :doc:`Dependency Injection <../fundamentals/container>` to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to ``ownnotes/tests/Unit/Controller/NoteControllerTest.php``:
 
 .. code-block:: php
 

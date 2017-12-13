@@ -769,3 +769,4 @@ Code Description
 .. Links
    
 .. _the square/okhttp library: https://github.com/square/okhttp
+.. _RFC-compliant mimetype: https://tools.ietf.org/html/rfc2045

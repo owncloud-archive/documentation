@@ -125,15 +125,24 @@ XML Output
 
   <?xml version="1.0"?>
   <ocs>
-    <meta>
-      <statuscode>100</statuscode>
-      <status>ok</status>
-    </meta>
-    <data>
-      <email>frank@example.org</email>
-      <quota>0</quota>
-      <enabled>true</enabled>
-    </data>
+   <meta>
+    <status>ok</status>
+    <statuscode>100</statuscode>
+    <message/>
+   </meta>
+   <data>
+    <enabled>true</enabled>
+    <quota>
+     <free>81919008768</free>
+     <used>5809166</used>
+     <total>81924817934</total>
+     <relative>0.01</relative>
+    </quota>
+    <email>user@example.com</email>
+    <displayname>Frank</displayname>
+    <home>/mnt/data/files/Frank</home>
+    <two_factor_auth_enabled>false</two_factor_auth_enabled>
+   </data>
   </ocs>
 
 **users / edituser**

@@ -2,94 +2,136 @@
 User Authentication with IMAP, SMB, and FTP
 ===========================================
 
-You may configure additional user backends
-in ownCloud's configuration :file:`config/config.php` using the following
-syntax:
+You may configure additional user backends in ownCloud's configuration file (:file:`config/config.php`) using the following syntax:
 
-::
+.. code-block:: php
 
   <?php
 
-  "user_backends" => array (
-      0 => array (
-              "class"     => ...,
-              "arguments" => array (
-                                0 => ...
-                                ),
-      ),
-  ),
+  "user_backends" => [
+      0 => [
+          "class"     => ...,
+          "arguments" => [
+              0 => ...
+          ],
+      ],
+  ],
 
-.. note:: A non-blocking or correctly configured SELinux setup is needed
-   for these backends to work. Please refer to the :ref:`selinux-config-label`.
+.. note:: 
+   A non-blocking or correctly configured SELinux setup is needed for these backends to work, if SELinux is enabled on your server.. 
+   Please refer to :ref:`the SELinux documentation <selinux-config-label>` for further details.
 
-Currently the “External user support” (user_external) app, which you need to
-enable first (See :doc:`../../installation/apps_management_installation`)
-provides the following user backends:
+Currently the `External user support app`_ (user_external), *which is not enabled by default*, provides three backends. 
+These are:
+
+- `IMAP`_
+- `SMB`_
+- `FTP`_
+
+See :doc:`../../installation/apps_management_installation` for more information.
 
 IMAP
 ----
-Provides authentication against IMAP servers
 
-- **Class:** OC_User_IMAP
-- **Arguments:**  a mailbox string as defined `in the PHP documentation <http://www.php.net/manual/en/function.imap-open.php>`_
-- **Dependency:** php-imap (See :doc:`../../installation/source_installation`)
-- **Example:**
+Provides authentication against IMAP servers.
 
-::
+========== ==========================================================================
+Option     Value/Description
+========== ==========================================================================
+Class      ``OC_User_IMAP``.
+Arguments  A mailbox string as defined `in the PHP documentation`_.
+Dependency `PHP's IMAP extension`_. See :doc:`../../installation/source_installation` 
+           for instructions on how to install it.
+========== ==========================================================================
+
+Example
+~~~~~~~
+
+.. code-block:: php
 
   <?php
 
-  "user_backends" => array (
-      0 => array (
-              "class"     => "OC_User_IMAP",
-              "arguments" => array (
-                                0 => '{imap.gmail.com:993/imap/ssl}'
-                                ),
-      ),
-  ),
+  "user_backends" => [
+      0 => [
+          "class"     => "OC_User_IMAP",
+          "arguments" => [
+              // The IMAP server to authenticate against
+              '{imap.gmail.com:993/imap/ssl}', 
+              // The domain to send email from
+              'example.com'
+          ],
+      ],
+  ],
+  
+.. warning:: 
+   The second ``arguments`` parameter ensures that only users from that domain are allowed to login. 
+   When set, after a successful login, the domain will be stripped from the email address and the rest used as an ownCloud username. 
+   For example, if the email address is ``guest.user@example.com``, then ``guest.user`` will be the username used by ownCloud.
 
 SMB
 ---
-Provides authentication against Samba servers
 
-- **Class:** OC_User_SMB
-- **Arguments:** the samba server to authenticate against
-- **Dependency:** PHP smbclient module or smbclient (see 
-  :doc:`../../configuration/files/external_storage/smb`)
-- **Example:**
+Provides authentication against Samba servers.
 
-::
+========== ==============================================================================================
+Option     Value/Description
+========== ==============================================================================================
+Class      ``OC_User_SMB``.
+Arguments  The samba server to authenticate against.
+Dependency `PECL's smbclient extension`_ or :doc:`smbclient <../../configuration/files/external_storage/smb>`.
+========== ==============================================================================================
+
+Example
+~~~~~~~
+
+.. code-block:: php
 
   <?php
 
-  "user_backends" => array (
-      0 => array (
-              "class"     => "OC_User_SMB",
-              "arguments" => array (
-                                0 => 'localhost'
-                                ),
-      ),
-  ),
+  "user_backends" => [
+      0 => [
+          "class"     => "OC_User_SMB",
+          "arguments" => [
+              0 => 'localhost'
+          ],
+      ],
+  ],
 
 FTP
 ---
 
-Provides authentication against FTP servers
+Provides authentication against FTP servers.
 
-- **Class:** OC_User_FTP
-- **Arguments:** the FTP server to authenticate against
-- **Dependency:** php-ftp (See :doc:`../../installation/source_installation`)
-- **Example:**
 
-::
+=============== =========================================================================
+Option          Value/Description
+=============== =========================================================================
+Class           ``OC_User_FTP``.
+Arguments       The FTP server to authenticate against.
+Dependency      `PHP's FTP extension`_. See :doc:`../../installation/source_installation` 
+                for instructions on how to install it.
+=============== =========================================================================
+
+Example
+~~~~~~~
+
+.. code-block:: php
 
   <?php
 
-  "user_backends" => array (
-      0 => array (
-              "class"     => "OC_User_FTP",
-              "arguments" => array (
-                                0 => 'localhost'
-                                ),
-      ),
-  ),
+  "user_backends" => [
+      0 => [
+          "class"     => "OC_User_FTP",
+          "arguments" => [
+              0 => 'localhost'
+          ],
+      ],
+  ],
+  
+.. Links
+   
+.. _PHP's IMAP extension: http://www.php.net/manual/en/book.imap.php
+.. _PECL's smbclient extension: https://pecl.php.net/package/smbclient
+.. _PHP's FTP extension: http:/www.php.net/manual/en/book.ftp.php
+.. _External user support app: https://github.com/owncloud/apps
+.. _in the PHP documentation: http://www.php.net/manual/en/function.imap-open.php
