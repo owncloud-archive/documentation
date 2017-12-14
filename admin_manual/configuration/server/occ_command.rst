@@ -1420,7 +1420,7 @@ Ransomware Protection
 ---------------------
 
 Use these commands to help users recover from a Ransomware attack.
-You can find more information about the application :doc:`in the documentation <security/ransomeware-protection>`.
+You can find more information about the application :doc:`in the documentation <security/ransomware-protection>`.
 
 .. note:: Ransomware Protection (which is an Enterprise app) needs to be installed and enabled to be able to use these commands.
 
