@@ -56,11 +56,10 @@ never use it.
 
 ::
 
-	'trusted_domains' =>
-	  array (
-	    'demo.example.org',
-	    'otherdomain.example.org',
-	  ),
+	'trusted_domains' => [
+      'demo.example.org',
+      'otherdomain.example.org',
+    ],
 
 Your list of trusted domains that users can log into. Specifying trusted
 domains prevents host header poisoning. Do not remove this, as it performs
@@ -165,49 +164,13 @@ this after installation. The SQLite database is stored in your ownCloud
 is good for testing and for simple installations, but for production ownCloud
 systems you should use MySQL, MariaDB, or PostgreSQL.
 
-::
-
-  <?php
-  $CONFIG = array (
-    'instanceid' => 'occ6f7365735',
-    'passwordsalt' => '2c5778476346786306303',
-    'trusted_domains' =>
-    array (
-      0 => 'localhost',
-      1 => 'studio',
-    ),
-    'datadirectory' => '/var/www/owncloud/data',
-    'dbtype' => 'sqlite3',
-    'version' => '7.0.2.1',
-    'installed' => true,
-    'operation.mode' => 'single-instance',
-  );
+.. literalinclude:: examples/config_sample_php_parameters/default-config-sample-sqlite.php
+   :language: php
 
 This example is from a new ownCloud installation using MariaDB
 
-::
-
-  <?php
-  $CONFIG = array (
-    'instanceid' => 'oc8c0fd71e03',
-    'passwordsalt' => '515a13302a6b3950a9d0fdb970191a',
-    'trusted_domains' =>
-    array (
-      0 => 'localhost',
-      1 => 'studio',
-      2 => '192.168.10.155'
-    ),
-    'datadirectory' => '/var/www/owncloud/data',
-    'dbtype' => 'mysql',
-     'version' => '7.0.2.1',
-    'dbname' => 'owncloud',
-    'dbhost' => 'localhost',
-    'dbtableprefix' => 'oc_',
-    'dbuser' => 'oc_carla',
-    'dbpassword' => '67336bcdf7630dd80b2b81a413d07',
-    'installed' => true,
-    'operation.mode' => 'single-instance',
-  );
+.. literalinclude:: examples/config_sample_php_parameters/default-config-sample-mariadb.php
+   :language: php
 
 .. Generated content below. Don't change this.
 .. ALL_OTHER_SECTIONS_START
@@ -333,12 +296,12 @@ skeleton files.
 
 ::
 
-	'user_backends' => array(
-		array(
+	'user_backends' => [
+		[
 			'class' => 'OC_User_IMAP',
-			'arguments' => array('{imap.gmail.com:993/imap/ssl}INBOX')
-		)
-	),
+			'arguments' => ['{imap.gmail.com:993/imap/ssl}INBOX']
+		]
+	],
 
 The ``user_backends`` app (which needs to be enabled first) allows you to
 configure alternate authentication backends. Supported backends are:
@@ -746,20 +709,20 @@ The default value is ``ownCloud``.
 
 ::
 
-	'log.conditions' => [
-	        [
-			'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-			'users' => ['user1'],
-			'apps' => ['files_texteditor'],
-			'logfile' => '/tmp/test.log'
-	        ],
-	        [
-			'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-			'users' => ['user1'],
-			'apps' => ['gallery'],
-			'logfile' => '/tmp/gallery.log'
-	        ],
-	],
+    'log.conditions' => [
+        [
+            'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+            'users' => ['user1'],
+            'apps' => ['files_texteditor'],
+            'logfile' => '/tmp/test.log'
+        ],
+        [
+            'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+            'users' => ['user1'],
+            'apps' => ['gallery'],
+            'logfile' => '/tmp/gallery.log'
+        ],
+    ],
 
 Log condition for log level increase based on conditions. Once one of these
 conditions is met, the required log level is set to debug. This allows to
@@ -953,7 +916,7 @@ Use this if LibreOffice/OpenOffice requires additional arguments.
 
 ::
 
-	'enabledPreviewProviders' => array(
+	'enabledPreviewProviders' => [
 		'OC\Preview\PNG',
 		'OC\Preview\JPEG',
 		'OC\Preview\GIF',
@@ -962,7 +925,7 @@ Use this if LibreOffice/OpenOffice requires additional arguments.
 		'OC\Preview\MP3',
 		'OC\Preview\TXT',
 		'OC\Preview\MarkDown'
-	),
+	],
 
 Only register providers that have been explicitly enabled
 
@@ -1070,9 +1033,9 @@ SSL
 
 ::
 
-	'openssl' => array(
+	'openssl' => [
 		'config' => '/absolute/location/of/openssl.cnf',
-	),
+	],
 
 Extra SSL options to be used for configuration.
 
@@ -1165,19 +1128,19 @@ Available failover modes:
 
 ::
 
-	'memcached_servers' => array(
+	'memcached_servers' => [
 		// hostname, port and optional weight. Also see:
 		// http://www.php.net/manual/en/memcached.addservers.php
 		// http://www.php.net/manual/en/memcached.addserver.php
-		array('localhost', 11211),
-		//array('other.host.local', 11211),
-	),
+		['localhost', 11211],
+		//['other.host.local', 11211],
+	],
 
 Server details for one or more memcached servers to use for memory caching.
 
 ::
 
-	'memcached_options' => array(
+	'memcached_options' => [
 		// Set timeouts to 50ms
 		\Memcached::OPT_CONNECT_TIMEOUT => 50,
 		\Memcached::OPT_RETRY_TIMEOUT =>   50,
@@ -1196,7 +1159,7 @@ Server details for one or more memcached servers to use for memory caching.
 	
 		// Binary serializer vill be enabled if the igbinary PECL module is available
 		//\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
-	),
+	],
 
 Connection options for memcached, see http://apprize.info/php/scaling/15.html
 
@@ -1287,10 +1250,10 @@ All other configuration options
 
 ::
 
-	'dbdriveroptions' => array(
+	'dbdriveroptions' => [
 		PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
 		PDO::MYSQL_ATTR_INIT_COMMAND => 'SET wait_timeout = 28800'
-	),
+	],
 
 Additional driver options for the database connection, eg. to enable SSL
 encryption in MySQL or specify a custom wait timeout on a cheap hoster.
@@ -1345,16 +1308,17 @@ See:
 
 ::
 
-	'supportedDatabases' => array(
+	'supportedDatabases' => [
 		'sqlite',
 		'mysql',
 		'pgsql',
 		'oci',
-	),
+	],
 
 Database types that are supported for installation.
 
 Available:
+
 	- sqlite (SQLite3 - Not in Enterprise Edition)
 	- mysql (MySQL)
 	- pgsql (PostgreSQL)
@@ -1380,7 +1344,7 @@ Using a higher value requires more time and CPU power to calculate the hashes
 
 ::
 
-	'blacklisted_files' => array('.htaccess'),
+	'blacklisted_files' => ['.htaccess'),
 
 Blacklist a specific file or files and disallow the upload of files
 with this name. ``.htaccess`` is blocked by default.
@@ -1389,11 +1353,10 @@ with this name. ``.htaccess`` is blocked by default.
 
 ::
 
-	'excluded_directories' =>
-		array (
-			'.snapshot',
-			'~snapshot',
-		),
+	'excluded_directories' => [
+        '.snapshot',
+        '~snapshot',
+    ],
 
 Exclude specific directory names and disallow scanning, creating and renaming
 using these names. Case insensitive.
@@ -1493,7 +1456,7 @@ lose this string there will be data corruption.
 
 ::
 
-	'trusted_proxies' => array('203.0.113.45', '198.51.100.128'),
+	'trusted_proxies' => ['203.0.113.45', '198.51.100.128'],
 
 List of trusted proxy servers
 
@@ -1502,7 +1465,7 @@ otherwise defaults to `HTTP_X_FORWARDED_FOR` (the `X-Forwarded-For` header).
 
 ::
 
-	'forwarded_for_headers' => array('HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR'),
+	'forwarded_for_headers' => ['HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR'],
 
 Headers that should be trusted as client IP address in combination with
 `trusted_proxies`. If the HTTP header looks like 'X-Forwarded-For', then use

@@ -58,18 +58,10 @@ via a multiple domains reverse SSL proxy
 **https://ssl-proxy.tld/domain.tld/owncloud** with the IP address **10.0.0.1**
 you can set the following parameters inside the :file:`config/config.php`.
 
-::
+.. literalinclude:: examples/reverse_proxy_configuration/multiple-domains-reverse-ssl-proxy.php
+   :language: php
 
-  <?php
-  $CONFIG = array (
-    "trusted_proxies"   => ['10.0.0.1'],
-    "overwritehost"     => "ssl-proxy.tld",
-    "overwriteprotocol" => "https",
-    "overwritewebroot"  => "/domain.tld/owncloud",
-    "overwritecondaddr" => "^10\.0\.0\.1$",
-  );
-
-With an apache as reverse proxy (ssl-proxy.tld) you can use this configuration:
+With an Apache as reverse proxy (ssl-proxy.tld) you can use this configuration:
 
 ::
 
