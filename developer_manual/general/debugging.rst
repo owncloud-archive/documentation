@@ -22,9 +22,7 @@ When debug mode is enabled in ownCloud, a variety of debugging features are enab
 Debugging variables
 -------------------
 
-You should use exceptions if you need to debug variable values manually, and not alternatives like trigger_error() (which may not be logged).
-
-e.g.:
+You should use exceptions if you need to debug variable values manually, and not alternatives like trigger_error() (which may not be logged), e.g.,:
 
 .. code-block:: php
 
@@ -60,7 +58,7 @@ XDebug will now (when activated) try to connect to localhost on port 9000, and w
 
 - vdebug - Multi-language DBGP debugger client for Vim
 - SublimeTextXdebug - XDebug client for Sublime Text
-- PHPStorm - in-built DBGP debugger
+- PhpStorm - in-built DBGP debugger
 
 For further reading, see the XDebug documentation: http://xdebug.org/docs/remote
 
