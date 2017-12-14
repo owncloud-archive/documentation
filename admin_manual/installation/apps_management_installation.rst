@@ -54,22 +54,9 @@ The key **url** defines the HTTP web path to that folder, starting at the ownClo
 .. note:: 
    To ensure that the default **/apps/** folder only contains apps shipped with ownCloud, follow this example to setup an **/apps2/** folder which will be used to store all other apps.
 
-.. code-block:: php
+.. literalinclude:: examples/apps-management-installation.php
+   :language: php
 
-  <?php
-
-    "apps_paths" => array (
-        0 => array (
-                "path"     => OC::$SERVERROOT."/apps",
-                "url"      => "/apps",
-                "writable" => false,
-        ),
-        1 => array (
-                "path"     => OC::$SERVERROOT."/apps2",
-                "url"      => "/apps2",
-                "writable" => true,
-        ),
-    ),
 
 Manually Installing Apps
 ------------------------

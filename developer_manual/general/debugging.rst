@@ -16,13 +16,8 @@ Debug mode
 
 When debug mode is enabled in ownCloud, a variety of debugging features are enabled - see debugging documentation. Set ``debug`` to ``true`` in :file:`/config/config.php` to enable it:
 
-.. code-block:: php
-
-  <?php
-  $CONFIG = array (
-      'debug' => true,
-      ... configuration goes here ...
-  );
+.. literalinclude:: examples/debugging/debug-mode.php
+   :language: php
 
 Debugging variables
 -------------------
@@ -58,13 +53,8 @@ Using a PHP debugger (XDebug)
 
 Using a debugger connected to PHP allows you to step through code line by line, view variables at each line and even change values while the code is running. The de-facto standard debugger for PHP is XDebug, available as an installable package in many distributions. It just provides the PHP side however, so you will need a frontend to actually control XDebug. When installed, it needs to be enabled in :file:`php.ini`, along with some parameters to enable connections to the debugging interface:
 
-.. code-block:: ini
-
-  zend_extension=/usr/lib/php/modules/xdebug.so
-  xdebug.remote_enable=on
-  xdebug.remote_host=127.0.0.1
-  xdebug.remote_port=9000
-  xdebug.remote_handler=dbgp
+.. literalinclude:: examples/debugging/xdebug.ini
+   :language: ini
 
 XDebug will now (when activated) try to connect to localhost on port 9000, and will communicate over the standard protocol DBGP. This protocol is supported by many debugging interfaces, such as the following popular ones:
 
