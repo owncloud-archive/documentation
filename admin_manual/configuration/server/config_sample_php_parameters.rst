@@ -783,14 +783,11 @@ Alternate Code Locations
 Some of the ownCloud code may be stored in alternate locations.
 
 
-::
+.. code-block:: php
 
-	'customclient_desktop' =>
-		'https://owncloud.org/install/#install-clients',
-	'customclient_android' =>
-		'https://play.google.com/store/apps/details?id=com.owncloud.android',
-	'customclient_ios' =>
-		'https://itunes.apple.com/us/app/owncloud/id543672169?mt=8',
+	'customclient_desktop' => 'https://owncloud.org/install/#install-clients',
+	'customclient_android' => 'https://play.google.com/store/apps/details?id=com.owncloud.android',
+	'customclient_ios' => 'https://itunes.apple.com/us/app/owncloud/id543672169?mt=8',
 
 This section is for configuring the download links for ownCloud clients, as
 seen in the first-run wizard and on Personal pages.
@@ -801,19 +798,19 @@ Apps
 Options for the Apps folder, Apps store, and App code checker.
 
 
-::
+.. code-block:: php
 
 	'appstoreenabled' => true,
 
 When enabled, admins may install apps from the ownCloud Marketplace.
 
-::
+.. code-block:: php
 
 	'appstoreurl' => 'https://api.owncloud.com/v1',
 
 The URL of the appstore to use.
 
-::
+.. code-block:: php
 
 	'appstore.experimental.enabled' => false,
 
@@ -832,7 +829,7 @@ indicates if a Web server can write files to that folder.
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 
-::
+.. code-block:: php
 
 	'appcodechecker' => true,
 
@@ -851,8 +848,7 @@ ownCloud supports previews of image files, the covers of MP3 files, and text
 files. These options control enabling and disabling previews, and thumbnail
 size.
 
-
-::
+.. code-block:: php
 
 	'enable_previews' => true,
 
@@ -865,21 +861,21 @@ By default, ownCloud can generate previews for the following filetypes:
 Valid values are ``true``, to enable previews, or
 ``false``, to disable previews
 
-::
+.. code-block:: php
 
 	'preview_max_x' => 2048,
 
 The maximum width, in pixels, of a preview. A value of ``null`` means there
 is no limit.
 
-::
+.. code-block:: php
 
 	'preview_max_y' => 2048,
 
 The maximum height, in pixels, of a preview. A value of ``null`` means there
 is no limit.
 
-::
+.. code-block:: php
 
 	'preview_max_scale_factor' => 10,
 
@@ -888,7 +884,7 @@ preview system generates blurry previews, you might want to consider setting
 a maximum scale factor. By default, pictures are upscaled to 10 times the
 original size. A value of ``1`` or ``null`` disables scaling.
 
-::
+.. code-block:: php
 
 	'preview_max_filesize_image' => 50,
 
@@ -900,13 +896,13 @@ Value represents the maximum filesize in megabytes
 Default is 50
 Set to -1 for no limit
 
-::
+.. code-block:: php
 
 	'preview_libreoffice_path' => '/usr/bin/libreoffice',
 
 custom path for LibreOffice/OpenOffice binary
 
-::
+.. code-block:: php
 
 	'preview_office_cl_parameters' =>
 		' --headless --nologo --nofirststartwizard --invisible --norestore '.
@@ -914,7 +910,7 @@ custom path for LibreOffice/OpenOffice binary
 
 Use this if LibreOffice/OpenOffice requires additional arguments.
 
-::
+.. code-block:: php
 
 	'enabledPreviewProviders' => [
 		'OC\Preview\PNG',
@@ -971,8 +967,7 @@ LDAP
 
 Global settings used by LDAP User and Group Backend
 
-
-::
+.. code-block:: php
 
 	'ldapUserCleanupInterval' => 51,
 
@@ -985,8 +980,7 @@ Comments
 
 Global settings for the Comments infrastructure
 
-
-::
+.. code-block:: php
 
 	'comments.managerFactory' => '\OC\Comments\ManagerFactory',
 
@@ -994,7 +988,7 @@ Replaces the default Comments Manager Factory. This can be utilized if an
 own or 3rdParty CommentsManager should be used that – for instance – uses the
 filesystem instead of the database to keep the comments.
 
-::
+.. code-block:: php
 
 	'systemtags.managerFactory' => '\OC\SystemTag\ManagerFactory',
 
@@ -1008,8 +1002,7 @@ Maintenance
 These options are for halting user activity when you are performing server
 maintenance.
 
-
-::
+.. code-block:: php
 
 	'maintenance' => false,
 
@@ -1020,7 +1013,7 @@ doing some maintenance work, you need to set the value of the maintenance
 parameter to true. Please keep in mind that users who are already logged-in
 are kicked out of ownCloud instantly.
 
-::
+.. code-block:: php
 
 	'singleuser' => false,
 
@@ -1030,8 +1023,7 @@ who are not in the ``admin`` group.
 SSL
 ---
 
-
-::
+.. code-block:: php
 
 	'openssl' => [
 		'config' => '/absolute/location/of/openssl.cnf',
@@ -1039,7 +1031,7 @@ SSL
 
 Extra SSL options to be used for configuration.
 
-::
+.. code-block:: php
 
 	'enable_certificate_management' => false,
 
@@ -1064,8 +1056,7 @@ Advice on choosing between the various backends:
 * Use Redis or Memcached for distributed environments.
   For the local cache (you can configure two) take APCu.
 
-
-::
+.. code-block:: php
 
 	'memcache.local' => '\OC\Memcache\APCu',
 
@@ -1073,7 +1064,7 @@ Memory caching backend for locally stored data
 
 * Used for host-specific data, e.g. file paths
 
-::
+.. code-block:: php
 
 	'memcache.distributed' => '\OC\Memcache\Memcached',
 
@@ -1082,14 +1073,14 @@ Memory caching backend for distributed data
 * Used for installation-specific data, e.g. database caching
 * If unset, defaults to the value of memcache.local
 
-::
+.. code-block:: php
 
 	'redis' => [
-		'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
+		'host' => 'localhost',  // can also be a unix domain socket: '/tmp/redis.sock'
 		'port' => 6379,
 		'timeout' => 0.0,
-		'password' => '', // Optional, if not defined no password will be used.
-		'dbindex' => 0, // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
+		'password' => '',       // Optional, if not defined no password will be used.
+		'dbindex' => 0,         // Optional, if undefined SELECT will not run and will use Redis Server's default DB Index.
 	],
 
 Connection details for redis to use for memory caching in a single server configuration.
@@ -1098,10 +1089,11 @@ For enhanced security it is recommended to configure Redis
 to require a password. See http://redis.io/topics/security
 for more information.
 
-::
+.. code-block:: php
 
 	'redis.cluster' => [
-		'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
+        // provide some/all of the cluster servers to bootstrap discovery, port required
+		'seeds' => [ 
 			'localhost:7000',
 			'localhost:7001'
 		],
@@ -1126,7 +1118,7 @@ Available failover modes:
    Make sure that phpredis is properly configured to use Redis Cluster, before attempting to configure it in ownCloud. 
    You can find all the information that you need to do so in the `phpredis' Redis Cluster documentation`_.
 
-::
+.. code-block:: php
 
 	'memcached_servers' => [
 		// hostname, port and optional weight. Also see:
@@ -1138,7 +1130,7 @@ Available failover modes:
 
 Server details for one or more memcached servers to use for memory caching.
 
-::
+.. code-block:: php
 
 	'memcached_options' => [
 		// Set timeouts to 50ms
@@ -1163,7 +1155,7 @@ Server details for one or more memcached servers to use for memory caching.
 
 Connection options for memcached, see http://apprize.info/php/scaling/15.html
 
-::
+.. code-block:: php
 
 	'cache_path' => '',
 
@@ -1172,7 +1164,7 @@ Location of the cache folder, defaults to ``data/$user/cache`` where
 ``$cache_path/$user`` where ``$cache_path`` is the configured cache directory
 and ``$user`` is the user.
 
-::
+.. code-block:: php
 
 	'cache_chunk_gc_ttl' => 86400, // 60*60*24 = 1 day
 
@@ -1184,7 +1176,7 @@ completed within one day.
 Using Object Store with ownCloud
 --------------------------------
 
-::
+.. code-block:: php
 
 	'objectstore' => [
 		'class' => 'OC\\Files\\ObjectStore\\Swift',
@@ -1237,7 +1229,7 @@ Sharing
 Global settings for Sharing
 
 
-::
+.. code-block:: php
 
 	'sharing.managerFactory' => '\OC\Share20\ProviderFactory',
 
@@ -1248,7 +1240,7 @@ filesystem instead of the database to keep the share information.
 All other configuration options
 -------------------------------
 
-::
+.. code-block:: php
 
 	'dbdriveroptions' => [
 		PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
@@ -1258,14 +1250,14 @@ All other configuration options
 Additional driver options for the database connection, eg. to enable SSL
 encryption in MySQL or specify a custom wait timeout on a cheap hoster.
 
-::
+.. code-block:: php
 
 	'sqlite.journal_mode' => 'DELETE',
 
 sqlite3 journal mode can be specified using this configuration parameter -
 can be 'WAL' or 'DELETE' see for more details https://www.sqlite.org/wal.html
 
-::
+.. code-block:: php
 
 	'mysql.utf8mb4' => false,
 
@@ -1286,7 +1278,7 @@ Consult the documentation for more details.
 MySQL requires a special setup for longer indexes (> 767 bytes) which are
 needed:
 
-::
+.. code-block:: ini
 
   [mysqld]
   innodb_large_prefix=ON
@@ -1306,7 +1298,7 @@ See:
 - http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
 - http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
 
-::
+.. code-block:: php
 
 	'supportedDatabases' => [
 		'sqlite',
@@ -1324,7 +1316,7 @@ Available:
 	- pgsql (PostgreSQL)
 	- oci (Oracle - Enterprise Edition Only)
 
-::
+.. code-block:: php
 
 	'tempdirectory' => '/tmp/owncloudtemp',
 
@@ -1335,14 +1327,14 @@ use.
 
 The Web server user must have write access to this directory.
 
-::
+.. code-block:: php
 
 	'hashingCost' => 10,
 
 The hashing cost used by hashes generated by ownCloud
 Using a higher value requires more time and CPU power to calculate the hashes
 
-::
+.. code-block:: php
 
 	'blacklisted_files' => ['.htaccess'),
 
@@ -1351,7 +1343,7 @@ with this name. ``.htaccess`` is blocked by default.
 
 .. warning:: Use this only if you know what you are doing.
 
-::
+.. code-block:: php
 
 	'excluded_directories' => [
         '.snapshot',
@@ -1368,13 +1360,13 @@ Use when the storage backend supports eg snapshot directories to be excluded.
 
 .. warning:: Use this only if you know what you are doing.
 
-::
+.. code-block:: php
 
 	'share_folder' => '/',
 
 Define a default folder for shared files and folders other than root.
 
-::
+.. code-block:: php
 
 	'theme' => '',
 
@@ -1382,14 +1374,14 @@ If you are applying a theme to ownCloud, enter the name of the theme here.
 
 The default location for themes is ``owncloud/themes/``.
 
-::
+.. code-block:: php
 
 	'cipher' => 'AES-256-CFB',
 
 The default cipher for encrypting files. Currently AES-128-CFB and
 AES-256-CFB are supported.
 
-::
+.. code-block:: php
 
 	'minimum.supported.desktop.version' => '2.0.0',
 
@@ -1402,14 +1394,14 @@ When changing this, note that older unsupported versions of the ownCloud desktop
 client may not function as expected, and could lead to permanent data loss for
 clients or other unexpected results.
 
-::
+.. code-block:: php
 
 	'quota_include_external_storage' => false,
 
 .. note:: 
    The option of whether to include external storage in quota calculation defaults to false.
 
-::
+.. code-block:: php
 
 	'filesystem_check_changes' => 0,
 
@@ -1424,7 +1416,7 @@ filesystem
 1 -> Check each file or folder at most once per request, recommended for
 general use if outside changes might happen.
 
-::
+.. code-block:: php
 
 	'part_file_in_storage' => true,
 
@@ -1433,28 +1425,28 @@ same storage as the upload target. Setting this to false will store the part
 files in the root of the users folder which might be required to work with certain
 external storage setups that have limited rename capabilities.
 
-::
+.. code-block:: php
 
 	'mount_file' => '/var/www/owncloud/data/mount.json',
 
 Where ``mount.json`` file should be stored, defaults to ``data/mount.json``
 in the ownCloud directory.
 
-::
+.. code-block:: php
 
 	'filesystem_cache_readonly' => false,
 
 When ``true``, prevent ownCloud from changing the cache due to changes in the
 filesystem for all storage.
 
-::
+.. code-block:: php
 
 	'secret' => '',
 
 Secret used by ownCloud for various purposes, e.g. to encrypt data. If you
 lose this string there will be data corruption.
 
-::
+.. code-block:: php
 
 	'trusted_proxies' => ['203.0.113.45', '198.51.100.128'],
 
@@ -1463,7 +1455,7 @@ List of trusted proxy servers
 If you configure these also consider setting `forwarded_for_headers` which
 otherwise defaults to `HTTP_X_FORWARDED_FOR` (the `X-Forwarded-For` header).
 
-::
+.. code-block:: php
 
 	'forwarded_for_headers' => ['HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR'],
 
@@ -1476,7 +1468,7 @@ ownCloud, bypassing access controls and making logs useless!
 
 Defaults to 'HTTP_X_FORWARED_FOR' if unset
 
-::
+.. code-block:: php
 
 	'max_filesize_animated_gifs_public_sharing' => 10,
 
@@ -1487,7 +1479,7 @@ If the gif is bigger, it'll show a static preview
 Value represents the maximum filesize in megabytes. Default is ``10``. Set to
 ``-1`` for no limit.
 
-::
+.. code-block:: php
 
 	'filelocking.enabled' => true,
 
@@ -1501,7 +1493,7 @@ be caused by concurrent operations. Mainly relevant for
 very large installations with many users working with
 shared files.
 
-::
+.. code-block:: php
 
 	'filelocking.ttl' => 3600,
 
@@ -1511,7 +1503,7 @@ Any lock older than this will be automatically cleaned up.
 
 If not set this defaults to either 1 hour or the php max_execution_time, whichever is higher.
 
-::
+.. code-block:: php
 
 	'memcache.locking' => '\\OC\\Memcache\\Redis',
 
@@ -1520,13 +1512,13 @@ Memory caching backend for file locking
 Because most memcache backends can clean values without warning using redis
 is highly recommended to *avoid data loss*.
 
-::
+.. code-block:: php
 
 	'upgrade.disable-web' => false,
 
 Disable the web based updater
 
-::
+.. code-block:: php
 
 	'debug' => false,
 
@@ -1535,7 +1527,7 @@ Set this ownCloud instance to debugging mode
 Only enable this for local development and not in production environments
 This will disable the minifier and outputs some additional debug information
 
-::
+.. code-block:: php
 
 	'data-fingerprint' => '',
 
@@ -1549,7 +1541,7 @@ To set this to a new value.
 Updating/Deleting this value can make connected clients stall until
 the user has resolved conflicts.
 
-::
+.. code-block:: php
 
 	'copied_sample_config' => true,
 
@@ -1559,7 +1551,7 @@ configuration. DO NOT ADD THIS SWITCH TO YOUR CONFIGURATION!
 If you, brave person, have read until here be aware that you should not
 modify *ANY* settings in this file without reading the documentation.
 
-::
+.. code-block:: php
 
 	'files_external_allow_create_new_local' => false,
 
@@ -1576,14 +1568,14 @@ App config options
 Retention for activities of the activity app:
 
 
-::
+.. code-block:: php
 
 	'activity_expire_days' => 365,
 
 Every day a cron job is ran, which deletes all activities for all users
 which are older then the number of days that is set for ``activity_expire_days``
 
-::
+.. code-block:: php
 
 	'wnd.logging.enable' => true,
 
