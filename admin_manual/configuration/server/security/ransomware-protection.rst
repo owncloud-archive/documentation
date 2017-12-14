@@ -25,16 +25,13 @@ Prevention: Blocking Common Ransomware File Extensions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Like other forms of cyberattack, ransomware has a range of diverse characteristics.
-On the one hand it makes them hard to detect, and on the other it makes them even harder to prevent.
+On the one hand it makes them hard to detect and on the other it makes them even harder to prevent.
 Recent ransomware attacks either encrypt a user's files and add a specific file extension to them (e.g., ".crypt"), or they replace the original files with an encrypted copy and add a particular file extension.
 
 File Extension Blacklist
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 The first line of defense against such threats is a blacklist that blocks write access to file extensions known to originate from ransomware.
-
-.. note:: 
-   Write access (e.g., moving and deleting files) is still possible for users, when they log in with their web browser.
 
 Ransomware Protection ships with `a static extension list`_ of around 1,500 file extensions.
 As new extensions are regularly created, this list also needs to be regularly reviewed and updated.
@@ -44,14 +41,27 @@ Future releases of Ransomware Protection will include an updated list and the ab
    Please check the provided ransomware blacklist!
    It is **strongly recommended** to check the provided ransomware blacklist to ensure that it fits your needs. 
    In some cases, the patterns might be too generic and result in false positives.
+   
+File Blocking
+^^^^^^^^^^^^^
+
+The second line of defense is file blocking. 
+As files are uploaded, they are compared against the file extension blacklist. 
+If a match is found, the upload is denied. 
+
+.. note:: File blocking is always enabled.
 
 Account Locking
 ^^^^^^^^^^^^^^^
 
-The second line of defense is account locking. 
-If a client uploads a file which matches a pattern in the ransomware blacklist, the account will be locked (set as read-only) for client access (*create*, *change*, *move*, and *delete* operations) to prevent further malicious changes. 
+The third line of defense is account locking. 
+If a client uploads a file matching a pattern in the ransomware blacklist, the account is locked (set as read-only) for client access (*create*, *change*, *move*, and *delete* operations). 
+Doing this prevents further, malicious, changes. 
 
 Following this, clients receive an error (403 Access Forbidden) which notifies the user that the account is locked by Ransomware Protection.
+
+.. note:: 
+   Write access (e.g., moving and deleting files) is still possible for users when they log in with their web browser.
 
 When an account is locked, administrators can unlock the account using the ``occ ransomguard:unlock`` command.
 Administrators can also manually lock user accounts, using the ``occ ransomguard:lock`` command.
@@ -60,7 +70,7 @@ Administrators can also manually lock user accounts, using the ``occ ransomguard
    When an account is locked, it will still be fully usable from the ownCloud web UI.
    However, ownCloud clients (as well as other WebDAV clients) will see the account as set to read-only mode.
 
-Users will see a yellow notification banner in the ownCloud web UI directing them to "Personal Settings -> Security" ("*Locked by Ransomware Protection app. Unlock your account in the security settings panel.*"), where additional information is displayed and users can unlock their account when ransomware issues are resolved locally.
+Users will see a yellow notification banner in the ownCloud web UI directing them to "Personal Settings -> Security" ("*Ransomware detected: Your account is locked (read-only) for client access to protect your data. Click here to unlock.*"), where additional information is displayed and users can unlock their account when ransomware issues are resolved locally.
 
 .. note::  
    Locking is enabled by default. If this is not desired, an administrator can disable it in the "Admin -> Security" panel.
@@ -100,8 +110,9 @@ Ransomguard Scanner             ``occ ransomguard:scan <timestamp> <user>``    A
 Ransomguard Restorer            ``occ ransomguard:restore <timestamp> <user>`` A command for administrators to revert all
                                                                                operations in a user account that occurred after
                                                                                a certain point in time.
-Ransomguard Lock                ``occ ransomguard:lock <user>``                Set a user account as read-only. This prevents any 
-                                                                               further changes to the account.
+Ransomguard Lock                ``occ ransomguard:lock <user>``                Set a user account as read-only for ownCloud and other 
+                                                                               WebDAV clients. This prevents any further changes to 
+                                                                               the account.
 Ransomguard Unlock              ``occ ransomguard:unlock <user>``              Unlock a user account which was set to read-only. 
 =============================== ============================================== ========================================================
 
