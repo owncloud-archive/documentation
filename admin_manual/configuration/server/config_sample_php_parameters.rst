@@ -1331,7 +1331,7 @@ Using a higher value requires more time and CPU power to calculate the hashes
 
 .. code-block:: php
 
-	'blacklisted_files' => ['.htaccess'),
+	'blacklisted_files' => ['.htaccess'],
 
 Blacklist a specific file or files and disallow the upload of files
 with this name. ``.htaccess`` is blocked by default.
@@ -1340,7 +1340,7 @@ with this name. ``.htaccess`` is blocked by default.
 
 .. code-block:: php
 
-	'excluded_directories' => [
+    'excluded_directories' => [
         '.snapshot',
         '~snapshot',
     ],
