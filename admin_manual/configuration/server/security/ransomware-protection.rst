@@ -144,7 +144,7 @@ Limitations
   * Trash bin items may be deleted by the user making them unrecoverable by Ransomware Protection => Users need to know this.
   * Versions have `a built-in "thin-out" policy`_ which makes it possible that required file versions are unrecoverable by Ransomware Protection. To help avoid this, set ``versions\_retention\_obligation`` to ``disabled`` or choose a conservative policy for version retention. Please be aware that this might increase your storage needs.
   * A specific version of a file that is needed for rollback might have been manually restored, making this version potentially unrecoverable by Ransomware Protection. Currently, after restoration the restored version `is not a version anymore`, e.g., the version is not present in versioning.
-
+- Contents in received shared folders can currently not be recovered by restoring the account of the affected user. As a workaround the account of the sharing user can be restored.
 - Contents in secondary storages, such as *Windows network drives*, *Dropbox*, and *Google Drive*, are unrecoverable by Ransomware Protection, because they do not have versioning or trash bin enabled in ownCloud.
 - Rolling files forward is not *currently* supported or tested. Therefore it is vital to:
 
