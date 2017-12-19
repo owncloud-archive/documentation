@@ -400,6 +400,13 @@ Use this when you have:
 
 .. important::
    It is not possible to disable it.
+   
+Recreating an Existing Master Key
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If the master key needs replacing, for example, because it has been compromised, an occ command is available.
+The command is :ref:`encryption:recreate-master-key <encryption_label>`.
+It replaces existing master key with new one and encrypts the files with the new key.
  
 Disabling Encryption
 --------------------
