@@ -47,29 +47,37 @@ If they are, then they will not be installed.
 Using Custom App Directories
 ----------------------------
 
-Use the **apps_paths** array in ``config.php`` to set any custom apps directory locations. 
-The key **path** defines the absolute file system path to the app folder. 
-The key **url** defines the HTTP web path to that folder, starting at the ownCloud web root. The key **writable** indicates if a user can install apps in that folder.
+There are several reasons for using custom app directories instead of ownCloud's default.
+These are:
 
-.. note:: 
-   To ensure that the default **/apps/** folder only contains apps shipped with ownCloud, follow this example to setup an **/apps2/** folder which will be used to store all other apps.
+#. It separates ownCloud's core apps from user or admin downloaded apps. Doing so distinguishes which apps are core and which aren't, simplifying upgrades.
+#. It eases manual upgrades. Downloaded apps must be manually copied. Having them in a separate directory makes it simpler to manage.
+#. ownCloud may gain new core apps in newer versions. Doing so orphans deprecated apps, but doesn't remove them.
 
-.. code-block:: php
+If you want to store apps in a custom directory, instead of ownCloud’s default (``/app``), you need to modify the ``apps_paths`` element in ``config/config.php``.
+There, you need to add a new associative array that contains three elements.
+These are:
 
-  <?php
+- ``path``: The absolute file system path to the custom app folder. 
+- ``url``: The request path to that folder relative to the ownCloud web root, prefixed with ``/``. 
+- ``writable``: Whether users can install apps in that folder. After the configuration is added, new apps will only install in a directory where ``writable`` is set to ``true``.
 
-    "apps_paths" => array (
-        0 => array (
-                "path"     => OC::$SERVERROOT."/apps",
-                "url"      => "/apps",
-                "writable" => false,
-        ),
-        1 => array (
-                "path"     => OC::$SERVERROOT."/apps2",
-                "url"      => "/apps2",
-                "writable" => true,
-        ),
-    ),
+The configuration example below shows how to add a second directory, called ``apps2``. 
+
+.. literalinclude:: ./examples/custom-app-directory-configuration.php
+   :language: php
+   :emphasize-lines: 9-13
+
+After you add a new directory configuration, you can then move apps from the original app directory to the new one. 
+To do so, follow these steps:
+
+#. Enable maintenance mode.
+#. Disable the apps that you want to move.
+#. Create a new apps directory and assign it the same user and group, and ownership permissions as the core apps directory.
+#. Move the apps from the old apps directory to the new apps directory.
+#. Add a new app directory in ``config/config.php``.
+#. Re-enable the apps.
+#. Disable maintenance mode.
 
 Manually Installing Apps
 ------------------------
