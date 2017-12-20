@@ -46,7 +46,7 @@ Things To Note
 #. Files are checked when they are uploaded or updated (whether because they were edited or saved) but *not* when they are downloaded. 
 #. ownCloud doesn't support a cache of previously scanned files.
 #. If the app is either not configured or is misconfigured, then it rejects file uploads.
-#. If ClamAV is unavailable, then it rejects file uploads.
+#. If ClamAV is unavailable, then the app rejects file uploads.
 #. A file size limit applies both to background jobs and to file uploads.
 
 .. _configure_clamav_antivirus_scanner_label:
@@ -55,7 +55,8 @@ Configuring the ClamAV Antivirus Scanner
 ----------------------------------------
 
 You can configure your ownCloud server to automatically run a virus scan on newly-uploaded files using the `Antivirus App for Files`_. 
-You must first install ClamAV and then install and configure the Antivirus App for Files in ownCloud.
+
+.. note:: ClamAV must be installed before installing and configuring Antivirus App for Files.
 
 Installing ClamAV
 -----------------
@@ -142,16 +143,10 @@ Enabling the Antivirus App for Files
 
 To enable it, navigate to ``Settings -> Admin -> Apps``.
 It should already be enabled. 
-But, if it’s not, click "**Show disabled apps**", find it in the list, and click
+But, if it's not, click "**Show disabled apps**", find it in the list, and click
 "**Enable**".
 
 .. figure:: ../../images/antivirus-app.png
-
-.. You can also configure it from the command-line, by running the following command:
-
-.. ::
-
-  
 
 Configuring ClamAV within ownCloud
 ----------------------------------
@@ -160,9 +155,8 @@ Next, go to your ownCloud Admin page and set your ownCloud logging level to Ever
 
 .. figure:: ../../images/antivirus-logging.png
 
-Now, navigate to ``Settings -> Admin -> Additional``, where you’ll find the
-"**Antivirus Configuration**" panel.
-There, as below, you’ll see the configuration options which ownCloud will pass
+Now, navigate to ``Settings -> Admin -> Additional``, where you'll find the "**Antivirus Configuration**" panel.
+There, as below, you'll see the configuration options which ownCloud will pass
 to ClamAV. 
 
 .. figure:: ../../images/antivirus-config.png
@@ -203,7 +197,7 @@ run ``netstat`` to verify::
    netstat -a|grep clam
    unix 2 [ ACC ] STREAM LISTENING 15857 /var/run/clamav/clamd.ctl
 
-  .. figure:: ../../images/antivirus-daemon-socket.png
+.. figure:: ../../images/antivirus-daemon-socket.png
 
 The ``Stream Length`` value sets the number of bytes to read in one pass.
 10485760 bytes, or ten megabytes, is the default. 
@@ -265,17 +259,17 @@ Exit Status or Signature Description                                            
 40                       Unknown option passed                                     Unchecked
 50                       Database initialization error                             Unchecked
 52                       Not supported file type                                   Unchecked
-53                       Can’t open directory                                      Unchecked
-54                       Can’t open file                                           Unchecked
+53                       Can't open directory                                      Unchecked
+54                       Can't open file                                           Unchecked
 55                       Error reading file                                        Unchecked
-56                       Can’t stat input file                                     Unchecked
-57                       Can’t get absolute path name of current working directory Unchecked
+56                       Can't stat input file                                     Unchecked
+57                       Can't get absolute path name of current working directory Unchecked
 58                       I/O error                                                 Unchecked  
-62                       Can’t initialize logger                                   Unchecked
-63                       Can’t create temporary files/directories                  Unchecked
-64                       Can’t write to temporary directory                        Unchecked
-70                       Can’t allocate memory (calloc)                            Unchecked
-71                       Can’t allocate memory (malloc)                            Unchecked
+62                       Can't initialize logger                                   Unchecked
+63                       Can't create temporary files/directories                  Unchecked
+64                       Can't write to temporary directory                        Unchecked
+70                       Can't allocate memory (calloc)                            Unchecked
+71                       Can't allocate memory (malloc)                            Unchecked
 ``/.*: OK$/``                                                                      Clean
 ``/.*: (.*) FOUND$/``                                                              Infected
 ``/.*: (.*) ERROR$/``                                                              Unchecked
@@ -294,7 +288,7 @@ Update An Existing Rule
 
 To match on an exit status, change the "**Match by**" dropdown list to "**Scanner exit status**" and in the "**Scanner exit status or signature to search**" field, add the status code to match on. 
 
-To match on the scanner’s output, change the "**Match by**" dropdown list to "**Scanner output**" and in the "**Scanner exit status or signature to search**" field, add the regular expression to match against the scanner’s output. 
+To match on the scanner's output, change the "**Match by**" dropdown list to "**Scanner output**" and in the "**Scanner exit status or signature to search**" field, add the regular expression to match against the scanner's output. 
 
 Then, while not mandatory, add a description of what the status or scan output means. 
 After that, set what ownCloud should do when the exit status or regular expression you set matches the value returned by ClamAV. To do so change the value of the dropdown in the "**Mark as**" column. 
