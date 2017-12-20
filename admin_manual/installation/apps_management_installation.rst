@@ -56,7 +56,7 @@ These are:
 #. It eases manual upgrades. Downloaded apps must be manually copied. Having them in a separate directory makes it simpler to manage.
 #. ownCloud may gain new core apps in newer versions. Doing so orphans deprecated apps, but doesn't remove them.
 
-If you want to store apps in a custom directory, instead of ownCloud’s default (``/app``), you need to modify the ``apps_paths`` element in ``config/config.php``.
+If you want to store apps in a custom directory, instead of ownCloud's default (``/app``), you need to modify the ``apps_paths`` element in ``config/config.php``.
 There, you need to add a new associative array that contains three elements.
 These are:
 
