@@ -174,22 +174,8 @@ Assuming all of the steps have been followed to completion, the first run wizard
 
 The configuration file should look something like this:
 
-::
-
-    <?php
-    $CONFIG = array (
-    'instanceid' => 'abcdefgh',
-    'passwordsalt' => '01234567890123456789',
-    'datadirectory' => '/var/data',
-    'dbtype' => 'oci',
-    'version' => '8.2.x.y',
-    'dbname' => 'orcl',
-    'dbhost' => '192.168.1.57',
-    'dbtableprefix' => 'oc_',
-    'dbuser' => 'owncloud1',
-    'dbpassword' => '********',
-    'installed' => true,
-    );
+.. literalinclude:: examples/configuration-file.php
+   :language: php
 
 Useful SQL Commands
 -------------------
