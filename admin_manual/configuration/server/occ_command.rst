@@ -1420,14 +1420,19 @@ Ransomware Protection
 ---------------------
 
 Use these commands to help users recover from a Ransomware attack.
-You can find more information about the application :doc:`in the documentation <security/ransomeware-protection>`.
+You can find more information about the application :doc:`in the documentation <security/ransomware-protection>`.
 
 .. note:: Ransomware Protection (which is an Enterprise app) needs to be installed and enabled to be able to use these commands.
 
 ::
 
-  occ ransomguard:scan <timestamp> <user>    Report all changes in a user's account, starting from timestamp.
+  occ ransomguard:scan <timestamp> <user>    Report all changes in a user's account, starting from 
+                                             timestamp.
   occ ransomguard:restore <timestamp> <user> Revert all operations in a user account after a point in time.
+  occ ransomguard:lock <user>                Set a user account as read-only for ownCloud and other WebDAV 
+                                             clients when malicious activity is suspected.
+  occ ransomguard:unlock <user>              Unlock a user account after ransomware issues have been 
+                                             resolved.
 
 .. _sharing_commands_label:
 
@@ -1847,7 +1852,7 @@ Here is an example for syncing with LDAP four times a day on Ubuntu:
 
   crontab -e -u www-data
   
-  * */6 * * * /usr/bin/php /var/www/owncloud/occ user:sync -vvv --missing-account-action="remove" -n "OCA\User_LDAP\User_Proxy"
+  * */6 * * * /usr/bin/php /var/www/owncloud/occ user:sync -vvv --missing-account-action="disable" -n "OCA\User_LDAP\User_Proxy"
  
 .. _versions_label:
  
