@@ -30,15 +30,24 @@ ownCloud integrates with anti-virus tools by connecting to them via:
 
 In the case of ClamAV, ownCloud's Antivirus extension sends files as streams to a ClamAV service (which can be on the same ownCloud server or another server within the same network) which in turn scans them and returns a result to stdout. 
 
-The information is then parsed or an exit code is evaluated if no result is available to determine the response from the scan. 
-Based on ownCloud’s evaluation of the response (or exit code) an appropriate action is then taken, such as recording a log message or deleting the file. 
+.. note:: 
+   Individual chunks are **not** scanned. The whole file is scanned when it is moved to the final location.
 
-.. important::
-   Files are checked when they are uploaded or updated (whether because they were edited or saved) but *not* when they are downloaded. And ownCloud doesn't support a file cache of previously scanned files.
+The information is then parsed or an exit code is evaluated if no result is available to determine the response from the scan. 
+Based on ownCloud's evaluation of the response (or exit code) an appropriate action is then taken, such as recording a log message or deleting the file. 
 
 .. note::
    Scanner exit status rules are used to handle errors when ClamAV is run in CLI mode. 
    Scanner output rules are used in daemon/socket mode.
+
+Things To Note
+~~~~~~~~~~~~~~
+
+#. Files are checked when they are uploaded or updated (whether because they were edited or saved) but *not* when they are downloaded. 
+#. ownCloud doesn't support a cache of previously scanned files.
+#. If the app is either not configured or is misconfigured, then it rejects file uploads.
+#. If ClamAV is unavailable, then it rejects file uploads.
+#. A file size limit applies both to background jobs and to file uploads.
 
 .. _configure_clamav_antivirus_scanner_label:
 
@@ -157,6 +166,21 @@ There, as below, you’ll see the configuration options which ownCloud will pass
 to ClamAV. 
 
 .. figure:: ../../images/antivirus-config.png
+
+Configuration Warnings
+^^^^^^^^^^^^^^^^^^^^^^
+
+The Antivirus App for Files will show one of three warnings if it is either misconfigured, or ClamAV is not available. 
+You can see an example of all three below.
+
+.. figure:: ./images/anti-virus-message-host-connection-problem.png
+   :alt: Configuration error message: "Antivirus app is misconfigured or antivirus inaccessible. Could not connect to host 'localhost' on port 999".
+
+.. figure:: ./images/anti-virus-message-misconfiguration-problem.png
+   :alt: Configuration error message: "Antivirus app is misconfigured or antivirus inaccessible. The antivirus executable could not be found at path '/usr/bin/clamsfcan'". 
+
+.. figure:: ./images/anti-virus-message-socket-connection-problem.png
+   :alt: Configuration error message: "Antivirus app is misconfigured or antivirus inaccessible. Could not connect to socket '/var/run/clamav/cslamd-socket': No such file or directory (code 2)". 
 
 Mode Configuration
 ^^^^^^^^^^^^^^^^^^
