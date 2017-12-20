@@ -44,6 +44,8 @@ If they are, then they will not be installed.
    refer to the `developer manual
    <https://doc.owncloud.org/server/9.0/developer_manual/app/index.html>`_.
 
+.. _using_custom_app_directories_label:
+
 Using Custom App Directories
 ----------------------------
 
@@ -82,5 +84,18 @@ To do so, follow these steps:
 Manually Installing Apps
 ------------------------
 
-To install an app manually (locally), instead of by using the Appstore, copy the app into the ownCloud app folder (``/path/to/owncloud/apps``). 
-The folder name of the app and the name of the app **must be identical**.
+To install an app manually instead of by using `the Marketplace`_, copy the app either into ownCloud's default app folder (``</path/to/owncloud>/apps``) or :ref:`a custom app folder <using_custom_app_directories_label>`. 
+
+Be aware that the name of the app and its folder name **must be identical**!
+You can find these details in `the application's metadata file`, located in ``<app directory>/appinfo/info.xml``.
+
+Using the example below, both the app's name and directory name would be ``yourappname``.
+
+.. literalinclude:: ./examples/appinfo.xml
+   :language: xml
+   :emphasize-lines: 100
+
+.. Links
+   
+.. _the Marketplace: https://marketplace.owncloud.com
+.. _the application's metadata file: https://doc.owncloud.org/server/latest/developer_manual/app/fundamentals/info.html
