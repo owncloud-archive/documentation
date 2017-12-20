@@ -5,7 +5,7 @@ How to Upgrade Your ownCloud Server
 We recommend that you keep your ownCloud server upgraded regularly installing all point releases and major releases, without skipping any of them, as doing so increases the risk of errors. 
 
 - Major releases are 8.0, 8.1, 8.2, 9.0, 9.1, and 10.0. 
-- Point releases are intermediate releases for each major release, e.g., 8.0.9, 8.1.3, and 10.0.2. 
+- Point releases are intermediate releases for each major release, e.g., 8.0.9, 8.1.3, and |version|. 
 
 When an update is available for your ownCloud server, you will see a notification at the top of your ownCloud Web interface. 
 When you click the notification, it will bring you here.
@@ -111,15 +111,15 @@ Migrating from Debian to Official ownCloud Packages
 As of March 2016, Debian will not include ownCloud packages. Debian users can 
 migrate to the official ownCloud packages by following this guide, `Upgrading ownCloud on Debian Stable to official packages <https://owncloud.org/blog/upgrading-owncloud-on-debian-stable-to-official-packages/>`_.
 
-Upgrading from 9.10 to 10.0.2
------------------------------
+Upgrading from 9.10 to |version|
+--------------------------------
 
-To upgrade ownCloud from version 9.10 to 10.0.2 requires just a few steps.
+To upgrade ownCloud from version 9.10 to |version| requires just a few steps.
 In this guide, the following assumptions are made:
 
-#. ownCloud 10.0.2 is the latest version.
+#. ownCloud |version| is the latest version.
 #. Your existing installation is in ``/var/www/owncloud``.
-#. Your new installation is in ``/var/www/owncloud-10.0.2``.
+#. Your new installation is in ``/var/www/owncloud-10.0.4``.
 #. The commands are executed as the web server user, which is ``www-data``.
 #. Your ownCloud installation is run with *Apache 2*, *PHP 5.6*, and *Ubuntu 14.04*.
 
@@ -144,35 +144,35 @@ To do this, run the following command:
    
    sudo service apache2 stop
 
-Get a Copy of ownCloud 10.0.2
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Get a Copy of ownCloud |version|
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can download ownCloud 10 from several places. 
-However, the best place is <download.owncloud.org>. 
+However, the best place is https://owncloud.org/install/. 
 To do so, run the following command:
 
 .. code-block:: console
    
-   # Download and extract the code to /var/www/owncloud-10.0.2
-   wget -qO- https://download.owncloud.org/community/owncloud-10.0.2.tar.bz2 | \ 
-     tar --transform 's/^owncloud/owncloud-10.0.2/' -jxv -C /var/www/
+   # Download and extract the code to /var/www/owncloud-10.0.4
+   wget -qO- https://download.owncloud.org/community/owncloud-10.0.4.tar.bz2 | \ 
+     tar --transform 's/^owncloud/owncloud-10.0.4/' -jxv -C /var/www/
 
 Copy config/config.php to the New Source
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Next, copy ``config/config.php`` from the current installation to the new, 10.0.2, source.
+Next, copy ``config/config.php`` from the current installation to the new, |version|, source.
 You can do this by running the following command:
 
 .. code-block:: console
    
-   cp -v /var/www/owncloud/config/config.php /var/www/owncloud-10.0.2/config/config.php
+   cp -v /var/www/owncloud/config/config.php /var/www/owncloud-10.0.4/config/config.php
 
 If you use the default ownCloud data directory, then you need to copy it from the existing installation to the new source directory as well. 
 You can do this by running the following command:
 
 .. code-block:: console
    
-   cp -rv /var/www/owncloud/data /var/www/owncloud-10.0.2/data
+   cp -rv /var/www/owncloud/data /var/www/owncloud-10.0.4/data
 
 If your data directory is located outside of the ownCloud installation directory, then you can safely skip this command.
 
@@ -214,7 +214,7 @@ Let’s assume that Apache 2 is configured to serve ownCloud from a `VirtualHost
 
    </VirtualHost>
    
-In that configuration, change the `Alias`_ and `DocumentRoot`_ directives to point to the ownCloud 10.0.2 source. 
+In that configuration, change the `Alias`_ and `DocumentRoot`_ directives to point to the ownCloud |version| source. 
 Specifically, change them to be as in the following example:
 
 .. code-block:: console

@@ -45,7 +45,7 @@ The example below shows how to use `Docker Compose <https://docs.docker.com/comp
 
    # Create the environment configuration file
    cat << EOF > .env
-   VERSION=10.0.2
+   VERSION=10.0.4
    DOMAIN=localhost
    ADMIN_USERNAME=admin
    ADMIN_PASSWORD=admin
