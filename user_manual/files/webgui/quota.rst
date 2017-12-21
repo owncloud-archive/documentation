@@ -2,9 +2,8 @@
 Storage Quota
 =============
 
-Your ownCloud admin has the option to set a storage quota on users. Look at 
-the top of your Personal page to see what your quota is, and how much you have 
-used.
+Your ownCloud admin has the option to set a storage quota on users. 
+Look at the top of your Personal page to see what your quota is, and how much you have used.
 
 .. figure:: ../../images/quota1.png
 
@@ -25,3 +24,19 @@ When deleted files exceed 50% of quota then the oldest files are removed until t
 
 When version control is enabled, the older file versions are not counted against quotas.
 If you create a public share via URL, and allow uploads, any uploaded files count against your quota.
+
+Quotas Are Neither Hard Nor Soft
+--------------------------------
+
+Quotas are not strictly hard quotas, but nor are they soft quotas either.
+They're more hard quotas with the exception of always being able to restore deleted files.
+
+Why? 
+Well, say that a user's Trash bin contains one or more files.
+The user uploads several files and in the process reaches their quota limit. 
+
+If hard quotas were enforced, the user would be prevented from being able to restore any deleted file. 
+However, with the Trash bin exception in place, files can always be restored, but no new files can be uploaded, once a quota has been reached.
+
+This user workflow may sound peculiar, but not allowing a user to restore files would make for a poor user experience.
+Given that, this exception is allowed.
