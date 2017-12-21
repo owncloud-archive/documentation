@@ -174,7 +174,8 @@ The core project provides a script that runs all the core unit tests using the s
 
 To run tests on ``mysql`` or ``pgsql`` you need a database user called "oc_autotest" with the password "owncloud". This user needs the privilege to create and delete the database called "oc_autotest".
 
-**MySQL setup**
+MySQL Setup
+^^^^^^^^^^^
 
 ::
 
@@ -190,7 +191,8 @@ To run tests on ``mysql`` or ``pgsql`` you need a database user called "oc_autot
   CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud'
   GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost'
 
-**PGSQL setup**
+PostgreSQL Setup
+^^^^^^^^^^^^^^^^
 ::
 
   su - postgres
@@ -217,9 +219,10 @@ ____________________________________________________
   # Give the user the privileged to create databases
   psql -c 'ALTER USER oc_autotest0 CREATEDB;'
 
+Run Tests
+^^^^^^^^^
 
 
-**run tests**
 ::
 
   make test-php
