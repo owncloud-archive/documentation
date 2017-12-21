@@ -176,28 +176,48 @@ To run tests on ``mysql`` or ``pgsql`` you need a database user called "oc_autot
 
 **MySQL setup**
 
-- ``CREATE DATABASE oc_autotest;``
-- ``CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud';``
-- ``GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost';``
+::
+
+  CREATE DATABASE oc_autotest
+  CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud'
+  GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost'
 
 *for parallel executor support with EXECUTOR_NUMBER=0:* 
 
-- ``CREATE DATABASE oc_autotest0;``
-- ``CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud';``
-- ``GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost';``
+::
+
+  CREATE DATABASE oc_autotest0
+  CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud'
+  GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost'
 
 **PGSQL setup**
+::
 
-- ``su - postgres``
-- ``createuser -P oc_autotest`` (enter password "owncloud")
-- ``psql -c 'ALTER USER oc_autotest CREATEDB;'`` (to give the user the privileged to create databases)
-- to enable dropdb I decided to add following line to ``pg_hba.conf`` (this is not the safest way but fine for a testing machine): ``local	all	all	trust``
+  su - postgres
 
-*for parallel executor support with EXECUTOR_NUMBER=0:*
+  # Use password "owncloud"
+  createuser -P oc_autotest 
 
-- ``su - postgres``
-- ``createuser -P oc_autotest0`` (enter password "owncloud")
-- ``psql -c 'ALTER USER oc_autotest0 CREATEDB;'`` (to give the user the privileged to create databases)
+  # Give the user the privileged to create databases
+  psql -c 'ALTER USER oc_autotest CREATEDB;' 
+
+.. note:: 
+   To enable ``dropdb`` add "local	all	all	trust" to ``pg_hba.conf``. 
+
+For parallel executor support with EXECUTOR_NUMBER=0
+____________________________________________________
+
+::
+
+  su - postgres
+
+  # Use password "owncloud"
+  createuser -P oc_autotest0
+
+  # Give the user the privileged to create databases
+  psql -c 'ALTER USER oc_autotest0 CREATEDB;'
+
+
 
 **run tests**
 ::
