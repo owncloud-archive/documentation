@@ -183,7 +183,8 @@ MySQL Setup
   CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud'
   GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost'
 
-*for parallel executor support with EXECUTOR_NUMBER=0:* 
+For parallel executor support with EXECUTOR_NUMBER=0 
+_____________________________________________________
 
 ::
 
@@ -200,7 +201,7 @@ PostgreSQL Setup
   # Use password "owncloud"
   createuser -P oc_autotest 
 
-  # Give the user the privileged to create databases
+  # Give the user the privilege to create databases
   psql -c 'ALTER USER oc_autotest CREATEDB;' 
 
 .. note:: 
@@ -216,24 +217,25 @@ ____________________________________________________
   # Use password "owncloud"
   createuser -P oc_autotest0
 
-  # Give the user the privileged to create databases
+  # Give the user the privilege to create databases
   psql -c 'ALTER USER oc_autotest0 CREATEDB;'
 
 Run Tests
 ^^^^^^^^^
 
+To run all tests, run the following command:
 
 ::
 
   make test-php
 
-To run tests only for MySQL
+To run tests only for MySQL, run the following command:
 
 ::
 
   make test-php TEST_DATABASE=mysql
 
-To run a particular test suite
+To run a particular test suite, use the following command as a guide:
 
 ::
 
@@ -263,7 +265,7 @@ The easiest way to do this is to run the automatic test script first, see next s
 Running All The Tests
 ~~~~~~~~~~~~~~~~~~~~~
 
-To run all tests, just run
+To run all JavaScript tests, run the following command:
 
 ::
 
