@@ -174,43 +174,68 @@ The core project provides a script that runs all the core unit tests using the s
 
 To run tests on ``mysql`` or ``pgsql`` you need a database user called "oc_autotest" with the password "owncloud". This user needs the privilege to create and delete the database called "oc_autotest".
 
-**MySQL setup**
+MySQL Setup
+^^^^^^^^^^^
 
-- ``CREATE DATABASE oc_autotest;``
-- ``CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud';``
-- ``GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost';``
+::
 
-*for parallel executor support with EXECUTOR_NUMBER=0:* 
+  CREATE DATABASE oc_autotest
+  CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud'
+  GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost'
 
-- ``CREATE DATABASE oc_autotest0;``
-- ``CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud';``
-- ``GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost';``
+For parallel executor support with EXECUTOR_NUMBER=0 
+_____________________________________________________
 
-**PGSQL setup**
+::
 
-- ``su - postgres``
-- ``createuser -P oc_autotest`` (enter password "owncloud")
-- ``psql -c 'ALTER USER oc_autotest CREATEDB;'`` (to give the user the privileged to create databases)
-- to enable dropdb I decided to add following line to ``pg_hba.conf`` (this is not the safest way but fine for a testing machine): ``local	all	all	trust``
+  CREATE DATABASE oc_autotest0
+  CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud'
+  GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost'
 
-*for parallel executor support with EXECUTOR_NUMBER=0:*
+PostgreSQL Setup
+^^^^^^^^^^^^^^^^
+::
 
-- ``su - postgres``
-- ``createuser -P oc_autotest0`` (enter password "owncloud")
-- ``psql -c 'ALTER USER oc_autotest0 CREATEDB;'`` (to give the user the privileged to create databases)
+  su - postgres
 
-**run tests**
+  # Use password "owncloud"
+  createuser -P oc_autotest 
+
+  # Give the user the privilege to create databases
+  psql -c 'ALTER USER oc_autotest CREATEDB;' 
+
+.. note:: 
+   To enable ``dropdb`` add "local	all	all	trust" to ``pg_hba.conf``. 
+
+For parallel executor support with EXECUTOR_NUMBER=0
+____________________________________________________
+
+::
+
+  su - postgres
+
+  # Use password "owncloud"
+  createuser -P oc_autotest0
+
+  # Give the user the privilege to create databases
+  psql -c 'ALTER USER oc_autotest0 CREATEDB;'
+
+Run Tests
+^^^^^^^^^
+
+To run all tests, run the following command:
+
 ::
 
   make test-php
 
-To run tests only for MySQL
+To run tests only for MySQL, run the following command:
 
 ::
 
   make test-php TEST_DATABASE=mysql
 
-To run a particular test suite
+To run a particular test suite, use the following command as a guide:
 
 ::
 
@@ -240,7 +265,7 @@ The easiest way to do this is to run the automatic test script first, see next s
 Running All The Tests
 ~~~~~~~~~~~~~~~~~~~~~
 
-To run all tests, just run
+To run all JavaScript tests, run the following command:
 
 ::
 
