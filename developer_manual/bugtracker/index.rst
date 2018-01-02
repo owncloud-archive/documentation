@@ -14,6 +14,8 @@ Thank you for helping ownCloud by reporting bugs. Before submitting an issue, pl
 
 * If the issue is with the ownCloud server, report it to the `Core repository`_
 * If the issue is with the ownCloud client, report it to the `Client repository`_
+* If the issue is with the ownCloud iOS app, report it to the `iOS repository`_
+* If the issue is with the ownCloud Android app, report it to the `Android repository`_
 * If the issue with with an ownCloud app, report it to where that app is developed
 * If the issue is with a Marketplace app, report it to the `Marketplace issue tracker`_
 * If the app is listed in our `main github repository`_ report it to the correct sub 
@@ -28,3 +30,5 @@ Please note that the mailing list should not be used for bug reports, as it is h
 .. _main github repository: https://github.com/owncloud
 .. _apps repository: https://github.com/owncloud/apps/issues
 .. _Marketplace issue tracker: https://github.com/owncloud/marketplace-issues
+.. _Android repository: https://github.com/owncloud/android/issues
+.. _iOS repository: https://github.com/owncloud/ios/issues
