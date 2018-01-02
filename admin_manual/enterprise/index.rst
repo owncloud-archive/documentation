@@ -7,6 +7,7 @@ Enterprise Features
 
    installation/index
    firewall/index
+   security/index
    file_management/index
    external_storage/index
    user_management/index
