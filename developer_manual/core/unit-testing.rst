@@ -244,10 +244,10 @@ To run a particular test suite, use the following command as a guide:
 Further Reading
 ~~~~~~~~~~~~~~~
 
-- http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
-- http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
-- http://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
-- Clean Code: A Handbook of Agile Software Craftsmanship (Robert C. Martin)
+- `Writing Testable Code`_
+- `PHPUnit Manual`_
+- `Clean Code Talks - "GuiceBerry"`_
+- `Clean Code by Robert C. Martin`_
 
 Unit Testing JavaScript in Core
 -------------------------------
@@ -306,4 +306,7 @@ Here are some useful links about how to write unit tests with Jasmine and Sinon:
 
 .. _the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
 .. _the writing tests section: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
-
+.. _Clean Code by Robert C. Martin: https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM
+.. _Clean Code Talks - "GuiceBerry": http://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
+.. _Writing Testable Code: http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
+.. _PHPUnit Manual: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
