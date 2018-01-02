@@ -62,8 +62,8 @@ Setup the Webserver and Database
 Next, you need to setup your web and database servers, so that they work properly with ownCloud.
 The respective guides are available at:
 
-- `Apache Webserver Configuration <http://admin.manual.localdomain/installation/source_installation.html#configure-apache-web-server>`_
-- `Database Server Configuration <http://admin.manual.localdomain/configuration/database/linux_database_configuration.html>`_
+- `Apache Webserver Configuration`_
+- `Database Server Configuration`_
 
 Get The Source
 --------------
@@ -186,4 +186,5 @@ With all that done, you're now ready to use either `the installation wizard`_ or
 .. _available to your webserver: https://doc.owncloud.org/server/latest/admin_manual/installation/source_installation.html#configure-the-apache-web-server
 .. _the installation wizard: https://doc.owncloud.org/server/latest/admin_manual/installation/installation_wizard.html
 .. _command line installer: https://doc.owncloud.org/server/latest/admin_manual/installation/command_line_installation.html
-
+.. _Apache Webserver Configuration: https://doc.owncloud.org/server/latest/admin_manual/installation/source_installation.html#apache-configuration-label
+.. _Database Server Configuration: https://doc.owncloud.org/server/latest/admin_manual/configuration/database/linux_database_configuration.html
