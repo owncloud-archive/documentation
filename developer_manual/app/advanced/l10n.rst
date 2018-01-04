@@ -120,6 +120,8 @@ In case some translation strings may be translated wrongly because they have mul
         </li>
     </ul>
 
+.. _creating_translatable_files_label:
+
 Creating Your Own Translatable Files
 ------------------------------------
 
