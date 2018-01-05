@@ -18,62 +18,87 @@ Release Notes
 Changes in 10.0.4
 -----------------
 
-Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.4 that need your attention:
+Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.4 that need your attention. You can also read `the full ownCloud Server 10.0.4 changelog`_ for further details on what has changed.
 
-**The full ownCloud Server 10.0.4 changelog can be found here: https://github.com/owncloud/core/blob/stable10/CHANGELOG.md**
+More granular sharing restrictions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* **More granular sharing restrictions**
 The "*Restrict users to only share with users in their groups*" option, in the Sharing settings, restricts users to only share with groups which they are a member of, while simultaneously prohibiting sharing with single users that do not belong to any of the users' groups.
+
 To make this more granular, we split this option into two parts and added "*Restrict users to only share with groups they are member of*", which differentiates between users and groups. Doing so makes it possible to restrict users from sharing with all users of an installation, limiting them to only being able to share with groups which they are a member of, and vice versa.
 
-- **Configurable solution for indistinguishable user display names**
+Configurable solution for indistinguishable user display names
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 The ownCloud sharing dialog displays users according to their display name. As users can choose their display name in self-service (which can be disabled in `config.php`) and display names are not unique, it is possible that a user can't distinguish sharing results. To cover this case the displayed user identifiers are now configurable. In the Sharing settings administrators can now configure the display of either mail addresses or user ids.
 
-- **Added "occ files:scan" repair mode to repair filecache inconsistencies**
-We recommend to use this command when directed to do so in the upgrade process.
-Please check the ownCloud documentation for more information (https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/occ_command.html?highlight=occ#the-repair-option).
+Added "occ files:scan" repair mode to repair filecache inconsistencies
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Detailed mode for "occ security:routes"**
+We recommend to use this command when directed to do so in the upgrade process.
+Please refer to `the occ command's files:scan --repair documentation`_ for more information.
+
+Detailed mode for "occ security:routes"
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 Administrators can use the output of this command when using a network firewall, to check the appropriateness of configured rules or to get assistance when setting up.
 
-- **Added mode of operations to differentiate between single-instance or clustered setup**
-As ownCloud needs to behave differently when operating in a clustered setup versus a single instance setup, the new `config.php` option `operation.mode` has been added. It can take one of two values: `single-instance` and `clustered-instance`.
-For example:
+Added mode of operations to differentiate between single-instance or clustered setup
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-```
-'operation.mode' => 'clustered-instance',
-```
+As ownCloud needs to behave differently when operating in a clustered setup versus a single instance setup, the new `config.php` option ``operation.mode`` has been added. 
+It can take one of two values: ``single-instance`` and ``clustered-instance``. 
+For example: ``'operation.mode' => 'clustered-instance',``.
 
-Currently the Market App (ownCloud Marketplace integration) does not support clustered setups and can do harm when used for installing or updating apps. The new config setting prevents this and other actions that are undesired in cluster mode.
-**Therefore when operating in a clustered setup it is mandatory to set this option.**
-Please check the ownCloud documentation for more information (https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/config_sample_php_parameters.html#mode-of-operation).
+Currently the Market App (ownCloud Marketplace integration) does not support clustered setups and can do harm when used for installing or updating apps. 
+The new config setting prevents this and other actions that are undesired in cluster mode.
 
-- **Added occ dav:cleanup-chunks command to clean up expired uploads**
+**When operating in a clustered setup, it is mandatory to set this option.**
+Please check `the config_sample_php_parameters documentation`_ for more information.
+
+Added occ dav:cleanup-chunks command to clean up expired uploads
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 When file uploads are interrupted for any reason, already uploaded file parts (chunks) remain in the underlying storage so that the file upload can resume in a future upload attempt.
-However, resuming an upload is only possible until the partial upload is expired and deleted, respectively. To clean up chunks (expire and delete) originating from unfinished uploads, administrators can use this newly introduced command. The default expiry time is two days, but it can be specified as a parameter to the command.
-**It is recommended to configure CRON to execute this background job regularly**. It is not included in the regular ownCloud background jobs so that the administrators have more flexibility in scheduling it. Please check the ownCloud documentation for more information (https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/background_jobs_configuration.html#cleanupchunks).
+However, resuming an upload is only possible until the partial upload is expired and deleted, respectively. 
 
-- **Administrators can now exclude files from integrity check in config.php**
+To clean up chunks (expire and delete) originating from unfinished uploads, administrators can use this newly introduced command. 
+The default expiry time is two days, but it can be specified as a parameter to the command.
+**It is recommended to configure CRON to execute this background job regularly**. 
+
+It is not included in the regular ownCloud background jobs so that the administrators have more flexibility in scheduling it. 
+Please check `the background jobs configuration documentation`_ for more information.
+
+Administrators can now exclude files from integrity check in config.php
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 When administrators did intentional changes to the ownCloud code they now have the ability to exclude certain files from the integrity checker.
 Please check "config.sample.php" for the usage of ``'integrity.excluded.files'``.
 
-- **Modification time value of files is now 64 bits long**
-Note: When upgrading to 10.0.4 migrations may increase update duration dependent on number of files.
+Modification time value of files is now 64 bits long
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- **Updated minimum supported browser versions**
-Note: Users with outdated browsers might get warnings. See the list of supported browser versions: https://doc.owncloud.com/server/10.0/admin_manual/installation/system_requirements.html#web-browser
+When upgrading to 10.0.4 migrations may increase update duration dependent on number of files.
 
-- **10.0.3 known issues are solved**
+Updated minimum supported browser versions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  - SFTP external storages with key pair mode work again https://github.com/owncloud/core/issues/29156
-  - Added support for MariaDB 10.2.7+ https://github.com/owncloud/core/issues/29240
-  - Encryption panel in admin settings fixed to properly detect current mode after upgrade to ownCloud 10 https://github.com/owncloud/core/issues/29049
-  - Removed double quotes from boolean values in status.php output https://github.com/owncloud/core/pull/29261
+Users with outdated browsers might get warnings. 
+See `the list of supported browser versions`_.
 
-**Known issues**
+10.0.3 resolved known issues
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Impersonate app 0.1.1 does not work with ownCloud Server 10.0.4. Please update to Impersonate 0.1.2 (https://marketplace.owncloud.com/apps/impersonate) to be able to use the feature with ownCloud 10.0.4.
-- Mounting ownCloud storage via davfs does not work https://github.com/owncloud/core/issues/29793
+- `SFTP external storages with key pair mode work again <https://github.com/owncloud/core/issues/29156>`_
+- `Added support for MariaDB 10.2.7+ <https://github.com/owncloud/core/issues/29240>`_
+- `Encryption panel in admin settings fixed to properly detect current mode after upgrade to ownCloud 10 <https://github.com/owncloud/core/issues/29049>`_
+- `Removed double quotes from boolean values in status.php output <https://github.com/owncloud/core/pull/29261>`_
+
+Known issues
+~~~~~~~~~~~~
+
+- Impersonate app 0.1.1 does not work with ownCloud Server 10.0.4. Please update to `Impersonate 0.1.2 <https://marketplace.owncloud.com/apps/impersonate>`_ to be able to use the feature with ownCloud 10.0.4.
+- `Mounting ownCloud storage via davfs does not work <https://github.com/owncloud/core/issues/29793>`_
 
 .. _10.0.3_release_notes_label:
 
@@ -798,3 +823,8 @@ or PostgreSQL) to operate correctly.
 .. _Open Build Service: https://download.owncloud.org/download/repositories/10.0/owncloud/
 .. _please apply this patch: https://gist.github.com/VicDeo/bb0689104baeb5ad2371d3fdb1a013ac/raw/04bb98e08719a04322ea883bcce7c3e778e3afe1/DoctrineMariaDB102.patch
 .. _check out the related issue: https://github.com/owncloud/core/issues/28695
+.. _the full ownCloud Server 10.0.4 changelog: https://github.com/owncloud/core/blob/stable10/CHANGELOG.md
+.. _the occ command's files:scan --repair documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/occ_command.html?highlight=occ#the-repair-option
+.. _the config_sample_php_parameters documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/config_sample_php_parameters.html#mode-of-operation
+.. _the background jobs configuration documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/background_jobs_configuration.html#cleanupchunks
+.. _the list of supported browser versions: https://doc.owncloud.com/server/10.0/admin_manual/installation/system_requirements.html#web-browser
