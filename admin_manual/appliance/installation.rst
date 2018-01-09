@@ -44,6 +44,9 @@ The example below shows this being done using VirtualBox.
 .. image:: ../images/appliance/import-the-virtual-appliance.png
    :alt: Importing the ownCloud X Trial Appliance OVA file into VirtualBox and accepting the software license agreement terms and conditions.
 
+.. note:: 
+   If you try to install an ownCloud appliance in your domain after removing an existing one, please remember to remove the original one from you DNS configuration.
+
 Don't Forget the IP Address!
 ----------------------------
 
