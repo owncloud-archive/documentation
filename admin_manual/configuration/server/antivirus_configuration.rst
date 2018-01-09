@@ -153,7 +153,7 @@ Once it is installed, go to your ownCloud Admin page and set your ownCloud loggi
 
 .. figure:: ../../images/antivirus-logging.png
 
-Now, navigate to ``Settings -> Admin -> Additional``, where you'll find the "**Antivirus Configuration**" panel.
+Now, navigate to ``Settings -> Admin -> Security``, where you'll find the "**Antivirus Configuration**" panel.
 There, as below, you'll see the configuration options which ownCloud will pass
 to ClamAV. 
 
