@@ -183,6 +183,24 @@ The ``yum`` command shows available and installed version information:
 
    yum search php-pecl-redis
 
+Clearing the Redis Cache
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Redis cache can be flushed from the command-line using `the redis-cli tool`_, as in the following example:
+
+::
+
+  sudo redis-cli
+  SELECT <dbIndex>
+  FLUSHDB
+
+``<dbIndex>`` is the number of Redis database where the cache is stored. 
+It is zero by default at ownCloud.
+For more information see:
+
+- https://redis.io/commands/select
+- https://redis.io/commands/flushdb
+
 .. _memcached-label:
 
 Memcached
@@ -261,6 +279,22 @@ After that, assuming that you don't encounter any errors:
 #. Restart your Web server
 #. Add the appropriate entries to ``config.php`` (which you can find an example of below)
 #. Refresh your ownCloud admin page 
+
+Clearing the Memcached Cache
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The Memcached cache can be flushed from the command-line using a range of common Linux/UNIX tools, including netcat and telnet. 
+The following example uses telnet to login, run `the flush_all command`_, and logout:
+
+::
+
+  telnet localhost 11211
+  flush_all
+  quit
+
+For more information see:
+
+- https://github.com/memcached/memcached/wiki/Commands#flushall
    
 Configuring Memory Caching
 --------------------------
@@ -418,3 +452,8 @@ In the table below, you can see all of the known reasons for reduced or broken f
 | "distributed", but the class is missing     | This is because autoloading needs the missing class. So there is |
 |                                             | no way to show a page                                            |
 +---------------------------------------------+------------------------------------------------------------------+
+
+.. Links
+   
+.. _the redis-cli tool: https://redis.io/topics/rediscli
+.. _the flush_all command: https://github.com/memcached/memcached/wiki/Commands#flushall
