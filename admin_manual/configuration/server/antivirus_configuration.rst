@@ -138,20 +138,18 @@ For example, to run it every hour at 47 minutes past the hour, add the following
 .. note::
    Please avoid any multiples of 10, because those are when the ClamAV servers are hit the hardest for updates.
 
-Enabling the Antivirus App for Files
-------------------------------------
+Install the Anti-Virus App
+--------------------------
 
-To enable it, navigate to ``Settings -> Admin -> Apps``.
-It should already be enabled. 
-But, if it's not, click "**Show disabled apps**", find it in the list, and click
-"**Enable**".
+The Anti-Virus app needs to be installed from the ownCloud Market, under *"Security"*. 
+You can access the ownCloud Market via the App Menu (or App Switcher).
 
 .. figure:: ../../images/antivirus-app.png
 
 Configuring ClamAV within ownCloud
 ----------------------------------
 
-Next, go to your ownCloud Admin page and set your ownCloud logging level to Everything.
+Once it is installed, go to your ownCloud Admin page and set your ownCloud logging level to ``Everything``.
 
 .. figure:: ../../images/antivirus-logging.png
 
