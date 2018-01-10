@@ -1,5 +1,6 @@
-Mitigating Ransomware Risks in ownCloud
-=======================================
+=====================
+Ransomware Protection
+=====================
 
 Ransomware is `an ever-present threat`_, both for large enterprises as well as for individuals.
 Once infected, a whole hard disk (or just parts of it) can become encrypted, leading to unrecoverable data loss.
@@ -22,14 +23,14 @@ It aims to do so in two ways: `prevention <ransomware_prevention_label>`_, and `
 .. _ransomware_prevention_label:
 
 Prevention: Blocking Common Ransomware File Extensions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------------------------------------
 
 Like other forms of cyberattack, ransomware has a range of diverse characteristics.
 On the one hand it makes them hard to detect and on the other it makes them even harder to prevent.
 Recent ransomware attacks either encrypt a user's files and add a specific file extension to them (e.g., ".crypt"), or they replace the original files with an encrypted copy and add a particular file extension.
 
 File Extension Blacklist
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 The first line of defense against such threats is a blacklist that blocks write access to file extensions known to originate from ransomware.
 
@@ -43,7 +44,7 @@ Future releases of Ransomware Protection will include an updated list and the ab
    In some cases, the patterns might be too generic and result in false positives.
    
 File Blocking
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 The second line of defense is file blocking. 
 As files are uploaded, they are compared against the file extension blacklist. 
@@ -52,7 +53,7 @@ If a match is found, the upload is denied.
 .. note:: File blocking is always enabled.
 
 Account Locking
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 The third line of defense is account locking. 
 If a client uploads a file matching a pattern in the ransomware blacklist, the account is locked (set as read-only) for client access (*create*, *change*, *move*, and *delete* operations). 
@@ -78,7 +79,7 @@ Users will see a yellow notification banner in the ownCloud web UI directing the
 .. _ransomware_protection_label:
 
 Protection: Data Retention and Rollback
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------
 
 While Ransomware Prevention mitigates risks of a range of ransomware attacks, it is not a future-proof solution, because ransomware is becoming ever-more sophisticated.
 There are known attacks that change file extensions randomly or keep them unchanged which makes them harder to detect.
@@ -91,7 +92,7 @@ Doing so allows all user data that is synchronized with the server to be rolled 
 A combination of Ransomware prevention and protection reduces risks to a minimum acceptable level.
 
 Other Elements of Ransomware Protection
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+---------------------------------------
 
 =============================== ============================================== ========================================================
 Name                            Command (if applicable)                        Description
@@ -120,10 +121,10 @@ Ransomguard Unlock              ``occ ransomguard:unlock <user>``              U
    ``<timestamp>`` must be in `the Linux timestamp format`.
 
 Requirements
-~~~~~~~~~~~~
+------------
 
 Mandatory
-^^^^^^^^^
+~~~~~~~~~
 
 #. **File Firewall rule (previous approach for ransomware protection).** If you have configured the File Firewall rule which was provided as a preliminary protection mechanism, please remove it. The functionality (Blocking) is covered by Ransomware Protection in an improved way.
 #. **Ransomware Protection.** Ransomware protection needs to be in operation before an attack occurs, as it needs to record file operations to be able to revert them, in case of an attack.
@@ -131,12 +132,12 @@ Mandatory
 #. **ownCloud Trash Bin App.** Required to restore deleted files. The capabilities of Ransomware Protection depend on its configuration regarding trash bin retention.
 
 Optional
-^^^^^^^^
+~~~~~~~~
 
 #. **Activity app.** For viewing activity logs.
 
 Limitations
-~~~~~~~~~~~
+-----------
 
 - Ransomware Protection works with master-key based storage encryption. With credential-based storage encryption, only Ransomware Prevention (Blocking) works.
 - Rollback is not based on snapshots:
