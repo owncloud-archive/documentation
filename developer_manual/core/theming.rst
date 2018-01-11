@@ -340,5 +340,5 @@ If you think a new section should be added to core however, please create a PR w
 .. _Safari: https://developer.apple.com/safari/tools/
 .. _the guide on Can I Use: http://caniuse.com/#feat=css-gradients
 .. _this example: https://github.com/owncloud/core/blob/master/lib/private/Settings/SettingsManager.php#L195   
-.. _signed: /app/code_signing.html
+.. _signed: /app/advanced/code_signing.html?highlight=sign
 .. _the marketplace: https://marketplace.owncloud.com
