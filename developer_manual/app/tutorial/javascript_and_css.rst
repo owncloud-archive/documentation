@@ -31,3 +31,6 @@ As with ``script``, the first parameter is the application to find the CSS file 
 .. code-block:: php
    
    style('ownnotes, 'style');  // adds ownnotes/css/style.css
+
+.. note:: 
+   ownCloud doesn't provide automatic JavaScript or CSS minification 
