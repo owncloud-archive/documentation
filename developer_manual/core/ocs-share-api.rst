@@ -215,6 +215,20 @@ Go
 .. literalinclude:: ../examples/go/get-share-info.go
    :language: go
 
+Kotlin
+~~~~~~
+
+.. literalinclude:: ../examples/kotlin/get-share-info.kt
+   :language: kotlin
+
+Java
+~~~~
+
+.. literalinclude:: ../examples/java/get-share-info.java
+   :language: java
+   
+.. note:: The Java and Kotlin examples use `the square/okhttp library`_.
+
 Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -755,3 +769,4 @@ Code Description
 .. Links
    
 .. _RFC-compliant mimetype: https://tools.ietf.org/html/rfc2045
+.. _the square/okhttp library: https://github.com/square/okhttp
