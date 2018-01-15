@@ -1282,6 +1282,35 @@ The ``market`` commands *install*, *list*, and *upgrade* applications from `the 
 .. note::
    These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
+Install an Application
+^^^^^^^^^^^^^^^^^^^^^^
+
+Applications can be installed both from `the ownCloud Marketplace`_ and from a local file archive. 
+
+Install Apps From The Marketplace
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To install an application from the Marketplace, you need to supply the app’s id, which can be found in the app’s Marketplace URL. 
+For example, the URL for *Two factor backup codes* is https://marketplace.owncloud.com/apps/twofactor_backup_codes.
+So its app id is ``twofactor_backup_codes``.
+
+Install Apps From a File Archive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To install an application from a local file archive, you need to supply the path to the archive, and that you pass the ``-l`` switch. 
+Only ``zip``, ``gzip``, and ``bzip2`` archives are supported.
+
+Usage Example
+~~~~~~~~~~~~~
+
+::
+
+  # Install an app from the marketplace.
+  sudo -u www-data occ market:install twofactor_backup_codes
+
+  # Install an app from a local archive.
+  sudo -u www-data occ market:install -l /mnt/data/richdocuments-2.0.0.tar.gz
+
 .. _reports_commands_label:
    
 Reports
