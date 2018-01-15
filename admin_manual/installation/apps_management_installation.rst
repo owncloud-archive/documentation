@@ -78,7 +78,7 @@ To do so, follow these steps:
 #. Create a new apps directory and assign it the same user and group, and ownership permissions as the core apps directory.
 #. Move the apps from the old apps directory to the new apps directory.
 #. Add a new app directory in ``config/config.php``.
-#. If you're using a cache, such as Redis, clear the cache.
+#. If you're using a cache, such as `Redis <../configuration/server/caching_configuration.html#clearing-the-redis-cache>`_ or `Memcached <../configuration/server/caching_configuration.html#clearing-the-memcached-cache>`_, ensure that you clear the cache.
 #. Re-enable the apps.
 #. Disable maintenance mode.
 
