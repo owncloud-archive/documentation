@@ -73,11 +73,12 @@ The configuration example below shows how to add a second directory, called ``ap
 After you add a new directory configuration, you can then move apps from the original app directory to the new one. 
 To do so, follow these steps:
 
-#. Enable maintenance mode.
-#. Disable the apps that you want to move.
+#. :ref:`Enable maintenance mode <maintenance_commands_label>`.
+#. :ref:`Disable the apps <apps_commands_label>` that you want to move.
 #. Create a new apps directory and assign it the same user and group, and ownership permissions as the core apps directory.
 #. Move the apps from the old apps directory to the new apps directory.
 #. Add a new app directory in ``config/config.php``.
+#. If you're using a cache, such as Redis, clear the cache.
 #. Re-enable the apps.
 #. Disable maintenance mode.
 
