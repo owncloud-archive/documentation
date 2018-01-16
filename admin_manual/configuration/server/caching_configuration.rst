@@ -196,7 +196,21 @@ The Redis cache can be flushed from the command-line using `the redis-cli tool`_
 
 ``<dbIndex>`` is the number of Redis database where the cache is stored. 
 It is zero by default at ownCloud.
-For more information see:
+To check what yours is currently set to, check the ``dbindex`` value in ``config/config.php``.
+Here’s an example of what to look for:
+
+.. code-block:: php
+   :emphasize-lines: 5
+
+    "redis": {
+        "host": "localhost",
+        "port": 6379,
+        "timeout": 0,
+        "dbindex": 0
+    },
+
+Further Reading
+===============
 
 - https://redis.io/commands/select
 - https://redis.io/commands/flushdb
