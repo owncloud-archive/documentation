@@ -60,7 +60,15 @@ Assuming that your ownCloud installation is on Ubuntu, then the following comman
 Creating a New Share
 --------------------
 
-When you create a new WND share you need: the login credentials for the share, the server address, the share name, and the folder you want to connect to. 
+When you create a new WND share you need the following details available: 
+
+- The login credentials for the share
+- The server address
+- The share name
+- The folder you want to connect to
+
+.. note:: 
+   All the configuration fields must be filled out correctly, especially the folder to connect to, to prevent connection and other issues.
 
 1. Enter the ownCloud mount point for your new WND share. This must not be an existing folder.
 2. Then select your authentication method; See  :doc:`enterprise_only_auth` for complete information on the five available authentication methods.

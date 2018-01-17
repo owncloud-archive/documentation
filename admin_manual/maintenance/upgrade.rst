@@ -36,18 +36,17 @@ After the upgrade is complete re-enable any which are compatible with the new re
 Upgrade Options
 ---------------
 
-There are three ways to upgrade your ownCloud server:
+There are three ways to upgrade your ownCloud server.
+The first — *and recommended* — way is to perform a :doc:`manual upgrade <manual_upgrade>`, using `the latest ownCloud release <owncloud.org/install/>`_.
+The second way is to use your distribution's :doc:`package manager <package_upgrade>`, in conjunction with our official ownCloud repositories. 
+However, this approach should not be used unattended nor in clustered setups.
 
-#. Using the :doc:`Updater App <update>` (Server Edition only). This is recommended for shared hosters and for users who want an easy way to track different release channels. It is *not available* and *not supported* on the Enterprise edition. This is the recommended method.
-#. Using your :doc:`Linux package manager <package_upgrade>` with our official ownCloud repositories. 
-#. :doc:`Manually upgrading <manual_upgrade>` with the latest ownCloud release from `owncloud.org/install/`_. 
-
-.. note::
-   Please remember that in scale-out deployments (where your database is sitting somewehere else, not on the same machine as the webserver) using the package manager is going to install all the related dependencies, unless the ``owncloud-enterprise-files`` (for the Enterprise edition) or the ``owncloud-files`` (for the Community edition) package is being used.
+The third way is to use the :doc:`Updater App <update>`. 
+This is needed in scenarios where the admin does not have access to the command line.
+It is recommended for shared hosting environments and for users who want an easy way to track different release channels. 
 
 .. note::
    Enterprise customers will use their Enterprise software repositories to maintain their ownCloud servers, rather than the Open Build Service. Please see :doc:`../enterprise/installation/install` for more information.
-
 
 Reverse Upgrade
 ---------------
