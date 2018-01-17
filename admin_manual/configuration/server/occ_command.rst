@@ -950,7 +950,62 @@ See :doc:`../../issues/code_signing` to learn more.
 l10n, Create Javascript Translation Files for Apps
 --------------------------------------------------
 
-This command is for app developers to update their translation mechanism from ownCloud 7 to ownCloud 8 and later.
+This command creates JavaScript and JSON translation files for ownCloud applications.
+
+.. note::
+   The command does not update existing translations if the source translation
+   file has been updated. It only creates translation files when none are
+   present for a given language.
+
+::
+
+ l10n
+   l10n:createjs                Create Javascript translation files for a given app
+
+The command takes two parameters; these are:
+
+- ``app``: the name of the application.
+- ``lang``: the output language of the translation files; more than one can be supplied.
+
+To create the two translation files, the command reads translation data from a source PHP translation file. 
+
+A Working Example
+^^^^^^^^^^^^^^^^^
+
+In this example, we'll create Austrian German translations for the Gallery app.
+
+.. note:: 
+   This example assumes that the ownCloud directory is `/var/www/owncloud`` and that it uses ownCloud’s standard apps directory, ``app``. 
+
+First, create a source translation file in ``/var/www/owncloud/apps/gallery/l10n``, called ``de_AT.php``.
+In it, add the required translation strings, as in the following example.
+Refer to the developer documentation on `creating translation files`_, if you’re not familiar with creating them.
+
+.. code-block:: php
+
+  <?php
+  // The source string is the key, the translated string is the value.
+  $TRANSLATIONS = [
+    "Share" => "Freigeben"
+  ];
+  $PLURAL_FORMS = "nplurals=2; plural=(n != 1);";
+
+After that, run the following command to create the translation.
+
+:: 
+
+ sudo -u www-data php occ l10n:createjs gallery de_AT
+
+This will generate two translation files, ``de_AT.js`` and ``de_AT.json``, in ``/var/www/owncloud/apps/gallery/l10n``.
+
+Create Translations in Multiple Languages
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To create translations in multiple languages simultaneously, supply multiple languages to the command, as in the following example:
+
+::
+  
+ sudo -u www-data php occ l10n:createjs gallery de_AT de_DE hu_HU es fr
 
 .. _ldap_commands_label: 
  
@@ -2156,4 +2211,4 @@ json    This will render the output as a JSON-encoded, but not formatted, string
 .. Links
    
 .. _the ownCloud Marketplace: https://marketplace.owncloud.com/
-   
+.. _creating translation files: https://doc.owncloud.org/server/latest/developer_manual/app/advanced/l10n.html#creating-translatable-files-label
