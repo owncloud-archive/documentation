@@ -8,8 +8,8 @@ Installation
    system_requirements
    deployment_recommendations
    deployment_considerations
-   linux_installation
    source_installation
+   linux_installation
    installation_wizard
    docker/index
    command_line_installation
