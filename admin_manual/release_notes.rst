@@ -2,6 +2,7 @@
 Release Notes
 =============
 
+* :ref:`10.0.5_release_notes_label`
 * :ref:`10.0.4_release_notes_label`
 * :ref:`10.0.3_release_notes_label`
 * :ref:`10.0.1_release_notes_label`
@@ -12,6 +13,44 @@ Release Notes
 * :ref:`8.1_release_notes_label`
 * :ref:`8.0_release_notes_label`
 * :ref:`7.0_release_notes_label`
+
+.. _10.0.5_release_notes_label:
+
+Changes in 10.0.5
+-----------------
+
+Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.5 that need your attention. You can also read `the full ownCloud Server changelog`_ for further details on what has changed.
+
+Technology preview for PHP 7.2 support
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ownCloud catches up with new web technologies. This has mainly been introduced for the open-source community to test and give feeback. PHP 7.2 is not yet supported nor recommended for productive scenarios. ownCloud is going to fully support PHP 7.2 with the next major release.
+
+php-intl now is a hard requirement
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please make sure to have the PHP extension installed before upgrading.
+
+Changed: Only allow a single active theme app
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The theming behavior has been changed for that only a single theme can be active concurrently. This change ensures that themes can not interfere in any way. Please make sure to have the desired theme enabled after upgrading.
+
+Removed old Dropbox external storage backend (Dropbox API v1)
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Please switch to the new *External Storage: Dropbox* app (https://marketplace.owncloud.com/apps/files_external_dropbox) with Dropbox API v2 support to continue providing Dropbox external storages to your users.
+
+Fixed: Only set CORS headers on WebDAV endpoint when Origin header is specified
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ownCloud Server 10.0.4 known issue is resolved.
+
+Fixes and improvements for the Mail Template Editor
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+- Known issues are resolved: Mail Template Editor works again, got support for app themes and additional templates were added for customization.
+- Mail Template Editor is still bundled with ownCloud Server but will soon be released as a separate app to ownCloud Marketplace.
+- Changelog: https://github.com/owncloud/templateeditor/blob/release/0.2.0/CHANGELOG.md
+
+Known issues
+~~~~~~~~~~~~
+
+To date there are no known issues related to ownCloud Server 10.0.5.
 
 .. _10.0.4_release_notes_label:
 
@@ -824,6 +863,7 @@ or PostgreSQL) to operate correctly.
 .. _please apply this patch: https://gist.github.com/VicDeo/bb0689104baeb5ad2371d3fdb1a013ac/raw/04bb98e08719a04322ea883bcce7c3e778e3afe1/DoctrineMariaDB102.patch
 .. _check out the related issue: https://github.com/owncloud/core/issues/28695
 .. _the full ownCloud Server 10.0.4 changelog: https://github.com/owncloud/core/blob/stable10/CHANGELOG.md
+.. _the full ownCloud Server changelog: https://owncloud.org/changelog/server/
 .. _the occ command's files:scan --repair documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/occ_command.html?highlight=occ#the-repair-option
 .. _the config_sample_php_parameters documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/config_sample_php_parameters.html#mode-of-operation
 .. _the background jobs configuration documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/background_jobs_configuration.html#cleanupchunks
