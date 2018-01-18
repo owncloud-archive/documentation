@@ -110,10 +110,10 @@ Migrating from Debian to Official ownCloud Packages
 As of March 2016, Debian will not include ownCloud packages. Debian users can 
 migrate to the official ownCloud packages by following this guide, `Upgrading ownCloud on Debian Stable to official packages <https://owncloud.org/blog/upgrading-owncloud-on-debian-stable-to-official-packages/>`_.
 
-Upgrading from 9.10 to |version|
+Upgrading from 9.1 to |version|
 --------------------------------
 
-To upgrade ownCloud from version 9.10 to |version| requires just a few steps.
+To upgrade ownCloud from version 9.1 to |version| requires just a few steps.
 In this guide, the following assumptions are made:
 
 #. ownCloud |version| is the latest version.
