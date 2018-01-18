@@ -122,6 +122,16 @@ The following command provides an example of how to do so.
   sudo -u www-data php occ app:disable files_texteditor
   sudo -u www-data php occ app:disable gallery
 
+Market and Marketplace App Upgrades
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Before getting too far into the upgrade process, please be aware of how the Market app and its configuration options affect the upgrade process.
+
+- The Market app is not upgraded if it is either disabled (because ``appstoreenabled`` is set to ``false``) or it is not available.
+- If ``upgrade.automatic-app-update`` is set to ``false`` apps installed from the Marketplace are not automatically upgraded.
+
+In addition to these two points, if there are installed apps (whether compatible or incompatible with the next version, or missing source code) and the Market app is enabled, but there is no available internet connection, then these apps will need to be manually updated once the upgrade is finished.
+
 Start the Upgrade
 ~~~~~~~~~~~~~~~~~
 
