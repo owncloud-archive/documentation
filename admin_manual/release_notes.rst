@@ -23,7 +23,7 @@ Dear ownCloud administrator, please find below the changes and known issues in o
 
 Technology preview for PHP 7.2 support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-ownCloud catches up with new web technologies. This has mainly been introduced for the open-source community to test and give feeback. PHP 7.2 is not yet supported nor recommended for productive scenarios. ownCloud is going to fully support PHP 7.2 with the next major release.
+ownCloud catches up with new web technologies. This has mainly been introduced for the open-source community to test and give feedback. PHP 7.2 is not yet supported nor recommended for production scenarios. ownCloud is going to fully support PHP 7.2 with the next major release.
 
 php-intl now is a hard requirement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
