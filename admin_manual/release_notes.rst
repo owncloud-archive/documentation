@@ -31,7 +31,7 @@ Please make sure to have the PHP extension installed before upgrading.
 
 Changed: Only allow a single active theme app
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The theming behavior has been changed for that only a single theme can be active concurrently. This change ensures that themes can not interfere in any way. Please make sure to have the desired theme enabled after upgrading.
+The theming behavior has been changed so that only a single theme can be active concurrently. This change ensures that themes can not interfere in any way (e.g., override default theming in an arbitrary order). Please make sure to have the desired theme enabled after upgrading.
 
 Removed old Dropbox external storage backend (Dropbox API v1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
