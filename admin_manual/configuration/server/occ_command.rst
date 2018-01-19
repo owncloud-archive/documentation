@@ -1194,10 +1194,23 @@ Use the ``--enable`` option to turn on logging. Use ``--file`` to set a differen
 Set your rotation by log file size in bytes with ``--rotate-size``; 0 disables rotation. 
 ``log:manage`` sets your logging backend, log level, and timezone. 
 The defaults are ``owncloud``, ``Warning``, and ``UTC``. 
+
+Log level can be adjusted by entering the number or the name:
+
+::
+
+   sudo -u www-data php occ log:manage --level 4
+   sudo -u www-data php occ log:manage --level error
+
+You can also choose debug, info, warning, error or fatal.
+
+.. note::
+   Setting the log level to debug ( 0 ) can be used for finding the cause for an error, but should not be the standard
+   as it increases the log file size.
+
 Available options are:
 
 * --backend [owncloud, syslog, errorlog]
-* --level [debug, info, warning, error, fatal]
 
 .. _maintenance_commands_label:
    
