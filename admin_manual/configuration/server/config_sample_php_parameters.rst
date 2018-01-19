@@ -1582,9 +1582,10 @@ which are older then the number of days that is set for ``activity_expire_days``
 
 .. code-block:: php
 
-	'wnd.logging.enable' => true,
+	'smb.logging.enable' => true,
 
-This enables debug logs for the windows_network_drive app.
+This enables debug logging for SMB access.
+Use this carefully as it can generate a huge amount of log data.
 
 Overriding Existing Parameter Values Using Environment Variables
 ----------------------------------------------------------------
