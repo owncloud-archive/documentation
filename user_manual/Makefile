@@ -7,10 +7,16 @@ SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
 
+# Set the version string from a command-line argument, if it's supplied, otherwise
+# fallback to setting it from the existing configuration in conf.py
+ifeq ($(OC_VERSION),)
+  OC_VERSION := $( grep -e "^version" conf.py | awk -F" = " '{print $2}' | tr -d "'" )
+endif
+
 # Internal variables.
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) -D version=$(OC_VERSION) -D release=$(OC_VERSION) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
