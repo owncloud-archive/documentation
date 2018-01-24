@@ -36,7 +36,6 @@ occ Command Directory
 * :ref:`versions_label`
 * :ref:`command_line_installation_label`
 * :ref:`command_line_upgrade_label`
-* :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
 
 .. _http_user_label:
@@ -100,8 +99,8 @@ Query your ownCloud server status::
 
  sudo -u www-data php occ status
    - installed: true
-   - version: 9.0.0.19
-   - versionstring: 9.0.0
+   - version: 9.1
+   - versionstring: 9.1
    - edition: 
 
 ``occ`` has *options*, *commands*, and *arguments*. 
@@ -244,7 +243,7 @@ The other two commands are:
 * ``background:cron``
 * ``background:webcron``
 
-See :doc:`../../configuration/server/background_jobs_configuration` to learn more.
+See :doc:`../../configuration_server/background_jobs_configuration` to learn more.
 
 .. _config_commands_label:
 
@@ -412,29 +411,14 @@ A set of commands to create address books, calendars, and to migrate address boo
 ::
 
  dav
-  dav:cleanup-chunks            Cleanup outdated chunks
   dav:create-addressbook        Create a dav address book
   dav:create-calendar           Create a dav calendar
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
   dav:sync-system-addressbook   Synchronizes users to the system 
                                 address book
-                                      
+
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
-
-``dav:cleanup-chunks`` cleans up outdated chunks (uploaded files) more than a certain number of days old.
-By default, the command cleans up chunks more than 2 days old. 
-However, by supplying the number of days to the command, the range can be increased.
-For example, in the example below, chunks older than 10 days will be removed.
-
-::
-
- sudo -u www-data php occ dav:cleanup-chunks 10
- 
- # example output
- Cleaning chunks older than 10 days(2017-11-08T13:13:45+00:00)
- Cleaning chunks for admin
-    0 [>---------------------------]
 
 The syntax for ``dav:create-addressbook`` and  ``dav:create-calendar`` is 
 ``dav:create-addressbook [user] [name]``. This example creates the addressbook 
@@ -506,7 +490,7 @@ This is example converts SQLite to MySQL/MariaDB:
  sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 
  oc_database
 
-For a more detailed explanation see :doc:`../../configuration/database/db_conversion`.
+For a more detailed explanation see :doc:`../../configuration_database/db_conversion`.
 
 .. _encryption_label:
 
@@ -569,7 +553,7 @@ You must first put your ownCloud server into :ref:`single-user mode<maintenance_
 
 ::
 
- sudo -u www-data php occ encryption:decrypt freda
+ sudo -u www-data php occ encryption:decrypt-all freda
 
 Users must have enabled recovery keys on their Personal pages. 
 You must first put your ownCloud server into :ref:`single-user mode <maintenance_commands_label>` to prevent any user activity until decryption is completed.
@@ -584,7 +568,7 @@ It is not possible to disable it.
 
 ``encryption:migrate`` migrates encryption keys after a major ownCloud version upgrade. 
 You may optionally specify individual users in a space-delimited list.
-See :doc:`../../configuration/files/encryption_configuration` to learn more.
+See :doc:`../../configuration_files/encryption_configuration` to learn more.
  
 .. _federation_sync_label:
  
@@ -761,149 +745,6 @@ Use ``files_external:export`` to export all admin mounts to stdout, and ``files_
   It is not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
 .. _group_commands_label:
-
-Group Commands
---------------
-
-The ``group`` commands provide a range of functionality for managing ownCloud groups. 
-This includes creating and removing groups and managing group membership.
-Group names are case-sensitive, so "Finance" and "finance" are two different groups.
-
-The full list of commands is:
-
-::
-
- group
-  group:add                           adds a group
-  group:add-member                    add members to a group
-  group:delete                        deletes the specified group
-  group:list                          list groups
-  group:list-members                  list group members
-  group:remove-member                 remove member(s) from a group
-
-Creating Groups
-^^^^^^^^^^^^^^^
-
-You can create a new group with the ``group:add`` command. 
-The syntax is::
-
- group:add groupname
-
-This example adds a new group, called "Finance":
-
-:: 
- 
- sudo -u www-data php occ group:add Finance
-   Created group "Finance"
-
-Listing Groups
-^^^^^^^^^^^^^^
-
-You can list the names of existing groups with the ``group:list`` command.
-The syntax is::
-
-  group:list [options] [<search-pattern>]
-
-Groups containing the ``search-pattern`` string are listed. Matching is 
-not case-sensitive. If you do not provide a search-pattern then all groups 
-are listed.
-
-This example lists groups containing the string finance:: 
- 
- sudo -u www-data php occ group:list finance
-  - All-Finance-Staff
-  - Finance
-  - Finance-Managers
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty group:list finance
-  [
-    "All-Finance-Staff",
-    "Finance",
-    "Finance-Managers"
-  ]
-
-Listing Group Members
-^^^^^^^^^^^^^^^^^^^^^
-
-You can list the user IDs of group members with the ``group:list-members`` command.
-The syntax is::
-
-  group:list-members [options] <group>
-
-This example lists members of the Finance group:: 
- 
- sudo -u www-data php occ group:list-members Finance
-  - aaron: Aaron Smith
-  - julie: Julie Jones
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty group:list-members Finance
-  {
-    "aaron": "Aaron Smith",
-    "julie": "Julie Jones"
-  }
-
-Adding Members to Groups
-^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can add members to an existing group with the ``group:add-member`` command.
-Members must be existing users. 
-The syntax is::
-
- group:add-member [-m|--member [MEMBER]] <group>
-
-This example adds members "aaron" and "julie" to group "Finance":: 
-
- sudo -u www-data php occ group:add-member --member aaron --member julie Finance
-   User "aaron" added to group "Finance"
-   User "julie" added to group "Finance"
-
-You may attempt to add members that are already in the group, without error.
-This allows you to add members in a scripted way without needing to know if the user is already a member of the group. 
-For example::
-
- sudo -u www-data php occ group:add-member --member aaron --member julie --member fred Finance
-   User "aaron" is already a member of group "Finance"
-   User "julie" is already a member of group "Finance"
-   User fred" added to group "Finance"
-
-Removing Members from Groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can remove members from a group with the ``group:remove-member`` command.
-The syntax is::
-
- group:remove-member [-m|--member [MEMBER]] <group>
-
-This example removes members "aaron" and "julie" from group "Finance":: 
-
- sudo -u www-data php occ group:remove-member --member aaron --member julie Finance
-   Member "aaron" removed from group "Finance"
-   Member "julie" removed from group "Finance"
-
-You may attempt to remove members that have already been removed from the group, without error. 
-This allows you to remove members in a scripted way without needing to know if the user is still a member of the group. 
-For example:
-
-::
-
- sudo -u www-data php occ group:remove-member --member aaron --member fred Finance
-   Member "aaron" could not be found in group "Finance"
-   Member "fred" removed from group "Finance"
-
-Deleting a Group
-^^^^^^^^^^^^^^^^^
-
-To delete a group, you use the ``group:delete`` command, as in the example below:
-
-::
-
- sudo -u www-data php occ group:delete Finance
-   
-.. _integrity_check_label:
 
 Integrity Check
 ---------------
@@ -1507,17 +1348,12 @@ The full list, of commands is:
  user
   user:add                            adds a user
   user:delete                         deletes the specified user
-  user:disable                        disables the specified user
   user:enable                         enables the specified user
   user:inactive                       reports users who are known to owncloud, 
                                       but have not logged in for a certain number of days
   user:lastseen                       shows when the user was logged in last time
-  user:list                           list users
-  user:list-groups                    list groups for a user
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
-  user:setting                        Read and modify user settings
-  user:sync                           Sync local users with an external backend service
 
 Creating Users
 ^^^^^^^^^^^^^^
@@ -1527,7 +1363,6 @@ This command lets you set the following attributes:
 
 - **uid:** The ``uid`` is the user's username and their login name
 - **display name:** This corresponds to the **Full Name** on the Users page in your ownCloud Web UI
-- **email address**
 - **group**
 - **login name**
 - **password**
@@ -1536,7 +1371,7 @@ The command's syntax is:
 
 .. code-block:: console
 
- user:add [--password-from-env] [--display-name [DISPLAY-NAME]] [--email [EMAIL]] [-g|--group [GROUP]] [--] <uid>
+ user:add [--password-from-env] [--display-name [DISPLAY-NAME]] [-g|--group [GROUP]] [--] <uid>
 
 This example adds new user Layla Smith, and adds her to the **users** and **db-admins** groups. 
 Any groups that do not exist are created.
@@ -1549,7 +1384,6 @@ Any groups that do not exist are created.
    Confirm password: 
    The user "layla" was created successfully
    Display name set to "Layla Smith"
-   Email address set to "layla.smith@example.com"
    User "layla" added to group "users"
    User "layla" added to group "db-admins"
 
@@ -1574,7 +1408,7 @@ This example adds new user Fred Jones:
  Display name set to "Fred Jones"
  User "fred" added to group "users" 
 
-You can reset any user's password, including administrators (see :doc:`../../configuration/user/reset_admin_password`):
+You can reset any user's password, including administrators (see :doc:`../../configuration_user/reset_admin_password`):
 
 ::
 
@@ -1600,55 +1434,6 @@ To delete a user, you use the ``user:delete`` command, as in the example below:
 ::
 
  sudo -u www-data php occ user:delete fred
-   
-   
-Listing Users
-^^^^^^^^^^^^^
-
-You can list existing users with the ``user:list`` command.
-The syntax is::
-
-  user:list [options] [<search-pattern>]
-
-User IDs containing the ``search-pattern`` string are listed. Matching is 
-not case-sensitive. If you do not provide a search-pattern then all users 
-are listed.
-
-This example lists user IDs containing the string ron:: 
- 
- sudo -u www-data php occ user:list ron
-  - aaron: Aaron Smith
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty user:list
-  {
-    "aaron": "Aaron Smith",
-    "herbert": "Herbert Smith",
-    "julie": "Julie Jones"
-  }
-
-Listing Group Membership of a User
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-You can list the group membership of a user with the ``user:list-groups`` command.
-The syntax is::
-
-  user:list-groups [options] <uid>
-
-This example lists group membership of user julie:: 
- 
- sudo -u www-data php occ user:list-groups julie
-  - Executive
-  - Finance
-
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
-
- sudo -u www-data php occ --output=json_pretty user:list-groups julie
-  [
-    "Executive",
-    "Finance"
-  ]
 
 Finding The User's Last Login
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1659,106 +1444,6 @@ To view a user's most recent login, use the ``user:lastseen`` command, as in the
    
  sudo -u www-data php occ user:lastseen layla 
    layla's last login: 09.01.2015 18:46
-
-User Application Settings
-^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To manage application settings for a user, use the ``user:setting`` command. 
-This command provides the ability to:
-
-- Retrieve all settings for an application
-- Retrieve a single setting
-- Set a setting value
-- Delete a setting
-
-If you run the command and pass the help switch (``--help``), you will see the following output, in your terminal:
-
-::
-
-  $ ./occ user:setting --help
-  Usage:
-    user:setting [options] [--] <uid> [<app>] [<key>]
-
-  Arguments:
-    uid                                User ID used to login
-    app                                Restrict the settings to a given app [default: ""]
-    key                                Setting key to set, get or delete [default: ""]
-
-If you're new to the ``user:setting`` command, the descriptions for the ``app`` and ``key`` arguments may not be completely transparent. 
-So, here's a lengthier description of both.
-
-======== ======================================================================
-Argument Description
-======== ======================================================================
-app      When an value is supplied, ``user:setting`` limits the settings 
-         displayed, to those for that, specific, application — assuming that 
-         the application is installed, and that there are settings available 
-         for it. Some example applications are "core", "files_trashbin", and 
-         "user_ldap". A complete list, unfortunately, cannot be supplied, as it 
-         is impossible to know the entire list of applications which a user 
-         could, potentially, install.
-key      This value specifies the setting key to be manipulated (set, 
-         retrieved, or deleted) by the ``user:setting`` command.
-======== ======================================================================
-
-Retrieving User Settings
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-To retrieve all settings for a user, you need to call the ``user:setting`` command and supply the user's username, as in the example below.
-
-::
-
- sudo -u www-data php occ user:setting layla
-   - core:
-     - lang: en
-   - login:
-     - lastLogin: 1465910968
-   - settings:
-     - email: layla@example.tld
-
-Here, we see that the user has settings for the application ``core``, when they last logged in, and what their email address is. 
-
-To retrieve the user's settings for a specific application, you have to supply the username and the application's name, which you want to retrieve the settings for; such as in the example below::
-
- sudo -u www-data php occ user:setting layla core
-  - core:
-     - lang: en
-
-In the output, you can see that one setting is in effect, ``lang``, which is set to ``en``. 
-To retrieve the value of a single application for a user, use the ``user:setting`` command, as in the example below.
-
-::
-
- sudo -u www-data php occ user:setting layla core lang
- 
-This will display the value for that setting, such as ``en``.
-
-Setting a Setting
-~~~~~~~~~~~~~~~~~
-
-To set a setting, you need to supply four things; these are: 
-
-- the username
-- the application (or setting category)
-- the ``--value`` switch
-- the, quoted, value for that setting
-
-Here's an example of how you would set the email address of the user ``layla``.
-
-::
-
- sudo -u www-data php occ user:setting layla settings email --value "new-layla@example.tld"
-
-Deleting a Setting
-~~~~~~~~~~~~~~~~~~
-
-Deleting a setting is quite similar to setting a setting. 
-In this case, you supply the username, application (or setting category) and key as above. 
-Then, in addition, you supply the ``--delete`` flag.
-
-::
-
- sudo -u www-data php occ user:setting layla settings email --delete
 
 Generating a User Count Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -1778,54 +1463,6 @@ Generate a simple report that counts all users, including users on external user
  |                  |    |
  | user directories | 2  |
  +------------------+----+
-
-.. _syncing_user_accounts_label:
-
-Syncing User Accounts
-^^^^^^^^^^^^^^^^^^^^^
-
-This command syncs users stored in external backend services, such as *LDAP*, *Shibboleth*, and *Samba*, with ownCloud's, internal, user database.
-However, it's not essential to run it regularly, unless you have a large number of users whose account properties have changed in a backend outside of ownCloud.
-When run, it will pick up changes from alternative user backends, such as LDAP where properties like ``cn`` or ``display name`` have changed, and sync them with ownCloud's user database.
-If accounts are found that no longer exist in the external backend, you are given the choice of either removing or disabling the accounts. 
-
-.. note:: 
-   It's also :ref:`one of the commands <available_background_jobs_label>` that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
-
-.. note::
-   This command replaces the old ``show-remnants`` functionality, and brings the LDAP feature more in line with the rest of ownCloud's functionality.
-
-Below are examples of how to use the command with an *LDAP*, *Samba*, and *Shibboleth* backend.
-
-LDAP
-~~~~
-
-::
-
-  sudo -u www-data ./occ user:sync "OCA\User_LDAP\User_Proxy"
-
-Samba
-~~~~~
-
-::
-
-  sudo -u www-data ./occ user:sync "OCA\User\SMB" -vvv
-
-Shibboleth
-~~~~~~~~~~
-
-::
-
-  sudo -u www-data ./occ user:sync "OCA\User_Shibboleth\UserBackend"
-
-Syncing via cron job
-~~~~~~~~~~~~~~~~~~~~
-
-Here is an example for syncing with LDAP four times a day on Ubuntu:
-
-  crontab -e -u www-data
-  
-  * */6 * * * /usr/bin/php /var/www/owncloud/occ user:sync -vvv --missing-account-action="remove" -n "OCA\User_LDAP\User_Proxy"
  
 .. _versions_label:
  
@@ -2020,13 +1657,13 @@ Enabling verbosity displays timestamps:
 
  sudo -u www-data php occ upgrade -v
  ownCloud or one of the apps require upgrade - only a limited number of commands are available
- 2015-06-23T09:06:15+0000 Turned on maintenance mode
- 2015-06-23T09:06:15+0000 Checked database schema update
- 2015-06-23T09:06:15+0000 Checked database schema update for apps
- 2015-06-23T09:06:15+0000 Updated database
- 2015-06-23T09:06:15+0000 Updated <files_sharing> to 0.6.6
- 2015-06-23T09:06:15+0000 Update successful
- 2015-06-23T09:06:15+0000 Turned off maintenance mode
+ Turned on maintenance mode
+ Checked database schema update
+ Checked database schema update for apps
+ Updated database
+ Updated <files_sharing> to 0.6.6
+ Update successful
+ Turned off maintenance mode
 
 If there is an error it throws an exception, and the error is detailed in your ownCloud logfile, so you can use the log output to figure out what went wrong, or to use in a bug report.
 
@@ -2042,43 +1679,7 @@ If there is an error it throws an exception, and the error is detailed in your o
  Update failed
  Turned off maintenance mode
 
-.. _two_factor_auth_label:
-
-Two-factor Authentication
--------------------------
-
-If a two-factor provider app is enabled, it is enabled for all users by default (though the provider can decide whether or not the user has to pass the challenge).
-In the case of an user losing access to the second factor (e.g., a lost phone with two-factor SMS verification), the admin can temporarily disable the two-factor check for that user via the occ command:
-
-::
-
- sudo -u www-data php occ twofactor:disable <username>
-
-To re-enable two-factor authentication again, use the following commmand:
-
-::
-
- sudo -u www-data php occ twofactor:enable <username>
-
 .. _disable_user_label:
-
-Disable Users
--------------
-
-Admins can disable users via the occ command too:
-
-::
-
- sudo -u www-data php occ user:disable <username>
-
-Use the following command to enable the user again:
-
-::
-
- sudo -u www-data php occ user:enable <username>
-
-.. note::
-   Once users are disabled, their connected browsers will be disconnected.
 
 Finding Inactive Users
 ^^^^^^^^^^^^^^^^^^^^^^
