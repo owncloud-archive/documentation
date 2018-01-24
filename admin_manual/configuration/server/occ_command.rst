@@ -519,23 +519,20 @@ Encryption
 ::
 
  encryption
-  encryption:change-key-storage-root   Change key storage root
-  encryption:decrypt-all               Disable server-side encryption and 
-                                       decrypt all files
-  encryption:disable                   Disable encryption
-  encryption:enable                    Enable encryption
-  encryption:enable-master-key         Enable the master key. Only available 
-                                       for fresh installations with no existing 
-                                       encrypted data! There is also no way to 
-                                       disable it again.
-  encryption:encrypt-all               Encrypt all files for all users
-  encryption:list-modules              List all available encryption modules
-  encryption:migrate                   initial migration to encryption 2.0
-  encryption:recreate-master-key       Replace existing master key with new one. 
-                                       Encrypt the file system with newly created master key.
-  encryption:set-default-module        Set the encryption default module
-  encryption:show-key-storage-root     Show current key storage root
-  encryption:status                    Lists the current status of encryption
+  encryption:change-key-storage-root  Change key storage root
+  encryption:decrypt-all              Disable server-side encryption and decrypt all files
+  encryption:disable                  Disable encryption
+  encryption:enable                   Enable encryption
+  encryption:encrypt-all              Encrypt all files for all users
+  encryption:list-modules             List all available encryption modules
+  encryption:migrate                  initial migration to encryption 2.0
+  encryption:recreate-master-key      Replace existing master key with new one. Encrypt the file system with 
+                                      newly created master key
+  encryption:select-encryption-type   Select the encryption type. The encryption types available are: masterkey and 
+                                      user-keys. There is also no way to disable it again.
+  encryption:set-default-module       Set the encryption default module
+  encryption:show-key-storage-root    Show current key storage root
+  encryption:status                   Lists the current status of encryption
   
 ``encryption:status`` shows whether you have active encryption, and your default encryption module. 
 To enable encryption you must first enable the Encryption app, and then run ``encryption:enable``:
@@ -579,11 +576,6 @@ You must first put your ownCloud server into :ref:`single-user mode <maintenance
 
 Use ``encryption:disable`` to disable your encryption module. 
 You must first put your ownCloud server into :ref:`single-user mode <maintenance_commands_label>` to prevent any user activity.
-
-``encryption:enable-master-key`` creates a new master key, which is used for all user data instead of individual user keys. 
-This is especially useful to enable single-sign on. 
-Use this only on fresh installations with no existing data, or on systems where encryption has not already been enabled. 
-It is not possible to disable it.
 
 ``encryption:migrate`` migrates encryption keys after a major ownCloud version upgrade. 
 You may optionally specify individual users in a space-delimited list.
