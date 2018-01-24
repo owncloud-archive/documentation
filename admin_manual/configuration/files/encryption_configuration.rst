@@ -164,7 +164,7 @@ To enable master key based encryption:
 
 ::
 
-  php occ encryption:enable-master-key
+  php occ encryption:select-encryption-type masterkey
 
 .. note::
 
