@@ -2,7 +2,7 @@
 Release Notes
 =============
 
-* :ref:`10.0.5_release_notes_label`
+* :ref:`10.0.6_release_notes_label`
 * :ref:`10.0.4_release_notes_label`
 * :ref:`10.0.3_release_notes_label`
 * :ref:`10.0.1_release_notes_label`
@@ -14,12 +14,12 @@ Release Notes
 * :ref:`8.0_release_notes_label`
 * :ref:`7.0_release_notes_label`
 
-.. _10.0.5_release_notes_label:
+.. _10.0.6_release_notes_label:
 
-Changes in 10.0.5
+Changes in 10.0.6
 -----------------
 
-Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.5 that need your attention. You can also read `the full ownCloud Server changelog`_ for further details on what has changed.
+Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.6 that need your attention. You can also read `the full ownCloud Server changelog`_ for further details on what has changed.
 
 Technology preview for PHP 7.2 support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -50,7 +50,7 @@ Fixes and improvements for the Mail Template Editor
 Known issues
 ~~~~~~~~~~~~
 
-To date there are no known issues related to ownCloud Server 10.0.5.
+To date there are no known issues related to ownCloud Server 10.0.6.
 
 .. _10.0.4_release_notes_label:
 
