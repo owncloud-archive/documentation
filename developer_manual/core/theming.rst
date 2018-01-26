@@ -27,7 +27,7 @@ All themes, whether copied or new, must meet two key criteria, these are:
 2. They require a configuration file called ``appinfo/info.xml`` to be present.
 
 .. note:: 
-   When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_.
+   When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_. To get rid of the warning you have to trigger a rescan in the admin page.
    This is slightly complicated by the fact that without the file a warning will be displayed. 
    However, this is to be corrected in the next release, 10.0.3.
 
