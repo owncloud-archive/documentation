@@ -619,6 +619,11 @@ File Operations
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
+The files:cleanup command
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+``files:cleanup`` tidies up the server's file cache by deleting all file entries that have no matching entries in the storage table. 
+
 The files:scan command
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -700,13 +705,11 @@ The following commands show how to enable single user mode, run a repair file sc
 .. note:: 
    We strongly suggest that you backup the database before running this command.
 
-The files:cleanup command
-^^^^^^^^^^^^^^^^^^^^^^^^^
+The files:transfer-ownership command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-``files:cleanup`` tidies up the server's file cache by deleting all file entries that have no matching entries in the storage table. 
 You may transfer all files and shares from one user to another. 
 This is useful before removing a user. 
-
 For example, to move all files from ``<source-user>`` to ``<destination-user>``, use the following command:
 
 ::
