@@ -144,6 +144,30 @@ Some common problems / error messages found in your logfiles as described above:
   PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is
   failing. More information on how to correctly configure your environment can be
   found `at the forums <https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819>`_.
+  
+OAuth2
+------
+  
+.. _bearer_auth_header_problem_label:
+
+ownCloud clients cannot connect to the ownCloud server
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If ownCloud clients cannot connect to your ownCloud server, check to see if `PROPFIND` requests receive ``HTTP/1.1 401 Unauthorized`` responses. 
+If this is happening, more than likely your webserver configuration is stripping out `the bearer authorization header`_. 
+
+If you’re using the Apache web server, add the following ``SetEnvIf`` directive to your Apache configuration, whether in the general Apache config, in a configuration include file, or in ownCloud’s .htaccess file.
+
+::
+
+  SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+  
+Alternatively, if you’re using NGINX, add the following configuration to your NGINX setup:
+
+::
+
+  # Adding this allows the variable to be accessed with $_SERVER['Authorization']
+  fastcgi_param Authorization $http_authorization;
 
 Missing Data Directory
 ----------------------
@@ -375,3 +399,4 @@ first.
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
    https://doc.owncloud.org/server/10.0/developer_manual/bugtracker/index.html
+.. _the bearer authorization header: https://tools.ietf.org/html/rfc6750
