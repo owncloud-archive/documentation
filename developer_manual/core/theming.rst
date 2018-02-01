@@ -13,6 +13,11 @@ However, this documentation only covers customizing the web front-end, *so far*.
    sure you change any references to match the location of your owncloud
    installation.
 
+To save you time and effort, you can use the shell script below, to create the basis of a new theme from ownCloud's example theme.
+
+.. literalinclude:: ../scripts/theme-bootstrap.sh
+   :language: bash
+
 How to Create a New Theme
 -------------------------
 
