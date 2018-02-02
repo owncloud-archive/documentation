@@ -61,3 +61,5 @@ perform an authentication request, establishing the storage connection.
 
 .. figure:: images/dropbox-oc.png
    :alt: Dropbox storage mount configuration.
+
+If ownCloud client’s are unable to connect to your ownCloud server, check that the bearer authorization header :ref:`is not being stripped out <bearer_auth_header_problem_label>`.
