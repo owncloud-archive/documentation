@@ -51,6 +51,15 @@ All log information will be sent to your default syslog daemon.
     "logfile" => "",
     "loglevel" => "3",
 
+The syslog format can be changed to remove or add information.
+In addition to the ``%replacements%`` below ``%level%`` can be used, but it is used
+as a dedicated parameter to the syslog logging facility anyway.
+
+::
+    'log.syslog.format' => '[%reqId%][%remoteAddr%][%user%][%app%][%method%][%url%] %message%',
+    // 'log.syslog.format' => '{%app%} %message%', // For the old syslog message format
+
+
 Conditional Logging Level Increase
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
