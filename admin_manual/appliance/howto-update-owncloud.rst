@@ -8,7 +8,7 @@ There are two options to update an ownCloud installation hosted on an ownCloud X
 - `Use the Command Line`_
 
 .. WARNING::
-   Do not use the ownCloud build in web updater!
+   Do not use the ownCloud built in web updater!
 
 Use the Univention Management Console
 -------------------------------------
