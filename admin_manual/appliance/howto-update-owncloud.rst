@@ -7,15 +7,18 @@ There are two options to update an ownCloud installation hosted on an ownCloud X
 - `Use the Univention Management Console`_
 - `Use the Command Line`_
 
+.. WARNING::
+   Do not use the ownCloud build in web updater!
+
 Use the Univention Management Console
 -------------------------------------
 
 Using the Univention Management Console, there are two paths to upgrade an existing ownCloud installation:
 
-- `In-place Upgrade (for 10.1 users)`_
+- `In-place Upgrade (for 10.0 users)`_
 - `Uninstall the Existing Version and Install the New Version (for 9.1 users)`_
 
-In-place Upgrade (for 10.1 users)
+In-place Upgrade (for 10.0 users)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To perform an in-place upgrade, after logging in to the Univention server, under "**Administration**", click the first option labeled "**System and domain settings**".
