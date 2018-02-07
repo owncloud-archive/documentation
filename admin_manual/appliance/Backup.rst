@@ -14,7 +14,7 @@ The file name is ::
 
   appcenter-backup-owncloud:date
 
-There you find your data and conf folders. 
+In it, you find your data and conf folders. 
 
 Your database backup is in ::
 
