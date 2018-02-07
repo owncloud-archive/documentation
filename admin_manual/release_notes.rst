@@ -35,7 +35,7 @@ ownCloud Server 10.0.6 is a hotfix follow-up release that takes care of an issue
 Changes in 10.0.5
 -----------------
 
-Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.6 that need your attention. You can also read `the full ownCloud Server changelog`_ for further details on what has changed.
+Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.5 that need your attention. You can also read `the full ownCloud Server changelog`_ for further details on what has changed.
 
 Technology preview for PHP 7.2 support
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
