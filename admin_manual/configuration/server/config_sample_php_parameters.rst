@@ -41,7 +41,7 @@ for your ownCloud server to operate.
 This is a unique identifier for your ownCloud installation, created
 automatically by the installer. This example is for documentation only,
 and you should never use it because it will not work. A valid ``instanceid``
-is created when you install ownCloud.
+is created when you install ownCloud. Needs to start with a letter.
 
 'instanceid' => 'd3c944a9a',
 
@@ -560,6 +560,13 @@ Available values:
 * ``disabled``
     trash bin auto clean disabled, files and folders will be kept forever
 
+::
+
+	'trashbin_purge_limit' => 50,
+
+This setting defines percentage of free space occupied by deleted files
+that triggers auto purging of deleted files for this user
+
 File versions
 -------------
 
@@ -714,6 +721,15 @@ to distinguish between them. ``syslog_tag`` can be set per instance
 with a unique id. Only available if ``log_type`` is set to ``syslog``.
 
 The default value is ``ownCloud``.
+
+::
+
+	'log.syslog.format' => '[%reqId%][%remoteAddr%][%user%][%app%][%method%][%url%] %message%',
+
+The syslog format can be changed to remove or add information.
+
+In addition to the %replacements% below %level% can be used, but it is used
+as a dedicated parameter to the syslog logging facility anyway.
 
 ::
 
@@ -1367,14 +1383,6 @@ Define a default folder for shared files and folders other than root.
 
 ::
 
-	'theme' => '',
-
-If you are applying a theme to ownCloud, enter the name of the theme here.
-
-The default location for themes is ``owncloud/themes/``.
-
-::
-
 	'cipher' => 'AES-256-CFB',
 
 The default cipher for encrypting files. Currently AES-128-CFB and
@@ -1563,6 +1571,12 @@ modify *ANY* settings in this file without reading the documentation.
 Set this property to true if you want to enable the files_external local mount Option.
 
 Default: false
+
+::
+
+	'smb.logging.enable' => false,
+
+Set this property to true if you want to enable debug logging for SMB access.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.
