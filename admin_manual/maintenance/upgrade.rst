@@ -30,14 +30,11 @@ After the upgrade is complete re-enable any which are compatible with the new re
 .. warning::
    Install unsupported apps at your own risk.
 
-.. _owncloud.org/install/:
-   https://owncloud.org/install/  
-
 Upgrade Options
 ---------------
 
 There are three ways to upgrade your ownCloud server.
-The first — *and recommended* — way is to perform a :doc:`manual upgrade <manual_upgrade>`, using `the latest ownCloud release <owncloud.org/install/>`_.
+The first — *and recommended* — way is to perform a :doc:`manual upgrade <manual_upgrade>`, using `the latest ownCloud release <https://owncloud.org/install/>`_.
 The second way is to use your distribution's :doc:`package manager <package_upgrade>`, in conjunction with our official ownCloud repositories. 
 However, this approach should not be used unattended nor in clustered setups.
 

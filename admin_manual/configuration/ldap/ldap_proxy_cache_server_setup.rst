@@ -104,8 +104,8 @@ or
 
   ldapsearch -H ldaps://localhost:636 -x -LLL -D "cn=admin,cn=users,dc=example,dc=com" -b "cn=users,dc=example,dc=com" -W "(cn=Administrator)" name
 
--h = host adress (Example: localhost or 192.168.1.1)
--H = host adress (Example: ldap:// or ldaps:// hostname or ip and port :389 or :636 )
+-h = host address (Example: localhost or 192.168.1.1)
+-H = host address (Example: ``ldap://`` or ``ldaps://`` hostname or ip and port :389 or :636 )
 -x = simple authentication
 -b = Search Base, (Example: "cn=Users,dc=example,dc=com")
 -D = User with permissions (Example: "cn=Admin,dc=example,dc=com")

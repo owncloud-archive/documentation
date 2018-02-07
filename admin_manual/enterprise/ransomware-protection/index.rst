@@ -18,7 +18,7 @@ About Ransomware Protection
 
 The app is tasked with *detecting*, *preventing*, and *reverting* anomalies.
 Anomalies are file operations (including *create*, *update*, *delete*, and *move*) not intentionally conducted by the user.
-It aims to do so in two ways: `prevention <ransomware_prevention_label>`_, and `protection <ransomware_protection_label>`_.
+It aims to do so in two ways: :ref:`prevention <ransomware_prevention_label>`, and :ref:`protection <ransomware_protection_label>`.
 
 .. _ransomware_prevention_label:
 
@@ -36,7 +36,7 @@ The first line of defense against such threats is a blacklist that blocks write 
 
 Ransomware Protection ships with `a static extension list`_ of around 1,500 file extensions.
 As new extensions are regularly created, this list also needs to be regularly reviewed and updated.
-Future releases of Ransomware Protection will include an updated list and the ability to update the list via syncing with `FSRM's API`_ by using :doc:`occ <../occ_command>`.
+Future releases of Ransomware Protection will include an updated list and the ability to update the list via syncing with `FSRM's API`_ by using :doc:`occ <../../configuration/server/occ_command>`.
 
 .. important:: 
    Please check the provided ransomware blacklist!

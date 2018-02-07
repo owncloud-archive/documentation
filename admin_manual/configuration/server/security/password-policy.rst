@@ -22,7 +22,7 @@ It supports configuring a basic password policy, which includes:
 #. Setting a password length
 #. Whether to enforce at least one upper and lower case character, a numerical character and a special character.
 
-.. figure:: ../../../configuration/files/images/security-app-password-policy.png
+.. figure:: ../../../images/configuration/server/security/security-app-password-policy.png
 
 
 .. Links
