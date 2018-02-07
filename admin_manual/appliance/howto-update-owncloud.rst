@@ -18,6 +18,10 @@ Using the Univention Management Console, there are two paths to upgrade an exist
 In-place Upgrade (for 10.1 users)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+.. note ::
+
+   Existing certificates and themes persist after an upgrade
+
 To perform an in-place upgrade, after logging in to the Univention server, under "**Administration**", click the first option labeled "**System and domain settings**".
 This takes you to the Univention Management Console.
 From there, click the "**Software**" shortcut (1), and then click "**Software update**" (2).
