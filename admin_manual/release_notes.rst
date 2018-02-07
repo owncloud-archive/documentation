@@ -2,7 +2,9 @@
 Release Notes
 =============
 
+* :ref:`10.0.7_release_notes_label`
 * :ref:`10.0.6_release_notes_label`
+* :ref:`10.0.5_release_notes_label`
 * :ref:`10.0.4_release_notes_label`
 * :ref:`10.0.3_release_notes_label`
 * :ref:`10.0.1_release_notes_label`
@@ -14,9 +16,23 @@ Release Notes
 * :ref:`8.0_release_notes_label`
 * :ref:`7.0_release_notes_label`
 
+.. _10.0.7_release_notes_label:
+
+Changes in 10.0.7
+-----------------
+
+ownCloud Server 10.0.7 is a hotfix follow-up release that takes care of an issue regarding "app passwords" (https://github.com/owncloud/core/pull/30363). Please consider the ownCloud Server 10.0.5 release notes.
+
 .. _10.0.6_release_notes_label:
 
 Changes in 10.0.6
+-----------------
+
+ownCloud Server 10.0.6 is a hotfix follow-up release that takes care of an issue during the build process (https://github.com/owncloud/core/pull/30265). Please consider the ownCloud Server 10.0.5 release notes.
+
+.. _10.0.5_release_notes_label:
+
+Changes in 10.0.5
 -----------------
 
 Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.6 that need your attention. You can also read `the full ownCloud Server changelog`_ for further details on what has changed.
@@ -50,7 +66,7 @@ Fixes and improvements for the Mail Template Editor
 Known issues
 ~~~~~~~~~~~~
 
-To date there are no known issues related to ownCloud Server 10.0.6.
+To date there are no known issues related to ownCloud Server 10.0.5.
 
 .. _10.0.4_release_notes_label:
 
