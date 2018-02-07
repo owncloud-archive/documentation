@@ -1,13 +1,9 @@
-================
-Active Directory
-================
+============================
+Active Directory Integration
+============================
 
-You have tested the appliance with your Active Directory environment, 
+In case you have tested the appliance with your Active Directory environment, removed the appliance and now want to include it again - you might run into some issues.
 
-deleted it and now want to go in to production or test it again and 
-
-you can't include the appliance in your environment again?
-
-The solution is - you have to clean up the prevouis DNS entries on your Domain Controller.
+The solution is to clean up the previous DNS entries in your Domain Controller.
 
 After that, you should be able to include the appliance again in your Active Directory environment.
