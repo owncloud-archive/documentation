@@ -2,6 +2,9 @@
 The Installation Wizard
 =======================
 
+.. warning::
+   If you are planning to use the installation wizard, we **strongly** encourage you to protect it, through some form of `password authentication`_, or `access control`_. If the installer is left unprotected when exposed to the public internet, there is the possibility that a malicious actor could finish the installation and block you out — or worse. So please ensure that only you — or someone from your organization — can access the web installer.
+
 Quick Start
 -----------
 
@@ -239,3 +242,8 @@ and files:
   world
 
 These strong permissions prevent upgrading your ownCloud server; see :ref:`set_updating_permissions_label` for a script to quickly change permissions to allow upgrading.
+
+.. Links
+   
+.. _password authentication: https://wiki.apache.org/httpd/PasswordBasicAuth
+.. _access control: https://httpd.apache.org/docs/2.4/howto/access.html
