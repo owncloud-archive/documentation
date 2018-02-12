@@ -56,27 +56,57 @@ In addition to the ``%replacements%`` below ``%level%`` can be used, but it is u
 as a dedicated parameter to the syslog logging facility anyway.
 
 ::
+
     'log.syslog.format' => '[%reqId%][%remoteAddr%][%user%][%app%][%method%][%url%] %message%',
-    // 'log.syslog.format' => '{%app%} %message%', // For the old syslog message format
+
+       For the old syslog message format use:
+     
+    'log.syslog.format' => '{%app%} %message%', 
 
 
 Conditional Logging Level Increase
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can configure the logging level to automatically increase to ``debug`` when one of three conditions are met:
+You can configure the logging level to automatically increase to ``debug`` when the first condition inside a condition block is met.
+All conditions are optional !
 
-# ``shared_secret``: If a request parameter with the name ``log_secret`` is set to this value the condition is met.
+ - ``shared_secret``: A unique token. If a http(s) request parameter named ``log_secret`` is added 
+               to the request and set to this token, the condition is met.
+ - ``users``:  If the current request is done by one of the specified users,
+               this condition is met.
+ - ``apps``:   If the log message is invoked by one of the specified apps,
+               this condition is met.
+ - ``logfile``: The log message invoked gets redirected to this logfile 
+	   when a condition above is met.
+	   
+Notes regarding the logfile key:
 
-# ``users``: If the current request is done by one of the specified users, this condition is met.
+1. If no logfile is defined, the standard logfile is used.
+2. Not applicable when using syslog.
 
-# ``apps``: If the log message is invoked by one of the specified apps, this condition is met.
 
-The following example demonstrates what all three conditions look like::
+| The following example demonstrates how all three conditions can look like.
+| The first one that matches triggers the condition block writing the log entry to the defined logfile.
+
+::
 
  'log.condition' => [
 	'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-	'users' => ['sample-user'],
-	'apps' => ['files'],
+	'users' => ['user1', 'user2'],
+	'apps' => ['gallery'],
+	'logfile' => '/tmp/test2.log'
  ],
+
+Based on the conditional log settings above, following logs are written to the same logfile defined:
+
+- Requests matching ``log_secret`` are debug logged.
+
+::
+
+  curl -X PROPFIND -u sample-user:password \
+    https://your_domain/remote.php/webdav/?log_secret=57b58edb6637fe3059b3595cf9c41b9
+
+- ``user1`` and ``user2`` gets debug logged.
+- Access to app ``gallery`` gets debug logged.
 
 .. _PHP date function: http://www.php.net/manual/en/function.date.php

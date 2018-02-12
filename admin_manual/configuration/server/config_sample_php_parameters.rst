@@ -722,32 +722,36 @@ The default value is ``ownCloud``.
 			'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
 			'users' => ['user1'],
 			'apps' => ['files_texteditor'],
-			'logfile' => '/tmp/test.log'
+			'logfile' => '/tmp/test1.log'
 	        ],
 	        [
-			'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-			'users' => ['user1'],
+			'shared_secret' => '83b58edb6637fd3059b3595cf9c52a6',
+			'users' => ['user2'],
 			'apps' => ['gallery'],
-			'logfile' => '/tmp/gallery.log'
+			'logfile' => '/tmp/test2.log'
 	        ],
 	],
 
-Log condition for log level increase based on conditions. Once one of these
-conditions is met, the required log level is set to debug. This allows to
-debug specific requests, users or apps
+Log condition for log level increasement based on conditions. 
+You can configure the logging level to automatically increase to ``debug`` when the first condition inside a condition block is met.
+This allows debugging specific requests, users or apps. Defaults to an empty array. All conditions are optional !
 
 Supported conditions:
- - ``shared_secret``: if a request parameter with the name `log_secret` is set to
-               this value the condition is met
- - ``users``:  if the current request is done by one of the specified users,
-               this condition is met
- - ``apps``:   if the log message is invoked by one of the specified apps,
-               this condition is met
- - ``logfile``: the log message invoked by the specified apps get redirected to
-	   this logfile, this condition is met
-	   Note: Not applicable when using syslog.
+ - ``shared_secret``: A unique token. If a http(s) request parameter named ``log_secret`` is added 
+               to the request and set to this token, the condition is met.
+ - ``users``:  If the current request is done by one of the specified users,
+               this condition is met.
+ - ``apps``:   If the log message is invoked by one of the specified apps,
+               this condition is met.
+ - ``logfile``: The log message invoked gets redirected to this logfile 
+	   when a condition above is met.
 
-Defaults to an empty array.
+Notes regarding the logfile key:
+
+1. If no logfile is defined, the standard logfile is used.
+2. Not applicable when using syslog.
+
+For multiple entries in ``users`` or ``apps`` use the following format: ``['value1', 'value2', '...']``
 
 ::
 
