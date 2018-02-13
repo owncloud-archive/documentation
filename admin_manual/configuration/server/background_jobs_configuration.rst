@@ -105,9 +105,7 @@ A number of existing background jobs are available to be run just for specific t
 
 .. note::
    These jobs are generally only needed on large instances and can be run as background jobs.
-   If the number of users in your installation ranges between 1,000 and 3,000, or if you’re using LDAP
-   and it becomes a bottleneck, then admins can delete several entries in the `oc_jobs` table and replace
-   them with the corresponding `occ` command, which you can see here:
+   If the number of users in your installation ranges between 1,000 and 3,000, or if you’re using LDAP and it becomes a bottleneck, then admins can delete several entries in the `oc_jobs` table and replace them with the corresponding `occ` command, which you can see here:
 
    * ``OCA\\DAV\\Command\\CleanupChunks`` -> ``occ dav:cleanup-chunks``
    * ``OCA\\DAV\CardDAV\\SyncJob`` -> ``occ dav:sync-system-addressbook``
