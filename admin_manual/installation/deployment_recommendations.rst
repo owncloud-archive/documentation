@@ -379,15 +379,11 @@ The solution is to send all write requests to a single server, instead of all of
 
 ---------
 
-If you are sharing via public link and encounter the error message "Unspecified share exception" in your web ui this is the solution:
-
 Set the wsrep_sync_wait parameter to 1 on all nodes of your Galera Cluster. It is disabled per default.
 
 What this parameter actually does:
 
 When you enable this parameter, the node triggers causality checks in response to certain types of queries. During the check, the node blocks new queries while the database server catches up with all updates made in the cluster to the point where the check was begun. Once it reaches this point, the node executes the original query. source http://galeracluster.com/documentation-webpages/mysqlwsrepoptions.html
-
-note: If you encounter the error and reload the page, the error disappears and the share works. This guide's goal is simply to help you avoiding errors.
 
 What's the issue?
 
