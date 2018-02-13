@@ -379,11 +379,15 @@ The solution is to send all write requests to a single server, instead of all of
 
 ---------
 
-Set the wsrep_sync_wait parameter to 1 on all nodes of your Galera Cluster. It is disabled per default.
+Set the 
+
+.. code-block:: wsrep_sync_wait
+
+parameter to 1 on all nodes of your Galera Cluster. It is disabled by default.
 
 What this parameter actually does:
 
-When you enable this parameter, the node triggers causality checks in response to certain types of queries. During the check, the node blocks new queries while the database server catches up with all updates made in the cluster to the point where the check was begun. Once it reaches this point, the node executes the original query. source http://galeracluster.com/documentation-webpages/mysqlwsrepoptions.html
+When you enable this parameter, the node triggers causality checks in response to certain types of queries. During the check, the node blocks new queries while the database server catches up with all updates made in the cluster to the point where the check begun. Once it reaches this point, the node executes the original query. source http://galeracluster.com/documentation-webpages/mysqlwsrepoptions.html
 
 What's the issue?
 
