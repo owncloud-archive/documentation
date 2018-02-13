@@ -443,14 +443,14 @@ Email Field:
 User Home Folder Naming Rule:
   By default, the ownCloud server creates the user directory in your ownCloud 
   data directory and gives it the ownCloud username, e.g., ``/var/www/owncloud/data/5a9df029-322d-4676-9c80-9fc8892c4e4b`` 
-  if your data directory is set to be ``/var/www/owncloud/data``.
+  if your data directory is set to ``/var/www/owncloud/data``.
 
   It is possible to override this setting and name it after an LDAP
   attribute value, e.g., ``attr:cn``. The attribute can return either an absolute path, e.g. 
   ``/mnt/storage43/alice`` or a relative path which must not begin with a ``/``, e.g. ``CloudUsers/CookieMonster``.
   This relative path is then created inside the data directory (e.g. ``/var/www/owncloud/data/CloudUsers/CookieMonster``).
   
-  Since ownCloud 8.0.10, 8.1.5, 8.2.0 and up the home folder rule is enforced. This means that once you
+  Since ownCloud 8.0.10 and up the home folder rule is enforced. This means that once you
   set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all
   users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem
   will not be set up for that user, so their file shares will not be available to other users.
@@ -458,7 +458,7 @@ User Home Folder Naming Rule:
 
   sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1 
 
-  Since ownCloud 10 the home folder naming rule is only applied when first provisioning
+  Since ownCloud 10.0 the home folder naming rule is only applied when first provisioning
   the user. This prevents data loss due to reprovisioning the users home folder in case
   of unintentional changes in LDAP.
 
