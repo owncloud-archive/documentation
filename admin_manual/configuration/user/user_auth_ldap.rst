@@ -308,12 +308,22 @@ Directory Settings
 User Display Name Field:
   The attribute that should be used as display name in ownCloud.
 
-  *  Example: *displayName*
+  * Example:
+
+    | *displayName*
+    | *givenName*
+    | *sn*
   
 2nd User Display Name Field:  
   An optional second attribute displayed in brackets after the display name, 
   for example using the ``mail`` attribute displays as ``Molly Foo 
   (molly@example.com)``.
+
+  * Example:
+
+    | *mail*
+    | *userPrincipalName*
+    | *sAMAccountName*
 
 Base User Tree:
   The base DN of LDAP, from where all users can be reached. This must be a 
@@ -526,13 +536,10 @@ users and groups are fetched correctly on the Users page.
 Syncing Users
 -------------
 
-You need to sync all LDAP users to your ownCloud database after they've been created, using :ref:`the occ command <syncing_user_accounts_label>`.
-Versions of ownCloud before 10.0 imported all users when the user page loaded, but this is no longer the case. 
+While users who match the login and user filters can log in, only synced users will be found in the sharing dialog. Whenever users log in their display name, email, quota, avatar and search attributes will be synced to ownCloud. If you want to keep the metadata up to date you can set up a cron job, using :ref:`the occ command <syncing_user_accounts_label>`.
+Versions of ownCloud before 10.0 imported all users when the users page was loaded, but this is no longer the case. 
 
-In versions of ownCloud from 10.0 onward, un-synced users *can* log in, **but** LDAP account changes won’t be reflected in ownCloud. 
-This includes user quotas and search option changes.
-
-Therefore, we recommend :ref:`creating a Cron job <cron_job_label>`, to automate regularly syncing LDAP users with your ownCloud database.
+We recommend :ref:`creating a Cron job <cron_job_label>`, to automate regularly syncing LDAP users with your ownCloud database.
 
 How Often Should the Job Run?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
