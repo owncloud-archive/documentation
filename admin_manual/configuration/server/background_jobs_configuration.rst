@@ -63,6 +63,9 @@ You can verify if the cron job has been added and scheduled by executing::
 
 Please refer to `the crontab man page`_ for the exact command syntax.
 
+.. note::
+   There are other methods to invoke programs by the system regularly, e.g. `systemd timers`_
+
 Webcron
 ~~~~~~~
 
@@ -177,3 +180,4 @@ It can be run, as follows, using the OCC command::
 .. _easyCron: http://www.easycron.com/
 .. _Cron Jobs: https://en.wikipedia.org/wiki/Cron
 .. _the crontab man page: https://linux.die.net/man/1/crontab
+.. _systemd timers: https://wiki.archlinux.org/index.php/Systemd/Timers
