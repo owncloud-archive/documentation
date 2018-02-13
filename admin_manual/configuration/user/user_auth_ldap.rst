@@ -387,7 +387,15 @@ Group Member association:
   ownCloud detects the value automatically. You should only change it if you
   have a very valid reason and know what you are doing.
 
-  * Example: *uniquemember*
+  * Example:
+
+    | *member* with FDN for Active Directory or for objectclass ``groupOfNames`` groups
+    | *memberUid* with RDN for objectclass ``posixGroup`` groups
+    | *uniqueMember* with FDN for objectclass ``groupOfUniqueNames`` groups
+
+Dynamic Group Member URL
+  The LDAP attribute that on group objects contains an LDAP search URL that determines what objects belong to the group.
+  An empty setting disables dynamic group membership functionality. See `Configuring Dynamic Groups <http://www.zytrax.com/books/ldap/ch11/dynamic.html>`_ for more details.
 
 Nested Groups:
   This makes the LDAP connector aware that groups could be stored inside existing group records. 
