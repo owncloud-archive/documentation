@@ -403,19 +403,6 @@ Quota Default:
   Override ownCloud's default quota *for LDAP users* who do not have a quota set in 
   the Quota Field, e.g., ``15 GB``.
 
-Email Field:
-  Set the user's email from an LDAP attribute, e.g., ``mail``. Leave it empty for default 
-  behavior.
-
-User Home Folder Naming Rule:
-  By default, the ownCloud server creates the user directory in your ownCloud 
-  data directory and gives it the ownCloud username, e.g., ``/var/www/owncloud/data/alice`` 
-  if your data directory is set to be ``/var/www/owncloud/data``.
-
-  You may want to override this setting and name it after an LDAP
-  attribute value, e.g., ``cn``. The attribute can return either an absolute path, e.g. 
-  ``/mnt/storage43/alice`` or a relative path which must not begin with a ``/``, e.g. ``CloudUsers/CookieMonster``. This relative path is then created inside the data directory (e.g. ``/var/www/owncloud/data/CloudUsers/CookieMonster``). Leave it empty for default behavior.
-
 Please bear in mind the following, when using these fields to assign user quota limits. 
 It should help to alleviate any, potential, confusion.
 
@@ -426,13 +413,38 @@ It should help to alleviate any, potential, confusion.
 
 .. note:: 
    Administrators are not allowed to modify the user quota limit in the user management page when steps 3 or 4 are in effect. At this point, updates are only possible via LDAP.
+   
+  See the `LDAP Schema for OwnCloud Quota <https://github.com/valerytschopp/owncloud-ldap-schema>`_
 
-In new ownCloud installations (8.0.10, 8.1.5, 8.2.0 and up) the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.
+Email Field:
+  Set the user's email from an LDAP attribute, e.g., ``mail``. Leave it empty for default 
+  behavior.
 
-In existing ownCloud installations the old behavior still applies, which is using the ownCloud username as the home folder when an LDAP attribute is not set. You may change this to enforcing the home folder rule with the ``occ`` command in ownCloud 8.2, like this example on Ubuntu::
+.. _user-home-folder-naming-rule:
+
+User Home Folder Naming Rule:
+  By default, the ownCloud server creates the user directory in your ownCloud 
+  data directory and gives it the ownCloud username, e.g., ``/var/www/owncloud/data/5a9df029-322d-4676-9c80-9fc8892c4e4b`` 
+  if your data directory is set to be ``/var/www/owncloud/data``.
+
+  It is possible to override this setting and name it after an LDAP
+  attribute value, e.g., ``attr:cn``. The attribute can return either an absolute path, e.g. 
+  ``/mnt/storage43/alice`` or a relative path which must not begin with a ``/``, e.g. ``CloudUsers/CookieMonster``.
+  This relative path is then created inside the data directory (e.g. ``/var/www/owncloud/data/CloudUsers/CookieMonster``).
+  
+  Since ownCloud 8.0.10, 8.1.5, 8.2.0 and up the home folder rule is enforced. This means that once you
+  set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all
+  users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem
+  will not be set up for that user, so their file shares will not be available to other users.
+  For older versions you may enforce the home folder rule with the ``occ`` command, like this example on Ubuntu::
 
   sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1 
-  
+
+  Since ownCloud 10 the home folder naming rule is only applied when first provisioning
+  the user. This prevents data loss due to reprovisioning the users home folder in case
+  of unintentional changes in LDAP.
+
+
 Expert Settings
 ---------------
 
