@@ -13,6 +13,8 @@ Cron jobs are commands or shell-based scripts that are scheduled to periodically
 ownCloud plug-in applications can register actions with ``cron.php`` automatically to take care of typical housekeeping operations. 
 These actions can include garbage collecting of temporary files or checking for newly updated files using ``filescan()`` on externally mounted file systems.
 
+You can decide how often jobs get processed, we recommend an interval of one minute.
+
 .. _cron_job_label:
 
 Cron Jobs
@@ -48,20 +50,23 @@ Cron
 Using the operating system Cron feature is the preferred method for executing regular tasks.  
 This method enables the execution of scheduled jobs without the inherent limitations which the web server might have.
 
-For example, to run a Cron job on a \*nix system every 15 minutes, under the default web server user (often, ``www-data`` or ``wwwrun``) you must set up the following Cron job to call the **cron.php** script::
+For example, to run a Cron job on a \*nix system every minute, under the default web server user (often, ``www-data`` or ``wwwrun``) you must set up the following Cron job to call the **cron.php** script::
 
   # crontab -u www-data -e
-  */15  *  *  *  * /usr/bin/php -f /path/to/your/owncloud/cron.php
+  *  *  *  *  * /usr/bin/php -f /path/to/your/owncloud/cron.php
 
 You can verify if the cron job has been added and scheduled by executing::
 
   # crontab -u www-data -l
-  */15  *  *  *  * /usr/bin/php -f /path/to/your/owncloud/cron.php
+  *  *  *  *  * /usr/bin/php -f /path/to/your/owncloud/cron.php
 
 .. note:: 
    You have to make sure that ``php`` is found by ``cron``, hence why we’ve deliberately added the full path to the PHP binary above (``/usr/bin/php``). On some systems it might be necessary to use **php-cli** instead of **php**.
 
-Please refer to `the crontab man page`_ for the exact command syntax.
+Please refer to `the crontab man page`_ for the exact command syntax if you don't want to have it run every minute.
+
+.. note::
+   There are other methods to invoke programs by the system regularly, e.g. `systemd timers`_
 
 Webcron
 ~~~~~~~
@@ -177,3 +182,4 @@ It can be run, as follows, using the OCC command::
 .. _easyCron: http://www.easycron.com/
 .. _Cron Jobs: https://en.wikipedia.org/wiki/Cron
 .. _the crontab man page: https://linux.die.net/man/1/crontab
+.. _systemd timers: https://wiki.archlinux.org/index.php/Systemd/Timers
