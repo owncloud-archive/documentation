@@ -377,6 +377,28 @@ You may also encounter database errors, such as this one:
 The issue, `identified by Michael Roth`_, is caused when MariaDB Galera cluster sends write requests to all servers in the cluster; `here is a detailed explanation`_.
 The solution is to send all write requests to a single server, instead of all of them.
 
+---------
+
+Set wsrep_sync_wait to 1 on all Galera Cluster nodes
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+What the parameter does
+~~~~~~~~~~~~~~~~~~~~~~~
+
+When enabled, the node triggers causality checks in response to certain types of queries. 
+During the check, the node blocks new queries while the database server catches up with all updates made in the cluster to the point where the check begun. 
+Once it reaches this point, the node executes the original query. 
+
+Why enable it
+~~~~~~~~~~~~~
+
+A Galera Cluster write operation is sent to the master while reads are retrieved from the slaves. 
+Since Galera Cluster replication is, by default, not strictly synchronous it could happen that items are requested before the replication has actually taken place.
+
+.. note:: This setting is disabled by default.
+   
+.. note:: See `the Galera Cluster WSREP documentation` for more details.
+
 References
 ----------
 
@@ -422,3 +444,4 @@ References
 .. _the official Apache documentation: https://httpd.apache.org/docs/2.4/ssl/ssl_howto.html
 .. _master-master replication: https://mariadb.com/kb/en/mariadb/replication-cluster-multi-master/
 .. _a hot failover setup: http://searchwindowsserver.techtarget.com/definition/cold-warm-hot-server
+.. the Galera Cluster WSREP documentation: http://galeracluster.com/documentation-webpages/mysqlwsrepoptions.html
