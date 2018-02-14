@@ -391,7 +391,7 @@ When you enable this parameter, the node triggers causality checks in response t
 
 What's the issue?
 
-In a Galera Cluster write operation will be send to the master while reads will be retrieved from the slaves. Since Galera Cluster replication is by default not strictly synchronous it could happen that the item is requested before the replication has actually taken place.
+A Galera Cluster write operation is sent to the master while reads are retrieved from the slaves. Since Galera Cluster replication is, by default, not strictly synchronous it could happen that items are requested before the replication has actually taken place.
 
 
 References
