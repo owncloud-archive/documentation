@@ -39,7 +39,7 @@ For detailed information on how to create an issue in the documentation
 repository, please refer to `the "How To Create An Issue" guide
 <CREATING_ISSUES.rst>`_. 
 
-This process overrides **all** previous practices and aims to formalize and
+This process overrides **all** previous practices, and aims to formalize and
 simplify the process of creating requests for change within the ownCloud
 documentation. 
 
