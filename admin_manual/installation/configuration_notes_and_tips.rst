@@ -15,19 +15,19 @@ SELinux-enabled distributions such as Fedora and CentOS.
 php.ini
 ^^^^^^^
 
-Several core PHP settings have to be configured correctly, otherwise ownCloud may
-not work properly. Known settings causing issues are listed here. Please note that
-there might be other settings causing unwanted behaviours. In general it is recommended
-to keep the ``php.ini`` settings at their defaults, except you exactly know about the changes.
+Several core PHP settings must be configured correctly, otherwise ownCloud may not work properly. 
+Known settings causing issues are listed here. 
+Please note that, there might be other settings which cause unwanted behavior. 
+In general, however, it is recommended to keep the ``php.ini`` settings at their defaults, except when you know exactly why the change is required, and its implications.
 
 .. NOTE::
-   Keep in mind that changes to ``php.ini`` may have to be configured in more
-   than one ini file. This can be the case, for example, for the
-   ``date.timezone`` setting.
+   Keep in mind that, changes to ``php.ini`` may have to be configured in more than one ini file. 
+   This can be the case, for example, for the ``date.timezone`` setting.
    
 php.ini - Used by the Web server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For php version 7.0 onwards, replace ``php_version`` with the version number installed, eg ``7.0``
+
+For PHP version 7.0 onward, replace ``php_version`` with the version number installed, e.g., ``7.0`` in the following examples.
 
 ::
 
@@ -87,24 +87,27 @@ amount of memory for use with ownCloud, which is 512 MB.
 realpath_cache_size
 ~~~~~~~~~~~~~~~~~~~
 
-Determines the size of the realpath cache to be used by PHP. 
-This value should be increased on systems where PHP opens many files, to reflect the quantity of the 
-file operations performed. For a detailed description see `realpath-cache-size`_
-Available since PHP 5.1.0. Prior to PHP 7.0.16 and 7.1.2, the default was "16K"
-To see your current value, query your ``phpinfo()`` output for this key. It is recommended to change / 
-set the value if the result is set to the default of 16K.
-A good reading about the backgroud can be found at `tideways.io`_
+This determines the size of the realpath cache used by PHP. 
+This value should be increased on systems where PHP opens many files, to reflect the number of file operations performed. 
+For a detailed description see `realpath-cache-size`_.
+This setting has been available since PHP 5.1.0. 
+Prior to PHP 7.0.16 and 7.1.2, the default was 16 KB.
 
-Brief description how to get a working value:
+To see your current value, query your ``phpinfo()`` output for this key. 
+It is recommended to set the value if it is currently set to the default of 16 KB.
+A good reading about the background can be found at `tideways.io`_.
 
-With the assumption of 112 bytes per file path needed, this would allow the cache to hold around 37.000 items 
-with a cache size of 4096K (4M), but only about a hundred entries for a cache size of 16KB.
+How to get a working value
+--------------------------
 
-**Rule of Thumb:** Always have a realpath cache that can hold entries for all your files paths in memory. 
-If you use symlink deployment, then make it double or triple the amount of files.
+With the assumption of 112 bytes per file path needed, this would allow the cache to hold around 37.000 items with a cache size of 4096K (4M), but only about a hundred entries for a cache size of 16 KB.
 
-| The easiest way to get the quantity of php files is to use cloc. ``sudo apt-get install cloc``.
-| Available for nearly all distributions.
+.. note:: 
+   It’s a good rule of thumb to always have a realpath cache that can hold entries for all your files paths in memory. 
+   If you use symlink deployment, then set it to double or triple the amount of files.
+
+The easiest way to get the quantity of PHP files is to use cloc, which can be installed by running ``sudo apt-get install cloc``.
+The cloc package is available for nearly all distributions.
 
 ::
 
@@ -120,14 +123,12 @@ If you use symlink deployment, then make it double or triple the amount of files
   PHP                            4896          96509         285384         558135
   ...
 
-| Taking the math from above and assuming a symlinked instance, using factor 3.
-|   ``4896 * 3 * 112 = 1.6MB``
-| This result shows that you can run with the php setting of 4M two instances of ownCloud.
+Taking the math from above and assuming a symlinked instance, using factor 3.
+For example: ``4896 * 3 * 112 = 1.6MB``
+This result shows that you can run with the PHP setting of 4M two instances of ownCloud.
 
-**Having the default of 16K means that only 1/100 of the existing php file paths can be cached and 
-need continious cache refresh slowing down performance.**
-
-I you run more webservices using php, you have to calculate accordingly.
+Having the default of 16 KB means that only 1/100 of the existing PHP file paths can be cached and need continuous cache refresh slowing down performance.
+If you run more web services using PHP, you have to calculate accordingly.
 
 
 .. _php_fpm_tips_label:
