@@ -60,7 +60,7 @@ Assuming that your ownCloud installation is on Ubuntu, then the following comman
 Creating a New Share
 --------------------
 
-When you create a new WND share you need: the login credentials for the share, the server address, the share name, and the folder you want to connect to. 
+When you create a new WND share you need: the login credentials for the share, the server address, the share name, and the folder you want to connect to. **Consider all the parameters as case-sensitive**. Although some parts of the app might work fine regardless of the case, other parts might have problems if the case isn't respected. 
 
 1. Enter the ownCloud mount point for your new WND share. This must not be an existing folder.
 2. Then select your authentication method; See  :doc:`enterprise_only_auth` for complete information on the five available authentication methods.
@@ -101,7 +101,7 @@ Users have four options for login credentials:
 * Log-in credentials, save in database
 * Global credentials
 
-libsmclient Issues
+libsmbclient Issues
 ------------------
 
 If your Linux distribution ships with ``libsmbclient 3.x``, which is included in the Samba client, you may need to set up the HOME variable in Apache to prevent a segmentation fault. 
@@ -155,8 +155,6 @@ Windows network drive connections and setup of ``occ wnd:listen`` often does not
 If you encounter issues using it, then try the following troubleshooting steps:
 
 1. Check the connection with smbclient_ on the command line of the ownCloud server
-2. If you are connecting to `Distributed File Shares`_ (DFS), be aware that the
-   shares are case-sensitive
 
 Take the example of attempting to connect to the share named `MyData` using ``occ wnd:listen``.
 Running the following command would work::
@@ -178,7 +176,7 @@ The WND listener for ownCloud 10 includes two different commands that need to be
 wnd:listen
 ----------
 
-This listens and stores notifications in the database coming from one specific host and share. 
+This command listens and stores notifications in the database coming from one specific host and share.
 It is intended to be run as a service.
 The command requires the host and share, which the listener will listen to, and the Windows/Samba account that will listen.
 The command does not produce any output by default, unless errors happen.
@@ -190,13 +188,45 @@ The command does not produce any output by default, unless errors happen.
 .. note::
    Although the exact permissions required for the Windows account are unknown, read-only should be enough.
 
+The simplest way to start the wnd:listen process *manually* (maybe for initial testing) is like the following::
+
+   sudo -u www-data ./occ wnd:listen <host> <share> <username>
+
+The password is an optional parameter and you'll be asked for it if you didn't provide it, as in the example above.
+In order to start the wnd:listen without any interaction, there are other ways to provide the password:
+
+- Pass the password as the 4th parameter. This is easy, but **NOT** recommended::
+
+   sudo -u www-data ./occ wnd:listen <host> <share> <username> <password>
+
+- Store the password in a file and let the command read that file to get the password. Check the ``--password-file`` option::
+
+   sudo -u www-data ./occ wnd:listen --password-file /path/to/plain/password <host> <share> <username>
+
+- Let any external application fetch the password and read it from stdin with ``--password-file=-``::
+
+   sudo base64 -d /my/base64encoded/password | sudo -u www-data ./occ wnd:listen --password-file=- <host> <share> <username>
+
+Note that there won't be any processing to the password by default. This means that spaces or new line chars won't be removed unless explicitly told.
+Use the ``--password-trim`` option in those cases.
+
+You should be able to run any of those commands, and/or wrap them into a systemd service or any other startup service, so that the wnd:listen command is automatically started during boot if you need it.
+
 wnd:process-queue
 -----------------
 
-Processes the stored notifications for a given host and share.
+This command processes the stored notifications for a given host and share.
 This process is intended to be run periodically as a Cron job, or via a similar mechanism.
 The command will process the notifications stored by the ``wnd:listen`` process, showing only errors by default.
 If you need more information, increase the verbosity by calling ``wnd:process-queue -vvv``.
+
+As a simple example, you can check the following::
+
+   sudo -u www-data ./occ wnd:process-queue <host> <share>
+
+You can run that command even if there are no notifications to be processed.
+
+As said, you can wrap that command in a Cron job so it's run every 5 minutes for example.
 
 Basic Setup for One ownCloud Server
 -----------------------------------
@@ -285,8 +315,7 @@ Number of Serializers
 Only one file serializer should be used per server and share, as the serialized file has to be per server and share.
 Consider the following usage scenarios:
 
-- You have several Windows servers. Then you'll need to serialize to different files for each of server.
-- You have three shares: ``10.0.2.2/share1``, ``10.0.2.2/share2``, and ``10.0.10.20/share2``. Then you should use three different calls to ``wnd:process-queue``, changing the target file for the serializer for each one.
+- If you have three shares: ``10.0.2.2/share1``, ``10.0.2.2/share2``, and ``10.0.10.20/share2``. Then you should use three different calls to ``wnd:process-queue``, changing the target file for the serializer for each one.
 
 Since the serialized file has to be per server and share, the serialized file has some checks to prevent misuse. 
 Specifically, if we detect you're trying to read the storages for another server and share from the file, the contents of the file won't be read and will fallback to creating the storage from scratch. 
@@ -322,6 +351,13 @@ The reason for this is that several ``wnd:process-queue`` might use the same wro
 
 As a result, it's recommended to force the execution serialization of that command to prevent this issue.
 You might want to use `Anacron`_, which seems to have an option for this scenario, or wrap the command with `flock`_.
+
+If you need to serialize the execution of the wnd:process-queue, check the following example with `flock`_::
+
+   flock -n /my/lock/file sudo -u www-data ./occ wnd:process-queue <host> <share>
+
+In that case, flock will try get the lock of that file and won't run the command if it isn't possible.
+For our case, and considering that file isn't being used by any other process, it will run only one wnd:process-queue at a time. If someone tries to run the same command a second time while the previous one is running, the second will fail and won't be executed. (Check "flock" documentation for details and other options).
 
 Multiple Server Setup
 ---------------------
