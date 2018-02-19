@@ -15,10 +15,34 @@ SELinux-enabled distributions such as Fedora and CentOS.
 php.ini
 ^^^^^^^
 
-Several core PHP settings have to be configured correctly, otherwise ownCloud may
-not work properly. Known settings causing issues are listed here. Please note that
-there might be other settings causing unwanted behaviours. In general it is recommended
-to keep the ``php.ini`` at their defaults.
+Several core PHP settings must be configured correctly, otherwise ownCloud may not work properly. 
+Known settings causing issues are listed here. 
+Please note that, there might be other settings which cause unwanted behavior. 
+In general, however, it is recommended to keep the ``php.ini`` settings at their defaults, except when you know exactly why the change is required, and its implications.
+
+.. NOTE::
+   Keep in mind that, changes to ``php.ini`` may have to be configured in more than one ini file. 
+   This can be the case, for example, for the ``date.timezone`` setting.
+   
+php.ini - Used by the Web server
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+For PHP version 7.0 onward, replace ``php_version`` with the version number installed, e.g., ``7.0`` in the following examples.
+
+::
+
+   /etc/php/[php_version]/apache2/php.ini
+ or
+   /etc/php/[php_version]/fpm/php.ini
+ or ...
+
+php.ini - used by the php-cli and so by ownCloud CRON jobs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
+
+  /etc/php/[php_version]/cli/php.ini
+
 
 session.auto_start && enable_post_data_reading
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -60,27 +84,51 @@ amount of memory for use with ownCloud, which is 512 MB.
    Please be careful when you set this value if you use the byte value shortcut as it is very specific.  
    Use `K` for kilobyte, `M` for megabyte and `G` for gigabyte. `KB`, `MB`, and `GB` **do not work!**
 
-.. NOTE::
-   Keep in mind that changes to ``php.ini`` may have to be configured in more
-   than one ini file. This can be the case, for example, for the
-   ``date.timezone`` setting.
+realpath_cache_size
+~~~~~~~~~~~~~~~~~~~
 
-php.ini - Used by the Web server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This determines the size of the realpath cache used by PHP. 
+This value should be increased on systems where PHP opens many files, to reflect the number of file operations performed. 
+For a detailed description see `realpath-cache-size`_.
+This setting has been available since PHP 5.1.0. 
+Prior to PHP 7.0.16 and 7.1.2, the default was 16 KB.
+
+To see your current value, query your ``phpinfo()`` output for this key. 
+It is recommended to set the value if it is currently set to the default of 16 KB.
+A good reading about the background can be found at `tideways.io`_.
+
+How to get a working value
+--------------------------
+
+With the assumption of 112 bytes per file path needed, this would allow the cache to hold around 37.000 items with a cache size of 4096K (4M), but only about a hundred entries for a cache size of 16 KB.
+
+.. note:: 
+   It’s a good rule of thumb to always have a realpath cache that can hold entries for all your files paths in memory. 
+   If you use symlink deployment, then set it to double or triple the amount of files.
+
+The easiest way to get the quantity of PHP files is to use cloc, which can be installed by running ``sudo apt-get install cloc``.
+The cloc package is available for nearly all distributions.
 
 ::
 
-   /etc/php5/apache2/php.ini
- or
-   /etc/php5/fpm/php.ini
- or ...
+  sudo cloc /var/www/owncloud --exclude-dir=data --follow-links
+     12179 text files.
+     11367 unique files.
+     73126 files ignored.
 
-php.ini - used by the php-cli and so by ownCloud CRON jobs
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  http://cloc.sourceforge.net v 1.60  T=1308.98 s (6.4 files/s, 1283.5 lines/s)
+  --------------------------------------------------------------------------------
+  Language                      files          blank        comment           code
+  --------------------------------------------------------------------------------
+  PHP                            4896          96509         285384         558135
+  ...
 
-::
+Taking the math from above and assuming a symlinked instance, using factor 3.
+For example: ``4896 * 3 * 112 = 1.6MB``
+This result shows that you can run with the PHP setting of 4M two instances of ownCloud.
 
-  /etc/php5/cli/php.ini
+Having the default of 16 KB means that only 1/100 of the existing PHP file paths can be cached and need continuous cache refresh slowing down performance.
+If you run more web services using PHP, you have to calculate accordingly.
 
 
 .. _php_fpm_tips_label:
@@ -99,11 +147,11 @@ variables in the appropriate ``php-fpm`` ini/config file.
 
 Here are some example root paths for these ini/config files:
 
-+--------------------+-----------------------+
-| Ubuntu/Mint        | CentOS/Red Hat/Fedora |
-+--------------------+-----------------------+ 
-| ``/etc/php5/fpm/`` | ``/etc/php-fpm.d/``   |
-+--------------------+-----------------------+ 
++---------------------------------+-----------------------+
+| Ubuntu/Mint                     | CentOS/Red Hat/Fedora |
++---------------------------------+-----------------------+ 
+| ``/etc/php/[php_version]/fpm/`` | ``/etc/php-fpm.d/``   |
++---------------------------------+-----------------------+ 
 
 In both examples, the ``ini/config`` file is called ``www.conf``, and depending
 on the distribution or customizations which you have made, it may be in
@@ -176,3 +224,5 @@ Other Web Servers
 .. _session poisoning: https://en.wikipedia.org/wiki/Session_poisoning
 .. _read through a thorough discussion of local session poisoning: http://ha.xxor.se/2011/09/local-session-poisoning-in-php-part-1.html
 .. _suhosin.session.cryptkey: https://suhosin.org/stories/configuration.html#suhosin-session-cryptkey
+.. _realpath-cache-size: http://php.net/manual/en/ini.core.php#ini.realpath-cache-size
+.. _`tideways.io`: https://tideways.io/profiler/blog/how-does-the-php-realpath-cache-work-and-how-to-configure-it
