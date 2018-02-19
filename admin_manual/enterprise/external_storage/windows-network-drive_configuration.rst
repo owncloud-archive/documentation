@@ -60,7 +60,15 @@ Assuming that your ownCloud installation is on Ubuntu, then the following comman
 Creating a New Share
 --------------------
 
-When you create a new WND share you need: the login credentials for the share, the server address, the share name, and the folder you want to connect to. **Consider all the parameters as case-sensitive**. Although some parts of the app might work fine regardless of the case, other parts might have problems if the case isn't respected. 
+When you create a new WND share you need three things: 
+
+- The login credentials for the share
+- The server address, the share name; and
+- The folder you want to connect to 
+
+.. note:: 
+   **Treat all the parameters as being case-sensitive.** 
+   Although some parts of the app might work properly, regardless of case, other parts might have problems if case isn't respected. 
 
 1. Enter the ownCloud mount point for your new WND share. This must not be an existing folder.
 2. Then select your authentication method; See  :doc:`enterprise_only_auth` for complete information on the five available authentication methods.
@@ -102,7 +110,7 @@ Users have four options for login credentials:
 * Global credentials
 
 libsmbclient Issues
-------------------
+-------------------
 
 If your Linux distribution ships with ``libsmbclient 3.x``, which is included in the Samba client, you may need to set up the HOME variable in Apache to prevent a segmentation fault. 
 If you have ``libsmbclient 4.1.6`` and higher it doesn't seem to be an issue, so you won't have to change your HOME variable.
@@ -188,29 +196,40 @@ The command does not produce any output by default, unless errors happen.
 .. note::
    Although the exact permissions required for the Windows account are unknown, read-only should be enough.
 
-The simplest way to start the wnd:listen process *manually* (maybe for initial testing) is like the following::
+The simplest way to start the ``wnd:listen`` process manually, perhaps for initial testing, is as follows
+
+::
 
    sudo -u www-data ./occ wnd:listen <host> <share> <username>
 
 The password is an optional parameter and you'll be asked for it if you didn't provide it, as in the example above.
-In order to start the wnd:listen without any interaction, there are other ways to provide the password:
+In order to start the ``wnd:listen`` without any interaction, there are other ways to provide the password:
 
-- Pass the password as the 4th parameter. This is easy, but **NOT** recommended::
+- Pass the password as the 4th parameter. This is **NOT** recommended.
 
-   sudo -u www-data ./occ wnd:listen <host> <share> <username> <password>
+  ::
 
-- Store the password in a file and let the command read that file to get the password. Check the ``--password-file`` option::
+     sudo -u www-data ./occ wnd:listen <host> <share> <username> <password>
 
-   sudo -u www-data ./occ wnd:listen --password-file /path/to/plain/password <host> <share> <username>
+- Store the password in a file and let the command read that file to get the password, using the ``--password-file`` option
 
-- Let any external application fetch the password and read it from stdin with ``--password-file=-``::
+  ::
 
-   sudo base64 -d /my/base64encoded/password | sudo -u www-data ./occ wnd:listen --password-file=- <host> <share> <username>
+     sudo -u www-data ./occ wnd:listen --password-file /path/to/plain/password \
+       <host> <share> <username>
 
-Note that there won't be any processing to the password by default. This means that spaces or new line chars won't be removed unless explicitly told.
+- Let any external application fetch the password and read it from STDIN with ``--password-file=-``
+
+  ::
+
+    sudo base64 -d /my/base64encoded/password | sudo -u www-data ./occ wnd:listen \
+      --password-file=- <host> <share> <username>
+
+Note that there won't be any processing to the password by default. 
+This means that spaces or newline chars won't be removed unless explicitly told.
 Use the ``--password-trim`` option in those cases.
 
-You should be able to run any of those commands, and/or wrap them into a systemd service or any other startup service, so that the wnd:listen command is automatically started during boot if you need it.
+You should be able to run any of those commands, and/or wrap them into a systemd service or any other startup service, so that the ``wnd:listen`` command is automatically started during boot, if you need it.
 
 wnd:process-queue
 -----------------
@@ -224,7 +243,7 @@ As a simple example, you can check the following::
 
    sudo -u www-data ./occ wnd:process-queue <host> <share>
 
-You can run that command even if there are no notifications to be processed.
+You can run that command, even if there are no notifications to be processed.
 
 As said, you can wrap that command in a Cron job so it's run every 5 minutes for example.
 
@@ -287,7 +306,7 @@ Switch                  Allowed Values
 
 While the specific behavior will depend on the serializer implementation, the overall behavior can be simplified as follows: 
 
-If the serializer’s data source (such as *a file*, *a database table*, or some *Redis keys*) has storage data, it uses that data to create the storages; otherwise, it creates the storages from scratch. 
+If the serializer's data source (such as *a file*, *a database table*, or some *Redis keys*) has storage data, it uses that data to create the storages; otherwise, it creates the storages from scratch. 
 
 After the storages are created, notifications are processed for the storages. 
 If the storages have been created from scratch, those storages are written in the data source so that they can be read on the next run.
@@ -313,9 +332,9 @@ Number of Serializers
 ^^^^^^^^^^^^^^^^^^^^^
 
 Only one file serializer should be used per server and share, as the serialized file has to be per server and share.
-Consider the following usage scenarios:
+Consider the following usage scenario:
 
-- If you have three shares: ``10.0.2.2/share1``, ``10.0.2.2/share2``, and ``10.0.10.20/share2``. Then you should use three different calls to ``wnd:process-queue``, changing the target file for the serializer for each one.
+- If you have three shares: ``10.0.2.2/share1``, ``10.0.2.2/share2``, and ``10.0.10.20/share2``, then you should use three different calls to ``wnd:process-queue``, changing the target file for the serializer for each one.
 
 Since the serialized file has to be per server and share, the serialized file has some checks to prevent misuse. 
 Specifically, if we detect you're trying to read the storages for another server and share from the file, the contents of the file won't be read and will fallback to creating the storage from scratch. 
@@ -352,12 +371,16 @@ The reason for this is that several ``wnd:process-queue`` might use the same wro
 As a result, it's recommended to force the execution serialization of that command to prevent this issue.
 You might want to use `Anacron`_, which seems to have an option for this scenario, or wrap the command with `flock`_.
 
-If you need to serialize the execution of the wnd:process-queue, check the following example with `flock`_::
+If you need to serialize the execution of the ``wnd:process-queue``, check the following example with `flock`_
+
+::
 
    flock -n /my/lock/file sudo -u www-data ./occ wnd:process-queue <host> <share>
 
 In that case, flock will try get the lock of that file and won't run the command if it isn't possible.
-For our case, and considering that file isn't being used by any other process, it will run only one wnd:process-queue at a time. If someone tries to run the same command a second time while the previous one is running, the second will fail and won't be executed. (Check "flock" documentation for details and other options).
+For our case, and considering that file isn't being used by any other process, it will run only one ``wnd:process-queue`` at a time. 
+If someone tries to run the same command a second time while the previous one is running, the second will fail and won't be executed. 
+Check `flock's documentation`_ for details and other options.
 
 Multiple Server Setup
 ---------------------
@@ -419,4 +442,5 @@ Note that the file can be removed manually at any time if it's needed (for examp
 .. _Anacron: http://www.thegeekstuff.com/2011/05/anacron-examples
 .. _flock: http://linuxaria.com/howto/linux-shell-introduction-to-flock
 .. _a known issue: https://github.com/owncloud/Windows_network_drive/issues/94
-.. _password lockout policy: https://technet.microsoft.com/en-us/library/dd277400.aspx
+.. _password lockout policies: https://technet.microsoft.com/en-us/library/dd277400.aspx
+.. _flock's documentation: https://linux.die.net/man/2/flock
