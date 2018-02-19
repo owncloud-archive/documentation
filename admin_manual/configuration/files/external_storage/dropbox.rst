@@ -14,6 +14,8 @@ To connect Dropbox to your ownCloud installation requires four steps to be compl
 Step One - Install the "External Storage: Dropbox" app from the ownCloud Marketplace
 ------------------------------------------------------------------------------------
 
+.. figure:: images/external-storage-dropbox-highlighted.png
+
 1. Click **Market** in the ownCloud web UI dropdown menu on the left side
 2. Go to the **Storage** category
 3. select **External Storage: Dropbox** App
