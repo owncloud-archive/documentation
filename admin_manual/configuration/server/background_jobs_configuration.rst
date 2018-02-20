@@ -103,7 +103,7 @@ Available Background Jobs
 
 A number of existing background jobs are available to be run just for specific tasks.
 
-.. NOTE::
+.. note::
    These jobs are generally only needed on large instances and can be run as background jobs.
    If the number of users in your installation ranges between 1,000 and 3,000, or if you’re using LDAP
    and it becomes a bottleneck, then admins can delete several entries in the `oc_jobs` table and replace
@@ -116,6 +116,9 @@ A number of existing background jobs are available to be run just for specific t
    * ``OCA\\Files_Versions\\BackgroundJob\\ExpireVersions`` -> ``occ versions:expire``
 
    If used, these should be scheduled to run on a daily basis.
+   
+.. note:: 
+   There is no matching background job to delete from the ``oc_jobs`` table.
 
 While not exhaustive, these include:
 
@@ -129,6 +132,9 @@ It can be run, as follows, using the OCC command
 ::
 
   occ dav:cleanup-chunks
+
+.. note:: 
+   This command needs to be added to CRON, as it is not listed there by default. 
 
 ExpireTrash
 ^^^^^^^^^^^
