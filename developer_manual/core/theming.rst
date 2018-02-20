@@ -15,6 +15,13 @@ However, this documentation only covers customizing the web front-end, *so far*.
 
 To save you time and effort, you can use the shell script below, to create the basis of a new theme from ownCloud's example theme.
 
+Using this script, you will have a new theme, ready to go, in less than five seconds.
+You can execute this script with two variables; the first one is the **theme name** and the second one is your **ownCloud directory**.
+
+For example: 
+
+     theme-bootstrap.sh mynewtheme /var/www/owncloud
+
 .. literalinclude:: ../scripts/theme-bootstrap.sh
    :language: bash
 
