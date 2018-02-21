@@ -185,6 +185,13 @@ The InnoDB storage engine is required, and MyISAM is not supported, see: :ref:`d
 Install the Required Packages
 -----------------------------
 
+.. note::
+   **When Are Stable Channel Packages Updated?**
+   
+   Packages in the supported distributions’ stable channels are not immediately updated following a release. 
+   This is because we need to make sure that the release is sufficiently stable, as many people use automatic updates. 
+   By waiting a number of business days after a tarball has been released, we are able to make this assessment, based on a number of criteria which include the submitted bug reports from systems administrators.
+
 On Ubuntu 16.04 LTS Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
