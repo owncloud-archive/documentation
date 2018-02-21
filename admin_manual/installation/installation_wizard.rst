@@ -182,31 +182,40 @@ You can find your HTTP user in your HTTP server configuration files, or you can 
    lost.
 
 The easy way to set the correct permissions is to copy and run the script, below.
-What it does is to:
+The script sets proper permissions and ownership including the handling of necessary directories. 
+The script also prepares for an ``apps2`` directory, for details see ``config.sample.php``:
 
 - Replace the ``ocpath`` variable with the path to your ownCloud directory.
 - Replace the ``ocdata`` variable with the path to your ownCloud data directory.
+- Replace the ``ocapps2`` variable with the path to your ownCloud apps2 directory.
 
 In case use want to use links for the data and apps2 directory:
 
 - Replace the ``linkdata`` variable with the path to your ownCloud linked data directory.
 - Replace the ``linkapps2`` variable with the path to your ownCloud linked apps2 directory.
-- Replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group
+
+Set the correct HTTP user and group according your needs:
+ 
+- Replace the ``htuser`` and ``htgroup`` variables with your HTTP user and group.
+
+In case of upgrading using tar:
+
+- Replace the ``oldocpath`` variable with the path to your old ownCloud directory.  
 
 .. literalinclude:: ./examples/post-installation-steps.sh
    :language: php
 
-If you have customized your ownCloud installation and your file paths are different than the standard installation, then modify this script accordingly.
+If you have customized your ownCloud installation and your file paths are different than the standard installation, modify this script accordingly.
 
-This lists the recommended modes and ownership for your ownCloud directories
-and files:
+This summary lists the recommended modes and ownership for your ownCloud directories and files:
 
 * All files should be read-write for the file owner, read-only for the group owner, and zero for the world
 * All directories should be executable (because directories always need the executable bit set), read-write for the directory owner, and read-only for the group owner
 * The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`apps2/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
-* The :file:`themes/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`updater/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`[ocpath]/.htaccess` file should be owned by ``root:[HTTP group]``
 * The :file:`data/.htaccess` file should be owned by ``root:[HTTP group]``
 * Both :file:`.htaccess` files are read-write file owner, read-only group and 
