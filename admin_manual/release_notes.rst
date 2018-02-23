@@ -21,7 +21,14 @@ Release Notes
 Changes in 10.0.7
 -----------------
 
-ownCloud Server 10.0.7 is a hotfix follow-up release that takes care of an issue regarding "app passwords" (https://github.com/owncloud/core/pull/30363). Please consider the ownCloud Server 10.0.5 release notes.
+ownCloud Server 10.0.7 is a hotfix follow-up release that takes care of an `issue regarding OAuth authentication <https://github.com/owncloud/core/issues/30157>`_.
+
+Please consider the ownCloud Server 10.0.5 release notes.
+
+Known issues
+~~~~~~~~~~~~
+
+- When using application passwords, `log entries related to "Login Failed" will appear <https://github.com/owncloud/core/issues/30157>`_ and can be ignored. For people using fail2ban or other account locking tools based on log parsing, please apply `this patch <https://github.com/owncloud/core/commit/50c78a4bf4c2ab4194f40111b8a34b7e9cc17a14.patch>`_ with :code:`patch -p1 < 50c78a4bf4c2ab4194f40111b8a34b7e9cc17a14.patch` (`original pull request here <https://github.com/owncloud/core/pull/30591>`_).
 
 .. _10.0.6_release_notes_label:
 
@@ -66,7 +73,7 @@ Fixes and improvements for the Mail Template Editor
 Known issues
 ~~~~~~~~~~~~
 
-To date there are no known issues related to ownCloud Server 10.0.5.
+- When using application passwords, `log entries related to "Login Failed" will appear <https://github.com/owncloud/core/issues/30157>`_, please upgrade to 10.0.7 and check the fix mentionned in its release notes.
 
 .. _10.0.4_release_notes_label:
 
@@ -140,6 +147,11 @@ Updated minimum supported browser versions
 
 Users with outdated browsers might get warnings. 
 See `the list of supported browser versions`_.
+
+Known issues
+~~~~~~~~~~~~
+
+- When using application passwords, `log entries related to "Login Failed" will appear <https://github.com/owncloud/core/issues/30157>`_, please upgrade to 10.0.7 and check the fix mentioned in its release notes.
 
 10.0.3 resolved known issues
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
