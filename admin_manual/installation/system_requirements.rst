@@ -37,7 +37,7 @@ Web Browser
 
 - Edge (current version on Windows 10)
 - IE11+ (except Compatibility Mode)
-- Firefox 55+ or 52 ESR
+- Firefox 57+ or 52 ESR
 - Chrome 61+
 - Safari 10+
 
