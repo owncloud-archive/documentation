@@ -69,7 +69,7 @@ if [ "$uselinks" = "n" ]; then
     mkdir -p $ocapps2
   fi
 else
-  if [ -f ${ocdata} ]; then
+  if [ -d ${ocdata} ]; then
     echo "Directory for $ocdata found but link requested. Exiting."
     echo
     exit
@@ -77,7 +77,7 @@ else
     printf "ln $ocdata \n"
     ln -sfn $linkdata $ocdata
   fi
-  if [ -f ${ocapps2} ]; then
+  if [ -d ${ocapps2} ]; then
     echo "Directory for $ocapps2 found but link requested. Exiting."
     echo
     exit
@@ -129,13 +129,16 @@ fi
 printf "\nchown directories excluding the data and apps2 directory \n"
 find  -L $ocpath  -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type d -print0 | xargs -0 chown ${rootuser}:${htgroup}
 # only do if directory is present
-if [ -f ${ocpath}/apps/ ]; then
+if [ -d ${ocpath}/apps/ ]; then
+  printf "chown apps directory \n"
   chown -R ${htuser}:${htgroup} ${ocpath}/apps/
 fi
-if [ -f ${ocpath}/config/ ]; then
+if [ -d ${ocpath}/config/ ]; then
+  printf "chown config directory \n"
   chown -R ${htuser}:${htgroup} ${ocpath}/config/
 fi
-if [ -f ${ocpath}/updater/ ]; then
+if [ -d ${ocpath}/updater/ ]; then
+  printf "chown updater directory \n"
   chown -R ${htuser}:${htgroup} ${ocpath}/updater
 fi
 
