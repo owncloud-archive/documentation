@@ -121,7 +121,7 @@ file lies.
 
 Put ownCLoud in maintenance mode using this command:
 
-	docker exec cloud_server /bin/su -c "./occ maintenance:mode --on" www-data
+	docker-compose exec server occ maintenance:mode --on
 
 5. If you are using the default database container from webhippie: 
 
