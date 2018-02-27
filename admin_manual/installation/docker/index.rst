@@ -105,54 +105,43 @@ Upgrading owncloud on docker
 When a new version of ownCloud gets released, you want to update your instance. 
 
 Follow these simple steps.
+ 
+1. go to your docker dir where your 
 
-1. 
-2. go to your docker dir where your 
-
-	.yaml file 
+	.yaml 
 
 	or
 
 	.env 
 
-file lies.
+file exists.
 
-3. it's best to put ownCloud into maintenance mode. We will create a backup, in case something goes wrong during the upgrade process, we always can go back to our working system. 
+2. it's best to put ownCloud into maintenance mode. We will create a backup, in case something goes wrong during the upgrade process, we always can go back to our working system. 
 
 Put ownCLoud in maintenance mode using this command:
 
 	docker-compose exec server occ maintenance:mode --on
 
-5. If you are using the default database container from webhippie: 
+3. If you are using the default database container from webhippie: 
 
 	docker-compose exec db backup
 
-6. shutdown the containers.
+4. shutdown the containers.
 
 	docker-compose down
 
-7. go to your data volume directory. 
-
-on default it's 
-
-	/var/lib/docker/volumes/
-
-8. backup your files with
-
-	rsync -av /var/lib/cloud /backup/owncloud
-
-9. Update the version number of owncloud in your .env file or the yaml file
+5. Update the version number of owncloud in your .env file or the yaml file
 
 you can use sed for it. here is an example. you would have to adjust it for your setup.
 
 
 	sed -i 's/^owncloud_version=.*$/owncloud_version=<neueversion>/' /compose/*/.env
 
-10. View the file to ensure the changes has been implemented.
+6. View the file to ensure the changes has been implemented.
 
 	cat .env
 
-11. In order to ensure no error has sneaked in, clear the redis volume of left over files.
+7. In order to ensure no error has sneaked in, clear the redis volume of left over files.
 
 	cd /<your_redis_volume>/
 
@@ -162,7 +151,7 @@ you can use sed for it. here is an example. you would have to adjust it for your
 
 	rm -rf *
 
-12. Start your docker instance again with
+8. Start your docker instance again with
 
 	docker-compose up -d
 
