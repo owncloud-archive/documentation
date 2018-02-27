@@ -97,7 +97,7 @@ if [ "$upgrdcfg" = "y" ]; then
   fi
 fi
 
-printf "\nchmod files and directories except the data and apps2 directory \n"
+printf "\nchmod files and directories excluding data and apps2 directory \n"
 find -L ${ocpath} -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type f -print0 | xargs -0 chmod 0640
 find -L ${ocpath} -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type d -print0 | xargs -0 chmod 0750
 
@@ -126,9 +126,11 @@ if [ "$chmdir" = "y" ] && [ "$uselinks" = "y" ]; then
   find -L ${ocapps2}/ -type d -print0 | xargs -0 chmod 0750
 fi
 
-printf "\nchown directories excluding the data and apps2 directory \n"
+printf "\nchown files and directories excluding data and apps2 directory \n"
 find  -L $ocpath  -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type d -print0 | xargs -0 chown ${rootuser}:${htgroup}
-# only do if directory is present
+find  -L $ocpath  -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type f -print0 | xargs -0 chown ${rootuser}:${htgroup}
+
+# do only if the directories are present
 if [ -d ${ocpath}/apps/ ]; then
   printf "chown apps directory \n"
   chown -R ${htuser}:${htgroup} ${ocpath}/apps/
