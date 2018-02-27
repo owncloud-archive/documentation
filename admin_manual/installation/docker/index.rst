@@ -141,17 +141,7 @@ you can use sed for it. here is an example. you would have to adjust it for your
 
 	cat .env
 
-7. In order to ensure no error has sneaked in, clear the redis volume of left over files.
-
-	cd /<your_redis_volume>/
-
-	default
-
-	cd /var/lib/docker/volumes/cloud_redis/
-
-	rm -rf *
-
-8. Start your docker instance again with
+7. Start your docker instance again with
 
 	docker-compose up -d
 
