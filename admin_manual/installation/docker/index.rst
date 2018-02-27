@@ -97,3 +97,73 @@ Stopping the Containers
 
 Assuming you used docker-compose, as in the previous example, to stop the containers use ``docker-compose stop``.
 Alternatively, use ``docker-compose down`` to stop and remove containers, along with the related networks, images, and volumes.
+
+
+Upgrading owncloud on docker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When a new version of ownCloud gets released, you want to update your instance. 
+
+Follow these simple steps.
+
+1. 
+2. go to your docker dir where your 
+
+	.yaml file 
+
+	or
+
+	.env 
+
+file lies.
+
+3. it's best to put ownCloud into maintenance mode. We will create a backup, in case something goes wrong during the upgrade process, we always can go back to our working system. 
+
+Put ownCLoud in maintenance mode using this command:
+
+	docker exec cloud_server /bin/su -c "./occ maintenance:mode --on" www-data
+
+5. If you are using the default database container from webhippie: 
+
+	docker-compose exec db backup
+
+6. shutdown the containers.
+
+	docker-compose down
+
+7. go to your data volume directory. 
+
+on default it's 
+
+	/var/lib/docker/volumes/
+
+8. backup your files with
+
+	rsync -av /var/lib/cloud /backup/owncloud
+
+9. Update the version number of owncloud in your .env file or the yaml file
+
+you can use sed for it. here is an example. you would have to adjust it for your setup.
+
+
+	sed -i 's/^owncloud_version=.*$/owncloud_version=<neueversion>/' /compose/*/.env
+
+10. View the file to ensure the changes has been implemented.
+
+	cat .env
+
+11. In order to ensure no error has sneaked in, clear the redis volume of left over files.
+
+	cd /<your_redis_volume>/
+
+	default
+
+	cd /var/lib/docker/volumes/cloud_redis/
+
+	rm -rf *
+
+12. Start your docker instance again with
+
+	docker-compose up -d
+
+Now you should have the current ownCloud running with docker-compose.
