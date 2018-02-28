@@ -132,7 +132,7 @@ Sixth, update the version number of ownCloud in your ``.env`` file or the YAML f
 ::
 
     # Make sure that you adjust the example to match your installation.
-    sed -i 's/^owncloud_version=.*$/owncloud_version=<neueversion>/' /compose/*/.env
+    sed -i 's/^owncloud_version=.*$/owncloud_version=<newVersion>/' /compose/*/.env
 
 Seventh, view the file to ensure the changes has been implemented.
 
