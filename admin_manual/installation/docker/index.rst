@@ -98,51 +98,57 @@ Stopping the Containers
 Assuming you used docker-compose, as in the previous example, to stop the containers use ``docker-compose stop``.
 Alternatively, use ``docker-compose down`` to stop and remove containers, along with the related networks, images, and volumes.
 
-
-Upgrading owncloud on docker
+Upgrading ownCloud on Docker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When a new version of ownCloud gets released, you want to update your instance. 
-
-Follow these simple steps.
+When a new version of ownCloud gets released, you should update your instance. 
+To do so, follow these simple steps.
  
-1. go to your docker dir where your 
+First, go to your docker directory where your ``.yaml`` or ``.env`` file exists.
+Second, put ownCloud into maintenance mode; you can do so using the following command:
 
-	.yaml 
+::
 
-	or
+    docker-compose exec server occ maintenance:mode --on
 
-	.env 
+Third, create a backup in case something goes wrong during the upgrade process, using the following command: 
 
-file exists.
+:: 
 
-2. it's best to put ownCloud into maintenance mode. We will create a backup, in case something goes wrong during the upgrade process, we always can go back to our working system. 
+    docker-compose exec db backup
+    
 
-Put ownCLoud in maintenance mode using this command:
+.. note:: 
+   This assumes that you are using `the default database container from Webhippie`_. 
 
-	docker-compose exec server occ maintenance:mode --on
+Fifth, shutdown the containers.
 
-3. If you are using the default database container from webhippie: 
+::
 
-	docker-compose exec db backup
+    docker-compose down
 
-4. shutdown the containers.
+Sixth, update the version number of ownCloud in your ``.env`` file or the YAML file. You can use sed for it, as in the following example.
 
-	docker-compose down
+::
 
-5. Update the version number of owncloud in your .env file or the yaml file
+    # Make sure that you adjust the example to match your installation.
+    sed -i 's/^owncloud_version=.*$/owncloud_version=<neueversion>/' /compose/*/.env
 
-you can use sed for it. here is an example. you would have to adjust it for your setup.
+Seventh, view the file to ensure the changes has been implemented.
 
+  ::
 
-	sed -i 's/^owncloud_version=.*$/owncloud_version=<neueversion>/' /compose/*/.env
+      cat .env
 
-6. View the file to ensure the changes has been implemented.
+Eighth, start your docker instance again.
 
-	cat .env
-
-7. Start your docker instance again with
+::
 
 	docker-compose up -d
 
 Now you should have the current ownCloud running with docker-compose.
+
+
+.. Links
+   
+.. _the default database container from Webhippie: https://hub.docker.com/r/webhippie/mariadb/ 
