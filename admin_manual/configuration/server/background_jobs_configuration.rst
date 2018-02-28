@@ -107,7 +107,6 @@ A number of existing background jobs are available to be run just for specific t
    These jobs are generally only needed on large instances and can be run as background jobs.
    If the number of users in your installation ranges between 1,000 and 3,000, or if you’re using LDAP and it becomes a bottleneck, then admins can delete several entries in the `oc_jobs` table and replace them with the corresponding `occ` command, which you can see here:
 
-   * ``OCA\\DAV\\Command\\CleanupChunks`` -> ``occ dav:cleanup-chunks``
    * ``OCA\\DAV\CardDAV\\SyncJob`` -> ``occ dav:sync-system-addressbook``
    * ``OCA\\Federation\\SyncJob`` -> ``occ federation:sync-addressbooks``
    * ``OCA\\Files_Trashbin\\BackgroundJob\\ExpireTrash`` -> ``occ trashbin:expire``
@@ -119,20 +118,6 @@ A number of existing background jobs are available to be run just for specific t
    There is no matching background job to delete from the ``oc_jobs`` table.
 
 While not exhaustive, these include:
-
-CleanupChunks
-^^^^^^^^^^^^^
-
-The CleanupChunks job, contained in ``OCA\\DAV\\Command\\CleanupChunks``, will clean up outdated chunks (uploaded files) more than a certain number of days old.
-By default, the command cleans up chunks more than two days old. However, the command also accepts the number of days as an argument.
-It can be run, as follows, using the OCC command
-
-::
-
-  occ dav:cleanup-chunks
-
-.. note:: 
-   This command needs to be added to CRON, as it is not listed there by default. 
 
 ExpireTrash
 ^^^^^^^^^^^
