@@ -681,6 +681,11 @@ For example:
   --path="/alice/files/Music"
 
 In the example above, the user_id ``alice`` is determined implicitly from the path component given.
+
+.. note::
+  Mounts are only scannable at the point of origin. Scanning of shares including federated shares 
+  is not necessary on the receiver side and therefore not possible.
+
 The ``--path``, ``--all`` and ``[user_id]`` parameters are exclusive - only one must be specified.
 
 The ``--repair`` Option
