@@ -2,10 +2,7 @@
 How to Upgrade Your ownCloud Server
 ===================================
 
-We recommend that you keep your ownCloud server upgraded regularly installing all point releases and major releases, without skipping any of them, as doing so increases the risk of errors. 
-
-- Major releases are 8.0, 8.1, 8.2, 9.0, 9.1, and 10.0. 
-- Point releases are intermediate releases for each major release, e.g., 8.0.9, 8.1.3, and |version|. 
+We recommend that you keep your ownCloud server up to date. 
 
 When an update is available for your ownCloud server, you will see a notification at the top of your ownCloud Web interface. 
 When you click the notification, it will bring you here.
@@ -114,9 +111,9 @@ In this guide, the following assumptions are made:
 
 #. ownCloud |version| is the latest version.
 #. Your existing installation is in ``/var/www/owncloud``.
-#. Your new installation is in ``/var/www/owncloud-10.0.4``.
+#. Your new installation is in ``/var/www/owncloud-|version|``.
 #. The commands are executed as the web server user, which is ``www-data``.
-#. Your ownCloud installation is run with *Apache 2*, *PHP 5.6*, and *Ubuntu 14.04*.
+#. Your ownCloud installation is run with *Apache 2*, *PHP 5.6*, and *Ubuntu 16.04*.
 
 Put ownCloud in Maintenance Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -142,15 +139,15 @@ To do this, run the following command:
 Get a Copy of ownCloud |version|
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-You can download ownCloud 10 from several places. 
+You can download ownCloud from several places. 
 However, the best place is https://owncloud.org/install/. 
 To do so, run the following command:
 
 .. code-block:: console
    
-   # Download and extract the code to /var/www/owncloud-10.0.4
-   wget -qO- https://download.owncloud.org/community/owncloud-10.0.4.tar.bz2 | \ 
-     tar --transform 's/^owncloud/owncloud-10.0.4/' -jxv -C /var/www/
+   # Download and extract the code to /var/www/owncloud-|version|
+   wget -qO- https://download.owncloud.org/community/owncloud-|version|.tar.bz2 | \ 
+     tar --transform 's/^owncloud/owncloud-|version|/' -jxv -C /var/www/
 
 Copy config/config.php from the existing installation to the new source
 
@@ -159,14 +156,14 @@ You can do this by running the following command:
 
 .. code-block:: console
    
-   cp -v /var/www/owncloud/config/config.php /var/www/owncloud-10.0.4/config/config.php
+   cp -v /var/www/owncloud/config/config.php /var/www/owncloud-|version|/config/config.php
 
 If you use the default ownCloud data directory, then you need to copy it from the existing installation to the new source directory as well. 
 You can do this by running the following command:
 
 .. code-block:: console
    
-   cp -rv /var/www/owncloud/data /var/www/owncloud-10.0.4/data
+   cp -rv /var/www/owncloud/data /var/www/owncloud-|version|/data
 
 If your data directory is located outside of the ownCloud installation directory, then you can safely skip this command.
 
@@ -213,8 +210,8 @@ Specifically, change them to be as in the following example:
 
 .. code-block:: console
 
-   Alias /owncloud "/var/www/owncloud-10.0.0RC1/"
-   DocumentRoot /var/www/owncloud-10.0.0RC1/
+   Alias /owncloud "/var/www/owncloud-|version|/"
+   DocumentRoot /var/www/owncloud-|version|/
 
 Run the Update Process
 ~~~~~~~~~~~~~~~~~~~~~~
