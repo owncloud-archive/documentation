@@ -170,6 +170,7 @@ Finalize the Installation
 
 With maintenance mode disabled, login and:
 
+- Re-enable cron jobs
 - Check that the version number reflects the new installation. It's visible at the bottom of your Admin page. 
 - Check that your other settings are correct. 
 - Go to the Apps page and review the core apps to make sure the right ones are enabled. 
