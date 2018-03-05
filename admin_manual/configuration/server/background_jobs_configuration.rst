@@ -113,11 +113,17 @@ A number of existing background jobs are available to be run just for specific t
    * ``OCA\\Files_Versions\\BackgroundJob\\ExpireVersions`` -> ``occ versions:expire``
 
    If used, these should be scheduled to run on a daily basis.
-   
-.. note:: 
-   There is no matching background job to delete from the ``oc_jobs`` table.
 
 While not exhaustive, these include:
+
+CleanupChunks
+^^^^^^^^^^^^^
+
+The CleanupChunks job, contained in ``OCA\\DAV\\Command\\CleanupChunks``, will clean up outdated chunks (uploaded files) more than a certain number of days old.
+   
+.. note:: 
+   This command needs to be added to your crontab. 
+   There is no matching background job to delete from the ``oc_jobs`` table.
 
 ExpireTrash
 ^^^^^^^^^^^
