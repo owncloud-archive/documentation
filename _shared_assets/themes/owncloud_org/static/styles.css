@@ -407,6 +407,10 @@ ul, ol {
   margin-bottom: 20px;
 }
 
+dl dd, dl dt {
+  margin-bottom: 10px;
+}
+
 /* Match all code highlight blocks, regardless of language */
 div[class*='highlight'] {
   margin-top: 25px;
