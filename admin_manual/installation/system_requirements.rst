@@ -21,6 +21,14 @@ Web server        Apache 2.4 with ``prefork`` :ref:`apache-mpm-label` and ``mod_
 PHP Runtime       PHP (5.6+, 7.0, & 7.1)
 ================= =============================================================
 
+
+.. info:: 
+
+    For the future release of ownCloud 10.1, a minimum php version of 7.1 is needed.
+    If you use Ubuntu 16.04:
+    - php 7.1 is only available via ppa
+    - php 7.2 standard installable, but you have to install some mandatory modules yourself, like intl.
+
 .. note::
    
    - Red Hat Enterprise Linux & Centos 7 are 64-bit only.
