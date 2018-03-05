@@ -27,6 +27,7 @@ PHP Runtime       PHP (5.6+, 7.0, & 7.1)
     For the future release of ownCloud 10.1, a minimum php version of 7.1 is needed.
     If you use Ubuntu 16.04:
     - php 7.1 is only available via ppa
+    to add a ppa to your system, use this command: sudo add-apt-repository ppa:user/ppa-name
     - php 7.2 standard installable, but you have to install some mandatory modules yourself, like intl.
 
 .. note::
