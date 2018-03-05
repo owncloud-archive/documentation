@@ -77,6 +77,8 @@ For example::
 
   URL to call: http[s]://<domain-of-your-server>/owncloud/cron.php
 
+.. _ajax_cron_label:
+
 AJAX
 ~~~~
 
