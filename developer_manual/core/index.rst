@@ -11,7 +11,7 @@ Core Development
    translation
    unit-testing
    ui-testing
-   integration-tests
+   acceptance-tests
    externalapi
    ocs-share-api
    ocs-recipient-api
