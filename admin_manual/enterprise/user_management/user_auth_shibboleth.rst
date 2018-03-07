@@ -42,32 +42,44 @@ following aliases are defined in an Apache virtual host directive:
 Further Shibboleth specific configuration as defined in
 ``/etc/apache2/conf.d/shib.conf``::
 
-	#
 	# Load the Shibboleth module.
-	#
 	LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_24.so
-	
-	#
-	# Configure the module for content.
-	#
-	
-	#
-	# The login endpoint is now under control of
-	# Shibboleth. 
-	#
-	<Location /login>
+
+	# Ensure handler will be accessible
+	<Location /Shibboleth.sso>
+		AuthType None
+		Require all granted
+	</Location>
+
+	# always fill env with shib variable for logout url
+	<Location />
+		AuthType shibboleth
+		ShibRequestSetting requireSession false
+		Require shibboleth
+	</Location>
+
+	# authenticate only on the login page
+	<Location ~ "(/index.php)?/login">
 		# force internal users to use the IdP
 		<If "-R '192.168.1.0/24'">
 			AuthType shibboleth
+			ShibRequestSetting requireSession true
 			require valid-user
 		</If>
 		# allow basic auth for eg. guest accounts
 		<Else>
 			AuthType shibboleth
+			ShibRequestSetting requireSession false
 			require shibboleth
 		</Else>
 	</Location>
-	
+
+	# shib session for css, js and woff not needed
+	<Location ~ "/.*\.(css|js|woff)">
+		AuthType None
+		Require all granted
+	</Location>
+
 
 To allow users to login via the IdP, add a login alternative with the ``login.alternatives``
 option in config.php.
