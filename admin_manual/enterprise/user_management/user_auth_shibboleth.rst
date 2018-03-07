@@ -39,11 +39,6 @@ following aliases are defined in an Apache virtual host directive:
 
 ::
 
-	# non-Shibboleth access
-	Alias /owncloud /var/www/owncloud/
-	# for Shibboleth access
-	Alias /oc-shib /var/www/owncloud/
-
 Further Shibboleth specific configuration as defined in
 ``/etc/apache2/conf.d/shib.conf``::
 
@@ -53,106 +48,29 @@ Further Shibboleth specific configuration as defined in
 	LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_24.so
 	
 	#
-	# Ensures handler will be accessible.
-	#
-	<Location /Shibboleth.sso>
-	  AuthType None
-	  Require all granted
-	</Location>
-	
-	#
 	# Configure the module for content.
 	#
 	
 	#
-	# Besides the exceptions below, this location is now under control of
-	# Shibboleth
+	# The login endpoint is now under control of
+	# Shibboleth. 
 	#
-	<Location /oc-shib>
-		AuthType shibboleth
-		ShibRequireSession On
-		ShibUseHeaders Off
-		ShibExportAssertion On
-		require valid-user
+	<Location /login>
+		# force internal users to use the IdP
+		<If "-R '192.168.1.0/24'">
+			AuthType shibboleth
+			require valid-user
+		</If>
+		# allow basic auth for eg. guest accounts
+		<Else>
+			AuthType shibboleth
+			require shibboleth
+		</Else>
 	</Location>
 	
-	#
-	# Allow access to Sharing API (and others) without Shibboleth
-	#
-	<Location ~ "/ocs">
-		AuthType None
-		Require all granted
-	</Location>
-		
-	#
-	# Shibboleth is disabled for the following location to allow non
-	# shibboleth webdav access
-	#
-	<Location ~ "/oc-shib/remote.php/nonshib-webdav">
-		AuthType None
-		Require all granted
-	</Location>
-	
-	#
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	#
-	<Location ~ \
-	"/oc-shib/(status.php$\
-	|index.php/s/\
-	|public.php\
-	|cron.php$\
-	|core/img/\
-	|index.php/apps/files_sharing/ajax/publicpreview.php$\
-	|index.php/apps/files/ajax/upload.php$\
-	|apps/files/templates/fileexists.html$\
-	|index.php/apps/files/ajax/mimeicon.php$\
-	|index.php/apps/files_sharing/ajax/list.php$\
-	|themes/\
-	|index.php/apps/files_pdfviewer/\
-	|apps/files_pdfviewer/)">
-	  AuthType None
-	  Require all granted
-	</Location>
-	
-	#
-	# Shibboleth is disabled for the following location to allow public gallery
-	# sharing
-	#
-	<Location ~ \
-	"/oc-shib/(index.php/apps/gallery/s/\
-	|index.php/apps/gallery/slideshow$\
-	|index.php/apps/gallery/.*\.public)">
-	  AuthType None
-	  Require all granted
-	</Location>
-	
-	#
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	#
-	<Location ~ "/oc-shib/.*\.css">
-	  AuthType None
-	  Require all granted
-	</Location>
-	
-	#
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	#
-	<Location ~ "/oc-shib/.*\.js">
-	  AuthType None
-	  Require all granted
-	</Location>
-	
-	#
-	# Shibboleth is disabled for the following location to allow public link
-	# sharing
-	#
-	<Location ~ "/oc-shib/.*\.woff">
-	  AuthType None
-	  Require all granted
-	</Location>
+
+To allow users to login via the IdP, add a login alternative with the ``login.alternatives``
+option in config.php.
 
 Depending on the ownCloud Shibboleth app mode, you may need to revisit this
 configuration.
