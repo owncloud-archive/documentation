@@ -30,8 +30,8 @@ How to Create a New Theme
 
 At its most basic, to create a theme requires two steps:
 
-1. Copy and extend an existing theme or create one from scratch.
-2. Enable the theme in the ownCloud Admin dashboard.
+#. Copy and extend an existing theme or create one from scratch.
+#. Enable the theme in the ownCloud Admin dashboard.
 
 All themes, whether copied or new, must meet two key criteria, these are:
 
