@@ -292,7 +292,7 @@ main Web server / Vhost configuration or the ``.htaccess`` placed in your docume
     RewriteEngine On
     RewriteCond %{REQUEST_URI} ^(/)$ [NC]
     RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
-    RewriteRule .* https://%{SERVER_NAME}/owncloud/remote.php/webdav/ [R=301,L]
+    RewriteRule .* https://%{SERVER_NAME}/owncloud/remote.php/webdav/ [R=401,L]
 
 For NGINX an example config addition could be::
 
