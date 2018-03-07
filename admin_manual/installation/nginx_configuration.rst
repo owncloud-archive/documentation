@@ -287,8 +287,6 @@ The following config should be used when ownCloud is not in your webroot but pla
   
       location ^~ /owncloud {
 
-          root /var/www/owncloud/;
-
           # set max upload size
           client_max_body_size 512M;
           fastcgi_buffers 8 4K;                     # Please see note 1
@@ -319,7 +317,7 @@ The following config should be used when ownCloud is not in your webroot but pla
           }
   
           location ~ ^/owncloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
-              fastcgi_split_path_info ^/owncloud(.+\.php)(/.*)$;
+              fastcgi_split_path_info ^(.+\.php)(/.*)$;
               include fastcgi_params;
               fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
               fastcgi_param SCRIPT_NAME $fastcgi_script_name; # necessary for owncloud to detect the contextroot https://github.com/owncloud/core/blob/v10.0.0/lib/private/AppFramework/Http/Request.php#L603
@@ -341,8 +339,8 @@ The following config should be used when ownCloud is not in your webroot but pla
   
           # Adding the cache control header for js and css files
           # Make sure it is BELOW the PHP block
-          location ~ /owncloud(\/.*\.(?:css|js)) {
-              try_files $1 /owncloud/index.php$1$is_args$args;
+          location ~ /owncloud/.*\.(?:css|js) {
+              try_files $uri /owncloud/index.php$uri$is_args$args;
               add_header Cache-Control "max-age=15778463";
               # Add headers to serve security related headers  (It is intended to have those duplicated to the ones above)
               # Before enabling Strict-Transport-Security headers please read into this topic first.
@@ -357,8 +355,8 @@ The following config should be used when ownCloud is not in your webroot but pla
               access_log off;
           }
   
-          location ~ /owncloud(/.*\.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg|map)) {
-              try_files $1 /owncloud/index.php$1$is_args$args;
+          location ~ /owncloud/.*\.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg|map) {
+              try_files $uri /owncloud/index.php$uri$is_args$args;
               add_header Cache-Control "public, max-age=7200";
               # Optional: Don't log access to other assets
               access_log off;
