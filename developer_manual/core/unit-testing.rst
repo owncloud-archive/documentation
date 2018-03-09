@@ -83,7 +83,7 @@ Writing PHP Unit tests
 
 To get started, do the following:
 
- - Create a directory called ``tests`` in the top level of your application
+ - Create a directory called ``tests/unit`` in the top level of your application
  - Create a PHP file in the directory and ``require_once`` your class which you want to test.
 
 Then you can run the created test with ``phpunit``.
@@ -94,46 +94,50 @@ Then you can run the created test with ``phpunit``.
 .. note::
    You'll most likely run your tests under a different user than the Web server. This might cause problems with your PHP settings (i.e., ``open_basedir``) and requires you to adjust your configuration.
 
-An example for a simple test would be:
+Given the class ``MyClass`` in your app:
 
-:file:`/srv/http/owncloud/apps/myapp/tests/testaddtwo.php`
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\Myapp\Tests;
-
-    class TestAddTwo extends \Test\TestCase {
-        protected $testMe;
-
-        protected function setUp() {
-            parent::setUp();
-            $this->testMe = new \OCA\Myapp\TestMe();
-        }
-
-        public function testAddTwo(){
-              $this->assertEquals(5, $this->testMe->addTwo(3));
-        }
-
-    }
-
-
-:file:`/srv/http/owncloud/apps/myapp/lib/testme.php`
+:file:`/srv/http/owncloud/apps/myapp/lib/MyClass.php`
 
 .. code-block:: php
 
     <?php
-    namespace OCA\Myapp;
+    namespace OCA\MyApp;
 
-    class TestMe {
+    class MyClass {
         public function addTwo($number){
             return $number + 2;
         }
     }
 
+An example for a simple test would be:
+
+:file:`/srv/http/owncloud/apps/myapp/tests/unit/MyClassTest.php`
+
+.. code-block:: php
+
+    <?php
+    namespace OCA\MyApp;
+
+    class MyClassTest extends \Test\TestCase {
+        protected $myClass;
+
+        protected function setUp() {
+            parent::setUp();
+            $this->myClass = new MyClass();
+        }
+
+        public function testAddTwo(){
+              $this->assertEquals(5, $this->myClass->addTwo(3));
+        }
+
+    }
+
+.. note::
+   The class under test and the test class should share the same namespace so you do not need to use a dedicated ``use`` statement for it. This is `the recommended way to organize tests`_
+
 In :file:`/srv/http/owncloud/apps/myapp/` you run the test with::
 
-  phpunit tests/testaddtwo.php
+  phpunit tests/unit/MyClassTest.php
 
 
 Make sure to extend the ``\Test\TestCase`` class with your test and always call the parent methods, when overwriting ``setUp()``, ``setUpBeforeClass()``, ``tearDown()`` or ``tearDownAfterClass()`` method from the ``TestCase``.
@@ -304,9 +308,10 @@ Here are some useful links about how to write unit tests with Jasmine and Sinon:
 
 .. links
 
-.. _the PHPUnit documentation: https://phpunit.de/manual/current/en/installation.html
-.. _the writing tests section: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
+.. _the PHPUnit documentation: https://phpunit.readthedocs.io/en/latest/installation.html
+.. _the recommended way to organize tests: https://phpunit.readthedocs.io/en/latest/organizing-tests.html
+.. _the writing tests section: https://phpunit.readthedocs.io/en/latest/writing-tests-for-phpunit.html
 .. _Clean Code by Robert C. Martin: https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM
 .. _Clean Code Talks - "GuiceBerry": http://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E
 .. _Writing Testable Code: http://googletesting.blogspot.de/2008/08/by-miko-hevery-so-you-decided-to.html
-.. _PHPUnit Manual: http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html
+.. _PHPUnit Manual: https://phpunit.readthedocs.io/en/latest/index.html
