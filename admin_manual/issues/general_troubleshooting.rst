@@ -285,22 +285,42 @@ The windows native WebDAV client might fail with the following error message::
 
     Error 0x80070043 "The network name cannot be found." while adding a network drive
 
-A known workaround for this issue is to update your Web server configuration. For Apache
-you need to add something like the following (please update the path accordingly) to your 
-main Web server / Vhost configuration or the ``.htaccess`` placed in your document root::
+A known workaround for this issue is to update your Web server configuration.
 
+**Apache**
+
+You need to add the following rule set to your main Web Server / Vhost configuration or 
+the ``.htaccess`` in your document root
+
+::
+
+    # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
     RewriteEngine On
-    RewriteCond %{REQUEST_URI} ^(/)$ [NC]
+    RewriteCond %{HTTP_USER_AGENT} ^(DavClnt)$
     RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
-    RewriteRule .* https://%{SERVER_NAME}/owncloud/remote.php/webdav/ [R=401,L]
+    RewriteRule .* - [R=401,L]
 
-For NGINX an example config addition could be::
+**nginx**
+
+| Because nginx does not allow nested ``if`` statements, you need to use ``map``
+| Add this into the http block
+
+::
+
+    # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
+    map "$http_user_agent:$request_method" $WinWebDav {
+        default			0;
+        "DavClnt:OPTIONS"	1;
+    }
+
+And this into the server bock
+
+::
 
     location = / {
-        if ($http_user_agent = DavClnt) {
-            return 401;
-        }
+        if ($WinWebDav) { return 401; }
     }
+
 
 Troubleshooting Contacts & Calendar
 -----------------------------------
