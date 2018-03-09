@@ -8,8 +8,8 @@ The Appliance:
 
 - Provides a pre-packaged, easy to deploy ownCloud ready for you in most popular virtual machine formats, including ``ESX``, ``VirtualBox``, ``KVM`` and ``VMware``.
 - Contains the ownCloud 10 virtual image, and all the additional software you need to get up and running on ownCloud in minutes: *ownCloud X Server and Enterprise Apps*, *Apache 2*, *PHP*, and *MySQL*.
-- Scales up to 500 users.
+- Scales up to 500 users. Depending on the intensity and pattern of use, this can vary from 400 up to 600 users.
 
 .. note:: 
-   Some configurations, such as SAML IDPs, or LDAP or AD instances, may still be needed in order to connect.
-   Depending on the intensity and pattern of use, this can vary from 150 up to 400 users.
+   Some configurations, such as SAML IDPs, or LDAP or AD instances, may needed additional configuraton in order to connect.
+   
