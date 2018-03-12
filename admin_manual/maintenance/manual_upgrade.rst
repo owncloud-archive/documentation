@@ -21,6 +21,12 @@ First, :doc:`backup <backup>` the following items:
 
   cp -rv /var/www/owncloud /opt/backup/owncloud
   mysqldump <db_name> > /opt/backup/backup-file.sql
+  
+Check ownCloud's Mandatory Requirements
+---------------------------------------
+
+:ref:`ownCloud's mandatory requirements <prerequisites_label>` (such as PHP versions and extensions) can change from one version to the next. 
+Ensure that you review them and update your server(s), if required, before upgrading ownCloud. 
 
 Enable Maintenance Mode
 -----------------------
