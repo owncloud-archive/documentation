@@ -285,11 +285,11 @@ The windows native WebDAV client might fail with the following error message::
 
     Error 0x80070043 "The network name cannot be found." while adding a network drive
 
-A known workaround for this issue is to update your Web server configuration.
+A known workaround for this issue is to update your web server configuration.
 
 **Apache**
 
-You need to add the following rule set to your main Web Server / Vhost configuration or 
+You need to add the following rule set to your main web server / Vhost configuration or 
 the ``.htaccess`` in your document root
 
 ::
@@ -300,9 +300,9 @@ the ``.htaccess`` in your document root
     RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
     RewriteRule .* - [R=401,L]
 
-**nginx**
+**NGINX**
 
-| Because nginx does not allow nested ``if`` statements, you need to use ``map``
+| Because NGINX does not allow nested ``if`` statements, you need to use ``map``
 | Add this into the http block
 
 ::
