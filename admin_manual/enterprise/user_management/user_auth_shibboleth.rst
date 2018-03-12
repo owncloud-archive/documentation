@@ -219,6 +219,24 @@ In ownCloud 8.1 the Shibboleth environment variable mapping was stored in
 preventing a seamless upgrade procedure. In ownCloud 8.2+ the variables are
 stored in the ownCloud database, making Shibboleth automatically upgradeable.
 
+Mapping ownCloud User IDs
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+From 3.1.2 you can now specify a mapper that is used on inbound ownCloud user IDs,
+to adjust them before usage in ownCloud. You can set the mapper using ``occ``::
+
+ $ sudo -u www-data php occ config:app:set user_shibboleth uid_mapper --value="OCA\User_Shibboleth\Mapper\ADFSMapper"
+
+You may view the currently configured mapper using:
+
+ $ sudo -u www-data php occ shibboleth:mapping
+
+The following mappers are provided with the app:
+
+* OCA\User_Shibboleth\Mapper\NoOpMapper - the default, does not alter the uid
+* OCA\User_Shibboleth\Mapper\ADFSMapper - splits the uid around a ; character and takes the first piece
+* OCA\User_Shibboleth\Mapper\GUIDInMemoryMapper - maps in binary GUIDs to strings
+
 Shibboleth with Desktop and Mobile Clients
 ------------------------------------------
 
