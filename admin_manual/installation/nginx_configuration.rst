@@ -40,369 +40,85 @@ data in transit.
 -  Remove all **ssl_** entries.
 -  Remove **fastcgi_params HTTPS on;**
 
-**Note 1:**
+Note 1
+~~~~~~
 
-| ``fastcgi_buffers 8 4K;``
-| Do not set the number of buffers over 63, in our example it is set to 8.
-| When exeeding, big file downloads can possibly consume a lot of system memory over time and cause problems especially on low-mem systems.
+- ``fastcgi_buffers 8 4K;``
+- Do not set the number of buffers over 63, in our example it is set to 8.
+- When exeeding, big file downloads can possibly consume a lot of system memory over time and cause problems especially on low-mem systems.
 
-**Note 2:**
+Note 2
+~~~~~~
  
-| ``fastcgi_ignore_headers X-Accel-Buffering;``
-| From ownCloud version 10.0.4 on, a header statement will be sent to nginx not to use buffers to avoid problems with problematic ``fastcgi_buffers`` values. See note above.
-| If these values are properly set and no problems are expected, you can turn on this statement to reenable buffering overriding the sent header.
-| In case you use an earlier version of ownCloud or can´t change the buffers, or you can´t remove a existing ignore header statement, you can explicitly set ``fastcgi_buffering off;``
-| These statements are used either or but not together.
+- ``fastcgi_ignore_headers X-Accel-Buffering;``
+- From ownCloud version 10.0.4 on, a header statement will be sent to nginx not to use buffers to avoid problems with problematic ``fastcgi_buffers`` values. See note above.
+- If these values are properly set and no problems are expected, you can turn on this statement to reenable buffering overriding the sent header.
+- In case you use an earlier version of ownCloud or can´t change the buffers, or you can´t remove a existing ignore header statement, you can explicitly set ``fastcgi_buffering off;``
+- These statements are used either or but not together.
 
-ownCloud in the webroot of NGINX
+ownCloud in the web root of NGINX
 ================================
 
-The following config should be used when ownCloud is placed in the webroot of 
+The following config should be used when ownCloud is placed in the web root of 
 your NGINX installation.
 
-.. code-block:: nginx
-
-  upstream php-handler {
-      server 127.0.0.1:9000;
-      # Depending on your used PHP version
-      #server unix:/var/run/php5-fpm.sock;
-      #server unix:/var/run/php7-fpm.sock;
-  }
-
-  server {
-      listen 80;
-      server_name cloud.example.com;
-
-      # For Lets Encrypt, this needs to be served via HTTP
-      location /.well-known/acme-challenge/ {
-          root /var/www/owncloud; # Specify here where the challenge file is placed
-      }
-
-      # enforce https
-      location / {
-          return 301 https://$server_name$request_uri;
-      }
-  }
-  
-  server {
-      listen 443 ssl http2;
-      server_name cloud.example.com;
-  
-      ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
-      ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
-
-      # Example SSL/TLS configuration. Please read into the manual of
-      # nginx before applying these.
-      ssl_session_timeout 5m;
-      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-      ssl_ciphers "-ALL:EECDH+AES256:EDH+AES256:AES256-SHA:EECDH+AES:EDH+AES:!ADH:!NULL:!aNULL:!eNULL:!EXPORT:!LOW:!MD5:!3DES:!PSK:!SRP:!DSS:!AESGCM:!RC4";
-      ssl_dhparam /etc/nginx/dh4096.pem;
-      ssl_prefer_server_ciphers on;
-      keepalive_timeout    70;
-      ssl_stapling on;
-      ssl_stapling_verify on;
-  
-      # Add headers to serve security related headers
-      # Before enabling Strict-Transport-Security headers please read into this topic first.
-      #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
-      add_header X-Content-Type-Options nosniff;
-      add_header X-Frame-Options "SAMEORIGIN";
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Robots-Tag none;
-      add_header X-Download-Options noopen;
-      add_header X-Permitted-Cross-Domain-Policies none;
-  
-      # Path to the root of your installation
-      root /var/www/owncloud/;
-  
-      location = /robots.txt {
-          allow all;
-          log_not_found off;
-          access_log off;
-      }
-  
-      # The following 2 rules are only needed for the user_webfinger app.
-      # Uncomment it if you're planning to use this app.
-      #rewrite ^/.well-known/host-meta /public.php?service=host-meta last;
-      #rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json last;
-  
-      location = /.well-known/carddav {
-          return 301 $scheme://$host/remote.php/dav;
-      }
-      location = /.well-known/caldav {
-          return 301 $scheme://$host/remote.php/dav;
-      }
-  
-      # set max upload size
-      client_max_body_size 512M;
-      fastcgi_buffers 8 4K;                     # Please see note 1
-      fastcgi_ignore_headers X-Accel-Buffering; # Please see note 2
-  
-      # Disable gzip to avoid the removal of the ETag header
-      # Enabling gzip would also make your server vulnerable to BREACH
-      # if no additional measures are done. See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=773332
-      gzip off;
-  
-      # Uncomment if your server is build with the ngx_pagespeed module
-      # This module is currently not supported.
-      #pagespeed off;
-  
-      error_page 403 /core/templates/403.php;
-      error_page 404 /core/templates/404.php;
-  
-      location / {
-          rewrite ^ /index.php$uri;
-      }
-  
-      location ~ ^/(?:build|tests|config|lib|3rdparty|templates|data)/ {
-          return 404;
-      }
-      location ~ ^/(?:\.|autotest|occ|issue|indie|db_|console) {
-          return 404;
-      }
-  
-      location ~ ^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
-          fastcgi_split_path_info ^(.+\.php)(/.*)$;
-          include fastcgi_params;
-          fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-          fastcgi_param SCRIPT_NAME $fastcgi_script_name; # necessary for owncloud to detect the contextroot https://github.com/owncloud/core/blob/v10.0.0/lib/private/AppFramework/Http/Request.php#L603
-          fastcgi_param PATH_INFO $fastcgi_path_info;
-          fastcgi_param HTTPS on;
-          fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
-          fastcgi_param front_controller_active true;
-          fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
-          fastcgi_pass php-handler;
-          fastcgi_intercept_errors on;
-          fastcgi_request_buffering off; #Available since NGINX 1.7.11
-      }
-  
-      location ~ ^/(?:updater|ocs-provider)(?:$|/) {
-          try_files $uri $uri/ =404;
-          index index.php;
-      }
-  
-      # Adding the cache control header for js and css files
-      # Make sure it is BELOW the PHP block
-      location ~ \.(?:css|js)$ {
-          try_files $uri /index.php$uri$is_args$args;
-          add_header Cache-Control "max-age=15778463";
-          # Add headers to serve security related headers (It is intended to have those duplicated to the ones above)
-          # Before enabling Strict-Transport-Security headers please read into this topic first.
-          #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
-          add_header X-Content-Type-Options nosniff;
-          add_header X-Frame-Options "SAMEORIGIN";
-          add_header X-XSS-Protection "1; mode=block";
-          add_header X-Robots-Tag none;
-          add_header X-Download-Options noopen;
-          add_header X-Permitted-Cross-Domain-Policies none;
-          # Optional: Don't log access to assets
-          access_log off;
-      }
-  
-      location ~ \.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg|map)$ {
-          add_header Cache-Control "public, max-age=7200";
-          try_files $uri /index.php$uri$is_args$args;
-          # Optional: Don't log access to other assets
-          access_log off;
-      }
-  }
+.. literalinclude:: examples/nginx/default-configuration.conf
 
 ownCloud in a subdir of NGINX
 =============================
 
-The following config should be used when ownCloud is not in your webroot but placed under a different contextroot of your NGINX installation such as /owncloud or /cloud. The following configuration assumes it is placed under ``/owncloud`` and that you have ``'overwritewebroot' => '/owncloud',`` set in your ``config/config.php``.
+The following config should be used when ownCloud is not in your web root but placed under a different context root of your NGINX installation such as /owncloud or /cloud. The following configuration assumes it is placed under ``/owncloud`` and that you have ``'overwriteweb root' => '/owncloud',`` set in your ``config/config.php``.
 
-.. code-block:: nginx
+.. literalinclude:: examples/nginx/subdirectory-configuration.conf
 
-  upstream php-handler {
-      server 127.0.0.1:9000;
-      # Depending on your used PHP version
-      #server unix:/var/run/php5-fpm.sock;
-      #server unix:/var/run/php7-fpm.sock;
-  }
-  
-  server {
-      listen 80;
-      server_name cloud.example.com;
-
-      # For Lets Encrypt, this needs to be served via HTTP
-      location /.well-known/acme-challenge/ {
-          root /var/www/owncloud; # Specify here where the challenge file is placed
-      }
-
-      # enforce https
-      location / {
-          return 301 https://$server_name$request_uri;
-      }
-  }
-  
-  server {
-      listen 443 ssl http2;
-      server_name cloud.example.com;
-  
-      ssl_certificate /etc/ssl/nginx/cloud.example.com.crt;
-      ssl_certificate_key /etc/ssl/nginx/cloud.example.com.key;
-
-      # Example SSL/TLS configuration. Please read into the manual of
-      # nginx before applying these.
-      ssl_session_timeout 5m;
-      ssl_protocols TLSv1 TLSv1.1 TLSv1.2;
-      ssl_ciphers "-ALL:EECDH+AES256:EDH+AES256:AES256-SHA:EECDH+AES:EDH+AES:!ADH:!NULL:!aNULL:!eNULL:!EXPORT:!LOW:!MD5:!3DES:!PSK:!SRP:!DSS:!AESGCM:!RC4";
-      ssl_dhparam /etc/nginx/dh4096.pem;
-      ssl_prefer_server_ciphers on;
-      keepalive_timeout    70;
-      ssl_stapling on;
-      ssl_stapling_verify on;
-
-      # Add headers to serve security related headers
-      # Before enabling Strict-Transport-Security headers please read into this topic first.
-      #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
-      add_header X-Content-Type-Options nosniff;
-      add_header X-Frame-Options "SAMEORIGIN";
-      add_header X-XSS-Protection "1; mode=block";
-      add_header X-Robots-Tag none;
-      add_header X-Download-Options noopen;
-      add_header X-Permitted-Cross-Domain-Policies none;
-  
-      # Path to the root of your installation
-      root /var/www/;
-  
-      location = /robots.txt {
-          allow all;
-          log_not_found off;
-          access_log off;
-      }
-  
-      # The following 2 rules are only needed for the user_webfinger app.
-      # Uncomment it if you're planning to use this app.
-      #rewrite ^/.well-known/host-meta /owncloud/public.php?service=host-meta last;
-      #rewrite ^/.well-known/host-meta.json /owncloud/public.php?service=host-meta-json last;
-  
-      location = /.well-known/carddav {
-          return 301 $scheme://$host/owncloud/remote.php/dav;
-      }
-      location = /.well-known/caldav {
-          return 301 $scheme://$host/owncloud/remote.php/dav;
-      }
-  
-      location ^~ /owncloud {
-
-          # set max upload size
-          client_max_body_size 512M;
-          fastcgi_buffers 8 4K;                     # Please see note 1
-          fastcgi_ignore_headers X-Accel-Buffering; # Please see note 2
-  
-  
-          # Disable gzip to avoid the removal of the ETag header
-          # Enabling gzip would also make your server vulnerable to BREACH
-          # if no additional measures are done. See https://bugs.debian.org/cgi-bin/bugreport.cgi?bug=773332
-          gzip off;
-  
-          # Uncomment if your server is build with the ngx_pagespeed module
-          # This module is currently not supported.
-          #pagespeed off;
-  
-          error_page 403 /owncloud/core/templates/403.php;
-          error_page 404 /owncloud/core/templates/404.php;
-  
-          location /owncloud {
-              rewrite ^ /owncloud/index.php$uri;
-          }
-  
-          location ~ ^/owncloud/(?:build|tests|config|lib|3rdparty|templates|data)/ {
-              return 404;
-          }
-          location ~ ^/owncloud/(?:\.|autotest|occ|issue|indie|db_|console) {
-              return 404;
-          }
-  
-          location ~ ^/owncloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+|core/templates/40[34])\.php(?:$|/) {
-              fastcgi_split_path_info ^(.+\.php)(/.*)$;
-              include fastcgi_params;
-              fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-              fastcgi_param SCRIPT_NAME $fastcgi_script_name; # necessary for owncloud to detect the contextroot https://github.com/owncloud/core/blob/v10.0.0/lib/private/AppFramework/Http/Request.php#L603
-              fastcgi_param PATH_INFO $fastcgi_path_info;
-              fastcgi_param HTTPS on;
-              fastcgi_param modHeadersAvailable true; #Avoid sending the security headers twice
-              # EXPERIMENTAL: active the following if you need to get rid of the 'index.php' in the URLs
-              #fastcgi_param front_controller_active true;
-              fastcgi_read_timeout 180; # increase default timeout e.g. for long running carddav/ caldav syncs with 1000+ entries
-              fastcgi_pass php-handler;
-              fastcgi_intercept_errors on;
-              fastcgi_request_buffering off; #Available since NGINX 1.7.11
-          }
-  
-          location ~ ^/owncloud/(?:updater|ocs-provider)(?:$|/) {
-              try_files $uri $uri/ =404;
-              index index.php;
-          }
-  
-          # Adding the cache control header for js and css files
-          # Make sure it is BELOW the PHP block
-          location ~ /owncloud/.*\.(?:css|js) {
-              try_files $uri /owncloud/index.php$uri$is_args$args;
-              add_header Cache-Control "max-age=15778463";
-              # Add headers to serve security related headers  (It is intended to have those duplicated to the ones above)
-              # Before enabling Strict-Transport-Security headers please read into this topic first.
-              #add_header Strict-Transport-Security "max-age=15552000; includeSubDomains";
-              add_header X-Content-Type-Options nosniff;
-              add_header X-Frame-Options "SAMEORIGIN";
-              add_header X-XSS-Protection "1; mode=block";
-              add_header X-Robots-Tag none;
-              add_header X-Download-Options noopen;
-              add_header X-Permitted-Cross-Domain-Policies none;
-              # Optional: Don't log access to assets
-              access_log off;
-          }
-  
-          location ~ /owncloud/.*\.(?:svg|gif|png|html|ttf|woff|ico|jpg|jpeg|map) {
-              try_files $uri /owncloud/index.php$uri$is_args$args;
-              add_header Cache-Control "public, max-age=7200";
-              # Optional: Don't log access to other assets
-              access_log off;
-          }
-      }
-  }
+Troubleshooting
+---------------
 
 Suppressing Log Messages
-========================
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you're seeing meaningless messages in your logfile, for example `client 
 denied by server configuration: /var/www/data/htaccesstest.txt 
 <https://central.owncloud.org/t/htaccesstest-txt-errors-in-logfiles/831>`_,
-add this section to your NGINX configuration to suppress them::
+add this section to your NGINX configuration to suppress them:
+   
+.. code-block:: nginx
 
-        location = /data/htaccesstest.txt {
-          allow all;
-          log_not_found off;
-          access_log off;
-        }
+   location = /data/htaccesstest.txt {
+       allow all;
+       log_not_found off;
+       access_log off;
+   }
 
 JavaScript (.js) or CSS (.css) files not served properly
-========================================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 A common issue with custom NGINX configs is that JavaScript (.js)
 or CSS (.css) files are not served properly leading to a 404 (File not found)
 error on those files and a broken webinterface.
 
-This could be caused by the::
+This could be caused by the:
+   
+.. code-block:: nginx
 
-        location ~ \.(?:css|js)$ {
+  location ~ \.(?:css|js)$ {
 
-block shown above not located **below** the::
+block shown above not located **below** the:
+   
+.. code-block:: nginx
 
-        location ~ \.php(?:$|/) {
+   location ~ \.php(?:$|/) {
 
 block. Other custom configurations like caching JavaScript (.js)
 or CSS (.css) files via gzip could also cause such issues.
 
 Not all of my contacts are synchronized
-=======================================
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Check your server timeouts! It turns out that CardDAV sync often fails silently if the request runs into timeouts. With PHP-FPM you might see a "CoreDAVHTTPStatusErrorDomain error 504" which is an "HTTP504 Gateway timeout" error. To solve this, first check the ``default_socket_timeout`` setting in ``/etc/php/7.0/fpm/php.ini`` and increase the above ``fastcgi_read_timeout`` accordingly. Depending on your server's performance a timeout of 180s should be sufficient to sync an addressbook of ~1000 contacts.
 
 Performance Tuning
-==================
+------------------
 
 `nginx (<1.9.5) <ngx_http_spdy_module 
 <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
@@ -475,7 +191,8 @@ distribution name)::
 
 Then run ``sudo apt-get update``
 
-.. note:: If you're not overly cautious and wish to install the latest and 
+.. note:: 
+   If you're not overly cautious and wish to install the latest and 
    greatest NGINX packages and features, you may have to install NGINX from its 
    mainline repository. From the NGINX homepage: "In general, you should 
    deploy NGINX from its mainline branch at all times." If you would like to 
@@ -579,7 +296,9 @@ Configure NGINX with the ``nginx-cache-purge`` module
 
    sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}
    
-Add at the *beginning*, but *outside* the ``server{}`` block::
+Add at the *beginning*, but *outside* the ``server{}`` block:
+   
+.. code-block:: nginx
 
    # cache_purge
    fastcgi_cache_path {path} levels=1:2 keys_zone=OWNCLOUD:100m inactive=60m;
@@ -593,15 +312,18 @@ Add at the *beginning*, but *outside* the ``server{}`` block::
 .. note:: Please adopt or delete any regex line in the ``map`` block according 
    your needs and the ownCloud version used.
    As an alternative to mapping, you can use as many ``if`` statements in 
-   your server block as necessary::
+   your server block as necessary:
    
-    set $skip_cache 1;
-    if ($request_uri ~* "thumbnail.php")      { set $skip_cache 0; }
-    if ($request_uri ~* "/apps/galleryplus/") { set $skip_cache 0; }
-    if ($request_uri ~* "/apps/gallery/")     { set $skip_cache 0; }
+.. code-block:: nginx
+   
+   set $skip_cache 1;
+   if ($request_uri ~* "thumbnail.php")      { set $skip_cache 0; }
+   if ($request_uri ~* "/apps/galleryplus/") { set $skip_cache 0; }
+   if ($request_uri ~* "/apps/gallery/")     { set $skip_cache 0; }
 
-Add *inside* the ``server{}`` block, as an example of a configuration::
+Add *inside* the ``server{}`` block, as an example of a configuration:
    
+.. code-block:: nginx
    
    # cache_purge (with $http_cookies we have unique keys for the user)
    fastcgi_cache_key $http_cookie$request_method$host$request_uri;
@@ -609,32 +331,36 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
    fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
    
    location ~ \.php(?:$/) {
-         fastcgi_split_path_info ^(.+\.php)(/.+)$;
+       fastcgi_split_path_info ^(.+\.php)(/.+)$;
        
-         include fastcgi_params;
-         fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-         fastcgi_param PATH_INFO $fastcgi_path_info;
-         fastcgi_param HTTPS on;
-         fastcgi_pass php-handler;
+       include fastcgi_params;
+       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+       fastcgi_param PATH_INFO $fastcgi_path_info;
+       fastcgi_param HTTPS on;
+       fastcgi_pass php-handler;
        
-         # cache_purge
-         fastcgi_cache_bypass $skip_cache;
-         fastcgi_no_cache $skip_cache;
-         fastcgi_cache OWNCLOUD;
-         fastcgi_cache_valid  60m;
-         fastcgi_cache_methods GET HEAD;
-         }
+       # cache_purge
+       fastcgi_cache_bypass $skip_cache;
+       fastcgi_no_cache $skip_cache;
+       fastcgi_cache OWNCLOUD;
+       fastcgi_cache_valid  60m;
+       fastcgi_cache_methods GET HEAD;
+   }
    
-.. note:: Note regarding the ``fastcgi_pass`` parameter:
+.. note:: 
+   Note regarding the ``fastcgi_pass`` parameter:
+   
    Use whatever fits your configuration. In the example above, an ``upstream`` 
    was defined in an NGINX global configuration file.
-   This may look like::
+   This may look like:
+   
+.. code-block:: nginx
        
-     upstream php-handler {
-         server unix:/var/run/php5-fpm.sock;
-         # or
-         # server 127.0.0.1:9000;
-       } 
+   upstream php-handler {
+       server unix:/var/run/php5-fpm.sock;
+       # or
+       # server 127.0.0.1:9000;
+   } 
    
 3. **Test the configuration**
 
@@ -655,6 +381,7 @@ Add *inside* the ``server{}`` block, as an example of a configuration::
 
 Prevent access log entries when accessing thumbnails
 ====================================================
+
 When using Gallery or Galleryplus, any access to a thumbnail of a picture will be logged.
 This can cause a massive log quanity making log reading challenging. With this approach,
 you can disable access logging for those thumbnails.
@@ -662,19 +389,19 @@ you can disable access logging for those thumbnails.
 1. **Create a map directive outside your server block like**
 
    (Adopt the path queried according your needs.)
+   
+.. code-block:: nginx
 
-::
-
-     # do not access log to gallery thumbnails, flooding access logs only, error will be logged anyway
-     map $request_uri $loggable {
-             default 1;
-             ~*\/apps\/gallery\/thumbnails           0;
-             ~*\/apps\/galleryplus\/thumbnails       0;
-     }
+   # do not access log to gallery thumbnails, flooding access logs only, error will be logged anyway
+   map $request_uri $loggable {
+       default 1;
+       ~*\/apps\/gallery\/thumbnails           0;
+       ~*\/apps\/galleryplus\/thumbnails       0;
+   }
 
 
 2. **Inside your server block where you define your logs**
+   
+.. code-block:: nginx
 
-::
-
-     access_log /path-to-your-log combined if=$loggable;
+   access_log /path-to-your-log combined if=$loggable;
