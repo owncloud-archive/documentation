@@ -29,13 +29,9 @@ Step Two - Create a Dropbox app
 Next, you need to create a Dropbox app. 
 To do that, `open the new app creation form <https://www.dropbox.com/developers/apps/create>`_, where you see three questions:
 
-1. Choose an API
-2. Choose the type of access you need
+1. Choose an API --> "Dropbox API"
+2. Choose the type of access --> "App folder"
 3. Name your app
-
-Under "Choose an API", choose the first option, titled "Dropbox API".
-Then, under "Choose the type of access you need", choose the first preference: "App folder - Access to a single folder created specifically for your app."
-For "Name your app", in the field marked "App name", give your app a meaningful, but short, name.
 
 With all of the required details filled out, click the blue "Create app" button, in the bottom, right-hand corner.
 After you do that, the settings page for the application loads. 
@@ -43,7 +39,18 @@ After you do that, the settings page for the application loads.
 .. image:: ../../../images/configuration/files/external_storage/dropbox/app-configuration.png
    :alt: Dropbox app configuration settings
 
-From that page, you need to add the hostname of your ownCloud installation as an OAuth2 redirect URI. 
+.. Important:: 
+
+   **Redirect URI**: Here you must enter the exact URL of the page where you configure the storage.
+   
+   Examples:
+   
+   When configuring as **admin**:
+   http(s)://<<Server_Address>>/index.php/settings/admin?sectionid=storage
+   
+   When configuring as **user**:
+   http(s)://<<Server_Address>>/index.php/settings/personal?sectionid=storage
+
 
 .. _dropbox_install_step_three_label:
 
