@@ -179,7 +179,9 @@ Setting Up the WND Listener
 The WND listener for ownCloud 10 includes two different commands that need to be executed:
 
 - `wnd:listen`_
+- `wnd:listen-service`_
 - `wnd:process-queue`_
+
 
 wnd:listen
 ----------
@@ -231,6 +233,27 @@ Use the ``--password-trim`` option in those cases.
 
 You should be able to run any of those commands, and/or wrap them into a systemd service or any other startup service, so that the ``wnd:listen`` command is automatically started during boot, if you need it.
 
+wnd:listen-service
+------------------
+
+Command that acts as a service to keep running the wnd:listen service.
+
+The new wnd:listen-service accepts the same parameters as the wnd:listen one with the additional "idle-timeout" option, which will control the time the wnd:listen is idle and restart the service if that timeout is reached.
+
+There are 3 differences between this service and the conventional service to restart the process:
+
+- This process will only restart the service if the idle timeout is reached. If the underlying command (the wnd:listen) stops running for whatever reason, this service will finish.
+- This process will respawn a secondary wnd:listen before killing the old one. This will make sure that at least one wnd:listen is running and no notification will slip by.
+- The timeout will only consider the time the process is idle (specifically, when it isn't producing output). Any activity (console output) will reset the timer, which means that, as long as the wnd:listen is producing output (receiving notifications) the service won't be restarted and can be run for hours or days.
+
+The default idle timeout is 870 secs (14 minutes and 30 secs). This is in order to match the default automatic disconnection of windows SMB service after being idle for 15 minutes. The developers left 30 seconds of offset to give enough time to respawn the second wnd:listen and cleanup the old one in order to prevent losing notifications. Note that the timeout can be changed or disabled in windows / samba.
+
+If your SMB server doesn't autodisconnect after being idle for some time, you should use the wnd:listen command directly.
+
+Example::
+
+   sudo -u www-data ./occ wnd:listen <host> <share> <username> <password> <path> <password-file> <idle-timeout>
+   
 wnd:process-queue
 -----------------
 
