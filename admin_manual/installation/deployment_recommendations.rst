@@ -26,13 +26,13 @@ General Recommendations
 .. note:: Whatever the size of your organization, always keep one thing in mind: 
    *The amount of data stored in ownCloud will only grow. So plan ahead.*
 
-Do Not Use Hosts That Do Not Provide Command Line Access or Cron
-----------------------------------------------------------------
+ownCloud Administrators Must Have Command Line or Cron Access
+-------------------------------------------------------------
 
-We do not recommend hosts that do not provide command-line access or Cron for three reasons:
+We only recommend using hosts that provide command-line or Cron access (ideally both) *to ownCloud administrators*, for three key reasons:
 
 #. Without command-line access, :doc:`OCC commands <../configuration/server/occ_command>`, required for administrative tasks such as repairs and upgrades, are not available.
-#. Without crontab access, you cannot run background jobs reliably. :ref:`ajax/cron.php <ajax_cron_label>` is available, but it is not reliable enough and is only available when using the web UI. Additionally, ownCloud relies heavily on :ref:`background jobs <available_background_jobs_label>` especially for long-running operations, which will likely cause PHP timeouts.
+#. Without crontab access, you cannot run background jobs reliably. :ref:`ajax/cron.php <ajax_cron_label>` is available, but it is not reliable enough, because it only runs when people are using the web UI. Additionally, ownCloud relies heavily on :ref:`background jobs <available_background_jobs_label>` especially for long-running operations, which will likely cause PHP timeouts.
 #. PHP timeout values are often low. Having low timeout settings can break long-running operations, such as moving a huge folder.
 
 Scenario 1: Small Workgroups and Departments
