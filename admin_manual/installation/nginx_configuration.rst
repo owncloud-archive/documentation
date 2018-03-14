@@ -288,7 +288,7 @@ This mechanism speeds up thumbnail presentation as it shifts requests to NGINX a
    the high load before.
    
 NGINX: cache purging
---------------------
+~~~~~~~~~~~~~~~~~~~~
 
 One of the optimizations for ownCloud when using NGINX as the web server is to combine FastCGI caching with the `Cache Purge`_ module. 
 Cache Purge is a 3rdparty NGINX module that adds the ability to purge content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. 
@@ -299,8 +299,7 @@ You may need to adapt it according to your OS type and release.
 .. note::
    Unlike Apache, NGINX does not dynamically load modules. All modules needed must be compiled into NGINX. This is one of the reasons for NGINX´s performance. It is expected to have an already running NGINX installation with a working configuration set up as described in the ownCloud documentation.
 
-NGINX module check
-~~~~~~~~~~~~~~~~~~
+**NGINX module check**
 
 As a first step, it is necessary to check if your NGINX installation has the ``nginx cache purge`` module compiled in. 
 You can do this by running the following command:
@@ -313,8 +312,7 @@ If your output contains ``ngx_cache_purge``, you can continue with the
 configuration, otherwise you need to manually compile NGINX with the module 
 needed.
 
-Compile NGINX with the ``nginx-cache-purge`` module
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Compile NGINX with the ``nginx-cache-purge`` module**
 
 **1. Preparation:**
 
