@@ -136,6 +136,9 @@ An access token is valid for 1 hour and can be refreshed with a refresh token.
 
 For further information about client registration, please refer to `the official access token response RFC from the IETF`_.
 
+.. note::
+   For a succinct explanation of the differences between access tokens and authorization codes, check out `this answer on StackOverflow`_.
+
 Installation
 ------------
 
@@ -148,6 +151,8 @@ If you are hosting your ownCloud installation from the Apache web server, then b
 
 Basic Configuration
 -------------------
+
+To enable token-only based app or client logins in ``config/config.php`` set ``token_auth_enforced`` to ``true``.
 
 Restricting Usage
 -----------------
@@ -180,4 +185,4 @@ Revoking Sessions
 .. _Client authentication: https://tools.ietf.org/html/rfc6749#section-2.3
 .. _mod_rewrite: http://httpd.apache.org/docs/current/mod/mod_rewrite.html
 .. _mod_headers: http://httpd.apache.org/docs/current/mod/mod_headers.html
-
+.. _this answer on StackOverflow: https://stackoverflow.com/a/16341985/222011
