@@ -139,7 +139,7 @@ For further information about client registration, please refer to `the official
 Installation
 ------------
 
-To install the application, place the content of the OAuth2 app inside your installation's ``app`` directory.
+To install the application, place the content of the OAuth2 app inside your installation's ``app`` directory, or use the Market application.
 
 Requirements
 ------------
@@ -152,11 +152,13 @@ Basic Configuration
 Restricting Usage
 -----------------
 
+- Enterprise installations can limit the access of authorized clients, preventing unwanted clients from connecting.
 
 Limitations
 -----------
 
-Since the app handles no user passwords, only master key encryption works (similar to `the Shibboleth app`_).
+- Since the app handles no user passwords, only master key encryption works (similar to `the Shibboleth app`_).
+- Clients cannot migrate accounts from Basic Authorization to OAuth2, if they are currently using the `~user_ldap~` backend.
 
 Connecting Clients via OAuth2
 -----------------------------
