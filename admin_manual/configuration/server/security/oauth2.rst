@@ -141,6 +141,11 @@ Installation
 
 To install the application, place the content of the OAuth2 app inside your installation's ``app`` directory.
 
+Requirements
+------------
+
+If you are hosting your ownCloud installation from the Apache web server, then both the `mod_rewrite`_ and `mod_headers`_ modules are required to be installed and enabled.
+
 Basic Configuration
 -------------------
 
@@ -171,4 +176,6 @@ Revoking Sessions
 .. _the official access token response RFC from the IETF: https://tools.ietf.org/html/rfc6749#section-4.1.4
 .. _RFC 6749: https://tools.ietf.org/html/rfc6749#section-4.1.1
 .. _Client authentication: https://tools.ietf.org/html/rfc6749#section-2.3
+.. _mod_rewrite: http://httpd.apache.org/docs/current/mod/mod_rewrite.html
+.. _mod_headers: http://httpd.apache.org/docs/current/mod/mod_headers.html
 
