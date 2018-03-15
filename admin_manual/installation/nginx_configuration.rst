@@ -12,11 +12,12 @@ Thank you, contributors!
    SSL Module documentation <http://wiki.nginx.org/HttpSslModule>`_).
 -  ``add_header`` statements are only valid in the current ``location`` block and are not 
    derived or cascaded from or to a different ``location`` block. All necessary ``add_header`` 
-   statements **must** be defined in each ``location`` block needed. For better readability it 
-   is possible to move *common* add header statements into a separate file 
-   and include that file wherever necessary. However, each ``add_header`` 
-   statement must be written in a single line to prevent connection problems 
-   with sync clients.
+   statements **must** be defined in each ``location`` block needed.
+-  For better readability it is possible to move *common* ``add_header`` directives into a separate file 
+   and include that file wherever necessary. However, each ``add_header`` directive must be written in 
+   a single line to prevent connection problems with sync clients.
+-  The same is true for ``map`` directives which also can be collected
+   into a singe file and then be included.
 
 Example Configurations
 ----------------------
@@ -119,6 +120,36 @@ With PHP-FPM you might see a "CoreDAVHTTPStatusErrorDomain error 504" which is a
 To solve this, first check the ``default_socket_timeout`` setting in ``/etc/php/7.0/fpm/php.ini`` and increase the above ``fastcgi_read_timeout`` accordingly. 
 Depending on your server's performance a timeout of 180s should be sufficient to sync an address book of ~1000 contacts.
 
+Windows: Error 0x80070043 "The network name cannot be found." while adding a network drive
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The windows native WebDAV client might fail with the following error message::
+
+    Error 0x80070043 "The network name cannot be found." while adding a network drive
+
+A known workaround for this issue is to update your web server configuration.
+
+| Because NGINX does not allow nested `if`_ directives, you need to use the `map`_ directive.
+| The position of the `location`_ directive is important for success.
+
+**1 Create a map directive outside your server block**
+
+::
+
+    # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
+    map "$http_user_agent:$request_method" $WinWebDav {
+        default			0;
+        "DavClnt:OPTIONS"	1;
+    }
+
+**2 Inside your server block on top of your location directives**
+
+::
+
+    location = / {
+        if ($WinWebDav) { return 401; }
+    }
+
 Log Optimisation
 ----------------
 
@@ -209,7 +240,7 @@ This mechanism speeds up thumbnail presentation as it shifts requests to NGINX a
    
 .. code-block:: nginx
 
-   # cache_purge
+   # skip_cache
    fastcgi_cache_path /usr/local/tmp/cache levels=1:2 keys_zone=cachezone:100m inactive=60m;
    map $request_uri $skip_cache {
         default              1;
@@ -434,3 +465,6 @@ needed.
 .. _ngx_http_v2_module: http://nginx.org/en/docs/http/ngx_http_v2_module.html
 .. _SPDY: https://www.maxcdn.com/one/visual-glossary/spdy/ 
 .. _Cache Purge: https://github.com/FRiCKLE/ngx_cache_purge
+.. _if: http://nginx.org/en/docs/http/ngx_http_rewrite_module.html
+.. _map: http://nginx.org/en/docs/http/ngx_http_map_module.html
+.. _location: http://nginx.org/en/docs/http/ngx_http_core_module.html#location

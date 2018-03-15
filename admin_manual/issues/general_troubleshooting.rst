@@ -299,28 +299,6 @@ You need to add the following rule set to your main web server or virtual host c
     RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
     RewriteRule .* - [R=401,L]
 
-**NGINX**
-
-| Because NGINX does not allow nested ``if`` statements, you need to use ``map``
-| Add this into the http block:
-
-::
-
-    # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
-    map "$http_user_agent:$request_method" $WinWebDav {
-        default			0;
-        "DavClnt:OPTIONS"	1;
-    }
-
-And this into the server block:
-
-::
-
-    location = / {
-        if ($WinWebDav) { return 401; }
-    }
-
-
 Troubleshooting Contacts & Calendar
 -----------------------------------
 
