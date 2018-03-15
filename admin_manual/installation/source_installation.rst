@@ -366,12 +366,18 @@ Additional Apache Configurations
 
     a2enmod rewrite
   
-  Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
+  Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``
+  
+  ::
   
     a2enmod headers
     a2enmod env
     a2enmod dir
     a2enmod mime
+  
+  .. note::
+     If you want to use `the OAuth2 app`_, then `mod_headers`_ must be installed and
+     enabled.
   
 - You must disable any server-configured authentication for ownCloud, as it uses Basic authentication internally for DAV services. If you have turned on authentication on a parent folder (via, e.g., an ``AuthType Basic`` directive), you can disable the authentication specifically for the ownCloud entry. Following the above example configuration file, add the following line in the ``<Directory`` section
 
@@ -452,6 +458,9 @@ After you do so, your ownCloud server will be ready to use.
 .. _Apache prefork: https://httpd.apache.org/docs/2.4/mod/prefork.html
 .. _not thread safe: https://secure.php.net/manual/en/install.unix.apache2.php
 
+.. Apache Modules
+.. _mod_headers: http://httpd.apache.org/docs/current/mod/mod_headers.html
+
 .. PHP Extension Links
 
 .. _Bzip2: https://php.net/manual/en/book.bzip2.php
@@ -501,4 +510,4 @@ After you do so, your ownCloud server will be ready to use.
 .. Forum Links
    
 .. _in the forums: https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819
-
+.. _the OAuth2 app: https://marketplace.owncloud.com/apps/oauth2
