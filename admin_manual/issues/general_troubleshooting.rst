@@ -289,8 +289,7 @@ A known workaround for this issue is to update your web server configuration.
 
 **Apache**
 
-You need to add the following rule set to your main web server / Vhost configuration or 
-the ``.htaccess`` in your document root
+You need to add the following rule set to your main web server or virtual host configuration, or the ``.htaccess`` file in your document root.
 
 ::
 
@@ -303,7 +302,7 @@ the ``.htaccess`` in your document root
 **NGINX**
 
 | Because NGINX does not allow nested ``if`` statements, you need to use ``map``
-| Add this into the http block
+| Add this into the http block:
 
 ::
 
@@ -313,7 +312,7 @@ the ``.htaccess`` in your document root
         "DavClnt:OPTIONS"	1;
     }
 
-And this into the server bock
+And this into the server block:
 
 ::
 
