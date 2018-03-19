@@ -125,14 +125,23 @@ only those object classes:
   object classes.
 
 only from those groups:
-  If your LDAP server supports the ``member-of-overlay`` in LDAP filters, you 
+  If your LDAP server supports the ``memberof-overlay`` in LDAP filters, you 
   can define that only users from one or more certain groups are allowed to
   appear in user listings in ownCloud. By default, no value will be selected. 
 You
   may select multiple groups.
 
-  If your LDAP server does not support the member-of-overlay in LDAP filters,
-  the input field is disabled. Please contact your LDAP administrator.
+.. note:: 
+   Group membership is configured by adding `memberUid`, `uniqueMember` or `member`
+   attributes to an ldap group (see :ref:`Group Member association <group_member_association>`)
+   below. In order to efficiently look up the groups a user is
+   a member of the ldap server must support a memberof-overlay. It allows using
+   the virtual `memberOf` or `isMemberOf` attributes of an ldap user in the user
+   filter. If your LDAP server does not support the memberof-overlay in LDAP
+   filters, the input field is disabled. Please contact your LDAP administrator.
+   * Activle Directory uses `memberOf <https://msdn.microsoft.com/en-us/library/ms677943.aspx#memberOf>`_ and is enabled by default.
+   * OpenLDAP uses memberOf.  `Reverse Group Membership Maintenance <https://www.openldap.org/doc/admin24/overlays.html#Reverse%20Group%20Membership%20Maintenance>`_ needs to be enabled.
+   * Oracle uses `isMemberOf <https://docs.oracle.com/cd/E29127_01/doc.111170/e28967/ismemberof-5dsat.htm>`_ and is enabled by default.
 
 Edit raw filter instead:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP 
@@ -380,6 +389,8 @@ Group Search Attributes:
     | *cn*
     | *description*
 
+.. _group_member_association:
+
 Group Member association:
   The attribute that is used to indicate group memberships, i.e. the attribute
   used by LDAP groups to refer to their users.
@@ -392,6 +403,11 @@ Group Member association:
     | *member* with FDN for Active Directory or for objectclass ``groupOfNames`` groups
     | *memberUid* with RDN for objectclass ``posixGroup`` groups
     | *uniqueMember* with FDN for objectclass ``groupOfUniqueNames`` groups
+
+
+.. note:: 
+   The Group Member association is used to efficiently query users of a certain
+   group, eg. on the userManagement page or when resolving all members of a group share.
 
 Dynamic Group Member URL
   The LDAP attribute that on group objects contains an LDAP search URL that determines what objects belong to the group.
