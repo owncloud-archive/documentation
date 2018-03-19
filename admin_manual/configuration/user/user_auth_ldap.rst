@@ -18,15 +18,15 @@ The LDAP application supports:
 * File sharing with ownCloud users and groups
 * Access via WebDAV and ownCloud Desktop Client
 * Versioning, external Storage and all other ownCloud features
-* Seamless connectivity to Active Directory, with no extra configuration 
+* Seamless connectivity to Active Directory, with no extra configuration
   required
 * Support for primary groups in Active Directory
-* Auto-detection of LDAP attributes such as base DN, email, and the LDAP server 
+* Auto-detection of LDAP attributes such as base DN, email, and the LDAP server
   port number
-* Only read access to your LDAP (edit or delete of users on your LDAP is not  
+* Only read access to your LDAP (edit or delete of users on your LDAP is not
   supported)
 
-.. warning:: The LDAP app is not compatible with the ``User backend using remote 
+.. warning:: The LDAP app is not compatible with the ``User backend using remote
    HTTP servers`` app. You cannot use both of them at the same time.
 
 .. note:: A non-blocking or correctly configured SELinux setup is needed
@@ -127,8 +127,17 @@ Only from those groups:
   By default, no value will be selected.
   You may select multiple groups.
 
-  If your LDAP server does not support the member-of-overlay in LDAP filters, the input field is disabled.
-  Please contact your LDAP administrator.
+.. note::
+   Group membership is configured by adding `memberUid`, `uniqueMember` or `member`
+   attributes to an ldap group (see :ref:`Group Member association <group_member_association>`)
+   below. In order to efficiently look up the groups a user is
+   a member of the ldap server must support a memberof-overlay. It allows using
+   the virtual `memberOf` or `isMemberOf` attributes of an ldap user in the user
+   filter. If your LDAP server does not support the memberof-overlay in LDAP
+   filters, the input field is disabled. Please contact your LDAP administrator.
+   * Activle Directory uses `memberOf <https://msdn.microsoft.com/en-us/library/ms677943.aspx#memberOf>`_ and is enabled by default.
+   * OpenLDAP uses memberOf.  `Reverse Group Membership Maintenance <https://www.openldap.org/doc/admin24/overlays.html#Reverse%20Group%20Membership%20Maintenance>`_ needs to be enabled.
+   * Oracle uses `isMemberOf <https://docs.oracle.com/cd/E29127_01/doc.111170/e28967/ismemberof-5dsat.htm>`_ and is enabled by default.
 
 Edit raw filter instead:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP filter directly.
@@ -352,6 +361,8 @@ Group Search Attributes:
   * ``cn``
   * ``description``
 
+.. _group_member_association:
+
 Group Member association:
   The attribute that is used to indicate group memberships, i.e., the attribute used by LDAP groups to refer to their users.
 
@@ -363,6 +374,11 @@ Group Member association:
   * ``member`` with FDN for Active Directory or for objectclass ``groupOfNames`` groups
   * ``memberUid`` with RDN for objectclass ``posixGroup`` groups
   * ``uniqueMember`` with FDN for objectclass ``groupOfUniqueNames`` groups
+
+
+.. note::
+   The Group Member association is used to efficiently query users of a certain
+   group, eg. on the userManagement page or when resolving all members of a group share.
 
 Dynamic Group Member URL
   The LDAP attribute that on group objects contains an LDAP search URL that determines what objects belong to the group.
@@ -631,7 +647,7 @@ The more precise your base DN, the faster LDAP can search because it has fewer b
 Use precise filters
 ^^^^^^^^^^^^^^^^^^^
 
-Use good filters to further define the scope of LDAP searches, and to intelligently direct your server where to search, rather than forcing it to perform needlessly-general searches. 
+Use good filters to further define the scope of LDAP searches, and to intelligently direct your server where to search, rather than forcing it to perform needlessly-general searches.
 
 
 ownCloud LDAP Internals
