@@ -11,7 +11,7 @@ If not already present, add an `SSLOpenSSLConfCmd`_ directive and a new certific
 The OpenSSL command may take a quite a while to complete, so please be patient.
 
 You can place the certificate into any directory of your choice.
-We recommend ``/etc/apache2/`` in this guide, just for sakes of simplicity.
+We recommend ``/etc/apache2/`` in this guide, just for the sake of simplicity.
 
 ::
 
@@ -22,7 +22,25 @@ Add the following directive to your common SSL configuration:
 .. code-block:: apacheconf
 
   SSLOpenSSLConfCmd DHParameters /etc/apache2/dh4096.pem
-  
+
+Add the ``/.well-known/acme-challenge`` location in your Virtual Host directive for port 80
+
+.. code-block:: apacheconf
+
+  <virtualHost *.80>
+    ServerName mydom.tld
+
+    Alias /.well-known/acme-challenge/ /var/www/letsencrypt/.well-known/acme-challenge/
+    <Directory "/var/www/letsencrypt/.well-known/acme-challenge/">
+        Options None
+        AllowOverride None
+        ForceType text/plain
+        RedirectMatch 404 "^(?!/\.well-known/acme-challenge/[\w-]{43}$)"
+    </Directory>
+
+    # ...
+  </virtualHost>
+
 Prepare a virtualHost directive for port 443
 --------------------------------------------
 
