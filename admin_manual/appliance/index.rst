@@ -10,3 +10,4 @@ The ownCloud X Appliance
    howto-update-owncloud
    managing-ucs
    clamav
+   certificates
