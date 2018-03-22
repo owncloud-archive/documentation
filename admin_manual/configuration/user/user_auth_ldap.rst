@@ -191,7 +191,7 @@ Edit raw filter instead:
   
   * username or email address::
   
-     ((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
+     (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,
      dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
 
 Group Filter
