@@ -819,7 +819,7 @@ seen in the first-run wizard and on Personal pages.
 Apps
 ----
 
-Options for the Apps folder, Apps store, and App code checker.
+Options for the Apps store, Apps folder, and App code checker.
 
 
 ::
@@ -828,14 +828,31 @@ Options for the Apps folder, Apps store, and App code checker.
 
 The URL of the appstore to use.
 
-Use the ``apps_paths`` parameter to set the location of the Apps directory,
-which should be scanned for available apps, and where user-specific apps
-should be installed from the Apps store. The ``path`` defines the absolute
-file system path to the app folder. The key ``url`` defines the HTTP Web path
-to that folder, starting from the ownCloud webroot. The key ``writable``
-indicates if a Web server can write files to that folder.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+::
 
+    'apps_paths' => [
+        [
+            'path' => '/var/www/owncloud/apps',
+            'url' => '/apps',
+            'writable' => false,
+        ],
+        [
+            'path' => '/var/www/owncloud/apps2',
+            'url' => '/apps2',
+            'writable' => true,
+        ],
+    ],
+    
+If you want to store apps in a custom directory instead of ownCloud’s default ``/app``, you need to 
+modify the ``apps_paths`` key. There, you need to add a new associative array that contains three 
+elements. These are:
+
+- ``path`` The absolute file system path to the custom app folder.
+- ``url`` The request path to that folder relative to the ownCloud web root, prefixed with /.
+- ``writable`` Whether users can install apps in that folder. After the configuration is added, new apps will only install in a directory where writable is set to true.
+
+The configuration example shows how to add a second directory, called ``/apps2``.
+Please see the Apps Management description on how to move custom apps properly.
 
 Previews
 --------
