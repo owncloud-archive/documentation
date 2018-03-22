@@ -31,7 +31,6 @@ For it to work, there are a few dependencies to install.
 
 - A Samba client. This is included in all Linux distributions. On Debian, Ubuntu, and other Debian derivatives it is called ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is ``samba-client``. 
 - ``php-smbclient`` (version 0.8.0+). It should be included in most Linux distributions. You can use `eduardok/libsmbclient-php`_, if your distribution does not provide it.
-
 - ``which`` and ``stdbuf``. These should be included in most Linux distributions.
 
 Example
