@@ -2,7 +2,7 @@
 Installing and Configuring the External Storage: Windows Network Drives App
 ===========================================================================
 
-The "External Storage: Windows Network Drives" app creates a control panel in your Admin page for seamlessly integrating Windows and Samba/CIFS shared network drives as external storages.
+The `External Storage: Windows Network Drives`_ app creates a control panel in your Admin page for seamlessly integrating Windows and Samba/CIFS shared network drives as external storages.
 
 Any Windows file share and Samba servers on Linux and other Unix-type operating systems use the SMB/CIFS file-sharing protocol. 
 The files and directories on the SMB/CIFS server will be visible on your Files page just like your other ownCloud files and folders. 
@@ -43,12 +43,8 @@ Assuming that your ownCloud installation is on Ubuntu, then the following comman
   # Install core packages
   sudo apt-get update -y
   sudo apt-get install -y smbclient php-smbclient coreutils
-  
-  # Enable the extension in your PHP installation
-  extension="smbclient.so"
 
-
-Other methode using PECL is:
+Other method using PECL is:
 
 .. code-block:: console
   
@@ -61,9 +57,13 @@ Other methode using PECL is:
   ./configure
   make
   sudo make install
-  
-  # Enable the extension in your PHP installation
-  extension="smbclient.so"
+
+.. note::
+   Regardless of the method you use, remember to enable the extension:
+
+   ::
+
+     extension="smbclient.so"
 
 Creating a New Share
 --------------------
@@ -170,7 +170,7 @@ The listener marks changed files, and a background job updates the file metadata
 Windows network drive connections and setup of ``occ wnd:listen`` often does not always work the first time.
 If you encounter issues using it, then try the following troubleshooting steps:
 
-1. Check the connection with smbclient_ on the command line of the ownCloud server
+1. Check the connection with `smbclient`_ on the command line of the ownCloud server
 
 Take the example of attempting to connect to the share named `MyData` using ``occ wnd:listen``.
 Running the following command would work::
@@ -331,7 +331,7 @@ It requires an additional parameter where you can specify the location of the fi
 There are several things you should know about this serializer:
 
 - The generated file contains the encrypted passwords for accessing the backend. This is necessary in order to avoid re-fetching the user information, when next accessing the storages.
-- The generated file is intended to be readable and writeable **only** for the web server user. Other users shouldn't have access to this file. Do not manually edit the file. You can remove the file if it contains obsolete information.
+- The generated file is intended to be readable and writable **only** for the web server user. Other users shouldn't have access to this file. Do not manually edit the file. You can remove the file if it contains obsolete information.
 
 Usage Recommendations
 ~~~~~~~~~~~~~~~~~~~~~
@@ -452,3 +452,4 @@ Note that the file can be removed manually at any time if it's needed (for examp
 .. _a known issue: https://github.com/owncloud/Windows_network_drive/issues/94
 .. _password lockout policies: https://technet.microsoft.com/en-us/library/dd277400.aspx
 .. _flock's documentation: https://linux.die.net/man/2/flock
+.. _External Storage\: Windows Network Drives: https://marketplace.owncloud.com/apps/windows_network_drive
