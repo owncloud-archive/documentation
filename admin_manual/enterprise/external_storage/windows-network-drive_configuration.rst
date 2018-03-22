@@ -31,6 +31,7 @@ For it to work, there are a few dependencies to install.
 
 - A Samba client. This is included in all Linux distributions. On Debian, Ubuntu, and other Debian derivatives it is called ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is ``samba-client``. 
 - ``php-smbclient`` (version 0.8.0+). It should be included in most Linux distributions. You can use `eduardok/libsmbclient-php`_, if your distribution does not provide it.
+
 - ``which`` and ``stdbuf``. These should be included in most Linux distributions.
 
 Example
@@ -42,7 +43,15 @@ Assuming that your ownCloud installation is on Ubuntu, then the following comman
    
   # Install core packages
   sudo apt-get update -y
-  sudo apt-get install -y smbclient coreutils
+  sudo apt-get install -y smbclient php-smbclient coreutils
+  
+  # Enable the extension in your PHP installation
+  extension="smbclient.so"
+
+
+Other methode using PECL is:
+
+.. code-block:: console
   
   # Install php-smbclient using PECL
   pecl install smbclient
