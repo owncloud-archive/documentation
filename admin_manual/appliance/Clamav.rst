@@ -45,3 +45,34 @@ Configure ownCloud to Use ClamAV
 
 You next need to configure ClamAV in your ownCloud instance.
 Please refer to :ref:`the ClamAV documentation <configure_clamav_antivirus_scanner_label>` for instructions on how to do that. 
+
+.. note::
+
+If you try to update the clamav virus database manualy by entering "freshclam" and receive this error:
+
+ERROR: /var/log/clamav/freshclam.log is locked by another process
+ERROR: Problem with internal logger (UpdateLogFile = /var/log/clamav/freshclam.log).
+
+This means freshclam is already running, and the refresh is happening depending on 
+the configured time interval in the cron job. For example:
+
+# m   h  dom mon dow  command
+47  *  *   *    *  /usr/bin/freshclam --quiet
+
+You can enter this command to see what process is blocking the log file.
+
+lsof /var/log/clamav/freshclam.log
+
+If you insist on refreshing it manualy follow this steps:
+
+Gently end the freshclam process with this command:
+
+sudo pkill -15 -x freshclam
+
+Start the refresh process again with this command:
+
+sudo freshclam
+
+
+
+
