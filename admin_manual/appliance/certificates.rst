@@ -2,22 +2,24 @@
 How to add certificates
 =======================
 
-If you want to add your own certificates for the appliance,
-
-you will have to follow these steps.
+If you want to use your own SSL certificates for the appliance, you have to follow these three steps:
 
 1. Create the certificates and deposit them on your appliance.
-2. Connect to your appliance either directly on the command line of your virtual machine 
+2. Connect to your appliance either directly on the command line of your virtual machine
    or via ssh connection to your appliance.
 3. Execute the following commands:
 
-ucr set apache2/ssl/certificate="/etc/myssl/cert.pem"
-ucr set apache2/ssl/key="/etc/myssl/private.key"
+::
 
-Adjust the path and filename to match your certificate.
+  ucr set apache2/ssl/certificate="/etc/myssl/cert.pem"
+  ucr set apache2/ssl/key="/etc/myssl/private.key"
 
-Then restart the apache2 service, using the following command:
+.. note:: Remember to adjust the path and filename to match your certificate.
 
-service apache2 restart
+Once you've completed these steps, restart Apache using the following command:
 
-Now your certificates will be used to access your applince.
+::
+
+  service apache2 restart
+
+Now your certificates will be used to access your appliance.
