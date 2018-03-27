@@ -46,10 +46,10 @@ After you do that, the settings page for the application loads.
    Examples:
    
    When configuring as **admin**:
-   http(s)://<<Server_Address>>/index.php/settings/admin?sectionid=storage
+   ``http(s)://<<Server_Address>>/index.php/settings/admin?sectionid=storage``
    
    When configuring as **user**:
-   http(s)://<<Server_Address>>/index.php/settings/personal?sectionid=storage
+   ``http(s)://<<Server_Address>>/index.php/settings/personal?sectionid=storage``
 
 
 .. _dropbox_install_step_three_label:
