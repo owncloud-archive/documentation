@@ -44,35 +44,41 @@ Configure ownCloud to Use ClamAV
 --------------------------------
 
 You next need to configure ClamAV in your ownCloud instance.
-Please refer to :ref:`the ClamAV documentation <configure_clamav_antivirus_scanner_label>` for instructions on how to do that. 
+Please refer to :ref:`the ClamAV documentation <configure_clamav_antivirus_scanner_label>` for instructions on how to do that.
 
 .. note::
 
-If you try to update the clamav virus database manualy by entering "freshclam" and receive this error:
+If you try to update the ClamAV virus database manually, by entering ``freshclam``, and see the error below, it means that `freshclam`_ is already updating the database.
 
-ERROR: /var/log/clamav/freshclam.log is locked by another process
-ERROR: Problem with internal logger (UpdateLogFile = /var/log/clamav/freshclam.log).
+::
 
-This means freshclam is already running, and the refresh is happening depending on 
-the configured time interval in the cron job. For example:
+  ERROR: /var/log/clamav/freshclam.log is locked by another process
+  ERROR: Problem with internal logger (UpdateLogFile = /var/log/clamav/freshclam.log).
 
-# m   h  dom mon dow  command
-47  *  *   *    *  /usr/bin/freshclam --quiet
+Updates are run based on the configured time interval in the applicable Cron job.
+In the example below, the update would run every 47 minutes:
 
-You can enter this command to see what process is blocking the log file.
+::
 
-lsof /var/log/clamav/freshclam.log
+  # m   h  dom mon dow  command
+  47  *  *   *    *  /usr/bin/freshclam --quiet
 
-If you insist on refreshing it manualy follow this steps:
+If there are errors running the freshclam process, check if a process is blocking the log file, by running the following command:
 
-Gently end the freshclam process with this command:
+::
 
-sudo pkill -15 -x freshclam
+  lsof /var/log/clamav/freshclam.log
 
-Start the refresh process again with this command:
+If you want to refresh the ClamAV database manually, follow these steps:
 
-sudo freshclam
+::
 
+  # Gently end the freshclam process with this command:
+  sudo pkill -15 -x freshclam
 
+  # Start the refresh process again with this command:
+  sudo freshclam
 
+.. Links
 
+.. _freshclam: https://linux.die.net/man/1/freshclam
