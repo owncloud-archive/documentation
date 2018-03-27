@@ -244,4 +244,3 @@ If this does not work properly, try the repair function::
 
 .. _owncloud.org/install/: https://owncloud.org/install/
 .. _the ownCloud forums: https://central.owncloud.org
-.. _file a support ticket: https://owncloud.com/create-a-case/
