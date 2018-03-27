@@ -20,7 +20,6 @@ First, :doc:`backup <backup>` the following items:
 ::
 
   # This example assumes Ubuntu Linux and MariaDB
-
   cp -rv /var/www/owncloud /opt/backup/owncloud && mysqldump <db_name> > /opt/backup/backup-file.sql
 
 Review Third-Party Apps
@@ -32,6 +31,12 @@ After the upgrade is complete re-enable any which are compatible with the new re
 
 .. warning::
    Install unsupported apps at your own risk.
+
+Check ownCloud's Mandatory Requirements
+---------------------------------------
+
+:ref:`ownCloud's mandatory requirements <prerequisites_label>` (such as PHP versions and extensions) can change from one version to the next. 
+Ensure that you review them and update your server(s), if required, before upgrading ownCloud. 
 
 Enable Maintenance Mode
 -----------------------
@@ -185,10 +190,11 @@ Finalize the Installation
 
 With maintenance mode disabled, login and:
 
-- Check that the version number reflects the new installation. It's visible at the bottom of your Admin page.
-- Check that your other settings are correct.
-- Go to the Apps page and review the core apps to make sure the right ones are enabled.
-- Re-enable your third-party apps.
+- Re-enable cron jobs
+- Check that the version number reflects the new installation. It's visible at the bottom of your Admin page. 
+- Check that your other settings are correct. 
+- Go to the Apps page and review the core apps to make sure the right ones are enabled. 
+- Re-enable your third-party apps. 
 - :ref:`Apply strong permissions <strong_perms_label>` to your ownCloud directories.
 
 .. _migration_test_label:

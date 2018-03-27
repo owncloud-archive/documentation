@@ -97,3 +97,58 @@ Stopping the Containers
 
 Assuming you used docker-compose, as in the previous example, to stop the containers use ``docker-compose stop``.
 Alternatively, use ``docker-compose down`` to stop and remove containers, along with the related networks, images, and volumes.
+
+Upgrading ownCloud on Docker
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+When a new version of ownCloud gets released, you should update your instance. 
+To do so, follow these simple steps.
+ 
+First, go to your docker directory where your ``.yaml`` or ``.env`` file exists.
+Second, put ownCloud into maintenance mode; you can do so using the following command:
+
+::
+
+    docker-compose exec server occ maintenance:mode --on
+
+Third, create a backup in case something goes wrong during the upgrade process, using the following command: 
+
+:: 
+
+    docker-compose exec db backup
+    
+
+.. note:: 
+   This assumes that you are using `the default database container from Webhippie`_. 
+
+Fifth, shutdown the containers.
+
+::
+
+    docker-compose down
+
+Sixth, update the version number of ownCloud in your ``.env`` file or the YAML file. You can use sed for it, as in the following example.
+
+::
+
+    # Make sure that you adjust the example to match your installation.
+    sed -i 's/^owncloud_version=.*$/owncloud_version=<newVersion>/' /compose/*/.env
+
+Seventh, view the file to ensure the changes has been implemented.
+
+  ::
+
+      cat .env
+
+Eighth, start your docker instance again.
+
+::
+
+	docker-compose up -d
+
+Now you should have the current ownCloud running with docker-compose.
+
+
+.. Links
+   
+.. _the default database container from Webhippie: https://hub.docker.com/r/webhippie/mariadb/ 

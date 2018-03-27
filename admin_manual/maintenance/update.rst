@@ -41,7 +41,7 @@ The Updater app performs these operations:
   ``updater_backup/packageVersion`` directory
 * Makes a copy of your current ownCloud instance, except for your data 
   directory, to ``updater_backup/currentVersion-randomstring``
-* Moves all directories except ``data``, ``config`` and ``themes`` from the 
+* Moves all directories except ``data`` and ``config`` from the 
   current instance to ``updater_backup/tmp``
 * Moves all directories from ``updater_backup/packageVersion`` to the current 
   version

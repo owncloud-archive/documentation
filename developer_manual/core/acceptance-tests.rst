@@ -1,16 +1,16 @@
-=================
-Integration Tests
-=================
+================
+Acceptance Tests
+================
 
 The Test Directory Structure
 ----------------------------
 
-This is the structure of integration directory inside `the core repository's`_ ``tests`` directory:
+This is the structure of acceptance directory inside `the core repository's`_ ``tests`` directory:
 
 .. code-block:: bash
 
     tests
-    ├── integration
+    ├── acceptance
     │   ├── composer.json
     │   ├── composer.lock
     │   ├── config
@@ -24,6 +24,7 @@ This is the structure of integration directory inside `the core repository's`_ `
     │   ├── federation_features
     │   │   └── federated.feature (feature on a separated context)
     │   ├── run.sh
+    │   ├── skeleton
     │   ├── vendor
 
 Here’s a short description of each component of the directory.
@@ -31,12 +32,12 @@ Here’s a short description of each component of the directory.
 ``composer.json`` and ``composer.lock``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-These files store the required dependencies for the integration tests. This can include libraries such as sabredav, guzzle, or behat.
+These files store the required dependencies for the acceptance tests. This can include libraries such as sabredav, guzzle, or behat.
 
 ``config/``
 ~~~~~~~~~~~
 
-This directory contains ``behat.yml`` which sets up the integration tests.
+This directory contains ``behat.yml`` which sets up the acceptance tests.
 In this file we can add new contexts and new features.
 Here's an example configuration:
 
@@ -68,7 +69,7 @@ This folder can be used in tests to store temporary data.
 ~~~~~~~~~~~~~
 
 This directory stores `Behat's feature files`_. 
-These contain the Behat's test cases, called scenarios, which use the Gherkin language.
+These contain Behat's test cases, called scenarios, which use the Gherkin language.
 
 ``feature/bootstrap``
 ~~~~~~~~~~~~~~~~~~~~~
@@ -82,6 +83,11 @@ Every feature file has to have at least one context associated with it.
   
 This script runs the tests suites. 
 To use it we need to use the web server user, which is normally ``www-data`` or ``apache``.
+
+``skeleton/``
+~~~~~~~~~~~~~
+
+This folder stores the initial files loaded for a new user.
 
 How to Add a New Feature
 ------------------------
@@ -123,6 +129,7 @@ Here’s example code for a scenario:
 
   /**
    * @When Sending a :method to :url with requesttoken
+   *
    * @param string $method
    * @param string $url
    */
@@ -144,8 +151,7 @@ Lets show an example of a feature file with scenarios:
         Given using api version "1"
 
       Scenario: Getting an not existing user
-        Given As an "admin"
-        When sending "GET" to "/cloud/users/test"
+        When user "admin" sends HTTP method "GET" to API endpoint "/cloud/users/test"
         Then the OCS status code should be "998"
         And the HTTP status code should be "200"
 
@@ -154,7 +160,7 @@ Lets show an example of a feature file with scenarios:
 - ``Scenario``: contains the core information about a test scenario in human-readable language, so that you can understand what the code will have to do for the scenario to have been successfully implemented. 
 
 A scenario requires three parts, ``"Given"``, ``"When"``, and ``"Then"`` sections. 
-``"Given"`` and ``"Then"`` can have several sentences joined together by ``"And"``, but ``"Then"`` statements should just have one. 
+``"Given"`` and ``"Then"`` can have several sentences joined together by ``"And"``, but ``"When"`` statements should just have one.
 And this should be the function to test. 
 The other parts are preconditions and post-conditions of the test. 
 
@@ -171,10 +177,10 @@ After the name, add all the variables required for your context.
 In this example we add just the required ``baseUrl`` variable.
 With that done, we're now ready to run the tests. 
 
-Running Integration Tests
-~~~~~~~~~~~~~~~~~~~~~~~~~
+Running Acceptance Tests
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-This is a concise guide to running integration tests on ownCloud 10.0.
+This is a concise guide to running acceptance tests on ownCloud 10.0.
 Before you can do so, you need to meet a few prerequisites available; these are
 
 - ownCloud 
@@ -187,7 +193,7 @@ After cloning core, run ``make`` as your webserver's user in the root directory 
 .. NOTE: 
    Having a clean database is a also good idea.
 
-Now that the prerequisites are satisfied, and assuming that ``$installation_path`` is the location where you cloned the ``ownCloud/core`` repository, the following commands will prepare the installation for running the integration tests.
+Now that the prerequisites are satisfied, and assuming that ``$installation_path`` is the location where you cloned the ``ownCloud/core`` repository, the following commands will prepare the installation for running the acceptance tests.
 
 .. code-block:: bash
 
@@ -207,7 +213,7 @@ Now that the prerequisites are satisfied, and assuming that ``$installation_path
       --database-pass='' --admin-user='admin' --admin-pass='admin'
 
 With the installation prepared, you should now be able to run the tests. 
-Go to the ``tests/integration`` folder and, assuming that your web user is ``www-data``, run the following command::
+Go to the ``tests/acceptance`` folder and, assuming that your web user is ``www-data``, run the following command::
 
   sudo -u www-data ./run.sh features/task-to-test.feature
 
@@ -219,7 +225,7 @@ If you want to have encryption enabled add ``OC_TEST_ENCRYPTION_ENABLED=1``, as 
 
   sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/task-to-test.feature
 
-For more information on Behat, and how to write integration tests using it, check out `the online documentation`_.
+For more information on Behat, and how to write acceptance tests using it, check out `the online documentation`_.
 
 .. Links
    
