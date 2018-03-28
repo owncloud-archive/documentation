@@ -1,6 +1,6 @@
 #!/bin/bash
 
-LE_PATH="/opt/letsencrypt"
+LE_PATH="/usr/bin"
 LE_CB="certbot"
 
 ##
