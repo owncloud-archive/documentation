@@ -20,4 +20,4 @@ Installation
    apps_supported
    selinux_configuration
    nginx_configuration
-   letsencrypt
+   letsencrypt/index
