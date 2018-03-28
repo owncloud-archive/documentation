@@ -1,7 +1,7 @@
 #!/bin/bash
 # export makes the variable available for all subprocesses
 
-LE_PATH="/opt/letsencrypt"
+LE_PATH="/usr/bin"
 LE_CB="certbot"
 
 # Assumes that mydom.tld www.mydom.tld and sub.mydom.tld are the domains that you want a certificate for
