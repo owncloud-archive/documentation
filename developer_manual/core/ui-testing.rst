@@ -74,7 +74,7 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 - To run the federation Sharing tests:
 
   1. Make sure you have configured HTTPS with valid certificates on both servers URLs
-  2. `Import SSL certificates <https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/import_ssl_cert.html>`_ (or do not offer HTTPS).
+  2. `Import SSL certificates <https://doc.owncloud.org/server/latest/admin_manual/configuration/server/import_ssl_cert.html>`_ (or do not offer HTTPS).
 
 - Run the tests:
 
