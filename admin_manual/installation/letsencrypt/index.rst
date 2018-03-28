@@ -57,6 +57,10 @@ To run Certbot use the following command:
   sudo /opt/letsencrypt/certbot-auto
 
 .. note::
+   For the sake of simplicity, the path chosen for the installation is ``/opt/letsencrypt``.
+   You can use any path that fits your needs.
+
+.. note::
    Unless explicitly denied, Certbot will auto-update on each run.
 
 As part of the first run, certbot-auto will install any missing dependencies.
@@ -82,6 +86,15 @@ These will add the repository, update Apt’s cache, and install Certbot.
      sudo apt-get update
      sudo apt-get install software-properties-common
      sudo add-apt-repository ppa:certbot/certbot
+
+To run Certbot use the following command:
+
+::
+
+  sudo /usr/bin/certbot
+
+  # Alternatively, you could run the following instead
+  sudo certbot
 
 .. note::
 
@@ -136,7 +149,7 @@ Create Let's Encrypt's config files
 -----------------------------------
 
 - Create following files in the Let's Encrypt directory. They will help to maintain your certificates.
-- Replace the path to Certbot and the Certbot script name based on your installation.
+- Replace the path to Certbot and the Certbot script name based on your installation. You can find it by running ``which certbot``.
 - Rename <your-domain-name>.sh with the name of the domain(s) you want to issue a certificate for. As an example, the script could be renamed to ``your-domain-name.com.sh``.
 - Make all files executable except ``cli.ini`` by running ``sudo chmod +x <script-name>``.
 
