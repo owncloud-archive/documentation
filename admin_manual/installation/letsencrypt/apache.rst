@@ -16,7 +16,7 @@ We recommend ``/etc/apache2/`` in this guide, just for the sake of simplicity.
 ::
 
   sudo openssl dhparam -out /etc/apache2/dh4096.pem 4096
-  
+
 Add the following directive to your common SSL configuration:
 
 .. code-block:: apacheconf
@@ -44,17 +44,17 @@ Add the ``/.well-known/acme-challenge`` location in your Virtual Host directive 
 Prepare a virtualHost directive for port 443
 --------------------------------------------
 
-It is easiest, if you create a separate file for the following ``SSL`` directives. 
-If these directives already exist in this Virtual Host, delete them and include the file instead. 
-When the certificate has been created, you can use this file in any SSL Virtual Host for which the certificate is valid, without 
+It is easiest, if you create a separate file for the following ``SSL`` directives.
+If these directives already exist in this Virtual Host, delete them and include the file instead.
+When the certificate has been created, you can use this file in any SSL Virtual Host for which the certificate is valid, without
 reissuing.
 
 ::
 
   cd /etc/apache2/
   sudo mkdir ssl_rules
-  
-Create a file named ``ssl_mydom.tld`` in the newly created directory. 
+
+Create a file named ``ssl_mydom.tld`` in the newly created directory.
 
 .. code-block:: apacheconf
 
@@ -81,25 +81,25 @@ Then adopt your Virtual Host block:
 
   <virtualHost *:443>
     ServerName mydom.tld
- 
+
     # ssl letsencrypt
     # Include /etc/apache2/ssl_rules/ssl_mydom.tld
-  
+
     #...
   </virtualHost>
 
 Commenting the ``Include`` directive is required, because the certificate files currently do not exist.
 
-Test and enable your Apache config
-----------------------------------
+Test and enable your Apache configuration
+-----------------------------------------
 
-To test your configuration run 
+To test your configuration run
 
 ::
 
   sudo apache2ctl -t # You can also use: sudo apache2ctl configtest
-  
-It should reply without errors. 
+
+It should reply without errors.
 Load your new Apache configuration:
 
 ::
@@ -120,7 +120,7 @@ To double check the issued certificate, run the ``list.sh`` script.
 ::
 
   sudo /etc/letsencrypt/list.sh
-  
+
 If successful, you will see output similar to that below, when the command completes:
 
 ::
@@ -142,10 +142,10 @@ When successfully issuing the certificate for the first time, the certificate fi
 
   <virtualHost *:443>
     ServerName mydom.tld
- 
+
     # ssl letsencrypt
     Include /etc/apache2/ssl_rules/ssl_mydom.tld
-  
+
     #...
   </virtualHost>
 

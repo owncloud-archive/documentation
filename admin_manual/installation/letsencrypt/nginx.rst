@@ -14,7 +14,7 @@ However, in this guide we recommend ``/etc/nginx/``, just for the sake of simpli
 ::
 
   sudo openssl dhparam -out /etc/nginx/dh4096.pem 4096
-  
+
 Add the following directive to your common SSL configuration:
 
 .. code-block:: nginx
@@ -39,17 +39,17 @@ Add the ``/.well-known/acme-challenge`` location in your server directive for po
 Prepare a server directive for port 443
 ---------------------------------------
 
-It is easiest, if you create a separate file for the following ``ssl_*`` directives. 
-If these directives already exist in this server block, delete them and include the file instead. 
-When the certificate has been created, you can use this file in any SSL server block for which the certificate is valid without 
+It is easiest, if you create a separate file for the following ``ssl_*`` directives.
+If these directives already exist in this server block, delete them and include the file instead.
+When the certificate has been created, you can use this file in any SSL server block for which the certificate is valid without
 reissuing.
 
 ::
 
   cd /etc/nginx/
   sudo mkdir ssl_rules
-  
-Create a file named ``ssl_mydom.tld`` in the newly created directory. 
+
+Create a file named ``ssl_mydom.tld`` in the newly created directory.
 
 .. code-block:: nginx
 
@@ -73,26 +73,26 @@ Then adopt your server block:
   server {
     listen 443 ssl http2;
     server_name mydom.tld;
- 
+
     # ssl letsencrypt
     # include /etc/nginx/ssl_rules/ssl_mydom.tld;
-  
+
     #...
   }
 
 .. note::
    Commenting the ``include`` directive is necessary, because the certificate files currently do not exist.
 
-Test and enable your NGINX config
----------------------------------
+Test and enable your NGINX configuration
+----------------------------------------
 
-To test your configuration run 
+To test your configuration run
 
 ::
 
   sudo nginx -t
-  
-It should reply without errors. 
+
+It should reply without errors.
 
 Load your new NGINX configuration:
 
@@ -108,7 +108,7 @@ Check that you have commented out the ``include`` directive as stated above and 
 ::
 
   sudo /etc/letsencrypt/register.sh
-  
+
 If successful, you will see output similar to that below, when the command completes:
 
 ::
@@ -177,10 +177,10 @@ As the SSL certificate has been successfully issued by Let’s Encrypt, you can 
   server {
     listen 443 ssl http2 ;
     server_name mydom.tld;
- 
+
     # ssl letsencrypt
     include /etc/nginx/ssl_rules/ssl_mydom.tld;
-  
+
     #...
   }
 

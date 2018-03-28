@@ -1,4 +1,7 @@
 #!/bin/bash
 
-$( which certbot ) renew
+LE_PATH="/opt/letsencrypt"
+LE_CB="certbot"
+
+"$LE_PATH/$LE_CB" renew
 
