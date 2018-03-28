@@ -255,16 +255,27 @@ After you run the script, you will see output similar to the following:
 
 You can see that the SSL certificate’s been successfully created, and that it will expire on 2018-06-18.
 
-Add/Remove domains from the certificate
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Listing Existing Certificates
+-----------------------------
 
-If you want to *add* a domain like ``test.mydom.tld`` to your certificate, just add the domain in the domain shell script above, re-run it and reload the web server config.
-This can be useful when migrating from a sub-directory to sub-domain access.
+If you want to list (view) the existing SSL certificates, use ``list.sh``, which can be run as follows:
 
-If you want to *remove* a sub-domain like ``www.mydom.tld`` from your SSL certificate, delete the certificate with the ``delete.sh`` script and then set up a new one.
+::
 
-.. note::
-   This also implies that you need to comment the ``include`` directive (please refer to the relevant :ref:`web server setup <web_server_setup_label>`) and follow the steps afterward.
+  sudo /etc/letsencrypt/list.sh
+
+Depending on the number of certificates, you can expect to see output similar to the following:
+
+::
+
+  -------------------------------------------------------------------------------
+  Found the following certs:
+    Certificate Name: your-domain-name.com
+      Domains: your-domain-name.com
+      Expiry Date: 2018-06-18 10:57:18+00:00 (VALID: 82 days)
+      Certificate Path: /etc/letsencrypt/live/your-domain-name.com/fullchain.pem
+      Private Key Path: /etc/letsencrypt/live/your-domain-name.com/privkey.pem
+  -------------------------------------------------------------------------------
 
 .. _web_server_setup_label:
 
@@ -286,8 +297,8 @@ See an example screenshot of a test run below.
 .. figure:: ../images/ssllabs.png
    :scale: 30%
 
-Certificate renewal
--------------------
+Renewing Certificates
+---------------------
 
 As Let’s Encrypts certificates expire every 90 days, you should ensure you renew them before that time.
 There are two ways to do so: `manually <Manual renewal>`_ and automatically.
@@ -300,6 +311,21 @@ If you have provided your email address, you will receive reminder notifications
 .. code-block:: bash
 
   sudo /etc/letsencrypt/renew.sh
+
+If the certificate is not yet due for renewal, you can expect to see output
+similar to that below:
+
+::
+
+  -------------------------------------------------------------------------------
+  Processing /etc/letsencrypt/renewal/your-domain-name.com.conf
+  -------------------------------------------------------------------------------
+  Cert not yet due for renewal
+
+  The following certs are not due for renewal yet:
+    /etc/letsencrypt/live/your-domain-name.com/fullchain.pem (skipped)
+  No renewals were attempted.
+  No hooks were run.
 
 Automatic renewal via crontab
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -326,6 +352,43 @@ After you save and exit the file, the new job will have been added to the Cron j
 
 .. note::
    If you want to use own values, you can check them at `crontab.guru`_ or modify the script for other options.
+
+Add extra domains to the certificate
+------------------------------------
+
+If you want to add an extra domain, like ``test.mydom.tld``, to your certificate, add the domain in the domain shell script above, re-run it and reload the web server config.
+This can be useful when migrating from a sub-directory to sub-domain access.
+
+.. note::
+   This also implies that you need to comment the ``include`` directive (please refer to the relevant :ref:`web server setup <web_server_setup_label>`) and follow the steps afterward.
+
+Deleting SSL Certificates
+-------------------------
+
+If you want to delete an SSL certificate, use the delete.sh script, running it as follows:
+
+.. code-block:: bash
+
+  sudo /etc/letsencrypt/delete.sh
+
+It will start off, as below, by displaying a list of the currently available SSL certificate domain names, and then prompt you to supply the certificate that you want to delete.
+
+::
+
+  Available Certificates:
+
+  1. your-domain-name.com
+
+  Which certificate do you want to delete:
+
+Provide the SSL certificate name that you want to delete and click enter, and the certificate and all of its related files will be deleted.
+After that you should expect to see a confirmation, as in the example output below.
+
+::
+
+  -------------------------------------------------------------------------------
+  Deleted all files relating to certificate your-domain-name.com.
+  -------------------------------------------------------------------------------
 
 .. Links
 
