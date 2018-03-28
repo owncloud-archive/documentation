@@ -1,5 +1,5 @@
-Using Let's Encrypt certificates
-================================
+Using Let's Encrypt SSL Certificates
+====================================
 
 This page covers how to configure your web server to use `Let's Encrypt`_ as the certificate authority for your ownCloud server.
 Note that Let's Encrypt is *not officially supported*, and this page is *community-maintained*.
@@ -56,10 +56,10 @@ To run Certbot use the following command:
 
   sudo /opt/letsencrypt/certbot-auto
 
-Without explicitly denying by command, Certbot will auto-update on each run.
-
 .. note::
-   Please replace ``/opt/letsencrypt`` with the relevant path, in the following two examples.
+   Unless explicitly denied, Certbot will auto-update on each run.
+
+As part of the first run, certbot-auto will install any missing dependencies.
 
 .. _install_letsencrypt_via_ppa_repository:
 
@@ -74,16 +74,25 @@ These will add the repository, update Apt’s cache, and install Certbot.
   sudo apt-get install certbot
 
 .. note::
-   If you need to update Certbot at a later date, run ``sudo apt-get install --only-upgrade certbot``.
-
-.. note::
-   If you’re using a version of Ubuntu prior to 17.10, you may need to run the following commands before you can install Certbot:
+   If you’re using a version of Ubuntu prior to 17.10, you may need to run the
+   following commands before you can install Certbot:
 
    ::
 
      sudo apt-get update
      sudo apt-get install software-properties-common
      sudo add-apt-repository ppa:certbot/certbot
+
+.. note::
+
+   Depending on how you installed Let's Encrypt, certbot may also be named ``letsencrypt`` or ``certbot-auto``.
+   However, this guide will refer to it as ``certbot``.
+   Please bear that in mind, and update the ../examples and scripts used in this guide to reflect your Certbot installation.
+
+Updating Certbot
+----------------
+
+If you need to update Certbot at a later date, run ``sudo apt-get install --only-upgrade certbot``.
 
 Register your email address
 ---------------------------
@@ -145,7 +154,7 @@ This file defines some settings used by Certbot.
 Use the email address you registered with.
 Comment / un-comment the post-hook parameter according which web server you use.
 
-.. literalinclude:: examples/lets_encrypt/cli.ini
+.. literalinclude:: ../examples/lets_encrypt/cli.ini
     :language: ini
 
 list.sh
@@ -153,7 +162,7 @@ list.sh
 
 This script lists all your issued certificates.
 
-.. literalinclude:: examples/lets_encrypt/list.sh
+.. literalinclude:: ../examples/lets_encrypt/list.sh
     :language: bash
 
 renew.sh
@@ -165,7 +174,7 @@ This script:
 #. Updates Certbot, when using Git as the installation source.
 #. Reloads the web server configuration automatically if a certificate has been renewed.
 
-.. literalinclude:: examples/lets_encrypt/renew.sh
+.. literalinclude:: ../examples/lets_encrypt/renew.sh
     :language: bash
 
 renew-cron.sh
@@ -179,7 +188,7 @@ This script:
 .. note::
    It is intended for use via Cron.
 
-.. literalinclude:: examples/lets_encrypt/renew-cron.sh
+.. literalinclude:: ../examples/lets_encrypt/renew-cron.sh
     :language: bash
 
 delete.sh
@@ -188,7 +197,7 @@ delete.sh
 This script deletes an issued certificate.
 Use the ``list.sh`` script to list issued certificates.
 
-.. literalinclude:: examples/lets_encrypt/delete.sh
+.. literalinclude:: ../examples/lets_encrypt/delete.sh
     :language: bash
 
 your-domain-name.sh
@@ -202,7 +211,7 @@ The first (sub)domain name used in the script is taken for naming the directorie
 **Note:** You can create different certificates for different sub-domains, such as ``mydom.tld``, ``www.mydom.tld``, and ``sub.mydom.tld``, by creating different scripts.
 You can see an example script here below:
 
-.. literalinclude:: examples/lets_encrypt/your-domain-name.sh
+.. literalinclude:: ../examples/lets_encrypt/your-domain-name.sh
     :language: bash
 
 .. note::
@@ -264,8 +273,8 @@ Web Server setup
 
 Follow the links to set up your web server and issue a certificate.
 
-- :doc:`examples/lets_encrypt/apache`
-- :doc:`examples/lets_encrypt/nginx`
+- :doc:`apache`
+- :doc:`nginx`
 
 Test the setup
 --------------
@@ -274,7 +283,7 @@ After you have setup and configured the web server and installed the SSL certifi
 To do so, you can use the free service of `SSL Labs`_.
 See an example screenshot of a test run below.
 
-.. figure:: images/ssllabs.png
+.. figure:: ../images/ssllabs.png
    :scale: 30%
 
 Certificate renewal
