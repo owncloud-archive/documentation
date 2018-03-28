@@ -592,7 +592,7 @@ Federated Cloud Shares
 ======================
 
 Both the sending and the receiving instance need to have federated cloud sharing
-enabled and configured. See `Configuring Federated Cloud Sharing <https://doc.owncloud.org/server/9.0/admin_manual/configuration/files/federated_cloud_sharing_configuration.html>`_.
+enabled and configured. See `Configuring Federated Cloud Sharing <https://doc.owncloud.org/server/latest/admin_manual/configuration/files/federated_cloud_sharing_configuration.html>`_.
 
 Create A New Federated Cloud Share
 ----------------------------------

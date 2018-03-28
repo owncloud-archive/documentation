@@ -418,18 +418,18 @@ References
 .. Links
 
 .. _Maintenance: 
-   https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html
+   https://doc.owncloud.org/server/latest/admin_manual/maintenance/index.html
 .. _User Authentication with LDAP:
-   https://doc.owncloud.org/server/10.0/admin_manual/configuration/user/    
+   https://doc.owncloud.org/server/latest/admin_manual/configuration/user/    
    user_auth_ldap.html
 .. _Configuring Memory Caching:   
-   https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/ 
+   https://doc.owncloud.org/server/latest/admin_manual/configuration/server/ 
    caching_configuration.html
 .. _ownCloud Server or Enterprise Edition:  
    https://owncloud.com/owncloud-server-or-enterprise-edition/
 .. _F5 Big-IP: https://f5.com/products/big-ip/
 .. _Shibboleth Integration: 
-   https://doc.owncloud.org/server/9.0/admin_manual/enterprise_user_management/
+   https://doc.owncloud.org/server/latest/admin_manual/enterprise_user_management/
    user_auth_shibboleth.html
 .. _Database High Availability: 
    http://www.severalnines.com/blog/become-mysql-dba-blog-series-database-high-

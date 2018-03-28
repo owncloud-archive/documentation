@@ -242,4 +242,4 @@ However, if the comment does not exist, then the following response will be retu
    
 .. Links
    
-.. _relevant section of the documentation: https://doc.owncloud.com/server/10.0/user_manual/files/access_webdav.html#webdav_api_retrieve_fileid
+.. _relevant section of the documentation: https://doc.owncloud.com/server/latest/user_manual/files/access_webdav.html#webdav_api_retrieve_fileid
