@@ -113,7 +113,7 @@ Check that you have commented out the ``Include`` directive as stated above and 
 
 ::
 
-  sudo /etc/letsencrypt/register.sh
+  sudo /etc/letsencrypt/<your-domain-name>.sh
 
 To double check the issued certificate, run the ``list.sh`` script.
 

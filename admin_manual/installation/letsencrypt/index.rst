@@ -137,6 +137,7 @@ Create Let's Encrypt's config files
 
 - Create following files in the Let's Encrypt directory. They will help to maintain your certificates.
 - Replace the path to Certbot and the Certbot script name based on your installation.
+- Rename <your-domain-name>.sh with the name of the domain(s) you want to issue a certificate for. As an example, the script could be renamed to ``your-domain-name.com.sh``.
 - Make all files executable except ``cli.ini`` by running ``sudo chmod +x <script-name>``.
 
 .. note::
@@ -145,7 +146,7 @@ Create Let's Encrypt's config files
 ::
 
     cd /etc/letsencrypt
-    touch cli.ini list.sh renew.sh renew-cron.sh delete.sh your-domain-name.sh
+    touch cli.ini list.sh renew.sh renew-cron.sh delete.sh <your-domain-name>.sh
 
 cli.ini
 ~~~~~~~
@@ -200,8 +201,8 @@ Use the ``list.sh`` script to list issued certificates.
 .. literalinclude:: ../examples/lets_encrypt/delete.sh
     :language: bash
 
-your-domain-name.sh
-~~~~~~~~~~~~~~~~~~~
+<your-domain-name>.sh
+~~~~~~~~~~~~~~~~~~~~~
 
 As an example, this script creates a certificate for following domain / sub-domains.
 You can add or remove sub-domains as necessary.
@@ -224,7 +225,7 @@ With all the scripts created, to create an SSL certificate, run the following co
 
 ::
 
-  sudo /etc/letsencrypt/your-domain-name.sh
+  sudo /etc/letsencrypt/<your-domain-name>.sh
 
 After you run the script, you will see output similar to the following:
 
@@ -233,7 +234,7 @@ After you run the script, you will see output similar to the following:
   Saving debug log to /var/log/letsencrypt/letsencrypt.log
   Obtaining a new certificate
   Performing the following challenges:
-  http-01 challenge for example.com
+  http-01 challenge for your-domain-name.com
   Using the webroot path /var/www/html for all unmatched domains.
   Waiting for verification...
   Cleaning up challenges
@@ -241,9 +242,9 @@ After you run the script, you will see output similar to the following:
 
   IMPORTANT NOTES:
    1. Congratulations! Your certificate and chain have been saved at:
-      /etc/letsencrypt/live/example.com/fullchain.pem
+      /etc/letsencrypt/live/your-domain-name.com/fullchain.pem
       Your key file has been saved at:
-      /etc/letsencrypt/live/example.com/privkey.pem
+      /etc/letsencrypt/live/your-domain-name.com/privkey.pem
       Your cert will expire on 2018-06-18. To obtain a new or tweaked
       version of this certificate in the future, simply run certbot
       again. To non-interactively renew *all* of your certificates, run

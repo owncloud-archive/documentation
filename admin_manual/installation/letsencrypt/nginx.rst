@@ -107,7 +107,7 @@ Check that you have commented out the ``include`` directive as stated above and 
 
 ::
 
-  sudo /etc/letsencrypt/register.sh
+  sudo /etc/letsencrypt/<your-domain-name>.sh
 
 If successful, you will see output similar to that below, when the command completes:
 
