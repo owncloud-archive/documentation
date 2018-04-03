@@ -11,6 +11,9 @@ To keep it succinct, you need to:
 
 After that, you can access the running instance of ownCloud and :ref:`further configure it <appliance-download-label>` to suit your needs. 
 
+.. note::
+   Please bear in mind that you need internet access to activate the appliance.
+
 .. _appliance-download-label:
 
 Download the Appliance
