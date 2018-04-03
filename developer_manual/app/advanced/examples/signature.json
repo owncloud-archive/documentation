@@ -1,0 +1,24 @@
+{
+  "hashes": {
+    "/filename.php":
+    "2401fed2eea6f2c1027c482a633e8e25cd46701f811e2d2c10dc213fd95fa60e350b
+    ccbbebdccc73a042b1a2799f673fbabadc783284cc288e4f1a1eacb74e3d",
+    "/lib/base.php":
+    "55548cc16b457cd74241990cc9d3b72b6335f2e5f45eee95171da024087d114fcbc2
+    effc3d5818a6d5d55f2ae960ab39fd0414d0c542b72a3b9e08eb21206dd9"
+  },
+  "certificate": "-----BEGIN CERTIFICATE-----
+  MIIBvTCCASagAwIBAgIUPvawyqJwCwYazcv7iz16TWxfeUMwDQYJKoZIhvcNAQEF\
+  nBQAwIzEhMB8GA1UECgwYb3duQ2xvdWQgQ29kZSBTaWduaW5nIENBMB4XDTE1MTAx\
+  nNDEzMTcxMFoXDTE2MTAxNDEzMTcxMFowEzERMA8GA1UEAwwIY29udGFjdHMwgZ8w\
+  nDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANoQesGdCW0L2L+a2xITYipixkScrIpB\
+  nkX5Snu3fs45MscDb61xByjBSlFgR4QI6McoCipPw4SUr28EaExVvgPSvqUjYLGps\
+  nfiv0Cvgquzbx/X3mUcdk9LcFo1uWGtrTfkuXSKX41PnJGTr6RQWGIBd1V52q1qbC\
+  nJKkfzyeMeuQfAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAvF/KIhRMQ3tYTmgHWsiM\
+  nwDMgIDb7iaHF0fS+/Nvo4PzoTO/trev6tMyjLbJ7hgdCpz/1sNzE11Cibf6V6dsz\
+  njCE9invP368Xv0bTRObRqeSNsGogGl5ceAvR0c9BG+NRIKHcly3At3gLkS2791bC\
+  niG+UxI/MNcWV0uJg9S63LF8=\n
+  -----END CERTIFICATE-----",
+  "signature": "U29tZVNpZ25lZERhdGFFeGFtcGxl"
+}
+

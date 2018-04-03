@@ -52,40 +52,57 @@ PHP >= 5.6 (ideally 7.0 or above)
 PHP Extensions
 ~~~~~~~~~~~~~~
 
-=================== ===========================================================
-Name                Description
-=================== ===========================================================
-`Ctype`_            For character type checking
-`cURL`_             Used for aspects of HTTP user authentication 
-`DOM`_              For operating on XML documents through the DOM API
-`GD`_               For creating and manipulating image files in a variety of 
-                    different image formats, including GIF, PNG, JPEG, WBMP, 
-                    and XPM.
-HASH Message        For working with message digests (hash).
-Digest Framework
-`iconv`_            For working with the iconv character set conversion 
-                    facility.
-`intl`_             Increases language translation performance and fixes sorting of
-                    non-ASCII characters
-`JSON`_             For working with the JSON data-interchange format.
-`libxml`_           This is required for the _DOM_, _libxml_, _SimpleXML_, and 
-                    _XMLWriter_ extensions to work. It requires that libxml2, 
-                    version 2.7.0 or higher, is installed.
-`Multibyte String`_ For working with multibyte character encoding schemes.
-`OpenSSL`_          For symmetric and asymmetric encryption and decryption, 
-                    PBKDF2, PKCS7, PKCS12, X509 and other crypto operations.
-`PDO`_              This is required for the pdo_msql function to work. 
-`Phar`_             For working with PHP Archives (.phar files).
-`POSIX`_            For working with UNIX POSIX functionality.
-`SimpleXML`_        For working with XML files as objects.
-`XMLWriter`_        For generating streams or files of XML data.
-`Zip`_              For reading and writing ZIP compressed archives and the 
-                    files inside them.
-`Zlib`_             For reading and writing gzip (.gz) compressed files.
-=================== ===========================================================
++----------------------+-------------------------------------------------------------+
+| Name                 | Description                                                 |
++======================+=============================================================+
+| `Ctype`_             | For character type checking                                 |
++----------------------+-------------------------------------------------------------+
+| `cURL`_              | Used for aspects of HTTP user authentication                |
++----------------------+-------------------------------------------------------------+
+| `DOM`_               | For operating on XML documents through the DOM API          |
++----------------------+-------------------------------------------------------------+
+| `GD`_                | For creating and manipulating image files in a variety of   |
+|                      | different image formats, including GIF, PNG, JPEG, WBMP,    |
+|                      | and XPM.                                                    |
++----------------------+-------------------------------------------------------------+
+| `HASH Message`_      | For working with message digests (hash).                    |
+| `Digest Framework`_  |                                                             |
++----------------------+-------------------------------------------------------------+
+| `iconv`_             | For working with the iconv character set conversion         |
+|                      | facility.                                                   |
++----------------------+-------------------------------------------------------------+
+| `intl`_              | Increases language translation performance and fixes        |
+|                      | sorting of non-ASCII characters                             |
++----------------------+-------------------------------------------------------------+
+| `JSON`_              | For working with the JSON data-interchange format.          |
++----------------------+-------------------------------------------------------------+
+| `libxml`_            | This is required for the _DOM_, _libxml_, _SimpleXML_, and  |
+|                      | _XMLWriter_ extensions to work. It requires that libxml2,   |
+|                      | version 2.7.0 or higher, is installed.                      |
++----------------------+-------------------------------------------------------------+
+| `Multibyte String`_  | For working with multibyte character encoding schemes.      |
++----------------------+-------------------------------------------------------------+
+| `OpenSSL`_           | For symmetric and asymmetric encryption and decryption,     |
+|                      | PBKDF2, PKCS7, PKCS12, X509 and other crypto operations.    |
++----------------------+-------------------------------------------------------------+
+| `PDO`_               | This is required for the pdo_msql function to work.         |
++----------------------+-------------------------------------------------------------+
+| `Phar`_              | For working with PHP Archives (.phar files).                |
++----------------------+-------------------------------------------------------------+
+| `POSIX`_             | For working with UNIX POSIX functionality.                  |
++----------------------+-------------------------------------------------------------+
+| `SimpleXML`_         | For working with XML files as objects.                      |
++----------------------+-------------------------------------------------------------+
+| `XMLWriter`_         | For generating streams or files of XML data.                |
++----------------------+-------------------------------------------------------------+
+| `Zip`_               | For reading and writing ZIP compressed archives and the     |
+|                      | files inside them.                                          |
++----------------------+-------------------------------------------------------------+
+| `Zlib`_              | For reading and writing gzip (.gz) compressed files.        |
++----------------------+-------------------------------------------------------------+
 
-.. tip:: 
-   The *Phar*, *OpenSSL*, and *cUrl* extensions are mandatory if you want to use Make
+.. tip::
+   The *Phar*, *OpenSSL*, and *cUrl* extensions are mandatory if you want to use `Make`_
    `to setup your ownCloud environment`_, prior to running either the web
    installation wizard, or the command line installer.
 
@@ -199,10 +216,18 @@ On a machine running a pristine Ubuntu 16.04 LTS server, install the required an
 
 ::
 
-    apt install -y apache2 mariadb-server libapache2-mod-php7.0 \
-        php7.0-gd php7.0-json php7.0-mysql php7.0-curl \
-        php7.0-intl php7.0-mcrypt php-imagick \
-        php7.0-zip php7.0-xml php7.0-mbstring
+    apt-get install -y apache2 mariadb-server libapache2-mod-php7.0 \
+        openssl php-imagick php7.0-common php7.0-curl php7.0-gd \
+        php7.0-imap php7.0-intl php7.0-json php7.0-ldap php7.0-mbstring \
+        php7.0-mcrypt php7.0-mysql php7.0-pgsql php-smbclient php-ssh2 \
+        php7.0-sqlite3 php7.0-xml php7.0-zip
+
+**Please note:**
+
+- ``php7.0-common`` provides: ftp, Phar, posix, iconv, ctype
+- The Hash extension is available from PHP 5.1.2 by default
+- ``php7.0-xml`` provides DOM, SimpleXML, XML, & XMLWriter
+- ``php7.0-zip`` provides zlib
 
 The remaining steps are analogous to the installation on Ubuntu 14.04 as shown below.
 
@@ -213,28 +238,85 @@ On a machine running a pristine Ubuntu 14.04 LTS server, install the required an
 
 ::
 
-    apt-get install -y apache2 mariadb-server libapache2-mod-php5 \
-      php5-gd php5-json php5-mysql php5-curl \
-      php5-intl php5-mcrypt php5-imagick
+    apt-get install -y wget expect apache2 mariadb-server libapache2-mod-php5 \
+        libsmbclient-dev libssh2-1-dev openssl php5-imagick \
+        php5-common php5-curl php5-dev php5-gd \
+        php5-imap php5-intl php5-json php5-ldap \
+        php5-mcrypt php5-mysql php5-pgsql php5-sqlite
 
-libapache2-mod-php5 provides the following PHP extensions: 
+**Please note:**
 
-  ``bcmath bz2 calendar Core ctype date dba dom ereg exif fileinfo filter ftp gettext hash iconv libxml mbstring mhash openssl pcre Phar posix Reflection session shmop SimpleXML soap sockets SPL standard sysvmsg sysvsem sysvshm tokenizer wddx xml xmlreader xmlwriter zip zlib``
+``libapache2-mod-php5`` provides the following PHP extensions.
 
-If you are planning on running additional apps, keep in mind that you might require additional packages.  
+- ctype 
+- dom 
+- ftp 
+- hash 
+- iconv 
+- libxml 
+- mbstring 
+- openssl 
+- Phar 
+- posix 
+- SimpleXML 
+- xml 
+- xmlreader 
+- xmlwriter 
+- zip 
+- zlib
+
+So if you don’t see an applicable package in the list above, that’s why.
+
+Installing smbclient
+~~~~~~~~~~~~~~~~~~~~
+
+To install smbclient, you can use the following script.
+It first installs PEAR, which at the time of writing only installs version 1.9.4.
+However, smbclient requires version 1.9.5.
+So the final two commands upgrade PEAR to version 1.9.5 and then install smbclient using Pecl.
+
+::
+
+  #!/usr/bin/expect
+  spawn wget -O /tmp/go-pear.phar http://pear.php.net/go-pear.phar
+  expect eof
+
+  spawn php /tmp/go-pear.phar
+
+  expect "1-11, 'all' or Enter to continue:"
+  send "\r"
+  expect eof
+
+  spawn rm /tmp/go-pear.phar
+
+  pear install PEAR-1.9.5
+  pecl install smbclient
+
+Installing ssh2
+~~~~~~~~~~~~~~~
+
+To install ssh2, which provides sftp, you can use the following command:
+
+::
+
+  spawn pecl install ssh2
+
+Running Additional Apps?
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you are planning on running additional apps, keep in mind that you might require additional packages.
 See :ref:`prerequisites_label` for details.
 
 .. note::
-   During the installation of the MySQL/MariaDB server, you will be prompted to create a root password. 
+   During the installation of the MySQL/MariaDB server, you will be prompted to create a root password.
    Be sure to remember your password as you will need it during ownCloud database setup.
-   
+
 Additional Extensions
 ~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
-  apt-get install -y php-apcu php-redis redis-server \
-    php7.0-ldap php-smbclient 
+  apt-get install -y php-apcu php-redis redis-server php7.0-ldap
 
 RHEL (RedHat Enterprise Linux) 7.2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -469,6 +551,8 @@ After you do so, your ownCloud server will be ready to use.
 .. _GD: https://php.net/manual/en/book.image.php
 .. _GMP: https://php.net/manual/en/book.gmp.php
 .. _HASH: https://secure.php.net/manual/en/book.hash.php
+.. _HASH Message: http://php.net/manual/en/function.hash.php
+.. _Digest Framework: http://php.net/manual/en/function.hash.php
 .. _Iconv: https://php.net/manual/en/book.iconv.php
 .. _JSON: https://php.net/manual/en/book.json.php
 .. _Mcrypt: https://php.net/manual/en/book.mcrypt.php
@@ -504,6 +588,7 @@ After you do so, your ownCloud server will be ready to use.
 .. _ffmpeg: https://ffmpeg.org/
 .. _OpenOffice: https://www.openoffice.org/
 .. _LibreOffice: https://www.libreoffice.org/
+.. _Make: https://www.gnu.org/software/make/
 
 .. Forum Links
    

@@ -74,7 +74,7 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 - To run the federation Sharing tests:
 
   1. Make sure you have configured HTTPS with valid certificates on both servers URLs
-  2. `Import SSL certificates <https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/import_ssl_cert.html>`_ (or do not offer HTTPS).
+  2. `Import SSL certificates <https://doc.owncloud.org/server/latest/admin_manual/configuration/server/import_ssl_cert.html>`_ (or do not offer HTTPS).
 
 - Run the tests:
 
@@ -132,7 +132,7 @@ You can run the UI tests for just a single suite by specifying the suite name:
 
   bash tests/travis/start_ui_tests.sh --suite files
   
-The names of suites are found in the ``behat.yml`` file.
+The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
 
 Running UI Tests for One Feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -141,13 +141,13 @@ You can run the UI tests for just a single feature by specifying the feature fil
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --feature tests/ui/features/other/login.feature
+  bash tests/travis/start_ui_tests.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature
 
 To run just a single scenario within a feature, specify the line number of the scenario:
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --feature tests/ui/features/other/login.feature:<linenumber>
+  bash tests/travis/start_ui_tests.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature:<linenumber>
 
 Running UI Tests for an App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -156,13 +156,13 @@ With the app installed, run the UI tests for the app by specifying the location 
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml
+  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml
 
 Run UI the tests for just a single feature of the app by also specifying the feature file:
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/ui/config/behat.yml --feature apps/files_texteditor/tests/ui/features/createtextfile.feature
+  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --feature apps/files_texteditor/tests/acceptance/features/textfiles.feature
 
 Skipping Tests
 ~~~~~~~~~~~~~~
