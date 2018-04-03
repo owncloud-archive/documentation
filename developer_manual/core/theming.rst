@@ -248,7 +248,7 @@ For core we do something like this to build the documentation link:
 .. code-block:: php
 
   public function buildDocLinkToKey($key) {
-    return $this->getDocBaseUrl() . '/server/9.0/go.php?to=' . $key;
+    return $this->getDocBaseUrl() . '/server/latest/go.php?to=' . $key;
   }
 
 

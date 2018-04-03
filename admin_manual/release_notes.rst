@@ -236,7 +236,7 @@ Infrastructure
 
 * **Client:** You need to update to `the latest desktop client version`_.
 * **Cron jobs:** The user account table has been reworked. As a result the Cron job for `syncing user backends`_, e.g., LDAP, needs to be configured.
-* **Logfiles:** App logs, e.g., auditing and owncloud.log, can now be split, see: https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/config_sample_php_parameters.html#logging.
+* **Logfiles:** App logs, e.g., auditing and owncloud.log, can now be split, see: https://doc.owncloud.org/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html#logging.
 
 Known Issues
 ~~~~~~~~~~~~
@@ -303,7 +303,7 @@ Changes in 10.0.0
 * The upgrade migration test has been removed; see :ref:`migration_test_label`. (Option ``"--skip-migration-tests"`` removed from update command)
 * Requires to use the latest desktop client version 2.3
 * Third party apps are not disabled anymore when upgrading
-* User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/occ_command.html#syncing-user-accounts)
+* User account table has been reworked. CRON job for syncing with e.g. LDAP needs to be configured (see https://doc.owncloud.com/server/latest/admin_manual/configuration/server/occ_command.html#syncing-user-accounts)
 * LDAP app is not released with ownCloud 10.0.0 and will be released on the marketplace after some more QA
 * files_drop app is not shipped anymore as it's integrated with core now. Since migrations are not possible you will have to reconfigure your drop folders (in the 'Public Link' section of the sharing dialog of the respective folders).
 * SAML/Shibboleth with device-specific app passwords: No migration possible; Users need to regenerate device-specific app passwords in the WebUI and enter those in their clients.
@@ -407,7 +407,7 @@ Changes in 9.1
 
 **Technical debt**
 
-* PSR-4 autoloading forced for ``OC\`` and ``OCP\``, optional for ``OCA\`` docs at https://doc.owncloud.org/server/9.1/developer_manual/app/classloader.html
+* PSR-4 autoloading forced for ``OC\`` and ``OCP\``, optional for ``OCA\`` docs at https://doc.owncloud.org/server/latest/developer_manual/app/classloader.html
 * More cleanup of the sharing code (ongoing)
 
 .. _9.0_release_notes_label:
@@ -415,10 +415,7 @@ Changes in 9.1
 Changes in 9.0
 --------------
 
-9.0 requires .ico files for favicons. This will change in 9.1, which will 
-use .svg files. See `Changing favicon 
-<https://doc.owncloud.org/server/9.0/developer_manual/core/theming.html#changing
--favicon>`_ in the Developer Manual.
+9.0 requires .ico files for favicons. This will change in 9.1, which will use .svg files. See `Changing favicon <https://doc.owncloud.org/server/latest/developer_manual/core/theming.html#changing-favicon>`_ in the Developer Manual.
 
 Home folder rule is enforced in the user_ldap application in new ownCloud installations; see
 :doc:`configuration/user/user_auth_ldap`. This affects ownCloud 8.0.10, 8.1.5 and 8.2.0 and up.
@@ -470,7 +467,7 @@ so that ownCloud will detect remote file changes.
 
 XSendFile support has been removed, so there is no longer support for `serving 
 static files
-<https://doc.owncloud.org/server/8.1/admin_manual/configuration/files/
+<https://doc.owncloud.org/server/latest/admin_manual/configuration/files/
 serving_static_files_configuration.html>`_ from your ownCloud server.
 
 LDAP issue: 8.2 uses the ``memberof`` attribute by default. If this is not 
@@ -892,7 +889,7 @@ or PostgreSQL) to operate correctly.
 .. _check out the related issue: https://github.com/owncloud/core/issues/28695
 .. _the full ownCloud Server 10.0.4 changelog: https://github.com/owncloud/core/blob/stable10/CHANGELOG.md
 .. _the full ownCloud Server changelog: https://owncloud.org/changelog/server/
-.. _the occ command's files:scan --repair documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/occ_command.html?highlight=occ#the-repair-option
-.. _the config_sample_php_parameters documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/config_sample_php_parameters.html#mode-of-operation
-.. _the background jobs configuration documentation: https://doc.owncloud.com/server/10.0/admin_manual/configuration/server/background_jobs_configuration.html#cleanupchunks
-.. _the list of supported browser versions: https://doc.owncloud.com/server/10.0/admin_manual/installation/system_requirements.html#web-browser
+.. _the occ command's files:scan --repair documentation: https://doc.owncloud.com/server/latest/admin_manual/configuration/server/occ_command.html?highlight=occ#the-repair-option
+.. _the config_sample_php_parameters documentation: https://doc.owncloud.com/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html#mode-of-operation
+.. _the background jobs configuration documentation: https://doc.owncloud.com/server/latest/admin_manual/configuration/server/background_jobs_configuration.html#cleanupchunks
+.. _the list of supported browser versions: https://doc.owncloud.com/server/latest/admin_manual/installation/system_requirements.html#web-browser

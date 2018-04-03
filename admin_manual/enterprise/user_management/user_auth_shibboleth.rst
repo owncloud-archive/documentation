@@ -59,7 +59,7 @@ Further Shibboleth specific configuration as defined in
 	</Location>
 
 	# authenticate only on the login page
-	<Location ~ "(/index.php)?/login">
+	<Location ~ "^(/index.php)?/login">
 		# force internal users to use the IdP
 		<If "-R '192.168.1.0/24'">
 			AuthType shibboleth

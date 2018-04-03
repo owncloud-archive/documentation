@@ -378,6 +378,10 @@ li.next {
   max-width: 100%;
 }
 
+dl dd, dl dt {
+  margin-bottom: 10px;
+}
+
 @media (min-width: 1200px) {
   .banner ul#menu-header.nav>li:not(.menu-install)>a {
 	width: auto;

@@ -2,34 +2,34 @@
 Installing and Configuring the External Storage: Windows Network Drives App
 ===========================================================================
 
-The "External Storage: Windows Network Drives" app creates a control panel in your Admin page for seamlessly integrating Windows and Samba/CIFS shared network drives as external storages.
+The `External Storage: Windows Network Drives`_ app creates a control panel in your Admin page for seamlessly integrating Windows and Samba/CIFS shared network drives as external storages.
 
-Any Windows file share and Samba servers on Linux and other Unix-type operating systems use the SMB/CIFS file-sharing protocol. 
-The files and directories on the SMB/CIFS server will be visible on your Files page just like your other ownCloud files and folders. 
+Any Windows file share and Samba servers on Linux and other Unix-type operating systems use the SMB/CIFS file-sharing protocol.
+The files and directories on the SMB/CIFS server will be visible on your Files page just like your other ownCloud files and folders.
 
-They are labeled with a little four-pane Windows-style icon, and the left pane of your Files page includes a Windows Network Drive filter. 
-Figure 1 shows a new Windows Network Drive share marked with red warnings. 
+They are labeled with a little four-pane Windows-style icon, and the left pane of your Files page includes a Windows Network Drive filter.
+Figure 1 shows a new Windows Network Drive share marked with red warnings.
 
-These indicate that ownCloud cannot connect to the share because it requires the user to login, it is not available, or there is an error in the configuration. 
+These indicate that ownCloud cannot connect to the share because it requires the user to login, it is not available, or there is an error in the configuration.
 
 .. figure:: images/wnd-1.png
    :alt: Windows Network Drive share on your Files page.
-   
+
    *Figure 1: Windows Network Drive share on your Files page.*
 
-Files are synchronized bi-directionally, and you can create, upload, and delete files and folders. 
-ownCloud server admins can create Windows Network Drive mounts and optionally allow users to set up their own personal Windows Network Drive mounts. 
+Files are synchronized bi-directionally, and you can create, upload, and delete files and folders.
+ownCloud server admins can create Windows Network Drive mounts and optionally allow users to set up their own personal Windows Network Drive mounts.
 
-Depending on the authentication method, passwords for each mount are encrypted and stored in the ownCloud database, using a long random secret key stored in ``config.php``, which allows ownCloud to access the shares when the users who own the mounts are not logged in. 
+Depending on the authentication method, passwords for each mount are encrypted and stored in the ownCloud database, using a long random secret key stored in ``config.php``, which allows ownCloud to access the shares when the users who own the mounts are not logged in.
 Or, passwords are not stored and available only for the current session, which adds security.
 
 Installation
 ------------
 
-Install `the External Storage: Windows Network Drives app`_ from the ownCloud Market App or ownCloud Marketplace. 
+Install `the External Storage: Windows Network Drives app`_ from the ownCloud Market App or ownCloud Marketplace.
 For it to work, there are a few dependencies to install.
 
-- A Samba client. This is included in all Linux distributions. On Debian, Ubuntu, and other Debian derivatives it is called ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is ``samba-client``. 
+- A Samba client. This is included in all Linux distributions. On Debian, Ubuntu, and other Debian derivatives it is called ``smbclient``. On SUSE, Red Hat, CentOS, and other Red Hat derivatives it is ``samba-client``.
 - ``php-smbclient`` (version 0.8.0+). It should be included in most Linux distributions. You can use `eduardok/libsmbclient-php`_, if your distribution does not provide it.
 - ``which`` and ``stdbuf``. These should be included in most Linux distributions.
 
@@ -39,50 +39,64 @@ Example
 Assuming that your ownCloud installation is on Ubuntu, then the following commands will install the required dependencies:
 
 .. code-block:: console
-   
+
   # Install core packages
   sudo apt-get update -y
-  sudo apt-get install -y smbclient coreutils
-  
+  sudo apt-get install -y smbclient php-smbclient coreutils
+
+Other method using PECL is:
+
+.. code-block:: console
+
   # Install php-smbclient using PECL
   pecl install smbclient
-  
+
   # Install it from source
   git clone git://github.com/eduardok/libsmbclient-php.git
   cd libsmbclient-php ; phpize
   ./configure
   make
   sudo make install
-  
-  # Enable the extension in your PHP installation
-  extension="smbclient.so"
+
+.. note::
+   Regardless of the method you use, remember to check if an smbclient.ini file exists in ``/etc/php/<your php version>/mods-available`` and contains the following line:
+
+   ::
+
+     extension="smbclient.so"
+
+If so, then make it available via by running the following command:
+
+::
+
+  sudo phpenmod -v ALL smbclient
 
 Creating a New Share
 --------------------
 
-When you create a new WND share you need three things: 
+When you create a new WND share you need three things:
 
 - The login credentials for the share
 - The server address, the share name; and
-- The folder you want to connect to 
+- The folder you want to connect to
 
-.. note:: 
-   **Treat all the parameters as being case-sensitive.** 
-   Although some parts of the app might work properly, regardless of case, other parts might have problems if case isn't respected. 
+.. note::
+   **Treat all the parameters as being case-sensitive.**
+   Although some parts of the app might work properly, regardless of case, other parts might have problems if case isn't respected.
 
 1. Enter the ownCloud mount point for your new WND share. This must not be an existing folder.
 2. Then select your authentication method; See  :doc:`enterprise_only_auth` for complete information on the five available authentication methods.
-   
+
 .. figure:: images/wnd-2.png
    :alt: WND mountpoint and auth.
-   
+
    *Figure 2: WND mountpoint and authorization credentials.*
-   
+
 3. Enter the address of the server that contains the WND share.
 4. The Windows share name.
-5. The root folder of the share. This is the folder name, or the 
-   ``$user`` variable for user's home directories. Note that the LDAP 
-   ``Internal Username Attribute`` must be set to the ``samaccountname`` for either the share or the root to work, and the user's home directory needs to match the ``samaccountname``. (See 
+5. The root folder of the share. This is the folder name, or the
+   ``$user`` variable for user's home directories. Note that the LDAP
+   ``Internal Username Attribute`` must be set to the ``samaccountname`` for either the share or the root to work, and the user's home directory needs to match the ``samaccountname``. (See
    :doc:`../../configuration/user/user_auth_ldap`.)
 6. Login credentials.
 7. Select users or groups with access to the share. The default is all users.
@@ -91,7 +105,7 @@ When you create a new WND share you need three things:
 .. figure:: images/wnd-3.png
    :alt: WND server and credentials.
 
-   *Figure 3: WND server, credentials, and additional mount options.*  
+   *Figure 3: WND server, credentials, and additional mount options.*
 
 Your changes are saved automatically.
 
@@ -100,9 +114,9 @@ Your changes are saved automatically.
 Personal WND Mounts
 -------------------
 
-Users create their own WND mounts on their Personal pages. 
-These are created the same way as Admin-created shares. 
-Users have four options for login credentials: 
+Users create their own WND mounts on their Personal pages.
+These are created the same way as Admin-created shares.
+Users have four options for login credentials:
 
 * Username and password
 * Log-in credentials, save in session
@@ -112,7 +126,7 @@ Users have four options for login credentials:
 libsmbclient Issues
 -------------------
 
-If your Linux distribution ships with ``libsmbclient 3.x``, which is included in the Samba client, you may need to set up the HOME variable in Apache to prevent a segmentation fault. 
+If your Linux distribution ships with ``libsmbclient 3.x``, which is included in the Samba client, you may need to set up the HOME variable in Apache to prevent a segmentation fault.
 If you have ``libsmbclient 4.1.6`` and higher it doesn't seem to be an issue, so you won't have to change your HOME variable.
 To set up the HOME variable on Ubuntu, modify the ``/etc/apache2/envvars`` file::
 
@@ -122,9 +136,9 @@ To set up the HOME variable on Ubuntu, modify the ``/etc/apache2/envvars`` file:
 In Red Hat/CentOS, modify the ``/etc/sysconfig/httpd`` file and add the following line to set the HOME variable in Apache::
 
   export HOME=/usr/share/httpd
- 
-By default, CentOS has activated SELinux, and the ``httpd`` process can not make outgoing network connections. 
-This will cause problems with the ``curl``, ``ldap`` and ``samba`` libraries. 
+
+By default, CentOS has activated SELinux, and the ``httpd`` process can not make outgoing network connections.
+This will cause problems with the ``curl``, ``ldap`` and ``samba`` libraries.
 You'll need to get around this to make this work. First, check the status::
 
   getsebool -a | grep httpd
@@ -135,7 +149,7 @@ Then enable support for network connections::
   setsebool -P httpd_can_network_connect 1
 
 In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
- 
+
   export HOME=/var/lib/apache2
 
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS mounts.
@@ -144,7 +158,7 @@ Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS mounts
 Windows Network Drive Listener
 ==============================
 
-The SMB protocol supports registering for notifications of file changes on remote Windows SMB storage servers. 
+The SMB protocol supports registering for notifications of file changes on remote Windows SMB storage servers.
 Notifications are more efficient than polling for changes, as polling requires scanning the whole SMB storage.
 ownCloud supports SMB notifications with an ``occ`` command, ``occ wnd:listen``.
 
@@ -162,7 +176,7 @@ The listener marks changed files, and a background job updates the file metadata
 Windows network drive connections and setup of ``occ wnd:listen`` often does not always work the first time.
 If you encounter issues using it, then try the following troubleshooting steps:
 
-1. Check the connection with smbclient_ on the command line of the ownCloud server
+1. Check the connection with `smbclient`_ on the command line of the ownCloud server
 
 Take the example of attempting to connect to the share named `MyData` using ``occ wnd:listen``.
 Running the following command would work::
@@ -189,8 +203,8 @@ It is intended to be run as a service.
 The command requires the host and share, which the listener will listen to, and the Windows/Samba account that will listen.
 The command does not produce any output by default, unless errors happen.
 
-.. note:: 
-   You can increase the command's verbosity by using ``-vvv``. 
+.. note::
+   You can increase the command's verbosity by using ``-vvv``.
    Doing so displays what the listener is doing, including a timestamp and the notifications received.
 
 .. note::
@@ -225,7 +239,7 @@ In order to start the ``wnd:listen`` without any interaction, there are other wa
     sudo base64 -d /my/base64encoded/password | sudo -u www-data ./occ wnd:listen \
       --password-file=- <host> <share> <username>
 
-Note that there won't be any processing to the password by default. 
+Note that there won't be any processing to the password by default.
 This means that spaces or newline chars won't be removed unless explicitly told.
 Use the ``--password-trim`` option in those cases.
 
@@ -282,8 +296,8 @@ Between 200 and 500 should be fine, and we'll likely process all the notificatio
 Optimizing wnd:process-queue
 ----------------------------
 
-.. note:: 
-   Do not use this option if the process-queue is fast enough. 
+.. note::
+   Do not use this option if the process-queue is fast enough.
    The option has some drawbacks, specifically regarding password changes in the backend.
 
 ``wnd:process-queue`` creates all the storages that need to be updated from scratch.
@@ -293,22 +307,22 @@ To optimize this, ``wnd:process-queue`` make use of two switches: "--serializer-
 These serialize storages for later use, so that future executions don't need to fetch the users, saving precious time — especially for large organizations.
 
 ======================= =======================================================================
-Switch                  Allowed Values 
+Switch                  Allowed Values
 ======================= =======================================================================
 ``--serializer-type``   ``file``.  Other valid values may be added in the future, as more
                         implementations are requested.
 ``--serializer-params`` Depends on ``--serializer-type``, because those will be the parameters
-                        that the chosen serializer will use. For the ``file`` serializer, you 
-                        need to provide a file location in the host FS where the storages will 
-                        be serialized. You can use ``--serializer-params file=/tmp/file`` as an 
+                        that the chosen serializer will use. For the ``file`` serializer, you
+                        need to provide a file location in the host FS where the storages will
+                        be serialized. You can use ``--serializer-params file=/tmp/file`` as an
                         example.
 ======================= =======================================================================
 
-While the specific behavior will depend on the serializer implementation, the overall behavior can be simplified as follows: 
+While the specific behavior will depend on the serializer implementation, the overall behavior can be simplified as follows:
 
-If the serializer's data source (such as *a file*, *a database table*, or some *Redis keys*) has storage data, it uses that data to create the storages; otherwise, it creates the storages from scratch. 
+If the serializer's data source (such as *a file*, *a database table*, or some *Redis keys*) has storage data, it uses that data to create the storages; otherwise, it creates the storages from scratch.
 
-After the storages are created, notifications are processed for the storages. 
+After the storages are created, notifications are processed for the storages.
 If the storages have been created from scratch, those storages are written in the data source so that they can be read on the next run.
 
 .. note::
@@ -318,12 +332,12 @@ The File Serializer
 -------------------
 
 The file serializer is a serializer implementation that can be used with the ``wnd:process-queue`` command.
-It requires an additional parameter where you can specify the location of the file containing the serialized storages. 
+It requires an additional parameter where you can specify the location of the file containing the serialized storages.
 
 There are several things you should know about this serializer:
 
 - The generated file contains the encrypted passwords for accessing the backend. This is necessary in order to avoid re-fetching the user information, when next accessing the storages.
-- The generated file is intended to be readable and writeable **only** for the web server user. Other users shouldn't have access to this file. Do not manually edit the file. You can remove the file if it contains obsolete information.
+- The generated file is intended to be readable and writable **only** for the web server user. Other users shouldn't have access to this file. Do not manually edit the file. You can remove the file if it contains obsolete information.
 
 Usage Recommendations
 ~~~~~~~~~~~~~~~~~~~~~
@@ -336,14 +350,14 @@ Consider the following usage scenario:
 
 - If you have three shares: ``10.0.2.2/share1``, ``10.0.2.2/share2``, and ``10.0.10.20/share2``, then you should use three different calls to ``wnd:process-queue``, changing the target file for the serializer for each one.
 
-Since the serialized file has to be per server and share, the serialized file has some checks to prevent misuse. 
-Specifically, if we detect you're trying to read the storages for another server and share from the file, the contents of the file won't be read and will fallback to creating the storage from scratch. 
+Since the serialized file has to be per server and share, the serialized file has some checks to prevent misuse.
+Specifically, if we detect you're trying to read the storages for another server and share from the file, the contents of the file won't be read and will fallback to creating the storage from scratch.
 At this point, we'll then update the contents of that file with the new storage.
 
-Doing so, though, creates unneeded competition, where several process-queue will compete for the serializer file. 
-For example, let's say that you have two process-queues targeting the same serializer file. 
+Doing so, though, creates unneeded competition, where several process-queue will compete for the serializer file.
+For example, let's say that you have two process-queues targeting the same serializer file.
 After the first process creates the file the second process will notice that the file is no longer available.
-As a result, it will recreate the file with new content. 
+As a result, it will recreate the file with new content.
 
 At this point the first process runs again and notices that the file isn't available and recreate the file again.
 When this happens, the serializer file's purpose isn't fulfilled
@@ -352,7 +366,7 @@ As a result, we recommend the use of a different file per server and share.
 File Clean Up
 ^^^^^^^^^^^^^
 
-The file will need to cleaned up from time to time. 
+The file will need to cleaned up from time to time.
 The easiest way to do this is to remove the file when it is no longer needed.
 The file will be regenerated with fresh data the next execution if the serializer option is set.
 
@@ -378,8 +392,8 @@ If you need to serialize the execution of the ``wnd:process-queue``, check the f
    flock -n /my/lock/file sudo -u www-data ./occ wnd:process-queue <host> <share>
 
 In that case, flock will try get the lock of that file and won't run the command if it isn't possible.
-For our case, and considering that file isn't being used by any other process, it will run only one ``wnd:process-queue`` at a time. 
-If someone tries to run the same command a second time while the previous one is running, the second will fail and won't be executed. 
+For our case, and considering that file isn't being used by any other process, it will run only one ``wnd:process-queue`` at a time.
+If someone tries to run the same command a second time while the previous one is running, the second will fail and won't be executed.
 Check `flock's documentation`_ for details and other options.
 
 Multiple Server Setup
@@ -397,20 +411,20 @@ Basic Command Execution Examples
 ::
 
   sudo -u www-data ./occ ``wnd:listen`` host share username password
-  
+
   sudo -u www-data ./occ ``wnd:process-queue`` host share
-  
+
   sudo -u www-data ./occ ``wnd:process-queue`` host share -c 500
-  
+
   sudo -u www-data ./occ ``wnd:process-queue`` host share -c 500 \
       --serializer-type file \
       --serializer-params file=/opt/oc/store
-  
+
   sudo -u www-data ./occ ``wnd:process-queue`` host2 share2 -c 500 \
       --serializer-type File \
       --serializer-params file=/opt/oc/store2
 
-To set it up, make sure the listener is running as a system service: 
+To set it up, make sure the listener is running as a system service:
 
 ::
 
@@ -444,3 +458,4 @@ Note that the file can be removed manually at any time if it's needed (for examp
 .. _a known issue: https://github.com/owncloud/Windows_network_drive/issues/94
 .. _password lockout policies: https://technet.microsoft.com/en-us/library/dd277400.aspx
 .. _flock's documentation: https://linux.die.net/man/2/flock
+.. _External Storage\: Windows Network Drives: https://marketplace.owncloud.com/apps/windows_network_drive
