@@ -204,7 +204,7 @@ Only those object classes:
   ownCloud will determine the object classes that are typically available for group objects in your LDAP server.
   ownCloud will only list object classes that return at least one group object.
   You can select multiple object classes.
-  A typical object class is "``group``", or "``posixGroup``".
+  A typical object class is ``group``, or ``posixGroup``.
 
 Only from those groups:
   ownCloud will generate a list of available groups found in your LDAP server.
