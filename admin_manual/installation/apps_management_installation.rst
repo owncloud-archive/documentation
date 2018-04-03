@@ -42,7 +42,7 @@ If they are, then they will not be installed.
 
 .. note:: If you would like to create or add your own ownCloud app, please 
    refer to the `developer manual
-   <https://doc.owncloud.org/server/9.0/developer_manual/app/index.html>`_.
+   <https://doc.owncloud.org/server/latest/developer_manual/app/index.html>`_.
 
 .. _using_custom_app_directories_label:
 
