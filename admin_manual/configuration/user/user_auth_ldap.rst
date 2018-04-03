@@ -385,7 +385,7 @@ Group Member association:
 
 .. note::
    The Group Member association is used to efficiently query users of a certain
-   group, eg. on the userManagement page or when resolving all members of a group share.
+   group, eg., on the userManagement page or when resolving all members of a group share.
 
 Dynamic Group Member URL
   The LDAP attribute that on group objects contains an LDAP search URL that determines what objects belong to the group.
