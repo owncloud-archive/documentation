@@ -4,12 +4,9 @@ User Authentication with LDAP
 
 .. warning:: Please check both the advanced and expert configurations carefully before using in production
 
-ownCloud ships with an LDAP application to allow LDAP users (including Active
-Directory) to appear in your ownCloud user listings. These users will
-authenticate to ownCloud with their LDAP credentials, so you don't have to
-create separate ownCloud user accounts for them. You will manage their ownCloud
-group memberships, quotas, and sharing permissions just like any other ownCloud
-user.
+ownCloud ships with an LDAP application which allows LDAP users (including Active Directory) to appear in your ownCloud user listings.
+These users will authenticate to ownCloud with their LDAP credentials, so you don't have to create separate ownCloud user accounts for them.
+You will manage their ownCloud group memberships, quotas, and sharing permissions just like any other ownCloud user.
 
 .. note::
    The PHP LDAP module is required; this is supplied by ``php5-ldap`` on
@@ -128,19 +125,22 @@ Only those object classes:
 Only from those groups:
   If your LDAP server supports the ``memberof-overlay`` in LDAP filters, you
   can define that only users from one or more certain groups are allowed to
-  appear in user listings in ownCloud. By default, no value will be selected.
+  appear in user listings in ownCloud.
+  By default, no value will be selected.
   You may select multiple groups.
 
 .. note::
-   Group membership is configured by adding `memberUid`, `uniqueMember` or `member`
-   attributes to an LDAP group (see :ref:`Group Member association <group_member_association>`)
-   below. In order to efficiently look up the groups a user who is
-   a member of the LDAP server must support a memberof-overlay. It allows using
-   the virtual `memberOf` or `isMemberOf` attributes of an LDAP user in the user
-   filter. If your LDAP server does not support the memberof-overlay in LDAP
-   filters, the input field is disabled. Please contact your LDAP administrator.
-   * Activle Directory uses `memberOf <https://msdn.microsoft.com/en-us/library/ms677943.aspx#memberOf>`_ and is enabled by default.
-   * OpenLDAP uses memberOf.  `Reverse Group Membership Maintenance <https://www.openldap.org/doc/admin24/overlays.html#Reverse%20Group%20Membership%20Maintenance>`_ needs to be enabled.
+   Group membership is configured by adding `memberUid`, `uniqueMember` or
+   `member` attributes to an ldap group (see :ref:`Group Member association
+   <group_member_association>`) below. In order to efficiently look up the
+   groups a user who is a member of the LDAP server must support
+   a ``memberof-overlay``. It allows using the virtual ``memberOf`` or
+   ``isMemberOf`` attributes of an LDAP user in the user filter. If your LDAP
+   server does not support the ``memberof-overlay`` in LDAP filters, the input
+   field is disabled. Please contact your LDAP administrator.
+
+   * Active Directory uses `memberOf <https://msdn.microsoft.com/en-us/library/ms677943.aspx#memberOf>`_ and is enabled by default.
+   * OpenLDAP uses ``memberOf``. `Reverse Group Membership Maintenance <https://www.openldap.org/doc/admin24/overlays.html#Reverse%20Group%20Membership%20Maintenance>`_ needs to be enabled.
    * Oracle uses `isMemberOf <https://docs.oracle.com/cd/E29127_01/doc.111170/e28967/ismemberof-5dsat.htm>`_ and is enabled by default.
 
 Edit raw filter instead:
@@ -159,20 +159,18 @@ Login Filter
 The settings in the Login Filter tab determine which LDAP users can log in to your ownCloud system and which attribute or attributes the provided login name is matched against (e.g., LDAP/AD username, email address).
 You may select multiple user details.
 You may bypass the form fields and enter a raw LDAP filter if you prefer.
+
 You may override your User Filter settings on the User Filter tab by using a raw LDAP filter.
 
 .. figure:: ../../images/ldap-wizard-3-login.png
    :alt: Login filter
 
 LDAP Username:
-  If this value is checked, the login value will be compared to the username in
-  the LDAP directory. The corresponding attribute, usually ``uid`` or
-  ``samaccountname`` will be detected automatically by ownCloud.
+  If this value is checked, the login value will be compared to the username in the LDAP directory.
+  The corresponding attribute, usually ``uid`` or ``samaccountname`` will be detected automatically by ownCloud.
 
 LDAP Email Address:
-  If this value is checked, the login value will be compared to an email address
-  in the LDAP directory; specifically, the ``mailPrimaryAddress`` and ``mail``
-  attributes.
+  If this value is checked, the login value will be compared to an email address in the LDAP directory; specifically, the ``mailPrimaryAddress`` and ``mail`` attributes.
 
 Other Attributes:
   This multi-select box allows you to select other attributes for the comparison.
@@ -205,11 +203,11 @@ You may also elect to enter a raw LDAP filter instead.
 .. figure:: ../../images/ldap-wizard-4-group.png
    :alt: Group filter
 
-only those object classes:
-  ownCloud will determine the object classes that are typically available for
-  group objects in your LDAP server. ownCloud will only list object
-  classes that return at least one group object. You can select multiple
-  object classes. A typical object class is ``group``, or ``posixGroup``.
+Only those object classes:
+  ownCloud will determine the object classes that are typically available for group objects in your LDAP server.
+  ownCloud will only list object classes that return at least one group object.
+  You can select multiple object classes.
+  A typical object class is "``group``", or "``posixGroup``".
 
 Only from those groups:
   ownCloud will generate a list of available groups found in your LDAP server.
@@ -379,6 +377,8 @@ Group Member association:
 
   Examples:
 
+(??)  * Example:
+
   * ``member`` with FDN for Active Directory or for objectclass ``groupOfNames`` groups
   * ``memberUid`` with RDN for objectclass ``posixGroup`` groups
   * ``uniqueMember`` with FDN for objectclass ``groupOfUniqueNames`` groups
@@ -410,7 +410,7 @@ Special Attributes
 
 Quota Field:
   The name of the LDAP attribute to retrieve the user quota limit from, e.g., ``ownCloudQuota``.
-  **Note:** any quota set in LDAP overrides quotas set in ownCloud's user management page.
+  *Note:* any quota set in LDAP overrides quotas set in ownCloud's user management page.
 
 Quota Default:
   Override ownCloud's default quota *for LDAP users* who do not have a quota set in the Quota Field, e.g., ``15 GB``.
@@ -436,22 +436,17 @@ Email Field:
 .. _user-home-folder-naming-rule:
 
 User Home Folder Naming Rule:
-  By default, the ownCloud server creates the user directory in your ownCloud
-  data directory and gives it the ownCloud username, e.g., ``/var/www/owncloud/data/5a9df029-322d-4676-9c80-9fc8892c4e4b``
-  if your data directory is set to ``/var/www/owncloud/data``.
+  By default, the ownCloud server creates the user directory in your ownCloud data directory and gives it the ownCloud username, e.g., ``/var/www/owncloud/data/5a9df029-322d-4676-9c80-9fc8892c4e4b``, if your data directory is set to ``/var/www/owncloud/data``.
 
-  It is possible to override this setting and name it after an LDAP
-  attribute value, e.g., ``attr:cn``. The attribute can return either an absolute path, e.g.
-  ``/mnt/storage43/alice`` or a relative path which must not begin with a ``/``, e.g. ``CloudUsers/CookieMonster``.
-  This relative path is then created inside the data directory (e.g. ``/var/www/owncloud/data/CloudUsers/CookieMonster``).
+  It is possible to override this setting and name it after an LDAP attribute value, e.g., ``attr:cn``.
+  The attribute can return either an absolute path, e.g., ``/mnt/storage43/alice``, or a relative path which must not begin with a ``/``, e.g., ``CloudUsers/CookieMonster``.
+  This relative path is then created inside the data directory (e.g., ``/var/www/owncloud/data/CloudUsers/CookieMonster``).
 
-  Since ownCloud 8.0.10 and up the home folder rule is enforced. This means that once you
-  set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all
-  users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem
-  will not be set up for that user, so their file shares will not be available to other users.
-  For older versions you may enforce the home folder rule with the ``occ`` command, like this example on Ubuntu
-
-  ::
+  Since ownCloud 8.0.10 and up the home folder rule is enforced.
+  This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users.
+  If it isn't available for a user, then that user will not be able to login.
+  Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.
+  For older versions you may enforce the home folder rule with the ``occ`` command, like this example on Ubuntu::
 
     sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
 
@@ -469,20 +464,18 @@ Expert Settings
     configuration should be well-tested before starting production use.
 
 Internal Username:
-  The internal username is the identifier in ownCloud for LDAP users.
-  By default it will be created from the UUID attribute.
-  The UUID attribute ensures that the username is unique, and that characters do not need to be converted. Only these characters are allowed: ``[\a-\zA-\Z0-\9_.@-]``.
-  Other characters are replaced with their ASCII equivalents, or are simply omitted.
+(??)  The internal username is the identifier in ownCloud for LDAP users. By default
+(??)  it will be created from the UUID attribute. The UUID attribute ensures that 
+(??)  the username is unique, and that characters do not need to be converted. Only 
+(??)  these characters are allowed: [\a-\zA-\Z0-\9_.@-]. Other characters are 
+(??)  replaced with their ASCII equivalents, or are simply omitted.
 
   The LDAP backend ensures that there are no duplicate internal usernames in ownCloud, i.e., that it is checking all other activated user backends (including local ownCloud users).
   On collisions a random number (between 1000 and 9999) will be attached to the retrieved value.
   For example, if "alice" exists, the next username may be "alice_1337".
 
-  The LDAP backend ensures that there are no duplicate internal usernames in
-  ownCloud, i.e., that it is checking all other activated user backends
-  (including local ownCloud users). On collisions a random number (between 1000
-  and 9999) will be attached to the retrieved value. For example, if "**alice**"
-  exists, the next username may be "**alice_1337**".
+  The internal username is the default name for the user home folder in ownCloud.
+  It is also a part of remote URLs, for instance for all \*DAV services.
 
   You can override all of this with the Internal Username setting.
   Leave it empty for default behavior.
@@ -497,28 +490,26 @@ Override UUID detection
   The UUID attribute is used to uniquely identify LDAP users and groups.
   The internal username will be created based on the UUID, if not specified otherwise.
 
-  You can override the setting and pass an attribute of your choice. You must
-  make sure that the attribute of your choice can be fetched for both users and
-  groups and it is unique. Leave it empty for default behavior. Changes will
-  have effect only on newly mapped LDAP users and groups.
+  You can override the setting and pass an attribute of your choice.
+  You must make sure that the attribute of your choice can be fetched for both users and
+  groups and it is unique.
+  Leave it empty for default behavior.
+  Changes will have effect only on newly mapped LDAP users and groups.
 
-  It also will have effect when a user's or group's DN changes and an old UUID
-  was cached, which will result in a new user. Because of this, the setting
-  should be applied before putting ownCloud in production use and clearing the
-  bindings (see the ``User and Group Mapping`` section below).
+  It also will have effect when a user's or group's DN changes and an old UUID was cached, which will result in a new user.
+  Because of this, the setting should be applied before putting ownCloud in production use and clearing the bindings (see the ``User and Group Mapping`` section below).
 
-  * Example: ``cn``
+  Examples:
+
+  * ``cn``
 
 Username-LDAP User Mapping
-  ownCloud uses usernames as keys to store and assign data. In order to
-  precisely identify and recognize users, each LDAP user will have a internal
-  username in ownCloud. This requires a mapping from ownCloud username to LDAP
-  user.
-
+  ownCloud uses usernames as keys to store and assign data.
+  In order to precisely identify and recognize users, each LDAP user will have a internal
+  username in ownCloud.
+  This requires a mapping from ownCloud username to LDAP user.
   The created username is mapped to the UUID of the LDAP user.
-  Additionally the DN is cached as well to reduce LDAP interaction, but it is
-  not used for identification. If the DN changes, the change will be detected by
-  ownCloud by checking the UUID value.
+  Additionally the DN is cached as well to reduce LDAP interaction, but it is not used for identification. If the DN changes, the change will be detected by ownCloud by checking the UUID value.
 
   The same is valid for groups.
   The internal ownCloud name is used all over in ownCloud.
@@ -558,23 +549,17 @@ You can run it more frequently, but doing so may generate too much load on the s
 ownCloud Avatar integration
 ---------------------------
 
-ownCloud supports user profile pictures, which are also called avatars. If a user
-has a photo stored in the ``jpegPhoto`` or ``thumbnailPhoto`` attribute on your LDAP
-server, it will be used as their avatar. In this case the user cannot alter their
-avatar (on their Personal page) as it must be changed in LDAP. ``jpegPhoto`` is
-preferred over ``thumbnailPhoto``.
+ownCloud supports user profile pictures, which are also called avatars.
+If a user has a photo stored in the ``jpegPhoto`` or ``thumbnailPhoto`` attribute on your LDAP server, it will be used as their avatar.
+In this case the user cannot alter their avatar (on their Personal page) as it must be changed in LDAP. ``jpegPhoto`` is preferred over ``thumbnailPhoto``.
 
 .. figure:: ../../images/ldap-fetched-avatar.png
    :alt: Profile picture fetched from LDAP.
 
-If the ``jpegPhoto`` or ``thumbnailPhoto`` attribute is not set or empty, then
-users can upload and manage their avatars on their ownCloud Personal pages.
+If the ``jpegPhoto`` or ``thumbnailPhoto`` attribute is not set or empty, then users can upload and manage their avatars on their ownCloud Personal pages.
 Avatars managed in ownCloud are not stored in LDAP.
 
-The ``jpegPhoto`` or ``thumbnailPhoto`` attribute is fetched once a day to make
-sure the current photo from LDAP is used in ownCloud. LDAP avatars override
-ownCloud avatars, and when an LDAP avatar is deleted then the most recent
-ownCloud avatar replaces it.
+The ``jpegPhoto`` or ``thumbnailPhoto`` attribute is fetched once a day to make sure the current photo from LDAP is used in ownCloud. LDAP avatars override ownCloud avatars, and when an LDAP avatar is deleted then the most recent ownCloud avatar replaces it.
 
 Photos served from LDAP are automatically cropped and resized in ownCloud.
 This affects only the presentation, and the original image is not changed.
@@ -589,13 +574,14 @@ A common mistake with SSL certificates is that they may not be known to PHP.
 If you have trouble with certificate validation make sure that
 
 * You have the certificate of the server installed on the ownCloud server
-* The certificate is announced in the system's LDAP configuration file (usually
-  ``/etc/ldap/ldap.conf``)
+* The certificate is announced in the system's LDAP configuration file, usually  ``/etc/ldap/ldap.conf``.
 
-* If you get the error "**Lost connection to LDAP server**" or "**No connection to
-LDAP server**" double check the connection parameters and try connecting to
-  LDAP with tools like ``ldapsearch``. If using LDAPS or TLS make sure the
-  certificate is readable by the user that is used to serve ownCloud.
+.. commenting out windows section as windows server is not supported
+..  ``C:\\openldap\\sysconf\\ldap.conf`` or
+..  ``C:\\ldap.conf`` on Windows) using a ````TLS_CACERT /path/to/cert```` line.
+
+* Using LDAPS, also make sure that the port is correctly configured (by default 636)
+* If you get the error "Lost connection to LDAP server" or "**No connection to LDAP server**" double check the connection parameters and try connecting to LDAP with tools like ``ldapsearch``. If using ldaps or TLS make sure the certificate is readable by the user that is used to serve ownCloud.
 
 Microsoft Active Directory
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -614,13 +600,13 @@ Duplicating Server Configurations
 
 In case you have a working configuration and want to create a similar one or "snapshot" configurations before modifying them you can do the following:
 
-#. Go to the "**Server**" tab.
-#. On "**Server Configuration**" choose *Add Server Configuration*.
+#. Go to the  "**Server**" tab
+#. On  "**Server Configuration**" choose  "**Add Server Configuration**"
 #. Answer the question "**Take over settings from recent server configuration?**"
-   with "**yes**".
-#. (optional) Switch to "**Advanced**" tab and uncheck "**Configuration Active**"
-   in the "**Connection Settings**", so the new configuration is not used on Save.
-#. Click on "**Save**".
+   with  "**yes**".
+#. (optional) Switch to  "**Advanced**" tab and uncheck  "**Configuration Active**"
+   in the "**Connection Settings**", so the new configuration is not used on Save
+#. Click on  "**Save**"
 
 Now you can modify and enable the configuration.
 
@@ -669,7 +655,6 @@ Use precise filters
 
 Use good filters to further define the scope of LDAP searches, and to intelligently direct your server where to search, rather than forcing it to perform needlessly-general searches.
 
-
 ownCloud LDAP Internals
 -----------------------
 
@@ -702,6 +687,6 @@ When you have scheduled downtime, check  "**Disable Main Server**"  to avoid unn
 
 .. Links
 
+.. _SELinux: https://selinuxproject.org/page/Main_Page
 .. _The openLDAP tuning guide: https://www.openldap.org/doc/admin24/tuning.html#Indexes
 .. _How to Index an Attribute in Active Directory: https://technet.microsoft.com/en-us/library/aa995762(v=exchg.65).aspx
-.. _SELinux: https://selinuxproject.org/page/Main_Page
