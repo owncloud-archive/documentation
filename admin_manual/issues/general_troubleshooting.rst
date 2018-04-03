@@ -395,5 +395,5 @@ first.
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/10.0/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/latest/developer_manual/bugtracker/index.html
 .. _the bearer authorization header: https://tools.ietf.org/html/rfc6750
