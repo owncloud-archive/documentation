@@ -180,7 +180,7 @@ Prevent access log entries when accessing thumbnails
 
 When using eg. the Gallery App, any access to a thumbnail of a picture will be logged.
 This can cause a massive log quanity making log reading challenging. With this approach,
-you can disable access logging for those thumbnails.
+you can prevent access logging for those thumbnails.
 
 **1 Create a map directive outside your server block like**
 
@@ -197,11 +197,31 @@ you can disable access logging for those thumbnails.
 
 
 **2 Inside your server block where you define your logs**
-   
+
 .. code-block:: nginx
 
    access_log /path-to-your-log-file combined if=$loggable;
-   
+
+If you want or need to log thumbnails access, you can easily add another logfile which only logs this access. 
+You can easily enable / disable this kind of logging if you uncomment / comment the line starting with ``0`` in the following ``map`` directive.
+
+**Below the above map statement**
+
+.. code-block:: nginx
+
+   # invert the $loggable variable
+   map $loggable $invertloggable {
+       default                         0;
+       0                               1;
+   }
+
+**Below the above access_log statement**
+
+.. code-block:: nginx
+
+   access_log /var/log/nginx/path-to-your-log-file-inverted combined if=$invertloggable;
+
+
 Performance Tuning
 ------------------
 
