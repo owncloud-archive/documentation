@@ -285,22 +285,19 @@ The windows native WebDAV client might fail with the following error message::
 
     Error 0x80070043 "The network name cannot be found." while adding a network drive
 
-A known workaround for this issue is to update your Web server configuration. For Apache
-you need to add something like the following (please update the path accordingly) to your 
-main Web server / Vhost configuration or the ``.htaccess`` placed in your document root::
+A known workaround for this issue is to update your web server configuration.
 
+**Apache**
+
+You need to add the following rule set to your main web server or virtual host configuration, or the ``.htaccess`` file in your document root.
+
+::
+
+    # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
     RewriteEngine On
-    RewriteCond %{REQUEST_URI} ^(/)$ [NC]
+    RewriteCond %{HTTP_USER_AGENT} ^(DavClnt)$
     RewriteCond %{REQUEST_METHOD} ^(OPTIONS)$
-    RewriteRule .* https://%{SERVER_NAME}/owncloud/remote.php/webdav/ [R=301,L]
-
-For NGINX an example config addition could be::
-
-    location = / {
-        if ($http_user_agent = DavClnt) {
-            return 401;
-        }
-    }
+    RewriteRule .* - [R=401,L]
 
 Troubleshooting Contacts & Calendar
 -----------------------------------
@@ -398,5 +395,5 @@ first.
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
 .. _Enterprise Edition: https://owncloud.com/lp/community-or-enterprise/
 .. _bugtracker: 
-   https://doc.owncloud.org/server/10.0/developer_manual/bugtracker/index.html
+   https://doc.owncloud.org/server/latest/developer_manual/bugtracker/index.html
 .. _the bearer authorization header: https://tools.ietf.org/html/rfc6750

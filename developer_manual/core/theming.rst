@@ -30,13 +30,17 @@ How to Create a New Theme
 
 At its most basic, to create a theme requires two steps:
 
-1. Copy and extend an existing theme or create one from scratch.
-2. Enable the theme in the ownCloud Admin dashboard.
+#. Copy and extend an existing theme or create one from scratch.
+#. Enable the theme in the ownCloud Admin dashboard.
 
 All themes, whether copied or new, must meet two key criteria, these are:
 
-1. They must be located in a directory under the ``apps`` directory of your ownCloud installation.
-2. They require a configuration file called ``appinfo/info.xml`` to be present.
+#. They must be store in an app directory of your ownCloud installation, whether that’s the core app directory (``apps``) or `a custom app directory`_.
+#. They require a configuration file called ``appinfo/info.xml`` to be present.
+
+.. note:: 
+   To ensure that custom themes aren’t lost during upgrades, we strongly
+   encourage you to store them in `a custom app directory`_.
 
 .. note:: 
    When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_. To get rid of the warning you have to remove (or move) ``appinfo/signature.json`` and then trigger a rescan, in the admin page, which you can see in the screenshot below.
@@ -244,7 +248,7 @@ For core we do something like this to build the documentation link:
 .. code-block:: php
 
   public function buildDocLinkToKey($key) {
-    return $this->getDocBaseUrl() . '/server/9.0/go.php?to=' . $key;
+    return $this->getDocBaseUrl() . '/server/latest/go.php?to=' . $key;
   }
 
 
@@ -357,3 +361,4 @@ If you think a new section should be added to core however, please create a PR w
 .. _this example: https://github.com/owncloud/core/blob/master/lib/private/Settings/SettingsManager.php#L195   
 .. _signed: /app/advanced/code_signing.html?highlight=sign
 .. _the marketplace: https://marketplace.owncloud.com
+.. _a custom app directory: https://doc.owncloud.org/server/latest/admin_manual/installation/apps_management_installation.html#using-custom-app-directories
