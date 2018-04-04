@@ -80,8 +80,6 @@ When you create a new WND share you need three things:
 - The server address, the share name; and
 - The folder you want to connect to
 
-the share. 
-
 .. note:: 
    There are a number of ways in which you can supply a password. 
    Please refer to :ref:`the Password Options section <password-options-label>` for full details.
@@ -332,7 +330,11 @@ Similar as above, but the contents are encoded in base64 format (not much securi
 
 Third party password managers can also be integrated. The only requirement is that they have to provide the password in plain text somehow. If not, additional operations might be required to get the password as plain text and inject it in the listener. As an example:
 
-For a more complex test, which might be similar to a real scenario, you can use "pass" as a password manager. You can go through http://xmodulo.com/manage-passwords-command-line-linux.html to setup the keyring for whoever will fetch the password (probably root) and then use something like pass the-password-name | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+For a more complex test, which might be similar to a real scenario, you can use "pass" as a password manager. You can go through http://xmodulo.com/manage-passwords-command-line-linux.html to setup the keyring for whoever will fetch the password (probably root) and then use something like 
+
+::
+
+   pass the-password-name | sudo -u www-data ./occ wnd:listen host share username --password-file=-
 
 
 .. note::
