@@ -9,8 +9,9 @@ These users will authenticate to ownCloud with their LDAP credentials, so you do
 You will manage their ownCloud group memberships, quotas, and sharing permissions just like any other ownCloud user.
 
 .. note::
-   The PHP LDAP module is required; this is supplied by ``php5-ldap`` on
-   Debian/Ubuntu, and ``php-ldap`` on CentOS/Red Hat/Fedora.
+   The PHP LDAP module is required. It is supplied by php7.1-ldap on
+   Debian/Ubuntu and php-ldap on CentOS/Red Hat/Fedora. Please check for the
+   correct version, based on your installation of PHP.
 
 The LDAP application supports:
 
