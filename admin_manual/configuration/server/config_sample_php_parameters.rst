@@ -68,6 +68,15 @@ necessary security checks.
 
 ::
 
+	'cors.allowed-domains' => [
+		'https://foo.example.org',
+	],
+
+The global list of CORS domains. All users can use tools running CORS
+requests from the listed domains.
+
+::
+
 	'datadirectory' => '/var/www/owncloud/data',
 
 Where user files are stored; this defaults to ``data/`` in the ownCloud
@@ -587,7 +596,7 @@ Available values:
 
 * ``auto``
     default setting. Automatically expire versions according to expire
-    rules. Please refer to :doc:`../configuration_files/file_versioning` for
+    rules. Please refer to :doc:`../configuration/files/file_versioning` for
     more information.
 * ``D, auto``
     keep versions at least for D days, apply expire rules to all versions
@@ -629,29 +638,11 @@ Is ownCloud connected to the Internet or running in a closed network?
 
 ::
 
-	'check_for_working_webdav' => true,
-
-Allows ownCloud to verify a working WebDAV connection. This is done by
-attempting to make a WebDAV request from PHP.
-
-::
-
 	'check_for_working_wellknown_setup' => true,
 
 Allows ownCloud to verify a working .well-known URL redirects. This is done
 by attempting to make a request from JS to
 https://your-domain.com/.well-known/caldav/
-
-::
-
-	'check_for_working_htaccess' => true,
-
-This is a crucial security check on Apache servers that should always be set
-to ``true``. This verifies that the ``.htaccess`` file is writable and works.
-
-If it is not, then any options controlled by ``.htaccess``, such as large
-file uploads, will not work. It also runs checks on the ``data/`` directory,
-which verifies that it can't be accessed directly through the Web server.
 
 ::
 
@@ -722,36 +713,32 @@ The default value is ``ownCloud``.
 			'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
 			'users' => ['user1'],
 			'apps' => ['files_texteditor'],
-			'logfile' => '/tmp/test1.log'
+			'logfile' => '/tmp/test.log'
 	        ],
 	        [
-			'shared_secret' => '83b58edb6637fd3059b3595cf9c52a6',
-			'users' => ['user2'],
+			'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+			'users' => ['user1'],
 			'apps' => ['gallery'],
-			'logfile' => '/tmp/test2.log'
+			'logfile' => '/tmp/gallery.log'
 	        ],
 	],
 
-Log condition for log level increasement based on conditions. 
-You can configure the logging level to automatically increase to ``debug`` when the first condition inside a condition block is met.
-This allows debugging specific requests, users or apps. Defaults to an empty array. All conditions are optional !
+Log condition for log level increase based on conditions. Once one of these
+conditions is met, the required log level is set to debug. This allows to
+debug specific requests, users or apps
 
 Supported conditions:
- - ``shared_secret``: A unique token. If a http(s) request parameter named ``log_secret`` is added 
-               to the request and set to this token, the condition is met.
- - ``users``:  If the current request is done by one of the specified users,
-               this condition is met.
- - ``apps``:   If the log message is invoked by one of the specified apps,
-               this condition is met.
- - ``logfile``: The log message invoked gets redirected to this logfile 
-	   when a condition above is met.
+ - ``shared_secret``: if a request parameter with the name `log_secret` is set to
+               this value the condition is met
+ - ``users``:  if the current request is done by one of the specified users,
+               this condition is met
+ - ``apps``:   if the log message is invoked by one of the specified apps,
+               this condition is met
+ - ``logfile``: the log message invoked by the specified apps get redirected to
+	   this logfile, this condition is met
+	   Note: Not applicable when using syslog.
 
-Notes regarding the logfile key:
-
-1. If no logfile is defined, the standard logfile is used.
-2. Not applicable when using syslog.
-
-For multiple entries in ``users`` or ``apps`` use the following format: ``['value1', 'value2', '...']``
+Defaults to an empty array.
 
 ::
 
@@ -799,18 +786,6 @@ Some of the ownCloud code may be stored in alternate locations.
 
 This section is for configuring the download links for ownCloud clients, as
 seen in the first-run wizard and on Personal pages.
-
-Apps
-----
-
-Options for the Apps folder, Apps store, and App code checker.
-
-
-::
-
-	'appstoreurl' => 'https://api.owncloud.com/v1',
-
-The URL of the appstore to use.
 
 Use the ``apps_paths`` parameter to set the location of the Apps directory,
 which should be scanned for available apps, and where user-specific apps
@@ -935,7 +910,7 @@ concerns:
  - OC\\Preview\\Font
 
 .. note:: Troubleshooting steps for the MS Word previews are available
-   at the :doc:`../configuration_files/collaborative_documents_configuration`
+   at the :doc:`../configuration/files/collaborative_documents_configuration`
    section of the Administrators Manual.
 
 The following providers are not available in Microsoft Windows:
@@ -946,22 +921,6 @@ The following providers are not available in Microsoft Windows:
  - OC\\Preview\\MSOffice2007
  - OC\\Preview\\OpenDocument
  - OC\\Preview\\StarOffice
-
-LDAP
-----
-
-Global settings used by LDAP User and Group Backend
-
-
-::
-
-	'ldapUserCleanupInterval' => 51,
-
-defines the interval in minutes for the background job that checks user
-existence and marks them as ready to be cleaned up. The number is always
-minutes. Setting it to 0 disables the feature.
-
-See command line (occ) methods ldap:show-remnants and user:delete
 
 Comments
 --------
@@ -1169,56 +1128,6 @@ Location of the chunk folder, defaults to ``data/$user/uploads`` where
 ``$dav.chunk_base_dir/$user`` where ``$dav.chunk_base_dir`` is the configured
 cache directory and ``$user`` is the user.
 
-Using Object Store with ownCloud
---------------------------------
-
-
-::
-
-	'objectstore' => [
-		'class' => 'OC\\Files\\ObjectStore\\Swift',
-		'arguments' => [
-			// trystack will use your facebook id as the user name
-			'username' => 'facebook100000123456789',
-			// in the trystack dashboard go to user -> settings -> API Password to
-			// generate a password
-			'password' => 'Secr3tPaSSWoRdt7',
-			// must already exist in the objectstore, name can be different
-			'container' => 'owncloud',
-			// prefix to prepend to the fileid, default is 'oid:urn:'
-			'objectPrefix' => 'oid:urn:',
-			// create the container if it does not exist. default is false
-			'autocreate' => true,
-			// required, dev-/trystack defaults to 'RegionOne'
-			'region' => 'RegionOne',
-			// The Identity / Keystone endpoint
-			'url' => 'http://8.21.28.222:5000/v2.0',
-			// required on dev-/trystack
-			'tenantName' => 'facebook100000123456789',
-			// dev-/trystack uses swift by default, the lib defaults to 'cloudFiles'
-			// if omitted
-			'serviceName' => 'swift',
-			// The Interface / url Type, optional
-			'urlType' => 'internal'
-		],
-	],
-
-This example shows how to configure ownCloud to store all files in a
-swift object storage.
-
-It is important to note that ownCloud in object store mode will expect
-exclusive access to the object store container because it only stores the
-binary data for each file. The metadata is currently kept in the local
-database for performance reasons.
-
-WARNING: The current implementation is incompatible with any app that uses
-direct file IO and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
-
-One way to test is applying for a trystack account at http://trystack.org/
-
 Sharing
 -------
 
@@ -1232,6 +1141,13 @@ Global settings for Sharing
 Replaces the default Share Provider Factory. This can be utilized if
 own or 3rdParty Share Providers are used that – for instance – use the
 filesystem instead of the database to keep the share information.
+
+::
+
+	'sharing.federation.allowHttpFallback' => false,
+
+When talking with federated sharing server, allow falling back to HTTP
+instead of hard forcing HTTPS
 
 All other configuration options
 -------------------------------
@@ -1362,6 +1278,12 @@ WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 		),
 
 Exclude files from the integrity checker command
+
+::
+
+	'integrity.ignore.missing.app.signature' => [],
+
+The list of apps that are allowed to have no signature.json
 
 ::
 
