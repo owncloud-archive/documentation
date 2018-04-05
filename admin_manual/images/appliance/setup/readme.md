@@ -1,1 +1,1 @@
-This are images of the setup
+These are images of the setup
