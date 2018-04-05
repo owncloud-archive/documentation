@@ -134,7 +134,7 @@ A known workaround for this issue is to update your web server configuration.
 
 **1 Create a map directive outside your server block**
 
-::
+.. code-block:: nginx
 
     # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
     map "$http_user_agent:$request_method" $WinWebDav {
@@ -144,7 +144,7 @@ A known workaround for this issue is to update your web server configuration.
 
 **2 Inside your server block on top of your location directives**
 
-::
+.. code-block:: nginx
 
     location = / {
         if ($WinWebDav) { return 401; }
@@ -192,7 +192,6 @@ you can prevent access logging for those thumbnails.
    map $request_uri $loggable {
        default                              1;
        ~*\/apps\/gallery\/thumbnails        0;
-       ~*\/apps2\/gallery\/thumbnails       0;
    }
 
 
@@ -219,106 +218,129 @@ You can easily enable / disable this kind of logging if you uncomment / comment 
 
 .. code-block:: nginx
 
-   access_log /var/log/nginx/path-to-your-log-file-inverted combined if=$invertloggable;
+   access_log /var/log/nginx/<your-log-file-inverted> combined if=$invertloggable;
 
 
 Performance Tuning
 ------------------
 
+**1 HTTP/2**
+
 To increase the performance of your NGINX installation, we recommend using either the SPDY or HTTP_V2 modules, depending on your installed NGINX version.
 
-- `nginx (<1.9.5) <ngx_http_spdy_module <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>`_
-- `nginx (+1.9.5) <ngx_http_http2_module <http://nginx.org/en/docs/http/ngx_http_v2_module.html>`_
+- nginx (<1.9.5) `ngx_http_spdy_module`_
+- nginx (+1.9.5) `ngx_http_v2_module`_
 
 To use HTTP_V2 for NGINX you have to check two things:
 
-1. Be aware that this module may not built in by default, due to a dependency to the OpenSSL version used on your system. It will be enabled with the ``--with-http_v2_module`` configuration parameter during compilation. The dependencies should be checked automatically. You can check the presence of ``ngx_http_v2_module`` by using the command: ``nginx -V 2>&1 | grep http_v2 -o``. An example of how to compile NGINX to include the ``http_v2`` module can be found in the section "Configure NGINX with the ``nginx-cache-purge`` module" below.
-2. When changing from `SPDY`_ to HTTP_V2, the NGINX config has to be changed from ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
+1. Be aware that this module may not built in by default, due to a dependency to the OpenSSL version used on your system. It will be enabled with the ``--with-http_v2_module`` configuration parameter during compilation. The dependencies should be checked automatically. You can check the presence of ``ngx_http_v2_module`` by using the command: ``nginx -V 2>&1 | grep http_v2 -o``. A description of how to compile NGINX to include modules can be found in `Compiling Modules`_.
+2. When changing from `SPDY`_ to `HTTP v2`_, the NGINX config has to be changed from ``listen 443 ssl spdy;`` to ``listen 443 ssl http2;``
 
-Configure NGINX to use caching for thumbnails
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-This mechanism speeds up thumbnail presentation as it shifts requests to NGINX and minimizes PHP invocations, which otherwise would take place for every thumbnail presented every time.
+**2 Caching Metadata**
+
+The ``open_file_cache`` directive can help you to cache file metadata information. This can increase performance on high loads respectively when using eg NFS as backend.
+That cache can store:
+
+- Open file descriptors, their sizes and modification times;
+- Information on existence of directories;
+- File lookup errors, such as “file not found”, “no read permission”, and so on.
+
+To configure metadata caching, add following directives either in your http, server or location block:
+
+.. code-block:: nginx
+
+        open_file_cache                 max=10000 inactive=5m;
+        open_file_cache_valid           1m;
+        open_file_cache_min_uses        1;
+        open_file_cache_errors          on;
+
+
+Configure NGINX to use caching for ownCloud internal images and thumbnails 
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+This mechanism speeds up presentation as it shifts requests to NGINX and minimizes PHP invocations, which otherwise would take place for every thumbnail or internal image presented every time.
 
 **1 Preparation**
 
-- Create a directory where NGINX will save the cached thumbnails. Use any path that fits to your environment. Replace ``{path}`` ... ``/usr/local/tmp/cachezone`` in this example with your path created:
+- Create a directory where NGINX will save the cached thumbnails or internal images. Use any path that fits to your environment. Replace ``/opt/cachezone`` in this example with your path created:
    
-::   
+.. code-block:: bash  
    
-   sudo mkdir -p /usr/local/tmp/cachezone
-   sudo chown www-data:www-data /usr/local/tmp/cachezone
+   sudo mkdir -p /opt/cachezone
+   sudo chown www-data:www-data /opt/cachezone
 
 **2 Configuration**
 
-::
-
-   sudo vi /etc/nginx/sites-enabled/{your-ownCloud-nginx-config-file}
+a. **Define when to skip the cache:**
    
 - **Option 1:** ``map``
 
+  This is the preferred method. 
   In the ``http{}`` block, but *outside* the ``server{}`` block:
    
 .. code-block:: nginx
 
-   # skip_cache
-   fastcgi_cache_path /usr/local/tmp/cache levels=1:2 keys_zone=cachezone:100m inactive=60m;
+   # skip_cache, default skip
    map $request_uri $skip_cache {
         default              1;
         ~*\/thumbnail.php    0;
         ~*\/apps\/gallery\/  0;
+        ~*\/core\/img\/      0;
    }
 
 - **Option 2:** ``if``
 
-  In the ``server{}`` block:
+  In the ``server{}`` block, above the location block mentioned below:
 
 .. code-block:: nginx
    
    set $skip_cache 1;
    if ($request_uri ~* "thumbnail.php")      { set $skip_cache 0; }
    if ($request_uri ~* "/apps/gallery/")     { set $skip_cache 0; }
-
-- **General Config:**
-
-  Add *inside* the ``server{}`` block, as an example of a configuration:
+   if ($request_uri ~* "/core/img/")         { set $skip_cache 0; }
    
+b. **General Config:**
+
+  In case you want to have multiple cache paths with different cache keys, follow the NGINX documentation where to place the directives. 
+  For the sake of simplicity, we both add them to the ``http{}`` block.
+  
+- Add *inside* the ``http{}`` block:
+
 .. code-block:: nginx
-   
-   # cache_purge (with $http_cookies we have unique keys for the user)
+
+   fastcgi_cache_path /opt/cache levels=1:2 keys_zone=cachezone:100m 
+                      max_size=500m inactive=60m use_temp_path=off;
    fastcgi_cache_key $http_cookie$request_method$host$request_uri;
-   fastcgi_cache_use_stale error timeout invalid_header http_500;
-   fastcgi_ignore_headers Cache-Control Expires Set-Cookie;
-   
+
+
+- Add *inside* the ``server{}`` block the following FastCGI caching directives, as an example of a configuration:
+
+.. code-block:: nginx
+
    location ~ \.php(?:$/) {
        fastcgi_split_path_info ^(.+\.php)(/.+)$;
        
        include fastcgi_params;
-       fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
-       fastcgi_param PATH_INFO $fastcgi_path_info;
-       fastcgi_param HTTPS on;
-       fastcgi_pass php-handler;
-       
-       # skip_cache
-       fastcgi_cache_bypass $skip_cache;
+       # ...
+
+       ## Begin - FastCGI caching
+       fastcgi_ignore_headers  "Cache-Control"
+                               "Expires"
+                               "Set-Cookie";
+       fastcgi_cache_use_stale error
+                               timeout
+                               updating
+                               http_429
+                               http_500
+                               http_503;
+       fastcgi_cache_background_update on;
        fastcgi_no_cache $skip_cache;
+       fastcgi_cache_bypass $skip_cache;
        fastcgi_cache cachezone;
        fastcgi_cache_valid  60m;
        fastcgi_cache_methods GET HEAD;
+       ## End - FastCGI caching
+
    }
-   
-- The ``fastcgi_pass`` parameter:
-
-  In the example above, an ``upstream`` 
-  was defined in an NGINX global configuration file.
-  This may look like:
-
-.. code-block:: nginx
-
-     upstream php-handler {
-        server unix:/var/run/php5-fpm.sock;
-           # or
-           # server 127.0.0.1:9000;
-     }
      
 **3 Test the configuration**
 
@@ -338,152 +360,16 @@ This mechanism speeds up thumbnail presentation as it shifts requests to NGINX a
 *  ``htop`` will not show up additional load while processing, compared to 
    the high load before.
    
-NGINX: cache purging
-~~~~~~~~~~~~~~~~~~~~
-
-One of the optimizations for ownCloud when using NGINX as the web server is to combine FastCGI caching with the `Cache Purge`_ module. 
-Cache Purge is a 3rdparty NGINX module that adds the ability to purge content from `FastCGI`, `proxy`, `SCGI` and `uWSGI` caches. 
- 
-The following procedure is based on an Ubuntu 14.04 system.
-You may need to adapt it according to your OS type and release.
-
-.. note::
-   Unlike Apache, NGINX does not dynamically load modules. All modules needed must be compiled into NGINX. This is one of the reasons for NGINX´s performance. It is expected to have an already running NGINX installation with a working configuration set up as described in the ownCloud documentation.
-
-**NGINX module check**
-
-As a first step, it is necessary to check if your NGINX installation has the ``nginx cache purge`` module compiled in. 
-You can do this by running the following command:
- 
-::
- 
- nginx -V 2>&1 | grep ngx_cache_purge -o
- 
-If your output contains ``ngx_cache_purge``, you can continue with the 
-configuration, otherwise you need to manually compile NGINX with the module 
-needed.
-
-**Compile NGINX with the ``nginx-cache-purge`` module**
-
-**1. Preparation:**
-
-::
-
-    cd /opt
-    wget http://nginx.org/keys/nginx_signing.key
-    sudo apt-key add nginx_signing.key
-    sudo vi /etc/apt/sources.list.d/nginx.list
-
-
-- Add the following lines (if different, replace ``{trusty}`` by your distribution name)
-
-::
-
-    deb http://nginx.org/packages/mainline/ubuntu/ trusty nginx
-    deb -src http://nginx.org/packages/mainline/ubuntu/ trusty nginx    
-
-- Then run ``sudo apt-get update``
-
-.. note:: 
-   If you're not overly cautious and wish to install the latest and greatest NGINX packages and features, you may have to install NGINX from its mainline repository. From the NGINX homepage: "*In general, you should deploy NGINX from its mainline branch at all times*." If you would like to use standard NGINX from the latest mainline branch without compiling in any additional modules, run: ``sudo apt-get install nginx``.  
-
-**2 Download the NGINX source from the ppa repository**
-
-::
-
-    cd /opt
-    sudo apt-get build-dep nginx
-    sudo apt-get source nginx
-
-**3 Download module(s) to be compiled in and configure compiler arguments**
-    
-:: 
-   
-    ls -la
-    
-- Please replace ``{release}`` with the release downloaded
-
-::
-
-    cd /opt/nginx-{release}/debian
-    
-- If folder "modules" is not present, do:
-
-::
-
-    sudo mkdir modules
-    cd modules
-    sudo git clone https://github.com/FRiCKLE/ngx_cache_purge.git
-    sudo vi /opt/nginx-{release}/debian/rules
-    
-- If not present, add the following line at the top somewhere under
-
-::
-
-    #export DH_VERBOSE=1:
-    MODULESDIR = $(CURDIR)/debian/modules
-   
-- At the end of every ``configure`` command add
-
-::
-
-  --add-module=$(MODULESDIR)/ngx_cache_purge
-    
-- In case, don't forget to escape preceeding lines with a backslash ``\``.
-- The parameters may now look like
-
-::
-      
-   --with-cc-opt="$(CFLAGS)" \
-   --with-ld-opt="$(LDFLAGS)" \
-   --with-ipv6 \
-   --add-module=$(MODULESDIR)/ngx_cache_purge
-
-**4 Compile and install NGINX**
-
-::
-
-   cd /opt/nginx-{release}
-   sudo dpkg-buildpackage -uc -b
-   ls -la /opt
-   sudo dpkg --install /opt/nginx_{release}~{distribution}_amd64.deb
-
-**5 Check if the compilation and installation of the ngx_cache_purge module was successful**
-   
-::  
-
-   nginx -V 2>&1 | grep ngx_cache_purge -o
-    
-- It should now show: ``ngx_cache_purge``
-    
-- Show NGINX version including all features compiled and installed
-
-::
-
-   nginx -V 2>&1 | sed s/" --"/"\n\t--"/g
-
-**6 Mark NGINX to be blocked from further updates via apt-get**
-
-::
-
-   sudo dpkg --get-selections | grep nginx
-    
-- For every NGINX component listed run ``sudo apt-mark hold <component>``. If you do not mark hold, an ``apt-upgrade`` will overwrite your version with default compiled modules. 
-
-**7 Configuration**
-
-- Please see https://github.com/FRiCKLE/ngx_cache_purge for more details
-
-**8 Regular checks for NGINX updates**
-
-- Do a regular visit on the `NGINX news page <http://nginx.org>`_ and proceed in case of updates with items 2 to 6.
 
 .. Links
  
 .. _NGINX HTTP SSL Module documentation: http://wiki.nginx.org/HttpSslModule
 .. _client denied by server configuration: https://central.owncloud.org/t/htaccesstest-txt-errors-in-logfiles/831
 .. _ngx_http_v2_module: http://nginx.org/en/docs/http/ngx_http_v2_module.html
+.. _ngx_http_spdy_module: http://nginx.org/en/docs/http/ngx_http_spdy_module.html
+.. _Compiling Modules: https://www.nginx.com/resources/wiki/extending/compiling
 .. _SPDY: https://www.maxcdn.com/one/visual-glossary/spdy/ 
+.. _HTTP v2: https://tools.ietf.org/html/rfc7540
 .. _Cache Purge: https://github.com/FRiCKLE/ngx_cache_purge
 .. _if: http://nginx.org/en/docs/http/ngx_http_rewrite_module.html
 .. _map: http://nginx.org/en/docs/http/ngx_http_map_module.html
