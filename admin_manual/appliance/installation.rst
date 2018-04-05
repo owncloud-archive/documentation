@@ -10,7 +10,7 @@ To keep it succinct, you need to:
 - :ref:`Activate <appliance-activate-label>` the configured appliance 
 
 .. important:: 
-   You need **Internet access** to use the appliance. The appliance **has to be activated** with a license you get from Univention via **mail**. This license has to be imported in the appliance via the **web interface**.
+   You need **Internet access** to use the appliance. The appliance has to be activated with a license that you will receive from Univention via email. This license has to be imported in the appliance via the **web interface**.
 
 After that, you can access the running instance of ownCloud and :ref:`further configure it <appliance-administer-label>` to suit your needs. 
 
@@ -53,7 +53,7 @@ The example below shows this being done using VirtualBox.
    If you try to install an ownCloud appliance in your domain after removing an existing one, please remember to remove the original one from you DNS configuration.
 
 .. important:: 
-   Don't Forget the **IP Address** and the **Administrator Password**. Those two things you will need to use the Appliance.
+   Don't Forget the **IP Address** and the **Administrator Password**. You will need them to use the Appliance.
 
 Start the Appliance
 -------------------
@@ -96,7 +96,7 @@ Once activated, you should be redirected to the portal, which you can see below.
 .. image:: ../images/appliance/portal.png
    :alt: Portal page.
 
-If you want to create new users and groups, download Apps from the univention appcenter click on the "System and domain settings". Login as the "Administrator" using the password that you supplied during the configuration wizard earlier.
+If you want to create new users and groups, or download apps from the univention appcenter click on the "System and domain settings". Login as the "Administrator" using the password that you supplied during the configuration wizard earlier.
 
 .. image:: ../images/appliance/login-to-the-virtual-appliance.png
    :alt: Administer the ownCloud X Trial Appliance.
