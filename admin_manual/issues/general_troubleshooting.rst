@@ -389,7 +389,7 @@ first.
    
 .. _503 Service not available: https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#5xx_Server_Error
 .. _The ownCloud Forums: https://central.owncloud.org
-.. _FAQ category: https://central.owncloud.org/c/faq
+.. _FAQ category: https://owncloud.org/faq/
 .. _the ownCloud User mailing list: 
    https://mailman.owncloud.org/mailman/listinfo/user
 .. _webchat: http://webchat.freenode.net/?channels=owncloud
