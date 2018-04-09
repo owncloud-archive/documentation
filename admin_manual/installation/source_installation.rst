@@ -531,6 +531,31 @@ Set Strong Directory Permissions
 After completing the installation, you must immediately :ref:`set the directory permissions <post_installation_steps_label>` in your ownCloud installation as strictly as possible for stronger security. 
 After you do so, your ownCloud server will be ready to use.
 
+.. _trusted_domains_label: 
+
+Managing Trusted Domains
+------------------------
+
+All URLs used to access your ownCloud server must be whitelisted in your ``config.php`` file, under the ``trusted_domains`` setting. 
+Users are allowed to log into ownCloud only when they point their browsers to a URL that is listed in the ``trusted_domains`` setting. 
+
+.. note:: 
+   This setting is important when changing or moving to a new domain name.
+   You may use IP addresses and domain names.
+ 
+A typical configuration looks like this:
+
+.. code-block:: php
+
+  'trusted_domains' => [
+     0 => 'localhost', 
+     1 => 'server1.example.com', 
+     2 => '192.168.1.50',
+  ],
+
+The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long as you have access to the physical server you can always log in. 
+In the event that a load-balancer is in place, there will be no issues as long as it sends the correct ``X-Forwarded-Host`` header. 
+
 .. note::
  For further information on improving the quality of your ownCloud installation, please see the :doc:`configuration_notes_and_tips` guide.
 
