@@ -53,8 +53,8 @@ User accounts have the following properties:
   can add and remove users from their groups.
 
 *Quota*
-  The maximum disk space assigned to each user. Any user that exceeds the quota 
-  cannot upload or sync data. You have the the option to include external 
+  The maximum disk space assigned to each user. Any user that exceeds the quota
+  cannot upload or sync data. You have the option to include external
   storage in user quotas.
 
 Creating a New User
