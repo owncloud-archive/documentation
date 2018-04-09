@@ -96,7 +96,7 @@ Once activated, you should be redirected to the portal, which you can see below.
 .. image:: ../images/appliance/portal.png
    :alt: Portal page.
 
-If you want to create new users and groups, or download apps from the univention appcenter click on the "System and domain settings". Login as the "Administrator" using the password that you supplied during the configuration wizard earlier.
+If you want to create new users and groups, or download apps from the Univention appcenter click on the "**System and domain settings**". Login as the "**Administrator**" using the password that you supplied during the configuration wizard earlier.
 
 .. image:: ../images/appliance/login-to-the-virtual-appliance.png
    :alt: Administer the ownCloud X Trial Appliance.
