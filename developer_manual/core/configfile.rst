@@ -124,8 +124,8 @@ ownCloud can be set to use a custom app directory in /config/config.php. Customi
           'writable' => true,
       ],
       1 =>[
-          'path' => OC::$SERVERROOT.'/apps2',
-          'url' => '/apps2',
+          'path' => OC::$SERVERROOT.'/apps-external',
+          'url' => '/apps-external',
           'writable' => false,
       ],
   ],

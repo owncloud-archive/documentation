@@ -64,7 +64,7 @@ These are:
 - ``url``: The request path to that folder relative to the ownCloud web root, prefixed with ``/``. 
 - ``writable``: Whether users can install apps in that folder. After the configuration is added, new apps will only install in a directory where ``writable`` is set to ``true``.
 
-The configuration example below shows how to add a second directory, called ``apps2``. 
+The configuration example below shows how to add a second directory, called ``apps-external``.
 
 .. literalinclude:: ./examples/custom-app-directory-configuration.php
    :language: php

@@ -7,8 +7,8 @@ $CONFIG = [
             'writable' => false,
         ],
         [
-            'path' => '/var/www/owncloud/apps2',
-            'url' => '/apps2',
+            'path' => '/var/www/owncloud/apps-external',
+            'url' => '/apps-external',
             'writable' => true,
         ],
     ],
