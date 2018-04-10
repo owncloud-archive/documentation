@@ -17,8 +17,8 @@ pattern used to delete old versions:
 The versions are adjusted along this pattern every time a new version is 
 created.
 
-The Versions app never uses more that 50% of the user's currently available 
-free space. If the stored versions exceed this limit, ownCloud deletes the 
+The Versions app never uses more that 50% of the user's storage quota.
+If the stored versions exceed this limit, ownCloud deletes the
 oldest file versions until it meets the disk space limit again.
 
 You may alter the default pattern in ``config.php``. The default setting is 
