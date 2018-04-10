@@ -80,15 +80,6 @@ When you create a new WND share you need three things:
 - The server address, the share name; and
 - The folder you want to connect to
 
-.. note:: 
-   There are a number of ways in which you can supply a password. 
-   Please refer to :ref:`the Password Options section <password-options-label>` for full details.
-
-By default there is no output. Enable verbosity to see the
-  notifications::
-
-   $ sudo -u www-data php occ wnd:listen -v server share useraccount
-
 .. note::
    **Treat all the parameters as being case-sensitive.**
    Although some parts of the app might work properly, regardless of case, other parts might have problems if case isn't respected.
@@ -190,11 +181,11 @@ If you encounter issues using it, then try the following troubleshooting steps:
 Take the example of attempting to connect to the share named `MyData` using ``occ wnd:listen``.
 Running the following command would work::
 
-   su www-data -s /bin/bash -c 'php /var/www/owncloud/occ ``wnd:listen`` dfsdata MyData svc_owncloud password'
+   sudo -u www-data ./occ wnd:listen MyHost MyData svc_owncloud password
 
 However, running this command would not::
 
-   su www-data -s /bin/bash -c 'php /var/www/owncloud/occ ``wnd:listen`` dfsdata mydata svc_owncloud password'
+   sudo -u www-data ./occ wnd:listen MyHost mydata svc_owncloud password
 
 Setting Up the WND Listener
 ---------------------------
@@ -226,29 +217,15 @@ The simplest way to start the ``wnd:listen`` process manually, perhaps for initi
    sudo -u www-data ./occ wnd:listen <host> <share> <username>
 
 The password is an optional parameter and you'll be asked for it if you didn't provide it, as in the example above.
-In order to start the ``wnd:listen`` without any interaction, there are other ways to provide the password:
+In order to start the ``wnd:listen`` without any interaction, there are other ways to provide the password being the most simple providing the password as the 4th parameter:
 
-- Pass the password as the 4th parameter. This is **NOT** recommended.
+::
 
-  ::
+   sudo -u www-data ./occ wnd:listen <host> <share> <username> <password>
 
-     sudo -u www-data ./occ wnd:listen <host> <share> <username> <password>
+For additional options to provide the password, check :ref:`password-options-label`
 
-- Store the password in a file and let the command read that file to get the password, using the ``--password-file`` option
-
-  ::
-
-     sudo -u www-data ./occ wnd:listen --password-file /path/to/plain/password \
-       <host> <share> <username>
-
-- Let any external application fetch the password and read it from STDIN with ``--password-file=-``
-
-  ::
-
-    sudo base64 -d /my/base64encoded/password | sudo -u www-data ./occ wnd:listen \
-      --password-file=- <host> <share> <username>
-
-Note that there won't be any processing to the password by default.
+Note that in any case there won't be any processing to the password by default.
 This means that spaces or newline chars won't be removed unless explicitly told.
 Use the ``--password-trim`` option in those cases.
 
@@ -307,58 +284,58 @@ Between 200 and 500 should be fine, and we'll likely process all the notificatio
 Password Options
 ----------------
 
-There are three ways to supply a password:
+There are several ways to supply a password:
 
 #. Interactively in response to a password prompt.
-#. Sent as a parameter to the command, e.g., ``occ wnd:listen host share username password``.
-#. Read from a file, using the ``--password-file`` switch to specify the file to read from. 
+
+   ::
+
+      sudo -u www-data ./occ wnd:listen <host> <share> <username>
+
+#. Sent as a parameter to the command.
+
+   ::
+
+      sudo -u www-data ./occ wnd:listen <host> <share> <username> <password>
+
+#. Read from a file, using the ``--password-file`` switch to specify the file to read from. Note that the password must be in plain text inside the file, and neither spaces nor newline characters will be removed from the file by default, unless the ``--pasword-trim`` option is added. The password file must be readable by the apache user (or www-data)
+
+   ::
+
+      sudo -u www-data ./occ wnd:listen <host> <share> <username> \
+        --password-file=/my/secret/password/file
+
+   ::
+
+      sudo -u www-data ./occ wnd:listen <host> <share> <username> \
+        --password-file=/my/secret/password/file --password-trim
+
+   .. note::
+      If you use the ``--password-file`` switch, the entire contents of the file will be used for the password, so please be careful with newlines.
+
+   .. warning::
+      If using ``--password-file`` make sure that the file is only readable by the
+      apache / www-data user and inaccessible from the web, in order to prevent
+      tampering or leaking of the information. The password won't be leaked to any
+      other user using ``ps``.
+
 #. Using 3rd party software to store and fetch the password. When using this option, the 3rd party app needs to show the password as plaintext on standard output.
 
-basic example:
-
-::
-
-   cat /tmp/plainpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
-
-This provides a bit more security because the /tmp/plainpass password should be owned by root and only root should be able to read the file (0400 permissions), particularly apache shouldn't be able to read it. It's expected that root will be the one to run that command line
-
-Similar as above, but the contents are encoded in base64 format (not much security, but addional obfuscation):
-
-::
-
-   base64 -d /tmp/encodedpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
-
-Third party password managers can also be integrated. The only requirement is that they have to provide the password in plain text somehow. If not, additional operations might be required to get the password as plain text and inject it in the listener. As an example:
-
-For a more complex test, which might be similar to a real scenario, you can use "pass" as a password manager. You can go through http://xmodulo.com/manage-passwords-command-line-linux.html to setup the keyring for whoever will fetch the password (probably root) and then use something like 
-
-::
-
-   pass the-password-name | sudo -u www-data ./occ wnd:listen host share username --password-file=-
-
-
-.. note::
-   If you use the ``--password-file`` switch, the entire contents of the file will be used for the password, so please be careful with newlines.
-
-.. warning::
-   If using ``--password-file`` make sure that the file is only readable by the
-   apache / www-data user and inaccessible from the web, in order to prevent
-   tampering or leaking of the information. The password won't be leaked to any
-   other user using ``ps``.
 
 3rd Party Software Examples
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
- cat /tmp/plainpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+ cat /tmp/plainpass | sudo -u www-data ./occ wnd:listen <host> <share> <username> --password-file=-
 
 This provides a bit more security because the ``/tmp/plainpass`` password should be owned by root and only root should be able to read the file (0400 permissions); Apache, particularly, shouldn't be able to read it. 
 It's expected that root will be the one to run this command. 
 
 .. code-block:: console
 
- base64 -d /tmp/encodedpass | sudo -u www-data ./occ wnd:listen host share username --password-file=-
+ base64 -d /tmp/encodedpass | sudo -u www-data ./occ wnd:listen <host> <share> <username> \
+   --password-file=-
 
 Similar to the previous example, but this time the contents are encoded in `Base64 format <https://www.base64decode.org/>`_ (there's not much security, but it has additional obfuscation).
 
@@ -368,12 +345,17 @@ If not, additional operations might be required to get the password as plain tex
 
 As an example:
 
-  For a more complex test, which might be similar to a real scenario, you can use "pass" as a password manager. You can go through http://xmodulo.com/manage-passwords-command-line-linux.html to setup the keyring for whoever will fetch the password (probably root) and then use something like pass the-password-name | sudo -u www-data ./occ wnd:listen host share username --password-file=-.
+  You can use "pass" as a password manager. You can go through http://xmodulo.com/manage-passwords-command-line-linux.html to setup the keyring for whoever will fetch the password (probably root) and then use something like the following
+
+.. code-block:: console
+
+   pass the-password-name | sudo -u www-data ./occ wnd:listen <host> <share> <username> --password-file=-
+
 
 Password Option Precedence
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If both the argument and the option are passed, e.g., ``occ wnd:listen host share username password --password-file=/tmp/pass``, then the ``--password-file`` option will take precedence.
+If both the argument and the option are passed, e.g., ``occ wnd:listen <host> <share> <username> <password> --password-file=/tmp/pass``, then the ``--password-file`` option will take precedence.
 
 Optimizing wnd:process-queue
 ----------------------------
