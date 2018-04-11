@@ -165,9 +165,9 @@ You may view the currently configured mapper using:
 
 The following mappers are provided with the app:
 
-* OCA\User_Shibboleth\Mapper\NoOpMapper - the default, does not alter the uid
-* OCA\User_Shibboleth\Mapper\ADFSMapper - splits the uid around a ; character and takes the first piece
-* OCA\User_Shibboleth\Mapper\GUIDInMemoryMapper - maps in binary GUIDs to strings
+* OCA\\User_Shibboleth\\Mapper\\NoOpMapper - the default, does not alter the uid
+* OCA\\User_Shibboleth\\Mapper\\ADFSMapper - splits the uid around a ; character and takes the first piece
+* OCA\\User_Shibboleth\\Mapper\\GUIDInMemoryMapper - maps in binary GUIDs to strings
 
 Shibboleth with Desktop and Mobile Clients
 ------------------------------------------
