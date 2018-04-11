@@ -217,7 +217,7 @@ The simplest way to start the ``wnd:listen`` process manually, perhaps for initi
    sudo -u www-data ./occ wnd:listen <host> <share> <username>
 
 The password is an optional parameter and you'll be asked for it if you didn't provide it, as in the example above.
-In order to start the ``wnd:listen`` without any interaction, there are other ways to provide the password the most simple being providing the password as the 4th parameter:
+In order to start the ``wnd:listen`` without any user interaction, provide the password as the user's 4th parameter, as in the following example:
 
 ::
 
@@ -225,7 +225,7 @@ In order to start the ``wnd:listen`` without any interaction, there are other wa
 
 For additional options to provide the password, check :ref:`password-options-label`
 
-Note that in any case there won't be any processing to the password by default.
+Note that in any case there won't be any processing of the password by default.
 This means that spaces or newline chars won't be removed unless explicitly told.
 Use the ``--password-trim`` option in those cases.
 
@@ -315,8 +315,7 @@ There are several ways to supply a password:
 
    .. warning::
       If using ``--password-file`` make sure that the file is only readable by the
-      apache / www-data user and inaccessible from the web, in order to prevent
-      tampering or leaking of the information. The password won't be leaked to any
+      apache / www-data user and inaccessible from the web. This prevents tampering or leaking of the information. The password won't be leaked to any
       other user using ``ps``.
 
 #. Using 3rd party software to store and fetch the password. When using this option, the 3rd party app needs to show the password as plaintext on standard output.
