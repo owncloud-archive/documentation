@@ -217,7 +217,7 @@ The simplest way to start the ``wnd:listen`` process manually, perhaps for initi
    sudo -u www-data ./occ wnd:listen <host> <share> <username>
 
 The password is an optional parameter and you'll be asked for it if you didn't provide it, as in the example above.
-In order to start the ``wnd:listen`` without any interaction, there are other ways to provide the password being the most simple providing the password as the 4th parameter:
+In order to start the ``wnd:listen`` without any interaction, there are other ways to provide the password the most simple being providing the password as the 4th parameter:
 
 ::
 
