@@ -116,6 +116,9 @@ You will also be able to access the ownCloud web interface (2).
    The default username for the ownCloud is: ``owncloud`` and so is the password.
    The password is **not** the password you supplied during the configuration wizard.
 
+.. note:: 
+	For security reasons ``rpcbind`` should be disabled in the appliance. If you want to create NFS shares on the appliance and give someone permission to access them, then you can enable ``rpcbind`` again.
+
 .. Links
    
 .. _VMware: https://www.vmware.com
