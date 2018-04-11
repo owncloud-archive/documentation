@@ -117,8 +117,8 @@ You will also be able to access the ownCloud web interface (2).
    The password is **not** the password you supplied during the configuration wizard.
 
 .. note:: 
-	For security reasons ``rpcbind`` should be disabled in the appliance. If you want to create NFS shares on the appliance and give someone permission to access them, then you can enable ``rpcbind`` again.
-
+	For security reasons ``rpcbind`` should be disabled in the appliance. An open, from the internet accessable portmapper service like ``rpcbind`` can be used by an attacker to perform DDoS-Reflection-Attacks. Furthermore, the attacker can obtain information about your system, for example running rpc-services, or existing network shares. The german IT securyty agency "BSI" reported that systems with an open ``rpcbind`` service were used to perform DDoS-Reflection-Attacks against other systems.
+	If you want to create NFS shares on the appliance and give someone permission to access them, then you can enable ``rpcbind`` again.
 .. Links
    
 .. _VMware: https://www.vmware.com
