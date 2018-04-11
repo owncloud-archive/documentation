@@ -11,6 +11,7 @@ To keep it succinct, you need to:
 
 .. important:: 
    You need **Internet access** to use the appliance. The appliance has to be activated with a license that you will receive from Univention via email. This license has to be imported in the appliance via the **web interface**.
+   The appliance also needs access to a DHCP server so that it can receive an IP address and be accessible.
 
 After that, you can access the running instance of ownCloud and :ref:`further configure it <appliance-administer-label>` to suit your needs. 
 
