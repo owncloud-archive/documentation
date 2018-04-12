@@ -11,7 +11,7 @@ The ownCloud X Appliance
    login_information
    howto-update-owncloud
    managing-ucs
-   Backup
-   Active_Directory
    Clamav
+   Active_Directory
+   Backup
    Collabora
