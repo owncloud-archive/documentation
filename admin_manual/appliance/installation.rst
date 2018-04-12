@@ -56,6 +56,8 @@ The example below shows this being done using VirtualBox.
 .. important:: 
    Don't Forget the **IP Address** and the **Administrator Password**. You will need them to use the Appliance.
 
+.. _appliance-start-label:
+
 Start the Appliance
 -------------------
 
