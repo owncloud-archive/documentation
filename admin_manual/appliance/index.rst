@@ -13,3 +13,5 @@ The ownCloud X Appliance
    clamav
    Collabora
    certificates
+   Active_Directory
+   Backup
