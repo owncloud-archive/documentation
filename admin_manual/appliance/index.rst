@@ -10,7 +10,7 @@ The ownCloud X Appliance
    login_information
    howto-update-owncloud
    managing-ucs
-   clamav
+   Clamav
    certificates
    Active_Directory
    Backup
