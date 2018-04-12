@@ -12,3 +12,5 @@ The ownCloud X Appliance
    managing-ucs
    clamav
    certificates
+   Active_Directory
+   Backup
