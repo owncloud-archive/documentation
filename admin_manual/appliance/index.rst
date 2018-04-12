@@ -8,8 +8,10 @@ The ownCloud X Appliance
    what-is-it
    installation
    certificates
+   login_information
    howto-update-owncloud
    managing-ucs
-   clamav
+   Backup
+   Active_Directory
+   Clamav
    Collabora
-   certificates
