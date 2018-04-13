@@ -241,6 +241,12 @@ To run a particular test suite, use the following command as a guide:
 
   make test-php TEST_DATABASE=mysql TEST_PHP_SUITE=tests/lib/share/share.php
 
+By default, a code coverage report is generated after the test run. To avoid the time taken for that, specify ``NOCOVERAGE``:
+
+::
+
+  make test-php NOCOVERAGE=true TEST_DATABASE=mysql TEST_PHP_SUITE=tests/lib/share/share.php
+
 Further Reading
 ~~~~~~~~~~~~~~~
 
