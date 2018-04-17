@@ -109,7 +109,7 @@ If you want to create new users and groups, or download apps from the Univention
 
 After you've done so, you will now be at the Univention management console, which you can see below.
 
-.. image:: ../images/appliance/Univention-Management-Console.png
+.. image:: ../images/appliance/univention-management-console.png
    :alt: The Univention Management Console.
 
 The management console allows you to manage the virtual appliance (1), covering such areas as: *users*, *devices*, *domains*, and *software*.
