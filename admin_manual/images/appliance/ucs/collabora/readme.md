@@ -1,1 +1,1 @@
-Here are the screen shots for the collabora installation.
+Here are the screen shots for the Collabora installation.
