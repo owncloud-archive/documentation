@@ -54,6 +54,22 @@ Required Software
 The README on https://github.com/owncloud/documentation has instructions for setting 
 up your build environment.
 
+How to Install Sphinx-Doc
+-------------------------
+
+On Ubuntu 16.10
+~~~~~~~~~~~~~~~
+
+To install Sphinx-Doc, follow the commands below.
+This will install all of the required packages so that you build the documentation.
+
+::
+
+  apt-get update
+  apt-get install python3-sphinx python-pip python-dev build-essential make --assume-yes
+  pip install sphinxcontrib-phpdomain
+  pip install rst2pdf
+
 Release Updates
 ---------------
 
