@@ -124,12 +124,10 @@ While many customers are starting with NFS, sooner or later that requires scale-
 Session Storage
 ---------------
 
-* Redis: is required for Transactional File Locking, provides session persistence, 
-  nice graphical inspection tools available. 
-   
-* If you need to scale out Shibboleth you must use Memcached, as Shibboleth 
-  does not provide an interface to Redis. Memcached can also be 
-  used to scale-out shibd session storage (see `Memcache StorageService`_).
+* Redis is required for :doc:`transactional file locking <../configuration/files/files_locking_transactional>`, provides
+  session persistence, and graphical inspection tools available.
+* If you need to scale out Shibboleth you must use Memcached, as Shibboleth does not provide an interface to Redis.
+  Memcached can also be used to scale-out shibd session storage (see `Memcache StorageService`_).
 
 .. Links
    
