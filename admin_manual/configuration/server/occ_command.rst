@@ -1636,7 +1636,6 @@ The full list, of commands is:
   user:lastseen                       Shows when the user was logged in last time
   user:list                           List users
   user:list-groups                    List groups for a user
-  user:modify                         Modify user details
   user:report                         Shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user application settings
@@ -1882,30 +1881,6 @@ Then, in addition, you supply the ``--delete`` flag.
 ::
 
  sudo -u www-data php occ user:setting layla settings email --delete
-
-Modify user details
-^^^^^^^^^^^^^^^^^^^
-
-This command modifies either the users username or email address.
-
-::
-
-  user:modify [options] [--] <uid> <key> <value>
-  
-  Arguments:
-    uid                    User ID used to login
-    key                    Key to be changed. Valid keys are: displayname, email
-    value                  The new value of the key
-  
-All three arguments are mandatory and can not be empty.
-
-Example to set the email address:
-
-::
-
-  sudo -u www-data php occ user:modify carla email foobar@foo.com
-
-The email address of ``carla`` is updated to ``foobar@foo.com``
 
 Generating a User Count Report
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
