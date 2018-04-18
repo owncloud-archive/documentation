@@ -2,12 +2,12 @@
 $CONFIG = [
     'apps_paths' => [
         [
-            'path' => '/var/www/owncloud/apps',
+            'path' => OC::$SERVERROOT.'/apps',
             'url' => '/apps',
             'writable' => false,
         ],
         [
-            'path' => '/var/www/owncloud/apps-external',
+            'path' => OC::$SERVERROOT.'/apps-external',
             'url' => '/apps-external',
             'writable' => true,
         ],
