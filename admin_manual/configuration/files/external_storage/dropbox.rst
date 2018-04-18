@@ -44,13 +44,13 @@ After you do that, the settings page for the application loads.
    **Redirect URI**: Here you must enter the exact URL of the page where you configure the storage.
    
    Examples:
-   
-   When configuring as **admin**::
-   
+
+   When configuring as an **admin**::
+
       ``http(s)://<<Server_Address>>/index.php/settings/admin?sectionid=storage``
-   
-   When configuring as **user**::
-   
+
+   When configuring as a **user**::
+
       ``http(s)://<<Server_Address>>/index.php/settings/personal?sectionid=storage``
 
 
