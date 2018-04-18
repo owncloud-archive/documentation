@@ -31,6 +31,7 @@ After the upgrade is complete re-enable any which are compatible with the new re
 
 .. warning::
    Install unsupported apps at your own risk.
+
 Check ownCloud's Mandatory Requirements
 ---------------------------------------
 

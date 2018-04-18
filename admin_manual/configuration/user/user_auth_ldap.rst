@@ -208,7 +208,7 @@ Only those object classes:
   ownCloud will determine the object classes that are typically available for group objects in your LDAP server.
   ownCloud will only list object classes that return at least one group object.
   You can select multiple object classes.
-  A typical object class is "``group``", or "``posixGroup``".
+  A typical object class is ``group``, or ``posixGroup``.
 
 Only from those groups:
   ownCloud will generate a list of available groups found in your LDAP server.
@@ -378,8 +378,6 @@ Group Member association:
 
   Examples:
 
-(??)  * Example:
-
   * ``member`` with FDN for Active Directory or for objectclass ``groupOfNames`` groups
   * ``memberUid`` with RDN for objectclass ``posixGroup`` groups
   * ``uniqueMember`` with FDN for objectclass ``groupOfUniqueNames`` groups
@@ -465,11 +463,10 @@ Expert Settings
     configuration should be well-tested before starting production use.
 
 Internal Username:
-(??)  The internal username is the identifier in ownCloud for LDAP users. By default
-(??)  it will be created from the UUID attribute. The UUID attribute ensures that 
-(??)  the username is unique, and that characters do not need to be converted. Only 
-(??)  these characters are allowed: [\a-\zA-\Z0-\9_.@-]. Other characters are 
-(??)  replaced with their ASCII equivalents, or are simply omitted.
+  The internal username is the identifier in ownCloud for LDAP users.
+  By default it will be created from the UUID attribute.
+  The UUID attribute ensures that the username is unique, and that characters do not need to be converted. Only these characters are allowed: ``[\a-\zA-\Z0-\9_.@-]``.
+  Other characters are replaced with their ASCII equivalents, or are simply omitted.
 
   The LDAP backend ensures that there are no duplicate internal usernames in ownCloud, i.e., that it is checking all other activated user backends (including local ownCloud users).
   On collisions a random number (between 1000 and 9999) will be attached to the retrieved value.
