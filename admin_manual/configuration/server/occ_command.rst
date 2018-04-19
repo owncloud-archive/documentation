@@ -1886,6 +1886,8 @@ Then, in addition, you supply the ``--delete`` flag.
 Modify user details
 ^^^^^^^^^^^^^^^^^^^
 
+.. versionadded:: 10.0.8
+
 This command modifies either the users username or email address.
 
 ::
