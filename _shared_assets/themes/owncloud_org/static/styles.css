@@ -387,6 +387,11 @@ li.next {
   max-width: 100%;
 }
 
+.versionmodified {
+  font-weight: bold;
+  font-style: italic;
+}
+
 /* -- Start specific css for legibility -- */
 
 h2, h3, h4, h5, h6 {
