@@ -5475,6 +5475,12 @@ blockquote ul:first-child {
 .admonition-title {
   display: none;
 }
+
+.versionmodified {
+  font-weight: bold;
+  font-style: italic;
+}
+
 form input[type="submit"] {
   display: inline-block;
   *display: inline;
