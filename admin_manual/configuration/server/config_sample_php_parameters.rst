@@ -64,7 +64,9 @@ never use it.
 
 Your list of trusted domains that users can log into. Specifying trusted
 domains prevents host header poisoning. Do not remove this, as it performs
-necessary security checks.
+necessary security checks. Please consider that for backend processes like
+background jobs or occ commands, the url parameter in key ``overwrite.cli.url``
+is used. For more details please see that key.
 
 ::
 
@@ -262,9 +264,11 @@ Enabling this sends a "heartbeat" to the server to keep it from timing out.
 
 	'token_auth_enforced' => false,
 
-Enforce token authentication for clients, which blocks requests using the user
-password for enhanced security. Users need to generate tokens in personal settings
-which can be used as passwords on their clients.
+Enforces token only authentication for apps and clients connecting to ownCloud.
+
+If enabled, all access requests using the users password are blocked for enhanced security.
+Users have to generate special app-passwords (tokens) for their apps or clients in their personal
+settings which are further used for app or client authentication. Browser logon is not affected.
 
 ::
 
@@ -329,6 +333,18 @@ and other search terms. Allows finding 'Alice' when searching for 'lic'.
 
 May slow down user search. Disable this if you encounter slow username search
 in the sharing dialog.
+
+::
+
+	'user.search_min_length' => 4,
+
+Defines the minimum characters entered before a search returns results for
+users or groups in the share autocomplete form. Lower values increase search
+time especially for large backends.
+
+Any exact matches to a user or group will be returned, even though less than
+the minimum characters have been entered. The search is case insensitive.
+e.g. entering "tom" will always return "Tom" if there is an exact match.
 
 Mail Parameters
 ---------------
@@ -487,6 +503,10 @@ Use this configuration parameter to specify the base URL for any URLs which
 are generated within ownCloud using any kind of command line tools (cron or
 occ). The value should contain the full base URL:
 ``https://www.example.com/owncloud``
+As an example, alerts shown in the browser to upgrade an app are triggered by
+a cron background process and therefore uses the url of this key, even if the user
+has logged on via a different domain defined in key ``trusted_domains``. When the
+user clicks an alert like this, he will be redirected to that URL and must logon again.
 
 ::
 
@@ -803,14 +823,38 @@ Some of the ownCloud code may be stored in alternate locations.
 This section is for configuring the download links for ownCloud clients, as
 seen in the first-run wizard and on Personal pages.
 
-Use the ``apps_paths`` parameter to set the location of the Apps directory,
-which should be scanned for available apps, and where user-specific apps
-should be installed from the Apps store. The ``path`` defines the absolute
-file system path to the app folder. The key ``url`` defines the HTTP Web path
-to that folder, starting from the ownCloud webroot. The key ``writable``
-indicates if a Web server can write files to that folder.
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+::
 
+	'apps_paths' =>
+	    array (
+	      0 => 
+	      array (
+	        'path' => OC::$SERVERROOT.'/apps',
+	        'url' => '/apps',
+	        'writable' => false,
+	      ),
+	      1 => 
+	      array (
+	        'path' => OC::$SERVERROOT.'/apps-external',
+	        'url' => '/apps-external',
+	        'writable' => true,
+	      ),
+	    ),
+
+If you want to store apps in a custom directory instead of ownCloud’s default
+``/app``, you need to modify the ``apps_paths`` key. There, you need to add a
+new associative array that contains three elements. These are:
+
+- ``path``     The absolute file system path to the custom app folder.
+- ``url``      The request path to that folder relative to the ownCloud web root, prefixed with /.
+- ``writable`` Whether users can install apps in that folder. After the configuration is added,
+               new apps will only install in a directory where writable is set to true.
+
+The configuration example shows how to add a second directory, called ``/apps-external``.
+Here, new apps and updates are only writen to the ``/apps-external`` directory.
+This eases upgrade procedures of owncloud where shipped apps are delivered to apps/ by default.
+``OC::$SERVERROOT`` points to the web root of your instance.
+Please see the Apps Management description on how to move custom apps properly.
 
 Previews
 --------
@@ -1252,8 +1296,11 @@ The Web server user must have write access to this directory.
 
 	'hashingCost' => 10,
 
-The hashing cost used by hashes generated by ownCloud
-Using a higher value requires more time and CPU power to calculate the hashes
+The hashing cost used by hashes generated by ownCloud.
+
+Using a higher value requires more time and CPU power to calculate the hashes.
+As this number grows, the amount of work (typically CPU time or memory) necessary
+to compute the hash increases exponentially.
 
 ::
 
@@ -1297,9 +1344,17 @@ Exclude files from the integrity checker command
 
 ::
 
-	'integrity.ignore.missing.app.signature' => [],
+	'integrity.ignore.missing.app.signature' =>
+		array(
+			'app-id of app-1',
+			'app-id of theme-2',
+		),
 
-The list of apps that are allowed to have no signature.json
+The list of apps that are allowed to have no signature.json. Besides
+ownCloud apps, this is particularly useful when creating ownCloud themes,
+because themes are treated as apps. The app is identified with it´s app-id.
+
+The following example allows app-1 and theme-2 to have no signature.
 
 ::
 
