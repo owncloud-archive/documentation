@@ -1379,8 +1379,46 @@ Usage Example
   # Install an app from a local archive.
   sudo -u www-data occ market:install -l /mnt/data/richdocuments-2.0.0.tar.gz
 
-.. _reports_commands_label:
+.. _notifications_commands_label:
+
+Notifications
+-------------
+
+If you want to send notifications to users or groups use the following command.
+
+.. code-block:: console
    
+  notifications
+    notifications:generate   Generates a notification.
+
+Options and Arguments:
+
+.. code-block:: console
+   
+  notifications:generate [-u|--user USER] [-g|--group GROUP] [-l|--link <linktext>] [--] <subject> [<message>]
+
+  Options:
+    -u --user              User id to whom the notification shall be sent
+    -g --group             Group id to whom the notification shall be sent
+    -l --link              A link associated with the notification
+
+  Arguments:
+    subject                The notification subject - maximum 255 characters
+    message                A longer message - maximum 4000 characters
+    linktext               A link to an HTML page
+
+At least one user or group must be set.
+
+A link can be useful for notifications shown in client apps.
+
+Example:
+
+::
+
+ sudo -u www-data php occ notifications:generate -g Office "Emergeny Alert" "Rebooting in 5min"
+
+.. _reports_commands_label:
+
 Reports
 -------
 
