@@ -14,3 +14,4 @@ The ownCloud X Appliance
    certificates
    Active_Directory
    Backup
+   Office
