@@ -611,6 +611,8 @@ File Operations
 ``occ`` has three commands for managing files in ownCloud::
 
  files
+  files:checksums:verify     Get all checksums in filecache and compares them by
+                             recalculating the checksum of the file.
   files:cleanup              Deletes orphaned file cache entries.
   files:scan                 Rescans the filesystem.
   files:transfer-ownership   All files and folders are moved to another 
@@ -618,6 +620,34 @@ File Operations
  
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
+
+The files:checksums:verify command
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+ownCloud supports file integrity checking, by computing and matching checksums.
+Doing so ensures that transferred files arrive at their target in the exact state as they left their origin.
+
+In some rare cases, wrong checksums are written to the database which leads to synchronization issues, such as with the Desktop Client.
+To mitigate such problems a new command is available: ``occ files:checksums:verify``.
+
+Executing the command recalculates checksums, either for all files of a user or within a specified filesystem path on the designated storage.
+It then compares them with the values in the database.
+The command also offers an option to repair incorrect checksum values (``-r, --repair``).
+
+.. note:: Executing this command might take some time depending on the file count.
+
+Below is sample output that you can expect to see when using the command.
+
+::
+
+  ./occ files:checksums:verify
+  This operation might take very long.
+  Mismatch for files/welcome.txt:
+   Filecache:	SHA1:eeb2c08011374d8ad4e483a4938e1aa1007c089d MD5:368e3a6cb99f88c3543123931d786e21 ADLER32:c5ad3a63
+   Actual:	SHA1:da39a3ee5e6b4b0d3255bfef95601890afd80709 MD5:d41d8cd98f00b204e9800998ecf8427e ADLER32:00000001
+  Mismatch for thumbnails/9/2048-2048-max.png:
+   Filecache:	SHA1:2634fed078d1978f24f71892bf4ee0e4bd0c3c99 MD5:dd249372f7a68c551f7e6b2615d49463 ADLER32:821230d4
+   Actual:	SHA1:da39a3ee5e6b4b0d3255bfef95601890afd80709 MD5:d41d8cd98f00b204e9800998ecf8427e ADLER32:00000001
 
 The files:cleanup command
 ^^^^^^^^^^^^^^^^^^^^^^^^^
