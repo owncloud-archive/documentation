@@ -15,3 +15,4 @@ The ownCloud X Appliance
    Active_Directory
    Backup
    Collabora
+   Office
