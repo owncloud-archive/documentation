@@ -42,7 +42,7 @@ New events for audit logging
 New events have been added to be used for audit logging, among others. These include *configuration changes* by administrators and users, *file comments* (*add/edit/delete*) and *updating existing public links*. When logs are forwarded to external analyzers like Splunk, administrators can check to add the new events. The latest version of the Auditing extension (*admin_audit*) is required.
 
 New command to verify and repair file checksums
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 With ownCloud 10 file integrity checking by computing and matching checksums has been introduced to ensure that transferred files arrive at their target in the exact state as their origin. In some rare cases wrong checksums can be written to the database leading to synchronization issues with e.g. the Desktop Client. To mitigate such situations a new command ``occ files:checksums:verify`` has been introduced. Executing the command will recalculate checksums for all files of a user or within a specified path on the storage and compare them with the values in the database. Naturally the command also offers an option to repair incorrect checksum values (``-r, --repair``). Please check the available options by executing ``occ files:checksums:verify --help``. Note: Executing this command might take some time depending on the file count.
 
 New config setting to specify minimum characters for sharing autocomplete
@@ -102,16 +102,11 @@ As of ownCloud Server 10.0.5 it is only possible to have one theme app enabled s
 
 - ``occ transfer:ownership`` does not transfer public link shares (https://github.com/owncloud/core/issues/31150).
 
-For developers (draft @PVince81)
+For developers
 ~~~~~~~~~~~~~~
-- oc_current_user private entry in JS is gone
-- new symfony events/hooks (TODO: link to docs), see changelog for details
-- Added new API event for zip file download - [#30067](https://github.com/owncloud/core/issues/30067)
-- Added new API event for public link creation - [#30067](https://github.com/owncloud/core/issues/30067)
-- Added new API events for commenting actions - [#30142](https://github.com/owncloud/core/issues/30142)
-- Added Symfony events for configuration changes (config.php and appconfig) - [#30788](https://github.com/owncloud/core/issues/30788) [#30937](https://github.com/owncloud/core/issues/30937) [#31107](https://github.com/owncloud/core/issues/31107)
-- client dev: Add Webdav-Location header in private link redirect - [#30387](https://github.com/owncloud/core/issues/30387) [#30595](https://github.com/owncloud/core/issues/30595)
-- Added Symfony event to let apps resolve private links - [#30911](https://github.com/owncloud/core/issues/30911)
+- The global JS variable "oc_current_user" was removed. Please use the public method "OC.getCurrentUser()" instead.
+- Lots of new Symfony events have been added for various user actions, see changelog for details. Documentation ticket: <https://github.com/owncloud/documentation/issues/3738>`_
+- When requesting a private link there is a new HTTP response header "Webdav-Location" that contains the Webdav path to the requested file while the "Location" still points at the frontend URL for viewing the file.
 
 .. _10.0.7_release_notes_label:
 
