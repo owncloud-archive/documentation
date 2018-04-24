@@ -11,9 +11,7 @@ Here is an overview of the process:
 2. Install :ref:`Collabora <collabora-label>` or :ref:`OnlyOffice <onlyoffice-label>`
 3. :ref:`Update <update-label>` the App
 
-.. important::
-
-   Access with **HTTPS** using **domain name** is required.
+.. warning::  Access with **HTTPS** using **domain name** is required.
 
 .. _appcenter-label:
 
@@ -53,10 +51,57 @@ From here on it's your choice to install :ref:`Collabora <collabora-label>` or :
 How to Install Collabora
 ------------------------
 
-1. Search for "**Collabora Online Development Edition**" or select it from the application list in the Appcenter.
+1. Install Collabora in UCS.
 
-2. Install "**Collabora Online Development Edition**".
+.. figure:: ../images/appliance/ucs/collabora/001-ucs-app-collabora-search.png
+   :alt: Search
 
+.. figure:: ../images/appliance/ucs/collabora/002-ucs-app-collabora-install.png
+   :alt: Installation
+
+.. figure:: ../images/appliance/ucs/collabora/004-ucs-app-collabora-install-admin.png
+   :alt: Installation
+
+.. figure:: ../images/appliance/ucs/onlyoffice/008-ucs-install-docker.png
+   :alt: Docker Container Info
+
+3. Enable Collabora in ownCloud.
+
+.. figure:: ../images/appliance/ucs/collabora/005-ucs-app-collabora-install-back.png
+   :alt: UCS User Interface
+
+.. figure:: ../images/appliance/ucs/onlyoffice/011-ucs-onlyoffice-install-owncloud.png
+   :alt: ownCloud App
+
+.. figure:: ../images/appliance/ucs/onlyoffice/012-ucs-owncloud-open.png
+   :alt: Open the ownCloud App
+
+.. figure:: ../images/appliance/ucs/onlyoffice/013-ucs-owncloud-login.png
+   :alt: Login in ownCloud
+
+.. note::
+   Username and Password are owncloud
+
+.. figure:: ../images/appliance/ucs/collabora/006-oc-settings.png
+   :alt: ownCloud Settings
+
+.. figure:: ../images/appliance/ucs/collabora/007-oc-settings-apps.png
+   :alt: ownCloud Settings
+
+.. figure:: ../images/appliance/ucs/collabora/008-oc-settings-show-dis-apps.png
+   :alt: ownCcloud Apps
+
+.. figure:: ../images/appliance/ucs/collabora/009-oc-enable-collabora.png
+   :alt: ownCcloud Apps
+
+.. figure:: ../images/appliance/ucs/collabora/010-oc-goto-collabora.png
+   :alt: Collabora
+
+.. figure:: ../images/appliance/ucs/collabora/011-oc-collabora-open-example.png
+   :alt: Collabora
+
+.. figure:: ../images/appliance/ucs/collabora/012-oc-collabora-example.png
+   :alt: Collabora
 
 Now you can use Collabora within ownCloud.
 Start by creating a new Document.
