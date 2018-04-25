@@ -26,7 +26,7 @@ Dear ownCloud administrator, please find below the changes and known issues in o
 
 PHP 5.6 deprecation
 ~~~~~~~~~~~~~~~~~~~
-PHP 5.6 active support has ended on 19 Jan 2017 and security support will be dropped by the end of 2018 (https://secure.php.net/supported-versions.php). Many libraries used by ownCloud (including the QA-Suite *PHPUnit*) will therefore not be maintained actively anymore which forces ownCloud to drop support in one of the next minor server versions as well. Please make sure to upgrade to PHP 7 soon. See the `system requirements in the ownCloud documentation <https://doc.owncloud.com/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options>`_.
+PHP 5.6 active support has ended on 19 Jan 2017 and security support will be dropped by the end of 2018 (https://secure.php.net/supported-versions.php). Many libraries used by ownCloud (including the QA-Suite *PHPUnit*) will therefore not be maintained actively anymore which forces ownCloud to drop support in one of the next minor server versions as well. Please make sure to upgrade to PHP 7 as soon as possible. See the `system requirements in the ownCloud documentation <https://doc.owncloud.com/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options>`_.
 
 Personal note for public link mail notification
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,7 +34,7 @@ One of the usability enhancements of ownCloud Server 10.0.8 is the possibility f
 
 LDAP-related improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~~
-- When disabling or deleting user accounts in LDAP the administrator can choose to either *delete* or *disable* respective accounts in ownCloud when executing ``occ user:sync`` (``-m, --missing-account-action=MISSING-ACCOUNT-ACTION``). User accounts that are disabled in ownCloud can now be re-enabled automatically when running ``occ user:sync`` in case they are enabled in LDAP. When this behavior is desired administrators just need to add the ``-r, --re-enable`` option to their cron jobs or when manually executing ``occ user:sync``.
+- When disabling or deleting user accounts in LDAP, the administrator can choose to either *delete* or *disable* respective accounts in ownCloud when executing ``occ user:sync`` (``-m, --missing-account-action=MISSING-ACCOUNT-ACTION``). User accounts that are disabled in ownCloud can now be re-enabled automatically when running ``occ user:sync`` if they are enabled in LDAP. When this behavior is desired administrators just need to add the ``-r, --re-enable`` option to their cron jobs or when manually executing ``occ user:sync``.
 - Furthermore it is now possible to execute ``occ user:sync`` only for *single* (``-u, --uid=UID``) or *seen* (``-s, --seenOnly``) users (users that are present in the database and have logged in at least once). These new options provide more granularity for administrators in terms of managing ``occ user:sync`` performance. Another notable change in behavior of ``occ user:sync`` is that administrators now have to explicitly specify the option ``-c, --showCount`` to display the number of users to be synchronized.
 
 New events for audit logging
@@ -47,11 +47,11 @@ With ownCloud 10 file integrity checking by computing and matching checksums has
 
 New config setting to specify minimum characters for sharing autocomplete
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For security reasons the default value for minimum characters to trigger the sharing autocomplete mechanism has been set to "4" (previously it was set to "2"). This is to impede user name or mail address tapping. As it is a trade-off between security and usability for some scenarios this high security level might not be desirable. Therefore the value now is configurable via the *config.php* option ``'user.search_min_length' => 4,``. Please check which value fits your needs best.
+For security reasons the default value for minimum characters to trigger the sharing autocomplete mechanism has been set to "4" (previously it was set to "2"). This is to prevent people from easily downloading lots of email addresses or user names by requesting their first letters through the API. As it is a trade-off between security and usability for some scenarios this high security level might not be desirable. Therefore the value now is configurable via the *config.php* option ``'user.search_min_length' => 4,``. Please check which value fits your needs best.
 
 New option to granularly configure public link password enforcement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-With ownCloud 10 the *"File Drop"* feature has been merged to public link permissions. As this kind of public link does not give recipients access to any contents but just gives them the possibility to "drop" files it might not be desirable for some scenarios to enforce password protection for such shares while other public links should require setting a password. For this password enforcement for public links has been split to apply based on permissions given (*read-only, read & write, upload only/File Drop*). Please check the administration settings *'Sharing'* section and configure as desired.
+With ownCloud 10 the *"File Drop"* feature has been merged with public link permissions. This kind of public link does not give recipients access to any content, but it gives them the possibility to "drop files". As a result, it might not always be desirable to enforce password protection for such shares. Given that, passwords for public links can now be enforced based on permissions (*read-only, read & write, upload only/File Drop*). Please check the administration settings *"Sharing"* section and configure as desired.
 
 New option to exclude apps from integrity check
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,7 +67,7 @@ Apart from using the ``occ files:scan`` command for *single users* and *whole in
 
 New configurable default format for syslog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-When using syslog as the log type (``'log_type' => 'syslog',`` in *config.php*) the default format has been changed to include *request IDs* for easier debugging. Additionally the log format has been made configurable using ``'log.syslog.format'`` in *config.php*. If you require a certain log format to forward to external applications, please check the new format and *config.sample.php* on how to change it.
+When using syslog as the log type (``'log_type' => 'syslog',`` in *config.php*) the default format has been changed to include *request IDs* for easier debugging. Additionally the log format has been made configurable using ``'log.syslog.format'`` in *config.php*. If you require a certain log format, please check the new format and *config.sample.php* on how to change it.
 
 New config option to enable fallback to HTTP for federated shares
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -79,28 +79,28 @@ Upgrading to 10.0.8 includes migrations related to *auth_tokens* (*app passwords
 
 Changed behavior of e-mail autocomplete for public link share dialog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-When the *'Sharing'* settings option ``Allow users to send mail notifications for shared files`` for public links is enabled, users can send public links via mail from within the web interface. The behavior of the autocomplete when entering mail addresses in the public link share dialog has been changed. Previously the autocomplete queried for local users, users from federated address books and contacts from CardDAV/Contacts App. As public links are not intended for sharing between ownCloud users (local/federated), those have been removed. Contacts synchronized via CardDAV or created in the Contacts app will still appear as suggestions.
+When the *"Sharing"* settings option ``Allow users to send mail notifications for shared files`` for public links is enabled, users can send public links via mail from within the web interface. The behavior of the autocomplete when entering mail addresses in the public link share dialog has been changed. Previously the autocomplete queried for local users, users from federated address books and contacts from CardDAV/Contacts App. As public links are not intended for sharing between ownCloud users (local/federated), those have been removed. Contacts synchronized via CardDAV or created in the Contacts app will still appear as suggestions.
 
 Global option for CORS domains
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-For security reasons ownCloud has a *Same-Origin-Policy* that prevents requests to ownCloud resources from other domains as the domain the backend server is hosted on. If ownCloud resources should be accessible from other domains, e.g. for a separate web frontend operated on a different domain, administrators can now globally specify policy exceptions via *CORS (Cross-Origin Resource Sharing)* using ``'cors.allowed-domains'`` in *config.php*. Please check *config.sample.php* for more information.
+For security reasons ownCloud has a *Same-Origin-Policy* that prevents requests to ownCloud resources from other domains than the domain the backend server is hosted on. If ownCloud resources should be accessible from other domains, e.g. for a separate web frontend operated on a different domain, administrators can now globally specify policy exceptions via *CORS (Cross-Origin Resource Sharing)* using ``'cors.allowed-domains'`` in *config.php*. Please check *config.sample.php* for more information.
 
-Śolved known issues
+Solved known issues
 ~~~~~~~~~~~~~~~~~~~
 
-- Bogus "Login failed" log entries have been removed (see 10.0.7 known issues)
+- Bogus "Login failed" log entries have been removed (see `10.0.7 known issues <https://doc.owncloud.com/server/10.0/admin_manual/release_notes.html#changes-in-10-0-7>`_)
 - The *Provisioning API* can now properly set default or zero quota
 - User quota settings can be queried through *Provisioning API*
 - A regression preventing a user from setting their e-mail address in the settings page has been fixed
-- File deletion as guest user works again (trash bin permissions are checked correctly)
+- File deletion as a guest user works correctly (trash bin permissions are checked correctly)
 
 Known issues
 ~~~~~~~~~~~~
 
-- Issue with multiple theme apps and Mail Template Editor
-As of ownCloud Server 10.0.5 it is only possible to have one theme app enabled simultaneously. When having a theme app enabled and trying to enable a second one this will result in an error. However, when also having the Mail Template Editor enabled this scenario will lead to the *'General'* settings section for administrators being displayed wrong (https://github.com/owncloud/core/issues/31134). As a remedy administrators can either uninstall the second theme app or disable the Mail Template Editor app.
+- Issues with multiple theme apps and Mail Template Editor
+As of ownCloud Server 10.0.5 it is only possible to have one theme app enabled simultaneously. When a theme app is enabled attempts to enable additional ones will result in an error. When the Mail Template Editor is also enabled, the administrators *"General"* settings section `will be displayed incorrectly <https://github.com/owncloud/core/issues/31134>`_. As a remedy administrators can either uninstall the second theme app or disable the Mail Template Editor app.
 
-- ``occ transfer:ownership`` does not transfer public link shares (https://github.com/owncloud/core/issues/31150).
+- ``occ transfer:ownership`` does not transfer public link shares if they were created by the target user (reshare) (https://github.com/owncloud/core/issues/31150).
 
 For developers
 ~~~~~~~~~~~~~~
