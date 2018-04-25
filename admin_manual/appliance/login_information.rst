@@ -27,8 +27,8 @@ ownCloud's data directory is under the following path:
 
     /var/lib/univention-appcenter/apps/owncloud/data
     
-ownCloud's config directory, containing the config.php:
+ownCloud's config directory, containing config.php:
 
 ::
 
-/var/lib/univention-appcenter/apps/owncloud/conf    
+	/var/lib/univention-appcenter/apps/owncloud/conf    
