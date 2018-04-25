@@ -53,7 +53,6 @@ After you do that, the settings page for the application loads.
 
       ``http(s)://<<Server_Address>>/index.php/settings/personal?sectionid=storage``
 
-
 .. _dropbox_install_step_three_label:
 
 Step Three - Create a Dropbox Share

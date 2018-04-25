@@ -178,8 +178,11 @@ Other Attributes:
   The list is generated automatically from the user object attributes in your LDAP server.
 
 Edit raw filter instead:
-  Clicking on this text toggles the filter mode and you can enter the raw LDAP filter directly.
-  The "**%uid**" placeholder is replaced with the login name entered by the user upon login.
+  Clicking on this text toggles the filter mode and you can enter the raw LDAP
+  filter directly.
+
+  The ``%uid`` placeholder is replaced with the login name entered by the
+  user upon login.
 
   Examples:
 
@@ -370,7 +373,6 @@ Group Search Attributes:
 
 Group Member association:
   The attribute that is used to indicate group memberships, i.e., the attribute used by LDAP groups to refer to their users.
-
   ownCloud detects the value automatically.
   You should only change it if you have a very valid reason and know what you are doing.
 
