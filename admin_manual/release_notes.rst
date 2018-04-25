@@ -35,7 +35,8 @@ One of the usability enhancements of ownCloud Server 10.0.8 is the possibility f
 LDAP-related improvements
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 - When disabling or deleting user accounts in LDAP, the administrator can choose to either *delete* or *disable* respective accounts in ownCloud when executing ``occ user:sync`` (``-m, --missing-account-action=MISSING-ACCOUNT-ACTION``). User accounts that are disabled in ownCloud can now be re-enabled automatically when running ``occ user:sync`` if they are enabled in LDAP. When this behavior is desired administrators just need to add the ``-r, --re-enable`` option to their cron jobs or when manually executing ``occ user:sync``.
-- Furthermore it is now possible to execute ``occ user:sync`` only for *single* (``-u, --uid=UID``) or *seen* (``-s, --seenOnly``) users (users that are present in the database and have logged in at least once). These new options provide more granularity for administrators in terms of managing ``occ user:sync`` performance. Another notable change in behavior of ``occ user:sync`` is that administrators now have to explicitly specify the option ``-c, --showCount`` to display the number of users to be synchronized.
+- Furthermore it is now possible to execute ``occ user:sync`` only for *single* (``-u, --uid=UID``) or *seen* (``-s, --seenOnly``) users (users that are present in the database and have logged in at least once). These new options provide more granularity for administrators in terms of managing ``occ user:sync`` performance. 
+- Another notable change in behavior of ``occ user:sync`` is that administrators now have to explicitly specify the option ``-c, --showCount`` to display the number of users to be synchronized.
 
 New events for audit logging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -55,7 +56,7 @@ With ownCloud 10 the *"File Drop"* feature has been merged with public link perm
 
 New option to exclude apps from integrity check
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-By verifying signature files the *integrity check* ensures that the code running in an ownCloud instance has not been altered by third parties. Naturally this check can only be successful for code that has been obtained from official ownCloud sources. In the case of external modifications (e.g., for theming) the *integrity check* will fail and notify the administrator. For intended modifications within apps these can now be excluded from the *integrity check* by using the *config.php* option ``'integrity.ignore.missing.app.signature' => ['app1', 'app2', 'app3'],``. See *config.sample.php* for more information.
+By verifying signature files the *integrity check* ensures that the code running in an ownCloud instance has not been altered by third parties. Naturally this check can only be successful for code that has been obtained from official ownCloud sources. When providing custom apps (like theme apps) that do not have a signature, the integrity check will fail and notify the administrator. These apps can now be excluded from the *integrity check* by using the *config.php* option ``'integrity.ignore.missing.app.signature' => ['app1', 'app2', 'app3'],``. See *config.sample.php* for more information.
 
 New occ command to modify user details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -75,7 +76,7 @@ For security reasons federated sharing (sharing between different ownCloud insta
 
 Migration related to auth_tokens (app passwords)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-Upgrading to 10.0.8 includes migrations related to *auth_tokens* (*app passwords*). When users create *app passwords* as separate passwords for their clients the upgrade duration will increase depending on user count. Please consider this when planning the upgrade.
+Upgrading to 10.0.8 includes migrations related to *auth_tokens* (*app passwords*). When users have created *app passwords* as separate passwords for their clients the upgrade duration will increase depending on user count. Please consider this when planning the upgrade.
 
 Changed behavior of e-mail autocomplete for public link share dialog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
