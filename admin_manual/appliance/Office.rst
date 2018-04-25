@@ -23,6 +23,7 @@ First you have to get to the Appcenter. Here are the steps to do that:
 1. Connect to your appliance using IP address or domain name.
 
 ::
+
    https://172.16.40.100
    # or
    https://ucs-2341.CompanyName.com
