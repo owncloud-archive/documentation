@@ -98,9 +98,9 @@ Known issues
 ~~~~~~~~~~~~
 
 - Issues with multiple theme apps and Mail Template Editor
-As of ownCloud Server 10.0.5 it is only possible to have one theme app enabled simultaneously. When a theme app is enabled attempts to enable additional ones will result in an error. When the Mail Template Editor is also enabled, the administrators *"General"* settings section `will be displayed incorrectly <https://github.com/owncloud/core/issues/31134>`_. As a remedy administrators can either uninstall the second theme app or disable the Mail Template Editor app.
+As of ownCloud Server 10.0.5 it is only possible to have one theme app enabled simultaneously. When a theme app is enabled and the administrator attempts to enable a second one this will result in an error. However, when also having the Mail Template Editor enabled in this scenario the administrators *"General"* settings section `will be displayed incorrectly <https://github.com/owncloud/core/issues/31134>`_. As a remedy administrators can either uninstall the second theme app or disable the Mail Template Editor app.
 
-- ``occ transfer:ownership`` does not transfer public link shares if they were created by the target user (reshare) (https://github.com/owncloud/core/issues/31150).
+- ``occ transfer:ownership`` `does not transfer public link shares if they were created by the target user (reshare) <https://github.com/owncloud/core/issues/31150>`_.
 
 For developers
 ~~~~~~~~~~~~~~
