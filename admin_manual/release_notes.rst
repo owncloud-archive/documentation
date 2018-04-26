@@ -26,7 +26,7 @@ Dear ownCloud administrator, please find below the changes and known issues in o
 
 PHP 5.6 deprecation
 ~~~~~~~~~~~~~~~~~~~
-PHP 5.6 active support has ended on 19 Jan 2017 and security support will be dropped by the end of 2018 (https://secure.php.net/supported-versions.php). Many libraries used by ownCloud (including the QA-Suite *PHPUnit*) will therefore not be maintained actively anymore which forces ownCloud to drop support in one of the next minor server versions as well. Please make sure to upgrade to PHP 7 as soon as possible. See the `system requirements in the ownCloud documentation <https://doc.owncloud.com/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options>`_.
+PHP 5.6 active support has ended on 19 Jan 2017 and security support `will be dropped by the end of 2018 <https://secure.php.net/supported-versions.php>`_. Many libraries used by ownCloud (including the QA-Suite *PHPUnit*) will therefore not be maintained actively anymore which forces ownCloud to drop support in one of the next minor server versions as well. Please make sure to upgrade to PHP 7 as soon as possible. See the `system requirements in the ownCloud documentation <https://doc.owncloud.com/server/10.0/admin_manual/installation/system_requirements.html#officially-recommended-supported-options>`_.
 
 Personal note for public link mail notification
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -56,7 +56,7 @@ With ownCloud 10 the *"File Drop"* feature has been merged with public link perm
 
 New option to exclude apps from integrity check
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-By verifying signature files the *integrity check* ensures that the code running in an ownCloud instance has not been altered by third parties. Naturally this check can only be successful for code that has been obtained from official ownCloud sources. When providing custom apps (like theme apps) that do not have a signature, the integrity check will fail and notify the administrator. These apps can now be excluded from the *integrity check* by using the *config.php* option ``'integrity.ignore.missing.app.signature' => ['app1', 'app2', 'app3'],``. See *config.sample.php* for more information.
+By verifying signature files the *integrity check* ensures that the code running in an ownCloud instance has not been altered by third parties. Naturally this check can only be successful for code that has been obtained from official ownCloud sources. When providing custom apps (like theme apps) that do not have a signature, the integrity check will fail and notify the administrator. These apps can now be excluded from the *integrity check* by using the *config.php* option ``'integrity.ignore.missing.app.signature' => ['app_id1', 'app_id2', 'app_id3'],``. See *config.sample.php* for more information.
 
 New occ command to modify user details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
