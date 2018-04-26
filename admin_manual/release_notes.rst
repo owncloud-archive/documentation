@@ -82,6 +82,10 @@ Changed behavior of e-mail autocomplete for public link share dialog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 When the *"Sharing"* settings option ``Allow users to send mail notifications for shared files`` for public links is enabled, users can send public links via mail from within the web interface. The behavior of the autocomplete when entering mail addresses in the public link share dialog has been changed. Previously the autocomplete queried for local users, users from federated address books and contacts from CardDAV/Contacts App. As public links are not intended for sharing between ownCloud users (local/federated), those have been removed. Contacts synchronized via CardDAV or created in the Contacts app will still appear as suggestions.
 
+Notifications sent by *occ* can now include links
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The command ``occ:notifications:generate`` can be used to send notifications to individual users or groups. With 10.0.8 it is also capable of including links to such notifications using the ``-l, --link=LINK`` option. Please append ``--help`` for more information. There is also `Announcementcenter <https://marketplace.owncloud.com/apps/announcementcenter>`_ to conduct such tasks from the web interface but it is currently limited to send notifications to all users. For now administrators can use the *occ* command if more granularity is required.
+
 Global option for CORS domains
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For security reasons ownCloud has a *Same-Origin-Policy* that prevents requests to ownCloud resources from other domains than the domain the backend server is hosted on. If ownCloud resources should be accessible from other domains, e.g. for a separate web frontend operated on a different domain, administrators can now globally specify policy exceptions via *CORS (Cross-Origin Resource Sharing)* using ``'cors.allowed-domains'`` in *config.php*. Please check *config.sample.php* for more information.
