@@ -69,8 +69,8 @@ then enter your app name. **Authorized JavaScript Origins** is your root domain,
 for example ``https://example.com``, without a trailing slash. You need two 
 **Authorized Redirect URIs**, and they must be in this form::
 
-  https://example.com/owncloud/index.php/settings/personal
-  https://example.com/owncloud/index.php/settings/admin
+  https://example.com/owncloud/index.php/settings/personal?sectionid=storage
+  https://example.com/owncloud/index.php/settings/admin?sectionid=storage 
   
 Replace ``https://example.com/owncloud/`` with your own ownCloud server URL, 
 then click **Create**.
