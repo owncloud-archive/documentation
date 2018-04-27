@@ -76,11 +76,14 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
   1. Make sure you have configured HTTPS with valid certificates on both servers URLs
   2. `Import SSL certificates <https://doc.owncloud.org/server/latest/admin_manual/configuration/server/import_ssl_cert.html>`_ (or do not offer HTTPS).
 
-- Run the tests:
+- Run a suite of tests:
 
   .. code-block:: console
 
-    bash tests/travis/start_ui_tests.sh
+    bash tests/travis/start_ui_tests.sh --suite webUILogin
+
+The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
+Running all suites in a single run is not supported. You must always specify a suite and/or feature to run.
 
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
 To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
@@ -123,17 +126,6 @@ Because not everyone will have functional IPv6 on their test system yet, tests t
 require IPv6 are tagged ``@skip @ipv6``. To run those tests, follow the section below on running 
 skipped tests and specify ``--tags @ipv6``.
 
-Running UI Tests for One Suite
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-You can run the UI tests for just a single suite by specifying the suite name:
-
-.. code-block:: console
-
-  bash tests/travis/start_ui_tests.sh --suite files
-  
-The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
-
 Running UI Tests for One Feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -156,13 +148,13 @@ With the app installed, run the UI tests for the app by specifying the location 
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml
+  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite default
 
 Run UI the tests for just a single feature of the app by also specifying the feature file:
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --feature apps/files_texteditor/tests/acceptance/features/textfiles.feature
+  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite default --feature apps/files_texteditor/tests/acceptance/features/textfiles.feature
 
 Skipping Tests
 ~~~~~~~~~~~~~~
