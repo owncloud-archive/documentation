@@ -43,7 +43,11 @@ All themes, whether copied or new, must meet two key criteria, these are:
    encourage you to store them in `a custom app directory`_.
 
 .. note:: 
-   When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_. To get rid of the warning you have to remove (or move) ``appinfo/signature.json`` and then trigger a rescan, in the admin page, which you can see in the screenshot below.
+   An example theme is available to base new themes on. 
+   You can find it at https://github.com/owncloud/theme-example.
+   When using the example theme, make sure that you delete ``appinfo/signature.json``. 
+   If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_. 
+   To get rid of the warning you have to remove (or move) ``appinfo/signature.json`` and then trigger a rescan, in the admin page, which you can see in the screenshot below.
    This is slightly complicated by the fact that without the file a warning will be displayed. 
    However, this is to be corrected in the next release, 10.0.3.
    
@@ -139,7 +143,6 @@ Admin image                                                      ``owncloud/sett
 Logout image                                                     ``owncloud/core/img/actions/logout.svg``
 Apps menu - Files image                                          ``owncloud/apps/files/img/app.svg``
 Apps menu - Plus image                                           ``owncloud/settings/img/apps.svg``
-The favicon                                                      ``owncloud/apps/theme-example/core/img/favicon.ico``  
 Upload image                                         Personal    ``owncloud/core/img/actions/upload.svg``
 Folder image                                                     ``owncloud/core/img/filetypes/folder.svg``
 Trash can image                                                  ``owncloud/core/img/actions/delete.svg``
