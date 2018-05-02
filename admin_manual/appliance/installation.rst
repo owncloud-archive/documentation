@@ -6,8 +6,8 @@ The install process is a little involved, but not too much.
 To keep it succinct, you need to:
 
 - :ref:`Download <appliance-download-label>` and :ref:`Install <appliance-install-label>` the appliance 
-- Step through :ref:`the configuration wizard <appliance-start-label>`
 - :ref:`Activate <appliance-activate-label>` the configured appliance 
+- Step through :ref:`the configuration wizard <appliance-download-label>`
 
 .. important:: 
    You need **Internet access** to use the appliance. The appliance has to be activated with a license that you will receive from Univention via email. This license has to be imported in the appliance via the **web interface**.

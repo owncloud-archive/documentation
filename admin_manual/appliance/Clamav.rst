@@ -47,8 +47,7 @@ You next need to configure ClamAV in your ownCloud instance.
 Please refer to :ref:`the ClamAV documentation <configure_clamav_antivirus_scanner_label>` for instructions on how to do that.
 
 .. note::
-
-If you try to update the ClamAV virus database manually, by entering ``freshclam``, and see the error below, it means that `freshclam`_ is already updating the database.
+  If you try to update the ClamAV virus database manually, by entering ``freshclam``, and see the error below, it means that `freshclam`_ is already updating the database.
 
 ::
 

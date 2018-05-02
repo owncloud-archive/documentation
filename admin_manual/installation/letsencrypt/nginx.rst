@@ -6,7 +6,7 @@ The following is an example setup process for NGINX, please adapt it to your exa
 NGINX ssl_dhparam
 -----------------
 
-If not already present, add an `ssl_dhparam`_ directive and a new certificate with stronger keys for Diffie-Hellmann_ based key exchange (which improves `forward secrecy`_).
+If not already present, add an `ssl_dhparam`_ directive and a new certificate with stronger keys for `Diffie-Hellman`_ based key exchange (which improves `forward secrecy`_).
 The OpenSSL command may take a while to complete, so please be patient.
 You can place the certificate into any directory you choose.
 However, in this guide we recommend ``/etc/nginx/``, just for the sake of simplicity.
