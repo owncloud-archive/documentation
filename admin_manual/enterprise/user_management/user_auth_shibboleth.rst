@@ -34,13 +34,10 @@ This is an example configuration as installed and operated on a Linux server
 running the Apache 2.4 Web server. These configurations are highly operating system
 specific and require a high degree of customization.
 
-The ownCloud instance itself is installed in ``/var/www/owncloud/``.  The
-following aliases are defined in an Apache virtual host directive:
+The ownCloud instance itself is installed in ``/var/www/owncloud/``.
+Further Shibboleth specific configuration as defined in ``/etc/apache2/conf.d/shib.conf``.
 
 ::
-
-Further Shibboleth specific configuration as defined in
-``/etc/apache2/conf.d/shib.conf``::
 
 	# Load the Shibboleth module.
 	LoadModule mod_shib /usr/lib64/shibboleth/mod_shib_24.so
@@ -183,7 +180,7 @@ WebDAV Support
 
 Users of standard WebDAV clients can generated an App Password on the
 Personal settings page. Use of App Passwords may be enforced with the
-``token_auth_enforced``option in config.php
+``token_auth_enforced`` option in config.php.
 
 
 Known Limitations

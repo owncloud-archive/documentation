@@ -22,7 +22,7 @@ Excellent introductions to strong SSL security measures can be found here: `Apac
 #. `Create an SSL certificate`_
 #. `Web Server setup`_
 #. `Test the setup`_
-#. `Certificate renewal`_
+#. `Renewing Certificates`_
 
 Requirements & Dependencies
 ---------------------------

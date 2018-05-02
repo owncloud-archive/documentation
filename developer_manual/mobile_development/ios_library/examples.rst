@@ -700,7 +700,7 @@ Code example
 ~~~~~~~~~~~~
 
 
-.. code-block:: objective-c
+::
 
  [[ AppDelegate sharedOCCommunication ] shareFileOrFolderByServer :path andFileOrFolderPath :itemPath onCommunication :[ AppDelegate sharedOCCommunication ]
  successRequest :^( NSHTTPURLResponse *response, NSString *token, NSString *redirectedServer) {

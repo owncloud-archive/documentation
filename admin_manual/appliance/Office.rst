@@ -107,7 +107,7 @@ How to Install Collabora
 Now you can use Collabora within ownCloud.
 Start by creating a new Document.
 
-.. onlyoffice-label:
+.. _onlyoffice-label:
 
 How to Install OnlyOffice
 -------------------------
@@ -161,6 +161,7 @@ After the installation is complete, return to the Appcenter overview
    :alt: Market
 
 - Tools
+
 .. figure:: ../images/appliance/ucs/onlyoffice/016-ucs-onlyoffice-install-owncloud-market-tools.png
    :alt: Tools Category
 

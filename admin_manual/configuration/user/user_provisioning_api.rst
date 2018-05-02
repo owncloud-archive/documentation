@@ -514,7 +514,7 @@ Status Codes
 Example
 ^^^^^^^
 
-.. code-block:: console
+::
 
   # Removes ``Frank's`` sub-admin rights from the ``oldgroup`` group
   curl -X DELETE https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"
