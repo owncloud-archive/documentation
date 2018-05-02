@@ -36,7 +36,7 @@ The first line of defense against such threats is a blacklist that blocks write 
 
 Ransomware Protection ships with `a static extension list`_ of around 1,500 file extensions.
 As new extensions are regularly created, this list also needs to be regularly reviewed and updated.
-Future releases of Ransomware Protection will include an updated list and the ability to update the list via syncing with `FSRM's API`_ by using :doc:`occ <../occ_command>`.
+Future releases of Ransomware Protection will include an updated list and the ability to update the list via syncing with `FSRM's API`_ by using :doc:`occ <../../configuration/server/occ_command>`.
 
 .. important:: 
    Please check the provided ransomware blacklist!

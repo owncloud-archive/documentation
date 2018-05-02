@@ -531,7 +531,7 @@ Set Strong Directory Permissions
 After completing the installation, you must immediately :ref:`set the directory permissions <post_installation_steps_label>` in your ownCloud installation as strictly as possible for stronger security. 
 After you do so, your ownCloud server will be ready to use.
 
-.. _trusted_domains_label: 
+.. _managing_trusted_domains_label:
 
 Managing Trusted Domains
 ------------------------

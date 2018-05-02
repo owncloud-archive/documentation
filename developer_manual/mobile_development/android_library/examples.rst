@@ -75,8 +75,8 @@ of the new folder.
 
 Code example
 ~~~~~~~~~~~~
-                                                      
-.. code-block:: java
+   
+::
 
   private void startFolderCreation(String newFolderPath) {
     CreateRemoteFolderOperation createOperation = new CreateRemoteFolderOperation(newFolderPath, false); 
@@ -104,7 +104,7 @@ array with all the files and folders stored in the selected folder.
 Code example
 ~~~~~~~~~~~~
 
-.. code-block:: java
+::
 
   private void startReadRootFolder() {
     ReadRemoteFolderOperation refreshOperation = new ReadRemoteFolderOperation(FileUtils.PATH_SEPARATOR); 
@@ -133,7 +133,7 @@ Get information related to a certain file or folder, information obtained is:
 Code example
 ~~~~~~~~~~~~
 
-.. code-block:: java
+::
 
   private void startReadFileProperties(String filePath) {
     ReadRemoteFileOperation readOperation = new ReadRemoteFileOperation(filePath);
@@ -160,7 +160,7 @@ folder/file to be deleted.
 Code example
 ~~~~~~~~~~~~
 
-.. code-block:: java
+::
 
   private void startRemoveFile(String filePath) { 
     RemoveRemoteFileOperation removeOperation = new RemoveRemoteFileOperation(remotePath);
@@ -264,8 +264,8 @@ used by a different file or folder. This one will be replaced by the former.
 
 Code example
 ~~~~~~~~~~~~
-                                                      
-.. code-block:: java
+   
+::
 
   private void startFileMove(String filePath, String newFilePath, boolean overwrite) {
     MoveRemoteFileOperation moveOperation = new MoveRemoteFileOperation(filePath, newFilePath, overwrite); 
