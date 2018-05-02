@@ -22,7 +22,7 @@ click  the **Create Project** button.
 
 
 Give your project a name, and either accept the default **Project ID** or 
-create your own, then click the **Create** button. For this example a random name was choosen "owncloud-04-27". Feel free to choose your own name.
+create your own, then click the **Create** button. For this example a random name was chosen, "owncloud-04-27". However, feel free to choose your own name.
 
 .. figure:: images/google_drive/003
    :alt: Choose a name
@@ -48,7 +48,7 @@ Now you must create your credentials.
 .. figure:: images/google_drive/008
    :alt: Create Credentials
 
-First select Web Browser and User data.
+First, select "Web Browser" and "User data".
 
 .. figure:: images/google_drive/009
    :alt: Access type and Data
@@ -71,21 +71,21 @@ You need to configure **Authorized Redirect URIs**, and they must be in this for
   https://example.com/owncloud/index.php/settings/admin?sectionid=storage
   https://example.com/owncloud/index.php/settings/personal?sectionid=storage
 
-If you configuring storage as an Administrator - choose the admin URI, if you are a user and configuring a storage
+If you are configuring storage as an Administrator - choose the admin URI, if you are a user and configuring a storage
 - pick the personal URI.
 
 If you are not sure what your exact URIs are - here is a quick guide to figure it out.
 
 **Authorized JavaScript Origins**
 
-This is just the address you access you ownCloud on, where you see the login screen.
+This is just the address you access your ownCloud server at, where you see the login screen.
 
 .. figure:: images/google_drive/011
    :alt: text
 
 **Authorized Redirect URIs**
 
-If you have not already enabled the google drive storage, here is how you do it:
+If you have not already enabled the Google Drive storage, here is how you do it:
 
 .. figure:: images/google_drive/011
    :alt: Login in ownCloud
@@ -110,9 +110,7 @@ Here is the correct result:
 .. figure:: images/google_drive/017
    :alt: Client ID
 
-Now we have to create a consent screen. This is the information in the screen 
-Google shows you when you connect your new Google app to ownCloud the first 
-time.
+Now we have to create a consent screen. This is the information in the screen Google shows you when you connect your new Google app to ownCloud the first time.
 
 .. figure:: images/google_drive/018
    :alt: Choose a Project Name
@@ -122,15 +120,18 @@ Now you can download the credentials as a JSON file.
 .. figure:: images/google_drive/019
    :alt: Download your Credentials
 
-You can see either open this file with the editor of your choice ( sublime for exampe ) or you can put in in your web browser. This is when you do the later:   
+You can see either open this file with the editor of your choice (SublimeText for example), or you can put in in your web browser. This is when you do the later:   
 
 .. figure:: images/google_drive/020
    :alt: Credentials
 
-Enter the Client ID and Client Secret in the app and press **Grant Access**   
-Now you have everything you need to mount your Google Drive in ownCloud. Your 
-consent page appears when ownCloud makes a successful connection. Click 
-**Allow**.
+Enter the Client ID and Client Secret in the app and press **Grant Access**.
+
+Now you have everything you need to mount your Google Drive in ownCloud. 
+
+Your consent page appears when ownCloud makes a successful connection. 
+
+Click **Allow**.
 
 .. figure:: images/google_drive/021
    :alt: Grant Access
