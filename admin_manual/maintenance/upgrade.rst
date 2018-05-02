@@ -15,6 +15,9 @@ Before beginning an upgrade, please keep the following points in mind:
 - Large installations may take several hours to complete the upgrade.
 - Downgrading **is not supported** as it risks corrupting your data. If you want to revert to an older ownCloud version, make a new, fresh installation and then restore your data from backup. Before doing this, file a support ticket (if you have paid support) or ask for help in the ownCloud forums to resolve your issue without downgrading.
 
+.. warning::
+   3rd Party Apps have to be disabled before the upgrade.
+   
 Prerequisites
 -------------
 
