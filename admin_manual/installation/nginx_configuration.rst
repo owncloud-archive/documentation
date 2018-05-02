@@ -97,8 +97,8 @@ A standard issue with custom NGINX configurations is, that JavaScript (.js) or C
 - This could be caused by an inproper sequence of ``location`` blocks.
 
   The following sequence is correct:
-   
-.. code-block:: nginx
+
+::
 
   location ~ \.php(?:$|/) {
    ...

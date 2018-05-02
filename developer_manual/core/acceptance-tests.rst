@@ -41,7 +41,7 @@ This directory contains ``behat.yml`` which sets up the acceptance tests.
 In this file we can add new contexts and new features.
 Here's an example configuration:
 
-.. code-block:: yaml
+::
 
     default:
       autoload:
@@ -167,7 +167,7 @@ The other parts are preconditions and post-conditions of the test.
 To be able to run your new feature tests you'll have to add a new context to ``config/behat.yml`` file.
 To do so, in the ``contexts`` section add your new context:
 
-.. code-block:: yaml
+::
 
     contexts:
           * TaskToTestContext:

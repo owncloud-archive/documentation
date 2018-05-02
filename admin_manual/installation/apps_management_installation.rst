@@ -94,9 +94,8 @@ Using the example below, both the app's name and directory name would be ``youra
 
 .. literalinclude:: ./examples/appinfo.xml
    :language: xml
-   :emphasize-lines: 100
 
 .. Links
-   
+
 .. _the Marketplace: https://marketplace.owncloud.com
 .. _the application's metadata file: https://doc.owncloud.org/server/latest/developer_manual/app/fundamentals/info.html

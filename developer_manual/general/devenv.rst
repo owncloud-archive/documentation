@@ -34,7 +34,7 @@ While you can go further, you need to install at least the following:
 Install Dependencies on Ubuntu 16.04
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+::
 
   # Ensure that Apt's cache is up to date
   sudo apt-get -y -q update
@@ -45,7 +45,7 @@ Install Dependencies on Ubuntu 16.04
 Install Dependencies on openSUSE Leap 42.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code-block:: console
+::
 
   # Ensure that Zypper's cache is up to date
   sudo zypper --non-interactive --quiet \
@@ -76,7 +76,7 @@ There are two ways to do so:
 
 For the sake of a brief example, assuming you chose to clone from GitHub, here's an example of how to do so:
 
-.. code-block:: console
+::
 
   # Assuming that /var/www/html is the webserver's document root
   git clone https://github.com/owncloud/core.git /var/www/html/core
@@ -93,7 +93,7 @@ You now need to make sure that the web server user (and optionally the web serve
 The following commands assume that ``/var/www`` is the web server's directory and that ``www-data`` is the web server user and group.
 The following commands will do this:
 
-.. code-block:: console
+::
 
   # Set the user and group to the webserver user and group
   sudo chown -R www-data:www-data /var/www/html/core/
@@ -107,13 +107,13 @@ The following commands will do this:
   Likely the easiest are ``grep`` and ``ps``.
   Here's an example of using both (which assumes that the distribution is Ubuntu 16.04).
 
-  .. code-block:: console
-   
-   # Find the user defined in Apache's configuration files
-   grep -r 'APACHE_RUN_USER' /etc/apache2/
-   
-   # Find the user that's running Apache.
-   ps -aux | grep apache2
+  ::
+
+    # Find the user defined in Apache's configuration files
+    grep -r 'APACHE_RUN_USER' /etc/apache2/
+
+    # Find the user that's running Apache.
+    ps -aux | grep apache2
 
    Depending on your distribution, it will likely be one of ``http``, ``www-data``, ``apache``, or ``wwwrun``.
 

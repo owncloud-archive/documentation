@@ -77,8 +77,8 @@ Let’s step through an example, from start to finish, of changing the icon that
 
 2. Update the alias for ``application/json``, which you should find on line 8, to match the following, and save the file:
 
-.. code-block:: json
-   
+::
+
    "application/json": "text/json",
 
 3. Copy a new SVG icon to represent JSON files to ``core/img/filetypes``, calling it ``text-json.svg``.
