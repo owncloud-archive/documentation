@@ -61,7 +61,7 @@ For example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this
 Running ``occ`` with no options lists all commands and options, like this example on Ubuntu::
 
  sudo -u www-data php occ 
- ownCloud version 9.0.0
+ ownCloud version 10.0.8
 
  Usage:
   command [options] [arguments]
@@ -78,14 +78,12 @@ Running ``occ`` with no options lists all commands and options, like this exampl
                         2 for more verbose output and 3 for debug
 
  Available commands:
-  check                 check dependencies of the server 
-                        environment
+  check                 Check dependencies of the server environment
   help                  Displays help for a command
   list                  Lists commands
-  status                show some status information
-  upgrade               run upgrade routines after installation of 
-                        a new release. The release has to be 
-                        installed before.
+  status                Show some status information
+  upgrade               Run upgrade routines after installation of 
+                        a new release. The release has to be installed before
 
 This is the same as ``sudo -u www-data php occ list``.
 Run it with the ``-h`` option for syntax help::
@@ -95,21 +93,23 @@ Run it with the ``-h`` option for syntax help::
 Display your ownCloud version::
 
  sudo -u www-data php occ -V
-   ownCloud version 9.0.0
+   ownCloud version 10.0.8
    
 Query your ownCloud server status::
 
  sudo -u www-data php occ status
    - installed: true
-   - version: 9.0.0.19
-   - versionstring: 9.0.0
-   - edition: 
+   - version: 10.0.8.5
+   - versionstring: 10.0.8
+   - edition: Community
 
 ``occ`` has *options*, *commands*, and *arguments*. 
 Commands are required.
 Options are optional.
 Arguments can be required *or* optional.
-The, generic, syntax is::
+The, generic, syntax is
+
+::
 
  occ [options] command [arguments]
  
@@ -122,8 +122,9 @@ Get detailed information on individual commands with the ``help`` command, like 
   maintenance:mode [options]
 
  Options:
-      --on              enable maintenance mode
-      --off             disable maintenance mode
+      --on              Enable maintenance mode
+      --off             Disable maintenance mode
+      --output[=OUTPUT] Output format (plain, json or json_pretty, default is plain) [default: "plain"]
   -h, --help            Display this help message
   -q, --quiet           Do not output any message
   -V, --version         Display this application version
@@ -135,19 +136,23 @@ Get detailed information on individual commands with the ``help`` command, like 
                         2 for more verbose output and 3 for debug
 
 The ``status`` command from above has an option to define the output format.
-The default is plain text, but it can also be ``json``::
+The default is plain text, but it can also be ``json``
+
+::
 
  sudo -u www-data php occ status --output=json
  {"installed":true,"version":"9.0.0.19","versionstring":"9.0.0","edition":""}
 
-or ``json_pretty``::
+or ``json_pretty``
+
+::
 
  sudo -u www-data php occ status --output=json_pretty
  {
     "installed": true,
-    "version": "9.0.0.19",
-    "versionstring": "9.0.0",
-    "edition": ""
+    "version": "10.0.8.5",
+    "versionstring": "10.0.8",
+    "edition": "Community"
  }
 
 This output option is available on all list and list-like commands, which include ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status`` and ``encryption:list-modules``.
@@ -228,7 +233,7 @@ Background Jobs Selector
 Use the ``background`` command to select which scheduler you want to use for controlling *background jobs*, *Ajax*, *Webcron*, or *Cron*. 
 This is the same as using the **Cron** section on your ownCloud Admin page.
 
-::
+.. code-block:: console
 
  background
   background:ajax       Use ajax to run background jobs
@@ -308,7 +313,7 @@ These commands get the value of a single app or system configuration:
 ::
 
   sudo -u www-data php occ config:system:get version
-  9.0.0.19
+  10.0.8.5
 
   sudo -u www-data php occ config:app:get activity installed_version
   2.2.1
@@ -321,7 +326,7 @@ These commands set the value of a single app or system configuration:
 ::
 
   sudo -u www-data php occ config:system:set logtimezone 
-  --value="Europe/Berlin"
+     --value="Europe/Berlin"
   System config value logtimezone set to Europe/Berlin
 
   sudo -u www-data php occ config:app:set files_sharing 
@@ -334,7 +339,7 @@ To update an existing value,  set ``--update-only``:
 ::
 
   sudo -u www-data php occ config:system:set doesnotexist --value="true" 
-  --type=boolean --update-only
+     --type=boolean --update-only
   Value not updated, as it has not been set before.
 
 Note that in order to write a Boolean, float, or integer value to the configuration file, you need to specify the type on your command. 
@@ -350,7 +355,7 @@ When you want to e.g., disable the maintenance mode run the following command:
 ::
 
   sudo -u www-data php occ config:system:set maintenance --value=false 
-  --type=boolean
+     --type=boolean
   ownCloud is in maintenance mode - no app have been loaded
   System config value maintenance set to boolean false
 
@@ -362,23 +367,17 @@ In order to set (and also get) the value of one key, you can specify multiple ``
 
 ::
 
-  sudo -u www-data php occ config:system:get trusted_domains
-  localhost
-  owncloud.local
-  sample.tld
+  sudo -u www-data php occ config:system:get trusted_domains localhost owncloud.local sample.tld
 
 To replace ``sample.tld`` with ``example.com`` trusted_domains => 2 needs to be set:
 
 ::
 
   sudo -u www-data php occ config:system:set trusted_domains 2 
-  --value=example.com
+     --value=example.com
   System config value trusted_domains => 2 set to string example.com
 
-  sudo -u www-data php occ config:system:get trusted_domains
-  localhost
-  owncloud.local
-  example.com
+  sudo -u www-data php occ config:system:get trusted_domains localhost owncloud.local example.com
 
 Deleting a Single Configuration Value
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -398,10 +397,8 @@ If you want to be notified in that case, set the ``--error-if-not-exists`` flag.
 
 ::
 
-  sudo -u www-data php occ config:system:delete doesnotexist 
-  --error-if-not-exists
-  Config provisioning_api of app appname could not be deleted because it did not 
-  exist
+  sudo -u www-data php occ config:system:delete doesnotexist --error-if-not-exists
+  Config provisioning_api of app appname could not be deleted because it did not exist
   
 .. _dav_label:  
    
@@ -410,15 +407,14 @@ Dav Commands
   
 A set of commands to create address books, calendars, and to migrate address books:
 
-::
+.. code-block:: console
 
  dav
   dav:cleanup-chunks            Cleanup outdated chunks
   dav:create-addressbook        Create a dav address book
   dav:create-calendar           Create a dav calendar
   dav:sync-birthday-calendar    Synchronizes the birthday calendar
-  dav:sync-system-addressbook   Synchronizes users to the system 
-                                address book
+  dav:sync-system-addressbook   Synchronizes users to the system address book
                                       
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
@@ -486,12 +482,11 @@ Database Conversion
 The SQLite database is good for testing, and for ownCloud servers with small single-user workloads that do not use sync clients, but production servers with multiple users should use MariaDB, MySQL, or PostgreSQL. 
 You can use ``occ`` to convert from SQLite to one of these other databases.
 
-::
+.. code-block:: console
 
  db
-  db:convert-type           Convert the ownCloud database to the newly 
-                            configured one
-  db:generate-change-script generates the change script from the current 
+  db:convert-type           Convert the ownCloud database to the newly configured one
+  db:generate-change-script Generates the change script from the current 
                             connected db to db_structure.xml
 
 You need:
@@ -504,8 +499,7 @@ This is example converts SQLite to MySQL/MariaDB:
 
 :: 
 
- sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 
- oc_database
+ sudo -u www-data php occ db:convert-type mysql oc_dbuser 127.0.0.1 oc_database
 
 For a more detailed explanation see :doc:`../../configuration/database/db_conversion`.
 
@@ -516,7 +510,7 @@ Encryption
 
 ``occ`` includes a complete set of commands for managing encryption.
 
-::
+.. code-block:: console
 
  encryption
   encryption:change-key-storage-root  Change key storage root
@@ -588,10 +582,11 @@ See :doc:`../../configuration/files/encryption_configuration` to learn more.
 Federation Sync
 ---------------
 
-Synchronize the address books of all federated ownCloud servers::
+Synchronize the address books of all federated ownCloud servers.
 
- federation:sync-addressbooks  Synchronizes address books of all 
-                               federated clouds
+.. code-block:: console
+
+ federation:sync-addressbooks  Synchronizes address books of all federated clouds
 
 Servers connected with federation shares can share user address books, and auto-complete usernames in share dialogs. 
 Use this command to synchronize federated servers:
@@ -608,15 +603,18 @@ Use this command to synchronize federated servers:
 File Operations
 ---------------
 
-``occ`` has three commands for managing files in ownCloud::
+``occ`` has three commands for managing files in ownCloud.
+
+.. code-block:: console
 
  files
   files:checksums:verify     Get all checksums in filecache and compares them by
                              recalculating the checksum of the file.
   files:cleanup              Deletes orphaned file cache entries.
   files:scan                 Rescans the filesystem.
-  files:transfer-ownership   All files and folders are moved to another 
-                             user - outgoing shares are moved as well (incoming shares are not moved as the sharing user holds the ownership of the respective files).
+  files:transfer-ownership   All files and folders are moved to another user 
+                             - outgoing shares are moved as well (incoming shares are 
+                             not moved as the sharing user holds the ownership of the respective files).
  
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
@@ -634,7 +632,8 @@ Executing the command recalculates checksums, either for all files of a user or 
 It then compares them with the values in the database.
 The command also offers an option to repair incorrect checksum values (``-r, --repair``).
 
-.. note:: Executing this command might take some time depending on the file count.
+.. note:: 
+  Executing this command might take some time depending on the file count.
 
 Below is sample output that you can expect to see when using the command.
 
@@ -673,15 +672,15 @@ File scans can be performed per-user, for a space-delimited list of users, and f
     files:scan [options] [--] [<user_id>]...
 
   Arguments:
-    user_id                will rescan all files of the given user(s)
+    user_id                Will rescan all files of the given user(s)
 
   Options:
         --output[=OUTPUT]  Output format (plain, json or json_pretty, default is plain) [default: "plain"]
-    -p, --path=PATH        limit rescan to this path, eg. --path="/alice/files/Music", the user_id is determined by the path and the user_id parameter and --all are ignored
+    -p, --path=PATH        Limit rescan to this path, eg. --path="/alice/files/Music", the user_id is determined by the path and the user_id parameter and --all are ignored
     -q, --quiet            Do not output any message
-        --all              will rescan all files of all known users
-        --repair           will repair detached filecache entries (slow)
-        --unscanned        only scan files which are marked as not fully scanned
+        --all              Will rescan all files of all known users
+        --repair           Will repair detached filecache entries (slow)
+        --unscanned        Only scan files which are marked as not fully scanned
     -h, --help             Display this help message
     -V, --version          Display this application version
         --ansi             Force ANSI output
@@ -772,7 +771,9 @@ Files External
 These commands replace the ``data/mount.json`` configuration file used in 
 ownCloud releases before 9.0.
 
-Commands for managing external storage::
+Commands for managing external storage.
+
+.. code-block:: console
 
  files_external
   files_external:applicable  Manage applicable users and groups for a mount
@@ -806,15 +807,15 @@ Group names are case-sensitive, so "Finance" and "finance" are two different gro
 
 The full list of commands is:
 
-::
+.. code-block:: console
 
  group
-  group:add                           adds a group
-  group:add-member                    add members to a group
-  group:delete                        deletes the specified group
-  group:list                          list groups
-  group:list-members                  list group members
-  group:remove-member                 remove member(s) from a group
+  group:add                           Adds a group
+  group:add-member                    Add members to a group
+  group:delete                        Deletes the specified group
+  group:list                          List groups
+  group:list-members                  List group members
+  group:remove-member                 Remove member(s) from a group
 
 Creating Groups
 ^^^^^^^^^^^^^^^
@@ -843,16 +844,26 @@ Groups containing the ``search-pattern`` string are listed. Matching is
 not case-sensitive. If you do not provide a search-pattern then all groups 
 are listed.
 
-This example lists groups containing the string finance:: 
+Options:
+
+::
+  
+  --output[=OUTPUT]  Output format (plain, json or json_pretty, default is plain) [default: "plain"]
+
+This example lists groups containing the string "finance".
+
+:: 
  
  sudo -u www-data php occ group:list finance
   - All-Finance-Staff
   - Finance
   - Finance-Managers
 
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+This example lists groups containing the string "finance" formatted with ``json_pretty``.
 
- sudo -u www-data php occ --output=json_pretty group:list finance
+::
+
+ sudo -u www-data php occ group:list --output=json_pretty finance
   [
     "All-Finance-Staff",
     "Finance",
@@ -867,15 +878,25 @@ The syntax is::
 
   group:list-members [options] <group>
 
-This example lists members of the Finance group:: 
+Options:
+
+::
+  
+  --output[=OUTPUT]  Output format (plain, json or json_pretty, default is plain) [default: "plain"]
+
+This example lists members of the "Finance" group.
+
+:: 
  
  sudo -u www-data php occ group:list-members Finance
   - aaron: Aaron Smith
   - julie: Julie Jones
 
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+This example lists members of the Finance group formatted with ``json_pretty``.
 
- sudo -u www-data php occ --output=json_pretty group:list-members Finance
+::
+
+ sudo -u www-data php occ group:list-members --output=json_pretty Finance
   {
     "aaron": "Aaron Smith",
     "julie": "Julie Jones"
@@ -886,7 +907,9 @@ Adding Members to Groups
 
 You can add members to an existing group with the ``group:add-member`` command.
 Members must be existing users. 
-The syntax is::
+The syntax is
+
+::
 
  group:add-member [-m|--member [MEMBER]] <group>
 
@@ -913,7 +936,9 @@ The syntax is::
 
  group:remove-member [-m|--member [MEMBER]] <group>
 
-This example removes members "aaron" and "julie" from group "Finance":: 
+This example removes members "aaron" and "julie" from group "Finance".
+
+:: 
 
  sudo -u www-data php occ group:remove-member --member aaron --member julie Finance
    Member "aaron" removed from group "Finance"
@@ -947,7 +972,7 @@ Apps which have an official tag MUST be code signed.
 Unsigned official apps won't be installable anymore. 
 Code signing is optional for all third-party applications.
 
-::
+.. code-block:: console
 
  integrity
   integrity:check-app                 Check app integrity using a signature.
@@ -959,7 +984,7 @@ After creating your signing key, sign your app like this example:
 
 :: 
  
- sudo -u www-data php occ integrity:sign-app --privateKey=/Users/lukasreschke/contacts.key --certificate=/Users/lukasreschke/CA/contacts.crt --path=/Users/lukasreschke/Programming/contacts
+ sudo -u www-data php occ integrity:sign-app --privateKey=/Users/karlmay/contacts.key --certificate=/Users/karlmay/CA/contacts.crt --path=/Users/karlmay/Programming/contacts
  
 Verify your app:
 
@@ -987,7 +1012,7 @@ This command creates JavaScript and JSON translation files for ownCloud applicat
    file has been updated. It only creates translation files when none are
    present for a given language.
 
-::
+.. code-block:: console
 
  l10n
    l10n:createjs                Create Javascript translation files for a given app
@@ -1049,18 +1074,18 @@ LDAP Commands
 These LDAP commands appear only when you have enabled the LDAP app. 
 Then you can run the following LDAP commands with ``occ``:
 
-::
+.. code-block:: console
 
  ldap
-  ldap:check-user               checks whether a user exists on LDAP.
-  ldap:create-empty-config      creates an empty LDAP configuration
-  ldap:delete-config            deletes an existing LDAP configuration
-  ldap:search                   executes a user or group search
-  ldap:set-config               modifies an LDAP configuration
-  ldap:show-config              shows the LDAP configuration
-  ldap:test-config              tests an LDAP configuration
-  ldap:update-group             update the specified group membership
-                                information stored locally
+  ldap:check-user               Checks whether a user exists on LDAP.
+  ldap:create-empty-config      Creates an empty LDAP configuration
+  ldap:delete-config            Deletes an existing LDAP configuration
+  ldap:search                   Executes a user or group search
+  ldap:set-config               Modifies an LDAP configuration
+  ldap:show-config              Shows the LDAP configuration
+  ldap:test-config              Tests an LDAP configuration
+  ldap:update-group             Update the specified group membership
+                                Information stored locally
 
 Search for an LDAP user, using this syntax:
 
@@ -1238,7 +1263,7 @@ Instead, you need to use the ``config:app:set`` command, as in the following exa
 
 ::
    
-  occ config:app:set user_ldap updateAttributesInterval --value=7200
+  sudo -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=7200
    
 In the example above, the interval is being set to 7200 seconds.
 Assuming the above example was used, the command would output the following:
@@ -1249,9 +1274,9 @@ Assuming the above example was used, the command would output the following:
 
 If you want to reset (or unset) the setting, then you can use the following command:
 
-.. code-block:: console
+::
    
-  occ config:app:delete user_ldap updateAttributesInterval
+  sudo -u www-data php occ config:app:delete user_ldap updateAttributesInterval
 
 .. _logging_commands_label:
 
@@ -1260,11 +1285,11 @@ Logging Commands
 
 These commands view and configure your ownCloud logging preferences.
 
-::
+.. code-block:: console
 
  log
-  log:manage     manage logging configuration
-  log:owncloud   manipulate ownCloud logging backend
+  log:manage     Manage logging configuration
+  log:owncloud   Manipulate ownCloud logging backend
 
 Run ``log:owncloud`` to see your current logging status:
 
@@ -1275,10 +1300,27 @@ Run ``log:owncloud`` to see your current logging status:
  Log file: /opt/owncloud/data/owncloud.log
  Rotate at: disabled
 
+Options for ``log:owncloud``:
+
+::
+
+  --enable                   Enable this logging backend
+  --file=FILE                Set the log file path
+  --rotate-size=ROTATE-SIZE  Set the file size for log rotation, 0 = disabled
+
 Use the ``--enable`` option to turn on logging. Use ``--file`` to set a different log file path. 
 Set your rotation by log file size in bytes with ``--rotate-size``; 0 disables rotation. 
-``log:manage`` sets your logging backend, log level, and timezone. 
+
+Run ``log:manage`` to set your logging backend, log level, and timezone:
+
 The defaults are ``owncloud``, ``Warning``, and ``UTC``. 
+
+Options for ``log:manage``:
+
+::
+
+  --backend=BACKEND    set the logging backend [owncloud, syslog, errorlog]
+  --level=LEVEL        set the log level [debug, info, warning, error, fatal]
 
 Log level can be adjusted by entering the number or the name:
 
@@ -1287,32 +1329,26 @@ Log level can be adjusted by entering the number or the name:
    sudo -u www-data php occ log:manage --level 4
    sudo -u www-data php occ log:manage --level error
 
-You can also choose debug, info, warning, error or fatal.
-
 .. note::
    Setting the log level to debug ( 0 ) can be used for finding the cause of an error, but should not be the standard
    as it increases the log file size.
-
-Available options are:
-
-* --backend [owncloud, syslog, errorlog]
 
 .. _maintenance_commands_label:
    
 Maintenance Commands
 --------------------
 
-Use these commands when you upgrade ownCloud, manage encryption, perform backups and other tasks that require locking users out until you are finished::
+Use these commands when you upgrade ownCloud, manage encryption, perform backups and other tasks that require locking users out until you are finished.
+
+.. code-block:: console
 
  maintenance
-  maintenance:data-fingerprint        update the systems data-fingerprint after 
-                                      a backup is restored
-  maintenance:mimetype:update-db      Update database mimetypes and update 
-                                      filecache
+  maintenance:data-fingerprint        Update the systems data-fingerprint after a backup is restored
+  maintenance:mimetype:update-db      Update database mimetypes and update filecache
   maintenance:mimetype:update-js      Update mimetypelist.js
-  maintenance:mode                    set maintenance mode
-  maintenance:repair                  repair this installation
-  maintenance:singleuser              set single user mode
+  maintenance:mode                    Set maintenance mode
+  maintenance:repair                  Repair this installation
+  maintenance:singleuser              Set single user mode
   maintenance:update:htaccess         Updates the .htaccess file
 
 .. _maintenance_mode_label:
@@ -1423,7 +1459,7 @@ If you want to send notifications to users or groups use the following command.
 
 Options and Arguments:
 
-.. code-block:: console
+::
    
   notifications:generate [-u|--user USER] [-g|--group GROUP] [-l|--link <linktext>] [--] <subject> [<message>]
 
@@ -1489,7 +1525,7 @@ Use these commands when you manage security related tasks
 
 Routes dispays all routes of ownCloud. You can use this information to grant strict access via firewalls, proxies or loadbalancers etc.
 
-::
+.. code-block:: console
 
   security:routes [options]
 
@@ -1504,7 +1540,7 @@ Example 1:
 
 ::
 
-  sudo  -uwww-data ./occ security:routes
+  sudo -uwww-data ./occ security:routes
 
 ::
 
@@ -1555,11 +1591,11 @@ Example 3:
 The following commands manage server-wide SSL certificates. 
 These are useful when you create federation shares with other ownCloud servers that use self-signed certificates.
 
-::
+.. code-block:: console
 
-  security:certificates         list trusted certificates
-  security:certificates:import  import trusted certificate
-  security:certificates:remove  remove trusted certificate
+  security:certificates         List trusted certificates
+  security:certificates:import  Import trusted certificate
+  security:certificates:remove  Remove trusted certificate
 
 This example lists your installed certificates:
 
@@ -1587,17 +1623,16 @@ Ransomware Protection
 Use these commands to help users recover from a Ransomware attack.
 You can find more information about the application :doc:`in the documentation <../../enterprise/ransomware-protection/index>`.
 
-.. note:: Ransomware Protection (which is an Enterprise app) needs to be installed and enabled to be able to use these commands.
+.. note::
+  Ransomware Protection (which is an Enterprise app) needs to be installed and enabled to be able to use these commands.
 
 ::
 
-  occ ransomguard:scan <timestamp> <user>    Report all changes in a user's account, starting from 
-                                             timestamp.
-  occ ransomguard:restore <timestamp> <user> Revert all operations in a user account after a point in time.
-  occ ransomguard:lock <user>                Set a user account as read-only for ownCloud and other WebDAV 
-                                             clients when malicious activity is suspected.
-  occ ransomguard:unlock <user>              Unlock a user account after ransomware issues have been 
-                                             resolved.
+  occ ransomguard:scan <timestamp> <user>     Report all changes in a user's account, starting from timestamp.
+  occ ransomguard:restore <timestamp> <user>  Revert all operations in a user account after a point in time.
+  occ ransomguard:lock <user>                 Set a user account as read-only for ownCloud and other WebDAV 
+                                              clients when malicious activity is suspected.
+  occ ransomguard:unlock <user>               Unlock a user account after ransomware issues have been resolved.
 
 .. _sharing_commands_label:
 
@@ -1633,7 +1668,9 @@ Shibboleth Modes (Enterprise Edition only)
 ------------------------------------------
 
 ``shibboleth:mode`` sets your Shibboleth mode to ``notactive``, 
-``autoprovision``, or ``ssoonly``::
+``autoprovision``, or ``ssoonly``
+
+.. code-block:: console
 
  shibboleth:mode [mode]
 
@@ -1650,8 +1687,8 @@ Trashbin
   These commands are only available when the "Deleted files" app
   (``files_trashbin``) is enabled.
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
- 
-::
+
+.. code-block:: console
 
  trashbin
   trashbin:cleanup   Remove deleted files
@@ -1692,7 +1729,7 @@ This includes: creating and removing users, resetting user passwords, displaying
 
 The full list, of commands is:
 
-::
+.. code-block:: console
 
  user
   user:add                            Adds a user
@@ -1779,8 +1816,7 @@ You may also use ``password-from-env`` to reset passwords:
 ::
 
  export OC_PASS=newpassword
- su -s /bin/sh www-data -c 'php occ user:resetpassword --password-from-env 
-   layla'
+ sudo -u www-data php occ user:resetpassword --password-from-env layla
    Successfully reset password for layla
    
 Deleting A User
@@ -1797,7 +1833,9 @@ Listing Users
 ^^^^^^^^^^^^^
 
 You can list existing users with the ``user:list`` command.
-The syntax is::
+The syntax is
+
+.. code-block:: console
 
   user:list [options] [<search-pattern>]
 
@@ -1805,25 +1843,54 @@ User IDs containing the ``search-pattern`` string are listed. Matching is
 not case-sensitive. If you do not provide a search-pattern then all users 
 are listed.
 
-This example lists user IDs containing the string ron:: 
+Options:
+
+::
+
+  --output[=OUTPUT]	         Output format (plain, json or json-pretty, default is plain)
+  -a, --attributes[=ATTRIBUTES]  Adds more details to the output
+
+Allowed attributes, multiple values possible
+
+::
+
+  uid, displayName, email, quota, enabled, lastLogin, home, 
+  backend, cloudId, searchTerms [default: ["displayName"]]
+
+This example lists user IDs containing the string "aron"
+
+:: 
  
  sudo -u www-data php occ user:list ron
   - aaron: Aaron Smith
 
-The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
+The output can be formatted in JSON with the output option ``json`` or ``json_pretty``.
 
- sudo -u www-data php occ --output=json_pretty user:list
+::
+
+ sudo -u www-data php occ user:list --output=json_pretty 
   {
     "aaron": "Aaron Smith",
     "herbert": "Herbert Smith",
     "julie": "Julie Jones"
   }
 
+This example lists all users including the attribute "enabled".
+
+:: 
+ 
+ sudo -u www-data php occ user:list -a enabled
+  - admin: true
+  - foo: true
+
+
 Listing Group Membership of a User
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can list the group membership of a user with the ``user:list-groups`` command.
-The syntax is::
+The syntax is
+
+.. code-block:: console
 
   user:list-groups [options] <uid>
 
@@ -1835,7 +1902,7 @@ This example lists group membership of user julie::
 
 The output can be formatted in JSON with the output option ``json`` or ``json_pretty``::
 
- sudo -u www-data php occ --output=json_pretty user:list-groups julie
+ sudo -u www-data php occ user:list-groups --output=json_pretty julie
   [
     "Executive",
     "Finance"
@@ -1864,16 +1931,19 @@ This command provides the ability to:
 
 If you run the command and pass the help switch (``--help``), you will see the following output, in your terminal:
 
-::
+.. code-block:: console
 
-  $ ./occ user:setting --help
   Usage:
     user:setting [options] [--] <uid> [<app>] [<key>]
 
   Arguments:
-    uid                                User ID used to login
-    app                                Restrict the settings to a given app [default: ""]
-    key                                Setting key to set, get or delete [default: ""]
+    uid    User ID used to login
+    app    Restrict the settings to a given app [default: ""]
+    key    Setting key to set, get or delete [default: ""]
+
+::
+
+  sudo -u www-data php occ user:setting --help
 
 If you're new to the ``user:setting`` command, the descriptions for the ``app`` and ``key`` arguments may not be completely transparent. 
 So, here's a lengthier description of both.
@@ -1958,14 +2028,14 @@ Modify user details
 
 This command modifies either the users username or email address.
 
-::
+.. code-block:: console
 
   user:modify [options] [--] <uid> <key> <value>
   
   Arguments:
-    uid                    User ID used to login
-    key                    Key to be changed. Valid keys are: displayname, email
-    value                  The new value of the key
+    uid      User ID used to login
+    key      Key to be changed. Valid keys are: displayname, email
+    value    The new value of the key
   
 All three arguments are mandatory and can not be empty.
 
@@ -2051,7 +2121,7 @@ Here is an example for syncing with LDAP four times a day on Ubuntu:
 Versions
 --------
 
-::
+.. code-block:: console
 
  versions
   versions:cleanup   Delete versions
@@ -2102,9 +2172,9 @@ This lists your available options:
 
 ::
 
- sudo -u www-data php /var/www/owncloud/occ
+ sudo -u www-data php occ
  ownCloud is not installed - only a limited number of commands are available
- ownCloud version 9.0.0
+ ownCloud version 10.0.8
 
  Usage:
   [options] command [arguments]
@@ -2112,30 +2182,35 @@ This lists your available options:
  Options:
   --help (-h)           Display this help message
   --quiet (-q)          Do not output any message
-  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal 
-  output,  2 for more verbose output and 3 for debug
+  --verbose (-v|vv|vvv) Increase the verbosity of messages: 1 for normal output,
+                        2 for more verbose output and 3 for debug
   --version (-V)        Display this application version
   --ansi                Force ANSI output
   --no-ansi             Disable ANSI output
   --no-interaction (-n) Do not ask any interactive question
 
  Available commands:
-  check                 check dependencies of the server environment
+  check                 Check dependencies of the server environment
   help                  Displays help for a command
   list                  Lists commands
-  status                show some status information
+  status                Show some status information
   app
-  app:check-code        check code to be compliant
+   app:check-code       Check code to be compliant
   l10n
-  l10n:createjs         Create javascript translation files for a given app
+   l10n:createjs        Create javascript translation files for a given app
   maintenance
-  maintenance:install   install ownCloud
+   maintenance:install  Install ownCloud
   
-Display your ``maintenance:install`` options::
+Display your ``maintenance:install`` options
+
+::
 
  sudo -u www-data php occ help maintenance:install
  ownCloud is not installed - only a limited number of commands are available
  Usage:
+
+.. code-block:: console
+
   maintenance:install [--database="..."] [--database-name="..."] 
  [--database-host="..."] [--database-user="..."] [--database-pass[="..."]] 
  [--database-table-prefix[="..."]] [--admin-user="..."] [--admin-pass="..."] 
@@ -2150,12 +2225,11 @@ Display your ``maintenance:install`` options::
   --database-table-prefix  Prefix for all tables (default: oc_)
   --admin-user             User name of the admin account (default: "admin")
   --admin-pass             Password of the admin account
-  --data-dir               Path to data directory (default: 
-                           "/var/www/owncloud/data")
+  --data-dir               Path to data directory (default: "/var/www/owncloud/data")
   --help (-h)              Display this help message
   --quiet (-q)             Do not output any message
-  --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal 
-   output, 2 for more verbose output and 3 for debug
+  --verbose (-v|vv|vvv)    Increase the verbosity of messages: 1 for normal output,
+                           2 for more verbose output and 3 for debug
   --version (-V)           Display this application version
   --ansi                   Force ANSI output
   --no-ansi                Disable ANSI output
@@ -2193,10 +2267,13 @@ List all options, like this example on CentOS Linux:
 
  sudo -u www-data php occ upgrade -h
  Usage:
+
+.. code-block:: console
+
   upgrade [options]
 
  Options:
-      --no-app-disable  skips the disable of third party apps
+      --no-app-disable  Skips the disable of third party apps
   -h, --help            Display this help message
   -q, --quiet           Do not output any message
   -V, --version         Display this application version
@@ -2239,13 +2316,13 @@ Enabling verbosity displays timestamps:
 
  sudo -u www-data php occ upgrade -v
  ownCloud or one of the apps require upgrade - only a limited number of commands are available
- 2015-06-23T09:06:15+0000 Turned on maintenance mode
- 2015-06-23T09:06:15+0000 Checked database schema update
- 2015-06-23T09:06:15+0000 Checked database schema update for apps
- 2015-06-23T09:06:15+0000 Updated database
- 2015-06-23T09:06:15+0000 Updated <files_sharing> to 0.6.6
- 2015-06-23T09:06:15+0000 Update successful
- 2015-06-23T09:06:15+0000 Turned off maintenance mode
+ 2017-06-23T09:06:15+0000 Turned on maintenance mode
+ 2017-06-23T09:06:15+0000 Checked database schema update
+ 2017-06-23T09:06:15+0000 Checked database schema update for apps
+ 2017-06-23T09:06:15+0000 Updated database
+ 2017-06-23T09:06:15+0000 Updated <files_sharing> to 0.6.6
+ 2017-06-23T09:06:15+0000 Update successful
+ 2017-06-23T09:06:15+0000 Turned off maintenance mode
 
 If there is an error it throws an exception, and the error is detailed in your ownCloud logfile, so you can use the log output to figure out what went wrong, or to use in a bug report.
 
@@ -2305,13 +2382,20 @@ Finding Inactive Users
 To view a list of users who've not logged in for a given number of days, use the ``user:inactive`` command
 The example below searches for users inactive for five days, or more.
 
-.. code-block:: console
+::
    
    sudo -u www-data php occ user:inactive 5 
    
+
+Options
+
+::
+
+  --output[=OUTPUT] Output format (plain, json or json_pretty, default is plain) [default: "plain"]
+
 By default, this will generate output in the following format:
 
-.. code-block:: console
+::
    
    - 0:
      - uid: admin
@@ -2320,20 +2404,14 @@ By default, this will generate output in the following format:
 
 You can see the user's user id, display name, and the number of days they've been inactive.
 If you're passing or piping this information to another application for further processing, you can also use the ``--output`` switch to change its format. 
-The switch supports three options, these are:
 
-======= =========================================================================
-Setting Description
-======= =========================================================================
-plain   This is the default format.
-json    This will render the output as a JSON-encoded, but not formatted, string.
-======= =========================================================================
+Using the output option ``json`` will render the output formatted as follows.
 
 .. code-block:: json
 
    [{"uid":"admin","displayName":"admin","inactiveSinceDays":5}]
 
-- **json_pretty:** This will render the output as a JSON-encoded string, formatted for ease of readability.
+Using the output option ``json_pretty`` will render the output formatted as follows.
 
 .. code-block:: json
 
