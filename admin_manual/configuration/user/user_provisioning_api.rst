@@ -37,6 +37,7 @@ Argument Type   Description
 ======== ====== ======================================
 userid   string The required username for the new user
 password string The required password for the new user
+groups   array  Groups to add the user to [optional]
 ======== ====== ======================================
 
 Status Codes
@@ -46,6 +47,7 @@ Status Codes
 * 101 - invalid input data
 * 102 - username already exists
 * 103 - unknown error occurred whilst adding the user
+* 104 - group does not exist
 
 Example
 ^^^^^^^
@@ -56,6 +58,12 @@ Example
   curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \
      -d userid="Frank" \
      -d password="frankspassword"
+
+  # Creates the user ``Frank`` with password ``frankspassword`` and adds him to the ``finance`` and ``management``groups
+  curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \
+     -d userid="Frank" \
+     -d password="frankspassword" \
+     -d groups[]="finance" -d groups[]="management"
 
 XML Output
 ^^^^^^^^^^
