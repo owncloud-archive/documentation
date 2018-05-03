@@ -45,14 +45,6 @@ All themes, whether copied or new, must meet two key criteria, these are:
 .. note:: 
    An example theme is available to base new themes on. 
    You can find it at https://github.com/owncloud/theme-example.
-   When using the example theme, make sure that you delete ``appinfo/signature.json``. 
-   If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_. 
-   To get rid of the warning you have to remove (or move) ``appinfo/signature.json`` and then trigger a rescan, in the admin page, which you can see in the screenshot below.
-   This is slightly complicated by the fact that without the file a warning will be displayed. 
-   However, this is to be corrected in the next release, 10.0.3.
-   
-   .. figure:: ../images/core/theming/code-integrity-warning-rescan.png
-      :alt: Code integrity warning rescan.
 
 .. note::
    You only need to sign your theme if you are going to publish it as an app in `the marketplace`_. 
