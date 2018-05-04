@@ -19,8 +19,8 @@ Only a few settings are required, these are:
 ================== ============================== =============
 Setting Name       Description                    Example
 ================== ============================== =============
-``VERSION``        The ownCloud version           ``latest``
-``DOMAIN``         The ownCloud domain            ``localhost``
+``OWNCLOUD_VERSION``        The ownCloud version           ``latest``
+``OWNCLOUD_DOMAIN``         The ownCloud domain            ``localhost``
 ``ADMIN_USERNAME`` The admin username             ``admin``
 ``ADMIN_PASSWORD`` The admin user's password      ``admin``
 ``HTTP_PORT``      The HTTP port to bind to       ``80``
@@ -45,8 +45,8 @@ The example below shows how to use `Docker Compose <https://docs.docker.com/comp
 
    # Create the environment configuration file
    cat << EOF > .env
-   VERSION=10.0.4
-   DOMAIN=localhost
+   OWNCLOUD_VERSION=latest
+   OWNCLOUD_DOMAIN=localhost
    ADMIN_USERNAME=admin
    ADMIN_PASSWORD=admin
    HTTP_PORT=80
