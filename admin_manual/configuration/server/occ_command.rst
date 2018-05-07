@@ -194,8 +194,11 @@ Disable an app
  sudo -u www-data php occ app:disable market
  market disabled
 
-``app:check-code`` has multiple checks: it checks if an app uses ownCloud's public API (``OCP``) or private API (``OC_``), and it also checks for deprecated methods and the validity of the ``info.xml`` file. 
-By default all checks are enabled. 
+.. note::
+   Be aware that the following apps cannot be disabled: *DAV*, *FederatedFileSharing*, *Files* and *Files_External*.
+
+``app:check-code`` has multiple checks: it checks if an app uses ownCloud's public API (``OCP``) or private API (``OC_``), and it also checks for deprecated methods and the validity of the ``info.xml`` file.
+By default all checks are enabled.
 The Activity app is an example of a correctly-formatted app
 
 ::
