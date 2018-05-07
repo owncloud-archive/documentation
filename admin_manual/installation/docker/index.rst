@@ -16,16 +16,16 @@ To use it, first create a new project directory and download ``docker-compose.ym
 Next, create a `.env` configuration file, which contains the required configuration settings.
 Only a few settings are required, these are:
 
-================== ============================== =============
-Setting Name       Description                    Example
-================== ============================== =============
-``VERSION``        The ownCloud version           ``latest``
-``DOMAIN``         The ownCloud domain            ``localhost``
-``ADMIN_USERNAME`` The admin username             ``admin``
-``ADMIN_PASSWORD`` The admin user's password      ``admin``
-``HTTP_PORT``      The HTTP port to bind to       ``80``
-``HTTPS_PORT``     The HTTP port to bind to       ``443``
-================== ============================== =============
+==================== ============================== =============
+Setting Name         Description                    Example
+==================== ============================== =============
+``OWNCLOUD_VERSION`` The ownCloud version           ``latest``
+``OWNCLOUD_DOMAIN``  The ownCloud domain            ``localhost``
+``ADMIN_USERNAME``   The admin username             ``admin``
+``ADMIN_PASSWORD``   The admin user's password      ``admin``
+``HTTP_PORT``        The HTTP port to bind to       ``80``
+``HTTPS_PORT``       The HTTP port to bind to       ``443``
+==================== ============================== =============
 
 Then, you can start the container, using your preferred Docker command-line tool.
 The example below shows how to use `Docker Compose <https://docs.docker.com/compose/>`_.
@@ -45,8 +45,8 @@ The example below shows how to use `Docker Compose <https://docs.docker.com/comp
 
    # Create the environment configuration file
    cat << EOF > .env
-   VERSION=10.0.4
-   DOMAIN=localhost
+   OWNCLOUD_VERSION=10.0
+   OWNCLOUD_DOMAIN=localhost
    ADMIN_USERNAME=admin
    ADMIN_PASSWORD=admin
    HTTP_PORT=80
@@ -101,9 +101,9 @@ Alternatively, use ``docker-compose down`` to stop and remove containers, along 
 Upgrading ownCloud on Docker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When a new version of ownCloud gets released, you should update your instance. 
+When a new version of ownCloud gets released, you should update your instance.
 To do so, follow these simple steps.
- 
+
 First, go to your docker directory where your ``.yaml`` or ``.env`` file exists.
 Second, put ownCloud into maintenance mode; you can do so using the following command:
 
@@ -111,15 +111,15 @@ Second, put ownCloud into maintenance mode; you can do so using the following co
 
     docker-compose exec server occ maintenance:mode --on
 
-Third, create a backup in case something goes wrong during the upgrade process, using the following command: 
+Third, create a backup in case something goes wrong during the upgrade process, using the following command:
 
-:: 
+::
 
     docker-compose exec db backup
-    
 
-.. note:: 
-   This assumes that you are using `the default database container from Webhippie`_. 
+
+.. note::
+   This assumes that you are using `the default database container from Webhippie`_.
 
 Fifth, shutdown the containers.
 
@@ -132,7 +132,7 @@ Sixth, update the version number of ownCloud in your ``.env`` file or the YAML f
 ::
 
     # Make sure that you adjust the example to match your installation.
-    sed -i 's/^owncloud_version=.*$/owncloud_version=<newVersion>/' /compose/*/.env
+    sed -i 's/^OWNCLOUD_VERSION=.*$/OWNCLOUD_VERSION=<newVersion>/' /compose/*/.env
 
 Seventh, view the file to ensure the changes has been implemented.
 
@@ -150,5 +150,5 @@ Now you should have the current ownCloud running with docker-compose.
 
 
 .. Links
-   
-.. _the default database container from Webhippie: https://hub.docker.com/r/webhippie/mariadb/ 
+
+.. _the default database container from Webhippie: https://hub.docker.com/r/webhippie/mariadb/
