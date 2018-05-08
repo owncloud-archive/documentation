@@ -15,7 +15,7 @@ Viewing Enabled Apps
 During the ownCloud installation, some apps are installed and enabled by default, and some are able to be installed and enabled later on. 
 To see the status of your installation's applications, go to your Apps page.
 
-.. figure:: ../images/oc_admin_app_page.png
+.. figure:: ../images/oc_admin_apps.png
    :alt: Apps page for enabling and disabling apps.
 
 There, you will see which apps are currently: *enabled*, *not enabled*, and *recommended*. 
