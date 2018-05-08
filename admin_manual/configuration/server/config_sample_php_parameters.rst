@@ -197,7 +197,7 @@ values, where present, are shown.
 
 ::
 
-	'default_language' => 'en',
+	'default_language' => 'en_GB',
 
 This sets the default language on your ownCloud server, using ISO_639-1
 language codes such as ``en`` for English, ``de`` for German, and ``fr`` for
