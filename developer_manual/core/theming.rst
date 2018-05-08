@@ -30,7 +30,7 @@ How to Create a New Theme
 
 At its most basic, to create a theme requires two steps:
 
-#. Copy and extend an existing theme or create one from scratch.
+#. Copy and extend `an existing theme`_ or create one from scratch.
 #. Enable the theme in the ownCloud Admin dashboard.
 
 All themes, whether copied or new, must meet two key criteria, these are:
@@ -41,18 +41,6 @@ All themes, whether copied or new, must meet two key criteria, these are:
 .. note:: 
    To ensure that custom themes aren’t lost during upgrades, we strongly
    encourage you to store them in `a custom app directory`_.
-
-.. note:: 
-   When copying the example theme supplied with ownCloud in ``apps/theme-example``, make sure that you delete ``appinfo/signature.json``. If you don’t, when you make changes, an integrity warning will be triggered, as the original theme is `signed`_. To get rid of the warning you have to remove (or move) ``appinfo/signature.json`` and then trigger a rescan, in the admin page, which you can see in the screenshot below.
-   This is slightly complicated by the fact that without the file a warning will be displayed. 
-   However, this is to be corrected in the next release, 10.0.3.
-   
-   .. figure:: ../images/core/theming/code-integrity-warning-rescan.png
-      :alt: Code integrity warning rescan.
-
-.. note::
-   You only need to sign your theme if you are going to publish it as an app in `the marketplace`_. 
-   If you are only creating a private theme for your own ownCloud installation, then you can get rid of the signature file.
 
 appinfo/info.xml
 ~~~~~~~~~~~~~~~~
@@ -103,6 +91,21 @@ The dependencies element needs to be present to set the minimum and maximum vers
 While the remaining elements are optional, they help when working with the theme in the ownCloud Admin dashboard. 
 Please consider filling out as many as possible, as completely as possible.
 
+Theme Signing
+~~~~~~~~~~~~~
+
+If you are going to publish the theme as an app in `the marketplace`_, you need to sign it.
+However, if you are only creating a private theme for your own ownCloud installation, then you do not need to.
+
+That said, to avoid a signature warning in the ownCloud UI, you need to add it to the ``integrity.ignore.missing.app.signature`` list in ``config/config.php``.
+The following example allows the app whose application id is ``app-id`` to have no signature.
+
+::
+
+  'integrity.ignore.missing.app.signature' => [
+        'app-id',
+   ],
+
 How to Override Images
 ----------------------
 
@@ -139,7 +142,6 @@ Admin image                                                      ``owncloud/sett
 Logout image                                                     ``owncloud/core/img/actions/logout.svg``
 Apps menu - Files image                                          ``owncloud/apps/files/img/app.svg``
 Apps menu - Plus image                                           ``owncloud/settings/img/apps.svg``
-The favicon                                                      ``owncloud/apps/theme-example/core/img/favicon.ico``  
 Upload image                                         Personal    ``owncloud/core/img/actions/upload.svg``
 Folder image                                                     ``owncloud/core/img/filetypes/folder.svg``
 Trash can image                                                  ``owncloud/core/img/actions/delete.svg``
@@ -362,3 +364,4 @@ If you think a new section should be added to core however, please create a PR w
 .. _signed: /app/advanced/code_signing.html?highlight=sign
 .. _the marketplace: https://marketplace.owncloud.com
 .. _a custom app directory: https://doc.owncloud.org/server/latest/admin_manual/installation/apps_management_installation.html#using-custom-app-directories
+.. _an existing theme: https://github.com/owncloud/theme-example
