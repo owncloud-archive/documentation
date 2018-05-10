@@ -187,6 +187,7 @@ Before you can do so, you need to meet a few prerequisites available; these are
 - Composer 
 - MySQL
 
+In ``php.ini`` on your system, set ``opcache.revalidate_freq=0`` so that changes made to ownCloud ``config.php`` by test scenarios are implemented immediately.
 
 After cloning core, run ``make`` as your webserver's user in the root directory of the project.
 
