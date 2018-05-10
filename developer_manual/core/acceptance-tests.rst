@@ -11,28 +11,19 @@ This is the structure of acceptance directory inside `the core repository's`_ ``
 
     tests
     ├── acceptance
-    │   ├── composer.json
-    │   ├── composer.lock
     │   ├── config
     │   │   └── behat.yml
     │   ├── data
     │   │   └── textfile.txt
     │   ├── features
-    │   │   ├── feature files (behat gherkin files)
+    │   │   ├── apiMain (suite of acceptance test features)
+    │   │   │   └── feature files for the suite (behat gherkin files)
     │   │   └── bootstrap
     │   │       └── Contexts and traits (php files)
-    │   ├── federation_features
-    │   │   └── federated.feature (feature on a separated context)
     │   ├── run.sh
-    │   ├── skeleton
-    │   ├── vendor
+    │   └── skeleton
 
 Here’s a short description of each component of the directory.
-
-``composer.json`` and ``composer.lock``
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-These files store the required dependencies for the acceptance tests. This can include libraries such as sabredav, guzzle, or behat.
 
 ``config/``
 ~~~~~~~~~~~
@@ -47,18 +38,19 @@ Here's an example configuration:
       autoload:
         '': %paths.base%/../features/bootstrap
       suites:
-        default:
+        apiMain:
           paths:
-            + %paths.base%/../features
+            - %paths.base%/../features/apiMain
           contexts:
-            + FeatureContext:
-                baseUrl:  http://localhost:8080/ocs/
-                admin:
-                  + admin
-                  + admin
-                regular_user_password: 123456
-            + CommentsContext:
-                baseUrl: http://localhost:8080
+            - FeatureContext: &common_feature_context_params
+                baseUrl:  http://localhost:8080
+                adminUsername: admin
+                adminPassword: admin
+                regularUserPassword: 123456
+                ocPath: ../../
+            - CardDavContext:
+            - CalDavContext:
+            - AppManagementContext:
 
 ``data/``
 ~~~~~~~~~
@@ -70,19 +62,20 @@ This folder can be used in tests to store temporary data.
 
 This directory stores `Behat's feature files`_. 
 These contain Behat's test cases, called scenarios, which use the Gherkin language.
+Features are grouped into suites. The features for a suite are stored in a folder like ``features/apiMain``.
 
-``feature/bootstrap``
+``features/bootstrap``
 ~~~~~~~~~~~~~~~~~~~~~
 
 This folder contains all the Behat contexts. 
 Contexts contain the PHP code required to run Behat's scenarios. 
-Every feature file has to have at least one context associated with it. 
+The contexts needed by each suite are listed in ``behat.yml``.
 
 ``run.sh``
 ~~~~~~~~~~
   
 This script runs the tests suites. 
-To use it we need to use the web server user, which is normally ``www-data`` or ``apache``.
+To use it we need to run it as the web server user, which is normally ``www-data`` or ``apache``.
 
 ``skeleton/``
 ~~~~~~~~~~~~~
@@ -136,10 +129,10 @@ Here’s example code for a scenario:
   public function exampleFunction($method, $url) {
 
 
-Following this, add a new feature file to ``features/`` folder. 
+Following this, add a new feature file to the ``features/`` folder.
 The name should be in the format: ``<task-to-test>.feature``.
 The content of this file should be Gherkin code. 
-You can use all the sentences available in the rest of core contexts, just use the appropriate trait in your context. 
+You can use all the sentences available in the rest of the core contexts, just use the appropriate trait in your context.
 
 For example "use Webdav;" for using WebDAV related functions.
 Lets show an example of a feature file with scenarios:
