@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 
-* ROOT
+* Admin Manual
 *** Appliance
 **** Ucs
 ***** xref:appliance/ucs/add-groups-and-users.adoc[Add groups and users]
