@@ -125,7 +125,7 @@ First, you must enable this, and then select an encryption module to
 load. Go to the *Server-side encryption* section of your Admin page and
 check *Enable encryption*.
 
-image:/owncloud-docs/_images/encryption3.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption3.png[image]
 
 After clicking *Enable encryption*, you will see the message ``__No
 encryption module loaded, please load an encryption module in the app

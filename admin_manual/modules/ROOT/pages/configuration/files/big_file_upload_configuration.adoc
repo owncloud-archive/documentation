@@ -183,12 +183,12 @@ If all prerequisites described in this documentation are in place an
 admin can change the upload limits on demand by using the
 `File handling` input box within the administrative backend of ownCloud.
 
-image:/owncloud-docs/_images/admin_filehandling-1.png[image]
+image:/owncloud-docs/_images/configuration/files/admin_filehandling-1.png[image]
 
 Depending on your environment you might get an insufficient permissions
 message shown for this input box.
 
-image:/owncloud-docs/_images/admin_filehandling-2.png[image]
+image:/owncloud-docs/_images/configuration/files/admin_filehandling-2.png[image]
 
 To be able to use this input box you need to make sure that:
 
