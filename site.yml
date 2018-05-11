@@ -2,8 +2,8 @@ site:
   title: ownCloud Documentation
 content:
   sources:
-  - url: ./admin_manual
-    branches: master
+  - url: ./
+    branches: create-antora-build
 ui:
   bundle: ./ui-bundle.zip
   output_dir: owncloud-docs

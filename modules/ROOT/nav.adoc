@@ -41,7 +41,7 @@
 ***** xref:configuration/files/federated_cloud_sharing_configuration.adoc[Federated Cloud Sharing Configuration]
 ***** xref:configuration/files/file_sharing_configuration.adoc[File Sharing Configuration]
 ***** xref:configuration/files/file_versioning.adoc[File Versioning]
-***** xref:configuration/files/files_locking_transactional.adoc[Files LOCking Transactional]
+***** xref:configuration/files/files_locking_transactional.adoc[Files Locking Transactional]
 ***** xref:configuration/files/index.adoc[Index]
 ***** xref:configuration/files/previews_configuration.adoc[Previews Configuration]
 ***** xref:configuration/files/trashbin_options.adoc[Trashbin Options]
