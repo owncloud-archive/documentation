@@ -297,7 +297,7 @@ Function Arguments
    - Files will only ever have the **read** permission set
    - Folders will have **read**, **update**, **create**, and **delete** set
    - Public link shares **cannot** be shared with users and groups
-   - Public link shares are not available if public link sharing is enabled by the administrator
+   - Public link shares are not available if public link sharing is disabled by the administrator
 
 .. note:: **Mandatory Fields**
 
