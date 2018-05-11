@@ -2,7 +2,7 @@
 
 * Admin Manual
 *** Appliance
-**** Ucs
+**** UCS
 ***** xref:appliance/ucs/add-groups-and-users.adoc[Add groups and users]
 **** xref:appliance/Active_Directory.adoc[Active Directory]
 **** xref:appliance/Backup.adoc[Backup]
@@ -45,7 +45,7 @@
 ***** xref:configuration/files/index.adoc[Index]
 ***** xref:configuration/files/previews_configuration.adoc[Previews Configuration]
 ***** xref:configuration/files/trashbin_options.adoc[Trashbin Options]
-**** Ldap
+**** LDAP
 ***** xref:configuration/ldap/ldap_proxy_cache_server_setup.adoc[LDAP Proxy Cache Server Setup]
 **** Mimetypes
 ***** xref:configuration/mimetypes/index.adoc[Index]
@@ -89,15 +89,15 @@
 ***** xref:enterprise/clients/creating_branded_apps.adoc[Creating Branded Apps]
 ***** xref:enterprise/clients/custom_client_repos.adoc[Custom Client Repos]
 ***** xref:enterprise/clients/index.adoc[Index]
-**** External_storage
+**** External Storage
 ***** xref:enterprise/external_storage/enterprise_only_auth.adoc[Enterprise Only Auth]
 ***** xref:enterprise/external_storage/index.adoc[Index]
 ***** xref:enterprise/external_storage/ldap_home_connector_configuration.adoc[LDAP Home Connector Configuration]
 ***** xref:enterprise/external_storage/onedrive.adoc[OneDrive]
-***** xref:enterprise/external_storage/s3_swift_as_primary_object_store_configuration.adoc[S3 Swift As Primary Object Store Configuration]
+***** xref:enterprise/external_storage/s3_swift_as_primary_object_store_configuration.adoc[S3 Swift as Primary Object Store Configuration]
 ***** xref:enterprise/external_storage/sharepoint-integration_configuration.adoc[Sharepoint integration Configuration]
-***** xref:enterprise/external_storage/windows-network-drive_configuration.adoc[Windows network drive Configuration]
-**** File_management
+***** xref:enterprise/external_storage/windows-network-drive_configuration.adoc[Windows Network Drive Configuration]
+**** File Management
 ***** xref:enterprise/file_management/files_tagging.adoc[Files Tagging]
 ***** xref:enterprise/file_management/index.adoc[Index]
 **** Firewall
@@ -110,21 +110,21 @@
 **** Logging
 ***** xref:enterprise/logging/enterprise_logging_apps.adoc[Enterprise Logging Apps]
 ***** xref:enterprise/logging/index.adoc[Index]
-**** Ransomware-protection
+**** Ransomware Protection
 ***** xref:enterprise/ransomware-protection/index.adoc[Index]
-**** Server_branding
+**** Server Branding
 ***** xref:enterprise/server_branding/enterprise_server_branding.adoc[Enterprise Server Branding]
 ***** xref:enterprise/server_branding/index.adoc[Index]
-**** User_management
+**** User Management
 ***** xref:enterprise/user_management/index.adoc[Index]
 ***** xref:enterprise/user_management/user_auth_shibboleth.adoc[User Auth Shibboleth]
 **** xref:enterprise/index.adoc[Index]
-*** Faq
+*** FAQ
 **** xref:faq/index.adoc[Index]
 *** Installation
 **** Docker
 ***** xref:installation/docker/index.adoc[Index]
-**** Letsencrypt
+**** Let's Encrypt
 ***** xref:installation/letsencrypt/apache.adoc[Apache]
 ***** xref:installation/letsencrypt/index.adoc[Index]
 ***** xref:installation/letsencrypt/nginx.adoc[NGINX]
@@ -166,4 +166,4 @@
 *** xref:contents.adoc[Contents]
 *** xref:index.adoc[Index]
 *** xref:release_notes.adoc[Release Notes]
-*** xref:whats_new_admin.adoc[Whats New Admin]
+*** xref:whats_new_admin.adoc[What's New Admin]
