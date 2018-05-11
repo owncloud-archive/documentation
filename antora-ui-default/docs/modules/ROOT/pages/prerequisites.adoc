@@ -1,0 +1,75 @@
+= UI Development Prerequisites
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+// Settings:
+:idprefix:
+:idseparator: -
+// URIs:
+:uri-nvm: https://github.com/creationix/nvm
+:uri-node: https://nodejs.org
+:uri-gulp: http://gulpjs.com
+:uri-yarn: https://yarnpkg.com
+:uri-git: https://git-scm.com
+:uri-git-dl: {uri-git}/downloads
+:uri-nvm-install: {uri-nvm}#installation
+// These prerequisite instructions are less detailed than Antora's prerequisite instructions, I don't know if this is a concern or not.
+
+An Antora UI project is based on tools built atop Node.js (aka Node), namely:
+
+* {uri-node}[Node] (command: `node`)
+ ** {uri-nvm}[nvm] (optional, but strongly recommended)
+* {uri-gulp}[Gulp] (command: `gulp`)
+* {uri-yarn}[Yarn] (command: `yarn`)
+
+You also need {uri-git}[git] (command: `git`) to pull down the project and push updates to it.
+
+== git
+
+First, make sure you have git installed.
+
+ $ git --version
+
+If not, {uri-git-dl}[download and install] the git package for your system.
+
+== Node 8
+
+Next, make sure that you have Node 8 installed.
+While you can install Node from the official packages, we strongly recommend that you use {uri-nvm}[nvm] (Node Version Manager) to install and manage Node.
+Follow the {uri-nvm-install}[nvm installation instructions] to set up nvm on your machine.
+
+Once you've installed nvm, open a new terminal and install Node 8 using the following command:
+
+ $ nvm install 8
+
+You can switch to this version of Node at any time using the following command:
+
+ $ nvm use 8
+
+To make Node 8 the default in new terminals, type:
+
+ $ nvm alias default 8
+
+Now that you have Node 8 installed, you can proceed with installing the Gulp CLI and Yarn.
+
+== Gulp CLI
+
+Next, you'll need the Gulp CLI (aka wrapper).
+This package provides the `gulp` command which executes the version of Gulp declared by the project.
+You should install the Gulp CLI globally (which resolves to a location in your user directory if you're using nvm) using the following command:
+
+ $ npm install -g gulp-cli
+
+== Yarn
+
+Finally, you'll need Yarn, which is the preferred package manager for the Node ecosystem.
+You'll need to use the `npm` command to install Yarn, though this is the last time you'll use the `npm` command.
+You should install Yarn globally (which resolves to a location in your user directory if you're using nvm) using the following command:
+
+ $ npm install -g yarn
+
+Verify Yarn is installed by checking the version:
+
+ $ yarn --version
+
+Now that you have Node, Yarn, and Gulp installed, you're ready to set up the project.

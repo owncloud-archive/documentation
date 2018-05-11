@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ocs>
+  <meta>
+    <status>failure</status>
+    <statuscode>404</statuscode>
+    <message>wrong path, file/folder doesn't exist</message>
+  </meta>
+  <data/>
+</ocs>

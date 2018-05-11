@@ -1,0 +1,332 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Setup Apache &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="setup-apache">
+<h1>Setup Apache<a class="headerlink" href="#setup-apache" title="Permalink to this headline">¶</a></h1>
+<p>The following is an example setup process for Apache, please adopt to your exact needs.</p>
+<div class="section" id="apache-sslopensslconfcmd-dhparameters">
+<h2>Apache SSLOpenSSLConfCmd DHParameters<a class="headerlink" href="#apache-sslopensslconfcmd-dhparameters" title="Permalink to this headline">¶</a></h2>
+<p>For Apache 2.4.8 or later and OpenSSL 1.0.2 or later, you can generate and specify your <a class="reference external" href="https://en.wikipedia.org/wiki/Diffie–Hellman_key_exchange">Diffie-Hellman</a> (DH) params file.
+If not already present, add an <a class="reference external" href="https://httpd.apache.org/docs/trunk/mod/mod_ssl.html#sslopensslconfcmd">SSLOpenSSLConfCmd</a> directive and a new certificate with stronger keys (which improves <a class="reference external" href="https://scotthelme.co.uk/perfect-forward-secrecy/">forward secrecy</a>).
+The OpenSSL command may take a quite a while to complete, so please be patient.</p>
+<p>You can place the certificate into any directory of your choice.
+We recommend <code class="docutils literal notranslate"><span class="pre">/etc/apache2/</span></code> in this guide, just for the sake of simplicity.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">openssl</span> <span class="n">dhparam</span> <span class="o">-</span><span class="n">out</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">dh4096</span><span class="o">.</span><span class="n">pem</span> <span class="mi">4096</span>
+</pre></div>
+</div>
+<p>Add the following directive to your common SSL configuration:</p>
+<div class="highlight-apacheconf notranslate"><div class="highlight"><pre><span></span><span class="nb">SSLOpenSSLConfCmd</span> DHParameters <span class="sx">/etc/apache2/dh4096.pem</span>
+</pre></div>
+</div>
+<p>Add the <code class="docutils literal notranslate"><span class="pre">/.well-known/acme-challenge</span></code> location in your Virtual Host directive for port 80</p>
+<div class="highlight-apacheconf notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;virtualHost</span> <span class="s">*.80</span><span class="nt">&gt;</span>
+  <span class="nb">ServerName</span> mydom.tld
+
+  <span class="nb">Alias</span> /.well-known/acme-challenge/ <span class="sx">/var/www/letsencrypt/.well-known/acme-challenge/</span>
+  <span class="nt">&lt;Directory</span> <span class="s">&quot;/var/www/letsencrypt/.well-known/acme-challenge/&quot;</span><span class="nt">&gt;</span>
+      <span class="nb">Options</span> <span class="k">None</span>
+      <span class="nb">AllowOverride</span> <span class="k">None</span>
+      <span class="nb">ForceType</span> text/plain
+      <span class="nb">RedirectMatch</span> <span class="m">404</span> <span class="s2">&quot;^(?!/\.well-known/acme-challenge/[\w-]{43}$)&quot;</span>
+  <span class="nt">&lt;/Directory&gt;</span>
+
+  <span class="c"># ...</span>
+<span class="nt">&lt;/virtualHost&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="prepare-a-virtualhost-directive-for-port-443">
+<h2>Prepare a virtualHost directive for port 443<a class="headerlink" href="#prepare-a-virtualhost-directive-for-port-443" title="Permalink to this headline">¶</a></h2>
+<p>It is easiest, if you create a separate file for the following <code class="docutils literal notranslate"><span class="pre">SSL</span></code> directives.
+If these directives already exist in this Virtual Host, delete them and include the file instead.
+When the certificate has been created, you can use this file in any SSL Virtual Host for which the certificate is valid, without
+reissuing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span>
+<span class="n">sudo</span> <span class="n">mkdir</span> <span class="n">ssl_rules</span>
+</pre></div>
+</div>
+<p>Create a file named <code class="docutils literal notranslate"><span class="pre">ssl_mydom.tld</span></code> in the newly created directory.</p>
+<div class="highlight-apacheconf notranslate"><div class="highlight"><pre><span></span><span class="c"># ssl rules for mydom.tld</span>
+<span class="c"># eases letsencrypt initial cert issuing</span>
+
+<span class="nb">SSLEngine</span> <span class="k">on</span>
+
+<span class="nb">SSLCertificateChainFile</span>  <span class="sx">/etc/letsencrypt/live/mydom.tld/fullchain.pem</span>
+<span class="nb">SSLCertificateKeyFile</span>    <span class="sx">/etc/letsencrypt/live/mydom.tld/privkey.pem</span>
+<span class="nb">SSLCertificateFile</span>       <span class="sx">/etc/letsencrypt/live/mydom.tld/cert.pem</span>
+</pre></div>
+</div>
+<p>To reduce the SSL performance penalty, we recommend you use the <a class="reference external" href="https://httpd.apache.org/docs/trunk/mod/mod_ssl.html#sslusestapling">SSLUseStapling</a> and <a class="reference external" href="https://httpd.apache.org/docs/trunk/mod/mod_ssl.html#sslstaplingcache">SSLStaplingCache</a> directives:
+Here’s an example configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">SSLUseStapling</span> <span class="n">on</span>
+<span class="n">SSLStaplingCache</span>         <span class="n">shmcb</span><span class="p">:</span><span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">stapling_cache</span><span class="p">(</span><span class="mi">2097152</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Then adopt your Virtual Host block:</p>
+<div class="highlight-apacheconf notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;virtualHost</span> <span class="s">*:443</span><span class="nt">&gt;</span>
+  <span class="nb">ServerName</span> mydom.tld
+
+  <span class="c"># ssl letsencrypt</span>
+  <span class="c"># Include /etc/apache2/ssl_rules/ssl_mydom.tld</span>
+
+  <span class="c">#...</span>
+<span class="nt">&lt;/virtualHost&gt;</span>
+</pre></div>
+</div>
+<p>Commenting the <code class="docutils literal notranslate"><span class="pre">Include</span></code> directive is required, because the certificate files currently do not exist.</p>
+</div>
+<div class="section" id="test-and-enable-your-apache-configuration">
+<h2>Test and enable your Apache configuration<a class="headerlink" href="#test-and-enable-your-apache-configuration" title="Permalink to this headline">¶</a></h2>
+<p>To test your configuration run</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apache2ctl</span> <span class="o">-</span><span class="n">t</span> <span class="c1"># You can also use: sudo apache2ctl configtest</span>
+</pre></div>
+</div>
+<p>It should reply without errors.
+Load your new Apache configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apache2ctl</span> <span class="n">graceful</span>
+</pre></div>
+</div>
+<div class="section" id="creating-certificates">
+<h3>Creating certificates<a class="headerlink" href="#creating-certificates" title="Permalink to this headline">¶</a></h3>
+<p>Check that you have commented out the <code class="docutils literal notranslate"><span class="pre">Include</span></code> directive as stated above and run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/&lt;</span><span class="n">your</span><span class="o">-</span><span class="n">domain</span><span class="o">-</span><span class="n">name</span><span class="o">&gt;.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>To double check the issued certificate, run the <code class="docutils literal notranslate"><span class="pre">list.sh</span></code> script.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="nb">list</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>If successful, you will see output similar to that below, when the command completes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Saving</span> <span class="n">debug</span> <span class="n">log</span> <span class="n">to</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">.</span><span class="n">log</span>
+
+<span class="o">-------------------------------------------------------------------------------</span>
+<span class="n">Found</span> <span class="n">the</span> <span class="n">following</span> <span class="n">certs</span><span class="p">:</span>
+  <span class="n">Certificate</span> <span class="n">Name</span><span class="p">:</span> <span class="n">mydom</span><span class="o">.</span><span class="n">tld</span>
+    <span class="n">Domains</span><span class="p">:</span> <span class="n">mydom</span><span class="o">.</span><span class="n">tld</span>
+    <span class="n">Expiry</span> <span class="n">Date</span><span class="p">:</span> <span class="mi">2018</span><span class="o">-</span><span class="mi">06</span><span class="o">-</span><span class="mi">18</span> <span class="mi">10</span><span class="p">:</span><span class="mi">57</span><span class="p">:</span><span class="mi">18</span><span class="o">+</span><span class="mi">00</span><span class="p">:</span><span class="mi">00</span> <span class="p">(</span><span class="n">VALID</span><span class="p">:</span> <span class="mi">89</span> <span class="n">days</span><span class="p">)</span>
+    <span class="n">Certificate</span> <span class="n">Path</span><span class="p">:</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">mydom</span><span class="o">.</span><span class="n">tld</span><span class="o">/</span><span class="n">fullchain</span><span class="o">.</span><span class="n">pem</span>
+    <span class="n">Private</span> <span class="n">Key</span> <span class="n">Path</span><span class="p">:</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">letsencrypt</span><span class="o">/</span><span class="n">live</span><span class="o">/</span><span class="n">mydom</span><span class="o">.</span><span class="n">tld</span><span class="o">/</span><span class="n">privkey</span><span class="o">.</span><span class="n">pem</span>
+<span class="o">-------------------------------------------------------------------------------</span>
+</pre></div>
+</div>
+<p>When successfully issuing the certificate for the first time, the certificate files exist and you can un-comment the <code class="docutils literal notranslate"><span class="pre">Include</span></code> directive to use them with SSL.</p>
+<div class="highlight-apacheconf notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;virtualHost</span> <span class="s">*:443</span><span class="nt">&gt;</span>
+  <span class="nb">ServerName</span> mydom.tld
+
+  <span class="c"># ssl letsencrypt</span>
+  <span class="nb">Include</span> <span class="sx">/etc/apache2/ssl_rules/ssl_mydom.tld</span>
+
+  <span class="c">#...</span>
+<span class="nt">&lt;/virtualHost&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reload-the-apache-configuration">
+<h2>Reload the Apache configuration<a class="headerlink" href="#reload-the-apache-configuration" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">apache2</span> <span class="n">reload</span>
+</pre></div>
+</div>
+<p>Your web server is now ready to serve https request for the given domain using the issued certificates.</p>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

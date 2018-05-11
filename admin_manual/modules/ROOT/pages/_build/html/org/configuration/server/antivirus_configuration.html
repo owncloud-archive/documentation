@@ -1,0 +1,624 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Virus Scanner Support &#8212; ownCloud 10.0.8 Server Administration Manual 10.0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Memory Caching" href="caching_configuration.html" />
+    <link rel="prev" title="Configuring the Activity App" href="activity_configuration.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://owncloud.org/wp-content/themes/owncloudorgnew/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://owncloud.org/wp-content/themes/owncloudorgnew/assets/img/common/favicon.png" />
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https//piwik.owncloud.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://owncloud.org/" rel="home" title="ownCloud.org"><img class="logo" src="../../_static/img/logo_owncloud.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+        <li class="menu-news"><a href="https://owncloud.org/news/">News</a></li>
+        <li class="menu-features"><a href="https://owncloud.org/features/">Features</a></li>
+        <li class="menu-demo"><a target="_blank" href="https://demo.owncloud.org">Demo</a></li>
+        <li class="menu-documentation top-nav-active"><a href="https://doc.owncloud.org">Documentation</a></li>
+        <li class="menu-contribute"><a href="https://owncloud.org/contribute/">Contribute</a>
+        <li class="menu-support"><a href="https://owncloud.org/support">Support</a></li>
+        <li class="menu-commercial"><a target="_blank" href="https://owncloud.com">Enterprise Edition</a></li>
+        <li class="menu-install"><a href="https://owncloud.org/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../../contents.html">ownCloud 10.0.8 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" />
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../database/index.html">Database Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ldap/ldap_proxy_cache_server_setup.html">How To Install and Configure an LDAP Proxy-Cache Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Server Configuration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="security_setup_warnings.html">Warnings on Admin Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="import_ssl_cert.html">Importing System-wide and Personal SSL Certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_command.html">Using the occ Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activity_configuration.html">Configuring the Activity App</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Virus Scanner Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="caching_configuration.html">Memory Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="background_jobs_configuration.html">Background Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_sample_php_parameters.html">Config.php Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="email_configuration.html">Email Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="excluded_blacklisted_files.html">Excluding Directories and Blacklisting Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external_sites.html">Linking External Sites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom_client_repos.html">Custom Client Download Repositories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knowledgebase_configuration.html">Knowledge Base Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language_configuration.html">Language Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging_configuration.html">Logging Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harden_server.html">Hardening and Security Guidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/password-policy.html">Password Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse Proxy Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thirdparty_php_configuration.html">Using Third Party PHP Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="automatic_configuration.html">Automatic Configuration Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="oc_server_tuning.html">ownCloud Server Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_php_less_urls.html">Enable index.php-less URLs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html">User Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="activity_configuration.html" title="Previous Chapter: Configuring the Activity App"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Configuring t...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="caching_configuration.html" title="Next Chapter: Memory Caching"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Memory Caching &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="virus-scanner-support">
+<h1>Virus Scanner Support<a class="headerlink" href="#virus-scanner-support" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.clamav.net/index.html">ClamAV</a> is the only <em>officially</em> supported virus scanner available for use with ownCloud.
+It:</p>
+<ul class="simple">
+<li>Operates on all major operating systems, including <em>Windows</em>, <em>Linux</em>, and <em>Mac</em></li>
+<li>Detects all forms of malware including <em>Trojan horses</em>, <em>viruses</em>, and <em>worms</em></li>
+<li>Scans <em>compressed files</em>, <em>executables</em>, <em>image files</em>, <em>Flash</em>, <em>PDF</em>, as well as many others</li>
+</ul>
+<p>What’s more, <cite>ClamAV’s Freshclam daemon</cite> automatically updates its malware signature database at scheduled intervals.
+However, other scanners can be used, so long as they:</p>
+<ol class="arabic simple">
+<li>Can receive data streams via pipe on the command-line and return an exit code</li>
+<li>Return a parsable result on stdout</li>
+</ol>
+<div class="section" id="how-clamav-works-with-owncloud">
+<h3>How ClamAV Works With ownCloud<a class="headerlink" href="#how-clamav-works-with-owncloud" title="Permalink to this headline">¶</a></h3>
+<p>Before you install and configure ClamAV, here is a bit of background which may be handy to know.
+ownCloud integrates with anti-virus tools by connecting to them via:</p>
+<ul class="simple">
+<li>A URL and port</li>
+<li>A socket</li>
+<li>Streaming the data from the command-line via a pipe with a configured executable</li>
+</ul>
+<p>In the case of ClamAV, ownCloud’s Antivirus extension sends files as streams to a ClamAV service (which can be on the same ownCloud server or another server within the same network) which in turn scans them and returns a result to stdout.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Individual chunks are <strong>not</strong> scanned. The whole file is scanned when it is moved to the final location.</p>
+</div>
+<p>The information is then parsed or an exit code is evaluated if no result is available to determine the response from the scan.
+Based on ownCloud’s evaluation of the response (or exit code) an appropriate action is then taken, such as recording a log message or deleting the file.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Scanner exit status rules are used to handle errors when ClamAV is run in CLI mode.
+Scanner output rules are used in daemon/socket mode.</p>
+</div>
+<div class="section" id="things-to-note">
+<h4>Things To Note<a class="headerlink" href="#things-to-note" title="Permalink to this headline">¶</a></h4>
+<ol class="arabic simple">
+<li>Files are checked when they are uploaded or updated (whether because they were edited or saved) but <em>not</em> when they are downloaded.</li>
+<li>ownCloud doesn’t support a cache of previously scanned files.</li>
+<li>If the app is either not configured or is misconfigured, then it rejects file uploads.</li>
+<li>If ClamAV is unavailable, then the app rejects file uploads.</li>
+<li>A file size limit applies both to background jobs and to file uploads.</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-the-clamav-antivirus-scanner">
+<span id="configure-clamav-antivirus-scanner-label"></span><h2>Configuring the ClamAV Antivirus Scanner<a class="headerlink" href="#configuring-the-clamav-antivirus-scanner" title="Permalink to this headline">¶</a></h2>
+<p>You can configure your ownCloud server to automatically run a virus scan on newly-uploaded files using the <a class="reference external" href="https://github.com/owncloud/files_antivirus">Antivirus App for Files</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">ClamAV must be installed before installing and configuring Antivirus App for Files.</p>
+</div>
+</div>
+<div class="section" id="installing-clamav">
+<h2>Installing ClamAV<a class="headerlink" href="#installing-clamav" title="Permalink to this headline">¶</a></h2>
+<p>As always, Linux distributions install and configure ClamAV in different ways.
+Below you can find the instructions for installing it on Debian or Red Hat-based
+distributions.</p>
+<div class="section" id="debian-ubuntu-linux-mint">
+<h3>Debian, Ubuntu, Linux Mint<a class="headerlink" href="#debian-ubuntu-linux-mint" title="Permalink to this headline">¶</a></h3>
+<p>On Debian, Ubuntu, and their many variants, install ClamAV with the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">clamav</span> <span class="n">clamav</span><span class="o">-</span><span class="n">daemon</span>
+</pre></div>
+</div>
+<p>This automatically creates the default configuration files and launches the <code class="docutils literal notranslate"><span class="pre">clamd</span></code> and <code class="docutils literal notranslate"><span class="pre">freshclam</span></code> daemons.
+You shouldn’t have to do anything else, though it is a good idea to review the ClamAV documentation, as well ClamAV’s settings in <code class="docutils literal notranslate"><span class="pre">/etc/clamav/</span></code>.</p>
+</div>
+<div class="section" id="red-hat-7-and-centos-7">
+<h3>Red Hat 7 and CentOS 7<a class="headerlink" href="#red-hat-7-and-centos-7" title="Permalink to this headline">¶</a></h3>
+<p>On Red Hat 7 and related systems, you must install the “Extra Packages for Enterprise Linux (EPEL)” repository, and then install ClamAV.
+To do so, run the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">epel</span><span class="o">-</span><span class="n">release</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="n">clamav</span> <span class="n">clamav</span><span class="o">-</span><span class="n">scanner</span> <span class="n">clamav</span><span class="o">-</span><span class="n">scanner</span><span class="o">-</span><span class="n">systemd</span> <span class="n">clamav</span><span class="o">-</span><span class="n">server</span>
+<span class="n">clamav</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">systemd</span> <span class="n">clamav</span><span class="o">-</span><span class="n">update</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Regardless of your operating system, we recommend that you enable verbose logging in both <code class="docutils literal notranslate"><span class="pre">clamd.conf</span></code> and <code class="docutils literal notranslate"><span class="pre">freshclam.conf</span></code> until you get any kinks with your ClamAV installation worked out.</p>
+</div>
+</div>
+</div>
+<div class="section" id="configuring-and-running-clamav">
+<h2>Configuring and Running ClamAV<a class="headerlink" href="#configuring-and-running-clamav" title="Permalink to this headline">¶</a></h2>
+<p>After installing ClamAV and the related tools, you will now have two configuration files: <code class="docutils literal notranslate"><span class="pre">/etc/freshclam.conf</span></code> and <code class="docutils literal notranslate"><span class="pre">/etc/clamd.d/scan.conf</span></code>.
+You must edit both of these before you can run ClamAV.
+Both files are well commented.
+Running either <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">clamd.conf</span></code> or <code class="docutils literal notranslate"><span class="pre">man</span> <span class="pre">freshclam.conf</span></code> will provide detailed information on all the available configuration options.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Refer to <code class="docutils literal notranslate"><span class="pre">/etc/passwd</span></code> and <code class="docutils literal notranslate"><span class="pre">/etc/group</span></code> when you need to verify the ClamAV user and group.</p>
+</div>
+<p>When you’re finished editing the configuration files, you must enable the <code class="docutils literal notranslate"><span class="pre">clamd</span></code> service file and start <code class="docutils literal notranslate"><span class="pre">clamd</span></code>.
+You can do so using the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="n">clamav</span><span class="o">-</span><span class="n">daemon</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">clamav</span><span class="o">-</span><span class="n">daemon</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>That should take care of everything.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Enable verbose logging in <code class="docutils literal notranslate"><span class="pre">scan.conf</span></code> and <code class="docutils literal notranslate"><span class="pre">freshclam.conf</span></code> until it is running the way you want.</p>
+</div>
+</div>
+<div class="section" id="automating-clamav-virus-database-updates">
+<h2>Automating ClamAV Virus Database Updates<a class="headerlink" href="#automating-clamav-virus-database-updates" title="Permalink to this headline">¶</a></h2>
+<p>To update your malware database and get the latest malware signatures, you need to run <code class="docutils literal notranslate"><span class="pre">freshclam</span></code> frequently.
+Do this by running <code class="docutils literal notranslate"><span class="pre">freshclam</span></code> or <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">freshclam</span></code> on Debian-based distributions.</p>
+<p>We recommend you do this, post-installation, to download your first set of malware signatures.
+If you want to adjust freshclam’s behavior, edit <code class="docutils literal notranslate"><span class="pre">/etc/clamav/freshclam.conf</span></code> and make any changes you believe are necessary.</p>
+<p>After that, create a <a class="reference external" href="https://en.wikipedia.org/wiki/Cron">cron job</a> to automate the process.
+For example, to run it every hour at 47 minutes past the hour, add the following in the applicable user’s crontab:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># m   h  dom mon dow  command</span>
+<span class="mi">47</span>  <span class="o">*</span>  <span class="o">*</span>   <span class="o">*</span>    <span class="o">*</span>  <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">freshclam</span> <span class="o">--</span><span class="n">quiet</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please avoid any multiples of 10, because those are when the ClamAV servers are hit the hardest for updates.</p>
+</div>
+</div>
+<div class="section" id="install-the-anti-virus-app">
+<h2>Install the Anti-Virus App<a class="headerlink" href="#install-the-anti-virus-app" title="Permalink to this headline">¶</a></h2>
+<p>The Anti-Virus app needs to be installed from the ownCloud Market, under <em>“Security”</em>.
+You can access the ownCloud Market via the App Menu (or App Switcher).</p>
+<div class="figure">
+<img alt="../../_images/antivirus-app.png" src="../../_images/antivirus-app.png" />
+</div>
+</div>
+<div class="section" id="configuring-clamav-within-owncloud">
+<h2>Configuring ClamAV within ownCloud<a class="headerlink" href="#configuring-clamav-within-owncloud" title="Permalink to this headline">¶</a></h2>
+<p>Once it is installed, go to your ownCloud Admin page and set your ownCloud logging level to <code class="docutils literal notranslate"><span class="pre">Everything</span></code>.</p>
+<div class="figure">
+<img alt="../../_images/antivirus-logging.png" src="../../_images/antivirus-logging.png" />
+</div>
+<p>Now, navigate to <code class="docutils literal notranslate"><span class="pre">Settings</span> <span class="pre">-&gt;</span> <span class="pre">Admin</span> <span class="pre">-&gt;</span> <span class="pre">Security</span></code>, where you’ll find the “<strong>Antivirus Configuration</strong>” panel.
+There, as below, you’ll see the configuration options which ownCloud will pass
+to ClamAV.</p>
+<div class="figure">
+<img alt="../../_images/antivirus-config.png" src="../../_images/antivirus-config.png" />
+</div>
+<div class="section" id="configuration-warnings">
+<h3>Configuration Warnings<a class="headerlink" href="#configuration-warnings" title="Permalink to this headline">¶</a></h3>
+<p>The Antivirus App for Files will show one of three warnings if it is either misconfigured, or ClamAV is not available.
+You can see an example of all three below.</p>
+<div class="figure">
+<img alt="Configuration error message: &quot;Antivirus app is misconfigured or antivirus inaccessible. Could not connect to host 'localhost' on port 999&quot;." src="../../_images/anti-virus-message-host-connection-problem.png" />
+</div>
+<div class="figure">
+<img alt="Configuration error message: &quot;Antivirus app is misconfigured or antivirus inaccessible. The antivirus executable could not be found at path '/usr/bin/clamsfcan'&quot;." src="../../_images/anti-virus-message-misconfiguration-problem.png" />
+</div>
+<div class="figure">
+<img alt="Configuration error message: &quot;Antivirus app is misconfigured or antivirus inaccessible. Could not connect to socket '/var/run/clamav/cslamd-socket': No such file or directory (code 2)&quot;." src="../../_images/anti-virus-message-socket-connection-problem.png" />
+</div>
+</div>
+<div class="section" id="mode-configuration">
+<h3>Mode Configuration<a class="headerlink" href="#mode-configuration" title="Permalink to this headline">¶</a></h3>
+<p>ClamAV runs in one of three modes: <a class="reference internal" href="#daemon-socket">Daemon (Socket)</a>, <a class="reference internal" href="#daemon">Daemon</a>, and <a class="reference internal" href="#executable">Executable</a>.</p>
+</div>
+<div class="section" id="daemon-socket">
+<h3>Daemon (Socket)<a class="headerlink" href="#daemon-socket" title="Permalink to this headline">¶</a></h3>
+<p>In this mode, ClamAV runs in the background on the same server as the ownCloud installation.
+When there is no activity <code class="docutils literal notranslate"><span class="pre">clamd</span></code> places a minimal load on your
+system.
+However, if your users upload large volumes of files, you will see high CPU usage.
+Please keep this in mind.</p>
+<p>ownCloud should detect your <code class="docutils literal notranslate"><span class="pre">clamd</span></code> socket and fill in the <code class="docutils literal notranslate"><span class="pre">Socket</span></code> field.
+This is the <code class="docutils literal notranslate"><span class="pre">LocalSocket</span></code> option in <code class="docutils literal notranslate"><span class="pre">clamd.conf</span></code>. You can
+run <code class="docutils literal notranslate"><span class="pre">netstat</span></code> to verify:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">netstat</span> <span class="o">-</span><span class="n">a</span><span class="o">|</span><span class="n">grep</span> <span class="n">clam</span>
+<span class="n">unix</span> <span class="mi">2</span> <span class="p">[</span> <span class="n">ACC</span> <span class="p">]</span> <span class="n">STREAM</span> <span class="n">LISTENING</span> <span class="mi">15857</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">clamav</span><span class="o">/</span><span class="n">clamd</span><span class="o">.</span><span class="n">ctl</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="../../_images/antivirus-daemon-socket.png" src="../../_images/antivirus-daemon-socket.png" />
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">Stream</span> <span class="pre">Length</span></code> value sets the number of bytes to read in one pass.
+10485760 bytes, or ten megabytes, is the default.
+This value should be no larger than the PHP <code class="docutils literal notranslate"><span class="pre">memory_limit</span></code> settings or physical memory if <code class="docutils literal notranslate"><span class="pre">memory_limit</span></code> is set to -1 (no limit).</p>
+<p><code class="docutils literal notranslate"><span class="pre">Action</span> <span class="pre">for</span> <span class="pre">infected</span> <span class="pre">files</span> <span class="pre">found</span> <span class="pre">while</span> <span class="pre">scanning</span></code> gives you the choice of logging any alerts without deleting the files or immediately deleting infected files.</p>
+</div>
+<div class="section" id="daemon">
+<h3>Daemon<a class="headerlink" href="#daemon" title="Permalink to this headline">¶</a></h3>
+<p>In this mode, ClamAV runs on a different server. This is a good option for ownCloud servers with high volumes of file uploads.
+For the Daemon option, you need the hostname or IP address of the remote server running ClamAV and the server’s port number.</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../../_images/antivirus-daemon-socket.png" src="../../_images/antivirus-daemon-socket.png" />
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="executable">
+<h3>Executable<a class="headerlink" href="#executable" title="Permalink to this headline">¶</a></h3>
+<p>In this mode, ClamAV runs on the same server as the ownCloud installation, and the <code class="docutils literal notranslate"><span class="pre">clamscan</span></code> command only runs when a file is uploaded.
+<code class="docutils literal notranslate"><span class="pre">clamscan</span></code> is slow and not always reliable for on-demand usage; it is better to use one of the daemon modes.</p>
+<p>This option requires the path to <code class="docutils literal notranslate"><span class="pre">clamscan</span></code>, which is the interactive ClamAV scanning command.
+ownCloud should find it automatically.</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../../_images/antivirus-executable.png" src="../../_images/antivirus-executable.png" />
+</div>
+</div></blockquote>
+<p>When you are satisfied with how ClamAV is operating, you might want to go back and change all of your logging to less verbose levels.</p>
+</div>
+<div class="section" id="rule-configuration">
+<h3>Rule Configuration<a class="headerlink" href="#rule-configuration" title="Permalink to this headline">¶</a></h3>
+<p>ownCloud provides the ability to customize how it reacts to the response given by an anti-virus scan.
+To do so, under <cite>Admin -&gt; Antivirus Configuration -&gt; Advanced</cite>, which you can see in the screenshot below, you can view and change the existing rules.
+You can also add new ones.</p>
+<div class="figure">
+<img alt="../../_images/anti-virus-configuration-rules.png" src="../../_images/anti-virus-configuration-rules.png" />
+</div>
+<p>Rules can match on either an exit status (e.g., <cite>0</cite>, <cite>1</cite>, or <cite>40</cite>) or a pattern in the string returned from ClamAV (e.g., <code class="docutils literal notranslate"><span class="pre">/.*:</span> <span class="pre">(.*)</span> <span class="pre">FOUND$/</span></code>).</p>
+<p>Here are some points to bear in mind about rules:</p>
+<ul class="simple">
+<li>Scanner exit status rules are used to handle errors when ClamAV is run in CLI mode while</li>
+<li>scanner output rules are used in daemon/socket mode.</li>
+<li>Daemon output is parsed by regexp.</li>
+<li>In case there are no matching rules, the status is: <code class="docutils literal notranslate"><span class="pre">Unknown</span></code>, and a warning will be logged.</li>
+</ul>
+</div>
+<div class="section" id="default-ruleset">
+<span id="update-an-existing-rule"></span><h3>Default Ruleset<a class="headerlink" href="#default-ruleset" title="Permalink to this headline">¶</a></h3>
+<p>The default rule set for ClamAV is populated automatically with the following rules:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="26%" />
+<col width="61%" />
+<col width="14%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Exit Status or Signature</th>
+<th class="head">Description</th>
+<th class="head">Marks File As</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>0</td>
+<td>&#160;</td>
+<td>Clean</td>
+</tr>
+<tr class="row-odd"><td>1</td>
+<td>&#160;</td>
+<td>Infected</td>
+</tr>
+<tr class="row-even"><td>40</td>
+<td>Unknown option passed</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-odd"><td>50</td>
+<td>Database initialization error</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-even"><td>52</td>
+<td>Not supported file type</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-odd"><td>53</td>
+<td>Can’t open directory</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-even"><td>54</td>
+<td>Can’t open file</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-odd"><td>55</td>
+<td>Error reading file</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-even"><td>56</td>
+<td>Can’t stat input file</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-odd"><td>57</td>
+<td>Can’t get absolute path name of current working directory</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-even"><td>58</td>
+<td>I/O error</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-odd"><td>62</td>
+<td>Can’t initialize logger</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-even"><td>63</td>
+<td>Can’t create temporary files/directories</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-odd"><td>64</td>
+<td>Can’t write to temporary directory</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-even"><td>70</td>
+<td>Can’t allocate memory (calloc)</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-odd"><td>71</td>
+<td>Can’t allocate memory (malloc)</td>
+<td>Unchecked</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">/.*:</span> <span class="pre">OK$/</span></code></td>
+<td>&#160;</td>
+<td>Clean</td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">/.*:</span> <span class="pre">(.*)</span> <span class="pre">FOUND$/</span></code></td>
+<td>&#160;</td>
+<td>Infected</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">/.*:</span> <span class="pre">(.*)</span> <span class="pre">ERROR$/</span></code></td>
+<td>&#160;</td>
+<td>Unchecked</td>
+</tr>
+</tbody>
+</table>
+<p>The rules are always checked in the following order:</p>
+<ol class="arabic simple">
+<li>Infected</li>
+<li>Error</li>
+<li>Clean</li>
+</ol>
+<p>In case there are no matching rules, the status would be <code class="docutils literal notranslate"><span class="pre">Unknown</span></code> and a warning would be logged.</p>
+<div class="section" id="id1">
+<h4>Update An Existing Rule<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<p>To match on an exit status, change the “<strong>Match by</strong>” dropdown list to “<strong>Scanner exit status</strong>” and in the “<strong>Scanner exit status or signature to search</strong>” field, add the status code to match on.</p>
+<p>To match on the scanner’s output, change the “<strong>Match by</strong>” dropdown list to “<strong>Scanner output</strong>” and in the “<strong>Scanner exit status or signature to search</strong>” field, add the regular expression to match against the scanner’s output.</p>
+<p>Then, while not mandatory, add a description of what the status or scan output means.
+After that, set what ownCloud should do when the exit status or regular expression you set matches the value returned by ClamAV. To do so change the value of the dropdown in the “<strong>Mark as</strong>” column.</p>
+<p>The dropdown supports the following three options:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="18%" />
+<col width="82%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Option</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Clean</td>
+<td>The file is clean, and contains no viruses</td>
+</tr>
+<tr class="row-odd"><td>Infected</td>
+<td>The file contains a virus</td>
+</tr>
+<tr class="row-even"><td>Unchecked</td>
+<td>No action should be taken</td>
+</tr>
+</tbody>
+</table>
+<p>With all these changes made, click the check mark on the lefthand side of the “<strong>Match by</strong>” column, to confirm the change to the rule.</p>
+</div>
+<div class="section" id="add-a-new-rule">
+<h4>Add A New Rule<a class="headerlink" href="#add-a-new-rule" title="Permalink to this headline">¶</a></h4>
+<p>To add a new rule, click the button marked “Add a rule” at the bottom left of the rules table.
+Then follow the process outlined in <a class="reference internal" href="#update-an-existing-rule"><span class="std std-ref">Update An Existing Rule</span></a>.</p>
+</div>
+<div class="section" id="delete-an-existing-rule">
+<h4>Delete An Existing Rule<a class="headerlink" href="#delete-an-existing-rule" title="Permalink to this headline">¶</a></h4>
+<p>To delete an existing rule, click the rubbish bin icon on the far right-hand side of the rule that you want to delete.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="activity_configuration.html" title="Previous Chapter: Configuring the Activity App"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Configuring t...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="caching_configuration.html" title="Next Chapter: Memory Caching"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Memory Caching &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/107072838776436530705/about"><img width=50 src="../../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" style="margin: 0 7px 0 14px;" href="https://www.facebook.com/ownClouders"><img width=50 src="../../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" style="margin: 0 14px 0 7px;" href="https://twitter.com/ownClouders"><img width=50 src="../../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://owncloud.org/blogfeed"><img class="img-circle" width=50 src="../../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="http://visitor.r20.constantcontact.com/d.jsp?llr=ixens9uab&amp;p=oi&amp;m=1121878184680&amp;sit=mf4qye7jb&amp;f=cc4cd13f-acdf-45d3-b132-75252542c37d"><img class="img-circle" width=50 src="../../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About ownCloud</h4>
+          <ul id="menu-about" class="menu">
+            <li class="menu-contact"><a href="https://owncloud.org/contact/">People</a></li>
+            <li class="menu-history"><a href="https://owncloud.org/history/">History</a></li>
+            <li class="menu-events"><a href="https://owncloud.org/events/">Events</a></li>
+            <li class="menu-press"><a href="https://owncloud.org/press">Press</a></li>
+            <li class="menu-privacy"><a href="https://owncloud.org/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Resources</h4>
+          <ul id="menu-support-and-documentation" class="menu">
+            <li class="menu-faq"><a href="https://owncloud.org/faq/">FAQ</a></li>
+            <li class="menu-support"><a href="https://owncloud.org/support/">Support</a></li>
+            <li class="menu-admin-manual"><a href="https://doc.owncloud.org">Documentation</a></li>
+            <li class="menu-security"><a href="https://owncloud.org/security/">Security</a></li>
+            <li class="menu-store"><a href="http://www.cafepress.com/owncloudshop">ownCloud Store</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=owncloud">IRC Channel</a></li>
+            <li class="menu-mailing-list"><a href="https://mailman.owncloud.org/mailman/listinfo/">Mailing List</a></li>
+            <li class="menu-forums"><a href="https://forum.owncloud.org/">Forums</a></li>
+            <li class="menu-bug-tracker"><a href="https://owncloud.org/contribute">Get involved</a></li>
+            <li class="menu-promote"><a href="https://owncloud.org/promote/">Discuss ownCloud with others</a></li>
+
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2013-2018, The ownCloud developers.<br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

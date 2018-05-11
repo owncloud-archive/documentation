@@ -1,0 +1,11 @@
+@media screen and (min-width: 1024px) {
+  .main-wrapper {
+    display: flex;
+  }
+
+  .main {
+    flex: auto;
+    /* min-width: 0 required for flexbox to constrain overflowing elements */
+    min-width: 0;
+  }
+}

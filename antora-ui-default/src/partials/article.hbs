@@ -1,0 +1,17 @@
+<article class="doc">
+{{#if (eq page.layout '404')}}
+<h1>{{{or page.title 'Page Not Found'}}}</h1>
+<div class="paragraph">
+<p>The page you're looking for does not exist. It may have been moved.</p>
+</div>
+<div class="paragraph">
+<p>If you arrived on this page by clicking on a link, please notify the owner of the site that the link is broken.
+If you typed the URL of this page manually, please double check that you entered the address correctly.</p>
+</div>
+{{else}}
+{{#if page.title}}
+<h1>{{{page.title}}}</h1>
+{{/if}}
+{{{page.contents}}}
+{{/if}}
+</article>

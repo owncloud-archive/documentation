@@ -1,0 +1,7 @@
+What’s New in ownCloud
+======================
+
+See the
+https://github.com/owncloud/core/wiki/ownCloud-10.0-Features[ownCloud
+10.0 Features page] on Github for a comprehensive list of new features
+and updates.

@@ -1,0 +1,340 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ownCloud Roles &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Maintenance" href="../../maintenance/index.html" />
+    <link rel="prev" title="User Provisioning API" href="user_provisioning_api.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../database/index.html">Database Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ldap/ldap_proxy_cache_server_setup.html">How To Install and Configure an LDAP Proxy-Cache Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server/index.html">Server Configuration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">User Management</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="user_configuration.html">User Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reset_admin_password.html">Resetting a Lost Admin Password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reset_user_password.html">Resetting a User Password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_auth_ftp_smb_imap.html">User Authentication with IMAP, SMB, and FTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_auth_ldap.html">User Authentication with LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_provisioning_api.html">User Provisioning API</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ownCloud Roles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="owncloud-roles">
+<h1>ownCloud Roles<a class="headerlink" href="#owncloud-roles" title="Permalink to this headline">¶</a></h1>
+<p>ownCloud supports eight user roles.
+These are:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#anonymous">Anonymous</a></li>
+<li><a class="reference internal" href="#guest">Guest</a></li>
+<li><a class="reference internal" href="#standard-user">Standard User</a></li>
+<li><a class="reference internal" href="#federated-user">Federated User</a></li>
+<li><a class="reference internal" href="#owncloud-group-administrator">ownCloud Group Administrator</a></li>
+<li><a class="reference internal" href="#owncloud-administrator">ownCloud Administrator</a></li>
+<li><a class="reference internal" href="#system-administrator">System Administrator</a></li>
+<li><a class="reference internal" href="#auditor">Auditor</a></li>
+</ul>
+<p>The following information is not an in-depth guide, but more of a high-level overview of each type.</p>
+<div class="section" id="anonymous">
+<h2>Anonymous<a class="headerlink" href="#anonymous" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Is not a regular user.</li>
+<li>Has access to specific content made available via public links.
+- Can be password-protected (optional, enforced, policy-enforced).
+- Can have an expiration date (optional, enforced, enforced dependent on password).</li>
+<li>Has no personal space</li>
+<li>Has no file ownership (ownership of uploaded/created files is directed to sharer).</li>
+<li>Has no use of clients.</li>
+<li>Quota is that of the sharer.</li>
+<li>Permissions are those granted by the sharer for specific content, e.g., <em>view-only</em>, <em>edit</em>, and <em>File Drop</em>.</li>
+<li>Can only use file and viewer apps, such as <a class="reference external" href="https://marketplace.owncloud.com/apps/files_pdfviewer">PDF Viewer</a> and <a class="reference external" href="https://marketplace.owncloud.com/apps/richdocuments">Collabora Online</a>.</li>
+</ul>
+</div>
+<div class="section" id="guest">
+<h2>Guest<a class="headerlink" href="#guest" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Is a regular user with restricted permissions, identified via e-mail address.</li>
+<li>Has no personal space.</li>
+<li>Has no file ownership (ownership of uploaded/created files is directed to sharer).</li>
+<li>Has access to shared space. The permissions are granted by the sharer.</li>
+<li>Is not bound to the inviting user.<ul>
+<li>Can log in as long as shares are available.</li>
+<li>Becomes deactivated when no shares are left; this is <a class="reference internal" href="#shared-with-guests-filter-label"><span class="std std-ref">the shared with guests filter</span></a>.</li>
+<li>Reactivated when a share is received.</li>
+<li>Administrators will be able to automate user cleanup (“<strong>disabled for x days</strong>”).</li>
+</ul>
+</li>
+<li>Can use all clients.</li>
+<li>Fully auditable in the enterprise edition.</li>
+<li>Can be promoted to group administrator or administrator, but will still have no personal space.</li>
+<li>Apps are specified by the admin (whitelist).</li>
+</ul>
+<div class="admonition note" id="shared-with-guests-filter-label">
+<p class="first admonition-title">Note</p>
+<p><strong>The Shared with Guests Filter</strong></p>
+<p class="last">This filter makes it easy for sharers to view and remove their shares with a guest, which also removes their responsibility for guests. When all of a guest’s shares are removed, the guest is then disabled and can no longer login.</p>
+</div>
+</div>
+<div class="section" id="standard-user">
+<h2>Standard User<a class="headerlink" href="#standard-user" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Is a regular user (from LDAP, ownCloud user backend, or another backend).</li>
+<li>Has personal space. Permissions are granted by the administrator.</li>
+<li>Shared space: Permissions as granted by sharer.</li>
+<li>Apps: All enabled, might be restricted by group membership.</li>
+</ul>
+</div>
+<div class="section" id="federated-user">
+<h2>Federated User<a class="headerlink" href="#federated-user" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Is not an internal user.</li>
+<li>Can trust <a class="reference internal" href="../../faq/index.html#faq-federated-system-label"><span class="std std-ref">a federated system</span></a>.</li>
+<li>Has access to shared space through users on the considered ownCloud system.</li>
+<li>Can share data with the considered system (accept-/rejectable).</li>
+</ul>
+</div>
+<div class="section" id="owncloud-group-administrator">
+<h2>ownCloud Group Administrator<a class="headerlink" href="#owncloud-group-administrator" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Is a regular user, such as from LDAP, an ownCloud user backend, or another backend.</li>
+<li>Can manage users in their groups, such as adding and removing them, and changing quota of users in the group.</li>
+<li>Can add new users to their groups and can manage guests.</li>
+<li>Can enable and disable users.</li>
+<li>Can impersonate users in their groups.</li>
+<li>Custom group creation may be restricted to group admins.</li>
+</ul>
+</div>
+<div class="section" id="owncloud-administrator">
+<h2>ownCloud Administrator<a class="headerlink" href="#owncloud-administrator" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Is a regular user (from LDAP, ownCloud user backend, or another backend).</li>
+<li>Can configure ownCloud features via the UI, such as sharing settings, app-specific configurations, and external storages for users.</li>
+<li>Can manage users, such as adding and removing, enabling and disabling, quota and group management.</li>
+<li>Can restrict app usage to groups, where applicable.</li>
+<li>Configurable access to log files.</li>
+<li>Mounting of external shares and local shares (of external file systems) is disabled by default.</li>
+</ul>
+</div>
+<div class="section" id="system-administrator">
+<h2>System Administrator<a class="headerlink" href="#system-administrator" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Is not an ownCloud user.</li>
+<li>Has access to ownCloud code (e.g., <code class="docutils literal notranslate"><span class="pre">config.php</span></code> and apps folders) and command-line tool (<a class="reference internal" href="../server/occ_command.html"><span class="doc">occ</span></a>).</li>
+<li>Configures and maintains the ownCloud environment (<em>PHP</em>, <em>Webserver</em>, <em>DB</em>, <em>Storage</em>, <em>Redis</em>, <em>Firewall</em>, <em>Cron</em>, and <em>LDAP</em>, etc.).</li>
+<li>Maintains ownCloud, such as updates, backups, and installs extensions.</li>
+<li>Can manage users and groups, such as via <a class="reference internal" href="../server/occ_command.html"><span class="doc">occ</span></a>.</li>
+<li>Has access to the master key when storage encryption is used.</li>
+<li><strong>Storage admin:</strong> Encryption at rest, which prevents the storage administrator from having access to data stored in ownCloud.</li>
+<li><strong>DB admin:</strong> Calendar/Contacts etc. DB entries not encrypted.</li>
+</ul>
+</div>
+<div class="section" id="auditor">
+<h2>Auditor<a class="headerlink" href="#auditor" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Is not an ownCloud user.</li>
+<li>Conducts usage and compliance audits in enterprise scenarios.</li>
+<li>App logs (especially <a class="reference external" href="https://marketplace.owncloud.com/apps/admin_audit">Auditlog</a>) can be separated from ownCloud log. This separates the Auditor and Sysadmin roles. An <code class="docutils literal notranslate"><span class="pre">audit.log</span></code> file can be enabled, which the Sysadmin can’t access.</li>
+<li><strong>Best practice:</strong> parse separated log to an external analyzing tool.</li>
+</ul>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

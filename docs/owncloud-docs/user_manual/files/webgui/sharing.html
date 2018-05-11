@@ -1,0 +1,1476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sharing Files :: ownCloud Documentation</title>
+    <link rel="stylesheet" href="../../../../owncloud-docs/css/site.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../../..">ownCloud Documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <a class="navbar-item" href="https://owncloud.org/news/">News</a>
+        <a class="navbar-item" href="https://owncloud.org/features/">Features</a>
+        <a class="navbar-item" href="https://demo.owncloud.org/">Demo</a>
+        <a class="navbar-item" href="#">Documentation</a>
+        <a class="navbar-item" href="https://owncloud.org/contribute/">Contribute</a>
+        <a class="navbar-item" href="https://owncloud.org/support">Support</a>
+        <a class="navbar-item" href="https://owncloud.com/">Enterprise Edition</a>
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>-->
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://owncloud.org/install/">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="main-wrapper">
+<div class="navigation-container" data-component="owncloud-docs" data-version="master">
+  <aside class="navigation" role="navigation">
+    <div class="panels">
+<div class="navigation-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../../index.html">ownCloud // Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">ROOT</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Appliance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ucs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../appliance/ucs/add-groups-and-users.html">Add groups and users</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/Active_Directory.html">Active Directory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/Backup.html">Backup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/Clamav.html">ClamAV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/Office.html">Office</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/certificates.html">Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/howto-update-owncloud.html">Howto update ownCloud</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/login_information.html">Login Information</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/managing-ucs.html">Managing UCS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../appliance/what-is-it.html">What is it</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Database</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/database/db_conversion.html">DB Conversion</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/database/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/database/linux_database_configuration.html">Linux Database Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Files</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/external_storage/amazons3.html">AmazonS3</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/big_file_upload_configuration.html">Big File Upload Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/default_files_configuration.html">Default Files Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/encryption_configuration.html">Encryption Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/external_storage_configuration.html">External Storage Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/external_storage_configuration_gui.html">External Storage Configuration GUI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/federated_cloud_sharing_configuration.html">Federated Cloud Sharing Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/file_sharing_configuration.html">File Sharing Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/file_versioning.html">File Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/files_locking_transactional.html">Files LOCking Transactional</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/previews_configuration.html">Previews Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/files/trashbin_options.html">Trashbin Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ldap</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/ldap/ldap_proxy_cache_server_setup.html">LDAP Proxy Cache Server Setup</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Mimetypes</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/mimetypes/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Server</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/security/password-policy.html">Password policy</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/activity_configuration.html">Activity Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/antivirus_configuration.html">AntiVirus Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/automatic_configuration.html">Automatic Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/background_jobs_configuration.html">Background Jobs Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/caching_configuration.html">Caching Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/config_sample_php_parameters.html">Config Sample PHP Parameters</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/custom_client_repos.html">Custom Client Repos</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/email_configuration.html">Email Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/excluded_blacklisted_files.html">Excluded Blacklisted Files</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/external_sites.html">External Sites</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/harden_server.html">Harden Server</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/import_ssl_cert.html">Import SSL Cert</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/index_php_less_urls.html">Index PHP Less URLs</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/knowledgebase_configuration.html">Knowledgebase Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/language_configuration.html">Language Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/logging_configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/oc_server_tuning.html">OC Server Tuning</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/occ_command.html">OCC Command</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/reverse_proxy_configuration.html">Reverse Proxy Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/security_setup_warnings.html">Security Setup Warnings</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/server/thirdparty_php_configuration.html">Thirdparty PHP Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">User</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/user/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/user/reset_admin_password.html">Reset Admin Password</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/user/reset_user_password.html">Reset User Password</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/user/user_auth_ftp_smb_imap.html">User Auth FTP SMB IMAP</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/user/user_auth_ldap.html">User Auth LDAP</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/user/user_configuration.html">User Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/user/user_provisioning_api.html">User Provisioning API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../configuration/user/user_roles.html">User Roles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../configuration/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Enterprise</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Clients</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/clients/creating_branded_apps.html">Creating Branded Apps</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/clients/custom_client_repos.html">Custom Client Repos</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/clients/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">External_storage</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/external_storage/enterprise_only_auth.html">Enterprise Only Auth</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/external_storage/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/external_storage/ldap_home_connector_configuration.html">LDAP Home Connector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/external_storage/onedrive.html">OneDrive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/external_storage/s3_swift_as_primary_object_store_configuration.html">S3 Swift As Primary Object Store Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/external_storage/sharepoint-integration_configuration.html">Sharepoint integration Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/external_storage/windows-network-drive_configuration.html">Windows network drive Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">File_management</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/file_management/files_tagging.html">Files Tagging</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/file_management/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Firewall</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/firewall/file_firewall.html">File Firewall</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/firewall/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/installation/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/installation/install.html">Install</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/installation/oracle_db_configuration.html">Oracle DB Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Logging</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/logging/enterprise_logging_apps.html">Enterprise Logging Apps</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/logging/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ransomware-protection</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/ransomware-protection/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Server_branding</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/server_branding/enterprise_server_branding.html">Enterprise Server Branding</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/server_branding/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">User_management</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/user_management/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../enterprise/user_management/user_auth_shibboleth.html">User Auth Shibboleth</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../enterprise/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Faq</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../faq/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Docker</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../installation/docker/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Letsencrypt</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../installation/letsencrypt/apache.html">Apache</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../installation/letsencrypt/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../installation/letsencrypt/nginx.html">NGINX</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/apps_management_installation.html">Apps Management Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/apps_supported.html">Apps Supported</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/changing_the_web_route.html">Changing the Web Route</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/command_line_installation.html">Command Line Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/configuration_notes_and_tips.html">Configuration Notes and Tips</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/deployment_considerations.html">Deployment Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/deployment_recommendations.html">Deployment Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/installation_wizard.html">Installation Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/linux_installation.html">Linux Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/nginx_configuration.html">NGINX Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/selinux_configuration.html">SELinux Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/source_installation.html">Source Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/system_requirements.html">System ReqUIrements</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../installation/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Issues</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../issues/code_signing.html">Code Signing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../issues/general_troubleshooting.html">General Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../issues/impersonate_users.html">Impersonate Users</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../issues/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Maintenance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/backup.html">Backup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/enable_maintenance.html">Enable Maintenance</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/manual_upgrade.html">Manual Upgrade</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/manually-moving-data-folders.html">Manually moving data folders</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/migrating.html">Migrating</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/package_upgrade.html">Package Upgrade</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/restore.html">Restore</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/update.html">Update</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../maintenance/upgrade.html">Upgrade</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Upgrading</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../upgrading/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../upgrading/marketplace_apps.html">Marketplace Apps</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../upgrading/upgrade_php.html">Upgrade PHP</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../contents.html">Contents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../release_notes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../whats_new_admin.html">Whats New Admin</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">user manual</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">External_storage</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../external_storage/external_storage.html">External Storage</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../external_storage/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../external_storage/sharepoint_connecting.html">Sharepoint Connecting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Files</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Webgui</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="comments.html">Comments</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="custom_groups.html">Custom Groups</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="navigating.html">Navigating</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="quota.html">Quota</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="sharing.html">Sharing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="tagging.html">Tagging</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../access_webdav.html">Access Webdav</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../deleted_file_management.html">Deleted File Management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../desktop_mobile_sync.html">Desktop Mobile Sync</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../encrypting_files.html">Encrypting Files</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../federated_cloud_sharing.html">Federated Cloud Sharing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../gallery_app.html">Gallery App</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../large_file_upload.html">Large File Upload</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../public_link_shares.html">Public Link Shares</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../version_control.html">Version Control</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Pim</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../pim/calendar.html">Calendar</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../pim/contacts.html">Contacts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../pim/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../pim/sync_ios.html">Sync Ios</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../pim/sync_kde.html">Sync Kde</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../pim/sync_osx.html">Sync Osx</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../pim/sync_thunderbird.html">Sync Thunderbird</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../pim/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../contents.html">Contents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../session_management.html">Session Management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../userpreferences.html">Userpreferences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../webinterface.html">Webinterface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../whats_new.html">Whats New</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">developer manual</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">App</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Advanced</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/code_signing.html">Code Signing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/custom-cache-backend.html">Custom cache backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/custom-storage-backend.html">Custom storage backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/extstorage.html">Extstorage</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/l10n.html">L10N</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/storage-backend.html">Storage backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/two-factor-provider.html">Two factor provider</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/advanced/users.html">Users</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Fundamentals</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/backgroundjobs.html">Backgroundjobs</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/changelog.html">Changelog</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/classloader.html">ClaSSLoader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/container.html">Container</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/controllers.html">Controllers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/css.html">CSS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/database.html">Database</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/filesystem.html">Filesystem</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/hooks.html">Hooks</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/info.html">Info</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/js.html">JS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/market_app.html">Market App</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/middleware.html">Middleware</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/publishing.html">Publishing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/routes.html">Routes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/templates.html">Templates</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/fundamentals/testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Tutorial</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/database_connectivity.html">Database Connectivity</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/development_environment.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/finishing_touches.html">Finishing Touches</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/javascript_and_css.html">JavaScript and CSS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/navigation.html">Navigation</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/request.html">Request</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/requirements.html">ReqUIrements</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/restful_api.html">Restful API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/routes_and_controllers.html">Routes and Controllers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/template_content.html">Template Content</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/app/tutorial/wiring_it_up.html">Wiring it Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/app/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/app/introduction.html">Introduction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Bugtracker</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/bugtracker/codereviews.html">Codereviews</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/bugtracker/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/bugtracker/triaging.html">Triaging</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Commun</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/commun/help_and_communication.html">Help and Communication</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/commun/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Core</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/acceptance-tests.html">Acceptance tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/configfile.html">Configfile</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/externalapi.html">ExternalAPI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/ocs-capabilities.html">OCS capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/ocs-recipient-api.html">OCS recipient API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/ocs-share-api.html">OCS share API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/theming.html">Theming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/translation.html">Translation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/ui-testing.html">UI testing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/core/unit-testing.html">Unit testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">General</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/general/backporting.html">Backporting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/general/code-of-conduct.html">Code of conduct</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/general/codingguidelines.html">CodingGUIdelines</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/general/debugging.html">Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/general/devenv.html">Devenv</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/general/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/general/performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/general/security.html">Security</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Mobile_development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Android_library</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/mobile_development/android_library/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/mobile_development/android_library/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/mobile_development/android_library/library_installation.html">Library Installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ios_library</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/mobile_development/ios_library/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/mobile_development/ios_library/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../../developer_manual/mobile_development/ios_library/library_installation.html">Library Installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/mobile_development/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Testing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/testing/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Webdav_api</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/webdav_api/comments.html">Comments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/webdav_api/files_versions.html">Files Versions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/webdav_api/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../../developer_manual/webdav_api/tags.html">Tags</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../../developer_manual/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="navigation-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ownCloud // Documentation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">ownCloud // Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+  <main class="main" role="main">
+<div class="toolbar" role="navigation">
+  <button class="navigation-toggle"></button>
+<nav class="crumbs" role="navigation" aria-label="breadcrumbs">
+  <ul>
+    <li class="crumb"><a href="../../../index.html">ownCloud // Documentation</a></li>
+    <li class="crumb">user manual</li>
+    <li class="crumb">Files</li>
+    <li class="crumb">Webgui</li>
+    <li class="crumb"><a href="sharing.html">Sharing</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///Users/settermjd/Workspace/clients/ownCloud/antora-build/admin_manual/modules/user_manual/pages/files/webgui/sharing.adoc">Edit this Page</a></div>
+</div>
+<article class="doc">
+<h1>Sharing Files</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>Clicking the share icon on any file or folder opens the Details view on
+the right, where the Share tab has focus.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="sharing-status-icons"><a class="anchor" href="#sharing-status-icons"></a>Sharing Status Icons</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Any folder that has been shared is marked with the <code>Shared</code> overlay
+icon. Public link shares are marked with a chain link. Un-shared folders
+are blank.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/files_page-5.png" alt="image"></span></p>
+</div>
+<div class="paragraph">
+<p>If your ownCloud server is the Enterprise edition, you may also have
+access to Sharepoint and Windows Network Drive file shares. These have
+special status icons. An icon with a red plugin and background means you
+have to enter a login to get access to the share.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/files_share-options.png" alt="image"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-shares"><a class="anchor" href="#creating-shares"></a>Creating Shares</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To share a file or folder, immediately below the Share tab, you will see
+a text field. In this field, you can enter any number of users (whether
+local to your ownCloud server or remote) or groups who you would like to
+share the file or folder with.</p>
+</div>
+<div class="paragraph">
+<p>If username auto-completion is enabled, when you start typing the user
+or group name ownCloud will automatically complete it for you, if
+possible.</p>
+</div>
+<div class="paragraph">
+<p>From 10.0.8, user and group name search results are dependent on a new
+<a href="https://doc.owncloud.org/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html">configuration
+setting</a>, called <code>user.search_min_length</code> (it is set to 4 by default).
+This setting helps to aid search performance but requires that search
+terms contain at least the defined number of characters. Consequently,
+search terms shorter than the defined number of characters will not
+return a list of matches. However, they will return an existing user or
+group with a name of the same length as the search term.</p>
+</div>
+<div class="paragraph">
+<p>After a file or folder has been shared, <a href="">Share Permissions</a> can be
+set on it. In the image below, you can see that the directory
+&#8220;event-Photos&#8221; is shared with the user &#8220;pierpont&#8221;, who can <em>share</em>,
+<em>edit</em>, <em>create</em>, <em>change</em>, and <em>delete</em> the directory.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/files_page-2.png" alt="image"></span></p>
+</div>
+<div class="sect2">
+<h3 id="what-happens-when-share-recipients-move-files-and-folders"><a class="anchor" href="#what-happens-when-share-recipients-move-files-and-folders"></a>What Happens When Share Recipients Move Files and Folders?</h3>
+<div class="paragraph">
+<p>If a share recipient has &#8220;<strong>can edit</strong>&#8221; privileges and moves files or
+folders out of the share, ownCloud stores a backup copy of the moved
+file/folder in the Deleted Files (Trash) of the share’s owner. The user
+who moved the file/folder out of the share still has the original copy
+there, along with its attached metadata.</p>
+</div>
+<div class="paragraph">
+<p>That way, the files/folders are not permanently lost. By clicking the
+<strong>Restore</strong> link, next to the respective file or folder, ownCloud will
+restore these files/folders to their original location.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/sharing/restore-files.png" alt="image"></span></p>
+</div>
+<div class="paragraph">
+<p>Restoring files restores the backup copy for <strong>all users</strong>, including the
+user that originally moved them, into the original folder.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sharing-files-with-guest-users"><a class="anchor" href="#sharing-files-with-guest-users"></a>Sharing Files with Guest Users</h3>
+<div class="paragraph">
+<p>Users can also share files and folders with guest users. To do so, your
+ownCloud administrator will need to have installed
+<a href="https://marketplace.owncloud.com/apps/guests">the Guest application</a>.</p>
+</div>
+<div class="paragraph">
+<p>If it’s already installed, in the &#8220;<strong>User and Groups</strong>&#8221; field of the
+&#8220;<strong>Sharing</strong>&#8221; panel, type the email address of a user who is not
+already a user in your ownCloud installation. You will then see a popup
+appear with the suffix <code>(guest)</code>, as in the screenshot below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/guest-users/share-with-guest-users.png" alt="Sharing with guest users."></span></p>
+</div>
+<div class="paragraph">
+<p>After you do that, the content will be shared with the user with all
+permissions applied, except for the ability to share with other users.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/guest-users/content-shared-with-guest-user.png" alt="Content shared with a guest user."></span></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="updating-shares"><a class="anchor" href="#updating-shares"></a>Updating Shares</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>To change any of the properties of a share, again, you first need to
+view the Share tab. From there, you can:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Delete a user’s access to a share</p>
+</li>
+<li>
+<p>Give more users access to a share</p>
+</li>
+<li>
+<p>Change a user’s share permissions</p>
+</li>
+<li>
+<p>Add or remove password protection</p>
+</li>
+<li>
+<p>Set or remove a share’s expiration date</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>As this functionality is already described in other parts of the
+<a href="">Sharing Files</a> section, it won’t be specifically covered here.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deleting-shares"><a class="anchor" href="#deleting-shares"></a>Deleting Shares</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Despite the name of this section, you don’t actually delete a share.
+Rather what you do is remove the access of user’s to whom it’s already
+been shared with. When all users access to a shared resource has been
+removed, the resource is no longer shared.</p>
+</div>
+<div class="paragraph">
+<p>To do that, you need to click on the rubbish bin icon, on the far
+right-hand side of the name of each user it’s been shared with, who
+should no longer have access to it.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="password-protecting-files"><a class="anchor" href="#password-protecting-files"></a>Password Protecting Files</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It’s also possible to password protect shared files and folders. If you
+want to do so, then you need to enable this functionality. Specifically,
+click the checkbox labeled &#8220;<em>Password protect</em>&#8221; under the &#8220;<em>Share
+Link</em>&#8221; section.</p>
+</div>
+<div class="paragraph">
+<p>When you do so, you’ll see a password field appear. In there, add the
+password that the user will need to enter to access the shared resource
+and press the return key.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-private-links"><a class="anchor" href="#using-private-links"></a>Using Private Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Another way to access a file or folder is via a private link. It’s a
+handy way of creating a permanent link for yourself or to point others
+to a file or folder, within a share, more efficiently. To access the
+private link, in the Sharing Panel for a file or folder, next to its
+name you’ll see a small link icon (1), as in the screenshot below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/public-link/private-link.png" alt="Obtaining a private link for a shared file or folder"></span></p>
+</div>
+<div class="paragraph">
+<p>If you click it, a new textbox will appear above the &#8220;<strong>Collaborative
+tags</strong>&#8221; field, populated with the link’s URI (2).</p>
+</div>
+<div class="paragraph">
+<p>Only people who have access to the file or folder can use the link.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="changing-the-share-expiration-date"><a class="anchor" href="#changing-the-share-expiration-date"></a>Changing The Share Expiration Date</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>In older versions of ownCloud, you could set an expiration date on both
+local and public shares. Since the most recent version three, key,
+changes have been made:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>You can <em>only</em> set an expiration date on public shares</p>
+</li>
+<li>
+<p>Local shares do not expire when public shares expire</p>
+</li>
+<li>
+<p>A local share can only be &#8220;expired&#8221; (or deleted) by clicking the
+trash can icon</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-or-connecting-to-federation-share-links"><a class="anchor" href="#creating-or-connecting-to-federation-share-links"></a>Creating or Connecting to Federation Share Links</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Federated Cloud Sharing allows you to mount file shares from remote
+ownCloud servers, and manage them just like a local share. In ownCloud 8
+the process for creating a new sharing link is easier and more
+streamlined. See ../federated_cloud_sharing to learn to how to create
+and connect to new Federated Cloud shares.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="share-permissions"><a class="anchor" href="#share-permissions"></a>Share Permissions</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Shares can have a combination of the following five permission types:</p>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 50%;">
+<col style="width: 50%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">Permission</th>
+<th class="tableblock halign-left valign-top">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">can share</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows the users you share with to re-share</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">can edit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows the users you share with to edit your shared files,
+and to</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">collaborate using the Documents app</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">create</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows the users you share with to create new files and add
+them</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">to the share</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">change</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows uploading a new version of a shared file and replacing
+it</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">delete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Allows the users you share with to delete shared files</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-drop-folders"><a class="anchor" href="#creating-drop-folders"></a>Creating Drop Folders</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As of ownCloud version 10.0.2, users can create upload-only, public
+shares (otherwise known as &#8220;Drop Folders&#8221;). Drop Folders allow users
+to upload files to a central location, but don’t allow them to either
+see or change any existing files, which already have been uploaded.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/sharing/create-drop-folder.png" alt="Create a Drop Folder"></span></p>
+</div>
+<div class="paragraph">
+<p>To create one:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>View the sharing panel of the folder that you want to share as a
+Drop Folder, and under <strong>&#8220;Public Links&#8221;</strong> select <strong>&#8220;Create public
+link&#8221;</strong>.</p>
+</li>
+<li>
+<p>As with other shares, provide the name in the <strong>&#8220;Link Name&#8221;</strong> field.</p>
+</li>
+<li>
+<p>Check <strong>&#8220;Allow editing&#8221;</strong>, un-check <strong>&#8220;Show file listing&#8221;</strong>, and
+then un-check <strong>&#8220;Allow editing&#8221;</strong>.</p>
+</li>
+<li>
+<p>Finally, click <strong>&#8220;Save&#8221;</strong> to complete creation of the share.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now, as with other public links, you can copy the link to the share and
+give it out, as and when necessary.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="using-drop-folders"><a class="anchor" href="#using-drop-folders"></a>Using Drop Folders</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/sharing/use-drop-folders.png" alt="Using Drop Folders"></span></p>
+</div>
+<div class="paragraph">
+<p>When users open the share link, they will see a page where they can
+either click to select files to share, or drag-and-drop files directly
+to share them. After the file’s been successfully uploaded, they’ll see
+(where possible) a preview of the file that has been uploaded.</p>
+</div>
+</div>
+</div>
+</article>
+  </main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../../owncloud-docs/js/site.js"></script>
+<script src="../../../../owncloud-docs/js/vendor/highlight.js"></script>
+<script>hljs.initHighlighting()</script>
+  </body>
+</html>

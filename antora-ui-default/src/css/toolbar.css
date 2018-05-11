@@ -1,0 +1,79 @@
+:root {
+  --toolbar-height: 2.5rem;
+}
+
+.toolbar {
+  color: #5d5d5d;
+  align-items: center;
+  background-color: #fafafa;
+  box-shadow: 0 1px 0 #e1e1e1;
+  display: flex;
+  font-size: 0.75rem;
+  height: var(--toolbar-height);
+  justify-content: flex-start;
+  position: sticky;
+  top: var(--navbar-height);
+  z-index: 1;
+}
+
+.toolbar a,
+.toolbar a:visited {
+  color: inherit;
+}
+
+.navigation-toggle {
+  background: url(../img/menu.svg) no-repeat 50% 47.5%;
+  background-size: 49%;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: block;
+  height: 2.5rem;
+  padding: 0;
+  width: 2.5rem;
+  margin-right: -0.25rem;
+}
+
+.navigation-toggle::-moz-focus-inner {
+  border: none;
+}
+
+@media screen and (min-width: 1024px) {
+  .navigation-toggle {
+    display: none;
+  }
+}
+
+.navigation-toggle.is-active {
+  background-image: url(../img/back.svg);
+  background-size: 41.5%;
+}
+
+.home-link {
+  background: url(../img/home-o.svg) no-repeat 50% 45%;
+  background-size: 50%;
+  display: block;
+  height: 2.5rem;
+  padding: 0;
+  width: 2.5rem;
+}
+
+.home-link:hover,
+.home-link.is-current {
+  background-image: url(../img/home.svg);
+}
+
+.edit-this-page {
+  display: none;
+  padding-right: 0.5rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .edit-this-page {
+    display: block;
+  }
+}
+
+.toolbar .edit-this-page a {
+  color: #8e8e8e;
+}

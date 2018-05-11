@@ -1,0 +1,130 @@
+How To Manually Move a Data Directory
+=====================================
+
+If you need to move your ownCloud data directory from its current
+location to somewhere else, here is a manual process that you can take
+to make it happen.
+
+This example assumes that:
+
+* The current folder is: /var/www/owncloud/data
+* The new folder is: /mnt/owncloud
+* You’re using Apache as your webserver
+
+1.  Stop Apache
+2.  Use rsync to sync the files from the current folder to the new one
+3.  Create a symbolic link from the new directory to the old one
+4.  Double-check
+https://doc.owncloud.org/server/latest/admin_manual/installation/installation_wizard.html#strong-perms-label[the
+directory permissions] on the new directory
+5.  Restart Apache
+
+To save time, here’s the commands which you can copy and use:
+
+....
+apachectl -k stop 
+rsync -avz /var/www/owncloud/data /mnt/owncloud
+ln -s /mnt/owncloud /var/www/owncloud/data
+apachectl -k graceful 
+....
+
+If you’re on CentOS/Fedora, try `systemctl restart httpd`. If you’re on
+Debian/Ubuntu try `sudo systemctl restart apache2` To learn more about
+the systemctl command, please refer to
+https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal[the
+systemd essentials guide]
+
+[[fix-hardcoded-database-path-variables]]
+Fix Hardcoded Database Path Variables
+-------------------------------------
+
+[[update-the-oc_storages-table]]
+Update the oc_storages table
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you want to manually change the location of the data folder in the
+database, run the SQL below:
+
+[source,sourceCode,sql]
+----
+UPDATE oc_storages SET id='local::/mnt/owncloud' 
+  WHERE id='local::/var/www/owncloud/data/';
+----
+
+[[update-the-oc_accounts-table]]
+Update the oc_accounts table
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You next need to update the `home` column in the `oc_accounts` table.
+This column contains the absolute path for user folders, e.g.,
+`/mnt/data/files/admin`. Assuming that the new home directory is:
+`/mnt/data/files/super-admin`, and that the user’s id is 1, you could
+change it using the following SQL statement:
+
+[source,sourceCode,sql]
+----
+UPDATE oc_accounts SET home='/mnt/data/files/super-admin' 
+  WHERE id=1;
+----
+
+Please don’t copy and paste this example verbatim — nor any of the
+others. It, and the others, are provided only as guides to what you
+should or could do.
+
+[[update-the-oc_jobs-table]]
+Update the oc_jobs table
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+The next area to check is the oc_jobs table. The logrotate process may
+have hard-coded a non-standard (or old) value for the data path. To
+check it, run the SQL below and see if any results are returned:
+
+[source,sourceCode,sql]
+----
+SELECT * FROM oc_jobs 
+  WHERE class = 'OC\Log\Rotate';
+----
+
+If any are, run the SQL below to update them, changing the value as
+appropriate.
+
+[source,sourceCode,sql]
+----
+UPDATE oc_jobs SET argument = '/your/new/data/path' 
+  WHERE id = <id of the incorrect record>;
+----
+
+[[fix-application-settings]]
+Fix Application Settings
+------------------------
+
+One thing worth noting is that individual apps may reference the data
+directory separate from the core system configuration. If so, then you
+will need to find which applications do this, and change them as needed.
+
+For example, if you listed the application configuration by running occ
+config:list, then you might see output similar to that below:
+
+[source,sourceCode,json]
+----
+{
+    "apps": {
+        "fictitious": {
+            "enabled": "yes",
+            "installed_version": "2.3.2",
+            "types": "filesystem",
+            "datadir": "var/www/owncloud/data"
+        }
+    }
+}
+----
+
+Here, the ``fictitious'' application references the data directory as
+being set to var/www/owncloud/data. So you would have to change the
+value by using the config:app:set option. Here’s an example of how you
+would update the setting:
+
+[source,sourceCode,console]
+----
+occ config:app:set --value /mnt/owncloud fictitious datadir
+----

@@ -1,0 +1,23 @@
+footer.footer {
+  font-size: 0.85rem;
+  background-color: #1d2d44;
+  color: #8e8e8e;
+  padding: 0.5rem 1rem;
+}
+
+.footer p {
+  margin: 0.5rem 0;
+}
+
+.footer a {
+  color: #5d5d5d;
+}
+
+.footer-nav h4 {
+  color: #ffffff;
+  font-weight: normal;
+}
+
+.footer-nav ul li a {
+  color: #aaaaaa;
+}

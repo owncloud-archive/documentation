@@ -1,0 +1,269 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Installing &amp; Upgrading ownCloud Enterprise Edition &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Oracle Database Setup" href="oracle_db_configuration.html" />
+    <link rel="prev" title="Installation" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Enterprise Features</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Installing &amp; Upgrading ownCloud Enterprise Edition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="oracle_db_configuration.html">Oracle Database Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../firewall/index.html">Firewall Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ransomware-protection/index.html">Ransomware Protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../file_management/index.html">File Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_management/index.html">User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clients/index.html">Creating Branded ownCloud Clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging/index.html">Logging Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server_branding/index.html">Server Branding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="installing-upgrading-owncloud-enterprise-edition">
+<h1>Installing &amp; Upgrading ownCloud Enterprise Edition<a class="headerlink" href="#installing-upgrading-owncloud-enterprise-edition" title="Permalink to this headline">¶</a></h1>
+<p>The recommended method for installing and maintaining your ownCloud Enterprise edition is with your Linux package manager.
+Configure your package manager to use the ownCloud Enterprise repository, import the signing key, and then install and update ownCloud packages like any other software package.</p>
+<p>Please refer to the <code class="docutils literal notranslate"><span class="pre">README</span> <span class="pre">-</span> <span class="pre">ownCloud</span> <span class="pre">Package</span> <span class="pre">Installation.txt</span></code> document in your account at <a class="reference external" href="https://customer.owncloud.com/owncloud/">Customer.owncloud.com</a> account for instructions on setting up your Linux package manager.</p>
+<p>After you have completed your initial installation of ownCloud as detailed in the README, follow the instructions in <a class="reference internal" href="../../installation/installation_wizard.html"><span class="doc">The Installation Wizard</span></a> to finish setting up ownCloud.</p>
+<p>To upgrade your Enterprise server, refer to <a class="reference internal" href="../../maintenance/upgrade.html"><span class="doc">How to Upgrade Your ownCloud Server</span></a>.</p>
+<div class="section" id="manual-installation">
+<h2>Manual Installation<a class="headerlink" href="#manual-installation" title="Permalink to this headline">¶</a></h2>
+<p>Download the ownCloud archive from your account at <a class="reference external" href="https://customer.owncloud.com/owncloud">https://customer.owncloud.com/owncloud</a>, then follow the instructions at <a class="reference internal" href="../../installation/source_installation.html"><span class="doc">Manual Installation on Linux</span></a>.</p>
+<div class="section" id="selinux">
+<h3>SELinux<a class="headerlink" href="#selinux" title="Permalink to this headline">¶</a></h3>
+<p>Linux distributions that use SELinux need to take some extra steps so that
+ownCloud will operate correctly under SELinux. Please see
+<a class="reference internal" href="../../installation/selinux_configuration.html"><span class="doc">SELinux Configuration</span></a> for some recommended configurations.</p>
+</div>
+</div>
+<div class="section" id="license-keys">
+<h2>License Keys<a class="headerlink" href="#license-keys" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="introduction">
+<h3>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h3>
+<p>You’ll need to install a license key to use ownCloud Enterprise Edition.
+There are two types of license keys: one is a free 30-day trial key.
+The other is a full license key for Enterprise customers.</p>
+<p>You can <a class="reference external" href="https://owncloud.com/download/">download and try ownCloud Enterprise for 30 days for free</a>, which auto-generates a free 30-day key.
+When this key expires your ownCloud installation is not removed, so when you become an Enterprise customer you can enter your new key to regain access.
+See <a class="reference external" href="https://owncloud.com/how-to-buy-owncloud/">How to Buy ownCloud</a> for sales and contact information.</p>
+</div>
+<div class="section" id="configuration">
+<h3>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h3>
+<p>Once you get your Enterprise license key, it needs to be copied to your ownCloud configuration file, <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> file like this example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;license-key&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;test-20150101-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-YYYYYY&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Each running instance of ownCloud requires a license key.
+Keys will work across upgrades without issue, so new keys will not be required when you upgrade your ownCloud Enterprise to a new version.</p>
+</div>
+</div>
+<div class="section" id="supported-owncloud-enterprise-edition-apps">
+<h2>Supported ownCloud Enterprise Edition Apps<a class="headerlink" href="#supported-owncloud-enterprise-edition-apps" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="../../installation/apps_supported.html"><span class="doc">Supported Apps in ownCloud</span></a> for a list of supported apps.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">3rd party and unsupported apps must be disabled before performing a
+system upgrade. Then install the upgraded versions, and after the
+upgrade is complete re-enable them.</p>
+</div>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

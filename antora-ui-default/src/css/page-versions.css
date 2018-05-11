@@ -1,0 +1,64 @@
+.page-versions {
+  display: none;
+  margin-right: 0.7rem;
+  position: relative;
+}
+
+@media screen and (min-width: 1024px) {
+  .page-versions {
+    display: block;
+  }
+}
+
+.page-versions.is-active {
+  color: #333;
+}
+
+.page-versions .versions-menu-toggle {
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  background: url(../img/chevron.svg) no-repeat;
+  background-position: right 0.5rem top 50%;
+  background-size: auto 0.75em;
+  border: 1px solid transparent;
+  outline: none;
+  cursor: pointer;
+  padding: 0.35rem 1.5rem 0.35rem 0.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.page-versions .versions-menu-toggle::-moz-focus-inner {
+  border: none;
+}
+
+.page-versions .versions-menu {
+  border: 1px solid transparent;
+  background-color: #f0f0f0;
+  padding: 1.3rem 0.5rem 0.35rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+}
+
+.page-versions:not(.is-active) .versions-menu {
+  display: none;
+}
+
+.page-versions .version {
+  display: block;
+  line-height: 1;
+  padding-top: 0.6em;
+}
+
+.page-versions .version.is-current {
+  display: none;
+}
+
+.page-versions .version.is-missing {
+  color: #8e8e8e;
+  font-style: italic;
+  text-decoration: none;
+}

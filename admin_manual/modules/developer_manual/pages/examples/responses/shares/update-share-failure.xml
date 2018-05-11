@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<ocs>
+  <meta>
+    <status>failure</status>
+    <statuscode>400</statuscode>
+    <message>can't change permission for public link share</message>
+  </meta>
+  <data/>
+</ocs>

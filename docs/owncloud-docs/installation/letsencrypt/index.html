@@ -1,0 +1,1727 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Using Let’s Encrypt SSL Certificates :: ownCloud Documentation</title>
+    <link rel="stylesheet" href="../../../owncloud-docs/css/site.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">ownCloud Documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <a class="navbar-item" href="https://owncloud.org/news/">News</a>
+        <a class="navbar-item" href="https://owncloud.org/features/">Features</a>
+        <a class="navbar-item" href="https://demo.owncloud.org/">Demo</a>
+        <a class="navbar-item" href="#">Documentation</a>
+        <a class="navbar-item" href="https://owncloud.org/contribute/">Contribute</a>
+        <a class="navbar-item" href="https://owncloud.org/support">Support</a>
+        <a class="navbar-item" href="https://owncloud.com/">Enterprise Edition</a>
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>-->
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://owncloud.org/install/">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="main-wrapper">
+<div class="navigation-container" data-component="owncloud-docs" data-version="master">
+  <aside class="navigation" role="navigation">
+    <div class="panels">
+<div class="navigation-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">ownCloud // Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">ROOT</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Appliance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ucs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../appliance/ucs/add-groups-and-users.html">Add groups and users</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Active_Directory.html">Active Directory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Backup.html">Backup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Clamav.html">ClamAV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Office.html">Office</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/certificates.html">Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/howto-update-owncloud.html">Howto update ownCloud</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/login_information.html">Login Information</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/managing-ucs.html">Managing UCS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/what-is-it.html">What is it</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Database</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/db_conversion.html">DB Conversion</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/linux_database_configuration.html">Linux Database Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Files</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage/amazons3.html">AmazonS3</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/big_file_upload_configuration.html">Big File Upload Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/default_files_configuration.html">Default Files Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/encryption_configuration.html">Encryption Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage_configuration.html">External Storage Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage_configuration_gui.html">External Storage Configuration GUI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/federated_cloud_sharing_configuration.html">Federated Cloud Sharing Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/file_sharing_configuration.html">File Sharing Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/file_versioning.html">File Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/files_locking_transactional.html">Files LOCking Transactional</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/previews_configuration.html">Previews Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/trashbin_options.html">Trashbin Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ldap</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/ldap/ldap_proxy_cache_server_setup.html">LDAP Proxy Cache Server Setup</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Mimetypes</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/mimetypes/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Server</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/security/password-policy.html">Password policy</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/activity_configuration.html">Activity Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/antivirus_configuration.html">AntiVirus Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/automatic_configuration.html">Automatic Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/background_jobs_configuration.html">Background Jobs Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/caching_configuration.html">Caching Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/config_sample_php_parameters.html">Config Sample PHP Parameters</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/custom_client_repos.html">Custom Client Repos</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/email_configuration.html">Email Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/excluded_blacklisted_files.html">Excluded Blacklisted Files</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/external_sites.html">External Sites</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/harden_server.html">Harden Server</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/import_ssl_cert.html">Import SSL Cert</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/index_php_less_urls.html">Index PHP Less URLs</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/knowledgebase_configuration.html">Knowledgebase Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/language_configuration.html">Language Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/logging_configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/oc_server_tuning.html">OC Server Tuning</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/occ_command.html">OCC Command</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/reverse_proxy_configuration.html">Reverse Proxy Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/security_setup_warnings.html">Security Setup Warnings</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/thirdparty_php_configuration.html">Thirdparty PHP Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">User</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/reset_admin_password.html">Reset Admin Password</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/reset_user_password.html">Reset User Password</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_auth_ftp_smb_imap.html">User Auth FTP SMB IMAP</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_auth_ldap.html">User Auth LDAP</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_configuration.html">User Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_provisioning_api.html">User Provisioning API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_roles.html">User Roles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../configuration/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Enterprise</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Clients</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/creating_branded_apps.html">Creating Branded Apps</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/custom_client_repos.html">Custom Client Repos</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">External_storage</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/enterprise_only_auth.html">Enterprise Only Auth</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/ldap_home_connector_configuration.html">LDAP Home Connector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/onedrive.html">OneDrive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/s3_swift_as_primary_object_store_configuration.html">S3 Swift As Primary Object Store Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/sharepoint-integration_configuration.html">Sharepoint integration Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/windows-network-drive_configuration.html">Windows network drive Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">File_management</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/file_management/files_tagging.html">Files Tagging</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/file_management/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Firewall</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/firewall/file_firewall.html">File Firewall</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/firewall/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/install.html">Install</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/oracle_db_configuration.html">Oracle DB Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Logging</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/logging/enterprise_logging_apps.html">Enterprise Logging Apps</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/logging/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ransomware-protection</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/ransomware-protection/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Server_branding</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/server_branding/enterprise_server_branding.html">Enterprise Server Branding</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/server_branding/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">User_management</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/user_management/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/user_management/user_auth_shibboleth.html">User Auth Shibboleth</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../enterprise/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Faq</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../faq/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Docker</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../docker/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Letsencrypt</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="apache.html">Apache</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="4">
+    <a class="nav-link" href="index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="nginx.html">NGINX</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../apps_management_installation.html">Apps Management Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../apps_supported.html">Apps Supported</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../changing_the_web_route.html">Changing the Web Route</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../command_line_installation.html">Command Line Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../configuration_notes_and_tips.html">Configuration Notes and Tips</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../deployment_considerations.html">Deployment Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../deployment_recommendations.html">Deployment Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../installation_wizard.html">Installation Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../linux_installation.html">Linux Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../nginx_configuration.html">NGINX Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../selinux_configuration.html">SELinux Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../source_installation.html">Source Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../system_requirements.html">System ReqUIrements</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Issues</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/code_signing.html">Code Signing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/general_troubleshooting.html">General Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/impersonate_users.html">Impersonate Users</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Maintenance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/backup.html">Backup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/enable_maintenance.html">Enable Maintenance</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/manual_upgrade.html">Manual Upgrade</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/manually-moving-data-folders.html">Manually moving data folders</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/migrating.html">Migrating</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/package_upgrade.html">Package Upgrade</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/restore.html">Restore</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/update.html">Update</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/upgrade.html">Upgrade</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Upgrading</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/marketplace_apps.html">Marketplace Apps</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/upgrade_php.html">Upgrade PHP</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../contents.html">Contents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../release_notes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../whats_new_admin.html">Whats New Admin</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">user manual</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">External_storage</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/external_storage/external_storage.html">External Storage</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/external_storage/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/external_storage/sharepoint_connecting.html">Sharepoint Connecting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Files</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Webgui</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/comments.html">Comments</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/custom_groups.html">Custom Groups</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/navigating.html">Navigating</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/quota.html">Quota</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/sharing.html">Sharing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/tagging.html">Tagging</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/access_webdav.html">Access Webdav</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/deleted_file_management.html">Deleted File Management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/desktop_mobile_sync.html">Desktop Mobile Sync</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/encrypting_files.html">Encrypting Files</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/federated_cloud_sharing.html">Federated Cloud Sharing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/gallery_app.html">Gallery App</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/large_file_upload.html">Large File Upload</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/public_link_shares.html">Public Link Shares</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/version_control.html">Version Control</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Pim</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/calendar.html">Calendar</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/contacts.html">Contacts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/sync_ios.html">Sync Ios</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/sync_kde.html">Sync Kde</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/sync_osx.html">Sync Osx</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/sync_thunderbird.html">Sync Thunderbird</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/contents.html">Contents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/session_management.html">Session Management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/userpreferences.html">Userpreferences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/webinterface.html">Webinterface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/whats_new.html">Whats New</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">developer manual</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">App</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Advanced</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/code_signing.html">Code Signing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/custom-cache-backend.html">Custom cache backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/custom-storage-backend.html">Custom storage backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/extstorage.html">Extstorage</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/l10n.html">L10N</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/storage-backend.html">Storage backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/two-factor-provider.html">Two factor provider</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/users.html">Users</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Fundamentals</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/backgroundjobs.html">Backgroundjobs</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/changelog.html">Changelog</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/classloader.html">ClaSSLoader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/container.html">Container</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/controllers.html">Controllers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/css.html">CSS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/database.html">Database</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/filesystem.html">Filesystem</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/hooks.html">Hooks</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/info.html">Info</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/js.html">JS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/market_app.html">Market App</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/middleware.html">Middleware</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/publishing.html">Publishing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/routes.html">Routes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/templates.html">Templates</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Tutorial</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/database_connectivity.html">Database Connectivity</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/development_environment.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/finishing_touches.html">Finishing Touches</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/javascript_and_css.html">JavaScript and CSS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/navigation.html">Navigation</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/request.html">Request</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/requirements.html">ReqUIrements</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/restful_api.html">Restful API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/routes_and_controllers.html">Routes and Controllers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/template_content.html">Template Content</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/wiring_it_up.html">Wiring it Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/app/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/app/introduction.html">Introduction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Bugtracker</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/bugtracker/codereviews.html">Codereviews</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/bugtracker/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/bugtracker/triaging.html">Triaging</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Commun</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/commun/help_and_communication.html">Help and Communication</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/commun/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Core</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/acceptance-tests.html">Acceptance tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/configfile.html">Configfile</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/externalapi.html">ExternalAPI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/ocs-capabilities.html">OCS capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/ocs-recipient-api.html">OCS recipient API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/ocs-share-api.html">OCS share API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/theming.html">Theming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/translation.html">Translation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/ui-testing.html">UI testing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/unit-testing.html">Unit testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">General</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/backporting.html">Backporting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/code-of-conduct.html">Code of conduct</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/codingguidelines.html">CodingGUIdelines</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/debugging.html">Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/devenv.html">Devenv</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/security.html">Security</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Mobile_development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Android_library</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/android_library/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/android_library/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/android_library/library_installation.html">Library Installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ios_library</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/ios_library/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/ios_library/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/ios_library/library_installation.html">Library Installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/mobile_development/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Testing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/testing/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Webdav_api</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/webdav_api/comments.html">Comments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/webdav_api/files_versions.html">Files Versions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/webdav_api/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/webdav_api/tags.html">Tags</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../developer_manual/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="navigation-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ownCloud // Documentation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">ownCloud // Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+  <main class="main" role="main">
+<div class="toolbar" role="navigation">
+  <button class="navigation-toggle"></button>
+<nav class="crumbs" role="navigation" aria-label="breadcrumbs">
+  <ul>
+    <li class="crumb"><a href="../../index.html">ownCloud // Documentation</a></li>
+    <li class="crumb">ROOT</li>
+    <li class="crumb">Installation</li>
+    <li class="crumb">Letsencrypt</li>
+    <li class="crumb"><a href="index.html">Index</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///Users/settermjd/Workspace/clients/ownCloud/antora-build/admin_manual/modules/ROOT/pages/installation/letsencrypt/index.adoc">Edit this Page</a></div>
+</div>
+<article class="doc">
+<h1>Using Let’s Encrypt SSL Certificates</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>This page covers how to configure your web server to use
+<a href="https://letsencrypt.org">Let’s Encrypt</a> as the certificate authority for
+your ownCloud server. Note that Let’s Encrypt is <em>not officially
+supported</em>, and this page is <em>community-maintained</em>. Thank you,
+contributors!</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>For ease of handling, SSL-specific directives have been moved into a
+separately included file. This can help for first-time certificate
+issuance as well as for reusing configurations.</p>
+</li>
+<li>
+<p>The examples shown are based on Ubuntu 17.10.</p>
+</li>
+<li>
+<p>Read the <a href="https://certbot.eff.org/docs/using.html">Certbot user guide</a>
+for details of the commands.</p>
+</li>
+<li>
+<p>Let’s Encrypt CA issues short-lived certificates valid for 90 days.
+Make sure you renew the certificates at least once in this period,
+because expired certificates need reissuing. A certificate is due for
+renewal earliest 30 days before expiring. Certbot can be forced to renew
+via options at any time as long the certificate is valid.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Excellent introductions to strong SSL security measures can be found
+here:
+<a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html">Apache</a>
+and
+<a href="https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html">NGINX</a>.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><a href="">Requirements &amp; Dependencies</a></p>
+</li>
+<li>
+<p><a href="">Install Let’s Encrypt’s Certbot client</a></p>
+</li>
+<li>
+<p><a href="">Register your email address</a></p>
+</li>
+<li>
+<p><a href="">Create Let’s Encrypt’s config files</a></p>
+</li>
+<li>
+<p><a href="">Create an SSL certificate</a></p>
+</li>
+<li>
+<p><a href="">Web Server setup</a></p>
+</li>
+<li>
+<p><a href="">Test the setup</a></p>
+</li>
+<li>
+<p><a href="">Renewing Certificates</a></p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="requirements-dependencies"><a class="anchor" href="#requirements-dependencies"></a>Requirements &amp; Dependencies</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>You require a domain name with a valid
+<a href="https://support.dnsimple.com/articles/a-record/">A record</a> pointing back
+to your servers IP address. In case your server is behind a firewall,
+take the necessary measures to ensure that your server is accessible,
+worldwide, from the internet, by adding the required firewall and port
+forward rules.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="install-lets-encrypts-certbot-client"><a class="anchor" href="#install-lets-encrypts-certbot-client"></a>Install Let’s Encrypt’s Certbot client</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The latest <a href="https://certbot.eff.org">Certbot</a> client can be installed in
+two ways:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>From source &lt;install_letsencrypt_via_github&gt;.</p>
+</li>
+<li>
+<p>With the Ubuntu
+ppa repository &lt;install_letsencrypt_via_ppa_repository&gt;.</p>
+</li>
+</ol>
+</div>
+<div class="sect2">
+<h3 id="via-github"><a class="anchor" href="#via-github"></a>Via GitHub</h3>
+<div class="literalblock">
+<div class="content">
+<pre>sudo apt-get update
+sudo apt-get install -y git
+sudo git clone https://github.com/certbot/certbot /opt/letsencrypt</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To run Certbot use the following command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo /opt/letsencrypt/certbot-auto</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For the sake of simplicity, the path chosen for the installation is
+<code>/opt/letsencrypt</code>. You can use any path that fits your needs.</p>
+</div>
+<div class="paragraph">
+<p>Unless explicitly denied, Certbot will auto-update on each run.</p>
+</div>
+<div class="paragraph">
+<p>As part of the first run, certbot-auto will install any missing
+dependencies.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="via-apt"><a class="anchor" href="#via-apt"></a>Via Apt</h3>
+<div class="paragraph">
+<p>To install Certbot via the PPA repository, run the following commands.
+These will add the repository, update Apt’s cache, and install Certbot.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo apt-get install certbot</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you’re using a version of Ubuntu prior to 17.10, you may need to run
+the following commands before you can install Certbot:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo apt-get update
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:certbot/certbot</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To run Certbot use the following command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo /usr/bin/certbot
+
+# Alternatively, you could run the following instead
+sudo certbot</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Depending on how you installed Let’s Encrypt, certbot may also be named
+<code>letsencrypt</code> or <code>certbot-auto</code>. However, this guide will refer to it as
+<code>certbot</code>. Please bear that in mind, and update the ../examples and
+scripts used in this guide to reflect your Certbot installation.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="updating-certbot"><a class="anchor" href="#updating-certbot"></a>Updating Certbot</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you need to update Certbot at a later date, run
+<code>sudo apt-get install --only-upgrade certbot</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="register-your-email-address"><a class="anchor" href="#register-your-email-address"></a>Register your email address</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Now that Certbot is installed, register your email address for urgent
+renewal and security notifications. This command also prepares Certbot’s
+environment if it’s not already installed. To do this, run the following
+command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo certbot register --agree-tos --email &lt;your-email-address&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When it executes, you’ll see the following question, which you can
+answer &#8220;Yes&#8221; or &#8220;No&#8221; to:</p>
+</div>
+<div class="paragraph">
+<p>Saving debug log to /var/log/letsencrypt/letsencrypt.log</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-------------------------------------------------------------------------------
+Would you be willing to share your email address with the Electronic Frontier
+Foundation, a founding partner of the Let's Encrypt project and the non-profit
+organization that develops Certbot? We'd like to send you email about EFF and
+our work to encrypt the web, protect its users and defend digital rights.
+-------------------------------------------------------------------------------
+(Y)es/(N)o:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>When that completes, you’ll see a message similar to the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>IMPORTANT NOTES:
+ 1. Your account credentials have been saved in your Certbot
+    configuration directory at /etc/letsencrypt. You should make a
+    secure backup of this folder now. This configuration directory will
+    also contain certificates and private keys obtained by Certbot so
+    making regular backups of this folder is ideal.</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Please, <strong>strongly</strong>, consider following its recommendation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-lets-encrypts-config-files"><a class="anchor" href="#create-lets-encrypts-config-files"></a>Create Let’s Encrypt’s config files</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Create following files in the Let’s Encrypt directory. They will help
+to maintain your certificates.</p>
+</li>
+<li>
+<p>Replace the path to Certbot and the Certbot script name based on your
+installation. You can find it by running <code>which certbot</code>.</p>
+</li>
+<li>
+<p>Rename &lt;your-domain-name&gt;.sh with the name of the domain(s) you want
+to issue a certificate for. As an example, the script could be renamed
+to <code>your-domain-name.com.sh</code>.</p>
+</li>
+<li>
+<p>Make all files executable except <code>cli.ini</code> by running
+<code>sudo chmod +x &lt;script-name&gt;</code>.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>All scripts have to be executed with <code>sudo</code>.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>cd /etc/letsencrypt
+touch cli.ini list.sh renew.sh renew-cron.sh delete.sh &lt;your-domain-name&gt;.sh</pre>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cli.ini"><a class="anchor" href="#cli.ini"></a>cli.ini</h3>
+<div class="paragraph">
+<p>This file defines some settings used by Certbot. Use the email address
+you registered with. Comment / un-comment the post-hook parameter
+according which web server you use.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="list.sh"><a class="anchor" href="#list.sh"></a>list.sh</h3>
+<div class="paragraph">
+<p>This script lists all your issued certificates.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="renew.sh"><a class="anchor" href="#renew.sh"></a>renew.sh</h3>
+<div class="paragraph">
+<p>This script:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Renews all your issued certificates.</p>
+</li>
+<li>
+<p>Updates Certbot, when using Git as the installation source.</p>
+</li>
+<li>
+<p>Reloads the web server configuration automatically if a certificate
+has been renewed.</p>
+</li>
+</ol>
+</div>
+</div>
+<div class="sect2">
+<h3 id="renew-cron.sh"><a class="anchor" href="#renew-cron.sh"></a>renew-cron.sh</h3>
+<div class="paragraph">
+<p>This script:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Renews all your issued certificates but does not upgrade Certbot.</p>
+</li>
+<li>
+<p>Reloads the web server configuration automatically if a certificate
+has been renewed.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>It is intended for use via Cron.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete.sh"><a class="anchor" href="#delete.sh"></a>delete.sh</h3>
+<div class="paragraph">
+<p>This script deletes an issued certificate. Use the <code>list.sh</code> script to
+list issued certificates.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="your-domain-name.sh"><a class="anchor" href="#your-domain-name.sh"></a>&lt;your-domain-name&gt;.sh</h3>
+<div class="paragraph">
+<p>As an example, this script creates a certificate for following domain /
+sub-domains. You can add or remove sub-domains as necessary. Use your
+domain / sub-domain names. The first (sub)domain name used in the script
+is taken for naming the directories created by Certbot.</p>
+</div>
+<div class="paragraph">
+<p><strong>Note:</strong> You can create different certificates for different sub-domains,
+such as <code>mydom.tld</code>, <code>www.mydom.tld</code>, and <code>sub.mydom.tld</code>, by creating
+different scripts. You can see an example script here below:</p>
+</div>
+<div class="paragraph">
+<p>You can enable the <code>--dry-run</code> option which does a test run of the
+client only.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="create-an-ssl-certificate"><a class="anchor" href="#create-an-ssl-certificate"></a>Create an SSL certificate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>With all the scripts created, to create an SSL certificate, run the
+following command:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo /etc/letsencrypt/&lt;your-domain-name&gt;.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After you run the script, you will see output similar to the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Saving debug log to /var/log/letsencrypt/letsencrypt.log
+Obtaining a new certificate
+Performing the following challenges:
+http-01 challenge for your-domain-name.com
+Using the webroot path /var/www/html for all unmatched domains.
+Waiting for verification...
+Cleaning up challenges
+Running post-hook command: service apache2 reload
+
+IMPORTANT NOTES:
+ 1. Congratulations! Your certificate and chain have been saved at:
+    /etc/letsencrypt/live/your-domain-name.com/fullchain.pem
+    Your key file has been saved at:
+    /etc/letsencrypt/live/your-domain-name.com/privkey.pem
+    Your cert will expire on 2018-06-18. To obtain a new or tweaked
+    version of this certificate in the future, simply run certbot
+    again. To non-interactively renew *all* of your certificates, run
+    "certbot renew"
+ 2. If you like Certbot, please consider supporting our work by:
+
+    Donating to ISRG / Let's Encrypt:   https://letsencrypt.org/donate
+    Donating to EFF:                    https://eff.org/donate-le</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can see that the SSL certificate’s been successfully created, and
+that it will expire on 2018-06-18.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="listing-existing-certificates"><a class="anchor" href="#listing-existing-certificates"></a>Listing Existing Certificates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to list (view) the existing SSL certificates, use <code>list.sh</code>,
+which can be run as follows:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo /etc/letsencrypt/list.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Depending on the number of certificates, you can expect to see output
+similar to the following:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-------------------------------------------------------------------------------
+Found the following certs:
+  Certificate Name: your-domain-name.com
+    Domains: your-domain-name.com
+    Expiry Date: 2018-06-18 10:57:18+00:00 (VALID: 82 days)
+    Certificate Path: /etc/letsencrypt/live/your-domain-name.com/fullchain.pem
+    Private Key Path: /etc/letsencrypt/live/your-domain-name.com/privkey.pem
+-------------------------------------------------------------------------------</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="web-server-setup"><a class="anchor" href="#web-server-setup"></a>Web Server setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Follow the links to set up your web server and issue a certificate.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>apache</p>
+</li>
+<li>
+<p>nginx</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="test-the-setup"><a class="anchor" href="#test-the-setup"></a>Test the setup</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>After you have setup and configured the web server and installed the SSL
+certificate using Certbot, you should now test the security of your new
+configuration. To do so, you can use the free service of
+<a href="https://www.ssllabs.com/ssltest/">SSL Labs</a>. See an example screenshot of
+a test run below.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/ssllabs.png" alt="image"></span></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="renewing-certificates"><a class="anchor" href="#renewing-certificates"></a>Renewing Certificates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>As Let’s Encrypts certificates expire every 90 days, you should ensure
+you renew them before that time. There are two ways to do so:
+<a href="Manual%20renewal">manually</a> and automatically.</p>
+</div>
+<div class="sect2">
+<h3 id="manual-renewal"><a class="anchor" href="#manual-renewal"></a>Manual renewal</h3>
+<div class="paragraph">
+<p>If you have provided your email address, you will receive reminder
+notifications.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">sudo /etc/letsencrypt/renew.sh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the certificate is not yet due for renewal, you can expect to see
+output similar to that below:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-------------------------------------------------------------------------------
+Processing /etc/letsencrypt/renewal/your-domain-name.com.conf
+-------------------------------------------------------------------------------
+Cert not yet due for renewal
+
+The following certs are not due for renewal yet:
+  /etc/letsencrypt/live/your-domain-name.com/fullchain.pem (skipped)
+No renewals were attempted.
+No hooks were run.</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="automatic-renewal-via-crontab"><a class="anchor" href="#automatic-renewal-via-crontab"></a>Automatic renewal via crontab</h3>
+<div class="paragraph">
+<p>Certificates are only renewed if they are due, so you can schedule Cron
+jobs to renew your SSL certificates on a more frequent basis. However, a
+weekly check is sufficient.</p>
+</div>
+<div class="paragraph">
+<p>To add a new Cron job to auto-renew your certificates, firstly run the
+following command to edit the job list.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sudo crontab -e</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It is essential to use <code>sudo</code> to derive proper permissions.</p>
+</div>
+<div class="paragraph">
+<p>Then, add the following at the end of the existing configuration:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>30 03 * * 6 /etc/letsencrypt/renew-cron.sh</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>After you save and exit the file, the new job will have been added to
+the Cron job scheduler.</p>
+</div>
+<div class="paragraph">
+<p>If you want to use own values, you can check them at
+<a href="https://crontab.guru">crontab.guru</a> or modify the script for other
+options.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="add-extra-domains-to-the-certificate"><a class="anchor" href="#add-extra-domains-to-the-certificate"></a>Add extra domains to the certificate</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to add an extra domain, like <code>test.mydom.tld</code>, to your
+certificate, add the domain in the domain shell script above, re-run it
+and reload the web server config. This can be useful when migrating from
+a sub-directory to sub-domain access.</p>
+</div>
+<div class="paragraph">
+<p>This also implies that you need to comment the <code>include</code> directive
+(please refer to the relevant web server setup &lt;web_server_setup_label&gt;)
+and follow the steps afterward.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="deleting-ssl-certificates"><a class="anchor" href="#deleting-ssl-certificates"></a>Deleting SSL Certificates</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you want to delete an SSL certificate, use the delete.sh script,
+running it as follows:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">sudo /etc/letsencrypt/delete.sh</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It will start off, as below, by displaying a list of the currently
+available SSL certificate domain names, and then prompt you to supply
+the certificate that you want to delete.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>Available Certificates:
+
+1. your-domain-name.com
+
+Which certificate do you want to delete:</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Provide the SSL certificate name that you want to delete and click
+enter, and the certificate and all of its related files will be deleted.
+After that you should expect to see a confirmation, as in the example
+output below.</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>-------------------------------------------------------------------------------
+Deleted all files relating to certificate your-domain-name.com.
+-------------------------------------------------------------------------------</pre>
+</div>
+</div>
+</div>
+</div>
+</article>
+  </main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../owncloud-docs/js/site.js"></script>
+<script src="../../../owncloud-docs/js/vendor/highlight.js"></script>
+<script>hljs.initHighlighting()</script>
+  </body>
+</html>

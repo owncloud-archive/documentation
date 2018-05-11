@@ -1,0 +1,2284 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Guidelines :: ownCloud Documentation</title>
+    <link rel="stylesheet" href="../../../owncloud-docs/css/site.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">ownCloud Documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <a class="navbar-item" href="https://owncloud.org/news/">News</a>
+        <a class="navbar-item" href="https://owncloud.org/features/">Features</a>
+        <a class="navbar-item" href="https://demo.owncloud.org/">Demo</a>
+        <a class="navbar-item" href="#">Documentation</a>
+        <a class="navbar-item" href="https://owncloud.org/contribute/">Contribute</a>
+        <a class="navbar-item" href="https://owncloud.org/support">Support</a>
+        <a class="navbar-item" href="https://owncloud.com/">Enterprise Edition</a>
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>-->
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://owncloud.org/install/">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="main-wrapper">
+<div class="navigation-container" data-component="owncloud-docs" data-version="master">
+  <aside class="navigation" role="navigation">
+    <div class="panels">
+<div class="navigation-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">ownCloud // Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">ROOT</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Appliance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ucs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../appliance/ucs/add-groups-and-users.html">Add groups and users</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Active_Directory.html">Active Directory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Backup.html">Backup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Clamav.html">ClamAV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Office.html">Office</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/certificates.html">Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/howto-update-owncloud.html">Howto update ownCloud</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/login_information.html">Login Information</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/managing-ucs.html">Managing UCS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/what-is-it.html">What is it</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Database</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/db_conversion.html">DB Conversion</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/linux_database_configuration.html">Linux Database Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Files</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage/amazons3.html">AmazonS3</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/big_file_upload_configuration.html">Big File Upload Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/default_files_configuration.html">Default Files Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/encryption_configuration.html">Encryption Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage_configuration.html">External Storage Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage_configuration_gui.html">External Storage Configuration GUI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/federated_cloud_sharing_configuration.html">Federated Cloud Sharing Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/file_sharing_configuration.html">File Sharing Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/file_versioning.html">File Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/files_locking_transactional.html">Files LOCking Transactional</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/previews_configuration.html">Previews Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/trashbin_options.html">Trashbin Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ldap</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/ldap/ldap_proxy_cache_server_setup.html">LDAP Proxy Cache Server Setup</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Mimetypes</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/mimetypes/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Server</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/security/password-policy.html">Password policy</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/activity_configuration.html">Activity Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/antivirus_configuration.html">AntiVirus Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/automatic_configuration.html">Automatic Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/background_jobs_configuration.html">Background Jobs Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/caching_configuration.html">Caching Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/config_sample_php_parameters.html">Config Sample PHP Parameters</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/custom_client_repos.html">Custom Client Repos</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/email_configuration.html">Email Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/excluded_blacklisted_files.html">Excluded Blacklisted Files</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/external_sites.html">External Sites</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/harden_server.html">Harden Server</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/import_ssl_cert.html">Import SSL Cert</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/index_php_less_urls.html">Index PHP Less URLs</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/knowledgebase_configuration.html">Knowledgebase Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/language_configuration.html">Language Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/logging_configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/oc_server_tuning.html">OC Server Tuning</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/occ_command.html">OCC Command</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/reverse_proxy_configuration.html">Reverse Proxy Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/security_setup_warnings.html">Security Setup Warnings</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/thirdparty_php_configuration.html">Thirdparty PHP Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">User</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/reset_admin_password.html">Reset Admin Password</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/reset_user_password.html">Reset User Password</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_auth_ftp_smb_imap.html">User Auth FTP SMB IMAP</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_auth_ldap.html">User Auth LDAP</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_configuration.html">User Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_provisioning_api.html">User Provisioning API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_roles.html">User Roles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../configuration/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Enterprise</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Clients</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/creating_branded_apps.html">Creating Branded Apps</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/custom_client_repos.html">Custom Client Repos</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">External_storage</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/enterprise_only_auth.html">Enterprise Only Auth</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/ldap_home_connector_configuration.html">LDAP Home Connector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/onedrive.html">OneDrive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/s3_swift_as_primary_object_store_configuration.html">S3 Swift As Primary Object Store Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/sharepoint-integration_configuration.html">Sharepoint integration Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/windows-network-drive_configuration.html">Windows network drive Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">File_management</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/file_management/files_tagging.html">Files Tagging</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/file_management/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Firewall</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/firewall/file_firewall.html">File Firewall</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/firewall/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/install.html">Install</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/oracle_db_configuration.html">Oracle DB Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Logging</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/logging/enterprise_logging_apps.html">Enterprise Logging Apps</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/logging/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ransomware-protection</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/ransomware-protection/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Server_branding</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/server_branding/enterprise_server_branding.html">Enterprise Server Branding</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/server_branding/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">User_management</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/user_management/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/user_management/user_auth_shibboleth.html">User Auth Shibboleth</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../enterprise/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Faq</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../faq/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Docker</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../installation/docker/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Letsencrypt</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../installation/letsencrypt/apache.html">Apache</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../installation/letsencrypt/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../installation/letsencrypt/nginx.html">NGINX</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/apps_management_installation.html">Apps Management Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/apps_supported.html">Apps Supported</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/changing_the_web_route.html">Changing the Web Route</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/command_line_installation.html">Command Line Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/configuration_notes_and_tips.html">Configuration Notes and Tips</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/deployment_considerations.html">Deployment Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/deployment_recommendations.html">Deployment Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/installation_wizard.html">Installation Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/linux_installation.html">Linux Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/nginx_configuration.html">NGINX Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/selinux_configuration.html">SELinux Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/source_installation.html">Source Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/system_requirements.html">System ReqUIrements</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Issues</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/code_signing.html">Code Signing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/general_troubleshooting.html">General Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/impersonate_users.html">Impersonate Users</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Maintenance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/backup.html">Backup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/enable_maintenance.html">Enable Maintenance</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/manual_upgrade.html">Manual Upgrade</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/manually-moving-data-folders.html">Manually moving data folders</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/migrating.html">Migrating</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/package_upgrade.html">Package Upgrade</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/restore.html">Restore</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/update.html">Update</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/upgrade.html">Upgrade</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Upgrading</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/marketplace_apps.html">Marketplace Apps</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/upgrade_php.html">Upgrade PHP</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../contents.html">Contents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../release_notes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../whats_new_admin.html">Whats New Admin</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">user manual</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">External_storage</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/external_storage/external_storage.html">External Storage</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/external_storage/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/external_storage/sharepoint_connecting.html">Sharepoint Connecting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Files</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Webgui</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/comments.html">Comments</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/custom_groups.html">Custom Groups</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/navigating.html">Navigating</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/quota.html">Quota</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/sharing.html">Sharing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../user_manual/files/webgui/tagging.html">Tagging</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/access_webdav.html">Access Webdav</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/deleted_file_management.html">Deleted File Management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/desktop_mobile_sync.html">Desktop Mobile Sync</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/encrypting_files.html">Encrypting Files</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/federated_cloud_sharing.html">Federated Cloud Sharing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/gallery_app.html">Gallery App</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/large_file_upload.html">Large File Upload</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/public_link_shares.html">Public Link Shares</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/files/version_control.html">Version Control</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Pim</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/calendar.html">Calendar</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/contacts.html">Contacts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/sync_ios.html">Sync Ios</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/sync_kde.html">Sync Kde</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/sync_osx.html">Sync Osx</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/sync_thunderbird.html">Sync Thunderbird</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../user_manual/pim/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/contents.html">Contents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/session_management.html">Session Management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/userpreferences.html">Userpreferences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/webinterface.html">Webinterface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../user_manual/whats_new.html">Whats New</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">developer manual</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">App</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Advanced</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/code_signing.html">Code Signing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/custom-cache-backend.html">Custom cache backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/custom-storage-backend.html">Custom storage backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/extstorage.html">Extstorage</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/l10n.html">L10N</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/storage-backend.html">Storage backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/two-factor-provider.html">Two factor provider</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/advanced/users.html">Users</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Fundamentals</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/backgroundjobs.html">Backgroundjobs</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/changelog.html">Changelog</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/classloader.html">ClaSSLoader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/container.html">Container</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/controllers.html">Controllers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/css.html">CSS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/database.html">Database</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/filesystem.html">Filesystem</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/hooks.html">Hooks</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/info.html">Info</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/js.html">JS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/market_app.html">Market App</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/middleware.html">Middleware</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/publishing.html">Publishing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/routes.html">Routes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/templates.html">Templates</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/fundamentals/testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Tutorial</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/database_connectivity.html">Database Connectivity</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/development_environment.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/finishing_touches.html">Finishing Touches</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/javascript_and_css.html">JavaScript and CSS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/navigation.html">Navigation</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/request.html">Request</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/requirements.html">ReqUIrements</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/restful_api.html">Restful API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/routes_and_controllers.html">Routes and Controllers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/template_content.html">Template Content</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../app/tutorial/wiring_it_up.html">Wiring it Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../app/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../app/introduction.html">Introduction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Bugtracker</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../bugtracker/codereviews.html">Codereviews</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../bugtracker/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../bugtracker/triaging.html">Triaging</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Commun</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../commun/help_and_communication.html">Help and Communication</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../commun/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Core</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/acceptance-tests.html">Acceptance tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/configfile.html">Configfile</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/externalapi.html">ExternalAPI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/ocs-capabilities.html">OCS capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/ocs-recipient-api.html">OCS recipient API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/ocs-share-api.html">OCS share API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/theming.html">Theming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/translation.html">Translation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/ui-testing.html">UI testing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../core/unit-testing.html">Unit testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">General</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="backporting.html">Backporting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="code-of-conduct.html">Code of conduct</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="codingguidelines.html">CodingGUIdelines</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="debugging.html">Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="devenv.html">Devenv</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="performance.html">Performance</a>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="security.html">Security</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Mobile_development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Android_library</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../mobile_development/android_library/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../mobile_development/android_library/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../mobile_development/android_library/library_installation.html">Library Installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ios_library</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../mobile_development/ios_library/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../mobile_development/ios_library/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../mobile_development/ios_library/library_installation.html">Library Installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../mobile_development/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Testing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../testing/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Webdav_api</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../webdav_api/comments.html">Comments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../webdav_api/files_versions.html">Files Versions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../webdav_api/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../webdav_api/tags.html">Tags</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../index.html">Index</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="navigation-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ownCloud // Documentation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">ownCloud // Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+  <main class="main" role="main">
+<div class="toolbar" role="navigation">
+  <button class="navigation-toggle"></button>
+<nav class="crumbs" role="navigation" aria-label="breadcrumbs">
+  <ul>
+    <li class="crumb"><a href="../../index.html">ownCloud // Documentation</a></li>
+    <li class="crumb">developer manual</li>
+    <li class="crumb">General</li>
+    <li class="crumb"><a href="security.html">Security</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///Users/settermjd/Workspace/clients/ownCloud/antora-build/admin_manual/modules/developer_manual/pages/general/security.adoc">Edit this Page</a></div>
+</div>
+<article class="doc">
+<h1>Security Guidelines</h1>
+<div class="sect1">
+<h2 id="introduction"><a class="anchor" href="#introduction"></a>Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>These security guidelines are for both core and application developers.
+They:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>highlight some of the most common security problems and how to prevent
+them.</p>
+</li>
+<li>
+<p>give you some best practices and tips about security when developing
+with ownCloud.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please use them to assess how secure your application is.</p>
+</div>
+<div class="paragraph">
+<p><strong>Program defensively</strong>: for instance always check for CSRF or escape
+strings, even if you do not need it. Doing so prevents future problems
+where you might miss a change that leads to a security hole.</p>
+</div>
+<div class="paragraph">
+<p>All application Framework security features depend on the call of the
+controller through :phpOCA\\AppFramework\\App::main. If the controller
+method executes directly, security checks are not performed!</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="general"><a class="anchor" href="#general"></a>General</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="source-code-analysis"><a class="anchor" href="#source-code-analysis"></a>Source Code Analysis</h3>
+<div class="paragraph">
+<p>Before releasing an application and after security-related changes, the
+complete source code <strong>must</strong> be scanned. We currently use
+<a href="http://rips-scanner.sourceforge.net/">RIPS</a> to perform scans. Affected
+Software:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Core</p>
+</li>
+<li>
+<p>All apps in core</p>
+</li>
+<li>
+<p>All apps in the marketplace</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="architecture"><a class="anchor" href="#architecture"></a>Architecture</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="security-related-comments-in-source-code"><a class="anchor" href="#security-related-comments-in-source-code"></a>Security Related Comments in Source Code</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Security-related comments in source code are forbidden. Source code
+means PHP code and especially JavaScript code. Security-related comments
+are:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Usernames and passwords</p>
+</li>
+<li>
+<p>Descriptions of processes and algorithms</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Before deploying your code,
+use a minifier for JavaScript and CSS files.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="http-or-https"><a class="anchor" href="#http-or-https"></a>HTTP or HTTPS</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Only use HTTPS for rendering content.</p>
+</li>
+<li>
+<p>Avoid switching between HTTP and HTTPS, which creates
+<a href="https://developer.mozilla.org/en-US/docs/Web/Security/Mixed_content">mixed-content
+pages</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="security-related-actions"><a class="anchor" href="#security-related-actions"></a>Security Related Actions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>All security-related actions must take place on the server. This
+includes <em>validation</em>, <em>authentication</em>, and <em>authorization</em>.
+Authorization implementations on the client side are only useful for
+providing a better user experience.</p>
+</li>
+<li>
+<p>Don’t hard-code passwords or encryption keys in the source code. They
+have to be in config files and should be user-generated.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="browser-plugins"><a class="anchor" href="#browser-plugins"></a>Browser plugins</h3>
+<div class="paragraph">
+<p>Don’t use browser plugins such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>ActiveX Controls</p>
+</li>
+<li>
+<p>Java Applets</p>
+</li>
+<li>
+<p>Flash</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="least-privilege-principle"><a class="anchor" href="#least-privilege-principle"></a>Least Privilege Principle</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Every application should only have the rights that it needs.</p>
+</li>
+<li>
+<p>An application should not access core database tables. If it needs
+data from these tables, it should call an API endpoint to retrieve it.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="error-messages-and-error-pages"><a class="anchor" href="#error-messages-and-error-pages"></a>Error Messages and Error Pages</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Don’t show sensitive information on error pages or in error messages.
+Sensitive information includes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Username/password</p>
+</li>
+<li>
+<p>E-Mail addresses</p>
+</li>
+<li>
+<p>Version numbers</p>
+</li>
+<li>
+<p>Paths</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Don’t show overly detailed information in error messages or on error
+pages.</p>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>If a user can’t login, don’t show an error like: ``<em>Your password is
+wrong</em>`. Instead, show a message such as: ``<em>There was an error with
+your credentials</em>`. If you print ``<em>Your password is wrong</em>` then
+an attacker knows the username was a valid one in the ownCloud
+installation.</p>
+</div>
+</li>
+<li>
+<p>Consider implementing a <a href="https://en.wikipedia.org/wiki/CAPTCHA">CAPTCHA</a>
+to prevent brute force attacks, after five failed login attempts.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="session-id-transport"><a class="anchor" href="#session-id-transport"></a>Session ID Transport</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Don’t use a session id as a GET Parameter, because these persist in
+browser history. Use cookies instead.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="new-session-id-after-a-successful-login"><a class="anchor" href="#new-session-id-after-a-successful-login"></a>New Session ID After a Successful Login</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>After a successful login, regenerate the session id to prevent
+<a href="https://www.owasp.org/index.php/Session_fixation">session fixation
+attacks</a>.</p>
+</li>
+<li>
+<p>If you have to switch between HTTPS and HTTP, you should change the
+session id, because an attacker could have already read the session id.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="access-protection-with-authorization-checks"><a class="anchor" href="#access-protection-with-authorization-checks"></a>Access Protection With Authorization Checks</h2>
+<div class="sectionbody">
+<div class="ulist">
+<ul>
+<li>
+<p>Every request to the server must check if the user has the
+authorization to perform this request. We do not recommend running these
+on the client-side, as they can be avoided. However, client-side checks
+can improve the user’s experience.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="best-practices"><a class="anchor" href="#best-practices"></a>Best Practices</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="use-of-the-eval-function"><a class="anchor" href="#use-of-the-eval-function"></a>Use of the eval Function</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Don’t use either PHP’s or JavaScript’s <code>eval</code> functions — especially
+not with user-supplied data.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="input-validation"><a class="anchor" href="#input-validation"></a>Input Validation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>All user-supplied data, <code>$_SERVER</code>, and <code>$_COOKIE</code> variables <strong>must</strong> be
+validated. All these contain data which can be changed (or forged) by
+the client.</p>
+</li>
+<li>
+<p>Sanitize any supplied script code.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
+<div class="paragraph">
+<p>If you expect to receive an integer id as a GET parameter, then always
+explicitly cast it into an integer using the cast operator <code>(int)</code>,
+because all <code>$_REQUEST</code> parameters are strings. However, if you expect
+text as a parameter, use
+<a href="http://php.net/manual/en/function.htmlspecialchars.php">PHP’s
+htmlspecialchars function</a> with <code>ENT_QUOTES</code> or <code>strip_tags</code> to prevent
+<a href="https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)">Cross-site
+Scripting (XSS) attacks</a>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+
+$neu = htmlspecialchars("&lt;a href='test'&gt;Test&lt;/a&gt;", ENT_QUOTES);
+echo $neu; // &amp;lt;a href=&amp;#039;test&amp;#039;&amp;gt;Test&amp;lt;/a&amp;gt;</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+
+$text = '&lt;p&gt;Test-Absatz.&lt;/p&gt;&lt;!-- Kommentar --&gt; &lt;a href="#fragment"&gt;Anderer Text&lt;/a&gt;';
+echo strip_tags($text);
+echo "\n";</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Output:</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">Test-Absatz. Anderer Text
+&lt;p&gt;Test-Absatz.&lt;/p&gt; &lt;a href="#fragment"&gt;Anderer Text&lt;/a&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Do the validation <strong>before</strong> all other actions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="path-traversal-and-path-manipulation"><a class="anchor" href="#path-traversal-and-path-manipulation"></a>Path Traversal and Path Manipulation</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Don’t use user-supplied data to build path names, if you need to
+access the file system. You have to check the input parameters for null
+bytes (<code>\0</code>), the links to the current and parent directory on
+UNIX/Linux filesystems (<code>.</code> and <code>..</code>), and empty strings.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="prevent-command-injection"><a class="anchor" href="#prevent-command-injection"></a>Prevent Command Injection</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Use <a href="http://php.net/manual/en/function.escapeshellarg.php">PHP’s
+escapeshellarg() function</a>, if your input parameters are arguments for
+<a href="http://php.net/manual/en/function.exec.php">exec()</a>,
+<a href="http://php.net/manual/en/function.popen.php">popen()</a>,
+<a href="http://php.net/manual/en/function.system.php">system()</a>, or the backtick
+(```) operator.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+
+system('ls '.escapeshellarg($dir));</code></pre>
+</div>
+</div>
+</li>
+<li>
+<p>If you do not know how many arguments your application receives, then
+use the PHP function
+<a href="http://php.net/manual/en/function.escapeshellcmd.php">escapeshellcmd()</a>
+to escape the whole command.</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+$command = './configure '.$_POST['configure_options'];
+
+$escaped_command = escapeshellcmd($command);
+
+system($escaped_command);</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="output-escaping"><a class="anchor" href="#output-escaping"></a>Output Escaping</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>All input parameters printed out in the response should be escaped.</p>
+</li>
+<li>
+<p>Do not use <code>print_unescaped()</code> in ownCloud templates, use <code>p()</code>
+instead.</p>
+</li>
+<li>
+<p>Use <code>$jQuery.text()</code>, if you have to output text in JavaScript .</p>
+</li>
+<li>
+<p>Use <code>$jQuery.html()</code>, if you want to output HTML, . A better option is
+to use a tool like <a href="http://htmlpurifier.org">HTMLPurifier</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="high-sensitive-information-in-get-request"><a class="anchor" href="#high-sensitive-information-in-get-request"></a>High Sensitive Information in GET Request</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>You should not use sensitive information, like passwords or usernames,
+in unprotected requests.</p>
+</li>
+<li>
+<p>All requests containing sensitive information should be protected with
+HTTPS.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="prevent-http-header-injection-http-response-splitting"><a class="anchor" href="#prevent-http-header-injection-http-response-splitting"></a>Prevent HTTP-Header-Injection (HTTP Response Splitting)</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>To prevent
+<a href="https://www.owasp.org/index.php/HTTP_Response_Splitting">HTTP Response
+Splitting</a>, check all request variables for <code>%0d</code> (CR) and <code>%0a</code> (LF),
+if they are parameters provided to
+<a href="http://php.net/manual/en/function.header.php">PHP’s header() function</a>.
+This is because an attacker can deface your website, such as redirect
+the request to a phishing site or executing an XSS attack, by performing
+header manipulation.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="changes-on-the-document-object-model-dom"><a class="anchor" href="#changes-on-the-document-object-model-dom"></a>Changes on the Document Object Model (DOM)</h3>
+<div class="paragraph">
+<p>Don’t use unvalidated user input, if your code changes the DOM.</p>
+</div>
+<div class="paragraph">
+<p>You should never trust user input.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="prevent-sql-injection"><a class="anchor" href="#prevent-sql-injection"></a>Prevent SQL-Injection</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Use the escape functions for your database to prevent
+<a href="https://www.owasp.org/index.php/SQL_Injection">SQL Injection attacks</a>, if
+you have to pass parameters to a SQL query. In ownCloud you must use the
+<a href="https://github.com/owncloud/core/blob/master/lib/private/DB/QueryBuilder/QueryBuilder.php">QueryBuilder</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="data-storage"><a class="anchor" href="#data-storage"></a>Data Storage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="persistent-storages-on-client-side"><a class="anchor" href="#persistent-storages-on-client-side"></a>Persistent Storages on Client Side</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Don’t save highly sensitive data in persistent storage on the client
+side. Persistent data storage includes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="http://www.allaboutcookies.org/cookies/cookies-the-same.html">Persistent
+HTTP cookies</a></p>
+</li>
+<li>
+<p><a href="http://www.popularmechanics.com/technology/security/how-to/a6134/what-are-flash-cookies-and-how-can-you-stop-them/">Flash
+cookies</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">HTML5
+Web-Storage</a></p>
+</li>
+<li>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">HTML5
+Index DB</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="release-all-resources-in-case-of-an-error"><a class="anchor" href="#release-all-resources-in-case-of-an-error"></a>Release all Resources in Case of an Error</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>All resources, such as database and file locks, must be released when
+errors occur. Doing so prevents the server from being subject to
+<a href="https://en.wikipedia.org/wiki/Denial-of-service_attack">denial-of-service
+(DOS) attacks</a>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cryptography"><a class="anchor" href="#cryptography"></a>Cryptography</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="symmetric-encryption-methods"><a class="anchor" href="#symmetric-encryption-methods"></a>Symmetric Encryption Methods</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If you use symmetric encryption methods in your code, use the
+following encryption types:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>AES with a key length of 256</p>
+</li>
+<li>
+<p>SERPENT with a key length of 256</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For block ciphers use the following modes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>CFB (cipher feedback mode)</p>
+</li>
+<li>
+<p>CBC (cipher block chaining mode)</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>CFB mode requires an initialization vector (IV) to the respective cipher
+function. Whereas in CBC mode, supplying one is optional. The IV must be
+unique and must be the same when encrypting and decrypting. Use
+<a href="http://php.net/manual/en/function.crypt.php">the PHP crypt library</a> with
+<a href="http://mcrypt.sourceforge.net">libmcrypt</a> greater 2.4.x.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="asymmetric-encryption-methods"><a class="anchor" href="#asymmetric-encryption-methods"></a>Asymmetric Encryption Methods</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If you use asymmetric encryption methods, use RSA encryption with a
+key length of 4096.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="hash-algorithms"><a class="anchor" href="#hash-algorithms"></a>Hash Algorithms</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If you need a hash function in PHP, use the SHA512 hash algorithm.</p>
+</li>
+<li>
+<p>You can use <a href="http://php.net/manual/en/function.crypt.php">PHP’s crypt()
+function</a>, but only with a strong salt.</p>
+</li>
+<li>
+<p>Don’t use <em>MD5</em>, <em>SHA1</em> or <em>SHA256</em>. These types of algorithms are
+designed to be very fast and efficient. However, with modern techniques
+and computer equipment, it has become trivial to brute force the output
+of these algorithms to discover the original input.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="cookies"><a class="anchor" href="#cookies"></a>Cookies</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="secure-flag"><a class="anchor" href="#secure-flag"></a>Secure Flag</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If you use HTTPS to protect requests, then use
+<a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Headers/Set-Cookie">the
+secure flag</a> for your cookies.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="http-only"><a class="anchor" href="#http-only"></a>HTTP Only</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If you do not have to access your cookie content in JavaScript, then
+set <a href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Cookies">the
+HttpOnly flag</a> on every cookie.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="path"><a class="anchor" href="#path"></a>Path</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If possible, set a path for a cookie. Doing so ensures that the cookie
+is only valid for requests using the provided path.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="passwords"><a class="anchor" href="#passwords"></a>Passwords</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The following chapter is not only for developers but also for admins and
+end-users.</p>
+</div>
+<div class="sect2">
+<h3 id="charset-of-passwords"><a class="anchor" href="#charset-of-passwords"></a>Charset of Passwords</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>The charset of a password should contain <em>characters</em>, <em>numbers</em>, and
+<em>special characters</em>.</p>
+</li>
+<li>
+<p>Characters should be both upper and lowercase.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="password-length"><a class="anchor" href="#password-length"></a>Password Length</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>All passwords should have a minimum length of eight characters and
+contain numbers and special characters. These requirements must be
+validated by the application.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="password-quality"><a class="anchor" href="#password-quality"></a>Password Quality</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If the user can choose his password for the first time, the quality of
+a password should be displayed graphically.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="password-input"><a class="anchor" href="#password-input"></a>Password Input</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>If a user can input his password into an input field, the input field
+<strong>must</strong> be of type ``password`.</p>
+</li>
+<li>
+<p>If an error occurs, don’t fill the password field automatically when
+displaying an error message.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="save-passwords"><a class="anchor" href="#save-passwords"></a>Save Passwords</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Don’t save passwords in clear text. Use a
+<a href="https://crackstation.net/hashing-security.htm">salted hash</a></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="default-and-initial-passwords"><a class="anchor" href="#default-and-initial-passwords"></a>Default and Initial Passwords</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Avoid using both default and initial passwords. If you have to use
+either, you have to make sure that the password is changed by the user
+on the first call to the application.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="user-interface"><a class="anchor" href="#user-interface"></a>User Interface</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="input-auto-completion"><a class="anchor" href="#input-auto-completion"></a>Input Auto-completion</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Auto-complete must be disabled for all input fields which receive
+sensitive data. Sensitive data includes:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Username</p>
+</li>
+<li>
+<p>Password</p>
+</li>
+<li>
+<p>Credit card information</p>
+</li>
+<li>
+<p>Banking information</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>For text input fields use <code>autocomplete="off"</code> or use a dynamically
+generated field name.</p>
+</li>
+<li>
+<p>For password fields use:</p>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;input name="pass" type="password" autocomplete="new-password" /&gt;</code></pre>
+</div>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="attack-vectors"><a class="anchor" href="#attack-vectors"></a>Attack Vectors</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="auth-bypass-privilege-escalations"><a class="anchor" href="#auth-bypass-privilege-escalations"></a>Auth bypass / Privilege escalations</h3>
+<div class="paragraph">
+<p>Auth bypass/privilege escalations happen when users can perform
+unauthorized actions. ownCloud offers three simple checks:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>OCP\JSON::checkLoggedIn()</strong>: Checks if the logged in user is logged in</p>
+</li>
+<li>
+<p><strong>OCP\JSON::checkAdminUser()</strong>: Checks if the logged in user has admin
+privileges</p>
+</li>
+<li>
+<p><strong>OCP\JSON::checkSubAdminUser()</strong>: Checks if the logged in user has
+group admin privileges</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These checks are already automatically performed, by the application
+framework, for each request. If they are not required, they have to be
+<em>explicitly</em> turned off by using annotations above your controller
+method. See ../app/fundamentals/controllers. Additionally, always check
+if the user has the right to perform that action.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="clickjacking"><a class="anchor" href="#clickjacking"></a>Clickjacking</h3>
+<div class="paragraph">
+<p><a href="http://en.wikipedia.org/wiki/Clickjacking">Clickjacking</a> tricks the user
+to click into an invisible iframe to perform an arbitrary action (e.g.,
+deleting a user account).</p>
+</div>
+<div class="paragraph">
+<p>To prevent such attacks ownCloud sends the X-Frame-Options header to all
+template responses. Don’t remove this header unless you need to!</p>
+</div>
+<div class="paragraph">
+<p>This functionality is built into ownCloud when
+<a href="https://doc.owncloud.org/server/latest/developer_manual/app/templates.html">ownCloud
+templates</a> or <a href="https://twig.symfony.com/">Twig Templates</a> are used.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="code-executions-file-inclusions"><a class="anchor" href="#code-executions-file-inclusions"></a>Code executions / File inclusions</h3>
+<div class="paragraph">
+<p>Code execution means that an attacker can include an arbitrary PHP file.
+This PHP file runs with all the privileges granted to the normal
+application and can do an enormous amount of damage. Code executions and
+file inclusions can be easily prevented by never allowing user-input to
+run through the following functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>include()</strong></p>
+</li>
+<li>
+<p><strong>require()</strong></p>
+</li>
+<li>
+<p><strong>require_once()</strong></p>
+</li>
+<li>
+<p><strong>eval()</strong></p>
+</li>
+<li>
+<p><strong>fopen()</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>Never</strong> allow the user to upload files into a folder which is reachable
+from the URL!</p>
+</div>
+<div class="paragraph">
+<p><strong>DON’T</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+require("/includes/" . $_GET['file']);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you have to pass user input to a potentially dangerous function,
+double check to be sure that there is no other option available. If
+there is no other option, sanitize every user parameter and ask people
+to audit your sanitize functions.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cross-site-request-forgery"><a class="anchor" href="#cross-site-request-forgery"></a>Cross site request forgery</h3>
+<div class="paragraph">
+<p>Using <a href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a> one
+can trick a user into executing a request that he did not want to make.
+Thus every POST and GET request needs to be protected against it. The
+only places where no CSRF checks are needed are in the main template,
+which is rendering the application, or in externally callable
+interfaces.</p>
+</div>
+<div class="paragraph">
+<p>Submitting a form is also a POST/GET request!</p>
+</div>
+<div class="paragraph">
+<p>To prevent CSRF in an app, be sure to call the following method at the
+top of all your files:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+OCP\JSON::callCheck();</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you are using the application Framework, every controller method is
+automatically checked for CSRF unless you explicitly exclude it by
+setting the <code>@NoCSRFRequired</code> annotation before the controller method,
+see ../app/fundamentals/controllers</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="cross-site-scripting"><a class="anchor" href="#cross-site-scripting"></a>Cross site scripting</h3>
+<div class="paragraph">
+<p><a href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross-site scripting</a>
+happens when user input is passed directly to templates. A potential
+attacker might be able to inject HTML or JavaScript into the page to
+steal the user’s session, log keyboard entries, or perform DDOS attacks
+on other websites and other malicious actions.</p>
+</div>
+<div class="paragraph">
+<p>Despite the fact that ownCloud uses Content-Security-Policy to prevent
+the execution of inline JavaScript code developers are still required to
+prevent XSS. CSP is another layer of defense that is not implemented in
+all web browsers.</p>
+</div>
+<div class="paragraph">
+<p>To prevent XSS vulnerabilities in your application, you have to sanitize
+both the templates <em>and</em> all JavaScript scripts which perform DOM
+manipulation.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="templates"><a class="anchor" href="#templates"></a>Templates</h3>
+<div class="paragraph">
+<p>Let’s assume you use the following example in your application:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+echo $_GET['username'];</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An attacker might now easily send the user a link to
+<code>app.php?username=&lt;script src="attacker.tld"&gt;&lt;/script&gt;</code>, to take control
+of the user account. The same problem occurs when outputting content
+from the database, or any other location that is writable by users.
+Another attack vector that is often overlooked is XSS vulnerabilities in
+<code>href</code> attributes. HTML allows for executing JavaScript in <code>href</code>
+attributes like this:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>&lt;a href="javascript:alert('xss')"&gt;</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To prevent XSS in your app, never use <code>echo</code>, <code>print()</code> or <code>&lt;\%=</code>, use
+<code>p()</code> instead. Doing so sanitizes input. Also <strong>validate URLs to start
+with the expected protocol</strong> (starts with ``http` for instance)!</p>
+</div>
+<div class="paragraph">
+<p>Should you ever need to print something unescaped, double check if it is
+necessary. If there is no other way (e.g., when including sub-templates)
+use print_unescaped with care.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="javascript"><a class="anchor" href="#javascript"></a>JavaScript</h3>
+<div class="paragraph">
+<p>Avoid manipulating HTML directly via JavaScript. Doing so often leads to
+XSS vulnerabilities since people often forget to sanitize variables. For
+example:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">var html = '&lt;li&gt;' + username + '&lt;/li&gt;"';</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you want to use JavaScript for something like this use escapeHTML to
+sanitize the variables:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">var html = '&lt;li&gt;' + escapeHTML(username) + '&lt;/li&gt;';</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>An even better way to make your application safer is to use the jQuery
+built-in function <strong>$.text()</strong>, instead of <strong>$.html()</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>DON’T</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">messageTd.html(username);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>DO</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">messageTd.text(username);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>It may also be wise to choose a proper JavaScript framework, like
+AngularJS, which automatically handles JavaScript escaping for you.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="directory-traversal"><a class="anchor" href="#directory-traversal"></a>Directory Traversal</h3>
+<div class="paragraph">
+<p>Very often, developers forget about sanitizing the file path (such as
+removing all <code>\\</code> and <code>/</code>). Doing so allows an attacker to traverse
+through directories on the server and opens several potential attack
+vendors, which include <em>privilege escalations</em>, <em>code executions</em>, and
+<em>file disclosures</em>.</p>
+</div>
+<div class="paragraph">
+<p><strong>DON’T</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+$username = OC_User::getUser();
+fopen("/data/" . $username . "/" . $_GET['file'] . ".txt");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>DO</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+$username = OC_User::getUser();
+$file = str_replace(array('/', '\\'), `,  $_GET['file']);
+fopen("/data/" . $username . "/" . $file . ".txt");</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>PHP also interprets the backslash (\) in paths, don’t forget to replace
+it too!</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="shell-injection"><a class="anchor" href="#shell-injection"></a>Shell Injection</h3>
+<div class="paragraph">
+<p><a href="http://en.wikipedia.org/wiki/Code_injection#Shell_injection">Shell
+Injection</a> occurs if PHP code executes shell commands (e.g., running a
+latex compiler). Before doing this, check if there is a PHP library that
+already provides the needed functionality. If you really need to execute
+a command be aware that you have to escape every user parameter passed
+to one of these functions:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>exec()</strong></p>
+</li>
+<li>
+<p><strong>shell_exec()</strong></p>
+</li>
+<li>
+<p><strong>passthru()</strong></p>
+</li>
+<li>
+<p><strong>proc_open()</strong></p>
+</li>
+<li>
+<p><strong>system()</strong></p>
+</li>
+<li>
+<p><strong>popen()</strong></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Please require/request additional programmers to audit your escape
+function.</p>
+</div>
+<div class="paragraph">
+<p>Without escaping the user input, this allows an attacker to execute
+arbitrary shell commands on your server. PHP offers the following
+functions to escape user input:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>escapeshellarg()</strong>: Escape a string to be used as a shell argument</p>
+</li>
+<li>
+<p><strong>escapeshellcmd()</strong>: Escape shell metacharacters</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><strong>DON’T</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+system('ls '.$_GET['dir']);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>DO</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+system('ls '.escapeshellarg($_GET['dir']));</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sensitive-data-exposure"><a class="anchor" href="#sensitive-data-exposure"></a>Sensitive data exposure</h3>
+<div class="paragraph">
+<p>Always store user data or configuration files in safe locations, e.g.,
+<strong>owncloud/data/</strong> and not in the web root, where they are accessible by
+anyone using a web browser.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="sql-injection"><a class="anchor" href="#sql-injection"></a>SQL Injection</h3>
+<div class="paragraph">
+<p><a href="http://en.wikipedia.org/wiki/SQL_injection">SQL Injection</a> occurs when
+SQL query strings are concatenated with variables. To prevent this,
+always use prepared queries:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+$sql = 'SELECT * FROM `users` WHERE `id` = ?';
+$query = \OCP\DB::prepare($sql);
+$params = array(1);
+$result = $query-&gt;execute($params);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If the application Framework is used, write SQL queries like this in the
+class that extends the Mapper:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+// inside a child mapper class
+$sql = 'SELECT * FROM `users` WHERE `id` = ?';
+$params = array(1);
+$result = $this-&gt;execute($sql, $params);</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="unvalidated-redirects"><a class="anchor" href="#unvalidated-redirects"></a>Unvalidated redirects</h3>
+<div class="paragraph">
+<p>This is more of an annoyance than a critical security vulnerability
+since it may be used for social engineering or phishing. Before
+redirecting, always validate the URL if the requested URL is on the same
+domain or is an allowed resource.</p>
+</div>
+<div class="paragraph">
+<p><strong>DON’T</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+header('Location:'. $_GET['redirectURL']);</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>DO</strong></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?php
+header('Location: https://example.com'. $_GET['redirectURL']);</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="getting-help"><a class="anchor" href="#getting-help"></a>Getting Help</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you need help to ensure that a function is secure, please ask on our
+<a href="https://mailman.owncloud.org/mailman/listinfo/devel">mailing list</a> or in
+IRC channel <strong>#owncloud-dev</strong> on <strong>irc.freenode.net</strong>.</p>
+</div>
+</div>
+</div>
+</article>
+  </main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../owncloud-docs/js/site.js"></script>
+<script src="../../../owncloud-docs/js/vendor/highlight.js"></script>
+<script>hljs.initHighlighting()</script>
+  </body>
+</html>

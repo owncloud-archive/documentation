@@ -1,0 +1,28 @@
+Bugtracker
+==========
+
+Thank you for helping ownCloud by reporting bugs. Before submitting an
+issue, please read
+https://github.com/owncloud/core/blob/master/.github/CONTRIBUTING.md#submitting-issues[Issue
+submission guidelines] first.
+
+* If the issue is with the ownCloud server, report it to the
+https://github.com/owncloud/core/issues[Core repository]
+* If the issue is with the ownCloud desktop client, report it to the
+https://github.com/owncloud/client/issues[Desktop client repository]
+* If the issue is with the ownCloud iOS app, report it to the
+https://github.com/owncloud/ios/issues[iOS repository]
+* If the issue is with the ownCloud Android app, report it to the
+https://github.com/owncloud/android/issues[Android repository]
+* If the issue with with an ownCloud app, report it to where that app is
+developed
+* If the issue is with a Marketplace app, report it to the
+https://github.com/owncloud/marketplace-issues[Marketplace issue
+tracker]
+* If the app is listed in our https://github.com/owncloud[main github
+repository] report it to the correct sub repository
+* If the app is listed in the
+https://github.com/owncloud/apps/issues[apps repository] report it there
+
+Please note that the mailing list should not be used for bug reports, as
+it is hard to track them there.

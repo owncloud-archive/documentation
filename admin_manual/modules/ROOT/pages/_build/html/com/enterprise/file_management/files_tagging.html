@@ -1,0 +1,294 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Advanced File Tagging With the Workflow App &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="External Storage" href="../external_storage/index.html" />
+    <link rel="prev" title="File Management" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Enterprise Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../firewall/index.html">Firewall Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ransomware-protection/index.html">Ransomware Protection</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">File Management</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Advanced File Tagging With the Workflow App</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_management/index.html">User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clients/index.html">Creating Branded ownCloud Clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging/index.html">Logging Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server_branding/index.html">Server Branding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="advanced-file-tagging-with-the-workflow-app">
+<h1>Advanced File Tagging With the Workflow App<a class="headerlink" href="#advanced-file-tagging-with-the-workflow-app" title="Permalink to this headline">¶</a></h1>
+<p>The Workflow App provides advanced management of file tagging.
+The app has three parts: Tag Manager, Automatic Tagging, and Retention.</p>
+<p>The Workflow App should be enabled by default (Apps page), and the three
+configuration modules visible on your ownCloud Admin page.</p>
+<p>See <a class="reference external" href="https://doc.owncloud.com/server/latest/user_manual/files/access_webgui.html">Tagging Files</a> in
+the ownCloud User manual to learn how to apply and filter tags on files.</p>
+<div class="section" id="tag-manager">
+<h2>Tag Manager<a class="headerlink" href="#tag-manager" title="Permalink to this headline">¶</a></h2>
+<p>The Tag Manager is for creating new tags, editing existing tags, and deleting tags. Tags may be marked as <strong>Visible</strong>, <strong>Restricted</strong>, or <strong>Invisible</strong>.</p>
+<p><strong>Visible</strong> means that all users may see, rename, and apply these tags to files and folders.</p>
+<p><strong>Restricted</strong> means tags are assignable and editable only to the user groups that you select. Other users can filter files by restricted tags, but cannot tag files with them or rename them. The tags are marked (restricted).</p>
+<p><strong>Invisible</strong> means visible only to ownCloud admins.</p>
+<p>Use the <strong>Collaborative tag management</strong> module on your ownCloud admin page to edit and create tags.</p>
+<div class="figure">
+<img alt="Tag Manager." src="../../_images/workflow-1.png" />
+</div>
+<p>This is what your tags look like in the <strong>Tags</strong> view on your files page. Non-admin users will not see invisible tags, but they will see visible and restricted tags.</p>
+<div class="figure">
+<img alt="Tag Manager." src="../../_images/workflow-5.png" />
+</div>
+</div>
+<div class="section" id="automatic-tagging">
+<h2>Automatic Tagging<a class="headerlink" href="#automatic-tagging" title="Permalink to this headline">¶</a></h2>
+<p>The Automatic Tagging module operates on newly-uploaded files. Create a set of
+conditions, and then when a file or folder matches those conditions it is
+automatically tagged. The tag must already have been created with the Tag
+Manager.</p>
+<p>For example, you can assign the invisible tag <strong>iOS Uploads</strong> to all files
+uploaded from iOS devices. This tag is visible only to admins.</p>
+<div class="figure">
+<img alt="Automatic tagging." src="../../_images/workflow-2.png" />
+</div>
+<p>When files with this tag are shared with you, you can view them with the Tags
+filter on the Files page.</p>
+<div class="figure">
+<img alt="Viewing tagged files." src="../../_images/workflow-3.png" />
+</div>
+<p>Automatic Tagging is especially useful with the Retention module.</p>
+</div>
+<div class="section" id="retention">
+<h2>Retention<a class="headerlink" href="#retention" title="Permalink to this headline">¶</a></h2>
+<p>The Retention module is your housecleaning power tool, because it automatically
+deletes files after a time period that you specify. Select which tag to
+set a time limit on, and then set your time limit. File age is calculated from
+the file mtime (modification time).</p>
+<div class="figure">
+<img alt="Setting retention times via tag." src="../../_images/workflow-4.png" />
+</div>
+<p>For best performance, retention tags should be applied high in your file
+hierarchy. If subfolders have the same tags as their parent folders, their tags
+must also be processed, so it will take a little longer.</p>
+</div>
+<div class="section" id="retention-engines">
+<h2>Retention Engines<a class="headerlink" href="#retention-engines" title="Permalink to this headline">¶</a></h2>
+<p>There are two retention engines that further allow you to fine-tune your
+retention settings: <strong>TagBasedRetention</strong> and <strong>UserBasedRetention</strong>.
+<strong>TagBasedRetention</strong> is the default.</p>
+<p><strong>TagBasedRetention</strong>: This checks files that have a particular tag
+assigned. Then it checks (depth-first) the children of the tagged item, before
+continuing with the other tagged items. Children that have already been checked
+will not be checked a second time.</p>
+<p>This is optimised for processing smaller numbers of files that have multiple
+retention tags.</p>
+<p><strong>UserBasedRetention</strong>: Examines files per user. It first iterates over all
+files and folders (siblings first), then examines the tags for those items and
+checks their respective retention periods. This is optimised for many files with
+few retention tags.</p>
+<p>To select UserBasedRetention, add this line to your ee.config.php:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;workflow.retention_engine&#39;</span> <span class="o">=&gt;</span> <span class="n">userbased</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

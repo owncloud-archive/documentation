@@ -1,0 +1,98 @@
+.navigation-explore {
+  display: flex;
+  flex-direction: column;
+}
+
+.navigation-explore.is-active {
+  height: inherit;
+}
+
+.navigation-explore .context {
+  flex-shrink: 0;
+  color: #5d5d5d;
+  background-color: #fafafa;
+  box-shadow: 0 -1px 0 #e1e1e1;
+  padding: 0 0.25rem 0 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+  /* font-size: 0.75rem; */
+  font-size: 0.8824em;
+  line-height: 1;
+  height: var(--drawer-height);
+}
+
+.navigation-explore.is-active .context {
+  box-shadow: 0 1px 0 #e1e1e1;
+}
+
+.navigation-explore .context .version {
+  background-image: url(../img/chevron.svg);
+  background-repeat: no-repeat;
+  background-position: right 0.5rem top 50%;
+  background-size: auto 0.75em;
+  padding: 0 1.5rem 0 0;
+}
+
+.navigation-explore .components {
+  flex-grow: 1;
+  box-shadow: inset 0 1px 5px #e1e1e1;
+  background-color: #f0f0f0;
+  padding: 0.5rem;
+  margin: 0;
+  overflow-y: auto;
+  max-height: 100%;
+  display: block;
+}
+
+.navigation-explore:not(.is-active) .components {
+  display: none;
+}
+
+.navigation-explore .component {
+  display: block;
+}
+
+.navigation-explore .component + .component {
+  margin-top: 0.5rem;
+}
+
+.navigation-explore .component .title {
+  font-weight: 500;
+}
+
+.navigation-explore .versions {
+  display: flex;
+  flex-wrap: wrap;
+  list-style: none;
+  padding-left: 0.5rem;
+}
+
+.navigation-explore .component .version {
+  display: block;
+  font-size: 0.95em;
+}
+
+.navigation-explore .component .version a {
+  border: 1px solid #b0b0b0;
+  border-radius: 0.25em;
+  color: #4a4a4a;
+  white-space: nowrap;
+  padding: 0.05em 0.25em 0;
+}
+
+.navigation-explore .component .is-current a {
+  border-color: #4a4a4a;
+  font-weight: 500;
+}
+
+/*
+.navigation-explore .component .is-latest a::after {
+  content: " (latest)";
+}
+*/
+
+.navigation-explore .component .version + .version {
+  padding-left: 0.375em;
+}

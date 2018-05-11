@@ -1,0 +1,156 @@
+User Authentication with IMAP, SMB, and FTP
+===========================================
+
+You may configure additional user backends in ownCloud’s configuration
+file (config/config.php) using the following syntax:
+
+[source,sourceCode,php]
+----
+<?php
+
+"user_backends" => [
+    0 => [
+        "class"     => ...,
+        "arguments" => [
+            0 => ...
+        ],
+    ],
+],
+----
+
+A non-blocking or correctly configured SELinux setup is needed for these
+backends to work, if SELinux is enabled on your server.. Please refer to
+the SELinux documentation <selinux-config-label> for further details.
+
+Currently the https://github.com/owncloud/apps[External user support
+app] (user_external), _which is not enabled by default_, provides three
+backends. These are:
+
+* link:[IMAP]
+* link:[SMB]
+* link:[FTP]
+
+See ../../installation/apps_management_installation for more
+information.
+
+[[imap]]
+IMAP
+----
+
+Provides authentication against IMAP servers.
+
+[cols=",",options="header",]
+|=======================================================================
+|Option |Value/Description
+|Class |`OC_User_IMAP`.
+
+|Arguments |A mailbox string as defined
+http://www.php.net/manual/en/function.imap-open.php[in the PHP
+documentation].
+
+|Dependency |http://www.php.net/manual/en/book.imap.php[PHP’s IMAP
+extension]. See ../../installation/source_installation
+
+| |for instructions on how to install it.
+|=======================================================================
+
+[[example]]
+Example
+~~~~~~~
+
+[source,sourceCode,php]
+----
+<?php
+
+"user_backends" => [
+    0 => [
+        "class"     => "OC_User_IMAP",
+        "arguments" => [
+            // The IMAP server to authenticate against
+            '{imap.gmail.com:993/imap/ssl}', 
+            // The domain to send email from
+            'example.com'
+        ],
+    ],
+],
+----
+
+The second `arguments` parameter ensures that only users from that
+domain are allowed to login. When set, after a successful login, the
+domain will be stripped from the email address and the rest used as an
+ownCloud username. For example, if the email address is
+`guest.user@example.com`, then `guest.user` will be the username used by
+ownCloud.
+
+[[smb]]
+SMB
+---
+
+Provides authentication against Samba servers.
+
+[cols=",",options="header",]
+|=======================================================================
+|Option |Value/Description
+|Class |`OC_User_SMB`.
+
+|Arguments |The samba server to authenticate against.
+
+|Dependency |https://pecl.php.net/package/smbclient[PECL’s smbclient
+extension] or
+smbclient <../../configuration/files/external_storage/smb>.
+|=======================================================================
+
+[[example-1]]
+Example
+~~~~~~~
+
+[source,sourceCode,php]
+----
+<?php
+
+"user_backends" => [
+    0 => [
+        "class"     => "OC_User_SMB",
+        "arguments" => [
+            0 => 'localhost'
+        ],
+    ],
+],
+----
+
+[[ftp]]
+FTP
+---
+
+Provides authentication against FTP servers.
+
+[cols=",",options="header",]
+|=======================================================================
+|Option |Value/Description
+|Class |`OC_User_FTP`.
+
+|Arguments |The FTP server to authenticate against.
+
+|Dependency |http:/www.php.net/manual/en/book.ftp.php[PHP’s FTP
+extension]. See ../../installation/source_installation
+
+| |for instructions on how to install it.
+|=======================================================================
+
+[[example-2]]
+Example
+~~~~~~~
+
+[source,sourceCode,php]
+----
+<?php
+
+"user_backends" => [
+    0 => [
+        "class"     => "OC_User_FTP",
+        "arguments" => [
+            0 => 'localhost'
+        ],
+    ],
+],
+----

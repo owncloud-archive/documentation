@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<info>
+  <id>mystorageapp</id>
+  <name>My storage app</name>
+  ...
+  <types>
+    <filesystem/>
+  </types>
+  ...
+</info>

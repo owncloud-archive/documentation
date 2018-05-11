@@ -1,0 +1,401 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>ownCloud Server Tuning &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Enable index.php-less URLs" href="index_php_less_urls.html" />
+    <link rel="prev" title="Automatic Configuration Setup" href="automatic_configuration.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../database/index.html">Database Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ldap/ldap_proxy_cache_server_setup.html">How To Install and Configure an LDAP Proxy-Cache Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Server Configuration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="security_setup_warnings.html">Warnings on Admin Page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="import_ssl_cert.html">Importing System-wide and Personal SSL Certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_command.html">Using the occ Command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="activity_configuration.html">Configuring the Activity App</a></li>
+<li class="toctree-l3"><a class="reference internal" href="antivirus_configuration.html">Virus Scanner Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="caching_configuration.html">Memory Caching</a></li>
+<li class="toctree-l3"><a class="reference internal" href="background_jobs_configuration.html">Background Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="config_sample_php_parameters.html">Config.php Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="email_configuration.html">Email Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="excluded_blacklisted_files.html">Excluding Directories and Blacklisting Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external_sites.html">Linking External Sites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="custom_client_repos.html">Custom Client Download Repositories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="knowledgebase_configuration.html">Knowledge Base Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="language_configuration.html">Language Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="logging_configuration.html">Logging Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="harden_server.html">Hardening and Security Guidance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security/password-policy.html">Password Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse Proxy Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="thirdparty_php_configuration.html">Using Third Party PHP Components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="automatic_configuration.html">Automatic Configuration Setup</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ownCloud Server Tuning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index_php_less_urls.html">Enable index.php-less URLs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html">User Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="owncloud-server-tuning">
+<h1>ownCloud Server Tuning<a class="headerlink" href="#owncloud-server-tuning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-cron-to-perform-background-jobs">
+<h2>Using Cron to Perform Background Jobs<a class="headerlink" href="#using-cron-to-perform-background-jobs" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="background_jobs_configuration.html"><span class="doc">Background Jobs</span></a> for a description and the
+benefits.</p>
+</div>
+<div class="section" id="enable-memory-caching">
+<span id="caching"></span><h2>Enable Memory Caching<a class="headerlink" href="#enable-memory-caching" title="Permalink to this headline">¶</a></h2>
+<p>Caching improves performance by storing data, code, and other objects in memory.
+Memory cache configuration for ownCloud is no longer automatically available from ownCloud 8.1 but must be installed and configured separately.
+ownCloud supports <a class="reference external" href="https://redis.io">Redis</a>, <a class="reference external" href="http://php.net/manual/en/intro.apcu.php">APCu</a>, and <a class="reference external" href="https://memcached.org">Memcached</a> as memory caching backends.
+See <a class="reference internal" href="caching_configuration.html"><span class="doc">Memory Caching</span></a>, for further details.</p>
+</div>
+<div class="section" id="use-redis-based-transactional-file-locking">
+<h2>Use Redis-based Transactional File Locking<a class="headerlink" href="#use-redis-based-transactional-file-locking" title="Permalink to this headline">¶</a></h2>
+<p>File locking is enabled by default, using the database locking backend.
+However, this places a significant load on your database.
+See the section <a class="reference internal" href="../files/files_locking_transactional.html"><span class="doc">Transactional File Locking</span></a> for how to configure ownCloud to use Redis-based Transactional File Locking.</p>
+</div>
+<div class="section" id="redis-tuning">
+<h2>Redis Tuning<a class="headerlink" href="#redis-tuning" title="Permalink to this headline">¶</a></h2>
+<p>Redis tuning improves both file locking (if used) and memory caching (when using Redis).
+Here is a brief guide for tuning Redis to improve the performance of your ownCloud installation, when working with sizeable instances.</p>
+<div class="section" id="tcp-backlog">
+<h3>TCP-Backlog<a class="headerlink" href="#tcp-backlog" title="Permalink to this headline">¶</a></h3>
+<p>If you raised the TCP-backlog setting, the following warning appears in the Redis logs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARNING: The TCP backlog setting of 20480 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of..</span>
+</pre></div>
+</div>
+<p>If so, please consider that newer versions of Redis have their own TCP-backlog value set to <code class="docutils literal notranslate"><span class="pre">511</span></code>, and that you have to increase if you have many connections.
+In high requests-per-second environments, you need a significant backlog to avoid slow clients connection issues.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The Linux kernel will silently truncate the TCP-backlog setting to the value of <code class="docutils literal notranslate"><span class="pre">/proc/sys/net/core/somaxconn</span></code>.
+So make sure to raise both the value of <code class="docutils literal notranslate"><span class="pre">somaxconn</span></code> and <code class="docutils literal notranslate"><span class="pre">tcp_max_syn_backlog</span></code>, to get the desired effect.</p>
+</div>
+<p>To fix this warning, set the value of <code class="docutils literal notranslate"><span class="pre">net.core.somaxconn</span></code> to <code class="docutils literal notranslate"><span class="pre">65535</span></code> in <code class="docutils literal notranslate"><span class="pre">/etc/rc.local</span></code>, so that it persists upon reboot, by running the following command.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo echo sysctl -w net.core.somaxconn=65535 &gt;&gt; /etc/rc.local</span>
+</pre></div>
+</div>
+<p>After the next reboot, 65535 connections will be allowed, instead of the default value.</p>
+</div>
+<div class="section" id="transparent-huge-pages-thp">
+<h3>Transparent Huge Pages (THP)<a class="headerlink" href="#transparent-huge-pages-thp" title="Permalink to this headline">¶</a></h3>
+<p>If you are experiencing latency problems with Redis, the following warning may appear in your Redis logs:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This creates both latency and memory usage issues with Redis.</span>
+</pre></div>
+</div>
+<p>If so, unfortunately, when a Linux kernel has <a class="reference external" href="https://www.kernel.org/doc/Documentation/vm/transhuge.txt">Transparent Huge Pages</a> enabled, Redis incurs a significant latency penalty after the fork call is used, to persist information to disk.
+Transparent Huge Pages are the cause of the following issue:</p>
+<ol class="arabic simple">
+<li>A fork call is made, resulting in two processes with shared huge pages being created.</li>
+<li>In a busy instance, a few event loops cause commands to target a few thousand pages, causing the copy-on-write of almost the entire process memory.</li>
+<li>Big latency and memory usage result.</li>
+</ol>
+<p>As a result, make sure to disable Transparent Huge Pages using the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">echo never &gt; /sys/kernel/mm/transparent_hugepage/enabled</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="redis-latency-problems">
+<h3>Redis Latency Problems<a class="headerlink" href="#redis-latency-problems" title="Permalink to this headline">¶</a></h3>
+<p>If you are having issues with Redis latency, please refer to <a class="reference external" href="https://redis.io/topics/latency">the official Redis guide</a> on how to handle them.</p>
+</div>
+</div>
+<div class="section" id="database-tuning">
+<h2>Database Tuning<a class="headerlink" href="#database-tuning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="using-mariadb-mysql-instead-of-sqlite">
+<h3>Using MariaDB/MySQL Instead of SQLite<a class="headerlink" href="#using-mariadb-mysql-instead-of-sqlite" title="Permalink to this headline">¶</a></h3>
+<p>MySQL or MariaDB are preferred because of the <a class="reference external" href="http://www.sqlite.org/whentouse.html">performance limitations of
+SQLite with highly concurrent applications</a>, like ownCloud.</p>
+<p>See the section <a class="reference internal" href="../database/linux_database_configuration.html"><span class="doc">Database Configuration</span></a> for how to
+configure ownCloud for MySQL or MariaDB. If your installation is already running on
+SQLite then it is possible to convert to MySQL or MariaDB using the steps provided
+in <a class="reference internal" href="../database/db_conversion.html"><span class="doc">Converting Database Type</span></a>.</p>
+</div>
+<div class="section" id="tune-mariadb-mysql">
+<h3>Tune MariaDB/MySQL<a class="headerlink" href="#tune-mariadb-mysql" title="Permalink to this headline">¶</a></h3>
+<p>A comprehensive guide to tuning MySQL and MariaDB is outside the scope of the ownCloud documentation.
+However, here are three links that can help you find further information:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/major/MySQLTuner-perl/">MySQLTuner</a>.</li>
+<li><a class="reference external" href="https://tools.percona.com/wizard">Percona Tools for MySQL</a></li>
+<li><a class="reference external" href="https://mariadb.com/kb/en/optimization-and-tuning/">Optimizing and Tuning MariaDB</a>.</li>
+</ul>
+</div>
+<div class="section" id="tune-postgresql">
+<h3>Tune PostgreSQL<a class="headerlink" href="#tune-postgresql" title="Permalink to this headline">¶</a></h3>
+<p>A comprehensive guide to tuning PostgreSQL is outside the scope of the ownCloud documentation.
+However, here are three links that can help you find further information:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://de.slideshare.net/PGExperts/five-steps-perform2013">Five Steps to PostgreSQL Performance</a></li>
+<li><a class="reference external" href="http://grokbase.com/t/postgresql/pgsql-admin/103qcpdrpf/tuning-auto-vacuum-for-highly-active-tables#20100323hfs3jtjuaywwufukoqtexkpjti">Tuning the autovacuum proceff for tables with huge update workloads (oc_filecache)</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ssl-encryption-app">
+<h2>SSL / Encryption App<a class="headerlink" href="#ssl-encryption-app" title="Permalink to this headline">¶</a></h2>
+<p>SSL (HTTPS) and file encryption/decryption can be offloaded to a processor’s
+AES-NI extension. This can both speed up these operations while lowering
+processing overhead. This requires a processor with the <a class="reference external" href="http://wikipedia.org/wiki/AES_instruction_set">AES-NI instruction set</a>.</p>
+<p>Here are some examples how to check if your CPU / environment supports the
+AES-NI extension:</p>
+<ul class="simple">
+<li>For each CPU core present: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">flags</span> <span class="pre">/proc/cpuinfo</span></code> or as a summary for
+all cores: <code class="docutils literal notranslate"><span class="pre">grep</span> <span class="pre">-m</span> <span class="pre">1</span> <span class="pre">^flags</span> <span class="pre">/proc/cpuinfo</span></code> If the result contains any
+<code class="docutils literal notranslate"><span class="pre">aes</span></code>, the extension is present.</li>
+<li>Search eg. on the Intel web if the processor used supports the extension
+<a class="reference external" href="http://ark.intel.com/MySearch.aspx?AESTech=true">Intel Processor Feature Filter</a> You may set a filter by
+<code class="docutils literal notranslate"><span class="pre">&quot;AES</span> <span class="pre">New</span> <span class="pre">Instructions&quot;</span></code> to get a reduced result set.</li>
+<li>For versions of openssl &gt;= 1.0.1, AES-NI does not work via an engine and
+will not show up in the <code class="docutils literal notranslate"><span class="pre">openssl</span> <span class="pre">engine</span></code> command. It is active by default
+on the supported hardware. You can check the openssl version via <code class="docutils literal notranslate"><span class="pre">openssl</span>
+<span class="pre">version</span> <span class="pre">-a</span></code></li>
+<li>If your processor supports AES-NI but it does not show up eg via grep or
+coreinfo, it is maybe disabled in the BIOS.</li>
+<li>If your environment runs virtualized, check the virtualization vendor for
+support.</li>
+</ul>
+</div>
+<div class="section" id="webserver-tuning">
+<h2>Webserver Tuning<a class="headerlink" href="#webserver-tuning" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tune-apache">
+<h3>Tune Apache<a class="headerlink" href="#tune-apache" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="enable-http-2-support">
+<h4>Enable HTTP/2 Support<a class="headerlink" href="#enable-http-2-support" title="Permalink to this headline">¶</a></h4>
+<p>If you want to improve the speed of an ownCloud installation, while at the same time increasing its security, you can <a class="reference external" href="https://httpd.apache.org/docs/2.4/howto/http2.html">enable HTTP/2 support for Apache</a>.
+Please be aware that <a class="reference external" href="https://caniuse.com/#feat=http2">most browsers require HTTP/2 to be used with SSL enabled</a>.</p>
+</div>
+<div class="section" id="apache-processes">
+<h4>Apache Processes<a class="headerlink" href="#apache-processes" title="Permalink to this headline">¶</a></h4>
+<p>An Apache process uses around 12MB of RAM.
+Apache should be configured so that the maximum number of HTTPD processes times 12MB is lower than the amount of RAM.
+Otherwise the system begins to swap and the performance goes down.</p>
+</div>
+<div class="section" id="use-keepalive">
+<h4>Use KeepAlive<a class="headerlink" href="#use-keepalive" title="Permalink to this headline">¶</a></h4>
+<p>The <a class="reference external" href="https://en.wikipedia.org/wiki/HTTP_persistent_connection">KeepAlive</a> directive enables persistent HTTP connections, allowing multiple requests to be sent over the same TCP connection.
+Enabling it reduces latency by as much as 50%.
+In combination with the periodic checks of the sync client the following settings are recommended:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">KeepAlive</span> <span class="n">On</span>
+<span class="n">KeepAliveTimeout</span> <span class="mi">100</span>
+<span class="n">MaxKeepAliveRequests</span> <span class="mi">200</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hostname-lookups">
+<h4>Hostname Lookups<a class="headerlink" href="#hostname-lookups" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># cat /etc/httpd/conf/httpd.conf</span>
+<span class="o">...</span>
+<span class="n">HostnameLookups</span> <span class="n">off</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="log-files">
+<h4>Log files<a class="headerlink" href="#log-files" title="Permalink to this headline">¶</a></h4>
+<p>Log files should be switched off for maximum performance.
+To do that, comment out the <a class="reference external" href="https://httpd.apache.org/docs/current/mod/mod_log_config.html#customlog">CustomLog</a> directive.
+However, keep <a class="reference external" href="https://httpd.apache.org/docs/2.4/logs.html#errorlog">ErrorLog</a> set, so errors can be tracked down.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

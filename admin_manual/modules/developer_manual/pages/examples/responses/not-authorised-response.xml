@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<ocs>
+  <meta>
+    <status>failure</status>
+    <statuscode>997</statuscode>
+    <message>Unauthorised</message>
+  </meta>
+  <data/>
+</ocs>
+

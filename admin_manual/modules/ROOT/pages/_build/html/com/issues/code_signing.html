@@ -1,0 +1,464 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Code Signing &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Impersonating Users" href="impersonate_users.html" />
+    <link rel="prev" title="General Troubleshooting" href="general_troubleshooting.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Issues and Troubleshooting</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="general_troubleshooting.html">General Troubleshooting</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code Signing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#fixing-invalid-code-integrity-messages">Fixing Invalid Code Integrity Messages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rescans">Rescans</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="impersonate_users.html">Impersonating Users</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="code-signing">
+<h1>Code Signing<a class="headerlink" href="#code-signing" title="Permalink to this headline">¶</a></h1>
+<p id="code-signing-label">ownCloud supports code signing for the core releases, and for ownCloud
+applications. Code signing gives our users an additional layer of security by
+ensuring that nobody other than authorized persons can push updates.</p>
+<p>It also ensures that all upgrades have been executed properly, so that no files
+are left behind, and all old files are properly replaced. In the past, invalid
+updates were a significant source of errors when updating ownCloud.</p>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="why-did-owncloud-add-code-signing">
+<h3>Why Did ownCloud Add Code Signing?<a class="headerlink" href="#why-did-owncloud-add-code-signing" title="Permalink to this headline">¶</a></h3>
+<p>By supporting Code Signing we add another layer of security by ensuring that
+nobody other than authorized persons can push updates for applications, and
+ensuring proper upgrades.</p>
+</div>
+<div class="section" id="do-we-lock-down-owncloud">
+<h3>Do We Lock Down ownCloud?<a class="headerlink" href="#do-we-lock-down-owncloud" title="Permalink to this headline">¶</a></h3>
+<p>The ownCloud project is open source and always will be. We do not want to
+make it more difficult for our users to run ownCloud. Any code signing errors on
+upgrades will not prevent ownCloud from running, but will display a warning on
+the Admin page. For applications that are not tagged “Official” the code signing
+process is optional.</p>
+</div>
+<div class="section" id="not-open-source-anymore">
+<h3>Not Open Source Anymore?<a class="headerlink" href="#not-open-source-anymore" title="Permalink to this headline">¶</a></h3>
+<p>The ownCloud project is open source and always will be. The code signing
+process is optional, though highly recommended. The code check for the
+core parts of ownCloud is enabled when the ownCloud release version branch has
+been set to stable.</p>
+<p>For custom distributions of ownCloud it is recommended to change the release
+version branch in version.php to something else than “stable”.</p>
+</div>
+<div class="section" id="is-code-signing-mandatory-for-apps">
+<h3>Is Code Signing Mandatory For Apps?<a class="headerlink" href="#is-code-signing-mandatory-for-apps" title="Permalink to this headline">¶</a></h3>
+<p>Code signing is optional for all third-party applications.</p>
+</div>
+</div>
+<div class="section" id="fixing-invalid-code-integrity-messages">
+<span id="code-signing-fix-warning-label"></span><h2>Fixing Invalid Code Integrity Messages<a class="headerlink" href="#fixing-invalid-code-integrity-messages" title="Permalink to this headline">¶</a></h2>
+<p>A code integrity error message (“There were problems with the code integrity
+check. More information…”) appears in a yellow banner at the top of your
+ownCloud Web interface:</p>
+<img alt="Code integrity warning banner." src="../_images/code-integrity-notification.png" />
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The yellow banner is only shown for admin users.</p>
+</div>
+<p>Clicking on this link will take you to your ownCloud admin page, which provides
+the following options:</p>
+<ol class="arabic simple">
+<li>Link to this documentation entry.</li>
+<li>Show a list of invalid files.</li>
+<li>Trigger a rescan.</li>
+</ol>
+<img alt="Links for resolving code integrity warnings." src="../_images/code-integrity-admin.png" />
+<p>To debug issues caused by the code integrity check click on “List of invalid
+files…”, and you will be shown a text document listing the different issues. The
+content of the file will look similar to the following example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Technical</span> <span class="n">information</span>
+<span class="o">=====================</span>
+<span class="n">The</span> <span class="n">following</span> <span class="nb">list</span> <span class="n">covers</span> <span class="n">which</span> <span class="n">files</span> <span class="n">have</span> <span class="n">failed</span> <span class="n">the</span> <span class="n">integrity</span> <span class="n">check</span><span class="o">.</span> <span class="n">Please</span> <span class="n">read</span>
+<span class="n">the</span> <span class="n">previous</span> <span class="n">linked</span> <span class="n">documentation</span> <span class="n">to</span> <span class="n">learn</span> <span class="n">more</span> <span class="n">about</span> <span class="n">the</span> <span class="n">errors</span> <span class="ow">and</span> <span class="n">how</span> <span class="n">to</span> <span class="n">fix</span>
+<span class="n">them</span><span class="o">.</span>
+
+<span class="n">Results</span>
+<span class="o">=======</span>
+<span class="o">-</span> <span class="n">core</span>
+      <span class="o">-</span> <span class="n">INVALID_HASH</span>
+              <span class="o">-</span> <span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span>
+              <span class="o">-</span> <span class="o">/</span><span class="n">version</span><span class="o">.</span><span class="n">php</span>
+      <span class="o">-</span> <span class="n">EXTRA_FILE</span>
+              <span class="o">-</span> <span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">php</span>
+<span class="o">-</span> <span class="n">calendar</span>
+      <span class="o">-</span> <span class="n">EXCEPTION</span>
+              <span class="o">-</span> <span class="n">OC</span>\<span class="n">IntegrityCheck</span>\<span class="n">Exceptions</span>\<span class="n">InvalidSignatureException</span>
+              <span class="o">-</span> <span class="n">Signature</span> <span class="n">data</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+<span class="o">-</span> <span class="n">tasks</span>
+      <span class="o">-</span> <span class="n">EXCEPTION</span>
+              <span class="o">-</span> <span class="n">OC</span>\<span class="n">IntegrityCheck</span>\<span class="n">Exceptions</span>\<span class="n">InvalidSignatureException</span>
+              <span class="o">-</span> <span class="n">Certificate</span> <span class="n">has</span> <span class="n">been</span> <span class="n">revoked</span><span class="o">.</span>
+
+<span class="n">Raw</span> <span class="n">output</span>
+<span class="o">==========</span>
+<span class="n">Array</span>
+<span class="p">(</span>
+    <span class="p">[</span><span class="n">core</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+        <span class="p">(</span>
+            <span class="p">[</span><span class="n">INVALID_HASH</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                <span class="p">(</span>
+                    <span class="p">[</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                        <span class="p">(</span>
+                            <span class="p">[</span><span class="n">expected</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="n">f1c5e2630d784bc9cb02d5a28f55d6f24d06dae2a0fee685f3</span>
+                            <span class="n">c2521b050955d9d452769f61454c9ddfa9c308146ade10546c</span>
+                            <span class="n">fa829794448eaffbc9a04a29d216</span>
+                            <span class="p">[</span><span class="n">current</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="n">ce08bf30bcbb879a18b49239a9bec6b8702f52452f88a9d321</span>
+                            <span class="mi">42</span><span class="n">cad8d2494d5735e6bfa0d8642b2762c62ca5be49f9bf4ec2</span>
+                            <span class="mi">31</span><span class="n">d4a230559d4f3e2c471d3ea094</span>
+                        <span class="p">)</span>
+
+                    <span class="p">[</span><span class="o">/</span><span class="n">version</span><span class="o">.</span><span class="n">php</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                        <span class="p">(</span>
+                            <span class="p">[</span><span class="n">expected</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="n">c5a03bacae8dedf8b239997901ba1fffd2fe51271d13a00cc4</span>
+                            <span class="n">b34b09cca5176397a89fc27381cbb1f72855fa18b69b6f87d7</span>
+                            <span class="n">d5685c3b45aee373b09be54742ea</span>
+                            <span class="p">[</span><span class="n">current</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="mi">88</span><span class="n">a3a92c11db91dec1ac3be0e1c87f862c95ba6ffaaaa3f2c3</span>
+                            <span class="n">b8f682187c66f07af3a3b557a868342ef4a271218fe1c1e300</span>
+                            <span class="n">c478e6c156c5955ed53c40d06585</span>
+                        <span class="p">)</span>
+
+                <span class="p">)</span>
+
+            <span class="p">[</span><span class="n">EXTRA_FILE</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                <span class="p">(</span>
+                    <span class="p">[</span><span class="o">/</span><span class="n">test</span><span class="o">.</span><span class="n">php</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                        <span class="p">(</span>
+                            <span class="p">[</span><span class="n">expected</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="p">[</span><span class="n">current</span><span class="p">]</span> <span class="o">=&gt;</span>
+                            <span class="mi">09563164</span><span class="n">f9904a837f9ca0b5f626db56c838e5098e0ccc1d8b</span>
+                            <span class="mi">935</span><span class="n">f68fa03a25c5ec6f6b2d9e44a868e8b85764dafd1605522</span>
+                            <span class="n">b4af8db0ae269d73432e9a01e63a</span>
+                        <span class="p">)</span>
+
+                <span class="p">)</span>
+
+        <span class="p">)</span>
+
+    <span class="p">[</span><span class="n">calendar</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+        <span class="p">(</span>
+            <span class="p">[</span><span class="n">EXCEPTION</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                <span class="p">(</span>
+                    <span class="p">[</span><span class="n">class</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">OC</span>\<span class="n">IntegrityCheck</span>\<span class="n">Exceptions</span>\<span class="n">InvalidSignature</span>
+                    <span class="ne">Exception</span>
+                    <span class="p">[</span><span class="n">message</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Signature</span> <span class="n">data</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+                <span class="p">)</span>
+
+        <span class="p">)</span>
+    <span class="p">[</span><span class="n">tasks</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+        <span class="p">(</span>
+            <span class="p">[</span><span class="n">EXCEPTION</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Array</span>
+                <span class="p">(</span>
+                    <span class="p">[</span><span class="n">class</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">OC</span>\<span class="n">IntegrityCheck</span>\<span class="n">Exceptions</span>\<span class="n">InvalidSignatureException</span>
+                    <span class="p">[</span><span class="n">message</span><span class="p">]</span> <span class="o">=&gt;</span> <span class="n">Certificate</span> <span class="n">has</span> <span class="n">been</span> <span class="n">revoked</span><span class="o">.</span>
+                <span class="p">)</span>
+
+        <span class="p">)</span>
+
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>In above error output it can be seen that:</p>
+<ol class="arabic simple">
+<li>In the ownCloud core (that is, the ownCloud server itself) the files
+“index.php” and “version.php” do have the wrong version.</li>
+<li>In the ownCloud core the unrequired extra file “/test.php” has been found.</li>
+<li>It was not possible to verify the signature of the calendar application.</li>
+<li>The certificate of the task application was revoked.</li>
+</ol>
+<p>You have to do the following steps to solve this:</p>
+<ol class="arabic simple">
+<li>Upload the correct “index.php” and “version.php” files from e.g. the archive of your ownCloud version.</li>
+<li>Delete the “test.php” file.</li>
+<li>Contact the developer of the application. A new version of the app containing a valid signature file needs to be released.</li>
+<li>Contact the developer of the application. A new version of the app signed with a valid signature needs to be released.</li>
+</ol>
+<p>For other means on how to receive support please take a look at
+<a class="reference external" href="https://owncloud.org/support/">https://owncloud.org/support/</a>. After fixing these problems verify by clicking
+“Rescan…”.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When using a FTP client to upload those files make sure it is using the
+<code class="docutils literal notranslate"><span class="pre">Binary</span></code> transfer mode instead of the <code class="docutils literal notranslate"><span class="pre">ASCII</span></code> transfer mode.</p>
+</div>
+</div>
+<div class="section" id="rescans">
+<span id="rescans-label"></span><h2>Rescans<a class="headerlink" href="#rescans" title="Permalink to this headline">¶</a></h2>
+<p>Rescans are triggered at installation, and by updates. You may run scans manually with the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command. The first command scans the ownCloud core files, and the second command scans the named app. There is not yet a command to manually scan all apps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>occ integrity:check-core
+occ integrity:check-app $appid
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../configuration/server/occ_command.html"><span class="doc">Using the occ Command</span></a> to learn more about using <code class="docutils literal notranslate"><span class="pre">occ</span></code>.</p>
+</div>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Please don’t modify the mentioned <code class="docutils literal notranslate"><span class="pre">signature.json</span></code> itself.</p>
+</div>
+<p>The following errors can be encountered when trying to verify a code signature.</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">INVALID_HASH</span></code><ul>
+<li>The file has a different hash than specified within <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>. This
+usually happens when the file has been modified after writing the signature
+data.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">MISSING_FILE</span></code><ul>
+<li>The file cannot be found but has been specified within <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>.
+Either a required file has been left out, or <code class="docutils literal notranslate"><span class="pre">signature.json</span></code> needs to be
+edited.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">EXTRA_FILE</span></code><ul>
+<li>The file does not exist in <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>. This usually happens when a
+file has been removed and <code class="docutils literal notranslate"><span class="pre">signature.json</span></code> has not been updated. It also
+happens if you have placed additional files in your ownCloud installation
+folder.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">EXCEPTION</span></code><ul>
+<li>Another exception has prevented the code verification. There are currently
+these following exceptions:<ul>
+<li><code class="docutils literal notranslate"><span class="pre">Signature</span> <span class="pre">data</span> <span class="pre">not</span> <span class="pre">found.`</span></code><ul>
+<li>The app has mandatory code signing enforced but no <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>
+file has been found in its <code class="docutils literal notranslate"><span class="pre">appinfo</span></code> folder.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">Certificate</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid.</span></code><ul>
+<li>The certificate has not been issued by the official ownCloud Code
+Signing Root Authority.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">Certificate</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">for</span> <span class="pre">required</span> <span class="pre">scope.</span> <span class="pre">(Requested:</span> <span class="pre">%s,</span> <span class="pre">current:</span> <span class="pre">%s)</span></code><ul>
+<li>The certificate is not valid for the defined application. Certificates
+are only valid for the defined app identifier and cannot be used for
+others.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">Signature</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">get</span> <span class="pre">verified.</span></code><ul>
+<li>There was a problem with verifying the signature of <code class="docutils literal notranslate"><span class="pre">signature.json</span></code>.</li>
+</ul>
+</li>
+<li><code class="docutils literal notranslate"><span class="pre">Certificate</span> <span class="pre">has</span> <span class="pre">been</span> <span class="pre">revoked.</span></code><ul>
+<li>The certificate which was used to sign the application was revoked.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

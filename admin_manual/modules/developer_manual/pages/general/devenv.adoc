@@ -1,0 +1,222 @@
+Development Environment
+=======================
+
+To be able to use and develop with ownCloud takes a few steps.
+
+1.  Install the Core Software
+2.  Setup the web server and database
+3.  Get the source
+4.  Install software dependencies
+5.  Enable debug mode
+6.  Setup ownCloud
+
+If you have already completed one or more of these steps, feel free to
+skip them. Otherwise, if you’re just getting started, begin by getting
+the ownCloud source code.
+
+[[install-the-core-software]]
+Install the Core Software
+-------------------------
+
+The first thing to do is to ensure that your server has the necessary
+software for installing and running ownCloud. While you can go further,
+you need to install at least the following:
+
+* https://www.gnu.org/software/make/[Make]
+* https://nodejs.org[Node.js].
+* https://git-scm.com/[git]
+* https://www.npmjs.com/[npm]
+* https://linux.die.net/man/1/unzip[unzip]
+* https://www.gnu.org/software/wget/[wget]
+
+[[install-dependencies-on-ubuntu-16.04]]
+Install Dependencies on Ubuntu 16.04
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+....
+# Ensure that Apt's cache is up to date
+sudo apt-get -y -q update
+
+# Auto-install the required dependencies with a minimum of output
+sudo apt-get install -y -q wget make npm nodejs unzip git
+....
+
+[[install-dependencies-on-opensuse-leap-42.3]]
+Install Dependencies on openSUSE Leap 42.3
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+....
+# Ensure that Zypper's cache is up to date
+sudo zypper --non-interactive --quiet \
+   update --auto-agree-with-licenses --best-effort
+
+# Auto-install the required dependencies with a minimum of output
+sudo zypper --quiet --non-interactive install \
+    wget make nodejs6 nodejs-common unzip git 
+    npm6 phantomjs php7-curl php7-openssl openssl php7-phar
+....
+
+[[setup-the-webserver-and-database]]
+Setup the Webserver and Database
+--------------------------------
+
+Next, you need to setup your web and database servers, so that they work
+properly with ownCloud. The respective guides are available at:
+
+* https://doc.owncloud.org/server/latest/admin_manual/installation/source_installation.html#apache-configuration-label[Apache
+Webserver Configuration]
+* https://doc.owncloud.org/server/latest/admin_manual/configuration/database/linux_database_configuration.html[Database
+Server Configuration]
+
+[[get-the-source]]
+Get The Source
+--------------
+
+With the web and database servers setup, you next need to get a copy of
+ownCloud. There are two ways to do so:
+
+1.  Use
+https://doc.owncloud.org/server/latest/admin_manual/#installation[the
+stable version]
+2.  Clone the development version from
+https://github.com/owncloud[GitHub]:
+
+For the sake of a brief example, assuming you chose to clone from
+GitHub, here’s an example of how to do so:
+
+....
+# Assuming that /var/www/html is the webserver's document root
+git clone https://github.com/owncloud/core.git /var/www/html/core
+....
+
+*What is the Web Server’s Root Directory?*
+
+The quickest way to find out is by using the `ls` command, for example:
+`ls -lah /var/wwww`. Depending on your Linux distribution, it’s likely
+to be one of `/var/www`, `/var/www/html`, or `/srv/http`.
+
+[[set-user-group-and-permissions]]
+Set User, Group, and Permissions
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You now need to make sure that the web server user (and optionally the
+web server’s group) have read/write access to the directory where you
+installed ownCloud: The following commands assume that `/var/www` is the
+web server’s directory and that `www-data` is the web server user and
+group. The following commands will do this:
+
+....
+# Set the user and group to the webserver user and group
+sudo chown -R www-data:www-data /var/www/html/core/
+
+# Set read/write permissions on the directory
+sudo chmod o+rw /var/www/html/core/
+....
+
+*What is the Web Server’s User and Group?*
+
+There are a few ways to identify the user and group the webserver is
+running as. Likely the easiest are `grep` and `ps`. Here’s an example of
+using both (which assumes that the distribution is Ubuntu 16.04).
+
+....
+# Find the user defined in Apache's configuration files
+grep -r 'APACHE_RUN_USER' /etc/apache2/
+
+# Find the user that's running Apache.
+ps -aux | grep apache2
+....
+
+___________________________________________________________________________________________________
+Depending on your distribution, it will likely be one of `http`,
+`www-data`, `apache`, or `wwwrun`.
+___________________________________________________________________________________________________
+
+[[install-software-dependencies]]
+Install Software Dependencies
+-----------------------------
+
+With the ownCloud source
+https://doc.owncloud.org/server/latest/admin_manual/installation/source_installation.html#configure-the-apache-web-server[available
+to your webserver], next install ownCloud’s dependencies by running
+https://www.gnu.org/software/make/[Make], from the directory where
+ownCloud’s located. Here’s an example of how to do so:
+
+[source,sourceCode,console]
+----
+# Assuming that the ownCloud source is located in ``/var/www/html/core`` 
+cd /var/www/html/core && make
+----
+
+By default, running `make` will install the required dependencies for
+both PHP and JavaScript. However, there are other options that it
+supports, which you can see in the table below, which are useful for a
+variety of tasks.
+
+[cols=",",options="header",]
+|=======================================================================
+|Target |Description
+|make |Pulls in both Composer and Bower dependencies
+
+|make clean |Cleans up dependencies. This is useful for starting over or
+
+| |when switching to older branches
+
+|make dist |Builds a minimal owncloud-core tarball with only core apps
+
+| |in build/dist/core, stripped of unwanted files
+
+|make docs |Builds the JavaScript documentation using
+http://usejsdoc.org[JSDoc]
+
+|make test |Runs all of the test targets
+
+|make test-external |Runs one of the external storage tests, and is
+configurable
+
+| |through make variables
+
+|make test-js |Runs the Javascript unit tests, replacing
+./autotest-js.sh
+
+|make test-php |Runs the PHPUnit tests with SQLite as the data source.
+This
+
+| |replaces ./autotest.sh sqlite and is configurable through
+
+| |make variables
+|=======================================================================
+
+[[enable-debug-mode]]
+Enable Debug Mode
+-----------------
+
+Now that ownCloud’s available to your web server and the dependencies
+are installed, we strongly encourage you to disable JavaScript and CSS
+caching during development. This is so that when changes are made,
+they’re immediately visible, not at some later stage when the respective
+caches expire. To do so, enable debug mode by setting `debug` to `true`
+in config/config.php, as in the example below.
+
+[source,sourceCode,php]
+----
+<?php
+
+$CONFIG = [
+    'debug' => true,
+    ... configuration goes here ...
+];
+----
+
+Do not enable this for production! This can create security problems and
+is only meant for debugging and development!
+
+[[setup-owncloud]]
+Setup ownCloud
+--------------
+
+With all that done, you’re now ready to use either
+https://doc.owncloud.org/server/latest/admin_manual/installation/installation_wizard.html[the
+installation wizard] or
+https://doc.owncloud.org/server/latest/admin_manual/installation/command_line_installation.html[command
+line installer] to finish setting up ownCloud.

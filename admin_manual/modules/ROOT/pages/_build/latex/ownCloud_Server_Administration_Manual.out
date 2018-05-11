@@ -1,0 +1,78 @@
+\BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.1.1}{ownCloud Videos and Blogs}{chapter.1}% 2
+\BOOKMARK [1][-]{section.1.2}{Target Audience}{chapter.1}% 3
+\BOOKMARK [0][-]{chapter.2}{Release Notes}{}% 4
+\BOOKMARK [1][-]{section.2.1}{Changes in 10.0.6}{chapter.2}% 5
+\BOOKMARK [1][-]{section.2.2}{Changes in 10.0.4}{chapter.2}% 6
+\BOOKMARK [1][-]{section.2.3}{Changes in 10.0.3}{chapter.2}% 7
+\BOOKMARK [1][-]{section.2.4}{Changes in 10.0.1}{chapter.2}% 8
+\BOOKMARK [1][-]{section.2.5}{Changes in 10.0.0}{chapter.2}% 9
+\BOOKMARK [1][-]{section.2.6}{Changes in 9.1}{chapter.2}% 10
+\BOOKMARK [1][-]{section.2.7}{Changes in 9.0}{chapter.2}% 11
+\BOOKMARK [1][-]{section.2.8}{Changes in 8.2}{chapter.2}% 12
+\BOOKMARK [1][-]{section.2.9}{Changes in 8.1}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.10}{Changes in 8.0}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.11}{Changes in 7.0}{chapter.2}% 15
+\BOOKMARK [0][-]{chapter.3}{What's New in ownCloud 10.0.6}{}% 16
+\BOOKMARK [0][-]{chapter.4}{Installation}{}% 17
+\BOOKMARK [1][-]{section.4.1}{System Requirements}{chapter.4}% 18
+\BOOKMARK [1][-]{section.4.2}{Deployment Recommendations}{chapter.4}% 19
+\BOOKMARK [1][-]{section.4.3}{Deployment Considerations}{chapter.4}% 20
+\BOOKMARK [1][-]{section.4.4}{Preferred Installation Method}{chapter.4}% 21
+\BOOKMARK [1][-]{section.4.5}{Manual Installation on Linux}{chapter.4}% 22
+\BOOKMARK [1][-]{section.4.6}{The Installation Wizard}{chapter.4}% 23
+\BOOKMARK [1][-]{section.4.7}{Installing with Docker}{chapter.4}% 24
+\BOOKMARK [1][-]{section.4.8}{Command Line Installation}{chapter.4}% 25
+\BOOKMARK [1][-]{section.4.9}{Configuration Notes \046 Tips}{chapter.4}% 26
+\BOOKMARK [1][-]{section.4.10}{Troubleshooting}{chapter.4}% 27
+\BOOKMARK [1][-]{section.4.11}{Changing Your ownCloud URL}{chapter.4}% 28
+\BOOKMARK [1][-]{section.4.12}{Installing and Managing Apps}{chapter.4}% 29
+\BOOKMARK [1][-]{section.4.13}{Supported Apps in ownCloud}{chapter.4}% 30
+\BOOKMARK [1][-]{section.4.14}{SELinux Configuration}{chapter.4}% 31
+\BOOKMARK [1][-]{section.4.15}{NGINX Configuration}{chapter.4}% 32
+\BOOKMARK [0][-]{chapter.5}{Upgrading}{}% 33
+\BOOKMARK [1][-]{section.5.1}{Upgrade PHP on RedHat 7 and Centos 7}{chapter.5}% 34
+\BOOKMARK [1][-]{section.5.2}{Upgrade Marketplace Applications}{chapter.5}% 35
+\BOOKMARK [0][-]{chapter.6}{Configuration}{}% 36
+\BOOKMARK [1][-]{section.6.1}{Database Configuration}{chapter.6}% 37
+\BOOKMARK [1][-]{section.6.2}{File Sharing and Management}{chapter.6}% 38
+\BOOKMARK [1][-]{section.6.3}{How To Install and Configure an LDAP Proxy-Cache Server}{chapter.6}% 39
+\BOOKMARK [1][-]{section.6.4}{Mimetypes Management}{chapter.6}% 40
+\BOOKMARK [1][-]{section.6.5}{Server Configuration}{chapter.6}% 41
+\BOOKMARK [1][-]{section.6.6}{User Management}{chapter.6}% 42
+\BOOKMARK [0][-]{chapter.7}{Maintenance}{}% 43
+\BOOKMARK [1][-]{section.7.1}{Maintenance Mode Configuration}{chapter.7}% 44
+\BOOKMARK [1][-]{section.7.2}{Backing up ownCloud}{chapter.7}% 45
+\BOOKMARK [1][-]{section.7.3}{How to Upgrade Your ownCloud Server}{chapter.7}% 46
+\BOOKMARK [1][-]{section.7.4}{Upgrade ownCloud From Packages}{chapter.7}% 47
+\BOOKMARK [1][-]{section.7.5}{Upgrading ownCloud with the Updater App}{chapter.7}% 48
+\BOOKMARK [1][-]{section.7.6}{Manual ownCloud Upgrade}{chapter.7}% 49
+\BOOKMARK [1][-]{section.7.7}{Restoring ownCloud}{chapter.7}% 50
+\BOOKMARK [1][-]{section.7.8}{Migrating to a Different Server}{chapter.7}% 51
+\BOOKMARK [1][-]{section.7.9}{How To Manually Move a Data Directory}{chapter.7}% 52
+\BOOKMARK [0][-]{chapter.8}{Issues and Troubleshooting}{}% 53
+\BOOKMARK [1][-]{section.8.1}{General Troubleshooting}{chapter.8}% 54
+\BOOKMARK [1][-]{section.8.2}{Code Signing}{chapter.8}% 55
+\BOOKMARK [1][-]{section.8.3}{Impersonating Users}{chapter.8}% 56
+\BOOKMARK [0][-]{chapter.9}{Enterprise Features}{}% 57
+\BOOKMARK [1][-]{section.9.1}{Installation}{chapter.9}% 58
+\BOOKMARK [1][-]{section.9.2}{Firewall Configuration}{chapter.9}% 59
+\BOOKMARK [1][-]{section.9.3}{Ransomware Protection}{chapter.9}% 60
+\BOOKMARK [1][-]{section.9.4}{File Management}{chapter.9}% 61
+\BOOKMARK [1][-]{section.9.5}{External Storage}{chapter.9}% 62
+\BOOKMARK [1][-]{section.9.6}{User Management}{chapter.9}% 63
+\BOOKMARK [1][-]{section.9.7}{Creating Branded ownCloud Clients}{chapter.9}% 64
+\BOOKMARK [1][-]{section.9.8}{Logging Apps}{chapter.9}% 65
+\BOOKMARK [1][-]{section.9.9}{Server Branding}{chapter.9}% 66
+\BOOKMARK [0][-]{chapter.10}{The ownCloud X Appliance}{}% 67
+\BOOKMARK [1][-]{section.10.1}{What is the Appliance?}{chapter.10}% 68
+\BOOKMARK [1][-]{section.10.2}{How to Install It}{chapter.10}% 69
+\BOOKMARK [1][-]{section.10.3}{How to Update ownCloud}{chapter.10}% 70
+\BOOKMARK [1][-]{section.10.4}{Managing UCS}{chapter.10}% 71
+\BOOKMARK [1][-]{section.10.5}{Install Antivirus Software in the ownCloud Appliance}{chapter.10}% 72
+\BOOKMARK [1][-]{section.10.6}{How to use Collabora with the appliance}{chapter.10}% 73
+\BOOKMARK [0][-]{chapter.11}{FAQ}{}% 74
+\BOOKMARK [1][-]{section.11.1}{How do I transfer files from one user to another?}{chapter.11}% 75
+\BOOKMARK [1][-]{section.11.2}{How do I deal with problems caused by using self-signed SSL certificates?}{chapter.11}% 76
+\BOOKMARK [1][-]{section.11.3}{I'm the admin and I lost my password! What do I do now!}{chapter.11}% 77
+\BOOKMARK [1][-]{section.11.4}{What is a Federated System?}{chapter.11}% 78

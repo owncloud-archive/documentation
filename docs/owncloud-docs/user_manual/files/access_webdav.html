@@ -1,0 +1,2120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accessing ownCloud Files Using WebDAV :: ownCloud Documentation</title>
+    <link rel="stylesheet" href="../../../owncloud-docs/css/site.css">
+  </head>
+  <body class="article">
+<header class="header" role="banner">
+  <nav class="navbar">
+    <div class="navbar-brand">
+      <a class="navbar-item" href="../../..">ownCloud Documentation</a>
+      <button class="navbar-burger" data-target="topbar-nav">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+    <div id="topbar-nav" class="navbar-menu">
+      <div class="navbar-end">
+        <a class="navbar-item" href="#">Home</a>
+        <a class="navbar-item" href="https://owncloud.org/news/">News</a>
+        <a class="navbar-item" href="https://owncloud.org/features/">Features</a>
+        <a class="navbar-item" href="https://demo.owncloud.org/">Demo</a>
+        <a class="navbar-item" href="#">Documentation</a>
+        <a class="navbar-item" href="https://owncloud.org/contribute/">Contribute</a>
+        <a class="navbar-item" href="https://owncloud.org/support">Support</a>
+        <a class="navbar-item" href="https://owncloud.com/">Enterprise Edition</a>
+        <!--<div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link" href="#">Products</a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="#">Product A</a>
+            <a class="navbar-item" href="#">Product B</a>
+            <a class="navbar-item" href="#">Product C</a>
+          </div>
+        </div>-->
+        <div class="navbar-item">
+          <span class="control">
+            <a class="button is-primary" href="https://owncloud.org/install/">Download</a>
+          </span>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
+<div class="main-wrapper">
+<div class="navigation-container" data-component="owncloud-docs" data-version="master">
+  <aside class="navigation" role="navigation">
+    <div class="panels">
+<div class="navigation-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="../../index.html">ownCloud // Documentation</a></h3>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">ROOT</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Appliance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ucs</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../appliance/ucs/add-groups-and-users.html">Add groups and users</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Active_Directory.html">Active Directory</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Backup.html">Backup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Clamav.html">ClamAV</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/Office.html">Office</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/certificates.html">Certificates</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/howto-update-owncloud.html">Howto update ownCloud</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/installation.html">Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/login_information.html">Login Information</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/managing-ucs.html">Managing UCS</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../appliance/what-is-it.html">What is it</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Configuration</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Database</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/db_conversion.html">DB Conversion</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/database/linux_database_configuration.html">Linux Database Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Files</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage/amazons3.html">AmazonS3</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/big_file_upload_configuration.html">Big File Upload Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/default_files_configuration.html">Default Files Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/encryption_configuration.html">Encryption Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage_configuration.html">External Storage Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/external_storage_configuration_gui.html">External Storage Configuration GUI</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/federated_cloud_sharing_configuration.html">Federated Cloud Sharing Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/file_sharing_configuration.html">File Sharing Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/file_versioning.html">File Versioning</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/files_locking_transactional.html">Files LOCking Transactional</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/previews_configuration.html">Previews Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/files/trashbin_options.html">Trashbin Options</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ldap</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/ldap/ldap_proxy_cache_server_setup.html">LDAP Proxy Cache Server Setup</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Mimetypes</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/mimetypes/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Server</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/security/password-policy.html">Password policy</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/activity_configuration.html">Activity Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/antivirus_configuration.html">AntiVirus Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/automatic_configuration.html">Automatic Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/background_jobs_configuration.html">Background Jobs Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/caching_configuration.html">Caching Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/config_sample_php_parameters.html">Config Sample PHP Parameters</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/custom_client_repos.html">Custom Client Repos</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/email_configuration.html">Email Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/excluded_blacklisted_files.html">Excluded Blacklisted Files</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/external_sites.html">External Sites</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/harden_server.html">Harden Server</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/import_ssl_cert.html">Import SSL Cert</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/index_php_less_urls.html">Index PHP Less URLs</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/knowledgebase_configuration.html">Knowledgebase Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/language_configuration.html">Language Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/logging_configuration.html">Logging Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/oc_server_tuning.html">OC Server Tuning</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/occ_command.html">OCC Command</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/reverse_proxy_configuration.html">Reverse Proxy Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/security_setup_warnings.html">Security Setup Warnings</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/server/thirdparty_php_configuration.html">Thirdparty PHP Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">User</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/reset_admin_password.html">Reset Admin Password</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/reset_user_password.html">Reset User Password</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_auth_ftp_smb_imap.html">User Auth FTP SMB IMAP</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_auth_ldap.html">User Auth LDAP</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_configuration.html">User Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_provisioning_api.html">User Provisioning API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../configuration/user/user_roles.html">User Roles</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../configuration/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Enterprise</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Clients</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/creating_branded_apps.html">Creating Branded Apps</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/custom_client_repos.html">Custom Client Repos</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/clients/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">External_storage</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/enterprise_only_auth.html">Enterprise Only Auth</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/ldap_home_connector_configuration.html">LDAP Home Connector Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/onedrive.html">OneDrive</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/s3_swift_as_primary_object_store_configuration.html">S3 Swift As Primary Object Store Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/sharepoint-integration_configuration.html">Sharepoint integration Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/external_storage/windows-network-drive_configuration.html">Windows network drive Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">File_management</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/file_management/files_tagging.html">Files Tagging</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/file_management/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Firewall</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/firewall/file_firewall.html">File Firewall</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/firewall/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/install.html">Install</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/installation/oracle_db_configuration.html">Oracle DB Configuration</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Logging</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/logging/enterprise_logging_apps.html">Enterprise Logging Apps</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/logging/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ransomware-protection</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/ransomware-protection/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Server_branding</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/server_branding/enterprise_server_branding.html">Enterprise Server Branding</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/server_branding/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">User_management</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/user_management/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../enterprise/user_management/user_auth_shibboleth.html">User Auth Shibboleth</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../enterprise/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Faq</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../faq/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Installation</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Docker</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../installation/docker/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Letsencrypt</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../installation/letsencrypt/apache.html">Apache</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../installation/letsencrypt/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../installation/letsencrypt/nginx.html">NGINX</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/apps_management_installation.html">Apps Management Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/apps_supported.html">Apps Supported</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/changing_the_web_route.html">Changing the Web Route</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/command_line_installation.html">Command Line Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/configuration_notes_and_tips.html">Configuration Notes and Tips</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/deployment_considerations.html">Deployment Considerations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/deployment_recommendations.html">Deployment Recommendations</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/installation_wizard.html">Installation Wizard</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/linux_installation.html">Linux Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/nginx_configuration.html">NGINX Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/selinux_configuration.html">SELinux Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/source_installation.html">Source Installation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/system_requirements.html">System ReqUIrements</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../installation/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Issues</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/code_signing.html">Code Signing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/general_troubleshooting.html">General Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/impersonate_users.html">Impersonate Users</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../issues/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Maintenance</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/backup.html">Backup</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/enable_maintenance.html">Enable Maintenance</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/manual_upgrade.html">Manual Upgrade</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/manually-moving-data-folders.html">Manually moving data folders</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/migrating.html">Migrating</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/package_upgrade.html">Package Upgrade</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/restore.html">Restore</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/update.html">Update</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../maintenance/upgrade.html">Upgrade</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Upgrading</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/marketplace_apps.html">Marketplace Apps</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../upgrading/upgrade_php.html">Upgrade PHP</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../contents.html">Contents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../release_notes.html">Release Notes</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../whats_new_admin.html">Whats New Admin</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">user manual</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">External_storage</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../external_storage/external_storage.html">External Storage</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../external_storage/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../external_storage/sharepoint_connecting.html">Sharepoint Connecting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Files</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Webgui</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="webgui/comments.html">Comments</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="webgui/custom_groups.html">Custom Groups</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="webgui/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="webgui/navigating.html">Navigating</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="webgui/overview.html">Overview</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="webgui/quota.html">Quota</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="webgui/sharing.html">Sharing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="webgui/tagging.html">Tagging</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item is-current-page" data-depth="3">
+    <a class="nav-link" href="access_webdav.html">Access Webdav</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="deleted_file_management.html">Deleted File Management</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="desktop_mobile_sync.html">Desktop Mobile Sync</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="encrypting_files.html">Encrypting Files</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="federated_cloud_sharing.html">Federated Cloud Sharing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="gallery_app.html">Gallery App</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="large_file_upload.html">Large File Upload</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="public_link_shares.html">Public Link Shares</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="version_control.html">Version Control</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Pim</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pim/calendar.html">Calendar</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pim/contacts.html">Contacts</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pim/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pim/sync_ios.html">Sync Ios</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pim/sync_kde.html">Sync Kde</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pim/sync_osx.html">Sync Osx</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pim/sync_thunderbird.html">Sync Thunderbird</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../pim/troubleshooting.html">Troubleshooting</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../contents.html">Contents</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../session_management.html">Session Management</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../troubleshooting.html">Troubleshooting</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../userpreferences.html">Userpreferences</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../webinterface.html">Webinterface</a>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../whats_new.html">Whats New</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="0">
+<ul class="nav-list">
+  <li class="nav-item" data-depth="1">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">developer manual</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">App</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Advanced</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/code_signing.html">Code Signing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/custom-cache-backend.html">Custom cache backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/custom-storage-backend.html">Custom storage backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/extstorage.html">Extstorage</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/l10n.html">L10N</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/storage-backend.html">Storage backend</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/two-factor-provider.html">Two factor provider</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/advanced/users.html">Users</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Fundamentals</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/api.html">API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/backgroundjobs.html">Backgroundjobs</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/changelog.html">Changelog</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/classloader.html">ClaSSLoader</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/configuration.html">Configuration</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/container.html">Container</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/controllers.html">Controllers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/css.html">CSS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/database.html">Database</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/filesystem.html">Filesystem</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/hooks.html">Hooks</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/info.html">Info</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/js.html">JS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/logging.html">Logging</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/market_app.html">Market App</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/middleware.html">Middleware</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/publishing.html">Publishing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/routes.html">Routes</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/templates.html">Templates</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/fundamentals/testing.html">Testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Tutorial</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/database_connectivity.html">Database Connectivity</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/development_environment.html">Development Environment</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/finishing_touches.html">Finishing Touches</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/javascript_and_css.html">JavaScript and CSS</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/navigation.html">Navigation</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/request.html">Request</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/requirements.html">ReqUIrements</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/restful_api.html">Restful API</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/routes_and_controllers.html">Routes and Controllers</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/template_content.html">Template Content</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/testing.html">Testing</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/app/tutorial/wiring_it_up.html">Wiring it Up</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/app/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/app/introduction.html">Introduction</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Bugtracker</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/bugtracker/codereviews.html">Codereviews</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/bugtracker/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/bugtracker/triaging.html">Triaging</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Commun</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/commun/help_and_communication.html">Help and Communication</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/commun/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Core</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/acceptance-tests.html">Acceptance tests</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/configfile.html">Configfile</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/externalapi.html">ExternalAPI</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/introduction.html">Introduction</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/ocs-capabilities.html">OCS capabilities</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/ocs-recipient-api.html">OCS recipient API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/ocs-share-api.html">OCS share API</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/theming.html">Theming</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/translation.html">Translation</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/ui-testing.html">UI testing</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/core/unit-testing.html">Unit testing</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">General</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/backporting.html">Backporting</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/code-of-conduct.html">Code of conduct</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/codingguidelines.html">CodingGUIdelines</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/debugging.html">Debugging</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/devenv.html">Devenv</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/performance.html">Performance</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/general/security.html">Security</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Mobile_development</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Android_library</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/android_library/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/android_library/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/android_library/library_installation.html">Library Installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Ios_library</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/ios_library/examples.html">Examples</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/ios_library/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="4">
+    <a class="nav-link" href="../../developer_manual/mobile_development/ios_library/library_installation.html">Library Installation</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/mobile_development/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Testing</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/testing/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <button class="nav-toggle"></button>
+    <span class="nav-text">Webdav_api</span>
+<ul class="nav-list">
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/webdav_api/comments.html">Comments</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/webdav_api/files_versions.html">Files Versions</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/webdav_api/index.html">Index</a>
+  </li>
+  <li class="nav-item" data-depth="3">
+    <a class="nav-link" href="../../developer_manual/webdav_api/tags.html">Tags</a>
+  </li>
+</ul>
+  </li>
+  <li class="nav-item" data-depth="2">
+    <a class="nav-link" href="../../developer_manual/index.html">Index</a>
+  </li>
+</ul>
+  </li>
+</ul>
+  </li>
+</ul>
+  </nav>
+</div>
+<div class="navigation-explore" data-panel="explore">
+  <div class="context">
+    <span class="title">ownCloud // Documentation</span>
+    <span class="version">master</span>
+  </div>
+  <ul class="components">
+    <li class="component is-current">
+      <span class="title">ownCloud // Documentation</span>
+      <ul class="versions">
+        <li class="version is-current is-latest">
+          <a href="../../index.html">master</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+  </aside>
+</div>
+  <main class="main" role="main">
+<div class="toolbar" role="navigation">
+  <button class="navigation-toggle"></button>
+<nav class="crumbs" role="navigation" aria-label="breadcrumbs">
+  <ul>
+    <li class="crumb"><a href="../../index.html">ownCloud // Documentation</a></li>
+    <li class="crumb">user manual</li>
+    <li class="crumb">Files</li>
+    <li class="crumb"><a href="access_webdav.html">Access Webdav</a></li>
+  </ul>
+</nav>
+  <div class="edit-this-page"><a href="file:///Users/settermjd/Workspace/clients/ownCloud/antora-build/admin_manual/modules/user_manual/pages/files/access_webdav.adoc">Edit this Page</a></div>
+</div>
+<article class="doc">
+<h1>Accessing ownCloud Files Using WebDAV</h1>
+<div id="preamble">
+<div class="sectionbody">
+<div class="paragraph">
+<p>ownCloud fully supports the WebDAV protocol, and you can connect and
+synchronize with your ownCloud files over WebDAV. In this chapter you
+will learn how to connect Linux, Mac OS X, Windows, and mobile devices
+to your ownCloud server via WebDAV. Before we get into configuring
+WebDAV, let’s take a quick look at the recommended way of connecting
+client devices to your ownCloud servers.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="owncloud-desktop-and-mobile-clients"><a class="anchor" href="#owncloud-desktop-and-mobile-clients"></a>ownCloud Desktop and Mobile Clients</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The recommended method for keeping your desktop PC synchronized with
+your ownCloud server is by using the
+<a href="https://owncloud.org/install/#install-clients">ownCloud Desktop Client</a>.
+You can configure the ownCloud client to save files in any local
+directory you want, and you choose which directories on the ownCloud
+server to sync with. The client displays the current connection status
+and logs all activity, so you always know which remote files have been
+downloaded to your PC, and you can verify that files created and updated
+on your local PC are properly synchronized with the server.</p>
+</div>
+<div class="paragraph">
+<p>The recommended method for syncing your ownCloud server with Android and
+Apple iOS devices is by using the
+<a href="https://owncloud.org/install/#install-clients">ownCloud mobile apps</a>.</p>
+</div>
+<div class="paragraph">
+<p>To connect to your ownCloud server with the <strong>ownCloud</strong> mobile apps, use
+the base URL and folder only:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>example.com/owncloud</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>In addition to the mobile apps provided by ownCloud, you can use other
+apps to connect to ownCloud from your mobile device using WebDAV.
+<a href="http://seanashton.net/webdav/">WebDAV Navigator</a> is a good (proprietary)
+app for
+<a href="https://play.google.com/store/apps/details?id=com.schimera.webdavnavlite">Android
+devices</a>,
+<a href="https://itunes.apple.com/app/webdav-navigator/id382551345">iPhones</a>, and
+<a href="http://appworld.blackberry.com/webstore/content/46816">BlackBerry
+devices</a>. The URL to use on these is:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>example.com/owncloud/remote.php/dav/files/USERNAME/</pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="webdav-configuration"><a class="anchor" href="#webdav-configuration"></a>WebDAV Configuration</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>If you prefer, you may also connect your desktop PC to your ownCloud
+server by using the WebDAV protocol rather than using a special client
+application. Web Distributed Authoring and Versioning (WebDAV) is a
+Hypertext Transfer Protocol (HTTP) extension that makes it easy to
+create, read, and edit files on Web servers. With WebDAV you can access
+your ownCloud shares on Linux, Mac OS X and Windows in the same way as
+any remote network share, and stay synchronized.</p>
+</div>
+<div class="paragraph">
+<p>In the following examples, You must adjust <strong>example.com/</strong> to the URL of
+your ownCloud server installation.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accessing-files-using-linux"><a class="anchor" href="#accessing-files-using-linux"></a>Accessing Files Using Linux</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can access files in Linux operating systems using the following
+methods.</p>
+</div>
+<div class="sect2">
+<h3 id="nautilus-file-manager"><a class="anchor" href="#nautilus-file-manager"></a>Nautilus File Manager</h3>
+<div class="paragraph">
+<p>Use the <code>davs://</code> protocol to connect the Nautilus file manager to your
+ownCloud share:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>davs://example.com/owncloud/remote.php/dav/files/USERNAME/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If your server connection is not HTTPS-secured, use dav:// instead of
+davs://.</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/webdav_gnome3_nautilus.png" alt="screenshot of configuring Nautilus file manager to use WebDAV"></span></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="accessing-files-with-kde-and-dolphin-file-manager"><a class="anchor" href="#accessing-files-with-kde-and-dolphin-file-manager"></a>Accessing Files with KDE and Dolphin File Manager</h3>
+<div class="paragraph">
+<p>To access your ownCloud files using the Dolphin file manager in KDE, use
+the <code>webdav://</code> protocol:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>webdav://example.com/owncloud/remote.php/dav/files/USERNAME/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/webdav_dolphin.png" alt="screenshot of configuring Dolphin file manager to use WebDAV"></span></p>
+</div>
+<div class="paragraph">
+<p>You can create a permanent link to your ownCloud server:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open Dolphin and click &#8220;Network&#8221; in the left hand &#8220;Places&#8221;
+column.</p>
+</li>
+<li>
+<p>Click on the icon labeled <strong>Add a Network Folder</strong>. The resulting
+dialog should appear with WebDAV already selected.</p>
+</li>
+<li>
+<p>If WebDAV is not selected, select it.</p>
+</li>
+<li>
+<p>Click <strong>Next</strong>.</p>
+</li>
+<li>
+<p>Enter the following settings:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name: The name you want to see in the <strong>Places</strong> bookmark, for example
+ownCloud.</p>
+</li>
+<li>
+<p>User: The ownCloud username you used to log in, for example admin.</p>
+</li>
+<li>
+<p>Server: The ownCloud domain name, for example <strong>example.com</strong> (without
+<strong>http://</strong> before or directories afterwards).</p>
+</li>
+<li>
+<p>Folder – Enter the path <code>owncloud/remote.php/dav/files/USERNAME/</code>.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>(Optional) Check the &#8220;Create icon checkbox&#8221; for a bookmark to
+appear in the Places column.</p>
+</li>
+<li>
+<p>(Optional) Provide any special settings or an SSL certificate in the
+&#8220;Port &amp; Encrypted&#8221; checkbox.</p>
+</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="creating-webdav-mounts-on-the-linux-command-line"><a class="anchor" href="#creating-webdav-mounts-on-the-linux-command-line"></a>Creating WebDAV Mounts on the Linux Command Line</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>You can create WebDAV mounts from the Linux command line. This is useful
+if you prefer to access ownCloud the same way as any other remote
+filesystem mount. The following example shows how to create a personal
+mount and have it mounted automatically every time you log in to your
+Linux computer.</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Install the <code>davfs2</code> WebDAV filesystem driver, which allows you to
+mount WebDAV shares just like any other remote filesystem. Use this
+command to install it on Debian/Ubuntu:</p>
+<div class="literalblock">
+<div class="content">
+<pre>apt-get install davfs2</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Use this command to install it on CentOS, Fedora, and openSUSE:</p>
+<div class="literalblock">
+<div class="content">
+<pre>yum install davfs2</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add yourself to the <code>davfs2</code> group:</p>
+<div class="literalblock">
+<div class="content">
+<pre>usermod -aG davfs2 &lt;username&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then create an <code>owncloud</code> directory in your home directory for the
+mountpoint, and <code>.davfs2/</code> for your personal configuration file:</p>
+<div class="literalblock">
+<div class="content">
+<pre>mkdir ~/owncloud
+mkdir ~/.davfs2</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Copy <code>/etc/davfs2/secrets</code> to <code>~/.davfs2</code>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>cp  /etc/davfs2/secrets ~/.davfs2/secrets</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Set yourself as the owner and make the permissions read-write owner
+only:</p>
+<div class="literalblock">
+<div class="content">
+<pre>chown &lt;username&gt;:&lt;username&gt;  ~/.davfs2/secrets
+chmod 600 ~/.davfs2/secrets</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add your ownCloud login credentials to the end of the <code>secrets</code>
+file, using your ownCloud server URL and your ownCloud username and
+password:</p>
+<div class="literalblock">
+<div class="content">
+<pre>example.com/owncloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Add the mount information to <code>/etc/fstab</code>:</p>
+<div class="literalblock">
+<div class="content">
+<pre>example.com/owncloud/remote.php/dav/files/USERNAME/ /home/&lt;username&gt;/owncloud
+davfs user,rw,auto 0 0</pre>
+</div>
+</div>
+</li>
+<li>
+<p>Then test that it mounts and authenticates by running the following
+command. If you set it up correctly you won’t need root permissions:</p>
+<div class="literalblock">
+<div class="content">
+<pre>mount ~/owncloud</pre>
+</div>
+</div>
+</li>
+<li>
+<p>You should also be able to unmount it:</p>
+<div class="literalblock">
+<div class="content">
+<pre>umount ~/owncloud</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Now every time you login to your Linux system your ownCloud share should
+automatically mount via WebDAV in your <code>~/owncloud</code> directory. If you
+prefer to mount it manually, change <code>auto</code> to <code>noauto</code> in <code>/etc/fstab</code>.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="known-issues"><a class="anchor" href="#known-issues"></a>Known Issues</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="problem"><a class="anchor" href="#problem"></a>Problem</h3>
+<div class="paragraph">
+<p>Resource temporarily unavailable</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution"><a class="anchor" href="#solution"></a>Solution</h3>
+<div class="paragraph">
+<p>If you experience trouble when you create a file in the directory, edit
+<code>/etc/davfs2/davfs2.conf</code> and add:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>use_locks 0</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="problem-1"><a class="anchor" href="#problem-1"></a>Problem</h3>
+<div class="paragraph">
+<p>Certificate warnings</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution-1"><a class="anchor" href="#solution-1"></a>Solution</h3>
+<div class="paragraph">
+<p>If you use a self-signed certificate, you will get a warning. To change
+this, you need to configure <code>davfs2</code> to recognize your certificate. Copy
+<code>mycertificate.pem</code> to <code>/etc/davfs2/certs/</code>. Then edit
+<code>/etc/davfs2/davfs2.conf</code> and uncomment the line <code>servercert</code>. Now add
+the path of your certificate as in this example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>servercert   /etc/davfs2/certs/mycertificate.pem</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accessing-files-using-mac-os-x"><a class="anchor" href="#accessing-files-using-mac-os-x"></a>Accessing Files Using Mac OS X</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>The Mac OS X Finder suffers from a
+<a href="http://sabre.io/dav/clients/finder/">series of implementation problems</a>
+and should only be used if the ownCloud server runs on <strong>Apache</strong> and
+<strong>mod_php</strong>, or <strong>NGINX 1.3.8+</strong>.</p>
+</div>
+<div class="paragraph">
+<p>To access files through the Mac OS X Finder:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Choose <strong>Go &gt; Connect to Server</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The &#8220;Connect to Server&#8221; window opens.</p>
+</div>
+</blockquote>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Specify the address of the server in the <strong>Server Address</strong> field.</p>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/osx_webdav1.png" alt="Screenshot of entering your ownCloud server address on Mac OS X"></span></p>
+</div>
+<div class="paragraph">
+<p>For example, the URL used to connect to the ownCloud server from the Mac
+OS X Finder is:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>https://example.com/owncloud/remote.php/dav/files/USERNAME/</pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/osx_webdav2.png" alt="image"></span></p>
+</div>
+</blockquote>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click <strong>Connect</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The device connects to the server.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>For added details about how to connect to an external server using Mac
+OS X, check the
+<a href="http://docs.info.apple.com/article.html?path=Mac/10.6/en/8160.html">vendor
+documentation</a></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accessing-files-using-microsoft-windows"><a class="anchor" href="#accessing-files-using-microsoft-windows"></a>Accessing Files Using Microsoft Windows</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>It is best to use a suitable WebDAV client from the
+<a href="http://www.webdav.org/projects/">WebDAV Project page</a> .</p>
+</div>
+<div class="paragraph">
+<p>If you must use the native Windows implementation, you can map ownCloud
+to a new drive. Mapping to a drive enables you to browse files stored on
+an ownCloud server the way you would files stored in a mapped network
+drive.</p>
+</div>
+<div class="paragraph">
+<p>Using this feature requires network connectivity. If you want to store
+your files offline, use the ownCloud Desktop Client to sync all files on
+your ownCloud to one or more directories of your local hard drive.</p>
+</div>
+<div class="paragraph">
+<p>Prior to mapping your drive, you must permit the use of Basic</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Authentication in the Windows Registry. The procedure is documented in
+<a href="http://support.microsoft.com/kb/841215">KB841215</a> and differs between
+Windows XP/Server 2003 and Windows Vista/7. Please follow the Knowledge
+Base article before proceeding, and follow the Vista instructions if you
+run Windows 7.</p>
+</div>
+</blockquote>
+</div>
+<div class="sect2">
+<h3 id="mapping-drives-with-the-command-line"><a class="anchor" href="#mapping-drives-with-the-command-line"></a>Mapping Drives With the Command Line</h3>
+<div class="paragraph">
+<p>The following example shows how to map a drive using the command line.
+To map the drive:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open a command prompt in Windows.</p>
+</li>
+<li>
+<p>Enter the following line in the command prompt to map to the
+computer Z drive:</p>
+<div class="literalblock">
+<div class="content">
+<pre>net use Z: https://&lt;drive_path&gt;/remote.php/dav/files/USERNAME/ /user:youruser
+yourpassword</pre>
+</div>
+</div>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>where &lt;drive_path&gt; is the URL to your ownCloud server.</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>For example:
+<code>net use Z: https://example.com/owncloud/remote.php/dav/files/USERNAME/  /user:youruser yourpassword</code></p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>The computer maps the files of your ownCloud account to the drive letter
+Z.</p>
+</div>
+</blockquote>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">Though not recommended, you can also mount the ownCloud server</dt>
+<dd>
+<p>using HTTP, leaving the connection unencrypted. If you plan to use
+HTTP connections on devices while in a public place, we strongly
+recommend using a VPN tunnel to provide the necessary security.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>An alternative command syntax is:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>net use Z: \\example.com@ssl\owncloud\remote.php\dav /user:youruser
+yourpassword</pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="mapping-drives-with-windows-explorer"><a class="anchor" href="#mapping-drives-with-windows-explorer"></a>Mapping Drives With Windows Explorer</h3>
+<div class="paragraph">
+<p>To map a drive using the Microsoft Windows Explorer:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Migrate to your computer in Windows Explorer.</p>
+</li>
+<li>
+<p>Right-click on <strong>Computer</strong> entry and select <strong>Map network drive…</strong> from
+the drop-down menu.</p>
+</li>
+<li>
+<p>Choose a local network drive to which you want to map ownCloud.</p>
+</li>
+<li>
+<p>Specify the address to your ownCloud instance, followed by
+<strong>/remote.php/dav/files/USERNAME/</strong>.</p>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>For example:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>https://example.com/owncloud/remote.php/dav/files/USERNAME/</pre>
+</div>
+</div>
+</blockquote>
+</div>
+<div class="dlist">
+<dl>
+<dt class="hdlist1">For SSL protected servers, check <strong>Reconnect at logon</strong> to ensure</dt>
+<dd>
+<p>that the mapping is persistent upon subsequent reboots. If you want to
+connect to the ownCloud server as a different user, check <strong>Connect
+using different credentials</strong>.</p>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="/owncloud-docs/_images/explorer_webdav.png" alt="image"></span></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Click the <code>Finish</code> button.</p>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>Windows Explorer maps the network drive, making your ownCloud instance
+available.</p>
+</div>
+</blockquote>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accessing-files-using-cyberduck"><a class="anchor" href="#accessing-files-using-cyberduck"></a>Accessing Files Using Cyberduck</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><a href="https://cyberduck.io/?l=en">Cyberduck</a> is an open source FTP and SFTP,
+WebDAV, OpenStack Swift, and Amazon S3 browser designed for file
+transfers on Mac OS X and Windows.</p>
+</div>
+<div class="paragraph">
+<p>This example uses Cyberduck version 4.2.1.</p>
+</div>
+<div class="paragraph">
+<p>To use Cyberduck:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Specify a server without any leading protocol information. For
+example:</p>
+</li>
+</ol>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><code>example.com</code></p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>\2. Specify the appropriate port. The port you choose depends on whether
+or not your ownCloud server supports SSL. Cyberduck requires that you
+select a different connection type if you plan to use SSL. For example:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p>80 (for WebDAV)</p>
+</div>
+<div class="paragraph">
+<p>443 (for WebDAV (HTTPS/SSL))</p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>\3. Use the &#8216;More Options&#8217; drop-down menu to add the rest of your WebDAV
+URL into the &#8216;Path&#8217; field. For example:</p>
+</div>
+<div class="quoteblock">
+<blockquote>
+<div class="paragraph">
+<p><code>remote.php/dav/files/USERNAME/</code></p>
+</div>
+</blockquote>
+</div>
+<div class="paragraph">
+<p>Now Cyberduck enables file access to the ownCloud server.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accessing-public-shares-over-webdav"><a class="anchor" href="#accessing-public-shares-over-webdav"></a>Accessing public shares over WebDAV</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>ownCloud provides the possibility to access public shares over WebDAV.</p>
+</div>
+<div class="paragraph">
+<p>To access the public share, open:</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>https://example.com/owncloud/public.php/dav</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>in a WebDAV client, use the share token as username and the (optional)
+share password as password.</p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="known-problems"><a class="anchor" href="#known-problems"></a>Known Problems</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="problem-2"><a class="anchor" href="#problem-2"></a>Problem</h3>
+<div class="paragraph">
+<p>Windows does not connect using HTTPS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution-1-1"><a class="anchor" href="#solution-1-1"></a>Solution 1</h3>
+<div class="paragraph">
+<p>The Windows WebDAV Client might not support Server Name Indication (SNI)
+on encrypted connections. If you encounter an error mounting an
+SSL-encrypted ownCloud instance, contact your provider about assigning a
+dedicated IP address for your SSL-based server.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution-2"><a class="anchor" href="#solution-2"></a>Solution 2</h3>
+<div class="paragraph">
+<p>The Windows WebDAV Client might not support TSLv1.1 / TSLv1.2
+connections. If you have restricted your server config to only provide
+TLSv1.1 and above the connection to your server might fail. Please refer
+to the
+<a href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a>
+documentation for further information.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="problem-3"><a class="anchor" href="#problem-3"></a>Problem</h3>
+<div class="paragraph">
+<p>You receive the following error message: <strong>Error 0x800700DF: The file
+size exceeds the limit allowed and cannot be saved.</strong></p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution-3"><a class="anchor" href="#solution-3"></a>Solution</h3>
+<div class="paragraph">
+<p>Windows limits the maximum size a file transferred from or to a WebDAV
+share may have. You can increase the value <strong>FileSizeLimitInBytes</strong> in
+<strong>HKEY_LOCAL_MacHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</strong>
+by clicking on <strong>Modify</strong>.</p>
+</div>
+<div class="paragraph">
+<p>To increase the limit to the maximum value of 4GB, select <strong>Decimal</strong>,
+enter a value of <strong>4294967295</strong>, and reboot Windows or restart the
+<strong>WebClient</strong> service.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="problem-4"><a class="anchor" href="#problem-4"></a>Problem</h3>
+<div class="paragraph">
+<p>Accessing your files from Microsoft Office via WebDAV fails.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution-4"><a class="anchor" href="#solution-4"></a>Solution</h3>
+<div class="paragraph">
+<p>Known problems and their solutions are documented in the
+<a href="https://support.microsoft.com/kb/2123563">KB2123563</a> article.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="problem-5"><a class="anchor" href="#problem-5"></a>Problem</h3>
+<div class="paragraph">
+<p>Cannot map ownCloud as a WebDAV drive in Windows using self-signed
+certificate.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution-5"><a class="anchor" href="#solution-5"></a>Solution</h3>
+<div class="quoteblock">
+<blockquote>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Go to the your ownCloud instance via your favorite Web browser.</p>
+</li>
+<li>
+<p>Click through until you get to the certificate error in the browser
+status line.</p>
+</li>
+<li>
+<p>View the cert, then from the Details tab, select Copy to File.</p>
+</li>
+<li>
+<p>Save to the desktop with an arbitrary name, for example
+<code>myOwnCloud.cer</code>.</p>
+</li>
+<li>
+<p>Start, Run, MMC.</p>
+</li>
+<li>
+<p>File, Add/Remove Snap-In.</p>
+</li>
+<li>
+<p>Select Certificates, Click Add, My User Account, then Finish, then
+OK.</p>
+</li>
+<li>
+<p>Dig down to Trust Root Certification Authorities, Certificates.</p>
+</li>
+<li>
+<p>Right-Click Certificate, Select All Tasks, Import.</p>
+</li>
+<li>
+<p>Select the Save Cert from the Desktop.</p>
+</li>
+<li>
+<p>Select Place all Certificates in the following Store, Click Browse,</p>
+</li>
+<li>
+<p>Check the Box that says Show Physical Stores, Expand out Trusted
+Root Certification Authorities, and select Local Computer there, click
+OK, Complete the Import.</p>
+</li>
+<li>
+<p>Check the list to make sure it shows up. You will probably need to
+Refresh before you see it. Exit MMC.</p>
+</li>
+<li>
+<p>Open Browser, select Tools, Delete Browsing History.</p>
+</li>
+<li>
+<p>Select all but In Private Filtering Data, complete.</p>
+</li>
+<li>
+<p>Go to Internet Options, Content Tab, Clear SSL State.</p>
+</li>
+<li>
+<p>Close browser, then re-open and test.</p>
+</li>
+</ol>
+</div>
+</blockquote>
+</div>
+</div>
+<div class="sect2">
+<h3 id="problem-6"><a class="anchor" href="#problem-6"></a>Problem</h3>
+<div class="paragraph">
+<p>You cannot download more than 50 MB or upload large Files when the
+upload takes longer than 30 minutes using Web Client in Windows 7.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution-6"><a class="anchor" href="#solution-6"></a>Solution</h3>
+<div class="paragraph">
+<p>Workarounds are documented in the
+<a href="https://support.microsoft.com/kb/2668751">KB2668751</a> article.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="problem-7"><a class="anchor" href="#problem-7"></a>Problem</h3>
+<div class="paragraph">
+<p>Error 0x80070043 &#8220;The network name cannot be found.&#8221; while adding a
+network drive.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="solution-7"><a class="anchor" href="#solution-7"></a>Solution</h3>
+<div class="paragraph">
+<p>Make Windows service <strong>WebClient</strong> start automatically:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Open <strong>Control Panel</strong>.</p>
+</li>
+<li>
+<p>Go to <strong>Administrative Tools</strong>.</p>
+</li>
+<li>
+<p>Launch <strong>Services</strong>.</p>
+</li>
+<li>
+<p>Find <strong>WebClient</strong> service.</p>
+</li>
+<li>
+<p>Right-click on it and choose <strong>Properties</strong>.</p>
+</li>
+<li>
+<p>Select <strong>Startup type</strong>: <strong>Automatic</strong>.</p>
+</li>
+<li>
+<p>Click <strong>OK</strong> button.</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Or in command prompt (as Admin):</p>
+</div>
+<div class="literalblock">
+<div class="content">
+<pre>sc config "WebClient" start=auto
+sc start "WebClient"</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>More details <a href="https://github.com/owncloud/documentation/pull/2668">here</a>.</p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="accessing-files-using-curl"><a class="anchor" href="#accessing-files-using-curl"></a>Accessing Files Using cURL</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>Since WebDAV is an extension of HTTP cURL can be used to script file
+operations.</p>
+</div>
+<div class="paragraph">
+<p>To create a folder with the current date as name:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">$ curl -u user:pass -X MKCOL "https://example.com/owncloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To upload a file <code>error.log</code> into that directory:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">$ curl -u user:pass -T error.log "https://example.com/owncloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')/error.log"</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To move a file:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">$ curl -u user:pass -X MOVE --header 'Destination: https://example.com/owncloud/remote.php/dav/files/USERNAME/target.jpg' https://example.com/owncloud/remote.php/dav/files/USERNAME/source.jpg</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To get the properties of files in the root folder:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">$ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/owncloud/remote.php/dav/files/USERNAME/ | xml_pp
+&lt;?xml version="1.0" encoding="utf-8"?&gt;
+&lt;d:multistatus xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns" xmlns:s="http://sabredav.org/ns"&gt;
+  &lt;d:response&gt;
+    &lt;d:href&gt;/owncloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+    &lt;d:propstat&gt;
+      &lt;d:prop&gt;
+        &lt;d:getlastmodified&gt;Tue, 13 Oct 2015 17:07:45 GMT&lt;/d:getlastmodified&gt;
+        &lt;d:resourcetype&gt;
+          &lt;d:collection/&gt;
+        &lt;/d:resourcetype&gt;
+        &lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+        &lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+        &lt;d:getetag&gt;"561d3a6139d05"&lt;/d:getetag&gt;
+      &lt;/d:prop&gt;
+      &lt;d:status&gt;HTTP/1.1 200 OK&lt;/d:status&gt;
+    &lt;/d:propstat&gt;
+  &lt;/d:response&gt;
+  &lt;d:response&gt;
+    &lt;d:href&gt;/owncloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+    &lt;d:propstat&gt;
+      &lt;d:prop&gt;
+        &lt;d:getlastmodified&gt;Tue, 13 Oct 2015 17:07:35 GMT&lt;/d:getlastmodified&gt;
+        &lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+        &lt;d:resourcetype/&gt;
+        &lt;d:getetag&gt;"47465fae667b2d0fee154f5e17d1f0f1"&lt;/d:getetag&gt;
+        &lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+      &lt;/d:prop&gt;
+      &lt;d:status&gt;HTTP/1.1 200 OK&lt;/d:status&gt;
+    &lt;/d:propstat&gt;
+  &lt;/d:response&gt;
+&lt;/d:multistatus&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>To get the file id of a file, regardless of location, you need to make a
+PROPFIND request. This request requires two things:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>A PROPFIND XML element in the body of the request method.</p>
+</li>
+<li>
+<p>The path to the file that you want to find out more about</p>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p>Here’s an example PROPFIND XML element, which we’ll store as
+<code>propfind-fileid.xml</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?xml version="1.0"?&gt;
+&lt;a:propfind xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns"&gt;
+    &lt;!-- retrieve the file's id --&gt;
+    &lt;a:prop&gt;&lt;oc:fileid/&gt;&lt;/a:prop&gt;
+&lt;/a:propfind&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You could pass this directly to the Curl request. However, it can often
+be easier to create, maintain, and to share, if it’s created in a
+standalone file.</p>
+</div>
+<div class="paragraph">
+<p>With the file created, make the request by running the following Curl
+command:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">curl -u username:password -X PROPFIND \
+  -H "Content-Type: text/xml" \
+  --data-binary "@propfind-fileid.xml" \
+  'http://localhost/remote.php/dav/files/admin/Photos/San%20Francisco.jpg'</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This will return an XML response payload similar to the following
+example. It contains the relative path to the file and the fileid of the
+file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-sourceCode hljs" data-lang="sourceCode">&lt;?xml version="1.0"?&gt;
+&lt;d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns"&gt;
+  &lt;d:response&gt;
+    &lt;d:href&gt;/remote.php/dav/files/admin/Photos/San%20Francisco.jpg&lt;/d:href&gt;
+    &lt;d:propstat&gt;
+      &lt;d:prop&gt;
+        &lt;oc:fileid&gt;4&lt;/oc:fileid&gt;
+      &lt;/d:prop&gt;
+      &lt;d:status&gt;HTTP/1.1 200 OK&lt;/d:status&gt;
+    &lt;/d:propstat&gt;
+  &lt;/d:response&gt;
+&lt;/d:multistatus&gt;</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The example above’s been formatted for readability, using
+<a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint">xmllint</a>,
+which is part of libxml2. To format it as it is listed above, pipe the
+previous command to <code>xmllint --format -</code>.</p>
+</div>
+</div>
+</div>
+</article>
+  </main>
+</div>
+<footer class="footer">
+  <p>This page was built using the Antora default UI.</p>
+  <p>The source code for this UI is licensed under the terms of the MPL-2.0 license.</p>
+</footer>
+<script src="../../../owncloud-docs/js/site.js"></script>
+<script src="../../../owncloud-docs/js/vendor/highlight.js"></script>
+<script>hljs.initHighlighting()</script>
+  </body>
+</html>

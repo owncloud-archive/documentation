@@ -1,0 +1,12 @@
+site:
+  title: ownCloud Documentation
+content:
+  sources:
+  - url: ./admin_manual
+    branches: master
+ui:
+  bundle: ./ui-bundle.zip
+  output_dir: owncloud-docs
+output: 
+ clean: true
+ dir: ./docs

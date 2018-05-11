@@ -1,0 +1,8 @@
+{{#if page.navigation}}
+<div class="navigation-menu is-active" data-panel="menu">
+  <nav class="nav-menu">
+    <h3 class="title"><a href="{{relativize page.url page.componentVersion.url}}">{{page.component.title}}</a></h3>
+{{> navigation-tree navigation=page.navigation}}
+  </nav>
+</div>
+{{/if}}
