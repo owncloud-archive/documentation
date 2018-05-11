@@ -1,6 +1,4 @@
-#!/usr/bin/env php
-
-* user manual
+* User Manual
 *** External_storage
 **** xref:external_storage/external_storage.adoc[External Storage]
 **** xref:external_storage/index.adoc[Index]
@@ -15,7 +13,7 @@
 ***** xref:files/webgui/quota.adoc[Quota]
 ***** xref:files/webgui/sharing.adoc[Sharing]
 ***** xref:files/webgui/tagging.adoc[Tagging]
-**** xref:files/access_webdav.adoc[Access Webdav]
+**** xref:files/access_webdav.adoc[Access WebDAV]
 **** xref:files/deleted_file_management.adoc[Deleted File Management]
 **** xref:files/desktop_mobile_sync.adoc[Desktop Mobile Sync]
 **** xref:files/encrypting_files.adoc[Encrypting Files]
@@ -39,6 +37,6 @@
 *** xref:index.adoc[Index]
 *** xref:session_management.adoc[Session Management]
 *** xref:troubleshooting.adoc[Troubleshooting]
-*** xref:userpreferences.adoc[Userpreferences]
-*** xref:webinterface.adoc[Webinterface]
-*** xref:whats_new.adoc[Whats New]
+*** xref:userpreferences.adoc[User Preferences]
+*** xref:webinterface.adoc[Web Interface]
+*** xref:whats_new.adoc[What's New]
