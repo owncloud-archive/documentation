@@ -13,7 +13,7 @@ the thumbnails with the folder names. Click on the folder thumbnails to
 open the folders. At the top left you have two sorting options,
 alphabetical and by date.
 
-image:/owncloud-docs/_images/gallery-1.png[image]
+image:/owncloud-docs/user_manual/_images/gallery-1.png[image]
 
 After entering any folder, click on any image to open it in slideshow
 mode. This has the following features: a download button at the top
@@ -21,7 +21,7 @@ center, forward and back buttons at the right and left sides, an
 automatic slideshow button at the bottom right, and a close button at
 the top right.
 
-image:/owncloud-docs/_images/gallery-2.png[image]
+image:/owncloud-docs/user_manual/_images/gallery-2.png[image]
 
 [[custom-configuration]]
 Custom Configuration

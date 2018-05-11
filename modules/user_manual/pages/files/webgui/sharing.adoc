@@ -12,14 +12,14 @@ Any folder that has been shared is marked with the `Shared` overlay
 icon. Public link shares are marked with a chain link. Un-shared folders
 are blank.
 
-image:/owncloud-docs/_images/files_page-5.png[image]
+image:/owncloud-docs/user_manual/_images/files_page-5.png[image]
 
 If your ownCloud server is the Enterprise edition, you may also have
 access to Sharepoint and Windows Network Drive file shares. These have
 special status icons. An icon with a red plugin and background means you
 have to enter a login to get access to the share.
 
-image:/owncloud-docs/_images/files_share-options.png[image]
+image:/owncloud-docs/user_manual/_images/files_share-options.png[image]
 
 [[creating-shares]]
 Creating Shares
@@ -48,7 +48,7 @@ set on it. In the image below, you can see that the directory
 ``event-Photos'' is shared with the user ``pierpont'', who can _share_,
 _edit_, _create_, _change_, and _delete_ the directory.
 
-image:/owncloud-docs/_images/files_page-2.png[image]
+image:/owncloud-docs/user_manual/_images/files_page-2.png[image]
 
 [[what-happens-when-share-recipients-move-files-and-folders]]
 What Happens When Share Recipients Move Files and Folders?
@@ -64,7 +64,7 @@ That way, the files/folders are not permanently lost. By clicking the
 *Restore* link, next to the respective file or folder, ownCloud will
 restore these files/folders to their original location.
 
-image:/owncloud-docs/_images/sharing/restore-files.png[image]
+image:/owncloud-docs/user_manual/_images/sharing/restore-files.png[image]
 
 Restoring files restores the backup copy for *all users*, including the
 user that originally moved them, into the original folder.
@@ -82,12 +82,12 @@ If it’s already installed, in the ``**User and Groups**'' field of the
 already a user in your ownCloud installation. You will then see a popup
 appear with the suffix `(guest)`, as in the screenshot below.
 
-image:/owncloud-docs/_images/guest-users/share-with-guest-users.png[Sharing with guest users.]
+image:/owncloud-docs/user_manual/_images/guest-users/share-with-guest-users.png[Sharing with guest users.]
 
 After you do that, the content will be shared with the user with all
 permissions applied, except for the ability to share with other users.
 
-image:/owncloud-docs/_images/guest-users/content-shared-with-guest-user.png[Content shared with a guest user.]
+image:/owncloud-docs/user_manual/_images/guest-users/content-shared-with-guest-user.png[Content shared with a guest user.]
 
 [[updating-shares]]
 Updating Shares
@@ -141,7 +141,7 @@ to a file or folder, within a share, more efficiently. To access the
 private link, in the Sharing Panel for a file or folder, next to its
 name you’ll see a small link icon (1), as in the screenshot below.
 
-image:/owncloud-docs/_images/public-link/private-link.png[Obtaining a private link for a shared file or folder]
+image:/owncloud-docs/user_manual/_images/public-link/private-link.png[Obtaining a private link for a shared file or folder]
 
 If you click it, a new textbox will appear above the ``**Collaborative
 tags**'' field, populated with the link’s URI (2).
@@ -207,7 +207,7 @@ shares (otherwise known as ``Drop Folders''). Drop Folders allow users
 to upload files to a central location, but don’t allow them to either
 see or change any existing files, which already have been uploaded.
 
-image:/owncloud-docs/_images/sharing/create-drop-folder.png[Create a Drop Folder]
+image:/owncloud-docs/user_manual/_images/sharing/create-drop-folder.png[Create a Drop Folder]
 
 To create one:
 
@@ -226,7 +226,7 @@ give it out, as and when necessary.
 Using Drop Folders
 ------------------
 
-image:/owncloud-docs/_images/sharing/use-drop-folders.png[Using Drop Folders]
+image:/owncloud-docs/user_manual/_images/sharing/use-drop-folders.png[Using Drop Folders]
 
 When users open the share link, they will see a page where they can
 either click to select files to share, or drag-and-drop files directly

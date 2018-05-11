@@ -46,7 +46,7 @@ example, that is `layla@remote-server/owncloud`. The form automatically
 echoes the address that you type and labels it as ``remote''. Click on
 the label.
 
-image:/owncloud-docs/_images/direct-share-1.png[image]
+image:/owncloud-docs/user_manual/_images/direct-share-1.png[image]
 
 \2. When your local ownCloud server makes a successful connection with
 the remote ownCloud server you’ll see a confirmation. Your only share
@@ -66,20 +66,20 @@ older.
 What if you do not know the username or URL? Then you can have ownCloud
 create the link for you and email it to your recipient.
 
-image:/owncloud-docs/_images/create_public_share-6.png[image]
+image:/owncloud-docs/user_manual/_images/create_public_share-6.png[image]
 
 When your recipient receives your email they will have to take a number
 of steps to complete the share link. First they must open the link you
 sent them in a Web browser, and then click the *Add to your ownCloud*
 button.
 
-image:/owncloud-docs/_images/create_public_share-8.png[image]
+image:/owncloud-docs/user_manual/_images/create_public_share-8.png[image]
 
 The *Add to your ownCloud* button changes to a form field, and your
 recipient needs to enter the URL of their ownCloud server in this field
 and press the return key, or click the arrow.
 
-image:/owncloud-docs/_images/create_public_share-9.png[image]
+image:/owncloud-docs/user_manual/_images/create_public_share-9.png[image]
 
 Next, they will see a dialog asking to confirm. All they have to do is
 click the *Add remote share* button and they’re finished.

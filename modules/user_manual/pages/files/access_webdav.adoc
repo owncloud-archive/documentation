@@ -83,7 +83,7 @@ davs://example.com/owncloud/remote.php/dav/files/USERNAME/
 If your server connection is not HTTPS-secured, use dav:// instead of
 davs://.
 
-image:/owncloud-docs/_images/webdav_gnome3_nautilus.png[screenshot of configuring Nautilus file manager to use WebDAV]
+image:/owncloud-docs/user_manual/_images/webdav_gnome3_nautilus.png[screenshot of configuring Nautilus file manager to use WebDAV]
 
 [[accessing-files-with-kde-and-dolphin-file-manager]]
 Accessing Files with KDE and Dolphin File Manager
@@ -96,7 +96,7 @@ the `webdav://` protocol:
 webdav://example.com/owncloud/remote.php/dav/files/USERNAME/
 ....
 
-image:/owncloud-docs/_images/webdav_dolphin.png[screenshot of configuring Dolphin file manager to use WebDAV]
+image:/owncloud-docs/user_manual/_images/webdav_dolphin.png[screenshot of configuring Dolphin file manager to use WebDAV]
 
 You can create a permanent link to your ownCloud server:
 
@@ -255,7 +255,7 @@ _______________________________________
 1.  Specify the address of the server in the *Server Address* field.
 
 ________________________________________________________________________________________________
-image:/owncloud-docs/_images/osx_webdav1.png[Screenshot of entering your ownCloud server address on Mac OS X]
+image:/owncloud-docs/user_manual/_images/osx_webdav1.png[Screenshot of entering your ownCloud server address on Mac OS X]
 
 For example, the URL used to connect to the ownCloud server from the Mac
 OS X Finder is:
@@ -264,7 +264,7 @@ OS X Finder is:
 https://example.com/owncloud/remote.php/dav/files/USERNAME/
 ....
 
-image:/owncloud-docs/_images/osx_webdav2.png[image]
+image:/owncloud-docs/user_manual/_images/osx_webdav2.png[image]
 ________________________________________________________________________________________________
 
 1.  Click *Connect*.
@@ -370,7 +370,7 @@ For SSL protected servers, check *Reconnect at logon* to ensure::
   connect to the ownCloud server as a different user, check *Connect
   using different credentials*.
 
-image:/owncloud-docs/_images/explorer_webdav.png[image]
+image:/owncloud-docs/user_manual/_images/explorer_webdav.png[image]
 
 1.  Click the `Finish` button.
 

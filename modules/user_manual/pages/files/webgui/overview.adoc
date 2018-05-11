@@ -7,7 +7,7 @@ _create_, _preview_, _edit_, _delete_, _share_, and _re-share_ files.
 Your ownCloud administrator has the option to disable these features. If
 any of them are missing on your system ask your server administrator.
 
-image:/owncloud-docs/_images/files_page.png[image]
+image:/owncloud-docs/user_manual/_images/files_page.png[image]
 
 [[file-controls]]
 File Controls
@@ -20,7 +20,7 @@ image below, ownCloud displays three file controls. These are:
 2.  link:[Sharing Files]
 3.  link:[The Overflow Menu]
 
-image:/owncloud-docs/_images/files_file-controls.png[image]
+image:/owncloud-docs/user_manual/_images/files_file-controls.png[image]
 
 [[marking-favorites]]
 Marking Favorites
@@ -30,7 +30,7 @@ Click the star to the left of the file icon to mark it as a favorite,
 and quickly find all of your favorites with the Favorites filter on the
 left sidebar.
 
-image:/owncloud-docs/_images/files_mark-as-favorite.png[image]
+image:/owncloud-docs/user_manual/_images/files_mark-as-favorite.png[image]
 
 [[sharing-files]]
 Sharing Files
@@ -55,7 +55,7 @@ The Overflow Menu allows you to:
 * Download files
 * Delete files
 
-image:/owncloud-docs/_images/files_page-3.png[image]
+image:/owncloud-docs/user_manual/_images/files_page-3.png[image]
 
 [[display-file-details]]
 Display File Details
@@ -79,4 +79,4 @@ Overflow Menu, a set of tabs (or views) are available. These are:
 
 You can see an example of the Activity view in the image below.
 
-image:/owncloud-docs/_images/files_page-4.png[image]
+image:/owncloud-docs/user_manual/_images/files_page-4.png[image]

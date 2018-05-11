@@ -13,7 +13,7 @@ Create and Upload Files and Directories
 At the top of the Files view is a navigation bar. This contains links to
 uploading new files, and creating new files and folders.
 
-image:/owncloud-docs/_images/files_page-6.png[image]
+image:/owncloud-docs/user_manual/_images/files_page-6.png[image]
 
 To upload or create new files or folders directly in an ownCloud folder
 click on the _New_ button in the navigation bar (this is the `+`
@@ -31,14 +31,14 @@ folder.
 Select Files or Folders
 -----------------------
 
-image:/owncloud-docs/_images/files_view_mouseover.png[image]
+image:/owncloud-docs/user_manual/_images/files_view_mouseover.png[image]
 
 You can select one or more files or folders by hovering over them (as in
 the image below) and clicking on their checkboxes. To select all files
 in the current directory, click on the checkbox located at the top of
 the files listing.
 
-image:/owncloud-docs/_images/files_view_select_all.png[image]
+image:/owncloud-docs/user_manual/_images/files_view_select_all.png[image]
 
 When you select multiple files, you can delete all of them, or download
 them as a ZIP file by using the `Delete` or `Download` buttons that
@@ -93,7 +93,7 @@ You can play videos in ownCloud with the Video Player app, by clicking
 once on the file. Please note, video streaming by the native ownCloud
 video player depends on your Web browser and the video’s format.
 
-image:/owncloud-docs/_images/video_player_2.png[image]
+image:/owncloud-docs/user_manual/_images/video_player_2.png[image]
 
 If your ownCloud administrator has enabled video streaming, and it
 doesn’t work in your Web browser, it may be a browser-related issue. See
@@ -113,7 +113,7 @@ The dot tells your operating system to hide these files in your file
 browsers, unless you choose to display them. Usually, these are
 configuration files, so having the option to hide them reduces clutter.
 
-image:/owncloud-docs/_images/hidden_files.png[image]
+image:/owncloud-docs/user_manual/_images/hidden_files.png[image]
 
 [[preview-files]]
 Preview Files

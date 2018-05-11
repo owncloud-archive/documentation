@@ -1,7 +1,7 @@
 Tagging Files
 =============
 
-image:/owncloud-docs/_images/file_popup-menu.png[image]
+image:/owncloud-docs/user_manual/_images/file_popup-menu.png[image]
 
 In ownCloud, you can assign one or more tags to files and folders. To do
 so, go to the ``**Details**'' view, inside
@@ -17,7 +17,7 @@ be saved.
 All tags are system tags, so they are shared by all users on your
 ownCloud server.
 
-image:/owncloud-docs/_images/files_page-7.png[image]
+image:/owncloud-docs/user_manual/_images/files_page-7.png[image]
 
 When you place the cursor inside the tags field, and as you type the tag
 name, a list of the system tags will appear. If you type a new tag name,
@@ -88,4 +88,4 @@ When you use the *Tag* filter on your Files page you’ll see something
 like the following image. If you do not have Admin rights then you will
 not see any invisible tags.
 
-image:/owncloud-docs/_images/files_page-8.png[image]
+image:/owncloud-docs/user_manual/_images/files_page-8.png[image]

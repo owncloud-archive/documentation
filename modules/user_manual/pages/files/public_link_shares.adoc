@@ -19,13 +19,13 @@ To create a public link share, first view the Sharing Panel of the file
 or folder that you want to create a public link share for, and under
 *``Public Links''* click *``Create public link''*.
 
-image:/owncloud-docs/_images/public-link/create-public-link.png[Create a public link - step one.]
+image:/owncloud-docs/user_manual/_images/public-link/create-public-link.png[Create a public link - step one.]
 
 Then, as with other shares, provide the name in the *``Link Name''*
 field, and fill out the options that suit what you want the link to
 support. You can find details of what each option does below.
 
-image:/owncloud-docs/_images/public-link/public-link-settings.png[Create a public link - step two.]
+image:/owncloud-docs/user_manual/_images/public-link/public-link-settings.png[Create a public link - step two.]
 
 Finally, click *``Save''* to complete creation of the share. Now that
 the share is created, you can:

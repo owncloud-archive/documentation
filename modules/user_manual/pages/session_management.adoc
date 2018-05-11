@@ -12,7 +12,7 @@ In the list of connected browsers you see which browsers connected to
 your account recently:
 
 _________________________________________
-image:/owncloud-docs/_images/settings_sessions.png[image]
+image:/owncloud-docs/user_manual/_images/settings_sessions.png[image]
 _________________________________________
 
 You can use the trash icon to disconnect any of the browsers in the
@@ -26,7 +26,7 @@ In the list of connected devices you see all the devices and clients you
 generated a device password for and their last activity:
 
 ________________________________________
-image:/owncloud-docs/_images/settings_devices.png[image]
+image:/owncloud-docs/user_manual/_images/settings_devices.png[image]
 ________________________________________
 
 You can use the trash icon to disconnect any of the devices in the list.
@@ -38,7 +38,7 @@ Ideally, generate individual tokens for every device you connect to your
 account, so you can disconnect those individually if necessary.
 
 ____________________________________________
-image:/owncloud-docs/_images/settings_devices_add.png[image]
+image:/owncloud-docs/user_manual/_images/settings_devices_add.png[image]
 ____________________________________________
 
 You have only access to the device password when creating it, ownCloud

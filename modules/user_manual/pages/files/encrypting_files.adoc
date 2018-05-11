@@ -41,13 +41,13 @@ your files. When encryption has been enabled on your ownCloud server you
 will see a yellow banner on your Files page warning you to log out and
 then log back in.
 
-image:/owncloud-docs/_images/encryption1.png[image]
+image:/owncloud-docs/user_manual/_images/encryption1.png[image]
 
 When you log back in it takes a few minutes to work, depending on how
 many files you have, and then you are returned to your default ownCloud
 page.
 
-image:/owncloud-docs/_images/encryption2.png[image]
+image:/owncloud-docs/user_manual/_images/encryption2.png[image]
 
 You must never lose your ownCloud password, because you will lose access
 to your files. Though there is an optional recovery option that your
@@ -85,7 +85,7 @@ files in the event you lose your ownCloud password. If the recovery key
 is not enabled, then there is no way to restore your files if you lose
 your login password.
 
-image:/owncloud-docs/_images/encryption3.png[image]
+image:/owncloud-docs/user_manual/_images/encryption3.png[image]
 
 [[files-not-encrypted]]
 Files Not Encrypted

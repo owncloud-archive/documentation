@@ -14,7 +14,7 @@ everyone who has access to the file or folder. To add a comment, as in
 the example below, click the *Comments* tab in the Details view, write a
 comment in the New Comment field, and click ``Post''.
 
-image:/owncloud-docs/_images/file_menu_comments_2.png[image]
+image:/owncloud-docs/user_manual/_images/file_menu_comments_2.png[image]
 
 [[edit-comments]]
 Edit Comments

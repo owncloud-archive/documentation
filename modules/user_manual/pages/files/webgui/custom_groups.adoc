@@ -22,7 +22,7 @@ click ``**Settings**'' (1). Then, in the main menu on the settings page,
 in ``**Personal**'' section, click the option: ``**Customgroups**'' (2).
 This will take you to the ``**Custom Groups**'' admin page.
 
-image:/owncloud-docs/_images/custom-groups/owncloud-create-custom-group-annotated.png[The Custom Groups administration panel]
+image:/owncloud-docs/user_manual/_images/custom-groups/owncloud-create-custom-group-annotated.png[The Custom Groups administration panel]
 
 To create a new custom group, in the text field at the top where you see
 the placeholder text: ``**Group name**'', add the group name and click
@@ -38,7 +38,7 @@ instance.
 Managing Group Members
 ----------------------
 
-image:/owncloud-docs/_images/custom-groups/custom-group-manage-group-members.png[Manage members in a custom group]
+image:/owncloud-docs/user_manual/_images/custom-groups/custom-group-manage-group-members.png[Manage members in a custom group]
 
 To add or remove users in a custom group, click your role (1), which
 will likely be ``**Member**'' (at least at first), and you’ll see a
@@ -60,7 +60,7 @@ and delete groups.
 Sharing with the Group
 ----------------------
 
-image:/owncloud-docs/_images/custom-groups/owncloud-share-to-custom-group.png[Sharing files and folders with custom groups]
+image:/owncloud-docs/user_manual/_images/custom-groups/owncloud-share-to-custom-group.png[Sharing files and folders with custom groups]
 
 To share a file or folder with your custom group, open the sharing panel
 (1). Then, in the ``**User and Groups**'' field (2), type part of the
@@ -81,4 +81,4 @@ appear to the right of the existing name. Click it, and a text field
 will appear, pre-populated with the existing name. Change the name and
 click enter, and the name will be changed.
 
-image:/owncloud-docs/_images/custom-groups/rename-custom-group.png[Rename a custom group]
+image:/owncloud-docs/user_manual/_images/custom-groups/rename-custom-group.png[Rename a custom group]

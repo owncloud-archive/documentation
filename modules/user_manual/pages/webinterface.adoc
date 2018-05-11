@@ -10,7 +10,7 @@ Supported Web browsers are:
 * Safari 5+
 * IE11+ (except Compatibility Mode)
 +
-image:/owncloud-docs/_images/oc_connect.png[image]
+image:/owncloud-docs/user_manual/_images/oc_connect.png[image]
 
 Some apps like `files_external` or `encryption` will disable the *Stay
 logged in* checkbox.
@@ -24,7 +24,7 @@ add, remove, and share files, and make changes based on the access
 privileges set by you (if you are administering the server) or by your
 server administrator.
 
-image:/owncloud-docs/_images/files_page.png[image]
+image:/owncloud-docs/user_manual/_images/files_page.png[image]
 
 The ownCloud user interface contains the following fields and functions:
 
