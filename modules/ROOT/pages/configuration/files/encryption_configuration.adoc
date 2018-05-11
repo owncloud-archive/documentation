@@ -125,7 +125,7 @@ First, you must enable this, and then select an encryption module to
 load. Go to the *Server-side encryption* section of your Admin page and
 check *Enable encryption*.
 
-image:/owncloud-docs/_images/configuration/files/encryption3.png[image]
+image:/owncloud-docs/_images/configuration/files/configuration/files/encryption3.png[image]
 
 After clicking *Enable encryption*, you will see the message ``__No
 encryption module loaded, please load an encryption module in the app
@@ -133,20 +133,20 @@ menu__''. Currently, the only available encryption module is the
 ownCloud Default Encryption module. So, go to your Apps page to enable
 the ownCloud Default Encryption module.
 
-image:/owncloud-docs/_images/encryption1.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption1.png[image]
 
 Then, return to your Admin page to see that the ownCloud Default
 Encryption module has been added to the module selector _and_
 automatically selected. Now you *must* log out and then log back in to
 initialize your encryption keys.
 
-image:/owncloud-docs/_images/encryption14.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption14.png[image]
 
 When you log back in, a checkbox for enabling encryption on your home
 storage, will now be available — checked by default. Uncheck it to avoid
 encrypting your home storage.
 
-image:/owncloud-docs/_images/encryption15.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption15.png[image]
 
 [[enabling-encryption-from-the-command-line]]
 Enabling Encryption From the Command-line
@@ -224,7 +224,7 @@ For individual shares, un-share and re-share the file. For group shares,
 share with any individuals who can’t access the share. This updates the
 encryption, and then the share owner can remove the individual shares.
 
-image:/owncloud-docs/_images/encryption9.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption9.png[image]
 
 [[encrypting-external-mountpoints]]
 Encrypting External Mountpoints
@@ -255,7 +255,7 @@ ________________________________________________________________________________
 To avoid all this, create a Recovery Key. To do so, go to the Encryption
 section of your Admin page and set a recovery key password.
 
-image:/owncloud-docs/_images/encryption10.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption10.png[image]
 
 You then need to ask your users to opt-in to the Recovery Key. For the
 users to do this, they need to go to the ``**Personal**'' page and
@@ -263,17 +263,17 @@ enable the recovery key. This signals that they are OK that the admin
 might have a way to decrypt their data for recovery reasons. If they do
 _not_ do this, then the Recovery Key won’t work for them.
 
-image:/owncloud-docs/_images/encryption7.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption7.png[image]
 
 For users who have enabled password recovery, give them a new password
 and recover access to their encrypted files, by supplying the Recovery
 Key on the Users page.
 
-image:/owncloud-docs/_images/encryption8.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption8.png[image]
 
 You may change your recovery key password.
 
-image:/owncloud-docs/_images/encryption12.png[image]
+image:/owncloud-docs/_images/configuration/files/encryption12.png[image]
 
 Sharing a recovery key with a user group is *not* supported. This is
 only supported with the master key <create-a-master-key>.

@@ -118,7 +118,7 @@ Check ``__Allow users to mount external storage__'' to allow your users
 to mount storages on external services. Then enable the backends you
 want to allow.
 
-image:external_storage/images/user_mounts.png[image]
+image:external_storage/images/external_storage/user_mounts.png[image]
 
 Be careful with the choices that you enable, as it allows a user to make
 potentially arbitrary connections to other services on your network!
@@ -131,7 +131,7 @@ When an external storage is created which uses either Google Drive or
 Dropbox, a link to the respective configuration page is available, next
 to the service name.
 
-image:/owncloud-docs/_images/external-storage-google-drive-and-dropbox-configuration.png[image]
+image:/owncloud-docs/_images/configuration/files/external_storage/external-storage-google-drive-and-dropbox-configuration.png[image]
 
 In the screenshot above, you can see that two external storage
 connections have been created, but not configured. One goes to Google
