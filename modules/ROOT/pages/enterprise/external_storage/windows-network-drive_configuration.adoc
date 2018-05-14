@@ -1,6 +1,5 @@
 [[installing-and-configuring-the-external-storage-windows-network-drives-app]]
-Installing and Configuring the External Storage: Windows Network Drives
-App
+Installing and Configuring the External Storage: Windows Network Drives App
 ---------------------------------------------------------------------------
 
 The link:[External Storage: Windows Network Drives] app creates a
@@ -445,8 +444,8 @@ It’s expected that root will be the one to run this command.
 
 [source,console]
 ----
-base64 -d /tmp/encodedpass | sudo -u www-data ./occ wnd:listen <host> <share> <username> \
-  --password-file=-
+base64 -d /tmp/encodedpass | sudo -u www-data \
+  ./occ wnd:listen <host> <share> <username> --password-file=-
 ----
 
 Similar to the previous example, but this time the contents are encoded
