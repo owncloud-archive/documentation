@@ -11,7 +11,7 @@ can be saved in the database. But to do that, we first need to create
 the database schema <../fundamentals/database> by creating
 `ownnotes/appinfo/database.xml`, with the following content:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <database>
     <name>*dbname*</name>
@@ -79,7 +79,7 @@ results to a PHP object. That way, we’re able to manage the data more
 precisely. To do that, create an entity <../fundamentals/database> in
 new file, called: `ownnotes/lib/Db/Note.php`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Db;
@@ -126,7 +126,7 @@ ________________________________________________________________________________
 Let’s create one in `ownnotes/lib/Db/NoteMapper.php` and add a `find`
 and `findAll` method:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Db;
@@ -171,7 +171,7 @@ user. To do so, add a `$UserId` parameter to the constructor, which is
 case-sensitive. Open `ownnotes/lib/Controller/NoteController.php` and
 change it to the following:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
  namespace OCA\OwnNotes\Controller;
@@ -210,7 +210,7 @@ notes created by that user. A `DataResponse` object is used to return
 generic data responses. It provides a more generic response than
 `JSONResponse`, which also works with JSON data.
 
-[source,sourceCode,php]
+[source,php]
 ----
 /**
  * @NoAdminRequired
@@ -226,7 +226,7 @@ mapper’s find method, which is supplied with the note’s and user’s ids.
 If the note cannot be retrieved, then a `DataResponse` is returned,
 which results in a 404 Not Found response.
 
-[source,sourceCode,php]
+[source,php]
 ----
 /**
  * @NoAdminRequired
@@ -249,7 +249,7 @@ object. The function returns the result of calling the data mapper’s
 insert method, which attempts to persist the Note entity in the
 database.
 
-[source,sourceCode,php]
+[source,php]
 ----
 /**
  * @NoAdminRequired
@@ -274,7 +274,7 @@ throws an exception if it’s unable to do so. If it can retrieve it, it
 then updates the title and content, and returns the response from
 calling the data mapper’s `update` function.
 
-[source,sourceCode,php]
+[source,php]
 ----
 /**
  * @NoAdminRequired
@@ -302,7 +302,7 @@ to be found. If it’s able to be found, it will then be passed to the
 data mapper’s `delete` function, which will delete the note from the
 database.
 
-[source,sourceCode,php]
+[source,php]
 ----
 /**
  * @NoAdminRequired
@@ -344,7 +344,7 @@ between, a layer called `Service`.
 Let’s take the logic that was inside the controller and put it into a
 separate class inside `ownnotes/lib/Service/NoteService.php`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Service;
@@ -424,7 +424,7 @@ class NoteService {
 Following that, create an exception class in
 `ownnotes/lib/Service/ServiceException.php`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Service;
@@ -437,7 +437,7 @@ class ServiceException extends Exception {}
 Then, create another one in
 `ownnotes/lib/Service/NotFoundException.php`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Service;
@@ -456,7 +456,7 @@ This will be important later on when you’ve got controllers that inherit
 from the `ApiController` class instead. The trait is created in
 `ownnotes/lib/Controller/Errors.php`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -484,7 +484,7 @@ trait Errors {
 Now we can wire up the trait and the service inside the
 `NoteController`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Controller;

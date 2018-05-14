@@ -30,7 +30,7 @@ appinfo/info.xml by adding a job element, containing the name of the job
 class, to the `background-jobs` element. The example below shows how to
 add the `SomeTask` class, which we just created, as a background job.:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <background-jobs>
     <job>\OCA\MyApp\Cron\SomeTask</job>
@@ -52,7 +52,7 @@ After doing so, you will need to reset the job to allow it to be run,
 manually, again. To do this, go to the database and run the following
 SQL query:
 
-[source,sourceCode,sql]
+[source,sql]
 ----
 UPDATE oc_jobs SET last_run=0,last_checked=0,reserved_at=0;
 ----

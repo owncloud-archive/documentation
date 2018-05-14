@@ -106,7 +106,7 @@ file_2
 
 Example `excluded_directories` entries in `config.php` look like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'excluded_directories' => [
     '.snapshot',
@@ -133,7 +133,7 @@ But not:
 
 Example `blacklisted_files` entries in `config.php` look like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'blacklisted_files' => [
     'hosts',

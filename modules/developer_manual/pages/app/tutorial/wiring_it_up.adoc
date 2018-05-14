@@ -12,7 +12,7 @@ navigation
 To do that open `ownnotes/js/script.js` and replace the example code
 with the following:
 
-[source,sourceCode,js]
+[source,js]
 ----
 (function (OC, window, $, undefined) {
 'use strict';

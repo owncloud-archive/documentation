@@ -53,7 +53,7 @@ based off of the branch that you wish to backport to. However, doing so
 can involve a number of manual steps. To reduce the effort and time
 involved, use the script below instead.
 
-[source,sourceCode,console]
+[source,console]
 ----
 #!/bin/bash
 set -e
@@ -83,7 +83,7 @@ git push origin $targetBranch-$commit
 Assuming that you store the script in a file called `backport.sh`, the
 command would be called as follows:
 
-[source,sourceCode,console]
+[source,console]
 ----
 ./backport.sh 123456 stable10
 ----
@@ -99,7 +99,7 @@ In case you have installed the `xdg-utils` package, you can add at the
 end of the script above following code which opens the PR to be
 finalized in your browser:
 
-[source,sourceCode,console]
+[source,console]
 ----
 repo=`git remote -v | grep -m 1 "(push)" | sed -e "s/.*github.com[:/]\(.*\)\.git.*/\1/"`
 branch=`git name-rev --name-only HEAD`

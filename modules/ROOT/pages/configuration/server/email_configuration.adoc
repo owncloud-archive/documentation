@@ -99,7 +99,7 @@ not given the default port `25/tcp` will be used unless you change that
 by modifying the *mail_smtpport* parameter. Multiple servers can be
 entered, separated by semicolons:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -110,7 +110,7 @@ entered, separated by semicolons:
 
 Or:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -122,7 +122,7 @@ Or:
 If a malware or SPAM scanner is running on the SMTP server it might be
 necessary that you increase the SMTP timeout to e.g., 30s:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -132,7 +132,7 @@ necessary that you increase the SMTP timeout to e.g., 30s:
 If the SMTP server accepts insecure connections, the default setting can
 be used:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -149,7 +149,7 @@ SSL/TLS
 A secure connection will be initiated using SSL/TLS via SMTPS on the
 default port `465/tcp`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -164,7 +164,7 @@ STARTTLS
 A secure connection will be initiated using STARTTLS via SMTP on the
 default port `25/tcp`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -174,7 +174,7 @@ default port `25/tcp`:
 
 An alternative is the port `587/tcp` (recommended):
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -189,7 +189,7 @@ Authentication
 And finally it is necessary to configure if the SMTP server requires
 authentication, if not, the default values can be taken as is.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -202,7 +202,7 @@ If SMTP authentication is required you have to set the required username
 and password and can optionally choose between the authentication types
 *LOGIN* (default) or *PLAIN*.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -222,7 +222,7 @@ send email is defined by the configuration settings in the *php.ini*
 file. On *nix systems this will most likely be Sendmail. ownCloud should
 be able to send email out of the box.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -307,7 +307,7 @@ Troubleshooting
 If you are unable to send email, try turning on debugging. Do this by
 enabling the `mail_smtpdebug parameter` in `config/config.php`.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -327,7 +327,7 @@ where your ownCloud installation is served. If you have a different mail
 domain name you can override this behavior by setting the following
 configuration parameter:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -435,7 +435,7 @@ Enabling Debug Mode
 If you are unable to send email, it might be useful to activate further
 debug messages by enabling the `mail_smtpdebug` parameter:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -501,7 +501,7 @@ the text portions of the messages.
 
 For example, this the lost password mail template:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 

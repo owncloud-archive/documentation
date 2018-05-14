@@ -6,7 +6,7 @@ This is for instance useful to run cleanup code after users, groups or
 files have been deleted. Hooks should be registered in the
 app.php <appinfo_info_xml_label>:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -18,7 +18,7 @@ $app->getContainer()->query('UserHooks')->register();
 The hook logic should be in a separate class that is being registered in
 the container
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -45,7 +45,7 @@ class Application extends App {
 }
 ----
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Hooks;
@@ -76,7 +76,7 @@ The scope is the first parameter that is passed to the `listen` method,
 the second parameter is the method and the third one the callback that
 should be executed once the hook is being called, e.g.:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -90,7 +90,7 @@ $userManager->listen('\OC\User', 'preDelete', $callback);
 Hooks can also be removed by using the `removeListener` method on the
 object:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 

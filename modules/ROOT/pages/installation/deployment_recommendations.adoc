@@ -179,7 +179,7 @@ system-specific session storage location. You can find out where that is
 by running `grep -R 'session.save_path' /etc/php5` and then add it to
 the `/etc/fstab` file, for example:
 
-[source,sourceCode,console]
+[source,console]
 ----
 echo "tmpfs /var/lib/php5/pool-www tmpfs defaults,noatime,mode=1777 0 0" >> /etc/fstab``.
 ----
@@ -320,7 +320,7 @@ storage location. You can find out where that is by running
 `grep -R 'session.save_path' /etc/php5` and then add it to the
 `/etc/fstab` file, for example:
 
-[source,sourceCode,console]
+[source,console]
 ----
 echo "tmpfs /var/lib/php5/pool-www tmpfs defaults,noatime,mode=1777 0 0" >> /etc/fstab
 ----
@@ -517,7 +517,7 @@ your ownCloud installation, you may encounter deadlocks when you attempt
 to sync a large number of files. You may also encounter database errors,
 such as this one:
 
-[source,sourceCode,console]
+[source,console]
 ----
 SQLSTATE[40001]: Serialization failure: 1213 Deadlock found when trying to get lock; try restarting transaction
 ----

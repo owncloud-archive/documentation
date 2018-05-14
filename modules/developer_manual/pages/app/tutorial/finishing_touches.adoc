@@ -5,7 +5,7 @@ Now, the only thing left is to style the textarea in a nicer fashion. To
 do that open `ownnotes/css/style.css` and replace the content with the
 following CSS <../fundamentals/css> code:
 
-[source,sourceCode,css]
+[source,css]
 ----
 #app-content-wrapper {
     height: 100%;

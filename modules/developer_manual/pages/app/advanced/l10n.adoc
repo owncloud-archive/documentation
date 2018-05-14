@@ -15,7 +15,7 @@ Should it ever be needed to use localized strings on the server-side,
 simply inject the `L10N` service from the `ServerContainer` into the
 needed constructor
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -48,7 +48,7 @@ class Application extends App {
 
 Strings can then be translated in the following way:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Service;
@@ -93,7 +93,7 @@ Templates
 In every template the global variable `$l` can be used to translate the
 strings using its methods `t()` and `n()`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <div><?php p($l->t('Showing %s files', $_['count'])); ?></div>
 
@@ -108,7 +108,7 @@ There is a global function `t()` available for translating strings. The
 first argument is your app name, the second argument is the string to
 translate.
 
-[source,sourceCode,js]
+[source,js]
 ----
 t('myapp', 'Hello World!');
 ----
@@ -124,7 +124,7 @@ In case some translation strings may be translated wrongly because they
 have multiple meanings, you can add hints which will be shown in the
 Transifex web-interface:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <ul id="translations">
     <li id="add-new">
@@ -144,7 +144,7 @@ If Transifex is not the right choice or the app is not accepted for
 translation, generate the gettext strings by yourself by creating an
 l10n/ directory in the app folder and executing
 
-[source,sourceCode,console]
+[source,console]
 ----
 cd /srv/http/owncloud/apps/myapp/l10n
 perl l10n.pl read myapp
@@ -166,14 +166,14 @@ example l10n/es/myapp.po. After this step the Perl script needs to be
 invoked to transfer the po file into our own file format that is more
 easily readable by the server code
 
-[source,sourceCode,console]
+[source,console]
 ----
 perl l10n.pl write myapp
 ----
 
 Now the following folder structure is available
 
-[source,sourceCode,console]
+[source,console]
 ----
 myapp/l10n
 |-- es

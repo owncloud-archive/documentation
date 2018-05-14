@@ -20,7 +20,7 @@ List File Versions
 If the file is not found, then the following response will be returned,
 with an `HTTP/1.1 404 Not Found` status:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">

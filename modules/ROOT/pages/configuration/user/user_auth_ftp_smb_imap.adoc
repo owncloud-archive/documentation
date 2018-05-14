@@ -4,7 +4,7 @@ User Authentication with IMAP, SMB, and FTP
 You may configure additional user backends in ownCloud’s configuration
 file (config/config.php) using the following syntax:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -58,7 +58,7 @@ extension]. See ../../installation/source_installation
 Example
 ~~~~~~~
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -104,7 +104,7 @@ smbclient <../../configuration/files/external_storage/smb>.
 Example
 ~~~~~~~
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -141,7 +141,7 @@ extension]. See ../../installation/source_installation
 Example
 ~~~~~~~
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 

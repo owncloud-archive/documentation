@@ -41,7 +41,7 @@ You can find instructions for using plain docker
 https://github.com/owncloud-docker/server#launch-with-plain-docker[in
 the GitHub repository].
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Create a new project directory
 mkdir owncloud-docker-server
@@ -70,7 +70,7 @@ successfully started, by running `docker-compose ps`. If they are all
 working correctly, you should expect to see output similar to that
 below:
 
-[source,sourceCode,console]
+[source,console]
 ----
 Name                     Command               State                     Ports
 ----

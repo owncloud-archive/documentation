@@ -585,28 +585,28 @@ operations.
 
 To create a folder with the current date as name:
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 $ curl -u user:pass -X MKCOL "https://example.com/owncloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')"
 ----
 
 To upload a file `error.log` into that directory:
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 $ curl -u user:pass -T error.log "https://example.com/owncloud/remote.php/dav/files/USERNAME/$(date '+%d-%b-%Y')/error.log"
 ----
 
 To move a file:
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 $ curl -u user:pass -X MOVE --header 'Destination: https://example.com/owncloud/remote.php/dav/files/USERNAME/target.jpg' https://example.com/owncloud/remote.php/dav/files/USERNAME/source.jpg
 ----
 
 To get the properties of files in the root folder:
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 $ curl -X PROPFIND -H "Depth: 1" -u user:pass https://example.com/owncloud/remote.php/dav/files/USERNAME/ | xml_pp
 <?xml version="1.0" encoding="utf-8"?>
@@ -651,7 +651,7 @@ PROPFIND request. This request requires two things:
 Here’s an example PROPFIND XML element, which we’ll store as
 `propfind-fileid.xml`.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <a:propfind xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
@@ -667,7 +667,7 @@ standalone file.
 With the file created, make the request by running the following Curl
 command:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 curl -u username:password -X PROPFIND \
   -H "Content-Type: text/xml" \
@@ -679,7 +679,7 @@ This will return an XML response payload similar to the following
 example. It contains the relative path to the file and the fileid of the
 file.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">

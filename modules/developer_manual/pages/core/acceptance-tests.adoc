@@ -9,7 +9,7 @@ This is the structure of acceptance directory inside
 https://github.com/owncloud/core[the core repository’s] `tests`
 directory:
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 tests
 ├── acceptance
@@ -114,7 +114,7 @@ The first thing we need to do is create a new file for the context;
 we’ll name it TaskToTestContext.php. In the file, we’ll add the code
 snippet below:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -143,7 +143,7 @@ gherkin code. Behat won’t parse it properly otherwise.
 
 Here’s example code for a scenario:
 
-[source,sourceCode,php]
+[source,php]
 ----
 /**
  * @When Sending a :method to :url with requesttoken
@@ -163,7 +163,7 @@ context.
 For example ``use Webdav;` for using WebDAV related functions. Lets
 show an example of a feature file with scenarios:
 
-[source,sourceCode,yaml]
+[source,yaml]
 ----
 Feature: provisioning
   Background:
@@ -223,7 +223,7 @@ Now that the prerequisites are satisfied, and assuming that
 `ownCloud/core` repository, the following commands will prepare the
 installation for running the acceptance tests.
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 # Remove current configuration (if existing)
 sudo rm -rf $installation_path/data/*

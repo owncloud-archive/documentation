@@ -15,7 +15,7 @@ order to use the ownCloud iOS library.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,Objective-C]
 ----
 #import "OCCommunication.h"
 
@@ -35,7 +35,7 @@ Code example
 Also could happen that you need to overwrite the class
 AFURLSessionManager to manage SSL Certificates
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 #import "OCCommunication.h"
 
@@ -75,7 +75,7 @@ Authentication on the app is possible by 3 different methods:
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 #Basic authentication, user name and password
 [[ AppDelegate sharedOCCommunication ] setCredentialsWithUser : userName andPassword : password ];
@@ -98,7 +98,7 @@ the path of the new folder.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[ AppDelegate sharedOCCommunication ] createFolder :path onCommunication : [ AppDelegate sharedOCCommunication ]
 
@@ -158,7 +158,7 @@ the selected folder.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[ AppDelegate sharedOCCommunication] readFolder:path onCommunication:[ AppDelegate sharedOCCommunication]
 
@@ -206,7 +206,7 @@ filename, isDirectory, size and date
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[ AppDelegate sharedOCCommunication ] readFile :path onCommunication :[ AppDelegate sharedOCCommunication ]
 
@@ -245,7 +245,7 @@ server. The info needed is the origin path and the destiny path.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[ AppDelegate sharedOCCommunication ] moveFileOrFolder :sourcePath toDestiny :destinyPath onCommunication :[ AppDelegate sharedOCCommunication ]
 
@@ -301,7 +301,7 @@ to delete.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 ----
 
@@ -337,7 +337,7 @@ neccesary to use LIFO queue or FIFO.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 NSOperation *op = nil;
 op = [[ AppDelegate sharedOCCommunication ] downloadFile :remotePath toDestiny :localPath withLIFOSystem:isLIFO onCommunication :[ AppDelegate sharedOCCommunication ]
@@ -393,7 +393,7 @@ the method where catch the notifications.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 NSURLSessionDownloadTask *downloadTask = nil;
 
@@ -462,7 +462,7 @@ The block is executed when a pending background task finishes.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[AppDelegate sharedOCCommunication] setDownloadTaskComleteBlock:^NSURL *(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, NSURL *location) {
 
@@ -482,7 +482,7 @@ executed when a pending task get a input porgress.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[AppDelegate sharedOCCommunication] setDownloadTaskDidGetBodyDataBlock:^(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, int64_t bytesWritten, int64_t totalBytesWritten, int64_t totalBytesExpectedToWrite) {
 
@@ -502,7 +502,7 @@ the file will be stored on the server.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 NSOperation *op = nil;
 op = [[ AppDelegate sharedOCCommunication ] uploadFile :localPath toDestiny : remotePath onCommunication :[ AppDelegate sharedOCCommunication ]
@@ -572,7 +572,7 @@ the method where catch the notifications.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 NSURLSessionUploadTask *uploadTask = nil;
 
@@ -635,7 +635,7 @@ executed when a pending background task finished.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[AppDelegate sharedOCCommunication] setTaskDidCompleteBlock:^(NSURLSession *session, NSURLSessionTask *task, NSError *error) {
 
@@ -655,7 +655,7 @@ a pending task get a input porgress.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[AppDelegate sharedOCCommunication] setTaskDidSendBodyDataBlock:^(NSURLSession *session, NSURLSessionTask *task, int64_t bytesSent, int64_t totalBytesSent, int64_t totalBytesExpectedToSend) {
 
@@ -675,7 +675,7 @@ info needed is activeUser.url, the server URL that you want to check.
 Code Example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[ AppDelegate sharedOCCommunication ] hasServerShareSupport :_activeUser.url onCommunication :[ AppDelegate sharedOCCommunication ]
 
@@ -698,7 +698,7 @@ The info needed is Path, the server URL that you want to check.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[ AppDelegate sharedOCCommunication ] readSharedByServer :path onCommunication :[ AppDelegate sharedOCCommunication ]
 
@@ -726,7 +726,7 @@ specific path tha you want to check.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[AppDelegate sharedOCCommunication] readSharedByServer:serverPath andPath:path onCommunication:[AppDelegate sharedOCCommunication] successRequest:^(NSHTTPURLResponse *response, NSArray *items, NSString *redirectedServer) {
           NSLog ( @"Item: %d" , items);
@@ -818,7 +818,7 @@ to unshared an element.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[ AppDelegate sharedOCCommunication ] unShareFileOrFolderByServer :path andIdRemoteSharedShared :sharedByLink.  idRemoteShared onCommunication :[ AppDelegate sharedOCCommunication ]
 
@@ -850,7 +850,7 @@ to unshared an element.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,objective-c]
+[source,objective-c]
 ----
 [[AppDelegate sharedOCCommunication] isShareFileOrFolderByServer:path andIdRemoteShared:_shareDto.idRemoteShared onCommunication:[AppDelegate sharedOCCommunication] successRequest:^(NSHTTPURLResponse *response, NSString *redirectedServer, BOOL isShared) {
      //File/Folder is shared 

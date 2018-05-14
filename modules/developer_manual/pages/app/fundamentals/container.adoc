@@ -21,7 +21,7 @@ Dependency Injection sounds pretty complicated but it just means: Don’t
 put new dependencies in your constructor or methods but pass them in. So
 this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -39,7 +39,7 @@ class AuthorMapper {
 
 would turn into this by using Dependency Injection:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -72,7 +72,7 @@ lib/AppInfo/Application.php.
 To add the app’s classes simply open the lib/AppInfo/Application.php and
 use the `registerService` method on the container object:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -203,7 +203,7 @@ If all constructor parameters are resolved, the class will be created,
 saved as a service and returned. So basically the following is now
 possible:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp;
@@ -267,7 +267,7 @@ method is now:
 
 `myapp/appinfo/routes.php`
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 return ['routes' => [
@@ -277,7 +277,7 @@ return ['routes' => [
 
 `myapp/appinfo/lib/Controller/PageController.php`
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -304,7 +304,7 @@ Interfaces and primitive types can not be instantiated, so the container
 can not automatically assemble them. The actual implementation needs to
 be wired up in the container:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -396,7 +396,7 @@ e.g.: for `OCA\\MyBeautifulApp\\Some\\OtherClass` the needed namespace
 would be `MyBeautifulApp` and would be added to the info.xml in the
 following way:
 +
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <info>
@@ -407,7 +407,7 @@ following way:
 * `appinfo/routes.php`: Instead of creating a new Application class
 instance, simply return the routes array like:
 +
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 return ['routes' => [

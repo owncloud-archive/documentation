@@ -4,7 +4,7 @@ CSS
 The CSS files reside in the `css/` folder and should be included in the
 template:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // include one file
@@ -20,7 +20,7 @@ vendor_style('myapp', 'style');  // adds vendor/style.css
 Web Components go into the `component/` folder and can be imported like
 this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // include one file
@@ -41,7 +41,7 @@ Standard Layout
 To use the commonly used layout consisting of sidebar navigation and
 content the `app-navigation` and `app-content` ids can be utilized:
 
-[source,sourceCode,html]
+[source,html]
 ----
 <div id="app">
     <div id="app-navigation">Your navigation</div>
@@ -65,7 +65,7 @@ should have 16x16 px icons, the `with-icon` class can be added to the
 base `ul`. The maximum supported indention level is two; we do not
 recommend further indentations.
 
-[source,sourceCode,html]
+[source,html]
 ----
 <div id="app-navigation">
     <ul class="with-icon">
@@ -94,7 +94,7 @@ button with the class `collapse` are needed. After adding the
 collapsible class the folder’s child entries can be toggled by adding
 the `open` class to the list element:
 
-[source,sourceCode,html]
+[source,html]
 ----
 <div id="app-navigation">
     <ul class="with-icon">
@@ -121,7 +121,7 @@ hovered entry to slide down giving a visual hint that it can accept the
 dragged element. In the case of jQuery UI’s droppable feature, the
 `hoverClass` option should be set to the `drag-and-drop` class.
 
-[source,sourceCode,html]
+[source,html]
 ----
 <div id="app-navigation">
     <ul class="with-icon">
@@ -146,7 +146,7 @@ for second and/or first level elements by adding the button and menu
 inside the corresponding `li` element and adding the `with-menu` CSS
 class:
 
-[source,sourceCode,html]
+[source,html]
 ----
 <div id="app-navigation">
     <ul>
@@ -182,7 +182,7 @@ The count should be limited to 999 and turn to 999+ if any higher number
 is given. If AngularJS is used the following filter can be used to get
 the correct behavior:
 
-[source,sourceCode,js]
+[source,js]
 ----
 app.filter('counterFormatter', function () {
     'use strict';
@@ -197,7 +197,7 @@ app.filter('counterFormatter', function () {
 
 Use it like this:
 
-[source,sourceCode,html]
+[source,html]
 ----
 <li class="app-navigation-entry-utils-counter">{{ count | counterFormatter }}</li>
 ----
@@ -207,7 +207,7 @@ by adding the `open` class to the `app-navigation-entry-menu` div. In
 the case of AngularJS the following small directive can be added to
 handle all the display and click logic out of the box:
 
-[source,sourceCode,js]
+[source,js]
 ----
 app.run(function ($document, $rootScope) {
     'use strict';
@@ -246,7 +246,7 @@ Editing
 Often an edit option is needed for an entry. To add one for a given
 entry simply hide the title and add the following div inside the entry:
 
-[source,sourceCode,html]
+[source,html]
 ----
 <div id="app-navigation">
     <ul class="with-icon">
@@ -269,7 +269,7 @@ If AngularJS is used you want to auto-focus the input box. This can be
 achieved by placing the show condition inside an `ng-if` on the
 `app-navigation-entry-edit` div and adding the following directive:
 
-[source,sourceCode,js]
+[source,js]
 ----
 app.directive('autofocusOnInsert', function () {
     'use strict';
@@ -291,7 +291,7 @@ If you want to undo a performed action on a navigation entry such as
 deletion, you should show the undo directly in place of the entry and
 make it disappear after location change or seven seconds:
 
-[source,sourceCode,html]
+[source,html]
 ----
 <div id="app-navigation">
     <ul class="with-icon">
@@ -314,7 +314,7 @@ Settings Area
 To create a settings area create a div with the id `app-settings` inside
 the `app-navgiation` div:
 
-[source,sourceCode,html]
+[source,html]
 ----
 <div id="app">
 

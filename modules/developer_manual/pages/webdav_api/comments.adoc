@@ -41,7 +41,7 @@ to the file specified.
 The example above uses xmllint, available in the libxml2 package to make
 the response easier to read.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
@@ -76,7 +76,7 @@ of the XML response, you can supply a `PROPFIND` XML element in the body
 of the request method. The example below shows how to filter the
 information returned to just the `oc:message` element.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8" ?>
 <a:propfind xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
@@ -177,7 +177,7 @@ curl -u username:password \
 Below is an example `PROPPATCH` element, which changes the message text
 but leaves the rest of the message unchanged.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8" ?>
 <a:propertyupdate xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
@@ -199,7 +199,7 @@ below. In it, you can see, in the `d:href` element the comment which was
 changed. In the `d:status` element, you can see if the update was
 successful or not.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
@@ -218,7 +218,7 @@ successful or not.
 If something goes wrong, you should receive a response similar to the
 following
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">
@@ -230,7 +230,7 @@ following
 If the tag is not available, then you will receive the following
 response, along with an `HTTP/1.1 404 Not Found` status code.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">
@@ -262,7 +262,7 @@ returned, but an `HTTP/1.1 204 No Content` status code will be returned.
 However, if the comment does not exist, then the following response will
 be returned, along with an `HTTP/1.1 404 Not Found` status code.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">

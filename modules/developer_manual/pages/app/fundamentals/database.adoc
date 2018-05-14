@@ -9,7 +9,7 @@ The basic way to run a database query is to use the database connection
 provided by `OCP\\IDBConnection`. Inside your database layer class you
 can now start running queries like:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // db/authordao.php
@@ -63,7 +63,7 @@ parent constructor with the following parameters:
 * *Optional*: Entity class name, defaults to `\\OCA\\MyApp\\Db\\Author`
 in the example below
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // db/authormapper.php
@@ -141,7 +141,7 @@ separated names to pascal case attributes:
 * *Table column name*: phone_number
 * *Property name*: phoneNumber
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // db/author.php
@@ -185,7 +185,7 @@ Accessing attributes
 Since all attributes should be protected, getters and setters are
 automatically generated for you:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // db/author.php
@@ -215,7 +215,7 @@ attributes to different columns because of backwards compatibility. To
 define a custom mapping, simply override the `columnToProperty` and
 `propertyToColumn` methods of the entity in question:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // db/author.php
@@ -256,7 +256,7 @@ Slugs are used to identify resources in the URL by a string rather than
 integer id. Since the URL allows only certain values, the entity
 `baseclass` provides a `slugify` method for it:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 $author = new Author();
@@ -284,7 +284,7 @@ of migrations and is enabled by default within core. Any app which wants
 to use this mechanism has to enable it in appinfo/info.xml, by adding
 the following:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <use-migrations>true</use-migrations>
 ----
@@ -294,7 +294,7 @@ is ignored. From this point onwards, when an app is installed or
 upgraded, all outstanding migrations are executed. Below is a migration
 code sample for creating an application’s core table.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -355,14 +355,14 @@ How to Create a Migration
 
 1.  Enable migrations by adding the XML tag to appinfo/info.xml
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <use-migrations>true</use-migrations>
 ----
 
 1.  Create a migration step
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 ./occ migrations:generate app-name {simple, SQL, schema}
 ----
@@ -373,7 +373,7 @@ A Simple Migration Step
 
 The simple migration step skeleton looks like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\testing\Migrations;
@@ -400,7 +400,7 @@ A SQL Migration Step
 
 A SQL migration step skeleton looks like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\testing\Migrations;
@@ -441,7 +441,7 @@ A Schema Migration Step
 
 A schema migration step skeleton looks like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\testing\Migrations;
@@ -466,7 +466,7 @@ preferred way to manipulate the schema.
 
 1.  Test your migration step
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 ./occ migrations:execute dav 20161130090952
 ----
@@ -494,7 +494,7 @@ database name.
 
 An example database XML file would look like this:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="UTF-8" ?>
 <database>

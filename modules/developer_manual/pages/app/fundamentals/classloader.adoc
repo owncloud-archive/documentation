@@ -23,7 +23,7 @@ which comes after the top level namespace `OCA\\`, e.g.: for
 way:
 
 ________________________________________
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <info>
@@ -45,7 +45,7 @@ works like this:
 
 * Take the full qualifier of a class
 
-[source,sourceCode,php]
+[source,php]
 ----
 \OCA\MyApp\Controller\PageController
 ----
@@ -54,35 +54,35 @@ works like this:
 directory
 * Cut off `\\OCA`
 
-[source,sourceCode,php]
+[source,php]
 ----
 \MyApp\Controller\PageController
 ----
 
 * Convert all characters to lowercase
 
-[source,sourceCode,php]
+[source,php]
 ----
 \myapp\controller\pagecontroller
 ----
 
 * Replace \ with /
 
-[source,sourceCode,php]
+[source,php]
 ----
 /myapp/controller/pagecontroller
 ----
 
 * Append .php
 
-[source,sourceCode,php]
+[source,php]
 ----
 /myapp/controller/pagecontroller.php
 ----
 
 * Prepend /apps because of the `OCA` namespace and include the file
 
-[source,sourceCode,php]
+[source,php]
 ----
 require_once '/apps/myapp/controller/pagecontroller.php';
 ----

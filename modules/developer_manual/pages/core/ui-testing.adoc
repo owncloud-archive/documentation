@@ -42,7 +42,7 @@ Set Up Test
 somewhere in the same folder.
 * Start the Selenium server:
 +
-[source,sourceCode,console]
+[source,console]
 ----
 java -jar selenium-server-standalone-3.6.0.jar -port 4445 -enablePassThrough false
 ----
@@ -64,7 +64,7 @@ server)
 e.g., to test an instance running on http://localhost/owncloud-core with
 Chrome do:
 +
-[source,sourceCode,console]
+[source,console]
 ----
 export SRV_HOST_NAME=localhost
 export REMOTE_FED_SRV_HOST_NAME=127.0.0.1
@@ -79,7 +79,7 @@ export BROWSER_VERSION="60.0"
 empty ( `export SRV_HOST_URL=""` ), and start the PHP development server
 with:
 +
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_php_dev_server.sh
 ----
@@ -93,7 +93,7 @@ servers URLs
 SSL certificates] (or do not offer HTTPS).
 * Run a suite of tests:
 +
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_ui_tests.sh --suite webUILogin
 ----
@@ -129,14 +129,14 @@ If you are using the PHP dev server, then before starting it, in
 addition to the exports in the Set Up Test section, specify where the
 IPv6 server should listen:
 
-[source,sourceCode,console]
+[source,console]
 ----
 export IPV6_HOST_NAME=ip6-localhost
 ----
 
 Then both IPv4 and IPv6 PHP dev servers will be started by the script:
 
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_php_dev_server.sh
 ----
@@ -145,7 +145,7 @@ If you want the tests to drive the UI over IPv6, then export an IPv6
 name or address for `SRV_HOST_NAME` and an IPv4 name or address for
 `IPV4_HOST_NAME`:
 
-[source,sourceCode,console]
+[source,console]
 ----
 export SRV_HOST_NAME=ip6-localhost
 export IPV4_HOST_NAME=localhost
@@ -163,7 +163,7 @@ Running UI Tests for One Feature
 You can run the UI tests for just a single feature by specifying the
 feature file:
 
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_ui_tests.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature
 ----
@@ -171,7 +171,7 @@ bash tests/travis/start_ui_tests.sh --feature tests/acceptance/features/webUITra
 To run just a single scenario within a feature, specify the line number
 of the scenario:
 
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_ui_tests.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature:<linenumber>
 ----
@@ -183,7 +183,7 @@ Running UI Tests for an App
 With the app installed, run the UI tests for the app by specifying the
 location of the app’s `behat.yml` config file:
 
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite default
 ----
@@ -191,7 +191,7 @@ bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/accepta
 Run UI the tests for just a single feature of the app by also specifying
 the feature file:
 
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite default --feature apps/files_texteditor/tests/acceptance/features/textfiles.feature
 ----
@@ -205,7 +205,7 @@ left in the test set _but_ is skipped by default. Skip a test by tagging
 it `@skip` and then put another tag with text that describes the reason
 it is skipped. e.g.,:
 
-[source,sourceCode,console]
+[source,console]
 ----
 @skip @quota-should-not-be-set-to-invalid-values-issue-1234
 Scenario Outline: change quota to an invalid value
@@ -214,14 +214,14 @@ Scenario Outline: change quota to an invalid value
 Skipped tests are listed at the end of a default UI test run. You can
 locally run the skipped test(s). Run all skipped tests with:
 
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_ui_tests.sh --tags @skip
 ----
 
 Or run just a particular test by using its unique tag:
 
-[source,sourceCode,console]
+[source,console]
 ----
 bash tests/travis/start_ui_tests.sh --tags @quota-should-not-be-set-to-invalid-values-issue-1234
 ----

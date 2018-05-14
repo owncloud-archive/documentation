@@ -18,7 +18,7 @@ into the constructor. A simple test for the update method can be added
 by adding this to
 `ownnotes/tests/Unit/Controller/NoteControllerTest.php`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Tests\Unit\Controller;
@@ -80,7 +80,7 @@ class NoteControllerTest extends PHPUnit_Framework_TestCase {
 
 We can and should also create a test for the `NoteService` class:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Tests\Unit\Service;
@@ -176,7 +176,7 @@ existing database. To do that create a new file called
 `ownnotes/tests/Integration/NoteIntegrationTest.php` with the following
 content:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\OwnNotes\Tests\Integration\Controller;
@@ -243,7 +243,7 @@ class NoteIntregrationTest extends TestCase {
 To run the integration tests change into the `ownnotes` directory and
 run
 
-[source,sourceCode,console]
+[source,console]
 ----
 phpunit -c phpunit.integration.xml
 ----

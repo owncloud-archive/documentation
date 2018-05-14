@@ -20,7 +20,7 @@ Registering Methods
 
 Methods are registered inside the appinfo/routes.php using :phpOCP\\API
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -73,7 +73,7 @@ Output from the application is wrapped inside a *data* element:
 
 *XML*:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -90,7 +90,7 @@ Output from the application is wrapped inside a *data* element:
 
 *JSON*:
 
-[source,sourceCode,js]
+[source,js]
 ----
 {
   "ocs": {

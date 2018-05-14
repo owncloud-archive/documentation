@@ -131,7 +131,7 @@ custom rules using the following conditions:
 You can combine multiple rules into one rule, e.g., if a rule applies to
 both the support and the qa-team you could write your rule like this:
 
-[source,sourceCode,text]
+[source,text]
 ----
 Regular Expression > ^(support|qa-team)$ > is > User group
 ----

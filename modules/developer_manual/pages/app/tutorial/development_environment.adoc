@@ -5,7 +5,7 @@ Now that you know how the request life cycle works, let’s look at the
 core application files. Any ownCloud application, at its most
 elementary, only needs a few files and directories; these are:
 
-[source,sourceCode,console]
+[source,console]
 ----
 .
 ├── appinfo                         # Contains app metadata and configuration
@@ -39,7 +39,7 @@ _namespace_, _category_, and _dependencies_.
 
 In `appinfo/info.xml`, add the following XML, changing it as necessary:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <info>
@@ -87,7 +87,7 @@ application’s first loaded.
 
 To start off with, in `appinfo/app.php`, add the following code:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -116,7 +116,7 @@ To start off with, in `appinfo/app.php`, add the following code:
 It can also contain ../fundamentals/backgroundjobs and
 ../fundamentals/hooks registrations, as in the example below.
 
-[source,sourceCode,php]
+[source,php]
 ----
 // execute OCA\MyApp\BackgroundJob\Task::run when cron is called
 \OC::$server->getJobList()->add('OCA\MyApp\BackgroundJob\Task');
@@ -131,7 +131,7 @@ inside this file as well. However, this is strongly discouraged, because
 the file is loaded on each request, as well as for requests that do not
 return HTML, such as JSON and WebDAV.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -148,7 +148,7 @@ you’re likely going to need a controller. This can be to render page
 content, API content, or something else entirely. In
 `lib/Controller/PageController.php`, add the following code:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\ownnotes\Controller;
@@ -183,7 +183,7 @@ As the name implies, in this file you register your application’s
 routes, and then link them to a handler. In `appinfo/routes.php`, add
 the following code:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -212,7 +212,7 @@ This is the core class of the application. Here, you setup your
 controllers among a range of other things. In `appinfo/application.php`,
 add the following code:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\ownnotes\AppInfo;
@@ -243,7 +243,7 @@ To create these, in a new directory that will be called ownnotes, run
 the following code in your terminal, from where you want to create the
 new project:
 
-[source,sourceCode,console]
+[source,console]
 ----
 mkdir -p ownnotes/{appinfo,lib/Controller}
 touch appinfo/{app,application,routes}.php appinfo/info.xml lib/Controller/PageController.php

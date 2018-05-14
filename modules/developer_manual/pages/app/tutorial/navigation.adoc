@@ -8,7 +8,7 @@ ownCloud defines many handy CSS styles <../fundamentals/css> which we
 are going to reuse to style the navigation. Adjust the file to contain
 only the following code:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <!-- translation strings -->
 <div style="display:none" id="new-note-string"><?php p($l->t('New note')); ?></div>

@@ -24,7 +24,7 @@ sudo openssl dhparam -out /etc/nginx/dh4096.pem 4096
 
 Add the following directive to your common SSL configuration:
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 ssl_dhparam /etc/nginx/dh4096.pem;
 ----
@@ -32,7 +32,7 @@ ssl_dhparam /etc/nginx/dh4096.pem;
 Add the `/.well-known/acme-challenge` location in your server directive
 for port 80
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 server {
   listen 80 ;
@@ -63,7 +63,7 @@ sudo mkdir ssl_rules
 
 Create a file named `ssl_mydom.tld` in the newly created directory.
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 # SSL rules for mydom.tld
 # eases letsencrypt initial cert issuing
@@ -81,7 +81,7 @@ ssl_session_timeout 5m;
 
 Then adopt your server block:
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 server {
   listen 443 ssl http2;
@@ -193,7 +193,7 @@ As the SSL certificate has been successfully issued by Let’s Encrypt,
 you can un-comment the `include` directive for your domain’s SSL rules,
 in the server block configuration.
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 server {
   listen 443 ssl http2 ;

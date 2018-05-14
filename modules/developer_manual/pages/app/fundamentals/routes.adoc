@@ -5,7 +5,7 @@ Routes map a URL and a method to a controller method. Routes are defined
 inside appinfo/routes.php by passing a configuration array to the
 `registerRoutes` method. An example route would look like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -28,7 +28,7 @@ The controller and the method to call; `page#index` is being mapped to
 inside appinfo/application.php:
 
 ____________________________________________________________________
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -80,7 +80,7 @@ Extracting Values From the URL
 It is possible to extract values from the URL to allow for RESTful URL
 design. To extract value, you have to wrap it inside curly braces:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -114,7 +114,7 @@ this would be to match a request for all URLs that start with
 parameter in your route, which is an array containing pairs of
 `'key' => 'regex'`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -149,7 +149,7 @@ value for the `page' parameter, that will be used if not already set in
 the URL. Use the `defaults` parameter in your route which is an array
 containing pairs of `'urlparameter' => 'defaultvalue'`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -189,7 +189,7 @@ since most of the time routes for the following tasks are needed:
 To prevent repetition, it’s possible to define resources. The following
 routes:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -209,7 +209,7 @@ $application->registerRoutes($this, [
 
 can be abbreviated by using the `resources` key:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -234,7 +234,7 @@ independent from the URL design or to 2) generate an URL for an image in
 `img/`. For those use cases, the `ServerContainer` provides a service
 that can be used in your container:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -269,7 +269,7 @@ class Application extends App {
 Inside the `PageController` the URL generator can now be used to
 generate an URL for a redirect:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -316,7 +316,7 @@ class PageController extends Controller {
 name you use in configuration <configuration>. If you use a camel-case
 name as _myCamelCaseApp_,
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 $route = 'myCamelCaseApp.author_api.do_something';

@@ -701,7 +701,7 @@ Installing the LDAP user backend will trigger the installation twice
 
 This causes an SQL error such as the following:
 
-[source,sourceCode,console]
+[source,console]
 ----
 sudo -u www-data ./occ market:install user_ldap
 

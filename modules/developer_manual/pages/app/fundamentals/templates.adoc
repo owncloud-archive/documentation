@@ -26,7 +26,7 @@ done by using `print_unescaped()`.
 
 templates/main.php
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php foreach($_['entries'] as $entry){ ?>
   <p><?php p($entry); ?></p>
@@ -41,7 +41,7 @@ Including templates
 Templates can also include other templates by using the
 `$this->inc('templateName')` method.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php print_unescaped($this->inc('sub.inc')); ?>
 ----
@@ -52,7 +52,7 @@ using the second optional parameter as array for `$this->inc`.
 
 templates/sub.inc.php
 
-[source,sourceCode,php]
+[source,php]
 ----
 <div>I am included, but I can still access the parents variables!</div>
 <?php p($_['name']); ?>
@@ -66,7 +66,7 @@ Including CSS and JavaScript
 
 To include CSS or JavaScript use the `style` and `script` functions:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 script('myapp', 'script');  // add js/script.js
@@ -79,7 +79,7 @@ Including images
 
 To generate links to images use the `image_path` function:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <img src="<?php print_unescaped(image_path('myapp', 'app.png')); ?> />
 ----

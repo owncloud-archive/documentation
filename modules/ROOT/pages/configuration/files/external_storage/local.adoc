@@ -29,7 +29,7 @@ In addition to these steps, you have to ensure that Local storage is
 enabled in your ownCloud installation’s `config/config.php` file. It
 should have the following configuration:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'files_external_allow_create_new_local' => 'true',
 ----

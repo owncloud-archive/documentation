@@ -203,7 +203,7 @@ running on the same system as ownCloud_) you must instruct SELinux to
 allow daemons to enable cluster mode. You can do this using the
 following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 setsebool -P daemons_enable_cluster_mode 1
 ----

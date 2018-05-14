@@ -3,7 +3,7 @@ Logging
 
 The logger can be injected from the `ServerContainer`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -37,7 +37,7 @@ class Application extends App {
 
 and then be used in the following way:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Service;

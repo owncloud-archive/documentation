@@ -172,7 +172,7 @@ The position of the http://nginx.org/en/docs/http/ngx_http_core_module.html#loca
 
 *1 Create a map directive outside your server block*
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 # Fixes Windows WebDav client error 0x80070043 "The network name cannot be found."
 map "$http_user_agent:$request_method" $WinWebDav {
@@ -183,7 +183,7 @@ map "$http_user_agent:$request_method" $WinWebDav {
 
 *2 Inside your server block on top of your location directives*
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 location = / {
     if ($WinWebDav) { return 401; }
@@ -204,7 +204,7 @@ denied by server configuration: /var/www/data/htaccesstest.txt], or
 access to `.ocdata`, add this section to your NGINX configuration to
 suppress them:
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 location = /data/htaccesstest.txt {
     allow all;
@@ -213,7 +213,7 @@ location = /data/htaccesstest.txt {
 }
 ----
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 location = /data/\.ocdata {
     access_log off;
@@ -235,7 +235,7 @@ ______________________________________________
 (Adopt the path queried according your needs.)
 ______________________________________________
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 # do not access log to gallery thumbnails, flooding access logs only, error will be logged anyway
 map $request_uri $loggable {
@@ -246,7 +246,7 @@ map $request_uri $loggable {
 
 *2 Inside your server block where you define your logs*
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 access_log /path-to-your-log-file combined if=$loggable;
 ----
@@ -258,7 +258,7 @@ this kind of logging if you uncomment / comment the line starting with
 
 *Below the above map statement*
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 # invert the $loggable variable
 map $loggable $invertloggable {
@@ -269,7 +269,7 @@ map $loggable $invertloggable {
 
 *Below the above access_log statement*
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 access_log /var/log/nginx/<your-log-file-inverted> combined if=$invertloggable;
 ----
@@ -319,7 +319,7 @@ permission'', and so on.
 To configure metadata caching, add following directives either in your
 http, server or location block:
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 open_file_cache                 max=10000 inactive=5m;
 open_file_cache_valid           1m;
@@ -342,7 +342,7 @@ thumbnail or internal image presented every time.
 internal images. Use any path that fits to your environment. Replace
 `/opt/cachezone` in this example with your path created:
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 sudo mkdir -p /opt/cachezone
 sudo chown www-data:www-data /opt/cachezone
@@ -357,7 +357,7 @@ a.  *Define when to skip the cache:*
 This is the preferred method. In the `http{}` block, but _outside_ the
 `server{}` block:
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 # skip_cache, default skip
 map $request_uri $skip_cache {
@@ -372,7 +372,7 @@ map $request_uri $skip_cache {
 +
 In the `server{}` block, above the location block mentioned below:
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 set $skip_cache 1;
 if ($request_uri ~* "thumbnail.php")      { set $skip_cache 0; }
@@ -390,7 +390,7 @@ ________________________________________________________________________________
 
 * Add _inside_ the `http{}` block:
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 fastcgi_cache_path /opt/cache levels=1:2 keys_zone=cachezone:100m 
                    max_size=500m inactive=60m use_temp_path=off;
@@ -400,7 +400,7 @@ fastcgi_cache_key $http_cookie$request_method$host$request_uri;
 * Add _inside_ the `server{}` block the following FastCGI caching
 directives, as an example of a configuration:
 
-[source,sourceCode,nginx]
+[source,nginx]
 ----
 location ~ \.php(?:$/) {
     fastcgi_split_path_info ^(.+\.php)(/.+)$;

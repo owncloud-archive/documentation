@@ -18,7 +18,7 @@ ownCloud’s default mimetype configuration is defined in
 a snippet of below. The mimetype’s on the left, and the icon used to
 represent that mimetype is on the right.
 
-[source,sourceCode,json]
+[source,json]
 ----
 {
  "application/coreldraw": "image",
@@ -112,7 +112,7 @@ icon’s file name, i.e., `text/json` becomes `text-json`.
 
 1.  Run the following command to update the mimetype alias database.
 
-[source,sourceCode,console]
+[source,console]
 ----
 $ sudo -u www-data php occ maintenance:mimetype:update-js
 ----
@@ -136,7 +136,7 @@ in `resources/config/mimetypemapping.dist.json`. This is similar to
 `resources/config/mimetypealiases.dist.json`, and also returns a basic
 JSON array.
 
-[source,sourceCode,json]
+[source,json]
 ----
 {
  "3gp": ["video/3gpp"],

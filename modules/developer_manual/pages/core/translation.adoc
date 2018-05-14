@@ -31,7 +31,7 @@ re-arrange words.
 Example:
 ~~~~~~~~
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php p($l->t('Select file from')) . ' '; ?><a href='#' id="browselink"><?php p($l->t('local filesystem'));?></a><?php p($l->t(' or ')); ?><a href='#' id="cloudlink"><?php p($l->t('cloud'));?></a>
 ----
@@ -64,7 +64,7 @@ What about variables in the strings?
 
 If you need to add variables to the translation strings do it like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 $l->t('%1$s is available. Get %2$smore information%3$s', [$data['versionstring'], '<a href="' . $data['web']] . '">', '</a>');
 ----
@@ -112,7 +112,7 @@ https://ci.owncloud.org/view/translation-sync/
 Manual quick translation update:
 --------------------------------
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 cd l10n/ && perl l10n.pl read && tx push -s && tx pull -a && perl l10n.pl write && cd ..
 ----
@@ -124,7 +124,7 @@ The translation script requires Locale::PO, installable via
 Configure transifex
 -------------------
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 tx init
 

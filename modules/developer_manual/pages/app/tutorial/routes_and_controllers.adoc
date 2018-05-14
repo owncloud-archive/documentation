@@ -19,7 +19,7 @@ own notes application, the following URLs will be used:
 On the client side we can call these URLs with the following jQuery
 code:
 
-[source,sourceCode,js]
+[source,js]
 ----
 // example for calling the PUT /notes/1 URL
 var baseUrl = OC.generateUrl('/apps/ownnotes');
@@ -49,7 +49,7 @@ To do that, we create the routes configuration file:
 `ownnotes/appinfo/routes.php`, which you can see the definition for
 below.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 return [
@@ -67,7 +67,7 @@ return [
 A handy feature of routing in ownCloud is that as the final five routes
 are so similar, they can be abbreviated by adding a resource instead:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 return [
@@ -83,7 +83,7 @@ return [
 Let’s look at the route below first, so that you get a better
 understanding of how they’re composed.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 return ['routes' => [
@@ -112,7 +112,7 @@ contents of a template <../fundamentals/templates> file, using the
 `TemplateResponse` object. The `TemplateResponse` object renders a
 template located in an application’s templates directory.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
  namespace OCA\OwnNotes\Controller;
@@ -157,7 +157,7 @@ application. Create a new controller, called
 `ownnotes/lib/Controller/NoteController.php`, with the following
 content:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
  namespace OCA\OwnNotes\Controller;

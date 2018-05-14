@@ -32,14 +32,14 @@ You should use exceptions if you need to debug variable values manually,
 and not alternatives like trigger_error() (which may not be logged),
 e.g.,:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php throw new \Exception( "\$user = $user" ); // should be logged in ownCloud ?>
 ----
 
 not:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php trigger_error( "\$user = $user" ); // may not be logged anywhere ?>
 ----

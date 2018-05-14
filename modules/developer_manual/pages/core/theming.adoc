@@ -230,7 +230,7 @@ structure is the same as for images. You just mimic the original file
 location inside your theme. You would then put the following code in the
 file:
 
-[source,sourceCode,js]
+[source,js]
 ----
 OC.L10N.register(
   "files",
@@ -245,7 +245,7 @@ You then need to create a second translation file,
 `owncloud/apps/theme-example/apps/files/l10n/de_DE.json`, which looks
 like this:
 
-[source,sourceCode,json]
+[source,json]
 ----
 {
   "translations": {
@@ -271,7 +271,7 @@ folder. You can find a sample version in
 a class named `OC_Theme` and implement the methods that you want to
 overwrite.
 
-[source,sourceCode,php]
+[source,php]
 ----
 class OC_Theme {
   public function getAndroidClientUrl() {
@@ -334,7 +334,7 @@ One exception is the method `buildDocLinkToKey` which gets passed in a
 key as its first parameter. For core we do something like this to build
 the documentation link:
 
-[source,sourceCode,php]
+[source,php]
 ----
 public function buildDocLinkToKey($key) {
   return $this->getDocBaseUrl() . '/server/latest/go.php?to=' . $key;

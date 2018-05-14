@@ -43,7 +43,7 @@ available in the libxml2 package, to make the response easier to read.
 This request will return an XML response similar to this example and a
 status of: `HTTP/1.1 207 Multi-Status`.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
@@ -68,7 +68,7 @@ to retrieve in the response. The sample below, which for the purposes of
 this example we’ll store in a file called `report-propfind.xml`, shows
 how to do so.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8" ?>
 <a:propfind xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
@@ -101,7 +101,7 @@ information more maintainable.
 Adding the `PROPFIND` XML element will cause the XML response to look
 similar to the following example.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
@@ -207,7 +207,7 @@ curl -u username:password -X PROPPATCH \
 Below is an example `PROPPATCH` element, which changes the message text
 but leaves the rest of the message unchanged.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8" ?>
 <a:propertyupdate xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
@@ -227,7 +227,7 @@ If the update is successful, then an XML response body will be returned,
 which looks similar to the example below. In addition an
 `HTTP/1.1 207 Multi-Status` status will also be returned.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
@@ -265,7 +265,7 @@ status will be returned but with no response body. However, if the
 comment does not exist, then the following response will be returned,
 along with an `HTTP/1.1 404 Not Found` status.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">
@@ -300,7 +300,7 @@ curl -u username:password -X PROPFIND \
 Response
 ~~~~~~~~
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
@@ -324,7 +324,7 @@ this example we’ll store in a file called `report-propfind.xml` will
 return the display-name, user-visible, user-assignable, and id values
 for each tag.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8" ?>
 <a:propfind xmlns:a="DAV:" xmlns:oc="http://owncloud.org/ns">
@@ -349,7 +349,7 @@ curl -u username:password -X PROPFIND \
 
 Below is an example of the response returned from this request:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:cal="urn:ietf:params:xml:ns:caldav" xmlns:cs="http://calendarserver.org/ns/" xmlns:card="urn:ietf:params:xml:ns:carddav" xmlns:oc="http://owncloud.org/ns">
@@ -479,7 +479,7 @@ The sample a `PROPFIND` element below, which for the purposes of this
 example we’ll store in a file called `report-propfind.xml`, will return
 every tag property, and will filter on tag id 17.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <oc:filter-files  xmlns:d="DAV:" xmlns:oc="http://owncloud.org/ns">
     <d:prop>
@@ -519,7 +519,7 @@ Response
 A successful response which you can see an example of below, along with
 a status of `HTTP/1.1 207 Multi-Status` will be returned.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <d:multistatus xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns" xmlns:oc="http://owncloud.org/ns">
@@ -552,7 +552,7 @@ exist, then an `HTTP/1.1 412 Precondition failed` status will be
 returned, along with the following XML payload in the body of the
 response.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0" encoding="utf-8"?>
 <d:error xmlns:d="DAV:" xmlns:s="http://sabredav.org/ns">

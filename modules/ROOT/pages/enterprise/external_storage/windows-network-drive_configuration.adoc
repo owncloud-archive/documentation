@@ -62,7 +62,7 @@ Example
 Assuming that your ownCloud installation is on Ubuntu, then the
 following commands will install the required dependencies:
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Install core packages
 sudo apt-get update -y
@@ -71,7 +71,7 @@ sudo apt-get install -y smbclient php-smbclient coreutils
 
 Other method using PECL is:
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Install php-smbclient using PECL
 pecl install smbclient
@@ -433,7 +433,7 @@ on standard output.
 3rd Party Software Examples
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 cat /tmp/plainpass | sudo -u www-data ./occ wnd:listen <host> <share> <username> --password-file=-
 ----
@@ -443,7 +443,7 @@ should be owned by root and only root should be able to read the file
 (0400 permissions); Apache, particularly, shouldn’t be able to read it.
 It’s expected that root will be the one to run this command.
 
-[source,sourceCode,console]
+[source,console]
 ----
 base64 -d /tmp/encodedpass | sudo -u www-data ./occ wnd:listen <host> <share> <username> \
   --password-file=-
@@ -467,7 +467,7 @@ keyring for whoever will fetch the password (probably root) and then use
 something like the following
 _____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
-[source,sourceCode,console]
+[source,console]
 ----
 pass the-password-name | sudo -u www-data ./occ wnd:listen <host> <share> <username> --password-file=-
 ----

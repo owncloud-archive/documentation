@@ -256,7 +256,7 @@ Use the `background` command to select which scheduler you want to use
 for controlling _background jobs_, _Ajax_, _Webcron_, or _Cron_. This is
 the same as using the *Cron* section on your ownCloud Admin page.
 
-[source,sourceCode,console]
+[source,console]
 ----
 background
  background:ajax       Use ajax to run background jobs
@@ -445,7 +445,7 @@ Dav Commands
 A set of commands to create address books, calendars, and to migrate
 address books:
 
-[source,sourceCode,console]
+[source,console]
 ----
 dav
  dav:cleanup-chunks            Cleanup outdated chunks
@@ -530,7 +530,7 @@ servers with multiple users should use MariaDB, MySQL, or PostgreSQL.
 You can use `occ` to convert from SQLite to one of these other
 databases.
 
-[source,sourceCode,console]
+[source,console]
 ----
 db
  db:convert-type           Convert the ownCloud database to the newly configured one
@@ -559,7 +559,7 @@ Encryption
 
 `occ` includes a complete set of commands for managing encryption.
 
-[source,sourceCode,console]
+[source,console]
 ----
 encryption
  encryption:change-key-storage-root  Change key storage root
@@ -651,7 +651,7 @@ Federation Sync
 
 Synchronize the address books of all federated ownCloud servers.
 
-[source,sourceCode,console]
+[source,console]
 ----
 federation:sync-addressbooks  Synchronizes address books of all federated clouds
 ----
@@ -675,7 +675,7 @@ File Operations
 
 `occ` has three commands for managing files in ownCloud.
 
-[source,sourceCode,console]
+[source,console]
 ----
 files
  files:checksums:verify     Get all checksums in filecache and compares them by
@@ -879,7 +879,7 @@ ownCloud releases before 9.0.
 
 Commands for managing external storage.
 
-[source,sourceCode,console]
+[source,console]
 ----
 files_external
  files_external:applicable  Manage applicable users and groups for a mount
@@ -918,7 +918,7 @@ group membership. Group names are case-sensitive, so ``Finance'' and
 
 The full list of commands is:
 
-[source,sourceCode,console]
+[source,console]
 ----
 group
  group:add                           Adds a group
@@ -1104,7 +1104,7 @@ Apps which have an official tag MUST be code signed. Unsigned official
 apps won’t be installable anymore. Code signing is optional for all
 third-party applications.
 
-[source,sourceCode,console]
+[source,console]
 ----
 integrity
  integrity:check-app                 Check app integrity using a signature.
@@ -1145,7 +1145,7 @@ The command does not update existing translations if the source
 translation file has been updated. It only creates translation files
 when none are present for a given language.
 
-[source,sourceCode,console]
+[source,console]
 ----
 l10n
   l10n:createjs                Create Javascript translation files for a given app
@@ -1177,7 +1177,7 @@ the developer documentation on
 https://doc.owncloud.org/server/latest/developer_manual/app/advanced/l10n.html#creating-translatable-files-label[creating
 translation files], if you’re not familiar with creating them.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // The source string is the key, the translated string is the value.
@@ -1219,7 +1219,7 @@ ________________________________________________________________________________
 These LDAP commands appear only when you have enabled the LDAP app. Then
 you can run the following LDAP commands with `occ`:
 
-[source,sourceCode,console]
+[source,console]
 ----
 ldap
  ldap:check-user               Checks whether a user exists on LDAP.
@@ -1427,7 +1427,7 @@ In the example above, the interval is being set to 7200 seconds.
 Assuming the above example was used, the command would output the
 following:
 
-[source,sourceCode,console]
+[source,console]
 ----
 Config value updateAttributesInterval for app user_ldap set to 7200
 ----
@@ -1445,7 +1445,7 @@ Logging Commands
 
 These commands view and configure your ownCloud logging preferences.
 
-[source,sourceCode,console]
+[source,console]
 ----
 log
  log:manage     Manage logging configuration
@@ -1503,7 +1503,7 @@ Use these commands when you upgrade ownCloud, manage encryption, perform
 backups and other tasks that require locking users out until you are
 finished.
 
-[source,sourceCode,console]
+[source,console]
 ----
 maintenance
  maintenance:data-fingerprint        Update the systems data-fingerprint after a backup is restored
@@ -1576,7 +1576,7 @@ Market
 The `market` commands _install_, _list_, and _upgrade_ applications from
 the ownCloud Marketplace.
 
-[source,sourceCode,console]
+[source,console]
 ----
 market
   market:install    Install apps from the marketplace. If already installed and 
@@ -1638,7 +1638,7 @@ Notifications
 If you want to send notifications to users or groups use the following
 command.
 
-[source,sourceCode,console]
+[source,console]
 ----
 notifications
   notifications:generate   Generates a notification.
@@ -1719,7 +1719,7 @@ Use these commands when you manage security related tasks
 Routes dispays all routes of ownCloud. You can use this information to
 grant strict access via firewalls, proxies or loadbalancers etc.
 
-[source,sourceCode,console]
+[source,console]
 ----
 security:routes [options]
 ----
@@ -1790,7 +1790,7 @@ The following commands manage server-wide SSL certificates. These are
 useful when you create federation shares with other ownCloud servers
 that use self-signed certificates.
 
-[source,sourceCode,console]
+[source,console]
 ----
 security:certificates         List trusted certificates
 security:certificates:import  Import trusted certificate
@@ -1876,7 +1876,7 @@ Shibboleth Modes (Enterprise Edition only)
 `shibboleth:mode` sets your Shibboleth mode to `notactive`,
 `autoprovision`, or `ssoonly`
 
-[source,sourceCode,console]
+[source,console]
 ----
 shibboleth:mode [mode]
 ----
@@ -1896,7 +1896,7 @@ These commands are only available when the ``Deleted files'' app
 single-user (maintenance) mode <maintenance_commands_label>.
 ________________________________________________________________________________________________________________________________________________________________________________________________
 
-[source,sourceCode,console]
+[source,console]
 ----
 trashbin
  trashbin:cleanup   Remove deleted files
@@ -1944,7 +1944,7 @@ and when a user was last logged in.
 
 The full list, of commands is:
 
-[source,sourceCode,console]
+[source,console]
 ----
 user
  user:add                            Adds a user
@@ -1980,7 +1980,7 @@ in your ownCloud Web UI
 
 The command’s syntax is:
 
-[source,sourceCode,console]
+[source,console]
 ----
 user:add [--password-from-env] [--display-name [DISPLAY-NAME]] [--email [EMAIL]] [-g|--group [GROUP]] [--] <uid>
 ----
@@ -2061,7 +2061,7 @@ Listing Users
 
 You can list existing users with the `user:list` command. The syntax is
 
-[source,sourceCode,console]
+[source,console]
 ----
 user:list [options] [<search-pattern>]
 ----
@@ -2118,7 +2118,7 @@ Listing Group Membership of a User
 You can list the group membership of a user with the `user:list-groups`
 command. The syntax is
 
-[source,sourceCode,console]
+[source,console]
 ----
 user:list-groups [options] <uid>
 ----
@@ -2169,7 +2169,7 @@ command. This command provides the ability to:
 If you run the command and pass the help switch (`--help`), you will see
 the following output, in your terminal:
 
-[source,sourceCode,console]
+[source,console]
 ----
 Usage:
   user:setting [options] [--] <uid> [<app>] [<key>]
@@ -2288,7 +2288,7 @@ Modify user details
 
 This command modifies either the users username or email address.
 
-[source,sourceCode,console]
+[source,console]
 ----
 user:modify [options] [--] <uid> <key> <value>
 
@@ -2394,7 +2394,7 @@ crontab -e -u www-data
 Versions
 --------
 
-[source,sourceCode,console]
+[source,console]
 ----
 versions
  versions:cleanup   Delete versions
@@ -2495,7 +2495,7 @@ ownCloud is not installed - only a limited number of commands are available
 Usage:
 ....
 
-[source,sourceCode,console]
+[source,console]
 ----
 maintenance:install [--database="..."] [--database-name="..."] 
 ----
@@ -2554,7 +2554,7 @@ sudo -u www-data php occ upgrade -h
 Usage:
 ....
 
-[source,sourceCode,console]
+[source,console]
 ----
 upgrade [options]
 ----
@@ -2704,7 +2704,7 @@ another application for further processing, you can also use the
 Using the output option `json` will render the output formatted as
 follows.
 
-[source,sourceCode,json]
+[source,json]
 ----
 [{"uid":"admin","displayName":"admin","inactiveSinceDays":5}]
 ----
@@ -2712,7 +2712,7 @@ follows.
 Using the output option `json_pretty` will render the output formatted
 as follows.
 
-[source,sourceCode,json]
+[source,json]
 ----
 [
     {

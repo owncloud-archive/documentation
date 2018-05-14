@@ -688,7 +688,7 @@ You may use IP addresses and domain names.
 
 A typical configuration looks like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'trusted_domains' => [
    0 => 'localhost', 

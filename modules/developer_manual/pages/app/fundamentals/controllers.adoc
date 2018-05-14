@@ -9,7 +9,7 @@ that should be executed to handle a request.
 
 Here is an example of how to do so.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -32,7 +32,7 @@ Connecting a Controller and a Route
 To connect a controller and a route the controller has to be registered
 in the container like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -117,7 +117,7 @@ or `PUT` request
 These parameters can be accessed by adding them to the controller
 method. For example:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -136,7 +136,7 @@ class PageController extends Controller {
 It is also possible to set default parameter values by using PHP default
 method values. This allows common values to be omitted. For example:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -167,7 +167,7 @@ cast these to the correct types, simply add a PHPDoc comment, in the
 form of `@param type $name`. Here’s a comprehensive example showing all
 the options at once.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -218,7 +218,7 @@ Content-Type: application/json
 }
 ....
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -242,7 +242,7 @@ Reading Headers, Files, Cookies and Environment Variables
 Headers, files, cookies, and environment variables can be accessed
 directly from the request object:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -276,7 +276,7 @@ like this:
 The session is closed automatically for writing, unless you add the
 `@UseSession` annotation!
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -314,7 +314,7 @@ Setting Cookies
 
 Cookies can be set or modified directly on the response class:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -368,7 +368,7 @@ JSON
 
 Returning JSON is simple, just pass an array to a `JSONResponse`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -387,7 +387,7 @@ class PageController extends Controller {
 Because returning JSON is such an common task, there’s even a shorter
 way to do this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -452,7 +452,7 @@ defaults to `json`.
 By default there is only a responder for JSON but more can be added
 easily:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -492,7 +492,7 @@ of failure that requires a custom HTTP error code, you can always wrap
 the value in a `DataResponse`. This works for both normal responses and
 error responses.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -542,7 +542,7 @@ $_['key']
 in the web interface, or in case blank is passed solely render the
 template
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -565,7 +565,7 @@ Redirects
 
 A redirect can be achieved by returning a `RedirectResponse`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -586,7 +586,7 @@ Downloads
 
 A file download can be triggered by returning a `DownloadResponse`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -614,7 +614,7 @@ thing that needs to be implemented is the `render` method which returns
 the result as string. Creating a custom `XMLResponse` class could look
 like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Http;
@@ -647,7 +647,7 @@ through middleware. In certain cases this is not a desirable behavior,
 for instance if you want to stream a file in order to save memory. To do
 that, use the `OCP\\AppFramework\\Http\\StreamResponse` class:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -667,7 +667,7 @@ If you want to use a custom, lazily rendered response simply implement
 the interface `OCP\\AppFramework\\Http\\ICallbackResponse` for your
 response:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Http;
@@ -727,7 +727,7 @@ any domain:
 The following policy for instance allows images, audio, and videos from
 other domains:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -759,7 +759,7 @@ Framework, an additional controller and response have been added. To
 migrate your API you can use the `OCP\\AppFramework\\OCSController` base
 class and return your data in the form of an array in the following way:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -802,7 +802,7 @@ Each response subclass has access to the `setStatus` method which lets
 you set an HTTP status code. To return a `JSONResponse` signaling that
 the author with id 1 has not been found, use the following code:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -849,7 +849,7 @@ you might create a security hole, to understand what it does see
 
 A controller method that turns off all checks would look like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;

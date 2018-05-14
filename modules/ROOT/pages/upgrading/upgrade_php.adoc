@@ -22,7 +22,7 @@ You will first need to subscribe to the Red Hat Software Collections
 channel repository to be able to download and install the PHP 5.6
 package in RHEL 7. To do that, run the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 subscription-manager repos --enable rhel-server-rhscl-7-rpms
 ----
@@ -34,7 +34,7 @@ https://access.redhat.com/solutions/253273[the official documentation].
 When that’s completed, then proceed by installing PHP 5.6, along with
 the other required PHP packages.
 
-[source,sourceCode,console]
+[source,console]
 ----
 yum install rh-php56 rh-php56-php rh-php56-php-gd rh-php56-php-mbstring rh-php56-php-mysqlnd rh-php56-php-intl rh-php56-php-ldap
 ----
@@ -42,7 +42,7 @@ yum install rh-php56 rh-php56-php rh-php56-php-gd rh-php56-php-mbstring rh-php56
 Once they’re all installed, you next need to enable PHP 5.6 system-wide.
 To do this, run the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 cp /opt/rh/rh-php56/enable /etc/profile.d/rh-php56.sh source /opt/rh/rh-php56/enable
 ----
@@ -52,7 +52,7 @@ the previous version of PHP 5.4. For this example, we’ll assume that
 you’re upgrading from PHP 5.4. Here, you disable it from loading by
 renaming it’s Apache configuration files.
 
-[source,sourceCode,console]
+[source,console]
 ----
 mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php54.off
 mv /etc/httpd/conf.modules.d/10-php.conf /etc/httpd/conf.modules.d/10-php54.off
@@ -64,7 +64,7 @@ Next, you need to enable loading of the PHP 5.6 Apache shared-object
 file. This you do by copying the shared object along with its two Apache
 configuration files, as in the command below.
 
-[source,sourceCode,console]
+[source,console]
 ----
 cp /opt/rh/httpd24/root/etc/httpd/conf.d/rh-php56-php.conf /etc/httpd/conf.d/
 cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/10-rh-php56-php.conf /etc/httpd/conf.modules.d/
@@ -73,7 +73,7 @@ cp /opt/rh/httpd24/root/etc/httpd/modules/librh-php56-php5.so /etc/httpd/modules
 
 With all that done, you lastly need to restart Apache.
 
-[source,sourceCode,console]
+[source,console]
 ----
 service httpd restart
 ----
@@ -93,7 +93,7 @@ This section assumes that you’re upgrading from PHP 5.6.
 Then, proceed by installing the required PHP 7 modules. You can use the
 command below to save you time.
 
-[source,sourceCode,console]
+[source,console]
 ----
 yum install rh-php70 rh-php70-php rh-php70-php-gd rh-php70-php-mbstring rh-php70-php-mysqlnd rh-php70-php-intl rh-php70-php-ldap
 ----
@@ -101,7 +101,7 @@ yum install rh-php70 rh-php70-php rh-php70-php-gd rh-php70-php-mbstring rh-php70
 Next, you need to enable PHP 7 and disable PHP 5.6 system-wide. To
 enable PHP 7 system-wide, run the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 cp /opt/rh/rh-php70/enable /etc/profile.d/rh-php70.sh source /opt/rh/rh-php70/enable
 ----
@@ -110,7 +110,7 @@ Then, you need to disable loading of the PHP 5.6 Apache modules. You can
 do this either by changing their names, as in the example below, or
 deleting the files.
 
-[source,sourceCode,console]
+[source,console]
 ----
 mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php56.off
 mv /etc/httpd/conf.modules.d/10-php.conf /etc/httpd/conf.modules.d/10-php56.off
@@ -120,7 +120,7 @@ With that done, you next need to copy the PHP 7 Apache modules into
 place; that being the two Apache configuration files and the shared
 object file.
 
-[source,sourceCode,console]
+[source,console]
 ----
 cp /opt/rh/httpd24/root/etc/httpd/conf.d/rh-php70-php.conf /etc/httpd/conf.d/
 cp /opt/rh/httpd24/root/etc/httpd/conf.modules.d/15-rh-php70-php.conf /etc/httpd/conf.modules.d/
@@ -130,7 +130,7 @@ cp /opt/rh/httpd24/root/etc/httpd/modules/librh-php70-php7.so /etc/httpd/modules
 Finally, you need to restart Apache to make the changes permanent, as in
 the command below.
 
-[source,sourceCode,console]
+[source,console]
 ----
 service httpd restart
 ----

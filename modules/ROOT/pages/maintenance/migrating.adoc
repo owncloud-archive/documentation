@@ -93,7 +93,7 @@ You may use IP addresses and domain names.
 
 A typical configuration looks like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'trusted_domains' => [
    0 => 'localhost', 
@@ -125,14 +125,14 @@ Preparation
 Before you can perform a migration, you have to prepare. To do this,
 first make sure SSH is installed:
 
-[source,sourceCode,console]
+[source,console]
 ----
 apt install ssh -y
 ----
 
 Next, edit ssh-config and enable root ssh login.
 
-[source,sourceCode,console]
+[source,console]
 ----
 nano /etc/ssh/sshd_config
 PermitRootLogin yes
@@ -140,7 +140,7 @@ PermitRootLogin yes
 
 And then restart SSH.
 
-[source,sourceCode,console]
+[source,console]
 ----
 service ssh restart
 ----
@@ -158,7 +158,7 @@ Enable Maintenance Mode
 The first step is to enable maintenance mode. To do that, use the
 following commands:
 
-[source,sourceCode,console]
+[source,console]
 ----
 cd /var/www/owncloud/
 sudo -u www-data php occ maintenance:mode --on
@@ -166,7 +166,7 @@ sudo -u www-data php occ maintenance:mode --on
 
 After that’s done, wait for 6-7 minutes and stop Apache:
 
-[source,sourceCode,console]
+[source,console]
 ----
 service apache2 stop
 ----
@@ -178,7 +178,7 @@ Transfer the Database
 Now, you have to transfer the database from the old server to the new
 one. To do that, first backup the database.
 
-[source,sourceCode,console]
+[source,console]
 ----
 cd /var/www/owncloud/
 mysqldump --single-transaction -h localhost -u admin -ppassword owncloud > owncloud-dbbackup.bak
@@ -186,14 +186,14 @@ mysqldump --single-transaction -h localhost -u admin -ppassword owncloud > owncl
 
 Then, export the database to the new server.
 
-[source,sourceCode,console]
+[source,console]
 ----
 rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud 
 ----
 
 With that completed, import the database on new server.
 
-[source,sourceCode,console]
+[source,console]
 ----
 mysql -h localhost -u admin -ppassword owncloud < owncloud-dbbackup.bak
 ----
@@ -216,7 +216,7 @@ when using mysqldump.
 Transfer Data and Configure the New Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 rsync -Aavxt config data root@new_server_address:/var/www/owncloud 
 ----
@@ -232,14 +232,14 @@ Finish the Migration
 Now it’s time to finish the migration. To do that, on the new server,
 first verify that ownCloud is in maintenance mode.
 
-[source,sourceCode,console]
+[source,console]
 ----
 sudo -u www-data php occ maintenance:mode
 ----
 
 Next, start up the database and web server on the new machine.
 
-[source,sourceCode,console]
+[source,console]
 ----
 service mysql start
 service apache2 start
@@ -250,7 +250,7 @@ instance, and confirm that you see the maintenance mode notice, and that
 no error messages occur. If both of these occur, take ownCloud out of
 maintenance mode.
 
-[source,sourceCode,console]
+[source,console]
 ----
 sudo -u www-data php occ maintenance:mode --off
 ----
@@ -267,7 +267,7 @@ Now you need to reverse the change to ssh-config. Specifically, set
 `PermitRootLogin` to `no` and restart ssh. To do that, run the following
 command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 service ssh restart
 ----

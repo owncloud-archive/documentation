@@ -30,7 +30,7 @@ the ownCloud autoloader security policy prevents access to the `tests/`
 subdirectory. This can be configured in your phpunit.xml file as
 follows:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <phpunit bootstrap="../../tests/bootstrap.php">
 ----
@@ -40,7 +40,7 @@ ensure that the container is wired up properly. Services that should be
 mocked can be replaced directly in the container. A test for the
 `AuthorStorage` class in filesystem:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Storage;
@@ -71,7 +71,7 @@ class AuthorStorage {
 
 would look like this:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // tests/Storage/AuthorStorageTest.php

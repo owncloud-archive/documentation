@@ -13,7 +13,7 @@ core form elements for creating notes.
 `$l->t()` is used to make your strings translatable <../advanced/l10n>
 and `p()` is used to print escaped HTML <../fundamentals/templates>
 
-[source,sourceCode,php]
+[source,php]
 ----
 <script id="content-tpl" type="text/x-handlebars-template">
     {{#if note}}

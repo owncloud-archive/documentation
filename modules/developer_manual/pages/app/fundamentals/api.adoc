@@ -8,7 +8,7 @@ methods so that
 https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS[web
 applications will also be able to access the API].
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;
@@ -35,7 +35,7 @@ class AuthorApiController extends ApiController {
 CORS also needs a separate URL for the preflighted *OPTIONS* request
 that can easily be added by adding the following route:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // appinfo/routes.php
@@ -71,7 +71,7 @@ request:
 To add an additional method or header or allow less headers, simply pass
 additional values to the parent constructor:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Controller;

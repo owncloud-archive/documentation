@@ -174,7 +174,7 @@ htmlspecialchars function] with `ENT_QUOTES` or `strip_tags` to prevent
 https://www.owasp.org/index.php/Cross-site_Scripting_(XSS)[Cross-site
 Scripting (XSS) attacks].
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -182,7 +182,7 @@ $neu = htmlspecialchars("<a href='test'>Test</a>", ENT_QUOTES);
 echo $neu; // &lt;a href=&#039;test&#039;&gt;Test&lt;/a&gt;
 ----
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -193,7 +193,7 @@ echo "\n";
 
 *Output:*
 
-[source,sourceCode,console]
+[source,console]
 ----
 Test-Absatz. Anderer Text
 <p>Test-Absatz.</p> <a href="#fragment">Anderer Text</a>
@@ -221,7 +221,7 @@ http://php.net/manual/en/function.popen.php[popen()],
 http://php.net/manual/en/function.system.php[system()], or the backtick
 (```) operator.
 +
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -232,7 +232,7 @@ use the PHP function
 http://php.net/manual/en/function.escapeshellcmd.php[escapeshellcmd()]
 to escape the whole command.
 +
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 $command = './configure '.$_POST['configure_options'];
@@ -460,7 +460,7 @@ sensitive data. Sensitive data includes:
 generated field name.
 * For password fields use:
 +
-[source,sourceCode,html]
+[source,html]
 ----
 <input name="pass" type="password" autocomplete="new-password" />
 ----
@@ -524,7 +524,7 @@ from the URL!
 
 *DON’T*
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 require("/includes/" . $_GET['file']);
@@ -551,7 +551,7 @@ Submitting a form is also a POST/GET request!
 To prevent CSRF in an app, be sure to call the following method at the
 top of all your files:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 OCP\JSON::callCheck();
@@ -587,7 +587,7 @@ Templates
 
 Let’s assume you use the following example in your application:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 echo $_GET['username'];
@@ -621,7 +621,7 @@ Avoid manipulating HTML directly via JavaScript. Doing so often leads to
 XSS vulnerabilities since people often forget to sanitize variables. For
 example:
 
-[source,sourceCode,js]
+[source,js]
 ----
 var html = '<li>' + username + '</li>"';
 ----
@@ -629,7 +629,7 @@ var html = '<li>' + username + '</li>"';
 If you want to use JavaScript for something like this use escapeHTML to
 sanitize the variables:
 
-[source,sourceCode,js]
+[source,js]
 ----
 var html = '<li>' + escapeHTML(username) + '</li>';
 ----
@@ -639,14 +639,14 @@ built-in function *$.text()*, instead of *$.html()*.
 
 *DON’T*
 
-[source,sourceCode,js]
+[source,js]
 ----
 messageTd.html(username);
 ----
 
 *DO*
 
-[source,sourceCode,js]
+[source,js]
 ----
 messageTd.text(username);
 ----
@@ -666,7 +666,7 @@ _file disclosures_.
 
 *DON’T*
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 $username = OC_User::getUser();
@@ -675,7 +675,7 @@ fopen("/data/" . $username . "/" . $_GET['file'] . ".txt");
 
 *DO*
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 $username = OC_User::getUser();
@@ -716,7 +716,7 @@ functions to escape user input:
 
 *DON’T*
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 system('ls '.$_GET['dir']);
@@ -724,7 +724,7 @@ system('ls '.$_GET['dir']);
 
 *DO*
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 system('ls '.escapeshellarg($_GET['dir']));
@@ -746,7 +746,7 @@ http://en.wikipedia.org/wiki/SQL_injection[SQL Injection] occurs when
 SQL query strings are concatenated with variables. To prevent this,
 always use prepared queries:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 $sql = 'SELECT * FROM `users` WHERE `id` = ?';
@@ -758,7 +758,7 @@ $result = $query->execute($params);
 If the application Framework is used, write SQL queries like this in the
 class that extends the Mapper:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 // inside a child mapper class
@@ -778,7 +778,7 @@ domain or is an allowed resource.
 
 *DON’T*
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 header('Location:'. $_GET['redirectURL']);
@@ -786,7 +786,7 @@ header('Location:'. $_GET['redirectURL']);
 
 *DO*
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 header('Location: https://example.com'. $_GET['redirectURL']);

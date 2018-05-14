@@ -16,7 +16,7 @@ the file] into `ownnotes/js/handlebars.js` and include it at the very
 top of `ownnotes/templates/main.php` before the other scripts and
 styles:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 script('ownnotes', 'handlebars');
@@ -40,7 +40,7 @@ below. As with `script`, the first parameter is the application to find
 the CSS file in and the second parameter is the name of the CSS file,
 minus the `.css` file extension.
 
-[source,sourceCode,php]
+[source,php]
 ----
 style('ownnotes, 'style');  // adds ownnotes/css/style.css
 ----

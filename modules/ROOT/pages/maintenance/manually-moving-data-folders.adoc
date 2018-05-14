@@ -45,7 +45,7 @@ Update the oc_storages table
 If you want to manually change the location of the data folder in the
 database, run the SQL below:
 
-[source,sourceCode,sql]
+[source,sql]
 ----
 UPDATE oc_storages SET id='local::/mnt/owncloud' 
   WHERE id='local::/var/www/owncloud/data/';
@@ -61,7 +61,7 @@ This column contains the absolute path for user folders, e.g.,
 `/mnt/data/files/super-admin`, and that the user’s id is 1, you could
 change it using the following SQL statement:
 
-[source,sourceCode,sql]
+[source,sql]
 ----
 UPDATE oc_accounts SET home='/mnt/data/files/super-admin' 
   WHERE id=1;
@@ -79,7 +79,7 @@ The next area to check is the oc_jobs table. The logrotate process may
 have hard-coded a non-standard (or old) value for the data path. To
 check it, run the SQL below and see if any results are returned:
 
-[source,sourceCode,sql]
+[source,sql]
 ----
 SELECT * FROM oc_jobs 
   WHERE class = 'OC\Log\Rotate';
@@ -88,7 +88,7 @@ SELECT * FROM oc_jobs
 If any are, run the SQL below to update them, changing the value as
 appropriate.
 
-[source,sourceCode,sql]
+[source,sql]
 ----
 UPDATE oc_jobs SET argument = '/your/new/data/path' 
   WHERE id = <id of the incorrect record>;
@@ -105,7 +105,7 @@ will need to find which applications do this, and change them as needed.
 For example, if you listed the application configuration by running occ
 config:list, then you might see output similar to that below:
 
-[source,sourceCode,json]
+[source,json]
 ----
 {
     "apps": {
@@ -124,7 +124,7 @@ being set to var/www/owncloud/data. So you would have to change the
 value by using the config:app:set option. Here’s an example of how you
 would update the setting:
 
-[source,sourceCode,console]
+[source,console]
 ----
 occ config:app:set --value /mnt/owncloud fictitious datadir
 ----

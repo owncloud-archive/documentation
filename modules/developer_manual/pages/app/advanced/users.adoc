@@ -4,7 +4,7 @@ User Management
 Users can be managed using the `UserManager` which is injected from the
 `ServerContainer`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -42,7 +42,7 @@ Creating Users
 Creating a user is done by passing a username and password to the
 `create` method:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Service;
@@ -74,7 +74,7 @@ pattern. The returned user objects can then be used to:
 * Disable/Enable them
 * Get their home directory
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Service;
@@ -115,7 +115,7 @@ User Session Information
 To login, logout or getting the currently logged in user, the
 `UserSession` has to be injected from the `ServerContainer`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\AppInfo;
@@ -154,7 +154,7 @@ class Application extends App {
 
 Then users can be logged in by using:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\MyApp\Service;

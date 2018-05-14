@@ -12,7 +12,7 @@ will be in charge of keeping the communication with the server.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,java]
+[source,java]
 ----
 public class MainActivity extends Activity
                           implements  OnRemoteOperationListener,
@@ -51,7 +51,7 @@ Authentication on the app is possible by 3 different methods:
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,java]
+[source,java]
 ----
 package com.owncloud.android.lib.common;
 
@@ -207,7 +207,7 @@ be stored on the device.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,java]
+[source,java]
 ----
 private void startDownload(String filePath, File targetDirectory) {
   DownloadRemoteFileOperation downloadOperation = new DownloadRemoteFileOperation(filePath, targetDirectory.getAbsolutePath());
@@ -247,7 +247,7 @@ file will be stored on the server and mimeType.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,java]
+[source,java]
 ----
 private void startUpload (File fileToUpload, String remotePath, String mimeType) { 
   UploadRemoteFileOperation uploadOperation = new UploadRemoteFileOperation( fileToUpload.getAbsolutePath(), remotePath, mimeType);
@@ -297,6 +297,7 @@ _
 _
 
 ....
+[source,java]
 private void startFileMove(String filePath, String newFilePath, boolean overwrite) {
   MoveRemoteFileOperation moveOperation = new MoveRemoteFileOperation(filePath, newFilePath, overwrite); 
   moveOperation.execute( mClient , this , mHandler); 
@@ -325,7 +326,7 @@ account)
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,java]
+[source,java]
 ----
 private void startAllSharesRetrieval() {
   GetRemoteSharesOperation getSharesOp = new GetRemoteSharesOperation();
@@ -360,7 +361,7 @@ library.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,java]
+[source,java]
 ----
 private void startSharesRetrievalForFileOrFolder(String filePath, boolean getReshares) {
   GeteRemoteSharesForFileOperation operation = new GetRemoteSharesForFileOperation(filePath, getReshares, false);
@@ -400,7 +401,7 @@ in use within the ownCloud Android library.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,java]
+[source,java]
 ----
 private void startCreationOfPublicShareForFile(String filePath, String password) {
   CreateRemoteShareOperation operation = new CreateRemoteShareOperation(filePath, ShareType.PUBLIC_LINK, "", false, password, 1);
@@ -441,7 +442,7 @@ link.
 Code example
 ~~~~~~~~~~~~
 
-[source,sourceCode,java]
+[source,java]
 ----
 private void startShareRemoval(OCShare share) {
   RemoveRemoteShareOperation operation = new RemoveRemoteShareOperation((int) share.getIdRemoteShared());

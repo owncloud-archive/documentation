@@ -23,7 +23,7 @@ brevity.
 This will return a JSON response, similar to the example below, along
 with a status of: `HTTP/1.1 200 OK`.
 
-[source,sourceCode,json]
+[source,json]
 ----
 {
    "ocs" : {

@@ -1,7 +1,7 @@
 App config
 ==========
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -114,7 +114,7 @@ Using alternative app directories
 ownCloud can be set to use a custom app directory in /config/config.php.
 Customise the following code and add it to your config file:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'apps_paths' => [
     [

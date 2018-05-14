@@ -76,7 +76,7 @@ need to download two Oracle Instant Client packages:
 
 Then, to install them, use the following commands:
 
-[source,sourceCode,console]
+[source,console]
 ----
 rpm --install oracle-instantclient12.2-basic-12.2.0.1.0-1.x86_64.rpm \
   oracle-instantclient12.2-devel-12.2.0.1.0-1.x86_64.rpm
@@ -92,7 +92,7 @@ OCI8 extension.
 Provide: `instantclient,/usr/lib/oracle/12.2/client64/lib` when
 requested, or let it auto-detect the location (if possible).
 
-[source,sourceCode,console]
+[source,console]
 ----
 pecl install oci8
 ----
@@ -101,7 +101,7 @@ With the extension installed, you now need to configure it, by creating
 a configuration file for it. You can do so using the command below,
 substituting `FILE_PATH` with one from the list below the command.
 
-[source,sourceCode,console]
+[source,console]
 ----
 cat << EOF > FILE_PATH
 ; Oracle Instant Client Shared Object extension
@@ -143,7 +143,7 @@ Validating the Extension
 With all that done, confirm that it’s been installed and available in
 your PHP distribution, run the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 php -m | grep -i oci8
 ----

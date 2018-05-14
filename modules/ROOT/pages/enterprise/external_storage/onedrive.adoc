@@ -87,7 +87,7 @@ To be able to use the occ command `files_onedrive:subscribe`, you need
 to have the variable `overwrite.cli.url` set in `config/config.php`, as
 in this example:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'overwrite.cli.url' => 'https://example.org:63984/index.php',
 ----

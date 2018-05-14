@@ -61,7 +61,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Creates the user ``Frank`` with password ``frankspassword``
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \
@@ -79,7 +79,7 @@ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -123,7 +123,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Returns list of users matching the search string.
 curl http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank
@@ -133,7 +133,7 @@ curl http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -178,7 +178,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 # Returns information on the user ``Frank``
 curl http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
@@ -188,7 +188,7 @@ curl http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -246,7 +246,7 @@ Status Codes
 Examples
 ^^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 Updates the email address for the user ``Frank``
 curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank \
@@ -263,7 +263,7 @@ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank \
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -305,7 +305,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Deletes the user ``Frank``
 curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
@@ -315,7 +315,7 @@ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -356,7 +356,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Retrieves a list of groups of which ``Frank`` is a member
 curl http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups
@@ -366,7 +366,7 @@ curl http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -418,7 +418,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Adds the user ``Frank`` to the group ``newgroup``
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
@@ -428,7 +428,7 @@ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -475,7 +475,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Removes the user ``Frank`` from the group ``newgroup``
 curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
@@ -485,7 +485,7 @@ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/grou
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -530,7 +530,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Makes the user ``Frank`` a sub-admin of the ``group`` group
 curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="group"
@@ -540,7 +540,7 @@ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subad
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -597,7 +597,7 @@ curl -X DELETE https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/sub
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -640,7 +640,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Returns the groups of which ``Frank`` is a sub-admin
 curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins
@@ -650,7 +650,7 @@ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadm
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -700,7 +700,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Returns list of groups matching the search string.
 curl http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=admi
@@ -710,7 +710,7 @@ curl http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=admi
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -758,7 +758,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Adds a new group called ``newgroup``
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid="newgroup"
@@ -768,7 +768,7 @@ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid=
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -809,7 +809,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Returns a list of users in the ``admin`` group
 curl http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin
@@ -819,7 +819,7 @@ curl http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -866,7 +866,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Return the sub-admins of the group: ``mygroup``
 curl https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins
@@ -876,7 +876,7 @@ curl https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -922,7 +922,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Delete the group ``mygroup``
 curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup
@@ -932,7 +932,7 @@ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -980,7 +980,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Gets enabled apps
 curl http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled
@@ -990,7 +990,7 @@ curl http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -1036,7 +1036,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Get app info for the ``files`` app
 curl http://admin:secret@example.com/ocs/v1.php/cloud/apps/files
@@ -1046,7 +1046,7 @@ curl http://admin:secret@example.com/ocs/v1.php/cloud/apps/files
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -1107,7 +1107,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Enable the ``files_texteditor`` app
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
@@ -1117,7 +1117,7 @@ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_textedi
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>
@@ -1157,7 +1157,7 @@ Status Codes
 Example
 ^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 Disable the ``files_texteditor`` app
 curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
@@ -1167,7 +1167,7 @@ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texte
 XML Output
 ^^^^^^^^^^
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <ocs>

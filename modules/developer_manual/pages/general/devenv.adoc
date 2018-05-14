@@ -142,7 +142,7 @@ to your webserver], next install ownCloud’s dependencies by running
 https://www.gnu.org/software/make/[Make], from the directory where
 ownCloud’s located. Here’s an example of how to do so:
 
-[source,sourceCode,console]
+[source,console]
 ----
 # Assuming that the ownCloud source is located in ``/var/www/html/core`` 
 cd /var/www/html/core && make
@@ -198,7 +198,7 @@ they’re immediately visible, not at some later stage when the respective
 caches expire. To do so, enable debug mode by setting `debug` to `true`
 in config/config.php, as in the example below.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 

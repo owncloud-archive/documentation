@@ -35,7 +35,7 @@ into classes.
 
 *DO*:
 
-[source,sourceCode,css]
+[source,css]
 ----
 .list {
     list-style-type: none;
@@ -52,7 +52,7 @@ into classes.
 
 *DON’T*:
 
-[source,sourceCode,css]
+[source,css]
 ----
 #content .myHeader ul {
     list-style-type: none;
@@ -239,7 +239,7 @@ and objects to
 
 *DO*:
 
-[source,sourceCode,javascript]
+[source,javascript]
 ----
 // set up namespace for sharing across multiple files
 var MyApp = MyApp || {};
@@ -257,7 +257,7 @@ var MyApp = MyApp || {};
 
 *DONT* (Seriously):
 
-[source,sourceCode,javascript]
+[source,javascript]
 ----
 // This does not only make everything global but you're programming
 // JavaScript like C functions with namespaces
@@ -278,7 +278,7 @@ flexible.
 
 This is how you’d do inheritance in JavaScript:
 
-[source,sourceCode,javascript]
+[source,javascript]
 ----
 // create parent object and bind methods to it
 var ParentObject = function(name) {
@@ -319,7 +319,7 @@ Objects, Functions & Variables
 
 Use Pascal case for Objects, Camel case for functions and variables.
 
-[source,sourceCode,javascript]
+[source,javascript]
 ----
 var MyObject = function() {
     this.attr = "hi";
@@ -344,7 +344,7 @@ Use *===* and *!==* instead of *==* and *!=*.
 
 Here’s why:
 
-[source,sourceCode,javascript]
+[source,javascript]
 ----
 ` == '0'           // false
 0 == `             // true
@@ -371,7 +371,7 @@ warnings if it shouldn’t be accessed
 
 *DO*:
 
-[source,sourceCode,javascript]
+[source,javascript]
 ----
 // single line if
 if (myVar === 'hi') {
@@ -455,7 +455,7 @@ Comments
 All API methods need to be marked with
 http://en.wikipedia.org/wiki/PHPDoc[PHPDoc] markup. An example would be:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -480,7 +480,7 @@ Use Pascal case for Objects, Camel case for functions and variables. If
 you set a default function/method parameter, do not use spaces. Do not
 prepend private class members with underscores.
 
-[source,sourceCode,javascript]
+[source,javascript]
 ----
 class MyClass {
 
@@ -508,7 +508,7 @@ Use *===* and *!==* instead of *==* and *!=*.
 
 Here’s why:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -529,7 +529,7 @@ Control Structures
 * Always use break in switch statements and prevent a default block with
 warnings if it shouldn’t be accessed
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -581,7 +581,7 @@ If a test is run with multiple different values, a data provider must be
 used. The name of the data provider method must not start with `test`
 and must end with `Data`.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace Test;

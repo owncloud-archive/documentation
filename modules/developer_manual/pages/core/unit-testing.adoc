@@ -117,7 +117,7 @@ An example for a simple test would be:
 
 /srv/http/owncloud/apps/myapp/tests/testaddtwo.php
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\Myapp\Tests;
@@ -139,7 +139,7 @@ class TestAddTwo extends \Test\TestCase {
 
 /srv/http/owncloud/apps/myapp/lib/testme.php
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 namespace OCA\Myapp;

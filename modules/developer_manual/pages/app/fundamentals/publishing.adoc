@@ -142,14 +142,14 @@ The following categories are available for apps to be filed under:
 To make your app available under one of these categories, please make
 sure to user the proper tag in your `info.xml`:
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <category>security</category>
 ----
 
 Note: For publishing themes, this tag must be present but empty.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <category></category>
 ----

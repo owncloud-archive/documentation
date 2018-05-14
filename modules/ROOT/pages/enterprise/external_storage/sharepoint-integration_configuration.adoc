@@ -107,7 +107,7 @@ Logging
 Turn on SharePoint app logging by modifying `config/config.php`, setting
 `sharepoint.logging.enable` to `true`, as in the example below.
 
-[source,sourceCode,php]
+[source,php]
 ----
 'sharepoint.logging.enable' => true,
 ----

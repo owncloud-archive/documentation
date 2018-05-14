@@ -44,7 +44,7 @@ TCP-Backlog
 If you raised the TCP-backlog setting, the following warning appears in
 the Redis logs:
 
-[source,sourceCode,console]
+[source,console]
 ----
 WARNING: The TCP backlog setting of 20480 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of..
 ----
@@ -63,7 +63,7 @@ To fix this warning, set the value of `net.core.somaxconn` to `65535` in
 `/etc/rc.local`, so that it persists upon reboot, by running the
 following command.
 
-[source,sourceCode,console]
+[source,console]
 ----
 sudo echo sysctl -w net.core.somaxconn=65535 >> /etc/rc.local
 ----
@@ -78,7 +78,7 @@ Transparent Huge Pages (THP)
 If you are experiencing latency problems with Redis, the following
 warning may appear in your Redis logs:
 
-[source,sourceCode,console]
+[source,console]
 ----
 WARNING you have Transparent Huge Pages (THP) support enabled in your kernel. This creates both latency and memory usage issues with Redis.
 ----
@@ -99,7 +99,7 @@ memory.
 As a result, make sure to disable Transparent Huge Pages using the
 following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ----

@@ -5,7 +5,7 @@ The appinfo/info.xml contains metadata about the application. In this
 section, you will find a complete example configuration, along with an
 explanation of what each of file’s elements.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <?xml version="1.0"?>
 <info>
@@ -112,7 +112,7 @@ categories are available for applications to be filed under.
 
 For publishing themes this tag must be present — but empty.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <category></category>
 ----
@@ -216,7 +216,7 @@ documentation
 Common places are: (where `$name` is the name of your app, e.g.
 `$name=theapp`)
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 $DOCUMENTATION_BASE = 'https://doc.owncloud.org';
 $DOCUMENTATION_DEVELOPER = $DOCUMENTATION_BASE.'/server/'.$VERSIONS_SERVER_MAJOR_DEV_DOCS.'/developer_manual/$name/';`

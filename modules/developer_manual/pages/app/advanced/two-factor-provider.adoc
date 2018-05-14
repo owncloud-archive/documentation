@@ -13,7 +13,7 @@ Two-factor authentication providers must implement the
 `OCP\Authentication\TwoFactorAuth\IProvider` interface. The example
 below shows a minimalist example of such a provider.
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -101,7 +101,7 @@ You need to inform the ownCloud core that the app provides two-factor
 authentication functionality. Two-factor providers are registered via
 `info.xml`.
 
-[source,sourceCode,xml]
+[source,xml]
 ----
 <two-factor-providers>
     <provider>OCA\TwoFactor_Test\Provider\TwoFactorTestProvider</provider>

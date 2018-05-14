@@ -28,7 +28,7 @@ sudo openssl dhparam -out /etc/apache2/dh4096.pem 4096
 
 Add the following directive to your common SSL configuration:
 
-[source,sourceCode,apacheconf]
+[source,apacheconf]
 ----
 SSLOpenSSLConfCmd DHParameters /etc/apache2/dh4096.pem
 ----
@@ -36,7 +36,7 @@ SSLOpenSSLConfCmd DHParameters /etc/apache2/dh4096.pem
 Add the `/.well-known/acme-challenge` location in your Virtual Host
 directive for port 80
 
-[source,sourceCode,apacheconf]
+[source,apacheconf]
 ----
 <virtualHost *.80>
   ServerName mydom.tld
@@ -70,7 +70,7 @@ sudo mkdir ssl_rules
 
 Create a file named `ssl_mydom.tld` in the newly created directory.
 
-[source,sourceCode,apacheconf]
+[source,apacheconf]
 ----
 # ssl rules for mydom.tld
 # eases letsencrypt initial cert issuing
@@ -95,7 +95,7 @@ SSLStaplingCache         shmcb:/tmp/stapling_cache(2097152)
 
 Then adopt your Virtual Host block:
 
-[source,sourceCode,apacheconf]
+[source,apacheconf]
 ----
 <virtualHost *:443>
   ServerName mydom.tld
@@ -163,7 +163,7 @@ When successfully issuing the certificate for the first time, the
 certificate files exist and you can un-comment the `Include` directive
 to use them with SSL.
 
-[source,sourceCode,apacheconf]
+[source,apacheconf]
 ----
 <virtualHost *:443>
   ServerName mydom.tld

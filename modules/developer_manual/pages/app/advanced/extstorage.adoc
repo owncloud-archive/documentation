@@ -179,7 +179,7 @@ https://en.wikipedia.org/wiki/OAuth[OAuth], an application might need to
 provide custom JavaScript code to implement such workflow. To add a
 custom script, use the following in the backend constructor:
 
-[source,sourceCode,php]
+[source,php]
 ----
 $this->addCustomJs('script');
 ----
@@ -196,14 +196,14 @@ With the backend adapter created, it next needs to be registered. This
 can be done in the `Application` class by implementing the
 `IBackendProvider` interface, as in the example below:
 
-[source,sourceCode,php]
+[source,php]
 ----
 :include: examples/storage-backend/OCA/MyStorageApp/AppInfo/Application.php
 ----
 
 Then in appinfo/app.php instantiate the `Application` class:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 

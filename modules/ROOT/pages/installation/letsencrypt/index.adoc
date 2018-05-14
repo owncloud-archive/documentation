@@ -345,7 +345,7 @@ Manual renewal
 If you have provided your email address, you will receive reminder
 notifications.
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 sudo /etc/letsencrypt/renew.sh
 ----
@@ -415,7 +415,7 @@ Deleting SSL Certificates
 If you want to delete an SSL certificate, use the delete.sh script,
 running it as follows:
 
-[source,sourceCode,bash]
+[source,bash]
 ----
 sudo /etc/letsencrypt/delete.sh
 ----

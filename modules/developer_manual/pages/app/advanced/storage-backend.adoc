@@ -181,7 +181,7 @@ https://en.wikipedia.org/wiki/OAuth[OAuth], an application might need to
 provide custom JavaScript code to implement such workflow. To add a
 custom script, use the following in the backend constructor:
 
-[source,sourceCode,php]
+[source,php]
 ----
 $this->addCustomJs('script');
 ----
@@ -198,14 +198,14 @@ With the backend adapter created, it next needs to be registered. This
 can be done in the `Application` class by implementing the
 `IBackendProvider` interface, as in the example below:
 
-[source,sourceCode,php]
+[source,php]
 ----
 :include: examples/storage-backend/OCA/MyStorageApp/AppInfo/Application.php
 ----
 
 Then in appinfo/app.php instantiate the `Application` class:
 
-[source,sourceCode,php]
+[source,php]
 ----
 <?php
 
@@ -369,7 +369,7 @@ IteratorDirectory
 `Icewind\Streams\IteratorDirectory` allows for creating a directory
 handle from an array or iterator.
 
-[source,sourceCode,php]
+[source,php]
 ----
 $fileNames = $this->getFolderContentsSomehow();
 return IteratorDirectory::wrap($fileNames);
@@ -388,7 +388,7 @@ result, the storage backend needs a way to upload the changed file back
 to the backend. This can be done by attaching a close-callback to a
 stream for a temporary file.
 
-[source,sourceCode,php]
+[source,php]
 ----
 $tempFile = $this->downloadFile($path);
 $handle = fopen($tempFile, $mode);
@@ -431,7 +431,7 @@ be called for each used storage. The callback can than determine if a
 wrapper should be applied to the given storage, based on the storage or
 mountpoint, or whether it needs to return the storage unwrapped.
 
-[source,sourceCode,php]
+[source,php]
 ----
 Filesystem::addStorageWrapper('fooWrapper', function($mountPoint, $storage) {
     if ($storage->instanceOfStorage('FooStorage')) {
@@ -459,7 +459,7 @@ PermissionsMask
 permissions on an existing storage. A sample use case is to create a
 read-only ftp backend.
 
-[source,sourceCode,php]
+[source,php]
 ----
 $storage = $this->createStorageToWrapSomehow();
 return new PermissionsMask([
@@ -475,7 +475,7 @@ Jail
 `\OC\Files\Storage\Wrapper\Jail` can be used to limit storage
 interaction to a sub-folder of an existing storage.
 
-[source,sourceCode,php]
+[source,php]
 ----
 $storage = $this->createStorageToWrapSomehow();
 return new Jail([
@@ -494,7 +494,7 @@ using PHP’s `instanceof` operator. Instead, you need to call the
 `instanceOfStorage()` method on the class with the fully-qualified class
 name.
 
-[source,sourceCode,php]
+[source,php]
 ----
 // Only works if no wrappers are applied
 if ($storage instanceof \OC\Files\Storage\DAV) {
@@ -521,7 +521,7 @@ interface, containing the
 `getMountsForUser(IUser $user, IStorageFactory $storageFactory)` method,
 which returns a list of mountpoints that should be created for a user.
 
-[source,sourceCode,php]
+[source,php]
 ----
 class MyMountProvider implements IMountProvider {
     public function getMountsForUser(IUser $user, IStorageFactory $loader) {
@@ -542,7 +542,7 @@ Registering a mount provider should be done from an app’s
 `appinfo/app.php`. Note that any mount provider registered after the
 filesystem is setup for a user will not be called again for that user.
 
-[source,sourceCode,php]
+[source,php]
 ----
 $provider = new MyMountProvider();
 \OC::$server->getMountProviderCollection()

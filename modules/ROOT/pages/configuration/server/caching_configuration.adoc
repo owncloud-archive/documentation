@@ -66,7 +66,7 @@ a data cache _and_ is available in most Linux distributions.
 Installing APCu
 ^^^^^^^^^^^^^^^
 
-[source,sourceCode,console]
+[source,console]
 ----
 # On RedHat/CentOS/Fedora systems running PHP 5.6 
 yum install rh-php56-php-devel
@@ -84,7 +84,7 @@ On Ubuntu 14.04 LTS, the APCu version is 4.0.2. This is too old to use
 with ownCloud, which requires ownCloud 4.0.6+. You can install 4.0.7
 from Ubuntu backports with the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 apt-get install php5-apcu/trusty-backports
 ----
@@ -92,7 +92,7 @@ apt-get install php5-apcu/trusty-backports
 After APCu’s installed, enable the extension by creating a configuration
 file for it, using the following commands.
 
-[source,sourceCode,console]
+[source,console]
 ----
 cat << EOF > /etc/opt/rh/rh-php70/php.d/20-apcu.ini
 ; APCu php extension
@@ -129,7 +129,7 @@ Installing Redis on Debian-based Distributions
 
 On Debian/Ubuntu/Mint run the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 apt-get install redis-server php5-redis
 ----
@@ -149,7 +149,7 @@ Installing Redis on RedHat, CentOS, and Fedora
 On RedHat, CentOS, and Fedora run the following commands to install
 Redis:
 
-[source,sourceCode,console]
+[source,console]
 ----
 yum install rh-php70-php-devel rh-redis32-redis
 pecl install redis 
@@ -160,7 +160,7 @@ on _RedHat_, _Centos_, and _Fedora_. Given that, you must use your
 service manager to both start Redis, and to launch it at boot time as a
 daemon. To do so, run the following commands:
 
-[source,sourceCode,console]
+[source,console]
 ----
 systemctl start rh-redis32-redis
 systemctl enable rh-redis32-redis
@@ -169,7 +169,7 @@ systemctl enable rh-redis32-redis
 You can verify that the Redis daemon is running using either of the
 following two commands:
 
-[source,sourceCode,console]
+[source,console]
 ----
 ps ax | grep redis
 netstat -tlnp | grep redis
@@ -178,7 +178,7 @@ netstat -tlnp | grep redis
 When it’s running, enable the Redis extension by creating a
 configuration file for it, using the following commands.
 
-[source,sourceCode,console]
+[source,console]
 ----
 cat << EOF > /etc/opt/rh/rh-php70/php.d/20-redis.ini
 ; Redis php extension
@@ -215,7 +215,7 @@ On Debian/Mint/Ubuntu
 Use `apt-cache` to see the available `php5-redis` version, or the
 version of your installed package:
 
-[source,sourceCode,console]
+[source,console]
 ----
 apt-cache policy php5-redis
 ----
@@ -226,7 +226,7 @@ On CentOS and Fedora
 
 The `yum` command shows available and installed version information:
 
-[source,sourceCode,console]
+[source,console]
 ----
 yum search php-pecl-redis
 ----
@@ -250,7 +250,7 @@ It is zero by default at ownCloud. To check what yours is currently set
 to, check the `dbindex` value in `config/config.php`. Here’s an example
 of what to look for:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'redis': {
     'host' => 'localhost',  // Can also be a unix domain socket => '/tmp/redis.sock'
@@ -294,7 +294,7 @@ On Debian/Ubuntu/Mint
 
 On Debian/Ubuntu/Mint run the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 apt-get install memcached php5-memcached
 ----
@@ -308,7 +308,7 @@ On RedHat/CentOS/Fedora
 
 On RedHat/CentOS/Fedora run the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 yum install memcached php-pecl-memcache 
 ----
@@ -317,7 +317,7 @@ It will not start Memcached automatically after the installation or on
 subsequent reboots as a daemon, so you must do so yourself . To do so,
 run the following command:
 
-[source,sourceCode,console]
+[source,console]
 ----
 systemctl start memcached
 systemctl enable memcached
@@ -326,7 +326,7 @@ systemctl enable memcached
 You can verify that the Memcached daemon is running using one of the
 following commands:
 
-[source,sourceCode,console]
+[source,console]
 ----
 ps ax | grep memcached
 netstat -tlnp | grep memcached
@@ -336,7 +336,7 @@ With the extension installed, you now need to configure it, by creating
 a configuration file for it. You can do so using the command below,
 substituting `FILE_PATH` with one from the list below the command.
 
-[source,sourceCode,console]
+[source,console]
 ----
 cat << EOF > FILE_PATH
 ; Memcached PHP extension
@@ -402,7 +402,7 @@ APCu Configuration
 
 To use APCu, add this line to `config.php`:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'memcache.local' => '\OC\Memcache\APCu',
 ----
@@ -417,7 +417,7 @@ Redis Configuration
 This example `config.php` configuration uses Redis for the local server
 cache:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'memcache.local' => '\OC\Memcache\Redis',
 'redis' => [
@@ -435,7 +435,7 @@ If you want to connect to Redis configured to listen on an Unix socket,
 which is recommended if Redis is running on the same system as ownCloud,
 use this example configuration:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'memcache.local' => '\OC\Memcache\Redis',
 'redis' => [
@@ -455,7 +455,7 @@ This example uses APCu for the local cache, Memcached as the distributed
 memory cache, and lists all the servers in the shared cache pool with
 their port numbers:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'memcache.local' => '\OC\Memcache\APCu',
 'memcache.distributed' => '\OC\Memcache\Memcached',
@@ -474,7 +474,7 @@ Configuration Recommendations Based on Type of Deployment
 Small/Private Home Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-[source,sourceCode,php]
+[source,php]
 ----
 // Only use APCu
 'memcache.local' => '\OC\Memcache\APCu', 
@@ -486,7 +486,7 @@ Small Organization, Single-server Setup
 
 Use APCu for local caching, Redis for file locking
 
-[source,sourceCode,php]
+[source,php]
 ----
 'memcache.local' => '\OC\Memcache\APCu',
 'memcache.locking' => '\OC\Memcache\Redis',
@@ -503,7 +503,7 @@ Large Organization, Clustered Setup
 Use Redis for everything except a local memory cache. Use the server’s
 IP address or hostname so that it is accessible to other hosts:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'memcache.distributed' => '\OC\Memcache\Redis',
 'memcache.locking' => '\OC\Memcache\Redis',
@@ -524,7 +524,7 @@ prevents simultaneous file saving. To use it, you have to enable it in
 `config.php` as in the following example, which uses Redis as the cache
 backend:
 
-[source,sourceCode,php]
+[source,php]
 ----
 'filelocking.enabled' => true,
 'memcache.locking' => '\OC\Memcache\Redis',
