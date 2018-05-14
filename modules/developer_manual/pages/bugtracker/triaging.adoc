@@ -121,7 +121,7 @@ developers. And you don’t have to know much to be able to judge at least
 some bug reports to be less than useful. There are duplications,
 incomplete reports and so on. Here is the work flow for each bug:
 
-image:/owncloud-docs/_images/triageworkflow.png[image]
+image:/owncloud-docs/developer_manual/_images/triageworkflow.png[image]
 
 Let’s go over each step.
 

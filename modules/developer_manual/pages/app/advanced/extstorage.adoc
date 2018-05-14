@@ -198,7 +198,7 @@ can be done in the `Application` class by implementing the
 
 [source,php]
 ----
-:include: examples/storage-backend/OCA/MyStorageApp/AppInfo/Application.php
+include::examples/storage-backend/OCA/MyStorageApp/AppInfo/Application.php
 ----
 
 Then in appinfo/app.php instantiate the `Application` class:

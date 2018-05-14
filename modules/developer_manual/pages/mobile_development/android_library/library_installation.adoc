@@ -28,7 +28,7 @@ then we will describe one of them.
 For that, access to Properties > Android > Library _*_* and click on add
 and select the ownCloud Android library
 
-image:/owncloud-docs/_images/1000000000000270000003A317117674.png[1000000000000270000003A317117674_png,width=407,height=608]
+image:/owncloud-docs/developer_manual/_images/mobile_development/android_library/1000000000000270000003A317117674.png[1000000000000270000003A317117674_png,width=407,height=608]
 
 Then all the public classes and methods of the library will be available
 for your own app.
