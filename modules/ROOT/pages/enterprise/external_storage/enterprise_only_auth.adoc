@@ -38,9 +38,9 @@ Global credentials::
 
 Global credentials are entered in a separate form.
 
-image:/owncloud-docs/_images/auth_backends-2.png[image]
+image:/owncloud-docs/_images/enterprise/external_storage/auth_backends-2.png[image]
 
 Use the dropdown selector to choose the authentication backend when you
 create a new external mount.
 
-image:/owncloud-docs/_images/auth_backends.png[image]
+image:/owncloud-docs/_images/enterprise/external_storage/auth_backends.png[image]

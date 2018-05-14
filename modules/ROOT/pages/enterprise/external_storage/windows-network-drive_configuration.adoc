@@ -21,8 +21,8 @@ These indicate that ownCloud cannot connect to the share because it
 requires the user to login, it is not available, or there is an error in
 the configuration.
 
-image:/owncloud-docs/_images/wnd-1.png[_Figure 1: Windows Network Drive share on your
-Files page._]
+image:/owncloud-docs/_images/enterprise/external_storage/wnd-1.png[Figure 1: Windows Network Drive share on your
+Files page.]
 
 Files are synchronized bi-directionally, and you can create, upload, and
 delete files and folders. ownCloud server admins can create Windows
@@ -117,8 +117,8 @@ be an existing folder.
 2.  Then select your authentication method; See enterprise_only_auth for
 complete information on the five available authentication methods.
 
-image:/owncloud-docs/_images/wnd-2.png[_Figure 2: WND mountpoint and authorization
-credentials._]
+image:/owncloud-docs/_images/enterprise/external_storage/wnd-2.png[Figure 2: WND mountpoint and authorization
+credentials.]
 
 1.  Enter the address of the server that contains the WND share.
 2.  The Windows share name.
@@ -137,8 +137,8 @@ not available for all authorization methods; see enterprise_only_auth.
 For large storages with many files, you may want to disable previews,
 because this can significantly increase performance.
 
-image:/owncloud-docs/_images/wnd-3.png[_Figure 3: WND server, credentials, and
-additional mount options._]
+image:/owncloud-docs/_images/enterprise/external_storage/wnd-3.png[Figure 3: WND server, credentials, and
+additional mount options.]
 
 Your changes are saved automatically.
 
