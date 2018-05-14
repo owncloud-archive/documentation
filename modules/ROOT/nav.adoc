@@ -1,7 +1,7 @@
 #!/usr/bin/env php
 
-* Admin Manual
-*** Appliance
+* xref:index.adoc[Admin Manual]
+*** xref:appliance/index.adoc[Appliance]
 **** UCS
 ***** xref:appliance/ucs/add-groups-and-users.adoc[Add groups and users]
 **** xref:appliance/Active_Directory.adoc[Active Directory]
@@ -10,17 +10,15 @@
 **** xref:appliance/Office.adoc[Office]
 **** xref:appliance/certificates.adoc[Certificates]
 **** xref:appliance/howto-update-owncloud.adoc[Howto update ownCloud]
-**** xref:appliance/index.adoc[Index]
 **** xref:appliance/installation.adoc[Installation]
 **** xref:appliance/login_information.adoc[Login Information]
 **** xref:appliance/managing-ucs.adoc[Managing UCS]
 **** xref:appliance/what-is-it.adoc[What is it]
-*** Configuration
-**** Database
+*** xref:configuration/index.adoc[Configuration]
+**** xref:configuration/database/index.adoc[Database]
 ***** xref:configuration/database/db_conversion.adoc[DB Conversion]
-***** xref:configuration/database/index.adoc[Index]
 ***** xref:configuration/database/linux_database_configuration.adoc[Linux Database Configuration]
-**** Files
+**** xref:configuration/files/index.adoc[Files]
 ***** External_storage
 ****** xref:configuration/files/external_storage/amazons3.adoc[AmazonS3]
 ****** xref:configuration/files/external_storage/auth_mechanisms.adoc[Auth Mechanisms]
@@ -32,7 +30,7 @@
 ****** xref:configuration/files/external_storage/owncloud.adoc[ownCloud]
 ****** xref:configuration/files/external_storage/sftp.adoc[SFTP]
 ****** xref:configuration/files/external_storage/smb.adoc[SMB]
-****** xref:configuration/files/external_storage/webdav.adoc[Webdav]
+****** xref:configuration/files/external_storage/webdav.adoc[WebDAV]
 ***** xref:configuration/files/big_file_upload_configuration.adoc[Big File Upload Configuration]
 ***** xref:configuration/files/default_files_configuration.adoc[Default Files Configuration]
 ***** xref:configuration/files/encryption_configuration.adoc[Encryption Configuration]
@@ -42,18 +40,16 @@
 ***** xref:configuration/files/file_sharing_configuration.adoc[File Sharing Configuration]
 ***** xref:configuration/files/file_versioning.adoc[File Versioning]
 ***** xref:configuration/files/files_locking_transactional.adoc[Files Locking Transactional]
-***** xref:configuration/files/index.adoc[Index]
 ***** xref:configuration/files/previews_configuration.adoc[Previews Configuration]
-***** xref:configuration/files/trashbin_options.adoc[Trashbin Options]
+***** xref:configuration/files/trashbin_options.adoc[Trash bin Options]
 **** LDAP
 ***** xref:configuration/ldap/ldap_proxy_cache_server_setup.adoc[LDAP Proxy Cache Server Setup]
-**** Mimetypes
-***** xref:configuration/mimetypes/index.adoc[Index]
-**** Server
+**** xref:configuration/mimetypes/index.adoc[Mimetypes]
+**** xref:configuration/server/index.adoc[Server]
 ***** Security
 ****** xref:configuration/server/security/password-policy.adoc[Password policy]
 ***** xref:configuration/server/activity_configuration.adoc[Activity Configuration]
-***** xref:configuration/server/antivirus_configuration.adoc[AntiVirus Configuration]
+***** xref:configuration/server/antivirus_configuration.adoc[Antivirus Configuration]
 ***** xref:configuration/server/automatic_configuration.adoc[Automatic Configuration]
 ***** xref:configuration/server/background_jobs_configuration.adoc[Background Jobs Configuration]
 ***** xref:configuration/server/caching_configuration.adoc[Caching Configuration]
@@ -64,18 +60,16 @@
 ***** xref:configuration/server/external_sites.adoc[External Sites]
 ***** xref:configuration/server/harden_server.adoc[Harden Server]
 ***** xref:configuration/server/import_ssl_cert.adoc[Import SSL Cert]
-***** xref:configuration/server/index.adoc[Index]
 ***** xref:configuration/server/index_php_less_urls.adoc[Index PHP Less URLs]
 ***** xref:configuration/server/knowledgebase_configuration.adoc[Knowledgebase Configuration]
 ***** xref:configuration/server/language_configuration.adoc[Language Configuration]
 ***** xref:configuration/server/logging_configuration.adoc[Logging Configuration]
-***** xref:configuration/server/oc_server_tuning.adoc[OC Server Tuning]
+***** xref:configuration/server/oc_server_tuning.adoc[Server Tuning]
 ***** xref:configuration/server/occ_command.adoc[OCC Command]
 ***** xref:configuration/server/reverse_proxy_configuration.adoc[Reverse Proxy Configuration]
 ***** xref:configuration/server/security_setup_warnings.adoc[Security Setup Warnings]
-***** xref:configuration/server/thirdparty_php_configuration.adoc[Thirdparty PHP Configuration]
-**** User
-***** xref:configuration/user/index.adoc[Index]
+***** xref:configuration/server/thirdparty_php_configuration.adoc[Third Party PHP Configuration]
+**** xref:configuration/user/index.adoc[User]
 ***** xref:configuration/user/reset_admin_password.adoc[Reset Admin Password]
 ***** xref:configuration/user/reset_user_password.adoc[Reset User Password]
 ***** xref:configuration/user/user_auth_ftp_smb_imap.adoc[User Auth FTP SMB IMAP]
@@ -83,50 +77,36 @@
 ***** xref:configuration/user/user_configuration.adoc[User Configuration]
 ***** xref:configuration/user/user_provisioning_api.adoc[User Provisioning API]
 ***** xref:configuration/user/user_roles.adoc[User Roles]
-**** xref:configuration/index.adoc[Index]
-*** Enterprise
-**** Clients
+*** xref:enterprise/index.adoc[Enterprise]
+**** xref:enterprise/clients/index.adoc[Clients]
 ***** xref:enterprise/clients/creating_branded_apps.adoc[Creating Branded Apps]
 ***** xref:enterprise/clients/custom_client_repos.adoc[Custom Client Repos]
-***** xref:enterprise/clients/index.adoc[Index]
-**** External Storage
+**** xref:enterprise/external_storage/index.adoc[External Storage]
 ***** xref:enterprise/external_storage/enterprise_only_auth.adoc[Enterprise Only Auth]
-***** xref:enterprise/external_storage/index.adoc[Index]
 ***** xref:enterprise/external_storage/ldap_home_connector_configuration.adoc[LDAP Home Connector Configuration]
 ***** xref:enterprise/external_storage/onedrive.adoc[OneDrive]
 ***** xref:enterprise/external_storage/s3_swift_as_primary_object_store_configuration.adoc[S3 Swift as Primary Object Store Configuration]
 ***** xref:enterprise/external_storage/sharepoint-integration_configuration.adoc[Sharepoint integration Configuration]
 ***** xref:enterprise/external_storage/windows-network-drive_configuration.adoc[Windows Network Drive Configuration]
-**** File Management
+**** xref:enterprise/file_management/index.adoc[File Management]
 ***** xref:enterprise/file_management/files_tagging.adoc[Files Tagging]
-***** xref:enterprise/file_management/index.adoc[Index]
-**** Firewall
+**** xref:enterprise/firewall/index.adoc[Firewall]
 ***** xref:enterprise/firewall/file_firewall.adoc[File Firewall]
-***** xref:enterprise/firewall/index.adoc[Index]
-**** Installation
-***** xref:enterprise/installation/index.adoc[Index]
+**** xref:enterprise/installation/index.adoc[Installation]
 ***** xref:enterprise/installation/install.adoc[Install]
 ***** xref:enterprise/installation/oracle_db_configuration.adoc[Oracle DB Configuration]
-**** Logging
+**** xref:enterprise/logging/index.adoc[Logging]
 ***** xref:enterprise/logging/enterprise_logging_apps.adoc[Enterprise Logging Apps]
-***** xref:enterprise/logging/index.adoc[Index]
-**** Ransomware Protection
-***** xref:enterprise/ransomware-protection/index.adoc[Index]
-**** Server Branding
+**** xref:enterprise/ransomware-protection/index.adoc[Ransomware Protection]
+**** xref:enterprise/server_branding/index.adoc[Server Branding]
 ***** xref:enterprise/server_branding/enterprise_server_branding.adoc[Enterprise Server Branding]
-***** xref:enterprise/server_branding/index.adoc[Index]
-**** User Management
-***** xref:enterprise/user_management/index.adoc[Index]
+**** xref:enterprise/user_management/index.adoc[User Management]
 ***** xref:enterprise/user_management/user_auth_shibboleth.adoc[User Auth Shibboleth]
-**** xref:enterprise/index.adoc[Index]
-*** FAQ
-**** xref:faq/index.adoc[Index]
-*** Installation
-**** Docker
-***** xref:installation/docker/index.adoc[Index]
-**** Let's Encrypt
+*** xref:faq/index.adoc[FAQ]
+*** xref:installation/index.adoc[Installation]
+**** xref:installation/docker/index.adoc[Docker]
+**** xref:installation/letsencrypt/index.adoc[Let's Encrypt]
 ***** xref:installation/letsencrypt/apache.adoc[Apache]
-***** xref:installation/letsencrypt/index.adoc[Index]
 ***** xref:installation/letsencrypt/nginx.adoc[NGINX]
 **** xref:installation/apps_management_installation.adoc[Apps Management Installation]
 **** xref:installation/apps_supported.adoc[Apps Supported]
@@ -135,23 +115,20 @@
 **** xref:installation/configuration_notes_and_tips.adoc[Configuration Notes and Tips]
 **** xref:installation/deployment_considerations.adoc[Deployment Considerations]
 **** xref:installation/deployment_recommendations.adoc[Deployment Recommendations]
-**** xref:installation/index.adoc[Index]
 **** xref:installation/installation_wizard.adoc[Installation Wizard]
 **** xref:installation/linux_installation.adoc[Linux Installation]
 **** xref:installation/nginx_configuration.adoc[NGINX Configuration]
 **** xref:installation/selinux_configuration.adoc[SELinux Configuration]
 **** xref:installation/source_installation.adoc[Source Installation]
-**** xref:installation/system_requirements.adoc[System ReqUIrements]
+**** xref:installation/system_requirements.adoc[System Requirements]
 **** xref:installation/troubleshooting.adoc[Troubleshooting]
-*** Issues
+*** xref:issues/index.adoc[Issues]
 **** xref:issues/code_signing.adoc[Code Signing]
 **** xref:issues/general_troubleshooting.adoc[General Troubleshooting]
 **** xref:issues/impersonate_users.adoc[Impersonate Users]
-**** xref:issues/index.adoc[Index]
-*** Maintenance
+*** xref:maintenance/index.adoc[Maintenance]
 **** xref:maintenance/backup.adoc[Backup]
 **** xref:maintenance/enable_maintenance.adoc[Enable Maintenance]
-**** xref:maintenance/index.adoc[Index]
 **** xref:maintenance/manual_upgrade.adoc[Manual Upgrade]
 **** xref:maintenance/manually-moving-data-folders.adoc[Manually moving data folders]
 **** xref:maintenance/migrating.adoc[Migrating]
@@ -159,11 +136,9 @@
 **** xref:maintenance/restore.adoc[Restore]
 **** xref:maintenance/update.adoc[Update]
 **** xref:maintenance/upgrade.adoc[Upgrade]
-*** Upgrading
-**** xref:upgrading/index.adoc[Index]
+*** xref:upgrading/index.adoc[Upgrading]
 **** xref:upgrading/marketplace_apps.adoc[Marketplace Apps]
 **** xref:upgrading/upgrade_php.adoc[Upgrade PHP]
 *** xref:contents.adoc[Contents]
-*** xref:index.adoc[Index]
 *** xref:release_notes.adoc[Release Notes]
 *** xref:whats_new_admin.adoc[What's New Admin]
