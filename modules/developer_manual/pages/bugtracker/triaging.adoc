@@ -70,7 +70,7 @@ the irc://freenode/#owncloud-dev[developers on irc]. Tell them you’re
 triaging bugs and share what problem you bumped into. Or just ask on the
 test-pilots mailing list.
 * To ensure no two people are working on the same issue, we ask you to
-simply add a comment like ``I am triaging this` in the issue you want
+simply add a comment like `I am triaging this` in the issue you want
 to work on, and when done, before or after executing the triaging
 actions, note similarly that you’re done.
 +
@@ -102,12 +102,9 @@ storage, or using the encryption app, you could look for bugs with these
 keywords. You can then use your knowledge of your installation and your
 installation itself to see if bugs are (still) valid or reproduce them.
 
-Once you have picked an issue, add a comment that you’ve started
-triaging:
+Once you have picked an issue, add a comment that you’ve started triaging:
 
-__________________________
-``I am triaging this bug`
-__________________________
+`I am triaging this bug`
 
 [[checking-if-the-issue-is-useful]]
 Checking if the issue is useful

@@ -347,11 +347,9 @@ class BakeryController extends Controller {
         $response->invalidateCookies(['bar', 'bazinga']);
         return $response;
     }
+}
 ----
 
-_
-}
-_
 
 [[responses]]
 Responses

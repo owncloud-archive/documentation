@@ -292,12 +292,8 @@ folder. This one will be replaced by the former.
 Code example
 ~~~~~~~~~~~~
 
-_
- 
-_
-
-....
 [source,java]
+----
 private void startFileMove(String filePath, String newFilePath, boolean overwrite) {
   MoveRemoteFileOperation moveOperation = new MoveRemoteFileOperation(filePath, newFilePath, overwrite); 
   moveOperation.execute( mClient , this , mHandler); 
@@ -312,7 +308,7 @@ public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationRe
   }
   …
 }
-....
+----
 
 [[read-shared-items-by-link]]
 Read shared items by link

@@ -162,7 +162,7 @@ View.prototype = {
         $('#new-note').click(function () {
             var note = {
                 title: translations.newNote,
-                content: `
+                content: ''
             };
 
             self._notes.create(note).done(function() {

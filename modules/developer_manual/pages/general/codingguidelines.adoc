@@ -25,9 +25,7 @@ extra commits like: _merged master into master_
 CSS
 ---
 
-Take a look at the
-http://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp[Writing Tactical
-CSS & HTML] video on YouTube.
+Take a look at the http://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp[Writing Tactical CSS & HTML] video on YouTube.
 
 Don’t bind your CSS too much to your HTML structure and try to avoid
 IDs. Also try to make your CSS reusable by grouping common attributes

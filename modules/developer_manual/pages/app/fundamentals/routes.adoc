@@ -20,14 +20,13 @@ $application->registerRoutes($this, [
 
 The route array contains the following parts:
 
-` `url`: The URL that is matched after `/index.php/apps/myapp` ` `name`:
+- `url`: The URL that is matched after `/index.php/apps/myapp` ` `name`:
 The controller and the method to call; `page#index` is being mapped to
 `PageController->index()`, `articles_api#drop_latest` would be mapped to
 `ArticlesApiController->dropLatest()`. The controller that matches the
 `page#index` name would have to be registered in the following way
 inside appinfo/application.php:
 
-____________________________________________________________________
 [source,php]
 ----
 <?php
@@ -56,9 +55,8 @@ class Application extends App {
 
 }
 ----
-____________________________________________________________________
 
-` `method` (Optional, defaults to `GET`): The HTTP method that should be
+- `method` (Optional, defaults to `GET`): The HTTP method that should be
 matched, (e.g., `GET`, `POST`, `PUT`, `DELETE`, `HEAD`, `OPTIONS`,
 `PATCH`) ` `requirements` (Optional): lets you match and extract URLs
 that have slashes in them (see `Matching suburls`) ` `postfix`

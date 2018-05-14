@@ -111,7 +111,7 @@ following command.
 
 ....
 # Replace "contacts" with your application identifier.
-``openssl req -nodes -newkey rsa:4096 -keyout contacts.key -out contacts.csr -subj "/CN=contacts"``
+openssl req -nodes -newkey rsa:4096 -keyout contacts.key -out contacts.csr -subj "/CN=contacts"
 ....
 
 Then, post the CSR on https://github.com/owncloud/appstore-issues, and
@@ -180,7 +180,7 @@ a file has been removed and `signature.json` has not been updated.
 
 * Another exception has prevented the code verification. There are
 currently these following exceptions:
-** `Signature data not found.``
+** `Signature data not found.`
 *** The app has mandatory code signing enforced but no `signature.json`
 file has been found in its `appinfo` folder.
 ** `Certificate is not valid.`

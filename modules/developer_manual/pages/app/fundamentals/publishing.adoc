@@ -50,7 +50,7 @@ notes of the ownCloud version this app is made for.
 ownCloud Marketplace:
 
 * Available in Apps page in a separate category.
-* Sorted first in all overviews, ``Official` tag.
+* Sorted first in all overviews, `Official` tag.
 * Shown as featured on https://owncloud.org, etc.
 * Major releases optionally featured on https://owncloud.org and sent to
 owncloud-announce list.
@@ -168,7 +168,7 @@ Besides these categories apps can have different tags:
 Enterprise
 ~~~~~~~~~~
 
-Apps with the ``Enterprise` tag are official ownCloud enterprise apps.
+Apps with the `Enterprise` tag are official ownCloud enterprise apps.
 These can only be uploaded by ownCloud itself and represent ownCloud
 Enterprise Edition features.
 
@@ -178,14 +178,14 @@ image:/owncloud-docs/_images/app/app-tile-enterprise.jpg[ownCloud "Enterprise" t
 Verified
 ~~~~~~~~
 
-To get the ``verified` label on your app, you must request a review. We
+To get the `verified` label on your app, you must request a review. We
 then will look into your app and check if it meets the ownCloud app
 development guidelines (see below). The advantages of verified apps are
 that:
 
-* they are labeled with ``verified` badge.
+* they are labeled with `verified` badge.
 * they are available in apps page in separate category.
-* only verified apps can be displayed in the ``featured` area.
+* only verified apps can be displayed in the `featured` area.
 * major releases optionally featured on https://owncloud.org and sent to
 the owncloud-announce list.
 
@@ -196,25 +196,25 @@ Trusted
 ~~~~~~~
 
 If your app reaches a rating level of 4 or higher based on 40 ratings or
-more it automatically gets the badge ``trusted`. It represents a
+more it automatically gets the badge `trusted`. It represents a
 community oriented level of quality which makes it more attractive to
 other users. The advantages of trusted apps are that:
 
-* they are labeled with ``trusted` badge.
+* they are labeled with `trusted` badge.
 * the user can filter by trusted apps.
 
 [[app-review-process]]
 App Review Process
 ------------------
 
-To request an app review go to ``Account` > ``My Products` > ``Edit
+To request an app review go to `Account` > ``My Products` > ``Edit
 app` and click on the button ``Request review`. Usually, it takes 3-5
 work days to review your app. You will be notified about the result.
 
-If it is successful, your app will get the ``verified` badge. Please be
+If it is successful, your app will get the `verified` badge. Please be
 aware of when uploading a new release to a verified app, you need to
 request a new review for the new release. To keep your verified badge,
-request the review before setting your new release to ``published`.
+request the review before setting your new release to `published`.
 
 [[app-guidelines]]
 App Guidelines
@@ -227,7 +227,7 @@ high quality.
 Legal and Security
 ~~~~~~~~~~~~~~~~~~
 
-* Apps can not use ``ownCloud` in their name
+* Apps can not use `ownCloud` in their name
 * Irregular and unannounced security audits of all apps can and will
 take place.
 * If any indication of malicious intent or bad faith is found the
@@ -317,42 +317,41 @@ code. This does not depend on whether it happens intentionally or not.
 Available Products Tags
 -----------------------
 
-=============
-=====================================================================================================
-Tag Description =============
-=====================================================================================================
-id A unique id; URL of your app will be based on this. name The
-name/title of your app; Max. 50 characters; Provide a concise name so
-users can identify your app easily; Do not include your
-developers/company name. summary Provide a short description (max. 90
-chars). This gets displayed below the product title and on the product
-tiles; mandatory since ownCloud 10.0.0. description Max. 4000
-characters; Provide all necessary, detailed information about the
-product. This should contain all user relevant information. Don’t get
-lost in technical details, focus on the benefits the product offers;
-Also, use markdown to layout your description. license At the moment
-following license are available: - ocl - ownCloud commercial license;
-ownCloud enterprise apps only - agpl - mit version The release version
-of your app. Note: To overwrite a release (using the same version
-number) it must be in state ```planned``. Once published, you cannot
-replace a release. category The category you want to publish your app
-in; For all available categories see above. screenshot Image URL; insert
-multiple tags if you want to include multiple images; Note: marketplace
-will store images in its own file system. You do not need to provide the
-images on you own hosted area after the upload. dependencies Min and max
-version of ownCloud platform your app works with. For example:
+.Available Product Tags
+|===
+|Tag |Description
 
-____________________________________________________
-[source,sourceCode,xml]
+| id 
+| A unique id. URL of your app will be based on this. 
+
+| name 
+| The name/title of your app; Max. 50 characters; Provide a concise name so users can identify your app easily; Do not include your developers/company name. 
+
+| summary 
+| Provide a short description (max. 90 chars). This gets displayed below the product title and on the product tiles; mandatory since ownCloud 10.0.0. 
+
+| description 
+| Max. 4000 characters; Provide all necessary, detailed information about the product. This should contain all user relevant information. Don’t get lost in technical details, focus on the benefits the product offers; Also, use markdown to layout your description. 
+
+| license 
+| At the moment following license are available: - ocl - ownCloud commercial license; ownCloud enterprise apps only - agpl - mit version The release version of your app. Note: To overwrite a release (using the same version number) it must be in state ``planned``. Once published, you cannot replace a release. 
+
+| category 
+| The category you want to publish your app in; For all available categories see above. 
+
+| screenshot 
+| Image URL; insert multiple tags if you want to include multiple images; Note: marketplace will store images in its own file system. You do not need to provide the images on you own hosted area after the upload. 
+
+| dependencies 
+| Min and max version of ownCloud platform your app works with. For example:
+|===
+
+[source,xml]
 ----
 <dependencies>
   <owncloud min-version="10.0" max-version="10.0" />
 </dependencies>
 ----
-____________________________________________________
-
-=============
-=====================================================================================================
 
 For a complete list of tags see:
 https://doc.owncloud.org/server/latest/developer_manual/app/info.html.

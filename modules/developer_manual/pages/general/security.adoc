@@ -20,7 +20,7 @@ strings, even if you do not need it. Doing so prevents future problems
 where you might miss a change that leads to a security hole.
 
 All application Framework security features depend on the call of the
-controller through :phpOCA\\AppFramework\\App::main. If the controller
+controller through `OCA\\AppFramework\\App::main`. If the controller
 method executes directly, security checks are not performed!
 
 [[general]]
