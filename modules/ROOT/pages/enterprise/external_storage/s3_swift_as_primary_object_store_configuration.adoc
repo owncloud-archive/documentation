@@ -41,6 +41,7 @@ relevant part to your `config.php` file. Any object store needs to
 implement `\\OCP\\Files\\ObjectStore\\IObjectStore` and can be passed
 parameters in the constructor with the `arguments` key:
 
+[source,json]
 ....
 'objectstore' => [
     'class' => 'Implementation\\Of\\OCP\\Files\\ObjectStore\\IObjectStore',
@@ -57,6 +58,7 @@ Amazon S3
 The S3 backend mounts a bucket of the Amazon S3 object store into the
 virtual filesystem. The class to be used is `OCA\ObjectStore\S3`:
 
+[source,json]
 ....
 'objectstore' => [
     'class' => 'OCA\ObjectStore\S3',
@@ -89,6 +91,7 @@ The S3 backend can also be used to mount the bucket of a ceph object
 store via the s3 API into the virtual filesystem. The class to be used
 is `OCA\ObjectStore\S3`:
 
+[source,json]
 ....
 'objectstore' => [
     'class' => 'OCA\ObjectStore\S3',
@@ -123,6 +126,7 @@ S3 Multibucket Configuration
 
 ownCloud 9.1+ has multibucket support for S3 object stores:
 
+[source,json]
 ....
 'objectstore_multibucket' => [
    'class' => 'OCA\ObjectStore\S3',
@@ -148,6 +152,7 @@ The Swift backend mounts a container on an OpenStack Object Storage
 server into the virtual filesystem. The class to be used is
 `\\OC\\Files\\ObjectStore\\Swift`:
 
+[source,json]
 ....
 'objectstore' => [
     'class' => 'OC\\Files\\ObjectStore\\Swift',
