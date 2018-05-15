@@ -1,0 +1,34 @@
+Library Installation
+====================
+
+[[obtaining-the-library]]
+Obtaining the library
+---------------------
+
+The ownCloud Android library may be obtained from the following Github
+repository:
+
+https://github.com/owncloud/android-library[https://github.com/owncloud/android-library]
+
+Once obtained, this code should be compiled. The Github repository not
+only contains the library, but also a sample project, sample_client
+sample_client properties/android/librerias , which will assist in
+learning how to use the library.
+
+[[add-the-library-to-a-project]]
+Add the library to a project
+----------------------------
+
+There are different methods to add an external library to a project,
+then we will describe one of them.
+
+1.  Compile the ownCloud Android Library
+2.  Define a dependency within your project.
+
+For that, access to Properties > Android > Library _*_* and click on add
+and select the ownCloud Android library
+
+image:/owncloud-docs/developer_manual/_images/mobile_development/android_library/1000000000000270000003A317117674.png[1000000000000270000003A317117674_png,width=407,height=608]
+
+Then all the public classes and methods of the library will be available
+for your own app.

@@ -1,0 +1,625 @@
+  migrating .//configuration/database/index.rst to .//configuration/database/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 12, column 1)
+  migrating .//configuration/database/linux_database_configuration.rst to .//configuration/database/linux_database_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 298, column 79)
+[pandoc warning] ignoring unknown role :file: in "source" (line 297, column 26)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 268, column 46)
+[pandoc warning] ignoring unknown role :file: in "source" (line 267, column 56)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 227, column 61)
+[pandoc warning] ignoring unknown role :file: in "source" (line 226, column 96)
+[pandoc warning] ignoring unknown role :file: in "source" (line 208, column 161)
+[pandoc warning] ignoring unknown role :file: in "source" (line 192, column 105)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 131, column 46)
+[pandoc warning] ignoring unknown role :file: in "source" (line 130, column 52)
+[pandoc warning] ignoring unknown role :file: in "source" (line 88, column 60)
+[pandoc warning] ignoring unknown role :file: in "source" (line 76, column 199)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 76, column 115)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 19, column 80)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 11, column 41)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 9, column 40)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 8, column 41)
+  migrating .//configuration/database/db_conversion.rst to .//configuration/database/db_conversion.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 7, column 249)
+  migrating .//configuration/index.rst to .//configuration/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 16, column 1)
+  migrating .//configuration/ldap/ldap_proxy_cache_server_setup.rst to .//configuration/ldap/ldap_proxy_cache_server_setup.adoc
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 210, column 1)
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 58, column 1)
+  migrating .//configuration/server/index_php_less_urls.rst to .//configuration/server/index_php_less_urls.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 48, column 96)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 30, column 60)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 24, column 71)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 22, column 46)
+  migrating .//configuration/server/index.rst to .//configuration/server/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 33, column 1)
+  migrating .//configuration/server/oc_server_tuning.rst to .//configuration/server/oc_server_tuning.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 104, column 53)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 101, column 81)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 32, column 77)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 25, column 33)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 14, column 49)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 8, column 41)
+  migrating .//configuration/server/antivirus_configuration.rst to .//configuration/server/antivirus_configuration.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 310, column 93)
+[pandoc warning] Could not find reference for Key "executable" "source" (line 180, column 84)
+[pandoc warning] Could not find reference for Key "daemon" "source" (line 180, column 65)
+[pandoc warning] Could not find reference for Key "daemon (socket)" "source" (line 180, column 54)
+  migrating .//configuration/server/external_sites.rst to .//configuration/server/external_sites.adoc
+  migrating .//configuration/server/occ_command.rst to .//configuration/server/occ_command.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 2122, column 81)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 2004, column 86)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 2005, column 197)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 1999, column 223)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 1999, column 173)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 1997, column 103)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 1985, column 194)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 1918, column 71)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 1699, column 118)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 1614, column 194)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 1588, column 103)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 1562, column 103)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 1557, column 82)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 1520, column 113)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 1414, column 103)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 1354, column 103)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 946, column 37)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 770, column 90)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 622, column 103)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 582, column 62)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 578, column 98)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 575, column 98)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 566, column 97)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 510, column 86)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 426, column 103)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 248, column 68)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 49, column 30)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 43, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 41, column 29)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 40, column 34)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 39, column 39)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 38, column 22)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 37, column 27)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 36, column 22)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 35, column 24)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 34, column 33)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 33, column 31)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 32, column 30)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 31, column 29)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 30, column 34)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 29, column 30)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 28, column 27)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 27, column 49)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 26, column 29)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 25, column 28)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 24, column 28)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 23, column 29)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 22, column 29)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 21, column 24)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 20, column 33)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 19, column 17)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 18, column 29)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 17, column 38)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 16, column 27)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 15, column 23)
+[pandoc warning] ignoring unknown role :file: in "source" (line 8, column 85)
+[pandoc warning] ignoring unknown role :file: in "source" (line 8, column 36)
+  migrating .//configuration/server/import_ssl_cert.rst to .//configuration/server/import_ssl_cert.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 38, column 23)
+  migrating .//configuration/server/config_sample_php_parameters.rst to .//configuration/server/config_sample_php_parameters.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 958, column 75)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 604, column 69)
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 176, column 1)
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 171, column 1)
+[pandoc warning] ignoring unknown role :file: in "source" (line 22, column 80)
+[pandoc warning] ignoring unknown role :file: in "source" (line 19, column 28)
+[pandoc warning] ignoring unknown role :file: in "source" (line 17, column 83)
+[pandoc warning] ignoring unknown role :file: in "source" (line 17, column 60)
+  migrating .//configuration/server/security/password-policy.rst to .//configuration/server/security/password-policy.adoc
+  migrating .//configuration/server/reverse_proxy_configuration.rst to .//configuration/server/reverse_proxy_configuration.adoc
+[pandoc warning] ignoring unknown role :file: in "source" (line 76, column 37)
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 64, column 1)
+[pandoc warning] ignoring unknown role :file: in "source" (line 59, column 74)
+[pandoc warning] ignoring unknown role :file: in "source" (line 37, column 78)
+[pandoc warning] ignoring unknown role :file: in "source" (line 12, column 40)
+  migrating .//configuration/server/harden_server.rst to .//configuration/server/harden_server.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 45, column 62)
+  migrating .//configuration/server/caching_configuration.rst to .//configuration/server/caching_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 425, column 90)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 322, column 113)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 321, column 40)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 224, column 172)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 95, column 168)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 92, column 215)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 36, column 102)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 24, column 35)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 22, column 27)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 21, column 25)
+  migrating .//configuration/server/automatic_configuration.rst to .//configuration/server/automatic_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 125, column 65)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 99, column 65)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 79, column 65)
+[pandoc warning] ignoring unknown role :file: in "source" (line 17, column 167)
+[pandoc warning] ignoring unknown role :file: in "source" (line 13, column 46)
+[pandoc warning] ignoring unknown role :file: in "source" (line 10, column 42)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 6, column 65)
+  migrating .//configuration/server/knowledgebase_configuration.rst to .//configuration/server/knowledgebase_configuration.adoc
+[pandoc warning] ignoring unknown role :file: in "source" (line 11, column 26)
+  migrating .//configuration/server/custom_client_repos.rst to .//configuration/server/custom_client_repos.adoc
+[pandoc warning] ignoring unknown role :file: in "source" (line 19, column 70)
+[pandoc warning] ignoring unknown role :file: in "source" (line 6, column 61)
+  migrating .//configuration/server/thirdparty_php_configuration.rst to .//configuration/server/thirdparty_php_configuration.adoc
+  migrating .//configuration/server/activity_configuration.rst to .//configuration/server/activity_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 31, column 56)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 28, column 62)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 25, column 27)
+  migrating .//configuration/server/language_configuration.rst to .//configuration/server/language_configuration.adoc
+[pandoc warning] ignoring unknown role :file: in "source" (line 24, column 60)
+[pandoc warning] ignoring unknown role :file: in "source" (line 11, column 48)
+  migrating .//configuration/server/excluded_blacklisted_files.rst to .//configuration/server/excluded_blacklisted_files.adoc
+  migrating .//configuration/server/email_configuration.rst to .//configuration/server/email_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 251, column 39)
+  migrating .//configuration/server/background_jobs_configuration.rst to .//configuration/server/background_jobs_configuration.adoc
+[pandoc warning] Could not find reference for Key "cron" "source" (line 164, column 79)
+[pandoc warning] Could not find reference for Key "webcron" "source" (line 89, column 68)
+[pandoc warning] Could not find reference for Key "ajax" "source" (line 23, column 74)
+[pandoc warning] Could not find reference for Key "webcron" "source" (line 23, column 62)
+[pandoc warning] Could not find reference for Key "cron" "source" (line 23, column 50)
+  migrating .//configuration/server/logging_configuration.rst to .//configuration/server/logging_configuration.adoc
+[pandoc warning] ignoring unknown role :file: in "source" (line 30, column 117)
+[pandoc warning] ignoring unknown role :file: in "source" (line 28, column 80)
+[pandoc warning] ignoring unknown role :file: in "source" (line 20, column 66)
+  migrating .//configuration/server/security_setup_warnings.rst to .//configuration/server/security_setup_warnings.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 126, column 44)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 118, column 58)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 113, column 40)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 79, column 32)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 70, column 25)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 60, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 54, column 23)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 52, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 39, column 92)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 31, column 33)
+  migrating .//configuration/user/index.rst to .//configuration/user/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 17, column 1)
+  migrating .//configuration/user/reset_user_password.rst to .//configuration/user/reset_user_password.adoc
+  migrating .//configuration/user/user_auth_ldap.rst to .//configuration/user/user_auth_ldap.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 644, column 95)
+[pandoc warning] Could not find reference for Key "here <https://serverfault.com/questions/167371/what-permissions-are -required-for-enumerating-users-groups-in-active-directory/167401#167401>" "source" (line 620, column 76)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 550, column 57)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 547, column 359)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 39, column 78)
+  migrating .//configuration/user/user_provisioning_api.rst to .//configuration/user/user_provisioning_api.adoc
+  migrating .//configuration/user/user_configuration.rst to .//configuration/user/user_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 188, column 60)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 94, column 58)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 80, column 70)
+  migrating .//configuration/user/reset_admin_password.rst to .//configuration/user/reset_admin_password.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 35, column 50)
+  migrating .//configuration/user/user_auth_ftp_smb_imap.rst to .//configuration/user/user_auth_ftp_smb_imap.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 112, column 74)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 82, column 99)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 44, column 75)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 31, column 59)
+[pandoc warning] Could not find reference for Key "ftp" "source" (line 31, column 7)
+[pandoc warning] Could not find reference for Key "smb" "source" (line 29, column 7)
+[pandoc warning] Could not find reference for Key "imap" "source" (line 28, column 8)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 26, column 72)
+[pandoc warning] ignoring unknown role :file: in "source" (line 5, column 103)
+  migrating .//configuration/user/user_roles.rst to .//configuration/user/user_roles.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 103, column 76)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 100, column 126)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 72, column 65)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 51, column 124)
+[pandoc warning] Could not find reference for Key "auditor" "source" (line 17, column 11)
+[pandoc warning] Could not find reference for Key "system administrator" "source" (line 15, column 24)
+[pandoc warning] Could not find reference for Key "owncloud administrator" "source" (line 14, column 26)
+[pandoc warning] Could not find reference for Key "owncloud group administrator" "source" (line 13, column 32)
+[pandoc warning] Could not find reference for Key "federated user" "source" (line 12, column 18)
+[pandoc warning] Could not find reference for Key "standard user" "source" (line 11, column 17)
+[pandoc warning] Could not find reference for Key "guest" "source" (line 10, column 9)
+[pandoc warning] Could not find reference for Key "anonymous" "source" (line 9, column 13)
+  migrating .//configuration/mimetypes/index.rst to .//configuration/mimetypes/index.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 63, column 131)
+  migrating .//configuration/files/index.rst to .//configuration/files/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 23, column 1)
+  migrating .//configuration/files/federated_cloud_sharing_configuration.rst to .//configuration/files/federated_cloud_sharing_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 122, column 63)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 82, column 58)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 15, column 32)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 13, column 57)
+  migrating .//configuration/files/external_storage_configuration_gui.rst to .//configuration/files/external_storage_configuration_gui.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 166, column 78)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 163, column 91)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 152, column 61)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 124, column 76)
+[pandoc warning] ignoring unknown directive: toctree "source" (line 120, column 1)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 97, column 81)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 38, column 53)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 13, column 44)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 9, column 110)
+  migrating .//configuration/files/external_storage/openstack.rst to .//configuration/files/external_storage/openstack.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 44, column 27)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 41, column 49)
+  migrating .//configuration/files/external_storage/smb.rst to .//configuration/files/external_storage/smb.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 47, column 27)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 44, column 49)
+  migrating .//configuration/files/external_storage/dropbox.rst to .//configuration/files/external_storage/dropbox.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 12, column 63)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 10, column 73)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 9, column 61)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 8, column 114)
+  migrating .//configuration/files/external_storage/owncloud.rst to .//configuration/files/external_storage/owncloud.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 17, column 27)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 14, column 49)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 6, column 59)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 5, column 51)
+  migrating .//configuration/files/external_storage/sftp.rst to .//configuration/files/external_storage/sftp.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 28, column 27)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 25, column 49)
+  migrating .//configuration/files/external_storage/auth_mechanisms.rst to .//configuration/files/external_storage/auth_mechanisms.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 65, column 179)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 44, column 55)
+  migrating .//configuration/files/external_storage/webdav.rst to .//configuration/files/external_storage/webdav.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 29, column 27)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 26, column 49)
+  migrating .//configuration/files/external_storage/amazons3.rst to .//configuration/files/external_storage/amazons3.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 35, column 27)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 32, column 49)
+  migrating .//configuration/files/external_storage/local.rst to .//configuration/files/external_storage/local.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 37, column 122)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 37, column 49)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 17, column 120)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 17, column 30)
+  migrating .//configuration/files/external_storage/ftp.rst to .//configuration/files/external_storage/ftp.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 34, column 72)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 31, column 49)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 33, column 66)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 21, column 79)
+  migrating .//configuration/files/external_storage/google.rst to .//configuration/files/external_storage/google.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 112, column 27)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 109, column 49)
+  migrating .//configuration/files/default_files_configuration.rst to .//configuration/files/default_files_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 26, column 63)
+[pandoc warning] ignoring unknown role :file: in "source" (line 13, column 62)
+[pandoc warning] ignoring unknown role :file: in "source" (line 9, column 41)
+[pandoc warning] ignoring unknown role :file: in "source" (line 6, column 43)
+  migrating .//configuration/files/previews_configuration.rst to .//configuration/files/previews_configuration.adoc
+  migrating .//configuration/files/encryption_configuration.rst to .//configuration/files/encryption_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 492, column 46)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 480, column 83)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 477, column 142)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 469, column 88)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 434, column 47)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 428, column 113)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 408, column 72)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 306, column 28)
+[pandoc warning] Could not find reference for Key "occ encryption commands" "source" (line 279, column 11)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 246, column 72)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 205, column 181)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 205, column 138)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 100, column 25)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 90, column 79)
+[pandoc warning] Could not find reference for Key "move key location" "source" (line 51, column 91)
+  migrating .//configuration/files/big_file_upload_configuration.rst to .//configuration/files/big_file_upload_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 177, column 86)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 161, column 26)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 136, column 68)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 133, column 117)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 35, column 62)
+  migrating .//configuration/files/files_locking_transactional.rst to .//configuration/files/files_locking_transactional.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 33, column 119)
+  migrating .//configuration/files/trashbin_options.rst to .//configuration/files/trashbin_options.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 39, column 188)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 39, column 131)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 39, column 100)
+  migrating .//configuration/files/file_versioning.rst to .//configuration/files/file_versioning.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 49, column 68)
+  migrating .//configuration/files/file_sharing_configuration.rst to .//configuration/files/file_sharing_configuration.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 106, column 51)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 77, column 41)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 27, column 29)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 9, column 105)
+  migrating .//configuration/files/external_storage_configuration.rst to .//configuration/files/external_storage_configuration.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 7, column 43)
+[pandoc warning] ignoring unknown role :file: in "source" (line 5, column 56)
+  migrating .//appliance/index.rst to .//appliance/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 15, column 1)
+  migrating .//appliance/Active_Directory.rst to .//appliance/Active_Directory.adoc
+  migrating .//appliance/Backup.rst to .//appliance/Backup.adoc
+  migrating .//appliance/clamav.rst to .//appliance/clamav.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 47, column 91)
+[pandoc warning] Could not find reference for Key "configure owncloud to use clamav" "source" (line 11, column 36)
+[pandoc warning] Could not find reference for Key "install clamav and related components" "source" (line 9, column 41)
+  migrating .//appliance/Collabora.rst to .//appliance/Collabora.adoc
+  migrating .//appliance/installation.rst to .//appliance/installation.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 12, column 119)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 12, column 43)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 10, column 72)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 9, column 89)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 9, column 43)
+  migrating .//appliance/howto-update-owncloud.rst to .//appliance/howto-update-owncloud.adoc
+[pandoc warning] Could not find reference for Key "upgrading from versions prior to 10.0" "source" (line 119, column 41)
+[pandoc warning] Could not find reference for Key "upgrading from version 10.0.1 to 10.0.3" "source" (line 117, column 43)
+[pandoc warning] Could not find reference for Key "uninstall the existing version and install the new version (for 9.1 users)" "source" (line 21, column 78)
+[pandoc warning] Could not find reference for Key "in-place upgrade (for 10.0 users)" "source" (line 19, column 37)
+[pandoc warning] Could not find reference for Key "use the command line" "source" (line 10, column 24)
+[pandoc warning] Could not find reference for Key "use the univention management console" "source" (line 8, column 41)
+  migrating .//appliance/managing-ucs.rst to .//appliance/managing-ucs.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 11, column 1)
+  migrating .//appliance/ucs/add-groups-and-users.rst to .//appliance/ucs/add-groups-and-users.adoc
+  migrating .//appliance/what-is-it.rst to .//appliance/what-is-it.adoc
+  migrating .//enterprise/clients/index.rst to .//enterprise/clients/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 14, column 1)
+  migrating .//enterprise/clients/creating_branded_apps.rst to .//enterprise/clients/creating_branded_apps.adoc
+  migrating .//enterprise/clients/custom_client_repos.rst to .//enterprise/clients/custom_client_repos.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 5, column 58)
+  migrating .//enterprise/index.rst to .//enterprise/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 20, column 1)
+  migrating .//enterprise/ransomware-protection/index.rst to .//enterprise/ransomware-protection/index.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 39, column 173)
+  migrating .//enterprise/server_branding/index.rst to .//enterprise/server_branding/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 11, column 1)
+  migrating .//enterprise/server_branding/enterprise_server_branding.rst to .//enterprise/server_branding/enterprise_server_branding.adoc
+  migrating .//enterprise/file_management/index.rst to .//enterprise/file_management/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 12, column 1)
+  migrating .//enterprise/file_management/files_tagging.rst to .//enterprise/file_management/files_tagging.adoc
+  migrating .//enterprise/installation/install.rst to .//enterprise/installation/install.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 55, column 45)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 25, column 48)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 18, column 169)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 13, column 77)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 11, column 163)
+  migrating .//enterprise/installation/index.rst to .//enterprise/installation/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 13, column 1)
+  migrating .//enterprise/installation/oracle_db_configuration.rst to .//enterprise/installation/oracle_db_configuration.adoc
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 180, column 1)
+[pandoc warning] ignoring unknown role :abbr: in "source" (line 31, column 92)
+[pandoc warning] ignoring unknown directive: toctree "source" (line 11, column 1)
+  migrating .//enterprise/firewall/index.rst to .//enterprise/firewall/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 11, column 1)
+  migrating .//enterprise/firewall/file_firewall.rst to .//enterprise/firewall/file_firewall.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 138, column 68)
+[pandoc warning] Could not find reference for Key "does not begin with" "source" (line 88, column 81)
+[pandoc warning] Could not find reference for Key "is not" "source" (line 88, column 49)
+[pandoc warning] Could not find reference for Key "less or equal" "source" (line 83, column 64)
+[pandoc warning] Could not find reference for Key "is not) a (webdav" "source" (line 73, column 35)
+[pandoc warning] Could not find reference for Key "begin with" "source" (line 68, column 67)
+[pandoc warning] Could not find reference for Key "must not) (match" "source" (line 68, column 48)
+  migrating .//enterprise/external_storage/index.rst to .//enterprise/external_storage/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 16, column 1)
+  migrating .//enterprise/external_storage/onedrive.rst to .//enterprise/external_storage/onedrive.adoc
+[pandoc warning] Could not find reference for Key "configure a mount point in owncloud" "source" (line 10, column 39)
+[pandoc warning] Could not find reference for Key "create an application configuration" "source" (line 8, column 39)
+  migrating .//enterprise/external_storage/sharepoint-integration_configuration.rst to .//enterprise/external_storage/sharepoint-integration_configuration.adoc
+  migrating .//enterprise/external_storage/s3_swift_as_primary_object_store_configuration.rst to .//enterprise/external_storage/s3_swift_as_primary_object_store_configuration.adoc
+  migrating .//enterprise/external_storage/windows-network-drive_configuration.rst to .//enterprise/external_storage/windows-network-drive_configuration.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 269, column 98)
+[pandoc warning] Could not find reference for Key "wnd:process-queue" "source" (line 184, column 21)
+[pandoc warning] Could not find reference for Key "wnd:listen" "source" (line 182, column 14)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 91, column 218)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 90, column 47)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 76, column 73)
+[pandoc warning] Could not find reference for Key "the external storage: windows network drives app" "source" (line 29, column 60)
+  migrating .//enterprise/external_storage/enterprise_only_auth.rst to .//enterprise/external_storage/enterprise_only_auth.adoc
+  migrating .//enterprise/external_storage/ldap_home_connector_configuration.rst to .//enterprise/external_storage/ldap_home_connector_configuration.adoc
+[pandoc warning] ignoring unknown role :file: in "source" (line 28, column 48)
+[pandoc warning] ignoring unknown role :file: in "source" (line 22, column 52)
+[pandoc warning] ignoring unknown role :file: in "source" (line 20, column 38)
+  migrating .//enterprise/user_management/index.rst to .//enterprise/user_management/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 11, column 1)
+  migrating .//enterprise/user_management/user_auth_shibboleth.rst to .//enterprise/user_management/user_auth_shibboleth.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 318, column 58)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 230, column 108)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 221, column 70)
+  migrating .//enterprise/logging/index.rst to .//enterprise/logging/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 11, column 1)
+  migrating .//enterprise/logging/enterprise_logging_apps.rst to .//enterprise/logging/enterprise_logging_apps.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 20, column 40)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 19, column 60)
+  migrating .//faq/index.rst to .//faq/index.adoc
+  migrating .//installation/index.rst to .//installation/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 25, column 1)
+  migrating .//installation/installation_wizard.rst to .//installation/installation_wizard.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 224, column 107)
+[pandoc warning] ignoring unknown role :file: in "source" (line 224, column 23)
+[pandoc warning] ignoring unknown role :file: in "source" (line 221, column 27)
+[pandoc warning] ignoring unknown role :file: in "source" (line 220, column 31)
+[pandoc warning] ignoring unknown role :file: in "source" (line 219, column 21)
+[pandoc warning] ignoring unknown role :file: in "source" (line 218, column 18)
+[pandoc warning] ignoring unknown role :file: in "source" (line 217, column 20)
+[pandoc warning] ignoring unknown role :file: in "source" (line 216, column 19)
+[pandoc warning] ignoring unknown role :file: in "source" (line 215, column 18)
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 208, column 1)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 171, column 105)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 105, column 78)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 55, column 102)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 37, column 63)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 35, column 48)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 34, column 63)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 25, column 178)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 25, column 101)
+  migrating .//installation/docker/index.rst to .//installation/docker/index.adoc
+  migrating .//installation/configuration_notes_and_tips.rst to .//installation/configuration_notes_and_tips.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 186, column 65)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 10, column 33)
+  migrating .//installation/apps_management_installation.rst to .//installation/apps_management_installation.adoc
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 99, column 1)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 88, column 220)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 78, column 46)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 77, column 60)
+[pandoc warning] ignoring unknown directive: literalinclude "source" (line 73, column 1)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 10, column 26)
+  migrating .//installation/command_line_installation.rst to .//installation/command_line_installation.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 42, column 43)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 41, column 128)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 39, column 67)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 10, column 81)
+  migrating .//installation/nginx_configuration.rst to .//installation/nginx_configuration.adoc
+[pandoc warning] Could not find reference for Key "nginx (+1.9.5) <ngx_http_http2_module <http://nginx.org/en/docs/http/ngx_http_v2_module.html>" "source" (line 412, column 58)
+[pandoc warning] Could not find reference for Key "nginx (<1.9.5) <ngx_http_spdy_module <http://nginx.org/en/docs/http/ngx_http_spdy_module.html>" "source" (line 410, column 60)
+[pandoc warning] Could not find reference for Key "ssl" "source" (line 41, column 18)
+  migrating .//installation/selinux_configuration.rst to .//installation/selinux_configuration.adoc
+  migrating .//installation/deployment_considerations.rst to .//installation/deployment_considerations.adoc
+  migrating .//installation/source_installation.rst to .//installation/source_installation.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 455, column 131)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 449, column 125)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 439, column 72)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 438, column 52)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 439, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 431, column 127)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 399, column 161)
+[pandoc warning] ignoring unknown role :file: in "source" (line 364, column 60)
+[pandoc warning] ignoring unknown role :file: in "source" (line 347, column 172)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 225, column 31)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 181, column 104)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 181, column 102)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 155, column 57)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 120, column 51)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 29, column 180)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 25, column 32)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 23, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 22, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 21, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 20, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 19, column 33)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 18, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 17, column 34)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 16, column 33)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 15, column 27)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 12, column 42)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 5, column 121)
+  migrating .//installation/apps_supported.rst to .//installation/apps_supported.adoc
+  migrating .//installation/linux_installation.rst to .//installation/linux_installation.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 106, column 182)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 101, column 39)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 86, column 169)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 84, column 33)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 83, column 31)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 71, column 46)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 42, column 35)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 36, column 84)
+  migrating .//installation/troubleshooting.rst to .//installation/troubleshooting.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 8, column 128)
+  migrating .//installation/system_requirements.rst to .//installation/system_requirements.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 97, column 78)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 95, column 103)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 94, column 120)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 20, column 52)
+  migrating .//installation/deployment_recommendations.rst to .//installation/deployment_recommendations.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 347, column 41)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 342, column 41)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 311, column 84)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 206, column 84)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 90, column 137)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 36, column 291)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 36, column 104)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 35, column 87)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 23, column 113)
+  migrating .//installation/changing_the_web_route.rst to .//installation/changing_the_web_route.adoc
+  migrating .//maintenance/enable_maintenance.rst to .//maintenance/enable_maintenance.adoc
+[pandoc warning] ignoring unknown role :file: in "source" (line 18, column 59)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 7, column 47)
+  migrating .//maintenance/index.rst to .//maintenance/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 19, column 1)
+  migrating .//maintenance/manual_upgrade.rst to .//maintenance/manual_upgrade.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 184, column 53)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 152, column 47)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 151, column 32)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 32, column 92)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 28, column 117)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 28, column 70)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 11, column 30)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 9, column 125)
+  migrating .//maintenance/update.rst to .//maintenance/update.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 137, column 112)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 130, column 36)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 105, column 28)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 93, column 32)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 76, column 33)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 75, column 26)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 63, column 57)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 60, column 56)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 33, column 55)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 15, column 80)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 16, column 50)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 9, column 66)
+  migrating .//maintenance/migrating.rst to .//maintenance/migrating.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 226, column 217)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 186, column 98)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 42, column 55)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 34, column 173)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 34, column 136)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 32, column 181)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 32, column 84)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 27, column 207)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 27, column 100)
+[pandoc warning] Could not find reference for Key "name" "source" (line 25, column 139)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 6, column 119)
+  migrating .//maintenance/backup.rst to .//maintenance/backup.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 16, column 70)
+  migrating .//maintenance/manually-moving-data-folders.rst to .//maintenance/manually-moving-data-folders.adoc
+  migrating .//maintenance/restore.rst to .//maintenance/restore.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 21, column 156)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 14, column 101)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 5, column 236)
+  migrating .//maintenance/upgrade.rst to .//maintenance/upgrade.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 228, column 82)
+[pandoc warning] Could not find reference for Key "version" "source" (line 215, column 109)
+[pandoc warning] Could not find reference for Key "version" "source" (line 161, column 85)
+[pandoc warning] Could not find reference for Key "version" "source" (line 145, column 33)
+[pandoc warning] Could not find reference for Key "version" "source" (line 119, column 19)
+[pandoc warning] Could not find reference for Key "version" "source" (line 115, column 50)
+[pandoc warning] Could not find reference for Key "version" "source" (line 112, column 32)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 104, column 118)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 66, column 39)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 54, column 56)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 52, column 194)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 44, column 56)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 41, column 86)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 40, column 91)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 25, column 79)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 19, column 115)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 16, column 49)
+[pandoc warning] Could not find reference for Key "version" "source" (line 10, column 99)
+  migrating .//maintenance/package_upgrade.rst to .//maintenance/package_upgrade.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 82, column 39)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 76, column 47)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 74, column 32)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 32, column 76)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 25, column 86)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 24, column 53)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 24, column 63)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 23, column 52)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 20, column 36)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 19, column 62)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 20, column 56)
+  migrating .//upgrading/index.rst to .//upgrading/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 12, column 1)
+  migrating .//upgrading/upgrade_php.rst to .//upgrading/upgrade_php.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 76, column 66)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 12, column 34)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 10, column 35)
+  migrating .//upgrading/marketplace_apps.rst to .//upgrading/marketplace_apps.adoc
+[pandoc warning] ignoring unknown role :ref: in "source" (line 20, column 46)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 10, column 150)
+  migrating .//issues/index.rst to .//issues/index.adoc
+[pandoc warning] ignoring unknown directive: toctree "source" (line 14, column 1)
+  migrating .//issues/general_troubleshooting.rst to .//issues/general_troubleshooting.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 379, column 80)
+[pandoc warning] ignoring unknown role :file: in "source" (line 378, column 43)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 374, column 44)
+[pandoc warning] ignoring unknown role :file: in "source" (line 337, column 59)
+[pandoc warning] ignoring unknown role :file: in "source" (line 332, column 41)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 145, column 36)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 132, column 41)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 133, column 47)
+[pandoc warning] ignoring unknown role :file: in "source" (line 65, column 40)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 61, column 53)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 52, column 64)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 45, column 77)
+[pandoc warning] ignoring unknown role :doc: in "source" (line 42, column 62)
+[pandoc warning] ignoring unknown role :ref: in "source" (line 35, column 25)
+  migrating .//issues/impersonate_users.rst to .//issues/impersonate_users.adoc
+  migrating .//issues/code_signing.rst to .//issues/code_signing.adoc
+[pandoc warning] ignoring unknown role :doc: in "source" (line 207, column 47)
+[pandoc warning] ignoring unknown directive: sectionauthor "source" (line 6, column 1)

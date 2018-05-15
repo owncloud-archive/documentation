@@ -1,0 +1,563 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Database Configuration &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="File Sharing and Management" href="../files/index.html" />
+    <link rel="prev" title="Converting Database Type" href="db_conversion.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Database Configuration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="db_conversion.html">Converting Database Type</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Database Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ldap/ldap_proxy_cache_server_setup.html">How To Install and Configure an LDAP Proxy-Cache Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server/index.html">Server Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html">User Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="database-configuration">
+<h1>Database Configuration<a class="headerlink" href="#database-configuration" title="Permalink to this headline">¶</a></h1>
+<p>ownCloud requires a database in which administrative data is stored. The following databases are currently supported:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#db-binlog-label"><span class="std std-ref">MySQL / MariaDB</span></a></li>
+<li><a class="reference internal" href="#db-postgresql-label"><span class="std std-ref">PostgreSQL</span></a></li>
+<li><a class="reference internal" href="../../enterprise/installation/oracle_db_configuration.html#db-oracle-database-setup"><span class="std std-ref">Oracle</span></a> (ownCloud Enterprise edition only)</li>
+</ul>
+<p>The MySQL or MariaDB databases are the recommended database engines.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle (ownCloud Enterprise
+edition only) as your database requires that you install and set up the server
+software first.
+(Oracle users, see <a class="reference internal" href="../../enterprise/installation/oracle_db_configuration.html"><span class="doc">Oracle Database Setup</span></a>.)</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The steps for configuring a third party database are beyond the scope of this document.  Please refer to the documentation for your specific database choice for instructions.</p>
+</div>
+<div class="section" id="mysql-mariadb-with-binary-logging-enabled">
+<span id="db-binlog-label"></span><h3>MySQL / MariaDB with Binary Logging Enabled<a class="headerlink" href="#mysql-mariadb-with-binary-logging-enabled" title="Permalink to this headline">¶</a></h3>
+<p>ownCloud is currently using a <code class="docutils literal notranslate"><span class="pre">TRANSACTION_READ_COMMITTED</span></code> transaction isolation
+to avoid data loss under high load scenarios (e.g., by using the sync client with
+many clients/users and many parallel operations). This requires a disabled or
+correctly configured binary logging when using MySQL or MariaDB. Your system is
+affected if you see the following in your log file during the installation or
+update of ownCloud:</p>
+<blockquote>
+<div>An unhandled exception has been thrown:
+exception ‘PDOException’ with message ‘SQLSTATE[HY000]: General error: 1665
+Cannot execute statement: impossible to write to binary log since
+BINLOG_FORMAT = STATEMENT and at least one table uses a storage engine limited
+to row-based logging. InnoDB is limited to row-logging when transaction
+isolation level is READ COMMITTED or READ UNCOMMITTED.’</div></blockquote>
+<p>There are two solutions. One is to disable binary logging. Binary logging
+records all changes to your database, and how long each change took. The
+purpose of binary logging is to enable replication and to support backup
+operations.</p>
+<p>The other is to change the BINLOG_FORMAT = STATEMENT in your database
+configuration file, or possibly in your database startup script, to
+BINLOG_FORMAT = MIXED or BINLOG_FORMAT = ROW. See <a class="reference external" href="https://mariadb.com/kb/en/mariadb/overview-of-the-binary-log/">Overview of the Binary
+Log</a> and <a class="reference external" href="https://dev.mysql.com/doc/refman/5.6/en/binary-log.html">The
+Binary Log</a> for
+detailed information.</p>
+</div>
+<div class="section" id="mysql-mariadb-read-commited-transaction-isolation-level">
+<span id="db-transaction-label"></span><h3>MySQL / MariaDB “READ COMMITED” transaction isolation level<a class="headerlink" href="#mysql-mariadb-read-commited-transaction-isolation-level" title="Permalink to this headline">¶</a></h3>
+<p>As discussed above ownCloud is using the <code class="docutils literal notranslate"><span class="pre">TRANSACTION_READ_COMMITTED</span></code> transaction isolation
+level. Some database configurations are enforcing other transaction isolation levels. To avoid
+data loss under high load scenarios (e.g., by using the sync client with many clients/users and
+many parallel operations) you need to configure the transaction isolation level accordingly.
+Please refer to the <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html">MySQL manual</a>
+for detailed information.</p>
+</div>
+<div class="section" id="mysql-mariadb-storage-engine">
+<span id="db-storage-engine-label"></span><h3>MySQL / MariaDB storage engine<a class="headerlink" href="#mysql-mariadb-storage-engine" title="Permalink to this headline">¶</a></h3>
+<p>Since ownCloud 7 only InnoDB is supported as a storage engine. There are some shared hosts who
+do not support InnoDB and only MyISAM. Running ownCloud on such an environment is not supported.</p>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>For setting up ownCloud to use any database, use the instructions in <a class="reference internal" href="../../installation/installation_wizard.html"><span class="doc">The Installation Wizard</span></a>. You should not have to edit the respective values in the <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code>.  However, in special cases (for example, if you want to connect your ownCloud instance to a database created by a previous installation of ownCloud), some modification might be required.</p>
+<div class="section" id="configuring-a-mysql-or-mariadb-database">
+<h3>Configuring a MySQL or MariaDB Database<a class="headerlink" href="#configuring-a-mysql-or-mariadb-database" title="Permalink to this headline">¶</a></h3>
+<p>If you decide to use a MySQL or MariaDB database, ensure the following:</p>
+<ul class="simple">
+<li>That you have installed and enabled the <code class="docutils literal notranslate"><span class="pre">pdo_mysql</span></code> extension in PHP</li>
+<li>That the <strong>mysql.default_socket</strong> points to the correct socket (if the database runs on the same server as ownCloud).</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">MariaDB is backwards compatible with MySQL.  All instructions work for both, so you will not need to replace or revise any, existing, MySQL client commands.</p>
+</div>
+<p>The PHP configuration in <code class="file docutils literal notranslate"><span class="pre">/etc/php5/conf.d/mysql.ini</span></code> could look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuration for PHP MySQL module</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">pdo_mysql</span><span class="o">.</span><span class="n">so</span>
+
+<span class="p">[</span><span class="n">mysql</span><span class="p">]</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">allow_local_infile</span><span class="o">=</span><span class="n">On</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">allow_persistent</span><span class="o">=</span><span class="n">On</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">cache_size</span><span class="o">=</span><span class="mi">2000</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">max_persistent</span><span class="o">=-</span><span class="mi">1</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">max_links</span><span class="o">=-</span><span class="mi">1</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_port</span><span class="o">=</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_socket</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="o">.</span><span class="n">sock</span>  <span class="c1"># Debian squeeze: /var/run/mysqld/mysqld.sock</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_host</span><span class="o">=</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_user</span><span class="o">=</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_password</span><span class="o">=</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">connect_timeout</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">trace_mode</span><span class="o">=</span><span class="n">Off</span>
+</pre></div>
+</div>
+<p>Now you need to create a database user and the database itself by using the
+MySQL command line interface. The database tables will be created by ownCloud
+when you login for the first time.</p>
+<p>To start the MySQL command line mode use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>Then a <strong>mysql&gt;</strong> or <strong>MariaDB [root]&gt;</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">IF</span> <span class="n">NOT</span> <span class="n">EXISTS</span> <span class="n">owncloud</span><span class="p">;</span>
+<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">ON</span> <span class="n">owncloud</span><span class="o">.*</span> <span class="n">TO</span> <span class="s1">&#39;username&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="n">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can quit the prompt by entering:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">quit</span>
+</pre></div>
+</div>
+<p>An ownCloud instance configured with MySQL would contain the hostname on which
+the database is running, a valid username and password to access it, and the
+name of the database. The <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> as created by the
+<a class="reference internal" href="../../installation/installation_wizard.html"><span class="doc">The Installation Wizard</span></a> would therefore contain entries like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+
+  &quot;dbtype&quot;        =&gt; &quot;mysql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;owncloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpassword&quot;    =&gt; &quot;password&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
+</pre></div>
+</div>
+<div class="section" id="configure-mysql-for-4-byte-unicode-support">
+<span id="db-postgresql-label"></span><h4>Configure MySQL for 4-byte Unicode Support<a class="headerlink" href="#configure-mysql-for-4-byte-unicode-support" title="Permalink to this headline">¶</a></h4>
+<p>For supporting such features as emoji, you have to enable 4-byte Unicode support in MySQL (instead of the default 3) <em>and</em> in ownCloud.
+If you have a new installation, you don’t need to do anything, as mb4 support is checked during setup, and used if available.
+If it’s available, ownCloud is configured to use it.</p>
+<p>However, if you have an existing installation that you need to convert to use 4-byte Unicode support, then you need to do two things:</p>
+<ol class="arabic simple">
+<li>In your MySQL configuration, add the configuration settings below. If you already have them configured, update them to reflect the values specified:</li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
+<span class="n">innodb_large_prefix</span><span class="o">=</span><span class="n">ON</span>
+<span class="n">innodb_file_format</span><span class="o">=</span><span class="n">Barracuda</span>
+<span class="n">innodb_file_per_table</span><span class="o">=</span><span class="n">ON</span>
+</pre></div>
+</div>
+<p>Then, run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">./</span><span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="n">mysql</span><span class="o">-</span><span class="n">charset</span>
+</pre></div>
+</div>
+<p>When this is done, tables will be created with a:</p>
+<ul class="simple">
+<li><code class="docutils literal notranslate"><span class="pre">utf8mb4</span></code> character set.</li>
+<li><code class="docutils literal notranslate"><span class="pre">utf8mb4_bin</span></code> collation.</li>
+<li><code class="docutils literal notranslate"><span class="pre">row_format</span></code> of compressed.</li>
+</ul>
+<p>For more information, please either refer to lines 1126 to 1156 in <code class="docutils literal notranslate"><span class="pre">config/config.sample.php</span></code>, or have a read through the following links:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix">https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix</a></li>
+<li><a class="reference external" href="https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix">https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix</a></li>
+<li><a class="reference external" href="http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html">http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html</a></li>
+<li><a class="reference external" href="http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/">http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/</a></li>
+<li><a class="reference external" href="http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html">http://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html</a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is not required for new installations, only existing ones, as mb4 support is checked during setup, and used if available.</p>
+</div>
+</div>
+</div>
+<div class="section" id="postgresql-database">
+<h3>PostgreSQL Database<a class="headerlink" href="#postgresql-database" title="Permalink to this headline">¶</a></h3>
+<p>If you decide to use a PostgreSQL database make sure that you have installed
+and enabled the PostgreSQL extension in PHP. The PHP configuration in <code class="file docutils literal notranslate"><span class="pre">/etc/php5/conf.d/pgsql.ini</span></code> could look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># configuration for PHP PostgreSQL module</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">pdo_pgsql</span><span class="o">.</span><span class="n">so</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">pgsql</span><span class="o">.</span><span class="n">so</span>
+
+<span class="p">[</span><span class="n">PostgresSQL</span><span class="p">]</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">allow_persistent</span> <span class="o">=</span> <span class="n">On</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">auto_reset_persistent</span> <span class="o">=</span> <span class="n">Off</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">max_persistent</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">max_links</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">ignore_notice</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">log_notice</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>The default configuration for PostgreSQL (at least in Ubuntu 14.04) is to use the peer authentication method. Check <code class="file docutils literal notranslate"><span class="pre">/etc/postgresql/9.3/main/pg_hba.conf</span></code> to find out which authentication method is used in your setup.
+To start the postgres command line mode use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">template1</span>
+</pre></div>
+</div>
+<p>Then a <strong>template1=#</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="n">username</span> <span class="n">CREATEDB</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">owncloud</span> <span class="n">OWNER</span> <span class="n">username</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can quit the prompt by entering:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">q</span>
+</pre></div>
+</div>
+<p>An ownCloud instance configured with PostgreSQL would contain the path to the socket on
+which the database is running as the hostname, the system username the php process is using,
+and an empty password to access it, and the name of the database. The <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> as
+created by the <a class="reference internal" href="../../installation/installation_wizard.html"><span class="doc">The Installation Wizard</span></a> would therefore contain entries like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+
+  &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;owncloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpassword&quot;    =&gt; &quot;&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;/var/run/postgresql&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The host actually points to the socket that is used to connect to the database. Using localhost here will not work if PostgreSQL is configured to use peer authentication. Also note, that no password is specified, because this authentication method doesn’t use a password.</p>
+</div>
+<p>If you use another authentication method (not peer), you’ll need to use the following steps to get the database setup:
+Now you need to create a database user and the database itself by using the
+PostgreSQL command line interface. The database tables will be created by
+ownCloud when you login for the first time.</p>
+<p>To start the PostgreSQL command line mode use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">hlocalhost</span> <span class="o">-</span><span class="n">Upostgres</span>
+</pre></div>
+</div>
+<p>Then a <strong>postgres=#</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="n">username</span> <span class="n">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">owncloud</span> <span class="n">TEMPLATE</span> <span class="n">template0</span> <span class="n">ENCODING</span> <span class="s1">&#39;UNICODE&#39;</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">DATABASE</span> <span class="n">owncloud</span> <span class="n">OWNER</span> <span class="n">TO</span> <span class="n">username</span><span class="p">;</span>
+<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">ON</span> <span class="n">DATABASE</span> <span class="n">owncloud</span> <span class="n">TO</span> <span class="n">username</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can quit the prompt by entering:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>\<span class="n">q</span>
+</pre></div>
+</div>
+<p>An ownCloud instance configured with PostgreSQL would contain the hostname on
+which the database is running, a valid username and password to access it, and
+the name of the database. The <code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> as created by the
+<a class="reference internal" href="../../installation/installation_wizard.html"><span class="doc">The Installation Wizard</span></a> would therefore contain entries like
+this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>&lt;?php
+
+  &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;owncloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpassword&quot;    =&gt; &quot;password&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<span id="db-troubleshooting-label"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-workaround-general-error-2006-mysql-server-has-gone-away">
+<h3>How to workaround General error: 2006 MySQL server has gone away<a class="headerlink" href="#how-to-workaround-general-error-2006-mysql-server-has-gone-away" title="Permalink to this headline">¶</a></h3>
+<p>The database request takes too long and therefore the MySQL server times out. Its
+also possible that the server is dropping a packet that is too large. Please
+refer to the manual of your database for how to raise the configuration options
+<code class="docutils literal notranslate"><span class="pre">wait_timeout</span></code> and/or <code class="docutils literal notranslate"><span class="pre">max_allowed_packet</span></code>.</p>
+<p>Some shared hosts are not allowing the access to these config options. For such
+systems ownCloud is providing a <code class="docutils literal notranslate"><span class="pre">dbdriveroptions</span></code> configuration option within your
+<code class="file docutils literal notranslate"><span class="pre">config/config.php</span></code> where you can pass such options to the database driver.
+Please refer to <a class="reference internal" href="../server/config_sample_php_parameters.html"><span class="doc">Config.php Parameters</span></a> for an example.</p>
+</div>
+<div class="section" id="how-can-i-find-out-if-my-mysql-postgresql-server-is-reachable">
+<h3>How can I find out if my MySQL/PostgreSQL server is reachable?<a class="headerlink" href="#how-can-i-find-out-if-my-mysql-postgresql-server-is-reachable" title="Permalink to this headline">¶</a></h3>
+<p>To check the server’s network availability, use the ping command on
+the server’s host name (db.server.com in this example):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ping</span> <span class="n">db</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">dom</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PING</span> <span class="n">db</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">dom</span> <span class="p">(</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="p">)</span> <span class="mi">56</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="o">.</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">your</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.10</span><span class="p">):</span> <span class="n">icmp_req</span><span class="o">=</span><span class="mi">1</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">3.64</span> <span class="n">ms</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">your</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.10</span><span class="p">):</span> <span class="n">icmp_req</span><span class="o">=</span><span class="mi">2</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.055</span> <span class="n">ms</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">your</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.10</span><span class="p">):</span> <span class="n">icmp_req</span><span class="o">=</span><span class="mi">3</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.062</span> <span class="n">ms</span>
+</pre></div>
+</div>
+<p>For a more detailed check whether the access to the database server software
+itself works correctly, see the next question.</p>
+</div>
+<div class="section" id="how-can-i-find-out-if-a-created-user-can-access-a-database">
+<h3>How can I find out if a created user can access a database?<a class="headerlink" href="#how-can-i-find-out-if-a-created-user-can-access-a-database" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to test if a database can be accessed is by starting the
+command line interface:</p>
+<p><strong>MySQL</strong>:</p>
+<p>Assuming the database server is installed on the same system you’re running
+the command from, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uUSERNAME</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>To acess a MySQL installation on a different machine, add the -h option with
+the respective host name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uUSERNAME</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">h</span> <span class="n">HOSTNAME</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">SHOW</span> <span class="n">VARIABLES</span> <span class="n">LIKE</span> <span class="s2">&quot;version&quot;</span><span class="p">;</span>
+<span class="o">+---------------+--------+</span>
+<span class="o">|</span> <span class="n">Variable_name</span> <span class="o">|</span> <span class="n">Value</span>  <span class="o">|</span>
+<span class="o">+---------------+--------+</span>
+<span class="o">|</span> <span class="n">version</span>       <span class="o">|</span> <span class="mf">5.1</span><span class="o">.</span><span class="mi">67</span> <span class="o">|</span>
+<span class="o">+---------------+--------+</span>
+<span class="mi">1</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">set</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">quit</span>
+</pre></div>
+</div>
+<p><strong>PostgreSQL</strong>:</p>
+<p>Assuming the database server is installed on the same system you’re running
+the command from, use:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">Uusername</span> <span class="o">-</span><span class="n">downcloud</span>
+</pre></div>
+</div>
+<p>To acess a MySQL installation on a different machine, add the -h option with
+the respective host name:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">Uusername</span> <span class="o">-</span><span class="n">downcloud</span> <span class="o">-</span><span class="n">h</span> <span class="n">HOSTNAME</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">postgres</span><span class="o">=</span><span class="c1"># SELECT version();</span>
+<span class="n">PostgreSQL</span> <span class="mf">8.4</span><span class="o">.</span><span class="mi">12</span> <span class="n">on</span> <span class="n">i686</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="p">,</span> <span class="n">compiled</span> <span class="n">by</span> <span class="n">GCC</span> <span class="n">gcc</span> <span class="p">(</span><span class="n">GCC</span><span class="p">)</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span> <span class="mi">20080704</span> <span class="p">(</span><span class="n">prerelease</span><span class="p">),</span> <span class="mi">32</span><span class="o">-</span><span class="n">bit</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<span class="n">postgres</span><span class="o">=</span><span class="c1"># \q</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="useful-sql-commands">
+<h3>Useful SQL commands<a class="headerlink" href="#useful-sql-commands" title="Permalink to this headline">¶</a></h3>
+<p><strong>Show Database Users</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MySQL</span>     <span class="p">:</span> <span class="n">SELECT</span> <span class="n">User</span><span class="p">,</span><span class="n">Host</span> <span class="n">FROM</span> <span class="n">mysql</span><span class="o">.</span><span class="n">user</span><span class="p">;</span>
+<span class="n">PostgreSQL</span><span class="p">:</span> <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pg_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Show available Databases</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MySQL</span>     <span class="p">:</span> <span class="n">SHOW</span> <span class="n">DATABASES</span><span class="p">;</span>
+<span class="n">PostgreSQL</span><span class="p">:</span> \<span class="n">l</span>
+</pre></div>
+</div>
+<p><strong>Show ownCloud Tables in Database</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MySQL</span>     <span class="p">:</span> <span class="n">USE</span> <span class="n">owncloud</span><span class="p">;</span> <span class="n">SHOW</span> <span class="n">TABLES</span><span class="p">;</span>
+<span class="n">PostgreSQL</span><span class="p">:</span> \<span class="n">c</span> <span class="n">owncloud</span><span class="p">;</span> \<span class="n">d</span>
+</pre></div>
+</div>
+<p><strong>Quit Database</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">MySQL</span>     <span class="p">:</span> <span class="n">quit</span>
+<span class="n">PostgreSQL</span><span class="p">:</span> \<span class="n">q</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

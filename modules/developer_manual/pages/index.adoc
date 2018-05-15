@@ -1,0 +1,44 @@
+ownCloud Developer Documentation
+================================
+
+If you want to contribute please read the
+https://owncloud.org/about/contributor-agreement/[Contributor agreement]
+
+[width="100%",cols="25%,36%,39%",]
+|=======================================================================
+|app/index |core/index
+|https://github.com/owncloud/documentation#owncloud-documentation[Documentation]
+
+|Develop apps for ownCloud and publish on the
+https://marketplace.owncloud.com/[ownCloud Marketplace] |Develop on the
+ownCloud internals |Create and enhance documentation
+
+a|
+testing/index::
+  Help us to test ownCloud by joining the testing team
+
+ a|
+bugtracker/index::
+  Report, triage or fix bugs to improve quality
+
+ a|
+https://www.transifex.com/projects/p/owncloud/[Translation]::
+  Translate ownCloud into your language
+
+a|
+commun/index::
+  Help on IRC, the mailinglist and forum
+
+ a|
+mobile_development/ios_library/index::
+  Integration with iOS
+
+ a|
+mobile_development/android_library/index::
+  Integrating with Android
+
+|=======================================================================
+
+[[table-of-contents]]
+Table of Contents
+-----------------

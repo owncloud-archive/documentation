@@ -1,0 +1,408 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>User Management &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Resetting a Lost Admin Password" href="reset_admin_password.html" />
+    <link rel="prev" title="User Management" href="index.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../database/index.html">Database Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ldap/ldap_proxy_cache_server_setup.html">How To Install and Configure an LDAP Proxy-Cache Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server/index.html">Server Configuration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">User Management</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">User Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reset_admin_password.html">Resetting a Lost Admin Password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="reset_user_password.html">Resetting a User Password</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_auth_ftp_smb_imap.html">User Authentication with IMAP, SMB, and FTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_auth_ldap.html">User Authentication with LDAP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_provisioning_api.html">User Provisioning API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="user_roles.html">ownCloud Roles</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="user-management">
+<h1>User Management<a class="headerlink" href="#user-management" title="Permalink to this headline">¶</a></h1>
+<p>On the User management page of your ownCloud Web UI you can:</p>
+<ul class="simple">
+<li>Create new users</li>
+<li>View all of your users in a single scrolling window</li>
+<li>Filter users by group</li>
+<li>See what groups they belong to</li>
+<li>Edit their full names and passwords</li>
+<li>See their data storage locations</li>
+<li>View and set quotas</li>
+<li>Create and edit their email addresses</li>
+<li>Send an automatic email notification to new users</li>
+<li>Delete them with a single click</li>
+</ul>
+<p>The default view displays basic information about your users.</p>
+<div class="figure">
+<img alt="../../_images/users-config.png" src="../../_images/users-config.png" />
+</div>
+<p>The Group filters on the left sidebar lets you quickly filter users by their
+group memberships, and create new groups.</p>
+<div class="figure">
+<img alt="../../_images/users-config-1.png" src="../../_images/users-config-1.png" />
+</div>
+<p>Click the gear icon on the lower left sidebar to set a default storage quota,
+and to display additional fields: <strong>Show storage location, Show last log in,
+Show user backend, Send email to new users,</strong> and <strong>Show email address</strong>.</p>
+<div class="figure">
+<img alt="../../_images/users-config-2.png" src="../../_images/users-config-2.png" />
+</div>
+<p>User accounts have the following properties:</p>
+<dl class="docutils">
+<dt><em>Login Name (Username)</em></dt>
+<dd>The unique ID of an ownCloud user, and it cannot be changed.</dd>
+<dt><em>Full Name</em></dt>
+<dd>The user’s display name that appears on file shares, the ownCloud Web
+interface, and emails. Admins and users may change the Full Name anytime. If
+the Full Name is not set it defaults to the login name.</dd>
+<dt><em>Password</em></dt>
+<dd>The admin sets the new user’s first password. Both the user and the admin can
+change the user’s password at anytime.</dd>
+<dt><em>Groups</em></dt>
+<dd>You may create groups, and assign group memberships to users. By default new
+users are not assigned to any groups.</dd>
+<dt><em>Group Admin</em></dt>
+<dd>Group admins are granted administrative privileges on specific groups, and
+can add and remove users from their groups.</dd>
+<dt><em>Quota</em></dt>
+<dd>The maximum disk space assigned to each user. Any user that exceeds the quota
+cannot upload or sync data. You have the option to include external
+storage in user quotas.</dd>
+</dl>
+<div class="section" id="creating-a-new-user">
+<h2>Creating a New User<a class="headerlink" href="#creating-a-new-user" title="Permalink to this headline">¶</a></h2>
+<p>To create a user account:</p>
+<ul class="simple">
+<li>Enter the new user’s <strong>Login Name</strong> and their initial <strong>Password</strong></li>
+<li>Optionally, assign <strong>Groups</strong> memberships</li>
+<li>Click the <strong>Create</strong> button</li>
+</ul>
+<div class="figure">
+<img alt="../../_images/users-create.png" src="../../_images/users-create.png" />
+</div>
+<p>Login names may contain letters (a-z, A-Z), numbers (0-9), dashes (-),
+underscores (_), periods (.) and at signs (&#64;). After creating the user, you
+may fill in their <strong>Full Name</strong> if it is different than the login name, or
+leave it for the user to complete.</p>
+<p>If you have checked <strong>Send email to new user</strong> in the control panel on the
+lower left sidebar, you may also enter the new user’s email address, and
+ownCloud will automatically send them a notification with their new login
+information. You may edit this email using the email template editor on your
+Admin page (see <a class="reference internal" href="../server/email_configuration.html"><span class="doc">Email Configuration</span></a>).</p>
+</div>
+<div class="section" id="reset-a-user-s-password">
+<h2>Reset a User’s Password<a class="headerlink" href="#reset-a-user-s-password" title="Permalink to this headline">¶</a></h2>
+<p>You cannot recover a user’s password, but you can set a new one:</p>
+<ul class="simple">
+<li>Hover your cursor over the user’s <strong>Password</strong> field</li>
+<li>Click on the <strong>pencil icon</strong></li>
+<li>Enter the user’s new password in the password field, and remember to provide
+the user with their password</li>
+</ul>
+<p>If you have encryption enabled, there are special considerations for user
+password resets. Please see
+<a class="reference internal" href="../files/encryption_configuration.html"><span class="doc">Encryption Configuration</span></a>.</p>
+</div>
+<div class="section" id="renaming-a-user">
+<h2>Renaming a User<a class="headerlink" href="#renaming-a-user" title="Permalink to this headline">¶</a></h2>
+<p>Each ownCloud user has two names: a unique <strong>Login Name</strong> used for
+authentication, and a <strong>Full Name</strong>, which is their display name. You can edit
+the display name of a user, but you cannot change the login name of any user.</p>
+<p>To set or change a user’s display name:</p>
+<ul class="simple">
+<li>Hover your cursor over the user’s <strong>Full Name</strong> field</li>
+<li>Click on the <strong>Pencil icon</strong></li>
+<li>Enter the user’s new display name</li>
+</ul>
+</div>
+<div class="section" id="granting-administrator-privileges-to-a-user">
+<h2>Granting Administrator Privileges to a User<a class="headerlink" href="#granting-administrator-privileges-to-a-user" title="Permalink to this headline">¶</a></h2>
+<p>ownCloud has two types of administrators: <strong>Super Administrators</strong> and <strong>Group
+Administrators</strong>. Group administrators have the rights to create, edit and
+delete users in their assigned groups. Group administrators cannot access
+system settings, or add or modify users in the groups that they are not <strong>Group
+Administrators</strong> for. Use the dropdown menus in the <strong>Group Admin</strong> column to
+assign group admin privileges.</p>
+<div class="figure">
+<img alt="../../_images/users-groups.png" src="../../_images/users-groups.png" />
+</div>
+<p><strong>Super Administrators</strong> have full rights on your ownCloud server, and can
+access and modify all settings. To assign the <strong>Super Administrators</strong> role to
+a user, simply add them to the <code class="docutils literal notranslate"><span class="pre">admin</span></code> group.</p>
+</div>
+<div class="section" id="managing-groups">
+<h2>Managing Groups<a class="headerlink" href="#managing-groups" title="Permalink to this headline">¶</a></h2>
+<p>You can assign new users to groups when you create them, and create new groups
+when you create new users. You may also use the <strong>Add Group</strong> button at the top
+of the left pane to create new groups. New group members will immediately
+have access to file shares that belong to their new groups.</p>
+</div>
+<div class="section" id="setting-storage-quotas">
+<h2>Setting Storage Quotas<a class="headerlink" href="#setting-storage-quotas" title="Permalink to this headline">¶</a></h2>
+<p>Click the gear on the lower left pane to set a default storage quota. This is
+automatically applied to new users. You may assign a different quota to any user
+by selecting from the <strong>Quota</strong> dropdown, selecting either a preset value or
+entering a custom value. When you create custom quotas, use the normal
+abbreviations for your storage values such as 500 MB, 5 GB, 5 TB, and so on.</p>
+<p>You now have a configurable option in <code class="docutils literal notranslate"><span class="pre">config.php</span></code> that controls whether
+external storage is counted against user’s quotas. This is still
+experimental, and may not work as expected. The default is to not count
+external storage as part of user storage quotas. If you prefer to include it,
+then change the default <code class="docutils literal notranslate"><span class="pre">false</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code>.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;quota_include_external_storage&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Metadata (such as thumbnails, temporary files, and encryption keys) takes up
+about 10% of disk space, but is not counted against user quotas. Users can check
+their used and available space on their Personal pages. Only files that
+originate with users count against their quotas, and not files shared with them
+that originate from other users. For example, if you upload files to a
+different user’s share, those files count against your quota. If you re-share a
+file that another user shared with you, that file does not count against your
+quota, but the originating user’s.</p>
+<p>Encrypted files are a little larger than unencrypted files; the unencrypted size
+is calculated against the user’s quota.</p>
+<p>Deleted files that are still in the trash bin do not count against quotas. The
+trash bin is set at 50% of quota. Deleted file aging is set at 30 days. When
+deleted files exceed 50% of quota then the oldest files are removed until the
+total is below 50%.</p>
+<p>When version control is enabled, the older file versions are not counted
+against quotas.</p>
+<p>When a user creates a public share via URL, and allows uploads, any uploaded
+files count against that user’s quota.</p>
+</div>
+<div class="section" id="deleting-users">
+<h2>Deleting users<a class="headerlink" href="#deleting-users" title="Permalink to this headline">¶</a></h2>
+<p>Deleting a user is easy: hover your cursor over their name on the <strong>Users</strong> page
+until a trashcan icon appears at the far right. Click the trashcan, and they’re
+gone. You’ll see an undo button at the top of the page, which remains until you
+refresh the page. When the undo button is gone you cannot recover the deleted
+user.</p>
+<p>All of the files owned by the user are deleted as well, including all files they
+have shared. If you need to preserve the user’s files and shares, you must first
+download them from your ownCloud Files page, which compresses them into a zip
+file, or use a sync client to copy them to your local computer. See
+<a class="reference internal" href="../files/file_sharing_configuration.html"><span class="doc">File Sharing</span></a> to learn how to create
+persistent file shares that survive user deletions.</p>
+</div>
+<div class="section" id="enabling-custom-groups">
+<h2>Enabling Custom Groups<a class="headerlink" href="#enabling-custom-groups" title="Permalink to this headline">¶</a></h2>
+<p>In previous versions of ownCloud, files and folders could only be shared with individual users or groups created by administrators.
+This wasn’t the most efficient way to work.
+From ownCloud 10.0, users can create groups on-the-fly, through a feature called “Custom Groups”, enabling them to share content in a more flexible way.</p>
+<p>To enable Custom Groups:</p>
+<ol class="arabic simple">
+<li>From the ownCloud Market, which you can find in version 10.0 under the Apps menu, click “<strong>Market</strong>”.</li>
+<li>Click “<strong>Collaboration</strong>” (1), to filter the list of available options and click the “<strong>Custom groups</strong>” application (2).</li>
+</ol>
+<img alt="The Custom Groups application in the ownCloud Market" src="../../_images/owncloud-market-custom-groups.png" />
+<ol class="arabic simple" start="3">
+<li>Click “<strong>INSTALL</strong>” in the bottom right-hand corner of the Custom Groups application.</li>
+</ol>
+<img alt="Install the Custom Groups application from the ownCloud Market" src="../../_images/owncloud-market-custom-groups-install.png" />
+<p>With this done, Custom Group functionality will be available in your ownCloud installation.</p>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

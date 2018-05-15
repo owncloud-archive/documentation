@@ -1,0 +1,12 @@
+/**
+ * Supplemental Navigation Styles
+ */
+li.nav-item.is-current-page.is-active a.nav-link {
+  text-decoration: underline;
+  font-style: italic;
+}
+
+li.nav-item.is-current-page.is-active ul li.nav-item a.nav-link {
+  font-style: normal;
+  text-decoration: none;
+}

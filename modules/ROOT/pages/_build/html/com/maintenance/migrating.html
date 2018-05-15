@@ -1,0 +1,411 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Migrating to a Different Server &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="How To Manually Move a Data Directory" href="manually-moving-data-folders.html" />
+    <link rel="prev" title="Restoring ownCloud" href="restore.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="enable_maintenance.html">Maintenance Mode Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup.html">Backing up ownCloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html">How to Upgrade Your ownCloud Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="package_upgrade.html">Upgrade ownCloud From Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Upgrading ownCloud with the Updater App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual_upgrade.html">Manual ownCloud Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restore.html">Restoring ownCloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Migrating to a Different Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-migrate">How to Migrate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-trusted-domains">Managing Trusted Domains</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-migration">Example Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="manually-moving-data-folders.html">How To Manually Move a Data Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="migrating-to-a-different-server">
+<h1>Migrating to a Different Server<a class="headerlink" href="#migrating-to-a-different-server" title="Permalink to this headline">¶</a></h1>
+<p>If the need arises, ownCloud can be migrated to a different server.
+A typical use case would be a hardware change or a migration from <a class="reference internal" href="../appliance/index.html"><span class="doc">the Enterprise appliance</span></a> to a physical server.
+All migrations have to be performed with ownCloud in maintenance mode.
+Online migration is supported by ownCloud only when implementing industry-standard clustering and high-availability solutions <strong>before</strong> ownCloud is installed for the first time.</p>
+<p>To start, let’s work through a potential use case.
+A configured ownCloud instance runs reliably on one machine, but for some reason the instance needs to be moved to a new machine.
+Depending on the size of the ownCloud instance the migration might take several hours.</p>
+<p>For the purpose of this use case, it is assumed that:</p>
+<ol class="arabic simple">
+<li>The end users reach the ownCloud instance via a virtual hostname (such as a DNS <code class="docutils literal notranslate"><span class="pre">CNAME</span></code> record) which can be pointed at the new location.</li>
+<li>The authentication method (e.g., LDAP) remains the same after the migration.</li>
+</ol>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">During the migration, do not make any changes to the original system, except for putting it into maintenance mode.
+This ensures, should anything unforeseen happen, that you can go back to your existing installation and resume availability of your ownCloud installation while debugging the problem.</p>
+</div>
+<div class="section" id="how-to-migrate">
+<h2>How to Migrate<a class="headerlink" href="#how-to-migrate" title="Permalink to this headline">¶</a></h2>
+<p>Firstly, set up the new machine with your desired Linux distribution.
+At this point you can either <a class="reference internal" href="../installation/source_installation.html"><span class="doc">install ownCloud manually</span></a> via the compressed archive, or <a class="reference internal" href="../installation/linux_installation.html"><span class="doc">with your Linux package manager</span></a>.</p>
+<p>Then, on the original machine turn on maintenance mode and then stop ownCloud.
+After waiting for 6 - 7 minutes for all sync clients to register that the server is in maintenance mode, ref:<cite>stop the web server &lt;maintenance_commands_label&gt;</cite> that is serving ownCloud.</p>
+<p>After that, <a class="reference internal" href="backup.html#backup-database-label"><span class="std std-ref">create a database dump from the database</span></a>, copy it to the new machine, and <a class="reference internal" href="restore.html#restore-database-label"><span class="std std-ref">import it into the new database</span></a>.</p>
+<p>Then, copy only your data, configuration, and database files from your original ownCloud instance to the new machine (See <a class="reference internal" href="backup.html"><span class="doc">Backing up ownCloud</span></a> and <a class="reference internal" href="restore.html#restore-directories-label"><span class="std std-ref">Restore Directories</span></a>).</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">You must keep the <code class="docutils literal notranslate"><span class="pre">data/</span></code> directory’s original file path during the migration.
+However, <a class="reference internal" href="manually-moving-data-folders.html#datadir-move-label"><span class="std std-ref">you can change it</span></a> before you begin the migration, or after the migration’s completed.</p>
+</div>
+<p>The data files should keep their original timestamp otherwise the clients will re-download all the files after the migration.
+This step might take several hours, depending on your installation.
+This can be done on a number of sync clients, such as by using <code class="docutils literal notranslate"><span class="pre">rsync</span></code> with <code class="docutils literal notranslate"><span class="pre">-t</span></code> option</p>
+<p>With ownCloud still in maintenance mode and before changing the DNS <code class="docutils literal notranslate"><span class="pre">CNAME</span></code> record, start up the database and web server on the new machine.
+Then point your web browser to the migrated ownCloud instance and confirm that:</p>
+<ol class="arabic simple">
+<li>You see the maintenance mode notice</li>
+<li>That a log file entry is written by both the web server and ownCloud</li>
+<li>That no error messages occur.</li>
+</ol>
+<p>If all of these things occur, then take ownCloud out of maintenance mode and repeat.
+After doing this, log in as an admin and confirm that ownCloud functions as normal.</p>
+<p>At this point, change the DNS <code class="docutils literal notranslate"><span class="pre">CNAME</span></code> entry to point your users to the new location.
+And with the <code class="docutils literal notranslate"><span class="pre">CNAME</span></code> entry updated, you now need to update the trusted domains.</p>
+</div>
+<div class="section" id="managing-trusted-domains">
+<span id="trusted-domains-label"></span><h2>Managing Trusted Domains<a class="headerlink" href="#managing-trusted-domains" title="Permalink to this headline">¶</a></h2>
+<p>All URLs used to access your ownCloud server must be whitelisted in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file, under the <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code> setting.
+Users are allowed to log into ownCloud only when they point their browsers to a URL that is listed in the <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code> setting.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This setting is important when changing or moving to a new domain name.
+You may use IP addresses and domain names.</p>
+</div>
+<p>A typical configuration looks like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="x">&#39;trusted_domains&#39; =&gt; [</span>
+<span class="x">   0 =&gt; &#39;localhost&#39;,</span>
+<span class="x">   1 =&gt; &#39;server1.example.com&#39;,</span>
+<span class="x">   2 =&gt; &#39;192.168.1.50&#39;,</span>
+<span class="x">],</span>
+</pre></div>
+</div>
+<p>The loopback address, <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>, is automatically whitelisted, so as long as you have access to the physical server you can always log in.
+In the event that a load-balancer is in place, there will be no issues as long as it sends the correct <code class="docutils literal notranslate"><span class="pre">X-Forwarded-Host</span></code> header.</p>
+</div>
+<div class="section" id="example-migration">
+<h2>Example Migration<a class="headerlink" href="#example-migration" title="Permalink to this headline">¶</a></h2>
+<p>Now, let’s step through an example migration.
+For this example to work, you will need the following on both the servers that you will use for the migration:</p>
+<ul class="simple">
+<li>Ubuntu 16.04</li>
+<li>SSH with <code class="docutils literal notranslate"><span class="pre">PermitRootLogin</span></code> set to <code class="docutils literal notranslate"><span class="pre">yes</span></code></li>
+</ul>
+<div class="section" id="preparation">
+<h3>Preparation<a class="headerlink" href="#preparation" title="Permalink to this headline">¶</a></h3>
+<p>Before you can perform a migration, you have to prepare.
+To do this, first make sure SSH is installed:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">apt install ssh -y</span>
+</pre></div>
+</div>
+<p>Next, edit ssh-config and enable root ssh login.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">nano /etc/ssh/sshd_config</span>
+<span class="go">PermitRootLogin yes</span>
+</pre></div>
+</div>
+<p>And then restart SSH.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">service ssh restart</span>
+</pre></div>
+</div>
+<p>Lastly, install ownCloud on the new server.</p>
+</div>
+<div class="section" id="migration">
+<h3>Migration<a class="headerlink" href="#migration" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="enable-maintenance-mode">
+<h4>Enable Maintenance Mode<a class="headerlink" href="#enable-maintenance-mode" title="Permalink to this headline">¶</a></h4>
+<p>The first step is to enable maintenance mode.
+To do that, use the following commands:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /var/www/owncloud/</span>
+<span class="go">sudo -u www-data php occ maintenance:mode --on</span>
+</pre></div>
+</div>
+<p>After that’s done, wait for 6-7 minutes and stop Apache:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">service apache2 stop</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="transfer-the-database">
+<h4>Transfer the Database<a class="headerlink" href="#transfer-the-database" title="Permalink to this headline">¶</a></h4>
+<p>Now, you have to transfer the database from the old server to the new one.
+To do that, first backup the database.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /var/www/owncloud/</span>
+<span class="go">mysqldump --single-transaction -h localhost -u admin -ppassword owncloud &gt; owncloud-dbbackup.bak</span>
+</pre></div>
+</div>
+<p>Then, export the database to the new server.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rsync -Aaxt owncloud-dbbackup.bak root@new_server_address:/var/www/owncloud</span>
+</pre></div>
+</div>
+<p>With that completed, import the database on new server.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">mysql -h localhost -u admin -ppassword owncloud &lt; owncloud-dbbackup.bak</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can find the values for the mysqldump command in your config.php, in your owncloud root directory.
+<code class="docutils literal notranslate"><span class="pre">[server]=</span> <span class="pre">dbhost,</span> <span class="pre">[username]=</span> <span class="pre">dbuser,</span> <span class="pre">[password]=</span> <span class="pre">dbpassword,</span> <span class="pre">and</span> <span class="pre">[db_name]=</span> <span class="pre">dbname</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>For InnoDB tables only</strong>
+The –single-transaction flag will start a transaction before running.
+Rather than lock the entire database, this will let mysqldump read the database in the current state at the time of the transaction, making for a consistent data dump.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>For Mixed MyISAM / InnoDB tables</strong>
+Either dumping your MyISAM tables separately from InnoDB tables or use –lock-tables
+instead of –single-transaction to guarantee the database is in a consistent state when using mysqldump.</p>
+</div>
+</div>
+<div class="section" id="transfer-data-and-configure-the-new-server">
+<h4>Transfer Data and Configure the New Server<a class="headerlink" href="#transfer-data-and-configure-the-new-server" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">rsync -Aavxt config data root@new_server_address:/var/www/owncloud</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If you want to move your data directory to another location on the target server, it is advised to do
+this as a second step. Please see the data directory migration document <a class="reference internal" href="manually-moving-data-folders.html#datadir-move-label"><span class="std std-ref">How To Manually Move a Data Directory</span></a> for more details.</p>
+</div>
+</div>
+<div class="section" id="finish-the-migration">
+<h4>Finish the Migration<a class="headerlink" href="#finish-the-migration" title="Permalink to this headline">¶</a></h4>
+<p>Now it’s time to finish the migration.
+To do that, on the new server, first verify that ownCloud is in maintenance mode.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -u www-data php occ maintenance:mode</span>
+</pre></div>
+</div>
+<p>Next, start up the database and web server on the new machine.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">service mysql start</span>
+<span class="go">service apache2 start</span>
+</pre></div>
+</div>
+<p>With that done, point your web browser to the migrated ownCloud instance, and confirm that you see the maintenance mode notice, and that no error messages occur.
+If both of these occur, take ownCloud out of maintenance mode.</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -u www-data php occ maintenance:mode --off</span>
+</pre></div>
+</div>
+<p>And finally, log in as admin and confirm normal function of ownCloud.
+If you have a domain name, and you want an SSL certificate, we recommend <a class="reference external" href="https://certbot.eff.org/">certbot</a>.</p>
+</div>
+<div class="section" id="reverse-the-changes-to-ssh-config">
+<h4>Reverse the Changes to ssh-config<a class="headerlink" href="#reverse-the-changes-to-ssh-config" title="Permalink to this headline">¶</a></h4>
+<p>Now you need to reverse the change to ssh-config.
+Specifically, set <code class="docutils literal notranslate"><span class="pre">PermitRootLogin</span></code> to <code class="docutils literal notranslate"><span class="pre">no</span></code> and restart ssh.
+To do that, run the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">service ssh restart</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="update-dns-and-trusted-domains">
+<h4>Update DNS and Trusted Domains<a class="headerlink" href="#update-dns-and-trusted-domains" title="Permalink to this headline">¶</a></h4>
+<p>Finally, update the DNS’ <code class="docutils literal notranslate"><span class="pre">CNAME</span></code> entry to point to your new server.
+If you have not only migrated physically from server to server but have also changed your ownCloud server’s domain name, you also need to update the domain in <a class="reference internal" href="../installation/source_installation.html#trusted-domains-label"><span class="std std-ref">the Trusted Domain setting</span></a> in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>, on the target server.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

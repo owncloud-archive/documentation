@@ -22,3 +22,6 @@
 
 # Exclude Vagrant files
 .vagrant
+
+# Exclude the build directory
+docs/

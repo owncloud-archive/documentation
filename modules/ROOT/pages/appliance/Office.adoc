@@ -1,0 +1,179 @@
+Working on Documents in the ownCloud Appliance
+==============================================
+
+Creating and editing documents in ownCloud can be achieved with either
+Collabora or OnlyOffice. It’s your choice which one you prefer to use.
+
+This guide covers the setup and update of the two office apps.
+
+Here is an overview of the process:
+
+1.  Access the Appcenter <appcenter-label>
+2.  Install Collabora <collabora-label> or OnlyOffice <onlyoffice-label>
+3.  Update <update-label> the App
+
+Access with *HTTPS* using *domain name* is required.
+
+[[appcenter]]
+Appcenter
+---------
+
+First you have to get to the Appcenter. Here are the steps to do that:
+
+1.  Connect to your appliance using IP address or domain name.
+
+....
+https://172.16.40.100
+# or
+https://ucs-2341.CompanyName.com
+....
+
+1.  Login into the management console
+
+* Click on the *Domain and System* settings
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/001-ucs-portal.png[image]
+
+* Type in the Administrator as username and the password you set.
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/002-ucs-login.png[image]
+
+1.  Now you can access the *Appcenter*".
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/003-ucs-favorites.png[image]
+
+From here on it’s your choice to install Collabora <collabora-label> or
+OnlyOffice <onlyoffice-label>.
+
+[[how-to-install-collabora]]
+How to Install Collabora
+------------------------
+
+1.  Install Collabora in UCS.
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/001-ucs-app-collabora-search.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/002-ucs-app-collabora-install.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/004-ucs-app-collabora-install-admin.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/008-ucs-install-docker.png[image]
+
+1.  Enable Collabora in ownCloud.
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/005-ucs-app-collabora-install-back.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/011-ucs-onlyoffice-install-owncloud.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/012-ucs-owncloud-open.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/013-ucs-owncloud-login.png[image]
+
+Username and Password are owncloud
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/006-oc-settings.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/007-oc-settings-apps.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/008-oc-settings-show-dis-apps.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/009-oc-enable-collabora.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/010-oc-goto-collabora.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/011-oc-collabora-open-example.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/collabora/012-oc-collabora-example.png[image]
+
+Now you can use Collabora within ownCloud. Start by creating a new
+Document.
+
+[[how-to-install-onlyoffice]]
+How to Install OnlyOffice
+-------------------------
+
+1.  Search for ``**OnlyOffice**'' or select it from the application list
+in the Appcenter.
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/004-ucs-onlyoffice.png[image]
+
+1.  Install OnlyOffice.
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/006-ucs-onlyoffice-install.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/007-ucs-onlyoffice-license.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/008-ucs-install-docker.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/009-ucs-onlyoffice-install-confirm.png[image]
+
+After the installation is complete, return to the Appcenter overview
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/010-ucs-onlyoffice-install-2oc.png[image]
+
+1.  Install the ownCloud OnlyOffice connector App
+
+* Go to ownCloud
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/011-ucs-onlyoffice-install-owncloud.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/012-ucs-owncloud-open.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/013-ucs-owncloud-login.png[image]
+
+Username and Password are owncloud
+
+* Market
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/014-ucs-owncloud-files.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/015-ucs-owncloud-market.png[image]
+
+* Tools
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/016-ucs-onlyoffice-install-owncloud-market-tools.png[image]
+
+* Install OnlyOffice
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/017-ucs-onlyoffice-install-owncloud-market-tools-oo.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/018-ucs-onlyoffice-install-owncloud-market-tools-oo-install.png[image]
+
+1.  Go to the OnlyOffice settings inside ownCloud.
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/019-ucs-owncloud-settings.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/020-ucs-owncloud-settings-open.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/021-ucs-owncloud-settings-general.png[image]
+
+1.  Enter the OnlyOffice server address in the following format and
+*save* it:
+
+....
+https://<your-domain-name>/onlyoffice-documentserver/
+....
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/022-ucs-onlyoffice-configure.png[image]
+
+1.  Now you can create a new document by clicking on the *Plus* button.
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/025-ucs-owncloud-create-new-document-oo.png[image]
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/026-ucs-onlyoffice-finished.png[image]
+
+PDF documents can also be viewed in OnlyOffice
+
+image:/owncloud-docs/_images/appliance/ucs/onlyoffice/027-ucs-onlyoffice-pdf.png[image]
+
+[[updating]]
+Updating
+--------
+
+When a new App release is available you should update the Office App.
+Here are the required steps:
+
+* Select *Software update*
+* Check if an Update is available
+* Select on the App name
+* Upgrade the App

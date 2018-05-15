@@ -1,0 +1,62 @@
+:root {
+  --drawer-height: 2.5rem;
+}
+
+.navigation-container {
+  display: none;
+  position: fixed;
+  top: var(--navbar-height);
+  left: 0;
+  width: 100%;
+  font-size: 0.95rem;
+  z-index: 1;
+}
+
+.navigation-container.is-active {
+  display: block;
+}
+
+@media screen and (min-width: 769px) {
+  .navigation-container {
+    width: 16rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navigation-container {
+    font-size: 0.85rem;
+    flex: none;
+    display: block;
+    position: static;
+    top: 0;
+  }
+}
+
+.navigation {
+  background-color: #fafafa;
+  position: relative;
+  top: var(--toolbar-height);
+  height: calc(100vh - var(--navbar-height) - var(--toolbar-height));
+}
+
+@media screen and (min-width: 769px) {
+  .navigation {
+    box-shadow: 0.5px 0 3px #c1c1c1;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .navigation {
+    top: var(--navbar-height);
+    box-shadow: none;
+    position: sticky;
+    height: calc(100vh - var(--navbar-height));
+  }
+}
+
+.navigation .panels {
+  display: flex;
+  flex-direction: column;
+  height: inherit;
+}

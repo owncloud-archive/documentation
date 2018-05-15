@@ -1,0 +1,171 @@
+= Antora Default UI
+// Settings:
+:experimental:
+:hide-uri-scheme:
+// Project URIs:
+:uri-project: https://gitlab.com/antora/antora-ui-default
+:uri-preview: https://antora.gitlab.io/antora-ui-default
+:uri-ci-pipelines: {uri-project}/pipelines
+:img-ci-status: {uri-project}/badges/master/pipeline.svg
+// External URIs:
+:uri-antora: https://antora.org
+:uri-git: https://git-scm.com
+:uri-git-dl: {uri-git}/downloads
+:uri-gulp: http://gulpjs.com
+:uri-opendevise: https://opendevise.com
+:uri-node: https://nodejs.org
+:uri-nvm: https://github.com/creationix/nvm
+:uri-nvm-install: {uri-nvm}#installation
+:uri-yarn: https://yarnpkg.com
+
+image:{img-ci-status}[CI Status (GitLab CI), link={uri-ci-pipelines}]
+
+This project is an archetype that demonstrates how to produce a UI bundle for use in a documentation site generated with {uri-antora}[Antora].
+You can see a preview of the default UI at {uri-preview}.
+
+== Use the Default UI
+
+If you want to use the default UI for your Antora-generated site, add the following UI configuration to your playbook:
+
+[source,yaml,subs=attributes+]
+----
+ui:
+  bundle: https://gitlab.com/antora/antora-ui-default/-/jobs/artifacts/master/raw/build/ui-bundle.zip?job=bundle-stable
+----
+
+Read on to learn how to use your own build of the default UI.
+
+== Quickstart
+
+This section offers a basic tutorial for learning how to preview the default UI and bundle it for use with Antora.
+A more comprehensive tutorial will be made available in the documentation.
+
+=== Prerequisites
+
+To preview and bundle the default UI, you need the following software on your computer:
+
+* {uri-git}[git] (command: `git`)
+* {uri-node}[Node 8] (command: `node`)
+* {uri-gulp}[Gulp CLI] (command: `gulp`)
+* {uri-yarn}[Yarn] (command: `yarn`)
+
+==== git
+
+First, make sure you have git installed.
+
+ $ git --version
+
+If not, {uri-git-dl}[download and install] the git package for your system.
+
+==== Node 8
+
+Next, make sure that you have Node 8 installed.
+
+ $ node --version
+
+If this command fails with an error, you don't have Node installed.
+If the command doesn't report a Node 8 version (e.g., v8.9.4), you don't have a suitable version of Node installed.
+
+While you can install Node from the official packages, we strongly recommend that you use {uri-nvm}[nvm] (Node Version Manager) to install and manage Node.
+Follow the {uri-nvm-install}[nvm installation instructions] to set up nvm on your machine.
+
+Once you've installed nvm, open a new terminal and install Node 8 using the following command:
+
+ $ nvm install 8
+
+You can switch to this version of Node at any time using the following command:
+
+ $ nvm use 8
+
+To make Node 8 the default in new terminals, type:
+
+ $ nvm alias default 8
+
+Now that you have Node 8 installed, you can proceed with installing the Gulp CLI and Yarn.
+
+==== Gulp CLI
+
+Next, you'll need the Gulp command-line interface (CLI).
+This package provides the `gulp` command which executes the version of Gulp declared by the project.
+
+You should install the Gulp CLI globally (which resolves to a location in your user directory if you're using nvm) using the following command:
+
+ $ npm install -g gulp-cli
+
+==== Yarn
+
+Finally, you'll need Yarn, which is the preferred package manager for the Node ecosystem.
+
+You should install Yarn globally (which resolves to a location in your user directory if you're using nvm) using the following command:
+
+ $ npm install -g yarn
+
+Now that you have the prerequisites installed, you can fetch and build the default UI project.
+
+=== Clone and Initialize the UI Project
+
+Clone the default UI project using git:
+
+[subs=attributes+]
+ $ git clone {uri-project} &&
+   cd "`basename $_`"
+
+The example above clones Antora's default UI project and then switches to the project folder on your filesystem.
+Stay in this project folder in order to initialize the project using Yarn.
+
+Use Yarn to install the project's dependencies.
+In your terminal, execute the following command (while inside the project folder):
+
+ $ yarn install
+
+This command installs the dependencies listed in [.path]_package.json_ into the [.path]_node_modules/_ folder inside the project.
+This folder does not get included in the UI bundle.
+
+=== Preview the UI
+
+The default UI project is configured to preview offline.
+That's what the files in the [.path]_preview-site-src/_ folder are for.
+This folder contains HTML file fragments that provide a representative sample of content from the site.
+
+To build the UI and preview it in a local web server, run the `preview` command:
+
+ $ gulp preview
+
+You'll see two URLs listed in the output of this command:
+
+....
+[BS] Access URLs:
+ ----------------------------------
+    Local: http://localhost:5252
+ External: http://192.168.1.7:5252
+ ----------------------------------
+[BS] Serving files from: build
+[BS] Watching files...
+....
+
+Navigate to the first URL to see the preview site.
+
+While this command is running, any changes you make to the source files will be instantly reflected in the browser.
+This works by monitoring the project for changes, running the `build` task if a change is detected, and sending the updates to the browser.
+
+Press kbd:[Ctrl+C] to stop the preview server and end the continuous build.
+
+=== Package for Use with Antora
+
+If you need to package the UI in order to preview the UI on the real site in local development, run the following command:
+
+ $ gulp pack
+
+The UI bundle will be available at [.path]_build/ui-bundle.zip_.
+You can then point Antora at this bundle using the `--ui-bundle` command-line option.
+
+== Copyright and License
+
+Copyright (C) 2017-2018 OpenDevise Inc. and the Antora Project.
+
+Use of this software is granted under the terms of the https://www.mozilla.org/en-US/MPL/2.0/[Mozilla Public License Version 2.0] (MPL-2.0).
+See link:LICENSE[] to find the full license text.
+
+== Authors
+
+Development of Antora is led and sponsored by {uri-opendevise}[OpenDevise Inc].

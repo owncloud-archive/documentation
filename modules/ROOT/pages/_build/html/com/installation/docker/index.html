@@ -1,0 +1,383 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Installing with Docker &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Command Line Installation" href="../command_line_installation.html" />
+    <link rel="prev" title="The Installation Wizard" href="../installation_wizard.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment_recommendations.html">Deployment Recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../deployment_considerations.html">Deployment Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../source_installation.html">Manual Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../linux_installation.html">Linux Package Manager Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation_wizard.html">The Installation Wizard</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installing with Docker</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installation-on-a-local-machine">Installation on a Local Machine</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../command_line_installation.html">Command Line Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration_notes_and_tips.html">Configuration Notes &amp; Tips</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changing_the_web_route.html">Changing Your ownCloud URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps_management_installation.html">Installing and Managing Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../apps_supported.html">Supported Apps in ownCloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../selinux_configuration.html">SELinux Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../nginx_configuration.html">NGINX Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../letsencrypt/index.html">Using Let’s Encrypt SSL Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="installing-with-docker">
+<h1>Installing with Docker<a class="headerlink" href="#installing-with-docker" title="Permalink to this headline">¶</a></h1>
+<p>ownCloud can be installed using Docker, using <a class="reference external" href="https://hub.docker.com/r/owncloud/server/">the official ownCloud Docker image</a>.
+This official image is designed to work with a data volume in the host filesystem and with separate <em>MariaDB</em> and <em>Redis</em> containers.
+The configuration:</p>
+<ul class="simple">
+<li>exposes ports 80 and 443, allowing for HTTP and HTTPS connections.</li>
+<li>mounts the data and MySQL data directories on the host for persistent storage.</li>
+</ul>
+<div class="section" id="installation-on-a-local-machine">
+<h2>Installation on a Local Machine<a class="headerlink" href="#installation-on-a-local-machine" title="Permalink to this headline">¶</a></h2>
+<p>To use it, first create a new project directory and download <code class="docutils literal notranslate"><span class="pre">docker-compose.yml</span></code> from <a class="reference external" href="https://github.com/owncloud-docker/server.git">the ownCloud Docker GitHub repository</a> into that new directory.
+Next, create a <cite>.env</cite> configuration file, which contains the required configuration settings.
+Only a few settings are required, these are:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="30%" />
+<col width="49%" />
+<col width="21%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Setting Name</th>
+<th class="head">Description</th>
+<th class="head">Example</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">VERSION</span></code></td>
+<td>The ownCloud version</td>
+<td><code class="docutils literal notranslate"><span class="pre">latest</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">DOMAIN</span></code></td>
+<td>The ownCloud domain</td>
+<td><code class="docutils literal notranslate"><span class="pre">localhost</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">ADMIN_USERNAME</span></code></td>
+<td>The admin username</td>
+<td><code class="docutils literal notranslate"><span class="pre">admin</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">ADMIN_PASSWORD</span></code></td>
+<td>The admin user’s password</td>
+<td><code class="docutils literal notranslate"><span class="pre">admin</span></code></td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">HTTP_PORT</span></code></td>
+<td>The HTTP port to bind to</td>
+<td><code class="docutils literal notranslate"><span class="pre">80</span></code></td>
+</tr>
+<tr class="row-odd"><td><code class="docutils literal notranslate"><span class="pre">HTTPS_PORT</span></code></td>
+<td>The HTTP port to bind to</td>
+<td><code class="docutils literal notranslate"><span class="pre">443</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>Then, you can start the container, using your preferred Docker command-line tool.
+The example below shows how to use <a class="reference external" href="https://docs.docker.com/compose/">Docker Compose</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can find instructions for using plain docker <a class="reference external" href="https://github.com/owncloud-docker/server#launch-with-plain-docker">in the GitHub repository</a>.</p>
+</div>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> Create a new project directory
+<span class="go">mkdir owncloud-docker-server</span>
+
+<span class="go">cd owncloud-docker-server</span>
+
+<span class="gp">#</span> Copy docker-compose.yml from the GitHub repository
+<span class="go">wget https://raw.githubusercontent.com/owncloud-docker/server/master/docker-compose.yml</span>
+
+<span class="gp">#</span> Create the environment configuration file
+<span class="go">cat &lt;&lt; EOF &gt; .env</span>
+<span class="go">VERSION=10.0.4</span>
+<span class="go">DOMAIN=localhost</span>
+<span class="go">ADMIN_USERNAME=admin</span>
+<span class="go">ADMIN_PASSWORD=admin</span>
+<span class="go">HTTP_PORT=80</span>
+<span class="go">HTTPS_PORT=443</span>
+<span class="go">EOF</span>
+
+<span class="gp">#</span> Build and start the container
+<span class="go">docker-compose up -d</span>
+</pre></div>
+</div>
+<p>When the process completes, then check that all the containers have successfully
+started, by running <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">ps</span></code>.
+If they are all working correctly, you should expect to see output similar to
+that below:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">         Name                     Command               State                     Ports</span>
+<span class="go">-------------------------------------------------------------------------------------------------------</span>
+<span class="go">server_db_1         /usr/bin/entrypoint /bin/s ...   Up      3306/tcp</span>
+<span class="go">server_owncloud_1   /usr/local/bin/entrypoint  ...   Up      0.0.0.0:443-&gt;443/tcp, 0.0.0.0:80-&gt;80/tcp</span>
+<span class="go">server_redis_1      /bin/s6-svscan /etc/s6           Up      6379/tcp</span>
+</pre></div>
+</div>
+<p>In it, you can see that the database, ownCloud, and Redis containers are running, and that ownCloud is accessible via ports 443 and 8080 on the host machine.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Just because all the containers are running, it takes a few minutes for ownCloud to be fully functional.
+If you run <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">logs</span> <span class="pre">--follow</span> <span class="pre">owncloud</span></code> and see a significant amount of information logging to the console, then please wait until it slows down to attempt to access the web UI.</p>
+</div>
+<div class="section" id="logging-in">
+<h3>Logging In<a class="headerlink" href="#logging-in" title="Permalink to this headline">¶</a></h3>
+<p>To log in to the ownCloud UI, open <code class="docutils literal notranslate"><span class="pre">https://localhost</span></code> in your browser of
+choice, where you see the standard ownCloud login screen, as in the image
+below.</p>
+<img alt="The ownCloud UI via Docker" src="../../_images/owncloud-ui-login.png" />
+<p>The username and password are the admin username and password which you stored in <code class="docutils literal notranslate"><span class="pre">.env</span></code> earlier.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The first time that you access the login page via HTTPS, a browser
+warning appears, as the SSL certificate in the Docker setup is self-signed.
+However, the self-signed certificate can be overwritten with a valid cert, within the host volume.</p>
+</div>
+</div>
+<div class="section" id="stopping-the-containers">
+<h3>Stopping the Containers<a class="headerlink" href="#stopping-the-containers" title="Permalink to this headline">¶</a></h3>
+<p>Assuming you used docker-compose, as in the previous example, to stop the containers use <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">stop</span></code>.
+Alternatively, use <code class="docutils literal notranslate"><span class="pre">docker-compose</span> <span class="pre">down</span></code> to stop and remove containers, along with the related networks, images, and volumes.</p>
+</div>
+<div class="section" id="upgrading-owncloud-on-docker">
+<h3>Upgrading ownCloud on Docker<a class="headerlink" href="#upgrading-owncloud-on-docker" title="Permalink to this headline">¶</a></h3>
+<p>When a new version of ownCloud gets released, you should update your instance.
+To do so, follow these simple steps.</p>
+<p>First, go to your docker directory where your <code class="docutils literal notranslate"><span class="pre">.yaml</span></code> or <code class="docutils literal notranslate"><span class="pre">.env</span></code> file exists.
+Second, put ownCloud into maintenance mode; you can do so using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">exec</span> <span class="n">server</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span> <span class="o">--</span><span class="n">on</span>
+</pre></div>
+</div>
+<p>Third, create a backup in case something goes wrong during the upgrade process, using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">exec</span> <span class="n">db</span> <span class="n">backup</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This assumes that you are using <a class="reference external" href="https://hub.docker.com/r/webhippie/mariadb/">the default database container from Webhippie</a>.</p>
+</div>
+<p>Fifth, shutdown the containers.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">down</span>
+</pre></div>
+</div>
+<p>Sixth, update the version number of ownCloud in your <code class="docutils literal notranslate"><span class="pre">.env</span></code> file or the YAML file. You can use sed for it, as in the following example.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Make sure that you adjust the example to match your installation.</span>
+<span class="n">sed</span> <span class="o">-</span><span class="n">i</span> <span class="s1">&#39;s/^owncloud_version=.*$/owncloud_version=&lt;newVersion&gt;/&#39;</span> <span class="o">/</span><span class="n">compose</span><span class="o">/*/.</span><span class="n">env</span>
+</pre></div>
+</div>
+<p>Seventh, view the file to ensure the changes has been implemented.</p>
+<blockquote>
+<div><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">.</span><span class="n">env</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>Eighth, start your docker instance again.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">docker</span><span class="o">-</span><span class="n">compose</span> <span class="n">up</span> <span class="o">-</span><span class="n">d</span>
+</pre></div>
+</div>
+<p>Now you should have the current ownCloud running with docker-compose.</p>
+</div>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

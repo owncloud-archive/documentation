@@ -1,0 +1,381 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Configuring External Storage (GUI) &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Amazon S3" href="external_storage/amazons3.html" />
+    <link rel="prev" title="Providing Default Files" href="default_files_configuration.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../database/index.html">Database Configuration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">File Sharing and Management</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="default_files_configuration.html">Providing Default Files</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external_storage_configuration.html">Configuring External Storage (Configuration File)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage Authentication mechanisms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="encryption_configuration.html">Encryption Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files_locking_transactional.html">Transactional File Locking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="previews_configuration.html">Previews Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="file_versioning.html">Controlling File Versions and Aging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trashbin_options.html">Managing the Trashbin</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ldap/ldap_proxy_cache_server_setup.html">How To Install and Configure an LDAP Proxy-Cache Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server/index.html">Server Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user/index.html">User Management</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="configuring-external-storage-gui">
+<h1>Configuring External Storage (GUI)<a class="headerlink" href="#configuring-external-storage-gui" title="Permalink to this headline">¶</a></h1>
+<p>The External Storage Support application enables you to mount external storage
+services and devices as secondary ownCloud storage devices. You may also allow
+users to mount their own external storage services.</p>
+<p>ownCloud 9.0 introduces a new set of <a class="reference internal" href="../server/occ_command.html#files-external-label"><span class="std std-ref">occ commands for managing external storage</span></a>.</p>
+<p>Also new in 9.0 is an option for the ownCloud admin to enable or disable sharing
+on individual external mountpoints (see
+<a class="reference internal" href="#external-storage-mount-options-label"><span class="std std-ref">Mount Options</span></a>). Sharing on such mountpoints is
+disabled by default.</p>
+<div class="section" id="enabling-external-storage-support">
+<h2>Enabling External Storage Support<a class="headerlink" href="#enabling-external-storage-support" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Enabling this app will disable the <strong>Stay logged in</strong> checkbox on the login page.</p>
+</div>
+<p>The External storage support application is enabled on your Apps page.</p>
+<div class="figure">
+<img alt="Enable external storage on your Apps page." src="../../_images/enable-app.png" />
+</div>
+</div>
+<div class="section" id="storage-configuration">
+<h2>Storage Configuration<a class="headerlink" href="#storage-configuration" title="Permalink to this headline">¶</a></h2>
+<p>To create a new external storage mount, select an available backend from the
+dropdown <strong>Add storage</strong>. Each backend has different required options, which
+are configured in the configuration fields.</p>
+<div class="figure">
+<img alt="../../_images/add_storage.png" src="../../_images/add_storage.png" />
+</div>
+<p>Each backend may also accept multiple authentication methods. These are selected
+with the dropdown under <strong>Authentication</strong>. Different backends support different
+authentication mechanisms; some specific to the backend, others are more
+generic. See <a class="reference internal" href="external_storage/auth_mechanisms.html"><span class="doc">External Storage Authentication mechanisms</span></a> for more detailed
+information.</p>
+<p>When you select an authentication mechanism, the configuration fields change as
+appropriate for the mechanism. The SFTP backend, for one example, supports
+<strong>username and password</strong>, <strong>Log-in credentials, save in session</strong>, and <strong>RSA
+public key</strong>.</p>
+<div class="figure">
+<img alt="An SFTP configuration example." src="../../_images/auth_mechanism.png" />
+</div>
+<p>Required fields are marked with a red border. When all required fields are
+filled, the storage is automatically saved. A green dot next to the storage row
+indicates the storage is ready for use. A red or yellow icon indicates
+that ownCloud could not connect to the external storage, so you need to
+re-check your configuration and network availability.</p>
+<p>If there is an error on the storage, it will be marked as unavailable for ten
+minutes. To re-check it, click the colored icon or reload your Admin page.</p>
+</div>
+<div class="section" id="user-and-group-permissions">
+<h2>User and Group Permissions<a class="headerlink" href="#user-and-group-permissions" title="Permalink to this headline">¶</a></h2>
+<p>A storage configured in a user’s Personal settings is available only to the user
+that created it. A storage configured in the Admin settings is available to
+all users by default, and it can be restricted to specific users and groups in
+the <strong>Available for</strong> field.</p>
+<div class="figure">
+<img alt="User and groups selector" src="../../_images/applicable.png" />
+</div>
+</div>
+<div class="section" id="mount-options">
+<span id="external-storage-mount-options-label"></span><h2>Mount Options<a class="headerlink" href="#mount-options" title="Permalink to this headline">¶</a></h2>
+<p>Hover your cursor to the right of any storage configuration to expose
+the settings button and trashcan. Click the trashcan to delete the
+mountpoint. The settings button allows you to configure each storage mount
+individually with the following options:</p>
+<ul class="simple">
+<li>Encryption</li>
+<li>Previews</li>
+<li>Enable Sharing</li>
+<li>Filesystem check frequency (Never, Once per direct access)</li>
+</ul>
+<p>The <strong>Encryption</strong> checkbox is visible only when the Encryption app is enabled.</p>
+<p><strong>Enable Sharing</strong> allows the ownCloud admin to enable or disable sharing on individual mountpoints.
+When sharing is disabled the shares are retained internally, so that you can re-enable sharing
+and the previous shares become available again. Sharing is disabled by default.</p>
+<div class="figure">
+<img alt="Additional mount options exposed on mouseover." src="../../_images/mount_options.png" />
+</div>
+</div>
+<div class="section" id="using-self-signed-certificates">
+<h2>Using Self-Signed Certificates<a class="headerlink" href="#using-self-signed-certificates" title="Permalink to this headline">¶</a></h2>
+<p>When using self-signed certificates for external storage mounts the certificate
+must be imported into ownCloud. Please refer to <a class="reference internal" href="../server/import_ssl_cert.html"><span class="doc">Importing System-wide and Personal SSL Certificates</span></a>
+for more information.</p>
+</div>
+<div class="section" id="available-storage-backends">
+<h2>Available storage backends<a class="headerlink" href="#available-storage-backends" title="Permalink to this headline">¶</a></h2>
+<p>The following backends are provided by the external storages app. Other apps
+may provide their own backends, which are not listed here.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/amazons3.html">Amazon S3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/dropbox.html">Dropbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/ftp.html">FTP/FTPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/google.html">Google Drive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/local.html">Local</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/openstack.html">OpenStack Object Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/owncloud.html">ownCloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/sftp.html">SFTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/smb.html">SMB/CIFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/webdav.html">WebDAV</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A non-blocking or correctly configured SELinux setup is needed
+for these backends to work. Please refer to the <a class="reference internal" href="../../installation/selinux_configuration.html#selinux-config-label"><span class="std std-ref">SELinux Configuration</span></a>.</p>
+</div>
+</div>
+<div class="section" id="allow-users-to-mount-external-storage">
+<h2>Allow Users to Mount External Storage<a class="headerlink" href="#allow-users-to-mount-external-storage" title="Permalink to this headline">¶</a></h2>
+<p>Check “<em>Allow users to mount external storage</em>” to allow your users to mount storages on external services.
+Then enable the backends you want to allow.</p>
+<div class="figure">
+<img alt="Checkboxes to allow users to mount external storage services." src="../../_images/user_mounts.png" />
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Be careful with the choices that you enable, as it allows a user to make potentially arbitrary connections to other services on your network!</p>
+</div>
+<div class="section" id="setting-up-google-drive-and-dropbox-connections">
+<h3>Setting Up Google Drive and Dropbox Connections<a class="headerlink" href="#setting-up-google-drive-and-dropbox-connections" title="Permalink to this headline">¶</a></h3>
+<p>When an external storage is created which uses either Google Drive or Dropbox, a link to the respective configuration page is available, next to the service name.</p>
+<div class="figure">
+<img alt="Links to Google Drive and Dropbox app configuration pages." src="../../_images/external-storage-google-drive-and-dropbox-configuration.png" />
+</div>
+<p>In the screenshot above, you can see that two external storage connections have been created, but not configured.
+One goes to Google Drive, the other to Dropbox.
+If you click the cog icon next to the name of either, the respective app configuration page will open in a new tab, or a new window.
+From there, you can manage the configuration and obtain the respective credentials needed for configuring the connection.</p>
+</div>
+</div>
+<div class="section" id="detecting-files-added-to-external-storages">
+<h2>Detecting Files Added to External Storages<a class="headerlink" href="#detecting-files-added-to-external-storages" title="Permalink to this headline">¶</a></h2>
+<p>We recommend configuring the background job <strong>Webcron</strong> or
+<strong>Cron</strong> (see <a class="reference internal" href="../server/background_jobs_configuration.html"><span class="doc">Background Jobs</span></a>)
+to enable ownCloud to automatically detect files added to your external
+storages.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You cannot scan/detect changed files on external storage mounts when you select
+the <strong>Log-in credentials, save in session</strong> authentication mechanism. However, there is
+a workaround, and that is to use Ajax cron mode. See <a class="reference internal" href="external_storage/auth_mechanisms.html#password-auth-workaround-label"><span class="std std-ref">Password-based Mechanisms</span></a>
+for more information.</p>
+</div>
+<p>ownCloud may not always be able to find out what has been
+changed remotely (files changed without going through ownCloud), especially
+when it’s very deep in the folder hierarchy of the external storage.</p>
+<p>You might need to setup a cron job that runs <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>
+(or replace “–all” with the user name, see also <a class="reference internal" href="../server/occ_command.html"><span class="doc">Using the occ Command</span></a>)
+to trigger a rescan of the user’s files periodically (for example every 15 minutes), which includes
+the mounted external storage.</p>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

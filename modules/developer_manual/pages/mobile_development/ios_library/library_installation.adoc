@@ -1,0 +1,106 @@
+Library Installation
+====================
+
+[[obtaining-the-library]]
+Obtaining the library
+---------------------
+
+The ownCloud iOS library may be obtained from the following Github
+repository:
+
+mailto:git@github.com:owncloud/ios-library.git[git@github.com:owncloud/ios-library.git]
+
+Once obtained, this code should be compiled with Xcode 6. The Github
+repository not only contains the library, ownCloud iOS library, but also
+contains a sample project, OCLibraryExample, which will assist in
+learning how to use the library.
+
+[[add-the-library-to-a-project]]
+Add the library to a project
+----------------------------
+
+There are two methods to add this library to a project.
+
+* Reference the headers and library binary file (`.a`) directly.
+* Include the library as a subproject.
+
+Which method to choose depends on user preference as well as whether the
+source code and project file of the static library are available.
+
+[[reference-headers-and-library-binary-files]]
+Reference headers and library binary files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Follow these steps if this is the desired method.
+
+\1. Compile the ownCloud iOS library and run the project. A
+`libownCloudiOS.a` file will be generated.
+
+The following files are required:
+
+*Library file*
+
+* `libownCloudiOS.a` (Library)
+
+*Library Classes*
+
+* `OCCommunication.h` (Accessors) Import in the communication class
+* `OCErrorMsg.h` (Error Messages) Import in the communication class
+* `OCFileDto.h` and `OCFileDto.m` (File/Folder object) Import when using
+* `readFolder` and `readFile` methods
+* `OCFrameworkConstants.h` (Customize constants)
+
+\2. Add the library file to the project. From the ``Build Phases` tab,
+scroll to ``Link binary files` and select the `+' to add a library.
+Select the library file.
+
+\3. Add the path of the library header files. Under the ``Build
+Settings` tab, select the target library and add the path in the
+``Header Search Paths` field.
+
+\4. Remaining in the ``Build Setting` tab, add the flag `-Obj-C` under
+the ``Other Linker Flags` option.
+
+At this stage, the library is included on your project and you can start
+communicating with the ownCloud server.
+
+[[include-the-library-as-a-subproject]]
+Include the library as a subproject
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Follow these steps if this is the desired method.
+
+\5. Add the file `ownCloud iOS library.xcodeproj` to the project via
+drag and drop.
+
+image:/owncloud-docs/_images/100000000000030C000001E61DFDBF76.png[100000000000030C000001E61DFDBF76_png]
+
+\6. Within the project, navigate to the ``Build Phases` tab. Under the
+``Target Dependencies` section, select the `+' and choose the library
+target.
+
+\7. Link the library file to the project target. Under the ``Build
+Phases` tab, select the `+' under the ``Link Binary with Libraries`
+section and select the library file.
+
+\8. Add the flag `-Obj-C` to ``Other Linker Flags` under the project
+target on the ``Build Settings` tab.
+
+\9. Finally add the path of the library headers. Under the ``Build
+Settings` tab, add the path under the ``Header Search Paths` option.
+
+[[sources]]
+Sources
+-------
+
+* http://www.raywenderlich.com/41377/creating-a-static-library-in-ios-tutorial[Creating
+a static library in iOS tutorial (raywenderlich.com)]
+* https://developer.apple.com/library/ios/technotes/iOSStaticLibraries/Articles/configuration.html#/apple_ref/doc/uid/TP40012554-CH3-SW2[Apple
+iOS static library documentation]
+
+__________
+width::
+  16.51cm
+height::
+  10.285cm
+__________

@@ -1,0 +1,12 @@
+{{#if page.versions}}
+<div class="page-versions">
+  <button class="versions-menu-toggle" title="Show other versions of page">{{page.version}}</button>
+  <div class="versions-menu">
+    {{#each page.versions}}
+    <a class="version
+      {{~#if (eq ./version @root.page.version)}} is-current{{/if~}}
+      {{~#if ./missing}} is-missing{{/if}}" href="{{{relativize @root.page.url ./url}}}">{{./version}}</a>
+    {{/each}}
+  </div>
+</div>
+{{/if}}

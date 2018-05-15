@@ -1,0 +1,3 @@
+curl -i -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \ 
+  -d userid="Frank" \
+  -d password="frankspassword"

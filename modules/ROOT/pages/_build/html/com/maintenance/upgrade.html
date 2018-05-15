@@ -1,0 +1,468 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>How to Upgrade Your ownCloud Server &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Upgrade ownCloud From Packages" href="package_upgrade.html" />
+    <link rel="prev" title="Backing up ownCloud" href="backup.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="enable_maintenance.html">Maintenance Mode Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backup.html">Backing up ownCloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to Upgrade Your ownCloud Server</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites">Prerequisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrade-options">Upgrade Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reverse-upgrade">Reverse Upgrade</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing-a-migration">Testing a Migration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#migrating-with-the-encryption-backend-enabled">Migrating with the Encryption Backend Enabled</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#migrating-from-debian-to-official-owncloud-packages">Migrating from Debian to Official ownCloud Packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-from-9-1-to-version">Upgrading from 9.1 to 10.0.7</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="package_upgrade.html">Upgrade ownCloud From Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Upgrading ownCloud with the Updater App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manual_upgrade.html">Manual ownCloud Upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restore.html">Restoring ownCloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html">Migrating to a Different Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="manually-moving-data-folders.html">How To Manually Move a Data Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="how-to-upgrade-your-owncloud-server">
+<h1>How to Upgrade Your ownCloud Server<a class="headerlink" href="#how-to-upgrade-your-owncloud-server" title="Permalink to this headline">¶</a></h1>
+<p>We recommend that you keep your ownCloud server upgraded regularly installing all point releases and major releases, without skipping any of them, as doing so increases the risk of errors.</p>
+<ul class="simple">
+<li>Major releases are 8.0, 8.1, 8.2, 9.0, 9.1, and 10.0.</li>
+<li>Point releases are intermediate releases for each major release, e.g., 8.0.9, 8.1.3, and 10.0.7.</li>
+</ul>
+<p>When an update is available for your ownCloud server, you will see a notification at the top of your ownCloud Web interface.
+When you click the notification, it will bring you here.</p>
+<p>Before beginning an upgrade, please keep the following points in mind:</p>
+<ul class="simple">
+<li>Review <a class="reference internal" href="../release_notes.html"><span class="doc">the release notes</span></a> for important information about the needed migration steps during that upgrade to help ensure a smooth upgrade process.</li>
+<li>Skipping major releases is not supported. However <em>you can</em> migrate from 9.0.9 straight to 10.0.</li>
+<li>Downgrading is not supported.</li>
+<li>Upgrading is disruptive, as your ownCloud server will be put into <a class="reference internal" href="../configuration/server/occ_command.html#maintenance-mode-label"><span class="std std-ref">maintenance mode</span></a>.</li>
+<li>Large installations may take several hours to complete the upgrade.</li>
+<li>Downgrading <strong>is not supported</strong> as it risks corrupting your data. If you want to revert to an older ownCloud version, make a new, fresh installation and then restore your data from backup. Before doing this, file a support ticket (if you have paid support) or ask for help in the ownCloud forums to resolve your issue without downgrading.</li>
+</ul>
+<div class="section" id="prerequisites">
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline">¶</a></h2>
+<p>We strongly recommend that you always maintain <a class="reference internal" href="backup.html"><span class="doc">regular backups</span></a> as well as make a fresh backup before every upgrade.
+We also recommend that you review any installed third-party apps for compatibility with the new ownCloud release.
+Ensure that they are all disabled before beginning the upgrade.
+After the upgrade is complete re-enable any which are compatible with the new release.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Install unsupported apps at your own risk.</p>
+</div>
+</div>
+<div class="section" id="upgrade-options">
+<h2>Upgrade Options<a class="headerlink" href="#upgrade-options" title="Permalink to this headline">¶</a></h2>
+<p>There are three ways to upgrade your ownCloud server.
+The first — <em>and recommended</em> —&nbsp;way is to perform a <a class="reference internal" href="manual_upgrade.html"><span class="doc">manual upgrade</span></a>, using <a class="reference external" href="https://owncloud.org/install/">the latest ownCloud release</a>.
+The second way is to use your distribution’s <a class="reference internal" href="package_upgrade.html"><span class="doc">package manager</span></a>, in conjunction with our official ownCloud repositories.
+However, this approach should not be used unattended nor in clustered setups.</p>
+<p>The third way is to use the <a class="reference internal" href="update.html"><span class="doc">Updater App</span></a>.
+This is needed in scenarios where the admin does not have access to the command line.
+It is recommended for shared hosting environments and for users who want an easy way to track different release channels.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Enterprise customers will use their Enterprise software repositories to maintain their ownCloud servers, rather than the Open Build Service. Please see <a class="reference internal" href="../enterprise/installation/install.html"><span class="doc">Installing &amp; Upgrading ownCloud Enterprise Edition</span></a> for more information.</p>
+</div>
+</div>
+<div class="section" id="reverse-upgrade">
+<h2>Reverse Upgrade<a class="headerlink" href="#reverse-upgrade" title="Permalink to this headline">¶</a></h2>
+<p>If you need to reverse your upgrade, see <a class="reference internal" href="restore.html"><span class="doc">Restoring ownCloud</span></a>.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>When upgrading ownCloud and you are running MySQL or MariaDB with binary logging enabled, your upgrade may fail with these errors in your MySQL/MariaDB log:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">An</span> <span class="n">unhandled</span> <span class="n">exception</span> <span class="n">has</span> <span class="n">been</span> <span class="n">thrown</span><span class="p">:</span>
+<span class="n">exception</span> <span class="s1">&#39;PDOException&#39;</span> <span class="k">with</span> <span class="n">the</span> <span class="n">message</span> <span class="s1">&#39;SQLSTATE[HY000]: General error: 1665</span>
+<span class="n">Cannot</span> <span class="n">execute</span> <span class="n">statement</span><span class="p">:</span> <span class="n">impossible</span> <span class="n">to</span> <span class="n">write</span> <span class="n">to</span> <span class="n">binary</span> <span class="n">log</span> <span class="n">since</span>
+<span class="n">BINLOG_FORMAT</span> <span class="o">=</span> <span class="n">STATEMENT</span> <span class="ow">and</span> <span class="n">at</span> <span class="n">least</span> <span class="n">one</span> <span class="n">table</span> <span class="n">uses</span> <span class="n">a</span> <span class="n">storage</span> <span class="n">engine</span> <span class="n">limited</span> <span class="n">to</span> <span class="n">row</span><span class="o">-</span><span class="n">based</span> <span class="n">logging</span><span class="o">.</span> <span class="n">InnoDB</span> <span class="ow">is</span> <span class="n">limited</span> <span class="n">to</span> <span class="n">row</span><span class="o">-</span><span class="n">logging</span> <span class="n">when</span> <span class="n">transaction</span> <span class="n">isolation</span> <span class="n">level</span> <span class="ow">is</span> <span class="n">READ</span> <span class="n">COMMITTED</span> <span class="ow">or</span> <span class="n">READ</span> <span class="n">UNCOMMITTED</span><span class="o">.</span><span class="s1">&#39;</span>
+</pre></div>
+</div>
+<p>Please refer to <a class="reference internal" href="../configuration/database/linux_database_configuration.html#db-binlog-label"><span class="std std-ref">MySQL / MariaDB with Binary Logging Enabled</span></a> on how to correctly configure your environment.</p>
+<p>Occasionally, <em>files do not show up after an upgrade</em>. A rescan of the files can help:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">console</span><span class="o">.</span><span class="n">php</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://owncloud.org/support">the owncloud.org support page</a> for further resources for both home and enterprise users.</p>
+<p>Sometimes, ownCloud can get <em>stuck in a upgrade</em>.
+This is usually due to the process taking too long and encountering a PHP time-out. Stop the upgrade process this way:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span> <span class="o">--</span><span class="n">off</span>
+</pre></div>
+</div>
+<p>Then start the manual process:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+<p>If this does not work properly, try the repair function:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">repair</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-a-migration">
+<span id="migration-test-label"></span><h2>Testing a Migration<a class="headerlink" href="#testing-a-migration" title="Permalink to this headline">¶</a></h2>
+<p>Previous versions of ownCloud included a migration test.
+ownCloud first ran a migration simulation by copying the ownCloud database and performing the upgrade on the copy, to ensure that the migration would succeed.</p>
+<p>Then the copied tables were deleted after the upgrade was completed.
+This doubled the upgrade time, so admins could skip this test (by risking a failed upgrade) with <code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">occ</span> <span class="pre">upgrade</span> <span class="pre">--skip-migration-test</span></code>.</p>
+<p>The migration test has been removed from ownCloud 9.2. ownCloud server admins should have current backups before migration, and rely on backups to correct any problems from the migration.</p>
+</div>
+<div class="section" id="migrating-with-the-encryption-backend-enabled">
+<h2>Migrating with the Encryption Backend Enabled<a class="headerlink" href="#migrating-with-the-encryption-backend-enabled" title="Permalink to this headline">¶</a></h2>
+<p>The encryption backend was changed twice between ownCloud 7.0 and 8.0 as well as
+between 8.0 and 8.1. If you’re upgrading from these older versions, please refer to <a class="reference internal" href="../configuration/files/encryption_configuration.html#upgrading-encryption-label"><span class="std std-ref">Encryption migration to ownCloud 8.0</span></a> for the needed migration steps.</p>
+</div>
+<div class="section" id="migrating-from-debian-to-official-owncloud-packages">
+<h2>Migrating from Debian to Official ownCloud Packages<a class="headerlink" href="#migrating-from-debian-to-official-owncloud-packages" title="Permalink to this headline">¶</a></h2>
+<p>As of March 2016, Debian will not include ownCloud packages. Debian users can
+migrate to the official ownCloud packages by following this guide, <a class="reference external" href="https://owncloud.org/blog/upgrading-owncloud-on-debian-stable-to-official-packages/">Upgrading ownCloud on Debian Stable to official packages</a>.</p>
+</div>
+<div class="section" id="upgrading-from-9-1-to-version">
+<h2>Upgrading from 9.1 to 10.0.7<a class="headerlink" href="#upgrading-from-9-1-to-version" title="Permalink to this headline">¶</a></h2>
+<p>To upgrade ownCloud from version 9.1 to 10.0.7 requires just a few steps.
+In this guide, the following assumptions are made:</p>
+<ol class="arabic simple">
+<li>ownCloud 10.0.7 is the latest version.</li>
+<li>Your existing installation is in <code class="docutils literal notranslate"><span class="pre">/var/www/owncloud</span></code>.</li>
+<li>Your new installation is in <code class="docutils literal notranslate"><span class="pre">/var/www/owncloud-10.0.4</span></code>.</li>
+<li>The commands are executed as the web server user, which is <code class="docutils literal notranslate"><span class="pre">www-data</span></code>.</li>
+<li>Your ownCloud installation is run with <em>Apache 2</em>, <em>PHP 5.6</em>, and <em>Ubuntu 14.04</em>.</li>
+</ol>
+<div class="section" id="put-owncloud-in-maintenance-mode">
+<h3>Put ownCloud in Maintenance Mode<a class="headerlink" href="#put-owncloud-in-maintenance-mode" title="Permalink to this headline">¶</a></h3>
+<p>Before you begin, enable maintenance mode in the existing ownCloud installation.
+You can do this by running the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cd /var/www/owncloud/</span>
+<span class="go">sudo -u www-data ./occ maintenance:mode --on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="stop-the-webserver">
+<h3>Stop the Webserver<a class="headerlink" href="#stop-the-webserver" title="Permalink to this headline">¶</a></h3>
+<p>Next, stop your web server.
+To do this, run the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo service apache2 stop</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-a-copy-of-owncloud-version">
+<h3>Get a Copy of ownCloud 10.0.7<a class="headerlink" href="#get-a-copy-of-owncloud-version" title="Permalink to this headline">¶</a></h3>
+<p>You can download ownCloud 10 from several places.
+However, the best place is <a class="reference external" href="https://owncloud.org/install/">https://owncloud.org/install/</a>.
+To do so, run the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">#</span> Download and extract the code to /var/www/owncloud-10.0.4
+<span class="go">wget -qO- https://download.owncloud.org/community/owncloud-10.0.4.tar.bz2 | \</span>
+<span class="go">  tar --transform &#39;s/^owncloud/owncloud-10.0.4/&#39; -jxv -C /var/www/</span>
+</pre></div>
+</div>
+<p>Copy config/config.php from the existing installation to the new source</p>
+<p>Next, copy <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> from the current installation to the new, 10.0.7, source.
+You can do this by running the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cp -v /var/www/owncloud/config/config.php /var/www/owncloud-10.0.4/config/config.php</span>
+</pre></div>
+</div>
+<p>If you use the default ownCloud data directory, then you need to copy it from the existing installation to the new source directory as well.
+You can do this by running the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">cp -rv /var/www/owncloud/data /var/www/owncloud-10.0.4/data</span>
+</pre></div>
+</div>
+<p>If your data directory is located outside of the ownCloud installation directory, then you can safely skip this command.</p>
+</div>
+<div class="section" id="update-config-config-php-optional">
+<h3>Update config/config.php (optional)<a class="headerlink" href="#update-config-config-php-optional" title="Permalink to this headline">¶</a></h3>
+<p>If the data directory is inside the new ownCloud directory, you need to update <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> to point to it.
+In your editor of choice, open <code class="docutils literal notranslate"><span class="pre">config/config.php</span></code> and change the value of <code class="docutils literal notranslate"><span class="pre">datadirectory</span></code> to the new data directory location.</p>
+</div>
+<div class="section" id="update-the-web-server-configuration-to-use-the-new-source">
+<h3>Update the Web Server Configuration to Use the New Source<a class="headerlink" href="#update-the-web-server-configuration-to-use-the-new-source" title="Permalink to this headline">¶</a></h3>
+<p>Let’s assume that Apache 2 is configured to serve ownCloud from a <a class="reference external" href="https://httpd.apache.org/docs/current/mod/core.html#virtualhost">VirtualHost</a> that has the following configuration:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">&lt;VirtualHost *:80&gt;</span>
+
+<span class="go">  ServerName owncloud.app.localdomain</span>
+<span class="go">  ServerAlias www.owncloud.app.localdomain</span>
+<span class="go">  DocumentRoot /var/www/owncloud/</span>
+<span class="go">  ErrorLog ${APACHE_LOG_DIR}/error.owncloud.log</span>
+<span class="go">  CustomLog ${APACHE_LOG_DIR}/access.owncloud.log combined</span>
+
+<span class="go">  Alias /owncloud &quot;/var/www/owncloud/&quot;</span>
+
+<span class="go">  &lt;Directory /var/www/owncloud/&gt;</span>
+<span class="go">    Options +FollowSymlinks</span>
+<span class="go">    AllowOverride All</span>
+
+<span class="go">   &lt;IfModule mod_dav.c&gt;</span>
+<span class="go">    Dav off</span>
+<span class="go">   &lt;/IfModule&gt;</span>
+
+<span class="go">   SetEnv HOME /var/www/owncloud</span>
+<span class="go">   SetEnv HTTP_HOME /var/www/owncloud</span>
+
+<span class="go">  &lt;/Directory&gt;</span>
+
+<span class="go">&lt;/VirtualHost&gt;</span>
+</pre></div>
+</div>
+<p>In that configuration, change the <a class="reference external" href="https://httpd.apache.org/docs/current/mod/mod_alias.html#alias">Alias</a> and <a class="reference external" href="https://httpd.apache.org/docs/current/mod/core.html#documentroot">DocumentRoot</a> directives to point to the ownCloud 10.0.7 source.
+Specifically, change them to be as in the following example:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">Alias /owncloud &quot;/var/www/owncloud-10.0.0RC1/&quot;</span>
+<span class="go">DocumentRoot /var/www/owncloud-10.0.0RC1/</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="run-the-update-process">
+<h3>Run the Update Process<a class="headerlink" href="#run-the-update-process" title="Permalink to this headline">¶</a></h3>
+<p>You can update ownCloud either by using the Web UI or the command-line.
+To update via the Web UI, open <a class="reference external" href="http://owncloud.app.localdomain">http://owncloud.app.localdomain</a> in your web browser of choice.
+Alternatively, use the command-line tool, <a class="reference internal" href="../configuration/server/occ_command.html#command-line-upgrade-label"><span class="std std-ref">occ</span></a>, to upgrade the installation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal notranslate"><span class="pre">occ</span></code> offers many advantages, and far more functionality and flexibility than the Web UI. A key one is its scriptability.</p>
+</div>
+<p>To upgrade from the command-line, run:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -u www-data ./occ upgrade</span>
+</pre></div>
+</div>
+<p>Depending on your installation, you should see output similar to the following:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">ownCloud or one of the apps require upgrade - only a limited number of commands are available</span>
+<span class="go">You may use your browser or the occ upgrade command to do the upgrade</span>
+<span class="go">Set log level to debug</span>
+<span class="go">Updating database schema</span>
+<span class="go">Updated database</span>
+<span class="go">Updating &lt;dav&gt; ...</span>
+<span class="go">Updated &lt;dav&gt; to 0.2.8</span>
+<span class="go">Drop old database tables</span>
+
+<span class="go"> Done</span>
+<span class="go"> 28/28 [============================] 100%</span>
+<span class="go">Remove old (&lt; 9.0) calendar/contact shares</span>
+<span class="go"> Done</span>
+<span class="go"> 4/4 [============================] 100%</span>
+<span class="go">Fix permissions so avatars can be stored again</span>
+<span class="go"> Done</span>
+<span class="go"> 2/2 [============================] 100%</span>
+<span class="go">Move user avatars outside the homes to the new location</span>
+<span class="go"> Done</span>
+<span class="go"> 1/1 [============================] 100%</span>
+<span class="go">Update successful</span>
+<span class="go">Maintenance mode is kept active</span>
+<span class="go">Reset log level</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-maintenance-mode">
+<h3>Disable Maintenance Mode<a class="headerlink" href="#disable-maintenance-mode" title="Permalink to this headline">¶</a></h3>
+<p>Now that ownCloud is upgraded, disable maintenance mode using the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo -u www-data ./occ maintenance:mode --off</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="restart-the-webserver">
+<h3>Restart the Webserver<a class="headerlink" href="#restart-the-webserver" title="Permalink to this headline">¶</a></h3>
+<p>Finally, restart the web server, by running the following command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">sudo service apache2 start</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Adding Users and Groups in UCS for ownCloud &#8212; ownCloud 10.0.8 Server Administration Manual 10.0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Install Antivirus Software in the ownCloud Appliance" href="../Clamav.html" />
+    <link rel="prev" title="Managing UCS" href="../managing-ucs.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://owncloud.org/wp-content/themes/owncloudorgnew/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://owncloud.org/wp-content/themes/owncloudorgnew/assets/img/common/favicon.png" />
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https//piwik.owncloud.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://owncloud.org/" rel="home" title="ownCloud.org"><img class="logo" src="../../_static/img/logo_owncloud.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+        <li class="menu-news"><a href="https://owncloud.org/news/">News</a></li>
+        <li class="menu-features"><a href="https://owncloud.org/features/">Features</a></li>
+        <li class="menu-demo"><a target="_blank" href="https://demo.owncloud.org">Demo</a></li>
+        <li class="menu-documentation top-nav-active"><a href="https://doc.owncloud.org">Documentation</a></li>
+        <li class="menu-contribute"><a href="https://owncloud.org/contribute/">Contribute</a>
+        <li class="menu-support"><a href="https://owncloud.org/support">Support</a></li>
+        <li class="menu-commercial"><a target="_blank" href="https://owncloud.com">Enterprise Edition</a></li>
+        <li class="menu-install"><a href="https://owncloud.org/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../../contents.html">ownCloud 10.0.8 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" />
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">The ownCloud X Appliance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../what-is-it.html">What is the Appliance?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../installation.html">How to Install the Appliance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../login_information.html">ownCloud Appliance Login Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../howto-update-owncloud.html">How to Update ownCloud</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../managing-ucs.html">Managing UCS</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Adding Users and Groups in UCS for ownCloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Clamav.html">Install Antivirus Software in the ownCloud Appliance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../certificates.html">How to add certificates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Active_Directory.html">Active Directory Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Backup.html">Backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../Office.html">Working on Documents in the ownCloud Appliance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="../managing-ucs.html" title="Previous Chapter: Managing UCS"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Managing UCS</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../Clamav.html" title="Next Chapter: Install Antivirus Software in the ownCloud Appliance"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Install Antiv... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="adding-users-and-groups-in-ucs-for-owncloud">
+<h1>Adding Users and Groups in UCS for ownCloud<a class="headerlink" href="#adding-users-and-groups-in-ucs-for-owncloud" title="Permalink to this headline">¶</a></h1>
+<p>If you want to add users and groups to your ownCloud installation via the UCS (Univention Corporate Server) UI, here’s a concise guide showing how.</p>
+<div class="section" id="login-to-the-univention-management-console">
+<h2>Login to the Univention Management Console<a class="headerlink" href="#login-to-the-univention-management-console" title="Permalink to this headline">¶</a></h2>
+<p>After logging in to the Univention server, under “<strong>Administration</strong>”, click the first option, labeled “<strong>System and domain settings</strong>”.</p>
+<img alt="../../_images/ucs-owncloud-portal1.png" src="../../_images/ucs-owncloud-portal1.png" />
+<p>This takes you to the Univention Management Console.</p>
+</div>
+<div class="section" id="create-the-user">
+<h2>Create the User<a class="headerlink" href="#create-the-user" title="Permalink to this headline">¶</a></h2>
+<p>Once there, click “<strong>Users</strong>”.</p>
+<img alt="../../_images/step-1.png" src="../../_images/step-1.png" />
+<p>In the screen that appears, add a new user by clicking “<strong>ADD</strong>” in the top left-hand corner of the users table.</p>
+<img alt="../../_images/step-2.png" src="../../_images/step-2.png" />
+<p>This opens up a new user dialog, where you can supply the relevant details for the new user.
+Enter a username and optionally a first name, last name, and a title.
+Then click “<strong>NEXT</strong>”.</p>
+<img alt="../../_images/step-3.png" src="../../_images/step-3.png" />
+<p>In the next dialog that appears, enter and confirm the password.
+You can, optionally, choose some further options, if desired.
+Then click “<strong>CREATE USER</strong>”.</p>
+<img alt="../../_images/step-4.png" src="../../_images/step-4.png" />
+<p>The new user will have been created, so click the “<strong>CLOSE</strong>” button, in the top right-hand corner, to go back to “<strong>Favorites</strong>”.</p>
+<img alt="../../_images/step-5.png" src="../../_images/step-5.png" />
+</div>
+<div class="section" id="create-the-group">
+<h2>Create the Group<a class="headerlink" href="#create-the-group" title="Permalink to this headline">¶</a></h2>
+<p>Now it’s time to create a new group.
+Click “<strong>Groups</strong>”, which is located between “<strong>Computers</strong>” and “<strong>Software Update</strong>”.</p>
+<img alt="../../_images/step-6.png" src="../../_images/step-6.png" />
+<p>From there, click “<strong>ADD</strong>”, located on the left-hand side of the groups table.</p>
+<img alt="../../_images/step-7.png" src="../../_images/step-7.png" />
+<p>In the next dialog that appears, first enter the name of the group and
+optionally a description.
+Then, under “<strong>Members of this group</strong>”, click “<strong>ADD</strong>”.</p>
+<img alt="../../_images/step-8.png" src="../../_images/step-8.png" />
+<p>This opens up an “<strong>Add objects</strong>” (or “Add new group”) dialog.
+Find the user, in the list at the bottom, that you want to add to the group, check the checkbox next to their name, and click “<strong>ADD</strong>”.</p>
+<img alt="../../_images/step-9.png" src="../../_images/step-9.png" />
+<p>After that, click on “<strong>ownCloud</strong>” in the left-hand side navigation, and check the option “<strong>ownCloud enabled</strong>”.
+And lastly, click “<strong>CREATE GROUP</strong>”.</p>
+<img alt="../../_images/step-10.png" src="../../_images/step-10.png" />
+<p>With that done, the new user and group are now available in your ownCloud installation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Depending on your installation, you will either see these changes immediately or you will have to wait for the user sync to be done.
+This happens ever 10 minutes by default.</p>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="../managing-ucs.html" title="Previous Chapter: Managing UCS"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Managing UCS</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../Clamav.html" title="Next Chapter: Install Antivirus Software in the ownCloud Appliance"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Install Antiv... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/107072838776436530705/about"><img width=50 src="../../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" style="margin: 0 7px 0 14px;" href="https://www.facebook.com/ownClouders"><img width=50 src="../../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" style="margin: 0 14px 0 7px;" href="https://twitter.com/ownClouders"><img width=50 src="../../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://owncloud.org/blogfeed"><img class="img-circle" width=50 src="../../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="http://visitor.r20.constantcontact.com/d.jsp?llr=ixens9uab&amp;p=oi&amp;m=1121878184680&amp;sit=mf4qye7jb&amp;f=cc4cd13f-acdf-45d3-b132-75252542c37d"><img class="img-circle" width=50 src="../../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About ownCloud</h4>
+          <ul id="menu-about" class="menu">
+            <li class="menu-contact"><a href="https://owncloud.org/contact/">People</a></li>
+            <li class="menu-history"><a href="https://owncloud.org/history/">History</a></li>
+            <li class="menu-events"><a href="https://owncloud.org/events/">Events</a></li>
+            <li class="menu-press"><a href="https://owncloud.org/press">Press</a></li>
+            <li class="menu-privacy"><a href="https://owncloud.org/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Resources</h4>
+          <ul id="menu-support-and-documentation" class="menu">
+            <li class="menu-faq"><a href="https://owncloud.org/faq/">FAQ</a></li>
+            <li class="menu-support"><a href="https://owncloud.org/support/">Support</a></li>
+            <li class="menu-admin-manual"><a href="https://doc.owncloud.org">Documentation</a></li>
+            <li class="menu-security"><a href="https://owncloud.org/security/">Security</a></li>
+            <li class="menu-store"><a href="http://www.cafepress.com/owncloudshop">ownCloud Store</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=owncloud">IRC Channel</a></li>
+            <li class="menu-mailing-list"><a href="https://mailman.owncloud.org/mailman/listinfo/">Mailing List</a></li>
+            <li class="menu-forums"><a href="https://forum.owncloud.org/">Forums</a></li>
+            <li class="menu-bug-tracker"><a href="https://owncloud.org/contribute">Get involved</a></li>
+            <li class="menu-promote"><a href="https://owncloud.org/promote/">Discuss ownCloud with others</a></li>
+
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2013-2018, The ownCloud developers.<br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

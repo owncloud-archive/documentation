@@ -1,0 +1,472 @@
+CSS
+===
+
+The CSS files reside in the `css/` folder and should be included in the
+template:
+
+[source,php]
+----
+<?php
+// include one file
+style('myapp', 'style');  // adds css/style.css
+
+// include multiple files for the same app
+style('myapp', ['style', 'navigation']);  // adds css/style.css, css/navigation.css
+
+// include vendor file (also allows vendor syntax)
+vendor_style('myapp', 'style');  // adds vendor/style.css
+----
+
+Web Components go into the `component/` folder and can be imported like
+this:
+
+[source,php]
+----
+<?php
+// include one file
+component('myapp', 'tabs');  // adds component/tabs.html
+
+// include multiple files for the same app
+component('myapp', ['tabs', 'forms']);  // adds component/tabs.html, component/forms.html
+----
+
+Keep in mind that Web Components are still very new and you
+http://www.polymer-project.org/resources/compatibility.html[might need
+to add polyfills using Polymer]
+
+[[standard-layout]]
+Standard Layout
+---------------
+
+To use the commonly used layout consisting of sidebar navigation and
+content the `app-navigation` and `app-content` ids can be utilized:
+
+[source,html]
+----
+<div id="app">
+    <div id="app-navigation">Your navigation</div>
+    <div id="app-content">
+        <div id="app-content-wrapper">
+            Your content in here
+        </div>
+    </div>
+</div>
+----
+
+For built in mobile support your content has to be wrapped inside
+another div with the id `app-content-wrapper`.
+
+[[navigation]]
+Navigation
+----------
+
+ownCloud provides a default CSS navigation layout. If list entries
+should have 16x16 px icons, the `with-icon` class can be added to the
+base `ul`. The maximum supported indention level is two; we do not
+recommend further indentations.
+
+[source,html]
+----
+<div id="app-navigation">
+    <ul class="with-icon">
+        <li><a href="#">First level entry</a></li>
+        <li>
+            <a href="#">First level container</a>
+            <ul>
+                <li><a href="#">Second level entry</a></li>
+                <li><a href="#">Second level entry</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+----
+
+[[folders]]
+Folders
+~~~~~~~
+
+Folders are like normal entries and are only supported for the first
+level. In contrast to standard entries, the links which show the title
+of the folder need to have the `icon-folder` CSS class.
+
+If the folder should be collapsible, the `collapsible` class and a
+button with the class `collapse` are needed. After adding the
+collapsible class the folder’s child entries can be toggled by adding
+the `open` class to the list element:
+
+[source,html]
+----
+<div id="app-navigation">
+    <ul class="with-icon">
+        <li><a href="#">First level entry</a></li>
+        <li class="collapsible open">
+            <button class="collapse"></button>
+            <a href="#" class="icon-folder svg">Folder name</a>
+            <ul>
+                <li><a href="#">Folder contents</a></li>
+                <li><a href="#">Folder contents</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+----
+
+[[drag-and-drop]]
+Drag and Drop
+~~~~~~~~~~~~~
+
+The class which should be applied to a first level element (`li`) that
+hosts or can host a second level is `drag-and-drop`. This will cause the
+hovered entry to slide down giving a visual hint that it can accept the
+dragged element. In the case of jQuery UI’s droppable feature, the
+`hoverClass` option should be set to the `drag-and-drop` class.
+
+[source,html]
+----
+<div id="app-navigation">
+    <ul class="with-icon">
+        <li><a href="#">First level entry</a></li>
+        <li class="drag-and-drop">
+            <a href="#" class="icon-folder svg">Folder name</a>
+            <ul>
+                <li><a href="#">Folder contents</a></li>
+                <li><a href="#">Folder contents</a></li>
+            </ul>
+        </li>
+    </ul>
+</div>
+----
+
+[[menus]]
+Menus
+~~~~~
+
+To add actions that affect the current list element, you can add a menu
+for second and/or first level elements by adding the button and menu
+inside the corresponding `li` element and adding the `with-menu` CSS
+class:
+
+[source,html]
+----
+<div id="app-navigation">
+    <ul>
+        <li class="with-counter with-menu">
+            <a href="#">First level entry</a>
+
+            <div class="app-navigation-entry-utils">
+                <ul>
+                    <li class="app-navigation-entry-utils-counter">15</li>
+                    <li class="app-navigation-entry-utils-menu-button svg"><button></button></li>
+                </ul>
+            </div>
+
+            <div class="app-navigation-entry-menu open">
+                <ul>
+                    <li><button class="icon-rename svg" title="rename"></button></li>
+                    <li><button class="icon-delete svg" title="delete"></button></li>
+                </ul>
+            </div>
+
+        </li>
+</div>
+----
+
+The div with the class `app-navigation-entry-utils` contains only the
+button (class: `app-navigation-entry-utils-menu-button`) to display the
+menu but in many cases, another entry is needed to display some sort of
+count (mails count, unread feed count, etc.). In that case, add the
+`with-counter` class to the list entry to adjust the correct padding and
+text-overflow of the entry’s title.
+
+The count should be limited to 999 and turn to 999+ if any higher number
+is given. If AngularJS is used the following filter can be used to get
+the correct behavior:
+
+[source,js]
+----
+app.filter('counterFormatter', function () {
+    'use strict';
+    return function (count) {
+        if (count > 999) {
+            return '999+';
+        }
+        return count;
+    };
+});
+----
+
+Use it like this:
+
+[source,html]
+----
+<li class="app-navigation-entry-utils-counter">{{ count | counterFormatter }}</li>
+----
+
+The menu is hidden by default (`display: none`) and has to be triggered
+by adding the `open` class to the `app-navigation-entry-menu` div. In
+the case of AngularJS the following small directive can be added to
+handle all the display and click logic out of the box:
+
+[source,js]
+----
+app.run(function ($document, $rootScope) {
+    'use strict';
+    $document.click(function (event) {
+        $rootScope.$broadcast('documentClicked', event);
+    });
+});
+
+app.directive('appNavigationEntryUtils', function () {
+    'use strict';
+    return {
+        restrict: 'C',
+        link: function (scope, elm) {
+            var menu = elm.siblings('.app-navigation-entry-menu');
+            var button = $(elm)
+                .find('.app-navigation-entry-utils-menu-button button');
+
+            button.click(function () {
+                menu.toggleClass('open');
+            });
+
+            scope.$on('documentClicked', function (scope, event) {
+                if (event.target !== button[0]) {
+                    menu.removeClass('open');
+                }
+            });
+        }
+    };
+});
+----
+
+[[editing]]
+Editing
+~~~~~~~
+
+Often an edit option is needed for an entry. To add one for a given
+entry simply hide the title and add the following div inside the entry:
+
+[source,html]
+----
+<div id="app-navigation">
+    <ul class="with-icon">
+        <li>
+            <a href="#" class="hidden">First level entry</a>
+
+            <div class="app-navigation-entry-edit">
+                <form>
+                    <input type="text" value="First level entry" autofocus-on-insert>
+                    <input type="submit" value="" class="action icon-checkmark svg">
+                </form>
+            </div>
+
+        </li>
+    </ul>
+</div>
+----
+
+If AngularJS is used you want to auto-focus the input box. This can be
+achieved by placing the show condition inside an `ng-if` on the
+`app-navigation-entry-edit` div and adding the following directive:
+
+[source,js]
+----
+app.directive('autofocusOnInsert', function () {
+    'use strict';
+    return function (scope, elm) {
+        elm.focus();
+    };
+});
+----
+
+`ng-if` is required because it removes/inserts the element into the DOM
+dynamically instead of just adding a `display: none` to it like
+`ng-show` and `ng-hide`.
+
+[[undo-entry]]
+Undo Entry
+~~~~~~~~~~
+
+If you want to undo a performed action on a navigation entry such as
+deletion, you should show the undo directly in place of the entry and
+make it disappear after location change or seven seconds:
+
+[source,html]
+----
+<div id="app-navigation">
+    <ul class="with-icon">
+        <li>
+            <a href="#" class="hidden">First level entry</a>
+
+            <div class="app-navigation-entry-deleted">
+                <div class="app-navigation-entry-deleted-description">Deleted X</div>
+                <button class="app-navigation-entry-deleted-button icon-history svg" title="Undo"></button>
+            </div>
+        </li>
+    </ul>
+</div>
+----
+
+[[settings-area]]
+Settings Area
+-------------
+
+To create a settings area create a div with the id `app-settings` inside
+the `app-navgiation` div:
+
+[source,html]
+----
+<div id="app">
+
+    <div id="app-navigation">
+
+        <!-- Your navigation here -->
+
+        <div id="app-settings">
+            <div id="app-settings-header">
+                <button class="settings-button"
+                        data-apps-slide-toggle="#app-settings-content"
+                ></button>
+            </div>
+            <div id="app-settings-content">
+                <!-- Your settings in here -->
+            </div>
+        </div>
+    </div>
+</div>
+----
+
+The data attribute `data-apps-slide-toggle` slides up a target area
+using a jQuery selector and hides the area if the user clicks outside of
+it.
+
+[[icons]]
+Icons
+-----
+
+To use icons which are shipped in core, special classes to apply the
+background image are supplied. All of these classes use
+`background-position: center` and `background-repeat: no-repeat`.
+
+* *icon-breadcrumb*:::
+  image:../../img/7/breadcrumb.png[image]
+* *icon-loading*:::
+  image:../../img/7/loading.png[image]
+* *icon-loading-dark*:::
+  image:../../img/7/loading-dark.png[image]
+* *icon-loading-small*:::
+  image:../../img/7/loading-small.png[image]
+* *icon-add*:::
+  image:../../img/7/actions/add.png[image]
+* *icon-caret*:::
+  image:../../img/7/actions/caret.png[image]
+* *icon-caret-dark*:::
+  image:../../img/7/actions/caret-dark.png[image]
+* *icon-checkmark*:::
+  image:../../img/7/actions/checkmark.png[image]
+* *icon-checkmark-white*:::
+  image:../../img/7/actions/checkmark-white.png[image]
+* *icon-clock*:::
+  image:../../img/7/actions/clock.png[image]
+* *icon-close*:::
+  image:../../img/7/actions/close.png[image]
+* *icon-confirm*:::
+  image:../../img/7/actions/confirm.png[image]
+* *icon-delete*:::
+  image:../../img/7/actions/delete.png[image]
+* *icon-download*:::
+  image:../../img/7/actions/download.png[image]
+* *icon-history*:::
+  image:../../img/7/actions/history.png[image]
+* *icon-info*:::
+  image:../../img/7/actions/info.png[image]
+* *icon-lock*:::
+  image:../../img/7/actions/lock.png[image]
+* *icon-logout*:::
+  image:../../img/7/actions/logout.png[image]
+* *icon-mail*:::
+  image:../../img/7/actions/mail.png[image]
+* *icon-more*:::
+  image:../../img/7/actions/more.png[image]
+* *icon-password*:::
+  image:../../img/7/actions/password.png[image]
+* *icon-pause*:::
+  image:../../img/7/actions/pause.png[image]
+* *icon-pause-big*:::
+  image:../../img/7/actions/pause-big.png[image]
+* *icon-play*:::
+  image:../../img/7/actions/play.png[image]
+* *icon-play-add*:::
+  image:../../img/7/actions/play-add.png[image]
+* *icon-play-big*:::
+  image:../../img/7/actions/play-big.png[image]
+* *icon-play-next*:::
+  image:../../img/7/actions/play-next.png[image]
+* *icon-play-previous*:::
+  image:../../img/7/actions/play-previous.png[image]
+* *icon-public*:::
+  image:../../img/7/actions/public.png[image]
+* *icon-rename*:::
+  image:../../img/7/actions/rename.png[image]
+* *icon-search*:::
+  image:../../img/7/actions/search.png[image]
+* *icon-settings*:::
+  image:../../img/7/actions/settings.png[image]
+* *icon-share*:::
+  image:../../img/7/actions/share.png[image]
+* *icon-shared*:::
+  image:../../img/7/actions/shared.png[image]
+* *icon-sound*:::
+  image:../../img/7/actions/sound.png[image]
+* *icon-sound-off*:::
+  image:../../img/7/actions/sound-off.png[image]
+* *icon-star*:::
+  image:../../img/7/actions/star.png[image]
+* *icon-starred*:::
+  image:../../img/7/actions/starred.png[image]
+* *icon-toggle*:::
+  image:../../img/7/actions/toggle.png[image]
+* *icon-triangle-e*:::
+  image:../../img/7/actions/triangle-e.png[image]
+* *icon-triangle-n*:::
+  image:../../img/7/actions/triangle-n.png[image]
+* *icon-triangle-s*:::
+  image:../../img/7/actions/triangle-s.png[image]
+* *icon-upload*:::
+  image:../../img/7/actions/upload.png[image]
+* *icon-upload-white*:::
+  image:../../img/7/actions/upload-white.png[image]
+* *icon-user*:::
+  image:../../img/7/actions/user.png[image]
+* *icon-view-close*:::
+  image:../../img/7/actions/view-close.png[image]
+* *icon-view-next*:::
+  image:../../img/7/actions/view-next.png[image]
+* *icon-view-pause*:::
+  image:../../img/7/actions/view-pause.png[image]
+* *icon-view-play*:::
+  image:../../img/7/actions/view-play.png[image]
+* *icon-view-previous*:::
+  image:../../img/7/actions/view-previous.png[image]
+* *icon-calendar-dark*:::
+  image:../../img/7/places/calendar-dark.png[image]
+* *icon-contacts-dark*:::
+  image:../../img/7/places/contacts-dark.png[image]
+* *icon-file*:::
+  image:../../img/7/places/file.png[image]
+* *icon-files*:::
+  image:../../img/7/places/files.png[image]
+* *icon-folder*:::
+  image:../../img/7/places/folder.png[image]
+* *icon-filetype-text*:::
+  image:../../img/7/filetypes/text.png[image]
+* *icon-filetype-folder*:::
+  image:../../img/7/filetypes/folder.png[image]
+* *icon-home*:::
+  image:../../img/7/places/home.png[image]
+* *icon-link*:::
+  image:../../img/7/places/link.png[image]
+* *icon-music*:::
+  image:../../img/7/places/music.png[image]
+* *icon-picture*:::
+  image:../../img/7/places/picture.png[image]

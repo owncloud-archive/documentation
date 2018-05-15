@@ -1,0 +1,421 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Configuration Notes &amp; Tips &#8212; ownCloud 10.0.7 Server Administration Manual 10.0.7 documentation</title>
+    <link rel="stylesheet" href="../_static/style.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/bootstrap.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/css/responsive.css" type="text/css" />
+    <script type="text/javascript" src="../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
+    <link rel="prev" title="Command Line Installation" href="command_line_installation.html" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script type="text/javascript">
+(function () {
+  /**
+   * Patch TOC list.
+   *
+   * Will mutate the underlying span to have a correct ul for nav.
+   *
+   * @param $span: Span containing nested UL's to mutate.
+   * @param minLevel: Starting level for nested lists. (1: global, 2: local).
+   */
+  var patchToc = function ($ul, minLevel) {
+    var findA;
+
+    // Find all a "internal" tags, traversing recursively.
+    findA = function ($elem, level) {
+      var level = level || 0,
+        $items = $elem.find("> li > a.internal, > ul, > li > ul");
+
+      // Iterate everything in order.
+      $items.each(function (index, item) {
+        var $item = $(item),
+          tag = item.tagName.toLowerCase(),
+          pad = 15 + ((level - minLevel) * 10);
+
+        if (tag === 'a' && level >= minLevel) {
+          // Add to existing padding.
+          $item.css('padding-left', pad + "px");
+          console.log(level, $item, 'padding-left', pad + "px");
+        } else if (tag === 'ul') {
+          // Recurse.
+          findA($item, level + 1);
+        }
+      });
+    };
+
+    console.log("HERE");
+    findA($ul);
+  };
+
+  $(document).ready(function () {
+    // Add styling, structure to TOC's.
+    $(".dropdown-menu").each(function () {
+      $(this).find("ul").each(function (index, item){
+        var $item = $(item);
+        $item.addClass('unstyled');
+      });
+      $(this).find("li").each(function () {
+        $(this).parent().append(this);
+      });
+    });
+
+    // Patch in level.
+    patchToc($("ul.globaltoc"), 2);
+    patchToc($("ul.localtoc"), 2);
+
+    // Enable dropdown.
+    $('.dropdown-toggle').dropdown();
+  });
+}());
+</script>
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https://piwik.owncloud.com/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+  
+
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+<div class="header_con">
+<div class="container">
+<h1 id="site-title"><a href="http://doc.owncloud.com" title="ownCloud" rel="home">ownCloud</a></h1>
+
+<form class="headersearch" action="../search.html" method="get">
+  <input type="text" name="q" placeholder="Search" />
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+
+<div class="follow">
+<p><a class="visible" href="https://owncloud.com" title="ownCloud">Back to owncloud.com</a>|<span class="visible">Follow us:</span></p>
+<a class="twitter" href="https://twitter.com/owncloud" target="_blank">Twitter</a>
+<a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a>
+<a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a>
+</div>
+
+</div>
+</div>
+
+<div id="main">
+<div class="container">
+  <div class="content">
+
+    </div>
+    
+			<div class="row">
+				<div class="span3">
+					<div class="sidebar">
+						<div class="box sidenavi">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new_admin.html">What’s New in ownCloud 10.0.7</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment Recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_considerations.html">Deployment Considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Manual Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_installation.html">Linux Package Manager Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">The Installation Wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="docker/index.html">Installing with Docker</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Command Line Installation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuration Notes &amp; Tips</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#selinux">SELinux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#php-ini">php.ini</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#php-fpm">PHP-FPM</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-web-servers">Other Web Servers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changing_the_web_route.html">Changing Your ownCloud URL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_management_installation.html">Installing and Managing Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported Apps in ownCloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx_configuration.html">NGINX Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="letsencrypt/index.html">Using Let’s Encrypt SSL Certificates</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../enterprise/index.html">Enterprise Features</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+        
+
+				<div class="span9">
+					<div class="page-content">
+						
+  <div class="section" id="configuration-notes-tips">
+<h1>Configuration Notes &amp; Tips<a class="headerlink" href="#configuration-notes-tips" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="selinux">
+<span id="selinux-tips-label"></span><h2>SELinux<a class="headerlink" href="#selinux" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="selinux_configuration.html"><span class="doc">SELinux Configuration</span></a> for a suggested configuration for
+SELinux-enabled distributions such as Fedora and CentOS.</p>
+</div>
+<div class="section" id="php-ini">
+<span id="php-ini-tips-label"></span><h2>php.ini<a class="headerlink" href="#php-ini" title="Permalink to this headline">¶</a></h2>
+<p>Several core PHP settings must be configured correctly, otherwise ownCloud may not work properly.
+Known settings causing issues are listed here.
+Please note that, there might be other settings which cause unwanted behavior.
+In general, however, it is recommended to keep the <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> settings at their defaults, except when you know exactly why the change is required, and its implications.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Keep in mind that, changes to <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> may have to be configured in more than one ini file.
+This can be the case, for example, for the <code class="docutils literal notranslate"><span class="pre">date.timezone</span></code> setting.</p>
+</div>
+<div class="section" id="php-ini-used-by-the-web-server">
+<h3>php.ini - Used by the Web server<a class="headerlink" href="#php-ini-used-by-the-web-server" title="Permalink to this headline">¶</a></h3>
+<p>For PHP version 7.0 onward, replace <code class="docutils literal notranslate"><span class="pre">php_version</span></code> with the version number installed, e.g., <code class="docutils literal notranslate"><span class="pre">7.0</span></code> in the following examples.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="p">[</span><span class="n">php_version</span><span class="p">]</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+<span class="ow">or</span>
+  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="p">[</span><span class="n">php_version</span><span class="p">]</span><span class="o">/</span><span class="n">fpm</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+<span class="ow">or</span> <span class="o">...</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="php-ini-used-by-the-php-cli-and-so-by-owncloud-cron-jobs">
+<h3>php.ini - used by the php-cli and so by ownCloud CRON jobs<a class="headerlink" href="#php-ini-used-by-the-php-cli-and-so-by-owncloud-cron-jobs" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="p">[</span><span class="n">php_version</span><span class="p">]</span><span class="o">/</span><span class="n">cli</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="session-auto-start-enable-post-data-reading">
+<h3>session.auto_start &amp;&amp; enable_post_data_reading<a class="headerlink" href="#session-auto-start-enable-post-data-reading" title="Permalink to this headline">¶</a></h3>
+<p>Ensure that <a class="reference external" href="https://secure.php.net/manual/en/session.configuration.php#ini.session.auto-start">session.auto_start</a> is set to <code class="docutils literal notranslate"><span class="pre">0</span></code> or <code class="docutils literal notranslate"><span class="pre">Off</span></code> and <a class="reference external" href="https://secure.php.net/manual/en/ini.core.php#ini.enable-post-data-reading">enable_post_data_reading</a>
+to <code class="docutils literal notranslate"><span class="pre">1</span></code> or <code class="docutils literal notranslate"><span class="pre">On</span></code> in your configuration. If not, you may have issues logging in
+to ownCloud via the WebUI, where you see the error: “<em>Access denied. CSRF check
+failed</em>”.</p>
+</div>
+<div class="section" id="session-save-path">
+<h3>session.save_path<a class="headerlink" href="#session-save-path" title="Permalink to this headline">¶</a></h3>
+<p>In addition to setting <code class="docutils literal notranslate"><span class="pre">session.auto_start</span></code> and <code class="docutils literal notranslate"><span class="pre">enable_post_data_reading</span></code> correctly, ensure that, if <code class="docutils literal notranslate"><span class="pre">session.save_handler</span></code> is set to <code class="docutils literal notranslate"><span class="pre">files</span></code>, that <code class="docutils literal notranslate"><span class="pre">session.save_path</span></code> is set to a path on the filesystem which <strong>only</strong> the web server process (or process which PHP is running as) can read from and write to.</p>
+<p>This is especially important if your ownCloud installation is using a shared-hosting arrangement.
+In these situations, <a class="reference external" href="https://en.wikipedia.org/wiki/Session_poisoning">session poisoning</a> can occur if all of the session files are stored in the same location.
+Session poisoning is where one web application can manipulate data in the <code class="docutils literal notranslate"><span class="pre">$_SESSION</span></code> superglobal array of another.</p>
+<p>When this happens, the original application has no way of knowing that this corruption has occurred and may not treat the data with any sense of suspicion.
+You can <a class="reference external" href="http://ha.xxor.se/2011/09/local-session-poisoning-in-php-part-1.html">read through a thorough discussion of local session poisoning</a> if you’d like to know more.</p>
+</div>
+<div class="section" id="suhosin-session-cryptkey">
+<h3>suhosin.session.cryptkey<a class="headerlink" href="#suhosin-session-cryptkey" title="Permalink to this headline">¶</a></h3>
+<p>When <a class="reference external" href="https://suhosin.org/stories/configuration.html#suhosin-session-cryptkey">suhosin.session.cryptkey</a> is enabled, session data will be transparently encrypted.
+If enabled, there is less of a concern in storing application session files in the same location, as discussed in session.save_path.
+Ideally, however, session files for each application should always be stored in a location specific to that application, and never stored collectively with any other.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is only relevant if you’re using PHP 5.x.</p>
+</div>
+</div>
+<div class="section" id="post-max-size">
+<h3>post_max_size<a class="headerlink" href="#post-max-size" title="Permalink to this headline">¶</a></h3>
+<p>Please ensure that you have <code class="docutils literal notranslate"><span class="pre">post_max_size</span></code> configured with <em>at least</em> the minimum
+amount of memory for use with ownCloud, which is 512 MB.</p>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<p class="last">Please be careful when you set this value if you use the byte value shortcut as it is very specific.
+Use <cite>K</cite> for kilobyte, <cite>M</cite> for megabyte and <cite>G</cite> for gigabyte. <cite>KB</cite>, <cite>MB</cite>, and <cite>GB</cite> <strong>do not work!</strong></p>
+</div>
+</div>
+<div class="section" id="realpath-cache-size">
+<h3>realpath_cache_size<a class="headerlink" href="#realpath-cache-size" title="Permalink to this headline">¶</a></h3>
+<p>This determines the size of the realpath cache used by PHP.
+This value should be increased on systems where PHP opens many files, to reflect the number of file operations performed.
+For a detailed description see <a class="reference external" href="http://php.net/manual/en/ini.core.php#ini.realpath-cache-size">realpath-cache-size</a>.
+This setting has been available since PHP 5.1.0.
+Prior to PHP 7.0.16 and 7.1.2, the default was 16 KB.</p>
+<p>To see your current value, query your <code class="docutils literal notranslate"><span class="pre">phpinfo()</span></code> output for this key.
+It is recommended to set the value if it is currently set to the default of 16 KB.
+A good reading about the background can be found at <a class="reference external" href="https://tideways.io/profiler/blog/how-does-the-php-realpath-cache-work-and-how-to-configure-it">tideways.io</a>.</p>
+<div class="section" id="how-to-get-a-working-value">
+<h4>How to get a working value<a class="headerlink" href="#how-to-get-a-working-value" title="Permalink to this headline">¶</a></h4>
+<p>With the assumption of 112 bytes per file path needed, this would allow the cache to hold around 37.000 items with a cache size of 4096K (4M), but only about a hundred entries for a cache size of 16 KB.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It’s a good rule of thumb to always have a realpath cache that can hold entries for all your files paths in memory.
+If you use symlink deployment, then set it to double or triple the amount of files.</p>
+</div>
+<p>The easiest way to get the quantity of PHP files is to use cloc, which can be installed by running <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt-get</span> <span class="pre">install</span> <span class="pre">cloc</span></code>.
+The cloc package is available for nearly all distributions.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">cloc</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">owncloud</span> <span class="o">--</span><span class="n">exclude</span><span class="o">-</span><span class="nb">dir</span><span class="o">=</span><span class="n">data</span> <span class="o">--</span><span class="n">follow</span><span class="o">-</span><span class="n">links</span>
+   <span class="mi">12179</span> <span class="n">text</span> <span class="n">files</span><span class="o">.</span>
+   <span class="mi">11367</span> <span class="n">unique</span> <span class="n">files</span><span class="o">.</span>
+   <span class="mi">73126</span> <span class="n">files</span> <span class="n">ignored</span><span class="o">.</span>
+
+<span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">cloc</span><span class="o">.</span><span class="n">sourceforge</span><span class="o">.</span><span class="n">net</span> <span class="n">v</span> <span class="mf">1.60</span>  <span class="n">T</span><span class="o">=</span><span class="mf">1308.98</span> <span class="n">s</span> <span class="p">(</span><span class="mf">6.4</span> <span class="n">files</span><span class="o">/</span><span class="n">s</span><span class="p">,</span> <span class="mf">1283.5</span> <span class="n">lines</span><span class="o">/</span><span class="n">s</span><span class="p">)</span>
+<span class="o">--------------------------------------------------------------------------------</span>
+<span class="n">Language</span>                      <span class="n">files</span>          <span class="n">blank</span>        <span class="n">comment</span>           <span class="n">code</span>
+<span class="o">--------------------------------------------------------------------------------</span>
+<span class="n">PHP</span>                            <span class="mi">4896</span>          <span class="mi">96509</span>         <span class="mi">285384</span>         <span class="mi">558135</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Taking the math from above and assuming a symlinked instance, using factor 3.
+For example: <code class="docutils literal notranslate"><span class="pre">4896</span> <span class="pre">*</span> <span class="pre">3</span> <span class="pre">*</span> <span class="pre">112</span> <span class="pre">=</span> <span class="pre">1.6MB</span></code>
+This result shows that you can run with the PHP setting of 4M two instances of ownCloud.</p>
+<p>Having the default of 16 KB means that only 1/100 of the existing PHP file paths can be cached and need continuous cache refresh slowing down performance.
+If you run more web services using PHP, you have to calculate accordingly.</p>
+</div>
+</div>
+</div>
+<div class="section" id="php-fpm">
+<span id="php-fpm-tips-label"></span><h2>PHP-FPM<a class="headerlink" href="#php-fpm" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="system-environment-variables">
+<h3>System Environment Variables<a class="headerlink" href="#system-environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>When you are using <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code>, system environment variables like
+<code class="docutils literal notranslate"><span class="pre">PATH</span></code>, <code class="docutils literal notranslate"><span class="pre">TMP</span></code> or others are not automatically populated in the same way as
+when using <code class="docutils literal notranslate"><span class="pre">php-cli</span></code>. A PHP call like <code class="docutils literal notranslate"><span class="pre">getenv('PATH');</span></code> can therefore
+return an empty result. So you may need to manually configure environment
+variables in the appropriate <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code> ini/config file.</p>
+<p>Here are some example root paths for these ini/config files:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="59%" />
+<col width="41%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Ubuntu/Mint</td>
+<td>CentOS/Red Hat/Fedora</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal notranslate"><span class="pre">/etc/php/[php_version]/fpm/</span></code></td>
+<td><code class="docutils literal notranslate"><span class="pre">/etc/php-fpm.d/</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>In both examples, the <code class="docutils literal notranslate"><span class="pre">ini/config</span></code> file is called <code class="docutils literal notranslate"><span class="pre">www.conf</span></code>, and depending
+on the distribution or customizations which you have made, it may be in
+a sub-directory.</p>
+<p>Usually, you will find some or all of the environment variables
+already in the file, but commented out like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>;env[HOSTNAME] = $HOSTNAME
+;env[PATH] = /usr/local/bin:/usr/bin:/bin
+;env[TMP] = /tmp
+;env[TMPDIR] = /tmp
+;env[TEMP] = /tmp
+</pre></div>
+</div>
+<p>Uncomment the appropriate existing entries. Then run <code class="docutils literal notranslate"><span class="pre">printenv</span> <span class="pre">PATH</span></code> to
+confirm your paths, for example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$ printenv PATH
+/home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
+/sbin:/bin:/
+</pre></div>
+</div>
+<p>If any of your system environment variables are not present in the file then
+you must add them.</p>
+<p>When you are using shared hosting or a control panel to manage your ownCloud
+virtual machine or server, the configuration files are almost certain to be
+located somewhere else, for security and flexibility reasons, so check your
+documentation for the correct locations.</p>
+<p>Please keep in mind that it is possible to create different settings for
+<code class="docutils literal notranslate"><span class="pre">php-cli</span></code> and <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code>, and for different domains and Web sites.
+The best way to check your settings is with <a class="reference internal" href="../issues/general_troubleshooting.html#label-phpinfo"><span class="std std-ref">PHP Version and Information</span></a>.</p>
+</div>
+<div class="section" id="maximum-upload-size">
+<h3>Maximum Upload Size<a class="headerlink" href="#maximum-upload-size" title="Permalink to this headline">¶</a></h3>
+<p>If you want to increase the maximum upload size, you will also have to modify
+your <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code> configuration and increase the <code class="docutils literal notranslate"><span class="pre">upload_max_filesize</span></code> and
+<code class="docutils literal notranslate"><span class="pre">post_max_size</span></code> values. You will need to restart <code class="docutils literal notranslate"><span class="pre">php5-fpm</span></code> and your HTTP
+server in order for these changes to be applied.</p>
+</div>
+<div class="section" id="htaccess-notes-for-apache">
+<h3>.htaccess Notes for Apache<a class="headerlink" href="#htaccess-notes-for-apache" title="Permalink to this headline">¶</a></h3>
+<p>ownCloud comes with its own <code class="docutils literal notranslate"><span class="pre">owncloud/.htaccess</span></code> file. Because <code class="docutils literal notranslate"><span class="pre">php-fpm</span></code> can’t
+read PHP settings in <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> these settings and permissions must be set
+in the <code class="docutils literal notranslate"><span class="pre">owncloud/.user.ini</span></code> file.</p>
+</div>
+<div class="section" id="no-basic-authentication-headers-were-found">
+<h3>No basic authentication headers were found<a class="headerlink" href="#no-basic-authentication-headers-were-found" title="Permalink to this headline">¶</a></h3>
+<p>This error is shown in your <code class="docutils literal notranslate"><span class="pre">data/owncloud.log</span></code> file.
+Some Apache modules like <code class="docutils literal notranslate"><span class="pre">mod_fastcgi</span></code>, <code class="docutils literal notranslate"><span class="pre">mod_fcgid</span></code> or <code class="docutils literal notranslate"><span class="pre">mod_proxy_fcgi</span></code> are not passing the needed authentication headers to PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is failing.
+Information on how to correctly configure your environment can be found <a class="reference external" href="https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819">in the forums</a> but we generally recommend against the use of these modules and recommend mod_php instead.</p>
+</div>
+</div>
+<div class="section" id="other-web-servers">
+<span id="other-http-servers-label"></span><h2>Other Web Servers<a class="headerlink" href="#other-web-servers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes">Other HTTP servers</a></li>
+<li><a class="reference external" href="https://github.com/owncloud/documentation/wiki/UCS-Installation">Univention Corporate Server installation</a></li>
+</ul>
+</div>
+</div>
+
+
+					</div>
+				</div>
+			</div>
+
+  </div>
+</div>
+</div>
+<footer class="footer">
+  <div class="container">
+  <div class="footer_navi">
+
+  <div class="menu-footer-navigation-container">
+  	<ul id="menu-footer-navigation" class="menu">
+  		<li><a href="https://owncloud.com">Home</a></li>
+  		<li><a href="https://owncloud.com/about">About ownCloud</a></li>
+  		<li><a href="https://owncloud.com/resources">Resources</a></li>
+  		<li><a href="https://owncloud.com/become-partner">Become a Partner</a></li>
+  		<li><a href="https://owncloud.org">Community</a></li>
+  		<li><a href="https://owncloud.com/blog">Blog</a></li>
+  		<li><a href="https://owncloud.com/jobs">Jobs</a></li>
+  		<li><a href="https://owncloud.com/contact">Contact</a></li>
+  	</ul>
+  </div>
+
+  <div class="follow_f">
+  	<ul>
+  		<li><a class="twitter" href="https://twitter.com/ownloud" target="_blank">Twitter</a></li>
+  		<li><a class="facebook" href="http://www.facebook.com/owncloud" target="_blank">Facebook</a></li>
+  		<li><a class="google" href="https://plus.google.com/+OwncloudOfficial" target="_blank">Google</a></li>
+  	</ul>
+  </div>
+
+  <p class="copyright">© ownCloud 2011-2015</p>
+
+  </div>
+  </div>
+</footer>
+  </body>
+</html>

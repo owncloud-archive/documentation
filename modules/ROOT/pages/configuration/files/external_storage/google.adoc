@@ -1,0 +1,144 @@
+Google Drive
+============
+
+ownCloud uses OAuth 2.0 to connect to Google Drive. This requires
+configuration through Google to get an app ID and app secret, as
+ownCloud registers itself as an app.
+
+All applications that access a Google API must be registered through the
+https://console.developers.google.com/[Google Cloud Console]. Follow
+along carefully because the Google interface is a bit of a maze and it’s
+easy to get lost.
+
+If you already have a Google account, such as Groups, Drive, or Mail,
+you can use your existing login to log into the Google Cloud Console.
+After logging in click the *Create Project* button.
+
+image:/owncloud-docs/_images/google_drive/001.png[image]
+
+image:/owncloud-docs/_images/google_drive/002.png[image]
+
+Give your project a name, and either accept the default *Project ID* or
+create your own, then click the *Create* button. For this example a
+random name was chosen, ``owncloud-04-27''. However, feel free to choose
+your own name.
+
+image:/owncloud-docs/_images/google_drive/003.png[image]
+
+After your project is created, click on the notifications bell and
+select your project.
+
+image:/owncloud-docs/_images/google_drive/004.png[image]
+
+Go to Api overview to select google’s API.
+
+image:/owncloud-docs/_images/google_drive/005.png[image]
+
+image:/owncloud-docs/_images/google_drive/006.png[image]
+
+image:/owncloud-docs/_images/google_drive/007.png[image]
+
+Now you must create your credentials.
+
+image:/owncloud-docs/_images/google_drive/008.png[image]
+
+First, select ``Web Browser'' and ``User data''.
+
+image:/owncloud-docs/_images/google_drive/009.png[image]
+
+The next screen that opens is *Create OAuth 2.0 Client ID*. Enter your
+app name.
+
+image:/owncloud-docs/_images/google_drive/010.png[image]
+
+*Authorized JavaScript Origins* is your root domain, for example
+`https://example.com`, without a trailing slash. Examples:
+
+....
+https://example.com
+http://example.com
+IP/owncloud  
+....
+
+You need to configure *Authorized Redirect URIs*, and they must be in
+this form:
+
+....
+https://example.com/owncloud/index.php/settings/admin?sectionid=storage
+https://example.com/owncloud/index.php/settings/personal?sectionid=storage
+....
+
+If you are configuring storage as an Administrator - choose the admin
+URI, if you are a user and configuring a storage - pick the personal
+URI.
+
+If you are not sure what your exact URIs are - here is a quick guide to
+figure it out.
+
+*Authorized JavaScript Origins*
+
+This is just the address you access your ownCloud server at, where you
+see the login screen.
+
+image:/owncloud-docs/_images/google_drive/011.png[image]
+
+*Authorized Redirect URIs*
+
+If you have not already enabled the Google Drive storage, here is how
+you do it:
+
+image:/owncloud-docs/_images/google_drive/011.png[image]
+
+image:/owncloud-docs/_images/google_drive/012.png[image]
+
+image:/owncloud-docs/_images/google_drive/013.png[image]
+
+image:/owncloud-docs/_images/google_drive/014.png[image]
+
+image:/owncloud-docs/_images/google_drive/015.png[image]
+
+image:/owncloud-docs/_images/google_drive/016.png[image]
+
+Here is the correct result:
+
+image:/owncloud-docs/_images/google_drive/017.png[image]
+
+Now we have to create a consent screen. This is the information in the
+screen Google shows you when you connect your new Google app to ownCloud
+the first time.
+
+image:/owncloud-docs/_images/google_drive/018.png[image]
+
+Now you can download the credentials as a JSON file.
+
+image:/owncloud-docs/_images/google_drive/019.png[image]
+
+You can see either open this file with the editor of your choice
+(SublimeText for example), or you can put in in your web browser. This
+is when you do the later:
+
+image:/owncloud-docs/_images/google_drive/020.png[image]
+
+Enter the Client ID and Client Secret in the app and press *Grant
+Access*.
+
+Now you have everything you need to mount your Google Drive in ownCloud.
+
+Your consent page appears when ownCloud makes a successful connection.
+
+Click *Allow*.
+
+image:/owncloud-docs/_images/google_drive/021.png[image]
+
+When you see the green light confirming a successful connection you’re
+finished.
+
+image:/owncloud-docs/_images/google_drive/022.png[image]
+
+image:/owncloud-docs/_images/google_drive/023.png[image]
+
+See ../external_storage_configuration_gui for additional mount options
+and information.
+
+See auth_mechanisms for more information on authentication schemes.
+603026686136-qnv9ooocacrkrh1vs0cht83eprgm2sbb.apps.googleusercontent.com

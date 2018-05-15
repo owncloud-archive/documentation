@@ -1,0 +1,55 @@
+image: node:8.11.1-alpine
+stages: [setup, verify, deploy]
+yarn:
+  stage: setup
+  cache:
+    paths:
+    - .yarn-cache/
+  script:
+  - &run_yarn
+    yarn --cache-folder=.yarn-cache --pure-lockfile > /dev/null
+lint:
+  stage: verify
+  cache: &pull_cache
+    policy: pull
+    paths:
+    - .yarn-cache/
+  script:
+  - *run_yarn
+  - node_modules/.bin/gulp lint
+bundle-stable:
+  stage: deploy
+  only:
+  - master@antora/antora-ui-default
+  cache: *pull_cache
+  script:
+  - *run_yarn
+  - node_modules/.bin/gulp pack
+  artifacts:
+    paths:
+    - build/ui-bundle.zip
+bundle-dev:
+  stage: deploy
+  except:
+  - master
+  cache: *pull_cache
+  script:
+  - *run_yarn
+  - node_modules/.bin/gulp pack
+  artifacts:
+    expire_in: 1 day # unless marked as keep from job page
+    paths:
+    - build/ui-bundle.zip
+pages:
+  stage: deploy
+  only:
+  - master@antora/antora-ui-default
+  cache: *pull_cache
+  script:
+  - *run_yarn
+  - node_modules/.bin/gulp build:preview
+  # FIXME figure out a way to avoid copying these files to preview site
+  - rm -rf public/_/{helpers,layouts,partials}
+  artifacts:
+    paths:
+    - public

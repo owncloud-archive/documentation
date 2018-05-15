@@ -1,0 +1,119 @@
+Installing and Managing Apps
+============================
+
+After installing ownCloud, you may provide added functionality by
+installing applications.
+
+[[supported-apps]]
+Supported Apps
+--------------
+
+See apps_supported for a list of supported Enterprise edition apps.
+
+[[viewing-enabled-apps]]
+Viewing Enabled Apps
+--------------------
+
+During the ownCloud installation, some apps are installed and enabled by
+default, and some are able to be installed and enabled later on. To see
+the status of your installation’s applications, go to your Apps page.
+
+image:/owncloud-docs/_images/oc_admin_apps.png[image]
+
+There, you will see which apps are currently: _enabled_, _not enabled_,
+and _recommended_. You’ll also see additional filters, such as
+Multimedia, Productivity, and Tool for finding more apps quickly.
+
+[[managing-apps]]
+Managing Apps
+-------------
+
+In the Apps page, you can enable or disable applications. Some apps have
+configurable options on the Apps page, such as *Enable only for specific
+groups*, but mainly they are enabled or disabled here and are configured
+on your ownCloud _Admin page_, _Personal page_, or in `config.php`.
+
+[[adding-apps]]
+Adding Apps
+-----------
+
+Click the app name to view a description of the app and any of the app
+settings in the Application View field. Clicking the *Install* button
+installs the app. If the app is not part of your ownCloud installation,
+it will be downloaded from the ownCloud Marketplace, installed, and
+enabled.
+
+Sometimes the installation of a third-party app fails silently, possibly
+because `'appcodechecker' => true,` is enabled in `config.php`. When
+`appcodechecker` is enabled it checks if third-party apps are using the
+private API, rather than the public API. If they are, then they will not
+be installed.
+
+If you would like to create or add your own ownCloud app, please refer
+to the
+https://doc.owncloud.org/server/latest/developer_manual/app/index.html[developer
+manual].
+
+[[using-custom-app-directories]]
+Using Custom App Directories
+----------------------------
+
+There are several reasons for using custom app directories instead of
+ownCloud’s default. These are:
+
+1.  It separates ownCloud’s core apps from user or admin downloaded
+apps. Doing so distinguishes which apps are core and which aren’t,
+simplifying upgrades.
+2.  It eases manual upgrades. Downloaded apps must be manually copied.
+Having them in a separate directory makes it simpler to manage.
+3.  ownCloud may gain new core apps in newer versions. Doing so orphans
+deprecated apps, but doesn’t remove them.
+
+If you want to store apps in a custom directory, instead of ownCloud’s
+default (`/app`), you need to modify the `apps_paths` element in
+`config/config.php`. There, you need to add a new associative array that
+contains three elements. These are:
+
+* `path`: The absolute file system path to the custom app folder.
+* `url`: The request path to that folder relative to the ownCloud web
+root, prefixed with `/`.
+* `writable`: Whether users can install apps in that folder. After the
+configuration is added, new apps will only install in a directory where
+`writable` is set to `true`.
+
+The configuration example below shows how to add a second directory,
+called `apps-external`.
+
+After you add a new directory configuration, you can then move apps from
+the original app directory to the new one. To do so, follow these steps:
+
+1.  Enable maintenance mode <maintenance_commands_label>.
+2.  Disable the apps <apps_commands_label> that you want to move.
+3.  Create a new apps directory and assign it the same user and group,
+and ownership permissions as the core apps directory.
+4.  Move the apps from the old apps directory to the new apps directory.
+5.  Add a new app directory in `config/config.php`.
+6.  If you’re using a cache, such as
+link:../configuration/server/caching_configuration.html#clearing-the-redis-cache[Redis]
+or
+link:../configuration/server/caching_configuration.html#clearing-the-memcached-cache[Memcached],
+ensure that you clear the cache.
+7.  Re-enable the apps.
+8.  Disable maintenance mode.
+
+[[manually-installing-apps]]
+Manually Installing Apps
+------------------------
+
+To install an app manually instead of by using
+https://marketplace.owncloud.com[the Marketplace], copy the app either
+into ownCloud’s default app folder (`</path/to/owncloud>/apps`) or
+a custom app folder <using_custom_app_directories_label>.
+
+Be aware that the name of the app and its folder name *must be
+identical*! You can find these details in
+the application's metadata file, located in
+`<app directory>/appinfo/info.xml`.
+
+Using the example below, both the app’s name and directory name would be
+`yourappname`.

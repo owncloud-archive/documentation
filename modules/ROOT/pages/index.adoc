@@ -1,0 +1,54 @@
+Introduction
+============
+
+Welcome to the ownCloud Server Administration Guide. This guide
+describes administration tasks for ownCloud, the flexible open source
+file synchronization and sharing solution. ownCloud includes the
+ownCloud server, which runs on Linux, client applications for Microsoft
+Windows, Mac OS X and Linux, and mobile clients for the Android and
+Apple iOS operating systems.
+
+Current editions of ownCloud manuals are always available online at
+https://doc.owncloud.org/[doc.owncloud.org] and
+https://doc.owncloud.com/[doc.owncloud.com].
+
+ownCloud server is available in three editions:
+
+* The free community-supported server. This is the core server for all
+editions.
+* The Standard Subscription for customers who want paid support for the
+core Server, without Enterprise applications.
+* The Enterprise Subscription provides paid support for the Enterprise
+Edition. This includes the core Server and Enterprise apps.
+
+See ../whats_new_admin for more information on the different ownCloud
+editions.
+
+[[owncloud-videos-and-blogs]]
+ownCloud Videos and Blogs
+-------------------------
+
+See the
+https://www.youtube.com/channel/UC_4gez4lsWqciH-otOlXo5w[official
+ownCloud channel] and
+https://www.youtube.com/channel/UCA8Ehsdu3KaxSz5KOcCgHbw[ownClouders
+community channel] on YouTube for tutorials, overviews, and conference
+videos.
+
+Visit https://owncloud.org/news/[ownCloud Planet] for news and developer
+blogs.
+
+[[target-audience]]
+Target Audience
+---------------
+
+This guide is for users who want to install, administer, and optimize
+their ownCloud servers. To learn more about the ownCloud Web user
+interface, and desktop and mobile clients, please refer to their
+respective manuals:
+
+* https://doc.owncloud.org/server/latest/user_manual/[ownCloud User
+Manual]
+* https://doc.owncloud.org/desktop/2.3/[ownCloud Desktop Client]
+* https://doc.owncloud.org/android/[ownCloud Android App]
+* https://doc.owncloud.org/ios/[ownCloud iOS App]

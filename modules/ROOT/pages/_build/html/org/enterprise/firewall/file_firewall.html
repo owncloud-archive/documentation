@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>File Firewall &#8212; ownCloud 10.0.8 Server Administration Manual 10.0.8 documentation</title>
+    <link rel="stylesheet" href="../../_static/" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/styles.css" type="text/css" />
+    <script type="text/javascript" src="../../_static/documentation_options.js"></script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Ransomware Protection" href="../ransomware-protection/index.html" />
+    <link rel="prev" title="Firewall Configuration" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://owncloud.org/wp-content/themes/owncloudorgnew/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://owncloud.org/wp-content/themes/owncloudorgnew/assets/img/common/favicon.png" />
+
+<!-- Piwik -->
+<script type="text/javascript">
+  var _paq = _paq || [];
+  /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+  _paq.push(['trackPageView']);
+  _paq.push(['enableLinkTracking']);
+  (function() {
+    var u="https//piwik.owncloud.org/";
+    _paq.push(['setTrackerUrl', u+'piwik.php']);
+    _paq.push(['setSiteId', '4']);
+    var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+    g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+  })();
+</script>
+<!-- End Piwik Code -->
+
+  </head><body>
+<noscript><p><img src="https://piwik.owncloud.com/piwik.php?idsite=4&rec=1" style="border:0" alt=""></p></noscript>
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://owncloud.org/" rel="home" title="ownCloud.org"><img class="logo" src="../../_static/img/logo_owncloud.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+        <li class="menu-news"><a href="https://owncloud.org/news/">News</a></li>
+        <li class="menu-features"><a href="https://owncloud.org/features/">Features</a></li>
+        <li class="menu-demo"><a target="_blank" href="https://demo.owncloud.org">Demo</a></li>
+        <li class="menu-documentation top-nav-active"><a href="https://doc.owncloud.org">Documentation</a></li>
+        <li class="menu-contribute"><a href="https://owncloud.org/contribute/">Contribute</a>
+        <li class="menu-support"><a href="https://owncloud.org/support">Support</a></li>
+        <li class="menu-commercial"><a target="_blank" href="https://owncloud.com">Enterprise Edition</a></li>
+        <li class="menu-install"><a href="https://owncloud.org/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../../contents.html">ownCloud 10.0.8 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin-bottom:-3px;" action="../../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" />
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+
+<li><a href="../../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../whats_new_admin.html">What’s New in ownCloud 10.0.8</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../upgrading/index.html">Upgrading</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration/index.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and Troubleshooting</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Enterprise Features</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Firewall Configuration</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">File Firewall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../ransomware-protection/index.html">Ransomware Protection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../file_management/index.html">File Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../user_management/index.html">User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../clients/index.html">Creating Branded ownCloud Clients</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging/index.html">Logging Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../server_branding/index.html">Server Branding</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../appliance/index.html">The ownCloud X Appliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../faq/index.html">FAQ</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Firewall Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Firewall Conf...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../ransomware-protection/index.html" title="Next Chapter: Ransomware Protection"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Ransomware Protection &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="file-firewall">
+<h1>File Firewall<a class="headerlink" href="#file-firewall" title="Permalink to this headline">¶</a></h1>
+<p>The File Firewall GUI enables you to manage firewall rule sets. You can find it in your ownCloud admin page, under <code class="docutils literal notranslate"><span class="pre">Admin</span> <span class="pre">-&gt;</span> <span class="pre">Security</span></code>.
+The File Firewall lets you control access and sharing in fine detail, by creating rules for allowing or denying access restrictions based on: <em>group</em>, <em>upload size</em>, <em>client devices</em>, <em>IP address</em>, <em>time of day</em>, as well as many more criteria.
+In addition to these restriction options, the File Firewall app also supports rules based on <a class="reference external" href="http://www.regular-expressions.info/">regular expressions</a>.</p>
+<div class="section" id="how-the-file-firewall-works">
+<h2>How the File Firewall Works<a class="headerlink" href="#how-the-file-firewall-works" title="Permalink to this headline">¶</a></h2>
+<p>Each firewall rule set consists of one or more conditions.
+If a request matches all of the conditions, in at least one rule set, then the request is blocked by the firewall.
+Otherwise, the request is allowed by the firewall.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The File Firewall app cannot lock out administrators from the web interface when rules are misconfigured.</p>
+</div>
+</div>
+<div class="section" id="using-the-file-firewall">
+<h2>Using the File Firewall<a class="headerlink" href="#using-the-file-firewall" title="Permalink to this headline">¶</a></h2>
+<p>Figure 1 shows an empty firewall configuration panel.
+Set your logging level to <strong>Blocked Requests Only</strong> for debugging, and create a new rule set by clicking the <strong>Add Group</strong> button.
+After setting up your rules you must click the <strong>Save Rules</strong> button.</p>
+<div class="figure" id="id1">
+<img alt="Empty File Firewall configuration panel." src="../../_images/firewall-1.png" />
+<p class="caption"><span class="caption-text"><em>Figure 1: Empty File Firewall configuration panel</em></span></p>
+</div>
+<p>Figure 2 shows two rules.
+The first rule, <strong>No Support outside office hours</strong>, prevents members of the support group from logging into the ownCloud Web interface from 5pm-9am, and also blocks client syncing.
+The second rule prevents members of the “qa-team” group from accessing the Web UI from IP addresses that are outside of the local network.</p>
+<div class="figure" id="id2">
+<img alt="Two example rules that restrict logins per user group." src="../../_images/firewall-2.png" />
+<p class="caption"><span class="caption-text"><em>Figure 2: Two example rules that restrict logins per user group</em></span></p>
+</div>
+<p>All other users are not affected, and can log in anytime from anywhere.</p>
+<div class="section" id="available-conditions">
+<h3>Available Conditions<a class="headerlink" href="#available-conditions" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="user-group">
+<h4>User Group<a class="headerlink" href="#user-group" title="Permalink to this headline">¶</a></h4>
+<p>The user (is|is not) a member of the selected group.</p>
+</div>
+<div class="section" id="user-agent">
+<h4>User Agent<a class="headerlink" href="#user-agent" title="Permalink to this headline">¶</a></h4>
+<p>The User-Agent of the request (matches|does not match) the given string.</p>
+</div>
+<div class="section" id="user-device">
+<h4>User Device<a class="headerlink" href="#user-device" title="Permalink to this headline">¶</a></h4>
+<p>A shortcut for matching all known (<code class="docutils literal notranslate"><span class="pre">android</span></code> | <code class="docutils literal notranslate"><span class="pre">ios</span></code> | <code class="docutils literal notranslate"><span class="pre">desktop</span></code>) sync clients by their User Agent string.</p>
+</div>
+<div class="section" id="request-time">
+<h4>Request Time<a class="headerlink" href="#request-time" title="Permalink to this headline">¶</a></h4>
+<p>The time of the request (has to|must not) be in a single range from beginning time to end time.</p>
+</div>
+<div class="section" id="request-url">
+<h4>Request URL<a class="headerlink" href="#request-url" title="Permalink to this headline">¶</a></h4>
+<p>The <strong>full page URL</strong> (has to|must not) (match|contain|begin with|end) with a given string.</p>
+</div>
+<div class="section" id="request-type">
+<h4>Request Type<a class="headerlink" href="#request-type" title="Permalink to this headline">¶</a></h4>
+<p>The request (is|is not) a (WebDAV|public share link|other) request.</p>
+</div>
+<div class="section" id="request-ip-range-ipv4-and-ip-range-ipv6">
+<h4>Request IP Range (IPv4) and IP Range (IPv6)<a class="headerlink" href="#request-ip-range-ipv4-and-ip-range-ipv6" title="Permalink to this headline">¶</a></h4>
+<p>The request’s <code class="docutils literal notranslate"><span class="pre">REMOTE_ADDR</span></code> header (is|is not) matching the given IP range.</p>
+</div>
+<div class="section" id="file-size-upload">
+<h4>File Size Upload<a class="headerlink" href="#file-size-upload" title="Permalink to this headline">¶</a></h4>
+<p>When a file is uploaded the size has to be (less|less or equal|greater|greater or equal) to the given size.</p>
+</div>
+<div class="section" id="file-mimetype-upload">
+<h4>File Mimetype Upload<a class="headerlink" href="#file-mimetype-upload" title="Permalink to this headline">¶</a></h4>
+<p>When a file is uploaded the mimetype (is|is not|begins with|does not begin with|ends with|does not end with) the given string.</p>
+</div>
+<div class="section" id="system-file-tag">
+<h4>System File Tag<a class="headerlink" href="#system-file-tag" title="Permalink to this headline">¶</a></h4>
+<p>One of the parent folders or the file itself (is|is not) tagged with a System tag.</p>
+</div>
+<div class="section" id="regular-expression">
+<h4>Regular Expression<a class="headerlink" href="#regular-expression" title="Permalink to this headline">¶</a></h4>
+<p>The File Firewall supports regular expressions, allowing you to create custom
+rules using the following conditions:</p>
+<ul class="simple">
+<li>IP Range (IPv4)</li>
+<li>IP Range (IPv6)</li>
+<li>User agent</li>
+<li>User group</li>
+<li>Request URL</li>
+</ul>
+<p>You can combine multiple rules into one rule, e.g., if a rule applies to both the support and the qa-team you could write your rule like this:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Regular Expression &gt; ^(support|qa-team)$ &gt; is &gt; User group
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">We do not recommend modifying the configuration values directly in your
+<code class="docutils literal notranslate"><span class="pre">config.php</span></code>. These use JSON encoding, so the values are difficult to read
+and a single typo will break all of your rules.</p>
+</div>
+</div>
+</div>
+<div class="section" id="controlling-access-to-folders">
+<h3>Controlling Access to Folders<a class="headerlink" href="#controlling-access-to-folders" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to block access to a folder, starting with ownCloud 9.0, is to use a system tag.
+A new rule type was added which allows you to block access to files and folders, where at least one of the parents has a given tag.</p>
+<p>Now you just need to add the tag to the folder or file, and then block the tag with the File Firewall.
+This example blocks access to any folder with the tag “Confidential” from outside access.</p>
+<p>Block by System Tag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">System</span> <span class="n">file</span> <span class="n">tag</span><span class="p">:</span>   <span class="ow">is</span>       <span class="s2">&quot;Confidential&quot;</span>
+<span class="n">IP</span> <span class="n">Range</span> <span class="p">(</span><span class="n">IPv4</span><span class="p">):</span>   <span class="ow">is</span> <span class="ow">not</span>   <span class="s2">&quot;192.168.1.0/24&quot;</span>
+</pre></div>
+</div>
+<div class="figure">
+<img alt="Protecting files tagged with &quot;Confidential&quot; from outside access" src="../../_images/firewall-3.png" />
+</div>
+</div>
+<div class="section" id="custom-configuration-for-branded-clients">
+<h3>Custom Configuration for Branded Clients<a class="headerlink" href="#custom-configuration-for-branded-clients" title="Permalink to this headline">¶</a></h3>
+<p>If you are using <a class="reference internal" href="../clients/index.html"><span class="doc">branded ownCloud clients</span></a>, you may define <code class="docutils literal notranslate"><span class="pre">firewall.branded_clients</span></code> in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> to identify your branded clients in the firewall <strong>“User Device”</strong> rule.</p>
+<p>The configuration is a <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> =&gt; <code class="docutils literal notranslate"><span class="pre">Device</span></code> map. <code class="docutils literal notranslate"><span class="pre">Device</span></code> must be one of the following:</p>
+<ul class="simple">
+<li>android</li>
+<li>android_branded</li>
+<li>ios</li>
+<li>ios_branded</li>
+<li>desktop</li>
+<li>desktop_branded</li>
+</ul>
+<p>The <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> is always compared all lowercase. By default the agent is compared with <code class="docutils literal notranslate"><span class="pre">equals</span></code>. When a trailing or leading asterisk, <code class="docutils literal notranslate"><span class="pre">*</span></code>, is found, the agent is compared with <code class="docutils literal notranslate"><span class="pre">starts</span> <span class="pre">with</span></code> or <code class="docutils literal notranslate"><span class="pre">ends</span> <span class="pre">with</span></code>.
+If the agent has both a leading and a trailing <code class="docutils literal notranslate"><span class="pre">*</span></code>, the string must appear anywhere.
+For technical reasons the <code class="docutils literal notranslate"><span class="pre">User-Agent</span></code> string must be at least 4 characters, including wildcards.
+When you build your branded client you have the option to create a custom User Agent.</p>
+<p>In this example configuration you need to replace the example User Agent
+strings, for example <code class="docutils literal notranslate"><span class="pre">'android_branded'</span></code>, with your own User Agent strings:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//</span> <span class="n">config</span><span class="o">.</span><span class="n">php</span>
+
+ <span class="s1">&#39;firewall.branded_clients&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+   <span class="s1">&#39;my ownbrander android user agent string&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;android_branded&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;my ownbrander second android user agent string&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;android_branded&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;my ownbrander ios user agent string&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ios_branded&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;my ownbrander second ios user agent string&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;ios_branded&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;my ownbrander desktop user agent string&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;desktop_branded&#39;</span><span class="p">,</span>
+   <span class="s1">&#39;my ownbrander second desktop user agent string&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;desktop_branded&#39;</span><span class="p">,</span>
+ <span class="p">),</span>
+</pre></div>
+</div>
+<p>The Web UI dropdown then expands to the following options:</p>
+<ul class="simple">
+<li>Android Client - always visible</li>
+<li>iOS Client - always visible</li>
+<li>Desktop Client - always visible</li>
+<li>Android Client (Branded) - visible when at least one <code class="docutils literal notranslate"><span class="pre">android_branded</span></code> is defined</li>
+<li>iOS Client (Branded) - visible when at least one <code class="docutils literal notranslate"><span class="pre">ios_branded</span></code> is defined</li>
+<li>Desktop Client (Branded) - visible when at least one <code class="docutils literal notranslate"><span class="pre">desktop_branded</span></code> is defined</li>
+<li>All branded clients - visible when at least one of <code class="docutils literal notranslate"><span class="pre">android_branded</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ios_branded</span></code> or <code class="docutils literal notranslate"><span class="pre">desktop_branded</span></code> is defined</li>
+<li>All non-branded clients - visible when at least one of <code class="docutils literal notranslate"><span class="pre">android_branded</span></code>,
+<code class="docutils literal notranslate"><span class="pre">ios_branded</span></code> or <code class="docutils literal notranslate"><span class="pre">desktop_branded</span></code> is defined</li>
+<li>Others (Browsers, etc.) - always visible</li>
+</ul>
+<p>Then these options operate this way:</p>
+<ul class="simple">
+<li>The <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">Client</span></code> options only match <code class="docutils literal notranslate"><span class="pre">android</span></code>, <code class="docutils literal notranslate"><span class="pre">ios</span></code> and <code class="docutils literal notranslate"><span class="pre">desktop</span></code> respectively.</li>
+<li>The <code class="docutils literal notranslate"><span class="pre">*</span> <span class="pre">Client</span> <span class="pre">(Branded)</span></code> options match the <code class="docutils literal notranslate"><span class="pre">*_branded</span></code> agents equivalent.</li>
+<li><code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">branded</span> <span class="pre">clients</span></code> matches: <code class="docutils literal notranslate"><span class="pre">android_branded</span></code>, <code class="docutils literal notranslate"><span class="pre">ios_branded</span></code> and
+<code class="docutils literal notranslate"><span class="pre">desktop_branded</span></code></li>
+<li><code class="docutils literal notranslate"><span class="pre">All</span> <span class="pre">non-branded</span> <span class="pre">clients</span></code> matches: <code class="docutils literal notranslate"><span class="pre">android</span></code>, <code class="docutils literal notranslate"><span class="pre">ios</span></code> and <code class="docutils literal notranslate"><span class="pre">desktop</span></code></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Firewall Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Firewall Conf...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../ransomware-protection/index.html" title="Next Chapter: Ransomware Protection"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Ransomware Protection &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/107072838776436530705/about"><img width=50 src="../../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" style="margin: 0 7px 0 14px;" href="https://www.facebook.com/ownClouders"><img width=50 src="../../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" style="margin: 0 14px 0 7px;" href="https://twitter.com/ownClouders"><img width=50 src="../../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://owncloud.org/blogfeed"><img class="img-circle" width=50 src="../../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="http://visitor.r20.constantcontact.com/d.jsp?llr=ixens9uab&amp;p=oi&amp;m=1121878184680&amp;sit=mf4qye7jb&amp;f=cc4cd13f-acdf-45d3-b132-75252542c37d"><img class="img-circle" width=50 src="../../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About ownCloud</h4>
+          <ul id="menu-about" class="menu">
+            <li class="menu-contact"><a href="https://owncloud.org/contact/">People</a></li>
+            <li class="menu-history"><a href="https://owncloud.org/history/">History</a></li>
+            <li class="menu-events"><a href="https://owncloud.org/events/">Events</a></li>
+            <li class="menu-press"><a href="https://owncloud.org/press">Press</a></li>
+            <li class="menu-privacy"><a href="https://owncloud.org/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Resources</h4>
+          <ul id="menu-support-and-documentation" class="menu">
+            <li class="menu-faq"><a href="https://owncloud.org/faq/">FAQ</a></li>
+            <li class="menu-support"><a href="https://owncloud.org/support/">Support</a></li>
+            <li class="menu-admin-manual"><a href="https://doc.owncloud.org">Documentation</a></li>
+            <li class="menu-security"><a href="https://owncloud.org/security/">Security</a></li>
+            <li class="menu-store"><a href="http://www.cafepress.com/owncloudshop">ownCloud Store</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=owncloud">IRC Channel</a></li>
+            <li class="menu-mailing-list"><a href="https://mailman.owncloud.org/mailman/listinfo/">Mailing List</a></li>
+            <li class="menu-forums"><a href="https://forum.owncloud.org/">Forums</a></li>
+            <li class="menu-bug-tracker"><a href="https://owncloud.org/contribute">Get involved</a></li>
+            <li class="menu-promote"><a href="https://owncloud.org/promote/">Discuss ownCloud with others</a></li>
+
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2013-2018, The ownCloud developers.<br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

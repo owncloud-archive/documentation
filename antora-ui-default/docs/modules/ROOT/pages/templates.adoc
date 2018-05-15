@@ -1,0 +1,139 @@
+= Work with the Handlebars Templates
+ifndef::env-site,env-github[]
+include::_attributes.adoc[]
+endif::[]
+// Settings:
+:idprefix:
+:idseparator: -
+
+Antora combines the Handlebars templates with the converted AsciiDoc content to make the pages in the site.
+These "`logic-less`" templates are mostly HTML with some special mustache tags sprinkled in where content is to be inserted.
+
+== What do the templates do?
+
+The layout templates, which are stored in [.path]_src/layouts/_, provide the main page structure.
+The partial templates, in [.path]_src/partials/_, fill in different regions of a page, such as the navigation and footer.
+
+The templates read from a model that's populated by Antora.
+Places in the template where the model is read are enclosed in `{{` and `}}` markers or `{{{` and `}}}`, aka mustaches (e.g., `+{{{page.title}}}+`).
+Double mustaches escape the content, whereas triple mustaches insert the content verbatim.
+When the `{{` is immediately followed by `>`, that's where the result of a partial is inserted (e.g., `+{{> head }}+`.
+
+=== Template variables
+
+CAUTION: This model is not final.
+Variable names and purposes may change.
+
+Here's an overview of the available UI model:
+
+.Variables available to the Handlebars templates
+[#template-variables-table,cols="1m,3"]
+|===
+| Name | Description
+
+| site
+| Information about the site.
+
+| site.url
+| The base URL of the site, if specified.
+
+| site.title
+| The title of the site.
+
+| site.components
+| A collection of all the components in the site.
+
+| site.ui
+| Information about the site UI.
+
+| site.ui.defaultLayout
+| The default page layout used for this site.
+
+| site.ui.url
+| The absolute base URL of the UI.
+
+| page
+| Information about the current page.
+
+| page.title
+| The page title (also used as the primary heading).
+
+| page.contents
+| The main article content in HTML format.
+Sourced from AsciiDoc and converted to HTML by the Asciidoctor processor.
+
+| page.attributes
+| AsciiDoc header attributes that are prefixed with `page-`.
+The `page-` prefix is dropped from these names.
+
+| page.description
+| The text of the description attribute in the AsciiDoc header, if specified.
+
+| page.keywords
+| A comma-separated list of keywords defined in the AsciiDoc header, if specified.
+
+| page.component
+| Information about the component for the current page.
+Properties include name, title, and versions.
+
+| page.componentVersion
+| Information about the component version for the current page.
+Properties include name, title, and url.
+
+| page.module
+| The name of the module for the current page.
+
+| page.version
+| The name of the version for the current page.
+
+| page.versions
+| All versions of the current page, including the current page.
+Each entry has the properties url, string, and missing.
+
+| page.breadcrumbs
+| An array of breadcrumb items that represent the current selection in the navigation tree.
+
+| page.navigation
+| A collection of navigation links for the current page.
+Each navigation item contains the property `content` as well as the optional properties `url` and (child) `items`.
+
+| page.canonicalUrl
+| The canonical URL for the current page.
+If there are older versions of the page, the canonical URL is the URL of the latest version.
+If this is an aspect page, the canonical URL is the URL of the primary (non-aspect) page.
+
+| page.editUrl
+| The URL to edit the current page, typically on GitHub.
+
+| page.home
+| Indicates whether the current page is the home page of the site.
+
+| page.layout
+| The page layout for the current page.
+
+| uiRootPath
+| The path to the root directory of the UI.
+
+//| siteRootUrl
+//| The URL of the site root relative to the current page.
+//If the site does not have a root component, this value is null.
+|===
+
+This model is likely to grow over time.
+
+== Modify a template
+
+Let's consider the case when you want to add a new meta tag inside the HTML head.
+
+First, make sure you have set up the project and created a development branch.
+Next, open the file [.path]_templates/partials/head.hbs_ and add your tag.
+
+[source,html]
+----
+<meta class="swiftype" name="title" data-type="string" content="{{page.title}}">
+----
+
+Each template file has access to the template model, which exposes information about the current page through variable names.
+The variables currently available are listed in <<template-variables-table>>.
+
+Save the file, commit it to git, push the branch, and allow the approval workflow to play out.

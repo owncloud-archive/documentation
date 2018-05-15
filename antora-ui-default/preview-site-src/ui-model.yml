@@ -1,0 +1,98 @@
+antoraVersion: '1.0.0'
+site:
+  url: http://localhost:5252
+  title: Brand Docs
+  components:
+  - name: abc
+    title: Project ABC
+    url: '#'
+    versions:
+    - &latest_version_abc
+      url: '#' 
+      version: '1.1'
+    - url: '#' 
+      version: '1.0'
+    latestVersion: *latest_version_abc
+  - &component
+    name: xyz
+    title: Project XYZ
+    url: /xyz/6.0/index.html
+    versions:
+    - &latest_version_xyz
+      url: /xyz/6.0/index.html
+      version: '6.0'
+    - &component_version
+      url: '#' 
+      version: '5.2'
+    - url: '#' 
+      version: '5.1'
+    - url: '#' 
+      version: '5.0'
+    latestVersion: *latest_version_xyz
+  - name: 123
+    title: Project 123
+    url: '#'
+    versions:
+    - &latest_version_123
+      url: '#' 
+      version: '2.2'
+    - url: '#' 
+      version: '2.1'
+    - url: '#' 
+      version: '2.0'
+    latestVersion: *latest_version_123
+page:
+  title: Hardware and Software Requirements
+  url: /xyz/5.2/index.html
+  component: *component
+  componentVersion: *component_version
+  version: '5.2'
+  module: ROOT
+  home: false
+  editUrl: http://example.com/project-xyz/blob/master/index.adoc
+  breadcrumbs:
+  - content: Quickstart
+    url: '#'
+    urlType: fragment
+  - content: Hardware and Software Requirements
+    url: /xyz/5.2/index.html
+    urlType: internal
+  versions:
+  - version: '6.0'
+    url: '#'
+  - version: '5.2'
+    url: '#'
+  - version: '5.1'
+    url: '#'
+  - version: '5.0'
+    missing: true
+    url: '#'
+  navigation:
+  - root: true
+    content: Project XYZ
+    url: '#'
+    urlType: fragment
+    items:
+    - content: Quickstart
+      url: '#'
+      urlType: fragment
+      items:
+      - content: Hardware and Software Requirements
+        url: /xyz/5.2/index.html
+        urlType: internal
+      - title: IDE Integration
+        url: '#'
+        urlType: fragment
+    - content: Liber Recusabo
+      url: '#liber-recusabo'
+      urlType: fragment
+    - content: Reference
+      url: '#'
+      urlType: fragment
+      items:
+      - content: Keyboard Shortcuts
+        url: '#'
+        urlType: fragment
+      - content: Importing and Exporting
+        url: '#'
+        urlType: fragment
