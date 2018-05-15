@@ -72,7 +72,7 @@ a few minutes.
 downloading the new ownCloud archive succeeded you will see the
 following screen. Click the Start Update button to complete your update:
 
-image:/owncloud-docs/_images/upgrade-2.png[image]
+image:/owncloud-docs/_images/maintenance/upgrade-2.png[image]
 
 If you have a large ownCloud installation and have shell access,::
   you should use the `occ upgrade` command, running it as your HTTP

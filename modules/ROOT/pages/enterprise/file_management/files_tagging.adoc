@@ -33,13 +33,13 @@ but cannot tag files with them or rename them. The tags are marked
 Use the *Collaborative tag management* module on your ownCloud admin
 page to edit and create tags.
 
-image:/owncloud-docs/_images/workflow-1.png[image]
+image:/owncloud-docs/_images/enterprise/file_management/workflow-1.png[image]
 
 This is what your tags look like in the *Tags* view on your files page.
 Non-admin users will not see invisible tags, but they will see visible
 and restricted tags.
 
-image:/owncloud-docs/_images/workflow-5.png[image]
+image:/owncloud-docs/_images/enterprise/file_management/workflow-5.png[image]
 
 [[automatic-tagging]]
 Automatic Tagging
@@ -53,12 +53,12 @@ created with the Tag Manager.
 For example, you can assign the invisible tag *iOS Uploads* to all files
 uploaded from iOS devices. This tag is visible only to admins.
 
-image:/owncloud-docs/_images/workflow-2.png[image]
+image:/owncloud-docs/_images/enterprise/file_management/workflow-2.png[image]
 
 When files with this tag are shared with you, you can view them with the
 Tags filter on the Files page.
 
-image:/owncloud-docs/_images/workflow-3.png[image]
+image:/owncloud-docs/_images/enterprise/file_management/workflow-3.png[image]
 
 Automatic Tagging is especially useful with the Retention module.
 
@@ -71,7 +71,7 @@ automatically deletes files after a time period that you specify. Select
 which tag to set a time limit on, and then set your time limit. File age
 is calculated from the file mtime (modification time).
 
-image:/owncloud-docs/_images/workflow-4.png[image]
+image:/owncloud-docs/_images/enterprise/file_management/workflow-4.png[image]
 
 For best performance, retention tags should be applied high in your file
 hierarchy. If subfolders have the same tags as their parent folders,

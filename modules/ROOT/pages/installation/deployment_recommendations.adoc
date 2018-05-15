@@ -85,7 +85,7 @@ One machine running the application, web, and database server, as well
 as local storage. Authentication via an existing LDAP or Active
 Directory server.
 
-image:/owncloud-docs/_images/deprecs-1.png[image]
+image:/owncloud-docs/_images/installation/deprecs-1.png[image]
 
 [[components]]
 Components
@@ -238,7 +238,7 @@ Recommended System Requirements
 * Storage on an NFS server.
 * Authentication via an existing LDAP or Active Directory server.
 
-image:/owncloud-docs/_images/deprecs-2.png[image]
+image:/owncloud-docs/_images/installation/deprecs-2.png[image]
 
 [[components-1]]
 Components
@@ -382,7 +382,7 @@ Recommended System Requirements
 * Authentication via an existing LDAP or Active Directory server, or
 SAML.
 
-image:/owncloud-docs/_images/deprecs-3.png[image]
+image:/owncloud-docs/_images/installation/deprecs-3.png[image]
 
 [[components-2]]
 Components

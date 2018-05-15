@@ -100,7 +100,7 @@ To log in to the ownCloud UI, open `https://localhost` in your browser
 of choice, where you see the standard ownCloud login screen, as in the
 image below.
 
-image:../..//images/docker/owncloud-ui-login.png[The ownCloud UI via Docker]
+image:/owncloud-docs/_images/docker/owncloud-ui-login.png[The ownCloud UI via Docker]
 
 The username and password are the admin username and password which you
 stored in `.env` earlier.

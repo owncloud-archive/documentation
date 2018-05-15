@@ -100,8 +100,8 @@ After enabling the Shibboleth app on your Apps page, you need to choose
 the app mode and map the necessary Shibboleth environment variables to
 ownCloud user attributes on your Admin page.
 
-image:/owncloud-docs/_images/shib-gui5.png[_figure 1: Enabling Shibboleth on the
-ownCloud Admin page_]
+image:/owncloud-docs/_images/shib-gui5.png[figure 1: Enabling Shibboleth on the
+ownCloud Admin page]
 
 [[choosing-the-app-mode]]
 Choosing the App Mode
@@ -151,8 +151,8 @@ In *Autoprovision Users* mode the app will not ask another user backend,
 but instead provision users on the fly by reading the two additional
 environment variables for display name and email address.
 
-image:/owncloud-docs/_images/shib-gui6.png[_figure 2: Mapping Shibboleth
-environment configuration variables to ownCloud user attributes_]
+image:/owncloud-docs/_images/shib-gui6.png[figure 2: Mapping Shibboleth
+environment configuration variables to ownCloud user attributes]
 
 In ownCloud 8.1 the Shibboleth environment variable mapping was stored
 in `apps/user_shibboleth/config.php`. This file was overwritten on
