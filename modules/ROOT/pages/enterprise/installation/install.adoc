@@ -61,6 +61,7 @@ Configuration
 Once you get your Enterprise license key, it needs to be copied to your
 ownCloud configuration file, `config/config.php` file like this example:
 
+[source,php]
 ....
 'license-key' => 'test-20150101-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX-YYYYYY',
 ....

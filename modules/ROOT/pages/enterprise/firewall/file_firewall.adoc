@@ -192,6 +192,7 @@ In this example configuration you need to replace the example User Agent
 strings, for example `'android_branded'`, with your own User Agent
 strings:
 
+[source,php]
 ....
 // config.php
 

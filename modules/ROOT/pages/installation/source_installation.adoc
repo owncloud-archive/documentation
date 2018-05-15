@@ -541,6 +541,7 @@ configuration, so all you have to do is create a
 /etc/apache2/sites-available/owncloud.conf file with these lines in it,
 replacing the *Directory* and other file paths with your own file paths:
 
+[source,apache]
 ....
 Alias /owncloud "/var/www/owncloud/"
 
