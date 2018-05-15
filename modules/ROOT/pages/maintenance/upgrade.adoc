@@ -34,7 +34,7 @@ the new ownCloud release. Ensure that they are all disabled before
 beginning the upgrade. After the upgrade is complete re-enable any which
 are compatible with the new release.
 
-Install unsupported apps at your own risk.
+CAUTION: Install unsupported apps at your own risk.
 
 [[upgrade-options]]
 Upgrade Options
