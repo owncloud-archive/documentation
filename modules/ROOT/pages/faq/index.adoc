@@ -2,34 +2,22 @@ FAQ
 ===
 
 [[how-do-i-transfer-files-from-one-user-to-another]]
-How do I transfer files from one user to another?
--------------------------------------------------
+== How do I transfer files from one user to another?
 
-See
-https://doc.owncloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html#transferring%20files%20to%20another%20user[transferring
-files to another user].
+See https://doc.owncloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html#transferring%20files%20to%20another%20user[transferring files to another user].
 
 [[how-do-i-deal-with-problems-caused-by-using-self-signed-ssl-certificates]]
-How do I deal with problems caused by using self-signed SSL
-certificates?
--------------------------------------------------------------------------
+== How do I deal with problems caused by using self-signed SSL certificates?
 
 See
-https://doc.owncloud.org/server/latest/admin_manual/configuration_server/occ_command.html#security[the
-security section of the OCC command].
+https://doc.owncloud.org/server/latest/admin_manual/configuration_server/occ_command.html#security[the security section of the OCC command].
 
 [[im-the-admin-and-i-lost-my-password-what-do-i-do-now]]
-I’m the admin and I lost my password! What do I do now!
--------------------------------------------------------
+== I’m the admin and I lost my password! What do I do now!
 
-See
-https://doc.owncloud.org/server/latest/admin%20manual/configuration%20user/reset%20admin%20password.html[the
-reset admin password documentation].
+See https://doc.owncloud.org/server/latest/admin%20manual/configuration%20user/reset%20admin%20password.html[the reset admin password documentation].
 
 [[what-is-a-federated-system]]
-What is a Federated System?
----------------------------
+== What is a Federated System?
 
-A Federated System is another ownCloud or
-https://oc.owncloud.com/opencloudmesh.html[OpenCloudMesh] supporting
-cloud service.
+A Federated System is another ownCloud or https://oc.owncloud.com/opencloudmesh.html[OpenCloudMesh] supporting cloud service.

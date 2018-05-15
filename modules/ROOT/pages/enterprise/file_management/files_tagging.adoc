@@ -8,9 +8,7 @@ The Workflow App should be enabled by default (Apps page), and the three
 configuration modules visible on your ownCloud Admin page.
 
 See
-https://doc.owncloud.com/server/latest/user_manual/files/access_webgui.html[Tagging
-Files] in the ownCloud User manual to learn how to apply and filter tags
-on files.
+https://doc.owncloud.com/server/latest/user_manual/files/access_webgui.html[Tagging Files] in the ownCloud User manual to learn how to apply and filter tags on files.
 
 [[tag-manager]]
 Tag Manager

@@ -7,8 +7,8 @@ and logouts.
 
 image:/owncloud-docs/_images/enterprise/logging/logging-1.png[image]
 
-Your logging level must be set to at least *Info, warnings, errors, and
-fatal issues* on your ownCloud admin page, or `'loglevel' => 1` in
+Your logging level must be set to at least *Info*, *warnings*, *errors*, and
+*fatal issues* on your ownCloud admin page, or `'loglevel' => 1` in
 `config.php`.
 
 View your logfiles on your admin page. Click the *Download logfile*

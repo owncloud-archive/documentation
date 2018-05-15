@@ -305,9 +305,7 @@ Forums] which contains various additional information about WebDAV
 problems.
 
 [[error-0x80070043-the-network-name-cannot-be-found.-while-adding-a-network-drive]]
-Error 0x80070043 ``The network name cannot be found.'' while adding a
-network drive
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Error 0x80070043 ``The network name cannot be found.'' while adding a network drive
 
 The windows native WebDAV client might fail with the following error
 message:

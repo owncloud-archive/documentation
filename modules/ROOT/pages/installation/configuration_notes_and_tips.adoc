@@ -238,8 +238,7 @@ restart `php5-fpm` and your HTTP server in order for these changes to be
 applied.
 
 [[htaccess-notes-for-apache]]
-.htaccess Notes for Apache
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== .htaccess Notes for Apache
 
 ownCloud comes with its own `owncloud/.htaccess` file. Because `php-fpm`
 can’t read PHP settings in `.htaccess` these settings and permissions

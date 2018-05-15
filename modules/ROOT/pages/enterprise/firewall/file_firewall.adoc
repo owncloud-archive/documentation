@@ -195,14 +195,14 @@ strings:
 ....
 // config.php
 
- 'firewall.branded_clients' => array(
-   'my ownbrander android user agent string' => 'android_branded',
-   'my ownbrander second android user agent string' => 'android_branded',
-   'my ownbrander ios user agent string' => 'ios_branded',
-   'my ownbrander second ios user agent string' => 'ios_branded',
-   'my ownbrander desktop user agent string' => 'desktop_branded',
-   'my ownbrander second desktop user agent string' => 'desktop_branded',
- ),
+'firewall.branded_clients' => array(
+  'my ownbrander android user agent string' => 'android_branded',
+  'my ownbrander second android user agent string' => 'android_branded',
+  'my ownbrander ios user agent string' => 'ios_branded',
+  'my ownbrander second ios user agent string' => 'ios_branded',
+  'my ownbrander desktop user agent string' => 'desktop_branded',
+  'my ownbrander second desktop user agent string' => 'desktop_branded',
+),
 ....
 
 The Web UI dropdown then expands to the following options:

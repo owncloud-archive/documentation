@@ -118,8 +118,7 @@ Note: Executing this command might take some time depending on the file
 count.
 
 [[new-config-setting-to-specify-minimum-characters-for-sharing-autocomplete]]
-New config setting to specify minimum characters for sharing
-autocomplete
+New config setting to specify minimum characters for sharing autocomplete
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For security reasons the default value for minimum characters to trigger
@@ -136,14 +135,14 @@ needs best.
 New option to granularly configure public link password enforcement
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-With ownCloud 10 the _``File Drop''_ feature has been merged with public
+With ownCloud 10 the ''File Drop'' feature has been merged with public
 link permissions. This kind of public link does not give recipients
-access to any content, but it gives them the possibility to ``drop
+access to any content, but it gives them the possibility to ''drop
 files''. As a result, it might not always be desirable to enforce
 password protection for such shares. Given that, passwords for public
 links can now be enforced based on permissions (_read-only, read &
 write, upload only/File Drop_). Please check the administration settings
-_``Sharing''_ section and configure as desired.
+_''Sharing''_ section and configure as desired.
 
 [[new-option-to-exclude-apps-from-integrity-check]]
 New option to exclude apps from integrity check
@@ -370,8 +369,7 @@ Dropbox API v2 support to continue providing Dropbox external storages
 to your users.
 
 [[fixed-only-set-cors-headers-on-webdav-endpoint-when-origin-header-is-specified]]
-Fixed: Only set CORS headers on WebDAV endpoint when Origin header is
-specified
+Fixed: Only set CORS headers on WebDAV endpoint when Origin header is specified
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ownCloud Server 10.0.4 known issue is resolved.
@@ -453,8 +451,7 @@ firewall, to check the appropriateness of configured rules or to get
 assistance when setting up.
 
 [[added-mode-of-operations-to-differentiate-between-single-instance-or-clustered-setup]]
-Added mode of operations to differentiate between single-instance or
-clustered setup
+Added mode of operations to differentiate between single-instance or clustered setup
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As ownCloud needs to behave differently when operating in a clustered
@@ -566,7 +563,7 @@ https://github.com/owncloud/core/blob/stable10/CHANGELOG.md**
 single upgrade process.
 * Added occ command to list routes which can help administrators setting
 up network firewall rules.
-* `occ upgrade' is now verbose by default. Administrators may need to
+* `occ upgrade` is now verbose by default. Administrators may need to
 adjust scripts for automated setup/upgrade procedures that rely on `occ
 upgrade' outputs.
 * Reenabled medial search by default::
@@ -726,22 +723,19 @@ We will re-enable SSO for LDAP users with an update of the app in the
 market after completing internal testing.
 
 [[the-web-ui-prevents-uninstalling-apps-marked-as-shipped-e.g.-user_ldap]]
-The web UI prevents uninstalling apps marked as shipped, e.g.,
-`user_ldap`
+The web UI prevents uninstalling apps marked as shipped, e.g., `user_ldap`
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To uninstall, disable the app with occ and rm the app directory.
 
 [[moving-files-around-in-external-storages-outside-of-owncloud-will-invalidate-the-metadata]]
-Moving files around in external storages outside of ownCloud will
-invalidate the metadata
+Moving files around in external storages outside of ownCloud will invalidate the metadata
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 All shares, comments, and tags on the moved files will be lost.
 
 [[existing-ldap-users-only-show-up-in-the-user-management-page-and-the-share-dialog-after-being-synced]]
-Existing LDAP users only show up in the user management page and the
-share dialog after being synced
+Existing LDAP users only show up in the user management page and the share dialog after being synced
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The account table introduced in ownCloud 10.0.0 significantly reduces
@@ -753,8 +747,7 @@ setting up a nightly Cron job <cron_job_label> to keep metadata of users
 not actively logging in up to date.
 
 [[error-pages-will-not-use-the-configured-theme-but-will-instead-fall-back-to-the-community-default]]
-Error pages will not use the configured theme but will instead fall back
-to the community default
+Error pages will not use the configured theme but will instead fall back to the community default
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 [[changes-in-10.0.0]]

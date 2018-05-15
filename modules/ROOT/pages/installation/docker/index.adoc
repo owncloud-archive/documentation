@@ -22,16 +22,36 @@ repository] into that new directory. Next, create a .env configuration
 file, which contains the required configuration settings. Only a few
 settings are required, these are:
 
-[cols=",,",options="header",]
-|====================================================
-|Setting Name |Description |Example
-|`OWNCLOUD_VERSION` |The ownCloud version |`latest`
-|`OWNCLOUD_DOMAIN` |The ownCloud domain |`localhost`
-|`ADMIN_USERNAME` |The admin username |`admin`
-|`ADMIN_PASSWORD` |The admin user’s password |`admin`
-|`HTTP_PORT` |The HTTP port to bind to |`80`
-|`HTTPS_PORT` |The HTTP port to bind to |`443`
-|====================================================
+[cols=3,options=header]
+|===
+|Setting Name 
+|Description 
+|Example
+
+|`OWNCLOUD_VERSION` 
+|The ownCloud version 
+|`latest`
+
+|`OWNCLOUD_DOMAIN` 
+|The ownCloud domain 
+|`localhost`
+
+|`ADMIN_USERNAME` 
+|The admin username 
+|`admin`
+
+|`ADMIN_PASSWORD` 
+|The admin user’s password 
+|`admin`
+
+|`HTTP_PORT` 
+|The HTTP port to bind to 
+|`80`
+
+|`HTTPS_PORT` 
+|The HTTP port to bind to 
+|`443`
+|===
 
 Then, you can start the container, using your preferred Docker
 command-line tool. The example below shows how to use
@@ -71,16 +91,13 @@ working correctly, you should expect to see output similar to that
 below:
 
 [source,console]
-----
-Name                     Command               State                     Ports
-----
-
-___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-——————————————————————————————————-server_db_1 /usr/bin/entrypoint
-/bin/s … Up 3306/tcp server_owncloud_1 /usr/local/bin/entrypoint … Up
-0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp server_redis_1 /bin/s6-svscan
-/etc/s6 Up 6379/tcp
-___________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+....
+Name                Command                       State             Ports
+_______________________________________________________________________________________________________________
+server_db_1         /usr/bin/entrypoint/bin/s …   Up                3306/tcp 
+server_owncloud_1   /usr/local/bin/entrypoint …   Up                0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp 
+server_redis_1      /bin/s6-svscan /etc/s6        Up                6379/tcp
+....
 
 In it, you can see that the database, ownCloud, and Redis containers are
 running, and that ownCloud is accessible via ports 443 and 8080 on the
@@ -130,6 +147,7 @@ First, go to your docker directory where your `.yaml` or `.env` file
 exists. Second, put ownCloud into maintenance mode; you can do so using
 the following command:
 
+[source,console]
 ....
 docker-compose exec server occ maintenance:mode --on
 ....
@@ -137,6 +155,7 @@ docker-compose exec server occ maintenance:mode --on
 Third, create a backup in case something goes wrong during the upgrade
 process, using the following command:
 
+[source,console]
 ....
 docker-compose exec db backup
 ....
@@ -147,6 +166,7 @@ container from Webhippie].
 
 Fifth, shutdown the containers.
 
+[source,console]
 ....
 docker-compose down
 ....
@@ -154,6 +174,7 @@ docker-compose down
 Sixth, update the version number of ownCloud in your `.env` file or the
 YAML file. You can use sed for it, as in the following example.
 
+[source,console]
 ....
 # Make sure that you adjust the example to match your installation.
 sed -i 's/^OWNCLOUD_VERSION=.*$/OWNCLOUD_VERSION=<newVersion>/' /compose/*/.env
@@ -161,11 +182,9 @@ sed -i 's/^OWNCLOUD_VERSION=.*$/OWNCLOUD_VERSION=<newVersion>/' /compose/*/.env
 
 Seventh, view the file to ensure the changes has been implemented.
 
-________
 ....
 cat .env
 ....
-________
 
 Eighth, start your docker instance again.
 

@@ -169,14 +169,16 @@ user IDs, to adjust them before usage in ownCloud. You can set the
 mapper using `occ`:
 
 ....
-$ sudo -u www-data php occ config:app:set user_shibboleth uid_mapper --value="OCA\User_Shibboleth\Mapper\ADFSMapper"
+$ sudo -u www-data php occ config:app:set user_shibboleth \
+    uid_mapper --value="OCA\User_Shibboleth\Mapper\ADFSMapper"
 ....
 
 You may view the currently configured mapper using:
 
-_____________________________________________
+[source,console]
+....
 $ sudo -u www-data php occ shibboleth:mapping
-_____________________________________________
+....
 
 The following mappers are provided with the app:
 
@@ -250,5 +252,4 @@ We recommend using a scoped login attribute like *userPrincipalName* or
 *mail* because otherwise the search might find multiple users and
 prevent login.
 
-`user_shibboleth` will do the authentication, and `user_ldap` will
-provide user details such as `email` and `displayname`.
+`user_shibboleth` will do the authentication, and `user_ldap` will provide user details such as `email` and `displayname`.

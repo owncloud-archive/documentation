@@ -702,7 +702,4 @@ long as you have access to the physical server you can always log in. In
 the event that a load-balancer is in place, there will be no issues as
 long as it sends the correct `X-Forwarded-Host` header.
 
-__________________________________________________________________________________________________________________________________
-For further information on improving the quality of your ownCloud
-installation, please see the configuration_notes_and_tips guide.
-__________________________________________________________________________________________________________________________________
+NOTE: For further information on improving the quality of your ownCloud installation, please see xref:installation/configuration_notes_and_tips.adoc[the configuration notes and tips guide].

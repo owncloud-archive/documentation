@@ -84,11 +84,7 @@ ownCloud in the web root of NGINX
 The following config should be used when ownCloud is placed in the web
 root of your NGINX installation.
 
-The configuration assumes that ownCloud is installed in
-
-______________________________________________________________________
-`/var/www/owncloud` and is accessed via `http(s)://cloud.example.com`.
-______________________________________________________________________
+The configuration assumes that ownCloud is installed in `/var/www/owncloud` and is accessed via `http(s)://cloud.example.com`.
 
 [[owncloud-in-a-subdirectory-of-nginx]]
 ownCloud in a subdirectory of NGINX
@@ -98,14 +94,7 @@ The following config should be used when ownCloud is placed under a
 different context root of your NGINX installation such as /owncloud or
 /cloud.
 
-The configuration assumes that ownCloud is installed in
-
-________________________________________________________________________________________
-`/var/www/owncloud` is accessed via `http(s)://example.com/owncloud`
-
-and that you have `'overwriteweb root' => '/owncloud',` set in your
-`config/config.php`.
-________________________________________________________________________________________
+The configuration assumes that ownCloud is installed in `/var/www/owncloud` is accessed via `http(s)://example.com/owncloud` and that you have `'overwriteweb root' => '/owncloud',` set in your `config/config.php`.
 
 [[troubleshooting]]
 Troubleshooting
@@ -123,14 +112,15 @@ A standard issue with custom NGINX configurations is, that JavaScript
 +
 The following sequence is correct:
 
+[source,nginx]
 ....
-location ~ \.php(?:$|/) {
- ...
-}
+  location ~ \.php(?:$|/) {
+   ...
+  }
 
-location ~ \.(?:css|js)$ {
- ...
-}
+  location ~ \.(?:css|js)$ {
+   ...
+  }
 ....
 
 Other custom configurations like caching JavaScript (.js) or CSS (.css)
@@ -150,9 +140,7 @@ server’s performance a timeout of 180s should be sufficient to sync an
 address book of ~1000 contacts.
 
 [[windows-error-0x80070043-the-network-name-cannot-be-found.-while-adding-a-network-drive]]
-Windows: Error 0x80070043 ``The network name cannot be found.'' while
-adding a network drive
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Windows: Error 0x80070043 ``The network name cannot be found.'' while adding a network drive
 
 The windows native WebDAV client might fail with the following error
 message:
@@ -328,8 +316,7 @@ open_file_cache_errors          on;
 ----
 
 [[configure-nginx-to-use-caching-for-owncloud-internal-images-and-thumbnails]]
-Configure NGINX to use caching for ownCloud internal images and
-thumbnails
+Configure NGINX to use caching for ownCloud internal images and thumbnails
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This mechanism speeds up presentation as it shifts requests to NGINX and
