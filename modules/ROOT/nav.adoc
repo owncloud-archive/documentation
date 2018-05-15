@@ -139,6 +139,5 @@
 *** xref:upgrading/index.adoc[Upgrading]
 **** xref:upgrading/marketplace_apps.adoc[Marketplace Apps]
 **** xref:upgrading/upgrade_php.adoc[Upgrade PHP]
-*** xref:contents.adoc[Contents]
 *** xref:release_notes.adoc[Release Notes]
 *** xref:whats_new_admin.adoc[What's New Admin]
