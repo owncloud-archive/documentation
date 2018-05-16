@@ -1,6 +1,8 @@
 #!/usr/bin/env php
 
 * xref:index.adoc[Admin Manual]
+*** xref:release_notes.adoc[Release Notes]
+*** xref:whats_new_admin.adoc[What's New Admin]
 *** xref:appliance/index.adoc[Appliance]
 **** UCS
 ***** xref:appliance/ucs/add-groups-and-users.adoc[Add groups and users]
@@ -139,5 +141,3 @@
 *** xref:upgrading/index.adoc[Upgrading]
 **** xref:upgrading/marketplace_apps.adoc[Marketplace Apps]
 **** xref:upgrading/upgrade_php.adoc[Upgrade PHP]
-*** xref:release_notes.adoc[Release Notes]
-*** xref:whats_new_admin.adoc[What's New Admin]
