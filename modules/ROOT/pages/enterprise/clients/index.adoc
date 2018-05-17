@@ -1,4 +1,0 @@
-Creating Branded ownCloud Clients
-=================================
-
-

@@ -1,9 +1,9 @@
 * xref:index.adoc[User Manual]
-*** xref:external_storage/index.adoc[External_storage]
+*** External_storage
 **** xref:external_storage/external_storage.adoc[External Storage]
 **** xref:external_storage/sharepoint_connecting.adoc[Sharepoint Connecting]
-*** xref:files/index.adoc[Files]
-**** xref:files/webgui/index.adoc[WebGUI]
+*** Files
+**** WebGUI
 ***** xref:files/webgui/comments.adoc[Comments]
 ***** xref:files/webgui/custom_groups.adoc[Custom Groups]
 ***** xref:files/webgui/navigating.adoc[Navigating]
