@@ -173,3 +173,10 @@ To do so, run the following commands:
   univention-app install owncloud
         
 And after the upgrade and updates are completed, you can then login to ownCloud and verify the upgrade.
+
+Username and Password remain the same as before the upgrade:
+
+::
+
+   owncloudadmin
+   password
