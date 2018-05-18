@@ -1,6 +1,6 @@
 #!/usr/bin/env php
 
-* xref:index.adoc[Developer Manual]
+* Developer Manual
 ** xref:commun/help_and_communication.adoc[Getting Involved]
 ** Developing ownCloud Apps
 *** xref:app/introduction.adoc[Introduction]
@@ -49,16 +49,10 @@
 **** xref:app/tutorial/testing.adoc[Writing Tests]
 ** Developing ownCloud Core
 *** xref:core/introduction.adoc[Introduction]
-*** xref:general/code-of-conduct.adoc[Community Code of Conduct]
-*** xref:general/codingguidelines.adoc[Coding Style & General Guidelines]
 *** xref:general/devenv.adoc[Setup Your Development Environment]
 *** xref:core/configfile.adoc[Application Configuration]
-*** xref:general/debugging.adoc[Debugging]
-*** xref:general/performance.adoc[Performance Considerations]
-*** xref:general/security.adoc[Security Guidelines]
 *** xref:core/theming.adoc[Theming]
 *** xref:core/translation.adoc[Translation]
-*** xref:general/backporting.adoc[Backporting]
 *** Testing
 **** xref:testing/index.adoc[ownCloud Test Pilots]
 **** xref:core/unit-testing.adoc[Unit Testing]
@@ -73,6 +67,13 @@
 ***** xref:webdav_api/comments.adoc[The Comments API]
 ***** xref:webdav_api/files_versions.adoc[The Files Versions API]
 ***** xref:webdav_api/tags.adoc[The Tags API]
+** General Contributor Guidelines
+*** xref:general/code-of-conduct.adoc[Community Code of Conduct]
+*** xref:general/codingguidelines.adoc[Coding Style & General Guidelines]
+*** xref:general/debugging.adoc[Debugging]
+*** xref:general/performance.adoc[Performance Considerations]
+*** xref:general/security.adoc[Security Guidelines]
+*** xref:general/backporting.adoc[Backporting]
 ** Mobile Development
 *** xref:mobile_development/android_library/index.adoc[Android]
 **** xref:mobile_development/android_library/library_installation.adoc[Library Installation]
