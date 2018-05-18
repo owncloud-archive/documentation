@@ -1,5 +1,4 @@
-Sharing Files
-=============
+= Sharing Files
 
 Clicking the share icon on any file or folder opens the Details view on
 the right, where the Share tab has focus.

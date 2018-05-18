@@ -1,5 +1,4 @@
-Configuration Notes & Tips
-==========================
+= Configuration Notes and Tips
 
 [[selinux]]
 SELinux

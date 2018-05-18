@@ -1,5 +1,4 @@
-App config
-==========
+= Application Configuration
 
 [source,php]
 ----

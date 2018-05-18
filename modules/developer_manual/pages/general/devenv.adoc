@@ -1,5 +1,4 @@
-Development Environment
-=======================
+= Setup Your Development Environment
 
 To be able to use and develop with ownCloud takes a few steps.
 

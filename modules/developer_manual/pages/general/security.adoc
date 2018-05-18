@@ -536,8 +536,7 @@ there is no other option, sanitize every user parameter and ask people
 to audit your sanitize functions.
 
 [[cross-site-request-forgery]]
-Cross site request forgery
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Cross Site Request Forgery (CSRF)
 
 Using http://en.wikipedia.org/wiki/Cross-site_request_forgery[CSRF] one
 can trick a user into executing a request that he did not want to make.
@@ -563,8 +562,7 @@ setting the `@NoCSRFRequired` annotation before the controller method,
 see ../app/fundamentals/controllers
 
 [[cross-site-scripting]]
-Cross site scripting
-~~~~~~~~~~~~~~~~~~~~
+=== Cross Site Scripting (XSS)
 
 http://en.wikipedia.org/wiki/Cross-site_scripting[Cross-site scripting]
 happens when user input is passed directly to templates. A potential
