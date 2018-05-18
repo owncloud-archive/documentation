@@ -1,15 +1,9 @@
 The Installation Wizard
 =======================
 
-If you are planning to use the installation wizard, we *strongly*
-encourage you to protect it, through some form of
-https://wiki.apache.org/httpd/PasswordBasicAuth[password
-authentication], or
-https://httpd.apache.org/docs/2.4/howto/access.html[access control]. If
-the installer is left unprotected when exposed to the public internet,
-there is the possibility that a malicious actor could finish the
-installation and block you out — or worse. So please ensure that only
-you — or someone from your organization — can access the web installer.
+IMPORTANT: If you are planning to use the installation wizard, we *strongly* encourage you to protect it, through some form of https://wiki.apache.org/httpd/PasswordBasicAuth[password
+authentication], or https://httpd.apache.org/docs/2.4/howto/access.html[access control]. If
+the installer is left unprotected when exposed to the public internet, there is the possibility that a malicious actor could finish the installation and block you out — or worse. So please ensure that only you — or someone from your organization — can access the web installer.
 
 [[quick-start]]
 Quick Start
@@ -58,7 +52,7 @@ if you are using an HTTP server other than Apache, or you may wish to
 store your ownCloud data in a different location for other reasons (e.g.
 on a storage server).
 
-Please know that ownCloud’s data directory *must be exclusive to
+IMPORTANT: Please know that ownCloud’s data directory *must be exclusive to
 ownCloud* and not be modified manually by any other process or user.
 
 It is best to configure your data directory location at installation, as
@@ -84,8 +78,7 @@ are:
 SQLite
 ^^^^^^
 
-SQLite is the default database for ownCloud Server — but is not
-supported by the ownCloud Enterprise edition.
+WARNING: SQLite is the default database for ownCloud Server — but is not supported by the ownCloud Enterprise edition.
 
 SQLite is only good for testing and lightweight single user setups. It
 has no client synchronization support, so other devices will not be able
@@ -211,10 +204,7 @@ you can use label-phpinfo (Look for the *User/Group* line).
 * The HTTP user and group in Arch Linux is `http`.
 * The HTTP user in openSUSE is `wwwrun`, and the HTTP group is `www`.
 
-When using an NFS mount for the data directory, do not change its
-ownership from the default. The simple act of mounting the drive will
-set proper permissions for ownCloud to write to the directory. Changing
-ownership as above could result in some issues if the NFS mount is lost.
+CAUTION: When using an NFS mount for the data directory, do not change its ownership from the default. The simple act of mounting the drive will set proper permissions for ownCloud to write to the directory. Changing ownership as above could result in some issues if the NFS mount is lost.
 
 The easy way to set the correct permissions is to copy and run the
 script, below. The script sets proper permissions and ownership
