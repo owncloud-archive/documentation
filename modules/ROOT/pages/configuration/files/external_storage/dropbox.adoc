@@ -39,8 +39,7 @@ settings page for the application loads.
 
 image:..//owncloud-docs/_images/configuration/files/external_storage/dropbox/app-configuration.png[Dropbox app configuration settings]
 
-*Redirect URI*: Here you must enter the exact URL of the page where you
-configure the storage.
+IMPORTANT: *Redirect URI*: Here you must enter the exact URL of the page where you configure the storage.
 
 Examples:
 

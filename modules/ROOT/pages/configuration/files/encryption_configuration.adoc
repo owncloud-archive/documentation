@@ -45,8 +45,7 @@ need to track an extra password. All they need to do is log in as they
 normally would. ownCloud, transparently, encrypts only the contents of
 files, and not filenames and directory structures.
 
-You should regularly backup all encryption keys to prevent permanent
-data loss.
+IMPORTANT: You should regularly backup all encryption keys to prevent permanent data loss.
 
 The encryption keys are stored in the following directories:
 

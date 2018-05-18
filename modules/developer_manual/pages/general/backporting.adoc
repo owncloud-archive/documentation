@@ -30,10 +30,9 @@ reference the original PR in there. This enables the QA team to find the
 backported items for testing and having the original PR with detailed
 description linked.
 
-Before each patch release there is a freeze to be able to test
+NOTE: Before each patch release there is a freeze to be able to test
 everything as a whole without pulling in new changes. This freeze is
-announced on the
-https://mailman.owncloud.org/pipermail/devel/[owncloud-devel
+announced on the https://mailman.owncloud.org/pipermail/devel/[owncloud-devel
 mailinglist]. While this freeze is active a backport isn’t allowed and
 has to wait for the next patch release.
 
