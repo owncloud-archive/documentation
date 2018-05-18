@@ -5,12 +5,11 @@ Native SharePoint support has been added to ownCloud Enterprise
 Subscription as a secondary storage location for SharePoint 2007, 2010
 and 2013. To the user, these appear as normal ownCloud mounts, with
 bi-directional updates in any ownCloud client: desktop, mobile, or Web.
+
 There is one difference, and that is ownCloud sharing is intentionally
 disabled for SharePoint mountpoints in order to preserve SharePoint
 access controls, and to ensure that content is properly accessed as per
-SharePoint rules.
-
-Your ownCloud admin may optionally allow users to mount their own
+SharePoint rules. Your ownCloud admin may optionally allow users to mount their own
 SharePoint libraries.
 
 [[accessing-sharepoint-folders]]
