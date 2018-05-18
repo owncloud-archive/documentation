@@ -17,7 +17,7 @@ Installation Wizard. This involves just three steps:
 2.  Enter your desired administrator’s username and password.
 3.  Click ``Finish Setup''.
 
-image:/owncloud-docs/_images/install-wizard-a.png[image]
+image:/owncloud-docs/_images/installation/install-wizard-a.png[Installation wizard]
 
 You’re now finished and can start using your new ownCloud server. Of
 course, there is much more that you _can_ do to set up your ownCloud
@@ -45,7 +45,7 @@ Data Directory Location
 Click ``Storage and Database'' to expose additional installation
 configuration options for your ownCloud data directory and database.
 
-image:/owncloud-docs/_images/install-wizard-a1.png[image]
+image:/owncloud-docs/_images/installation/install-wizard-a1.png[image]
 
 You should locate your ownCloud data directory outside of your Web root
 if you are using an HTTP server other than Apache, or you may wish to
