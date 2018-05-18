@@ -39,6 +39,3 @@ mobile_development/android_library/index::
 
 |=======================================================================
 
-[[table-of-contents]]
-Table of Contents
------------------
