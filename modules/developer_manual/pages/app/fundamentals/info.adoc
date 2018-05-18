@@ -318,7 +318,7 @@ owncloud
 
 Defines the minimum and maximum versions of ownCloud core.
 
-This will be mandatory from version 11 onwards.
+IMPORTANT: This will be mandatory from version 11 onwards.
 
 [[deprecated]]
 Deprecated

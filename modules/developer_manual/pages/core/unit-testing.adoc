@@ -59,7 +59,7 @@ After the installation the command `phpunit` is available
 phpunit --version
 ....
 
-Please be aware that PHPUnit 6.0 and above require PHP 7.0.
+IMPORTANT: Please be aware that PHPUnit 6.0 and above require PHP 7.0.
 
 And you can update it using:
 
