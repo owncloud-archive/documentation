@@ -209,8 +209,8 @@ using the specified database backend like `sqlite`, `mysql`, `pgsql`,
 `oci` (for Oracle), the default is `sqlite`
 
 To run tests on `mysql` or `pgsql` you need a database user called
-``oc_autotest` with the password ``owncloud`. This user needs the
-privilege to create and delete the database called ``oc_autotest`.
+`oc_autotest` with the password `owncloud`. This user needs the
+privilege to create and delete the database called `oc_autotest`.
 
 [[mysql-setup]]
 MySQL Setup
@@ -246,7 +246,7 @@ createuser -P oc_autotest
 psql -c 'ALTER USER oc_autotest CREATEDB;' 
 ....
 
-To enable `dropdb` add ``local all all trust` to `pg_hba.conf`.
+To enable `dropdb` add `local all all trust` to `pg_hba.conf`.
 
 [[for-parallel-executor-support-with-executor_number0-1]]
 For parallel executor support with EXECUTOR_NUMBER=0
@@ -300,7 +300,7 @@ Testable Code]
 * http://www.phpunit.de/manual/current/en/writing-tests-for-phpunit.html[PHPUnit
 Manual]
 * http://www.youtube.com/watch?v=4E4672CS58Q&feature=bf_prev&list=PLBDAB2BA83BB6588E[Clean
-Code Talks - ``GuiceBerry`]
+Code Talks - `GuiceBerry`]
 * https://www.amazon.com/Clean-Code-Handbook-Software-Craftsmanship-ebook/dp/B001GSTOAM[Clean
 Code by Robert C. Martin]
 
@@ -344,7 +344,7 @@ make test-js-debug
 ....
 
 From there, open the URL http://localhost:9876 in a web browser. On that
-page, click on the ``Debug` button. An empty page will appear, from
+page, click on the `Debug` button. An empty page will appear, from
 which you must open the browser console (F12 in Firefox/Chrome). Every
 time you reload the page, the unit tests will be relaunched and will
 output the results in the browser console.

@@ -150,24 +150,24 @@ Several authentication schemes can be specified.
 
 |*AuthMechanism::SCHEME_PASSWORD* |Support for password-based auth,
 
-| |provides two fields ``user` and
+| |provides two fields `user` and
 
-| |``password` to the parameter list
+| |`password` to the parameter list
 
-|*AuthMechanism::SCHEME_OAUTH1* |OAuth1, provides fields ``app_key`,
+|*AuthMechanism::SCHEME_OAUTH1* |OAuth1, provides fields `app_key`,
 
-| |``app_secret`, ``token`, ``token_secret`
+| |`app_secret`, `token`, `token_secret`
 
-| |and ``configured`
+| |and `configured`
 
-|*AuthMechanism::SCHEME_OAUTH2* |OAuth2, provides fields ``client_id`,
+|*AuthMechanism::SCHEME_OAUTH2* |OAuth2, provides fields `client_id`,
 
-| |``client_secret`, ``token` and ``configured`
+| |`client_secret`, `token` and `configured`
 
 |*AuthMechanism::SCHEME_PUBLICKEY* |Public key, provides fields
-``user`,
+`user`,
 
-| |``public_key`, ``private_key`
+| |`public_key`, `private_key`
 |=======================================================================
 
 [[custom-user-interface]]

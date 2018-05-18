@@ -9,17 +9,13 @@ Coding
 * Use tabs to indent
 * A tab is 4 spaces wide
 * Opening braces of blocks are on the same line as the definition
-* Quotes: ’ for everything, " for HTML attributes (<p
-class=``my_class`>)
-* End of Lines : Unix style (LF / `n') only
+* Quotes: ’ for everything, " for HTML attributes (`<p class="my_class">`)
+* End of Lines : Unix style (LF / `\n`) only
 * No global variables or functions
 * Unit tests
 * HTML should be HTML5 compliant
-* Check these
-https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html[database
-performance tips]
-* When you `git pull`, always `git pull --rebase` to avoid generating
-extra commits like: _merged master into master_
+* Check these https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html[database performance tips]
+* When you `git pull`, always `git pull --rebase` to avoid generating extra commits like: _merged master into master_
 
 [[css]]
 CSS
@@ -84,7 +80,7 @@ you take it and take it from there.
 * When you are finished, use the merge request function on Github to
 create a pull request. The other developers will look at it and give you
 feedback. You can signify that your PR is ready for review by adding the
-label ``5 - ready for review` to it. You can also post your merge
+label `5 - ready for review` to it. You can also post your merge
 request to the mailing list to let people know. See
 the code review page for more information <../bugtracker/codereviews>
 * It is essential to keep changes small and separate. The bigger a PR

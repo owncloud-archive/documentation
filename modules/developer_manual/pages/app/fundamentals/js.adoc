@@ -74,7 +74,7 @@ It is possible to extend components of the core web UI. The following
 examples should show how this is possible.
 
 [[extending-the-new-menu-in-the-files-app]]
-Extending the ``new` Menu in the Files App
+Extending the `new` Menu in the Files App
 -------------------------------------------
 
 [source,js]
@@ -96,6 +96,6 @@ var myFileMenuPlugin = {
 OC.Plugins.register('OCA.Files.NewFileMenu', myFileMenuPlugin);
 ----
 
-This will register a new menu entry in the ``New` menu of the files
+This will register a new menu entry in the `New` menu of the files
 app. The method `attach()` is called once the menu is built. This
 usually happens right after the click on the button.

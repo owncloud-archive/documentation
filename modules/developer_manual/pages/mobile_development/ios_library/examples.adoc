@@ -810,7 +810,7 @@ want to Unshare.
 
 Before unsharing an item, you have to read the shared items on the
 selected server, using the method “ readSharedByServer ” so that you get
-the array ``items` with all the shared elements. These are objects
+the array `items` with all the shared elements. These are objects
 OCShareDto, one of their properties is idRemoteShared, parameter needed
 to unshared an element.
 
@@ -842,7 +842,7 @@ want.
 
 Before check an item, you have to read the shared items on the selected
 server, using the method “ readSharedByServer ” so that you get the
-array ``items` with all the shared elements. These are objects
+array `items` with all the shared elements. These are objects
 OCShareDto, one of their properties is idRemoteShared, parameter needed
 to unshared an element.
 
@@ -870,12 +870,12 @@ Tips
 * Wrong path: `https://example.com/owncloud/remote.php/dav/Pop%20Music/`
 * There are some forbidden characters to be used in folder and files
 names on the server, same on the ownCloud iOS library
-``",`/``,`<``,`>``,`:``,```",```,`?``,`*"
+`",`/`,`<`,`>`,`:`,``",``,`?`,`*"
 * To move a folder the origin path and the destination path must end
-with ``/`
+with `/`
 * To move a file the origin path and the destination path must not end
-with ``/`
+with `/`
 * Upload and download actions may be cancelled thanks to the object
-``NSOperation`
+`NSOperation`
 * Unit tests, before launching unit tests you have to enter your account
 information (server url, user and password) on OCCommunicationLibTests.m

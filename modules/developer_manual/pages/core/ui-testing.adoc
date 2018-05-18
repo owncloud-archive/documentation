@@ -116,7 +116,7 @@ Running UI Tests using IPv6
 The test system must have (at least locally) functioning IPv6:
 
 * working loopback address ::1
-* a ``real` routable IPv6 address (not just a link-local address)
+* a `real` routable IPv6 address (not just a link-local address)
 
 If you have a server set up that listens on both IPv4 and IPv6 (e.g.
 localhost on 127.0.0.1 and ::1) then the UI tests will access the server

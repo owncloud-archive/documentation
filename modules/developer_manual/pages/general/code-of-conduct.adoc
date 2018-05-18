@@ -22,7 +22,7 @@ Overview
 --------
 
 This Code of Conduct presents a summary of the shared values and
-``common sense` thinking in our community. The basic social ingredients
+common sense thinking in our community. The basic social ingredients
 that hold our project together include:
 
 * Be considerate

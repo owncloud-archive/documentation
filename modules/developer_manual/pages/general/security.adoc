@@ -109,9 +109,9 @@ pages.
 +
 *Example:*
 +
-If a user can’t login, don’t show an error like: ``__Your password is
-wrong__`. Instead, show a message such as: ``__There was an error with
-your credentials__`. If you print ``__Your password is wrong__` then
+If a user can’t login, don’t show an error like: `__Your password is
+wrong__`. Instead, show a message such as: `__There was an error with
+your credentials__`. If you print `__Your password is wrong__` then
 an attacker knows the username was a valid one in the ownCloud
 installation.
 * Consider implementing a https://en.wikipedia.org/wiki/CAPTCHA[CAPTCHA]
@@ -219,7 +219,7 @@ escapeshellarg() function], if your input parameters are arguments for
 http://php.net/manual/en/function.exec.php[exec()],
 http://php.net/manual/en/function.popen.php[popen()],
 http://php.net/manual/en/function.system.php[system()], or the backtick
-(```) operator.
+(``) operator.
 +
 [source,php]
 ----
@@ -423,7 +423,7 @@ Password Input
 ~~~~~~~~~~~~~~
 
 * If a user can input his password into an input field, the input field
-*must* be of type ``password`.
+*must* be of type `password`.
 * If an error occurs, don’t fill the password field automatically when
 displaying an error message.
 
@@ -605,7 +605,7 @@ attributes like this:
 
 To prevent XSS in your app, never use `echo`, `print()` or `<\%=`, use
 `p()` instead. Doing so sanitizes input. Also *validate URLs to start
-with the expected protocol* (starts with ``http` for instance)!
+with the expected protocol* (starts with `http` for instance)!
 
 Should you ever need to print something unescaped, double check if it is
 necessary. If there is no other way (e.g., when including sub-templates)
