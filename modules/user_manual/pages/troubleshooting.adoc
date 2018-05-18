@@ -1,13 +1,13 @@
-Troubleshooting
-===============
+= Troubleshooting
+
+== General Troubleshooting
 
 This section contains a list of error messages that ownCloud displays
 when things go wrong. For each message, you can find the most likely
 cause, a resolution, and one or more translations.
 
 [[problem-loading-page-reloading-in-5-seconds]]
-Problem loading page, reloading in 5 seconds
---------------------------------------------
+== Problem loading page, reloading in 5 seconds
 
 [cols=",",]
 |=======================================================================
@@ -20,8 +20,7 @@ nochmals geladen''
 |=======================================================================
 
 [[already-existing-files]]
-Already existing files
-----------------------
+== Already existing files
 
 [cols=",",]
 |=============================================
@@ -31,8 +30,7 @@ Already existing files
 |=============================================
 
 [[which-files-do-you-want-to-keep]]
-Which files do you want to keep?"
----------------------------------
+== Which files do you want to keep?"
 
 [cols=",",]
 |=====================================================
@@ -42,8 +40,7 @@ Which files do you want to keep?"
 |=====================================================
 
 [[error-while-sharing]]
-Error while sharing
--------------------
+== Error while sharing
 
 [cols=",",]
 |====================================
@@ -53,8 +50,7 @@ Error while sharing
 |====================================
 
 [[error-while-unsharing]]
-Error while unsharing
----------------------
+== Error while unsharing
 
 [cols=",",]
 |==================================================
@@ -64,8 +60,7 @@ Error while unsharing
 |==================================================
 
 [[error-while-sending-notification]]
-Error while sending notification
---------------------------------
+== Error while sending notification
 
 [cols=",",]
 |========================================================
@@ -75,8 +70,7 @@ Error while sending notification
 |========================================================
 
 [[resharing-is-not-allowed]]
-Resharing is not allowed
-------------------------
+== Resharing is not allowed
 
 [cols=",",]
 |======================================================
@@ -86,8 +80,7 @@ Resharing is not allowed
 |======================================================
 
 [[error-removing-share]]
-Error removing share
---------------------
+== Error removing share
 
 [cols=",",]
 |===================================================
@@ -97,8 +90,7 @@ Error removing share
 |===================================================
 
 [[internal-server-error]]
-Internal Server Error
----------------------
+== Internal Server Error
 
 [cols=",",]
 |======================================
@@ -108,8 +100,7 @@ Internal Server Error
 |======================================
 
 [[this-owncloud-instance-is-currently-in-single-user-mode.]]
-This ownCloud instance is currently in single user mode.
---------------------------------------------------------
+== This ownCloud instance is currently in single user mode.
 
 [cols=",",]
 |=======================================================================
@@ -122,9 +113,7 @@ Einzelbenutzermodus.''
 |=======================================================================
 
 [[this-s-instance-is-currently-in-maintenance-mode-which-may-take-a-while.]]
-This %s instance is currently in maintenance mode, which may take a
-while.
---------------------------------------------------------------------------
+== This %s instance is currently in maintenance mode, which may take a while.
 
 [cols=",",]
 |=======================================================================
@@ -137,3 +126,50 @@ was eine
 
 | |Weile dauern kann."
 |=======================================================================
+
+== File Troubleshooting
+
+Listed here are the most common errors you may encounter while
+attempting to upload files, along with what they mean, and possible
+workarounds.
+
+[[error-while-copying-file-to-target-location-copied-bytes-xxx-expected-filesize-yyy]]
+== Error while copying file to target location (copied bytes: xxx, expected filesize: yyy)
+
+This error is most likely due to an issue with the target storage
+location. During file uploads the file data is read from PHP input and
+copied into a part file on the target storage. 
+
+If the target storage is not local (eg: FTP) and that storage is slow, not available, or broken
+it is likely that the operation will fail either at the beginning, or in
+the middle of the copy. Other reasons for this message can be that, when
+writing to external storage, the connection took too long to respond or
+the network connection was flaky.
+
+[[sharing-sidebar-does-not-show-shared-with-you-by-for-remote-shares]]
+== Sharing sidebar does not show ``Shared with you by …'' for remote shares
+
+In some scenarios, when users share folders and files with each other
+they cannot be scanned. There are a variety of reasons why this happens,
+which can include firewalls and broken servers. 
+
+In these situations, when the initial scan did not complete successfully, the mount point
+cannot appear in the ownCloud web UI. This is because ownCloud was not
+able to generate a matching file cache entry, nor retrieve any metadata
+about whether it’s a folder or file (mime type), etc.
+
+== PIM Troubleshooting
+
+BlackBerry OS up to 10.2.2102 does not accept a URL with protocol
+`https://` in front of the server address. It will always tell you that
+it cannot login on your server. So instead of writing:
+
+....
+https://example.com/remote.php/dav/principals/users/USERNAME/
+....
+
+in the server address field, you have to write:
+
+....
+example.com/remote.php/dav/principals/users/USERNAME/
+....
