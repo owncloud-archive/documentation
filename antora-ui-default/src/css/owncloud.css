@@ -10,3 +10,50 @@ li.nav-item.is-current-page.is-active ul li.nav-item a.nav-link {
   font-style: normal;
   text-decoration: none;
 }
+
+footer {
+  overflow: auto;
+}
+
+footer div.container p {
+  text-align: center;
+  margin-top: 20px;
+}
+
+footer div.container div.row-full {
+  margin: 0 auto;
+  margin-left: 3%;
+  width: 100%;
+  clear: both;
+  float: left;
+}
+
+footer div.container div.row-full div.col-third {
+  float: left;
+  width: 33%;
+}
+
+@media screen and (max-width: 600px) {
+  footer div.container div.row-full {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  footer div.container div.row-full div.col-third {
+    width: 50%;
+    margin: 0 auto;
+    float: none;
+  }
+}
+
+@media screen and (min-width: 601px) {
+  footer div.container div.row-full {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  footer div.container div.row-full div.col-third {
+    width: 33%;
+    margin: 0 auto;
+  }
+}
