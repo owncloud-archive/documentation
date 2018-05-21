@@ -13,9 +13,32 @@ Requirements
 - An admin user called ``admin`` with the password ``admin``.
 - No self-signed SSL certificates.
 - Testing utils (running ``make`` in your terminal from the ``webroot`` directory will install them).
-- `Selenium standalone server <http://docs.seleniumhq.org/download/>`_ version 3.6.0 or newer.
-- Browser installed that you would like to test on.
-- `Web driver for the browsers that you want to test <http://www.seleniumhq.org/download/#thirdPartyDrivers>`_.
+- `Docker CE Installed <https://docs.docker.com/install/linux/docker-ce/ubuntu/>`_
+- `Docker Post-install <https://docs.docker.com/install/linux/linux-postinstall/>`_ done to put your developer account in the docker group so you can run ``docker`` without ``sudo``
+- Docker subnet enabled for any firewall that may be active. e.g. ``ufw`` might be enabled and so you should allow the ``172.17.0.0/16`` ``docker`` subnet:
+
+  .. code-block:: console
+
+    sudo ufw status
+    sudo ufw allow from 172.17.0.0/16
+
+- Docker containers pulled. It is recommended to use ``standalone-chrome-debug`` which allows seeing the browser live. You will also need ``mailhog``. Pull any or all of these ``docker`` containers:
+
+  .. code-block:: console
+
+    docker pull selenium/standalone-chrome
+    docker pull selenium/standalone-chrome-debug
+    docker pull selenium/standalone-firefox
+    docker pull selenium/standalone-firefox-debug
+    docker pull mailhog/mailhog
+
+- A ``vnc`` viewer installed (in order to view the browser action as the UI tests run). For example:
+
+  .. code-block:: console
+
+    sudo apt install tigervnc-viewer
+
+- To run the selenium server locally (not in ``docker``) see the notes at the end.
 
 Overview
 ~~~~~~~~
@@ -32,12 +55,23 @@ that define the steps taken to do the test.
 Set Up Test
 ~~~~~~~~~~~
 
-- Place the Selenium standalone server jar file and the web driver(s) somewhere in the same folder.
-- Start the Selenium server:
+- Start the ``selenium`` ``docker`` container in a terminal:
 
   .. code-block:: console
 
-    java -jar selenium-server-standalone-3.6.0.jar -port 4445 -enablePassThrough false
+    docker run -p 4445:4444 -p 5900:5900 -v /dev/shm:/dev/shm selenium/standalone-chrome-debug
+
+  Ports on the selenium docker IP address are mapped to ``localhost`` so they can be accessed by the tests and the ``vnc`` viewer.
+
+- Start the ``mailhog`` ``docker`` container in another terminal:
+
+  .. code-block:: console
+
+    docker run -p 1025:1025 -p 8025:8025 mailhog/mailhog
+
+  Ports on the mailhog docker IP address are mapped to ``localhost`` so they can be accessed by the tests.
+
+  By running these in terminal windows, it is simple to press ``ctrl-C`` to stop them when you are finished.
 
 - Set the following environment variables:
 
@@ -50,19 +84,19 @@ Set Up Test
   - ``BROWSER`` (Any one of ``chrome``, ``firefox``, ``internet explorer``)
   - ``BROWSER_VERSION`` (version of the browser you want to use - optional)
 
-  e.g., to test an instance running on http://localhost/owncloud-core with Chrome do:
+  e.g., to test an instance running on the ``docker`` subnet with Chrome do:
 
   .. code-block:: console
 
-    export SRV_HOST_NAME=localhost
-    export REMOTE_FED_SRV_HOST_NAME=127.0.0.1
+    export SRV_HOST_NAME=172.17.0.1
+    export REMOTE_FED_SRV_HOST_NAME=172.17.0.1
     export SRV_HOST_URL=owncloud-core
     export REMOTE_FED_SRV_HOST_URL=owncloud-core
-    export SRV_HOST_PORT=80
-    export REMOTE_FED_SRV_HOST_PORT=80
+    export SRV_HOST_PORT=8080
+    export REMOTE_FED_SRV_HOST_PORT=8180
     export BROWSER=chrome
-    export BROWSER_VERSION="60.0"
-    
+
+- If your ownCloud install is running locally on Apache, then it should already be available on the ``docker``  subnet at ``172.17.0.1``
 
 - If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
 
@@ -83,10 +117,18 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 
     bash tests/travis/start_ui_tests.sh --suite webUILogin
 
-The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
+  The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
 
-The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
-To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
+  The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
+  To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
+
+- The browser for the tests runs inside the selenium docker container. View it by running the ``vnc`` viewer:
+
+  .. code-block:: console
+
+    vncviewer
+
+  And connect to ``localhost``. The VNC password of the docker container is ``secret``.
 
 Running UI Tests using IPv6
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -200,6 +242,25 @@ To not rerun failed test scenarios:
 .. code-block:: console
 
    bash tests/travis/start_ui_tests.sh --norerun --suite webUILogin
+
+Local Selenium Setup
+~~~~~~~~~~~~~~~~~~~~
+
+You may optionally run the ``selenium`` server locally. ``docker`` is now the recommended way, but local ``selenium`` is also possible:
+
+- `Selenium standalone server <http://docs.seleniumhq.org/download/>`_ e.g. version 3.12.0 or newer.
+- Browser installed that you would like to test on (e.g. chrome)
+- `Web driver for the browser that you want to test <http://www.seleniumhq.org/download/#thirdPartyDrivers>`_.
+- Place the Selenium standalone server jar file and the web driver(s) somewhere in the same folder.
+- Start the Selenium server:
+
+  .. code-block:: console
+
+    java -jar selenium-server-standalone-3.12.0.jar -port 4445 -enablePassThrough false
+
+- In this configuration, the tests will keep popping open the browser-under-test on your local system.
+
+- If you run any test scenarios that need ``mailhog`` (to test password reset etc.), then you need to run the ``mailhog`` ``docker`` container. That is much simpler than trying to configure ``mailhog`` on your local system.
 
 Known Issues
 ~~~~~~~~~~~~
