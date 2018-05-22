@@ -5,7 +5,7 @@ Acceptance Tests
 The Test Directory Structure
 ----------------------------
 
-This is the structure of acceptance directory inside `the core repository's`_ ``tests`` directory:
+This is the structure of the acceptance directory inside `the core repository's`_ ``tests`` directory:
 
 .. code-block:: bash
 
@@ -16,12 +16,16 @@ This is the structure of acceptance directory inside `the core repository's`_ ``
     │   ├── data
     │   │   └── textfile.txt
     │   ├── features
-    │   │   ├── apiMain (suite of acceptance test features)
+    │   │   ├── apiMain (suite of API acceptance test features)
     │   │   │   └── feature files for the suite (behat gherkin files)
-    │   │   └── bootstrap
-    │   │       └── Contexts and traits (php files)
+    │   │   ├── bootstrap
+    │   │   │   └── Contexts and traits (php files)
+    │   │   └── webUILogin (suite of webUI acceptance test features)
+    │   │       └── feature files for the suite (behat gherkin files)
+    │   ├── filesForUpload
     │   ├── run.sh
-    │   └── skeleton
+    │   ├── skeleton
+    │   └── webUISkeleton
 
 Here’s a short description of each component of the directory.
 
@@ -52,6 +56,23 @@ Here's an example configuration:
             - CalDavContext:
             - AppManagementContext:
 
+        webUILogin:
+          paths:
+            - %paths.base%/../features/webUILogin
+          context: &common_webui_suite_context
+            parameters:
+              ocPath: apps/testing/api/v1/occ
+              adminUsername: admin
+              adminPassword: admin
+              regularUserPassword: 123456
+          contexts:
+            - FeatureContext: *common_feature_context_params
+            - WebUIGeneralContext:
+            - WebUILoginContext:
+            - WebUIFilesContext:
+            - WebUIPersonalGeneralSettingsContext:
+            - EmailContext:
+
 ``data/``
 ~~~~~~~~~
 
@@ -62,7 +83,11 @@ This folder can be used in tests to store temporary data.
 
 This directory stores `Behat's feature files`_. 
 These contain Behat's test cases, called scenarios, which use the Gherkin language.
-Features are grouped into suites. The features for a suite are stored in a folder like ``features/apiMain``.
+Features are grouped into suites.
+The features for a suite are stored in a folder like ``features/apiMain`` or ``webUILogin``.
+Suites that test the API start with ``api``. These can run without extra supporting software.
+Suites that test the web user interface start with ``webUI``. These require extra supporting software that will open a
+browser and drive it.
 
 ``features/bootstrap``
 ~~~~~~~~~~~~~~~~~~~~~
@@ -70,6 +95,11 @@ Features are grouped into suites. The features for a suite are stored in a folde
 This folder contains all the Behat contexts. 
 Contexts contain the PHP code required to run Behat's scenarios. 
 The contexts needed by each suite are listed in ``behat.yml``.
+
+``filesForUpload/``
+~~~~~~~~~~~~~
+
+This folder stores sample local files that are used in upload tests.
 
 ``run.sh``
 ~~~~~~~~~~
@@ -80,7 +110,12 @@ To use it we need to run it as the web server user, which is normally ``www-data
 ``skeleton/``
 ~~~~~~~~~~~~~
 
-This folder stores the initial files loaded for a new user.
+This folder stores the initial files loaded for a new user by the API tests.
+
+``webUISkeleton/``
+~~~~~~~~~~~~~
+
+This folder stores the initial files loaded for a new user by the web UI tests.
 
 How to Add a New Feature
 ------------------------
@@ -184,7 +219,7 @@ Before you can do so, you need to meet a few prerequisites available; these are
 After cloning core, run ``make`` as your webserver's user in the root directory of the project.
 
 .. NOTE: 
-   Having a clean database is a also good idea.
+   Having a clean database is also good idea.
 
 Now that the prerequisites are satisfied, and assuming that ``$installation_path`` is the location where you cloned the ``ownCloud/core`` repository, the following commands will prepare the installation for running the acceptance tests.
 
@@ -208,15 +243,15 @@ Now that the prerequisites are satisfied, and assuming that ``$installation_path
 With the installation prepared, you should now be able to run the tests. 
 Go to the ``tests/acceptance`` folder and, assuming that your web user is ``www-data``, run the following command::
 
-  sudo -u www-data ./run.sh features/task-to-test.feature
+  sudo -u www-data ./run.sh features/apiSuite/task-to-test.feature
 
 If you want to use an alternative home name using the ``env`` variable add to the execution ``OC_TEST_ALT_HOME=1``, as in the following example:
 
-  sudo -u www-data OC_TEST_ALT_HOME=1 ./run.sh features/task-to-test.feature
+  sudo -u www-data OC_TEST_ALT_HOME=1 ./run.sh features/apiSuite/task-to-test.feature
 
 If you want to have encryption enabled add ``OC_TEST_ENCRYPTION_ENABLED=1``, as in the following example:
 
-  sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/task-to-test.feature
+  sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/apiSuite/task-to-test.feature
 
 For more information on Behat, and how to write acceptance tests using it, check out `the online documentation`_.
 
