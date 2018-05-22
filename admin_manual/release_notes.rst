@@ -60,7 +60,7 @@ With ownCloud 10 the *"File Drop"* feature has been merged with public link perm
 
 New option to exclude apps from integrity check
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-By verifying signature files the *integrity check* ensures that the code running in an ownCloud instance has not been altered by third parties. Naturally this check can only be successful for code that has been obtained from official ownCloud sources. When providing custom apps (like theme apps) that do not have a signature, the integrity check will fail and notify the administrator. These apps can now be excluded from the *integrity check* by using the *config.php* option ``'integrity.ignore.missing.app.signature' => ['app_id1', 'app_id2', 'app_id3'],``. See *config.sample.php* for more information.
+By verifying signature files the *integrity check* ensures that the code running in an ownCloud instance has not been altered by third parties. Naturally this check can only be successful for code that has been obtained from official ownCloud sources. When providing custom apps (like theme apps) that do not have a signature, the integrity check will fail and notify the administrator. These apps can now be excluded from the *integrity check* by using the *config.php* option ``'integrity.ignore.missing.app.signature' => ('app_id1', 'app_id2', 'app_id3'),``. See *config.sample.php* for more information.
 
 New occ command to modify user details
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
