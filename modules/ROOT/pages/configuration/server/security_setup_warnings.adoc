@@ -11,9 +11,11 @@ image:/owncloud-docs/_images/security-setup-warning-1.png[image]
 Cache Warnings
 --------------
 
-``No memory cache has been configured. To enhance your performance
-please configure a memcache if available.'' ownCloud supports multiple
-php caching extentions:
+....
+No memory cache has been configured. To enhance your performance please configure a memcache if available. 
+....
+
+ownCloud supports multiple PHP caching extentions:
 
 * APCu
 * Memcached
@@ -35,8 +37,9 @@ performance. See caching_configuration.
 Transactional file locking is disabled
 --------------------------------------
 
-``Transactional file locking is disabled, this might lead to issues with
-race conditions.''
+....
+Transactional file locking is disabled, this might lead to issues with race conditions.
+....
 
 Please see xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking] for how to correctly configure your environment for transactional file locking.
 
@@ -44,13 +47,13 @@ Please see xref:configuration/files/files_locking_transactional.adoc[Transaction
 You are accessing this site via HTTP
 ------------------------------------
 
-``You are accessing this site via HTTP. We strongly suggest you
-configure your server to require using HTTPS instead.'' Please take this
-warning seriously; using HTTPS is a fundamental security measure. You
-must configure your Web server to support it, and then there are some
-settings in the *Security* section of your ownCloud Admin page to
-enable. The following pages describe how to enable HTTPS on the Apache
-and Nginx Web servers.
+....
+You are accessing this site via HTTP. We strongly suggest you configure your server to require using HTTPS instead. 
+....
+
+Please take this warning seriously; using HTTPS is a fundamental security measure. 
+You must configure your Web server to support it, and then there are some settings in the *Security* section of your ownCloud Admin page to enable. 
+The following pages describe how to enable HTTPS on the Apache and Nginx Web servers.
 
 enabling_ssl_label (on Apache)
 
@@ -68,9 +71,9 @@ environment.
 The ``Strict-Transport-Security'' HTTP header is not configured
 ---------------------------------------------------------------
 
-``The''Strict-Transport-Security" HTTP header is not configured to least
-``15552000'' seconds. For enhanced security we recommend enabling HSTS
-as described in our security tips."
+....
+The ''Strict-Transport-Security'' HTTP header is not configured to least ''15552000'' seconds. For enhanced security we recommend enabling HSTS as described in our security tips.
+....
 
 The HSTS header needs to be configured within your Web server by
 following the enable-hsts-label documentation
@@ -79,9 +82,10 @@ following the enable-hsts-label documentation
 /dev/urandom is not readable by PHP
 -----------------------------------
 
-``/dev/urandom is not readable by PHP which is highly discouraged for
-security reasons. Further information can be found in our
-documentation.''
+....
+/dev/urandom is not readable by PHP which is highly discouraged for security reasons. 
+Further information can be found in our documentation.
+....
 
 This message is another one which needs to be taken seriously. Please
 have a look at the dev-urandom-label documentation.
@@ -90,8 +94,9 @@ have a look at the dev-urandom-label documentation.
 Your Web server is not yet set up properly to allow file synchronization
 ------------------------------------------------------------------------
 
-``Your web server is not yet set up properly to allow file
-synchronization because the WebDAV interface seems to be broken.''
+....
+Your web server is not yet set up properly to allow file synchronization because the WebDAV interface seems to be broken.
+....
 
 At the ownCloud community forums a larger
 https://central.owncloud.org/t/how-to-fix-caldav-carddav-webdav-problems/852[FAQ]
@@ -101,15 +106,19 @@ is maintained containing various information and debugging hints.
 Outdated NSS / OpenSSL version
 ------------------------------
 
-``cURL is using an outdated OpenSSL version (OpenSSL/$version). Please
+....
+cURL is using an outdated OpenSSL version (OpenSSL/$version). Please
 update your operating system or features such as installing and updating
 apps via the ownCloud Marketplace or Federated Cloud Sharing will not
-work reliably.''
+work reliably.
+....
 
-``cURL is using an outdated NSS version (NSS/$version). Please update
+....
+cURL is using an outdated NSS version (NSS/$version). Please update
 your operating system or features such as installing and updating apps
 via the ownCloud Marketplace or Federated Cloud Sharing will not work
-reliably.''
+reliably.
+....
 
 There are known bugs in older OpenSSL and NSS versions leading to
 misbehaviour in combination with remote hosts using SNI. A technology
@@ -121,8 +130,7 @@ distributions such as RHEL/CentOS which have this backport still
 https://bugzilla.redhat.com/show_bug.cgi?id=1241172[pending].
 
 [[your-web-server-is-not-set-up-properly-to-resolve-.well-knowncaldav-or-.well-knowncarddav]]
-Your Web server is not set up properly to resolve /.well-known/caldav/
-or /.well-known/carddav/
+Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/
 -----------------------------------------------------------------------------------------------
 
 Both URLs need to be correctly redirected to the DAV endpoint of
@@ -136,13 +144,14 @@ Please refer to the code_signing_fix_warning_label documentation how to
 debug this issue.
 
 [[your-database-does-not-run-with-read-commited-transaction-isolation-level]]
-Your database does not run with ``READ COMMITED'' transaction isolation
-level
+Your database does not run with ``READ COMMITED'' transaction isolation level
 -----------------------------------------------------------------------------
 
-``Your database does not run with''READ COMMITED" transaction isolation
+....
+Your database does not run with''READ COMMITED" transaction isolation
 level. This can cause problems when multiple actions are executed in
-parallel."
+parallel.
+....
 
 Please refer to db-transaction-label how to configure your database for
 this requirement.

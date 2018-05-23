@@ -40,22 +40,18 @@ https://marketplace.owncloud.com/apps/richdocuments[Collabora Online].
 Guest
 -----
 
-* Is a regular user with restricted permissions, identified via e-mail
-address.
+* Is a regular user with restricted permissions, identified via e-mail address.
 * Has no personal space.
-* Has no file ownership (ownership of uploaded/created files is directed
-to sharer).
+* Has no file ownership (ownership of uploaded/created files is directed to sharer).
 * Has access to shared space. The permissions are granted by the sharer.
 * Is not bound to the inviting user.
 ** Can log in as long as shares are available.
 ** Becomes deactivated when no shares are left; this is xref:the-shared-with-guests-filter[the shared with guests filter].
 ** Reactivated when a share is received.
-** Administrators will be able to automate user cleanup (``**disabled
-for x days**'').
+** Administrators will be able to automate user cleanup (``**disabled for x days**'').
 * Can use all clients.
 * Fully auditable in the enterprise edition.
-* Can be promoted to group administrator or administrator, but will
-still have no personal space.
+* Can be promoted to group administrator or administrator, but will still have no personal space.
 * Apps are specified by the admin (whitelist).
 
 [[the-shared-with-guests-filter]]

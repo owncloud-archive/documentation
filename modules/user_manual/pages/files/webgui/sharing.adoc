@@ -198,8 +198,7 @@ it
 |=======================================================================
 
 [[creating-drop-folders]]
-Creating Drop Folders
----------------------
+== Creating Drop Folders
 
 As of ownCloud version 10.0.2, users can create upload-only, public
 shares (otherwise known as ``Drop Folders''). Drop Folders allow users

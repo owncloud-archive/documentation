@@ -53,17 +53,17 @@ oc_permissions
 
 You can ignore these tables. Here is a list of known old tables:
 
-* oc_calendar_calendars
-* oc_calendar_objects
-* oc_calendar_share_calendar
-* oc_calendar_share_event
-* oc_fscache
-* oc_log
-* oc_media_albums
-* oc_media_artists
-* oc_media_sessions
-* oc_media_songs
-* oc_media_users
-* oc_permissions
-* oc_queuedtasks
-* oc_sharing
+* `oc_calendar_calendars`
+* `oc_calendar_objects`
+* `oc_calendar_share_calendar`
+* `oc_calendar_share_event`
+* `oc_fscache`
+* `oc_log`
+* `oc_media_albums`
+* `oc_media_artists`
+* `oc_media_sessions`
+* `oc_media_songs`
+* `oc_media_users`
+* `oc_permissions`
+* `oc_queuedtasks`
+* `oc_sharing`

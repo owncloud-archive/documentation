@@ -37,13 +37,16 @@ Share Settings Explained
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
 [cols=",",options="header",]
-|====================================================================
-|Setting |Description
-|Allow editing |It also allows renaming, deleting, and moving.
-|Show file listing |The option allows recipients to list the files in
-| |the shared folder. If you don’t give permission to
-| |view the files you have :ref:`a drop folder
-| |<create_drop_folder_label>`.
+|===
+|Setting 
+|Description
+
+|Allow editing 
+|It also allows renaming, deleting, and moving.
+
+|Show file listing 
+|The option allows recipients to list the files in the shared folder. If you don’t give permission to view the files you have xref:files/webgui/sharing.adoc#creating-drop-folders[a drop folder].
+
 |Password |Sets a password for protecting the link.
 |Expiration |Sets an expiry date for the link.
-|====================================================================
+|===

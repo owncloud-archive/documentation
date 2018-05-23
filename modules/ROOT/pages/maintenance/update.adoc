@@ -216,8 +216,8 @@ changing config.php. You can run this on your shell:
 php -r 'echo password_hash("Enter a random password here", PASSWORD_DEFAULT)."\n";'
 ....
 
-Please replace `Enter a random password here` with your own. Then add
-this into your config.php:
+Please replace `Enter a random password here` with your own. 
+Then add this into your config.php:
 
 ....
 'updater.secret' => 'The value you got from the above hash command',

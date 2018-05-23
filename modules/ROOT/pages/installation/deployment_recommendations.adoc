@@ -1,8 +1,8 @@
 Deployment Recommendations
 ==========================
 
-What is the best way to install and maintain ownCloud? The answer to
-that is, as always: _``it depends''_.
+What is the best way to install and maintain ownCloud? 
+The answer to that is, as always: _``it depends''_.
 
 This is because every ownCloud customer has their own particular needs
 and IT infrastructure. However, both ownCloud and the LAMP stack are

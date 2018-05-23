@@ -20,11 +20,8 @@ For the purpose of this use case, it is assumed that:
 2.  The authentication method (e.g., LDAP) remains the same after the
 migration.
 
-During the migration, do not make any changes to the original system,
-except for putting it into maintenance mode. This ensures, should
-anything unforeseen happen, that you can go back to your existing
-installation and resume availability of your installation while
-debugging the problem.
+IMPORTANT: During the migration, do not make any changes to the original system, except for putting it into maintenance mode. 
+This ensures, should anything unforeseen happen, that you can go back to your existing installation and resume availability of your installation while debugging the problem.
 
 [[how-to-migrate]]
 How to Migrate
@@ -193,12 +190,12 @@ your owncloud root directory.
 
 *For InnoDB tables only* The –single-transaction flag will start a
 transaction before running. Rather than lock the entire database, this
-will let mysqldump read the database in the current state at the time of
+will let `mysqldump` read the database in the current state at the time of
 the transaction, making for a consistent data dump.
 
 *For Mixed MyISAM / InnoDB tables* Either dumping your MyISAM tables
-separately from InnoDB tables or use –lock-tables instead of
-–single-transaction to guarantee the database is in a consistent state
+separately from InnoDB tables or use `–lock-tables` instead of
+`–single-transaction` to guarantee the database is in a consistent state
 when using mysqldump.
 
 [[transfer-data-and-configure-the-new-server]]

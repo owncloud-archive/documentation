@@ -164,10 +164,8 @@ Market and Marketplace App Upgrades
 Before getting too far into the upgrade process, please be aware of how
 the Market app and its configuration options affect the upgrade process.
 
-* The Market app is not upgraded if it is either disabled (because
-`appstoreenabled` is set to `false`) or it is not available.
-* If `upgrade.automatic-app-update` is set to `false` apps installed
-from the Marketplace are not automatically upgraded.
+* The Market app is not upgraded if it is either disabled (because `appstoreenabled` is set to `false`) or it is not available.
+* If `upgrade.automatic-app-update` is set to `false` apps installed from the Marketplace are not automatically upgraded.
 
 In addition to these two points, if there are installed apps (whether
 compatible or incompatible with the next version, or missing source
@@ -284,12 +282,11 @@ files can help:
 sudo -u www-data php console.php files:scan --all
 ....
 
-See https://owncloud.org/support[the owncloud.org support page] for
-further resources for both home and enterprise users.
+See https://owncloud.org/support[the owncloud.org support page] for further resources for both home and enterprise users.
 
-Sometimes, ownCloud can get _stuck in a upgrade_. This is usually due to
-the process taking too long and encountering a PHP time-out. Stop the
-upgrade process this way:
+Sometimes, ownCloud can get _stuck in a upgrade_. 
+This is usually due to the process taking too long and encountering a PHP time-out. 
+Stop the upgrade process this way:
 
 ....
 sudo -u www-data php occ maintenance:mode --off
