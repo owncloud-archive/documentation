@@ -6,7 +6,7 @@ ownCloud servers. But, *it does not scale* for large, multi-user sites.
 If you have an existing ownCloud installation which uses SQLite, and you
 want to convert to a better performing database, such as _MySQL_,
 _MariaDB_ or _PostgreSQL_, you can use
-the ownCloud command line tool: occ <database_conversion_label>.
+the ownCloud command line tool: xref:configuration/server/occ_command.adoc#database-conversion[occ].
 
 ownCloud Enterprise edition does not support SQLite.
 

@@ -645,14 +645,11 @@ disable these apps or manually download and provide the apps before
 updating.
 * *App updates:* Third party apps are not disabled anymore when
 upgrading.
-* *Upgrade migration test:* The upgrade migration test has been removed;
-see migration_test_label. (Option `--skip-migration-tests` removed from
-update command).
+* *Upgrade migration test:* The upgrade migration test, `--skip-migration-tests`, has been removed.
 
 The template editor app is not included in the 10.0.1 release due to
-technical reasons, but will be distributed via the marketplace. However,
-you can still
-edit template files manually <using_email_templates_label>.
+technical reasons, but will be distributed via the marketplace. 
+However, you can still xref:configuration/server/email_configuration.adoc#using-email-templates[edit template files] manually.
 
 [[settings]]
 Settings
@@ -742,9 +739,8 @@ The account table introduced in ownCloud 10.0.0 significantly reduces
 LDAP communication overhead. Password checks are yet to be accounted
 for. LDAP user metadata in the account table will be updated when users
 log in or when the administrator runs
-`occ user:sync "OCA\User_LDAP\User_Proxy"`. We recommend
-setting up a nightly Cron job <cron_job_label> to keep metadata of users
-not actively logging in up to date.
+`occ user:sync "OCA\User_LDAP\User_Proxy"`. 
+We recommend setting up xref:configuration/server/background_jobs_configuration.adoc[a nightly Cron job] to keep metadata of users not actively logging in up to date.
 
 [[error-pages-will-not-use-the-configured-theme-but-will-instead-fall-back-to-the-community-default]]
 Error pages will not use the configured theme but will instead fall back to the community default
@@ -759,9 +755,7 @@ Changes in 10.0.0
 (Option `"--skip-migration-tests"` removed from update command)
 * Requires to use the latest desktop client version 2.3
 * Third party apps are not disabled anymore when upgrading
-* User account table has been reworked. CRON job for syncing with e.g.
-LDAP needs to be configured (see
-https://doc.owncloud.com/server/latest/admin_manual/configuration/server/occ_command.html#syncing-user-accounts)
+* User account table has been reworked. CRON job for syncing with e.g., LDAP needs to be configured (see xref:configuration/server/occ_command.adoc#user-commands[Syncing User Accounts] for more information
 * LDAP app is not released with ownCloud 10.0.0 and will be released on
 the marketplace after some more QA
 * files_drop app is not shipped anymore as it’s integrated with core
@@ -957,8 +951,8 @@ RHEL6, Debian 7, or any version of Fedora. A new package,
 owncloud-enterprise-files, is available for all supported platforms,
 including the above. This new package comes without dependencies, and is
 installable on a larger number of platforms. System administrators must
-install their own LAMP stacks and databases. See
-https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/
+install their own LAMP stacks and databases. 
+See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/.
 
 [[changes-in-8.2]]
 Changes in 8.2
@@ -1052,9 +1046,7 @@ ownCloud ships now with its own root certificate bundle derived from
 Mozilla’s root certificates file. The system root certificate bundle
 will not be used anymore for most requests.
 
-When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you
-must enable the new encryption backend and migrate your encryption keys.
-See upgrading_encryption_label.
+When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must enable the new encryption backend and xref:configuration/server/occ_command.adoc#encryption[migrate your encryption keys].
 
 Encryption can no longer be disabled in ownCloud 8.1. It is planned to
 re-add this feature to the command line client for a future release.
@@ -1079,12 +1071,10 @@ The 8.1.0 release has a minor bug which makes application updates fail
 at first try. Reload the apps page and try again, and the update will
 succeed.
 
-The `forcessl` option within the `config.php` and the `Enforce SSL`
-option within the Admin-Backend was removed. This now needs to be
-configured like described in use_https_label.
+The `forcessl` option within the `config.php` and the `Enforce SSL` option within the Admin-Backend was removed. 
+This now needs to be configured like described in xref:configuration/server/harden_server.adoc#use-https[Hardening and Security Guidance].
 
-WebDAV file locking was removed in ownCloud 8.1 which causes Finder on
-Mac OS X to mount WebDAV read-only.
+WebDAV file locking was removed in ownCloud 8.1 which causes Finder on macOS to mount WebDAV read-only.
 
 [[enterprise-8.1]]
 Enterprise 8.1
@@ -1126,9 +1116,7 @@ about federated cloud sharing)
 Manually Migrate Encryption Keys after Upgrade
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you are using the Encryption application and upgrading from older
-versions of ownCloud to ownCloud 8.0, you must manually migrate your
-encryption keys. See upgrading_encryption_label.
+If you are using the Encryption application and upgrading from older versions of ownCloud to ownCloud 8.0, you must xref:configuration/server/occ_command.adoc#encryption[manually migrate your encryption keys].
 
 [[windows-server-not-supported]]
 Windows Server Not Supported

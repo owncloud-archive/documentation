@@ -398,16 +398,14 @@ Group Member association:::
   * `memberUid` with RDN for objectclass `posixGroup` groups
   * `uniqueMember` with FDN for objectclass `groupOfUniqueNames` groups
 
-The Group Member association is used to efficiently query users of a
-certain group, eg., on the userManagement page or when resolving all
-members of a group share.
+  The Group Member association is used to efficiently query users of a
+  certain group, eg., on the userManagement page or when resolving all
+  members of a group share.
 
-Dynamic Group Member URL::
-  The LDAP attribute that on group objects contains an LDAP search URL
-  that determines what objects belong to the group. An empty setting
-  disables dynamic group membership functionality. See
-  http://www.zytrax.com/books/ldap/ch11/dynamic.html[Configuring Dynamic
-  Groups] for more details.
+Dynamic Group Member URL:::
+  The LDAP attribute that on group objects contains an LDAP search URL that determines what objects belong to the group. An empty setting disables dynamic group membership functionality. 
+  See http://www.zytrax.com/books/ldap/ch11/dynamic.html[Configuring Dynamic Groups] for more details.
+
 Nested Groups:::
   This makes the LDAP connector aware that groups could be stored inside
   existing group records. By default a group will only contain users, so
@@ -454,8 +452,7 @@ Administrators are not allowed to modify the user quota limit in the
 user management page when steps 3 or 4 are in effect. At this point,
 updates are only possible via LDAP.
 
-See the https://github.com/valerytschopp/owncloud-ldap-schema[LDAP
-Schema for OwnCloud Quota]
+  See the https://github.com/valerytschopp/owncloud-ldap-schema[LDAP Schema for ownCloud Quota]
 
 Email Field:::
   Set the user’s email from an LDAP attribute, e.g., `mail`. Leave it
@@ -543,9 +540,7 @@ Override UUID detection::
   It also will have effect when a user’s or group’s DN changes and an
   old UUID was cached, which will result in a new user. Because of this,
   the setting should be applied before putting ownCloud in production
-  use and clearing the bindings (see the `User and Group Mapping`
-  section below).
-  +
+  use and clearing the bindings (see xref:user-and-group-mapping[the User and Group Mapping` section] below).
   Examples:
   +
   * `cn`
@@ -592,11 +587,11 @@ While users who match the login and user filters can log in, only synced
 users will be found in the sharing dialog. Whenever users log in their
 display name, email, quota, avatar and search attributes will be synced
 to ownCloud. If you want to keep the metadata up to date you can set up
-a cron job, using the occ command <syncing_user_accounts_label>.
+a cron job, using xref:configuration/server/occ_command.adoc#user-commands[the occ command].
 Versions of ownCloud before 10.0 imported all users when the users page
 was loaded, but this is no longer the case.
 
-We recommend creating a Cron job <cron_job_label>, to automate regularly
+We recommend xref:configuration/server/background_jobs_configuration.adoc#cron-jobs[creating a Cron job], to automate regularly
 syncing LDAP users with your ownCloud database.
 
 [[how-often-should-the-job-run]]
@@ -701,9 +696,8 @@ Performance tips
 Caching
 ~~~~~~~
 
-Using caching to speed up lookups. See
-../../configuration/server/caching_configuration. The ownCloud cache is
-populated on demand, and remains populated until the ``**Cache
+Using xref:configuration/server/caching_configuration.adoc[caching] to speed up lookups. 
+The ownCloud cache is populated on demand, and remains populated until the ``**Cache
 Time-To-Live**'' for each unique request expires. User logins are not
 cached, so if you need to improve login times set up a slave LDAP server
 to share the load.
@@ -741,11 +735,8 @@ LDAP indexing
 ~~~~~~~~~~~~~
 
 Turn on indexing. Deciding which attributes to index depends on your
-configuration and which LDAP server you are using. See
-https://www.openldap.org/doc/admin24/tuning.html#Indexes[The openLDAP
-tuning guide] for openLDAP, and
-https://technet.microsoft.com/en-us/library/aa995762(v=exchg.65).aspx[How
-to Index an Attribute in Active Directory] for Active Directory.
+configuration and which LDAP server you are using. 
+See https://www.openldap.org/doc/admin24/tuning.html#Indexes[The openLDAP tuning guide] for openLDAP, and https://technet.microsoft.com/en-us/library/aa995762(v=exchg.65).aspx[How to Index an Attribute in Active Directory] for Active Directory.
 
 [[use-precise-base-dns]]
 Use precise base DNs

@@ -97,8 +97,7 @@ backups. These are backups of your old and new ownCloud installations,
 and do not contain your data files. If your update works and there are
 no problems you can delete the backups from this screen.
 
-If the update fails, then you must update manually. (See Manually 
-upgrading <manual_upgrade>.)
+If the update fails, then you must xref:maintenance/manual_upgrade.adoc[update manually].
 
 [[setting-permissions-for-updating]]
 Setting Permissions for Updating
@@ -134,9 +133,7 @@ you can use label-phpinfo (Look for the *User/Group* line).
 * The HTTP user and group in Arch Linux is `http`.
 * The HTTP user in openSUSE is `wwwrun`, and the HTTP group is `www`.
 
-After the update is completed, re-apply
-the strong directory permissions <post_installation_steps_label>
-immediately.
+After the update is completed, re-apply xref:installation/source_installation.adoc#set-strong-directory-permissions[the strong directory permissions] immediately.
 
 [[command-line-options]]
 Command Line Options

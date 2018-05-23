@@ -41,7 +41,7 @@ Tumbleweed.
 
 Once your package manager has been updated, follow the rest of the
 instructions on the download page to install ownCloud. Once ownCloud’s
-installed, run the Installation Wizard <installation_wizard> to complete
+installed, run xref:installation/installation_wizard.adoc[the Installation Wizard] to complete
 your installation.
 
 See the system_requirements for the recommended ownCloud setup and
@@ -86,8 +86,7 @@ ownCloud version through all major releases.
 Installing ownCloud Enterprise Edition
 --------------------------------------
 
-See ../enterprise/installation/install for instructions on installing
-ownCloud Enterprise edition.
+See xref:enterprise/installation/install[the enterprise installation guide] for instructions on installing ownCloud Enterprise edition.
 
 [[downgrading]]
 Downgrading
@@ -106,12 +105,10 @@ Additional Guides and Notes
 
 See installation_wizard for important steps, such as choosing the best
 database and setting correct directory permissions. See
-selinux_configuration for a suggested configuration for SELinux-enabled
-distributions such as Fedora and CentOS.
+xref:installation/configuration_notes_and_tips.adoc#selinux[the SELinux guide] for a suggested configuration for SELinux-enabled distributions such as _Fedora_ and _CentOS_.
 
 If your distribution is not listed, your Linux distribution may maintain
-its own ownCloud packages or you may prefer to
-install from source <source_installation>.
+its own ownCloud packages or you may prefer to xref:installation/source_installation.adoc[install from source].
 
 [[archlinux]]
 Archlinux
@@ -141,6 +138,4 @@ environment if you have binary logging enabled.
 Running ownCloud in a sub-directory
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If you’re running ownCloud in a sub-directory and want to use CalDAV or
-CardDAV clients, make sure you have configured the correct
-service discovery <service-discovery-label> URLs.
+If you’re running ownCloud in a sub-directory and want to use CalDAV or CardDAV clients, make sure you have configured the correct xref:issues/general_troubleshooting.adoc#service-discovery[service discovery URLs].

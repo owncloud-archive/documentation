@@ -3,11 +3,9 @@ Tagging Files
 
 image:/owncloud-docs/user_manual/_images/file_popup-menu.png[image]
 
-In ownCloud, you can assign one or more tags to files and folders. To do
-so, go to the ``**Details**'' view, inside
-The Overflow Menu <the_overflow_menu_label>. There, you’ll see a text
-field, with the placeholder text ``**Collaborative tags**'' if no tags
-have yet been added, below the file’s icon, name, and other details.
+In ownCloud, you can assign one or more tags to files and folders. 
+To do so, go to the ``**Details**'' view, inside xref:files/webgui/overview.adoc#the-overflow-menu[The Overflow Menu]. 
+There, you’ll see a text field, with the placeholder text ``**Collaborative tags**'' if no tags have yet been added, below the file’s icon, name, and other details.
 
 In that field, type the tag’s name. If you want to use multiple words,
 there is no need to use single or double-quotes. Type as many words as

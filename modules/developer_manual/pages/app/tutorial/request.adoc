@@ -1,15 +1,12 @@
 The Request Life Cycle
 ======================
 
-Before we dive in to creating an application, it’s important to have an
+Before we dive in to creating an application, it's important to have an
 overview of how the request life cycle of an ownCloud application works.
 
-If you are not interested in the internals or don’t want to execute
-anything before and after your controller, feel free to skip this
-section and continue directly with defining
-your app's routes <../fundamentals/routes>.
+If you are not interested in the internals or don't want to execute anything before and after your controller, feel free to skip this section and continue directly with defining xref:app/fundamentals/routes.adoc[your app's routes].
 
-As with other web-based applications, it’s centered around an HTTP
+As with other web-based applications, it's centered around an HTTP
 request, which typically consists of the following, four, components:
 
 * *A URL*: e.g. `/index.php/apps/myapp/something`
@@ -29,7 +26,7 @@ These requests are, in turn, handled by five ownCloud components:
 The Front Controller
 --------------------
 
-All requests are sent to ownCloud’s Front Controller: index.php, which
+All requests are sent to ownCloud's Front Controller: index.php, which
 in turn executes lib/base.php. This file:
 
 * Inspects the HTTP headers
@@ -46,16 +43,11 @@ With these three applications loaded, the remaining initialization steps
 are then executed. These are:
 
 * Attempt to authenticate the user is made.
-* Load and execute all the remaining applications’ main files.
-+
-To do this, the application’s main file <appinfo_info_xml_label>
-(`appinfo/app.php`) is loaded and executed. If you want to execute code
-before your application is loaded, you need to place code in your app’s
-main file.
-* Load all the routes in the applications’ appinfo/routes.php.
+* Load and execute all the remaining applications' main files. To do this, the application's main file xref:app/tutorial/development_environment.adoc#appinfoinfo.xml[`appinfo/app.php`] is loaded and executed. If you want to execute code before your application is loaded, you need to place code in your app's main file.
+* Load all the routes in the applications' `appinfo/routes.php`.
 * Execute the router.
 
-With the setup completed, ownCloud then handles the user’s request.
+With the setup completed, ownCloud then handles the user's request.
 
 [[the-router]]
 The Router
@@ -63,29 +55,23 @@ The Router
 
 The router:
 
-* Parses the application’s routing <../fundamentals/routes>
-configuration file: appinfo/routes.php
-* Inspects the request’s method and URL
-* Retrieves the handling controller <../fundamentals/controllers> from
-the ../fundamentals/container
+* Parses xref:app/fundamentals/routes.adoc[the application's routing configuration file]: `appinfo/routes.php`.
+* Inspects the request's method and URL
+* Retrieves xref:app/fundamentals/controllers.adoc[the handling controller] from xref:app/fundamentals/container.adoc[the DI container].
 * Passes control to the dispatcher
 
 The dispatcher:
 
-* Handles the requested routes by running hooks, called
-link:[Middleware], before and after invoking the controller which
-handles the route
+* Handles the requested routes by running hooks, called link:[Middleware], before and after invoking the controller which handles the route
 * Executes the controller method
-* Renders the request’s output
+* Renders the request's output
 
 [[middleware]]
 Middleware
 ----------
 
-Middleware <../fundamentals/middleware> is a convenient way to execute
-common tasks, such as custom authentication, before or after a
-controller method <../fundamentals/controllers> is executed. You can
-execute middleware at the following locations:
+xref:app/fundamentals/middleware.adoc[Middleware] is a convenient way to execute common tasks, such as custom authentication, before or after xref:app/fundamentals/controllers.adoc[a controller method] is executed. 
+You can execute middleware at the following locations:
 
 * Before calling the controller method
 * After calling the controller method
@@ -97,24 +83,17 @@ e.g., if an authentication request fails)
 The Dependency Injection Container
 ----------------------------------
 
-The Dependency Injection (DI) container <../fundamentals/container> is
-where you define all the services (or dependencies) that your
-application will need; in particular, all of your application’s
-controllers. A key benefit of DI containers is that they handle all
-dependency instantiation. This means that you no longer have to rely on
-either globals or singletons.
+xref:app/fundamentals/container.adoc[The Dependency Injection (DI) container] is where you define all the services (or dependencies) that your application will need; in particular, all of your application's controllers. 
+A key benefit of DI containers is that they handle all dependency instantiation. 
+This means that you no longer have to rely on either globals or singletons.
 
 [[the-controller]]
 The Controller
 --------------
 
-The controller <../fundamentals/controllers> contains the code that you
-actually want to run when a request has come in. Think of it like a
-callback that is executed if everything before went fine. The controller
-collects all the information necessary to perform the request, such as
-from the route and environment, and returns a response.
+xref:app/fundamentals/controllers.adoc[The controller] contains the code that you actually want to run when a request has come in. 
+Think of it like a callback that is executed if everything before went fine. 
+The controller collects all the information necessary to perform the request, such as from the route and environment, and returns a response.
 
-This response is then run through follow-up middleware
-(`afterController` and `beforeOutput`) for final processing. When those
-steps are complete, HTTP headers are then set along with the body of the
-response to the client.
+This response is then run through follow-up middleware (`afterController` and `beforeOutput`) for final processing. 
+When those steps are complete, HTTP headers are then set along with the body of the response to the client.

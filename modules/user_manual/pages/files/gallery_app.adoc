@@ -67,8 +67,8 @@ Setup
 The configuration file has to be named *gallery.cnf*. You may have
 multiple per-album *gallery.cnf* files. To enable global features, place
 one in your top-level folder, which is symbolised in the Web GUI by the
-home icon. (This puts it in `data/<user>/files/`.) See an example below 
-<supported_variables_label> in the *Global features* section.
+home icon. (This puts it in `data/<user>/files/`.) 
+See xref:supported-variables[an example below] in the *Global features* section.
 
 You need to refresh your browser after changing your configuration to
 see your changes.

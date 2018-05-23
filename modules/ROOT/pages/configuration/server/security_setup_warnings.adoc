@@ -38,10 +38,7 @@ Transactional file locking is disabled
 ``Transactional file locking is disabled, this might lead to issues with
 race conditions.''
 
-Please see
-Transactional File Locking <configuring_transactional_file_locking_label>
-for how to correctly configure your environment for transactional file
-locking.
+Please see xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking] for how to correctly configure your environment for transactional file locking.
 
 [[you-are-accessing-this-site-via-http]]
 You are accessing this site via HTTP

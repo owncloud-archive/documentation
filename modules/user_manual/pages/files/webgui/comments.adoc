@@ -8,7 +8,7 @@ This section describes how to add, edit, and delete comments.
 Add Comments
 ------------
 
-Use the Details view, in The Overflow Menu <the_overflow_menu_label>, to
+Use the Details view, in xref:files/webgui/overview.adoc#the-overflow-menu[The Overflow Menu], to
 add and read comments on any file or folder. Comments are visible to
 everyone who has access to the file or folder. To add a comment, as in
 the example below, click the *Comments* tab in the Details view, write a

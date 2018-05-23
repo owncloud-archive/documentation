@@ -51,7 +51,7 @@ give an additional indicator for the quality of the pull request.
 Examples
 --------
 
-Read our coding_style_guidelines_label for information on what a good
+Read our xref:general/codingguidelines.adoc[coding style guidelines] for information on what a good
 pull request and good ownCloud code looks like.
 
 These are two examples that are considered to be good examples of how

@@ -42,17 +42,10 @@ ownCloud Administrators Must Have Command Line or Cron Access
 We only recommend using hosts that provide command-line or Cron access
 (ideally both) _to ownCloud administrators_, for three key reasons:
 
-1.  Without command-line access,
-OCC commands <../configuration/server/occ_command>, required for
+1.  Without command-line access, xref:configuration/server/occ_command.adoc[OCC commands], required for
 administrative tasks such as repairs and upgrades, are not available.
-2.  Without crontab access, you cannot run background jobs reliably.
-ajax/cron.php <ajax_cron_label> is available, but it is not reliable
-enough, because it only runs when people are using the web UI.
-Additionally, ownCloud relies heavily on
-background jobs <available_background_jobs_label> especially for
-long-running operations, which will likely cause PHP timeouts.
-3.  PHP timeout values are often low. Having low timeout settings can
-break long-running operations, such as moving a huge folder.
+2.  Without crontab access, you cannot run background jobs reliably. xref:configuration/server/background_jobs_configuration.adoc#ajax[ajax/cron.php] is available, but it is not reliable enough, because it only runs when people are using the web UI. Additionally, ownCloud relies heavily on background jobs <available_background_jobs_label> especially for long-running operations, which will likely cause PHP timeouts.
+3.  PHP timeout values are often low. Having low timeout settings can break long-running operations, such as moving a huge folder.
 
 [[scenario-1-small-workgroups-and-departments]]
 Scenario 1: Small Workgroups and Departments
@@ -155,9 +148,8 @@ Alternatively, you can make nightly backups — with service interruption
 5.  Start Apache.
 
 After these steps have been completed, then, optionally, rsync the
-backup to either an external backup storage or tape backup. See the
-https://doc.owncloud.org/server/latest/admin_manual/maintenance/index.html[Maintenance]
-section of the Administration manual for tips on backups and restores.
+backup to either an external backup storage or tape backup. 
+See xref:maintenance/index.adoc[the Maintenance section] of the Administration manual for tips on backups and restores.
 
 [[authentication]]
 Authentication
@@ -468,27 +460,22 @@ management storage.
 Caching
 ^^^^^^^
 
-Redis <redis_configuration_label> for distributed in-memory caching, see
-https://doc.owncloud.org/server/latest/admin_manual/configuration/server/caching_configuration.html[Configuring
-Memory Caching].
+xref:configuration/server/caching_configuration.adoc#redis[Redis] for distributed in-memory caching.
 
 [[storage-2]]
 Storage
 ^^^^^^^
 
-An off-the-shelf NFS solution should be used. Some examples are
-https://www.ibm.com/us-en/marketplace/ibm-elastic-storage-server[IBM
-Elastic Storage] or
-https://www.redhat.com/en/technologies/storage/ceph[RedHat Ceph].
+An off-the-shelf NFS solution should be used. 
+Some examples are https://www.ibm.com/us-en/marketplace/ibm-elastic-storage-server[IBM Elastic Storage] or https://www.redhat.com/en/technologies/storage/ceph[RedHat Ceph].
 Optionally, an S3 compatible object store can also be used.
 
 [[owncloud-edition-2]]
 ownCloud Edition
 ^^^^^^^^^^^^^^^^
 
-Enterprise Edition. See
-https://owncloud.com/owncloud-server-or-enterprise-edition/[ownCloud
-Server or Enterprise Edition] for comparisons of the ownCloud editions.
+Enterprise Edition. 
+See https://owncloud.com/owncloud-server-or-enterprise-edition/[ownCloud Server or Enterprise Edition] for comparisons of the ownCloud editions.
 
 [[redis-configuration]]
 Redis Configuration
@@ -557,15 +544,12 @@ requested before the replication has actually taken place.
 
 This setting is disabled by default.
 
-See the Galera Cluster WSREP documentation for more details.
+See http://galeracluster.com/documentation-webpages/[the Galera Cluster WSREP documentation] for more details.
 
 [[references]]
 References
 ----------
 
-* http://www.severalnines.com/blog/become-mysql-dba-blog-series-database-high-availability[Database
-High Availability]
-* http://blog.bitnami.com/2014/06/performance-enhacements-for-apache-and.html[Performance
-enhancements for Apache and PHP]
-* https://www.digitalocean.com/community/tutorials/how-to-set-up-a-redis-server-as%20-a-session-handler-for-php-on-ubuntu-14-04[How
-to Set Up a Redis Server as a Session Handler for PHP on Ubuntu 14.04]
+* http://www.severalnines.com/blog/become-mysql-dba-blog-series-database-high-availability[Database High Availability]
+* http://blog.bitnami.com/2014/06/performance-enhacements-for-apache-and.html[Performance enhancements for Apache and PHP]
+* https://www.digitalocean.com/community/tutorials/how-to-set-up-a-redis-server-as%20-a-session-handler-for-php-on-ubuntu-14-04[How to Set Up a Redis Server as a Session Handler for PHP on Ubuntu 14.04]

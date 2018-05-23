@@ -4,15 +4,15 @@ Tags API
 The tags API provides extensive support for managing tags within
 ownCloud. Using the tags API, you can:
 
-* List tags <list_tags_label>
-* Create tags <create_tags_label>
-* Update tags <update_tags_label>
-* Delete tags <delete_tags_label>
-* Retrieve the tag ids and metadata of a given file <retrieve_tag_ids_and_metadata_label>
-* Assign a tag to a file <assign_tag_to_file_label>
-* Unassign a tag from a file <unassign_tag_from_file_label>
-* Create and assign a tag at the same time <create_and_assign_tag_label>
-* Retrieve all files tagged with a tag id <retrieve_files_tagged_with_id>
+* link:list-tags[List tags]
+* link:create-tags[Create tags]
+* link:update-tags[Update tags]
+* link:delete-tags[Delete tags]
+* link:retrieve-the-tag-ids-and-metadata-of-a-given-file[Retrieve-the-tag-ids-and-metadata-of-a-given-file]
+* link:assign-a-tag-to-a-file[Assign-a-tag-to-a-file]
+* link:unassign-a-tag-from-a-file[Un-assign-a-tag-from-a-file]
+* link:create-and-assign-a-tag-at-the-same-time[Create-and-assign-a-tag-at-the-same-time]
+* link:retrieve-all-files-tagged-with-a-tag-id[Retrieve-all-files-tagged-with-a-tag-id]
 
 In short, it provides all of the functionality available through the UI,
 from the command-line.
@@ -61,8 +61,7 @@ status of: `HTTP/1.1 207 Multi-Status`.
 
 Note that it does not return very much, just the `href` and `status`
 properties. If you want to retrieve more detailed information, you need
-to supply a
-https://webmasters.stackexchange.com/questions/59211/what-is-http-method-propfind-used-for[PROPFIND]
+to supply a https://webmasters.stackexchange.com/questions/59211/what-is-http-method-propfind-used-for[PROPFIND]
 element in the request body, containing all the properties that you want
 to retrieve in the response. The sample below, which for the purposes of
 this example we’ll store in a file called `report-propfind.xml`, shows

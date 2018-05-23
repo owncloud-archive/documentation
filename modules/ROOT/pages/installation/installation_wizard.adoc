@@ -23,9 +23,7 @@ You’re now finished and can start using your new ownCloud server. Of
 course, there is much more that you _can_ do to set up your ownCloud
 server for best performance and security. In the following sections we
 will cover important installation and post-installation steps. Note that
-you must follow the instructions in
-Setting Strong Permissions <strong_perms_label> in order to use the
-occ Command <../configuration/server/occ_command>.
+you must follow the instructions in xref:installation/source_installation.adoc#set-strong-directory-permissions[Setting Strong Permissions] in order to use the occ command.
 
 [[in-depth-guide]]
 In-Depth Guide
@@ -34,9 +32,9 @@ In-Depth Guide
 This section provides a more detailed guide to the installation wizard.
 Specifically, it is broken down into three steps:
 
-1.  Data Directory Location <data_directory_location_label>
-2.  Database Choices <database_choice_label>
-3.  Post-Installation Steps <post_installation_steps_label>
+1. xref:data-directory-location[Data Directory Location]
+2. xref:database-choice-label[Database Choices]
+3. xref:post-installation-steps-label[Post-Installation Steps]
 
 [[data-directory-location]]
 Data Directory Location
@@ -49,17 +47,15 @@ image:/owncloud-docs/_images/installation/install-wizard-a1.png[image]
 
 You should locate your ownCloud data directory outside of your Web root
 if you are using an HTTP server other than Apache, or you may wish to
-store your ownCloud data in a different location for other reasons (e.g.
+store your ownCloud data in a different location for other reasons (e.g.,
 on a storage server).
 
 IMPORTANT: Please know that ownCloud’s data directory *must be exclusive to
 ownCloud* and not be modified manually by any other process or user.
 
 It is best to configure your data directory location at installation, as
-it is difficult to move after installation. You may put it anywhere; in
-this example is it located in `/var/oc_data`. This directory must
-already exist, and must be owned by your HTTP user (see
-strong_perms_label).
+it is difficult to move after installation. You may put it anywhere; in this example is it located in `/var/oc_data`. 
+This directory must already exist, and must be owned by your HTTP user.
 
 [[database-choices]]
 Database Choices
@@ -259,6 +255,4 @@ read-only for the group owner
 * Both .htaccess files are read-write file owner, read-only group and
 world
 
-These strong permissions prevent upgrading your ownCloud server; see
-set_updating_permissions_label for a script to quickly change
-permissions to allow upgrading.
+These strong permissions prevent upgrading your ownCloud server; see xref:maintenance/update.adoc#setting-permissions-for-updating[Setting Permissions for Updating] for a script to quickly change permissions to allow upgrading.

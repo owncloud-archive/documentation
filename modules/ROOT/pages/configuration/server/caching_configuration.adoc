@@ -107,21 +107,12 @@ Apache and the extension is ready to use.
 Redis
 ~~~~~
 
-http://redis.io/[Redis] is an excellent modern memory cache to use for
-both distributed caching and as a local cache for
-Transactional File Locking <../../configuration/files/files_locking_transactional>,
-because it guarantees that cached objects are available for as long as
-they are needed.
+http://redis.io/[Redis] is an excellent modern memory cache to use for both distributed caching and as a local cache for xref:configuration/files/files_locking_transactional.adoc[transactional file locking], because it guarantees that cached objects are available for as long as they are needed.
 
-The Redis PHP module must be at least version 2.2.6 or higher. If you
-are running a Linux distribution that does not package the supported
-versions of this module — or does not package Redis at all — see
-install_redis_label.
+The Redis PHP module must be at least version 2.2.6 or higher. 
+If you are running a Linux distribution that does not package the supported versions of this module — or does not package Redis at all — see xref:installing-redis-on-other-distributions[Installing Redis on other distributions].
 
-Debian Jessie users, please see this
-https://github.com/owncloud/core/issues/20675#issuecomment-159202901[GitHub
-discussion] if you have problems with LDAP authentication when using
-Redis.
+TIP: Debian Jessie users, please see this https://github.com/owncloud/core/issues/20675#issuecomment-159202901[GitHub discussion] if you have problems with LDAP authentication when using Redis.
 
 [[installing-redis-on-debian-based-distributions]]
 Installing Redis on Debian-based Distributions
@@ -275,8 +266,7 @@ Memcached
 
 Memcached is a reliable old-timer for shared caching on distributed
 servers. It performs well with ownCloud with one exception: it is not
-suitable to use with
-Transactional File Locking <../../configuration/files/files_locking_transactional>.
+suitable to use with xref:configuration/files/files_locking_transactional[Transactional File Locking].
 This is because it does not store locks, and data can disappear from the
 cache at any time. Given that, Redis is the best memory cache to use.
 
@@ -367,10 +357,8 @@ Clearing the Memcached Cache
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Memcached cache can be flushed from the command-line using a range
-of common Linux/UNIX tools, including netcat and telnet. The following
-example uses telnet to login, run
-https://github.com/memcached/memcached/wiki/Commands#flushall[the
-flush_all command], and logout:
+of common Linux/UNIX tools, including `netcat` and `telnet`. 
+The following example uses telnet to login, run https://github.com/memcached/memcached/wiki/Commands#flushall[the flush_all command], and logout:
 
 ....
 telnet localhost 11211
@@ -392,9 +380,8 @@ Memory caches must be explicitly configured in ownCloud by:
 extension and/or the caching server).
 2.  Adding the appropriate entry to ownCloud’s `config.php`.
 
-See config_sample_php_parameters for an overview of all possible config
-parameters. After installing and enabling your chosen memory cache,
-verify that it is active by running label-phpinfo.
+See config_sample_php_parameters for an overview of all possible config parameters. 
+After installing and enabling your chosen memory cache, verify that it is active by viewing xref:issues/general_troubleshooting.adoc#php-version-and-information[the PHP configuration details].
 
 [[apcu-configuration]]
 APCu Configuration
@@ -444,8 +431,7 @@ use this example configuration:
 ],
 ----
 
-Redis is very configurable; consult http://redis.io/documentation[the
-Redis documentation] to learn more.
+Redis is very configurable; consult http://redis.io/documentation[the Redis documentation] to learn more.
 
 [[memcached-configuration]]
 Memcached Configuration
@@ -519,10 +505,8 @@ IP address or hostname so that it is accessible to other hosts:
 Configuring Transactional File Locking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Transactional File Locking <../../configuration/files/files_locking_transactional>
-prevents simultaneous file saving. To use it, you have to enable it in
-`config.php` as in the following example, which uses Redis as the cache
-backend:
+xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking] prevents simultaneous file saving. 
+To use it, you have to enable it in `config.php` as in the following example, which uses Redis as the cache backend:
 
 [source,php]
 ----

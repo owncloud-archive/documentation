@@ -3,14 +3,14 @@ ownCloud Roles
 
 ownCloud supports eight user roles. These are:
 
-* link:[Anonymous]
-* link:[Guest]
-* link:[Standard User]
-* link:[Federated User]
-* link:[ownCloud Group Administrator]
-* link:[ownCloud Administrator]
-* link:[System Administrator]
-* link:[Auditor]
+* link:anonymous[Anonymous]
+* link:guest[Guest]
+* link:standard-user[Standard User]
+* link:federated-user[Federated User]
+* link:owncloud-group-administrator[ownCloud Group Administrator]
+* link:owncloud-administrator[ownCloud Administrator]
+* link:system-administrator[System Administrator]
+* link:auditor[Auditor]
 
 The following information is not an in-depth guide, but more of a
 high-level overview of each type.
@@ -48,8 +48,7 @@ to sharer).
 * Has access to shared space. The permissions are granted by the sharer.
 * Is not bound to the inviting user.
 ** Can log in as long as shares are available.
-** Becomes deactivated when no shares are left; this is
-the shared with guests filter <shared_with_guests_filter_label>.
+** Becomes deactivated when no shares are left; this is xref:the-shared-with-guests-filter[the shared with guests filter].
 ** Reactivated when a share is received.
 ** Administrators will be able to automate user cleanup (``**disabled
 for x days**'').
@@ -59,6 +58,7 @@ for x days**'').
 still have no personal space.
 * Apps are specified by the admin (whitelist).
 
+[[the-shared-with-guests-filter]]
 *The Shared with Guests Filter*
 
 This filter makes it easy for sharers to view and remove their shares
@@ -81,9 +81,8 @@ Federated User
 --------------
 
 * Is not an internal user.
-* Can trust a federated system <faq_federated_system_label>.
-* Has access to shared space through users on the considered ownCloud
-system.
+* Can trust xref:faq/index.adoc#what-is-a-federated-system[a federated system].
+* Has access to shared space through users on the considered ownCloud system.
 * Can share data with the considered system (accept-/rejectable).
 
 [[owncloud-group-administrator]]

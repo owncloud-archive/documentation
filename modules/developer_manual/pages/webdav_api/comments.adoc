@@ -4,10 +4,10 @@ Comments API
 The comments API allows for the following functionality files and
 folders stored in ownCloud:
 
-* listing comments <list_comments_label>
-* creating comments <create_comments_label>
-* updating comments <update_comments_label>
-* deleting comments <delete_comments_label>
+* link:list-comments[listing comments]
+* link:create-comments[creating comments]
+* link:update-comments[updating comments]
+* link:delete-comments[deleting comments]
 
 It provides all of the functionality available through the UI, from the
 command-line.

@@ -22,11 +22,10 @@ together with the `mod_php` Apache module for PHP. Other modules like
 
 Finally the user running your Web server (e.g. `www-data`) needs to be
 able to write into the `.htaccess` file shipped within the ownCloud root
-directory (e.g. `/var/www/owncloud/.htaccess`). If you have applied
+directory (e.g., `/var/www/owncloud/.htaccess`). If you have applied
 strong_perms_label the user might be unable to write into this file and
-the needed update will fail. You need to revert this strong permissions
-temporarily by following the steps described in
-set_updating_permissions_label.
+the needed update will fail. 
+You need to revert this strong permissions temporarily by following the steps described in xref:maintenance/update.adoc#setting-permissions-for-updating[setting permissions for updating].
 
 [[configuration-steps]]
 Configuration steps

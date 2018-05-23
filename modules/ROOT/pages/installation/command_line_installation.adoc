@@ -5,17 +5,14 @@ ownCloud can be installed entirely from the command line. This is
 convenient for scripted operations and for systems administrators who
 prefer using the command line over a GUI. It involves five steps:
 
-1.  Ensure your server meets
-the ownCloud prerequisites <prerequisites_label>
+1.  Ensure your server meets xref:installation/source_installation.adoc#prerequisites[the ownCloud prerequisites]
 2.  Download and unpack the source
 3.  Install using the `occ` command
 4.  Set the correct owner and permissions
 5.  Optional post#.installation considerations
 
-Let’s begin. To install ownCloud, first
-https://owncloud.org/install/#instructions-server[download the source]
-(whether community or enterprise) directly from ownCloud, and then
-unpack (decompress) the tarball into the appropriate directory.
+Let’s begin. 
+To install ownCloud, first https://owncloud.org/install/#instructions-server[download the source] (whether community or enterprise) directly from ownCloud, and then unpack (decompress) the tarball into the appropriate directory.
 
 With that done, you next need to set your webserver user to be the owner
 of your unpacked `owncloud` directory, as in the example below.
@@ -38,16 +35,11 @@ $ sudo -u www-data php occ maintenance:install \
    --admin-user "admin" --admin-pass "password" 
 ....
 
-You must run `occ` as your HTTP user. See http_user_label
+IMPORTANT: You must run `occ` as xref:installation/source_installation#set-strong-directory-permissions[your HTTP user].
 
-If you want to use a directory other than the default (which is data
-inside the root ownCloud directory), you can also supply the
-`--data-dir` switch. For example, if you were using the command above
-and you wanted the data directory to be `/opt/owncloud/data`, then add
-`--data-dir /opt/owncloud/data` to the command.
+If you want to use a directory other than the default (which is data inside the root ownCloud directory), you can also supply the `--data-dir` switch. 
+For example, if you were using the command above and you wanted the data directory to be `/opt/owncloud/data`, then add `--data-dir /opt/owncloud/data` to the command.
 
-When the command completes, apply the correct permissions to your
-ownCloud files and directories (see strong_perms_label). This is
-extremely important, as it helps protect your ownCloud installation and
-ensure that it will operate correctly. See
-command_line_installation_label for more information.
+When the command completes, xref:installation/source_installation#set-strong-directory-permissions[apply the correct permissions] to your ownCloud files and directories. 
+
+IMPORTANT: This is extremely important, as it helps protect your ownCloud installation and ensure that it will operate correctly. 

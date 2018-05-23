@@ -4,8 +4,8 @@ Files Versions
 The files versions API allows for retrieving the following information
 about files stored in ownCloud.
 
-* list file versions <list_file_version_label>
-* restore another version of a file <restore_file_version_label>
+* link:list-file-versions[list file versions]
+* link:restore-another-version-of-a-file[restore another version of a file]
 
 [[list-file-versions]]
 List File Versions

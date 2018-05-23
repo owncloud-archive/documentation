@@ -1,10 +1,9 @@
 Migrating to a Different Server
 ===============================
 
-If the need arises, ownCloud can be migrated to a different server. A
-typical use case would be a hardware change or a migration from
-the Enterprise appliance <../appliance/index> to a physical server. All
-migrations have to be performed with ownCloud in maintenance mode.
+If the need arises, ownCloud can be migrated to a different server. 
+A typical use case would be a hardware change or a migration from xref:appliance/what-is-it.adoc[the Enterprise appliance] to a physical server. 
+All migrations have to be performed with ownCloud in maintenance mode.
 Online migration is supported by ownCloud only when implementing
 industry-standard clustering and high-availability solutions *before*
 ownCloud is installed for the first time.
@@ -37,24 +36,14 @@ install ownCloud manually <../installation/source_installation> via the
 compressed archive, or
 with your Linux package manager <../installation/linux_installation>.
 
-Then, on the original machine turn on maintenance mode and then stop
-ownCloud. After waiting for 6 - 7 minutes for all sync clients to
-register that the server is in maintenance mode,
-ref:stop the web server <maintenance_commands_label> that is serving
-ownCloud.
+Then, on the original machine turn on maintenance mode and then stop ownCloud. 
+After waiting 6 - 7 minutes for all sync clients to register that the server is in maintenance mode, stop the web server that is serving ownCloud.
 
-After that,
-create a database dump from the database <backup_database_label>, copy
-it to the new machine, and
-import it into the new database <restore_database_label>.
+After that, xref:maintenance/backup.adoc[create a database dump] from the database, copy it to the new machine, and xref:maintenance/restore.adoc[import it] into the new database.
+Then, copy only your data, configuration, and database files from your original ownCloud instance to the new machine.
 
-Then, copy only your data, configuration, and database files from your
-original ownCloud instance to the new machine (See backup and
-restore_directories_label).
-
-You must keep the `data/` directory’s original file path during the
-migration. However, you can change it <datadir_move_label> before you
-begin the migration, or after the migration’s completed.
+You must keep the `data/` directory’s original file path during the migration. 
+However, xref:maintenance/manually-moving-data-folders.adoc[you can change it] before you begin the migration, or after the migration’s completed.
 
 The data files should keep their original timestamp otherwise the
 clients will re-download all the files after the migration. This step
@@ -222,8 +211,8 @@ rsync -Aavxt config data root@new_server_address:/var/www/owncloud
 ----
 
 If you want to move your data directory to another location on the
-target server, it is advised to do this as a second step. Please see the
-data directory migration document datadir_move_label for more details.
+target server, it is advised to do this as a second step. 
+Please see xref:maintenance/manually-moving-data-folders.adoc[the data directory migration document] for more details.
 
 [[finish-the-migration]]
 Finish the Migration
@@ -276,8 +265,5 @@ service ssh restart
 Update DNS and Trusted Domains
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Finally, update the DNS’ `CNAME` entry to point to your new server. If
-you have not only migrated physically from server to server but have
-also changed your ownCloud server’s domain name, you also need to update
-the domain in the Trusted Domain setting <trusted_domains_label> in
-`config.php`, on the target server.
+Finally, update the DNS’ `CNAME` entry to point to your new server. 
+If you have not only migrated physically from server to server but have also changed your ownCloud server’s domain name, you also need to update the domain in xref:managing-trusted-domains[the Trusted Domain setting] in `config.php`, on the target server.

@@ -108,12 +108,12 @@ keys, your files are *not* recoverable. Always have backups of your
 encryption keys stored in a safe location, and consider enabling all
 recovery options.
 
-You have more options via the `occ` command (see occ_encryption_label)
+TIP: You have more options via xref:configuration/server/occ_command.adoc#encryption[the `occ` command’s encryption options].
 
 You can’t manage encryption without access to the command line. If your
 ownCloud installation is on a hosted environment and you don’t have
-access to the command line, you won’t be able to run occ commands
-<../server/occ_command>. In this case, *don’t enable encryption*!
+access to the command line, you won’t be able to run xref:configuration/server/occ_command.adoc[occ commands]. 
+In this case, *don’t enable encryption*!
 
 [[how-to-enable-encryption]]
 How To Enable Encryption
@@ -229,11 +229,9 @@ image:/owncloud-docs/_images/configuration/files/encryption9.png[image]
 Encrypting External Mountpoints
 -------------------------------
 
-You and your users can encrypt individual external mount points. You
-must have external storage enabled on your Admin page, and enabled for
-your users. Encryption settings can be configured in the mount options
-for an external storage mount; see external_storage_mount_options_label
-(external_storage_configuration_gui)
+You and your users can encrypt individual external mount points. 
+You must have external storage enabled on your Admin page, and enabled for your users. 
+Encryption settings can be configured in the mount options for xref:configuration/files/external_storage_configuration_gui.adoc[an external storage mount].
 
 [[how-to-enable-users-file-recovery-keys]]
 How To Enable Users File Recovery Keys
@@ -494,10 +492,9 @@ It is not possible to disable it.
 Recreating an Existing Master Key
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the master key needs replacing, for example, because it has been
-compromised, an occ command is available. The command is
-encryption:recreate-master-key <encryption_label>. It replaces existing
-master key with new one and encrypts the files with the new key.
+If the master key needs replacing, for example, because it has been compromised, xref:configuration/server/occ_command.adoc#encryption[an occ command is available]. 
+The command is `encryption:recreate-master-key`. 
+It replaces existing master key with new one and encrypts the files with the new key.
 
 [[disabling-encryption-1]]
 Disabling Encryption
@@ -524,9 +521,8 @@ command:
 occ maintenance:singleuser --off
 ....
 
-It is possible to disable encryption with the file recovery key, _if_
-every user uses them. If so, "decrypt all" <encryption_label> will use
-it to decrypt all files.
+It is possible to disable encryption with the file recovery key, _if_ every user uses them. 
+If so, "decrypt all" will use it to decrypt all files.
 
 It is *not* planned to move this to the next user login or a background
 job. If that was done, then login passwords would need to be stored in
@@ -566,12 +562,8 @@ and then, of course, notify the user and give them their new password.
 Encryption migration to ownCloud 8.0
 ------------------------------------
 
-When you upgrade from older versions of ownCloud to ownCloud 8.0, you
-must manually migrate your encryption keys with the _occ_ command after
-the upgrade is complete, like this example for CentOS:
-`sudo -u apache php occ encryption:migrate-keys` You must run _occ_ as
-your HTTP user. See ../../configuration/server/occ_command to learn more
-about _occ_.
+When you upgrade from older versions of ownCloud to ownCloud 8.0, you must manually migrate your encryption keys with the `occ` command after the upgrade is complete, like this example for CentOS: `sudo -u apache php occ encryption:migrate-keys`. 
+You must run xref:configuration/server/occcommand.adoc[occ] as your HTTP user. 
 
 [[encryption-migration-to-owncloud-8.1]]
 Encryption migration to ownCloud 8.1
@@ -581,32 +573,26 @@ The encryption backend has changed again in ownCloud 8.1, so you must
 take some additional steps to migrate encryption correctly. If you do
 not follow these steps you may not be able to access your files.
 
-Before you start your upgrade, put your ownCloud server into
-`maintenance:singleuser` mode (See
-../../maintenance/enable_maintenance.) You must do this to prevent users
-and sync clients from accessing files before you have completed your
-encryption migration.
+Before you start your upgrade, put your ownCloud server into `maintenance:singleuser` mode.
+You must do this to prevent users and sync clients from accessing files before you have completed your encryption migration.
 
-After your upgrade is complete, follow the steps in
-enable_encryption_label to enable the new encryption system. Then click
-the *Start Migration* button on your Admin page to migrate your
-encryption keys, or use the `occ` command. We strongly recommend using
-the `occ` command; the *Start Migration* button is for admins who do not
-have access to the console, for example, installations on shared
-hosting. This example is for Debian/Ubuntu Linux:
+TIP: See xref:maintenance/enable_maintenance.adoc[the maintenance commands] for more information.
+
+After your upgrade is complete, follow the steps in enable_encryption_label to enable the new encryption system. 
+Then click the *Start Migration* button on your Admin page to migrate your encryption keys, or use the `occ` command. 
+We strongly recommend using the `occ` command; the *Start Migration* button is for admins who do not have access to the console, for example, installations on shared hosting. 
+
+This example is for Debian/Ubuntu Linux:
 
 ....
 $ sudo -u www-data php occ encryption:migrate
 ....
 
-This example is for Red Hat/CentOS/Fedora Linux:
+This example is for Red Hat, CentOS, and Fedora Linux:
 
 ....
 $ sudo -u apache php occ encryption:migrate
 ....
 
-You must run `occ` as your HTTP user; see
-../../configuration/server/occ_command.
-
-When you are finished, take your ownCloud server out of
-`maintenance:singleuser` mode.
+You must run `occ` as your HTTP user. 
+When you are finished, take your ownCloud server out of single user mode.

@@ -1,15 +1,13 @@
 Manual ownCloud Upgrade
 =======================
 
-If you’re not comfortable performing a manual upgrade, you can also use
-your Linux distribution’s package manager <package_upgrade>, or use
-the Updater App <update>.
+If you’re not comfortable performing a manual upgrade, you can also use your Linux distribution’s xref:installation/linux_installation.adoc[package manager].
 
 [[backup-your-existing-installation]]
 Backup Your Existing Installation
 ---------------------------------
 
-First, backup <backup> the following items:
+First, xref:maintenance/backup.adoc[backup] the following items:
 
 * The ownCloud server data directory
 * The `config.php` file
@@ -36,25 +34,19 @@ Install unsupported apps at your own risk.
 Check ownCloud’s Mandatory Requirements
 ---------------------------------------
 
-ownCloud's mandatory requirements <prerequisites_label> (such as PHP
-versions and extensions) can change from one version to the next. Ensure
-that you review them and update your server(s), if required, before
-upgrading ownCloud.
+ownCloud's xref:installation/source_installation#requirements[mandatory requirements] (such as PHP versions and extensions) can change from one version to the next. 
+Ensure that you review them and update your server(s), if required, before upgrading ownCloud.
 
 [[enable-maintenance-mode]]
 Enable Maintenance Mode
 -----------------------
 
-Put your server in maintenance mode <enable_maintenance> and disable
-Cron jobs <cron_job_label>. Doing so prevents new logins, locks the
-sessions of logged-in users, and displays a status screen so that users
-know what is happening.
+Put your server in xref:configuration/server/occ_command.adoc#maintenance-commands[maintenance mode] and disable xref:configuration/server/background_jobs_configuration.adoc#cron-jobs[Cron jobs]. 
+Doing so prevents new logins, locks the sessions of logged-in users, and displays a status screen so that users know what is happening.
 
-There are two ways to enable maintenance mode. The preferred method is
-to use the occ command <../configuration/server/occ_command> — which you
-must run as your webserver user. The other way is by entering your
-`config.php` file and changing `'maintenance' => false,` to
-`'maintenance' => true,`. :
+There are two ways to enable maintenance mode. 
+The preferred method is to use xref:configuration/server/occ_command#maintenance-commands[the occ command] — which you must run as your webserver user. 
+The other way is by entering your `config.php` file and changing `'maintenance' => false,` to `'maintenance' => true,`.
 
 ....
 # Enable maintenance mode using the occ command.
@@ -187,23 +179,17 @@ upgrade is finished.
 Start the Upgrade
 -----------------
 
-With the apps disabled and the webserver started, launch the upgrade
-process from the command line. :
+With the apps disabled and the webserver started, launch xref:configuration/server/occ_command.adoc#command-line-upgrade[the upgrade process] from the command line:
 
 ....
 # Here is an example on CentOS Linux
 sudo -u www-data php occ upgrade
 ....
 
-The optional parameter to skip migration tests during this step was
-removed in oC 10.0. See migration_test_label for background information.
-See ../configuration/server/occ_command to learn more about the occ
-command.
+IMPORTANT: The optional parameter to skip migration tests during this step was removed in oC 10.0. 
 
-The upgrade operation can take anywhere from a few minutes to a few
-hours, depending on the size of your installation. When it is finished
-you will see either a success message, or an error message which
-indicates why the process did not complete successfully.
+The upgrade operation can take anywhere from a few minutes to a few hours, depending on the size of your installation. 
+When it is finished you will see either a success message, or an error message which indicates why the process did not complete successfully.
 
 [[copy-old-apps]]
 Copy Old Apps
@@ -248,8 +234,7 @@ visible at the bottom of your Admin page.
 * Go to the Apps page and review the core apps to make sure the right
 ones are enabled.
 * Re-enable your third-party apps.
-* Apply strong permissions <strong_perms_label> to your ownCloud
-directories.
+* Apply xref:installation/source_installation.adoc#set-strong-directory-permissions[strong permissions] to your ownCloud directories.
 
 [[test-the-upgrade]]
 Test the Upgrade

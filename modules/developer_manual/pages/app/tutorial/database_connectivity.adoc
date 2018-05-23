@@ -5,11 +5,8 @@ Database Connectivity
 The Database Schema
 -------------------
 
-Now that the application’s routes and two controllers have been setup
-and wired together, we’ll flesh out `NotesController` so that the notes
-can be saved in the database. But to do that, we first need to create
-the database schema <../fundamentals/database> by creating
-`ownnotes/appinfo/database.xml`, with the following content:
+Now that the application’s routes and two controllers have been setup and wired together, we’ll flesh out `NotesController` so that the notes can be saved in the database. 
+But to do that, we first need to create xref:app/fundamentals/database.adoc[the database schema] by creating `ownnotes/appinfo/database.xml`, with the following content:
 
 [source,xml]
 ----
@@ -63,21 +60,17 @@ fields:
 * *user_id:* A text field
 * **content:** A CLOB field
 
-With the file created, the version tag <appinfo_info_xml_label> in
-`ownnotes/appinfo/info.xml` needs to be increased. This causes ownCloud
-to trigger the update process when you next load (or reload) the
-ownCloud UI. Part of the update process includes run database
-migrations, which will create the database table defined in the
-migration above.
+With the file created, xref:app/tutorial/development_environment.adoc#appinfoinfo.xml[the version tag] in `ownnotes/appinfo/info.xml` needs to be increased. 
+This causes ownCloud to trigger the update process when you next load (or reload) the ownCloud UI. 
+Part of the update process includes run database migrations, which will create the database table defined in the migration above.
 
 [[data-entities]]
 Data Entities
 -------------
 
-Now that the tables are created, we want to map the database search
-results to a PHP object. That way, we’re able to manage the data more
-precisely. To do that, create an entity <../fundamentals/database> in
-new file, called: `ownnotes/lib/Db/Note.php`:
+Now that the tables are created, we want to map the database search results to a PHP object. 
+That way, we’re able to manage the data more precisely. 
+To do that, xref:app/fundamentals/database.adoc[create an entity] in new file, called: `ownnotes/lib/Db/Note.php`:
 
 [source,php]
 ----
@@ -114,8 +107,7 @@ persist and cache the information.
 Data Mappers
 ------------
 
-Entities are returned from so-called
-data mappers <../fundamentals/database>.
+Entities are returned from so-called xref:app/fundamentals/database.adoc[data mappers]. 
 https://martinfowler.com/eaaCatalog/dataMapper.html[Data mappers are]:
 
 ___________________________________________________________________________________________________________________________________________
@@ -162,9 +154,9 @@ update methods are already implemented.
 Connecting Databases & Controllers
 ----------------------------------
 
-Now the mapper is finished and can be passed into the controller. You
-can do so by adding it as a type-hinted parameter. ownCloud will figure
-out how to assemble them by itself <../fundamentals/container>.
+Now the mapper is finished and can be passed into the controller. 
+You can do so by adding it as a type-hinted parameter. 
+ownCloud will figure out how to assemble them by itself.
 
 Additionally we want to know the `userId` of the currently logged in
 user. To do so, add a `$UserId` parameter to the constructor, which is
@@ -421,8 +413,7 @@ class NoteService {
 }
 ----
 
-Following that, create an exception class in
-`ownnotes/lib/Service/ServiceException.php`:
+Following that, create an exception class in `ownnotes/lib/Service/ServiceException.php`:
 
 [source,php]
 ----
