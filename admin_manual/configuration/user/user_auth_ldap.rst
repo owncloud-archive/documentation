@@ -396,6 +396,13 @@ Nested Groups:
   By default a group will only contain users, so enabling this option isn't necessary.
   However, if groups are contained inside groups, and this option is not enabled, any groups contained within other groups will be ignored and not returned in search results.
 
+  In Active Directory you have to enter this specific filter in order for the ownCloud LDAP app to be able to find users in nested groups.
+  
+  Example:
+
+  * ``memberof:1.2.840.113556.1.4.1941:=CN=<Group_Name>,dc=example,dc=com``
+
+
 Paging Chunk Size:
   This sets the maximum number of records able to be returned in a response when ownCloud requests data from LDAP.
   If this value is greater than the limit of the underlying LDAP server (such as 3000 for Microsoft Active Directory) the LDAP server will reject the request and the search request will fail.
