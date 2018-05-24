@@ -22,7 +22,7 @@ How to enable **Master Key** encryption:
 
   occ app:enable encryption
   occ encryption:enable
-  occ encryption:select-encryption-type masterkey -y
+  occ encryption:select-encryption-type masterkey
   occ encryption:encrypt-all
 
 How to enable **User specific Key** encryption:
@@ -31,6 +31,7 @@ How to enable **User specific Key** encryption:
 
   occ app:enable encryption
   occ encryption:enable
+  occ encryption:select-encryption-type user-keys
   occ encryption:encrypt-all 
 
 
