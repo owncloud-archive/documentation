@@ -21,6 +21,16 @@ Get all shares from the user.
 * Syntax: `/shares`
 * Method: `GET`
 
+Request Attributes
+^^^^^^^^^^^^^^^^^^
+
+==============  =======  =============================
+Attribute       Type     Description
+==============  =======  =============================
+shared_with_me  boolean  returns all shares shared with 
+                         the sharee
+==============  =======  =============================
+
 Returns
 ^^^^^^^
 
