@@ -35,14 +35,14 @@ How to enable **User specific Key** encryption:
   occ encryption:encrypt-all 
 
 
-After encryption is enabled, your users must also log out and log back in to generate their personal encryption keys. 
+After encryption is enabled, your users must also log out and log back in to trigger the automatic personal encryption key genaration process. 
 
 How To Enable Users File **Recovery Keys**
 ------------------------------------------
 
-Go to the Encryption section of your Admin page and set a recovery key password.
+Go to the Encryption section of your Admin page and set a recovery key password. This is important for the case that a user forgets his password. Without the recovery key all of the users data would be lost at that point.
 
-You then need to ask your users to opt-in to the Recovery Key. 
+You then need to ask your users to opt-in to the Recovery Key. If a user decides not to opt-in or forgets about it his data would be lost if he ever forgets his password.
 
 They need to
 
@@ -58,11 +58,17 @@ Get the current encryption status and the loaded encryption module::
 
 **Decrypt** Files For All Users
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Decrypt all user data files, or optionally a single user::
+How to decrypt **Master Key** encryption::
 
  occ maintenance:singleuser --on
  occ encryption:decrypt-all
+ occ maintenance:singleuser --off
+
+How to enable **User specific Key** encryption::
+
+ occ maintenance:singleuser --on
+ occ encryption:decrypt-all
+ #enter **Recovery Key** for **each user**
  occ maintenance:singleuser --off
 
 Disabling Encryption
