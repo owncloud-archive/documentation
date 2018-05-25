@@ -16,10 +16,7 @@ there is no guarantee that the attackers will supply the key after
 payment is made. To help mitigate such threats and ensure ongoing access
 to user data, ownCloud provides the Ransomware Protection app.
 
-It is essential to be aware that user data needs to be synchronized with
-you ownCloud Server using the ownCloud Desktop synchronization client.
-Data that is not synchronized and stored in ownCloud cannot be
-protected.
+NOTE: It is essential to be aware that user data needs to be synchronized with you ownCloud Server using the ownCloud Desktop synchronization client. Data that is not synchronized and stored in ownCloud cannot be protected.
 
 [[about-ransomware-protection]]
 About Ransomware Protection
@@ -58,10 +55,7 @@ updated list and the ability to update the list via syncing with
 https://fsrm.experiant.ca/api/v1/combined[FSRM’s API] by using
 occ <../../configuration/server/occ_command>.
 
-Please check the provided ransomware blacklist! It is *strongly
-recommended* to check the provided ransomware blacklist to ensure that
-it fits your needs. In some cases, the patterns might be too generic and
-result in false positives.
+NOTE: Please check the provided ransomware blacklist! It is *strongly recommended* to check the provided ransomware blacklist to ensure that it fits your needs. In some cases, the patterns might be too generic and result in false positives.
 
 [[file-blocking]]
 File Blocking
@@ -71,7 +65,7 @@ The second line of defense is file blocking. As files are uploaded, they
 are compared against the file extension blacklist. If a match is found,
 the upload is denied.
 
-File blocking is always enabled.
+NOTE: File blocking is always enabled.
 
 [[account-locking]]
 Account Locking
@@ -85,16 +79,13 @@ _delete_ operations). Doing this prevents further, malicious, changes.
 Following this, clients receive an error (403 Access Forbidden) which
 notifies the user that the account is locked by Ransomware Protection.
 
-Write access (e.g., moving and deleting files) is still possible for
-users when they log in with their web browser.
+NOTE: Write access (e.g., moving and deleting files) is still possible for users when they log in with their web browser.
 
 When an account is locked, administrators can unlock the account using
 the `occ ransomguard:unlock` command. Administrators can also manually
 lock user accounts, using the `occ ransomguard:lock` command.
 
-When an account is locked, it will still be fully usable from the
-ownCloud web UI. However, ownCloud clients (as well as other WebDAV
-clients) will see the account as set to read-only mode.
+NOTE: When an account is locked, it will still be fully usable from the ownCloud web UI. However, ownCloud clients (as well as other WebDAV clients) will see the account as set to read-only mode.
 
 Users will see a yellow notification banner in the ownCloud web UI
 directing them to ``Personal Settings -> Security'' (``__Ransomware
@@ -103,8 +94,7 @@ protect your data. Click here to unlock.__''), where additional
 information is displayed and users can unlock their account when
 ransomware issues are resolved locally.
 
-Locking is enabled by default. If this is not desired, an administrator
-can disable it in the ``Admin -> Security'' panel.
+NOTE: Locking is enabled by default. If this is not desired, an administrator can disable it in the ``Admin -> Security'' panel.
 
 [[protection-data-retention-and-rollback]]
 Protection: Data Retention and Rollback

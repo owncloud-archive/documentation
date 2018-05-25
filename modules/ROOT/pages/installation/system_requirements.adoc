@@ -1,3 +1,5 @@
+:icons: font
+
 System Requirements
 ===================
 
@@ -30,16 +32,17 @@ SUSE Linux Enterprise Server 12
 |PHP Runtime |PHP (5.6+, 7.0, & 7.1)
 |=======================================================================
 
-IMPORTANT: For the future release of ownCloud 10.1, a minimum php version of 7.1 is needed. If you use Ubuntu 16.04:
+[NOTE] 
+====
+ownCloud 10.1 requires a minimum php version of 7.1. 
+If you use Ubuntu 16.04:
 
-* PHP 7.1 is only available via ppa. To add a ppa to your system, use
-this command: `sudo add-apt-repository ppa:user/ppa-name`.
-* PHP 7.2 standard installable, but you have to install some mandatory
-modules yourself, like http://php.net/manual/en/intro.intl.php[intl].
-
+* PHP 7.1 is only available via ppa. To add a ppa to your system, use this command: `sudo add-apt-repository ppa:user/ppa-name`.
+* PHP 7.2 standard installable, but you have to install some mandatory modules yourself, like http://php.net/manual/en/intro.intl.php[intl].
 * Red Hat Enterprise Linux & Centos 7 are 64-bit only.
 * Oracle 11g is only supported for the Enterprise edition.
 * SQLite is not encouraged for production use.
+====
 
 [[mobile]]
 Mobile
@@ -79,9 +82,7 @@ Desktop
 * Ubuntu 16.04 & 17.04 & 17.10
 * openSUSE Leap 42.2 & 42.3
 
-For Linux distributions, we support, if technically feasible, the latest
-2 versions per platform and the previous
-https://wiki.ubuntu.com/LTS[LTS].
+NOTE: For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous https://wiki.ubuntu.com/LTS[LTS].
 
 [[alternative-but-unsupported-options]]
 Alternative (But Unsupported) Options
@@ -105,11 +106,12 @@ depending on the numbers of users and files, and volume of server
 activity. ownCloud officially requires a minimum of 128MB RAM. But, we
 recommend a minimum of 512MB.
 
-_Consideration for low memory environments_
-
-Scanning of files is committed internally in 10k files chunks. Based on
-tests, server memory usage for scanning greater than 10k files uses
-about 75MB of additional memory.
+[NOTE] 
+.Consideration for low memory environments 
+====
+Scanning of files is committed internally in 10k files chunks. 
+Based on tests, server memory usage for scanning greater than 10k files uses about 75MB of additional memory.
+====
 
 [[database-requirements]]
 Database Requirements

@@ -45,19 +45,16 @@ If you raised the TCP-backlog setting, the following warning appears in
 the Redis logs:
 
 [source,console]
-----
+....
 WARNING: The TCP backlog setting of 20480 cannot be enforced because /proc/sys/net/core/somaxconn is set to the lower value of..
-----
+....
 
 If so, please consider that newer versions of Redis have their own
 TCP-backlog value set to `511`, and that you have to increase if you
 have many connections. In high requests-per-second environments, you
 need a significant backlog to avoid slow clients connection issues.
 
-The Linux kernel will silently truncate the TCP-backlog setting to the
-value of `/proc/sys/net/core/somaxconn`. So make sure to raise both the
-value of `somaxconn` and `tcp_max_syn_backlog`, to get the desired
-effect.
+NOTE: The Linux kernel will silently truncate the TCP-backlog setting to the value of `/proc/sys/net/core/somaxconn`. So make sure to raise both the value of `somaxconn` and `tcp_max_syn_backlog`, to get the desired effect.
 
 To fix this warning, set the value of `net.core.somaxconn` to `65535` in
 `/etc/rc.local`, so that it persists upon reboot, by running the

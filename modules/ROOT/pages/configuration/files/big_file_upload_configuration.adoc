@@ -12,9 +12,7 @@ filesystem, operating system, or other software allows, for example:
 64-bit filesystems have much higher limits. Please consult the
 documentation for your filesystem.
 
-The ownCloud sync client itself however is able to upload files of any
-size, as it uploads files by transmitting them in small chunks. But, it
-can never exceed the maximum file size limits of the remote host.
+NOTE: The ownCloud sync client itself however is able to upload files of any size, as it uploads files by transmitting them in small chunks. But, it can never exceed the maximum file size limits of the remote host.
 
 [[system-configuration]]
 System Configuration
@@ -31,9 +29,7 @@ temp space has to hold at least 10x100 GB
 Configuring Your Web server
 ---------------------------
 
-ownCloud comes with its own `owncloud/.htaccess` file. Because `php-fpm`
-can’t read PHP settings in `.htaccess` these settings must be set in the
-`owncloud/.user.ini` file.
+NOTE: ownCloud comes with its own `owncloud/.htaccess` file. Because `php-fpm` can’t read PHP settings in `.htaccess` these settings must be set in the `owncloud/.user.ini` file.
 
 Set the following two parameters inside the corresponding php.ini file (see the *Loaded Configuration File* section of xref:issues/general_troubleshooting.adoc#php-version-and-information[PHP Version and Information] to find your relevant php.ini files) :
 
@@ -75,13 +71,7 @@ Apache with mod_fcgid
 * https://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html#fcgidmaxrequestinmem[FcgidMaxRequestInMem]
 * https://httpd.apache.org/mod_fcgid/mod/mod_fcgid.html#fcgidmaxrequestlen[FcgidMaxRequestLen]
 
-If you are using Apache/2.4 with mod_fcgid, as of February/March 2016,
-`FcgidMaxRequestInMem` still needs to be significantly increased from
-its default value to avoid the occurence of segmentation faults when
-uploading big files. This is not a regular setting but serves as a
-workaround for
-https://bz.apache.org/bugzilla/show_bug.cgi?id=51747[Apache with
-mod_fcgid bug #51747].
+WARNING: If you are using Apache/2.4 with mod_fcgid, as of February/March 2016, `FcgidMaxRequestInMem` still needs to be significantly increased from its default value to avoid the occurence of segmentation faults when uploading big files. This is not a regular setting but serves as a workaround for https://bz.apache.org/bugzilla/show_bug.cgi?id=51747[Apache with mod_fcgid bug #51747].
 
 Setting `FcgidMaxRequestInMem` significantly higher than normal may no
 longer be necessary, once bug #51747 is fixed.
@@ -105,11 +95,7 @@ For more info how to configure NGINX to raise the upload limits see also
 https://github.com/owncloud/documentation/wiki/Uploading-files-up-to-16GB#configuring-nginx[this]
 wiki entry.
 
-Make sure that `client_body_temp_path` points to a partition with
-adequate space for your upload file size, and on the same partition as
-the `upload_tmp_dir` or `tempdirectory` (see below). For optimal
-performance, place these on a separate hard drive that is dedicated to
-swap and temp storage.
+TIP: Make sure that `client_body_temp_path` points to a partition with adequate space for your upload file size, and on the same partition as the `upload_tmp_dir` or `tempdirectory` (see below). For optimal performance, place these on a separate hard drive that is dedicated to swap and temp storage.
 
 If your site is behind a NGINX frontend (for example a loadbalancer):
 

@@ -23,7 +23,7 @@ IMPORTANT: Make sure that you don’t skip a major release when upgrading via re
 * Take your ownCloud server out of xref:configuration/server/occ_command.adoc#maintenance-commands[maintenance mode].
 * Re-enable third-party apps.
 
-When upgrading from oC 9.0 to 9.1 with existing Calendars or Address books please have a look at the <<release_notes.adoc#changes-in-9.1,9.1 release notes>> for important information about the needed migration steps during that upgrade.
+IMPORTANT: When upgrading from oC 9.0 to 9.1 with existing Calendars or Address books please have a look at the <<release_notes.adoc#changes-in-9.1,9.1 release notes>> for important information about the needed migration steps during that upgrade.
 
 [[upgrade-tips]]
 Upgrade Tips

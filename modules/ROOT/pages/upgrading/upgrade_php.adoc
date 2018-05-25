@@ -25,9 +25,7 @@ package in RHEL 7. To do that, run the following command:
 subscription-manager repos --enable rhel-server-rhscl-7-rpms
 ----
 
-To know more about registering and subscribing a system to the Red Hat
-Customer Portal using the Red Hat Subscription-Manager, please refer to
-https://access.redhat.com/solutions/253273[the official documentation].
+NOTE: To know more about registering and subscribing a system to the Red Hat Customer Portal using the Red Hat Subscription-Manager, please refer to https://access.redhat.com/solutions/253273[the official documentation].
 
 When that’s completed, then proceed by installing PHP 5.6, along with
 the other required PHP packages.
@@ -56,7 +54,7 @@ mv /etc/httpd/conf.d/php.conf /etc/httpd/conf.d/php54.off
 mv /etc/httpd/conf.modules.d/10-php.conf /etc/httpd/conf.modules.d/10-php54.off
 ----
 
-You could also delete the files if you prefer.
+TIP: You could also delete the files if you prefer.
 
 Next, you need to enable loading of the PHP 5.6 Apache shared-object
 file. This you do by copying the shared object along with its two Apache
@@ -86,7 +84,7 @@ Collections channel repository to download and install the PHP 7 package
 in RHEL 7 (if you’ve not done this already). This uses the same command
 as you will find there.
 
-This section assumes that you’re upgrading from PHP 5.6.
+NOTE: This section assumes that you’re upgrading from PHP 5.6.
 
 Then, proceed by installing the required PHP 7 modules. You can use the
 command below to save you time.

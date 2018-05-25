@@ -1,10 +1,8 @@
 Linux Package Manager Installation
 ==================================
 
-Package managers should only be used for single-server setups. For
-production environments, we recommend installing from
-https://owncloud.org/download/#owncloud-server-tar-ball[the tar
-archive].
+NOTE: Package managers should only be used for single-server setups. For production environments, we recommend installing from
+https://owncloud.org/download/#owncloud-server-tar-ball[the tar archive].
 
 [[available-packages]]
 Available Packages
@@ -33,22 +31,16 @@ Configurations are available for the following Linux distributions:
 * SLES 11SP4 & 12SP2
 * openSUSE Leap 42.2 & 42.3
 
-Repositories for Fedora, openSUSE Tumbleweed, and Ubuntu 15.04 have been
-dropped. If you use Fedora, use
-https://owncloud.org/download/#owncloud-server-tar-ball[the tar archive]
-with your own LAMP stack. openSUSE users can rely on LEAP packages for
-Tumbleweed.
+NOTE: Repositories for Fedora, openSUSE Tumbleweed, and Ubuntu 15.04 have been dropped. If you use Fedora, use https://owncloud.org/download/#owncloud-server-tar-ball[the tar archive] with your own LAMP stack. openSUSE users can rely on LEAP packages for Tumbleweed.
 
 Once your package manager has been updated, follow the rest of the
 instructions on the download page to install ownCloud. Once ownCloud’s
 installed, run xref:installation/installation_wizard.adoc[the Installation Wizard] to complete
 your installation.
 
-See the system_requirements for the recommended ownCloud setup and
-supported platforms.
+NOTE: See the system_requirements for the recommended ownCloud setup and supported platforms.
 
-Do not move the folders provided by these packages after the
-installation, as this will break updates.
+IMPORTANT: Do not move the folders provided by these packages after the installation, as this will break updates.
 
 [[what-is-the-correct-version]]
 What is the Correct Version?

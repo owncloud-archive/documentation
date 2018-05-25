@@ -30,7 +30,4 @@ When the changes have been made and the file saved, restart Apache. Now
 you can access ownCloud from either `https://example.com/` or
 `https://localhost/`.
 
-Note that you will not be able to run any other virtual hosts, as
-ownCloud is aliased to your web root. On CentOS/Fedora/Red Hat, edit
-`/etc/httpd/conf.d/owncloud.conf` and
-`/var/www/html/owncloud/config/config.php`, then restart Apache.
+NOTE: You will not be able to run any other virtual hosts, as ownCloud is aliased to your web root. On CentOS/Fedora/Red Hat, edit `/etc/httpd/conf.d/owncloud.conf` and `/var/www/html/owncloud/config/config.php`, then restart Apache.

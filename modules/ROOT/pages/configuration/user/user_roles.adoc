@@ -55,12 +55,14 @@ Guest
 * Apps are specified by the admin (whitelist).
 
 [[the-shared-with-guests-filter]]
-*The Shared with Guests Filter*
-
+[NOTE]
+.The Shared with Guests Filter
+====
 This filter makes it easy for sharers to view and remove their shares
 with a guest, which also removes their responsibility for guests. When
 all of a guest’s shares are removed, the guest is then disabled and can
 no longer login.
+====
 
 [[standard-user]]
 Standard User

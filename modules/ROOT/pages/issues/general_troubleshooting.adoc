@@ -6,9 +6,7 @@ please refer to our community support channels:
 
 * https://central.owncloud.org[The ownCloud Forums]
 
-The ownCloud forums have a https://owncloud.org/faq/[FAQ category] where
-each topic corresponds to typical mistakes or frequently occurring
-issues
+NOTE: The ownCloud forums have a https://owncloud.org/faq/[FAQ category] where each topic corresponds to typical mistakes or frequently occurring issues.
 
 * https://mailman.owncloud.org/mailman/listinfo/user[The ownCloud User
 mailing list]
@@ -70,8 +68,7 @@ All major browsers have developer tools for viewing the console, and you
 usually access them by pressing F12. For Firefox we recommend to
 installing the https://getfirebug.com/[Firebug extension].
 
-The logfile of ownCloud is located in the data directory
-`owncloud/data/owncloud.log`.
+NOTE: The logfile of ownCloud is located in the data directory `owncloud/data/owncloud.log`.
 
 [[php-version-and-information]]
 PHP Version and Information
@@ -102,8 +99,7 @@ it is a security risk to expose such sensitive data.
 Debugging Sync Issues
 ~~~~~~~~~~~~~~~~~~~~~
 
-The data directory on the server is exclusive to ownCloud and must not
-be modified manually.
+IMPORTANT: The data directory on the server is exclusive to ownCloud and must not be modified manually.
 
 Disregarding this can lead to unwanted behaviours like:
 
@@ -123,37 +119,12 @@ Common problems / error messages
 Some common problems / error messages found in your logfiles as
 described above:
 
-* `SQLSTATE[HY000] [1040] Too many connections` -> You need to increase
-the connection limit of your database, please refer to the manual of
-your database for more information.
-* `SQLSTATE[HY000]: General error: 5 database is locked` -> You’re using
-`SQLite` which can’t handle a lot of parallel requests. Please consider
-converting to another database like described in
-../configuration/database/db_conversion.
-* `SQLSTATE[HY000]: General error: 2006 MySQL server has gone away` ->
-Please refer to db-troubleshooting-label for more information.
-* `SQLSTATE[HY000] [2002] No such file or directory` -> There is a
-problem accessing your SQLite database file in your data directory
-(`data/owncloud.db`). Please check the permissions of this folder/file
-or if it exists at all. If you’re using MySQL please start your
-database.
-* `Connection closed / Operation cancelled` or
-`expected filesize 4734206 got 458752` -> This could be caused by wrong
-`KeepAlive` settings within your Apache config. Make sure that
-`KeepAlive` is set to `On` and also try to raise the limits of
-`KeepAliveTimeout` and `MaxKeepAliveRequests`. On Apache with `mod_php`
-using a different apache-mpm-label then `prefork` could be another
-reason. Further information is available
-https://central.owncloud.org/t/expected-filesize-xxx-got-yyy-0/816[in
-the forums].
-* `No basic authentication headers were found` -> This error is shown in
-your `data/owncloud.log` file. Some Apache modules like `mod_fastcgi`,
-`mod_fcgid` or `mod_proxy_fcgi` are not passing the needed
-authentication headers to PHP and so the login to ownCloud via WebDAV,
-CalDAV and CardDAV clients is failing. More information on how to
-correctly configure your environment can be found
-https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819[at
-the forums].
+* `SQLSTATE[HY000] [1040] Too many connections` -> You need to increase the connection limit of your database, please refer to the manual of your database for more information.
+* `SQLSTATE[HY000]: General error: 5 database is locked` -> You’re using `SQLite` which can’t handle a lot of parallel requests. Please consider converting to another database like described in xref:configuration/database/db_conversion.adoc[converting Database Type].
+* `SQLSTATE[HY000]: General error: 2006 MySQL server has gone away` -> Please refer to xref:configuration/database/linux_database_configuration.adoc#troubleshooting[Troubleshooting] for more information.
+* `SQLSTATE[HY000] [2002] No such file or directory` -> There is a problem accessing your SQLite database file in your data directory (`data/owncloud.db`). Please check the permissions of this folder/file or if it exists at all. If you’re using MySQL please start your database.
+* `Connection closed / Operation cancelled` or `expected filesize 4734206 got 458752` -> This could be caused by wrong `KeepAlive` settings within your Apache config. Make sure that `KeepAlive` is set to `On` and also try to raise the limits of `KeepAliveTimeout` and `MaxKeepAliveRequests`. On Apache with `mod_php` using a different apache-mpm-label then `prefork` could be another reason. Further information is available https://central.owncloud.org/t/expected-filesize-xxx-got-yyy-0/816[in the forums].
+* `No basic authentication headers were found` -> This error is shown in your `data/owncloud.log` file. Some Apache modules like `mod_fastcgi`, `mod_fcgid` or `mod_proxy_fcgi` are not passing the needed authentication headers to PHP and so the login to ownCloud via WebDAV, CalDAV and CardDAV clients is failing. More information on how to correctly configure your environment can be found https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819[at the forums].
 
 [[oauth2]]
 OAuth2
@@ -166,8 +137,7 @@ ownCloud clients cannot connect to the ownCloud server
 If ownCloud clients cannot connect to your ownCloud server, check to see
 if PROPFIND requests receive `HTTP/1.1 401 Unauthorized` responses. If
 this is happening, more than likely your webserver configuration is
-stripping out https://tools.ietf.org/html/rfc6750[the bearer
-authorization header].
+stripping out https://tools.ietf.org/html/rfc6750[the bearer authorization header].
 
 If you’re using the Apache web server, add the following `SetEnvIf`
 directive to your Apache configuration, whether in the general Apache
@@ -218,9 +188,7 @@ Logfiles
 When having issues the first step is to check the logfiles provided by
 PHP, the Web server and ownCloud itself.
 
-In the following the paths to the logfiles of a default Debian
-installation running Apache2 with mod_php is assumed. On other Web
-servers, Linux distros or operating systems they can differ.
+NOTE: In the following the paths to the logfiles of a default Debian installation running Apache2 with mod_php is assumed. On other Web servers, Linux distros or operating systems they can differ.
 
 * The logfile of Apache2 is located in `/var/log/apache2/error.log`.
 * The logfile of PHP can be configured in your
@@ -402,14 +370,9 @@ Misconfigured Web server::
 Client Sync Stalls
 ------------------
 
-One known reason is stray locks. These should expire automatically after
-an hour. If stray locks don’t expire (identified by e.g. repeated
-`file.txt is locked` and/or `Exception\\\\FileLocked` messages in your
-data/owncloud.log), make sure that you are running system cron and not
-Ajax cron (See ../configuration/server/background_jobs_configuration).
-See https://github.com/owncloud/core/issues/22116 and
-https://central.owncloud.org/t/file-is-locked-how-to-unlock/985 for some
-discussion and additional info of this issue.
+One known reason is stray locks. These should expire automatically after an hour. 
+If stray locks don’t expire (identified by e.g. repeated `file.txt is locked` and/or `Exception\\\\FileLocked` messages in your data/owncloud.log), make sure that you are running system cron and not Ajax cron (See xref:configuration/server/background_jobs_configuration.adoc[Background Jobs]).
+See https://github.com/owncloud/core/issues/22116 and https://central.owncloud.org/t/file-is-locked-how-to-unlock/985 for some discussion and additional info of this issue.
 
 [[other-issues]]
 Other issues

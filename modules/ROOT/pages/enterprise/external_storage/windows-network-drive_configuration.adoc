@@ -83,6 +83,8 @@ make
 sudo make install
 ----
 
+[NOTE]
+====
 Regardless of the method you use, remember to check if an smbclient.ini
 file exists in `/etc/php/<your php version>/mods-available` and contains
 the following line:
@@ -90,6 +92,7 @@ the following line:
 ....
 extension="smbclient.so"
 ....
+====
 
 If so, then make it available via by running the following command:
 
@@ -107,9 +110,11 @@ When you create a new WND share you need three things:
 * The server address, the share name; and
 * The folder you want to connect to
 
-*Treat all the parameters as being case-sensitive.* Although some parts
-of the app might work properly, regardless of case, other parts might
-have problems if case isn’t respected.
+[CAUTION]
+.Treat all the parameters as being case-sensitive.
+====
+Although some parts of the app might work properly, regardless of case, other parts might have problems if case isn’t respected.
+====
 
 1.  Enter the ownCloud mount point for your new WND share. This must not
 be an existing folder.
@@ -141,9 +146,7 @@ additional mount options.]
 
 Your changes are saved automatically.
 
-When you create a new mountpoint using Login credentials, you must log
-out of ownCloud and then log back in so you can access the share. You
-only have to do this the first time.
+NOTE: When you create a new mountpoint using Login credentials, you must log out of ownCloud and then log back in so you can access the share. You only have to do this the first time.
 
 [[personal-wnd-mounts]]
 Personal WND Mounts
@@ -216,8 +219,7 @@ than polling for changes, as polling requires scanning the whole SMB
 storage. ownCloud supports SMB notifications with an `occ` command,
 `occ wnd:listen`.
 
-The notifier only works with remote storage on Windows servers. It does
-not work reliably with Linux servers due to technical limitations.
+NOTE: The notifier only works with remote storage on Windows servers. It does not work reliably with Linux servers due to technical limitations.
 
 Your `smbclient` version needs to be 4.x, as older versions do not
 support notifications. The ownCloud server needs to know about changes
@@ -273,12 +275,7 @@ The command requires the host and share, which the listener will listen
 to, and the Windows/Samba account that will listen. The command does not
 produce any output by default, unless errors happen.
 
-You can increase the command’s verbosity by using `-vvv`. Doing so
-displays what the listener is doing, including a timestamp and the
-notifications received.
-
-Although the exact permissions required for the Windows account are
-unknown, read-only should be enough.
+NOTE: You can increase the command’s verbosity by using `-vvv`. Doing so displays what the listener is doing, including a timestamp and the notifications received. Although the exact permissions required for the Windows account are unknown, read-only should be enough.
 
 The simplest way to start the `wnd:listen` process manually, perhaps for
 initial testing, is as follows
@@ -416,14 +413,11 @@ sudo -u www-data ./occ wnd:listen <host> <share> <username> \
 sudo -u www-data ./occ wnd:listen <host> <share> <username> \
   --password-file=/my/secret/password/file --password-trim
 ....
-+
-If you use the `--password-file` switch, the entire contents of the file
-will be used for the password, so please be careful with newlines.
-+
-If using `--password-file` make sure that the file is only readable by
-the apache / www-data user and inaccessible from the web. This prevents
-tampering or leaking of the information. The password won’t be leaked to
-any other user using `ps`.
+
+NOTE: If you use the `--password-file` switch, the entire contents of the file will be used for the password, so please be careful with newlines.
+
+IMPORTANT: If using `--password-file` make sure that the file is only readable by the apache / www-data user and inaccessible from the web. This prevents tampering or leaking of the information. The password won’t be leaked to any other user using `ps`.
+
 4.  Using 3rd party software to store and fetch the password. When using
 this option, the 3rd party app needs to show the password as plaintext
 on standard output.
@@ -483,9 +477,7 @@ then the `--password-file` option will take precedence.
 Optimizing wnd:process-queue
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Do not use this option if the process-queue is fast enough. The option
-has some drawbacks, specifically regarding password changes in the
-backend.
+NOTE: Do not use this option if the process-queue is fast enough. The option has some drawbacks, specifically regarding password changes in the backend.
 
 `wnd:process-queue` creates all the storages that need to be updated
 from scratch. To do so, we need to fetch all the users from all the
@@ -529,11 +521,7 @@ After the storages are created, notifications are processed for the
 storages. If the storages have been created from scratch, those storages
 are written in the data source so that they can be read on the next run.
 
-It’s imperative to periodically clean up the data source to fetch fresh
-data, such as for new storages and updated passwords. There isn’t a
-generic command to do this from ownCloud, because it depends on the
-specific serializer type. Though this option could be provided at some
-point if requested.
+NOTE: It’s imperative to periodically clean up the data source to fetch fresh data, such as for new storages and updated passwords. There isn’t a generic command to do this from ownCloud, because it depends on the specific serializer type. Though this option could be provided at some point if requested.
 
 [[the-file-serializer]]
 The File Serializer

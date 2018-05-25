@@ -49,8 +49,7 @@ Secondly, while Webcron is better than Ajax, it too has limitations. For
 example, running Webcron will only remove a single item from the job
 queue, not all of them. Cron, however, will clear the entire queue.
 
-It’s for this reason that we encourage you to use Cron — if at all
-possible.
+NOTE: It’s for this reason that we encourage you to use Cron — if at all possible.
 
 [[cron]]
 Cron
@@ -77,19 +76,13 @@ executing:
 *  *  *  *  * /usr/bin/php -f /path/to/your/owncloud/cron.php
 ....
 
-You have to make sure that `php` is found by `cron`, hence why we’ve
-deliberately added the full path to the PHP binary above
-(`/usr/bin/php`). On some systems it might be necessary to use *php-cli*
-instead of *php*.
+NOTE: You have to make sure that `php` is found by `cron`, hence why we’ve deliberately added the full path to the PHP binary above (`/usr/bin/php`). On some systems it might be necessary to use *php-cli* instead of *php*.
 
 Please refer to https://linux.die.net/man/1/crontab[the crontab man
 page] for the exact command syntax if you don’t want to have it run
 every minute.
 
-______________________________________________________________________________________________________________________________________________
-  There are other methods to invoke programs by the system regularly,
-e.g. https://wiki.archlinux.org/index.php/Systemd/Timers[systemd timers]
-______________________________________________________________________________________________________________________________________________
+NOTE: There are other methods to invoke programs by the system regularly, e.g., https://wiki.archlinux.org/index.php/Systemd/Timers[systemd timers]
 
 [[webcron]]
 Webcron
@@ -117,9 +110,7 @@ registration with a third party service. The disadvantage of this
 mechanism, when compared to the link:[Webcron] service, is that it
 requires regular visits to the page for it to be triggered.
 
-Especially when using the Activity App or external storages, where new
-files are added, updated, or deleted one of the other methods should be
-used.
+NOTE: Especially when using the Activity App or external storages, where new files are added, updated, or deleted one of the other methods should be used.
 
 [[parallel-task-execution]]
 Parallel Task Execution
@@ -143,6 +134,8 @@ Available Background Jobs
 A number of existing background jobs are available to be run just for
 specific tasks.
 
+[NOTE]
+====
 These jobs are generally only needed on large instances and can be run
 as background jobs. If the number of users in your installation ranges
 between 1,000 and 3,000, or if you’re using LDAP and it becomes a
@@ -159,6 +152,7 @@ here:
 `occ versions:expire`
 
 If used, these should be scheduled to run on a daily basis.
+====
 
 While not exhaustive, these include:
 
@@ -202,12 +196,7 @@ time. It can be run, as follows, using the OCC command:
 occ versions:expire
 ....
 
-Please take care when adding `ExpireTrash` and `ExpireVersions` as
-link:[Cron] jobs. Make sure that they’re not started in parallel on
-multiple machines. Running in parallel on a single machine is fine. But,
-currently, there isn’t sufficient locking in place to prevent them from
-conflicting with each other if running in parallel across multiple
-machines.
+CAUTION: Please take care when adding `ExpireTrash` and `ExpireVersions` as link:[Cron] jobs. Make sure that they’re not started in parallel on multiple machines. Running in parallel on a single machine is fine. But, currently, there isn’t sufficient locking in place to prevent them from conflicting with each other if running in parallel across multiple machines.
 
 [[syncjob-carddav]]
 SyncJob (CardDAV)

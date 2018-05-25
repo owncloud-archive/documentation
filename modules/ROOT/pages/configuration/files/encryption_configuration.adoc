@@ -11,9 +11,7 @@ can operate independently of each other. By doing so, you can encrypt a
 remote storage _without_ also having to encrypt your home storage on
 your ownCloud server.
 
-Starting with ownCloud 9.0 we support Authenticated Encryption for all
-newly encrypted files. See https://hackerone.com/reports/108082 for more
-technical information about the impact.
+NOTE: Starting with ownCloud 9.0 we support Authenticated Encryption for all newly encrypted files. See https://hackerone.com/reports/108082 for more technical information about the impact.
 
 For maximum security make sure to configure external storage with
 ``__Check for changes: Never__.'' This will let ownCloud ignore new
@@ -29,10 +27,7 @@ All files sent to remote storage will be encrypted by the ownCloud
 server and decrypted before serving them to you or anyone whom you have
 shared them with.
 
-Encrypting files increases their size by roughly 35%. Remember to take
-this into account when you are both provisioning storage and setting
-storage quotas. Secondly, user quotas are based on the _unencrypted_
-file size — *not* the encrypted size.
+NOTE: Encrypting files increases their size by roughly 35%. Remember to take this into account when you are both provisioning storage and setting storage quotas. Secondly, user quotas are based on the _unencrypted_ file size — *not* the encrypted size.
 
 When files on an external storage are encrypted in ownCloud, you cannot
 share them directly from the external storage services, only through
@@ -59,8 +54,7 @@ The encryption keys are stored in the following directories:
 | |external storage.
 |======================================================================
 
-You can move the keys to a different location. To do so, refer to the
-link:[Move Key Location] section of the documentation.
+NOTE: You can move the keys to a different location. To do so, refer to the link:[Move Key Location] section of the documentation.
 
 When encryption is enabled, all files are encrypted and decrypted by the
 ownCloud application, and stored encrypted on your remote storage. This
@@ -77,13 +71,14 @@ this application does not provide. If your ownCloud server is not
 connected to any external storage services, it is better to use other
 encryption tools, such as file-level or whole-disk encryption.
 
-SSL terminates at or before Apache on the ownCloud server. Consequently,
-all files are in an unencrypted state between the SSL connection
-termination and the ownCloud code that encrypts and decrypts them. This
-is, potentially, exploitable by anyone with administrator access to your
-server. For more information, read:
-https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/[How
-ownCloud uses encryption to protect your data].
+[CAUTION] 
+====
+SSL terminates at or before Apache on the ownCloud server. 
+Consequently, all files are in an unencrypted state between the SSL connection
+termination and the ownCloud code that encrypts and decrypts them. 
+This is, potentially, exploitable by anyone with administrator access to your server. 
+For more information, read: https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/[How ownCloud uses encryption to protect your data].
+====
 
 [[encryption-types]]
 Encryption Types
@@ -96,7 +91,7 @@ and the private key is protected by the user’s password.
 * *Master Key:* there is only one key (or key pair) and all files are
 encrypted using that key pair.
 
-These encryption types are *not compatible*.
+IMPORTANT: These encryption types are *not compatible*.
 
 [[before-enabling-encryption]]
 Before Enabling Encryption
@@ -164,10 +159,9 @@ php occ app:enable encryption
 php occ encryption:enable
 ....
 
-Please note, the commands have to be run in this order.
+NOTE: Please note, the commands have to be run in this order.
 
-If you already have Basic encryption enabled - you *must not* enable
-Master Key Based encryption.
+IMPORTANT: If you already have Basic encryption enabled - you *must not* enable Master Key Based encryption.
 
 [[enabling-master-key-based-encryption]]
 Enabling Master Key Based Encryption
@@ -194,7 +188,7 @@ php occ encryption:enable
 php occ encryption:select-encryption-type masterkey
 ....
 
-The master key mode has to be set up in a newly created instance.
+NOTE: The master key mode has to be set up in a newly created instance.
 
 1.  Encrypt all data
 
@@ -202,11 +196,7 @@ The master key mode has to be set up in a newly created instance.
 php occ encryption:encrypt-all
 ....
 
-This is not typically required, as the master key is often enabled at
-install time. As a result, when enabling it, there should be no data to
-encrypt. But, in case it’s being enabled after install, and the
-installation does have files which are unencrypted, encrypt-all can be
-used to encrypt them.
+NOTE: This is not typically required, as the master key is often enabled at install time. As a result, when enabling it, there should be no data to encrypt. But, in case it’s being enabled after install, and the installation does have files which are unencrypted, encrypt-all can be used to encrypt them.
 
 [[sharing-encrypted-files]]
 Sharing Encrypted Files
@@ -294,14 +284,9 @@ password. This will generate a new key pair
 and enable it again. This deletes the old recovery share keys from their
 files and encrypts their files with the new recovery key
 
-You can only change the recovery key password if you know the original.
-This is by design, as only admins who know the recovery key password
-should be able to change it. If not, admins could hijack the recovery
-key from each other
+NOTE: You can only change the recovery key password if you know the original. This is by design, as only admins who know the recovery key password should be able to change it. If not, admins could hijack the recovery key from each other
 
-Replacing the recovery key will mean that all users will lose the
-possibility to recover their files until they have applied the new
-recovery key
+IMPORTANT: Replacing the recovery key will mean that all users will lose the possibility to recover their files until they have applied the new recovery key.
 
 [[disabling-encryption]]
 Disabling Encryption
@@ -322,9 +307,7 @@ following command:
 occ maintenance:singleuser --off
 ....
 
-You may only disable encryption with by using the link:[occ Encryption
-Commands]. Make sure you have backups of all encryption keys, including
-those for all your users.
+CAUTION: You may only disable encryption with by using the link:[occ Encryption Commands]. Make sure you have backups of all encryption keys, including those for all your users.
 
 [[not-all-files-are-encrypted]]
 Not All Files Are Encrypted
@@ -487,7 +470,7 @@ Use this when you have:
 occ encryption:enable-master-key
 ....
 
-It is not possible to disable it.
+IMPORTANT: It is not possible to disable it.
 
 [[recreating-an-existing-master-key]]
 Recreating an Existing Master Key
@@ -523,9 +506,7 @@ occ maintenance:singleuser --off
 It is possible to disable encryption with the file recovery key, _if_ every user uses them. 
 If so, "decrypt all" will use it to decrypt all files.
 
-It is *not* planned to move this to the next user login or a background
-job. If that was done, then login passwords would need to be stored in
-the database, which could be a security issue.
+NOTE: It is *not* planned to move this to the next user login or a background job. If that was done, then login passwords would need to be stored in the database, which could be a security issue.
 
 [[files-not-encrypted]]
 Files Not Encrypted

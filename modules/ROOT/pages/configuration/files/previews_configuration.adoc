@@ -15,11 +15,7 @@ By default, ownCloud can generate previews for the following filetypes:
 * Cover of MP3 files
 * Text documents
 
-Older versions of ownCloud also supported the preview generation::
-  of other file types such as PDF, SVG or various office documents. Due
-  to security concerns those providers have been disabled by default and
-  are considered unsupported. While those providers are still available,
-  we discourage enabling them, and they are not documented.
+NOTE: Older versions of ownCloud also supported the preview generation of other file types such as PDF, SVG or various office documents. Due to security concerns those providers have been disabled by default and are considered unsupported. While those providers are still available, we discourage enabling them, and they are not documented.
 
 [[parameters]]
 Parameters
@@ -71,10 +67,7 @@ The following example would limit previews to a maximum size of 100 px ×
   'preview_max_y' => 100,
 ....
 
-___________________________________________________________________________________
-If you want no limit applied for one or both of these values then set
-them to null.
-___________________________________________________________________________________
+NOTE: If you want no limit applied for one or both of these values then set them to null.
 
 [[maximum-scale-factor]]
 Maximum scale factor

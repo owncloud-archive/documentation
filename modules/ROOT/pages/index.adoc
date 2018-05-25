@@ -19,20 +19,14 @@ core Server, without Enterprise applications.
 * The Enterprise Subscription provides paid support for the Enterprise
 Edition. This includes the core Server and Enterprise apps.
 
-See ../whats_new_admin for more information on the different ownCloud
-editions.
+See xref:whats_new_admin.adoc[What’s New in ownCloud] for more information on the different ownCloud editions.
 
 [[owncloud-videos-and-blogs]]
 ownCloud Videos and Blogs
 -------------------------
 
-See the
-https://www.youtube.com/channel/UC_4gez4lsWqciH-otOlXo5w[official
-ownCloud channel] and
-https://www.youtube.com/channel/UCA8Ehsdu3KaxSz5KOcCgHbw[ownClouders
-community channel] on YouTube for tutorials, overviews, and conference
+See the https://www.youtube.com/channel/UC_4gez4lsWqciH-otOlXo5w[official ownCloud channel] and https://www.youtube.com/channel/UCA8Ehsdu3KaxSz5KOcCgHbw[ownClouders community channel] on YouTube for tutorials, overviews, and conference
 videos.
-
 Visit https://owncloud.org/news/[ownCloud Planet] for news and developer
 blogs.
 

@@ -49,10 +49,7 @@ because `'appcodechecker' => true,` is enabled in `config.php`. When
 private API, rather than the public API. If they are, then they will not
 be installed.
 
-If you would like to create or add your own ownCloud app, please refer
-to the
-https://doc.owncloud.org/server/latest/developer_manual/app/index.html[developer
-manual].
+NOTE: If you would like to create or add your own ownCloud app, please refer to the https://doc.owncloud.org/server/latest/developer_manual/app/index.html[developer manual].
 
 [[using-custom-app-directories]]
 Using Custom App Directories

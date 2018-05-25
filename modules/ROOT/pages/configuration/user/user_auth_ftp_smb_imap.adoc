@@ -71,12 +71,7 @@ Example
 ],
 ----
 
-The second `arguments` parameter ensures that only users from that
-domain are allowed to login. When set, after a successful login, the
-domain will be stripped from the email address and the rest used as an
-ownCloud username. For example, if the email address is
-`guest.user@example.com`, then `guest.user` will be the username used by
-ownCloud.
+IMPORTANT: The second `arguments` parameter ensures that only users from that domain are allowed to login. When set, after a successful login, the domain will be stripped from the email address and the rest used as an ownCloud username. For example, if the email address is `guest.user@example.com`, then `guest.user` will be the username used by ownCloud.
 
 [[smb]]
 SMB
@@ -104,10 +99,10 @@ Example
 <?php
 
 "user_backends" => [
-    0 => [
+    [
         "class"     => "OC_User_SMB",
         "arguments" => [
-            0 => 'localhost'
+            'localhost'
         ],
     ],
 ],
@@ -141,10 +136,10 @@ Example
 <?php
 
 "user_backends" => [
-    0 => [
+    [
         "class"     => "OC_User_FTP",
         "arguments" => [
-            0 => 'localhost'
+            'localhost'
         ],
     ],
 ],

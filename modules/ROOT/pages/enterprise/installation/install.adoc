@@ -12,11 +12,8 @@ document in your account at
 https://customer.owncloud.com/owncloud/[Customer.owncloud.com] account
 for instructions on setting up your Linux package manager.
 
-After you have completed your initial installation of ownCloud as
-detailed in the README, follow the instructions in
-../../installation/installation_wizard to finish setting up ownCloud.
-
-To upgrade your Enterprise server, refer to ../../maintenance/upgrade.
+After you have completed your initial installation of ownCloud as detailed in the README, follow the instructions in xref:installation/installation_wizard[The Installation Wizard] to finish setting up ownCloud.
+To upgrade your Enterprise server, refer to xref:maintenance/upgrade[How to Upgrade Your ownCloud Server].
 
 [[manual-installation]]
 Manual Installation
@@ -76,6 +73,4 @@ Supported ownCloud Enterprise Edition Apps
 
 See xref:installation/apps_supported.adoc[Supported Apps in ownCloud] for a list of supported apps.
 
-3rd party and unsupported apps must be disabled before performing a
-system upgrade. Then install the upgraded versions, and after the
-upgrade is complete re-enable them.
+NOTE: 3rd party and unsupported apps must be disabled before performing a system upgrade. Then install the upgraded versions, and after the upgrade is complete re-enable them.

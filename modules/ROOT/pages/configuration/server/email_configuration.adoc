@@ -12,8 +12,7 @@ include:
 To make use of them, users need to configure which notifications they
 want to receive. They can do this on their Personal pages.
 
-To be able to send emails, a functioning mail server must be available,
-whether locally in your network, or remotely.
+NOTE: To be able to send emails, a functioning mail server must be available, whether locally in your network, or remotely.
 
 [[configuring-an-smtp-server]]
 Configuring an SMTP Server
@@ -31,9 +30,7 @@ The wizard supports three mail server types: _SMTP_, _PHP_, and
 _Sendmail_. Use SMTP for a remote email server, and either PHP or
 Sendmail when your mail server is on the same machine as ownCloud.
 
-The Sendmail option refers to the Sendmail SMTP server, and any drop-in
-Sendmail replacement such as Postfix, Exim, or Courier. All of these
-include a `sendmail` binary, and are freely-interchangeable.
+NOTE: The Sendmail option refers to the Sendmail SMTP server, and any drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of these include a `sendmail` binary, and are freely-interchangeable.
 
 You need the following information from your mail server administrator
 to connect ownCloud to a remote SMTP server:
@@ -103,9 +100,9 @@ entered, separated by semicolons:
 ----
 <?php
 
-  "mail_smtpmode"     => "smtp",
-  "mail_smtphost"     => "smtp-1.server.dom;smtp-2.server.dom:425",
-  "mail_smtpport"     => 25,
+"mail_smtpmode"     => "smtp",
+"mail_smtphost"     => "smtp-1.server.dom;smtp-2.server.dom:425",
+"mail_smtpport"     => 25,
 ----
 
 Or:
@@ -114,9 +111,9 @@ Or:
 ----
 <?php
 
-  "mail_smtpmode"     => "smtp",
-  "mail_smtphost"     => "smtp.server.dom",
-  "mail_smtpport"     => 425,
+"mail_smtpmode"     => "smtp",
+"mail_smtphost"     => "smtp.server.dom",
+"mail_smtpport"     => 425,
 ----
 
 If a malware or SPAM scanner is running on the SMTP server it might be
@@ -126,7 +123,7 @@ necessary that you increase the SMTP timeout to e.g., 30s:
 ----
 <?php
 
-  "mail_smtptimeout"  => 30,
+"mail_smtptimeout"  => 30,
 ----
 
 If the SMTP server accepts insecure connections, the default setting can
@@ -136,7 +133,7 @@ be used:
 ----
 <?php
 
- "mail_smtpsecure"   => '',
+"mail_smtpsecure"   => '',
 ----
 
 If the SMTP server only accepts secure connections you can choose
@@ -153,8 +150,8 @@ default port `465/tcp`:
 ----
 <?php
 
-  "mail_smtphost"     => "smtp.server.dom:465",
-  "mail_smtpsecure"   => 'ssl',
+"mail_smtphost"     => "smtp.server.dom:465",
+"mail_smtpsecure"   => 'ssl',
 ----
 
 [[starttls]]
@@ -168,8 +165,8 @@ default port `25/tcp`:
 ----
 <?php
 
-  "mail_smtphost"     => "smtp.server.dom",
-  "mail_smtpsecure"   => 'tls',
+"mail_smtphost"     => "smtp.server.dom",
+"mail_smtpsecure"   => 'tls',
 ----
 
 An alternative is the port `587/tcp` (recommended):
@@ -178,8 +175,8 @@ An alternative is the port `587/tcp` (recommended):
 ----
 <?php
 
-  "mail_smtphost"     => "smtp.server.dom:587",
-  "mail_smtpsecure"   => 'tls',
+"mail_smtphost"     => "smtp.server.dom:587",
+"mail_smtpsecure"   => 'tls',
 ----
 
 [[authentication]]
@@ -193,9 +190,9 @@ authentication, if not, the default values can be taken as is.
 ----
 <?php
 
-  "mail_smtpauth"     => false,
-  "mail_smtpname"     => "",
-  "mail_smtppassword" => "",
+"mail_smtpauth"     => false,
+"mail_smtpname"     => "",
+"mail_smtppassword" => "",
 ----
 
 If SMTP authentication is required you have to set the required username
@@ -206,10 +203,10 @@ and password and can optionally choose between the authentication types
 ----
 <?php
 
-  "mail_smtpauth"     => true,
-  "mail_smtpauthtype" => "LOGIN",
-  "mail_smtpname"     => "username",
-  "mail_smtppassword" => "password",
+"mail_smtpauth"     => true,
+"mail_smtpauthtype" => "LOGIN",
+"mail_smtpname"     => "username",
+"mail_smtppassword" => "password",
 ----
 
 [[php-mail]]
@@ -226,15 +223,15 @@ be able to send email out of the box.
 ----
 <?php
 
-  "mail_smtpmode"     => "php",
-  "mail_smtphost"     => "127.0.0.1",
-  "mail_smtpport"     => 25,
-  "mail_smtptimeout"  => 10,
-  "mail_smtpsecure"   => "",
-  "mail_smtpauth"     => false,
-  "mail_smtpauthtype" => "LOGIN",
-  "mail_smtpname"     => "",
-  "mail_smtppassword" => "",
+"mail_smtpmode"     => "php",
+"mail_smtphost"     => "127.0.0.1",
+"mail_smtpport"     => 25,
+"mail_smtptimeout"  => 10,
+"mail_smtpsecure"   => "",
+"mail_smtpauth"     => false,
+"mail_smtpauthtype" => "LOGIN",
+"mail_smtpname"     => "",
+"mail_smtppassword" => "",
 ----
 
 [[sendmail]]
@@ -246,18 +243,19 @@ necessary to have an installed and working email system on your *nix
 server. The Sendmail binary (`/usr/sbin/sendmail`) is usually part of
 that system. ownCloud should be able to send email out of the box.
 
+[source,php]
 ....
 <?php
 
-  "mail_smtpmode"     => "sendmail",
-  "mail_smtphost"     => "127.0.0.1",
-  "mail_smtpport"     => 25,
-  "mail_smtptimeout"  => 10,
-  "mail_smtpsecure"   => "",
-  "mail_smtpauth"     => false,
-  "mail_smtpauthtype" => "LOGIN",
-  "mail_smtpname"     => "",
-  "mail_smtppassword" => "",
+"mail_smtpmode"     => "sendmail",
+"mail_smtphost"     => "127.0.0.1",
+"mail_smtpport"     => 25,
+"mail_smtptimeout"  => 10,
+"mail_smtpsecure"   => "",
+"mail_smtpauth"     => false,
+"mail_smtpauthtype" => "LOGIN",
+"mail_smtpname"     => "",
+"mail_smtppassword" => "",
 ....
 
 [[qmail]]
@@ -269,18 +267,19 @@ have an installed and working qmail email system on your server. The
 Sendmail binary (*/var/qmail/bin/sendmail*) will then be used to send
 email. ownCloud should be able to send email out of the box.
 
+[source,php]
 ....
 <?php
 
-  "mail_smtpmode"     => "qmail",
-  "mail_smtphost"     => "127.0.0.1",
-  "mail_smtpport"     => 25,
-  "mail_smtptimeout"  => 10,
-  "mail_smtpsecure"   => "",
-  "mail_smtpauth"     => false,
-  "mail_smtpauthtype" => "LOGIN",
-  "mail_smtpname"     => "",
-  "mail_smtppassword" => "",
+"mail_smtpmode"     => "qmail",
+"mail_smtphost"     => "127.0.0.1",
+"mail_smtpport"     => 25,
+"mail_smtptimeout"  => 10,
+"mail_smtpsecure"   => "",
+"mail_smtpauth"     => false,
+"mail_smtpauthtype" => "LOGIN",
+"mail_smtpname"     => "",
+"mail_smtppassword" => "",
 ....
 
 [[send-a-test-email]]
@@ -311,12 +310,10 @@ enabling the `mail_smtpdebug parameter` in `config/config.php`.
 ----
 <?php
 
-  "mail_smtpdebug" => true;
+"mail_smtpdebug" => true;
 ----
 
-Immediately after pressing the *Send email* button, as described before,
-several *SMTP -> get_lines(): …* messages appear on the screen. This is
-expected behavior and can be ignored.
+NOTE: Immediately after pressing the *Send email* button, as described before, several *SMTP -> get_lines(): …* messages appear on the screen. This is expected behavior and can be ignored.
 
 [[why-is-my-web-domain-different-from-my-mail-domain]]
 Why is my web domain different from my mail domain?
@@ -331,7 +328,7 @@ configuration parameter:
 ----
 <?php
 
-  "mail_domain" => "example.com",
+"mail_domain" => "example.com",
 ----
 
 This setting results in every email sent by ownCloud (for example, the
@@ -359,8 +356,7 @@ time=3.64ms
 ....
 
 [[how-can-i-find-out-if-the-smtp-server-is-listening-on-a-specific-tcp-port]]
-How can I find out if the SMTP server is listening on a specific TCP
-port?
+How can I find out if the SMTP server is listening on a specific TCP port?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The best way to get mail server information is to ask your mail server
@@ -396,15 +392,14 @@ A good indication that the SMTP server supports SMTPS is that it is
 listening on port *465*.
 
 [[how-can-i-determine-what-authorization-and-encryption-protocols-the-mail-server-supports]]
-How can I determine what authorization and encryption protocols the mail
-server supports?
+How can I determine what authorization and encryption protocols the mail server supports?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 SMTP servers usually announce the availability of STARTTLS immediately
 after a connection has been established. You can easily check this using
 the `telnet` command.
 
-You must enter the marked lines to obtain the information displayed.
+NOTE: You must enter the marked lines to obtain the information displayed.
 
 ....
 telnet smtp.domain.dom 25
@@ -439,12 +434,10 @@ debug messages by enabling the `mail_smtpdebug` parameter:
 ----
 <?php
 
-  "mail_smtpdebug" => true,
+"mail_smtpdebug" => true,
 ----
 
-Immediately after pressing the *Send email* button, as described before,
-several *SMTP -> get_lines(): …* messages appear on the screen. This is
-expected behavior and can be ignored.
+NOTE: Immediately after pressing the *Send email* button, as described before, several *SMTP -> get_lines(): …* messages appear on the screen. This is expected behavior and can be ignored.
 
 [[using-email-templates]]
 Using Email Templates
@@ -524,6 +517,4 @@ If you did not ask for a password reset, ignore this message.
 Again, be very careful to change nothing but the message text, because
 the tiniest coding error will break the template.
 
-You can edit the templates directly in the template text box, or you can
-copy and paste them to a text editor for modification and then copy and
-paste them back to the template text box for use when you are done.
+NOTE: You can edit the templates directly in the template text box, or you can copy and paste them to a text editor for modification and then copy and paste them back to the template text box for use when you are done.

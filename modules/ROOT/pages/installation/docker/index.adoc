@@ -57,8 +57,7 @@ Then, you can start the container, using your preferred Docker
 command-line tool. The example below shows how to use
 https://docs.docker.com/compose/[Docker Compose].
 
-You can find instructions for using plain docker
-https://github.com/owncloud-docker/server#launch-with-plain-docker[in
+NOTE: You can find instructions for using plain docker https://github.com/owncloud-docker/server#launch-with-plain-docker[in
 the GitHub repository].
 
 [source,console]
@@ -103,11 +102,8 @@ In it, you can see that the database, ownCloud, and Redis containers are
 running, and that ownCloud is accessible via ports 443 and 8080 on the
 host machine.
 
-Just because all the containers are running, it takes a few minutes for
-ownCloud to be fully functional. If you run
-`docker-compose logs --follow owncloud` and see a significant amount of
-information logging to the console, then please wait until it slows down
-to attempt to access the web UI.
+NOTE: Just because all the containers are running, it takes a few minutes for ownCloud to be fully functional. If you run
+`docker-compose logs --follow owncloud` and see a significant amount of information logging to the console, then please wait until it slows down to attempt to access the web UI.
 
 [[logging-in]]
 Logging In
@@ -122,10 +118,7 @@ image:/owncloud-docs/_images/docker/owncloud-ui-login.png[The ownCloud UI via Do
 The username and password are the admin username and password which you
 stored in `.env` earlier.
 
-The first time that you access the login page via HTTPS, a browser
-warning appears, as the SSL certificate in the Docker setup is
-self-signed. However, the self-signed certificate can be overwritten
-with a valid cert, within the host volume.
+NOTE: The first time that you access the login page via HTTPS, a browser warning appears, as the SSL certificate in the Docker setup is self-signed. However, the self-signed certificate can be overwritten with a valid cert, within the host volume.
 
 [[stopping-the-containers]]
 Stopping the Containers
@@ -160,9 +153,7 @@ process, using the following command:
 docker-compose exec db backup
 ....
 
-This assumes that you are using
-https://hub.docker.com/r/webhippie/mariadb/[the default database
-container from Webhippie].
+NOTE: This assumes that you are using https://hub.docker.com/r/webhippie/mariadb/[the default database container from Webhippie].
 
 Fifth, shutdown the containers.
 

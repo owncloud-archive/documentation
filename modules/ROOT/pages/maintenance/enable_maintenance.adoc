@@ -20,7 +20,7 @@ config/config.php. Change `"maintenance" => false` to
 ....
 <?php
 
- "maintenance" => true,
+"maintenance" => true,
 ....
 
 Then change it back to `false` when you are finished.

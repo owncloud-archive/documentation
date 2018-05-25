@@ -27,8 +27,7 @@ a singe file and then be included.
 Example Configurations
 ----------------------
 
-Be careful about line breaks if you copy the examples, as long lines may
-be broken for page formatting.
+CAUTION: Be careful about line breaks if you copy the examples, as long lines may be broken for page formatting.
 
 You can use ownCloud over plain HTTP. However, _we strongly encourage
 you_ to use SSL/TLS to encrypt all of your server traffic *and* to
@@ -74,8 +73,7 @@ buffers, or can´t remove a existing ignore header directive, you can
 explicitly enable following directive in the location block
 `fastcgi_buffering off;`
 
-The directives `fastcgi_ignore_headers X-Accel-Buffering;` and
-`fastcgi_buffering off;` can be used separately but not together.
+NOTE: The directives `fastcgi_ignore_headers X-Accel-Buffering;` and `fastcgi_buffering off;` can be used separately but not together.
 
 [[owncloud-in-the-web-root-of-nginx]]
 ownCloud in the web root of NGINX

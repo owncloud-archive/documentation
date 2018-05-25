@@ -11,12 +11,12 @@ general recommendations, followed by three typical scenarios, and finish
 up with making best-practice recommendations for both software and
 hardware.
 
-The recommendations presented here are based on a standard ownCloud
-installation, one without any particular _apps_, _themes_, or _code
-changes_. But, server load is dependent upon the number of _clients_,
-_files_, and _user activity_, as well as other usage patterns. Given
-that, these recommendations are only a rule of thumb based on our
-experience, as well as that of one of our customers.
+[NOTE]
+====
+The recommendations presented here are based on a standard ownCloud installation, one without any particular _apps_, _themes_, or _code changes_. 
+But, server load is dependent upon the number of _clients_, _files_, and _user activity_, as well as other usage patterns. 
+Given that, these recommendations are only a rule of thumb based on our experience, as well as that of one of our customers.
+====
 
 [[general-recommendations]]
 General Recommendations
@@ -32,8 +32,7 @@ https://doc.owncloud.org/server/latest/user_manual/files/federated_cloud_sharing
 Cloud Sharing] to keep individual ownCloud instances to a manageable
 size.
 
-Whatever the size of your organization, always keep one thing in mind:
-_The amount of data stored in ownCloud will only grow. So plan ahead._
+NOTE: Whatever the size of your organization, always keep one thing in mind: _The amount of data stored in ownCloud will only grow. So plan ahead._
 
 [[owncloud-administrators-must-have-command-line-or-cron-access]]
 ownCloud Administrators Must Have Command Line or Cron Access
@@ -120,14 +119,12 @@ cluster to scale the DB. If using either MySQL or MariaDB, you must use
 the InnoDB storage engine as MyISAM is not supported, see:
 db-storage-engine-label
 
-___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
-If you are using MaxScale/Galera, then you need to use at least version
-1.3.0. In earlier versions, there is a bug where the value of
-`last_insert_id` is not routed to the master node. This bug can cause
-loops within ownCloud and corrupt database rows. You can find out more
-information https://jira.mariadb.org/browse/MXS-220[in the issue
-documentation].
-___________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+[IMPORTANT]
+====
+If you are using MaxScale/Galera, then you need to use at least version 1.3.0. In earlier versions, there is a bug where the value of `last_insert_id` is not routed to the master node. 
+This bug can cause loops within ownCloud and corrupt database rows. 
+You can find out more information https://jira.mariadb.org/browse/MXS-220[in the issue documentation].
+====
 
 [[backup]]
 Backup
@@ -542,9 +539,7 @@ retrieved from the slaves. Since Galera Cluster replication is, by
 default, not strictly synchronous it could happen that items are
 requested before the replication has actually taken place.
 
-This setting is disabled by default.
-
-See http://galeracluster.com/documentation-webpages/[the Galera Cluster WSREP documentation] for more details.
+NOTE: This setting is disabled by default. See http://galeracluster.com/documentation-webpages/[the Galera Cluster WSREP documentation] for more details.
 
 [[references]]
 References

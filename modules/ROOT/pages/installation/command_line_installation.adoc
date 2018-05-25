@@ -35,7 +35,7 @@ $ sudo -u www-data php occ maintenance:install \
    --admin-user "admin" --admin-pass "password" 
 ....
 
-IMPORTANT: You must run `occ` as xref:installation/source_installation#set-strong-directory-permissions[your HTTP user].
+NOTE: You must run `occ` as xref:installation/source_installation#set-strong-directory-permissions[your HTTP user].
 
 If you want to use a directory other than the default (which is data inside the root ownCloud directory), you can also supply the `--data-dir` switch. 
 For example, if you were using the command above and you wanted the data directory to be `/opt/owncloud/data`, then add `--data-dir /opt/owncloud/data` to the command.

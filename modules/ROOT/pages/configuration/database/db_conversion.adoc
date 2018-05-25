@@ -8,7 +8,7 @@ want to convert to a better performing database, such as _MySQL_,
 _MariaDB_ or _PostgreSQL_, you can use
 the ownCloud command line tool: xref:configuration/server/occ_command.adoc#database-conversion[occ].
 
-ownCloud Enterprise edition does not support SQLite.
+NOTE: ownCloud Enterprise edition does not support SQLite.
 
 [[run-the-conversion]]
 Run the conversion
@@ -21,16 +21,17 @@ the following command to convert the database to the new format:
 php occ db:convert-type [options] type username hostname database
 ....
 
-The converter searches for apps in your configured app folders and uses
-the schema definitions in the apps to create the new table. As a result,
-tables of removed apps will not be converted — even with option
-`--all-apps`
+[NOTE]
+====
+The converter searches for apps in your configured app folders and uses the schema definitions in the apps to create the new table. 
+As a result, tables of removed apps will not be converted — even with option `--all-apps`
+For example:
 
-For example
-
+[source,console]
 ....
 php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
 ....
+====
 
 To successfully proceed with the conversion, you must type `yes` when
 prompted with the question `Continue with the conversion?` On success

@@ -103,10 +103,7 @@ line 8, to match the following, and save the file:
 1.  Copy a new SVG icon to represent JSON files to `core/img/filetypes`,
 calling it `text-json.svg`.
 
-The name and location of the file are important. The location is because
-the `core/img/filetypes` directory stores the mimetype file icons. The
-name is important as it’s a rough mapping between the alias name and the
-icon’s file name, i.e., `text/json` becomes `text-json`.
+NOTE: The name and location of the file are important. The location is because the `core/img/filetypes` directory stores the mimetype file icons. The name is important as it’s a rough mapping between the alias name and the icon’s file name, i.e., `text/json` becomes `text-json`.
 
 1.  Run the following command to update the mimetype alias database.
 
@@ -164,9 +161,7 @@ the mimetype aliases, create a copy of
 `mimetypemapping.json` and storing it in `config/`. Then, in this new
 file, make any changes required.
 
-Please refer to
-https://doc.owncloud.com/server/latest/developer_manual/core/theming.html[the
-ownCloud theming documentation] for where to put the new image files.
+NOTE: Please refer to https://doc.owncloud.com/server/latest/developer_manual/core/theming.html[the ownCloud theming documentation] for where to put the new image files.
 
 [[icon-retrieval]]
 Icon retrieval

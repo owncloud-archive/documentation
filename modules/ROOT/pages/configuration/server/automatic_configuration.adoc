@@ -43,9 +43,9 @@ requests database and admin credentials settings.
 
 ....
 <?php
-$AUTOCONFIG = array(
+$AUTOCONFIG = [
   "directory"     => "/www/htdocs/owncloud/data",
-);
+];
 ....
 
 [[sqlite-database]]
@@ -57,11 +57,11 @@ requests data directory and admin credentials settings.
 
 ....
 <?php
-$AUTOCONFIG = array(
+$AUTOCONFIG = [
   "dbtype"        => "sqlite",
   "dbname"        => "owncloud",
   "dbtableprefix" => "",
-);
+];
 ....
 
 [[mysql-database]]
@@ -73,14 +73,14 @@ requests data directory and admin credentials settings.
 
 ....
 <?php
-$AUTOCONFIG = array(
+$AUTOCONFIG = [
   "dbtype"        => "mysql",
   "dbname"        => "owncloud",
   "dbuser"        => "username",
   "dbpass"        => "password",
   "dbhost"        => "localhost",
   "dbtableprefix" => "",
-);
+];
 ....
 
 NOTE: Keep in mind that the automatic configuration does not eliminate the need for creating the database user and database in advance, as described in xref:configuration/database/linux_database_configuration.adoc[Database Configuration].
@@ -94,14 +94,14 @@ requests data directory and admin credentials settings.
 
 ....
 <?php
-$AUTOCONFIG = array(
+$AUTOCONFIG = [
   "dbtype"        => "pgsql",
   "dbname"        => "owncloud",
   "dbuser"        => "username",
   "dbpass"        => "password",
   "dbhost"        => "localhost",
   "dbtableprefix" => "",
-);
+];
 ....
 
 [[all-parameters]]
@@ -114,7 +114,7 @@ already configured in the file, the ownCloud installation skips the
 
 ....
 <?php
-$AUTOCONFIG = array(
+$AUTOCONFIG = [
   "dbtype"        => "mysql",
   "dbname"        => "owncloud",
   "dbuser"        => "username",
@@ -124,9 +124,5 @@ $AUTOCONFIG = array(
   "adminlogin"    => "root",
   "adminpass"     => "root-password",
   "directory"     => "/www/htdocs/owncloud/data",
-);
+];
 ....
-
-Keep in mind that the automatic configuration does not eliminate the
-need for creating the database user and database in advance, as
-described in ../../configuration/database/linux_database_configuration.

@@ -14,8 +14,7 @@ Sharing on such mountpoints is disabled by default.
 Enabling External Storage Support
 ---------------------------------
 
-Enabling this app will disable the *Stay logged in* checkbox on the login page.
-The External storage support application is enabled on your Apps page.
+IMPORTANT: Enabling this app will disable the *Stay logged in* checkbox on the login page. The External storage support application is enabled on your Apps page.
 
 image:/owncloud-docs/_images/configuration/files/enable-app.png[image]
 
@@ -102,8 +101,7 @@ Available storage backends
 The following backends are provided by the external storages app. Other
 apps may provide their own backends, which are not listed here.
 
-A non-blocking or correctly configured SELinux setup is needed for these
-backends to work. Please refer to the selinux-config-label.
+NOTE: A non-blocking or correctly configured SELinux setup is needed for these backends to work. Please refer to the selinux-config-label.
 
 [[allow-users-to-mount-external-storage]]
 Allow Users to Mount External Storage
@@ -115,8 +113,7 @@ want to allow.
 
 image:/owncloud-docs/_images/configuration/files/external_storage/user_mounts.png[image]
 
-Be careful with the choices that you enable, as it allows a user to make
-potentially arbitrary connections to other services on your network!
+IMPORTANT: Be careful with the choices that you enable, as it allows a user to make potentially arbitrary connections to other services on your network!
 
 [[setting-up-google-drive-and-dropbox-connections]]
 Setting Up Google Drive and Dropbox Connections
@@ -141,12 +138,9 @@ Detecting Files Added to External Storages
 
 We recommend xref:configuration/server/background_jobs_configuration.adoc[configuring the background job Webcron or Cron] to enable ownCloud to automatically detect files added to your external storages.
 
-You cannot scan/detect changed files on external storage mounts when you
-select the *Log-in credentials, save in session* authentication
-mechanism. However, there is a workaround, and that is to use Ajax cron
-mode. See xref:configuration/files/external_storage/auth_mechanisms.adoc#password-based-mechanisms[Password-based Mechanisms] for more information.
+TIP: You cannot scan/detect changed files on external storage mounts when you select the *Log-in credentials, save in session* authentication mechanism. However, there is a workaround, and that is to use Ajax cron mode. See xref:configuration/files/external_storage/auth_mechanisms.adoc#password-based-mechanisms[Password-based Mechanisms] for more information.
 
-ownCloud may not always be able to find out what has been changed remotely (files changed without going through ownCloud), especially whenit’s very deep in the folder hierarchy of the external storage.
+ownCloud may not always be able to find out what has been changed remotely (files changed without going through ownCloud), especially when it’s very deep in the folder hierarchy of the external storage.
 
 You might need to setup a cron job that runs `sudo -u www-data php occ files:scan --all`. 
 Alternatively, replace ``–all'' with the user name to trigger a rescan of the user’s files periodically, for example every 15 minutes, which includes the mounted external storage.

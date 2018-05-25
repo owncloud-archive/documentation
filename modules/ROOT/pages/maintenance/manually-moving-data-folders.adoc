@@ -5,11 +5,14 @@ If you need to move your ownCloud data directory from its current
 location to somewhere else, here is a manual process that you can take
 to make it happen.
 
+[NOTE]
+====
 This example assumes that:
 
-* The current folder is: /var/www/owncloud/data
-* The new folder is: /mnt/owncloud
+* The current folder is: `/var/www/owncloud/data`
+* The new folder is: `/mnt/owncloud`
 * You’re using Apache as your webserver
+====
 
 1.  Stop Apache
 2.  Use rsync to sync the files from the current folder to the new one
@@ -26,11 +29,7 @@ ln -s /mnt/owncloud /var/www/owncloud/data
 apachectl -k graceful 
 ....
 
-If you’re on CentOS/Fedora, try `systemctl restart httpd`. If you’re on
-Debian/Ubuntu try `sudo systemctl restart apache2` To learn more about
-the systemctl command, please refer to
-https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal[the
-systemd essentials guide]
+NOTE: If you’re on CentOS/Fedora, try `systemctl restart httpd`. If you’re on Debian/Ubuntu try `sudo systemctl restart apache2` To learn more about the systemctl command, please refer to https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal[the systemd essentials guide].
 
 [[fix-hardcoded-database-path-variables]]
 Fix Hardcoded Database Path Variables
@@ -65,9 +64,7 @@ UPDATE oc_accounts SET home='/mnt/data/files/super-admin'
   WHERE id=1;
 ----
 
-Please don’t copy and paste this example verbatim — nor any of the
-others. It, and the others, are provided only as guides to what you
-should or could do.
+CAUTION: Please don’t copy and paste this example verbatim — nor any of the others. It, and the others, are provided only as guides to what you should or could do.
 
 [[update-the-oc_jobs-table]]
 Update the oc_jobs table

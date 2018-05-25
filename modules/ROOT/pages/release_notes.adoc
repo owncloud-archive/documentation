@@ -647,9 +647,7 @@ updating.
 upgrading.
 * *Upgrade migration test:* The upgrade migration test, `--skip-migration-tests`, has been removed.
 
-The template editor app is not included in the 10.0.1 release due to
-technical reasons, but will be distributed via the marketplace. 
-However, you can still xref:configuration/server/email_configuration.adoc#using-email-templates[edit template files] manually.
+NOTE: The template editor app is not included in the 10.0.1 release due to technical reasons, but will be distributed via the marketplace. However, you can still xref:configuration/server/email_configuration.adoc#using-email-templates[edit template files] manually.
 
 [[settings]]
 Settings
@@ -820,9 +818,7 @@ sessions
 * OCC command added to (temporarily) disable/enable two-factor
 authentication for single users
 
-The current desktop and mobile client versions do not support two-factor
-yet, this will be added later. It is already possible to generate a
-device specific password and enter that in the current client versions.
+NOTE: The current desktop and mobile client versions do not support two-factor yet, this will be added later. It is already possible to generate a device specific password and enter that in the current client versions.
 
 *Files app*
 
@@ -919,11 +915,7 @@ test a migration `dav:migrate-calendars` and/or
 `dav:migrate-addressbooks` scripts are available (*only in ownCloud
 9.0*) via the `occ` command. See configuration/server/occ_command.
 
-After upgrading to ownCloud 9.0 and *before* continuing to upgrade to
-9.1 make sure that all of your and your users Calendars and Addressbooks
-are migrated correctly. Especially when using the `IMAP user backend`
-(other user backends might be also affected) you need to manually run
-the mentioned `occ` migration commands described above.
+IMPORTANT: After upgrading to ownCloud 9.0 and *before* continuing to upgrade to 9.1 make sure that all of your and your users Calendars and Addressbooks are migrated correctly. Especially when using the `IMAP user backend` (other user backends might be also affected) you need to manually run the mentioned `occ` migration commands described above.
 
 Updates on systems with large datasets will take longer, due to the
 addition of checksums to the ownCloud database. See

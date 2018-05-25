@@ -26,9 +26,7 @@ https://owncloud.org/install/[the ownCloud .tar archive].
 * xref:installation/configuration_notes_and_tips.adoc#php-fpm[PHP-FPM]
 * xref:installation/configuration_notes_and_tips.adoc#other-web-servers[Other Web Servers]
 
-Admins of SELinux-enabled distributions such as _CentOS_, _Fedora_, and _Red
-Hat Enterprise Linux_ may need to set new rules to enable installing
-ownCloud. See xref:installation/configuration_notes_and_tips.adoc#selinux[SELinux] for a suggested configuration.
+NOTE: Admins of SELinux-enabled distributions such as _CentOS_, _Fedora_, and _Red Hat Enterprise Linux_ may need to set new rules to enable installing ownCloud. See xref:installation/configuration_notes_and_tips.adoc#selinux[SELinux] for a suggested configuration.
 
 [[prerequisites]]
 Prerequisites
@@ -128,11 +126,8 @@ ZIP compressed archives and the files inside them.
 gzip (.gz) compressed files.
 |=======================================================================
 
-The _Phar_, _OpenSSL_, and _cUrl_ extensions are mandatory if you want
-to use https://www.gnu.org/software/make/[Make]
-https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html[to
-setup your ownCloud environment], prior to running either the web
-installation wizard, or the command line installer.
+NOTE: The _Phar_, _OpenSSL_, and _cUrl_ extensions are mandatory if you want to use https://www.gnu.org/software/make/[Make]
+https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html[to setup your ownCloud environment], prior to running either the web installation wizard, or the command line installer.
 
 [[database-extensions]]
 Database Extensions
@@ -253,10 +248,7 @@ For Command Line Processing
 interruption by pressing `ctrl-c`
 |=======================================================================
 
-You don’t need the WebDAV module for your Web server (i.e., Apache’s
-`mod_webdav`), as ownCloud has a built-in WebDAV server of its own,
-http://sabre.io/[SabreDAV]. 
-If `mod_webdav` is enabled you must disable it for ownCloud. See xref:configure-apache-web-server[the Apache Web Server configuration] for an example configuration.
+NOTE: You don’t need the WebDAV module for your Web server (i.e., Apache’s `mod_webdav`), as ownCloud has a built-in WebDAV server of its own, http://sabre.io/[SabreDAV].If `mod_webdav` is enabled you must disable it for ownCloud. See xref:configure-apache-web-server[the Apache Web Server configuration] for an example configuration.
 
 [[for-mysqlmariadb]]
 For MySQL/MariaDB
@@ -388,9 +380,7 @@ Running Additional Apps?
 If you are planning on running additional apps, keep in mind that you
 might require additional packages. See xref:installation/source_installation.adoc#prerequisites[the prerequisites list] for details.
 
-During the installation of the MySQL/MariaDB server, you will be
-prompted to create a root password. Be sure to remember your password as
-you will need it during ownCloud database setup.
+NOTE: During the installation of the MySQL/MariaDB server, you will be prompted to create a root password. Be sure to remember your password as you will need it during ownCloud database setup.
 
 [[additional-extensions]]
 Additional Extensions
@@ -616,9 +606,7 @@ safe].
 Enable SSL
 ----------
 
-You can use ownCloud over plain HTTP, but we strongly encourage you to
-use SSL/TLS to encrypt all of your server traffic, and to protect user’s
-logins and data in transit.
+NOTE: You can use ownCloud over plain HTTP, but we strongly encourage you to use SSL/TLS to encrypt all of your server traffic, and to protect user’s logins and data in transit.
 
 Apache installed under Ubuntu comes already set-up with a simple
 self-signed certificate. All you have to do is to enable the `ssl`
@@ -630,11 +618,7 @@ a2ensite default-ssl
 service apache2 reload
 ....
 
-Self-signed certificates have their drawbacks - especially when you plan
-to make your ownCloud server publicly accessible. You might want to
-consider getting a certificate signed by a commercial signing authority.
-Check with your domain name registrar or hosting service for good deals
-on commercial certificates.
+NOTE: Self-signed certificates have their drawbacks - especially when you plan to make your ownCloud server publicly accessible. You might want to consider getting a certificate signed by a commercial signing authority. Check with your domain name registrar or hosting service for good deals on commercial certificates.
 
 [[run-the-installation-wizard]]
 Run the Installation Wizard
@@ -651,14 +635,12 @@ TIP: Refer to the xref:set-strong-directory-permissions[Set Strong Directory Per
 chown -R www-data:www-data /var/www/owncloud/
 ....
 
-Admins of SELinux-enabled distributions may need to write new SELinux
-rules to complete their ownCloud installation; see xref:installation/configuration_notes_and_tips.adoc#selinuxi[the SELinux guide] for a suggested configuration.
+NOTE: Admins of SELinux-enabled distributions may need to write new SELinux rules to complete their ownCloud installation; see xref:installation/configuration_notes_and_tips.adoc#selinuxi[the SELinux guide] for a suggested configuration.
 
 To use `occ` refer to the xref:installation/command_line_installation.adoc[command-line installation details]. 
 To use the graphical Installation Wizard refer to xref:installation/installation_wizard.adoc[the installation_wizard].
 
-Please know that ownCloud’s data directory *must be exclusive to
-ownCloud* and not be modified manually by any other process or user.
+IMPORTANT: Please know that ownCloud’s data directory *must be exclusive to ownCloud* and not be modified manually by any other process or user.
 
 [[set-strong-directory-permissions]]
 Set Strong Directory Permissions
@@ -676,8 +658,7 @@ All URLs used to access your ownCloud server must be whitelisted in your
 allowed to log into ownCloud only when they point their browsers to a
 URL that is listed in the `trusted_domains` setting.
 
-This setting is important when changing or moving to a new domain name.
-You may use IP addresses and domain names.
+NOTE: This setting is important when changing or moving to a new domain name. You may use IP addresses and domain names.
 
 A typical configuration looks like this:
 

@@ -60,8 +60,7 @@ If you’re using Ubuntu, we recommend that you use
 this very thorough guide from the Ubuntu Community Wiki to install the
 OCI8 extension.
 
-This _should_ work for other Debian-based distributions, however your
-mileage may vary.
+NOTE: This _should_ work for other Debian-based distributions, however your mileage may vary.
 
 [[redhat-centos-fedora]]
 RedHat / Centos / Fedora
@@ -90,8 +89,7 @@ Install the OCI8 PHP Extension
 With the Oracle packages installed you’re now ready to install PHP’s
 OCI8 extension.
 
-Provide: `instantclient,/usr/lib/oracle/12.2/client64/lib` when
-requested, or let it auto-detect the location (if possible).
+NOTE: Provide: `instantclient,/usr/lib/oracle/12.2/client64/lib` when requested, or let it auto-detect the location (if possible).
 
 [source,console]
 ----

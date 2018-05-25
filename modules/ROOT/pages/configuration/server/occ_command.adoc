@@ -211,8 +211,7 @@ sudo -u www-data php occ app:disable market
 market disabled
 ....
 
-Be aware that the following apps cannot be disabled: _DAV_,
-_FederatedFileSharing_, _Files_ and _Files_External_.
+NOTE: Be aware that the following apps cannot be disabled: _DAV_, _FederatedFileSharing_, _Files_ and _Files_External_.
 
 `app:check-code` has multiple checks: it checks if an app uses
 ownCloud’s public API (`OCP`) or private API (`OC_`), and it also checks
@@ -325,10 +324,7 @@ It is also possible to import remote files, by piping the input:
 sudo -u www-data php occ config:import < local-backup.json
 ....
 
-While it is possible to update/set/delete the versions and installation
-statuses of apps and ownCloud itself, it is *not* recommended to do this
-directly. Use the `occ app:enable`, `occ app:disable` and `occ update`
-commands instead.
+NOTE: While it is possible to update/set/delete the versions and installation statuses of apps and ownCloud itself, it is *not* recommended to do this directly. Use the `occ app:enable`, `occ app:disable` and `occ update` commands instead.
 
 [[getting-a-single-configuration-value]]
 Getting a Single Configuration Value
@@ -654,10 +650,7 @@ synchronize federated servers:
 sudo -u www-data php occ federation:sync-addressbooks
 ....
 
-_____________________________________________________________________________________
-This command is only available when the ``Federation'' app
-(`federation`) is enabled.
-_____________________________________________________________________________________
+NOTE: This command is only available when the ``Federation'' app (`federation`) is enabled.
 
 [[file-operations]]
 File Operations
@@ -697,9 +690,7 @@ user or within a specified filesystem path on the designated storage. It
 then compares them with the values in the database. The command also
 offers an option to repair incorrect checksum values (`-r, --repair`).
 
-________________________________________________________________________
-Executing this command might take some time depending on the file count.
-________________________________________________________________________
+CAUTION: Executing this command might take some time depending on the file count.
 
 Below is sample output that you can expect to see when using the
 command.
@@ -760,9 +751,7 @@ sudo -u www-data php occ files:scan --help
    -v|vv|vvv, --verbose   Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
 ....
 
-________________________________________________________________________
-If not using `--quiet`, statistics will be shown at the end of the scan.
-________________________________________________________________________
+TIP: If not using `--quiet`, statistics will be shown at the end of the scan.
 
 [[the---path-option]]
 The `--path` Option
@@ -786,11 +775,7 @@ For example:
 In the example above, the user_id `alice` is determined implicitly from
 the path component given.
 
-_________________________________________________________________________________________________________________________________________________________________
-Mounts are only scannable at the point of origin. Scanning of shares
-including federated shares is not necessary on the receiver side and
-therefore not possible.
-_________________________________________________________________________________________________________________________________________________________________
+TIP: Mounts are only scannable at the point of origin. Scanning of shares including federated shares is not necessary on the receiver side and therefore not possible.
 
 The `--path`, `--all` and `[user_id]` parameters are exclusive - only
 one must be specified.
@@ -820,8 +805,7 @@ sudo -u www-data php occ files:scan --all --repair
 sudo -u www-data php occ maintenance:singleuser --off
 ....
 
-We strongly suggest that you backup the database before running this
-command.
+CAUTION: We strongly suggest that you backup the database before running this command.
 
 [[the-filestransfer-ownership-command]]
 The files:transfer-ownership command
@@ -1122,9 +1106,7 @@ l10n, Create Javascript Translation Files for Apps
 This command creates JavaScript and JSON translation files for ownCloud
 applications.
 
-The command does not update existing translations if the source
-translation file has been updated. It only creates translation files
-when none are present for a given language.
+NOTE: The command does not update existing translations if the source translation file has been updated. It only creates translation files when none are present for a given language.
 
 [source,console]
 ----
@@ -1147,8 +1129,7 @@ A Working Example
 In this example, we’ll create Austrian German translations for the
 Gallery app.
 
-This example assumes that the ownCloud directory is /var/www/owncloud`
-and that it uses ownCloud’s standard apps directory, `app`.
+NOTE: This example assumes that the ownCloud directory is `/var/www/owncloud` and that it uses ownCloud’s standard apps directory, `app`.
 
 First, create a source translation file in
 `/var/www/owncloud/apps/gallery/l10n`, called `de_AT.php`. In it, add
@@ -1189,10 +1170,7 @@ sudo -u www-data php occ l10n:createjs gallery de_AT de_DE hu_HU es fr
 LDAP Commands
 -------------
 
-________________________________________________________________________________________________________
-These commands are only available when the ``LDAP user and group
-backend'' app (`user_ldap`) is enabled.
-________________________________________________________________________________________________________
+NOTE: These commands are only available when the ``LDAP user and group backend'' app (`user_ldap`) is enabled.
 
 These LDAP commands appear only when you have enabled the LDAP app. Then
 you can run the following LDAP commands with `occ`:
@@ -1385,10 +1363,7 @@ have been added or removed from these groups in LDAP, ownCloud will
 update its details. If a group was deleted in LDAP, ownCloud will also
 delete the local mapping info about this group.
 
-New groups in LDAP won’t be synced with this command. The LDAP TTL
-configuration (by default 10 minutes) still applies. This means that
-recently deleted groups from LDAP might be considered as ``active'' and
-might not be deleted in ownCloud immediately.
+CAUTION: New groups in LDAP won’t be synced with this command. The LDAP TTL configuration (by default 10 minutes) still applies. This means that recently deleted groups from LDAP might be considered as ``active'' and might not be deleted in ownCloud immediately.
 
 *Configuring the LDAP Refresh Attribute Interval*
 
@@ -1469,9 +1444,7 @@ sudo -u www-data php occ log:manage --level 4
 sudo -u www-data php occ log:manage --level error
 ....
 
-Setting the log level to debug ( 0 ) can be used for finding the cause
-of an error, but should not be the standard as it increases the log file
-size.
+TIP: Setting the log level to debug ( 0 ) can be used for finding the cause of an error, but should not be the standard as it increases the log file size.
 
 [[maintenance-commands]]
 Maintenance Commands
@@ -1563,12 +1536,9 @@ market
   market:upgrade    Installs new app versions if available on the marketplace
 ----
 
-The user running the update command, which will likely be your webserver
-user, needs write permission for the `/apps` folder. If they don’t have
-write permission, the command may report that the update was successful,
-but it may silently fail.
+NOTE: The user running the update command, which will likely be your webserver user, needs write permission for the `/apps` folder. If they don’t have write permission, the command may report that the update was successful, but it may silently fail.
 
-These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
+NOTE: These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [[install-an-application]]
 Install an Application
@@ -1799,10 +1769,7 @@ Ransomware Protection
 Use these commands to help users recover from a Ransomware attack. You
 can find more information about the application in the xref:enterprise/ransomware-protection.adoc[Ransomware protection documentation].
 
-______________________________________________________________________________________________________________________
-Ransomware Protection (which is an Enterprise app) needs to be installed
-and enabled to be able to use these commands.
-______________________________________________________________________________________________________________________
+NOTE: Ransomware Protection (which is an Enterprise app) needs to be installed and enabled to be able to use these commands.
 
 ....
 occ ransomguard:scan <timestamp> <user>     Report all changes in a user's account, starting from timestamp.
@@ -1839,10 +1806,7 @@ sudo -u www-data php occ sharing:cleanup-remote-storages
 
 You can also set it up to run as xref:background-jobs-selector[a background job].
 
-________________________________________________________________________________________________
-These commands are not available in
-single-user (maintenance) mode <maintenance_commands_label>.
-________________________________________________________________________________________________
+NOTE: These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [[shibboleth-modes-enterprise-edition-only]]
 Shibboleth Modes (Enterprise Edition only)
@@ -1856,18 +1820,13 @@ Shibboleth Modes (Enterprise Edition only)
 shibboleth:mode [mode]
 ----
 
-__________________________________________________________________________________________________________
-These commands are only available when the ``Shibboleth user backend''
-app (`user_shibboleth`) is enabled.
-__________________________________________________________________________________________________________
+NOTE: These commands are only available when the ``Shibboleth user backend'' app (`user_shibboleth`) is enabled.
 
 [[trashbin]]
 Trashbin
 --------
 
-________________________________________________________________________________________________________________________________________________________________________________________________
-These commands are only available when the ``Deleted files'' app (`files_trashbin`) is enabled. These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
-________________________________________________________________________________________________________________________________________________________________________________________________
+NOTE: These commands are only available when the ``Deleted files'' app (`files_trashbin`) is enabled. These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [source,console]
 ----
@@ -2515,7 +2474,7 @@ Usage:
 upgrade [options]
 ----
 
-________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+....
 Options:::
   –no-app-disable Skips the disable of third party apps
 -h, –help Display this help message::
@@ -2528,7 +2487,7 @@ Options:::
 Help:::
   run upgrade routines after installation of a new release. The release
   has to be installed before.
-________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+....
 
 When you are performing an update or upgrade on your ownCloud server
 (see the Maintenance section of this manual), it is better to use `occ`
@@ -2622,7 +2581,7 @@ Use the following command to enable the user again:
 sudo -u www-data php occ user:enable <username>
 ....
 
-Once users are disabled, their connected browsers will be disconnected.
+NOTE: Once users are disabled, their connected browsers will be disconnected.
 
 [[finding-inactive-users]]
 Finding Inactive Users

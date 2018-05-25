@@ -94,8 +94,7 @@ server {
 }
 ----
 
-Commenting the `include` directive is necessary, because the certificate
-files currently do not exist.
+NOTE: Commenting the `include` directive is necessary, because the certificate files currently do not exist.
 
 [[test-and-enable-your-nginx-configuration]]
 Test and enable your NGINX configuration

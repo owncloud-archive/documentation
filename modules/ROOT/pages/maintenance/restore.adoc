@@ -37,8 +37,7 @@ use whatever method you are accustomed to.
 Restore Database
 ----------------
 
-This guide assumes that your previous backup is called
-``owncloud-dbbackup.bak''
+NOTE: This guide assumes that your previous backup is called ``owncloud-dbbackup.bak``.
 
 [[mysql]]
 MySQL

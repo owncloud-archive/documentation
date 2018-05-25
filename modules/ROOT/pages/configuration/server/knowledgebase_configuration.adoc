@@ -20,5 +20,4 @@ If you want to disable the ownCloud help menu item you can use the
   "knowledgebaseenabled" => true,
 ....
 
-Disabling the help menu item might increase the number of support
-requests you have to answer in the future
+NOTE: Disabling the help menu item might increase the number of support requests you have to answer in the future.

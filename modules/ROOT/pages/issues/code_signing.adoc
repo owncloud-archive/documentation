@@ -61,7 +61,7 @@ top of your ownCloud Web interface:
 
 image:/owncloud-docs/_images/issues/code-integrity-notification.png[Code integrity warning banner.]
 
-The yellow banner is only shown for admin users.
+NOTE: The yellow banner is only shown for admin users.
 
 Clicking on this link will take you to your ownCloud admin page, which
 provides the following options:
@@ -197,8 +197,7 @@ For other means on how to receive support please take a look at
 https://owncloud.org/support/. After fixing these problems verify by
 clicking ``Rescan…''.
 
-When using a FTP client to upload those files make sure it is using the
-`Binary` transfer mode instead of the `ASCII` transfer mode.
+NOTE: When using a FTP client to upload those files make sure it is using the `Binary` transfer mode instead of the `ASCII` transfer mode.
 
 [[rescans]]
 Rescans

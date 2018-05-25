@@ -84,18 +84,10 @@ You can configure the logging level to automatically increase to `debug`
 when the first condition inside a condition block is met. All conditions
 are optional !
 
-_______________________________________________________________________________________________
-* `shared_secret`: A unique token. If a http(s) request parameter named
-`log_secret` is added::
-  to the request and set to this token, the condition is met.
-* `users`: If the current request is done by one of the specified
-users,::
-  this condition is met.
-* `apps`: If the log message is invoked by one of the specified apps,::
-  this condition is met.
-* `logfile`: The log message invoked gets redirected to this logfile::
-  when a condition above is met.
-_______________________________________________________________________________________________
+* `shared_secret`: A unique token. If a http(s) request parameter named `log_secret` is added to the request and set to this token, the condition is met.
+* `users`: If the current request is done by one of the specified users, this condition is met.
+* `apps`: If the log message is invoked by one of the specified apps, this condition is met.
+* `logfile`: The log message invoked gets redirected to this logfile when a condition above is met.
 
 Notes regarding the logfile key:
 

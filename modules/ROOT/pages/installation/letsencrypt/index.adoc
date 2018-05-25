@@ -72,10 +72,7 @@ To run Certbot use the following command:
 sudo /opt/letsencrypt/certbot-auto
 ....
 
-For the sake of simplicity, the path chosen for the installation is
-`/opt/letsencrypt`. You can use any path that fits your needs.
-
-Unless explicitly denied, Certbot will auto-update on each run.
+NOTE: For the sake of simplicity, the path chosen for the installation is `/opt/letsencrypt`. You can use any path that fits your needs. And unless explicitly denied, Certbot will auto-update on each run.
 
 As part of the first run, certbot-auto will install any missing
 dependencies.
@@ -91,14 +88,18 @@ These will add the repository, update Apt’s cache, and install Certbot.
 sudo apt-get install certbot
 ....
 
+[NOTE]
+====
 If you’re using a version of Ubuntu prior to 17.10, you may need to run
 the following commands before you can install Certbot:
 
-....
+[source,console]
+----
 sudo apt-get update
 sudo apt-get install software-properties-common
 sudo add-apt-repository ppa:certbot/certbot
-....
+----
+====
 
 To run Certbot use the following command:
 
@@ -109,10 +110,7 @@ sudo /usr/bin/certbot
 sudo certbot
 ....
 
-Depending on how you installed Let’s Encrypt, certbot may also be named
-`letsencrypt` or `certbot-auto`. However, this guide will refer to it as
-`certbot`. Please bear that in mind, and update the ../examples and
-scripts used in this guide to reflect your Certbot installation.
+NOTE: Depending on how you installed Let’s Encrypt, certbot may also be named `letsencrypt` or `certbot-auto`. However, this guide will refer to it as `certbot`. Please bear that in mind, and update the ../examples and scripts used in this guide to reflect your Certbot installation.
 
 [[updating-certbot]]
 Updating Certbot
@@ -176,7 +174,7 @@ to `your-domain-name.com.sh`.
 * Make all files executable except `cli.ini` by running
 `sudo chmod +x <script-name>`.
 
-All scripts have to be executed with `sudo`.
+NOTE: All scripts have to be executed with `sudo`.
 
 ....
 cd /etc/letsencrypt
@@ -218,7 +216,7 @@ This script:
 * Reloads the web server configuration automatically if a certificate
 has been renewed.
 
-It is intended for use via Cron.
+NOTE: It is intended for use via Cron.
 
 [[delete.sh]]
 delete.sh
@@ -240,8 +238,7 @@ is taken for naming the directories created by Certbot.
 such as `mydom.tld`, `www.mydom.tld`, and `sub.mydom.tld`, by creating
 different scripts. You can see an example script here below:
 
-You can enable the `--dry-run` option which does a test run of the
-client only.
+NOTE: You can enable the `--dry-run` option which does a test run of the client only.
 
 [[create-an-ssl-certificate]]
 Create an SSL certificate
@@ -380,7 +377,7 @@ following command to edit the job list.
 sudo crontab -e
 ....
 
-It is essential to use `sudo` to derive proper permissions.
+CAUTION: It is essential to use `sudo` to derive proper permissions.
 
 Then, add the following at the end of the existing configuration:
 
@@ -391,8 +388,7 @@ Then, add the following at the end of the existing configuration:
 After you save and exit the file, the new job will have been added to
 the Cron job scheduler.
 
-If you want to use own values, you can check them at
-https://crontab.guru[crontab.guru] or modify the script for other
+NOTE: If you want to use own values, you can check them at https://crontab.guru[crontab.guru] or modify the script for other
 options.
 
 [[add-extra-domains-to-the-certificate]]

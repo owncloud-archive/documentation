@@ -18,9 +18,7 @@ unwanted behavior. In general, however, it is recommended to keep the
 `php.ini` settings at their defaults, except when you know exactly why
 the change is required, and its implications.
 
-Keep in mind that, changes to `php.ini` may have to be configured in
-more than one ini file. This can be the case, for example, for the
-`date.timezone` setting.
+NOTE: Keep in mind that, changes to `php.ini` may have to be configured in more than one ini file. This can be the case, for example, for the `date.timezone` setting.
 
 [[php.ini---used-by-the-web-server]]
 php.ini - Used by the Web server
@@ -100,7 +98,7 @@ session files for each application should always be stored in a location
 specific to that application, and never stored collectively with any
 other.
 
-This is only relevant if you’re using PHP 5.x.
+NOTE: This is only relevant if you’re using PHP 5.x.
 
 [[post_max_size]]
 post_max_size
@@ -109,9 +107,7 @@ post_max_size
 Please ensure that you have `post_max_size` configured with _at least_
 the minimum amount of memory for use with ownCloud, which is 512 MB.
 
-Please be careful when you set this value if you use the byte value
-shortcut as it is very specific. Use K for kilobyte, M for megabyte and
-G for gigabyte. KB, MB, and GB *do not work!*
+NOTE: Please be careful when you set this value if you use the byte value shortcut as it is very specific. Use K for kilobyte, M for megabyte and G for gigabyte. KB, MB, and GB *do not work!*
 
 [[realpath_cache_size]]
 realpath_cache_size
@@ -137,9 +133,7 @@ With the assumption of 112 bytes per file path needed, this would allow
 the cache to hold around 37.000 items with a cache size of 4096K (4M),
 but only about a hundred entries for a cache size of 16 KB.
 
-It’s a good rule of thumb to always have a realpath cache that can hold
-entries for all your files paths in memory. If you use symlink
-deployment, then set it to double or triple the amount of files.
+NOTE: It’s a good rule of thumb to always have a realpath cache that can hold entries for all your files paths in memory. If you use symlink deployment, then set it to double or triple the amount of files.
 
 The easiest way to get the quantity of PHP files is to use cloc, which
 can be installed by running `sudo apt-get install cloc`. The cloc

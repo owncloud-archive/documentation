@@ -19,8 +19,7 @@ matches all of the conditions, in at least one rule set, then the
 request is blocked by the firewall. Otherwise, the request is allowed by
 the firewall.
 
-The File Firewall app cannot lock out administrators from the web
-interface when rules are misconfigured.
+NOTE: The File Firewall app cannot lock out administrators from the web interface when rules are misconfigured.
 
 [[using-the-file-firewall]]
 Using the File Firewall
@@ -136,9 +135,7 @@ both the support and the qa-team you could write your rule like this:
 Regular Expression > ^(support|qa-team)$ > is > User group
 ----
 
-We do not recommend modifying the configuration values directly in your
-`config.php`. These use JSON encoding, so the values are difficult to
-read and a single typo will break all of your rules.
+CAUTION: We do not recommend modifying the configuration values directly in your `config.php`. These use JSON encoding, so the values are difficult to read and a single typo will break all of your rules.
 
 [[controlling-access-to-folders]]
 Controlling Access to Folders

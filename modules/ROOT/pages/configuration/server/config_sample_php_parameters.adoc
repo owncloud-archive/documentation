@@ -7,11 +7,7 @@ ownCloud, along with example or default values. This document provides a
 more detailed reference. Most options are configurable on your Admin
 page, so it is usually not necessary to edit `config/config.php`.
 
-The installer creates a configuration containing the essential
-parameters. Only manually add configuration parameters to
-`config/config.php` if you need to use a special value for a parameter.
-*Do not copy everything from* `config/config.sample.php` *. Only enter
-the parameters you wish to modify!*
+NOTE: The installer creates a configuration containing the essential parameters. Only manually add configuration parameters to `config/config.php` if you need to use a special value for a parameter. *Do not copy everything from* `config/config.sample.php` *. Only enter the parameters you wish to modify!*
 
 ownCloud supports loading configuration parameters from multiple files.
 You can add arbitrary files ending with .config.php in the config/
@@ -28,6 +24,7 @@ Default Parameters
 These parameters are configured by the ownCloud installer, and are
 required for your ownCloud server to operate.
 
+[source,php]
 ....
 'instanceid' => '',
 ....
@@ -38,8 +35,12 @@ and you should never use it because it will not work. A valid
 `instanceid` is created when you install ownCloud. Needs to start with a
 letter.
 
+[source,php]
+....
 `instanceid' => `d3c944a9a',
+....
 
+[source,php]
 ....
 'passwordsalt' => '',
 ....
@@ -49,12 +50,12 @@ installer. (There are also per-user salts.) If you lose this salt you
 lose all your passwords. This example is for documentation only, and you
 should never use it.
 
+[source,php]
 ....
-'trusted_domains' =>
-  array (
-    'demo.example.org',
-    'otherdomain.example.org',
-  ),
+'trusted_domains' => [
+  'demo.example.org',
+  'otherdomain.example.org',
+],
 ....
 
 Your list of trusted domains that users can log into. Specifying trusted
@@ -63,6 +64,7 @@ performs necessary security checks. Please consider that for backend
 processes like background jobs or occ commands, the url parameter in key
 `overwrite.cli.url` is used. For more details please see that key.
 
+[source,php]
 ....
 'cors.allowed-domains' => [
     'https://foo.example.org',
@@ -72,6 +74,7 @@ processes like background jobs or occ commands, the url parameter in key
 The global list of CORS domains. All users can use tools running CORS
 requests from the listed domains.
 
+[source,php]
 ....
 'datadirectory' => '/var/www/owncloud/data',
 ....
@@ -81,6 +84,7 @@ directory. The SQLite database is also stored here, when you use SQLite.
 
 (SQLite is not available in ownCloud Enterprise Edition)
 
+[source,php]
 ....
 'version' => '',
 ....
@@ -88,6 +92,7 @@ directory. The SQLite database is also stored here, when you use SQLite.
 The current version number of your ownCloud installation. This is set up
 during installation and update, so you shouldn’t need to change it.
 
+[source,php]
 ....
 'version.hide' => false,
 ....
@@ -96,6 +101,7 @@ While hardening an ownCloud instance hiding the version information in
 status.php can be a legitimate step. Please consult the documentation
 before enabling this.
 
+[source,php]
 ....
 'show_server_hostname' => false,
 ....
@@ -103,6 +109,7 @@ before enabling this.
 Optionally, show the hostname of the server in status.php. Defaults to
 hidden
 
+[source,php]
 ....
 'dbtype' => 'sqlite',
 ....
@@ -110,12 +117,14 @@ hidden
 Identifies the database used with this installation. See also config
 option `supportedDatabases`
 
-Available:::
-  * sqlite (SQLite3 - Not in Enterprise Edition)
-  * mysql (MySQL/MariaDB)
-  * pgsql (PostgreSQL)
-  * oci (Oracle - Enterprise Edition Only)
+Available::
 
+  * `sqlite` (SQLite3 - Not in Enterprise Edition)
+  * `mysql` (MySQL/MariaDB)
+  * `pgsql` (PostgreSQL)
+  * `oci` (Oracle - Enterprise Edition Only)
+
+[source,php]
 ....
 'dbhost' => '',
 ....
@@ -125,6 +134,7 @@ Your host server name, for example `localhost`, `hostname`,
 `hostname:####`; to specify a Unix socket use
 `localhost:/path/to/socket`.
 
+[source,php]
 ....
 'dbname' => 'owncloud',
 ....
@@ -132,6 +142,7 @@ Your host server name, for example `localhost`, `hostname`,
 The name of the ownCloud database, which is set during installation. You
 should not need to change this.
 
+[source,php]
 ....
 'dbuser' => '',
 ....
@@ -140,6 +151,7 @@ The user that ownCloud uses to write to the database. This must be
 unique across ownCloud instances using the same SQL database. This is
 set up during installation, so you shouldn’t need to change it.
 
+[source,php]
 ....
 'dbpassword' => '',
 ....
@@ -147,12 +159,14 @@ set up during installation, so you shouldn’t need to change it.
 The password for the database user. This is set up during installation,
 so you shouldn’t need to change it.
 
+[source,php]
 ....
 'dbtableprefix' => '',
 ....
 
 Prefix for the ownCloud tables in the database.
 
+[source,php]
 ....
 'installed' => false,
 ....
@@ -181,6 +195,7 @@ User Experience
 These optional parameters control some aspects of the user interface.
 Default values, where present, are shown.
 
+[source,php]
 ....
 'default_language' => 'en_GB',
 ....
@@ -192,6 +207,7 @@ login or shared items. User’s language preferences configured under
 ``personal -> language'' override this setting after they have logged
 in.
 
+[source,php]
 ....
 'defaultapp' => 'files',
 ....
@@ -203,6 +219,7 @@ so if the first app is not enabled for a user then ownCloud will try the
 second one, and so on. If no enabled apps are found it defaults to the
 Files app.
 
+[source,php]
 ....
 'knowledgebaseenabled' => true,
 ....
@@ -210,6 +227,7 @@ Files app.
 `true` enables the Help menu item in the user menu (top right of the
 ownCloud Web interface). `false` removes the Help item.
 
+[source,php]
 ....
 'enable_avatars' => true,
 ....
@@ -218,6 +236,8 @@ ownCloud Web interface). `false` removes the Help item.
 page, on user’s Personal pages and are used by some apps (contacts,
 mail, etc). `false` disables them.
 
+
+[source,php]
 ....
 'allow_user_to_change_display_name' => true,
 ....
@@ -225,6 +245,8 @@ mail, etc). `false` disables them.
 `true` allows users to change their display names (on their Personal
 pages), and `false` prevents them from changing their display names.
 
+
+[source,php]
 ....
 'remember_login_cookie_lifetime' => 60*60*24*15,
 ....
@@ -233,6 +255,7 @@ Lifetime of the remember login cookie, which is set when the user clicks
 the `remember` checkbox on the login screen. The default is 15 days,
 expressed in seconds.
 
+[source,php]
 ....
 'session_lifetime' => 60 * 60 * 24,
 ....
@@ -240,6 +263,7 @@ expressed in seconds.
 The lifetime of a session after inactivity; the default is 24 hours,
 expressed in seconds.
 
+[source,php]
 ....
 'session_keepalive' => true,
 ....
@@ -250,6 +274,7 @@ UI.
 Enabling this sends a ``heartbeat'' to the server to keep it from timing
 out.
 
+[source,php]
 ....
 'token_auth_enforced' => false,
 ....
@@ -262,22 +287,30 @@ enhanced security. Users have to generate special app-passwords (tokens)
 for their apps or clients in their personal settings which are further
 used for app or client authentication. Browser logon is not affected.
 
+[source,php]
 ....
 'login.alternatives' => [],
 ....
 
 Allows to specify additional login buttons on the logon screen for e.g.
-SSO integration::
-  `login.alternatives' => [;;
-    [`href' =>
-    `https://www.testshib.org/Shibboleth.sso/ProtectNetwork?target=https%3A%2F%2Fmy.owncloud.tld%2Flogin%2Fsso-saml%2F',
-    `name' => `ProtectNetwork', `img' => `/img/PN_sign-in.gif'], [`href'
-    =>
-    `https://www.testshib.org/Shibboleth.sso/OpenIdP.org?target=https%3A%2F%2Fmy.owncloud.tld%2Flogin%2Fsso-saml%2F',
-    `name' => `OpenIdP.org', `img' => `/img/openidp.png'],
-  +
-  ]
 
+[source,php]
+....
+SSO integration: 'login.alternatives' => [
+    [
+        'href' => 'https://www.testshib.org/Shibboleth.sso/ProtectNetwork?target=https%3A%2F%2Fmy.owncloud.tld%2Flogin%2Fsso-saml%2F',
+        'name' => 'ProtectNetwork', 
+        'img' => '/img/PN_sign-in.gif'
+    ], 
+    [
+        'href' => 'https://www.testshib.org/Shibboleth.sso/OpenIdP.org?target=https%3A%2F%2Fmy.owncloud.tld%2Flogin%2Fsso-saml%2F',
+        'name' => 'OpenIdP.org', 
+        'img' => '/img/openidp.png'
+    ],
+]
+....
+
+[source,php]
 ....
 'csrf.disabled' => false,
 ....
@@ -289,8 +322,9 @@ e.g., running F5 ASM. In these cases the built-in mechanism is not
 needed and can be disabled. Generally speaking, however, this config
 switch should be left unchanged.
 
-WARNING: leave this as is if you’re not sure what it does
+WARNING: Leave this as is if you’re not sure what it does.
 
+[source,php]
 ....
 'skeletondirectory' => '/path/to/owncloud/core/skeleton',
 ....
@@ -299,19 +333,21 @@ The directory where the skeleton files are located. These files will be
 copied to the data directory of new users. Leave empty to not copy any
 skeleton files.
 
+[source,php]
 ....
-'user_backends' => array(
-    array(
+'user_backends' => [
+    [
         'class' => 'OC_User_IMAP',
-        'arguments' => array('{imap.gmail.com:993/imap/ssl}INBOX')
-    )
-),
+        'arguments' => ['{imap.gmail.com:993/imap/ssl}INBOX']
+    ]
+],
 ....
 
 The `user_backends` app (which needs to be enabled first) allows you to
 configure alternate authentication backends. Supported backends are:
 IMAP (OC_User_IMAP), SMB (OC_User_SMB), and FTP (OC_User_FTP).
 
+[source,php]
 ....
 'lost_password_link' => 'https://example.org/link/to/password/reset',
 ....
@@ -321,20 +357,18 @@ read-only user backend like LDAP), you can specify a custom link, where
 the user is redirected to, when clicking the ``reset password'' link
 after a failed login-attempt.
 
-In case you do not want to provide any link, replace the url with
-`disabled'
+In case you do not want to provide any link, replace the URL with `disabled'
 
+[source,php]
 ....
 'accounts.enable_medial_search' => true,
 ....
 
-Allow medial search on account properties like display name, user id,
-email, and other search terms. Allows finding `Alice' when searching for
-`lic'.
+Allow medial search on account properties like display name, user id, email, and other search terms. 
+Allows finding `Alice' when searching for `lic'.
+May slow down user search. Disable this if you encounter slow username search in the sharing dialog.
 
-May slow down user search. Disable this if you encounter slow username
-search in the sharing dialog.
-
+[source,php]
 ....
 'user.search_min_length' => 4,
 ....
@@ -355,6 +389,7 @@ Mail Parameters
 These configure the email settings for ownCloud notifications and
 password resets.
 
+[source,php]
 ....
 'mail_domain' => 'example.com',
 ....
@@ -363,6 +398,7 @@ The return address that you want to appear on emails sent by the
 ownCloud server, for example `oc-admin@example.com`, substituting your
 own domain, of course.
 
+[source,php]
 ....
 'mail_from_address' => 'owncloud',
 ....
@@ -370,12 +406,14 @@ own domain, of course.
 FROM address that overrides the built-in `sharing-noreply` and
 `lostpassword-noreply` FROM addresses.
 
+[source,php]
 ....
 'mail_smtpdebug' => false,
 ....
 
 Enable SMTP class debugging.
 
+[source,php]
 ....
 'mail_smtpmode' => 'sendmail',
 ....
@@ -395,6 +433,8 @@ on the server, with `/usr/sbin/sendmail` installed on your Unix system.
 For `qmail` the binary is /var/qmail/bin/sendmail, and it must be
 installed on your Unix system.
 
+
+[source,php]
 ....
 'mail_smtphost' => '127.0.0.1',
 ....
@@ -404,6 +444,8 @@ server host. This may contain multiple hosts separated by a semi-colon.
 If you need to specify the port number append it to the IP address
 separated by a colon, like this: `127.0.0.1:24`.
 
+
+[source,php]
 ....
 'mail_smtpport' => 25,
 ....
@@ -539,8 +581,8 @@ After setting this value run occ maintenance:update:htaccess. Now, when
 the following conditions are met ownCloud URLs won’t contain
 `index.php`:
 
-* mod_rewrite is installed
-* mod_env is installed
+* `mod_rewrite` is installed
+* `mod_env` is installed
 
 ....
 'proxy' => '',
@@ -582,22 +624,17 @@ ownCloud 8.1 and before.
 
 Available values:
 
-* `auto`::
-  default setting. Keeps files and folders in the deleted files for up
+* `auto`: default setting. Keeps files and folders in the deleted files for up
   to 30 days, automatically deleting them (at any time) if space is
   needed. Note: files may not be removed if space is not required.
-* `D, auto`::
-  keeps files and folders in the trash bin for D+ days, delete anytime
+* `D, auto`: keeps files and folders in the trash bin for D+ days, delete anytime
   if space needed (note: files may not be deleted if space is not
   needed)
-* `auto, D`::
-  delete all files in the trash bin that are older than D days
+* `auto, D`: delete all files in the trash bin that are older than D days
   automatically, delete other files anytime if space needed
-* `D1, D2`::
-  keep files and folders in the trash bin for at least D1 days and
+* `D1, D2`: keep files and folders in the trash bin for at least D1 days and
   delete when exceeds D2 days
-* `disabled`::
-  trash bin auto clean disabled, files and folders will be kept forever
+* `disabled`: trash bin auto clean disabled, files and folders will be kept forever
 
 ....
 'trashbin_purge_limit' => 50,
@@ -630,19 +667,19 @@ ownCloud 8.1 and before.
 
 Available values:
 
-* `auto`::
+* `auto`:
   default setting. Automatically expire versions according to expire
   rules. Please refer to ../configuration/files/file_versioning for more
   information.
-* `D, auto`::
+* `D, auto`:
   keep versions at least for D days, apply expire rules to all versions
   that are older than D days
-* `auto, D`::
+* `auto, D`:
   delete all versions that are older than D days automatically, delete
   other versions according to expire rules
-* `D1, D2`::
+* `D1, D2`:
   keep versions for at least D1 days and delete when exceeds D2 days
-* `disabled`::
+* `disabled`:
   versions auto clean disabled, versions will be kept forever
 
 [[owncloud-verifications]]
@@ -754,18 +791,18 @@ used as a dedicated parameter to the syslog logging facility anyway.
 
 ....
 'log.conditions' => [
-        [
-        'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-        'users' => ['user1'],
-        'apps' => ['files_texteditor'],
-        'logfile' => '/tmp/test.log'
-        ],
-        [
-        'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-        'users' => ['user1'],
-        'apps' => ['gallery'],
-        'logfile' => '/tmp/gallery.log'
-        ],
+    [
+      'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+      'users' => ['user1'],
+      'apps' => ['files_texteditor'],
+      'logfile' => '/tmp/test.log'
+    ],
+    [
+      'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+      'users' => ['user1'],
+      'apps' => ['gallery'],
+      'logfile' => '/tmp/gallery.log'
+    ],
 ],
 ....
 
@@ -773,20 +810,14 @@ Log condition for log level increase based on conditions. Once one of
 these conditions is met, the required log level is set to debug. This
 allows to debug specific requests, users or apps
 
-Supported conditions:::
-  * `shared_secret`: if a request parameter with the name log_secret is
-  set to;;
-    this value the condition is met
-  * `users`: if the current request is done by one of the specified
-  users,;;
-    this condition is met
-  * `apps`: if the log message is invoked by one of the specified
-  apps,;;
-    this condition is met
-  * `logfile`: the log message invoked by the specified apps get
-  redirected to;;
-    this logfile, this condition is met Note: Not applicable when using
-    syslog.
+Supported conditions::
+
+* `shared_secret`: if a request parameter with the name log_secret is set to `log_secret` this value the condition is met
+* `users`: if the current request is done by one of the specified users this condition is met
+* `apps`: if the log message is invoked by one of the specified apps this condition is met
+* `logfile`: the log message invoked by the specified apps get redirected to this logfile, this condition is met. 
+
+NOTE: Not applicable when using syslog.
 
 Defaults to an empty array.
 
@@ -827,33 +858,28 @@ Alternate Code Locations
 Some of the ownCloud code may be stored in alternate locations.
 
 ....
-'customclient_desktop' =>
-    'https://owncloud.org/install/#install-clients',
-'customclient_android' =>
-    'https://play.google.com/store/apps/details?id=com.owncloud.android',
-'customclient_ios' =>
-    'https://itunes.apple.com/us/app/owncloud/id543672169?mt=8',
+'customclient_desktop' => 'https://owncloud.org/install/#install-clients',
+'customclient_android' => 'https://play.google.com/store/apps/details?id=com.owncloud.android',
+'customclient_ios' => 'https://itunes.apple.com/us/app/owncloud/id543672169?mt=8',
 ....
 
 This section is for configuring the download links for ownCloud clients,
 as seen in the first-run wizard and on Personal pages.
 
+[source,php]
 ....
-'apps_paths' =>
-    array (
-      0 => 
-      array (
-        'path' => OC::$SERVERROOT.'/apps',
+'apps_paths' => [
+    [
+        'path' => OC:$SERVERROOT.'/apps',
         'url' => '/apps',
         'writable' => false,
-      ),
-      1 => 
-      array (
-        'path' => OC::$SERVERROOT.'/apps-external',
+    ],
+    [
+        'path' => OC:$SERVERROOT.'/apps-external',
         'url' => '/apps-external',
         'writable' => true,
-      ),
-    ),
+    ],
+],
 ....
 
 If you want to store apps in a custom directory instead of ownCloud’s
@@ -864,14 +890,14 @@ to add a new associative array that contains three elements. These are:
 * `url` The request path to that folder relative to the ownCloud web
 root, prefixed with /.
 * `writable` Whether users can install apps in that folder. After the
-configuration is added,::
+configuration is added,:
   new apps will only install in a directory where writable is set to
   true.
 
 The configuration example shows how to add a second directory, called
 `/apps-external`. Here, new apps and updates are only writen to the
 `/apps-external` directory. This eases upgrade procedures of owncloud
-where shipped apps are delivered to apps/ by default. `OC::$SERVERROOT`
+where shipped apps are delivered to apps/ by default. `OC:$SERVERROOT`
 points to the web root of your instance. Please see the Apps Management
 description on how to move custom apps properly.
 
@@ -945,7 +971,7 @@ custom path for LibreOffice/OpenOffice binary
 Use this if LibreOffice/OpenOffice requires additional arguments.
 
 ....
-'enabledPreviewProviders' => array(
+'enabledPreviewProviders' => [
     'OC\Preview\PNG',
     'OC\Preview\JPEG',
     'OC\Preview\GIF',
@@ -954,14 +980,14 @@ Use this if LibreOffice/OpenOffice requires additional arguments.
     'OC\Preview\MP3',
     'OC\Preview\TXT',
     'OC\Preview\MarkDown'
-),
+],
 ....
 
 Only register providers that have been explicitly enabled
 
 The following providers are enabled by default:
 
-_____________________
+....
 * OC\Preview\PNG
 * OC\Preview\JPEG
 * OC\Preview\GIF
@@ -970,12 +996,12 @@ _____________________
 * OC\Preview\MarkDown
 * OC\Preview\MP3
 * OC\Preview\TXT
-_____________________
+....
 
 The following providers are disabled by default due to performance or
 privacy concerns:
 
-_________________________
+....
 * OC\Preview\Illustrator
 * OC\Preview\Movie
 * OC\Preview\MSOffice2003
@@ -989,22 +1015,18 @@ _________________________
 * OC\Preview\SVG
 * OC\Preview\TIFF
 * OC\Preview\Font
-_________________________
-
-Troubleshooting steps for the MS Word previews are available at the
-../configuration/files/collaborative_documents_configuration section of
-the Administrators Manual.
+....
 
 The following providers are not available in Microsoft Windows:
 
-_________________________
+....
 * OC\Preview\Movie
 * OC\Preview\MSOfficeDoc
 * OC\Preview\MSOffice2003
 * OC\Preview\MSOffice2007
 * OC\Preview\OpenDocument
 * OC\Preview\StarOffice
-_________________________
+....
 
 [[comments]]
 Comments
@@ -1057,14 +1079,16 @@ users who are not in the `admin` group.
 SSL
 ---
 
+[source,php]
 ....
-'openssl' => array(
+'openssl' => [
     'config' => '/absolute/location/of/openssl.cnf',
-),
+],
 ....
 
 Extra SSL options to be used for configuration.
 
+[source,php]
 ....
 'enable_certificate_management' => false,
 ....
@@ -1092,6 +1116,7 @@ packages. Use this for single user environment for all caches.
 * Use Redis or Memcached for distributed environments. For the local
 cache (you can configure two) take APCu.
 
+[source,php]
 ....
 'memcache.local' => '\OC\Memcache\APCu',
 ....
@@ -1100,6 +1125,7 @@ Memory caching backend for locally stored data
 
 * Used for host-specific data, e.g. file paths
 
+[source,php]
 ....
 'memcache.distributed' => '\OC\Memcache\Memcached',
 ....
@@ -1107,8 +1133,9 @@ Memory caching backend for locally stored data
 Memory caching backend for distributed data
 
 * Used for installation-specific data, e.g. database caching
-* If unset, defaults to the value of memcache.local
+* If unset, defaults to the value of `memcache.local`
 
+[source,php]
 ....
 'redis' => [
     'host' => 'localhost', // can also be a unix domain socket: '/tmp/redis.sock'
@@ -1125,6 +1152,7 @@ server configuration.
 For enhanced security it is recommended to configure Redis to require a
 password. See http://redis.io/topics/security for more information.
 
+[source,php]
 ....
 'redis.cluster' => [
     'seeds' => [ // provide some/all of the cluster servers to bootstrap discovery, port required
@@ -1133,7 +1161,7 @@ password. See http://redis.io/topics/security for more information.
     ],
     'timeout' => 0.0,
     'read_timeout' => 0.0,
-    'failover_mode' => \RedisCluster::FAILOVER_DISTRIBUTE
+    'failover_mode' => \RedisCluster:FAILOVER_DISTRIBUTE
 ],
 ....
 
@@ -1145,53 +1173,53 @@ single server configuration above, and perform HA on the hostname.
 Redis Cluster support requires the php module phpredis in version 3.0.0
 or higher.
 
-Available failover modes:::
-  * \RedisCluster::FAILOVER_NONE - only send commands to master nodes
-  (default)
-  * \RedisCluster::FAILOVER_ERROR - failover to slaves for read commands
-  if master is unavailable
-  * \RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read
-  commands across master and slaves
+Available failover modes::
 
+  * `\RedisCluster:FAILOVER_NONE` - only send commands to master nodes (default)
+  * `\RedisCluster:FAILOVER_ERROR` - failover to slaves for read commands if master is unavailable
+  * `\RedisCluster:FAILOVER_DISTRIBUTE` - randomly distribute read commands across master and slaves
+
+[source,php]
 ....
-'memcached_servers' => array(
+'memcached_servers' => [
     // hostname, port and optional weight. Also see:
     // http://www.php.net/manual/en/memcached.addservers.php
     // http://www.php.net/manual/en/memcached.addserver.php
-    array('localhost', 11211),
+    ['localhost', 11211],
     //array('other.host.local', 11211),
-),
+],
 ....
 
 Server details for one or more memcached servers to use for memory
 caching.
 
+[source,php]
 ....
-'memcached_options' => array(
+'memcached_options' => [
     // Set timeouts to 50ms
-    \Memcached::OPT_CONNECT_TIMEOUT => 50,
-    \Memcached::OPT_RETRY_TIMEOUT =>   50,
-    \Memcached::OPT_SEND_TIMEOUT =>    50,
-    \Memcached::OPT_RECV_TIMEOUT =>    50,
-    \Memcached::OPT_POLL_TIMEOUT =>    50,
+    \Memcached:OPT_CONNECT_TIMEOUT => 50,
+    \Memcached:OPT_RETRY_TIMEOUT =>   50,
+    \Memcached:OPT_SEND_TIMEOUT =>    50,
+    \Memcached:OPT_RECV_TIMEOUT =>    50,
+    \Memcached:OPT_POLL_TIMEOUT =>    50,
 
     // Enable compression
-    \Memcached::OPT_COMPRESSION =>          true,
+    \Memcached:OPT_COMPRESSION =>          true,
 
     // Turn on consistent hashing
-    \Memcached::OPT_LIBKETAMA_COMPATIBLE => true,
+    \Memcached:OPT_LIBKETAMA_COMPATIBLE => true,
 
     // Enable Binary Protocol
-    \Memcached::OPT_BINARY_PROTOCOL =>      true,
+    \Memcached:OPT_BINARY_PROTOCOL =>      true,
 
     // Binary serializer vill be enabled if the igbinary PECL module is available
-    //\Memcached::OPT_SERIALIZER => \Memcached::SERIALIZER_IGBINARY,
-),
+    //\Memcached:OPT_SERIALIZER => \Memcached:SERIALIZER_IGBINARY,
+],
 ....
 
-Connection options for memcached, see
-http://apprize.info/php/scaling/15.html
+Connection options for memcached, see http://apprize.info/php/scaling/15.html.
 
+[source,php]
 ....
 'cache_path' => '',
 ....
@@ -1201,6 +1229,7 @@ Location of the cache folder, defaults to `data/$user/cache` where
 `$cache_path/$user` where `$cache_path` is the configured cache
 directory and `$user` is the user.
 
+[source,php]
 ....
 'cache_chunk_gc_ttl' => 86400, // 60*60*24 = 1 day
 ....
@@ -1210,6 +1239,7 @@ garbage collection (in seconds). Increase this value if users have
 issues uploading very large files via the ownCloud Client as upload
 isn’t completed within one day.
 
+[source,php]
 ....
 'dav.chunk_base_dir' => '',
 ....
@@ -1225,6 +1255,7 @@ Sharing
 
 Global settings for Sharing
 
+[source,php]
 ....
 'sharing.managerFactory' => '\OC\Share20\ProviderFactory',
 ....
@@ -1233,6 +1264,7 @@ Replaces the default Share Provider Factory. This can be utilized if own
 or 3rdParty Share Providers are used that – for instance – use the
 filesystem instead of the database to keep the share information.
 
+[source,php]
 ....
 'sharing.federation.allowHttpFallback' => false,
 ....
@@ -1244,24 +1276,25 @@ instead of hard forcing HTTPS
 All other configuration options
 -------------------------------
 
+[source,php]
 ....
-'dbdriveroptions' => array(
-    PDO::MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
-    PDO::MYSQL_ATTR_INIT_COMMAND => 'SET wait_timeout = 28800'
-),
+'dbdriveroptions' => [
+    PDO:MYSQL_ATTR_SSL_CA => '/file/path/to/ca_cert.pem',
+    PDO:MYSQL_ATTR_INIT_COMMAND => 'SET wait_timeout = 28800'
+],
 ....
 
 Additional driver options for the database connection, eg. to enable SSL
 encryption in MySQL or specify a custom wait timeout on a cheap hoster.
 
+[source,php]
 ....
 'sqlite.journal_mode' => 'DELETE',
 ....
 
-sqlite3 journal mode can be specified using this configuration parameter
--can be `WAL' or `DELETE' see for more details
-https://www.sqlite.org/wal.html
+sqlite3 journal mode can be specified using this configuration parameter can be `WAL' or `DELETE' see for more details https://www.sqlite.org/wal.html
 
+[source,php]
 ....
 'mysql.utf8mb4' => false,
 ....
@@ -1283,35 +1316,39 @@ are needed:
 [mysqld] innodb_large_prefix=ON innodb_file_format=Barracuda
 innodb_file_per_table=ON
 
-Tables will be created with::
+Tables will be created with:
   * character set: utf8mb4
   * collation: utf8mb4_bin
   * row_format: compressed
 
 See:
-https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
-https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
-https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
-http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
-http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
 
+* https://dev.mysql.com/doc/refman/5.7/en/charset-unicode-utf8mb4.html
+* https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
+* https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
+* http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
+* http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
+
+[source,php]
 ....
-'supportedDatabases' => array(
+'supportedDatabases' => [
     'sqlite',
     'mysql',
     'pgsql',
     'oci',
-),
+],
 ....
 
 Database types that are supported for installation.
 
-Available:::
-  * sqlite (SQLite3 - Not in Enterprise Edition)
-  * mysql (MySQL)
-  * pgsql (PostgreSQL)
-  * oci (Oracle - Enterprise Edition Only)
+Available:
 
+  * `sqlite` (SQLite3 - Not in Enterprise Edition)
+  * `mysql` (MySQL)
+  * `pgsql` (PostgreSQL)
+  * `oci` (Oracle - Enterprise Edition Only)
+
+[source,php]
 ....
 'tempdirectory' => '/tmp/owncloudtemp',
 ....
@@ -1323,6 +1360,7 @@ streaming are in use.
 
 The Web server user must have write access to this directory.
 
+[source,php]
 ....
 'hashingCost' => 10,
 ....
@@ -1333,8 +1371,9 @@ Using a higher value requires more time and CPU power to calculate the
 hashes. As this number grows, the amount of work (typically CPU time or
 memory) necessary to compute the hash increases exponentially.
 
+[source,php]
 ....
-'blacklisted_files' => array('.htaccess'),
+'blacklisted_files' => ['.htaccess'],
 ....
 
 Blacklist a specific file or files and disallow the upload of files with
@@ -1342,12 +1381,12 @@ this name. `.htaccess` is blocked by default.
 
 WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
+[source,php]
 ....
-'excluded_directories' =>
-    array (
-        '.snapshot',
-        '~snapshot',
-    ),
+'excluded_directories' => [
+    '.snapshot',
+    '~snapshot',
+],
 ....
 
 Exclude specific directory names and disallow scanning, creating and
@@ -1359,26 +1398,26 @@ if found. Please see the documentation for details and examples. Use
 when the storage backend supports eg snapshot directories to be
 excluded. WARNING: USE THIS ONLY IF YOU KNOW WHAT YOU ARE DOING.
 
+[source,php]
 ....
-'integrity.excluded.files' =>
-    array (
-        '.DS_Store',
-        'Thumbs.db',
-        '.directory',
-        '.webapp',
-        '.htaccess',
-        '.user.ini',
-    ),
+'integrity.excluded.files' => [
+    '.DS_Store',
+    'Thumbs.db',
+    '.directory',
+    '.webapp',
+    '.htaccess',
+    '.user.ini',
+],
 ....
 
 Exclude files from the integrity checker command
 
+[source,php]
 ....
-'integrity.ignore.missing.app.signature' =>
-    array(
-        'app-id of app-1',
-        'app-id of theme-2',
-    ),
+'integrity.ignore.missing.app.signature' => [
+    'app-id of app-1',
+    'app-id of theme-2',
+],
 ....
 
 The list of apps that are allowed to have no signature.json. Besides
@@ -1388,12 +1427,14 @@ it´s app-id.
 
 The following example allows app-1 and theme-2 to have no signature.
 
+[source,php]
 ....
 'share_folder' => '/',
 ....
 
 Define a default folder for shared files and folders other than root.
 
+[source,php]
 ....
 'cipher' => 'AES-256-CFB',
 ....
@@ -1401,6 +1442,7 @@ Define a default folder for shared files and folders other than root.
 The default cipher for encrypting files. Currently AES-128-CFB and
 AES-256-CFB are supported.
 
+[source,php]
 ....
 'minimum.supported.desktop.version' => '2.2.4',
 ....
@@ -1415,6 +1457,7 @@ When changing this, note that older unsupported versions of the ownCloud
 desktop client may not function as expected, and could lead to permanent
 data loss for clients or other unexpected results.
 
+[source,php]
 ....
 'quota_include_external_storage' => false,
 ....
@@ -1422,6 +1465,7 @@ data loss for clients or other unexpected results.
 EXPERIMENTAL: option whether to include external storage in quota
 calculation, defaults to false.
 
+[source,php]
 ....
 'filesystem_check_changes' => 0,
 ....
@@ -1437,6 +1481,7 @@ to the filesystem
 1 -> Check each file or folder at most once per request, recommended for
 general use if outside changes might happen.
 
+[source,php]
 ....
 'part_file_in_storage' => true,
 ....
@@ -1447,6 +1492,7 @@ the part files in the root of the users folder which might be required
 to work with certain external storage setups that have limited rename
 capabilities.
 
+[source,php]
 ....
 'mount_file' => '/var/www/owncloud/data/mount.json',
 ....
@@ -1454,6 +1500,7 @@ capabilities.
 Where `mount.json` file should be stored, defaults to `data/mount.json`
 in the ownCloud directory.
 
+[source,php]
 ....
 'filesystem_cache_readonly' => false,
 ....
@@ -1461,6 +1508,7 @@ in the ownCloud directory.
 When `true`, prevent ownCloud from changing the cache due to changes in
 the filesystem for all storage.
 
+[source,php]
 ....
 'secret' => '',
 ....
@@ -1468,8 +1516,9 @@ the filesystem for all storage.
 Secret used by ownCloud for various purposes, e.g. to encrypt data. If
 you lose this string there will be data corruption.
 
+[source,php]
 ....
-'trusted_proxies' => array('203.0.113.45', '198.51.100.128'),
+'trusted_proxies' => ['203.0.113.45', '198.51.100.128'],
 ....
 
 List of trusted proxy servers
@@ -1477,8 +1526,9 @@ List of trusted proxy servers
 If you configure these also consider setting forwarded_for_headers which
 otherwise defaults to HTTP_X_FORWARDED_FOR (the X-Forwarded-For header).
 
+[source,php]
 ....
-'forwarded_for_headers' => array('HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR'),
+'forwarded_for_headers' => ['HTTP_X_FORWARDED', 'HTTP_FORWARDED_FOR'],
 ....
 
 Headers that should be trusted as client IP address in combination with
@@ -1490,6 +1540,7 @@ ownCloud, bypassing access controls and making logs useless!
 
 Defaults to `HTTP_X_FORWARED_FOR' if unset
 
+[source,php]
 ....
 'max_filesize_animated_gifs_public_sharing' => 10,
 ....
@@ -1501,6 +1552,7 @@ If the gif is bigger, it’ll show a static preview
 Value represents the maximum filesize in megabytes. Default is `10`. Set
 to `-1` for no limit.
 
+[source,php]
 ....
 'filelocking.enabled' => true,
 ....
@@ -1514,6 +1566,7 @@ time. Can help prevent side effects that would be caused by concurrent
 operations. Mainly relevant for very large installations with many users
 working with shared files.
 
+[source,php]
 ....
 'filelocking.ttl' => 3600,
 ....
@@ -1525,6 +1578,7 @@ Any lock older than this will be automatically cleaned up.
 If not set this defaults to either 1 hour or the php max_execution_time,
 whichever is higher.
 
+[source,php]
 ....
 'memcache.locking' => '\\OC\\Memcache\\Redis',
 ....
@@ -1534,18 +1588,21 @@ Memory caching backend for file locking
 Because most memcache backends can clean values without warning using
 redis is highly recommended to _avoid data loss_.
 
+[source,php]
 ....
 'upgrade.disable-web' => false,
 ....
 
 Disable the web based updater
 
+[source,php]
 ....
 'upgrade.automatic-app-update' => true,
 ....
 
 Automatic update of market apps, set to ``false'' to disable.
 
+[source,php]
 ....
 'debug' => false,
 ....
@@ -1556,6 +1613,7 @@ Only enable this for local development and not in production
 environments This will disable the minifier and outputs some additional
 debug information
 
+[source,php]
 ....
 'data-fingerprint' => '',
 ....
@@ -1569,6 +1627,7 @@ maintenance:data-fingerprint To set this to a new value.
 Updating/Deleting this value can make connected clients stall until the
 user has resolved conflicts.
 
+[source,php]
 ....
 'copied_sample_config' => true,
 ....
@@ -1579,6 +1638,7 @@ sample configuration. DO NOT ADD THIS SWITCH TO YOUR CONFIGURATION!
 If you, brave person, have read until here be aware that you should not
 modify _ANY_ settings in this file without reading the documentation.
 
+[source,php]
 ....
 'files_external_allow_create_new_local' => false,
 ....
@@ -1586,8 +1646,9 @@ modify _ANY_ settings in this file without reading the documentation.
 Set this property to true if you want to enable the files_external local
 mount Option.
 
-Default: false
+Default: `false`
 
+[source,php]
 ....
 'smb.logging.enable' => false,
 ....
@@ -1651,6 +1712,7 @@ SetEnv OC_dbname owncloud_database_name
 Nginx Web Server (php-fpm)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+[source,nginx]
 ....
 location / {
     fastcgi_param OC_dbname owncloud_database_name
@@ -1661,6 +1723,7 @@ location / {
 Command Line
 ~~~~~~~~~~~~
 
+[source,console]
 ....
 # export the variable into the environment before launching the Cron script
 export OC_dbname=owncloud_database_name php -d variables_order=EGPCS cron.php

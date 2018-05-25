@@ -1,8 +1,7 @@
 User Authentication with LDAP
 =============================
 
-Please check both the advanced and expert configurations carefully
-before using in production
+IMPORTANT: Please check both the advanced and expert configurations carefully before using in production.
 
 ownCloud ships with an LDAP application which allows LDAP users
 (including Active Directory) to appear in your ownCloud user listings.
@@ -11,9 +10,7 @@ so you don’t have to create separate ownCloud user accounts for them.
 You will manage their ownCloud group memberships, quotas, and sharing
 permissions just like any other ownCloud user.
 
-The PHP LDAP module is required. It is supplied by php7.1-ldap on
-Debian/Ubuntu and php-ldap on CentOS/Red Hat/Fedora. Please check for
-the correct version, based on your installation of PHP.
+NOTE: The PHP LDAP module is required. It is supplied by php7.1-ldap on Debian/Ubuntu and php-ldap on CentOS/Red Hat/Fedora. Please check for the correct version, based on your installation of PHP.
 
 The LDAP application supports:
 
@@ -29,9 +26,7 @@ server port number
 * Only read access to your LDAP (edit or delete of users on your LDAP is
 not supported)
 
-The LDAP app is not compatible with the
-`User backend using remote HTTP servers` app. You cannot use both of
-them at the same time.
+CAUTION: The LDAP app is not compatible with the `User backend using remote HTTP servers` app. You cannot use both of them at the same time.
 
 NOTE: A non-blocking or correctly configured https://selinuxproject.org/page/Main_Page[SELinux] setup is needed for the LDAP backend to work. Please refer to the xref:installation/selinux_configuration.adoc[SELinux Configuration].
 
@@ -67,11 +62,12 @@ Host:::
   **ldaps://** URI. If you enter the port number, it speeds up server
   detection.
  
-  Examples:
- 
-  * `directory.my-company.com`
-  * `ldaps://directory.my-company.com`
-  * `directory.my-company.com:9876`
+Examples:
+
+* `directory.my-company.com`
+* `ldaps://directory.my-company.com`
+* `directory.my-company.com:9876`
+
 Port:::
   The port on which to connect to the LDAP server. The field is disabled
   in the beginning of a new configuration. If the LDAP server is running
@@ -79,19 +75,22 @@ Port:::
   are using a non-standard port, ownCloud will attempt to detect it. If
   this fails you must enter the port number manually.
  
-  Example:
- 
-  * `389`
+Example:
+
+* `389`
+
 User DN:::
   The name as DN of a user who has permissions to do searches in the
   LDAP directory. Leave it empty for anonymous access. We recommend that
   you have a special LDAP system user for this.
  
-  Example:
- 
-  * `uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com`
+Example:
+
+* `uid=owncloudsystemuser,cn=sysusers,dc=my-company,dc=com`
+
 Password:::
   The password for the user given above. Empty for anonymous access.
+
 Base DN:::
   The base DN of LDAP, from where all users and groups can be reached.
   You may enter multiple base DNs, one per line. Base DNs for users and
@@ -100,9 +99,9 @@ Base DN:::
   User DN or the provided Host, and you must enter it manually if
   ownCloud does not detect it.
  
-  Example:
- 
-  * `dc=my-company,dc=com`
+Example:
+
+* `dc=my-company,dc=com`
 
 [[user-filter]]
 User Filter
@@ -129,11 +128,14 @@ Only from those groups:::
   allowed to appear in user listings in ownCloud. By default, no value
   will be selected. You may select multiple groups.
 
-  Group membership is configured by adding memberUid, uniqueMember or member attributes to an ldap group (see xref:group-member-association[Group Member association]) below. In order to efficiently look up the groups a user who is a member of the LDAP server must support a `memberof-overlay`. It allows using the virtual `memberOf` or `isMemberOf` attributes of an LDAP user in the user filter. If your LDAP server does not support the `memberof-overlay` in LDAP filters, the input field is disabled. Please contact your LDAP administrator.
+[NOTE] 
+====
+Group membership is configured by adding memberUid, uniqueMember or member attributes to an ldap group (see xref:group-member-association[Group Member association]) below. In order to efficiently look up the groups a user who is a member of the LDAP server must support a `memberof-overlay`. It allows using the virtual `memberOf` or `isMemberOf` attributes of an LDAP user in the user filter. If your LDAP server does not support the `memberof-overlay` in LDAP filters, the input field is disabled. Please contact your LDAP administrator.
 
-  * Active Directory uses https://msdn.microsoft.com/en-us/library/ms677943.aspx#memberOf[memberOf] and is enabled by default.
-  * OpenLDAP uses `memberOf`. https://www.openldap.org/doc/admin24/overlays.html#Reverse%20Group%20Membership%20Maintenance[Reverse Group Membership Maintenance] needs to be enabled.
-  * Oracle uses https://docs.oracle.com/cd/E29127_01/doc.111170/e28967/ismemberof-5dsat.htm[isMemberOf] and is enabled by default.
+* Active Directory uses https://msdn.microsoft.com/en-us/library/ms677943.aspx#memberOf[memberOf] and is enabled by default.
+* OpenLDAP uses `memberOf`. https://www.openldap.org/doc/admin24/overlays.html#Reverse%20Group%20Membership%20Maintenance[Reverse Group Membership Maintenance] needs to be enabled.
+* Oracle uses https://docs.oracle.com/cd/E29127_01/doc.111170/e28967/ismemberof-5dsat.htm[isMemberOf] and is enabled by default.
+====
 
 Edit raw filter instead:::
   Clicking on this text toggles the filter mode and you can enter the
@@ -183,19 +185,19 @@ Edit raw filter instead:::
   The `%uid` placeholder is replaced with the login name entered by the
   user upon login.
 
-  Examples:
+Examples:
 
-  * only username:
+* only username:
 
-  
-  (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com)(uid=%uid)
-  
+....
+(&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com)(uid=%uid)
+....
 
-  * username or email address:
+* username or email address:
 
-  
-  ((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
-  
+....
+((&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com)(|(uid=%uid)(mail=%uid)))
+....
 
 [[group-filter]]
 Group Filter
@@ -223,10 +225,10 @@ Edit raw filter instead:::
   Clicking on this text toggles the filter mode and you can enter the
   raw LDAP filter directly.
 
-  Example:
+Example:
 
-  * `objectClass=group`
-  * `objectClass=posixGroup`
+* `objectClass=group`
+* `objectClass=posixGroup`
 
 y groups found:::
   This tells you approximately how many groups will be available in
@@ -264,18 +266,18 @@ Backup (Replica) Host:::
   server cannot be reached. The backup server must be a replica of the
   main server so that the object UUIDs match.
 
-  Example:
+Example:
 
-  * `directory2.my-company.com`
+* `directory2.my-company.com`
 
 Backup (Replica) Port:::
 
   The connection port of the backup LDAP server. If no port is given,
   but only a host, then the main port (as specified above) will be used.
   
-  Example:
-  
-  * `389`
+Example:
+
+* `389`
 
 Disable Main Server:::
   You can manually override the main server and make ownCloud only
@@ -288,17 +290,16 @@ Cache Time-To-Live:::
   A cache is introduced to avoid unnecessary LDAP traffic, for example
   caching usernames so they don’t have to be looked up for every page,
   and speeding up loading of the Users page. Saving the configuration
-  empties the cache. The time is given in seconds.
-
+  empties the cache. The time is given in seconds. 
   Note that almost every PHP request requires a new connection to the
   LDAP server. If you require fresh PHP requests we recommend defining a
   minimum lifetime of 15s or so, rather than completely eliminating the
   cache.
 
-  Examples:
+Examples:
 
-  * Ten minutes: `600`
-  * One hour: `3600`
+* Ten minutes: `600`
+* One hour: `3600`
 
 See xref:caching[the Caching section below] for detailed information on how the cache operates.
 
@@ -311,22 +312,22 @@ image:/owncloud-docs/_images/ldap-advanced-2-directory.png[image]
 User Display Name Field:::
   The attribute that should be used as display name in ownCloud.
 
-  Examples:
+Examples:
 
-  * `displayName`
-  * `givenName`
-  * `sn`
+* `displayName`
+* `givenName`
+* `sn`
 
 2nd User Display Name Field:::
   An optional second attribute displayed in brackets after the display
   name, for example using the `mail` attribute displays as
   `Molly Foo (molly@example.com)`.
 
-  Examples:
+Examples:
 
-  * `mail`
-  * `userPrincipalName`
-  * `sAMAccountName`
+* `mail`
+* `userPrincipalName`
+* `sAMAccountName`
 
 Base User Tree:::
   The base DN of LDAP, from where all users can be reached. This must be
@@ -334,10 +335,10 @@ Base User Tree:::
   the Basic setting. You can specify multiple base trees, one on each
   line.
 
-  Examples:
+Examples:
 
-  * `cn=programmers,dc=my-company,dc=com`
-  * `cn=designers,dc=my-company,dc=com`
+* `cn=programmers,dc=my-company,dc=com`
+* `cn=designers,dc=my-company,dc=com`
 
 User Search Attributes:::
   These attributes are used when searches for users are performed, for
@@ -349,19 +350,19 @@ User Search Attributes:::
   name attribute. If you override the default you must specify the
   display name attribute here.
 
-  Examples:
+Examples:
 
-  * `displayName`
-  * `mail`
+* `displayName`
+* `mail`
 
 Group Display Name Field:::
   The attribute that should be used as ownCloud group name. ownCloud
   allows a limited set of characters (`a-zA-Z0-9.-_@`). Once a group
   name is assigned it cannot be changed.
 
-  Examples:
+Examples:
 
-  * `cn`
+* `cn`
 
 Base Group Tree:::
   The base DN of LDAP, from where all groups can be reached. This must
@@ -369,10 +370,10 @@ Base Group Tree:::
   in the Basic setting. You can specify multiple base trees, one in each
   line.
 
-  Examples:
+Examples:
 
-  * `cn=barcelona,dc=my-company,dc=com`
-  * `cn=madrid,dc=my-company,dc=com`
+* `cn=barcelona,dc=my-company,dc=com`
+* `cn=madrid,dc=my-company,dc=com`
 
 Group Search Attributes:::
   These attributes are used when a search for groups is done, for
@@ -383,25 +384,29 @@ Group Search Attributes:::
   If you override the default, the group display name attribute will not
   be taken into account, unless you specify it as well.
 
-  Examples:
+Examples:
 
-  * `cn`
-  * `description`
+* `cn`
+* `description`
 
 [[group-member-association]]
 Group Member association:::
   The attribute that is used to indicate group memberships, i.e., the attribute used by LDAP groups to refer to their users. 
   ownCloud detects the value automatically. 
   You should only change it if you have a very valid reason and know what you are doing.
-  Here are some examples:
 
-  * `member` with FDN for Active Directory or for objectclass `groupOfNames` groups
-  * `memberUid` with RDN for objectclass `posixGroup` groups
-  * `uniqueMember` with FDN for objectclass `groupOfUniqueNames` groups
+Examples:
 
-  The Group Member association is used to efficiently query users of a
-  certain group, eg., on the userManagement page or when resolving all
-  members of a group share.
+* `member` with FDN for Active Directory or for objectclass `groupOfNames` groups
+* `memberUid` with RDN for objectclass `posixGroup` groups
+* `uniqueMember` with FDN for objectclass `groupOfUniqueNames` groups
+
+[NOTE] 
+====
+The Group Member association is used to efficiently query users of a
+certain group, eg., on the userManagement page or when resolving all
+members of a group share.
+====
 
 Dynamic Group Member URL:::
   The LDAP attribute that on group objects contains an LDAP search URL that determines what objects belong to the group. An empty setting disables dynamic group membership functionality. 
@@ -438,7 +443,6 @@ Quota Field:::
 Quota Default:::
   Override ownCloud’s default quota _for LDAP users_ who do not have a
   quota set in the Quota Field, e.g., `15 GB`.
-
   Please bear in mind the following, when using these fields to assign
   user quota limits. It should help to alleviate any, potential,
   confusion.
@@ -448,11 +452,12 @@ Quota Default:::
   3.  However, when an LDAP quota is set it will override any values set in ownCloud.
   4.  If an LDAP per/attribute quota is set, it will override the LDAP Quota Default value.
 
-  Administrators are not allowed to modify the user quota limit in the
-  user management page when steps 3 or 4 are in effect. At this point,
-  updates are only possible via LDAP.
-
-  See the https://github.com/valerytschopp/owncloud-ldap-schema[LDAP Schema for ownCloud Quota]
+[NOTE] 
+====
+Administrators are not allowed to modify the user quota limit in the user management page when steps 3 or 4 are in effect. 
+At this point, updates are only possible via LDAP.
+See the https://github.com/valerytschopp/owncloud-ldap-schema[LDAP Schema for ownCloud Quota]
+====
 
 Email Field:::
   Set the user’s email from an LDAP attribute, e.g., `mail`. Leave it

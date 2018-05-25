@@ -28,7 +28,7 @@ ownCloud release. Ensure that they are all disabled before beginning the
 upgrade. After the upgrade is complete re-enable any which are
 compatible with the new release.
 
-Install unsupported apps at your own risk.
+WARNING: Install unsupported apps at your own risk.
 
 [[check-ownclouds-mandatory-requirements]]
 Check ownCloud’s Mandatory Requirements
@@ -74,8 +74,7 @@ Download the latest ownCloud server release from
 https://owncloud.org/install/[owncloud.org/install/] into an empty
 directory *outside* of your current installation.
 
-Enterprise users must download their new ownCloud archives from their
-accounts on https://customer.owncloud.com/owncloud/.
+NOTE: Enterprise users must download their new ownCloud archives from their accounts on https://customer.owncloud.com/owncloud/.
 
 [[setup-the-new-installation]]
 Setup the New Installation
@@ -90,8 +89,7 @@ an ownCloud installation, please follow the standard upgrade. Otherwise,
 take the approach that you’re most comfortable with, likely the power
 user upgrade.
 
-Regardless of which approach that you take, they will both assume that
-your existing ownCloud installation is located in the default location:
+NOTE: Regardless of which approach that you take, they will both assume that your existing ownCloud installation is located in the default location:
 `/var/www/owncloud`.
 
 [[the-standard-upgrade]]
@@ -101,7 +99,7 @@ The Standard Upgrade
 Delete all files and folders in your existing ownCloud directory
 (`/var/www/owncloud`) — *_except_* `data` and `config`.
 
-Don’t keep the `apps` directory.
+NOTE: Don’t keep the `apps` directory.
 
 With those files and folders deleted, extract the archive of the latest
 ownCloud server, over the top of your existing installation.

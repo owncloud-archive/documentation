@@ -1,5 +1,4 @@
-Managing the Trashbin
-=====================
+= Managing the Trash Bin
 
 The ownCloud Trashbin (`files_trashbin`) permanently deletes files
 according to users’ storage quotas and file ages. When a user deletes a

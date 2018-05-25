@@ -45,8 +45,7 @@ https://en.wikipedia.org/wiki/List_of_LDAP_software[LDAP server
 implementations] available. The one used in this guide is
 https://en.wikipedia.org/wiki/OpenLDAP[OpenLDAP].
 
-While OpenLDAP does work on any operating system, for the purposes of
-this guide, we’ll be using a Debian-based Linux distribution.
+NOTE: While OpenLDAP does work on any operating system, for the purposes of this guide, we’ll be using a Debian-based Linux distribution.
 
 Firstly, log in as root, and update your system, to ensure that you’re
 using the latest packages.:
@@ -84,7 +83,7 @@ the configuration by running:
 slaptest -f /etc/ldap/slapd.conf
 ....
 
-If you see warnings in the console output, they are not crucial.
+NOTE: If you see warnings in the console output, they are not crucial.
 
 [[enable-the-configuration-file]]
 3. Enable the configuration file

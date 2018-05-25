@@ -37,8 +37,7 @@ After waiting 6 - 7 minutes for all sync clients to register that the server is 
 After that, xref:maintenance/backup.adoc[create a database dump] from the database, copy it to the new machine, and xref:maintenance/restore.adoc[import it] into the new database.
 Then, copy only your data, configuration, and database files from your original ownCloud instance to the new machine.
 
-You must keep the `data/` directory’s original file path during the migration. 
-However, xref:maintenance/manually-moving-data-folders.adoc[you can change it] before you begin the migration, or after the migration’s completed.
+IMPORTANT: You must keep the `data/` directory’s original file path during the migration. However, xref:maintenance/manually-moving-data-folders.adoc[you can change it] before you begin the migration, or after the migration’s completed.
 
 The data files should keep their original timestamp otherwise the
 clients will re-download all the files after the migration. This step
@@ -72,8 +71,7 @@ All URLs used to access your ownCloud server must be whitelisted in your
 allowed to log into ownCloud only when they point their browsers to a
 URL that is listed in the `trusted_domains` setting.
 
-This setting is important when changing or moving to a new domain name.
-You may use IP addresses and domain names.
+NOTE: This setting is important when changing or moving to a new domain name. You may use IP addresses and domain names.
 
 A typical configuration looks like this:
 
@@ -182,19 +180,20 @@ With that completed, import the database on new server.
 mysql -h localhost -u admin -ppassword owncloud < owncloud-dbbackup.bak
 ----
 
-You can find the values for the mysqldump command in your config.php, in
-your owncloud root directory.
-`[server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname`.
+NOTE: You can find the values for the mysqldump command in your config.php, in your owncloud root directory. `[server]= dbhost, [username]= dbuser, [password]= dbpassword, and [db_name]= dbname`.
 
-*For InnoDB tables only* The –single-transaction flag will start a
-transaction before running. Rather than lock the entire database, this
-will let `mysqldump` read the database in the current state at the time of
-the transaction, making for a consistent data dump.
+[NOTE]
+.For InnoDB tables only
+====
+The –single-transaction flag will start a transaction before running. 
+Rather than lock the entire database, this will let `mysqldump` read the database in the current state at the time of the transaction, making for a consistent data dump.
+====
 
-*For Mixed MyISAM / InnoDB tables* Either dumping your MyISAM tables
-separately from InnoDB tables or use `–lock-tables` instead of
-`–single-transaction` to guarantee the database is in a consistent state
-when using mysqldump.
+[NOTE]
+.For Mixed MyISAM / InnoDB tables 
+====
+Either dumping your MyISAM tables separately from InnoDB tables or use `–lock-tables` instead of `–single-transaction` to guarantee the database is in a consistent state when using `mysqldump`.
+====
 
 [[transfer-data-and-configure-the-new-server]]
 Transfer Data and Configure the New Server
@@ -205,9 +204,7 @@ Transfer Data and Configure the New Server
 rsync -Aavxt config data root@new_server_address:/var/www/owncloud 
 ----
 
-If you want to move your data directory to another location on the
-target server, it is advised to do this as a second step. 
-Please see xref:maintenance/manually-moving-data-folders.adoc[the data directory migration document] for more details.
+IMPORTANT: If you want to move your data directory to another location on the target server, it is advised to do this as a second step. Please see xref:maintenance/manually-moving-data-folders.adoc[the data directory migration document] for more details.
 
 [[finish-the-migration]]
 Finish the Migration
