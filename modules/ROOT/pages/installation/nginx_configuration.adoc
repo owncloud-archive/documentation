@@ -86,6 +86,11 @@ root of your NGINX installation.
 
 The configuration assumes that ownCloud is installed in `/var/www/owncloud` and is accessed via `http(s)://cloud.example.com`.
 
+[source,nginx]
+----
+include::{examplesdir}/installation/nginx/default-configuration.conf[]
+----
+
 [[owncloud-in-a-subdirectory-of-nginx]]
 ownCloud in a subdirectory of NGINX
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -95,6 +100,11 @@ different context root of your NGINX installation such as /owncloud or
 /cloud.
 
 The configuration assumes that ownCloud is installed in `/var/www/owncloud` is accessed via `http(s)://example.com/owncloud` and that you have `'overwriteweb root' => '/owncloud',` set in your `config/config.php`.
+
+[source,nginx]
+----
+include::{examplesdir}/installation/nginx/subdirectory-configuration.conf[]
+----
 
 [[troubleshooting]]
 Troubleshooting

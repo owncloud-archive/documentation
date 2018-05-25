@@ -70,11 +70,12 @@ server. One way of doing so, is to create a configuration file. So,
 create `/etc/ldap/slapd.conf` with your text editor of choice, and add
 the following configuration to it.
 
-__________________________________________________________________________________________________________________________________________________________________________
-This configuration only caches queries from a single Active Directory
-server. To cache queries from multiple Active Directory servers, a
-configuration is available below.
-__________________________________________________________________________________________________________________________________________________________________________
+[source,conf]
+----
+include::{examplesdir}/configuration/ldap/single.slapd.conf[]
+----
+
+NOTE: This configuration only caches queries from a single Active Directory server. To cache queries from multiple Active Directory servers, a configuration is available below.
 
 After you’ve done that, save the file, test that there are no errors in
 the configuration by running:
@@ -248,3 +249,8 @@ If you have more than one that you want to cache, in
 `/etc/ldap/slapd.conf` add the following configuration instead,
 adjusting as necessary. The ownCloud LDAP app settings are the same as
 in section 6.
+
+[source,conf]
+----
+include::{examplesdir}/configuration/ldap/Multi-AD.slapd.conf[]
+----
