@@ -1,4 +1,14 @@
 /**
+ * Supplemental Formatting Styles
+ */
+b,
+dt,
+strong,
+th {
+  font-weight: 700;
+}
+
+/**
  * Supplemental Navigation Styles
  */
 li.nav-item.is-current-page.is-active a.nav-link {
@@ -33,6 +43,9 @@ footer div.container div.row-full div.col-third {
   width: 33%;
 }
 
+/**
+ * Supplemental Responsive Styles
+ */
 @media screen and (max-width: 600px) {
   footer div.container div.row-full {
     margin-left: 0;
