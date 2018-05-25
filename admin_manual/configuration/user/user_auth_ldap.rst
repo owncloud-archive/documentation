@@ -391,7 +391,7 @@ Nested Groups:
   By default a group will only contain users, so enabling this option isn't necessary.
   However, if groups are contained inside groups, and this option is not enabled, any groups contained within other groups will be ignored and not returned in search results.
 
-  In Active Directory you have to enter this specific filter in order for the ownCloud LDAP app to be able to find users in nested groups.
+  In the case you choose **Active Directory** as your LDAP server you have to enter this specific filter in the **ownCloud LDAP Server Settings** in order for the ownCloud LDAP app to be able to find users in **nested groups**.
   
   Example:
 
