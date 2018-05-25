@@ -64,7 +64,7 @@ How to decrypt **Master Key** encryption::
  occ encryption:decrypt-all
  occ maintenance:singleuser --off
 
-How to enable **User specific Key** encryption::
+How to decrypt **User specific Key** encryption::
 
  occ maintenance:singleuser --on
  occ encryption:decrypt-all
