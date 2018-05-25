@@ -32,4 +32,4 @@ File locking is enabled by default, using the database locking backend.
 This places a significant load on your database. Using
 `memcache.locking` relieves the database load and improves performance.
 Admins of ownCloud servers with heavy workloads should install
-a memory cache <../server/caching_configuration>.
+xref:configuration/server/caching_configuration.adoc[a memory cache] .

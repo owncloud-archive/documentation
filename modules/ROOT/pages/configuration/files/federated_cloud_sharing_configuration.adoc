@@ -34,7 +34,7 @@ servers, which allows the trusted servers to exchange user directories
 and auto-complete the names of external users when you create shares. If
 you do not want this enabled, then un-check it.
 
-image:/owncloud-docs/_images/federation-0.png[image]
+image:/owncloud-docs/_images/configuration/files/federation-0.png[image]
 
 1.  Then, go to your Files page and select a folder to share. Click the
 share icon, and then enter the username and URL of the user on the
@@ -43,12 +43,12 @@ remote ownCloud server. In this example, that is
 it displays it with the *(remote)* label. Click on this label to
 establish the link.
 
-image:/owncloud-docs/_images/federation-2.png[image]
+image:/owncloud-docs/_images/configuration/files/federation-2.png[image]
 
 1.  When the link is successfully completed, you have a single share
 option, and that is *can edit*.
 
-image:/owncloud-docs/_images/federation-3.png[image]
+image:/owncloud-docs/_images/configuration/files/federation-3.png[image]
 
 You may disconnect the share at any time by clicking the trash can icon.
 
@@ -68,7 +68,7 @@ field. The yellow light indicates a successful connection, with no user
 names exchanged. The green light indicates a successful connection with
 user names exchanged. A red light means the connection failed.
 
-image:/owncloud-docs/_images/federation-1.png[image]
+image:/owncloud-docs/_images/configuration/files/federation-1.png[image]
 
 [[creating-federation-shares-via-public-link-share]]
 Creating Federation Shares via Public Link Share
@@ -82,26 +82,26 @@ are described more fully in file_sharing_configuration). You may create
 a Federation share by allowing ownCloud to create a public link for you,
 and then email it to the person you want to create the share with.
 
-image:/owncloud-docs/_images/create_public_share-6.png[image]
+image:/owncloud-docs/_images/configuration/files/create_public_share-6.png[image]
 
 You may optionally set a password and expiration date on it. When your
 recipient receives your email they must click the link, or copy it to a
 Web browser. They will see a page displaying a thumbnail of the file,
 with a button to *Add to your ownCloud*.
 
-image:/owncloud-docs/_images/create_public_share-8.png[image]
+image:/owncloud-docs/_images/configuration/files/create_public_share-8.png[image]
 
 Your recipient should click the *Add to your ownCloud* button. On the
 next screen your recipient needs to enter the URL to their ownCloud
 server, and then press the return key.
 
-image:/owncloud-docs/_images/create_public_share-9.png[image]
+image:/owncloud-docs/_images/configuration/files/create_public_share-9.png[image]
 
 Your recipient has to take one more step, and that is to confirm
 creating the federated cloud share link by clicking the *Add remote
 share* button.
 
-image:/owncloud-docs/_images/create_public_share-10.png[image]
+image:/owncloud-docs/_images/configuration/files/create_public_share-10.png[image]
 
 Un-check the `Share Link` checkbox to disable any federated cloud share
 created this way.

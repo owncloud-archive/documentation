@@ -17,7 +17,7 @@ Enabling External Storage Support
 Enabling this app will disable the *Stay logged in* checkbox on the login page.
 The External storage support application is enabled on your Apps page.
 
-image:external_storage/images/enable-app.png[image]
+image:/owncloud-docs/_images/configuration/files/enable-app.png[image]
 
 [[storage-configuration]]
 Storage Configuration
@@ -27,7 +27,7 @@ To create a new external storage mount, select an available backend from
 the dropdown *Add storage*. Each backend has different required options,
 which are configured in the configuration fields.
 
-image:external_storage/images/add_storage.png[image]
+image:/owncloud-docs/_images/configuration/files/external_storage/add_storage.png[image]
 
 Each backend may also accept multiple authentication methods. These are
 selected with the dropdown under *Authentication*. Different backends
@@ -40,7 +40,7 @@ change as appropriate for the mechanism. The SFTP backend, for one
 example, supports *username and password*, *Log-in credentials, save in
 session*, and *RSA public key*.
 
-image:external_storage/images/auth_mechanism.png[image]
+image:/owncloud-docs/_images/configuration/files/external_storage/auth_mechanism.png[image]
 
 Required fields are marked with a red border. When all required fields
 are filled, the storage is automatically saved. A green dot next to the
@@ -61,7 +61,7 @@ the user that created it. A storage configured in the Admin settings is
 available to all users by default, and it can be restricted to specific
 users and groups in the *Available for* field.
 
-image:external_storage/images/applicable.png[image]
+image:/owncloud-docs/_images/configuration/files/external_storage/applicable.png[image]
 
 [[mount-options]]
 Mount Options
@@ -85,7 +85,7 @@ on individual mountpoints. When sharing is disabled the shares are
 retained internally, so that you can re-enable sharing and the previous
 shares become available again. Sharing is disabled by default.
 
-image:external_storage/images/mount_options.png[image]
+image:/owncloud-docs/_images/configuration/files/external_storage/mount_options.png[image]
 
 [[using-self-signed-certificates]]
 Using Self-Signed Certificates
@@ -113,7 +113,7 @@ Check ``__Allow users to mount external storage__'' to allow your users
 to mount storages on external services. Then enable the backends you
 want to allow.
 
-image:external_storage/images/external_storage/user_mounts.png[image]
+image:/owncloud-docs/_images/configuration/files/external_storage/user_mounts.png[image]
 
 Be careful with the choices that you enable, as it allows a user to make
 potentially arbitrary connections to other services on your network!
@@ -126,7 +126,7 @@ When an external storage is created which uses either Google Drive or
 Dropbox, a link to the respective configuration page is available, next
 to the service name.
 
-image:/owncloud-docs/_images/configuration/files/external_storage/external-storage-google-drive-and-dropbox-configuration.png[image]
+image:/owncloud-docs/_images/configuration/files/external-storage-google-drive-and-dropbox-configuration.png[image]
 
 In the screenshot above, you can see that two external storage
 connections have been created, but not configured. One goes to Google
@@ -139,7 +139,7 @@ the respective credentials needed for configuring the connection.
 Detecting Files Added to External Storages
 ------------------------------------------
 
-We recommend xref:server/background_jobs_configuration.adoc[configuring the background job Webcron or Cron] to enable ownCloud to automatically detect files added to your external storages.
+We recommend xref:configuration/server/background_jobs_configuration.adoc[configuring the background job Webcron or Cron] to enable ownCloud to automatically detect files added to your external storages.
 
 You cannot scan/detect changed files on external storage mounts when you
 select the *Log-in credentials, save in session* authentication
@@ -151,4 +151,4 @@ ownCloud may not always be able to find out what has been changed remotely (file
 You might need to setup a cron job that runs `sudo -u www-data php occ files:scan --all`. 
 Alternatively, replace ``–all'' with the user name to trigger a rescan of the user’s files periodically, for example every 15 minutes, which includes the mounted external storage.
 
-TIP: See xref:server/occ_command.adoc[the occ’s file operations]) for more information.
+TIP: See xref:configuration/server/occ_command.adoc[the occ’s file operations] for more information.

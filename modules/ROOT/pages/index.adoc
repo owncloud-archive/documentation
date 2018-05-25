@@ -8,9 +8,7 @@ ownCloud server, which runs on Linux, client applications for Microsoft
 Windows, Mac OS X and Linux, and mobile clients for the Android and
 Apple iOS operating systems.
 
-Current editions of ownCloud manuals are always available online at
-https://doc.owncloud.org/[doc.owncloud.org] and
-https://doc.owncloud.com/[doc.owncloud.com].
+Current editions of ownCloud manuals are always available online at https://doc.owncloud.org/[doc.owncloud.org] and https://doc.owncloud.com/[doc.owncloud.com].
 
 ownCloud server is available in three editions:
 

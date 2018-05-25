@@ -35,9 +35,7 @@ ownCloud comes with its own `owncloud/.htaccess` file. Because `php-fpm`
 can’t read PHP settings in `.htaccess` these settings must be set in the
 `owncloud/.user.ini` file.
 
-Set the following two parameters inside the corresponding php.ini file
-(see the *Loaded Configuration File* section of label-phpinfo to find
-your relevant php.ini files) :
+Set the following two parameters inside the corresponding php.ini file (see the *Loaded Configuration File* section of xref:issues/general_troubleshooting.adoc#php-version-and-information[PHP Version and Information] to find your relevant php.ini files) :
 
 ....
 php_value upload_max_filesize = 16G
@@ -168,8 +166,7 @@ location for uploaded files by using the `tempdirectory` setting in your
 ../../configuration/server/config_sample_php_parameters).
 
 If you have configured the `session_lifetime` setting in your
-`config.php` (See
-../../configuration/server/config_sample_php_parameters) file then make
+`config.php` (See xref:configuration/server/config_sample_php_parameters.adoc[Config.php Parameters]) file then make
 sure it is not too low. This setting needs to be configured to at least
 the time (in seconds) that the longest upload will take. If unsure
 remove this completely from your configuration to reset it to the

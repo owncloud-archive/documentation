@@ -4,25 +4,17 @@ Upgrading ownCloud with the Updater App
 The Updater app automates many of the steps of upgrading an ownCloud
 installation. It is useful for installations that do not have root
 access, such as shared hosting, for installations with a smaller number
-of users and data, and it automates updating
-manual installations <../installation/source_installation>.
+of users and data, and it automates xref:installation/source_installation.adoc[manual installations].
 
-When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
-please have a look at the ../release_notes of oC 9.0 for important info
-about this migration.
+IMPORTANT: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks please have a look at the xref:release_notes.adoc[release notes] of oC 9.0 for important info about this migration.
 
-New in 9.0, the Updater app has
-command-line options <updater_cli_label>.
-
-The Updater app is *not enabled and not supported* in ownCloud
-Enterprise edition.
-
-The Updater app is *not included* in the
-https://download.owncloud.org/download/repositories/stable/owncloud/[Linux
-packages on our Open Build Service], but only in the
-https://owncloud.org/install/#instructions-server[tar and zip archives].
-When you install ownCloud from packages you should keep it updated with
-your package manager.
+[CAUTION]
+====
+* The Updater app is not enabled and not supported in ownCloud Enterprise edition.
+* The Updater app is not included in the https://download.owncloud.org/download/repositories/stable/owncloud/[Linux
+packages on our Open Build Service], but only in the https://owncloud.org/install/#instructions-server[tar and zip archives].
+* When you install ownCloud from packages you should keep it updated with your package manager.
+====
 
 *Downgrading* is not supported and risks corrupting your data! If you
 want to revert to an older ownCloud version, install it from scratch and
@@ -54,17 +46,17 @@ steps:
 1.  You should see a notification at the top of any ownCloud page when
 there is a new update available.
 2.  Even though the Updater app backs up important directories, you
-should always have your own current backups (See backup for details.)
+should always have your own current backups (See xref:maintenance/backup.adoc[Backing up ownCloud] for details.)
 3.  Verify that the HTTP user on your system can write to your whole
-ownCloud directory; see the set_updating_permissions_label section
+ownCloud directory; see the xref:setting-permissions-for-updating[Setting Permissions for Updating] section
 below.
 4.  Navigate to your Admin page and click the *Update Center* button
 under Updater. This takes you to the Updater control panel.
 5.  Click Update, and carefully read the messages. If there are any
 problems it will tell you. The most common issue is directory
 permissions; your HTTP user needs write permissions to your whole
-ownCloud directory. (See strong_perms_label.) Another common issue is
-SELinux rules (see selinux-config-label.) Otherwise you will see
+ownCloud directory. (See xref:installation/source_installation.adoc#set-strong-directory-permissions[Set Strong Directory Permissions].) Another common issue is
+SELinux rules (see xref:installation/selinux_configuration.adoc[SELinux Configuration].) Otherwise you will see
 messages about checking your installation and making backups.
 6.  Click Proceed, and then it performs the remaining steps, which takes
 a few minutes.
@@ -86,7 +78,7 @@ $ sudo -u www-data php occ upgrade
 ....
 
 The optional parameter to skip migration tests during this step was
-removed in oC 9.2. See migration_test_label for more information.
+removed in oC 9.2. See xref:maintenance/updated.adoc[Testing a Migration] for more information.
 
 1.  It runs for a few minutes, and when it is finished displays a
 success message, which disappears after a short time.
@@ -126,7 +118,8 @@ chown -R ${htuser}:${htgroup} ${ocpath}
 ....
 
 You can find your HTTP user in your HTTP server configuration files. Or
-you can use label-phpinfo (Look for the *User/Group* line).
+you can use xref:issues/general_troubleshooting.adoc#php-version-and-information[PHP Version and Information]. 
+Look for the `User/Group` line.
 
 * The HTTP user and group in Debian/Ubuntu is `www-data`.
 * The HTTP user and group in Fedora/CentOS is `apache`.

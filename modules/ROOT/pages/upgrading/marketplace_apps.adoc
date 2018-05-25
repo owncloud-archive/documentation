@@ -8,11 +8,8 @@ below, as applicable for your ownCloud setup.
 Single-Server Environment
 -------------------------
 
-To upgrade Marketplace applications when running ownCloud in a single
-server environment, you can use use the
-Market app <apps_commands_label>, specifically by running
-`market:upgrade`. This will install new versions of your installed apps
-if updates are available in the marketplace.
+To upgrade Marketplace applications when running ownCloud in a single server environment, you can use use xref:configuration/server/occ_command.adoc#apps-commands[the Market app], specifically by running `market:upgrade`. 
+This will install new versions of your installed apps if updates are available in the marketplace.
 
 The user running the update command, which will likely be your webserver
 user, needs write permission for the `/apps` folder. If they don’t have

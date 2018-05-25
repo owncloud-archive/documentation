@@ -62,8 +62,8 @@ Multiple Domains Reverse SSL Proxy
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to access your ownCloud installation
-**http://domain.tld/owncloud** via a multiple domains reverse SSL
-proxy**https://ssl-proxy.tld/domain.tld/owncloud** with the IP address
+``http://domain.tld/owncloud`` via a multiple domains reverse SSL
+proxy``https://ssl-proxy.tld/domain.tld/owncloud`` with the IP address
 *10.0.0.1* you can set the following parameters inside the
 config/config.php.
 

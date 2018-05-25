@@ -84,6 +84,11 @@ configuration is added, new apps will only install in a directory where
 The configuration example below shows how to add a second directory,
 called `apps-external`.
 
+[source,php]
+----
+include::{examplesdir}/installation/custom-app-directory-configuration.php[]
+----
+
 After you add a new directory configuration, you can then move apps from
 the original app directory to the new one. To do so, follow these steps:
 
@@ -117,3 +122,8 @@ the application's metadata file, located in
 
 Using the example below, both the app’s name and directory name would be
 `yourappname`.
+
+[source,xml]
+----
+include::{examplesdir}/installation/appinfo.xml[]
+----

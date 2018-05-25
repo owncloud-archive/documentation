@@ -59,7 +59,7 @@ A code integrity error message (``There were problems with the code
 integrity check. More information…'') appears in a yellow banner at the
 top of your ownCloud Web interface:
 
-image:/owncloud-docs/_images/code-integrity-notification.png[Code integrity warning banner.]
+image:/owncloud-docs/_images/issues/code-integrity-notification.png[Code integrity warning banner.]
 
 The yellow banner is only shown for admin users.
 
@@ -70,7 +70,7 @@ provides the following options:
 2.  Show a list of invalid files.
 3.  Trigger a rescan.
 
-image:/owncloud-docs/_images/code-integrity-admin.png[Links for resolving code integrity warnings.]
+image:/owncloud-docs/_images/issues/code-integrity-admin.png[Links for resolving code integrity warnings.]
 
 To debug issues caused by the code integrity check click on ``List of
 invalid files…'', and you will be shown a text document listing the

@@ -33,9 +33,7 @@ The LDAP app is not compatible with the
 `User backend using remote HTTP servers` app. You cannot use both of
 them at the same time.
 
-A non-blocking or correctly configured
-https://selinuxproject.org/page/Main_Page[SELinux] setup is needed for
-the LDAP backend to work. Please refer to the selinux-config-label.
+NOTE: A non-blocking or correctly configured https://selinuxproject.org/page/Main_Page[SELinux] setup is needed for the LDAP backend to work. Please refer to the xref:installation/selinux_configuration.adoc[SELinux Configuration].
 
 [[configuration]]
 Configuration

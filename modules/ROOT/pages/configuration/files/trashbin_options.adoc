@@ -7,7 +7,7 @@ file it is not immediately removed from your ownCloud server, but goes
 into the Trashbin. Then the user has the options to un-delete the file,
 or to delete it permanently.
 
-image:/owncloud-docs/_images/trashbin-1.png[image]
+image:/owncloud-docs/_images/configuration/files/trashbin-1.png[image]
 
 As the ownCloud server administrator, you have two `occ` commands for
 permanently deleting files from the Trashbin manually, without waiting

@@ -6,7 +6,7 @@ preferred method (see linux_installation). These are maintained by
 ownCloud engineers, and you can use your package manager to keep your
 ownCloud server up-to-date.
 
-Enterprise customers should refer to ../enterprise/installation/install
+NOTE: Enterprise customers should refer to xref:enterprise/installation/install.adoc[Installing & Upgrading ownCloud Enterprise Edition]
 
 If there are no packages for your Linux distribution, or you prefer
 installing from the source tarball, you can setup ownCloud from scratch

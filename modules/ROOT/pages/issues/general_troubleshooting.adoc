@@ -35,38 +35,31 @@ If you think you have found a bug in ownCloud, please:
 * Search for a solution (see the options above)
 * Double-check your configuration
 
-If you can’t find a solution, please use our
-https://doc.owncloud.org/server/latest/developer_manual/bugtracker/index.html[bugtracker].
-You can generate a configuration report with the occ config command 
-<config_commands_label>, with passwords automatically obscured.
+If you can’t find a solution, please use our https://doc.owncloud.org/server/latest/developer_manual/bugtracker/index.html[bugtracker].
+You can generate a configuration report with the xref:configuration/server/occ_command.adoc#config-command[occ config command], with passwords automatically obscured.
 
 [[general-troubleshooting-1]]
 General Troubleshooting
 -----------------------
 
-Check the ownCloud ../installation/system_requirements, especially
-supported browser versions.
-
-When you see warnings about `code integrity`, refer to code_signing.
+Check the ownCloud xref:installation/system_requirements.adoc[System Requirements], especially supported browser versions.
+When you see warnings about `code integrity`, refer to xref:issues/code_signing.adoc[Code Signing].
 
 [[disable-3rdparty-non-shipped-apps]]
 Disable 3rdparty / non-shipped apps
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It might be possible that 3rd party / non-shipped apps are causing
-various different issues. Always disable 3rd party apps before upgrades,
-and for troubleshooting. Please refer to the apps_commands_label on how
-to disable an app from command line.
+It might be possible that 3rd party / non-shipped apps are causing various different issues. 
+Always disable 3rd party apps before upgrades, and for troubleshooting. 
+Please refer to the xref:configuration/server/occ_command.adoc#apps-command[Apps Commands] on how to disable an app from command line.
 
 [[owncloud-logfiles]]
 ownCloud Logfiles
 ~~~~~~~~~~~~~~~~~
 
-In a standard ownCloud installation the log level is set to `Normal`. To
-find any issues you need to raise the log level to `All` in your
-`config.php` file, or to *Everything* on your ownCloud Admin page.
-Please see ../configuration/server/logging_configuration for more
-information on these log levels.
+In a standard ownCloud installation the log level is set to `Normal`. 
+To find any issues you need to raise the log level to `All` in your `config.php` file, or to *Everything* on your ownCloud Admin page.
+Please see xref:configuration/server/logging_configuration.adoc[Logging Configuration] for more information on these log levels.
 
 Some logging - for example JavaScript console logging - needs debugging
 enabled. Edit config/config.php and change `'debug' => false,` to
@@ -241,8 +234,7 @@ directive. After those changes you need to restart your Web server.
 Web Server and PHP Modules
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Lighttpd is not supported with ownCloud, and some ownCloud features may
-not work at all on Lighttpd.
+NOTE: link:https://www.lighttpd.net/[Lighttpd] is not supported with ownCloud — and some ownCloud features may not work _at all_ on Lighttpd.
 
 There are some Web server or PHP modules which are known to cause
 various problems like broken up-/downloads. The following shows a draft
@@ -404,7 +396,7 @@ Using Pound reverse-proxy/load balancer::
   to support HTTP/1.1.
 Misconfigured Web server::
   Your Web server is misconfigured and blocks the needed DAV methods.
-  Please refer to trouble-webdav-label above for troubleshooting steps.
+  Please refer to xref:troubleshooting-webdav[Troubleshooting WebDAV] above for troubleshooting steps.
 
 [[client-sync-stalls]]
 Client Sync Stalls

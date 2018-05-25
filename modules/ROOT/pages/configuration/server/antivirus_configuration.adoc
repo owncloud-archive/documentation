@@ -205,11 +205,11 @@ The Antivirus App for Files will show one of three warnings if it is
 either misconfigured, or ClamAV is not available. You can see an example
 of all three below.
 
-image:./images/anti-virus-message-host-connection-problem.png[image]
+image:/owncloud-docs/_images/configuration/server/anti-virus-message-host-connection-problem.png[image]
 
-image:./images/anti-virus-message-misconfiguration-problem.png[image]
+image:/owncloud-docs/_images/configuration/server/anti-virus-message-misconfiguration-problem.png[image]
 
-image:./images/anti-virus-message-socket-connection-problem.png[image]
+image:/owncloud-docs/_images/configuration/server/anti-virus-message-socket-connection-problem.png[image]
 
 [[mode-configuration]]
 Mode Configuration
@@ -289,7 +289,7 @@ Admin -> Antivirus Configuration -> Advanced, which you can see in the
 screenshot below, you can view and change the existing rules. You can
 also add new ones.
 
-image:/owncloud-docs/_images/anti-virus-configuration-rules.png[image]
+image:/owncloud-docs/_images/configuration/server/anti-virus-configuration-rules.png[image]
 
 Rules can match on either an exit status (e.g., 0, 1, or 40) or a
 pattern in the string returned from ClamAV (e.g., `/.*: (.*) FOUND$/`).

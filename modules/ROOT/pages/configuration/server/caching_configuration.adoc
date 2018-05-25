@@ -23,14 +23,14 @@ Supported Caching Backends
 
 The caching backends supported by ownCloud are:
 
-* APCu <apcu-label>: This is a local cache for systems running PHP 5.6
+* xref:apcu[APCu]: This is a local cache for systems running PHP 5.6
 and up. APCu 4.0.6 and up is required. Alternatively you can use
 the Zend OPCache. However, *it is not a data cache*, only an opcode
 cache.
-* Redis <redis-label>: This is a distributed cache for multi-server
+* xref:redis[Redis]: This is a distributed cache for multi-server
 ownCloud installations. Version 2.2.6 or higher of the PHP Redis
 extension is required.
-* Memcached <memcached-label>: This is a distributed cache for
+* xref:memcached[Memcached]: This is a distributed cache for
 multi-server ownCloud installations.
 
 You may use _both_ a local and a distributed cache. The recommended

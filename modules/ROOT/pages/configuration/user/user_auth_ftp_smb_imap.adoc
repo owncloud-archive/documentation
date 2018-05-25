@@ -2,7 +2,7 @@ User Authentication with IMAP, SMB, and FTP
 ===========================================
 
 You may configure additional user backends in ownCloud’s configuration
-file (config/config.php) using the following syntax:
+file (`config/config.php`) using the following syntax:
 
 [source,php]
 ----
@@ -18,20 +18,17 @@ file (config/config.php) using the following syntax:
 ],
 ----
 
-A non-blocking or correctly configured SELinux setup is needed for these
-backends to work, if SELinux is enabled on your server.. Please refer to
-the SELinux documentation <selinux-config-label> for further details.
+NOTE: A non-blocking or correctly configured SELinux setup is needed for these backends to work, if SELinux is enabled on your server. Please refer to xref:installation/selinux_configuration.adoc[the SELinux documentation] for further details.
 
 Currently the https://github.com/owncloud/apps[External user support
 app] (user_external), _which is not enabled by default_, provides three
 backends. These are:
 
-* link:[IMAP]
-* link:[SMB]
-* link:[FTP]
+* link:imap[IMAP]
+* link:smb[SMB]
+* link:ftp[FTP]
 
-See ../../installation/apps_management_installation for more
-information.
+See xref:installation/apps_management_installation.adoc[Installing and Managing Apps] for more information.
 
 [[imap]]
 IMAP
@@ -49,8 +46,7 @@ http://www.php.net/manual/en/function.imap-open.php[in the PHP
 documentation].
 
 |Dependency |http://www.php.net/manual/en/book.imap.php[PHP’s IMAP
-extension]. See ../../installation/source_installation
-
+extension]. See xref:installation/source_installation.adoc[Manual Installation on Linux] 
 | |for instructions on how to install it.
 |=======================================================================
 
@@ -96,8 +92,7 @@ Provides authentication against Samba servers.
 |Arguments |The samba server to authenticate against.
 
 |Dependency |https://pecl.php.net/package/smbclient[PECL’s smbclient
-extension] or
-smbclient <../../configuration/files/external_storage/smb>.
+extension] or xref:configuration/files/external_storage/smb.adoc[smbclient].
 |=======================================================================
 
 [[example-1]]

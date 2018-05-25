@@ -18,7 +18,7 @@ your users to create their own external storage mounts or Federation
 shares, they can import SSL certificates for those shares on their
 Personal pages.
 
-image:/owncloud-docs/_images/import-ssl-cert-1.png[image]
+image:/owncloud-docs/_images/configuration/server/import-ssl-cert-1.png[image]
 
 Click the *Import root certificate* button to open a file picker. You
 can distribute copies of your SSL certificates to your users (via an
@@ -28,8 +28,7 @@ Certificate* button, then keep going until you can download it. In
 Firefox and Chromium there is an *Export* button for downloading your
 own copy of a site’s SSL certificate.
 
-image:/owncloud-docs/_images/import-ssl-cert-2.png[_Click ``More information'' in
-Firefox to import SSL certificate_]
+image:/owncloud-docs/_images/configuration/server/import-ssl-cert-2.png[Click ''More information'' in Firefox to import SSL certificate]
 
 [[site-wide-ssl-import]]
 Site-wide SSL Import
@@ -59,4 +58,4 @@ security:certificates:import  import trusted certificate
 security:certificates:remove  remove trusted certificate
 ....
 
-See occ_command to learn about how to use `occ`.
+See xref:configuration/server/occ_command.adoc[Using the occ Command] to learn about how to use `occ`.

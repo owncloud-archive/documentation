@@ -3,14 +3,14 @@ ownCloud Roles
 
 ownCloud supports eight user roles. These are:
 
-* link:anonymous[Anonymous]
-* link:guest[Guest]
-* link:standard-user[Standard User]
-* link:federated-user[Federated User]
-* link:owncloud-group-administrator[ownCloud Group Administrator]
-* link:owncloud-administrator[ownCloud Administrator]
-* link:system-administrator[System Administrator]
-* link:auditor[Auditor]
+* xref:anonymous[Anonymous]
+* xref:guest[Guest]
+* xref:standard-user[Standard User]
+* xref:federated-user[Federated User]
+* xref:owncloud-group-administrator[ownCloud Group Administrator]
+* xref:owncloud-administrator[ownCloud Administrator]
+* xref:system-administrator[System Administrator]
+* xref:auditor[Auditor]
 
 The following information is not an in-depth guide, but more of a
 high-level overview of each type.
@@ -115,7 +115,7 @@ System Administrator
 
 * Is not an ownCloud user.
 * Has access to ownCloud code (e.g., `config.php` and apps folders) and
-command-line tool (occ <../server/occ_command>).
+command-line tool (occ xref:configuration/server/occ_command.adoc[occ]).
 * Configures and maintains the ownCloud environment (_PHP_, _Webserver_,
 _DB_, _Storage_, _Redis_, _Firewall_, _Cron_, and _LDAP_, etc.).
 * Maintains ownCloud, such as updates, backups, and installs extensions.

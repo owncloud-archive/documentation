@@ -47,9 +47,8 @@ make sure to include `/dev/urandom`.
 Enable hardening modules such as SELinux
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It is highly recommended to enable hardening modules such as SELinux
-where possible. See ../../installation/selinux_configuration to learn
-more about SELinux.
+It is highly recommended to enable hardening modules such as SELinux.
+where possible. See xref:installation/selinux_configuration.adoc[SELinux Configuration] to learn more about SELinux.
 
 [[deployment]]
 Deployment

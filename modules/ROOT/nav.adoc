@@ -45,7 +45,7 @@
 **** xref:installation/system_requirements.adoc[System Requirements]
 **** Installation Options
 ***** xref:installation/source_installation.adoc[Manual Installation]
-***** xref:installation/linux_installation.adoc[Linux Package Manager Installation]
+***** xref:installation/linux_installation.adoc[Linux Package Manager]
 ***** xref:installation/installation_wizard.adoc[The Installation Wizard]
 ***** xref:installation/docker/index.adoc[Installing With Docker]
 ***** xref:installation/command_line_installation.adoc[Command Line Installation]
@@ -70,7 +70,7 @@
 ***** xref:configuration/database/linux_database_configuration.adoc[Linux Database Configuration]
 **** Files
 ***** External Storage
-****** xref:configuration/files/external_storage/auth_mechanisms.adoc[Authentication Mechanisms]
+****** xref:configuration/files/external_storage/auth_mechanisms.adoc[External Storage Authentication Mechanisms]
 ****** xref:configuration/files/external_storage/amazons3.adoc[AmazonS3]
 ****** xref:configuration/files/external_storage/dropbox.adoc[Dropbox]
 ****** xref:configuration/files/external_storage/ftp.adoc[FTP]
@@ -89,9 +89,9 @@
 ***** xref:configuration/files/federated_cloud_sharing_configuration.adoc[Federated Cloud Sharing Configuration]
 ***** xref:configuration/files/file_sharing_configuration.adoc[File Sharing Configuration]
 ***** xref:configuration/files/file_versioning.adoc[File Versioning]
-***** xref:configuration/files/files_locking_transactional.adoc[Files Locking Transactional]
+***** xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking]
 ***** xref:configuration/files/previews_configuration.adoc[Preview Configuration]
-***** xref:configuration/files/trashbin_options.adoc[Trash Bin Options]
+***** xref:configuration/files/trashbin_options.adoc[Managing the Trashbin]
 **** LDAP
 ***** xref:configuration/ldap/ldap_proxy_cache_server_setup.adoc[LDAP Proxy Cache Server Setup]
 **** xref:configuration/mimetypes/index.adoc[Mimetypes]

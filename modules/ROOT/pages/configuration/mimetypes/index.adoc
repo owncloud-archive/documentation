@@ -54,9 +54,7 @@ required for two reasons:
 Then, either override one or more existing definitions or add new,
 custom, aliases as required.
 
-Please refer to
-https://doc.owncloud.com/server/latest/developer_manual/core/theming.html[the
-ownCloud theming documentation] for where to put the new image files.
+NOTE: Please refer to https://doc.owncloud.com/server/latest/developer_manual/core/theming.html[the ownCloud theming documentation] for where to put the new image files.
 
 Some common mimetypes that may be useful in creating aliases are:
 

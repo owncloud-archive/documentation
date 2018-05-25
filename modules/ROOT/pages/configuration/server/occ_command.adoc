@@ -6,7 +6,7 @@ interface. You can perform many common server operations with `occ`,
 such as installing and upgrading ownCloud, managing users and groups,
 encryption, passwords, LDAP setting, and more.
 
-`occ` is in the owncloud/ directory; for example /var/www/owncloud on
+`occ` is in the owncloud/ directory; for example `/var/www/owncloud` on
 Ubuntu Linux. `occ` is a PHP script. *You must run it as your HTTP user*
 to ensure that the correct permissions are maintained on your ownCloud
 files and directories.
@@ -453,10 +453,7 @@ dav
  dav:sync-system-addressbook   Synchronizes users to the system address book
 ----
 
-________________________________________________________________________________________________
-These commands are not available in
-single-user (maintenance) mode <maintenance_commands_label>.
-________________________________________________________________________________________________
+NOTE: These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 `dav:cleanup-chunks` cleans up outdated chunks (uploaded files) more
 than a certain number of days old. By default, the command cleans up
@@ -680,10 +677,7 @@ files
                             not moved as the sharing user holds the ownership of the respective files).
 ----
 
-________________________________________________________________________________________________
-These commands are not available in
-single-user (maintenance) mode <maintenance_commands_label>.
-________________________________________________________________________________________________
+NOTE: These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [[the-fileschecksumsverify-command]]
 The files:checksums:verify command
@@ -894,11 +888,7 @@ Use `files_external:export` to export all admin mounts to stdout, and
 `files_external:export [user_id]` to export the mounts of the specified
 ownCloud user.
 
-______________________________________________________________________________________________________________________________________________________________________________________________
-These commands are only available when the ``External storage support''
-app (`files_external`) is enabled. It is not available in
-single-user (maintenance) mode <maintenance_commands_label>.
-______________________________________________________________________________________________________________________________________________________________________________________________
+NOTE: These commands are only available when the ``External storage support'' app (`files_external`) is enabled. It is not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [[group-commands]]
 Group Commands
@@ -2324,12 +2314,9 @@ database. If accounts are found that no longer exist in the external
 backend, you are given the choice of either removing or disabling the
 accounts.
 
-It’s also one of the commands <available_background_jobs_label> that you
-should run on a regular basis to ensure that your ownCloud installation
-is running optimally.
+NOTE: It’s also xref:configuration/server/background_jobs_configuration.adoc#available-background-jobs[one of the commands] that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
 
-This command replaces the old `show-remnants` functionality, and brings
-the LDAP feature more in line with the rest of ownCloud’s functionality.
+NOTE: This command replaces the old `show-remnants` functionality, and brings the LDAP feature more in line with the rest of ownCloud’s functionality.
 
 Below are examples of how to use the command with an _LDAP_, _Samba_,
 and _Shibboleth_ backend.
@@ -2410,27 +2397,16 @@ versions section in config_sample_php_parameters). The default is to
 delete expired files for all users, or you may list users in a
 space-delimited list.
 
-___________________________________________________________________________________________________________________________________________________________________________________________
-These commands are only available when the ``Versions'' app
-(`files_versions`) is enabled. These commands are not available in
-single-user (maintenance) mode <maintenance_commands_label>.
-___________________________________________________________________________________________________________________________________________________________________________________________
+NOTE: These commands are only available when the ``Versions'' app (`files_versions`) is enabled. These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [[command-line-installation]]
 Command Line Installation
 -------------------------
 
-ownCloud can be installed entirely from the command line. After
-downloading the tarball and copying ownCloud into the appropriate
-directories, or after installing ownCloud packages (See
-../../installation/linux_installation and
-../../installation/source_installation) you can use `occ` commands in
-place of running the graphical Installation Wizard.
+ownCloud can be installed entirely from the command line. 
+After downloading the tarball and copying ownCloud into the appropriate directories, or after installing ownCloud packages (See xref:installation/linux_installation.adoc[Linux Package Manager Installation] and xref:installation/source_installation.adoc[Manual Installation on Linux]) you can use `occ` commands in place of running the graphical Installation Wizard.
 
-These instructions assume that you have a fully working and configured
-webserver. If not, please refer to the documentation on
-configuring xref:installation/source_installation.adoc[configure-apache-web-server]  for
-detailed instructions.
+NOTE: These instructions assume that you have a fully working and configured webserver. If not, please refer to the documentation on configuring xref:installation/source_installation.adoc[configure-apache-web-server] for detailed instructions.
 
 Apply correct permissions to your ownCloud directories; see
 strong_perms_label. Then choose your `occ` options. This lists your

@@ -26,7 +26,7 @@ issue, and you can safely backup your entire ownCloud installation, with
 the exception of your ownCloud database. Databases cannot be copied, but
 you must use the database tools to make a correct database dump.
 
-To restore your ownCloud installation from backup, see restore .
+To restore your ownCloud installation from backup, see xref:maintenance/restore.adoc[Restoring ownCloud].
 
 [[backing-up-the-config-and-data-directories]]
 Backing Up the config/ and data/ Directories

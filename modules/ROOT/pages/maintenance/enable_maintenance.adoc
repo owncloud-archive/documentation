@@ -3,10 +3,7 @@ Maintenance Mode Configuration
 
 You must put your ownCloud server into maintenance mode before
 performing upgrades, and for performing troubleshooting and maintenance.
-Please see ../configuration/server/occ_command to learn how to put your
-server into the various maintenance modes
-(`maintenance:mode, maintenance:singleuser`, and `maintenance:repair`)
-with the `occ` command.
+Please see xref:configuration/server/occ_command.adoc[Using the occ Command] to learn how to put your server into the various maintenance modes (`maintenance:mode, maintenance:singleuser`, and `maintenance:repair`) with the `occ` command.
 
 `maintenance:mode` locks the sessions of logged-in users and prevents
 new logins. This is the mode to use for upgrades. You must run `occ` as

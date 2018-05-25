@@ -5,7 +5,7 @@ ownCloud Server Tuning
 Using Cron to Perform Background Jobs
 -------------------------------------
 
-See background_jobs_configuration for a description and the benefits.
+See xref:configuration/server/background_jobs_configuration.adoc[Background Jobs] for a description and the benefits.
 
 [[enable-memory-caching]]
 Enable Memory Caching
@@ -17,7 +17,7 @@ automatically available from ownCloud 8.1 but must be installed and
 configured separately. ownCloud supports https://redis.io[Redis],
 http://php.net/manual/en/intro.apcu.php[APCu], and
 https://memcached.org[Memcached] as memory caching backends. See
-caching_configuration, for further details.
+xref:configuration/server/caching_configuration.adoc[Memory Caching], for further details.
 
 [[use-redis-based-transactional-file-locking]]
 Use Redis-based Transactional File Locking
@@ -25,7 +25,7 @@ Use Redis-based Transactional File Locking
 
 File locking is enabled by default, using the database locking backend.
 However, this places a significant load on your database. See the
-section ../../configuration/files/files_locking_transactional for how to
+section xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking] for how to
 configure ownCloud to use Redis-based Transactional File Locking.
 
 [[redis-tuning]]

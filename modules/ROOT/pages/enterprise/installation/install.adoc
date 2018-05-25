@@ -24,7 +24,7 @@ Manual Installation
 
 Download the ownCloud archive from your account at
 https://customer.owncloud.com/owncloud, then follow the instructions at
-../../installation/source_installation.
+xref:installation/source_installation.adoc[Manual Installation on Linux].
 
 [[selinux]]
 SELinux
@@ -32,7 +32,7 @@ SELinux
 
 Linux distributions that use SELinux need to take some extra steps so
 that ownCloud will operate correctly under SELinux. Please see
-../../installation/selinux_configuration for some recommended
+xref:installation/selinux_configuration.adoc[SELinux Configuration] for some recommended
 configurations.
 
 [[license-keys]]
@@ -74,7 +74,7 @@ upgrade your ownCloud Enterprise to a new version.
 Supported ownCloud Enterprise Edition Apps
 ------------------------------------------
 
-See ../../installation/apps_supported for a list of supported apps.
+See xref:installation/apps_supported.adoc[Supported Apps in ownCloud] for a list of supported apps.
 
 3rd party and unsupported apps must be disabled before performing a
 system upgrade. Then install the upgraded versions, and after the

@@ -1,19 +1,16 @@
 Automatic Configuration Setup
 =============================
 
-If you need to install ownCloud on multiple servers, you normally do not
-want to set up each instance separately as described in
-../../configuration/database/linux_database_configuration. For this
-reason, ownCloud provides an automatic configuration feature.
+If you need to install ownCloud on multiple servers, you normally do not want to set up each instance separately as described in xref:configuration/database/linux_database_configuration[Database Configuration]. 
+For this reason, ownCloud provides an automatic configuration feature.
 
 To take advantage of this feature, you must create a configuration file,
-called ../owncloud/config/autoconfig.php, and set the file parameters as
+called `config/autoconfig.php`, and set the file parameters as
 required. You can specify any number of parameters in this file. Any
 unspecified parameters appear on the ``Finish setup'' screen when you
 first launch ownCloud.
 
-The ../owncloud/config/autoconfig.php is automatically removed after the
-initial configuration has been applied.
+The `config/autoconfig.php` is automatically removed after the initial configuration has been applied.
 
 [[parameters]]
 Parameters
@@ -86,9 +83,7 @@ $AUTOCONFIG = array(
 );
 ....
 
-Keep in mind that the automatic configuration does not eliminate the
-need for creating the database user and database in advance, as
-described in ../../configuration/database/linux_database_configuration.
+NOTE: Keep in mind that the automatic configuration does not eliminate the need for creating the database user and database in advance, as described in xref:configuration/database/linux_database_configuration.adoc[Database Configuration].
 
 [[postgresql-database]]
 PostgreSQL Database
@@ -108,10 +103,6 @@ $AUTOCONFIG = array(
   "dbtableprefix" => "",
 );
 ....
-
-Keep in mind that the automatic configuration does not eliminate the
-need for creating the database user and database in advance, as
-described in ../../configuration/database/linux_database_configuration.
 
 [[all-parameters]]
 All Parameters

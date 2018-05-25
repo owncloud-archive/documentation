@@ -4,7 +4,7 @@ Linking External Sites
 You can embed external Web sites inside your ownCloud pages with the
 External Sites app, as this screenshot shows.
 
-image:/owncloud-docs/_images/external-sites-1.png[_Click to enlarge_]
+image:/owncloud-docs/_images/external-sites-1.png[Click to enlarge]
 
 This is useful for quick access to important Web pages such as the
 ownCloud manuals and informational pages for your company, and for
@@ -18,7 +18,7 @@ menu to select an icon, but there is only one default icon so you don’t
 have to select one. Hover your cursor to the right of your links to make
 the trashcan icon appear when you want to remove them.
 
-image:/owncloud-docs/_images/external-sites-2.png[_Click to enlarge_]
+image:/owncloud-docs/_images/external-sites-2.png[Click to enlarge]
 
 The links appear in the ownCloud dropdown menu on the top left after
 refreshing your page, and have globe icons.

@@ -25,14 +25,14 @@ https://raymii.org/s/tutorials/Strong_SSL_Security_On_Apache2.html[Apache]
 and
 https://raymii.org/s/tutorials/Strong_SSL_Security_On_nginx.html[NGINX].
 
-1.  link:[Requirements & Dependencies]
-2.  link:[Install Let’s Encrypt’s Certbot client]
-3.  link:[Register your email address]
-4.  link:[Create Let’s Encrypt’s config files]
-5.  link:[Create an SSL certificate]
-6.  link:[Web Server setup]
-7.  link:[Test the setup]
-8.  link:[Renewing Certificates]
+1.  link:requirements-dependencies[Requirements & Dependencies]
+2.  link:install-lets-encrypts-certbot-client[Install Let’s Encrypt’s Certbot client]
+3.  link:register-your-email-address[Register your email address]
+4.  link:create-lets-encrypts-config-files[Create Let’s Encrypt’s config files]
+5.  link:create-an-ssl-certificate[Create an SSL certificate]
+6.  link:web-server-setup[Web Server setup]
+7.  link:test-the-setup[Test the setup]
+8.  link:renewing-certificates[Renewing Certificates]
 
 [[requirements-dependencies]]
 Requirements & Dependencies
@@ -315,8 +315,8 @@ Web Server setup
 
 Follow the links to set up your web server and issue a certificate.
 
-* apache
-* nginx
+* xref:installation/letsencrypt/apache.adoc[Setup Apache]
+* xref:installation/letsencrypt/nginx.adoc[Setup NGINX]
 
 [[test-the-setup]]
 Test the setup
@@ -328,7 +328,7 @@ configuration. To do so, you can use the free service of
 https://www.ssllabs.com/ssltest/[SSL Labs]. See an example screenshot of
 a test run below.
 
-image:/owncloud-docs/_images/ssllabs.png[image]
+image:/owncloud-docs/_images/installation/ssllabs.png[image]
 
 [[renewing-certificates]]
 Renewing Certificates
@@ -404,9 +404,7 @@ certificate, add the domain in the domain shell script above, re-run it
 and reload the web server config. This can be useful when migrating from
 a sub-directory to sub-domain access.
 
-This also implies that you need to comment the `include` directive
-(please refer to the relevant web server setup <web_server_setup_label>)
-and follow the steps afterward.
+NOTE: This also implies that you need to comment the `include` directive (please refer to the relevant xref:web-server-setup[web server setup]) and follow the steps afterward.
 
 [[deleting-ssl-certificates]]
 Deleting SSL Certificates

@@ -13,10 +13,7 @@ manager to install fresh ownCloud packages. After installing upgraded
 packages you must run a few more steps to complete the upgrade. These
 are the basic steps to upgrading ownCloud:
 
-Make sure that you don’t skip a major release when upgrading via
-repositories. For example you can’t upgrade from 8.1.x to 9.0.x directly
-as you would skip the 8.2.x major release. See
-skipped_release_upgrade_label for more information.
+IMPORTANT: Make sure that you don’t skip a major release when upgrading via repositories. For example you can’t upgrade from 8.1.x to 9.0.x directly as you would skip the 8.2.x major release. See xref:upgrading-across-skipped-releases[Upgrading Across Skipped Releases] for more information.
 
 * xref:installation/apps_management_installation[Disable] all third-party apps.
 * Make xref:maintenance/backup.adoc[a fresh backup].

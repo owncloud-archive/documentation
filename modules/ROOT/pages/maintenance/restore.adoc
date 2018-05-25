@@ -9,17 +9,14 @@ your backup (see backup):
 1.  Your `config/` directory.
 2.  Your `data/` directory.
 3.  Your ownCloud database.
-4.  Your custom theme files, if you have any. (See
-https://doc.owncloud.org/server/latest/developer_manual/core/theming.html[Theming
-ownCloud])
+4.  Your custom theme files, if you have any. (See https://doc.owncloud.org/server/latest/developer_manual/core/theming.html[Theming ownCloud])
 
 When you install ownCloud from the source tarballs you may safely
 restore your entire ownCloud installation from backup, with the
 exception of your ownCloud database. Databases cannot be copied, but you
 must use the database tools to make a correct restoration.
 
-When you have completed your restoration, see
-Setting Strong Permissions <strong_perms_label>.
+When you have completed your restoration, see xref:installation/source_installation.adoc#set-strong-directory-permissions[Set Strong Directory Permissions].
 
 [[restore-directories]]
 Restore Directories

@@ -7,16 +7,14 @@ need to upgrade. This guide steps you through upgrading your
 installation of PHP to version 5.6 or 7.0 if you’re on RedHat or Centos
 7.
 
-* upgrade_to_version_56_label
-* upgrade_to_version_7_label
+* xref:upgrade-to-version-5.6[Upgrade PHP to version 5.6]
+* xref:upgrade-to-version-7.0[Upgrade PHP to version 7]
 
 [[upgrade-php-to-version-5.6]]
 Upgrade PHP to version 5.6
 --------------------------
 
-You should really be upgrading to PHP 7, as version 5.6 is
-https://secure.php.net/supported-versions.php[no longer actively
-supported], and security support ends on 31 Dec, 2018.
+TIP: You should really be upgrading to PHP 7, as version 5.6 is https://secure.php.net/supported-versions.php[no longer actively supported], and security support ends on 31 Dec, 2018.
 
 You will first need to subscribe to the Red Hat Software Collections
 channel repository to be able to download and install the PHP 5.6

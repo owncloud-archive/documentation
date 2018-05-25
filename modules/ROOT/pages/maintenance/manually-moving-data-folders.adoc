@@ -14,9 +14,7 @@ This example assumes that:
 1.  Stop Apache
 2.  Use rsync to sync the files from the current folder to the new one
 3.  Create a symbolic link from the new directory to the old one
-4.  Double-check
-https://doc.owncloud.org/server/latest/admin_manual/installation/installation_wizard.html#strong-perms-label[the
-directory permissions] on the new directory
+4.  Double-check https://doc.owncloud.org/server/latest/admin_manual/installation/installation_wizard.html#strong-perms-label[the directory permissions] on the new directory
 5.  Restart Apache
 
 To save time, here’s the commands which you can copy and use:

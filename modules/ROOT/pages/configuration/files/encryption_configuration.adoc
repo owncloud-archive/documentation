@@ -108,12 +108,14 @@ keys, your files are *not* recoverable. Always have backups of your
 encryption keys stored in a safe location, and consider enabling all
 recovery options.
 
-TIP: You have more options via xref:configuration/server/occ_command.adoc#encryption[the `occ` command’s encryption options].
+You have more options via xref:configuration/server/occ_command.adoc#encryption[the `occ` command’s encryption options].
 
-You can’t manage encryption without access to the command line. If your
-ownCloud installation is on a hosted environment and you don’t have
-access to the command line, you won’t be able to run xref:configuration/server/occ_command.adoc[occ commands]. 
+[IMPORTANT] 
+====
+You can’t manage encryption without access to the command line. 
+If your ownCloud installation is on a hosted environment and you don’t have access to the command line, you won’t be able to run xref:configuration/server/occ_command.adoc[occ commands]. 
 In this case, *don’t enable encryption*!
+====
 
 [[how-to-enable-encryption]]
 How To Enable Encryption
@@ -272,8 +274,7 @@ You may change your recovery key password.
 
 image:/owncloud-docs/_images/configuration/files/encryption12.png[image]
 
-Sharing a recovery key with a user group is *not* supported. This is
-only supported with the master key <create-a-master-key>.
+NOTE: Sharing a recovery key with a user group is *not* supported. This is only supported with xref:create-a-new-master-key[the master key].
 
 [[changing-the-recovery-key-password]]
 Changing The Recovery Key Password
@@ -510,9 +511,7 @@ occ maintenance:singleuser --on
 occ encryption:disable
 ....
 
-Encryption cannot be disabled without the user’s password or
-file recovery key <enable-file-recovery-key>. If you don’t have access
-to at least one of these then there is no way to decrypt all files.
+IMPORTANT: Encryption cannot be disabled without the user’s password or file recovery key <enable-file-recovery-key>. If you don’t have access to at least one of these then there is no way to decrypt all files.
 
 Then, take it out of single-user mode when you are finished with this
 command:
