@@ -14,7 +14,7 @@ The appliance has the community edition of ownCloud but can be easily upgraded t
 
 Now you have to go to your ownCloud and enter the Market app
 
-- Select "Add API Key" and paste your Key
+- To enable enterprise features Select "Add API Key" and paste your Key
 
 - Start the Enterprise Trial
 
