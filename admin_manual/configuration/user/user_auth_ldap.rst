@@ -144,25 +144,6 @@ Only from those groups:
    * OpenLDAP uses ``memberOf``. `Reverse Group Membership Maintenance <https://www.openldap.org/doc/admin24/overlays.html#Reverse%20Group%20Membership%20Maintenance>`_ needs to be enabled.
    * Oracle uses `isMemberOf <https://docs.oracle.com/cd/E29127_01/doc.111170/e28967/ismemberof-5dsat.htm>`_ and is enabled by default.
 
---------------------
- In the case you choose **Active Directory** as your LDAP server you have to enter this specific filter in the **ownCloud LDAP Server Settings** in order for the ownCloud LDAP app to be able to find users in **nested groups**.
-  
-  Example:
-
-  * ``memberof:1.2.840.113556.1.4.1941:=CN=<Group_Name>,dc=example,dc=com``
-  
-This filter is called "Recursive retrieval of all AD group memberships of a user". According to Microsoft:
-
-The string 1.2.840.113556.1.4.1941 specifies LDAP_MATCHING_RULE_IN_CHAIN. This applies only to DN attributes. This is an extended match operator that walks the chain of ancestry in objects all the way to the root until it finds a match. **This reveals group nesting.** It is available only on domain controllers with Windows Server 2003 SP2 or Windows Server 2008 (or above). 
-
-For more information, see the following from Technet:
-
-    http://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx
-    http://blogs.technet.com/b/heyscriptingguy/archive/2014/11/25/active-directory-week-explore-group-membership-with-powershell.aspx
-------------------------
-
-
-
 Edit raw filter instead:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP filter directly.
   Example::
