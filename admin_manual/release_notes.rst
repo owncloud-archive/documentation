@@ -96,7 +96,7 @@ For security reasons ownCloud has a *Same-Origin-Policy* that prevents requests 
 
 Mail Template Editor is now unbundled
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The Mail Template Editor has been unbundled from the default apps and is not shipped with the Server anymore. When upgrading ownCloud will try to automatically `install the latest version from the ownCloud Marketplace <https://marketplace.owncloud.com/apps/templateeditor>`_ in case the app was installed before. If this is not possible (e.g. no internet connection or clustered setup) you will either need to disable the app (``occ app:disable templateeditor``) or manually download the app and extract it to the ``apps/`` folder within your ownCloud directory.
+The Mail Template Editor has been unbundled from the default apps and is not shipped with the Server anymore. When upgrading ownCloud will try to automatically `install the latest version from the ownCloud Marketplace <https://marketplace.owncloud.com/apps/templateeditor>`_ in case the app was installed before. If this is not possible (e.g. no internet connection or clustered setup) you will either need to disable the app (``occ app:disable templateeditor``) or `download and install it manually <https://doc.owncloud.com/server/10.0/admin_manual/installation/apps_management_installation.html?highlight=install%20apps#manually-installing-apps>`_.
 
 Solved known issues
 ~~~~~~~~~~~~~~~~~~~
