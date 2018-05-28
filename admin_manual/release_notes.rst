@@ -94,6 +94,10 @@ Global option for CORS domains
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For security reasons ownCloud has a *Same-Origin-Policy* that prevents requests to ownCloud resources from other domains than the domain the backend server is hosted on. If ownCloud resources should be accessible from other domains, e.g. for a separate web frontend operated on a different domain, administrators can now globally specify policy exceptions via *CORS (Cross-Origin Resource Sharing)* using ``'cors.allowed-domains'`` in *config.php*. Please check *config.sample.php* for more information.
 
+Mail Template Editor is now unbundled
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The Mail Template Editor has been unbundled from the default apps and is not shipped with the Server anymore. When upgrading ownCloud will try to automatically `install the latest version from the ownCloud Marketplace <https://marketplace.owncloud.com/apps/templateeditor>`_ in case the app was installed before. If this is not possible (e.g. no internet connection or clustered setup) you will either need to disable the app (``occ app:disable templateeditor``) or manually download the app and extract it to the ``apps/`` folder within your ownCloud directory.
+
 Solved known issues
 ~~~~~~~~~~~~~~~~~~~
 - Bogus "Login failed" log entries have been removed (see `10.0.7 known issues <https://doc.owncloud.com/server/10.0/admin_manual/release_notes.html#changes-in-10-0-7>`_)
