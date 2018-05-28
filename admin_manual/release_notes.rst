@@ -100,7 +100,7 @@ The Mail Template Editor has been unbundled from the default apps and is not shi
 
 Solved known issues
 ~~~~~~~~~~~~~~~~~~~
-- Bogus "Login failed" log entries have been removed (see `10.0.7 known issues <https://doc.owncloud.com/server/10.0/admin_manual/release_notes.html#changes-in-10-0-7>`_)
+- Bogus "Login failed" log entries have been removed (see `10.0.7 known issues <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#changes-in-10-0-7>`_)
 - The *Provisioning API* can now properly set default or zero quota
 - User quota settings can be queried through *Provisioning API*
 - A regression preventing a user from setting their e-mail address in the settings page has been fixed
