@@ -160,17 +160,19 @@ x users found:
 
     ``(&(objectClass=user)(memberof:1.2.840.113556.1.4.1941:=CN=<groupname>,DC=example,DC=com))``
 
-  Enter your group name instead of the "<Group_Name>" placeholder.
+  Enter your group name instead of the "<groupname>" placeholder.
 
   If you want to search multiple groups with this feature adjust your filter like this:
 
     ``"(&
         (objectClass=user)
           (|
-            (memberOf:1.2.840.113556.1.4.1941:=CN=<groupname>,CN=Users,DC=example,DC=com)
-            (memberOf:1.2.840.113556.1.4.1941:=CN=<group2name>,CN=Users,DC=example,DC=com)
+            (memberOf:1.2.840.113556.1.4.1941:=CN=<groupname1>,CN=Users,DC=example,DC=com)
+            (memberOf:1.2.840.113556.1.4.1941:=CN=<groupname2>,CN=Users,DC=example,DC=com)
           )
       )"``
+
+You can add as many groups to recurse into in the format (|(m1)(m2)(m3).....)
 
 Description from Microsoft:
 
