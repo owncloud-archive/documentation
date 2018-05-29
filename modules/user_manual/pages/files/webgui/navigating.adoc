@@ -44,8 +44,7 @@ When you select multiple files, you can delete all of them, or download
 them as a ZIP file by using the `Delete` or `Download` buttons that
 appear at the top.
 
-If the `Download` button is not visible, the administrator has disabled
-this feature.
+NOTE: If the `Download` button is not visible, the administrator has disabled this feature.
 
 [[filter-the-files-view]]
 Filter the Files View
@@ -95,10 +94,13 @@ video player depends on your Web browser and the video’s format.
 
 image:/owncloud-docs/user_manual/_images/video_player_2.png[image]
 
+[NOTE]
+====
 If your ownCloud administrator has enabled video streaming, and it
 doesn’t work in your Web browser, it may be a browser-related issue. See
 https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility
 for supported multimedia formats in Web browsers.
+====
 
 [[settings]]
 Settings

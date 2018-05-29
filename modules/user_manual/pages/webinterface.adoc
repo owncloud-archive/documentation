@@ -12,8 +12,7 @@ Supported Web browsers are:
 +
 image:/owncloud-docs/user_manual/_images/oc_connect.png[image]
 
-Some apps like `files_external` or `encryption` will disable the *Stay
-logged in* checkbox.
+NOTE: Some apps like `files_external` or `encryption` will disable the *Stay logged in* checkbox.
 
 [[navigating-the-main-user-interface]]
 Navigating the Main User Interface
@@ -47,10 +46,7 @@ to the root level (home).
 * *New* button: Located in the Navigation Bar, the `New` button enables
 you to create new files, new folders, or upload files.
 
-You can also drag and drop files from your file manager into the
-ownCloud Files Application View to upload them to ownCloud. Currently,
-the only Web browsers that support drag-and-drop folders are Chrome and
-Chromium.
+NOTE: You can also drag and drop files from your file manager into the ownCloud Files Application View to upload them to ownCloud. Currently, the only Web browsers that support drag-and-drop folders are Chrome and Chromium.
 
 * *Search* field: Click on the magnifier in the upper right hand corner
 of to search for files.

@@ -41,10 +41,6 @@ ____________________________________________
 image:/owncloud-docs/user_manual/_images/settings_devices_add.png[image]
 ____________________________________________
 
-You have only access to the device password when creating it, ownCloud
-will not save the plain password, hence it’s recommended to enter the
-password on the new client immediately.
+NOTE: You have only access to the device password when creating it, ownCloud will not save the plain password, hence it’s recommended to enter the password on the new client immediately.
 
-If two-factor authentication is enabled for your account,
-device-specific passwords are the only way to configure clients. The
-client will deny connections of clients using your login password then.
+NOTE: If two-factor authentication is enabled for your account, device-specific passwords are the only way to configure clients. The client will deny connections of clients using your login password then.

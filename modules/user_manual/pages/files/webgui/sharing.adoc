@@ -33,6 +33,8 @@ If username auto-completion is enabled, when you start typing the user
 or group name ownCloud will automatically complete it for you, if
 possible.
 
+[NOTE]
+====
 From 10.0.8, user and group name search results are dependent on a new
 https://doc.owncloud.org/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html[configuration
 setting], called `user.search_min_length` (it is set to 4 by default).
@@ -41,6 +43,7 @@ terms contain at least the defined number of characters. Consequently,
 search terms shorter than the defined number of characters will not
 return a list of matches. However, they will return an existing user or
 group with a name of the same length as the search term.
+====
 
 After a file or folder has been shared, link:[Share Permissions] can be
 set on it. In the image below, you can see that the directory
@@ -65,8 +68,7 @@ restore these files/folders to their original location.
 
 image:/owncloud-docs/user_manual/_images/sharing/restore-files.png[image]
 
-Restoring files restores the backup copy for *all users*, including the
-user that originally moved them, into the original folder.
+NOTE: Restoring files restores the backup copy for *all users*, including the user that originally moved them, into the original folder.
 
 [[sharing-files-with-guest-users]]
 Sharing Files with Guest Users
@@ -145,7 +147,7 @@ image:/owncloud-docs/user_manual/_images/public-link/private-link.png[Obtaining 
 If you click it, a new textbox will appear above the ``**Collaborative
 tags**'' field, populated with the link’s URI (2).
 
-Only people who have access to the file or folder can use the link.
+NOTE: Only people who have access to the file or folder can use the link.
 
 [[changing-the-share-expiration-date]]
 Changing The Share Expiration Date

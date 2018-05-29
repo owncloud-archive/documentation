@@ -12,8 +12,7 @@ there is no need to use single or double-quotes. Type as many words as
 you want for the tag name. When you press the return key your tag will
 be saved.
 
-All tags are system tags, so they are shared by all users on your
-ownCloud server.
+NOTE: All tags are system tags, so they are shared by all users on your ownCloud server.
 
 image:/owncloud-docs/user_manual/_images/files_page-7.png[image]
 

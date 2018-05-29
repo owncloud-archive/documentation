@@ -49,10 +49,13 @@ page.
 
 image:/owncloud-docs/user_manual/_images/encryption2.png[image]
 
+[NOTE]
+====
 You must never lose your ownCloud password, because you will lose access
 to your files. Though there is an optional recovery option that your
 ownCloud administrator may enable; see the Recovery Key Password section
 (below) to learn about this.
+====
 
 [[sharing-encrypted-files]]
 Sharing Encrypted Files
