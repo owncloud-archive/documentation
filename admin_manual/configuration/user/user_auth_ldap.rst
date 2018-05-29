@@ -156,15 +156,21 @@ x users found:
 
   Active Directory offers "Recursive retrieval of all AD group memberships of a user". This means essentially that you would be able to search the group you enter and all the other child groups from this groups for users.
 
-  Enter this filter to access this feature::
+  Enter this filter to access this feature for a single group::
 
-    ``(&(objectClass=user)(memberof:1.2.840.113556.1.4.1941:=CN=<Group_Name>,DC=example,DC=com))``
+    ``(&(objectClass=user)(memberof:1.2.840.113556.1.4.1941:=CN=<groupname>,DC=example,DC=com))``
 
   Enter your group name instead of the "<Group_Name>" placeholder.
 
   If you want to search multiple groups with this feature adjust your filter like this:
 
-    ``"(&(objectClass=user)(|(memberOf:1.2.840.113556.1.4.1941:=CN=<groupname>,CN=Users,DC=example,DC=com)(memberOf:1.2.840.113556.1.4.1941:=CN=<group2name>,CN=Users,DC=example,DC=com)))"``
+    ``"(&
+        (objectClass=user)
+          (|
+            (memberOf:1.2.840.113556.1.4.1941:=CN=<groupname>,CN=Users,DC=example,DC=com)
+            (memberOf:1.2.840.113556.1.4.1941:=CN=<group2name>,CN=Users,DC=example,DC=com)
+          )
+      )"``
 
 Description from Microsoft:
 
