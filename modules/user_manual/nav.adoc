@@ -7,6 +7,7 @@
 *** xref:files/webgui/comments.adoc[Comments]
 *** xref:files/webgui/custom_groups.adoc[Custom Groups]
 *** Files
+**** xref:files/access_webdav.adoc[Access WebDAV]
 **** xref:files/webgui/sharing.adoc[Sharing Files]
 **** xref:files/webgui/tagging.adoc[Tagging Files]
 **** xref:files/encrypting_files.adoc[Encrypting Files]
@@ -19,8 +20,7 @@
 *** Storage
 **** xref:files/webgui/quota.adoc[Storage Quotas]
 **** xref:external_storage/external_storage.adoc[External Storage]
-*** xref:external_storage/sharepoint_connecting.adoc[Connecting to SharePoint]
-** xref:files/access_webdav.adoc[Access WebDAV]
+**** xref:external_storage/sharepoint_connecting.adoc[Connecting to SharePoint]
 ** xref:files/desktop_mobile_sync.adoc[Desktop Mobile Sync]
 ** Apps
 *** xref:files/gallery_app.adoc[Gallery App]
