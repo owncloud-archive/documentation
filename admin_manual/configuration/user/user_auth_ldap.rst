@@ -146,7 +146,10 @@ Only from those groups:
 
 Edit raw filter instead:
   Clicking on this text toggles the filter mode and you can enter the raw LDAP filter directly.
-  Example::
+
+Example
+
+::
 
    (&(objectClass=inetOrgPerson)(memberOf=cn=owncloudusers,ou=groups,dc=example,dc=com))
 
@@ -154,28 +157,29 @@ x users found:
   This is an indicator that tells you approximately how many users will be listed in ownCloud.
   The number updates automatically after any changes.
 
-  Active Directory offers "Recursive retrieval of all AD group memberships of a user". This means essentially that you would be able to search the group you enter and all the other child groups from this groups for users.
+Active Directory offers "Recursive retrieval of all AD group memberships of a user". This means essentially that you would be able to search the group you enter and all the other child groups from this groups for users.
 
-  Enter this filter to access this feature for a single group
+Enter this filter to access this feature for a single group
+  
 ::
   
-  "(&(objectClass=user)(memberof:1.2.840.113556.1.4.1941:=CN=<groupname>,DC=example,DC=com))"
+  (&(objectClass=user)(memberof:1.2.840.113556.1.4.1941:=CN=<groupname>,DC=example,DC=com))
 
-  Enter your group name instead of the "<groupname>" placeholder.
+Enter your group name instead of the "<groupname>" placeholder.
 
-  If you want to search multiple groups with this feature adjust your filter like this:
+If you want to search multiple groups with this feature, adjust your filter like this:
 
 ::
 
-  "(&
+  (&
       (objectClass=user)
         (|
           (memberOf:1.2.840.113556.1.4.1941:=CN=<groupname1>,CN=Users,DC=example,DC=com)
           (memberOf:1.2.840.113556.1.4.1941:=CN=<groupname2>,CN=Users,DC=example,DC=com)
         )
-    )"
+  )
 
-You can add as many groups to recurse into in the format (|(m1)(m2)(m3).....)
+You can add as many groups to recurse into in the format ``(|(m1)(m2)(m3).....)``
 
 Description from Microsoft:
 
