@@ -388,7 +388,7 @@ Add A New Rule
 
 To add a new rule, click the button marked ``Add a rule'' at the bottom
 left of the rules table. Then follow the process outlined in
-Update An Existing Rule <update-an-existing-rule>.
+xref:default-ruleset[Update An Existing Rule].
 
 [[delete-an-existing-rule]]
 Delete An Existing Rule

@@ -212,10 +212,7 @@ Example Request Response Payloads
 Response Attributes
 ^^^^^^^^^^^^^^^^^^^
 
-For details about the elements in the XML response payload please refer
-to
-the Response Attributes section <ocs-share-api__create-share_response-attributes>
-of the Create a New Share section below.
+For details about the elements in the XML response payload please refer to the Response Attributes section of xref:response-attributes-1[the Create a New Share section] below.
 
 [[create-a-new-share]]
 Create A New Share
@@ -479,8 +476,7 @@ Request Arguments
 | | |be up to 64 characters in length
 |share_id |int |The share’s unique id
 |permissions |int |Update permissions
-| | |(see :ref:`the create share section
-| | |<ocs-share-api__create-share>` above)
+| | |(see xref:create-a-new-share[the create share section] above)
 |password |string |Updated password for public link Share
 |publicUpload |boolean |Enable (true) / disable (false)
 | | |public upload for public shares.

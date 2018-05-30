@@ -8,9 +8,9 @@ This guide covers the setup and update of the two office apps.
 
 Here is an overview of the process:
 
-1.  Access the Appcenter <appcenter-label>
-2.  Install Collabora <collabora-label> or OnlyOffice <onlyoffice-label>
-3.  Update <update-label> the App
+1.  Access the xref:appcenter[Appcenter]
+2.  Install xref:how-to-install-collabora[Collabora] or xref:how-to-install-onlyoffice[OnlyOffice]
+3.  xref:updating[Update] the App
 
 Access with *HTTPS* using *domain name* is required.
 
@@ -42,8 +42,8 @@ image:/owncloud-docs/_images/appliance/ucs/onlyoffice/002-ucs-login.png[image]
 
 image:/owncloud-docs/_images/appliance/ucs/onlyoffice/003-ucs-favorites.png[image]
 
-From here on it’s your choice to install Collabora <collabora-label> or
-OnlyOffice <onlyoffice-label>.
+From here on it’s your choice to install xref:how-to-install-collabora[Collabora] or
+xref:how-to-install-onlyoffice[OnlyOffice].
 
 [[how-to-install-collabora]]
 How to Install Collabora

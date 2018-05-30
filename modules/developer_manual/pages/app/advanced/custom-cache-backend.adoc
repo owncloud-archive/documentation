@@ -4,6 +4,8 @@ Custom Filesystem Caches
 The metadata cache in ownCloud can be overridden by a storage class
 backend which implements the following methods:
 
+[[custom-cache-backend-methods]]
+
 [width="100%",cols="47%,53%",options="header",]
 |=======================================================================
 |Method |Description
@@ -40,23 +42,20 @@ following classes should be sub-classed:
 * `\OC\Files\Cache\Scanner`
 * `\OC\Files\Cache\Watcher`
 
-This class should then return the subclass from one of
-the three methods listed above <storage-backend-methods>.
+This class should then return the subclass from one of xref:custom-cache-backend-methods[the three methods listed above].
 
 [[cache]]
 Cache
 -----
 
-Instead of creating a full, custom, cache object, you can also use the
-same wrapper pattern as when
-creating custom storage backends <custom-storage-backends>. Cache
-wrappers should be implemented by overriding the `getCache()` method. In
-addition, it may also be useful to override the following methods:
+Instead of creating a full, custom, cache object, you can also use the same wrapper pattern as when creating xref:app/advanced/storage-backend.adoc#create-custom-storage-backends[custom storage backends].
+Cache wrappers should be implemented by overriding the `getCache()` method.
+In addition, it may also be useful to override the following methods:
 
 [width="100%",cols="43%,57%",options="header",]
 |=======================================================================
 |Method |Description
-|`get($file)` |Returns either the cache entry <label-cache-entry> for a
+|`get($file)` |Returns either xref:cache-entries[the cache entries] for a
 file or folder or false if the file is not in the cache.
 
 |`getFolderContents($path)` |Returns the cache entries for all files and

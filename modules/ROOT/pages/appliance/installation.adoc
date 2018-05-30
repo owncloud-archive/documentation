@@ -4,10 +4,9 @@ How to Install the Appliance
 The install process is a little involved, but not too much. To keep it
 succinct, you need to:
 
-* Download <appliance-download-label> and
-Install <appliance-install-label> the appliance
-* Activate <appliance-activate-label> the configured appliance
-* Step through the configuration wizard <appliance-download-label>
+* xref:download-the-appliance[Download] and xref:install-the-appliance[Install] the appliance
+* xref:activate-the-appliance[Activate] the configured appliance
+* Step through xref:administer-the-appliance[the configuration wizard]
 
 You need *Internet access* to use the appliance. The appliance has to be
 activated with a license that you will receive from Univention via
@@ -16,7 +15,7 @@ interface*. The appliance also needs access to a DHCP server so that it
 can receive an IP address and be accessible.
 
 After that, you can access the running instance of ownCloud and
-further configure it <appliance-administer-label> to suit your needs.
+further xref:administer-the-appliance[configure it] to suit your needs.
 
 [[download-the-appliance]]
 Download the Appliance

@@ -71,12 +71,12 @@ this application does not provide. If your ownCloud server is not
 connected to any external storage services, it is better to use other
 encryption tools, such as file-level or whole-disk encryption.
 
-[CAUTION] 
+[CAUTION]
 ====
-SSL terminates at or before Apache on the ownCloud server. 
+SSL terminates at or before Apache on the ownCloud server.
 Consequently, all files are in an unencrypted state between the SSL connection
-termination and the ownCloud code that encrypts and decrypts them. 
-This is, potentially, exploitable by anyone with administrator access to your server. 
+termination and the ownCloud code that encrypts and decrypts them.
+This is, potentially, exploitable by anyone with administrator access to your server.
 For more information, read: https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/[How ownCloud uses encryption to protect your data].
 ====
 
@@ -105,10 +105,10 @@ recovery options.
 
 You have more options via xref:configuration/server/occ_command.adoc#encryption[the `occ` command’s encryption options].
 
-[IMPORTANT] 
+[IMPORTANT]
 ====
-You can’t manage encryption without access to the command line. 
-If your ownCloud installation is on a hosted environment and you don’t have access to the command line, you won’t be able to run xref:configuration/server/occ_command.adoc[occ commands]. 
+You can’t manage encryption without access to the command line.
+If your ownCloud installation is on a hosted environment and you don’t have access to the command line, you won’t be able to run xref:configuration/server/occ_command.adoc[occ commands].
 In this case, *don’t enable encryption*!
 ====
 
@@ -221,8 +221,8 @@ image:/owncloud-docs/_images/configuration/files/encryption9.png[image]
 Encrypting External Mountpoints
 -------------------------------
 
-You and your users can encrypt individual external mount points. 
-You must have external storage enabled on your Admin page, and enabled for your users. 
+You and your users can encrypt individual external mount points.
+You must have external storage enabled on your Admin page, and enabled for your users.
 Encryption settings can be configured in the mount options for xref:configuration/files/external_storage_configuration_gui.adoc[an external storage mount].
 
 [[how-to-enable-users-file-recovery-keys]]
@@ -357,7 +357,7 @@ Get the current encryption status and the loaded encryption module:
 
 ....
 occ encryption:status
- - enabled: false                 
+ - enabled: false
  - defaultModule: OC_DEFAULT_MODULE
 ....
 
@@ -386,7 +386,7 @@ Select a different default Encryption module (currently the only
 available module is `OC_DEFAULT_MODULE`):
 
 ....
-occ encryption:set-default-module [Module ID]. 
+occ encryption:set-default-module [Module ID].
 ....
 
 The [module ID] is taken from the `encryption:list-modules` command.
@@ -416,7 +416,7 @@ It will depend on the encryption module you use which files get encrypted.
 Depending on the number and size of your files this can take some time.
 Please make sure that no users access their files during this process!
 
-Do you really want to continue? (y/n) 
+Do you really want to continue? (y/n)
 ....
 
 When you type `y` it creates a key pair for each of your users, and then
@@ -433,7 +433,7 @@ View current location of keys:
 
 ....
 occ encryption:show-key-storage-root
-Current key storage root:  default storage location (data/) 
+Current key storage root:  default storage location (data/)
 ....
 
 [[move-key-location]]
@@ -476,8 +476,8 @@ IMPORTANT: It is not possible to disable it.
 Recreating an Existing Master Key
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-If the master key needs replacing, for example, because it has been compromised, xref:configuration/server/occ_command.adoc#encryption[an occ command is available]. 
-The command is `encryption:recreate-master-key`. 
+If the master key needs replacing, for example, because it has been compromised, xref:configuration/server/occ_command.adoc#encryption[an occ command is available].
+The command is `encryption:recreate-master-key`.
 It replaces existing master key with new one and encrypts the files with the new key.
 
 [[disabling-encryption-1]]
@@ -494,7 +494,7 @@ occ maintenance:singleuser --on
 occ encryption:disable
 ....
 
-IMPORTANT: Encryption cannot be disabled without the user’s password or file recovery key <enable-file-recovery-key>. If you don’t have access to at least one of these then there is no way to decrypt all files.
+IMPORTANT: Encryption cannot be disabled without the user’s password or xref:how-to-enable-users-file-recovery-keys[file recovery key]. If you don’t have access to at least one of these then there is no way to decrypt all files.
 
 Then, take it out of single-user mode when you are finished with this
 command:
@@ -503,7 +503,7 @@ command:
 occ maintenance:singleuser --off
 ....
 
-It is possible to disable encryption with the file recovery key, _if_ every user uses them. 
+It is possible to disable encryption with the file recovery key, _if_ every user uses them.
 If so, "decrypt all" will use it to decrypt all files.
 
 NOTE: It is *not* planned to move this to the next user login or a background job. If that was done, then login passwords would need to be stored in the database, which could be a security issue.
@@ -542,8 +542,8 @@ and then, of course, notify the user and give them their new password.
 Encryption migration to ownCloud 8.0
 ------------------------------------
 
-When you upgrade from older versions of ownCloud to ownCloud 8.0, you must manually migrate your encryption keys with the `occ` command after the upgrade is complete, like this example for CentOS: `sudo -u apache php occ encryption:migrate-keys`. 
-You must run xref:configuration/server/occcommand.adoc[occ] as your HTTP user. 
+When you upgrade from older versions of ownCloud to ownCloud 8.0, you must manually migrate your encryption keys with the `occ` command after the upgrade is complete, like this example for CentOS: `sudo -u apache php occ encryption:migrate-keys`.
+You must run xref:configuration/server/occcommand.adoc[occ] as your HTTP user.
 
 [[encryption-migration-to-owncloud-8.1]]
 Encryption migration to ownCloud 8.1
@@ -558,9 +558,9 @@ You must do this to prevent users and sync clients from accessing files before y
 
 TIP: See xref:maintenance/enable_maintenance.adoc[the maintenance commands] for more information.
 
-After your upgrade is complete, follow the steps in enable_encryption_label to enable the new encryption system. 
-Then click the *Start Migration* button on your Admin page to migrate your encryption keys, or use the `occ` command. 
-We strongly recommend using the `occ` command; the *Start Migration* button is for admins who do not have access to the console, for example, installations on shared hosting. 
+After your upgrade is complete, follow the steps in enable_encryption_label to enable the new encryption system.
+Then click the *Start Migration* button on your Admin page to migrate your encryption keys, or use the `occ` command.
+We strongly recommend using the `occ` command; the *Start Migration* button is for admins who do not have access to the console, for example, installations on shared hosting.
 
 This example is for Debian/Ubuntu Linux:
 
@@ -574,5 +574,5 @@ This example is for Red Hat, CentOS, and Fedora Linux:
 $ sudo -u apache php occ encryption:migrate
 ....
 
-You must run `occ` as your HTTP user. 
+You must run `occ` as your HTTP user.
 When you are finished, take your ownCloud server out of single user mode.
