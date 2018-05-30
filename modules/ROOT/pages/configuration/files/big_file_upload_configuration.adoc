@@ -144,18 +144,10 @@ upload_tmp_dir = /var/big_temp_file/
 Configuring ownCloud
 --------------------
 
-As an alternative to the `upload_tmp_dir` of PHP (e.g., if you don’t
-have access to your `php.ini`) you can also configure a temporary
-location for uploaded files by using the `tempdirectory` setting in your
-`config.php` (See
-../../configuration/server/config_sample_php_parameters).
+As an alternative to the `upload_tmp_dir` of PHP (e.g., if you don’t have access to your `php.ini`) you can also configure a temporary location for uploaded files by using the `tempdirectory` setting in your `config.php`.
 
-If you have configured the `session_lifetime` setting in your
-`config.php` (See xref:configuration/server/config_sample_php_parameters.adoc[Config.php Parameters]) file then make
-sure it is not too low. This setting needs to be configured to at least
-the time (in seconds) that the longest upload will take. If unsure
-remove this completely from your configuration to reset it to the
-default shown in the `config.sample.php`.
+If you have configured the `session_lifetime` setting in your `config.php` (See xref:configuration/server/config_sample_php_parameters.adoc[Sample Config PHP Parameters]) file then make sure it is not too low. This setting needs to be configured to at least the time (in seconds) that the longest upload will take. 
+If unsure remove this completely from your configuration to reset it to the default shown in the `config.sample.php`.
 
 [[configuring-upload-limits-within-the-gui]]
 Configuring upload limits within the GUI
@@ -179,10 +171,8 @@ ownCloud (Apache only)
 * The user your Web server is running as has write permissions to the
 files `.htaccess` and `.user.ini`
 
-strong_perms_label might prevent write access to these files. As an
-admin you need to decide between the ability to use the input box and a
-more secure ownCloud installation where you need to manually modify the
-upload limits in the `.htaccess` and `.user.ini` files described above.
+xref:installation/source_installation.adoc#set-strong-directory-permissions[Directory permissions] might prevent write access to these files. 
+As an admin you need to decide between the ability to use the input box and a more secure ownCloud installation where you need to manually modify the upload limits in the `.htaccess` and `.user.ini` files described above.
 
 [[general-upload-issues]]
 General upload issues
@@ -192,8 +182,6 @@ Various environmental factors could cause a restriction of the upload
 size. Examples are:
 
 * The `LVE Manager` of `CloudLinux` which sets a `I/O limit`
-* Some services like `Cloudflare` are also known to cause uploading
-issues
+* Some services like `Cloudflare` are also known to cause uploading issues
 * Upload limits enforced by proxies used by your clients
-* Other webserver modules like described in
-../../issues/general_troubleshooting
+* Other webserver modules like described in xref:issues/general_troubleshooting.adoc[General Troubleshooting]

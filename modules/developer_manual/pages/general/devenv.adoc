@@ -2,12 +2,12 @@
 
 To be able to use and develop with ownCloud takes a few steps.
 
-1.  Install the Core Software
-2.  Setup the web server and database
-3.  Get the source
-4.  Install software dependencies
-5.  Enable debug mode
-6.  Setup ownCloud
+1.  link:install-the-core-software[Install the Core Software]
+2.  link:install-dependencies-on-opensuse-leap-42.3[Setup the web server and database]
+3.  link:setup-the-webserver-and-database[Get the source]
+4.  link:set-user-group-and-permissions[Install software dependencies]
+5.  link:enable-debug-mode[Enable debug mode]
+6.  link:setup-owncloud[Setup ownCloud]
 
 If you have already completed one or more of these steps, feel free to
 skip them. Otherwise, if you’re just getting started, begin by getting

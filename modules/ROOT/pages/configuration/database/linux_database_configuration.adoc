@@ -4,9 +4,9 @@ Database Configuration
 ownCloud requires a database in which administrative data is stored. The
 following databases are currently supported:
 
-* MySQL / MariaDB <db-binlog-label>
-* PostgreSQL <db-postgresql-label>
-* Oracle <db-oracle-database-setup> (ownCloud Enterprise edition only)
+* xref:mysql-mariadb-with-binary-logging-enabled[MySQL / MariaDB]
+* xref:postgresql-database[PostgreSQL]
+* xref:enterprise/server_branding/enterprise_server_branding.adoc[Oracle (ownCloud Enterprise edition only)]
 
 The MySQL or MariaDB databases are the recommended database engines.
 

@@ -21,9 +21,8 @@ image:/owncloud-docs/_images/skeleton-files1.png[image]
 Additional Configuration
 ------------------------
 
-The configuration option `skeletondirectory` available in your
-`config.php` (See
-../../configuration/server/config_sample_php_parameters) allows you to
-configure the directory where the skeleton files are located. These
-files will be copied to the data directory of new users. Leave empty to
-not copy any skeleton files.
+The configuration option `skeletondirectory` available in your `config.php` allows you to configure the directory where the skeleton files are located. 
+These files will be copied to the data directory of new users. 
+Leave empty to not copy any skeleton files.
+
+TIP: See xref:configuration/server/config_sample_php_parameters.adoc[Sample Config PHP Parameters] for more the complete list of `config.php` options.

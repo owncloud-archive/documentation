@@ -275,23 +275,15 @@ https://github.com/owncloud/core/issues/31134[will be displayed
 incorrectly]. As a remedy administrators can either uninstall the second
 theme app or disable the Mail Template Editor app.
 
-* `occ transfer:ownership`
-https://github.com/owncloud/core/issues/31150[does not transfer public
-link shares if they were created by the target user (reshare)].
+* `occ transfer:ownership` https://github.com/owncloud/core/issues/31150[does not transfer public link shares if they were created by the target user (reshare)].
 
 [[for-developers]]
 For developers
 ~~~~~~~~~~~~~~
 
-* The global JS variable ``oc_current_user'' was removed. Please use the
-public method ``OC.getCurrentUser()'' instead.
-* Lots of new Symfony events have been added for various user actions,
-see changelog for details. Documentation ticket:
-<https://github.com/owncloud/documentation/issues/3738>`_
-* When requesting a private link there is a new HTTP response header
-``Webdav-Location'' that contains the Webdav path to the requested file
-while the ``Location'' still points at the frontend URL for viewing the
-file.
+* The global JS variable ``oc_current_user'' was removed. Please use the public method `OC.getCurrentUser()` instead.
+* Lots of new Symfony events have been added for various user actions, see changelog for details, or the link:https://github.com/owncloud/documentation/issues/3738[documentation ticket].
+* When requesting a private link there is a new HTTP response header `Webdav-Location` that contains the WebDAV path to the requested file while the `Location` still points at the frontend URL for viewing the file.
 
 [[changes-in-10.0.7]]
 Changes in 10.0.7
@@ -363,10 +355,7 @@ Please make sure to have the desired theme enabled after upgrading.
 Removed old Dropbox external storage backend (Dropbox API v1)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Please switch to the new _External Storage: Dropbox_ app
-(https://marketplace.owncloud.com/apps/files_external_dropbox) with
-Dropbox API v2 support to continue providing Dropbox external storages
-to your users.
+Please switch to link:https://marketplace.owncloud.com/apps/files_external_dropbox[the new _External Storage: Dropbox_ app] with Dropbox API v2 support to continue providing Dropbox external storages to your users.
 
 [[fixed-only-set-cors-headers-on-webdav-endpoint-when-origin-header-is-specified]]
 Fixed: Only set CORS headers on WebDAV endpoint when Origin header is specified
@@ -466,9 +455,7 @@ updating apps. The new config setting prevents this and other actions
 that are undesired in cluster mode.
 
 *When operating in a clustered setup, it is mandatory to set this
-option.* Please check
-https://doc.owncloud.com/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html#mode-of-operation[the
-config_sample_php_parameters documentation] for more information.
+option.* Please check https://doc.owncloud.com/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html#mode-of-operation[the config_sample_php_parameters documentation] for more information.
 
 [[added-occ-davcleanup-chunks-command-to-clean-up-expired-uploads]]
 Added occ dav:cleanup-chunks command to clean up expired uploads
@@ -497,8 +484,7 @@ Administrators can now exclude files from integrity check in config.php
 
 When administrators did intentional changes to the ownCloud code they
 now have the ability to exclude certain files from the integrity
-checker. Please check ``config.sample.php'' for the usage of
-`'integrity.excluded.files'`.
+checker. Please check `config.sample.php` for the usage of `'integrity.excluded.files'`.
 
 [[modification-time-value-of-files-is-now-64-bits-long]]
 Modification time value of files is now 64 bits long

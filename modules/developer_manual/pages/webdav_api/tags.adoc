@@ -4,18 +4,17 @@ Tags API
 The tags API provides extensive support for managing tags within
 ownCloud. Using the tags API, you can:
 
-* link:list-tags[List tags]
-* link:create-tags[Create tags]
-* link:update-tags[Update tags]
-* link:delete-tags[Delete tags]
-* link:retrieve-the-tag-ids-and-metadata-of-a-given-file[Retrieve-the-tag-ids-and-metadata-of-a-given-file]
-* link:assign-a-tag-to-a-file[Assign-a-tag-to-a-file]
-* link:unassign-a-tag-from-a-file[Un-assign-a-tag-from-a-file]
-* link:create-and-assign-a-tag-at-the-same-time[Create-and-assign-a-tag-at-the-same-time]
-* link:retrieve-all-files-tagged-with-a-tag-id[Retrieve-all-files-tagged-with-a-tag-id]
+* xref:list-tags[List tags]
+* xref:create-tags[Create tags]
+* xref:update-tags[Update tags]
+* xref:delete-tags[Delete tags]
+* xref:retrieve-the-tag-ids-and-metadata-of-a-given-file[Retrieve the tag ids and metadata of a given file]
+* xref:assign-a-tag-to-a-file[Assign a Tag to a file]
+* xref:unassign-a-tag-from-a-file[Un-assign a Tag From a File]
+* xref:create-and-assign-a-tag-at-the-same-time[Create and Assign a Tag at the Same Time]
+* xref:retrieve-all-files-tagged-with-a-tag-id[Retrieve all Files Tagged with a Tag ID]
 
-In short, it provides all of the functionality available through the UI,
-from the command-line.
+In short, it provides all of the functionality available through the UI, from the command-line.
 
 [[list-tags]]
 List Tags
