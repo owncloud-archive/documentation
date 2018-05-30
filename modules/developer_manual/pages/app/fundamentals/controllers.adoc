@@ -1,5 +1,4 @@
-Controllers
-===========
+= Controllers
 
 Controllers are used to connect routes <routes> with application logic.
 Think of them as callbacks that are executed once a request has come in.

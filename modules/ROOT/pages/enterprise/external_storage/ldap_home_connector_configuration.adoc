@@ -1,5 +1,4 @@
-LDAP Home Connector
-===================
+= LDAP Home Connector Configuration
 
 The LDAP Home Connector App enables you to configure your ownCloud
 server to display your users’ Windows home directories on their Files

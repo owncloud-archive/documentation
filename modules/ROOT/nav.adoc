@@ -3,43 +3,42 @@
 * xref:index.adoc[Admin Manual]
 *** xref:release_notes.adoc[Release Notes]
 *** xref:whats_new_admin.adoc[What's New]
-*** Appliance
-**** UCS
-***** xref:appliance/ucs/add-groups-and-users.adoc[Add Groups and Users]
-**** xref:appliance/what-is-it.adoc[What is it]
-**** xref:appliance/Active_Directory.adoc[Active Directory]
-**** xref:appliance/Backup.adoc[Backup]
-**** xref:appliance/Clamav.adoc[ClamAV]
-**** xref:appliance/Office.adoc[Office]
-**** xref:appliance/certificates.adoc[Certificates]
-**** xref:appliance/howto-update-owncloud.adoc[How to Update ownCloud]
-**** xref:appliance/installation.adoc[Installation]
+*** The ownCloud X Appliance
+**** xref:appliance/what-is-it.adoc[What is the Appliance]
+**** xref:appliance/installation.adoc[How to Install the Appliance]
+**** xref:appliance/certificates.adoc[How to Add SSL Certificates]
 **** xref:appliance/login_information.adoc[Login Information]
-**** xref:appliance/managing-ucs.adoc[Managing UCS]
+**** xref:appliance/howto-update-owncloud.adoc[How to Update ownCloud]
+**** xref:appliance/Clamav.adoc[Install Antivirus Software]
+**** xref:appliance/Active_Directory.adoc[Active Directory Integration]
+**** xref:appliance/Backup.adoc[Backing up the Appliance]
+**** xref:appliance/Office.adoc[Working on Documents]
+**** Managing UCS
+***** xref:appliance/ucs/add-groups-and-users.adoc[Add Groups and Users]
 *** Enterprise
 **** Clients
 ***** xref:enterprise/clients/creating_branded_apps.adoc[Creating Branded Apps]
 ***** xref:enterprise/clients/custom_client_repos.adoc[Custom Client Repos]
 **** External Storage
-***** xref:enterprise/external_storage/enterprise_only_auth.adoc[Enterprise Only Authentication]
+***** xref:enterprise/external_storage/enterprise_only_auth.adoc[Enterprise-Only Authentication Options]
 ***** xref:enterprise/external_storage/ldap_home_connector_configuration.adoc[LDAP Home Connector Configuration]
 ***** xref:enterprise/external_storage/onedrive.adoc[OneDrive]
 ***** xref:enterprise/external_storage/s3_swift_as_primary_object_store_configuration.adoc[S3 Swift as Primary Object Store Configuration]
 ***** xref:enterprise/external_storage/sharepoint-integration_configuration.adoc[Sharepoint integration Configuration]
 ***** xref:enterprise/external_storage/windows-network-drive_configuration.adoc[Windows Network Drive Configuration]
 **** File Management
-***** xref:enterprise/file_management/files_tagging.adoc[File Tagging]
+***** xref:enterprise/file_management/files_tagging.adoc[Advanced File Tagging]
 **** Firewall
 ***** xref:enterprise/firewall/file_firewall.adoc[File Firewall]
 **** xref:enterprise/installation/install.adoc[Installation]
-***** xref:enterprise/installation/oracle_db_configuration.adoc[Oracle DB Configuration]
+***** xref:enterprise/installation/oracle_db_configuration.adoc[Oracle Database Setup]
 **** Logging
 ***** xref:enterprise/logging/enterprise_logging_apps.adoc[Enterprise Logging Apps]
 **** xref:enterprise/ransomware-protection/index.adoc[Ransomware Protection]
 **** Server Branding
 ***** xref:enterprise/server_branding/enterprise_server_branding.adoc[Enterprise Server Branding]
 **** User Management
-***** xref:enterprise/user_management/user_auth_shibboleth.adoc[User Auth Shibboleth]
+***** xref:enterprise/user_management/user_auth_shibboleth.adoc[Shibboleth Integration]
 *** xref:faq/index.adoc[FAQ]
 *** Installation
 **** xref:installation/system_requirements.adoc[System Requirements]

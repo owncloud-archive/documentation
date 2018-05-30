@@ -1,5 +1,4 @@
-Importing System-wide and Personal SSL Certificates
-===================================================
+= Importing System-wide and Personal SSL Certificates
 
 Modern Web browsers try to keep us safe, and so they blast us with scary
 warnings when sites have the smallest errors in their SSL certificates,

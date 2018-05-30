@@ -1,5 +1,4 @@
-ownCloud Bug Triaging
-=====================
+= Bug Triaging
 
 Bug Triaging is the process of checking bug reports to see if they are
 still valid (the problem might be solved since the bug was reported),

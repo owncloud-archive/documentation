@@ -1,7 +1,34 @@
 #!/usr/bin/env php
 
 * Developer Manual
-** xref:commun/help_and_communication.adoc[Getting Involved]
+** General Contributor Guidelines
+*** xref:commun/help_and_communication.adoc[Getting Involved]
+*** xref:general/code-of-conduct.adoc[Community Code of Conduct]
+*** xref:general/codingguidelines.adoc[Coding Style & General Guidelines]
+*** xref:general/debugging.adoc[Debugging]
+*** xref:general/performance.adoc[Performance Considerations]
+*** xref:general/security.adoc[Security Guidelines]
+*** xref:general/backporting.adoc[Backporting]
+** Developing ownCloud Core
+*** xref:core/introduction.adoc[Introduction]
+*** xref:general/devenv.adoc[Setup Your Development Environment]
+*** xref:core/configfile.adoc[Application Configuration]
+*** xref:core/theming.adoc[Theming]
+*** xref:core/translation.adoc[Translation]
+*** Testing
+**** xref:testing/index.adoc[ownCloud Test Pilots]
+**** xref:core/unit-testing.adoc[Unit Testing]
+**** xref:core/acceptance-tests.adoc[Acceptance tests]
+**** xref:core/ui-testing.adoc[User Interface Testing]
+*** xref:core/configfile.adoc[Available APIs]
+**** xref:core/externalapi.adoc[The External API]
+**** xref:core/ocs-capabilities.adoc[The OCS REST API]
+**** xref:core/ocs-recipient-api.adoc[The OCS Recipient API]
+**** xref:core/ocs-share-api.adoc[The OCS Share API]
+**** WebDAV APIs
+***** xref:webdav_api/comments.adoc[The Comments API]
+***** xref:webdav_api/files_versions.adoc[The Files Versions API]
+***** xref:webdav_api/tags.adoc[The Tags API]
 ** Developing ownCloud Apps
 *** xref:app/introduction.adoc[Introduction]
 *** Fundamental Concepts
@@ -47,33 +74,6 @@
 **** xref:app/tutorial/finishing_touches.adoc[Apply the Finishing Touches]
 **** xref:app/tutorial/restful_api.adoc[Add a RESTful API]
 **** xref:app/tutorial/testing.adoc[Writing Tests]
-** Developing ownCloud Core
-*** xref:core/introduction.adoc[Introduction]
-*** xref:general/devenv.adoc[Setup Your Development Environment]
-*** xref:core/configfile.adoc[Application Configuration]
-*** xref:core/theming.adoc[Theming]
-*** xref:core/translation.adoc[Translation]
-*** Testing
-**** xref:testing/index.adoc[ownCloud Test Pilots]
-**** xref:core/unit-testing.adoc[Unit Testing]
-**** xref:core/acceptance-tests.adoc[Acceptance tests]
-**** xref:core/ui-testing.adoc[User Interface Testing]
-*** xref:core/configfile.adoc[Available APIs]
-**** xref:core/externalapi.adoc[The External API]
-**** xref:core/ocs-capabilities.adoc[The OCS REST API]
-**** xref:core/ocs-recipient-api.adoc[The OCS Recipient API]
-**** xref:core/ocs-share-api.adoc[The OCS Share API]
-**** WebDAV APIs
-***** xref:webdav_api/comments.adoc[The Comments API]
-***** xref:webdav_api/files_versions.adoc[The Files Versions API]
-***** xref:webdav_api/tags.adoc[The Tags API]
-** General Contributor Guidelines
-*** xref:general/code-of-conduct.adoc[Community Code of Conduct]
-*** xref:general/codingguidelines.adoc[Coding Style & General Guidelines]
-*** xref:general/debugging.adoc[Debugging]
-*** xref:general/performance.adoc[Performance Considerations]
-*** xref:general/security.adoc[Security Guidelines]
-*** xref:general/backporting.adoc[Backporting]
 ** Mobile Development
 *** xref:mobile_development/android_library/index.adoc[Android]
 **** xref:mobile_development/android_library/library_installation.adoc[Library Installation]
@@ -82,5 +82,5 @@
 **** xref:mobile_development/ios_library/library_installation.adoc[Library Installation]
 **** xref:mobile_development/ios_library/examples.adoc[Examples]
 ** xref:bugtracker/index.adoc[Bugtracker]
-*** xref:bugtracker/codereviews.adoc[Code reviews]
-*** xref:bugtracker/triaging.adoc[Triaging]
+*** xref:bugtracker/codereviews.adoc[Code Reviews]
+*** xref:bugtracker/triaging.adoc[Bug Triaging]
