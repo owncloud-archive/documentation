@@ -68,7 +68,7 @@ Running `occ` with no options lists all commands and options, like this
 example on Ubuntu:
 
 ....
-sudo -u www-data php occ 
+sudo -u www-data php occ
 ownCloud version 10.0.8
 
 Usage:
@@ -82,7 +82,7 @@ Options:
      --no-ansi         Disable ANSI output
  -n, --no-interaction  Do not ask any interactive question
      --no-warnings     Skip global warnings, show command output only
- -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 
+ -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output,
                        2 for more verbose output and 3 for debug
 
 Available commands:
@@ -90,7 +90,7 @@ Available commands:
  help                  Displays help for a command
  list                  Lists commands
  status                Show some status information
- upgrade               Run upgrade routines after installation of 
+ upgrade               Run upgrade routines after installation of
                        a new release. The release has to be installed before
 ....
 
@@ -145,7 +145,7 @@ Options:
      --no-ansi         Disable ANSI output
  -n, --no-interaction  Do not ask any interactive question
      --no-warnings     Skip global warnings, show command output only
- -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 
+ -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output,
                        2 for more verbose output and 3 for debug
 ....
 
@@ -230,11 +230,11 @@ If your app has issues, you’ll see output like this
 sudo -u www-data php occ app:check-code foo_app
 Analysing /var/www/owncloud/apps/files/foo_app.php
 4 errors
-   line   45: OCP\Response - Static method of deprecated class must not be 
+   line   45: OCP\Response - Static method of deprecated class must not be
    called
-   line   46: OCP\Response - Static method of deprecated class must not be 
+   line   46: OCP\Response - Static method of deprecated class must not be
    called
-   line   47: OCP\Response - Static method of deprecated class must not be 
+   line   47: OCP\Response - Static method of deprecated class must not be
    called
    line   49: OC_Util - Static method of private class must not be called
 ....
@@ -347,11 +347,11 @@ Setting a Single Configuration Value
 These commands set the value of a single app or system configuration:
 
 ....
-sudo -u www-data php occ config:system:set logtimezone 
+sudo -u www-data php occ config:system:set logtimezone
    --value="Europe/Berlin"
 System config value logtimezone set to Europe/Berlin
 
-sudo -u www-data php occ config:app:set files_sharing 
+sudo -u www-data php occ config:app:set files_sharing
 incoming_server2server_share_enabled --value="yes" --type=boolean
 Config value incoming_server2server_share_enabled for app files_sharing set to yes
 ....
@@ -360,7 +360,7 @@ The `config:system:set` command creates the value, if it does not
 already exist. To update an existing value, set `--update-only`:
 
 ....
-sudo -u www-data php occ config:system:set doesnotexist --value="true" 
+sudo -u www-data php occ config:system:set doesnotexist --value="true"
    --type=boolean --update-only
 Value not updated, as it has not been set before.
 ....
@@ -379,7 +379,7 @@ When you want to e.g., disable the maintenance mode run the following
 command:
 
 ....
-sudo -u www-data php occ config:system:set maintenance --value=false 
+sudo -u www-data php occ config:system:set maintenance --value=false
    --type=boolean
 ownCloud is in maintenance mode - no app have been loaded
 System config value maintenance set to boolean false
@@ -401,7 +401,7 @@ To replace `sample.tld` with `example.com` trusted_domains => 2 needs to
 be set:
 
 ....
-sudo -u www-data php occ config:system:set trusted_domains 2 
+sudo -u www-data php occ config:system:set trusted_domains 2
    --value=example.com
 System config value trusted_domains => 2 set to string example.com
 
@@ -525,7 +525,7 @@ databases.
 ----
 db
  db:convert-type           Convert the ownCloud database to the newly configured one
- db:generate-change-script Generates the change script from the current 
+ db:generate-change-script Generates the change script from the current
                            connected db to db_structure.xml
 ----
 
@@ -559,9 +559,9 @@ encryption
  encryption:encrypt-all              Encrypt all files for all users
  encryption:list-modules             List all available encryption modules
  encryption:migrate                  initial migration to encryption 2.0
- encryption:recreate-master-key      Replace existing master key with new one. Encrypt the file system with 
+ encryption:recreate-master-key      Replace existing master key with new one. Encrypt the file system with
                                      newly created master key
- encryption:select-encryption-type   Select the encryption type. The encryption types available are: masterkey and 
+ encryption:select-encryption-type   Select the encryption type. The encryption types available are: masterkey and
                                      user-keys. There is also no way to disable it again.
  encryption:set-default-module       Set the encryption default module
  encryption:show-key-storage-root    Show current key storage root
@@ -601,7 +601,7 @@ You will see a list of modules only if you have enabled the Encryption
 app. Use `encryption:set-default-module [module name]` to set your
 desired module.
 
-`encryption:encrypt-all` encrypts all data files for all users. 
+`encryption:encrypt-all` encrypts all data files for all users.
 You must first put your ownCloud server into xref:maintenance-commands[single-user mode] to prevent any user activity until encryption is completed.
 
 `encryption:decrypt-all` decrypts all user data files, or optionally a
@@ -616,12 +616,12 @@ first put your ownCloud server into
 single-user mode <maintenance_commands> to prevent any user
 activity until decryption is completed.
 
-Use `encryption:disable` to disable your encryption module. 
+Use `encryption:disable` to disable your encryption module.
 You must first put your ownCloud server into xref:maintenance-commands[single-user mode] to prevent any user activity.
 
 `encryption:migrate` migrates encryption keys after a major ownCloud
-version upgrade. 
-You may optionally specify individual users in a space-delimited list. 
+version upgrade.
+You may optionally specify individual users in a space-delimited list.
 See xref:configuration/files/encryption_configuration.adoc[encryption configuration] to learn more.
 
 `encryption:recreate-master-key` decrypts the ownCloud file system,
@@ -650,7 +650,7 @@ synchronize federated servers:
 sudo -u www-data php occ federation:sync-addressbooks
 ....
 
-NOTE: This command is only available when the ``Federation'' app (`federation`) is enabled.
+NOTE: This command is only available when the "Federation" app (`federation`) is enabled.
 
 [[file-operations]]
 File Operations
@@ -665,8 +665,8 @@ files
                             recalculating the checksum of the file.
  files:cleanup              Deletes orphaned file cache entries.
  files:scan                 Rescans the filesystem.
- files:transfer-ownership   All files and folders are moved to another user 
-                            - outgoing shares are moved as well (incoming shares are 
+ files:transfer-ownership   All files and folders are moved to another user
+                            - outgoing shares are moved as well (incoming shares are
                             not moved as the sharing user holds the ownership of the respective files).
 ----
 
@@ -761,7 +761,7 @@ When using the `--path` option, the path must be in one of the following
 formats:
 
 ....
-"user_id/files/path" 
+"user_id/files/path"
 "user_id/files/mount_name"
 "user_id/files/mount_name/path"
 ....
@@ -880,8 +880,8 @@ Group Commands
 
 The `group` commands provide a range of functionality for managing
 ownCloud groups. This includes creating and removing groups and managing
-group membership. Group names are case-sensitive, so ``Finance'' and
-``finance'' are two different groups.
+group membership. Group names are case-sensitive, so "Finance" and
+"finance" are two different groups.
 
 The full list of commands is:
 
@@ -906,7 +906,7 @@ You can create a new group with the `group:add` command. The syntax is:
 group:add groupname
 ....
 
-This example adds a new group, called ``Finance'':
+This example adds a new group, called "Finance":
 
 ....
 sudo -u www-data php occ group:add Finance
@@ -934,7 +934,7 @@ Options:
 --output[=OUTPUT]  Output format (plain, json or json_pretty, default is plain) [default: "plain"]
 ....
 
-This example lists groups containing the string ``finance''.
+This example lists groups containing the string "finance".
 
 ....
 sudo -u www-data php occ group:list finance
@@ -943,7 +943,7 @@ sudo -u www-data php occ group:list finance
  - Finance-Managers
 ....
 
-This example lists groups containing the string ``finance'' formatted
+This example lists groups containing the string "finance" formatted
 with `json_pretty`.
 
 ....
@@ -972,7 +972,7 @@ Options:
 --output[=OUTPUT]  Output format (plain, json or json_pretty, default is plain) [default: "plain"]
 ....
 
-This example lists members of the ``Finance'' group.
+This example lists members of the "Finance" group.
 
 ....
 sudo -u www-data php occ group:list-members Finance
@@ -1002,7 +1002,7 @@ command. Members must be existing users. The syntax is
 group:add-member [-m|--member [MEMBER]] <group>
 ....
 
-This example adds members ``aaron'' and ``julie'' to group ``Finance'':
+This example adds members "aaron" and "julie" to group "Finance":
 
 ....
 sudo -u www-data php occ group:add-member --member aaron --member julie Finance
@@ -1032,8 +1032,8 @@ command. The syntax is:
 group:remove-member [-m|--member [MEMBER]] <group>
 ....
 
-This example removes members ``aaron'' and ``julie'' from group
-``Finance''.
+This example removes members "aaron" and "julie" from group
+"Finance".
 
 ....
 sudo -u www-data php occ group:remove-member --member aaron --member julie Finance
@@ -1092,8 +1092,8 @@ Verify your app:
 sudo -u www-data php occ integrity:check-app --path=/pathto/app appname
 ....
 
-When it returns nothing, your app is signed correctly. 
-When it returns a message then there is an error. 
+When it returns nothing, your app is signed correctly.
+When it returns a message then there is an error.
 
 `integrity:sign-core` is for ownCloud core developers only.
 
@@ -1133,7 +1133,7 @@ NOTE: This example assumes that the ownCloud directory is `/var/www/owncloud` an
 
 First, create a source translation file in
 `/var/www/owncloud/apps/gallery/l10n`, called `de_AT.php`. In it, add
-the required translation strings, as in the following example. 
+the required translation strings, as in the following example.
 Refer to the developer documentation on xref:developer_manual:app/advanced/l10n.adoc#creating-translatable-files-label[creating translation files], if you’re not familiar with creating them.
 
 [source,php]
@@ -1192,12 +1192,12 @@ ldap
 Search for an LDAP user, using this syntax:
 
 ....
-sudo -u www-data php occ ldap:search [--group] [--offset="..."] 
+sudo -u www-data php occ ldap:search [--group] [--offset="..."]
 [--limit="..."] search
 ....
 
 Searches will match at the beginning of the attribute value only. This
-example searches for `givenNames` that start with ``rob'':
+example searches for `givenNames` that start with "rob":
 
 ....
 sudo -u www-data php occ ldap:search "rob"
@@ -1247,7 +1247,7 @@ configurations that you create are automatically assigned IDs.
 
 ....
 sudo -u www-data php occ ldap:create-empty-config
-   Created new configuration with configID 's01' 
+   Created new configuration with configID 's01'
 ....
 
 Then you can list and view your configurations:
@@ -1273,7 +1273,7 @@ The `ldap:set-config` command is for manipulating configurations, like
 this example that sets search attributes:
 
 ....
-sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch 
+sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch
 "cn;givenname;sn;displayname;mail"
 ....
 
@@ -1363,7 +1363,7 @@ have been added or removed from these groups in LDAP, ownCloud will
 update its details. If a group was deleted in LDAP, ownCloud will also
 delete the local mapping info about this group.
 
-CAUTION: New groups in LDAP won’t be synced with this command. The LDAP TTL configuration (by default 10 minutes) still applies. This means that recently deleted groups from LDAP might be considered as ``active'' and might not be deleted in ownCloud immediately.
+CAUTION: New groups in LDAP won’t be synced with this command. The LDAP TTL configuration (by default 10 minutes) still applies. This means that recently deleted groups from LDAP might be considered as "active" and might not be deleted in ownCloud immediately.
 
 *Configuring the LDAP Refresh Attribute Interval*
 
@@ -1408,7 +1408,7 @@ log
 Run `log:owncloud` to see your current logging status:
 
 ....
-sudo -u www-data php occ log:owncloud 
+sudo -u www-data php occ log:owncloud
 Log backend ownCloud: enabled
 Log file: /opt/owncloud/data/owncloud.log
 Rotate at: disabled
@@ -1530,7 +1530,7 @@ the ownCloud Marketplace.
 [source,console]
 ----
 market
-  market:install    Install apps from the marketplace. If already installed and 
+  market:install    Install apps from the marketplace. If already installed and
                     an update is available the update will be installed.
   market:list       Lists apps as available on the marketplace.
   market:upgrade    Installs new app versions if available on the marketplace
@@ -1647,7 +1647,7 @@ Alternatively, you could generate the report and email it all in one
 command, by running:
 
 ....
-sudo -u www-data occ configreport:generate | mail -s "configuration report" \ 
+sudo -u www-data occ configreport:generate | mail -s "configuration report" \
     -r <the email address to send from> \
     support@owncloud.com
 ....
@@ -1725,7 +1725,7 @@ sudo  -uwww-data ./occ security:routes --with-details
 +---------------------------------------------+---------+-------------------------------------------------------+--------------------------------+
 | /apps/files/api/v1/sorting                  | POST    | OCA\Files\Controller\ApiController::updateFileSorting | NoAdminRequired                |
 | /apps/files/api/v1/thumbnail/{x}/{y}/{file} | GET     | OCA\Files\Controller\ApiController::getThumbnail      | NoAdminRequired,NoCSRFRequired |
-...  
+...
 ....
 
 [verse]
@@ -1774,7 +1774,7 @@ NOTE: Ransomware Protection (which is an Enterprise app) needs to be installed a
 ....
 occ ransomguard:scan <timestamp> <user>     Report all changes in a user's account, starting from timestamp.
 occ ransomguard:restore <timestamp> <user>  Revert all operations in a user account after a point in time.
-occ ransomguard:lock <user>                 Set a user account as read-only for ownCloud and other WebDAV 
+occ ransomguard:lock <user>                 Set a user account as read-only for ownCloud and other WebDAV
                                             clients when malicious activity is suspected.
 occ ransomguard:unlock <user>               Unlock a user account after ransomware issues have been resolved.
 ....
@@ -1832,7 +1832,7 @@ NOTE: These commands are only available when the ``Deleted files'' app (`files_t
 ----
 trashbin
  trashbin:cleanup   Remove deleted files
- trashbin:expire    Expires the users trash bin  
+ trashbin:expire    Expires the users trash bin
 ----
 
 The `trashbin:cleanup` command removes the deleted files of the
@@ -1840,13 +1840,13 @@ specified users in a space-delimited list, or all users if none are
 specified. This example removes all the deleted files of all users:
 
 ....
-sudo -u www-data php occ trashbin:cleanup 
+sudo -u www-data php occ trashbin:cleanup
 Remove all deleted files
 Remove deleted files for users on backend Database
  freda
  molly
  stash
- rosa 
+ rosa
  edward
 ....
 
@@ -1859,7 +1859,7 @@ Remove deleted files of   molly
 Remove deleted files of   freda
 ....
 
-`trashbin:expire` deletes only expired files according to the `trashbin_retention_obligation` setting in `config.php` (see xref:config_sample_php_parameters.adoc[the "Deleted Files" section documentation]). 
+`trashbin:expire` deletes only expired files according to the `trashbin_retention_obligation` setting in `config.php` (see xref:config_sample_php_parameters.adoc[the "Deleted Files" section documentation]).
 The default is to delete expired files for all users, or you may list users in a space-delimited list.
 
 [[user-commands]]
@@ -1880,7 +1880,7 @@ user
  user:delete                         Deletes the specified user
  user:disable                        Disables the specified user
  user:enable                         Enables the specified user
- user:inactive                       Reports users who are known to owncloud, 
+ user:inactive                       Reports users who are known to owncloud,
                                      but have not logged in for a certain number of days
  user:lastseen                       Shows when the user was logged in last time
  user:list                           List users
@@ -1920,8 +1920,8 @@ This example adds new user Layla Smith, and adds her to the *users* and
 ....
 sudo -u www-data php occ user:add --display-name="Layla Smith" \
   --group="users" --group="db-admins" --email=layla.smith@example.com layla
-  Enter password: 
-  Confirm password: 
+  Enter password:
+  Confirm password:
   The user "layla" was created successfully
   Display name set to "Layla Smith"
   Email address set to "layla.smith@example.com"
@@ -1942,25 +1942,25 @@ all users via the process list, and will only be visible in the history
 of the user (root) running the command. This also permits creating
 scripts for adding multiple new users.
 
-To use `password-from-env` you must run as ``real'' root, rather than
+To use `password-from-env` you must run as "real" root, rather than
 `sudo`, because `sudo` strips environment variables. This example adds
 new user Fred Jones:
 
 ....
 export OC_PASS=newpassword
-su -s /bin/sh www-data -c 'php occ user:add --password-from-env 
+su -s /bin/sh www-data -c 'php occ user:add --password-from-env
   --display-name="Fred Jones" --group="users" fred'
 The user "fred" was created successfully
 Display name set to "Fred Jones"
-User "fred" added to group "users" 
+User "fred" added to group "users"
 ....
 
 You can reset any user’s password, including administrators (see xref:configuration/user/reset_admin_password.adoc[Reset Admin Password]):
 
 ....
 sudo -u www-data php occ user:resetpassword layla
-  Enter a new password: 
-  Confirm the new password: 
+  Enter a new password:
+  Confirm the new password:
   Successfully reset password for layla
 ....
 
@@ -2008,11 +2008,11 @@ Options:
 Allowed attributes, multiple values possible
 
 ....
-uid, displayName, email, quota, enabled, lastLogin, home, 
+uid, displayName, email, quota, enabled, lastLogin, home,
 backend, cloudId, searchTerms [default: ["displayName"]]
 ....
 
-This example lists user IDs containing the string ``aron''
+This example lists user IDs containing the string "aron"
 
 ....
 sudo -u www-data php occ user:list ron
@@ -2023,7 +2023,7 @@ The output can be formatted in JSON with the output option `json` or
 `json_pretty`.
 
 ....
-sudo -u www-data php occ user:list --output=json_pretty 
+sudo -u www-data php occ user:list --output=json_pretty
  {
    "aaron": "Aaron Smith",
    "herbert": "Herbert Smith",
@@ -2031,7 +2031,7 @@ sudo -u www-data php occ user:list --output=json_pretty
  }
 ....
 
-This example lists all users including the attribute ``enabled''.
+This example lists all users including the attribute `enabled`.
 
 ....
 sudo -u www-data php occ user:list -a enabled
@@ -2078,7 +2078,7 @@ To view a user’s most recent login, use the `user:lastseen` command, as
 in the example below:
 
 ....
-sudo -u www-data php occ user:lastseen layla 
+sudo -u www-data php occ user:lastseen layla
   layla's last login: 09.01.2015 18:46
 ....
 
@@ -2125,7 +2125,7 @@ a lengthier description of both.
 
 | |the application is installed, and that there are settings available
 
-| |for it. Some example applications are ``core'', ``files_trashbin'',
+| |for it. Some example applications are "core", ``files_trashbin'',
 and
 
 | |``user_ldap''. A complete list, unfortunately, cannot be supplied, as
@@ -2323,7 +2323,7 @@ Versions
 ----
 versions
  versions:cleanup   Delete versions
- versions:expire    Expires the users file versions  
+ versions:expire    Expires the users file versions
 ----
 
 `versions:cleanup` can delete all versioned files, as well as the
@@ -2355,13 +2355,13 @@ versions section in config_sample_php_parameters). The default is to
 delete expired files for all users, or you may list users in a
 space-delimited list.
 
-NOTE: These commands are only available when the ``Versions'' app (`files_versions`) is enabled. These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
+NOTE: These commands are only available when the "Versions" app (`files_versions`) is enabled. These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [[command-line-installation]]
 Command Line Installation
 -------------------------
 
-ownCloud can be installed entirely from the command line. 
+ownCloud can be installed entirely from the command line.
 After downloading the tarball and copying ownCloud into the appropriate directories, or after installing ownCloud packages (See xref:installation/linux_installation.adoc[Linux Package Manager Installation] and xref:installation/source_installation.adoc[Manual Installation on Linux]) you can use `occ` commands in place of running the graphical Installation Wizard.
 
 NOTE: These instructions assume that you have a fully working and configured webserver. If not, please refer to the documentation on configuring xref:installation/source_installation.adoc[configure-apache-web-server] for detailed instructions.
@@ -2411,7 +2411,7 @@ Usage:
 
 [source,console]
 ----
-maintenance:install [--database="..."] [--database-name="..."] 
+maintenance:install [--database="..."] [--database-name="..."]
 ----
 
 ______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
@@ -2420,14 +2420,14 @@ ________________________________________________________________________________
 [–data-dir=``…'']
 
 Options:::
-  –database Supported database type (default: ``sqlite'') –database-name
+  –database Supported database type (default: `sqlite`) –database-name
   Name of the database –database-host Hostname of the database (default:
-  ``localhost'') –database-user User name to connect to the database
+  `localhost`) –database-user User name to connect to the database
   –database-pass Password of the database user –database-table-prefix
   Prefix for all tables (default: link:[oc]) –admin-user User name of
-  the admin account (default: ``admin'') –admin-pass Password of the
+  the admin account (default: `admin`) –admin-pass Password of the
   admin account –data-dir Path to data directory (default:
-  ``/var/www/owncloud/data'') –help (-h) Display this help message
+  `/var/www/owncloud/data`) –help (-h) Display this help message
   –quiet (-q) Do not output any message –verbose (-vvvv) Increase the
   verbosity of messages: 1 for normal output, 2 for more verbose output
   and 3 for debug –version (-V) Display this application version –ansi
@@ -2439,9 +2439,9 @@ This example completes the installation:
 
 ....
 cd /var/www/owncloud/
-sudo -u www-data php occ maintenance:install --database 
-"mysql" --database-name "owncloud"  --database-user "root" --database-pass 
-"password" --admin-user "admin" --admin-pass "password" 
+sudo -u www-data php occ maintenance:install --database
+"mysql" --database-name "owncloud"  --database-user "root" --database-pass
+"password" --admin-user "admin" --admin-pass "password"
 ownCloud is not installed - only a limited number of commands are available
 ownCloud was successfully installed
 ....
@@ -2493,21 +2493,21 @@ When you are performing an update or upgrade on your ownCloud server
 to perform the database upgrade step, rather than the Web GUI, in order
 to avoid timeouts. PHP scripts invoked from the Web interface are
 limited to 3600 seconds. In larger environments this may not be enough,
-leaving the system in an inconsistent state. 
+leaving the system in an inconsistent state.
 After performing all the preliminary steps (see xref:maintenance/upgrade.adoc[the maintenance upgrade documentation]) use this command to upgrade your databases, like this example on CentOS Linux:
 
 ....
 sudo -u www-data php occ upgrade
-ownCloud or one of the apps require upgrade - only a limited number of 
-commands are available                            
-Turned on maintenance mode                                                      
-Checked database schema update           
+ownCloud or one of the apps require upgrade - only a limited number of
+commands are available
+Turned on maintenance mode
+Checked database schema update
 Checked database schema update for apps
-Updated database      
-Updating <gallery> ...                                                          
-Updated <gallery> to 0.6.1               
+Updated database
+Updating <gallery> ...
+Updated <gallery> to 0.6.1
 Updating <activity> ...
-Updated <activity> to 2.1.0            
+Updated <activity> to 2.1.0
 Update successful
 Turned off maintenance mode
 ....
@@ -2591,7 +2591,7 @@ use the `user:inactive` command The example below searches for users
 inactive for five days, or more.
 
 ....
-sudo -u www-data php occ user:inactive 5 
+sudo -u www-data php occ user:inactive 5
 ....
 
 Options

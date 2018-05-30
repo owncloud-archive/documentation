@@ -62,7 +62,7 @@ Step Three - Create a Dropbox Share
 To create a Dropbox share, under ``admin -> Settings -> Admin ->
 Storage'', check the ``Enable external storage'' checkbox, if it’s not
 already checked. Then, in the dropdown list under ``External storage'',
-click the first ``Dropbox'' option.
+click the first "Dropbox" option.
 
 There are two Dropbox options in the dropdown list, as Dropbox
 functionality is currently part of ownCloud’s core. However, the
@@ -70,7 +70,7 @@ internal Dropbox functionality should be removed in ownCloud 10.0.4.
 
 Then, you need to provide a name for the folder in the ``Folder name''
 field, and a ``client key'' and ``client secret'', located in the
-``Configuration'' column. The client key and client secret values are
+"Configuration" column. The client key and client secret values are
 the ``App key'' and ``App secret'' fields which you saw earlier in your
 Dropbox app’s configuration settings page.
 

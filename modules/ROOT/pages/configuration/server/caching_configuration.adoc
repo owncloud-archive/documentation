@@ -33,11 +33,11 @@ extension is required.
 * xref:memcached[Memcached]: This is a distributed cache for
 multi-server ownCloud installations.
 
-[NOTE] 
+[NOTE]
 ====
-You may use _both_ a local and a distributed cache. 
+You may use _both_ a local and a distributed cache.
 The recommended ownCloud caches are APCu and Redis.
-If you do not install and enable a local memory cache you will see a warning on your ownCloud admin page. 
+If you do not install and enable a local memory cache you will see a warning on your ownCloud admin page.
 If you enable only a distributed cache in your `config.php` (`memcache.distributed`) and not a local cache (`memcache.local`) you will still see the cache warning.
 ====
 
@@ -68,16 +68,16 @@ Installing APCu
 
 [source,console]
 ----
-# On RedHat/CentOS/Fedora systems running PHP 5.6 
+# On RedHat/CentOS/Fedora systems running PHP 5.6
 yum install rh-php56-php-devel
-pecl install apcu 
+pecl install apcu
 
-# On RedHat/CentOS/Fedora systems running PHP 7.0 
+# On RedHat/CentOS/Fedora systems running PHP 7.0
 yum install rh-php70-php-devel
-pecl install apcu 
+pecl install apcu
 
 # On Debian/Ubuntu/Mint systems
-apt-get install php-apcu 
+apt-get install php-apcu
 ----
 
 [NOTE]
@@ -112,7 +112,7 @@ Redis
 
 http://redis.io/[Redis] is an excellent modern memory cache to use for both distributed caching and as a local cache for xref:configuration/files/files_locking_transactional.adoc[transactional file locking], because it guarantees that cached objects are available for as long as they are needed.
 
-The Redis PHP module must be at least version 2.2.6 or higher. 
+The Redis PHP module must be at least version 2.2.6 or higher.
 If you are running a Linux distribution that does not package the supported versions of this module — or does not package Redis at all — see xref:installing-redis-on-other-distributions[Installing Redis on other distributions].
 
 TIP: Debian Jessie users, please see this https://github.com/owncloud/core/issues/20675#issuecomment-159202901[GitHub discussion] if you have problems with LDAP authentication when using Redis.
@@ -143,7 +143,7 @@ Redis:
 [source,console]
 ----
 yum install rh-php70-php-devel rh-redis32-redis
-pecl install redis 
+pecl install redis
 ----
 
 Unlike on Debian-based distributions, Redis will not start automatically
@@ -297,7 +297,7 @@ On RedHat/CentOS/Fedora run the following command:
 
 [source,console]
 ----
-yum install memcached php-pecl-memcache 
+yum install memcached php-pecl-memcache
 ----
 
 It will not start Memcached automatically after the installation or on
@@ -354,7 +354,7 @@ Clearing the Memcached Cache
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The Memcached cache can be flushed from the command-line using a range
-of common Linux/UNIX tools, including `netcat` and `telnet`. 
+of common Linux/UNIX tools, including `netcat` and `telnet`.
 The following example uses telnet to login, run https://github.com/memcached/memcached/wiki/Commands#flushall[the flush_all command], and logout:
 
 ....
@@ -377,7 +377,7 @@ Memory caches must be explicitly configured in ownCloud by:
 extension and/or the caching server).
 2.  Adding the appropriate entry to ownCloud’s `config.php`.
 
-See config_sample_php_parameters for an overview of all possible config parameters. 
+See config_sample_php_parameters for an overview of all possible config parameters.
 After installing and enabling your chosen memory cache, verify that it is active by viewing xref:issues/general_troubleshooting.adoc#php-version-and-information[the PHP configuration details].
 
 [[apcu-configuration]]
@@ -445,8 +445,8 @@ their port numbers:
 'memcached_servers' => [
      ['localhost', 11211],
      ['server1.example.com', 11211],
-     ['server2.example.com', 11211], 
- ], 
+     ['server2.example.com', 11211],
+ ],
 ----
 
 [[configuration-recommendations-based-on-type-of-deployment]]
@@ -460,7 +460,7 @@ Small/Private Home Server
 [source,php]
 ----
 // Only use APCu
-'memcache.local' => '\OC\Memcache\APCu', 
+'memcache.local' => '\OC\Memcache\APCu',
 ----
 
 [[small-organization-single-server-setup]]
@@ -502,7 +502,7 @@ IP address or hostname so that it is accessible to other hosts:
 Configuring Transactional File Locking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking] prevents simultaneous file saving. 
+xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking] prevents simultaneous file saving.
 To use it, you have to enable it in `config.php` as in the following example, which uses Redis as the cache backend:
 
 [source,php]
@@ -546,7 +546,7 @@ will be a full page issue, and the application will not be usable
 be usable. But any file operation will return a *``500 Redis went
 away''* exception
 
-|If Memcache is configured for ``local'' and ``distributed'', but the
+|If Memcache is configured for `local` and `distributed`, but the
 class is missing |There will be a white page and an exception written to
 the logs, This is because autoloading needs the missing class. So there
 is no way to show a page

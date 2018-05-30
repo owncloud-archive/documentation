@@ -17,8 +17,7 @@ Using the Univention Management Console, there are two paths to upgrade
 an existing ownCloud installation:
 
 * link:[In-place Upgrade (for 10.0 users)]
-* link:[Uninstall the Existing Version and Install the New Version (for
-9.1 users)]
+* link:[Uninstall the Existing Version and Install the New Version (for 9.1 users)]
 
 [[in-place-upgrade-for-10.0-users]]
 In-place Upgrade (for 10.0 users)
@@ -64,9 +63,7 @@ ownCloud by clicking the ``**OPEN**'' button, on the far right-hand side
 of the page.
 
 [[uninstall-the-existing-version-and-install-the-new-version-for-9.1-users]]
-Uninstall the Existing Version and Install the New Version (for 9.1
-users)
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+== Uninstall the Existing Version and Install the New Version (for 9.1 users)
 
 Open your ownCloud X Appliance and go to the ``**System and Domain
 Settings**'' dashboard. Then, after logging in, click ``**Installed

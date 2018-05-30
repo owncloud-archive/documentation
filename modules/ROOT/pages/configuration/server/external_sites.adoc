@@ -38,7 +38,7 @@ you can freely access them outside of ownCloud.
 Most Web sites that offer login functionalities use the
 `X-Frame-Options` or `Content-Security-Policy` HTTP header which
 instructs browsers to not allow their pages to be embedded for security
-reasons (e.g. ``Clickjacking''). You can usually verify the reason why
+reasons (e.g. "Clickjacking"). You can usually verify the reason why
 embedding the website is not possible by using your browser’s console
 tool. For example, this page has an invalid SSL certificate.
 

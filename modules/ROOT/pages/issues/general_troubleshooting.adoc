@@ -208,7 +208,7 @@ There are some Web server or PHP modules which are known to cause
 various problems like broken up-/downloads. The following shows a draft
 overview of these modules:
 
-1.  Apache
+==== Apache
 
 * libapache2-mod-php5filter (use libapache2-mod-php5 instead)
 * mod_dav
@@ -223,13 +223,13 @@ php-fpm instead)
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured
 correctly)
 
-1.  NGINX
+==== NGINX
 
 * ngx_pagespeed
 * HttpDavModule
 * X-Sendfile (causing broken downloads if not configured correctly)
 
-1.  PHP
+==== PHP
 
 * eAccelerator
 

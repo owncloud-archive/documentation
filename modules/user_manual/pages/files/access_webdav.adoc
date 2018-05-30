@@ -98,7 +98,7 @@ image:/owncloud-docs/user_manual/_images/webdav_dolphin.png[screenshot of config
 
 You can create a permanent link to your ownCloud server:
 
-1.  Open Dolphin and click ``Network'' in the left hand ``Places''
+1.  Open Dolphin and click "Network" in the left hand "Places"
 column.
 2.  Click on the icon labeled *Add a Network Folder*. The resulting
 dialog should appear with WebDAV already selected.

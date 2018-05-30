@@ -69,7 +69,7 @@ be accessible via ownCloud.
 
 If you have a snapshot-capable storage or filesystem where snapshots are
 enabled and presented to clients, each directory will contain a
-``special'' visible directory named e.g. `.snapshot`. Depending on the
+"special" visible directory named e.g. `.snapshot`. Depending on the
 system, you may find underneath a list of snapshots taken and in the
 next lower level the complete set of files and directories which were
 present when the snapshot was created. In most systems, this mechanism

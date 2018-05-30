@@ -60,7 +60,7 @@ image:/owncloud-docs/user_manual/_images/files_page-3.png[image]
 Display File Details
 ^^^^^^^^^^^^^^^^^^^^
 
-When you display details about a file, by clicking ``Details'' in the
+When you display details about a file, by clicking "Details" in the
 Overflow Menu, a set of tabs (or views) are available. These are:
 
 [cols=",",options="header",]

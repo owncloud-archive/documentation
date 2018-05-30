@@ -24,7 +24,7 @@ support. You can find details of what each option does below.
 
 image:/owncloud-docs/user_manual/_images/public-link/public-link-settings.png[Create a public link - step two.]
 
-Finally, click *``Save''* to complete creation of the share. Now that
+Finally, click *"Save"* to complete creation of the share. Now that
 the share is created, you can:
 
 * Copy the link to the share and give it out

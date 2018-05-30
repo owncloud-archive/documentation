@@ -61,7 +61,7 @@ framework. Apart from technical changes under the hood the Notifications
 app can now also send mails for all notifications that previously were
 only displayed within the web interfaces (notification bell) or on the
 Desktop client (notifications API) like incoming federated share or
-Custom Group notifications, for example. In the _``General''_ settings
+Custom Group notifications, for example. In the _"General"_ settings
 section users can configure whether they want to receive mails for all
 notifications, only for those that require an action or decide not to
 get notifications via mail (by default users will only receive
@@ -122,8 +122,8 @@ New config setting to specify minimum characters for sharing autocomplete
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 For security reasons the default value for minimum characters to trigger
-the sharing autocomplete mechanism has been set to ``4'' (previously it
-was set to ``2''). This is to prevent people from easily downloading
+the sharing autocomplete mechanism has been set to "4" (previously it
+was set to "2"). This is to prevent people from easily downloading
 lots of email addresses or user names by requesting their first letters
 through the API. As it is a trade-off between security and usability for
 some scenarios this high security level might not be desirable.
@@ -208,7 +208,7 @@ on user count. Please consider this when planning the upgrade.
 Changed behavior of e-mail autocomplete for public link share dialog
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When the _``Sharing''_ settings option
+When the _"Sharing"_ settings option
 `Allow users to send mail notifications for shared files` for public
 links is enabled, users can send public links via mail from within the
 web interface. The behavior of the autocomplete when entering mail
@@ -270,7 +270,7 @@ As of ownCloud Server 10.0.5 it is only possible to have one theme app
 enabled simultaneously. When a theme app is enabled and the
 administrator attempts to enable a second one this will result in an
 error. However, when also having the Mail Template Editor enabled in
-this scenario the administrators _``General''_ settings section
+this scenario the administrators _"General"_ settings section
 https://github.com/owncloud/core/issues/31134[will be displayed
 incorrectly]. As a remedy administrators can either uninstall the second
 theme app or disable the Mail Template Editor app.
@@ -554,8 +554,8 @@ adjust scripts for automated setup/upgrade procedures that rely on `occ
 upgrade' outputs.
 * Reenabled medial search by default::
   ** Enables partial search in sharing dialog autocompletion (e.g. a
-  user wants to share with the user ``Peter'': Entering ``pe'' will find
-  the user, entering ``ter'' will only find the user if the option is
+  user wants to share with the user "Peter": Entering "pe" will find
+  the user, entering "ter" will only find the user if the option is
   enabled)
   ** New default is set to enabled as there is no performance impact
   anymore due to the introduction of the user account table in ownCloud
@@ -566,20 +566,20 @@ upgrade' outputs.
 (64-bits). For large instances it is therefore highly recommended to
 upgrade in order to avoid reaching limits.
 * Upgrade and Market app information::
-  ** Removed ``appstoreenabled'' setting from config.php. If you want to
+  ** Removed `appstoreenabled` setting from config.php. If you want to
   disable the app store / Marketplace integration, please disable the
   Market app.
   ** Added setting `upgrade.automatic-app-update' to config.php to
   disable automatic app updates with `occ upgrade' when Market app is
   enabled
   ** On upgrade from OC < 10 the Market app won’t be enabled if
-  ``appstoreenabled'' was false in config.php.
+  `appstoreenabled` was false in config.php.
 * Clustering: Better support of read only config file and apps folder
 * Default minimum desktop client version in config.php is now 2.2.4.
 
 *Known issues*
 
-* Added quotes in boolean result values of yourdomain/status.php output
+* Added quotes in boolean result values of `yourdomain/status.php` output
 * Setting up SFTP external storages with keypairs does not work.
 https://github.com/owncloud/core/issues/28669
 * If you have storage encryption enabled, the web UI for encryption will
@@ -640,7 +640,7 @@ Settings
 ~~~~~~~~
 
 * *Settings design:* Admin, personal pages, and app management are now
-merged together into a single ``Settings'' entry.
+merged together into a single "Settings" entry.
 * *Disable users:* The ability to disable users in the user management
 panel has been added.
 * *Password Policy:* Rules now apply not only to link passwords but also
@@ -723,7 +723,7 @@ The account table introduced in ownCloud 10.0.0 significantly reduces
 LDAP communication overhead. Password checks are yet to be accounted
 for. LDAP user metadata in the account table will be updated when users
 log in or when the administrator runs
-`occ user:sync "OCA\User_LDAP\User_Proxy"`. 
+`occ user:sync "OCA\User_LDAP\User_Proxy"`.
 We recommend setting up xref:configuration/server/background_jobs_configuration.adoc[a nightly Cron job] to keep metadata of users not actively logging in up to date.
 
 [[error-pages-will-not-use-the-configured-theme-but-will-instead-fall-back-to-the-community-default]]
@@ -759,7 +759,7 @@ application (e.g. fail2ban rules) relying on this file
 * External storages::
   ** FTP external storage moved to a separate app
   (https://marketplace.owncloud.com/apps/files_external_ftp)
-  ** ``Local'' storage type can now be disabled by sysadmin in
+  ** "Local" storage type can now be disabled by sysadmin in
   config.php (to prevent users mounting the local file system)
 
 Full changelog:
@@ -929,7 +929,7 @@ RHEL6, Debian 7, or any version of Fedora. A new package,
 owncloud-enterprise-files, is available for all supported platforms,
 including the above. This new package comes without dependencies, and is
 installable on a larger number of platforms. System administrators must
-install their own LAMP stacks and databases. 
+install their own LAMP stacks and databases.
 See https://owncloud.org/blog/time-to-upgrade-to-owncloud-9-0/.
 
 [[changes-in-8.2]]
@@ -1049,7 +1049,7 @@ The 8.1.0 release has a minor bug which makes application updates fail
 at first try. Reload the apps page and try again, and the update will
 succeed.
 
-The `forcessl` option within the `config.php` and the `Enforce SSL` option within the Admin-Backend was removed. 
+The `forcessl` option within the `config.php` and the `Enforce SSL` option within the Admin-Backend was removed.
 This now needs to be configured like described in xref:configuration/server/harden_server.adoc#use-https[Hardening and Security Guidance].
 
 WebDAV file locking was removed in ownCloud 8.1 which causes Finder on macOS to mount WebDAV read-only.
@@ -1087,7 +1087,7 @@ Remote Federated Cloud Share Cannot be Reshared With Local Users
 
 When you mount a Federated Cloud share from a remote ownCloud server,
 you cannot re-share it with your local ownCloud users. (See
-configuration/files/federated_cloud_sharing_configuration to learn more
+xref:configuration/files/federated_cloud_sharing_configuration.adoc[Federated Cloud Sharing Configuration] to learn more
 about federated cloud sharing)
 
 [[manually-migrate-encryption-keys-after-upgrade]]

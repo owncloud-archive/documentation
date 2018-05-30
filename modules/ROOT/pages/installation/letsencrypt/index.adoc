@@ -133,7 +133,7 @@ sudo certbot register --agree-tos --email <your-email-address>
 ....
 
 When it executes, you’ll see the following question, which you can
-answer ``Yes'' or ``No'' to:
+answer "Yes" or "No" to:
 
 Saving debug log to /var/log/letsencrypt/letsencrypt.log
 

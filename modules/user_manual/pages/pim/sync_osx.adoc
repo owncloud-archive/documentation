@@ -22,7 +22,7 @@ will see some folders named like this
 now and leave the window open. #. Open addressbook and try to add a new
 CardDav addressbook. At this point, it does not matter what information
 you enter. It will come up with the same error message you mentioned
-before when you click ``Create''. Ignore it and click ``Create'' again.
+before when you click "Create". Ignore it and click "Create" again.
 A non-functional addressbook will be added. #. Close addressbook again
 using Command + Q #. Go back to the folder window from step 2. You will
 now see a newly created folder with another long string as its name. #.

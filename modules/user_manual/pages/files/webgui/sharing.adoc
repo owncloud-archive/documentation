@@ -47,7 +47,7 @@ group with a name of the same length as the search term.
 
 After a file or folder has been shared, link:[Share Permissions] can be
 set on it. In the image below, you can see that the directory
-``event-Photos'' is shared with the user ``pierpont'', who can _share_,
+``event-Photos'' is shared with the user "pierpont", who can _share_,
 _edit_, _create_, _change_, and _delete_ the directory.
 
 image:/owncloud-docs/user_manual/_images/files_page-2.png[image]
@@ -159,7 +159,7 @@ changes have been made:
 
 * You can _only_ set an expiration date on public shares
 * Local shares do not expire when public shares expire
-* A local share can only be ``expired'' (or deleted) by clicking the
+* A local share can only be "expired" (or deleted) by clicking the
 trash can icon
 
 [[creating-or-connecting-to-federation-share-links]]
@@ -216,7 +216,7 @@ link''*.
 2.  As with other shares, provide the name in the *``Link Name''* field.
 3.  Check *``Allow editing''*, un-check *``Show file listing''*, and
 then un-check *``Allow editing''*.
-4.  Finally, click *``Save''* to complete creation of the share.
+4.  Finally, click *"Save"* to complete creation of the share.
 
 Now, as with other public links, you can copy the link to the share and
 give it out, as and when necessary.

@@ -324,7 +324,7 @@ following command:
 fail2ban-client status
 ....
 
-If ``owncloud'' is listed in the console output, the filter is both
+If "owncloud" is listed in the console output, the filter is both
 loaded and active. If you want to test the filter, run the following
 command, adjusting the path to your `owncloud.log`, if necessary:
 

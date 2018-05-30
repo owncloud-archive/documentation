@@ -114,7 +114,7 @@ config:list, then you might see output similar to that below:
 }
 ----
 
-Here, the ``fictitious'' application references the data directory as
+Here, the "fictitious" application references the data directory as
 being set to var/www/owncloud/data. So you would have to change the
 value by using the config:app:set option. Here’s an example of how you
 would update the setting:

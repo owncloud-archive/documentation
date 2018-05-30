@@ -37,7 +37,7 @@ Configuration
 First, enable the `LDAP user and group backend` app on the Apps page in
 ownCloud. Then, go to your Admin page to configure it. The LDAP
 configuration panel has four tabs. A correctly completed first tab
-(``Server'') is mandatory to access the other tabs. A green indicator
+("Server") is mandatory to access the other tabs. A green indicator
 lights when the configuration is correct. Hover your cursor over the
 fields to see some pop-up tooltips.
 
@@ -514,7 +514,7 @@ Internal Username:::
   usernames in ownCloud, i.e., that it is checking all other activated
   user backends (including local ownCloud users). On collisions a random
   number (between 1000 and 9999) will be attached to the retrieved
-  value. For example, if ``alice'' exists, the next username may be
+  value. For example, if "alice" exists, the next username may be
   ``alice_1337''.
  
   The internal username is the default name for the user home folder in
@@ -677,7 +677,7 @@ Duplicating Server Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In case you have a working configuration and want to create a similar
-one or ``snapshot'' configurations before modifying them you can do the
+one or "snapshot" configurations before modifying them you can do the
 following:
 
 1.  Go to the ``**Server**'' tab

@@ -133,7 +133,7 @@ Backup
 Install ownCloud, the ownCloud data directory, and database on
 https://en.wikipedia.org/wiki/Btrfs[a Btrfs filesystem]. Make regular
 snapshots at desired intervals for zero downtime backups. Mount DB
-partitions with the ``nodatacow'' option to prevent fragmentation.
+partitions with the "nodatacow" option to prevent fragmentation.
 
 Alternatively, you can make nightly backups — with service interruption
 — as follows:

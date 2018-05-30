@@ -169,7 +169,7 @@ Install the Anti-Virus App
 --------------------------
 
 The Anti-Virus app needs to be installed from the ownCloud Market, under
-_``Security''_. You can access the ownCloud Market via the App Menu (or
+_"Security"_. You can access the ownCloud Market via the App Menu (or
 App Switcher).
 
 image:/owncloud-docs/_images/antivirus-app.png[image]

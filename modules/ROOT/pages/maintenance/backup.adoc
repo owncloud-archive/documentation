@@ -95,9 +95,9 @@ NOTE: This is effective from at least version v8.2.7 of ownCloud onwards. Also, 
 1.  Restore the file from backup.
 2.  Restore the file’s encryption keys from backup.
 3.  Run `occ files:scan`; this makes the scanner find it. Note that, in
-the DB it will (1) have the ``size'' set to the encrypted size, which is
-wrong (and bigger) and (2) the ``encrypted'' flag will be set to 0.
-4.  Update the ``encrypted'' flag to 1 in the DB to all _files_ under
+the DB it will (1) have the `size` set to the encrypted size, which is
+wrong (and bigger) and (2) the `encrypted` flag will be set to 0.
+4.  Update the `encrypted` flag to 1 in the DB to all _files_ under
 `files/path`, but *not* directories. Setting the flag to 1 tells the
 encryption application that the file is encrypted and needs to be
 processed.

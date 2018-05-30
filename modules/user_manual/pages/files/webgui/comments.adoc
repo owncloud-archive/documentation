@@ -12,7 +12,7 @@ Use the Details view, in xref:files/webgui/overview.adoc#the-overflow-menu[The O
 add and read comments on any file or folder. Comments are visible to
 everyone who has access to the file or folder. To add a comment, as in
 the example below, click the *Comments* tab in the Details view, write a
-comment in the New Comment field, and click ``Post''.
+comment in the New Comment field, and click "Post".
 
 image:/owncloud-docs/user_manual/_images/file_menu_comments_2.png[image]
 
@@ -23,8 +23,8 @@ Edit Comments
 To edit an existing comment on a file or folder, hover the mouse over
 the comment and you will see a pencil icon appear. By clicking on the
 pencil, the _``Edit Comment''_ field will appear, pre-filled with the
-comment text. Change the text as necessary and click _``Save''_. If you
-change your mind, just click _``Cancel''_.
+comment text. Change the text as necessary and click _"Save"_. If you
+change your mind, just click _"Cancel"_.
 
 [[delete-comments]]
 Delete Comments

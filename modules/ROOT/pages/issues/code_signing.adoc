@@ -31,7 +31,7 @@ The ownCloud project is open source and always will be. We do not want
 to make it more difficult for our users to run ownCloud. Any code
 signing errors on upgrades will not prevent ownCloud from running, but
 will display a warning on the Admin page. For applications that are not
-tagged ``Official'' the code signing process is optional.
+tagged "Official" the code signing process is optional.
 
 [[not-open-source-anymore]]
 Not Open Source Anymore?
@@ -43,7 +43,7 @@ core parts of ownCloud is enabled when the ownCloud release version
 branch has been set to stable.
 
 For custom distributions of ownCloud it is recommended to change the
-release version branch in version.php to something else than ``stable''.
+release version branch in version.php to something else than "stable".
 
 [[is-code-signing-mandatory-for-apps]]
 Is Code Signing Mandatory For Apps?

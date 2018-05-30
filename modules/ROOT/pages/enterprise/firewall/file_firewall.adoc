@@ -148,7 +148,7 @@ a given tag.
 
 Now you just need to add the tag to the folder or file, and then block
 the tag with the File Firewall. This example blocks access to any folder
-with the tag ``Confidential'' from outside access.
+with the tag "Confidential" from outside access.
 
 Block by System Tag:
 

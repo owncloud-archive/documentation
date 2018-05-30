@@ -115,7 +115,7 @@ tail -f /var/log/syslog | grep QUERY
 If there is no such file, you need to install rsyslog with.
 
 ....
-apt install rsyslog 
+apt install rsyslog
 ....
 
 [[perform-a-test-search]]
@@ -128,28 +128,34 @@ cached. To do so, update the command below with values from your Active
 Directory server configuration, and then run it.:
 
 ....
-ldapsearch -h localhost -x -LLL -D "cn=admin,cn=users,dc=example,dc=com" -b "cn=users,dc=example,dc=com" -w "Password" "(cn=Administrator)" name
+ldapsearch -h localhost -x -LLL \
+	-D "cn=admin,cn=users,dc=example,dc=com" \
+ 	-b "cn=users,dc=example,dc=com" \
+	-w "Password" "(cn=Administrator)" name
 ....
 
 or
 
-_______________________________________________________________________________________________________________________________________________________
-ldapsearch -H ldaps://localhost:636 -x -LLL -D
-``cn=admin,cn=users,dc=example,dc=com'' -b
-``cn=users,dc=example,dc=com'' -W ``(cn=Administrator)'' name
-_______________________________________________________________________________________________________________________________________________________
+[source]
+----
+ldapsearch -H ldaps://localhost:636 -x -LLL \
+	-D "cn=admin,cn=users,dc=example,dc=com" \
+	-b "cn=users,dc=example,dc=com" \
+	-W "(cn=Administrator)" name
+----
 
--h = host adress (Example: localhost or 192.168.1.1) -H = host adress
-(Example: ldap:// or ldaps:// hostname or ip and port :389 or :636 ) -x
-= simple authentication -b = Search Base, (Example:
-``cn=Users,dc=example,dc=com'') -D = User with permissions (Example:
-``cn=Admin,dc=example,dc=com'') -LLL = Show only results, no extra
-information -w = Password (``Password'') -W = Password, will ask for
-password and hide your input ``(cn=Administrator)'' = Filter the search
+-h = host address (Example: `localhost` or `192.168.1.1`)
+-H = host address (Example: `ldap://` or `ldaps://` hostname or ip and port `:389` or `:636`)
+-x = simple authentication
+-b = Search Base, (Example: `cn=Users,dc=example,dc=com`)
+-D = User with permissions (Example: `cn=Admin,dc=example,dc=com`)
+-LLL = Show only results, no extra information
+-w = Password ("Password")
+-W = Password, will ask for password and hide your input
+`(cn=Administrator)` = Filter the search
 name = Show only this attributes
 
-If you see results including: `"Query cachable"` and
-`"Query answered (x) times"`, then the setup works.
+If you see results including: `"Query cachable"` and `"Query answered (x) times"`, then the setup works.
 
 [[configure-owncloud-ldap-app]]
 6. Configure ownCloud LDAP App
@@ -157,35 +163,34 @@ If you see results including: `"Query cachable"` and
 
 Login as ownCloud admin in your ownCloud server.
 
-Click on the dropdown menu in the top-left corner next to ``Files'',
+Click on the dropdown menu in the top-left corner next to "Files",
 then on Apps.
 
 Click on ``Not enabled'', and enable the ``LDAP user and group backend''
 App.
 
-Go to the admin dropdown menu in the top-right corner, select ``Admin''.
+Go to the admin dropdown menu in the top-right corner, select "Admin".
 
-In the administration section, click on the left side on ``LDAP''.
+In the administration section, click on the left side on "LDAP".
 
 Configure Server-Tab
 
 First enter the server address, either IP or DN.
 
 You can click on the button to detect your servers port or enter it
-manualy.
+manually.
 
 Next, enter the dn of the user, you want to log in with and in the next
 line enter the password.
 
-Then you can click on ``detect base dn'' or enter it manualy. then click
-on ``test base dn''.
+Then you can click on "detect base dn" or enter it manually. then click
+on "test base dn".
 
-If you fullfill all the requirements you should get a green light and
-``configuration ok'' message.
+If you fulfill all the requirements you should get a green light and "configuration ok" message.
 
 Configure Users
 
-Select the objectclass for the users, for example ``user''.
+Select the objectclass for the users, for example `user`.
 
 Verify your settings; where you will see the number of users being
 found.
@@ -202,7 +207,7 @@ adjust them or leave them the way they are.
 
 Configure Groups
 
-Select all the objectclasses for your groups, for example ``group''.
+Select all the objectclasses for your groups, for example "group".
 Verify your settings.
 
 Configure Advanced
@@ -222,7 +227,7 @@ Configure Expert
 
 ``Internal Username Attribute''
 
-Here we need to set ``cn'' for the users being shown with their unique
+Here we need to set "cn" for the users being shown with their unique
 name. If you leave that field empty, each user will get a unique uid as
 a string of numbers and letters.
 

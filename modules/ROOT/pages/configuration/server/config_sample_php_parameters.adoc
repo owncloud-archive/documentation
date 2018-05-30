@@ -271,7 +271,7 @@ expressed in seconds.
 Enable or disable session keep-alive when a user is logged in to the Web
 UI.
 
-Enabling this sends a ``heartbeat'' to the server to keep it from timing
+Enabling this sends a "heartbeat" to the server to keep it from timing
 out.
 
 [source,php]
@@ -299,12 +299,12 @@ Allows to specify additional login buttons on the logon screen for e.g.
 SSO integration: 'login.alternatives' => [
     [
         'href' => 'https://www.testshib.org/Shibboleth.sso/ProtectNetwork?target=https%3A%2F%2Fmy.owncloud.tld%2Flogin%2Fsso-saml%2F',
-        'name' => 'ProtectNetwork', 
+        'name' => 'ProtectNetwork',
         'img' => '/img/PN_sign-in.gif'
-    ], 
+    ],
     [
         'href' => 'https://www.testshib.org/Shibboleth.sso/OpenIdP.org?target=https%3A%2F%2Fmy.owncloud.tld%2Flogin%2Fsso-saml%2F',
-        'name' => 'OpenIdP.org', 
+        'name' => 'OpenIdP.org',
         'img' => '/img/openidp.png'
     ],
 ]
@@ -364,7 +364,7 @@ In case you do not want to provide any link, replace the URL with `disabled'
 'accounts.enable_medial_search' => true,
 ....
 
-Allow medial search on account properties like display name, user id, email, and other search terms. 
+Allow medial search on account properties like display name, user id, email, and other search terms.
 Allows finding `Alice' when searching for `lic'.
 May slow down user search. Disable this if you encounter slow username search in the sharing dialog.
 
@@ -379,7 +379,7 @@ increase search time especially for large backends.
 
 Any exact matches to a user or group will be returned, even though less
 than the minimum characters have been entered. The search is case
-insensitive. e.g. entering ``tom'' will always return ``Tom'' if there
+insensitive. e.g. entering "tom" will always return "Tom" if there
 is an exact match.
 
 [[mail-parameters]]
@@ -561,7 +561,7 @@ again.
 To have clean URLs without /index.php this parameter needs to be
 configured.
 
-This parameter will be written as ``RewriteBase'' on update and
+This parameter will be written as `RewriteBase` on update and
 installation of ownCloud to your .htaccess file. While this value is
 often simply the URL path of the ownCloud installation it cannot be set
 automatically properly in every scenario and needs thus some manual
@@ -619,7 +619,7 @@ of days a file will be kept, after which it may be deleted. Maximum time
 is the number of days at which it is guaranteed to be deleted. Both
 minimum and maximum times can be set together to explicitly define file
 and folder deletion. For migration purposes, this setting is installed
-initially set to ``auto'', which is equivalent to the default setting in
+initially set to `auto`, which is equivalent to the default setting in
 ownCloud 8.1 and before.
 
 Available values:
@@ -662,7 +662,7 @@ days a version will be kept, after which it may be deleted. Maximum time
 is the number of days at which it is guaranteed to be deleted. Both
 minimum and maximum times can be set together to explicitly define
 version deletion. For migration purposes, this setting is installed
-initially set to ``auto'', which is equivalent to the default setting in
+initially set to `auto`, which is equivalent to the default setting in
 ownCloud 8.1 and before.
 
 Available values:
@@ -815,7 +815,7 @@ Supported conditions::
 * `shared_secret`: if a request parameter with the name log_secret is set to `log_secret` this value the condition is met
 * `users`: if the current request is done by one of the specified users this condition is met
 * `apps`: if the log message is invoked by one of the specified apps this condition is met
-* `logfile`: the log message invoked by the specified apps get redirected to this logfile, this condition is met. 
+* `logfile`: the log message invoked by the specified apps get redirected to this logfile, this condition is met.
 
 NOTE: Not applicable when using syslog.
 
@@ -1600,7 +1600,7 @@ Disable the web based updater
 'upgrade.automatic-app-update' => true,
 ....
 
-Automatic update of market apps, set to ``false'' to disable.
+Automatic update of market apps, set to "false" to disable.
 
 [source,php]
 ....
