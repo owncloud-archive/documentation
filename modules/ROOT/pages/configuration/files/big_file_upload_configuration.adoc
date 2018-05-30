@@ -1,5 +1,4 @@
-Uploading big files > 512MB
-===========================
+= Big File Upload Configuration (> 512MB)
 
 The default maximum file size for uploads, in ownCloud, is 512MB. You
 can increase this limit up to the maximum file size which your

@@ -15,7 +15,6 @@
 **** xref:appliance/howto-update-owncloud.adoc[How to Update ownCloud]
 **** xref:appliance/installation.adoc[Installation]
 **** xref:appliance/login_information.adoc[Login Information]
-**** xref:appliance/managing-ucs.adoc[Managing UCS]
 *** Enterprise
 **** Clients
 ***** xref:enterprise/clients/creating_branded_apps.adoc[Creating Branded Apps]
@@ -32,14 +31,14 @@
 **** Firewall
 ***** xref:enterprise/firewall/file_firewall.adoc[File Firewall]
 **** xref:enterprise/installation/install.adoc[Installation]
-***** xref:enterprise/installation/oracle_db_configuration.adoc[Oracle DB Configuration]
+***** xref:enterprise/installation/oracle_db_configuration.adoc[Oracle DB Setup & Configuration]
 **** Logging
 ***** xref:enterprise/logging/enterprise_logging_apps.adoc[Enterprise Logging Apps]
 **** xref:enterprise/ransomware-protection/index.adoc[Ransomware Protection]
 **** Server Branding
 ***** xref:enterprise/server_branding/enterprise_server_branding.adoc[Enterprise Server Branding]
 **** User Management
-***** xref:enterprise/user_management/user_auth_shibboleth.adoc[User Auth Shibboleth]
+***** xref:enterprise/user_management/user_auth_shibboleth.adoc[Shibboleth Integration]
 *** xref:faq/index.adoc[FAQ]
 *** Installation
 **** xref:installation/system_requirements.adoc[System Requirements]

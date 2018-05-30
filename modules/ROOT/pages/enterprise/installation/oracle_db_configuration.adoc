@@ -1,5 +1,4 @@
-Oracle Database Setup
-=====================
+= Oracle Database Setup & Configuration
 
 This document will cover the setup and preparation of the ownCloud
 server to support the use of Oracle as a backend database.

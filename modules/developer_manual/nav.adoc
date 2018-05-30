@@ -6,7 +6,7 @@
 *** xref:app/introduction.adoc[Introduction]
 *** Fundamental Concepts
 **** xref:app/fundamentals/info.adoc[Application Metadata]
-**** xref:app/fundamentals/classloader.adoc[The ClassLoader]
+**** xref:app/fundamentals/classloader.adoc[The Classloader]
 **** xref:app/fundamentals/configuration.adoc[Configuration]
 **** xref:app/fundamentals/routes.adoc[Routing]
 **** xref:app/fundamentals/controllers.adoc[Controllers]
@@ -56,7 +56,7 @@
 *** Testing
 **** xref:testing/index.adoc[ownCloud Test Pilots]
 **** xref:core/unit-testing.adoc[Unit Testing]
-**** xref:core/acceptance-tests.adoc[Acceptance tests]
+**** xref:core/acceptance-tests.adoc[Acceptance Tests]
 **** xref:core/ui-testing.adoc[User Interface Testing]
 *** xref:core/configfile.adoc[Available APIs]
 **** xref:core/externalapi.adoc[The External API]
@@ -82,5 +82,5 @@
 **** xref:mobile_development/ios_library/library_installation.adoc[Library Installation]
 **** xref:mobile_development/ios_library/examples.adoc[Examples]
 ** xref:bugtracker/index.adoc[Bugtracker]
-*** xref:bugtracker/codereviews.adoc[Code reviews]
-*** xref:bugtracker/triaging.adoc[Triaging]
+*** xref:bugtracker/codereviews.adoc[Code Reviews]
+*** xref:bugtracker/triaging.adoc[Bug Triaging]
