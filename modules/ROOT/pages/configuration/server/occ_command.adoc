@@ -1955,8 +1955,7 @@ Display name set to "Fred Jones"
 User "fred" added to group "users" 
 ....
 
-You can reset any user’s password, including administrators (see
-../../configuration/user/reset_admin_password):
+You can reset any user’s password, including administrators (see xref:configuration/user/reset_admin_password.adoc[Reset Admin Password]):
 
 ....
 sudo -u www-data php occ user:resetpassword layla

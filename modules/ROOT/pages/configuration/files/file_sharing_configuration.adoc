@@ -116,8 +116,7 @@ and placed in a directory which follows the format:
 above, it will be stored under:
 `data/<destination-user>/files/transferred from <source-user> on 20170426_124510/`
 
-(See ../../configuration/server/occ_command for a complete `occ`
-reference.)
+TIP: See xref:configuration/server/occ_command.adoc[the occ command], for a complete `occ` reference.)
 
 [[creating-persistent-file-shares]]
 Creating Persistent File Shares

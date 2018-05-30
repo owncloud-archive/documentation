@@ -121,11 +121,8 @@ MySQL or MariaDB are preferred because of the
 http://www.sqlite.org/whentouse.html[performance limitations of SQLite
 with highly concurrent applications], like ownCloud.
 
-See the section
-../../configuration/database/linux_database_configuration for how to
-configure ownCloud for MySQL or MariaDB. If your installation is already
-running on SQLite then it is possible to convert to MySQL or MariaDB
-using the steps provided in ../../configuration/database/db_conversion.
+See the section xref:configuration/database/linux_database_configuration.adoc[Linux Database Configuration] for how to configure ownCloud for MySQL or MariaDB. 
+If your installation is already running on SQLite then it is possible to convert to MySQL or MariaDB using the steps provided in xref:configuration/database/db_conversion.adoc[database conversion].
 
 [[tune-mariadbmysql]]
 Tune MariaDB/MySQL

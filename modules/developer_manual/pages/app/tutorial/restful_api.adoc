@@ -1,10 +1,8 @@
 Add a RESTful API (optional)
 ============================
 
-A RESTful API <../fundamentals/api> allows other apps such as Android or
-iPhone apps to access and change your notes. Since syncing is a big core
-component of ownCloud it is a good idea to add, and document, your own
-RESTful API.
+xref:app/fundamentals/api.adoc[A RESTful API] allows other apps such as Android or iPhone apps to access and change your notes. 
+Since syncing is a big core component of ownCloud it is a good idea to add, and document, your own RESTful API.
 
 Because we put our logic into the `NoteService` class it is very easy to
 reuse it. The only pieces that need to be changed are the annotations

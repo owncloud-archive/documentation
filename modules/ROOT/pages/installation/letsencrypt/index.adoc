@@ -110,7 +110,7 @@ sudo /usr/bin/certbot
 sudo certbot
 ....
 
-NOTE: Depending on how you installed Let’s Encrypt, certbot may also be named `letsencrypt` or `certbot-auto`. However, this guide will refer to it as `certbot`. Please bear that in mind, and update the ../examples and scripts used in this guide to reflect your Certbot installation.
+NOTE: Depending on how you installed Let’s Encrypt, certbot may also be named `letsencrypt` or `certbot-auto`. However, this guide will refer to it as `certbot`. Please bear that in mind, and update the examples and scripts used in this guide to reflect your Certbot installation.
 
 [[updating-certbot]]
 Updating Certbot

@@ -121,7 +121,7 @@ command-line tool (occ xref:configuration/server/occ_command.adoc[occ]).
 * Configures and maintains the ownCloud environment (_PHP_, _Webserver_,
 _DB_, _Storage_, _Redis_, _Firewall_, _Cron_, and _LDAP_, etc.).
 * Maintains ownCloud, such as updates, backups, and installs extensions.
-* Can manage users and groups, such as via occ <../server/occ_command>.
+* Can manage users and groups, such as via xref:server/occ_command.adoc[occ].
 * Has access to the master key when storage encryption is used.
 * *Storage admin:* Encryption at rest, which prevents the storage
 administrator from having access to data stored in ownCloud.

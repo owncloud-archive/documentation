@@ -121,8 +121,7 @@ Provides authentication against FTP servers.
 
 |Arguments |The FTP server to authenticate against.
 
-|Dependency |http:/www.php.net/manual/en/book.ftp.php[PHP’s FTP
-extension]. See ../../installation/source_installation
+|Dependency |http:/www.php.net/manual/en/book.ftp.php[PHP’s FTP extension]. See xref:installation/source_installation.adoc[Source Installation].
 
 | |for instructions on how to install it.
 |=======================================================================

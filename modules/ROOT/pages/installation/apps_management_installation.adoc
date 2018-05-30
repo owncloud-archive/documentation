@@ -95,11 +95,7 @@ the original app directory to the new one. To do so, follow these steps:
 and ownership permissions as the core apps directory.
 4.  Move the apps from the old apps directory to the new apps directory.
 5.  Add a new app directory in `config/config.php`.
-6.  If you’re using a cache, such as
-link:../configuration/server/caching_configuration.html#clearing-the-redis-cache[Redis]
-or
-link:../configuration/server/caching_configuration.html#clearing-the-memcached-cache[Memcached],
-ensure that you clear the cache.
+6.  If you’re using a cache, such as xref:configuration/server/caching_configuration.html#clearing-the-redis-cache[Redis] or xref:configuration/server/caching_configuration.html#clearing-the-memcached-cache[Memcached], ensure that you clear the cache.
 7.  Re-enable the apps.
 8.  Disable maintenance mode.
 

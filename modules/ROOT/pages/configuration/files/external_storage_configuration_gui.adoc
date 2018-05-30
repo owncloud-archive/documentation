@@ -91,8 +91,9 @@ Using Self-Signed Certificates
 ------------------------------
 
 When using self-signed certificates for external storage mounts the
-certificate must be imported into ownCloud. Please refer to
-../server/import_ssl_cert for more information.
+certificate must be imported into ownCloud. 
+
+TIP: Please refer to xref:server/import_ssl_cert.adoc[Importing System-wide and Personal SSL Certificates] for more information.
 
 [[available-storage-backends]]
 Available storage backends

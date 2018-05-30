@@ -119,9 +119,7 @@ shares.
 link shares.
 * Check `Allow public uploads` to allow two-way file sharing.
 
-Your Apache Web server must have `mod_rewrite` enabled, and you must
-have `trusted_domains` correctly configured in `config.php` to allow
-external connections (see ../../installation/installation_wizard).
+Your Apache Web server must have `mod_rewrite` enabled, and you must have `trusted_domains` correctly configured in `config.php` to allow external connections (see xref:installation/installation_wizard.adoc[Installation Wizard]).
 Consider also enabling SSL to encrypt all traffic between your servers .
 
 Your ownCloud server creates the share link from the URL that you used

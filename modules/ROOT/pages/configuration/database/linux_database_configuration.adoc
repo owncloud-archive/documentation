@@ -16,8 +16,7 @@ Requirements
 
 Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle (ownCloud
 Enterprise edition only) as your database requires that you install and
-set up the server software first. (Oracle users, see
-../../enterprise/installation/oracle_db_configuration.)
+set up the server software first. (Oracle users, see xref:enterprise/installation/oracle_db_configuration.adoc[the Oracle Database Configuration guide].)
 
 The steps for configuring a third party database are beyond the scope of
 this document. Please refer to the documentation for your specific
@@ -81,12 +80,9 @@ ownCloud on such an environment is not supported.
 Parameters
 ----------
 
-For setting up ownCloud to use any database, use the instructions in
-../../installation/installation_wizard. You should not have to edit the
-respective values in the config/config.php. However, in special cases
-(for example, if you want to connect your ownCloud instance to a
-database created by a previous installation of ownCloud), some
-modification might be required.
+For setting up ownCloud to use any database, use the instructions in xref:installation/installation_wizard.adoc[the Installation Wizard]. 
+You should not have to edit the respective values in the `config/config.php`. 
+However, in special cases (for example, if you want to connect your ownCloud instance to a database created by a previous installation of ownCloud), some modification might be required.
 
 [[configuring-a-mysql-or-mariadb-database]]
 Configuring a MySQL or MariaDB Database
@@ -148,11 +144,8 @@ You can quit the prompt by entering:
 quit
 ....
 
-An ownCloud instance configured with MySQL would contain the hostname on
-which the database is running, a valid username and password to access
-it, and the name of the database. The config/config.php as created by
-the ../../installation/installation_wizard would therefore contain
-entries like this:
+An ownCloud instance configured with MySQL would contain the hostname on which the database is running, a valid username and password to access it, and the name of the database. 
+The `config/config.php` as created by the xref:installation/installation_wizard.adoc[installation wizard] would therefore contain entries like this:
 
 ....
 <?php
@@ -259,12 +252,8 @@ You can quit the prompt by entering:
 \q
 ....
 
-An ownCloud instance configured with PostgreSQL would contain the path
-to the socket on which the database is running as the hostname, the
-system username the php process is using, and an empty password to
-access it, and the name of the database. The config/config.php as
-created by the ../../installation/installation_wizard would therefore
-contain entries like this:
+An ownCloud instance configured with PostgreSQL would contain the path to the socket on which the database is running as the hostname, the system username the php process is using, and an empty password to access it, and the name of the database. 
+The `config/config.php` as created by xref:installation/installation_wizard.adoc[the Installation Wizard] would therefore contain entries like this:
 
 ....
 <?php
@@ -313,7 +302,7 @@ You can quit the prompt by entering:
 An ownCloud instance configured with PostgreSQL would contain the
 hostname on which the database is running, a valid username and password
 to access it, and the name of the database. The config/config.php as
-created by the ../../installation/installation_wizard would therefore
+created by xref:installation/installation_wizard.adoc[the Installation Wizard] would therefore
 contain entries like this:
 
 ....
@@ -343,8 +332,7 @@ configuration options `wait_timeout` and/or `max_allowed_packet`.
 Some shared hosts are not allowing the access to these config options.
 For such systems ownCloud is providing a `dbdriveroptions` configuration
 option within your config/config.php where you can pass such options to
-the database driver. Please refer to
-../../configuration/server/config_sample_php_parameters for an example.
+the database driver. Please refer to xref:configuration/server/config_sample_php_parameters.adoc[the sample PHP configuration parameters] for an example.
 
 [[how-can-i-find-out-if-my-mysqlpostgresql-server-is-reachable]]
 How can I find out if my MySQL/PostgreSQL server is reachable?

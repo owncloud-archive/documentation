@@ -128,14 +128,12 @@ the `uid`, by default `eppn`, and check if a user is known by that
 `uid`. In effect, this allows another user backend, e.g., the LDAP app,
 to provide the `displayname`, `email` and `avatar`.
 
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 As an example the IdP can send the *userPrincipalName* which the Apache
 Shibboleth module writes to a custom Apache environment variable called
 `login`. The ownCloud Shibboleth app reads that `login` environment
 variable and tries to find an LDAP user with that `username`. For this
 to work *userPrincipalName* needs to be added to the *Additional Search
-Attributes* in the
-LDAP directory settings on the advanced tab <../../configuration/user/user_auth_ldap>.
+Attributes* in the LDAP directory settings on xref:configuration/user/user_auth_ldap.adoc[the advanced tab].
 We recommend using a scoped login attribute like *userPrincipalName* or
 *mail* because otherwise the search might find multiple users and
 prevent login.
@@ -146,7 +144,6 @@ case it is sufficient to protect the ownCloud base url with Shibboleth.
 This will send Web users to the IdP but allow desktop and mobile clients
 to continue using username and password, preventing popups due to an
 expired Shibboleth session lifetime.
-_____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 In *Autoprovision Users* mode the app will not ask another user backend,
 but instead provision users on the fly by reading the two additional
@@ -248,7 +245,7 @@ To log in LDAP users via SAML for Single Sign On the user in LDAP must
 be uniquely resolvable by searching for the username that was sent in
 the SAML token. For this to work the ldap attribute containing the
 username needs to be added to the *Additional Search Attributes* in the
-LDAP directory settings on the advanced tab <../../configuration/user/user_auth_ldap>.
+LDAP directory settings on xref:configuration/user/user_auth_ldap.adoc[the advanced tab ].
 We recommend using a scoped login attribute like *userPrincipalName* or
 *mail* because otherwise the search might find multiple users and
 prevent login.

@@ -140,9 +140,7 @@ only) or Swift. S3 also allows access to Ceph Storage.
 Session Storage
 ---------------
 
-* Redis is required for
-transactional file locking <../configuration/files/files_locking_transactional>,
-provides session persistence, and graphical inspection tools available.
+* Redis is required for transactional file locking xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking], provides session persistence, and graphical inspection tools available.
 * If you need to scale out Shibboleth you must use Memcached, as
 Shibboleth does not provide an interface to Redis. Memcached can also be
 used to scale-out shibd session storage (see

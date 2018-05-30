@@ -55,6 +55,4 @@ sudo -u www-data php occ trashbin:cleanup user1 user2
  Remove deleted files of user2
 ....
 
-See the *Deleted Files* section in
-../../configuration/server/config_sample_php_parameters, and the
-trashbin_label section of ../../configuration/server/occ_command.
+See the *Deleted Files* section in xref:configuration/server/config_sample_php_parameters.adoc[Sample PHP Configuration Parameters], and xref:configuration/server/occ_command.adoc[the Trash Bin section] of the occ commands.

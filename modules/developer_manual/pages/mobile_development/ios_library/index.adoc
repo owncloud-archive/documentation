@@ -17,16 +17,10 @@ find the source code https://github.com/owncloud/ios[in github]. The
 setup and process of contribution is
 https://github.com/owncloud/ios/blob/master/SETUP.md[documented here].
 
-You might want to start with doing one or two
-https://github.com/owncloud/ios/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22[junior
-jobs] to get into the code and note our ../../general/index
+You might want to start with doing one or two https://github.com/owncloud/ios/issues?q=is%3Aopen+is%3Aissue+label%3A%22Junior+Job%22[junior jobs] to get into the code and note our xref:general/codingguidelines.adoc[General Contributor Guidelines].
 
-Note that contribution to the iOS client require signing the iOS
-addendum to the https://owncloud.org/contribute/agreement/[ownCloud
-Contributor Agreement]. You are permitted to test the iOS client on
-Apple hardware thanks to the
-https://owncloud.org/contribute/iOS-license-exception/[iOS license
-exception].
+Note that contribution to the iOS client require signing the iOS addendum to the https://owncloud.org/contribute/agreement/[ownCloud Contributor Agreement]. 
+You are permitted to test the iOS client on Apple hardware thanks to the https://owncloud.org/contribute/iOS-license-exception/[iOS license exception].
 
 [[owncloud-ios-library]]
 ownCloud iOS Library

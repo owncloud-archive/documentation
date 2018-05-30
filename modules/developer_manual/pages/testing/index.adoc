@@ -96,11 +96,8 @@ ownCloud instance. If it works – awesome, move on. If it doesn’t, find
 out as much as you can about why it doesn’t and use that for a bug
 report.
 
-This is the stage where you should see if your issue is already reported
-by checking the relevant bug tracker <../bugtracker/index>. It might
-even be fixed, sometimes! Alternatively, just ask on the test-pilots
-mailing list.
+This is the stage where you should see if your issue is already reported by checking the relevant xref:bugtracker/index.adoc[bug tracker]. 
+It might even be fixed, sometimes! Alternatively, just ask on the test-pilots mailing list.
 
 Finally, if the issue you bump into is a definite bug and the developers
-are not aware of it, file it as a new issue in
-the relevant bug tracker <../bugtracker/index>.
+are not aware of it, file it as a new issue in xref:bugtracker/index.adoc[the relevant bug tracker].

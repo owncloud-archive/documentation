@@ -669,7 +669,7 @@ Available values:
 
 * `auto`:
   default setting. Automatically expire versions according to expire
-  rules. Please refer to ../configuration/files/file_versioning for more
+  rules. Please refer to xref:configuration/files/file_versioning[File Versioning] for more
   information.
 * `D, auto`:
   keep versions at least for D days, apply expire rules to all versions

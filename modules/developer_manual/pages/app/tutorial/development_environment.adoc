@@ -64,9 +64,7 @@ inside a parent ownCloud namespace, called `OCA`. As the application’s
 namespace is `OwnNotes`, then it’s fully-qualified namespace is
 `OCA\\OwnNotes`.
 
-To learn more about the options able to be stored in this file, check
-out
-the App Metadata section of the documentation <../fundamentals/info>.
+To learn more about the options able to be stored in this file, check out xref:app/fundamentals/info.adoc[the App Metadata section] of the documentation.
 
 [[appinfoapp.php]]
 appinfo/app.php
@@ -113,8 +111,7 @@ To start off with, in `appinfo/app.php`, add the following code:
 });
 ----
 
-It can also contain ../fundamentals/backgroundjobs and
-../fundamentals/hooks registrations, as in the example below.
+It can also contain xref:app/fundamentals/backgroundjobs.adoc[background jobs] and xref:app/fundamentals/hooks.adoc[hook registrations], as in the example below.
 
 [source,php]
 ----
@@ -125,11 +122,8 @@ It can also contain ../fundamentals/backgroundjobs and
 \OCP\Util::connectHook('OC_User', 'pre_deleteUser', 'OCA\MyApp\Hooks\User', 'deleteUser');
 ----
 
-It is also possible to include ../fundamentals/js or ../fundamentals/css
-for other apps, by placing the `addScript` or `addStyle` functions
-inside this file as well. However, this is strongly discouraged, because
-the file is loaded on each request, as well as for requests that do not
-return HTML, such as JSON and WebDAV.
+It is also possible to include xref:app/fundamentals/js.adoc[JavaScript] or xref:app/fundamentals/css.adoc[CSS] for other apps, by placing the `addScript` or `addStyle` functions inside this file as well. 
+However, this is strongly discouraged, because the file is loaded on each request, as well as for requests that do not return HTML, such as JSON and WebDAV.
 
 [source,php]
 ----

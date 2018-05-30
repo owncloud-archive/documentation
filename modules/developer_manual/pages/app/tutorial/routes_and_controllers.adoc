@@ -40,14 +40,10 @@ $.ajax({
 });
 ----
 
-On the server side, we need to register a callback that is executed once
-the request comes in. The callback will be a method on a
-controller <../fundamentals/controllers> and the controller will be
-connected to the URL with a route <../fundamentals/routes>.
+On the server side, we need to register a callback that is executed once the request comes in. 
+The callback will be a method on xref:app/fundamentals/controllers.adoc[a controller] and the controller will be connected to the URL with xref:app/fundamentals/routes.adoc[a route ].
 
-To do that, we create the routes configuration file:
-`ownnotes/appinfo/routes.php`, which you can see the definition for
-below.
+To do that, we create the routes configuration file: `ownnotes/appinfo/routes.php`, which you can see the definition for below.
 
 [source,php]
 ----
@@ -107,10 +103,8 @@ action). These functions, as you would expect, can return a range of
 responses to the user, including: JSON, HTML, XML, and plain text; a
 redirect or 404 Not Found response, or the download of a file.
 
-In the example below, we’ll return an HTML response, based on the
-contents of a template <../fundamentals/templates> file, using the
-`TemplateResponse` object. The `TemplateResponse` object renders a
-template located in an application’s templates directory.
+In the example below, we’ll return an HTML response, based on the contents of xref:app/fundamentals/templates.adoc[a template file], using the `TemplateResponse` object. 
+The `TemplateResponse` object renders a template located in an application’s templates directory.
 
 [source,php]
 ----
@@ -149,7 +143,7 @@ The `OCP` namespace maps to `ownCloud/core/lib/public`.
 
 The `@NoAdminRequired` and `@NoCSRFRequired` annotations in index’s
 docblock above turn off security checks, as they’re not necessary for
-this method. See ../fundamentals/controllers for more information.
+this method. See xref:app/fundamentals/controllers.adoc[Controllers] for more information.
 
 With an initial overview of controllers (and templates) completed, we’ll
 now create the core of a controller which handles AJAX requests for the

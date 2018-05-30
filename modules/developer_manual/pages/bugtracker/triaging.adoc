@@ -223,8 +223,7 @@ This is needed in order to differentiate random/race condition bugs of
 reproducible ones (which may be reproduced by developers too; and they
 can fix them).
 
-To reproduce an issue, please refer to our testing documents:
-../testing/index
+To reproduce an issue, please refer to xref:developer_manual:testing/index.adoc[our testing documents].
 
 If you can’t reproduce an issue in a newer version of ownCloud, it is
 most likely fixed and can be closed. Comment that you failed to
@@ -259,21 +258,11 @@ occasionally take a long time.
 Collaboration
 -------------
 
-You can just get started with bug triaging. But if you want, you can
-register on the
-https://mailman.owncloud.org/mailman/listinfo/testpilots[testpilot
-mailing list] and perhaps introduce yourself to
-link:testpilots@owncloud.org[testpilots@owncloud.org]. On this list we
-announce and discuss testing and bug triaging related subjects.
+You can just get started with bug triaging. 
+But if you want, you can register on the link:https://mailman.owncloud.org/mailman/listinfo/testpilots[testpilot mailing list] and perhaps introduce yourself to mailto:testpilots@owncloud.org[testpilots@owncloud.org]. 
+On this list we announce and discuss testing and bug triaging related subjects.
 
-You can also join the *#owncloud-testing* channel on *irc.freenode.net*
-(irc://#owncloud-testing@freenode.net[link for IRC clients] and
-https://webchat.freenode.net/[link to webchat]) to ask questions but
-keep in mind that people aren’t active 24/7 and it can occasionally take
-a while to get a response. Last but not least, ownCloud contributor
-https://gist.github.com/jancborchardt/6155185[Jan Borchardt has a great
-guide for developers and triagers] about dealing with issues, including
-some `stock answers' and thoughts on how to deal with pull requests.
+You can also join the *#owncloud-testing* channel on *irc.freenode.net* (irc://#owncloud-testing@freenode.net[link for IRC clients] and https://webchat.freenode.net/[link to webchat]) to ask questions but keep in mind that people aren’t active 24/7 and it can occasionally take a while to get a response. Last but not least, ownCloud contributor https://gist.github.com/jancborchardt/6155185[Jan Borchardt has a great guide for developers and triagers] about dealing with issues, including some `stock answers' and thoughts on how to deal with pull requests.
 
 For further questions or help you can also send a mail to:
 

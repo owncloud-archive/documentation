@@ -213,7 +213,7 @@ occ integrity:check-core
 occ integrity:check-app $appid
 ....
 
-See ../configuration/server/occ_command to learn more about using `occ`.
+TIP: See xref:configuration/server/occ_command.adoc[the occ command] to learn more about using `occ`.
 
 [[errors]]
 Errors

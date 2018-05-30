@@ -71,10 +71,8 @@ Some common mimetypes that may be useful in creating aliases are:
 |`text/code` |Source code
 |============================================
 
-Once you have made changes to `config/mimetypealiases.json`, use
-the occ command <../../configuration/server/occ_command> to propagate
-the changes throughout your ownCloud installation. Here is an example
-for Ubuntu Linux:
+Once you have made changes to `config/mimetypealiases.json`, use xref:configuration/server/occ_command.adoc[the occ command] to propagate the changes throughout your ownCloud installation. 
+Here is an example for Ubuntu Linux:
 
 ....
 $ sudo -u www-data php occ maintenance:mimetype:update-js

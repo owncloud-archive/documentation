@@ -4,9 +4,8 @@ Creating a Navigation Menu
 A navigation menu is, effectively, another template, In our example,
 we’ll create it in `ownnotes/templates/part.navigation.php`.
 
-ownCloud defines many handy CSS styles <../fundamentals/css> which we
-are going to reuse to style the navigation. Adjust the file to contain
-only the following code:
+ownCloud defines many handy xref:app/fundamentals/css.adoc[CSS styles] which we are going to reuse to style the navigation. 
+Adjust the file to contain only the following code:
 
 [source,php]
 ----

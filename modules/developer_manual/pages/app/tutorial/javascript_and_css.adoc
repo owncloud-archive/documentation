@@ -1,8 +1,7 @@
 Add JavaScript and CSS
 ======================
 
-To create a modern web application you need to write
-JavaScript <../fundamentals/js> and CSS <../fundamentals/css>.
+To create a modern web application you need to write xref:app/fundamentals/js.adoc[JavaScript ] and xref:app/fundamentals/css.adoc[CSS].
 
 [[javascript]]
 JavaScript

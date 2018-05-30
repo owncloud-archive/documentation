@@ -484,9 +484,7 @@ group admin privileges
 
 These checks are already automatically performed, by the application
 framework, for each request. If they are not required, they have to be
-_explicitly_ turned off by using annotations above your controller
-method. See ../app/fundamentals/controllers. Additionally, always check
-if the user has the right to perform that action.
+_explicitly_ turned off by using annotations above your xref:app/fundamentals/controllers.adoc[controller method]. Additionally, always check /if the user has the right to perform that action.
 
 [[clickjacking]]
 Clickjacking
@@ -556,10 +554,7 @@ top of all your files:
 OCP\JSON::callCheck();
 ----
 
-If you are using the application Framework, every controller method is
-automatically checked for CSRF unless you explicitly exclude it by
-setting the `@NoCSRFRequired` annotation before the controller method,
-see ../app/fundamentals/controllers
+If you are using the application Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the `@NoCSRFRequired` annotation before xref:app/fundamentals/controllers.adoc[the controller method].
 
 [[cross-site-scripting]]
 === Cross Site Scripting (XSS)

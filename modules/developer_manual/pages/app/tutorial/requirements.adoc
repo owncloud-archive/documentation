@@ -17,7 +17,5 @@ There aren’t many; all that you’ll need is:
 * A copy of ownCloud core
 * A working installation of ownCloud server
 
-To find out more, read through
-the Development Environment section <../../general/devenv>. When you’ve
-done everything that it suggests, you’re ready to begin developing an
-ownCloud application.
+To find out more, read through xref:general/devenv.adoc[the Development Environment section]. 
+When you've done everything that it suggests, you’re ready to begin developing an ownCloud application.
