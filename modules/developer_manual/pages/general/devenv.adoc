@@ -22,7 +22,7 @@ software for installing and running ownCloud. While you can go further,
 you need to install at least the following:
 
 * https://www.gnu.org/software/make/[Make]
-* https://nodejs.org[Node.js].
+* https://nodejs.org[Node.js]
 * https://git-scm.com/[git]
 * https://www.npmjs.com/[npm]
 * https://linux.die.net/man/1/unzip[unzip]

@@ -33,14 +33,15 @@ This requires a disabled or correctly configured binary logging when
 using MySQL or MariaDB. Your system is affected if you see the following
 in your log file during the installation or update of ownCloud:
 
-____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+[source]
+----
 An unhandled exception has been thrown: exception `PDOException' with
 message `SQLSTATE[HY000]: General error: 1665 Cannot execute statement:
 impossible to write to binary log since BINLOG_FORMAT = STATEMENT and at
 least one table uses a storage engine limited to row-based logging.
 InnoDB is limited to row-logging when transaction isolation level is
 READ COMMITTED or READ UNCOMMITTED.'
-____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
+----
 
 There are two solutions. One is to disable binary logging. Binary
 logging records all changes to your database, and how long each change
