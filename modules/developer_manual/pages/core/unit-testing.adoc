@@ -79,7 +79,7 @@ documentation].
 Running PHP Unit tests for ownCloud >= 10.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are existing tests provided by ownCoud which are ready to run.
+There are existing tests provided by ownCloud which are ready to run.
 
 * Change into `webroot` and run `make help` to see tests and parameters
 available.
@@ -217,9 +217,9 @@ MySQL Setup
 ^^^^^^^^^^^
 
 ....
-CREATE DATABASE oc_autotest
-CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud'
-GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost'
+CREATE DATABASE oc_autotest;
+CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud';
+GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost';
 ....
 
 [[for-parallel-executor-support-with-executor_number0]]
@@ -227,9 +227,9 @@ For parallel executor support with EXECUTOR_NUMBER=0
 ++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 ....
-CREATE DATABASE oc_autotest0
-CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud'
-GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost'
+CREATE DATABASE oc_autotest0;
+CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud';
+GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost';
 ....
 
 [[postgresql-setup]]
