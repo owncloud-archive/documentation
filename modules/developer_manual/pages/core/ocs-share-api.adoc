@@ -20,6 +20,12 @@ Get all shares from the user.
 * Syntax: /shares
 * Method: GET
 
+[cols=",,",options="header",]
+|==========================
+|Attribute |Type |Description
+|`shared_with_me` |boolean |Returns all shares shared with the sharee.
+|==========================
+
 [[returns]]
 Returns
 ^^^^^^^
