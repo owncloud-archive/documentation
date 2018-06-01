@@ -553,21 +553,17 @@ Additional Apache Configurations
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 * For ownCloud to work correctly, we need the module `mod_rewrite`.
-Enable it by running:
-+
-....
-a2enmod rewrite
-....
-+
-Additional recommended modules are `mod_headers`, `mod_env`, `mod_dir`
-and `mod_mime`:
-+
-....
-a2enmod headers
-a2enmod env
-a2enmod dir
-a2enmod mime
-....
+Enable it by running: `a2enmod rewrite`.
+Additionally recommended modules are `mod_headers`, `mod_env`, `mod_dir` and `mod_mime`.
+To enable them, run the following commands:
+
+  a2enmod headers
+  a2enmod env
+  a2enmod dir
+  a2enmod mime
+
+NOTE: If you want to use link:https://marketplace.owncloud.com/apps/oauth2[the OAuth2 app], then link:http://httpd.apache.org/docs/current/mod/mod_headers.html[mod_headers] must be installed and enabled.
+
 * You must disable any server-configured authentication for ownCloud, as
 it uses Basic authentication internally for DAV services. If you have
 turned on authentication on a parent folder (via, e.g., an
