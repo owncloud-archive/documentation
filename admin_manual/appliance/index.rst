@@ -16,3 +16,4 @@ The ownCloud X Appliance
    Backup
    Collabora
    Office
+   firewall
