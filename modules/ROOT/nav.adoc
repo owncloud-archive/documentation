@@ -121,6 +121,7 @@
 ***** xref:configuration/server/security_setup_warnings.adoc[Security Setup Warnings]
 ***** xref:configuration/server/thirdparty_php_configuration.adoc[Third Party PHP Configuration]
 **** User
+***** xref:configuration/user/encryption_configuration_quick_guide.adoc[Encryption Configuration Quick Guide]
 ***** xref:configuration/user/reset_admin_password.adoc[Reset Admin Password]
 ***** xref:configuration/user/reset_user_password.adoc[Reset User Password]
 ***** xref:configuration/user/user_auth_ftp_smb_imap.adoc[User Auth FTP SMB IMAP]
