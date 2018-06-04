@@ -13,8 +13,6 @@ Firewall Rules:
 - software-univention.de
 - docker.software-univention.de
 - 176.9.114.147
-- updates.software-univention.de
-- 176.9.114.147
 - owncloud.org
 - owncloud.com
 - marketplace.owncloud.com
