@@ -43,6 +43,27 @@ footer div.container div.row-full div.col-third {
   width: 33%;
 }
 
+blockquote::before {
+  content: "\201c";
+  float: left;
+  font-size: 2.75em;
+  font-weight: bold;
+  line-height: 0.6em;
+  margin-left: -0.6em;
+  color: #1d2d44;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.quoteblock blockquote div.paragraph p {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 1rem;
+  line-height: 1.65;
+  word-spacing: 0.1em;
+  letter-spacing: 0;
+  font-style: italic;
+  text-align: justify;
+}
+
 /**
  * Supplemental Responsive Styles
  */
