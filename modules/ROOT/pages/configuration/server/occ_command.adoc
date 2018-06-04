@@ -1,5 +1,4 @@
-Using the occ Command
-=====================
+= Using the occ Command
 
 ownCloud’s `occ` command (ownCloud console) is ownCloud’s command-line
 interface. You can perform many common server operations with `occ`,
@@ -12,8 +11,7 @@ to ensure that the correct permissions are maintained on your ownCloud
 files and directories.
 
 [[occ-command-directory]]
-occ Command Directory
----------------------
+== occ Command Directory
 
 * xref:run-occ-as-your-http-user[Run occ As Your HTTP User]
 * xref:apps-commands[Apps Commands]
@@ -2117,28 +2115,16 @@ If you’re new to the `user:setting` command, the descriptions for the
 a lengthier description of both.
 
 [cols=",",options="header",]
-|=======================================================================
-|Argument |Description
-|app |When an value is supplied, `user:setting` limits the settings
+|====
+|Argument 
+|Description
 
-| |displayed, to those for that, specific, application — assuming that
+|`app` 
+|When an value is supplied, `user:setting` limits the settings displayed, to those for that, specific, application — assuming that the application is installed, and that there are settings available for it. Some example applications are "core", "files_trashbin", and "user_ldap". A complete list, unfortunately, cannot be supplied, as it is impossible to know the entire list of applications which a user could, potentially, install.
 
-| |the application is installed, and that there are settings available
-
-| |for it. Some example applications are "core", ``files_trashbin'',
-and
-
-| |``user_ldap''. A complete list, unfortunately, cannot be supplied, as
-it
-
-| |is impossible to know the entire list of applications which a user
-
-| |could, potentially, install.
-
-|key |This value specifies the setting key to be manipulated (set,
-
-| |retrieved, or deleted) by the `user:setting` command.
-|=======================================================================
+|`key` 
+|This value specifies the setting key to be manipulated (set, retrieved, or deleted) by the `user:setting` command.
+|====
 
 [[retrieving-user-settings]]
 Retrieving User Settings
@@ -2258,8 +2244,7 @@ sudo -u www-data php occ user:report
 ....
 
 [[syncing-user-accounts]]
-Syncing User Accounts
-~~~~~~~~~~~~~~~~~~~~~
+=== Syncing User Accounts
 
 This command syncs users stored in external backend services, such as _LDAP_, _Shibboleth_, and _Samba_, with ownCloud’s, internal, user database. 
 However, it’s not essential to run it regularly, unless you have a large number of users whose account properties have changed in a backend outside of ownCloud. 
@@ -2421,7 +2406,9 @@ Here is an example for syncing with LDAP four times a day on Ubuntu:
 ....
 crontab -e -u www-data
 
-* */6 * * * /usr/bin/php /var/www/owncloud/occ user:sync -vvv --missing-account-action="disable" -n "OCA\User_LDAP\User_Proxy"
+* */6 * * * /usr/bin/php /var/www/owncloud/occ user:sync -vvv \
+    --missing-account-action="disable" \
+    -n "OCA\User_LDAP\User_Proxy"
 ....
 
 [[versions]]
