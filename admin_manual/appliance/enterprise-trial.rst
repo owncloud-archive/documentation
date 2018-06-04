@@ -1,4 +1,4 @@
-The appliance has the community edition of ownCloud but can be easily upgraded to the enterprise edition. This upgrade gives you access to a Free-30-Day-Trial of the enterprise edition and all it's features. All you need is an email address to get started. Here are the necessary steps:
+The appliance contains the community edition of ownCloud but can be easily upgraded to the enterprise edition. This upgrade gives you access to a free, 30-day trial of the enterprise edition and all it's features. All you need is an email address to get started. Here are the necessary steps:
 
 - Visit https://marketplace.owncloud.com/enterprise-trial
 
@@ -6,17 +6,17 @@ The appliance has the community edition of ownCloud but can be easily upgraded t
 
 - Click on Complete Process
 
-- Check your email and and activate your account
+- Check your email and activate your account
 
-- log in with your credentials at marketplace.owncloud.com
+- Log in with your credentials at https://marketplace.owncloud.com
 
-- copy the API key
+- Copy the API key
 
-Now you have to go to your ownCloud and enter the Market app
+Now you have to go to your ownCloud installation and enable the Market app
 
-- To enable enterprise features Select "Add API Key" and paste your Key
+- To enable enterprise features Select "Add API Key" and paste your key
 
-- Start the Enterprise Trial
+- Start the Enterprise trial
 
 Note
 	
