@@ -159,7 +159,7 @@ x users found:
 
 Active Directory offers "Recursive retrieval of all AD group memberships of a user". This means essentially that you would be able to search the group you enter and all the other child groups from this groups for users.
 
-Enter this filter to access this feature for a single group
+Enter this filter to access this feature for a single group:
   
 ::
   
@@ -179,16 +179,16 @@ If you want to search multiple groups with this feature, adjust your filter like
         )
   )
 
-You can add as many groups to recurse into in the format ``(|(m1)(m2)(m3).....)``
+You can add as many groups to recurse by using the format: ``(|(m1)(m2)(m3).....)``
 
 Description from Microsoft:
 
-The string ``1.2.840.113556.1.4.1941`` specifies ``LDAP_MATCHING_RULE_IN_CHAIN``. This applies only to DN attributes. This is an extended match operator that walks the chain of ancestry in objects all the way to the root until it finds a match. **This reveals group nesting.** It is available only on domain controllers with Windows Server 2003 SP2 or Windows Server 2008 (or above). 
+  The string ``1.2.840.113556.1.4.1941`` specifies ``LDAP_MATCHING_RULE_IN_CHAIN``. This applies only to DN attributes. This is an extended match operator that walks the chain of ancestry in objects all the way to the root until it finds a match. **This reveals group nesting.** It is available only on domain controllers with Windows Server 2003 SP2 or Windows Server 2008 (or above). 
 
 For more information, see the following from Technet:
 
-    http://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx
-    http://blogs.technet.com/b/heyscriptingguy/archive/2014/11/25/active-directory-week-explore-group-membership-with-powershell.aspx
+- http://social.technet.microsoft.com/wiki/contents/articles/5392.active-directory-ldap-syntax-filters.aspx
+- http://blogs.technet.com/b/heyscriptingguy/archive/2014/11/25/active-directory-week-explore-group-membership-with-powershell.aspx
 
 Login Filter
 ^^^^^^^^^^^^
