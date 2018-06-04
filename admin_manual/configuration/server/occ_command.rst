@@ -2085,21 +2085,52 @@ If accounts are found that no longer exist in the external backend, you are give
 .. note::
    This command replaces the old ``show-remnants`` functionality, and brings the LDAP feature more in line with the rest of ownCloud's functionality.
 
-Below are examples of how to use the command with an *LDAP*, *Samba*, and *Shibboleth* backend.
+Usage:
+
+::
+
+  user:sync [options] [--] [<backend-class>]
+
+  Arguments:
+    backend-class                                        The quoted PHP class name for the backend, eg
+                                                         - LDAP:        "OCA\User_LDAP\User_Proxy"
+                                                         - Samba:       "OCA\User\SMB"
+                                                         - Shibboleth:  "OCA\User_Shibboleth\UserBackend"
+
+  Options:
+    -l, --list                                           List all enabled backend classes
+    -u, --uid=UID                                        Sync only the user with the given user id
+    -s, --seenOnly                                       Sync only seen users
+    -c, --showCount                                      Calculate user count before syncing
+    -m, --missing-account-action=MISSING-ACCOUNT-ACTION  Action to take if the account isn't connected to a backend any longer. Options are "disable" and "remove". Note that removing the account will also remove the stored data and files for that account.
+    -r, --re-enable                                      When syncing multiple accounts re-enable accounts that are disabled in ownCloud but available in the synced backend.
+    -h, --help                                           Display this help message
+    -q, --quiet                                          Do not output any message
+    -V, --version                                        Display this application version
+        --ansi                                           Force ANSI output
+        --no-ansi                                        Disable ANSI output
+    -n, --no-interaction                                 Do not ask any interactive question
+        --no-warnings                                    Skip global warnings, show command output only
+    -v|vv|vvv, --verbose                                 Increase the verbosity of messages: 1 for normal output, 2 for more verbose output and 3 for debug
+
+  Help:
+    Synchronize users from a given backend to the accounts table.
+
+Below are examples of how to use the command with different backends:
 
 LDAP
 ~~~~
 
 ::
 
-  sudo -u www-data ./occ user:sync "OCA\User_LDAP\User_Proxy"
+  sudo -u www-data ./occ user:sync "OCA\User_LDAP\User_Proxy" 
 
 Samba
 ~~~~~
 
 ::
 
-  sudo -u www-data ./occ user:sync "OCA\User\SMB" -vvv
+  sudo -u www-data ./occ user:sync "OCA\User\SMB"
 
 Shibboleth
 ~~~~~~~~~~
@@ -2107,6 +2138,81 @@ Shibboleth
 ::
 
   sudo -u www-data ./occ user:sync "OCA\User_Shibboleth\UserBackend"
+
+
+Below are examples of how to use the command with the *LDAP* backend along with example console output.
+
+Example 1:
+
+::
+
+  sudo ./occ user:sync "OCA\User_LDAP\User_Proxy" -m disable -r
+  Analysing all users ...
+      6 [============================]
+
+  No removed users have been detected.
+
+  No existing accounts to re-enable.
+
+  Insert new and update existing users ...
+      4 [============================]
+
+Example 2:
+
+::
+
+  sudo  ./occ user:sync "OCA\User_LDAP\User_Proxy" -m disable -r
+  Analysing all users ...
+      6 [============================]
+
+  Following users are no longer known with the connected backend.
+  Disabling accounts:
+  9F625F70-08DD-4838-AD52-7DE1F72DBE30, Bobbie, bobbie@example.org disabled
+  53CDB5AC-B02E-4A49-8FEF-001A13725777, David, dave@example.org disabled
+  34C3F461-90FE-417C-ADC5-CE97FE5B8E72, Carol, carol@example.org disabled
+
+  No existing accounts to re-enable.
+
+  Insert new and update existing users ...
+      1 [============================]
+
+Example 3:
+
+::
+
+  sudo./occ user:sync "OCA\User_LDAP\User_Proxy" -m disable -r
+  Analysing all users ...
+      6 [============================]
+
+  Following users are no longer known with the connected backend.
+  Disabling accounts:
+  53CDB5AC-B02E-4A49-8FEF-001A13725777, David, dave@example.org skipped, already disabled
+  34C3F461-90FE-417C-ADC5-CE97FE5B8E72, Carol, carol@example.org skipped, already disabled
+  B5275C13-6466-43FD-A129-A12A6D3D9A0D, Alicia3, alicia3@example.org disabled
+
+  Re-enabling accounts:
+  9F625F70-08DD-4838-AD52-7DE1F72DBE30, Bobbie, bobbie@example.org enabled
+
+  Insert new and update existing users ...
+      1 [============================]
+
+Example 4:
+
+::
+
+  sudo ./occ user:sync "OCA\User_LDAP\User_Proxy" -m disable -r
+  Analysing all users ...
+      6 [============================]
+
+  No removed users have been detected.
+
+  Re-enabling accounts:
+  53CDB5AC-B02E-4A49-8FEF-001A13725777, David, dave@example.org enabled
+  34C3F461-90FE-417C-ADC5-CE97FE5B8E72, Carol, carol@example.org enabled
+  B5275C13-6466-43FD-A129-A12A6D3D9A0D, Alicia3, alicia3@example.org enabled
+
+  Insert new and update existing users ...
+      4 [============================]
 
 Syncing via cron job
 ~~~~~~~~~~~~~~~~~~~~
