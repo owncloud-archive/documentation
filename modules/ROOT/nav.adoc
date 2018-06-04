@@ -7,6 +7,7 @@
 **** UCS
 ***** xref:appliance/ucs/add-groups-and-users.adoc[Add Groups and Users]
 **** xref:appliance/what-is-it.adoc[What is it]
+**** xref:appliance/enterprise_trial.adoc[Enterprise Trial]
 **** xref:appliance/Active_Directory.adoc[Active Directory]
 **** xref:appliance/Backup.adoc[Backup]
 **** xref:appliance/Clamav.adoc[ClamAV]
