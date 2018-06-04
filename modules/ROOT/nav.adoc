@@ -11,6 +11,7 @@
 **** xref:appliance/Backup.adoc[Backup]
 **** xref:appliance/Clamav.adoc[ClamAV]
 **** xref:appliance/Office.adoc[Office]
+**** xref:appliance/firewall.adoc[Firewall]
 **** xref:appliance/certificates.adoc[Certificates]
 **** xref:appliance/howto-update-owncloud.adoc[How to Update ownCloud]
 **** xref:appliance/installation.adoc[Installation]
