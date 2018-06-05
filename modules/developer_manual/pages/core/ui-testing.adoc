@@ -24,10 +24,9 @@ the browsers that you want to test].
 Overview
 --------
 
-Tests are divided into suites, enabling each suite to test some logical
-portion of the functionality and for the total elapsed run-time of a
-single suite to be reasonable (up to about 30 minutes). Smaller apps may
-have all tests in a single suite.
+Tests are divided into suites, enabling each suite to test some logical portion of the functionality and for the total elapsed run-time of a single suite to be reasonable (up to about 40 minutes on Travis-CI, about 10 minutes on drone). 
+Elapsed run-time on a local developer system is very dependent on the IO as well as CPU performance. 
+Smaller apps may have all tests in a single suite.
 
 Each suite consists of a number of features. Each feature is described
 in a `*.feature` file. There are a number of scenarios in each feature
@@ -59,7 +58,7 @@ federation share tests does not run in the root of the host)
 for federation share tests. This should be another port on the same
 server)
 ** `BROWSER` (Any one of `chrome`, `firefox`, `internet explorer`)
-** `BROWSER_VERSION` (version of the browser you are using)
+** `BROWSER_VERSION` (version of the browser you want to use - _optional_)
 +
 e.g., to test an instance running on http://localhost/owncloud-core with
 Chrome do:
@@ -185,7 +184,9 @@ location of the app’s `behat.yml` config file:
 
 [source,console]
 ----
-bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite default
+bash tests/travis/start_ui_tests.sh \
+  --config apps/files_texteditor/tests/acceptance/config/behat.yml \
+  --suite webUITextEditor
 ----
 
 Run UI the tests for just a single feature of the app by also specifying
@@ -193,7 +194,9 @@ the feature file:
 
 [source,console]
 ----
-bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite default --feature apps/files_texteditor/tests/acceptance/features/textfiles.feature
+bash tests/travis/start_ui_tests.sh \
+  --config apps/files_texteditor/tests/acceptance/config/behat.yml \
+  --feature apps/files_texteditor/tests/acceptance/features/webUITextEditor/editTextFiles.feature
 ----
 
 [[skipping-tests]]
@@ -228,6 +231,23 @@ bash tests/travis/start_ui_tests.sh --tags @quota-should-not-be-set-to-invalid-v
 
 When fixing the bug, remove these skip tags in the PR along with the bug
 fix code.
+
+=== Additional Command Options
+
+Running all suites in a single run is not recommended. It will take more than 1 hour on a typical development system.
+However, you may run all UI tests with:
+
+[source]
+----
+bash tests/travis/start_ui_tests.sh --all-suites
+----
+
+By default, any test scenarios that fail are automatically rerun once each. This minimizes transient failures caused by browser and selenium driver timing issues. When developing tests it can be convenient to override this behavior. To not rerun failed test scenarios:
+
+[source]
+----
+bash tests/travis/start_ui_tests.sh --norerun --suite webUILogin
+----
 
 [[known-issues]]
 Known Issues
