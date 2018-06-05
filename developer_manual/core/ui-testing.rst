@@ -21,8 +21,9 @@ Overview
 ~~~~~~~~
 
 Tests are divided into suites, enabling each suite to test some logical portion of the functionality
-and for the total elapsed run-time of a single suite to be reasonable (up to about 30 minutes).
-Smaller apps may have all tests in a single suite.
+and for the total elapsed run-time of a single suite to be reasonable (up to about 40 minutes on Travis-CI,
+about 10 minutes on drone). Elapsed run-time on a local developer system is very dependent on the IO as well as CPU
+performance. Smaller apps may have all tests in a single suite.
 
 Each suite consists of a number of features. Each feature is described in a ``*.feature`` file.
 There are a number of scenarios in each feature file. Each scenario has a number of scenario steps
@@ -47,7 +48,7 @@ Set Up Test
   - ``SRV_HOST_PORT`` (The port of your webserver)
   - ``REMOTE_FED_SRV_HOST_PORT`` (The alternative port of your webserver for federation share tests. This should be another port on the same server)
   - ``BROWSER`` (Any one of ``chrome``, ``firefox``, ``internet explorer``)
-  - ``BROWSER_VERSION`` (version of the browser you are using)
+  - ``BROWSER_VERSION`` (version of the browser you want to use - optional)
 
   e.g., to test an instance running on http://localhost/owncloud-core with Chrome do:
 
@@ -83,7 +84,6 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
     bash tests/travis/start_ui_tests.sh --suite webUILogin
 
 The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
-Running all suites in a single run is not supported. You must always specify a suite and/or feature to run.
 
 The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
 To run the tests as user that is different to your current terminal user use ``sudo -E -u <username>`` e.g. to run as 'www-data' user ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
@@ -148,13 +148,13 @@ With the app installed, run the UI tests for the app by specifying the location 
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite default
+  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite webUITextEditor
 
-Run UI the tests for just a single feature of the app by also specifying the feature file:
+Run UI the tests for just a single feature of the app by specifying the feature file:
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite default --feature apps/files_texteditor/tests/acceptance/features/textfiles.feature
+  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --feature apps/files_texteditor/tests/acceptance/features/webUITextEditor/editTextFiles.feature
 
 Skipping Tests
 ~~~~~~~~~~~~~~
@@ -182,6 +182,24 @@ Or run just a particular test by using its unique tag:
   bash tests/travis/start_ui_tests.sh --tags @quota-should-not-be-set-to-invalid-values-issue-1234
 
 When fixing the bug, remove these skip tags in the PR along with the bug fix code.
+
+Additional Command Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Running all suites in a single run is not recommended. It will take more than 1 hour on a typical development system.
+However, you may run all UI tests with:
+
+.. code-block:: console
+
+   bash tests/travis/start_ui_tests.sh --all-suites
+
+By default, any test scenarios that fail are automatically rerun once each. This minimizes transient failures caused by
+browser and selenium driver timing issues. When developing tests it can be convenient to override this behavior.
+To not rerun failed test scenarios:
+
+.. code-block:: console
+
+   bash tests/travis/start_ui_tests.sh --norerun --suite webUILogin
 
 Known Issues
 ~~~~~~~~~~~~
