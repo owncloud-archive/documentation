@@ -43,8 +43,7 @@ Provider setup:
   requests accordingly (2-n)
 * GPFS or Ceph via phprados (2-n, 3 to be safe, Ceph 10+ nodes to see speed 
   benefits under load)
-* If you are scaling, you have to be sure that the config.php in all the severs are the same. 
-  Otherwise you will run into problems.
+* In case of clustering, your cluster nodes must have the same ownCloud configuration including an identical config.php to avoid any potential issues.
 
 Pros:
 
