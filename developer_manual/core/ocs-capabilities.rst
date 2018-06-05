@@ -71,7 +71,12 @@ This will return a JSON response, similar to the example below, along with a sta
             "public" : {
               "enabled" : true,
               "password" : {
-                "enforced" : false
+                "enforced_for" : {
+                  "read_only" : true,
+                  "read_write" : true,
+                  "upload_only" : true
+                },
+                "enforced" : true
               },
               "multiple" : true,
               "social_share" : true,
