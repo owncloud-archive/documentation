@@ -18,7 +18,7 @@ Operating System  Ubuntu 16.04, 17.04 and 17.10; Debian 7, 8 and 9; SUSE Linux E
                   Fedora 26, 27 and 28; open Suse Tumbleweed and Leap 42.1, 42.2, 42.3
 Database          MySQL or MariaDB 5.5+, Oracle 11g, PostgreSQL, & SQLite
 Web server        Apache 2.4 with ``prefork`` :ref:`apache-mpm-label` and ``mod_php``
-PHP Runtime       PHP (5.6+, 7.0, & 7.1)
+PHP Runtime       PHP 7.1
 ================= =================================================================================
 
 .. important:: 
@@ -27,7 +27,6 @@ PHP Runtime       PHP (5.6+, 7.0, & 7.1)
     If you use Ubuntu 16.04:
 
     - PHP 7.1 is only available via ppa. To add a ppa to your system, use this command: ``sudo add-apt-repository ppa:user/ppa-name``.
-    - PHP 7.2 standard installable, but you have to install some mandatory modules yourself, like `intl`_.
 
 .. note::
    
