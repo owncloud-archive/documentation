@@ -47,7 +47,7 @@ Required
 PHP Version
 ~~~~~~~~~~~
 
-PHP >= 5.6 (ideally 7.0 or above)
+PHP (5.6+, 7.0, & 7.1)
 
 PHP Extensions
 ~~~~~~~~~~~~~~
