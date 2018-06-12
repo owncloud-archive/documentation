@@ -27,7 +27,6 @@ PHP Runtime       PHP (5.6+, 7.0, & 7.1)
     If you use Ubuntu 16.04:
 
     - PHP 7.1 is only available via ppa. To add a ppa to your system, use this command: ``sudo add-apt-repository ppa:user/ppa-name``.
-    - PHP 7.2 standard installable, but you have to install some mandatory modules yourself, like `intl`_.
 
 .. note::
    
