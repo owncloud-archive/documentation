@@ -49,6 +49,11 @@ PHP Version
 
 PHP (5.6+, 7.0, & 7.1)
 
+.. WARNING::
+
+   ownCloud recommends the use of PHP 7.1 in new installations.
+   Sites using a version earlier than PHP 7.1 are *strongly encouraged* to migrate to PHP 7.1
+
 PHP Extensions
 ~~~~~~~~~~~~~~
 
