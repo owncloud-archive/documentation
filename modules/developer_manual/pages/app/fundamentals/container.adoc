@@ -1,5 +1,4 @@
-The DI Container
-================
+= The DI Container
 
 The App Framework assembles the application by using a container based
 on the software pattern
@@ -14,8 +13,7 @@ the art of Services and Containers Tutorial]
 * http://www.youtube.com/watch?v=RlfLCWKxHJ0[Google Clean Code Talks]
 
 [[dependency-injection]]
-Dependency Injection
---------------------
+== Dependency Injection
 
 Dependency Injection sounds pretty complicated but it just means: Don’t
 put new dependencies in your constructor or methods but pass them in. So
@@ -56,8 +54,7 @@ class AuthorMapper {
 ----
 
 [[using-a-container]]
-Using a Container
------------------
+== Using a Container
 
 Passing dependencies into the constructor rather than instantiating them
 in the constructor has the following drawback: Every line in the source
@@ -128,8 +125,7 @@ class Application extends App {
 ----
 
 [[how-the-container-works]]
-How the Container Works
-~~~~~~~~~~~~~~~~~~~~~~~
+=== How the Container Works
 
 The container works in the following way:
 
@@ -186,8 +182,7 @@ Since ownCloud 8 it is possible to omit the
 instead.
 
 [[how-does-automatic-assembly-work]]
-How Does Automatic Assembly Work
---------------------------------
+== How Does Automatic Assembly Work
 
 Automatic assembly creates new instances of classes just by looking at
 the class name and its constructor parameters. For each constructor
@@ -234,8 +229,7 @@ sensitive so while `$AppName` will work correctly, using `$appName` as a
 constructor parameter will fail.
 
 [[how-does-it-affect-the-request-lifecycle]]
-How Does it Affect the Request Lifecycle
-----------------------------------------
+== How Does it Affect the Request Lifecycle
 
 * A request comes in
 * All apps’ `routes.php` files are loaded
@@ -257,8 +251,7 @@ container tries to create the class by using reflection on its
 constructor parameters
 
 [[how-does-this-affect-controllers]]
-How Does This Affect Controllers
---------------------------------
+== How Does This Affect Controllers
 
 The only thing that needs to be done to add a route and a controller
 method is now:
@@ -295,8 +288,7 @@ There is no need to wire up anything in `lib/AppInfo/Application.php`.
 Everything will be done automatically.
 
 [[how-to-deal-with-interface-and-primitive-type-parameters]]
-How to Deal with Interface and Primitive Type Parameters
---------------------------------------------------------
+== How to Deal with Interface and Primitive Type Parameters
 
 Interfaces and primitive types can not be instantiated, so the container
 can not automatically assemble them. The actual implementation needs to
@@ -331,8 +323,7 @@ class Application extends \OCP\AppFramework\App {
 ----
 
 [[predefined-core-services]]
-Predefined Core Services
-------------------------
+== Predefined Core Services
 
 The following parameter names and type hints can be used to inject core
 services instead of using `$container->getServer()->getServiceX()`
@@ -382,8 +373,7 @@ Types:
 * `OCP\\IUserSession`
 
 [[how-to-enable-it]]
-How to Enable It
-----------------
+== How to Enable It
 
 To make use of this new feature, the following things have to be done:
 
@@ -417,8 +407,7 @@ A namespace tag is required because you can not deduce the namespace
 from the app id
 
 [[which-classes-should-be-added]]
-Which Classes Should Be Added
------------------------------
+== Which Classes Should Be Added
 
 In general all of the app’s controllers need to be registered inside the
 container. Then the following question is: What goes into the

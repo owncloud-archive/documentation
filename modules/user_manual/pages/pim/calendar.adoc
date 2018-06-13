@@ -1,5 +1,4 @@
-Using the Calendar App
-======================
+= Using the Calendar App
 
 The Calendar app is not enabled by default in ownCloud and needs to be
 enabled separately. It is also not a supported core app. It is currently

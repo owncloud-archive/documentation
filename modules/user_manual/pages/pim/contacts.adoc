@@ -1,5 +1,4 @@
-Using the Contacts App
-======================
+= Using the Contacts App
 
 The Contacts app is not enabled by default in ownCloud and needs to be
 enabled separately. It is also not a supported core app. It is currently

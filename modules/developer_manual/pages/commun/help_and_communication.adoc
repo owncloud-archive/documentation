@@ -1,18 +1,15 @@
-Getting Involved
-================
+= Getting Involved
 
 There are a variety of ways to get involved and seek help if and when
 you need it. Here’s the best ways.
 
 [[mailing-lists]]
-Mailing lists
--------------
+== Mailing lists
 
 On the https://mailman.owncloud.org[mailing lists].
 
 [[community-support-forum]]
-Community support forum
------------------------
+== Community support forum
 
 Ask questions on http://central.owncloud.org/[ownCloud Central]. We
 strongly recommend using ownCloud Central, as it hosts dedicated FAQ
@@ -20,8 +17,7 @@ pages. These include topics which address typical mistakes and commonly
 occurring issues.
 
 [[social-media]]
-Social media
-------------
+== Social media
 
 Ask questions on social media.
 
@@ -30,8 +26,7 @@ Ask questions on social media.
 * https://twitter.com/ownclouders/[Twitter]
 
 [[irc-channels]]
-IRC channels
-------------
+== IRC channels
 
 Chat with us on http://www.irchelp.org/[IRC] (*irc.freenode.net*). You
 can chat via the web with http://webchat.freenode.net, or use your
@@ -43,8 +38,7 @@ favorite IRC client. The channel names are:
 * Design: *#owncloud-design*
 
 [[maintainers]]
-Maintainers
------------
+== Maintainers
 
 If you need to contact a maintainer of a certain app or division you can
 find the details at https://owncloud.org/contact/.

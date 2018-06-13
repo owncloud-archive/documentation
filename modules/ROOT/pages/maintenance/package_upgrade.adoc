@@ -1,9 +1,7 @@
-Upgrade ownCloud From Packages
-==============================
+= Upgrade ownCloud From Packages
 
 [[upgrade-quickstart]]
-Upgrade Quickstart
-------------------
+== Upgrade Quickstart
 
 The best method for keeping ownCloud current on Linux servers is by
 configuring your system to use ownCloud’s
@@ -26,8 +24,7 @@ IMPORTANT: Make sure that you don’t skip a major release when upgrading via re
 IMPORTANT: When upgrading from oC 9.0 to 9.1 with existing Calendars or Address books please have a look at the <<release_notes.adoc#changes-in-9.1,9.1 release notes>> for important information about the needed migration steps during that upgrade.
 
 [[upgrade-tips]]
-Upgrade Tips
-------------
+== Upgrade Tips
 
 Upgrading ownCloud from our
 https://download.owncloud.org/download/repositories/stable/owncloud/[Open
@@ -88,14 +85,12 @@ The optional parameter to skip migration tests during this step was removed in o
 TIP: See xref:maintenance/manual_upgrade.adoc#test-the-upgrade[Testing a Migration] for background information, and xref:configuration/server/occ_command[Using the OCC command] to learn more about `occ`.
 
 [[setting-strong-directory-permissions]]
-Setting Strong Directory Permissions
-------------------------------------
+== Setting Strong Directory Permissions
 
 After upgrading, verify that your ownCloud xref:set-strong-directory-permissions[directory permissions are set] according.
 
 [[upgrading-across-skipped-releases]]
-Upgrading Across Skipped Releases
----------------------------------
+== Upgrading Across Skipped Releases
 
 It is best to update your ownCloud installation with every new point
 release (e.g., 8.1.10), and to never skip any major release (e.g., don’t

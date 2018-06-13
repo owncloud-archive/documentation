@@ -1,5 +1,4 @@
-WebDAV
-======
+= WebDAV
 
 Use this backend to mount a directory from any WebDAV server, or another
 ownCloud server.

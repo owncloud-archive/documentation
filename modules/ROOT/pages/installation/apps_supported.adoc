@@ -1,9 +1,7 @@
-Supported Apps in ownCloud
-==========================
+= Supported Apps in ownCloud
 
 [[agpl-apps]]
-AGPL Apps
----------
+== AGPL Apps
 
 * https://marketplace.owncloud.com/apps/activity[Activity]
 * https://marketplace.owncloud.com/apps/files_antivirus[Anti-Virus]

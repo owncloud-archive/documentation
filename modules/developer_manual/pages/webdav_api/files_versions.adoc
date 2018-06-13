@@ -1,5 +1,4 @@
-Files Versions
-==============
+= Files Versions
 
 The files versions API allows for retrieving the following information
 about files stored in ownCloud.
@@ -8,8 +7,7 @@ about files stored in ownCloud.
 * link:restore-another-version-of-a-file[Restore Another Version of a File]
 
 [[list-file-versions]]
-List File Versions
-------------------
+== List File Versions
 
 [cols=",,",options="header",]
 |========================================================
@@ -30,8 +28,7 @@ with an `HTTP/1.1 404 Not Found` status:
 ----
 
 [[restore-another-version-of-a-file]]
-Restore Another Version of a File
----------------------------------
+== Restore Another Version of a File
 
 [cols=",,",options="header",]
 |=======================================================================

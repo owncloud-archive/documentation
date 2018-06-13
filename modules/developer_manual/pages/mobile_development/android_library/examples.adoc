@@ -1,16 +1,13 @@
-Examples
-========
+= Examples
 
 [[init-the-library]]
-Init the library
-----------------
+== Init the library
 
 Start using the library; it is needed to init the object mClient that
 will be in charge of keeping the communication with the server.
 
 [[code-example]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -38,8 +35,7 @@ mClient = OwnCloudClientFactory.createOwnCloudClient(
 ----
 
 [[set-credentials]]
-Set credentials
----------------
+== Set credentials
 
 Authentication on the app is possible by 3 different methods:
 
@@ -48,8 +44,7 @@ Authentication on the app is possible by 3 different methods:
 * Cookie (SAML-based single-sign-on)
 
 [[code-example-1]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -73,15 +68,13 @@ public class OwnCloudClient extends HttpClient {
 ----
 
 [[create-a-folder]]
-Create a folder
----------------
+== Create a folder
 
 Create a new folder on the cloud server, the info needed to be sent is
 the path of the new folder.
 
 [[code-example-2]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 _
  
@@ -105,8 +98,7 @@ public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationRe
 ....
 
 [[read-folder]]
-Read folder
------------
+== Read folder
 
 Get the content of an existing folder on the cloud server, the info
 needed to be sent is the path of the folder, in the example shown it has
@@ -115,8 +107,7 @@ will be received an array with all the files and folders stored in the
 selected folder.
 
 [[code-example-3]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 ....
 private void startReadRootFolder() {
@@ -139,15 +130,13 @@ public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationRe
 ....
 
 [[read-file]]
-Read file
----------
+== Read file
 
 Get information related to a certain file or folder, information
 obtained is: `filePath`, `filename`, `isDirectory`, `size` and `date`.
 
 [[code-example-4]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 ....
 private void startReadFileProperties(String filePath) {
@@ -168,15 +157,13 @@ public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationRe
 ....
 
 [[delete-file-or-folder]]
-Delete file or folder
----------------------
+== Delete file or folder
 
 Delete a file or folder on the cloud server. The info needed is the path
 of folder/file to be deleted.
 
 [[code-example-5]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 ....
 private void startRemoveFile(String filePath) { 
@@ -196,16 +183,14 @@ public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationRe
 ....
 
 [[download-a-file]]
-Download a file
----------------
+== Download a file
 
 Download an existing file on the cloud server. The info needed is path
 of the file on the server and targetDirectory, path where the file will
 be stored on the device.
 
 [[code-example-6]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -236,16 +221,14 @@ mHandler.post( new Runnable() {
 ----
 
 [[upload-a-file]]
-Upload a file
--------------
+== Upload a file
 
 Upload a new file to the cloud server. The info needed is fileToUpload,
 path where the file is stored on the device, remotePath, path where the
 file will be stored on the server and mimeType.
 
 [[code-example-7]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -276,8 +259,7 @@ public void onTransferProgress(long progressRate, long totalTransferredSoFar, lo
 ----
 
 [[move-a-file-or-folder]]
-Move a file or folder
----------------------
+== Move a file or folder
 
 Move an exisintg file or folder to a different location in the ownCloud
 server. Parameters needed are the path to the file or folder to move,
@@ -289,8 +271,7 @@ moved even if the new path is already used by a different file or
 folder. This one will be replaced by the former.
 
 [[code-example-8]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -311,16 +292,14 @@ public void onRemoteOperationFinish(RemoteOperation operation, RemoteOperationRe
 ----
 
 [[read-shared-items-by-link]]
-Read shared items by link
--------------------------
+== Read shared items by link
 
 Get information about what files and folder are shared by link (the
 object mClient contains the information about the server url and
 account)
 
 [[code-example-9]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -344,8 +323,7 @@ public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationR
 ----
 
 [[get-the-share-resources-for-a-given-file-or-folder]]
-Get the share resources for a given file or folder
---------------------------------------------------
+== Get the share resources for a given file or folder
 
 Get information about what files and folder are shared by link on a
 certain folder. The info needed is filePath, path of the file/folder on
@@ -354,8 +332,7 @@ api, from the moment it is not in use within the ownCloud Android
 library.
 
 [[code-example-10]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -384,8 +361,7 @@ public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationR
 ----
 
 [[share-link-of-file-or-folder]]
-Share link of file or folder
-----------------------------
+== Share link of file or folder
 
 Share a file or a folder from your cloud server by link.
 
@@ -394,8 +370,7 @@ and Password, this comes from the Sharing api, from the moment it is not
 in use within the ownCloud Android library.
 
 [[code-example-11]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -426,8 +401,7 @@ public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationR
 ----
 
 [[delete-a-share-resource]]
-Delete a share resource
------------------------
+== Delete a share resource
 
 Stop sharing by link a file or a folder from your cloud server.
 
@@ -435,8 +409,7 @@ The info needed is the object OCShare that you want to stop sharing by
 link.
 
 [[code-example-12]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,java]
 ----
@@ -456,8 +429,7 @@ public void onRemoteOperationFinish( RemoteOperation operation, RemoteOperationR
 ----
 
 [[tips]]
-Tips
-----
+== Tips
 
 * Credentials must be set before calling any method
 * Paths must not be on URL Encoding

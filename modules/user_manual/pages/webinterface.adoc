@@ -1,5 +1,4 @@
-The Web Interface
-=================
+= The Web Interface
 
 You can connect to your ownCloud server using any Web browser; just
 point it to your ownCloud server and enter your username and password.
@@ -15,8 +14,7 @@ image:/owncloud-docs/user_manual/_images/oc_connect.png[image]
 NOTE: Some apps like `files_external` or `encryption` will disable the *Stay logged in* checkbox.
 
 [[navigating-the-main-user-interface]]
-Navigating the Main User Interface
-----------------------------------
+== Navigating the Main User Interface
 
 By default, the ownCloud Web interface opens to your Files page. You can
 add, remove, and share files, and make changes based on the access

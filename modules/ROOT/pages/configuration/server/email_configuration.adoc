@@ -1,5 +1,4 @@
-Email Configuration
-===================
+= Email Configuration
 
 ownCloud is capable of sending emails for a range of reasons. These
 include:
@@ -15,16 +14,14 @@ want to receive. They can do this on their Personal pages.
 NOTE: To be able to send emails, a functioning mail server must be available, whether locally in your network, or remotely.
 
 [[configuring-an-smtp-server]]
-Configuring an SMTP Server
---------------------------
+== Configuring an SMTP Server
 
 To configure ownCloud to interact with an SMTP server, you can either
 update `config/config.php` by hand, or use the graphical Email
 Configuration Wizard, which updates `config/config.php` for you.
 
 [[the-graphical-email-configuration-wizard]]
-The Graphical Email Configuration Wizard
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== The Graphical Email Configuration Wizard
 
 The wizard supports three mail server types: _SMTP_, _PHP_, and
 _Sendmail_. Use SMTP for a remote email server, and either PHP or
@@ -283,8 +280,7 @@ email. ownCloud should be able to send email out of the box.
 ....
 
 [[send-a-test-email]]
-Send a Test Email
-~~~~~~~~~~~~~~~~~
+=== Send a Test Email
 
 Regardless of how you have configured ownCloud to interact with an email
 server, to test your email configuration, save your email address in
@@ -300,8 +296,7 @@ certificate must be imported into ownCloud. Please refer to
 import_ssl_cert for more information.
 
 [[troubleshooting]]
-Troubleshooting
-~~~~~~~~~~~~~~~
+=== Troubleshooting
 
 If you are unable to send email, try turning on debugging. Do this by
 enabling the `mail_smtpdebug parameter` in `config/config.php`.
@@ -424,8 +419,7 @@ Connection closed by foreign host.
 ....
 
 [[enabling-debug-mode]]
-Enabling Debug Mode
-~~~~~~~~~~~~~~~~~~~
+=== Enabling Debug Mode
 
 If you are unable to send email, it might be useful to activate further
 debug messages by enabling the `mail_smtpdebug` parameter:
@@ -440,8 +434,7 @@ debug messages by enabling the `mail_smtpdebug` parameter:
 NOTE: Immediately after pressing the *Send email* button, as described before, several *SMTP -> get_lines(): …* messages appear on the screen. This is expected behavior and can be ignored.
 
 [[using-email-templates]]
-Using Email Templates
----------------------
+== Using Email Templates
 
 Most emails sent from ownCloud are based on editable email templates,
 which are a mixture of PHP and HTML. The currently available templates

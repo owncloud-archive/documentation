@@ -1,9 +1,7 @@
-Deployment Considerations
-=========================
+= Deployment Considerations
 
 [[hardware]]
-Hardware
---------
+== Hardware
 
 * Solid-state drives (SSDs) for I/O.
 * Separate hard disks for storage and database, SSDs for databases.
@@ -78,12 +76,10 @@ split brain, and deadlocks. ownCloud tries to solve the problem of
 deadlocks with high-level file locking.
 
 [[software]]
-Software
---------
+== Software
 
 [[operating-system]]
-Operating System
-~~~~~~~~~~~~~~~~
+=== Operating System
 
 We are dependent on distributions that offer an easy way to install the
 various components in up-to-date versions. ownCloud has a partnership
@@ -96,8 +92,7 @@ includes many of the same system administration tools as SUSE Linux
 Enterprise Server.
 
 [[web-server]]
-Web server
-~~~~~~~~~~
+=== Web server
 
 Taking Apache and NGINX as the contenders, Apache with mod_php is
 currently the best option, as NGINX does not support all features
@@ -106,8 +101,7 @@ PHP_FPM, because in scale-out deployments separate PHP pools are simply
 not necessary.
 
 [[relational-database]]
-Relational Database
-~~~~~~~~~~~~~~~~~~~
+=== Relational Database
 
 More often than not the customer already has an opinion on what database
 to use. In general, the recommendation is to use what their database
@@ -129,8 +123,7 @@ deployments. It is not adequate for production systems.
 supported with ownCloud Enterprise Edition only.
 
 [[file-storage]]
-File Storage
-------------
+== File Storage
 
 While many customers are starting with NFS, sooner or later that
 requires scale-out storage. Currently the options are GPFS or GlusterFS,
@@ -138,8 +131,7 @@ or an object store protocol like S3 (supported in Enterprise Edition
 only) or Swift. S3 also allows access to Ceph Storage.
 
 [[session-storage]]
-Session Storage
----------------
+== Session Storage
 
 * Redis is required for transactional file locking xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking], provides session persistence, and graphical inspection tools available.
 * If you need to scale out Shibboleth you must use Memcached, as

@@ -1,5 +1,4 @@
-Active Directory Integration
-============================
+= Active Directory Integration
 
 In case you have tested the appliance with your Active Directory
 environment, removed the appliance and now want to include it again -

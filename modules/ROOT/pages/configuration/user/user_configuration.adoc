@@ -1,5 +1,4 @@
-User Management
-===============
+= User Management
 
 On the User management page of your ownCloud Web UI you can:
 
@@ -53,8 +52,7 @@ _Quota_::
   external storage in user quotas.
 
 [[creating-a-new-user]]
-Creating a New User
--------------------
+== Creating a New User
 
 To create a user account:
 
@@ -87,13 +85,12 @@ You cannot recover a user’s password, but you can set a new one:
 provide the user with their password
 
 If you have encryption enabled, there are special considerations for
-user password resets. 
+user password resets.
 
 TIP: See xref:configuration/files/encryption_configuration.adoc[Encryption Configuration].
 
 [[renaming-a-user]]
-Renaming a User
----------------
+== Renaming a User
 
 Each ownCloud user has two names: a unique *Login Name* used for
 authentication, and a *Full Name*, which is their display name. You can
@@ -107,8 +104,7 @@ To set or change a user’s display name:
 * Enter the user’s new display name
 
 [[granting-administrator-privileges-to-a-user]]
-Granting Administrator Privileges to a User
--------------------------------------------
+== Granting Administrator Privileges to a User
 
 ownCloud has two types of administrators: *Super Administrators* and
 *Group Administrators*. Group administrators have the rights to create,
@@ -124,8 +120,7 @@ access and modify all settings. To assign the *Super Administrators*
 role to a user, simply add them to the `admin` group.
 
 [[managing-groups]]
-Managing Groups
----------------
+== Managing Groups
 
 You can assign new users to groups when you create them, and create new
 groups when you create new users. You may also use the *Add Group*
@@ -134,8 +129,7 @@ members will immediately have access to file shares that belong to their
 new groups.
 
 [[setting-storage-quotas]]
-Setting Storage Quotas
-----------------------
+== Setting Storage Quotas
 
 Click the gear on the lower left pane to set a default storage quota.
 This is automatically applied to new users. You may assign a different
@@ -179,8 +173,7 @@ When a user creates a public share via URL, and allows uploads, any
 uploaded files count against that user’s quota.
 
 [[deleting-users]]
-Deleting users
---------------
+== Deleting users
 
 Deleting a user is easy: hover your cursor over their name on the
 *Users* page until a trashcan icon appears at the far right. Click the
@@ -197,8 +190,7 @@ to your local computer.
 TIP: See xref:configuration/files/file_sharing_configuration.adoc[File Sharing Configuration] to learn how to create persistent file shares that survive user deletions.
 
 [[enabling-custom-groups]]
-Enabling Custom Groups
-----------------------
+== Enabling Custom Groups
 
 In previous versions of ownCloud, files and folders could only be shared
 with individual users or groups created by administrators. This wasn’t

@@ -1,5 +1,4 @@
-Controlling File Versions and Aging
-===================================
+= Controlling File Versions and Aging
 
 The Versions app (files_versions) expires old file versions
 automatically to ensure that users don’t exceed their storage quotas.
@@ -35,7 +34,6 @@ Additional options are:
 * `disabled`: Disable Versions; no files will be deleted.
 
 [[enterprise-file-retention]]
-Enterprise File Retention
--------------------------
+== Enterprise File Retention
 
 Enterprise customers have additional tools for managing file retention policies; see xref:enterprise/file_management/files_tagging.adoc[Advanced File Tagging With the Workflow App].

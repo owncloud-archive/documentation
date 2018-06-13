@@ -1,5 +1,4 @@
-Comments API
-============
+= Comments API
 
 The comments API allows for the following functionality files and
 folders stored in ownCloud:
@@ -13,8 +12,7 @@ It provides all of the functionality available through the UI, from the
 command-line.
 
 [[list-comments]]
-List Comments
--------------
+== List Comments
 
 [cols=",,",options="header",]
 |================================================================
@@ -97,8 +95,7 @@ curl --silent -u username:password \
 ....
 
 [[create-comments]]
-Create Comments
----------------
+== Create Comments
 
 [cols=",,",options="header",]
 |====================================================================
@@ -139,15 +136,13 @@ https://doc.owncloud.com/server/latest/user_manual/files/access_webdav.html#webd
 section of the documentation].
 
 [[response]]
-Response
-~~~~~~~~
+=== Response
 
 If the request is successful, there will be no response body returned.
 However, it will have an `HTTP/1.1 201 Created` status.
 
 [[update-comments]]
-Update Comments
----------------
+== Update Comments
 
 [cols=",,",options="header",]
 |=======================================================================
@@ -190,8 +185,7 @@ but leaves the rest of the message unchanged.
 ----
 
 [[response-1]]
-Response
-~~~~~~~~
+=== Response
 
 Update comment requests will return the status:
 `HTTP/1.1 207 Multi-Status`, and an XML response similar to the example
@@ -240,8 +234,7 @@ response, along with an `HTTP/1.1 404 Not Found` status code.
 ----
 
 [[delete-comments]]
-Delete Comments
----------------
+== Delete Comments
 
 [cols=",,",options="header",]
 |=======================================================================

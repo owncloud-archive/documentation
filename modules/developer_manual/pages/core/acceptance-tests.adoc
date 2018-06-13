@@ -1,9 +1,7 @@
-Acceptance Tests
-================
+= Acceptance Tests
 
 [[the-test-directory-structure]]
-The Test Directory Structure
-----------------------------
+== The Test Directory Structure
 
 This is the structure of acceptance directory inside
 https://github.com/owncloud/core[the core repository’s] `tests`
@@ -103,8 +101,7 @@ server user, which is normally `www-data` or `apache`.
 This folder stores the initial files loaded for a new user.
 
 [[how-to-add-a-new-feature]]
-How to Add a New Feature
-------------------------
+== How to Add a New Feature
 
 Creation of a new feature file is recommended when the task being tested
 is independent enough from the existing features. In this section, we’ll
@@ -204,8 +201,7 @@ example we add just the required `baseUrl` variable. With that done,
 we’re now ready to run the tests.
 
 [[running-acceptance-tests]]
-Running Acceptance Tests
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== Running Acceptance Tests
 
 This is a concise guide to running acceptance tests on ownCloud 10.0.
 Before you can do so, you need to meet a few prerequisites available;

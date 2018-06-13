@@ -11,8 +11,7 @@ For _best performance_, _stability_, _support_, and _full functionality_
 we officially recommend and support:
 
 [[server]]
-Server
-~~~~~~
+=== Server
 
 [cols=",",options="header",]
 |=======================================================================
@@ -45,15 +44,13 @@ If you use Ubuntu 16.04:
 ====
 
 [[mobile]]
-Mobile
-~~~~~~
+=== Mobile
 
 * iOS 9.0+
 * Android 4.0+
 
 [[web-browser]]
-Web Browser
-~~~~~~~~~~~
+=== Web Browser
 
 * Edge (current version on Windows 10)
 * IE11+ (except Compatibility Mode)
@@ -62,8 +59,7 @@ Web Browser
 * Safari 10+
 
 [[hypervisors]]
-Hypervisors
-~~~~~~~~~~~
+=== Hypervisors
 
 * Hyper-V
 * VMware ESX
@@ -71,8 +67,7 @@ Hypervisors
 * KVM
 
 [[desktop]]
-Desktop
-~~~~~~~
+=== Desktop
 
 * Windows 7+
 * Mac OS X 10.7+ (*64-bit only*)
@@ -92,14 +87,12 @@ If you are not able to use one or more of the above tools, the following
 options are also available.
 
 [[web-server]]
-Web Server
-~~~~~~~~~~
+=== Web Server
 
 * NGINX with PHP-FPM
 
 [[memory-requirements]]
-Memory Requirements
--------------------
+== Memory Requirements
 
 Memory requirements for running an ownCloud server are greatly variable,
 depending on the numbers of users and files, and volume of server
@@ -114,8 +107,7 @@ Based on tests, server memory usage for scanning greater than 10k files uses abo
 ====
 
 [[database-requirements]]
-Database Requirements
----------------------
+== Database Requirements
 
 The following are currently required if you’re running ownCloud together
 with a MySQL or MariaDB database:

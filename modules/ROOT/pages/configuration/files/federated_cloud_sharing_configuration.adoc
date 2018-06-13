@@ -1,5 +1,4 @@
-Configuring Federation Sharing
-==============================
+= Configuring Federation Sharing
 
 Federated Cloud Sharing is now managed by the Federation app (9.0+), and
 is now called Federation sharing. When you enable the Federation app you
@@ -53,8 +52,7 @@ image:/owncloud-docs/_images/configuration/files/federation-3.png[image]
 You may disconnect the share at any time by clicking the trash can icon.
 
 [[configuring-trusted-owncloud-servers]]
-Configuring Trusted ownCloud Servers
-------------------------------------
+== Configuring Trusted ownCloud Servers
 
 You may create a list of trusted ownCloud servers for Federation
 sharing. This allows your linked ownCloud servers to share user
@@ -71,8 +69,7 @@ user names exchanged. A red light means the connection failed.
 image:/owncloud-docs/_images/configuration/files/federation-1.png[image]
 
 [[creating-federation-shares-via-public-link-share]]
-Creating Federation Shares via Public Link Share
-------------------------------------------------
+== Creating Federation Shares via Public Link Share
 
 You’ll need to use a Public Link Share to create Federation shares with
 ownCloud 8.x and older.
@@ -107,8 +104,7 @@ Un-check the `Share Link` checkbox to disable any federated cloud share
 created this way.
 
 [[configuration-tips]]
-Configuration Tips
-------------------
+== Configuration Tips
 
 The Sharing section on your Admin page allows you to control how your
 users manage federated cloud shares:

@@ -1,5 +1,4 @@
-Troubleshooting
-===============
+= Troubleshooting
 
 If your ownCloud installation fails and you see the following error in
 your ownCloud log please refer to db-binlog-label for how to resolve it.

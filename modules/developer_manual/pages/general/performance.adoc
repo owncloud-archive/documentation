@@ -1,5 +1,4 @@
-Performance Considerations
-==========================
+= Performance Considerations
 
 This document introduces some common considerations and tips on
 improving performance of ownCloud. Speed of ownCloud is important -
@@ -11,8 +10,7 @@ your app to make it faster.
 *Tips welcome*: More tips and ideas on performance are very welcome!
 
 [[database-performance]]
-Database performance
---------------------
+== Database performance
 
 The database plays an important role in ownCloud performance. The
 general rule is: database queries are very bad and should be avoided if
@@ -89,8 +87,7 @@ long_query_time=100
 ....
 
 [[measuring-performance]]
-Measuring performance
-~~~~~~~~~~~~~~~~~~~~~
+=== Measuring performance
 
 If you do bigger changes in the architecture or the database structure
 you should always double check the positive or negative performance
@@ -103,8 +100,7 @@ uploads, measure the time and compare the time before and after the
 change.
 
 [[getting-help]]
-Getting help
-------------
+== Getting help
 
 If you need help with performance or other issues please ask on our
 https://mailman.owncloud.org/mailman/listinfo/devel[mailing list] or on

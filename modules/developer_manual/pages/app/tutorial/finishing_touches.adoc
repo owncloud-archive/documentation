@@ -1,5 +1,4 @@
-Apply Finishing Touches
-=======================
+= Apply Finishing Touches
 
 Now, the only thing left is to style the textarea in a nicer fashion. 
 To do that open `ownnotes/css/style.css` and replace the content with the following xref:app/fundamentals/css.adoc[CSS] code:

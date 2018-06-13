@@ -1,5 +1,4 @@
-ownCloud Developer Documentation
-================================
+= ownCloud Developer Documentation
 
 If you want to contribute please read the
 https://owncloud.org/about/contributor-agreement/[Contributor agreement]

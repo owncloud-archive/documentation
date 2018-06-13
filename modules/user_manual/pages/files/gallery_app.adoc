@@ -1,5 +1,4 @@
-Gallery App
-===========
+= Gallery App
 
 The Pictures app has been rewritten and improved, and is now called the
 Gallery app. It supports more image formats, sorting, zoom, and
@@ -24,8 +23,7 @@ the top right.
 image:/owncloud-docs/user_manual/_images/gallery-2.png[image]
 
 [[custom-configuration]]
-Custom Configuration
---------------------
+== Custom Configuration
 
 You may customize a Gallery album with a simple text file named
 *gallery.cnf*, which contains parameters structured using the
@@ -36,8 +34,7 @@ have individual per-album *gallery.cnf* files if you want to define
 different behaviors in different albums.
 
 [[features]]
-Features
-~~~~~~~~
+=== Features
 
 The following general features are currently implemented:
 
@@ -61,8 +58,7 @@ white, to use for the picture you are currently viewing (for images with
 transparent backgrounds).
 
 [[setup]]
-Setup
-~~~~~
+=== Setup
 
 The configuration file has to be named *gallery.cnf*. You may have
 multiple per-album *gallery.cnf* files. To enable global features, place
@@ -74,15 +70,13 @@ You need to refresh your browser after changing your configuration to
 see your changes.
 
 [[format]]
-Format
-~~~~~~
+=== Format
 
 UTF-8, *without BOM*. A file created from within the ownCloud Web GUI
 works.
 
 [[structure]]
-Structure
-~~~~~~~~~
+=== Structure
 
 You should include a comment in the file, so that people stumbling upon
 the file know what it’s for. Comments start with #.
@@ -115,8 +109,7 @@ sorting:::
 _______________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 [[supported-variables]]
-Supported Variables
-~~~~~~~~~~~~~~~~~~~
+=== Supported Variables
 
 *Global Features*
 
@@ -179,8 +172,7 @@ Do not add links to your copyright string if you use the
 of the configuration.
 
 [[notes]]
-Notes
------
+== Notes
 
 * When only the sort *type* variable has been set, the default sort
 order will be used.
@@ -198,8 +190,7 @@ best to include all files within a shared folder, rather than adding
 text directly in the configuration file.
 
 [[examples]]
-Examples
---------
+== Examples
 
 *Sorting Only*
 
@@ -252,14 +243,12 @@ You can add standard configuration items to the same configuration file:
 ....
 
 [[possible-future-extensions]]
-Possible Future Extensions
---------------------------
+== Possible Future Extensions
 
 Different sorting parameters for albums.
 
 [[keeping-up-with-new-features]]
-Keeping Up With New Features
-----------------------------
+== Keeping Up With New Features
 
 See the https://github.com/owncloud/gallery/wiki[Gallery Wiki page] to
 stay informed of new developments.

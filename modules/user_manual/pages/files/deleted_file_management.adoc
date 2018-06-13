@@ -1,5 +1,4 @@
-Managing Deleted Files
-======================
+= Managing Deleted Files
 
 When you delete a file in ownCloud, it is not immediately deleted
 permanently. Instead, it is moved into the trash bin. It is not
@@ -11,8 +10,7 @@ Files page of the ownCloud Web interface. You’ll have options to either
 restore or permanently delete files.
 
 [[quotas]]
-Quotas
-------
+== Quotas
 
 Deleted files are not counted against your storage quota. Only files
 that originate with users count against their quotas, not files shared
@@ -20,8 +18,7 @@ with them that originate from other users. (See webgui/quota to learn
 more about quotas.)
 
 [[what-happens-when-shared-files-are-deleted]]
-What Happens When Shared Files Are Deleted
-------------------------------------------
+== What Happens When Shared Files Are Deleted
 
 Deleting files gets a little complicated when they are shared files, as
 this scenario illustrates:
@@ -41,8 +38,7 @@ with other people, just as they can for any computer files; ownCloud
 does not have magic powers to prevent this.
 
 [[how-the-deleted-files-app-manages-storage-space]]
-How the Deleted Files app Manages Storage Space
------------------------------------------------
+== How the Deleted Files app Manages Storage Space
 
 To ensure that users do not run over their storage quotas, the Deleted
 Files app allocates a maximum of 50% of their currently available

@@ -1,5 +1,4 @@
-How to Install the Appliance
-============================
+= How to Install the Appliance
 
 The install process is a little involved, but not too much. To keep it
 succinct, you need to:
@@ -18,8 +17,7 @@ After that, you can access the running instance of ownCloud and
 further xref:administer-the-appliance[configure it] to suit your needs.
 
 [[download-the-appliance]]
-Download the Appliance
-----------------------
+== Download the Appliance
 
 First off, you need to download the ownCloud X Appliance from
 https://owncloud.com/download[the ownCloud download page] and click
@@ -44,8 +42,7 @@ https://owncloud.org/download/#owncloud-server-appliance[the
 owncloud.org page].
 
 [[install-the-appliance]]
-Install the Appliance
----------------------
+== Install the Appliance
 
 Once you’ve downloaded the virtual appliance file, import it into your
 virtualization software, accept the T’s & C’s of the license agreement,
@@ -61,8 +58,7 @@ Don’t Forget the *IP Address* and the *Administrator Password*. You will
 need them to use the Appliance.
 
 [[start-the-appliance]]
-Start the Appliance
--------------------
+== Start the Appliance
 
 Once imported, start the appliance. Doing so launches the installer
 wizard which helps you specify the core configuration. This includes:
@@ -91,8 +87,7 @@ Make sure that you double-check the information provided, so that you
 don’t have to start over.
 
 [[activate-the-appliance]]
-Activate the Appliance
-----------------------
+== Activate the Appliance
 
 When the wizard completes, the virtual machine will be almost ready to
 use. You then need only retrieve the license file from the email which
@@ -105,8 +100,7 @@ remove the `https://`.
 image:/owncloud-docs/_images/appliance/activate-the-virtual-appliance.png[Activate the ownCloud X Trial Appliance.]
 
 [[administer-the-appliance]]
-Administer the Appliance
-------------------------
+== Administer the Appliance
 
 Once activated, you should be redirected to the portal, which you can
 see below.

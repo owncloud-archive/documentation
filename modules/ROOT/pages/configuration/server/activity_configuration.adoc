@@ -1,5 +1,4 @@
-Configuring the Activity App
-============================
+= Configuring the Activity App
 
 You can configure your ownCloud server to automatically send out e-mail
 notifications to your users for various events like:
@@ -14,15 +13,13 @@ have access to. Sharing actions are only visible to the sharer and
 recipient.
 
 [[enabling-the-activity-app]]
-Enabling the Activity App
--------------------------
+== Enabling the Activity App
 
 The Activity App is shipped and enabled by default. If it is not enabled
 simply go to your ownCloud Apps page to enable it.
 
 [[configuring-your-owncloud-for-the-activity-app]]
-Configuring your ownCloud for the Activity App
-----------------------------------------------
+== Configuring your ownCloud for the Activity App
 
 To configure your ownCloud to send out e-mail notifications a working
 email_configuration is mandatory.

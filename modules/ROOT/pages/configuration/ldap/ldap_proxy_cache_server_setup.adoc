@@ -2,8 +2,7 @@ How To Install and Configure an LDAP Proxy-Cache Server
 =======================================================
 
 [[background]]
-Background
-----------
+== Background
 
 To reduce network traffic overhead and avoid problems either logging in
 or performing user searches while sharing, it’s an excellent idea to
@@ -22,8 +21,7 @@ performance, are:
 `displayName`)
 
 [[how-to-setup-the-server]]
-How To Setup the Server
------------------------
+== How To Setup the Server
 
 There’s not that much to it, just the following five steps:
 
@@ -246,8 +244,7 @@ your active directory that will
 reduce the network traffic by caching the searches your perform.
 
 [[cache-multiple-active-directory-servers]]
-Cache Multiple Active Directory Servers
----------------------------------------
+== Cache Multiple Active Directory Servers
 
 If you have more than one that you want to cache, in
 `/etc/ldap/slapd.conf` add the following configuration instead,

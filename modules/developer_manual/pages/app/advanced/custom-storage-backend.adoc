@@ -1,5 +1,4 @@
-Create Custom Storage Backends
-==============================
+= Create Custom Storage Backends
 
 The preferred way for applications to create new storage backends is to
 create a subclass of `\OC\Files\Storage\Common` and implement the
@@ -12,8 +11,7 @@ fallbacks to reduce the amount of work it is to create a storage
 backend.
 
 [[required-methods]]
-Required Methods
-----------------
+== Required Methods
 
 All storage backends sub-classing the common storage backend must
 implement the following methods:
@@ -44,8 +42,7 @@ If `$mtime` is omitted the current time should be used.
 |=======================================================================
 
 [[suggested-methods]]
-Suggested Methods
------------------
+== Suggested Methods
 
 The common storage backends provide fallback implementations for a
 number of methods to make them easier to implement. However, some of
@@ -83,8 +80,7 @@ defaults to `isUpdatable($path)`.
 |=======================================================================
 
 [[other-useful-methods]]
-Other Useful Methods
---------------------
+== Other Useful Methods
 
 The default implementation for the following methods are good for most
 storage backends. But, providing an alternate implementation _can_
@@ -117,8 +113,7 @@ for the server platform.
 |=======================================================================
 
 [[copying-and-moving-between-storage-backends]]
-Copying and Moving Between Storage Backends
--------------------------------------------
+== Copying and Moving Between Storage Backends
 
 When copying or moving files between different storages a stream copy is
 used by default. This works well for copying between different types of
@@ -131,8 +126,7 @@ behavior by overriding the following methods:
 * `moveFromStorage(\OCP\Files\Storage $sourceStorage, $sourceInternalPath ,$targetInternalPath);`
 
 [[working-with-streams]]
-Working With Streams
---------------------
+== Working With Streams
 
 Both `fopen()` and `opendir()` require storage backends to return native
 PHP streams for maximum compatibility. ownCloud comes with several
@@ -141,8 +135,7 @@ streams for backends not supported by PHP’s own
 https://secure.php.net/manual/en/class.streamwrapper.php[streamWrapper].
 
 [[iteratordirectory]]
-IteratorDirectory
-~~~~~~~~~~~~~~~~~
+=== IteratorDirectory
 
 `Icewind\Streams\IteratorDirectory` allows for creating a directory
 handle from an array or iterator.
@@ -154,8 +147,7 @@ return IteratorDirectory::wrap($fileNames);
 ----
 
 [[callbackwrapper]]
-CallbackWrapper
-~~~~~~~~~~~~~~~
+=== CallbackWrapper
 
 `Icewind\Streams\CallbackWrapper` wraps an existing file handle, and
 allows for hooking into file reads and writes, and closing streams. The
@@ -177,8 +169,7 @@ return CallBackWrapper::wrap($handle, null, null function() use ($path, $tempFil
 ----
 
 [[storage-wrappers]]
-Storage Wrappers
-----------------
+== Storage Wrappers
 
 Besides implementing a complete custom storage backend, ownCloud allows
 for modifying the behavior of an existing storage by applying a wrapper
@@ -201,8 +192,7 @@ a storage wrapper is done by sub-classing
 `\OC\Files\Storage\Wrapper\Wrapper` and overwriting any of its methods.
 
 [[global-storage-wrappers]]
-Global Storage Wrappers
-~~~~~~~~~~~~~~~~~~~~~~~
+=== Global Storage Wrappers
 
 For using a storage wrapper globally, you provide a callback which will
 be called for each used storage. The callback can than determine if a
@@ -221,8 +211,7 @@ Filesystem::addStorageWrapper('fooWrapper', function($mountPoint, $storage) {
 ----
 
 [[wrappers-for-a-single-storage]]
-Wrappers for a Single Storage
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Wrappers for a Single Storage
 
 Sometimes an app can avoid having to create a custom storage backend by
 instead modifying the behavior of an existing one. ownCloud comes with a
@@ -289,8 +278,7 @@ if ($storage->instanceOfStorage('\OC\Files\Storage\DAV')) {
 applied to a storage.
 
 [[mounting-storages]]
-Mounting Storages
------------------
+== Mounting Storages
 
 For an app to add its storages to the filesystem it should implement a
 mount provider and register it with the filesystem. Implementing mount

@@ -11,16 +11,14 @@ Also new in 9.0 is an option for the ownCloud admin to enable or disable sharing
 Sharing on such mountpoints is disabled by default.
 
 [[enabling-external-storage-support]]
-Enabling External Storage Support
----------------------------------
+== Enabling External Storage Support
 
 IMPORTANT: Enabling this app will disable the *Stay logged in* checkbox on the login page. The External storage support application is enabled on your Apps page.
 
 image:/owncloud-docs/_images/configuration/files/enable-app.png[image]
 
 [[storage-configuration]]
-Storage Configuration
----------------------
+== Storage Configuration
 
 To create a new external storage mount, select an available backend from
 the dropdown *Add storage*. Each backend has different required options,
@@ -52,8 +50,7 @@ for ten minutes. To re-check it, click the colored icon or reload your
 Admin page.
 
 [[user-and-group-permissions]]
-User and Group Permissions
---------------------------
+== User and Group Permissions
 
 A storage configured in a user’s Personal settings is available only to
 the user that created it. A storage configured in the Admin settings is
@@ -63,8 +60,7 @@ users and groups in the *Available for* field.
 image:/owncloud-docs/_images/configuration/files/external_storage/applicable.png[image]
 
 [[mount-options]]
-Mount Options
--------------
+== Mount Options
 
 Hover your cursor to the right of any storage configuration to expose
 the settings button and trashcan. Click the trashcan to delete the
@@ -91,13 +87,12 @@ Using Self-Signed Certificates
 ------------------------------
 
 When using self-signed certificates for external storage mounts the
-certificate must be imported into ownCloud. 
+certificate must be imported into ownCloud.
 
 TIP: Please refer to xref:server/import_ssl_cert.adoc[Importing System-wide and Personal SSL Certificates] for more information.
 
 [[available-storage-backends]]
-Available storage backends
---------------------------
+== Available storage backends
 
 The following backends are provided by the external storages app. Other
 apps may provide their own backends, which are not listed here.
@@ -105,8 +100,7 @@ apps may provide their own backends, which are not listed here.
 NOTE: A non-blocking or correctly configured SELinux setup is needed for these backends to work. Please refer to the selinux-config-label.
 
 [[allow-users-to-mount-external-storage]]
-Allow Users to Mount External Storage
--------------------------------------
+== Allow Users to Mount External Storage
 
 Check ``__Allow users to mount external storage__'' to allow your users
 to mount storages on external services. Then enable the backends you
@@ -117,8 +111,7 @@ image:/owncloud-docs/_images/configuration/files/external_storage/user_mounts.pn
 IMPORTANT: Be careful with the choices that you enable, as it allows a user to make potentially arbitrary connections to other services on your network!
 
 [[setting-up-google-drive-and-dropbox-connections]]
-Setting Up Google Drive and Dropbox Connections
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Setting Up Google Drive and Dropbox Connections
 
 When an external storage is created which uses either Google Drive or
 Dropbox, a link to the respective configuration page is available, next
@@ -134,8 +127,7 @@ or a new window. From there, you can manage the configuration and obtain
 the respective credentials needed for configuring the connection.
 
 [[detecting-files-added-to-external-storages]]
-Detecting Files Added to External Storages
-------------------------------------------
+== Detecting Files Added to External Storages
 
 We recommend xref:configuration/server/background_jobs_configuration.adoc[configuring the background job Webcron or Cron] to enable ownCloud to automatically detect files added to your external storages.
 

@@ -1,5 +1,4 @@
-Upgrading ownCloud with the Updater App
-=======================================
+= Upgrading ownCloud with the Updater App
 
 The Updater app automates many of the steps of upgrading an ownCloud
 installation. It is useful for installations that do not have root
@@ -89,8 +88,7 @@ no problems you can delete the backups from this screen.
 If the update fails, then you must xref:maintenance/manual_upgrade.adoc[update manually].
 
 [[setting-permissions-for-updating]]
-Setting Permissions for Updating
---------------------------------
+== Setting Permissions for Updating
 
 For hardened security, we highly recommend setting the permissions on
 your ownCloud directory as strictly as possible, immediately after the
@@ -126,8 +124,7 @@ Look for the `User/Group` line.
 After the update is completed, re-apply xref:installation/source_installation.adoc#set-strong-directory-permissions[the strong directory permissions] immediately.
 
 [[command-line-options]]
-Command Line Options
---------------------
+== Command Line Options
 
 The Updater app includes command-line options to automate updates, to
 create checkpoints and to roll back to older checkpoints. You must run

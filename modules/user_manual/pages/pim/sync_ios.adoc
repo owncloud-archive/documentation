@@ -2,8 +2,7 @@ iOS - Synchronize iPhone/iPad
 =============================
 
 [[calendar]]
-Calendar
---------
+== Calendar
 
 1.  Open the settings application.
 2.  Select Mail, Contacts, Calendars.
@@ -27,8 +26,7 @@ the following steps:
 Your calendar will now be visible in the Calendar application
 
 [[address-book]]
-Address book
-------------
+== Address book
 
 1.  Open the settings application.
 2.  Select Mail, Contacts, Calendars.

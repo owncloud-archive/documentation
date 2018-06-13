@@ -1,11 +1,9 @@
-Add JavaScript and CSS
-======================
+= Add JavaScript and CSS
 
 To create a modern web application you need to write xref:app/fundamentals/js.adoc[JavaScript ] and xref:app/fundamentals/css.adoc[CSS].
 
 [[javascript]]
-JavaScript
-----------
+== JavaScript
 
 You can use any JavaScript framework but for this tutorial we want to
 keep it as simple as possible and therefore only include the templating
@@ -31,8 +29,7 @@ above, `ownnotes/js/handlebars.js` would be loaded.
 jQuery is included by default on every page.
 
 [[css]]
-CSS
----
+== CSS
 
 To include CSS, use the template’s `style` method, as in the example
 below. As with `script`, the first parameter is the application to find

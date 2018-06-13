@@ -1,5 +1,4 @@
-Tagging Files
-=============
+= Tagging Files
 
 image:/owncloud-docs/user_manual/_images/file_popup-menu.png[image]
 
@@ -27,8 +26,7 @@ added to the file or folder’s tag list. This can save you a lot of time
 and effort.
 
 [[untag-a-file-or-folder]]
-Untag a File or Folder
-----------------------
+== Untag a File or Folder
 
 If a file or folder is already tagged, the tag names in the popup list
 will have a check mark to the left of the tag’s name. To remove that tag
@@ -36,8 +34,7 @@ from the file or folder, click the tag’s name. You will see that the
 check mark disappears.
 
 [[edit-tags]]
-Edit Tags
----------
+== Edit Tags
 
 To edit a tag, click the pencil icon on the far right-hand side of the
 tag’s name, in the tags popup list. This will display a text box,
@@ -45,8 +42,7 @@ containing the tag’s name. Be sure that you want to change the tag’s
 name, as it will be updated for all users.
 
 [[delete-tags]]
-Delete Tags
------------
+== Delete Tags
 
 To delete a tag, as above, click the pencil icon on the far right-hand
 side of the tag’s name, in the tags popup list. Next to the text box
@@ -57,8 +53,7 @@ renaming a tag, remember that deleting a tag removes it for all users.
 So please be sure that you want to do this.
 
 [[filter-by-tag]]
-Filter By Tag
--------------
+== Filter By Tag
 
 To filter by tag, use the *Tags* filter on the left sidebar of the Files
 page. There are three types of tags:

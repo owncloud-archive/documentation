@@ -1,5 +1,4 @@
-Minimum Requirements
-====================
+= Minimum Requirements
 
 Before you can develop ownCloud applications, as with developing other
 software applications, you have to ensure that you have a working

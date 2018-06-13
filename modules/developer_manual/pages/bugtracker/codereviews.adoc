@@ -1,5 +1,4 @@
-Code Reviews
-============
+= Code Reviews
 
 ___________________________________________
 Given enough eyeballs, all bugs are shallow
@@ -8,24 +7,21 @@ Given enough eyeballs, all bugs are shallow
 ___________________________________________
 
 [[introduction]]
-Introduction
-------------
+== Introduction
 
 In order to increase the code quality within ownCloud, developers are
 requested to perform code reviews. As we are now heavily using the
 GitHub platform these code review shall take place on GitHub as well.
 
 [[precondition]]
-Precondition
-------------
+== Precondition
 
 From now on no direct commits/pushes to master or any of the stable
 branches are allowed in general. *Every code* change - *even one liners*
 - have to be reviewed!
 
 [[how-will-it-work]]
-How will it work?
------------------
+== How will it work?
 
 1.  A developer will submit his changes on GitHub via a pull request
 (PR). https://help.GitHub.com/articles/using-pull-requests[GitHub:help -
@@ -48,8 +44,7 @@ corresponding branch at least 2 reviewers need to give :+1 score.
 give an additional indicator for the quality of the pull request.
 
 [[examples]]
-Examples
---------
+== Examples
 
 Read our xref:general/codingguidelines.adoc[coding style guidelines] for information on what a good
 pull request and good ownCloud code looks like.
@@ -61,8 +56,7 @@ pull requests should be handled
 * https://github.com/owncloud/core/pull/146
 
 [[questions]]
-Questions?
-----------
+== Questions?
 
 Feel free to drop a line on the
 https://mailman.owncloud.org/mailman/listinfo/devel[mailing list] or

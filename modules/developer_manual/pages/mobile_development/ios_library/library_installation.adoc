@@ -1,9 +1,7 @@
-Library Installation
-====================
+= Library Installation
 
 [[obtaining-the-library]]
-Obtaining the library
----------------------
+== Obtaining the library
 
 The ownCloud iOS library may be obtained from the following Github
 repository:
@@ -16,8 +14,7 @@ contains a sample project, OCLibraryExample, which will assist in
 learning how to use the library.
 
 [[add-the-library-to-a-project]]
-Add the library to a project
-----------------------------
+== Add the library to a project
 
 There are two methods to add this library to a project.
 
@@ -28,8 +25,7 @@ Which method to choose depends on user preference as well as whether the
 source code and project file of the static library are available.
 
 [[reference-headers-and-library-binary-files]]
-Reference headers and library binary files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Reference headers and library binary files
 
 Follow these steps if this is the desired method.
 
@@ -65,8 +61,7 @@ At this stage, the library is included on your project and you can start
 communicating with the ownCloud server.
 
 [[include-the-library-as-a-subproject]]
-Include the library as a subproject
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Include the library as a subproject
 
 Follow these steps if this is the desired method.
 
@@ -90,8 +85,7 @@ target on the ``Build Settings` tab.
 Settings` tab, add the path under the ``Header Search Paths` option.
 
 [[sources]]
-Sources
--------
+== Sources
 
 * http://www.raywenderlich.com/41377/creating-a-static-library-in-ios-tutorial[Creating
 a static library in iOS tutorial (raywenderlich.com)]

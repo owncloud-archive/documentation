@@ -1,5 +1,4 @@
-Command Line Installation
-=========================
+= Command Line Installation
 
 ownCloud can be installed entirely from the command line. This is
 convenient for scripted operations and for systems administrators who

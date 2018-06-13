@@ -1,5 +1,4 @@
-Dropbox
-=======
+= Dropbox
 
 To connect Dropbox to your ownCloud installation requires four steps to
 be completed.
@@ -11,8 +10,7 @@ be completed.
 
 [[step-one---install-the-external-storage-dropbox-app-from-the-owncloud-marketplace]]
 Step One - Install the ``External Storage: Dropbox'' app from the
-ownCloud Marketplace
---------------------------------------------------------------------------------------
+== ownCloud Marketplace
 
 image:/owncloud-docs/_images/external-storage-dropbox-highlighted.png[image]
 
@@ -82,8 +80,7 @@ the far left-hand side of the row, next to the folder’s name.
 image:/owncloud-docs/_images/configuration/files/external_storage/dropbox/successful-connection-to-dropbox.png[A Dropbox share successfully created.]
 
 [[other-options]]
-Other Options
-~~~~~~~~~~~~~
+=== Other Options
 
 If you want to restrict access to the share to a select list of users
 and groups, you can add them to the field in the ``Available for''

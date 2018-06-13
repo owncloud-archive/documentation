@@ -1,5 +1,4 @@
-Warnings on Admin Page
-======================
+= Warnings on Admin Page
 
 Your ownCloud server has a built-in configuration checker, and it
 reports its findings at the top of your Admin page. These are some of
@@ -8,8 +7,7 @@ the warnings you might see, and what to do about them.
 image:/owncloud-docs/_images/security-setup-warning-1.png[image]
 
 [[cache-warnings]]
-Cache Warnings
---------------
+== Cache Warnings
 
 ....
 No memory cache has been configured. To enhance your performance please configure a memcache if available. 
@@ -34,8 +32,7 @@ You are not required to use any caches, but caches improve server
 performance. See caching_configuration.
 
 [[transactional-file-locking-is-disabled]]
-Transactional file locking is disabled
---------------------------------------
+== Transactional file locking is disabled
 
 ....
 Transactional file locking is disabled, this might lead to issues with race conditions.
@@ -44,8 +41,7 @@ Transactional file locking is disabled, this might lead to issues with race cond
 Please see xref:configuration/files/files_locking_transactional.adoc[Transactional File Locking] for how to correctly configure your environment for transactional file locking.
 
 [[you-are-accessing-this-site-via-http]]
-You are accessing this site via HTTP
-------------------------------------
+== You are accessing this site via HTTP
 
 ....
 You are accessing this site via HTTP. We strongly suggest you configure your server to require using HTTPS instead. 
@@ -91,8 +87,7 @@ This message is another one which needs to be taken seriously. Please
 have a look at the dev-urandom-label documentation.
 
 [[your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization]]
-Your Web server is not yet set up properly to allow file synchronization
-------------------------------------------------------------------------
+== Your Web server is not yet set up properly to allow file synchronization
 
 ....
 Your web server is not yet set up properly to allow file synchronization because the WebDAV interface seems to be broken.
@@ -137,8 +132,7 @@ Both URLs need to be correctly redirected to the DAV endpoint of
 ownCloud. Please refer to service-discovery-label for more info.
 
 [[some-files-have-not-passed-the-integrity-check]]
-Some files have not passed the integrity check
-----------------------------------------------
+== Some files have not passed the integrity check
 
 Please refer to the code_signing_fix_warning_label documentation how to
 debug this issue.

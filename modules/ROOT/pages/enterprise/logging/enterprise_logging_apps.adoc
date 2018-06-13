@@ -1,5 +1,4 @@
-Enterprise Logging Apps
-=======================
+= Enterprise Logging Apps
 
 The *Log user and file sharing actions* app (`apps/admin_audit`) records
 the file sharing activity of your users, file tagging, and user logins

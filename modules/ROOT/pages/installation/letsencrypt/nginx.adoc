@@ -1,5 +1,4 @@
-Setup NGINX
-===========
+= Setup NGINX
 
 The following is an example setup process for NGINX, please adapt it to
 your exact needs.
@@ -97,8 +96,7 @@ server {
 NOTE: Commenting the `include` directive is necessary, because the certificate files currently do not exist.
 
 [[test-and-enable-your-nginx-configuration]]
-Test and enable your NGINX configuration
-----------------------------------------
+== Test and enable your NGINX configuration
 
 To test your configuration run
 
@@ -115,8 +113,7 @@ sudo service nginx reload
 ....
 
 [[creating-certificates]]
-Creating certificates
-~~~~~~~~~~~~~~~~~~~~~
+=== Creating certificates
 
 Check that you have commented out the `include` directive as stated
 above and run the following command:
@@ -206,8 +203,7 @@ server {
 ----
 
 [[reload-the-nginx-configuration]]
-Reload the NGINX configuration
-------------------------------
+== Reload the NGINX configuration
 
 ....
 sudo service nginx reload

@@ -1,5 +1,4 @@
-Mimetypes Management
-====================
+= Mimetypes Management
 
 ownCloud allows you to create aliases for mimetypes and map file
 extensions to a mimetype. These allow administrators the ability to
@@ -10,8 +9,7 @@ variety of situations, such as when you might want a custom audio icon
 for audio mimetypes, instead of the default file icon.
 
 [[mimetype-aliases]]
-Mimetype Aliases
-----------------
+== Mimetype Aliases
 
 ownCloud’s default mimetype configuration is defined in
 `owncloud/resources/config/mimetypealiases.dist.json`, which you can see
@@ -38,8 +36,7 @@ files, and Adobe Illustrator files.
 * JavaScript files are represented by the text/code icon.
 
 [[changing-existing-icons-and-using-custom-icons]]
-Changing Existing Icons and Using Custom Icons
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Changing Existing Icons and Using Custom Icons
 
 If you want to change one or more of the existing icons which ownCloud
 uses, or if you want to expand the available list, here’s how to do so.
@@ -117,8 +114,7 @@ the image below.
 image:/owncloud-docs/_images/configuration/mimetypes/json-alias-after.png[image]
 
 [[mimetype-mapping]]
-Mimetype Mapping
-----------------
+== Mimetype Mapping
 
 ownCloud allows administrators to map a file extension to a mimetype,
 e.g., such as mapping files ending in `mp3` to `audio/mpeg`. Which then,
@@ -162,8 +158,7 @@ file, make any changes required.
 NOTE: Please refer to https://doc.owncloud.com/server/latest/developer_manual/core/theming.html[the ownCloud theming documentation] for where to put the new image files.
 
 [[icon-retrieval]]
-Icon retrieval
---------------
+== Icon retrieval
 
 When an icon is retrieved for a mimetype, if the full mimetype cannot be
 found, the search will fallback to looking for the part before the

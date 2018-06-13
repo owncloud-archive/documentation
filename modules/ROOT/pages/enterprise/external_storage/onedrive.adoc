@@ -1,5 +1,4 @@
-How to Create and Configure Microsoft OneDrive
-==============================================
+= How to Create and Configure Microsoft OneDrive
 
 To use Microsoft OneDrive as an external storage option in ownCloud, you
 need to do two things:
@@ -8,8 +7,7 @@ need to do two things:
 2.  link:[Configure a mount point in ownCloud]
 
 [[create-an-application-configuration]]
-Create an Application Configuration
------------------------------------
+== Create an Application Configuration
 
 image:/owncloud-docs/_images/enterprise/external_storage/onedrive/register-an-application.png[image]
 
@@ -25,8 +23,7 @@ settings. However, only a few of them are required for use with
 ownCloud.
 
 [[application-password]]
-Application Password
-~~~~~~~~~~~~~~~~~~~~
+=== Application Password
 
 image:/owncloud-docs/_images/enterprise/external_storage/onedrive/set-application-name.png[image]
 
@@ -38,8 +35,7 @@ Copy the password to your preferred password manager, as it is only
 displayed *once*.
 
 [[redirect-urls]]
-Redirect URLs
-~~~~~~~~~~~~~
+=== Redirect URLs
 
 Under ``__Platforms__'', click ``__Add Platform__'' and choose
 ``__Web__'' in the popup window which appears. Only one redirect URL
@@ -52,8 +48,7 @@ image below.
 image:/owncloud-docs/_images/enterprise/external_storage/onedrive/set-redirect-urls.png[image]
 
 [[application-permissions]]
-Application Permissions
-~~~~~~~~~~~~~~~~~~~~~~~
+=== Application Permissions
 
 image:/owncloud-docs/_images/enterprise/external_storage/onedrive/set-permissions.png[image]
 
@@ -70,8 +65,7 @@ With those settings added, click ``__Save__'', located right at the
 bottom of the page.
 
 [[configure-a-mount-point-in-owncloud]]
-Configure a Mount Point in ownCloud
------------------------------------
+== Configure a Mount Point in ownCloud
 
 You can add as many OneDrive mount points as you want. To do so:
 

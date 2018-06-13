@@ -1,5 +1,4 @@
-Templates
-=========
+= Templates
 
 ownCloud provides its own templating system which is basically plain PHP
 with some additional functions and preset variables. All the parameters
@@ -35,8 +34,7 @@ templates/main.php
 ----
 
 [[including-templates]]
-Including templates
--------------------
+== Including templates
 
 Templates can also include other templates by using the
 `$this->inc('templateName')` method.
@@ -61,8 +59,7 @@ templates/sub.inc.php
 ----
 
 [[including-css-and-javascript]]
-Including CSS and JavaScript
-----------------------------
+== Including CSS and JavaScript
 
 To include CSS or JavaScript use the `style` and `script` functions:
 
@@ -74,8 +71,7 @@ style('myapp', 'style');  // add css/style.css
 ----
 
 [[including-images]]
-Including images
-----------------
+== Including images
 
 To generate links to images use the `image_path` function:
 

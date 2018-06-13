@@ -28,31 +28,27 @@ server lists six capabilities, along with their settings, sub-settings,
 and their values.
 
 [[core]]
-Core
-----
+== Core
 
 Stored under the `core` capabilities element, this returns the server’s
 core status settings, the interval to poll for server side changes, and
 it’s WebDAV API root.
 
 [[checksums]]
-Checksums
----------
+== Checksums
 
 Stored under the `checksums` capabilities element, this returns the
 server’s supported checksum types, and preferred upload checksum type.
 
 [[files]]
-Files
------
+== Files
 
 Stored under the `files` capabilities element, this returns the server’s
 support for big file chunking, file versioning, its ability to undelete
 files, and the list of files that are currently blacklisted.
 
 [[files-sharing]]
-Files Sharing
--------------
+== Files Sharing
 
 Stored under the `files_sharing` capabilities element, this returns the
 server’s support for file sharing, re-sharing (by users and groups),
@@ -61,15 +57,13 @@ passwords and expiry dates are enforced), and also whether the sharing
 API’s enabled.
 
 [[notifications]]
-Notifications
--------------
+== Notifications
 
 Stored under the `notifications` capabilities element, this returns what
 the server sends notifications for.
 
 [[webdav]]
-WebDAV
-------
+== WebDAV
 
 Stored under the `dav` capabilities element, this returns the server’s
 WebDAV API support.

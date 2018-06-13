@@ -1,5 +1,4 @@
-Desktop and Mobile Synchronization
-==================================
+= Desktop and Mobile Synchronization
 
 For synchronizing files with your desktop computer, we recommend using
 the https://owncloud.org/sync-client/[ownCloud Sync Client] for Windows,
@@ -18,8 +17,7 @@ https://doc.owncloud.com/desktop/latest/[ownCloud Desktop Client
 Manual].
 
 [[mobile-clients]]
-Mobile Clients
---------------
+== Mobile Clients
 
 Visit your Personal page in your ownCloud Web interface to find download
 links for Android and iOS mobile sync clients. Or, visit the

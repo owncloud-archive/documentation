@@ -1,5 +1,4 @@
-Code Signing
-============
+= Code Signing
 
 ownCloud supports code signing for the core releases, and for ownCloud
 applications. Code signing gives our users an additional layer of
@@ -12,20 +11,17 @@ the past, invalid updates were a significant source of errors when
 updating ownCloud.
 
 [[faq]]
-FAQ
----
+== FAQ
 
 [[why-did-owncloud-add-code-signing]]
-Why Did ownCloud Add Code Signing?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Why Did ownCloud Add Code Signing?
 
 By supporting Code Signing we add another layer of security by ensuring
 that nobody other than authorized persons can push updates for
 applications, and ensuring proper upgrades.
 
 [[do-we-lock-down-owncloud]]
-Do We Lock Down ownCloud?
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Do We Lock Down ownCloud?
 
 The ownCloud project is open source and always will be. We do not want
 to make it more difficult for our users to run ownCloud. Any code
@@ -34,8 +30,7 @@ will display a warning on the Admin page. For applications that are not
 tagged "Official" the code signing process is optional.
 
 [[not-open-source-anymore]]
-Not Open Source Anymore?
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== Not Open Source Anymore?
 
 The ownCloud project is open source and always will be. The code signing
 process is optional, though highly recommended. The code check for the
@@ -46,14 +41,12 @@ For custom distributions of ownCloud it is recommended to change the
 release version branch in version.php to something else than "stable".
 
 [[is-code-signing-mandatory-for-apps]]
-Is Code Signing Mandatory For Apps?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Is Code Signing Mandatory For Apps?
 
 Code signing is optional for all third-party applications.
 
 [[fixing-invalid-code-integrity-messages]]
-Fixing Invalid Code Integrity Messages
---------------------------------------
+== Fixing Invalid Code Integrity Messages
 
 A code integrity error message (``There were problems with the code
 integrity check. More information…'') appears in a yellow banner at the
@@ -200,8 +193,7 @@ clicking ``Rescan…''.
 NOTE: When using a FTP client to upload those files make sure it is using the `Binary` transfer mode instead of the `ASCII` transfer mode.
 
 [[rescans]]
-Rescans
--------
+== Rescans
 
 Rescans are triggered at installation, and by updates. You may run scans
 manually with the `occ` command. The first command scans the ownCloud
@@ -216,8 +208,7 @@ occ integrity:check-app $appid
 TIP: See xref:configuration/server/occ_command.adoc[the occ command] to learn more about using `occ`.
 
 [[errors]]
-Errors
-------
+== Errors
 
 Please don’t modify the mentioned `signature.json` itself.
 

@@ -1,5 +1,4 @@
-User Provisioning API
-=====================
+= User Provisioning API
 
 The Provisioning API application enables a set of APIs that external
 systems can use to:
@@ -19,12 +18,10 @@ API app is enabled by default. The base URL for all calls to the share
 API is *owncloud_base_url/ocs/v1.php/cloud*.
 
 [[instruction-set-for-users]]
-Instruction Set For Users
--------------------------
+== Instruction Set For Users
 
 [[add-user]]
-Add User
-~~~~~~~~
+=== Add User
 
 Create a new user on the ownCloud server. Authentication is done by
 sending a basic HTTP authentication header.
@@ -93,8 +90,7 @@ XML Output
 ----
 
 [[get-users]]
-Get Users
-~~~~~~~~~
+=== Get Users
 
 Retrieves a list of users from the ownCloud server. Authentication is
 done by sending a Basic HTTP Authorization header.
@@ -150,8 +146,7 @@ XML Output
 ----
 
 [[get-user]]
-Get User
-~~~~~~~~
+=== Get User
 
 Retrieves information about a single user. Authentication is done by
 sending a Basic HTTP Authorization header.
@@ -214,8 +209,7 @@ XML Output
 ----
 
 [[edit-user]]
-Edit User
-~~~~~~~~~
+=== Edit User
 
 Edits attributes related to a user. Users are able to edit _email_,
 _displayname_ and _password_; admins can also edit the quota value.
@@ -276,8 +270,7 @@ XML Output
 ----
 
 [[delete-user]]
-Delete User
-~~~~~~~~~~~
+=== Delete User
 
 Deletes a user from the ownCloud server. Authentication is done by
 sending a Basic HTTP Authorization header.
@@ -328,8 +321,7 @@ XML Output
 ----
 
 [[get-groups]]
-Get Groups
-~~~~~~~~~~
+=== Get Groups
 
 Retrieves a list of groups the specified user is a member of.
 Authentication is done by sending a Basic HTTP Authorization header.
@@ -384,8 +376,7 @@ XML Output
 ----
 
 [[add-to-group]]
-Add To Group
-~~~~~~~~~~~~
+=== Add To Group
 
 Adds the specified user to the specified group. Authentication is done
 by sending a Basic HTTP Authorization header.
@@ -441,8 +432,7 @@ XML Output
 ----
 
 [[remove-from-group]]
-Remove From Group
-~~~~~~~~~~~~~~~~~
+=== Remove From Group
 
 Removes the specified user from the specified group. Authentication is
 done by sending a Basic HTTP Authorization header.
@@ -666,12 +656,10 @@ XML Output
 ----
 
 [[instruction-set-for-groups]]
-Instruction Set For Groups
---------------------------
+== Instruction Set For Groups
 
 [[get-groups-1]]
-Get Groups
-~~~~~~~~~~
+=== Get Groups
 
 Retrieves a list of groups from the ownCloud server. Authentication is
 done by sending a Basic HTTP Authorization header.
@@ -727,8 +715,7 @@ XML Output
 ----
 
 [[add-group]]
-Add Group
-~~~~~~~~~
+=== Add Group
 
 Adds a new group. Authentication is done by sending a Basic HTTP
 Authorization header.
@@ -781,8 +768,7 @@ XML Output
 ----
 
 [[get-group]]
-Get Group
-~~~~~~~~~
+=== Get Group
 
 Retrieves a list of group members. Authentication is done by sending a
 Basic HTTP Authorization header.
@@ -892,8 +878,7 @@ XML Output
 ----
 
 [[delete-group]]
-Delete Group
-~~~~~~~~~~~~
+=== Delete Group
 
 Removes a group. Authentication is done by sending a Basic HTTP
 Authorization header.
@@ -945,12 +930,10 @@ XML Output
 ----
 
 [[instruction-set-for-apps]]
-Instruction Set For Apps
-------------------------
+== Instruction Set For Apps
 
 [[get-apps]]
-Get Apps
-~~~~~~~~
+=== Get Apps
 
 Returns a list of apps installed on the ownCloud server. Authentication
 is done by sending a Basic HTTP Authorization header.
@@ -1008,8 +991,7 @@ XML Output
 ----
 
 [[get-app-info]]
-Get App Info
-~~~~~~~~~~~~
+=== Get App Info
 
 Provides information on a specific application. Authentication is done
 by sending a Basic HTTP Authorization header.
@@ -1079,8 +1061,7 @@ XML Output
 ----
 
 [[enable]]
-Enable
-~~~~~~
+=== Enable
 
 Enable an app. Authentication is done by sending a Basic HTTP
 Authorization header.
@@ -1129,8 +1110,7 @@ XML Output
 ----
 
 [[disable]]
-Disable
-~~~~~~~
+=== Disable
 
 Disables the specified app. Authentication is done by sending a Basic
 HTTP Authorization header.

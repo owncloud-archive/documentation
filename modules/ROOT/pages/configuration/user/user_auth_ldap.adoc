@@ -33,8 +33,7 @@ CAUTION: The LDAP app is not compatible with the `User backend using remote HTTP
 NOTE: A non-blocking or correctly configured https://selinuxproject.org/page/Main_Page[SELinux] setup is needed for the LDAP backend to work. Please refer to the xref:installation/selinux_configuration.adoc[SELinux Configuration].
 
 [[configuration]]
-Configuration
--------------
+== Configuration
 
 First, enable the `LDAP user and group backend` app on the Apps page in
 ownCloud. Then, go to your Admin page to configure it. The LDAP
@@ -44,8 +43,7 @@ lights when the configuration is correct. Hover your cursor over the
 fields to see some pop-up tooltips.
 
 [[server-tab]]
-Server Tab
-~~~~~~~~~~
+=== Server Tab
 
 Start with the Server tab. You may configure multiple servers if you
 have them. At a minimum you must supply the LDAP server’s hostname. If
@@ -185,8 +183,7 @@ For more information, see the following from Technet:
 - link:http://blogs.technet.com/b/heyscriptingguy/archive/2014/11/25/active-directory-week-explore-group-membership-with-powershell.aspx[Active Directory Week: Explore Group Membership with PowerShell, window="_blank"]
 
 [[login-filter]]
-Login Filter
-~~~~~~~~~~~~
+=== Login Filter
 
 The settings in the Login Filter tab determine which LDAP users can log
 in to your ownCloud system and which attribute or attributes the
@@ -236,8 +233,7 @@ Examples:
 ....
 
 [[group-filter]]
-Group Filter
-~~~~~~~~~~~~
+=== Group Filter
 
 By default, no LDAP groups will be available in ownCloud. The settings
 in the group filter tab determine which groups will be available in
@@ -271,8 +267,7 @@ y groups found:::
   ownCloud. The number updates automatically after any change.
 
 [[advanced-settings]]
-Advanced Settings
------------------
+== Advanced Settings
 
 The LDAP Advanced Setting section contains options that are not needed
 for a working connection. This provides controls to disable the current
@@ -286,8 +281,7 @@ The Advanced Settings are structured into three parts:
 * Special Attributes
 
 [[connection-settings]]
-Connection Settings
-~~~~~~~~~~~~~~~~~~~
+=== Connection Settings
 
 image:/owncloud-docs/_images/ldap-advanced-1-connection.png[image]
 
@@ -340,8 +334,7 @@ Examples:
 See xref:caching[the Caching section below] for detailed information on how the cache operates.
 
 [[directory-settings]]
-Directory Settings
-~~~~~~~~~~~~~~~~~~
+=== Directory Settings
 
 image:/owncloud-docs/_images/ldap-advanced-2-directory.png[image]
 
@@ -437,7 +430,7 @@ Examples:
 * `memberUid` with RDN for objectclass `posixGroup` groups
 * `uniqueMember` with FDN for objectclass `groupOfUniqueNames` groups
 
-[NOTE] 
+[NOTE]
 ====
 The Group Member association is used to efficiently query users of a
 certain group, eg., on the userManagement page or when resolving all
@@ -466,8 +459,7 @@ Paging Chunk Size:::
   underlying LDAP server supports.
 
 [[special-attributes]]
-Special Attributes
-~~~~~~~~~~~~~~~~~~
+=== Special Attributes
 
 image:/owncloud-docs/_images/ldap-advanced-3-attributes.png[image]
 
@@ -488,7 +480,7 @@ Quota Default:::
   3.  However, when an LDAP quota is set it will override any values set in ownCloud.
   4.  If an LDAP per/attribute quota is set, it will override the LDAP Quota Default value.
 
-[NOTE] 
+[NOTE]
 ====
 Administrators are not allowed to modify the user quota limit in the user management page when steps 3 or 4 are in effect. 
 At this point, updates are only possible via LDAP.
@@ -522,15 +514,14 @@ User Home Folder Naming Rule:::
   example on Ubuntu:
 
   sudo -u www-data php occ config:app:set user_ldap enforce_home_folder_naming_rule --value=1
- 
+
   Since ownCloud 10.0 the home folder naming rule is only applied when
   first provisioning the user. This prevents data loss due to
   re-provisioning the users home folder in case of unintentional changes
   in LDAP.
 
 [[expert-settings]]
-Expert Settings
----------------
+== Expert Settings
 
 image:/owncloud-docs/_images/ldap-expert.png[image]
 
@@ -602,8 +593,7 @@ Username-LDAP User Mapping::
   LDAP configurations!*
 
 [[testing-the-configuration]]
-Testing the configuration
--------------------------
+== Testing the configuration
 
 The ``**Test Configuration**'' button checks the values as currently
 given in the input fields. You do not need to save before testing. By
@@ -620,8 +610,7 @@ When the configuration test reports success, save your settings and
 check if the users and groups are fetched correctly on the Users page.
 
 [[syncing-users]]
-Syncing Users
--------------
+== Syncing Users
 
 While users who match the login and user filters can log in, only synced
 users will be found in the sharing dialog. Whenever users log in their
@@ -635,16 +624,14 @@ We recommend xref:configuration/server/background_jobs_configuration.adoc#cron-j
 syncing LDAP users with your ownCloud database.
 
 [[how-often-should-the-job-run]]
-How Often Should the Job Run?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== How Often Should the Job Run?
 
 This depends on the amount of users and speed of the update, but we
 recommend _at least_ once per day. You can run it more frequently, but
 doing so may generate too much load on the server.
 
 [[owncloud-avatar-integration]]
-ownCloud Avatar integration
----------------------------
+== ownCloud Avatar integration
 
 ownCloud supports user profile pictures, which are also called avatars.
 If a user has a photo stored in the `jpegPhoto` or `thumbnailPhoto`
@@ -692,8 +679,7 @@ TLS make sure the certificate is readable by the user that is used to
 serve ownCloud.
 
 [[microsoft-active-directory]]
-Microsoft Active Directory
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Microsoft Active Directory
 
 Compared to earlier ownCloud versions, no further tweaks need to be done
 to make ownCloud work with Active Directory. ownCloud will automatically
@@ -709,8 +695,7 @@ Directory this is described
 https://serverfault.com/questions/167371/what-permissions-are-required-for-enumerating-users-groups-in-active-directory/167401#167401[here].
 
 [[duplicating-server-configurations]]
-Duplicating Server Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Duplicating Server Configurations
 
 In case you have a working configuration and want to create a similar
 one or "snapshot" configurations before modifying them you can do the
@@ -729,12 +714,10 @@ new configuration is not used on Save
 Now you can modify and enable the configuration.
 
 [[performance-tips]]
-Performance tips
-----------------
+== Performance tips
 
 [[caching]]
-Caching
-~~~~~~~
+=== Caching
 
 Using xref:configuration/server/caching_configuration.adoc[caching] to speed up lookups. 
 The ownCloud cache is populated on demand, and remains populated until the ``**Cache
@@ -771,37 +754,32 @@ user is defunct, for example due to a server migration or unreachable
 server. In this case the other servers will also receive the request.
 
 [[ldap-indexing]]
-LDAP indexing
-~~~~~~~~~~~~~
+=== LDAP indexing
 
 Turn on indexing. Deciding which attributes to index depends on your
 configuration and which LDAP server you are using. 
 See https://www.openldap.org/doc/admin24/tuning.html#Indexes[The openLDAP tuning guide] for openLDAP, and https://technet.microsoft.com/en-us/library/aa995762(v=exchg.65).aspx[How to Index an Attribute in Active Directory] for Active Directory.
 
 [[use-precise-base-dns]]
-Use precise base DNs
-~~~~~~~~~~~~~~~~~~~~
+=== Use precise base DNs
 
 The more precise your base DN, the faster LDAP can search because it has
 fewer branches to search.
 
 [[use-precise-filters]]
-Use precise filters
-~~~~~~~~~~~~~~~~~~~
+=== Use precise filters
 
 Use good filters to further define the scope of LDAP searches, and to
 intelligently direct your server where to search, rather than forcing it
 to perform needlessly-general searches.
 
 [[owncloud-ldap-internals]]
-ownCloud LDAP Internals
------------------------
+== ownCloud LDAP Internals
 
 Some parts of how the LDAP backend works are described here.
 
 [[user-and-group-mapping]]
-User and Group Mapping
-~~~~~~~~~~~~~~~~~~~~~~
+=== User and Group Mapping
 
 In ownCloud the user or group name is used to have all relevant
 information in the database assigned. To work reliably a permanent
@@ -824,8 +802,7 @@ long as you are testing, you can empty the tables any time. Do not do
 this in production.
 
 [[handling-with-backup-server]]
-Handling with Backup Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Handling with Backup Server
 
 When ownCloud is not able to contact the main LDAP server, ownCloud
 assumes it is offline and will not try to connect again for the time

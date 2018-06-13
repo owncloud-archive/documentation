@@ -1,5 +1,4 @@
-OCS Share API
-=============
+= OCS Share API
 
 The OCS Share API allows you to access the sharing API from outside over
 pre-defined OCS calls.
@@ -8,12 +7,10 @@ The base URL for all calls to the share API is:
 _<owncloud_base_url>/ocs/v1.php/apps/files_sharing/api/v1_
 
 [[local-shares]]
-Local Shares
-------------
+== Local Shares
 
 [[get-all-shares]]
-Get All Shares
-~~~~~~~~~~~~~~
+=== Get All Shares
 
 Get all shares from the user.
 
@@ -75,8 +72,7 @@ If the user that you’re connecting with is authorized, then you will see
 output similar to the following:
 
 [[get-shares-from-a-specific-file-or-folder]]
-Get Shares From A Specific File Or Folder
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Get Shares From A Specific File Or Folder
 
 Get all shares from a given file or folder.
 
@@ -148,8 +144,7 @@ Status Codes
 |=========================================================
 
 [[get-information-about-a-known-share]]
-Get Information About A Known Share
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Get Information About A Known Share
 
 Get information about a given share.
 
@@ -221,8 +216,7 @@ Response Attributes
 For details about the elements in the XML response payload please refer to the Response Attributes section of xref:response-attributes-1[the Create a New Share section] below.
 
 [[create-a-new-share]]
-Create A New Share
-~~~~~~~~~~~~~~~~~~
+=== Create A New Share
 
 Share an existing file or folder with a user, a group, or as public
 link.
@@ -413,8 +407,7 @@ share being shared with them.
 |=======================================================================
 
 [[delete-a-share]]
-Delete A Share
-~~~~~~~~~~~~~~
+=== Delete A Share
 
 Remove the given share.
 
@@ -463,8 +456,7 @@ Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 [[update-share]]
-Update Share
-~~~~~~~~~~~~
+=== Update Share
 
 Update a given share. Only one value can be updated per request.
 
@@ -532,8 +524,7 @@ Example Request Response Payloads
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 [[federated-cloud-shares]]
-Federated Cloud Shares
-----------------------
+== Federated Cloud Shares
 
 Both the sending and the receiving instance need to have federated cloud
 sharing enabled and configured. See
@@ -541,8 +532,7 @@ https://doc.owncloud.org/server/latest/admin_manual/configuration/files/federate
 Federated Cloud Sharing].
 
 [[create-a-new-federated-cloud-share]]
-Create A New Federated Cloud Share
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Create A New Federated Cloud Share
 
 Creating a federated cloud share can be done via the local share
 endpoint, using (int) 6 as a shareType and the
@@ -551,8 +541,7 @@ recipient as shareWith. See link:[Create a new Share] for more
 information.
 
 [[list-accepted-federated-cloud-shares]]
-List Accepted Federated Cloud Shares
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== List Accepted Federated Cloud Shares
 
 Get all federated cloud shares the user has accepted.
 
@@ -576,8 +565,7 @@ Status Codes
 |=================
 
 [[get-information-about-a-known-federated-cloud-share]]
-Get Information About A Known Federated Cloud Share
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Get Information About A Known Federated Cloud Share
 
 Get information about a given received federated cloud share that was
 sent from a remote instance.
@@ -610,8 +598,7 @@ Status Codes
 |========================
 
 [[delete-an-accepted-federated-cloud-share]]
-Delete An Accepted Federated Cloud Share
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Delete An Accepted Federated Cloud Share
 
 Locally delete a received federated cloud share that was sent from a
 remote instance.
@@ -644,8 +631,7 @@ Status Codes
 |========================
 
 [[list-pending-federated-cloud-shares]]
-List Pending Federated Cloud Shares
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== List Pending Federated Cloud Shares
 
 Get all pending federated cloud shares the user has received.
 
@@ -670,8 +656,7 @@ Status Codes
 |========================
 
 [[accept-a-pending-federated-cloud-share]]
-Accept a pending Federated Cloud Share
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Accept a pending Federated Cloud Share
 
 Locally accept a received federated cloud share that was sent from a
 remote instance.
@@ -704,8 +689,7 @@ Status Codes
 |========================
 
 [[decline-a-pending-federated-cloud-share]]
-Decline a pending Federated Cloud Share
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Decline a pending Federated Cloud Share
 
 Locally decline a received federated cloud share that was sent from a
 remote instance.

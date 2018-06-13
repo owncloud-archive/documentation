@@ -1,5 +1,4 @@
-Advanced File Tagging With the Workflow App
-===========================================
+= Advanced File Tagging With the Workflow App
 
 The Workflow App provides advanced management of file tagging. The app
 has three parts: Tag Manager, Automatic Tagging, and Retention.
@@ -11,8 +10,7 @@ See
 https://doc.owncloud.com/server/latest/user_manual/files/access_webgui.html[Tagging Files] in the ownCloud User manual to learn how to apply and filter tags on files.
 
 [[tag-manager]]
-Tag Manager
------------
+== Tag Manager
 
 The Tag Manager is for creating new tags, editing existing tags, and
 deleting tags. Tags may be marked as *Visible*, *Restricted*, or
@@ -40,8 +38,7 @@ and restricted tags.
 image:/owncloud-docs/_images/enterprise/file_management/workflow-5.png[image]
 
 [[automatic-tagging]]
-Automatic Tagging
------------------
+== Automatic Tagging
 
 The Automatic Tagging module operates on newly-uploaded files. Create a
 set of conditions, and then when a file or folder matches those
@@ -61,8 +58,7 @@ image:/owncloud-docs/_images/enterprise/file_management/workflow-3.png[image]
 Automatic Tagging is especially useful with the Retention module.
 
 [[retention]]
-Retention
----------
+== Retention
 
 The Retention module is your housecleaning power tool, because it
 automatically deletes files after a time period that you specify. Select
@@ -76,8 +72,7 @@ hierarchy. If subfolders have the same tags as their parent folders,
 their tags must also be processed, so it will take a little longer.
 
 [[retention-engines]]
-Retention Engines
------------------
+== Retention Engines
 
 There are two retention engines that further allow you to fine-tune your
 retention settings: *TagBasedRetention* and *UserBasedRetention*.

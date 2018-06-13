@@ -1,5 +1,4 @@
-Market App
-==========
+= Market App
 
 Since ownCloud X (10.0.0) every ownCloud instance gets shipped with the
 market app. This app makes it easy to manage your applications out of

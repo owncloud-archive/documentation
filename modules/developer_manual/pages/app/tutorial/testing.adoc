@@ -1,5 +1,4 @@
-Writing Tests
-=============
+= Writing Tests
 
 Tests are essential for having happy users and a carefree life. No one
 wants their users to rant about your app breaking their ownCloud or
@@ -7,8 +6,7 @@ being buggy. To do that you need to test your app. Since this amounts to
 a ton of repetitive tasks, we need to automate the tests.
 
 [[unit-tests]]
-Unit Tests
-----------
+== Unit Tests
 
 A unit test is a test that tests a class in isolation. 
 It is very fast and catches most of the bugs, so we want many unit tests. 
@@ -158,8 +156,7 @@ longer present in your `PageController` and do not test the user id
 parameters since they are not passed anymore
 
 [[integration-tests]]
-Integration Tests
------------------
+== Integration Tests
 
 Integration tests are slow and need a fully working instance but make
 sure that our classes work well together. Instead of mocking out all

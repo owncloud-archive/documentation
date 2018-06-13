@@ -1,5 +1,4 @@
-JavaScript
-==========
+= JavaScript
 
 The JavaScript files reside in the `js/` folder and should be included
 in the template:
@@ -31,8 +30,7 @@ $eventDispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
 ----
 
 [[sending-the-csrf-token]]
-Sending the CSRF Token
-----------------------
+== Sending the CSRF Token
 
 If any other JavaScript request library than jQuery is being used, the
 requests need to send the CSRF token as an HTTP header named
@@ -48,8 +46,7 @@ var app = angular.module('MyApp', []).config(['$httpProvider', function($httpPro
 ----
 
 [[generating-urls]]
-Generating URLs
----------------
+== Generating URLs
 
 To send requests to ownCloud the base URL where ownCloud is currently
 running is needed. To get the base URL use:
@@ -67,8 +64,7 @@ var authorUrl = OC.generateUrl('/apps/myapp/authors/1');
 ----
 
 [[extending-core-parts]]
-Extending Core Parts
---------------------
+== Extending Core Parts
 
 It is possible to extend components of the core web UI. The following
 examples should show how this is possible.

@@ -1,5 +1,4 @@
-ownCloud Roles
-==============
+= ownCloud Roles
 
 ownCloud supports eight user roles. These are:
 
@@ -16,8 +15,7 @@ The following information is not an in-depth guide, but more of a
 high-level overview of each type.
 
 [[anonymous]]
-Anonymous
----------
+== Anonymous
 
 * Is not a regular user.
 * Has access to specific content made available via public links.
@@ -37,8 +35,7 @@ https://marketplace.owncloud.com/apps/files_pdfviewer[PDF Viewer] and
 https://marketplace.owncloud.com/apps/richdocuments[Collabora Online].
 
 [[guest]]
-Guest
------
+== Guest
 
 * Is a regular user with restricted permissions, identified via e-mail address.
 * Has no personal space.
@@ -65,8 +62,7 @@ no longer login.
 ====
 
 [[standard-user]]
-Standard User
--------------
+== Standard User
 
 * Is a regular user (from LDAP, ownCloud user backend, or another
 backend).
@@ -75,8 +71,7 @@ backend).
 * Apps: All enabled, might be restricted by group membership.
 
 [[federated-user]]
-Federated User
---------------
+== Federated User
 
 * Is not an internal user.
 * Can trust xref:faq/index.adoc#what-is-a-federated-system[a federated system].
@@ -84,8 +79,7 @@ Federated User
 * Can share data with the considered system (accept-/rejectable).
 
 [[owncloud-group-administrator]]
-ownCloud Group Administrator
-----------------------------
+== ownCloud Group Administrator
 
 * Is a regular user, such as from LDAP, an ownCloud user backend, or
 another backend.
@@ -97,8 +91,7 @@ and changing quota of users in the group.
 * Custom group creation may be restricted to group admins.
 
 [[owncloud-administrator]]
-ownCloud Administrator
-----------------------
+== ownCloud Administrator
 
 * Is a regular user (from LDAP, ownCloud user backend, or another
 backend).
@@ -112,8 +105,7 @@ quota and group management.
 systems) is disabled by default.
 
 [[system-administrator]]
-System Administrator
---------------------
+== System Administrator
 
 * Is not an ownCloud user.
 * Has access to ownCloud code (e.g., `config.php` and apps folders) and
@@ -128,8 +120,7 @@ administrator from having access to data stored in ownCloud.
 * *DB admin:* Calendar/Contacts etc. DB entries not encrypted.
 
 [[auditor]]
-Auditor
--------
+== Auditor
 
 * Is not an ownCloud user.
 * Conducts usage and compliance audits in enterprise scenarios.

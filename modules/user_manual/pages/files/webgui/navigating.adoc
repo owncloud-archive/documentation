@@ -1,5 +1,4 @@
-Navigating the WebUI
-====================
+= Navigating the WebUI
 
 Navigating through folders in ownCloud is as simple as clicking on a
 folder to open it and using the back button on your browser to move to a
@@ -7,8 +6,7 @@ previous level. This section walks you through how to navigate the
 ownCloud UI.
 
 [[create-and-upload-files-and-directories]]
-Create and Upload Files and Directories
----------------------------------------
+== Create and Upload Files and Directories
 
 At the top of the Files view is a navigation bar. This contains links to
 uploading new files, and creating new files and folders.
@@ -28,8 +26,7 @@ file to your current folder.
 folder.
 
 [[select-files-or-folders]]
-Select Files or Folders
------------------------
+== Select Files or Folders
 
 image:/owncloud-docs/user_manual/_images/files_view_mouseover.png[image]
 
@@ -47,8 +44,7 @@ appear at the top.
 NOTE: If the `Download` button is not visible, the administrator has disabled this feature.
 
 [[filter-the-files-view]]
-Filter the Files View
----------------------
+== Filter the Files View
 
 The left sidebar on the Files page contains several filters for quickly
 sorting and managing your files.
@@ -78,15 +74,13 @@ devices
 |=======================================================================
 
 [[move-files]]
-Move Files
-----------
+== Move Files
 
 You can move files and folders by dragging and dropping them into any
 directory.
 
 [[play-videos]]
-Play Videos
-~~~~~~~~~~~
+=== Play Videos
 
 You can play videos in ownCloud with the Video Player app, by clicking
 once on the file. Please note, video streaming by the native ownCloud
@@ -103,8 +97,7 @@ for supported multimedia formats in Web browsers.
 ====
 
 [[settings]]
-Settings
-~~~~~~~~
+=== Settings
 
 The *Settings* gear icon, in the lower left-hand corner of the ownCloud
 window, allows you to show or hide hidden files in your ownCloud Web
@@ -118,8 +111,7 @@ configuration files, so having the option to hide them reduces clutter.
 image:/owncloud-docs/user_manual/_images/hidden_files.png[image]
 
 [[preview-files]]
-Preview Files
-~~~~~~~~~~~~~
+=== Preview Files
 
 ownCloud can display thumbnail previews for _images_, _MP3 covers_, and
 _text files_, if this is enabled by your server administrator. You can

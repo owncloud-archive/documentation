@@ -1,5 +1,4 @@
-Reverse Proxy Configuration
-===========================
+= Reverse Proxy Configuration
 
 ownCloud can be run through a reverse proxy, which can cache static
 assets such as images, CSS, or Javascript files, move the load of
@@ -7,8 +6,7 @@ handling HTTPS to a different server or load balance between multiple
 servers.
 
 [[defining-trusted-proxies]]
-Defining Trusted Proxies
-------------------------
+== Defining Trusted Proxies
 
 For security, you must explicitly define the proxy servers that ownCloud
 is to trust. Connections from trusted proxies will be specially treated
@@ -31,8 +29,7 @@ ownCloud, even when going through the trusted proxy! The correct value
 for this parameter is dependent on your proxy software.
 
 [[overwrite-parameters]]
-Overwrite Parameters
---------------------
+== Overwrite Parameters
 
 The automatic hostname, protocol or webroot detection of ownCloud can
 fail in certain reverse proxy situations. This configuration allows the
@@ -54,12 +51,10 @@ use a reverse SSL proxy only for HTTPS access and you want to use the
 automatic detection for HTTP access.
 
 [[example]]
-Example
--------
+== Example
 
 [[multiple-domains-reverse-ssl-proxy]]
-Multiple Domains Reverse SSL Proxy
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Multiple Domains Reverse SSL Proxy
 
 If you want to access your ownCloud installation
 ``http://domain.tld/owncloud`` via a multiple domains reverse SSL

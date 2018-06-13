@@ -1,9 +1,7 @@
-Examples
-========
+= Examples
 
 [[init-the-library]]
-Init the library
-----------------
+== Init the library
 
 Start using the library, it is needed to init the object
 OCCommunication.
@@ -12,8 +10,7 @@ We recommend using the singleton method in the AppDelegate class in
 order to use the ownCloud iOS library.
 
 [[code-example]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,Objective-C]
 ----
@@ -62,8 +59,7 @@ return sharedOCCommunication;
 ----
 
 [[set-credentials]]
-Set credentials
----------------
+== Set credentials
 
 Authentication on the app is possible by 3 different methods:
 
@@ -72,8 +68,7 @@ Authentication on the app is possible by 3 different methods:
 * Token (oAuth)
 
 [[code-example-1]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -88,15 +83,13 @@ Code example
 ----
 
 [[create-a-folder]]
-Create a folder
----------------
+== Create a folder
 
 Create a new folder on the cloud server, the info needed to be sent is
 the path of the new folder.
 
 [[code-example-2]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -146,8 +139,7 @@ else
 ----
 
 [[read-folder]]
-Read folder
------------
+== Read folder
 
 Get the content of an existing folder on the cloud server, the info
 needed to be sent is the path of the folder. As answer of this method,
@@ -155,8 +147,7 @@ it will be received an array with all the files and folders stored in
 the selected folder.
 
 [[code-example-3]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -193,8 +184,7 @@ default :
 ----
 
 [[read-file]]
-Read file
----------
+== Read file
 
 Get information related to a certain file or folder. Although, more
 information can be obtained, the library only gets the eTag.
@@ -203,8 +193,7 @@ Other properties of the file or folder may be obtained: filePath,
 filename, isDirectory, size and date
 
 [[code-example-4]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -235,15 +224,13 @@ default:
 ----
 
 [[move-file-or-folder]]
-Move file or folder
--------------------
+== Move file or folder
 
 Move a file or folder from their current path to a new one on the cloud
 server. The info needed is the origin path and the destiny path.
 
 [[code-example-5]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -291,15 +278,13 @@ errorBeforeRequest :^( NSError *error) {
 ----
 
 [[delete-file-or-folder]]
-Delete file or folder
----------------------
+== Delete file or folder
 
 Delete a file or folder on the cloud server. The info needed is the path
 to delete.
 
 [[code-example-6]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -325,8 +310,7 @@ ________________________________________________________________________________
 ____________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________________
 
 [[download-a-file]]
-Download a file
----------------
+== Download a file
 
 Download an existing file on the cloud server. The info needed is the
 server URL, path of the file on the server and localPath, path where the
@@ -334,8 +318,7 @@ file will be stored on the device and a boolean to indicate if is
 neccesary to use LIFO queue or FIFO.
 
 [[code-example-7]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -375,8 +358,7 @@ shouldExecuteAsBackgroundTaskWithExpirationHandler :^{
 ----
 
 [[download-a-file-with-background-session]]
-Download a file with background session
----------------------------------------
+== Download a file with background session
 
 Download an existing file storaged on the cloud server using background
 session, only supported by iOS 7 and higher.
@@ -390,8 +372,7 @@ object. We add the code in this example of the call to set the KVO and
 the method where catch the notifications.
 
 [[code-example-8]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -451,16 +432,14 @@ downloadTask = [_sharedOCCommunication downloadFileSession:serverUrl toDestiny:l
 ----
 
 [[set-callback-when-background-download-task-finishes]]
-Set callback when background download task finishes
----------------------------------------------------
+== Set callback when background download task finishes
 
 Method to set callbacks of the pending download transfers when the app
 starts. It’s used when there are pendings download background transfers.
 The block is executed when a pending background task finishes.
 
 [[code-example-9]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -471,16 +450,14 @@ Code example
 ----
 
 [[set-progress-callback-with-pending-background-download-tasks]]
-Set progress callback with pending background download tasks
-------------------------------------------------------------
+== Set progress callback with pending background download tasks
 
 Method to set progress callbacks of the pending download transfers. It’s
 used when there are pendings background download transfers. The block is
 executed when a pending task get a input porgress.
 
 [[code-example-10]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -491,16 +468,14 @@ Code example
 ----
 
 [[upload-a-file]]
-Upload a file
--------------
+== Upload a file
 
 Upload a new file to the cloud server. The info needed is localPath,
 path where the file is stored on the device and server URL, path where
 the file will be stored on the server.
 
 [[code-example-11]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -554,8 +529,7 @@ shouldExecuteAsBackgroundTaskWithExpirationHandler :^{
 ----
 
 [[upload-a-file-with-background-session]]
-Upload a file with background session
--------------------------------------
+== Upload a file with background session
 
 Upload a new file to the cloud server using background session, only
 supported by iOS 7 and higher.
@@ -569,8 +543,7 @@ object. We add the code in this example of the call to set the KVO and
 the method where catch the notifications.
 
 [[code-example-12]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -624,16 +597,14 @@ uploadTask = [[AppDelegate sharedOCCommunication] uploadFileSession:localPath to
 ----
 
 [[set-callback-when-background-task-finish]]
-Set callback when background task finish
-----------------------------------------
+== Set callback when background task finish
 
 Method to set callbacks of the pending transfers when the app starts.
 It’s used when there are pendings background transfers. The block is
 executed when a pending background task finished.
 
 [[code-example-13]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -644,16 +615,14 @@ Code example
 ----
 
 [[set-progress-callback-with-pending-background-tasks]]
-Set progress callback with pending background tasks
----------------------------------------------------
+== Set progress callback with pending background tasks
 
 Method to set progress callbacks of the pending transfers. It’s used
 when there are pendings background transfers. The block is executed when
 a pending task get a input porgress.
 
 [[code-example-14]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -665,15 +634,13 @@ Code example
 ----
 
 [[check-if-the-server-supports-sharing-api]]
-Check if the server supports Sharing api
-----------------------------------------
+== Check if the server supports Sharing api
 
 The Sharing API is included in ownCloud 5.0.13 and greater versions. The
 info needed is activeUser.url, the server URL that you want to check.
 
 [[code-example-15]]
-Code Example
-~~~~~~~~~~~~
+=== Code Example
 
 [source,objective-c]
 ----
@@ -687,16 +654,14 @@ Code Example
 ----
 
 [[read-shared-all-items-by-link]]
-Read shared all items by link
------------------------------
+== Read shared all items by link
 
 Get information about what files and folder are shared by link.
 
 The info needed is Path, the server URL that you want to check.
 
 [[code-example-16]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -713,8 +678,7 @@ failureRequest :^( NSHTTPURLResponse *response, NSError *error){
 ----
 
 [[read-shared-items-by-link-of-a-path]]
-Read shared items by link of a path
------------------------------------
+== Read shared items by link of a path
 
 Get information about what files and folder are shared by link in a
 specific path.
@@ -723,8 +687,7 @@ The info needed is the server URL that you want to check and the
 specific path tha you want to check.
 
 [[code-example-17]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -739,16 +702,14 @@ Code example
 ----
 
 [[share-link-of-file-or-folder]]
-Share link of file or folder
-----------------------------
+== Share link of file or folder
 
 Share a file or a folder from your cloud server by link. The info needed
 is Path, your server URL and the path of the item that you want to share
 (for example `/folder/file.pdf`)
 
 [[code-example-18]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 ....
 [[ AppDelegate sharedOCCommunication ] shareFileOrFolderByServer :path andFileOrFolderPath :itemPath onCommunication :[ AppDelegate sharedOCCommunication ]
@@ -800,8 +761,7 @@ NSLog ( @"Operation error: %d" , response.statusCode);
 ....
 
 [[unshare-a-folder-or-file-by-link]]
-Unshare a folder or file by link
---------------------------------
+== Unshare a folder or file by link
 
 Stop sharing by link a file or a folder from your cloud server.
 
@@ -815,8 +775,7 @@ OCShareDto, one of their properties is idRemoteShared, parameter needed
 to unshared an element.
 
 [[code-example-19]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -832,8 +791,7 @@ Code example
 ----
 
 [[check-if-file-of-folder-is-shared]]
-Check if file of folder is shared
----------------------------------
+== Check if file of folder is shared
 
 Check if a specific file or folder is shared in your cloud server.
 
@@ -847,8 +805,7 @@ OCShareDto, one of their properties is idRemoteShared, parameter needed
 to unshared an element.
 
 [[code-example-20]]
-Code example
-~~~~~~~~~~~~
+=== Code example
 
 [source,objective-c]
 ----
@@ -861,8 +818,7 @@ Code example
 ----
 
 [[tips]]
-Tips
-----
+== Tips
 
 * Credentials must be set before calling any method
 * Paths must not be on URL Encoding

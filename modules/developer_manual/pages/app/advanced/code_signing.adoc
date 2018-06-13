@@ -1,5 +1,4 @@
-Code Signing
-============
+= Code Signing
 
 ownCloud supports code signing for the core releases, and for ownCloud
 applications. Code signing gives our users an additional layer of
@@ -12,20 +11,17 @@ the past, invalid updates were a significant source of errors when
 updating ownCloud.
 
 [[faq]]
-FAQ
----
+== FAQ
 
 [[why-did-owncloud-add-code-signing]]
-Why Did ownCloud Add Code Signing?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Why Did ownCloud Add Code Signing?
 
 By supporting Code Signing we add another layer of security which
 ensures that nobody, other than authorized individuals, can push updates
 for applications. This ensures proper upgrades.
 
 [[do-we-lock-down-owncloud]]
-Do We Lock Down ownCloud?
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Do We Lock Down ownCloud?
 
 The ownCloud project is open source and always will be. We do not want
 to make it more difficult for our users to run ownCloud. Any code
@@ -34,8 +30,7 @@ will display a warning on the Admin page. For applications that are not
 tagged ``Official` the code signing process is optional.
 
 [[is-owncloud-not-open-source-anymore]]
-Is ownCloud Not Open Source Anymore?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Is ownCloud Not Open Source Anymore?
 
 The ownCloud project is open source and always will be. The code signing
 process is optional, though highly recommended. The code check for the
@@ -46,16 +41,14 @@ For custom distributions of ownCloud it is recommended to change the
 release version branch in version.php to something else than ``stable`.
 
 [[is-code-signing-mandatory-for-apps]]
-Is Code Signing Mandatory For Apps?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Is Code Signing Mandatory For Apps?
 
 Code signing is optional for all third-party applications. Applications
 with a tag of ``Official` on https://marketplace.owncloud.com/ require
 code signing.
 
 [[technical-details]]
-Technical details
------------------
+== Technical details
 
 ownCloud uses a X.509 based approach to handle authentication of code.
 Each ownCloud release contains the certificate of a shipped ownCloud
@@ -87,8 +80,7 @@ their certificate, future updates can still be ensured by having a new
 certificate issued.
 
 [[how-code-signing-affects-apps-in-the-owncloud-marketplace]]
-How Code Signing Affects Apps in the ownCloud Marketplace
----------------------------------------------------------
+== How Code Signing Affects Apps in the ownCloud Marketplace
 
 * Unsigned apps can’t be uploaded to the marketplace. They can be
 installed manually, but the warning: `"Integrity check failed"`, will
@@ -98,8 +90,7 @@ code-signed in all future releases as well, otherwise the update will be
 refused.
 
 [[how-to-get-your-app-signed]]
-How to Get Your App Signed
---------------------------
+== How to Get Your App Signed
 
 The following commands require that you have OpenSSL installed on your
 machine. Ensure that you keep all generated files to sign your
@@ -150,8 +141,7 @@ ownCloud can create them on a case by case basis. We do not recommend
 developers to share their private key.
 
 [[errors]]
-Errors
-------
+== Errors
 
 The following errors can be encountered when trying to verify a code
 signature. For information about how to get access to those results

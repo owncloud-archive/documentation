@@ -1,5 +1,4 @@
-Synchronizing with KDE SC
-=========================
+= Synchronizing with KDE SC
 
 image:/owncloud-docs/user_manual/_images/kdes1.png[image]
 

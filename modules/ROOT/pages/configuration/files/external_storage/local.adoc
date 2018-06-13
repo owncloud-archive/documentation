@@ -1,5 +1,4 @@
-Local
-=====
+= Local
 
 Local storage provides the ability to mount any directory on your
 ownCloud server that is:

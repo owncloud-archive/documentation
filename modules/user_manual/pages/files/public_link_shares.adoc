@@ -1,5 +1,4 @@
-Public Link Shares
-==================
+= Public Link Shares
 
 With ownCloud X (10.0), we introduced the ability to create multiple
 public links per file or folder. This offers a lot of flexibility for
@@ -9,8 +8,7 @@ such as _different passwords_, _expiry dates_, and _permissions_.
 As of ownCloud version 10.0.2 you can xref:files/webgui/sharing.adoc#creating-drop-folders[create Drop Folders], where users can upload files to a central location, but not be able to change any existing ones, nor see other files which already have been uploaded.
 
 [[creating-public-link-shares]]
-Creating Public Link Shares
----------------------------
+== Creating Public Link Shares
 
 To create a public link share, first view the Sharing Panel of the file
 or folder that you want to create a public link share for, and under
@@ -33,8 +31,7 @@ the share is created, you can:
 * Delete the public link
 
 [[share-settings-explained]]
-Share Settings Explained
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== Share Settings Explained
 
 [cols=",",options="header",]
 |===

@@ -1,5 +1,4 @@
-How to Upgrade Your ownCloud Server
-===================================
+= How to Upgrade Your ownCloud Server
 
 We recommend that you keep your ownCloud server up to date. When an
 update is available for your ownCloud server, you will see a
@@ -24,8 +23,7 @@ file a support ticket (if you have paid support) or ask for help in the
 ownCloud forums to resolve your issue without downgrading.
 
 [[prerequisites]]
-Prerequisites
--------------
+== Prerequisites
 
 We strongly recommend that you always maintain xref:maintenance/backup.adoc[regular backups]
 as well as make a fresh backup before every upgrade. We also recommend
@@ -37,8 +35,7 @@ are compatible with the new release.
 CAUTION: Install unsupported apps at your own risk.
 
 [[upgrade-options]]
-Upgrade Options
----------------
+== Upgrade Options
 
 There are three ways to upgrade your ownCloud server:
 

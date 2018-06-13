@@ -1,5 +1,4 @@
-How to add certificates
-=======================
+= How to add certificates
 
 If you want to use your own SSL certificates for the appliance, you have
 to follow these three steps:

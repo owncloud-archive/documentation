@@ -1,5 +1,4 @@
-SFTP
-====
+= SFTP
 
 ownCloud’s SFTP (FTP over an SSH tunnel) backend supports both password
 and public key authentication.

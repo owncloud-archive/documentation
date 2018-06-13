@@ -1,5 +1,4 @@
-Filesystem
-==========
+= Filesystem
 
 Because users can choose their storage backend, the filesystem should be
 accessed by using the appropriate filesystem classes. Filesystem classes
@@ -37,8 +36,7 @@ class Application extends App {
 ----
 
 [[writing-to-a-file]]
-Writing to a File
------------------
+== Writing to a File
 
 All methods return a Folder object on which files and folders can be
 accessed, or filesystem operations can be performed relatively to their
@@ -79,8 +77,7 @@ class AuthorStorage {
 ----
 
 [[reading-from-a-file]]
-Reading from a File
--------------------
+== Reading from a File
 
 Files and folders can also be accessed by id, by calling the `getById`
 method on the folder.

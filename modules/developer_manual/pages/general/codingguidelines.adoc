@@ -2,8 +2,7 @@ Coding Style & General Guidelines
 =================================
 
 [[coding]]
-Coding
-------
+== Coding
 
 * Maximum line-length of 80 characters
 * Use tabs to indent
@@ -18,8 +17,7 @@ Coding
 * When you `git pull`, always `git pull --rebase` to avoid generating extra commits like: _merged master into master_
 
 [[css]]
-CSS
----
+== CSS
 
 Take a look at the http://www.youtube.com/watch?v=hou2wJCh3XE&feature=plcp[Writing Tactical CSS & HTML] video on YouTube.
 
@@ -59,8 +57,7 @@ into classes.
 ----
 
 [[general]]
-General
--------
+== General
 
 * Ideally, discuss your plans on the
 https://mailman.owncloud.org/mailman/listinfo/devel[mailing list] to see
@@ -96,8 +93,7 @@ pieces (apps) and maintainers have a strong influence. In case of
 disagreement we consult other seasoned contributors.
 
 [[labels]]
-Labels
-------
+== Labels
 
 We assign labels to issues and pull requests to make it easier to find
 them as well as to signal what needs to be done with them. Some of these
@@ -195,8 +191,7 @@ The most important labels and their meaning:
 |===
 
 [[severity-level-labels]]
-Severity Level Labels
-~~~~~~~~~~~~~~~~~~~~~
+=== Severity Level Labels
 
 To better understand which severity level to apply, if any, here is a
 description of each of the four severity labels.
@@ -227,8 +222,7 @@ If you want a label not in the list above, please first discuss on the
 mailing list.
 
 [[javascript]]
-JavaScript
-----------
+== JavaScript
 
 In general take a look at http://www.jslint.com/[JSLint] without the
 whitespace rules.
@@ -343,8 +337,7 @@ var objectLiteral = {
 ----
 
 [[operators]]
-Operators
-~~~~~~~~~
+=== Operators
 
 Use *===* and *!==* instead of *==* and *!=*.
 
@@ -367,8 +360,7 @@ null == undefined   // true
 ----
 
 [[control-structures]]
-Control Structures
-~~~~~~~~~~~~~~~~~~
+=== Control Structures
 
 * Always use \{ } for one line ifs
 * Split long ifs into multiple lines
@@ -413,8 +405,7 @@ switch (value) {
 ----
 
 [[php]]
-PHP
----
+== PHP
 
 The ownCloud coding style guide is based on
 http://pear.php.net/manual/en/standards.php[PEAR Coding Standards]. To
@@ -455,8 +446,7 @@ http://stackoverflow.com/questions/4410704/php-closing-tag[possible
 issue of sending white spaces].
 
 [[comments]]
-Comments
-~~~~~~~~
+=== Comments
 
 All API methods need to be marked with
 http://en.wikipedia.org/wiki/PHPDoc[PHPDoc] markup. An example would be:
@@ -507,8 +497,7 @@ $someArray = array(
 ----
 
 [[operators-1]]
-Operators
-~~~~~~~~~
+=== Operators
 
 Use *===* and *!==* instead of *==* and *!=*.
 
@@ -527,8 +516,7 @@ var_dump(100 == "1e2"); // 100 == 100 -> true
 ----
 
 [[control-structures-1]]
-Control Structures
-~~~~~~~~~~~~~~~~~~
+=== Control Structures
 
 * Always use \{ } for one line ifs
 * Split long ifs into multiple lines
@@ -577,8 +565,7 @@ switch ($condition) {
 ----
 
 [[unit-tests]]
-Unit tests
-~~~~~~~~~~
+=== Unit tests
 
 Unit tests must always extend the `\Test\TestCase` class, which takes
 care of cleaning up the installation after the test.
@@ -609,8 +596,7 @@ class Dummy extends \Test\TestCase {
 ----
 
 [[user-interface]]
-User Interface
---------------
+== User Interface
 
 * Software should not get in the way of what the user needs to do. It
 should do as much as possible automatically, instead of offering

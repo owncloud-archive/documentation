@@ -13,8 +13,7 @@ SharePoint rules. Your ownCloud admin may optionally allow users to mount their 
 SharePoint libraries.
 
 [[accessing-sharepoint-folders]]
-Accessing SharePoint Folders
-----------------------------
+== Accessing SharePoint Folders
 
 When you first log in to ownCloud, the Web interface shows a gray bar
 behind all SharePoint folders. The gray bar disappears when the
@@ -32,8 +31,7 @@ If your SharePoint login ever changes, go to your Personal page to
 update it in the `Sharepoint Personal Configuration` section.
 
 [[personal-page]]
-Personal Page
--------------
+== Personal Page
 
 You can manage your SharePoint connections in the
 `Sharepoint Personal  Configuration` section of your ownCloud Personal

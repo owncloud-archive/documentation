@@ -1,5 +1,4 @@
-Routing
-=======
+= Routing
 
 Routes map a URL and a method to a controller method. Routes are defined
 inside appinfo/routes.php by passing a configuration array to the
@@ -72,8 +71,7 @@ which is not present. The default values are passed in as a key => value
 par array
 
 [[extracting-values-from-the-url]]
-Extracting Values From the URL
-------------------------------
+== Extracting Values From the URL
 
 It is possible to extract values from the URL to allow for RESTful URL
 design. To extract value, you have to wrap it inside curly braces:
@@ -172,8 +170,7 @@ class PostController
 ----
 
 [[registering-resources]]
-Registering Resources
----------------------
+== Registering Resources
 
 When dealing with resources, writing routes can become quite repetitive
 since most of the time routes for the following tasks are needed:
@@ -224,8 +221,7 @@ $application->registerRoutes($this, [
 ----
 
 [[using-the-urlgenerator]]
-Using the URLGenerator
-----------------------
+== Using the URLGenerator
 
 Sometimes its useful to turn a route into a URL 1) to make the code
 independent from the URL design or to 2) generate an URL for an image in

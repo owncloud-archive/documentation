@@ -1,5 +1,4 @@
-Custom Client Download Repositories
-===================================
+= Custom Client Download Repositories
 
 See ../../configuration/server/custom_client_repos to learn how test and
 configure custom download repository URLs for your branded clients.

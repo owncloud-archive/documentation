@@ -1,5 +1,4 @@
-ownCloud
-========
+= ownCloud
 
 An ownCloud storage is a specialized webdav storage, with optimizations
 for ownCloud-ownCloud communication. See the webdav documentation to

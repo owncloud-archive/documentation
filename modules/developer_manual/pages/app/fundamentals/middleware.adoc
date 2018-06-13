@@ -1,5 +1,4 @@
-Middleware
-==========
+= Middleware
 
 Middleware is logic that is run before and after each request and is
 modelled after
@@ -86,8 +85,7 @@ is being reversed, meaning: if a middleware is registered first, it gets
 run last.
 
 [[parsing-annotations]]
-Parsing Annotations
--------------------
+== Parsing Annotations
 
 Sometimes its useful to conditionally execute code before or after a
 controller method. This can be done by defining custom annotations. An

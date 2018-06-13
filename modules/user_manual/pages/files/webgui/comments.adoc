@@ -1,12 +1,10 @@
-Comments
-========
+= Comments
 
 In ownCloud, you can add one or more comments on both files and folders.
 This section describes how to add, edit, and delete comments.
 
 [[add-comments]]
-Add Comments
-------------
+== Add Comments
 
 Use the Details view, in xref:files/webgui/overview.adoc#the-overflow-menu[The Overflow Menu], to
 add and read comments on any file or folder. Comments are visible to
@@ -17,8 +15,7 @@ comment in the New Comment field, and click "Post".
 image:/owncloud-docs/user_manual/_images/file_menu_comments_2.png[image]
 
 [[edit-comments]]
-Edit Comments
--------------
+== Edit Comments
 
 To edit an existing comment on a file or folder, hover the mouse over
 the comment and you will see a pencil icon appear. By clicking on the
@@ -27,8 +24,7 @@ comment text. Change the text as necessary and click _"Save"_. If you
 change your mind, just click _"Cancel"_.
 
 [[delete-comments]]
-Delete Comments
----------------
+== Delete Comments
 
 To delete an existing comment on a file or folder, as with editing
 comments, hover the mouse over the comment and you will see a pencil

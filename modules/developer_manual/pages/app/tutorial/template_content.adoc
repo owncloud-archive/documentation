@@ -1,5 +1,4 @@
-Creating Template Content
-=========================
+= Creating Template Content
 
 As noted in xref:app/tutorial/routes_and_controllers.adoc#controllers[the controllers section of the tutorial], templates are, effectively, not much more than the original PHP files, which were a combination of PHP and HTML. 
 However, they can also contain conditional logic, as you can see in the example below.

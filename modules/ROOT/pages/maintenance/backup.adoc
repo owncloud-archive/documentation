@@ -1,5 +1,4 @@
-Backing up ownCloud
-===================
+= Backing up ownCloud
 
 When you backup your ownCloud server, there are four things that you
 need to copy:
@@ -44,8 +43,7 @@ There are many ways to backup normal files, and you may use whatever
 method you are accustomed to.
 
 [[backup-database]]
-Backup Database
----------------
+== Backup Database
 
 You can’t just copy a database, but must use the database tools to make
 a correct database dump.
@@ -68,24 +66,21 @@ mysqldump --single-transaction -h localhost -u username -p password owncloud > o
 ....
 
 [[sqlite]]
-SQLite
-~~~~~~
+=== SQLite
 
 ....
 sqlite3 data/owncloud.db .dump > owncloud-dbbackup_`date +"%Y%m%d"`.bak
 ....
 
 [[postgresql]]
-PostgreSQL
-~~~~~~~~~~
+=== PostgreSQL
 
 ....
 PGPASSWORD="password" pg_dump [db_name] -h [server] -U [username] -f owncloud-dbbackup_`date +"%Y%m%d"`.bak
 ....
 
 [[restoring-files-from-backup-when-encryption-is-enabled]]
-Restoring Files From Backup When Encryption Is Enabled
-------------------------------------------------------
+== Restoring Files From Backup When Encryption Is Enabled
 
 If you need to restore files from backup, which were backed up when
 encryption was enabled, here’s how to do it.

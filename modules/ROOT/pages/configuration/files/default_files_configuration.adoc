@@ -1,5 +1,4 @@
-Providing Default Files
-=======================
+= Providing Default Files
 
 You may distribute a set of default files and folders to all users by
 placing them in the `owncloud/core/skeleton` directory on your ownCloud
@@ -18,8 +17,7 @@ They appear on the user’s ownCloud Files page just like any other files.
 image:/owncloud-docs/_images/skeleton-files1.png[image]
 
 [[additional-configuration]]
-Additional Configuration
-------------------------
+== Additional Configuration
 
 The configuration option `skeletondirectory` available in your `config.php` allows you to configure the directory where the skeleton files are located. 
 These files will be copied to the data directory of new users. 

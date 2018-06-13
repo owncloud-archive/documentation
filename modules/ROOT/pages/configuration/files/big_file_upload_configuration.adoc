@@ -14,8 +14,7 @@ documentation for your filesystem.
 NOTE: The ownCloud sync client itself however is able to upload files of any size, as it uploads files by transmitting them in small chunks. But, it can never exceed the maximum file size limits of the remote host.
 
 [[system-configuration]]
-System Configuration
---------------------
+== System Configuration
 
 * Make sure that the latest version of PHP (at least 5.6) is installed
 * Disable user quotas, which makes them unlimited
@@ -25,8 +24,7 @@ parallel uploads from multiple users; e.g. if the max upload size is
 temp space has to hold at least 10x100 GB
 
 [[configuring-your-web-server]]
-Configuring Your Web server
----------------------------
+== Configuring Your Web server
 
 NOTE: ownCloud comes with its own `owncloud/.htaccess` file. Because `php-fpm` can’t read PHP settings in `.htaccess` these settings must be set in the `owncloud/.user.ini` file.
 
@@ -57,8 +55,7 @@ config which could prevent the upload of larger files. Please see the
 manual of your Web server for how to configure those values correctly:
 
 [[apache]]
-Apache
-~~~~~~
+=== Apache
 
 * https://httpd.apache.org/docs/current/en/mod/core.html#limitrequestbody[LimitRequestBody]
 * https://httpd.apache.org/docs/current/mod/mod_ssl.html#sslrenegbuffersize[SSLRenegBufferSize]
@@ -76,8 +73,7 @@ Setting `FcgidMaxRequestInMem` significantly higher than normal may no
 longer be necessary, once bug #51747 is fixed.
 
 [[nginx]]
-NGINX
-~~~~~
+=== NGINX
 
 * http://nginx.org/en/docs/http/ngx_http_core_module.html#client_max_body_size[client_max_body_size]
 * http://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_read_timeout[fastcgi_read_timeout]
@@ -111,8 +107,7 @@ http://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering[X-Accel
 header to `add_header X-Accel-Buffering no;` on your backend server.
 
 [[configuring-php]]
-Configuring PHP
----------------
+== Configuring PHP
 
 If you don’t want to use the ownCloud `.htaccess` or `.user.ini` file,
 you may configure PHP instead. Make sure to comment out any lines
@@ -141,17 +136,15 @@ upload_tmp_dir = /var/big_temp_file/
 * `output_buffering = 0`
 
 [[configuring-owncloud]]
-Configuring ownCloud
---------------------
+== Configuring ownCloud
 
 As an alternative to the `upload_tmp_dir` of PHP (e.g., if you don’t have access to your `php.ini`) you can also configure a temporary location for uploaded files by using the `tempdirectory` setting in your `config.php`.
 
-If you have configured the `session_lifetime` setting in your `config.php` (See xref:configuration/server/config_sample_php_parameters.adoc[Sample Config PHP Parameters]) file then make sure it is not too low. This setting needs to be configured to at least the time (in seconds) that the longest upload will take. 
+If you have configured the `session_lifetime` setting in your `config.php` (See xref:configuration/server/config_sample_php_parameters.adoc[Sample Config PHP Parameters]) file then make sure it is not too low. This setting needs to be configured to at least the time (in seconds) that the longest upload will take.
 If unsure remove this completely from your configuration to reset it to the default shown in the `config.sample.php`.
 
 [[configuring-upload-limits-within-the-gui]]
-Configuring upload limits within the GUI
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Configuring upload limits within the GUI
 
 If all prerequisites described in this documentation are in place an
 admin can change the upload limits on demand by using the
@@ -171,12 +164,11 @@ ownCloud (Apache only)
 * The user your Web server is running as has write permissions to the
 files `.htaccess` and `.user.ini`
 
-xref:installation/source_installation.adoc#set-strong-directory-permissions[Directory permissions] might prevent write access to these files. 
+xref:installation/source_installation.adoc#set-strong-directory-permissions[Directory permissions] might prevent write access to these files.
 As an admin you need to decide between the ability to use the input box and a more secure ownCloud installation where you need to manually modify the upload limits in the `.htaccess` and `.user.ini` files described above.
 
 [[general-upload-issues]]
-General upload issues
----------------------
+== General upload issues
 
 Various environmental factors could cause a restriction of the upload
 size. Examples are:

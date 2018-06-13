@@ -1,5 +1,4 @@
-Synchronizing with OS X
-=======================
+= Synchronizing with OS X
 
 To use ownCloud with iCal you will need to use the following URL:
 

@@ -57,8 +57,7 @@ two ways:
 ppa repository <install_letsencrypt_via_ppa_repository>.
 
 [[via-github]]
-Via GitHub
-~~~~~~~~~~
+=== Via GitHub
 
 ....
 sudo apt-get update
@@ -78,8 +77,7 @@ As part of the first run, certbot-auto will install any missing
 dependencies.
 
 [[via-apt]]
-Via Apt
-~~~~~~~
+=== Via Apt
 
 To install Certbot via the PPA repository, run the following commands.
 These will add the repository, update Apt’s cache, and install Certbot.
@@ -113,15 +111,13 @@ sudo certbot
 NOTE: Depending on how you installed Let’s Encrypt, certbot may also be named `letsencrypt` or `certbot-auto`. However, this guide will refer to it as `certbot`. Please bear that in mind, and update the examples and scripts used in this guide to reflect your Certbot installation.
 
 [[updating-certbot]]
-Updating Certbot
-----------------
+== Updating Certbot
 
 If you need to update Certbot at a later date, run
 `sudo apt-get install --only-upgrade certbot`.
 
 [[register-your-email-address]]
-Register your email address
----------------------------
+== Register your email address
 
 Now that Certbot is installed, register your email address for urgent
 renewal and security notifications. This command also prepares Certbot’s
@@ -241,8 +237,7 @@ different scripts. You can see an example script here below:
 NOTE: You can enable the `--dry-run` option which does a test run of the client only.
 
 [[create-an-ssl-certificate]]
-Create an SSL certificate
--------------------------
+== Create an SSL certificate
 
 With all the scripts created, to create an SSL certificate, run the
 following command:
@@ -282,8 +277,7 @@ You can see that the SSL certificate’s been successfully created, and
 that it will expire on 2018-06-18.
 
 [[listing-existing-certificates]]
-Listing Existing Certificates
------------------------------
+== Listing Existing Certificates
 
 If you want to list (view) the existing SSL certificates, use `list.sh`,
 which can be run as follows:
@@ -307,8 +301,7 @@ Found the following certs:
 ....
 
 [[web-server-setup]]
-Web Server setup
-----------------
+== Web Server setup
 
 Follow the links to set up your web server and issue a certificate.
 
@@ -316,8 +309,7 @@ Follow the links to set up your web server and issue a certificate.
 * xref:installation/letsencrypt/nginx.adoc[Setup NGINX]
 
 [[test-the-setup]]
-Test the setup
---------------
+== Test the setup
 
 After you have setup and configured the web server and installed the SSL
 certificate using Certbot, you should now test the security of your new
@@ -328,16 +320,14 @@ a test run below.
 image:/owncloud-docs/_images/installation/ssllabs.png[image]
 
 [[renewing-certificates]]
-Renewing Certificates
----------------------
+== Renewing Certificates
 
 As Let’s Encrypts certificates expire every 90 days, you should ensure
 you renew them before that time. There are two ways to do so:
 link:Manual%20renewal[manually] and automatically.
 
 [[manual-renewal]]
-Manual renewal
-~~~~~~~~~~~~~~
+=== Manual renewal
 
 If you have provided your email address, you will receive reminder
 notifications.
@@ -363,8 +353,7 @@ No hooks were run.
 ....
 
 [[automatic-renewal-via-crontab]]
-Automatic renewal via crontab
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Automatic renewal via crontab
 
 Certificates are only renewed if they are due, so you can schedule Cron
 jobs to renew your SSL certificates on a more frequent basis. However, a
@@ -392,8 +381,7 @@ NOTE: If you want to use own values, you can check them at https://crontab.guru[
 options.
 
 [[add-extra-domains-to-the-certificate]]
-Add extra domains to the certificate
-------------------------------------
+== Add extra domains to the certificate
 
 If you want to add an extra domain, like `test.mydom.tld`, to your
 certificate, add the domain in the domain shell script above, re-run it
@@ -403,8 +391,7 @@ a sub-directory to sub-domain access.
 NOTE: This also implies that you need to comment the `include` directive (please refer to the relevant xref:web-server-setup[web server setup]) and follow the steps afterward.
 
 [[deleting-ssl-certificates]]
-Deleting SSL Certificates
--------------------------
+== Deleting SSL Certificates
 
 If you want to delete an SSL certificate, use the delete.sh script,
 running it as follows:

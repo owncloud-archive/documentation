@@ -1,16 +1,13 @@
-Backporting
-===========
+= Backporting
 
 [[general]]
-General
--------
+== General
 
 We backport important fixes and improvements from the current master
 release to get them to our users faster.
 
 [[process]]
-Process
--------
+== Process
 
 We mostly consider bug fixes for back porting. Occasionally, important
 changes to the API can be backported to make it easier for developers to
@@ -43,8 +40,7 @@ patch release is out, the post-fix -next-maintenance is removed and a
 new -next-maintenance milestone is created for that series.
 
 [[steps]]
-Steps
------
+== Steps
 
 Because pushing directly to particular ownCloud branches is forbidden
 (e.g., `origin/stable-xx`), you need to create your own remote branch,

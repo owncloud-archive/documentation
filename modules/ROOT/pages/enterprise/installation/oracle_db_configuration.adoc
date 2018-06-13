@@ -4,8 +4,7 @@ This document will cover the setup and preparation of the ownCloud
 server to support the use of Oracle as a backend database.
 
 [[outline-of-steps]]
-Outline of Steps
-----------------
+== Outline of Steps
 
 This document will cover the following steps:
 
@@ -21,12 +20,10 @@ and have provisioned the needed resources. It also assumes that you have
 installed ownCloud with all of the prerequisites.
 
 [[configuring-oracle]]
-Configuring Oracle
-------------------
+== Configuring Oracle
 
 [[setting-up-the-user-space-for-owncloud]]
-Setting up the User Space for ownCloud
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Setting up the User Space for ownCloud
 
 Step one, if it has not already been completed by your
 DBA (DataBase Administrator), provision a user space on the Oracle
@@ -135,8 +132,7 @@ RedHat, Centos, & Fedora
 |=============================================
 
 [[validating-the-extension]]
-Validating the Extension
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== Validating the Extension
 
 With all that done, confirm that it’s been installed and available in
 your PHP distribution, run the following command:
@@ -150,16 +146,14 @@ When the process has completed, assuming that you don’t encounter any
 errors, restart Apache and the extension is ready to use.
 
 [[configure-owncloud]]
-Configure ownCloud
-------------------
+== Configure ownCloud
 
 The next step is to configure the ownCloud instance to point to the
 Oracle Database, again this document assumes that ownCloud has
 previously been installed.
 
 [[configuration-wizard]]
-Configuration Wizard
-~~~~~~~~~~~~~~~~~~~~
+=== Configuration Wizard
 
 image:/owncloud-docs/_images/oracle-1.png[image,width=554,height=711]
 
@@ -199,8 +193,7 @@ Provided by the DBA. In this example the users table space (as is seen
 in the user creation script above), was used.
 
 [[configuration-file]]
-Configuration File
-~~~~~~~~~~~~~~~~~~
+=== Configuration File
 
 Assuming all of the steps have been followed to completion, the first
 run wizard should complete successfully, and an operating instance of
@@ -209,8 +202,7 @@ ownCloud should appear.
 The configuration file should look something like this:
 
 [[useful-sql-commands]]
-Useful SQL Commands
-~~~~~~~~~~~~~~~~~~~
+=== Useful SQL Commands
 
 *Is my Database Reachable?*
 
@@ -223,8 +215,7 @@ sqlplus username
 ....
 SQL> select * from v$version;
 
-BANNER
---------------------------------------------------------------------------------
+== BANNER
 Oracle Database 11g Express Edition Release 11.2.0.2.0 - 64bit Production
 PL/SQL Release 11.2.0.2.0 - Production
 CORE  11.2.0.2.0  Production

@@ -1,9 +1,7 @@
-Publishing in the ownCloud Marketplace
-======================================
+= Publishing in the ownCloud Marketplace
 
 [[the-owncloud-marketplace]]
-The ownCloud Marketplace
-------------------------
+== The ownCloud Marketplace
 
 With the ownCloud marketplace, introduced in 2017, we offer a flexible
 and easy way to publish your apps and extend your ownCloud. In addition
@@ -29,8 +27,7 @@ Apps in the store are divided into three levels of trust:
 With each level come requirements and a position in the store.
 
 [[official]]
-Official
-~~~~~~~~
+=== Official
 
 Official apps are developed by and within the ownCloud community and its
 https://github.com/owncloud[Github] repository and offer functionality
@@ -61,8 +58,7 @@ like to keep the tarball minimal, so most official apps are not part of
 the standard installation.
 
 [[approved]]
-Approved
-~~~~~~~~
+=== Approved
 
 Approved apps are developed by trusted developers and have passed a
 cursory security check. They are actively maintained in an open code
@@ -101,8 +97,7 @@ ownCloud Marketplace:
 * Warning shows for security/stability risks
 
 [[experimental]]
-Experimental
-~~~~~~~~~~~~
+=== Experimental
 
 Apps which have not been checked at all for security and/or are new,
 known to be unstable or under heavy development.
@@ -122,8 +117,7 @@ experimental apps` in the settings.
 * Sorted below all others.
 
 [[app-categories]]
-App Categories
---------------
+== App Categories
 
 The following categories are available for apps to be filed under:
 
@@ -155,8 +149,7 @@ Note: For publishing themes, this tag must be present but empty.
 ----
 
 [[app-tags]]
-App Tags
---------
+== App Tags
 
 Besides these categories apps can have different tags:
 
@@ -165,8 +158,7 @@ Besides these categories apps can have different tags:
 * Trusted
 
 [[enterprise]]
-Enterprise
-~~~~~~~~~~
+=== Enterprise
 
 Apps with the `Enterprise` tag are official ownCloud enterprise apps.
 These can only be uploaded by ownCloud itself and represent ownCloud
@@ -175,8 +167,7 @@ Enterprise Edition features.
 image:/owncloud-docs/_images/app/app-tile-enterprise.jpg[ownCloud "Enterprise" tag]
 
 [[verified]]
-Verified
-~~~~~~~~
+=== Verified
 
 To get the `verified` label on your app, you must request a review. We
 then will look into your app and check if it meets the ownCloud app
@@ -192,8 +183,7 @@ the owncloud-announce list.
 image:/owncloud-docs/_images/app/app-tile-verified.jpg[ownCloud "Verified" tag]
 
 [[trusted]]
-Trusted
-~~~~~~~
+=== Trusted
 
 If your app reaches a rating level of 4 or higher based on 40 ratings or
 more it automatically gets the badge `trusted`. It represents a
@@ -204,8 +194,7 @@ other users. The advantages of trusted apps are that:
 * the user can filter by trusted apps.
 
 [[app-review-process]]
-App Review Process
-------------------
+== App Review Process
 
 To request an app review go to `Account` > ``My Products` > ``Edit
 app` and click on the button ``Request review`. Usually, it takes 3-5
@@ -217,15 +206,13 @@ request a new review for the new release. To keep your verified badge,
 request the review before setting your new release to `published`.
 
 [[app-guidelines]]
-App Guidelines
---------------
+== App Guidelines
 
 The following are the guidelines your app should follow to provide a
 high quality.
 
 [[legal-and-security]]
-Legal and Security
-~~~~~~~~~~~~~~~~~~
+=== Legal and Security
 
 * Apps can not use `ownCloud` in their name
 * Irregular and unannounced security audits of all apps can and will
@@ -247,8 +234,7 @@ consequences including, but not limited to ownCloud or affected users
 taking legal action.
 
 [[technical]]
-Technical
-~~~~~~~~~
+=== Technical
 
 * Apps can only use the public ownCloud API
 * At time of the release of an app, it can only be configured to be
@@ -259,8 +245,7 @@ slow ownCloud down
 explicitly the goal of the app
 
 [[providing-information]]
-Providing Information
-~~~~~~~~~~~~~~~~~~~~~
+=== Providing Information
 
 When uploading an app, it should provide a professional and informative
 look and feel. To do so, please consider the following three points:
@@ -278,8 +263,7 @@ in technical details. Explain in simple, yet precise, steps what the
 user will get. When writing, focus on the benefits your app offers.
 
 [[images]]
-Images
-~~~~~~
+=== Images
 
 * Provide meaningful images to your users.
 * For best results, images should be 1400px wide and should go with a
@@ -289,8 +273,7 @@ preview image and is displayed in the top area of your marketplace app
 page.
 
 [[respect-the-users]]
-Respect the Users
-~~~~~~~~~~~~~~~~~
+=== Respect the Users
 
 * Apps have to follow design and HTML/CSS layout guidelines
 * Apps correctly clean up after themselves on uninstall and correctly
@@ -305,8 +288,7 @@ must be explained and be kept to a minimum for the functioning of an
 app. Use proper security measures when needed.
 
 [[disclaimer]]
-Disclaimer
-----------
+== Disclaimer
 
 ownCloud reserves the right to block and/or delete any uploaded app
 which does not comply with the ownCloud quality standards. Additionally,
@@ -314,8 +296,7 @@ we reserve the right to ban publishers who attempt to upload malicious
 code. This does not depend on whether it happens intentionally or not.
 
 [[available-products-tags]]
-Available Products Tags
------------------------
+== Available Products Tags
 
 .Available Product Tags
 |===

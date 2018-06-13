@@ -15,8 +15,7 @@ may still need `owncloud/data` for backwards compatibility with some
 apps.
 
 [[implications]]
-Implications
-------------
+== Implications
 
 This configuration needs to be applied before the first login of any
 user – including the admin user. Otherwise, you will run into an error
@@ -33,8 +32,7 @@ filesystem, and Encryption causes severe overhead because key files need
 to be fetched in addition to any requested file.
 
 [[configuration]]
-Configuration
--------------
+== Configuration
 
 Look in `config.sample.php` for a example configurations. Copy the
 relevant part to your `config.php` file. Any object store needs to
@@ -145,8 +143,7 @@ ownCloud 9.1+ has multibucket support for S3 object stores:
 ....
 
 [[openstack-swift]]
-OpenStack Swift
-~~~~~~~~~~~~~~~
+=== OpenStack Swift
 
 The Swift backend mounts a container on an OpenStack Object Storage
 server into the virtual filesystem. The class to be used is

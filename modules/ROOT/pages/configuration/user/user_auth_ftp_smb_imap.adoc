@@ -31,8 +31,7 @@ backends. These are:
 See xref:installation/apps_management_installation.adoc[Installing and Managing Apps] for more information.
 
 [[imap]]
-IMAP
-----
+== IMAP
 
 Provides authentication against IMAP servers.
 
@@ -51,8 +50,7 @@ extension]. See xref:installation/source_installation.adoc[Manual Installation o
 |=======================================================================
 
 [[example]]
-Example
-~~~~~~~
+=== Example
 
 [source,php]
 ----
@@ -74,8 +72,7 @@ Example
 IMPORTANT: The second `arguments` parameter ensures that only users from that domain are allowed to login. When set, after a successful login, the domain will be stripped from the email address and the rest used as an ownCloud username. For example, if the email address is `guest.user@example.com`, then `guest.user` will be the username used by ownCloud.
 
 [[smb]]
-SMB
----
+== SMB
 
 Provides authentication against Samba servers.
 
@@ -91,8 +88,7 @@ extension] or xref:configuration/files/external_storage/smb.adoc[smbclient].
 |=======================================================================
 
 [[example-1]]
-Example
-~~~~~~~
+=== Example
 
 [source,php]
 ----
@@ -109,8 +105,7 @@ Example
 ----
 
 [[ftp]]
-FTP
----
+== FTP
 
 Provides authentication against FTP servers.
 
@@ -127,8 +122,7 @@ Provides authentication against FTP servers.
 |=======================================================================
 
 [[example-2]]
-Example
-~~~~~~~
+=== Example
 
 [source,php]
 ----

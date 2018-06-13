@@ -1,15 +1,12 @@
-ownCloud Server Tuning
-======================
+= ownCloud Server Tuning
 
 [[using-cron-to-perform-background-jobs]]
-Using Cron to Perform Background Jobs
--------------------------------------
+== Using Cron to Perform Background Jobs
 
 See xref:configuration/server/background_jobs_configuration.adoc[Background Jobs] for a description and the benefits.
 
 [[enable-memory-caching]]
-Enable Memory Caching
----------------------
+== Enable Memory Caching
 
 Caching improves performance by storing data, code, and other objects in
 memory. Memory cache configuration for ownCloud is no longer
@@ -29,8 +26,7 @@ section xref:configuration/files/files_locking_transactional.adoc[Transactional 
 configure ownCloud to use Redis-based Transactional File Locking.
 
 [[redis-tuning]]
-Redis Tuning
-------------
+== Redis Tuning
 
 Redis tuning improves both file locking (if used) and memory caching
 (when using Redis). Here is a brief guide for tuning Redis to improve
@@ -102,16 +98,14 @@ echo never > /sys/kernel/mm/transparent_hugepage/enabled
 ----
 
 [[redis-latency-problems]]
-Redis Latency Problems
-~~~~~~~~~~~~~~~~~~~~~~
+=== Redis Latency Problems
 
 If you are having issues with Redis latency, please refer to
 https://redis.io/topics/latency[the official Redis guide] on how to
 handle them.
 
 [[database-tuning]]
-Database Tuning
----------------
+== Database Tuning
 
 [[using-mariadbmysql-instead-of-sqlite]]
 Using MariaDB/MySQL Instead of SQLite
@@ -138,8 +132,7 @@ help you find further information:
 Tuning MariaDB].
 
 [[tune-postgresql]]
-Tune PostgreSQL
-~~~~~~~~~~~~~~~
+=== Tune PostgreSQL
 
 A comprehensive guide to tuning PostgreSQL is outside the scope of the
 ownCloud documentation. However, here are three links that can help you
@@ -180,12 +173,10 @@ or coreinfo, it is maybe disabled in the BIOS.
 for support.
 
 [[webserver-tuning]]
-Webserver Tuning
-----------------
+== Webserver Tuning
 
 [[tune-apache]]
-Tune Apache
-~~~~~~~~~~~
+=== Tune Apache
 
 [[enable-http2-support]]
 Enable HTTP/2 Support

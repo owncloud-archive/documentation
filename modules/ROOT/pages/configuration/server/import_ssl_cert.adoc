@@ -9,8 +9,7 @@ mounts. There is no reason against using self-signed certificates on
 your own networks; they’re fast, free, and easy.
 
 [[importing-personal-ssl-certificates]]
-Importing Personal SSL Certificates
------------------------------------
+== Importing Personal SSL Certificates
 
 ownCloud has several methods for importing self-signed certificates so
 that you don’t have to hassle with Web browser warnings. When you allow
@@ -46,8 +45,7 @@ Then you’ll have a *Import root certificate* button on your admin page,
 just like the one on your personal page.
 
 [[using-occ-to-import-and-manage-ssl-certificates]]
-Using OCC to Import and Manage SSL Certificates
------------------------------------------------
+== Using OCC to Import and Manage SSL Certificates
 
 The `occ` command has options for listing and managing your SSL
 certificates:

@@ -1,5 +1,4 @@
-Converting Database Type
-========================
+= Converting Database Type
 
 SQLite is good for testing ownCloud, as well as small, single-user,
 ownCloud servers. But, *it does not scale* for large, multi-user sites.
@@ -11,8 +10,7 @@ the ownCloud command line tool: xref:configuration/server/occ_command.adoc#datab
 NOTE: ownCloud Enterprise edition does not support SQLite.
 
 [[run-the-conversion]]
-Run the conversion
-------------------
+== Run the conversion
 
 After you have setup the new database, in *the ownCloud root folder* run
 the following command to convert the database to the new format:
@@ -23,7 +21,7 @@ php occ db:convert-type [options] type username hostname database
 
 [NOTE]
 ====
-The converter searches for apps in your configured app folders and uses the schema definitions in the apps to create the new table. 
+The converter searches for apps in your configured app folders and uses the schema definitions in the apps to create the new table.
 As a result, tables of removed apps will not be converted — even with option `--all-apps`
 For example:
 
@@ -39,8 +37,7 @@ the converter will automatically configure the new database in your
 ownCloud config `config.php`.
 
 [[unconvertible-tables]]
-Unconvertible Tables
---------------------
+== Unconvertible Tables
 
 If you updated your ownCloud installation then the old tables, which are
 not used anymore, might still exist. The converter will tell you which

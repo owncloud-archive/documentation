@@ -1,5 +1,4 @@
-Manual Installation on Linux
-============================
+= Manual Installation on Linux
 
 Installing ownCloud on Linux from our Open Build Service packages is the
 preferred method (see linux_installation). These are maintained by
@@ -29,8 +28,7 @@ https://owncloud.org/install/[the ownCloud .tar archive].
 NOTE: Admins of SELinux-enabled distributions such as _CentOS_, _Fedora_, and _Red Hat Enterprise Linux_ may need to set new rules to enable installing ownCloud. See xref:installation/configuration_notes_and_tips.adoc#selinux[SELinux] for a suggested configuration.
 
 [[prerequisites]]
-Prerequisites
--------------
+== Prerequisites
 
 The ownCloud tar archive contains all of the required third-party PHP
 libraries. As a result, no extra ones are, strictly, necessary. However,
@@ -48,8 +46,7 @@ typing `php -m | grep -i <module_name>`. If you get a result, the module
 is present.
 
 [[required]]
-Required
-~~~~~~~~
+=== Required
 
 [[php-version]]
 PHP Version
@@ -155,8 +152,7 @@ with SQLite. It requires SQLite 3 or above. This is,
 |=======================================================================
 
 [[required-for-specific-apps]]
-Required For Specific Apps
-~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Required For Specific Apps
 
 [cols=",",options="header",]
 |=======================================================================
@@ -181,8 +177,7 @@ NOTE: SMB/Windows Network Drive mounts require the PHP module smbclient version 
 See xref:configuration/files/external_storage/smb.adoc[SMB/CIFS].
 
 [[optional]]
-Optional
-~~~~~~~~
+=== Optional
 
 [cols=",",options="header",]
 |=======================================================================
@@ -204,8 +199,7 @@ for creating and modifying images and preview thumbnails
 |=======================================================================
 
 [[recommended]]
-Recommended
-~~~~~~~~~~~
+=== Recommended
 
 [[for-specific-apps]]
 For Specific Apps
@@ -263,8 +257,7 @@ For MySQL/MariaDB
 The InnoDB storage engine is required, and MyISAM is not supported, see xref:configuration/database/linux_database_configuration.adoc#mysql-mariadb-storage-engine[MySQL / MariaDB storage engine] for more information.
 
 [[install-the-required-packages]]
-Install the Required Packages
------------------------------
+== Install the Required Packages
 
 *When Are Stable Channel Packages Updated?*
 
@@ -468,8 +461,7 @@ https://pecl.php.net/package/redis. Keep in mind that version 2.2.5 is
 the minimum version which ownCloud supports.
 
 [[install-owncloud]]
-Install ownCloud
-----------------
+== Install ownCloud
 
 Now download the archive of the latest ownCloud version:
 
@@ -522,8 +514,7 @@ On other HTTP servers, it is recommended to install ownCloud outside of
 the document root.
 
 [[configure-apache-web-server]]
-Configure Apache Web Server
----------------------------
+== Configure Apache Web Server
 
 On Debian, Ubuntu, and their derivatives, Apache installs with a useful
 configuration, so all you have to do is create an
@@ -555,8 +546,7 @@ ln -s /etc/apache2/sites-available/owncloud.conf /etc/apache2/sites-enabled/ownc
 ....
 
 [[additional-apache-configurations]]
-Additional Apache Configurations
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Additional Apache Configurations
 
 * For ownCloud to work correctly, we need the module `mod_rewrite`.
 Enable it by running: `a2enmod rewrite`.
@@ -605,8 +595,7 @@ https://secure.php.net/manual/en/install.unix.apache2.php[not thread
 safe].
 
 [[enable-ssl]]
-Enable SSL
-----------
+== Enable SSL
 
 NOTE: You can use ownCloud over plain HTTP, but we strongly encourage you to use SSL/TLS to encrypt all of your server traffic, and to protect user’s logins and data in transit.
 
@@ -623,8 +612,7 @@ service apache2 reload
 NOTE: Self-signed certificates have their drawbacks - especially when you plan to make your ownCloud server publicly accessible. You might want to consider getting a certificate signed by a commercial signing authority. Check with your domain name registrar or hosting service for good deals on commercial certificates.
 
 [[run-the-installation-wizard]]
-Run the Installation Wizard
----------------------------
+== Run the Installation Wizard
 
 After restarting Apache, you must complete your installation by running
 either the Graphical Installation Wizard or on the command line with the
@@ -645,15 +633,13 @@ To use the graphical Installation Wizard refer to xref:installation/installation
 IMPORTANT: Please know that ownCloud’s data directory *must be exclusive to ownCloud* and not be modified manually by any other process or user.
 
 [[set-strong-directory-permissions]]
-Set Strong Directory Permissions
---------------------------------
+== Set Strong Directory Permissions
 
 After completing the installation, you must immediately xref:installation/installation_wizard.adoc#post-installation-steps[set the directory permissions] in your ownCloud installation as strictly as possible for stronger security.
 After you do so, your ownCloud server will be ready to use.
 
 [[managing-trusted-domains]]
-Managing Trusted Domains
-------------------------
+== Managing Trusted Domains
 
 All URLs used to access your ownCloud server must be whitelisted in your
 `config.php` file, under the `trusted_domains` setting. Users are

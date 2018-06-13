@@ -127,8 +127,7 @@ return [
 It is a good idea to version your API in your URL
 
 [[testing-the-api]]
-Testing the API
----------------
+== Testing the API
 
 You can test the API by running a GET request with *curl*:
 

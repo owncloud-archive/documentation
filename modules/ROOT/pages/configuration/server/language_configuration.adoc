@@ -1,5 +1,4 @@
-Language Configuration
-======================
+= Language Configuration
 
 In normal cases ownCloud will automatically detect the language of the
 Web-GUI. If this does not work properly or you want to make sure that
@@ -14,8 +13,7 @@ Please check settings/languageCodes.php for the list of supported
 language codes.
 
 [[parameters]]
-Parameters
-----------
+== Parameters
 
 ....
 <?php

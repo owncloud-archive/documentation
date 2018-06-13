@@ -1,5 +1,4 @@
-How To Manually Move a Data Directory
-=====================================
+= How To Manually Move a Data Directory
 
 If you need to move your ownCloud data directory from its current
 location to somewhere else, here is a manual process that you can take
@@ -32,8 +31,7 @@ apachectl -k graceful
 NOTE: If you’re on CentOS/Fedora, try `systemctl restart httpd`. If you’re on Debian/Ubuntu try `sudo systemctl restart apache2` To learn more about the systemctl command, please refer to https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal[the systemd essentials guide].
 
 [[fix-hardcoded-database-path-variables]]
-Fix Hardcoded Database Path Variables
--------------------------------------
+== Fix Hardcoded Database Path Variables
 
 [[update-the-oc_storages-table]]
 Update the oc_storages table
@@ -90,8 +88,7 @@ UPDATE oc_jobs SET argument = '/your/new/data/path'
 ----
 
 [[fix-application-settings]]
-Fix Application Settings
-------------------------
+== Fix Application Settings
 
 One thing worth noting is that individual apps may reference the data
 directory separate from the core system configuration. If so, then you

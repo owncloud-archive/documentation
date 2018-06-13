@@ -1,5 +1,4 @@
-Introduction
-============
+= Introduction
 
 ownCloud applications let you extend and build on the power of ownCloud,
 taking it in ways that work just for your specific use-case(s).

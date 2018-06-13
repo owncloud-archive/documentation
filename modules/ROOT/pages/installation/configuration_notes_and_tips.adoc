@@ -1,8 +1,7 @@
 = Configuration Notes and Tips
 
 [[selinux]]
-SELinux
--------
+== SELinux
 
 See selinux_configuration for a suggested configuration for
 SELinux-enabled distributions such as Fedora and CentOS.
@@ -167,8 +166,7 @@ PHP-FPM
 -------
 
 [[system-environment-variables]]
-System Environment Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== System Environment Variables
 
 When you are using `php-fpm`, system environment variables like `PATH`,
 `TMP` or others are not automatically populated in the same way as when
@@ -221,8 +219,7 @@ Please keep in mind that it is possible to create different settings for
 best way to check your settings is with label-phpinfo.
 
 [[maximum-upload-size]]
-Maximum Upload Size
-~~~~~~~~~~~~~~~~~~~
+=== Maximum Upload Size
 
 If you want to increase the maximum upload size, you will also have to
 modify your `php-fpm` configuration and increase the
@@ -238,8 +235,7 @@ can’t read PHP settings in `.htaccess` these settings and permissions
 must be set in the `owncloud/.user.ini` file.
 
 [[no-basic-authentication-headers-were-found]]
-No basic authentication headers were found
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== No basic authentication headers were found
 
 This error is shown in your `data/owncloud.log` file. Some Apache
 modules like `mod_fastcgi`, `mod_fcgid` or `mod_proxy_fcgi` are not
@@ -251,8 +247,7 @@ the forums] but we generally recommend against the use of these modules
 and recommend mod_php instead.
 
 [[other-web-servers]]
-Other Web Servers
------------------
+== Other Web Servers
 
 * https://github.com/owncloud/documentation/wiki/Alternate-Web-server-notes[Other
 HTTP servers]

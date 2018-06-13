@@ -1,5 +1,4 @@
-Version Control
-===============
+= Version Control
 
 ownCloud supports simple version control system for files. Versioning
 creates backups of files which are accessible via the Versions tab on

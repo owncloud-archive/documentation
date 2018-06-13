@@ -1,9 +1,7 @@
-Database Connectivity
-=====================
+= Database Connectivity
 
 [[the-database-schema]]
-The Database Schema
--------------------
+== The Database Schema
 
 Now that the application’s routes and two controllers have been setup and wired together, we’ll flesh out `NotesController` so that the notes can be saved in the database. 
 But to do that, we first need to create xref:app/fundamentals/database.adoc[the database schema] by creating `ownnotes/appinfo/database.xml`, with the following content:
@@ -65,8 +63,7 @@ This causes ownCloud to trigger the update process when you next load (or reload
 Part of the update process includes run database migrations, which will create the database table defined in the migration above.
 
 [[data-entities]]
-Data Entities
--------------
+== Data Entities
 
 Now that the tables are created, we want to map the database search results to a PHP object. 
 That way, we’re able to manage the data more precisely. 
@@ -104,8 +101,7 @@ so that we’re able to transform the entity to JSON, making it easy to
 persist and cache the information.
 
 [[data-mappers]]
-Data Mappers
-------------
+== Data Mappers
 
 Entities are returned from so-called xref:app/fundamentals/database.adoc[data mappers]. 
 https://martinfowler.com/eaaCatalog/dataMapper.html[Data mappers are]:
@@ -316,8 +312,7 @@ This is all that is needed on the server side. Now let’s progress to the
 client side.
 
 [[decoupling-controllers-and-increasing-reusability]]
-Decoupling Controllers and Increasing Reusability
--------------------------------------------------
+== Decoupling Controllers and Increasing Reusability
 
 Let’s now say that our app is now on the ownCloud Marketplace, and we
 get a request that we should save the files in the filesystem which

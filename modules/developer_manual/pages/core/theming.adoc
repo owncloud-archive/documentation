@@ -1,5 +1,4 @@
-Theming ownCloud
-================
+= Theming ownCloud
 
 Themes can be used to customize the look and feel of any aspect of an
 ownCloud installation. They can override the default _JavaScript_,
@@ -28,8 +27,7 @@ theme-bootstrap.sh mynewtheme /var/www/owncloud
 _______________________________________________
 
 [[how-to-create-a-new-theme]]
-How to Create a New Theme
--------------------------
+== How to Create a New Theme
 
 At its most basic, to create a theme requires two steps:
 
@@ -108,8 +106,7 @@ the theme in the ownCloud Admin dashboard. Please consider filling out
 as many as possible, as completely as possible.
 
 [[theme-signing]]
-Theme Signing
-~~~~~~~~~~~~~
+=== Theme Signing
 
 If you are going to publish the theme as an app in
 https://marketplace.owncloud.com[the marketplace], you need to sign it.
@@ -128,8 +125,7 @@ application id is `app-id` to have no signature.
 ....
 
 [[how-to-override-images]]
-How to Override Images
-----------------------
+== How to Override Images
 
 Any image, such as the default logo, can be overridden by including one
 with the same path structure in your theme. For example, let’s say that
@@ -142,8 +138,7 @@ documentation_), add a new file with the following path:
 activated, this image will override the default one.
 
 [[default-image-paths]]
-Default Image Paths
-~~~~~~~~~~~~~~~~~~~
+=== Default Image Paths
 
 To make building a new theme that much easier, below is a list of a
 range of the image paths used in the default theme.
@@ -206,15 +201,13 @@ override for both `owncloud/apps/core/img/favicon.svg` and
 favicon handling.
 
 [[how-to-override-the-default-colors]]
-How to Override the Default Colors
-----------------------------------
+== How to Override the Default Colors
 
 To override the default style sheet, create a new CSS style sheet in
 your theme, in the theme’s `css` directory, called `styles.css`.
 
 [[how-to-override-translations]]
-How to Override Translations
-----------------------------
+== How to Override Translations
 
 You can override the translation of any string in your theme. To do so:
 
@@ -342,8 +335,7 @@ public function buildDocLinkToKey($key) {
 ----
 
 [[how-to-test-a-theme]]
-How to Test a Theme
--------------------
+== How to Test a Theme
 
 There are different options for testing themes:
 
@@ -354,12 +346,10 @@ you’re looking at the page.
 live environment.
 
 [[settings-page-registration]]
-Settings Page Registration
---------------------------
+== Settings Page Registration
 
 [[how-can-an-app-register-a-section-in-the-admin-or-personal-section]]
-How Can an App Register a Section in the Admin or Personal Section?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== How Can an App Register a Section in the Admin or Personal Section?
 
 As of ownCloud 10.0, apps must register admin and personal section
 settings in `info.xml`. As a result, all calls to
@@ -456,8 +446,7 @@ class PersonalPanel extends ISettings {
 ....
 
 [[create-custom-sections]]
-Create Custom Sections
-~~~~~~~~~~~~~~~~~~~~~~
+=== Create Custom Sections
 
 At the moment, there is no provision for apps creating their own
 settings sections. This is to encourage sensible and intelligent

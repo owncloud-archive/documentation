@@ -1,5 +1,4 @@
-CSS
-===
+= CSS
 
 The CSS files reside in the `css/` folder and should be included in the
 template:
@@ -35,8 +34,7 @@ http://www.polymer-project.org/resources/compatibility.html[might need
 to add polyfills using Polymer]
 
 [[standard-layout]]
-Standard Layout
----------------
+== Standard Layout
 
 To use the commonly used layout consisting of sidebar navigation and
 content the `app-navigation` and `app-content` ids can be utilized:
@@ -57,8 +55,7 @@ For built in mobile support your content has to be wrapped inside
 another div with the id `app-content-wrapper`.
 
 [[navigation]]
-Navigation
-----------
+== Navigation
 
 ownCloud provides a default CSS navigation layout. If list entries
 should have 16x16 px icons, the `with-icon` class can be added to the
@@ -82,8 +79,7 @@ recommend further indentations.
 ----
 
 [[folders]]
-Folders
-~~~~~~~
+=== Folders
 
 Folders are like normal entries and are only supported for the first
 level. In contrast to standard entries, the links which show the title
@@ -112,8 +108,7 @@ the `open` class to the list element:
 ----
 
 [[drag-and-drop]]
-Drag and Drop
-~~~~~~~~~~~~~
+=== Drag and Drop
 
 The class which should be applied to a first level element (`li`) that
 hosts or can host a second level is `drag-and-drop`. This will cause the
@@ -138,8 +133,7 @@ dragged element. In the case of jQuery UI’s droppable feature, the
 ----
 
 [[menus]]
-Menus
-~~~~~
+=== Menus
 
 To add actions that affect the current list element, you can add a menu
 for second and/or first level elements by adding the button and menu
@@ -240,8 +234,7 @@ app.directive('appNavigationEntryUtils', function () {
 ----
 
 [[editing]]
-Editing
-~~~~~~~
+=== Editing
 
 Often an edit option is needed for an entry. To add one for a given
 entry simply hide the title and add the following div inside the entry:
@@ -284,8 +277,7 @@ dynamically instead of just adding a `display: none` to it like
 `ng-show` and `ng-hide`.
 
 [[undo-entry]]
-Undo Entry
-~~~~~~~~~~
+=== Undo Entry
 
 If you want to undo a performed action on a navigation entry such as
 deletion, you should show the undo directly in place of the entry and
@@ -308,8 +300,7 @@ make it disappear after location change or seven seconds:
 ----
 
 [[settings-area]]
-Settings Area
--------------
+== Settings Area
 
 To create a settings area create a div with the id `app-settings` inside
 the `app-navgiation` div:
@@ -341,8 +332,7 @@ using a jQuery selector and hides the area if the user clicks outside of
 it.
 
 [[icons]]
-Icons
------
+== Icons
 
 To use icons which are shipped in core, special classes to apply the
 background image are supplied. All of these classes use

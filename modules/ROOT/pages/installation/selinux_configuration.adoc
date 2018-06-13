@@ -1,5 +1,4 @@
-SELinux Configuration
-=====================
+= SELinux Configuration
 
 When you have SELinux enabled on your Linux distribution, you may run
 into permissions problems after a new ownCloud installation, and see
@@ -43,8 +42,7 @@ you must give the HTTP server write access to these directories:
 ....
 
 [[enable-updates-via-the-web-interface]]
-Enable updates via the web interface
-------------------------------------
+== Enable updates via the web interface
 
 To enable updates via the ownCloud web interface, you may need this to
 enable writing to the ownCloud directories:
@@ -60,8 +58,7 @@ setsebool -P  httpd_unified  off
 ....
 
 [[disallow-write-access-to-the-whole-web-directory]]
-Disallow write access to the whole web directory
-------------------------------------------------
+== Disallow write access to the whole web directory
 
 For security reasons it’s suggested to disable write access to all
 folders in /var/www/ (default):
@@ -71,8 +68,7 @@ setsebool -P  httpd_unified  off
 ....
 
 [[allow-access-to-a-remote-database]]
-Allow access to a remote database
----------------------------------
+== Allow access to a remote database
 
 An additional setting is needed if your installation is connecting to a
 remote database:
@@ -82,8 +78,7 @@ setsebool -P httpd_can_network_connect_db on
 ....
 
 [[allow-access-to-ldap-server]]
-Allow access to LDAP server
----------------------------
+== Allow access to LDAP server
 
 Use this setting to allow LDAP connections:
 
@@ -92,8 +87,7 @@ setsebool -P httpd_can_connect_ldap on
 ....
 
 [[allow-access-to-remote-network]]
-Allow access to remote network
-------------------------------
+== Allow access to remote network
 
 ownCloud requires access to remote networks for functions such as
 Server-to-Server sharing, external storages or the ownCloud Marketplace.
@@ -104,8 +98,7 @@ setsebool -P httpd_can_network_connect on
 ....
 
 [[allow-access-to-network-memcache]]
-Allow access to network memcache
---------------------------------
+== Allow access to network memcache
 
 This setting is not required if `httpd_can_network_connect` is already
 on:
@@ -137,8 +130,7 @@ setsebool -P httpd_use_cifs on
 ....
 
 [[allow-access-to-fusefs]]
-Allow access to FuseFS
-----------------------
+== Allow access to FuseFS
 
 If your owncloud data folder resides on a Fuse Filesystem (e.g. EncFS
 etc), this setting is required as well:
@@ -148,8 +140,7 @@ setsebool -P httpd_use_fusefs on
 ....
 
 [[allow-access-to-gpg-for-rainloop]]
-Allow access to GPG for Rainloop
---------------------------------
+== Allow access to GPG for Rainloop
 
 If you use a the rainloop webmail client app which supports GPG/PGP, you
 might need this:
@@ -159,12 +150,10 @@ setsebool -P httpd_use_gpg on
 ....
 
 [[troubleshooting]]
-Troubleshooting
----------------
+== Troubleshooting
 
 [[general-troubleshooting]]
-General Troubleshooting
-~~~~~~~~~~~~~~~~~~~~~~~
+=== General Troubleshooting
 
 For general Troubleshooting of SELinux and its profiles try to install
 the package `setroubleshoot` and run:

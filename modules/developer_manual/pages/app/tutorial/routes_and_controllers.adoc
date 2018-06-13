@@ -2,8 +2,7 @@ Routes & Controllers
 ====================
 
 [[routes]]
-Routes
-------
+== Routes
 
 A typical web application consists of both server side and client side
 code. The glue between those two parts are the URLs. In the case of the
@@ -94,8 +93,7 @@ defined in the route’s name. The name is composed of the name of a
 controller and a method on that controller, separated by a hash symbol.
 
 [[controllers]]
-Controllers
------------
+== Controllers
 
 The controller, more specifically the controller function, as in other
 MVC-based frameworks, is the central place of logic for a route (or

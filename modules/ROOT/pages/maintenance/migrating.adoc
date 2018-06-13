@@ -1,5 +1,4 @@
-Migrating to a Different Server
-===============================
+= Migrating to a Different Server
 
 If the need arises, ownCloud can be migrated to a different server. 
 A typical use case would be a hardware change or a migration from xref:appliance/what-is-it.adoc[the Enterprise appliance] to a physical server. 
@@ -24,8 +23,7 @@ IMPORTANT: During the migration, do not make any changes to the original system,
 This ensures, should anything unforeseen happen, that you can go back to your existing installation and resume availability of your installation while debugging the problem.
 
 [[how-to-migrate]]
-How to Migrate
---------------
+== How to Migrate
 
 Firstly, set up the new machine with your desired Linux distribution. 
 At this point you can either xref:installation/source_installation.adoc[install ownCloud manually] via the
@@ -63,8 +61,7 @@ new location. And with the `CNAME` entry updated, you now need to update
 the trusted domains.
 
 [[managing-trusted-domains]]
-Managing Trusted Domains
-------------------------
+== Managing Trusted Domains
 
 All URLs used to access your ownCloud server must be whitelisted in your
 `config.php` file, under the `trusted_domains` setting. Users are
@@ -90,8 +87,7 @@ the event that a load-balancer is in place, there will be no issues as
 long as it sends the correct `X-Forwarded-Host` header.
 
 [[example-migration]]
-Example Migration
------------------
+== Example Migration
 
 Now, let’s step through an example migration. For this example to work,
 you will need the following on both the servers that you will use for
@@ -101,8 +97,7 @@ the migration:
 * SSH with `PermitRootLogin` set to `yes`
 
 [[preparation]]
-Preparation
-~~~~~~~~~~~
+=== Preparation
 
 Before you can perform a migration, you have to prepare. To do this,
 first make sure SSH is installed:
@@ -117,21 +112,18 @@ Next, edit ssh-config and enable root ssh login.
 [source,console]
 ----
 nano /etc/ssh/sshd_config
-PermitRootLogin yes
-----
+== PermitRootLogin yes
 
 And then restart SSH.
 
 [source,console]
 ----
-service ssh restart
-----
+== service ssh restart
 
 Lastly, install ownCloud on the new server.
 
 [[migration]]
-Migration
-~~~~~~~~~
+=== Migration
 
 [[enable-maintenance-mode]]
 Enable Maintenance Mode
@@ -250,8 +242,7 @@ command:
 
 [source,console]
 ----
-service ssh restart
-----
+== service ssh restart
 
 [[update-dns-and-trusted-domains]]
 Update DNS and Trusted Domains

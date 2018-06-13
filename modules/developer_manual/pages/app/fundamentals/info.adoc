@@ -1,5 +1,4 @@
-Application Metadata
-====================
+= Application Metadata
 
 The appinfo/info.xml contains metadata about the application. In this
 section, you will find a complete example configuration, along with an
@@ -88,8 +87,7 @@ This value also represents the URL your application is available on the
 marketplace.
 
 [[category]]
-category
---------
+== category
 
 The category you want to publish the application in. The following
 categories are available for applications to be filed under.
@@ -118,8 +116,7 @@ For publishing themes this tag must be present — but empty.
 ----
 
 [[description]]
-description
------------
+== description
 
 max. 4000 characters; This provides all the necessary, detailed
 information about the application. Don’t get lost in technical details,
@@ -128,28 +125,24 @@ https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet[markdown]
 to format the description.
 
 [[name]]
-name
-----
+== name
 
 *Required*. This is the human-readable name (or title) of the
 application that will be displayed in the application overview page.
 
 [[description-1]]
-description
------------
+== description
 
 *Required*. This contains the description of the application which will
 be shown in the application overview page.
 
 [[version]]
-version
--------
+== version
 
 This sets the version of your application.
 
 [[licence]]
-licence
--------
+== licence
 
 *Required*. The sets the application’s license. This license must be
 compatible with the AGPL and *must not be proprietary*.
@@ -164,14 +157,12 @@ to use the https://owncloud.com/overview/enterprise-edition[ownCloud
 Enterprise Edition].
 
 [[author]]
-author
-------
+== author
 
 *Required*. The name of the application’s author or authors.
 
 [[namespace]]
-namespace
----------
+== namespace
 
 Required if `routes.php` returns an array. For example, if your
 application is namespaced, e.g.,
@@ -181,16 +172,14 @@ to default to the first letter upper-cased application id, e.g., `myapp`
 would be tried under `Myapp`.
 
 [[summary]]
-summary
--------
+== summary
 
 *Required*. Provide a short application description (max. 90 chars).
 This gets displayed below the product title and on the product tiles. It
 is mandatory since ownCloud 10.0.0.
 
 [[types]]
-types
------
+== types
 
 ownCloud supports five types. These are:
 
@@ -209,8 +198,7 @@ Due to technical reasons applications of any type listed above can not
 be enabled for specific groups only.
 
 [[documentation]]
-documentation
--------------
+== documentation
 
 *Required*. Link to _admin_, _user_, and _developer_ documentation.
 Common places are: (where `$name` is the name of your app, e.g.
@@ -229,26 +217,22 @@ https://github.com/owncloud/documentation/. Another popular starting
 point for developer documentation is the README.md in GitHub.
 
 [[website]]
-website
--------
+== website
 
 *Required*. A link to the project’s web page.
 
 [[repository]]
-repository
-----------
+== repository
 
 *Required*. A link to the version control repository.
 
 [[bugs]]
-bugs
-----
+== bugs
 
 *Required*. A link to the bug tracker, if any.
 
 [[category-1]]
-category
---------
+== category
 
 The ownCloud Marketplace category. It can be one of the following:
 
@@ -258,23 +242,20 @@ The ownCloud Marketplace category. It can be one of the following:
 * tool
 
 [[dependencies]]
-Dependencies
-~~~~~~~~~~~~
+=== Dependencies
 
 All tags within the dependencies tag define a set of requirements which
 have to be fulfilled in order to operate properly. As soon as one of
 these requirements is not met the application cannot be installed.
 
 [[php]]
-php
----
+== php
 
 Defines the minimum and the maximum version of PHP required to run this
 application.
 
 [[database]]
-database
---------
+== database
 
 Each supported database has to be listed here. Valid values are
 `sqlite`, `mysql`, `pgsql`, `oci` and `mssql`. In the future it will be
@@ -282,8 +263,7 @@ possible to specify versions here as well. In case no database is
 specified it is assumed that all databases are supported.
 
 [[command]]
-command
--------
+== command
 
 Defines a command line tool to be available. With the attribute `os` the
 required operating system for this tool can be specified. Valid values
@@ -291,8 +271,7 @@ for the `os` attribute are as returned by the php function
 http://php.net/manual/en/function.php-uname.php[php_uname].
 
 [[lib]]
-lib
----
+== lib
 
 Defines a required PHP extension with a required minimum and/or maximum
 version. The names for the libraries have to match the result as
@@ -305,24 +284,21 @@ https://github.com/owncloud/core/blob/master/lib/private/app/platformrepository.
 base]
 
 [[os]]
-os
---
+== os
 
 Defines the required target operating system the application can run on.
 Valid values are as returned by the php function
 http://php.net/manual/en/function.php-uname.php[php_uname].
 
 [[owncloud]]
-owncloud
---------
+== owncloud
 
 Defines the minimum and maximum versions of ownCloud core.
 
 IMPORTANT: This will be mandatory from version 11 onwards.
 
 [[deprecated]]
-Deprecated
-~~~~~~~~~~
+=== Deprecated
 
 The following sections are listed just for reference and should not be
 used because:
@@ -333,8 +309,7 @@ used because:
 This should be replaced by a config file inside core.
 
 [[public]]
-public
-------
+== public
 
 Used to provide a public interface (requires no login) for the
 application. The id is appended to the URL `/owncloud/index.php/public`.
@@ -347,8 +322,7 @@ Example with id set to `calendar':
 Also take a look at xref:core/externalapi.adoc[the external API].
 
 [[remote]]
-remote
-------
+== remote
 
 Same as public, but requires login. The id is appended to the URL
 `/owncloud/index.php/remote`. Example with id set to `calendar':
@@ -360,8 +334,7 @@ Same as public, but requires login. The id is appended to the URL
 Also take a look at xref:core/externalapi.adoc[the external API].
 
 [[standalone]]
-standalone
-----------
+== standalone
 
 Can be set to `true` to indicate that this application is a web
 application. This can be used to tell GNOME Web for instance to treat
@@ -375,8 +348,7 @@ default_enable
 installation.
 
 [[shipped]]
-shipped
--------
+== shipped
 
 *Core applications only*: Used to tell ownCloud that the application is
 in the standard release. Please note that if this attribute is set to

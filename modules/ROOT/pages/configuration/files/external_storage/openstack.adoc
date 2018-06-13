@@ -1,5 +1,4 @@
-OpenStack Object Storage
-========================
+= OpenStack Object Storage
 
 OpenStack Object Storage is used to connect to an OpenStack Swift
 server, or to Rackspace. Two authentication mechanisms are available:

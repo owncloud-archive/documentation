@@ -1,5 +1,4 @@
-ownCloud Appliance Login Information
-====================================
+= ownCloud Appliance Login Information
 
 Welcome to the ownCloud Appliance. Here are the login credentials.
 

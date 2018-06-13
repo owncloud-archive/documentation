@@ -1,5 +1,4 @@
-Linking External Sites
-======================
+= Linking External Sites
 
 You can embed external Web sites inside your ownCloud pages with the
 External Sites app, as this screenshot shows.

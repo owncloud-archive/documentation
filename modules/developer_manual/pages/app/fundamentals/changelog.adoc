@@ -1,9 +1,7 @@
-Changelog
-=========
+= Changelog
 
 [[breaking-changes]]
-Breaking changes
-----------------
+== Breaking changes
 
 [[rc2]]
 8.2 RC2
@@ -29,8 +27,7 @@ is encoded properly before using it in URIs.
 https://github.com/owncloud/core/pull/14208)
 
 [[features]]
-Features
---------
+== Features
 
 [[rc2-1]]
 8.2 RC2
@@ -60,8 +57,7 @@ Furthermore all public APIs have received a `@since` annotation allowing
 developers to see when a function has been introduced.
 
 [[deprecations]]
-Deprecations
-------------
+== Deprecations
 
 This is a deprecation roadmap which lists all current deprecation
 targets and will be updated from release to release. This lists the
@@ -70,8 +66,7 @@ version when a specific method or class will be removed.
 Deprecations on interfaces also affect the implementing classes!
 
 [[deprecation-policy]]
-Deprecation Policy
-~~~~~~~~~~~~~~~~~~
+=== Deprecation Policy
 
 [[section]]
 11.1

@@ -1,5 +1,4 @@
-Changing Your ownCloud URL
-==========================
+= Changing Your ownCloud URL
 
 This admin manual assumes that the ownCloud server is already accessible
 under the route `/owncloud` (which is the default, e.g.

@@ -1,5 +1,4 @@
-External Storage Authentication Mechanisms
-==========================================
+= External Storage Authentication Mechanisms
 
 ownCloud storage backends accept one or more authentication schemes such
 as passwords, OAuth, or token-based, to name a few examples. Each
@@ -8,8 +7,7 @@ mechanisms. Different mechanisms require different configuration
 parameters, depending on their behaviour.
 
 [[special-mechanisms]]
-Special Mechanisms
-------------------
+== Special Mechanisms
 
 The *None* authentication mechanism requires no configuration
 parameters, and is used when a backend requires no authentication.
@@ -48,8 +46,7 @@ length. Keys can be regenerated with a button in the GUI.
 image:/owncloud-docs/_images/configuration/files/external_storage/auth_rsa.png[image]
 
 [[oauth]]
-OAuth
------
+== OAuth
 
 OAuth 1.0 and OAuth 2.0 are both implemented, but currently limited to
 the Dropbox and Google Drive backends respectively. These mechanisms

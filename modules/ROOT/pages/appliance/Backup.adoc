@@ -1,5 +1,4 @@
-Backup
-======
+= Backup
 
 If you remove the ownCloud app or update it - a backup is created
 automatically.

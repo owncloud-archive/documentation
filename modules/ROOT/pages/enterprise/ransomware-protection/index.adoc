@@ -1,5 +1,4 @@
-Ransomware Protection
-=====================
+= Ransomware Protection
 
 Ransomware is
 https://www.google.de/search?q=ransomware&source=lnms&tbm=nws&sa=X&ved=0ahUKEwiqmvL9rdfXAhWCyaQKHSkgDosQ_AUICigB&biw=1680&bih=908[an
@@ -19,8 +18,7 @@ to user data, ownCloud provides the Ransomware Protection app.
 NOTE: It is essential to be aware that user data needs to be synchronized with you ownCloud Server using the ownCloud Desktop synchronization client. Data that is not synchronized and stored in ownCloud cannot be protected.
 
 [[about-ransomware-protection]]
-About Ransomware Protection
----------------------------
+== About Ransomware Protection
 
 The app is tasked with _detecting_, _preventing_, and _reverting_
 anomalies. Anomalies are file operations (including _create_, _update_,
@@ -40,8 +38,7 @@ either encrypt a user’s files and add a specific file extension to them
 copy and add a particular file extension.
 
 [[file-extension-blacklist]]
-File Extension Blacklist
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== File Extension Blacklist
 
 The first line of defense against such threats is a blacklist that
 blocks write access to file extensions known to originate from
@@ -58,8 +55,7 @@ occ <../../configuration/server/occ_command>.
 NOTE: Please check the provided ransomware blacklist! It is *strongly recommended* to check the provided ransomware blacklist to ensure that it fits your needs. In some cases, the patterns might be too generic and result in false positives.
 
 [[file-blocking]]
-File Blocking
-~~~~~~~~~~~~~
+=== File Blocking
 
 The second line of defense is file blocking. As files are uploaded, they
 are compared against the file extension blacklist. If a match is found,
@@ -68,8 +64,7 @@ the upload is denied.
 NOTE: File blocking is always enabled.
 
 [[account-locking]]
-Account Locking
-~~~~~~~~~~~~~~~
+=== Account Locking
 
 The third line of defense is account locking. If a client uploads a file
 matching a pattern in the ransomware blacklist, the account is locked
@@ -121,8 +116,7 @@ Ransomware prevention and protection reduces risks to a minimum
 acceptable level.
 
 [[other-elements-of-ransomware-protection]]
-Other Elements of Ransomware Protection
----------------------------------------
+== Other Elements of Ransomware Protection
 
 [cols=",,",options="header",]
 |=======================================================================
@@ -172,12 +166,10 @@ account which was set to read-only.
 `<timestamp>` must be in the Linux timestamp format.
 
 [[requirements]]
-Requirements
-------------
+== Requirements
 
 [[mandatory]]
-Mandatory
-~~~~~~~~~
+=== Mandatory
 
 1.  *File Firewall rule (previous approach for ransomware protection).*
 If you have configured the File Firewall rule which was provided as a
@@ -194,14 +186,12 @@ capabilities of Ransomware Protection depend on its configuration
 regarding trash bin retention.
 
 [[optional]]
-Optional
-~~~~~~~~
+=== Optional
 
 1.  *Activity app.* For viewing activity logs.
 
 [[limitations]]
-Limitations
------------
+== Limitations
 
 * Ransomware Protection works with master-key based storage encryption.
 With credential-based storage encryption, only Ransomware Prevention

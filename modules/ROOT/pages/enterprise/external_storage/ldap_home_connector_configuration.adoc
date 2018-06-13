@@ -1,5 +1,4 @@
-LDAP Home Connector
-===================
+= LDAP Home Connector
 
 The LDAP Home Connector App enables you to configure your ownCloud
 server to display your users’ Windows home directories on their Files
@@ -15,8 +14,7 @@ ownCloud server. Then use the LDAP Home Connector and LDAP app to
 connect it to ownCloud.
 
 [[mount-home-directory]]
-Mount Home Directory
---------------------
+== Mount Home Directory
 
 Create an entry in /etc/fstab for the remote Windows root home directory
 mount. Store the credentials to access the home directory in a separate
@@ -36,8 +34,7 @@ address and filenames:
 ....
 
 [[configure-the-ldap-home-connector]]
-Configure the LDAP Home Connector
----------------------------------
+== Configure the LDAP Home Connector
 
 Enable the LDAP Home Connector app. Then go to the LDAP Home Connector
 form on your ownCloud admin page. In the *Display folder as:* field
@@ -50,8 +47,7 @@ already in use, then save your changes.
 image:/owncloud-docs/_images/enterprise/external_storage/ldap-home-connector-1.png[LDAP Home Connector configuration.]
 
 [[configure-the-ldap-server]]
-Configure the LDAP Server
--------------------------
+== Configure the LDAP Server
 
 In Active Directory, open the user profile. Scroll to the *Extensions*
 section and open the *Attribute Editor* tab

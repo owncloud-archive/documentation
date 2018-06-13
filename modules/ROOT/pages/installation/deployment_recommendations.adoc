@@ -1,5 +1,4 @@
-Deployment Recommendations
-==========================
+= Deployment Recommendations
 
 What is the best way to install and maintain ownCloud? 
 The answer to that is, as always: _``it depends''_.
@@ -19,8 +18,7 @@ Given that, these recommendations are only a rule of thumb based on our experien
 ====
 
 [[general-recommendations]]
-General Recommendations
------------------------
+== General Recommendations
 
 * Operating system: Linux.
 * Web server: Apache 2.4.
@@ -35,8 +33,7 @@ size.
 NOTE: Whatever the size of your organization, always keep one thing in mind: _The amount of data stored in ownCloud will only grow. So plan ahead._
 
 [[owncloud-administrators-must-have-command-line-or-cron-access]]
-ownCloud Administrators Must Have Command Line or Cron Access
--------------------------------------------------------------
+== ownCloud Administrators Must Have Command Line or Cron Access
 
 We only recommend using hosts that provide command-line or Cron access
 (ideally both) _to ownCloud administrators_, for three key reasons:
@@ -70,8 +67,7 @@ component
 |=======================================================================
 
 [[recommended-system-requirements]]
-Recommended System Requirements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Recommended System Requirements
 
 One machine running the application, web, and database server, as well
 as local storage. Authentication via an existing LDAP or Active
@@ -219,8 +215,7 @@ fail
 |=======================================================================
 
 [[recommended-system-requirements-1]]
-Recommended System Requirements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Recommended System Requirements
 
 * 2 to 4 application servers.
 * A cluster of two database servers.
@@ -361,8 +356,7 @@ fail
 |=======================================================================
 
 [[recommended-system-requirements-2]]
-Recommended System Requirements
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Recommended System Requirements
 
 * 4 to 20 application/Web servers.
 * A cluster of two or more database servers.
@@ -489,12 +483,10 @@ failure. A single Redis server, however, just needs to be rebooted, in
 the event of failure.
 
 [[known-issues]]
-Known Issues
-------------
+== Known Issues
 
 [[deadlocks-when-using-mariadb-galera-cluster]]
-Deadlocks When Using MariaDB Galera Cluster
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Deadlocks When Using MariaDB Galera Cluster
 
 If you’re using http://galeracluster.com[MariaDB Galera Cluster] with
 your ownCloud installation, you may encounter deadlocks when you attempt
@@ -542,8 +534,7 @@ requested before the replication has actually taken place.
 NOTE: This setting is disabled by default. See http://galeracluster.com/documentation-webpages/[the Galera Cluster WSREP documentation] for more details.
 
 [[references]]
-References
-----------
+== References
 
 * http://www.severalnines.com/blog/become-mysql-dba-blog-series-database-high-availability[Database High Availability]
 * http://blog.bitnami.com/2014/06/performance-enhacements-for-apache-and.html[Performance enhancements for Apache and PHP]

@@ -1,5 +1,4 @@
-RESTful API
-===========
+= RESTful API
 
 Offering a RESTful API is not different from creating a route <routes>
 and controllers <controllers> for the web interface. It is recommended
@@ -58,8 +57,7 @@ incompatible changes are introduced:
 ....
 
 [[modifying-the-cors-headers]]
-Modifying the CORS headers
---------------------------
+== Modifying the CORS headers
 
 By default the following values will be used for the preflighted OPTIONS
 request:

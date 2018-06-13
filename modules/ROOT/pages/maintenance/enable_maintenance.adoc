@@ -1,5 +1,4 @@
-Maintenance Mode Configuration
-==============================
+= Maintenance Mode Configuration
 
 You must put your ownCloud server into maintenance mode before
 performing upgrades, and for performing troubleshooting and maintenance.

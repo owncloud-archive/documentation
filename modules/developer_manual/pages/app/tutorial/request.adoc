@@ -1,5 +1,4 @@
-The Request Life Cycle
-======================
+= The Request Life Cycle
 
 Before we dive in to creating an application, it's important to have an
 overview of how the request life cycle of an ownCloud application works.
@@ -23,8 +22,7 @@ These requests are, in turn, handled by five ownCloud components:
 * link:[The Controller]
 
 [[the-front-controller]]
-The Front Controller
---------------------
+== The Front Controller
 
 All requests are sent to ownCloud's Front Controller: index.php, which
 in turn executes lib/base.php. This file:
@@ -50,8 +48,7 @@ are then executed. These are:
 With the setup completed, ownCloud then handles the user's request.
 
 [[the-router]]
-The Router
-----------
+== The Router
 
 The router:
 
@@ -67,8 +64,7 @@ The dispatcher:
 * Renders the request's output
 
 [[middleware]]
-Middleware
-----------
+== Middleware
 
 xref:app/fundamentals/middleware.adoc[Middleware] is a convenient way to execute common tasks, such as custom authentication, before or after xref:app/fundamentals/controllers.adoc[a controller method] is executed. 
 You can execute middleware at the following locations:
@@ -80,16 +76,14 @@ e.g., if an authentication request fails)
 * Before the output is rendered
 
 [[the-dependency-injection-container]]
-The Dependency Injection Container
-----------------------------------
+== The Dependency Injection Container
 
 xref:app/fundamentals/container.adoc[The Dependency Injection (DI) container] is where you define all the services (or dependencies) that your application will need; in particular, all of your application's controllers. 
 A key benefit of DI containers is that they handle all dependency instantiation. 
 This means that you no longer have to rely on either globals or singletons.
 
 [[the-controller]]
-The Controller
---------------
+== The Controller
 
 xref:app/fundamentals/controllers.adoc[The controller] contains the code that you actually want to run when a request has come in. 
 Think of it like a callback that is executed if everything before went fine. 

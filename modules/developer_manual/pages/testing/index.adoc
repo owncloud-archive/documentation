@@ -1,12 +1,10 @@
-ownCloud Test Pilots
-====================
+= ownCloud Test Pilots
 
 The ownCloud Test Pilots help to test and improve different server and
 client setups with ownCloud.
 
 [[what-do-you-do]]
-What do you do
---------------
+== What do you do
 
 You will receive emails from the mailing list and also from the bug
 tracker if developers need your help. Also, there will be announcements
@@ -17,8 +15,7 @@ them.
 We are looking forward to working with you :)
 
 [[why-do-you-want-to-join]]
-Why do you want to join
------------------------
+== Why do you want to join
 
 There are many different setups, and people have different interests. If
 we want ownCloud to run well on NGINX, for instance, someone has to test
@@ -39,15 +36,13 @@ If you want, you can also be listed as an active contributor on the
 https://owncloud.org[owncloud.org] page.
 
 [[who-can-join]]
-Who can join
-------------
+== Who can join
 
 Anyone who is interested in improving the quality on his/her setup and
 is willing to communicate with developers and other testers.
 
 [[how-do-you-join]]
-How do you join
----------------
+== How do you join
 
 Just register on the
 https://mailman.owncloud.org/mailman/listinfo/testpilots[testpilot
@@ -57,8 +52,7 @@ For further questions or help you can also send a mail to
 mstingl@owncloud.com.
 
 [[how-do-you-test]]
-How do you test
----------------
+== How do you test
 
 Testing follows these steps:
 
@@ -70,8 +64,7 @@ Testing follows these steps:
 6.  File the bug
 
 [[installing-owncloud]]
-Installing ownCloud
--------------------
+== Installing ownCloud
 
 Testing starts with setting up a testing environment. We urge you not to
 put your production data on testing releases unless you have a backup
@@ -87,8 +80,7 @@ https://github.com/owncloud/documentation[help us fix it]. Small things
 can be edited straight on GitHub.
 
 [[the-real-testing]]
-The Real Testing
-----------------
+== The Real Testing
 
 Testing is a matter of trying out some scenarios you decide on or were
 asked to test, for example, sharing a folder and mounting it on another

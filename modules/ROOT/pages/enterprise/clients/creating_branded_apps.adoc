@@ -1,9 +1,7 @@
-Creating Branded Client Apps
-============================
+= Creating Branded Client Apps
 
 [[overview]]
-Overview
---------
+== Overview
 
 ownBrander is an ownCloud build service that is exclusive to Enterprise
 customers for creating branded Android and iOS ownCloud sync apps, and
@@ -17,8 +15,7 @@ specifications and required elements in ownBrander.
 image:/owncloud-docs/_images/ownbrander-1.png[image]
 
 [[building-a-branded-desktop-sync-client]]
-Building a Branded Desktop Sync Client
---------------------------------------
+== Building a Branded Desktop Sync Client
 
 See https://doc.owncloud.com/branded_clients/[Building Branded ownCloud
 Clients] for instructions on building your own branded desktop sync
@@ -29,8 +26,7 @@ side-by-side. Both clients run independently of each other, and do not
 share account information or files.
 
 [[building-a-branded-ios-app]]
-Building a Branded iOS App
---------------------------
+== Building a Branded iOS App
 
 Building and distributing your branded iOS ownCloud app involves a large
 number of interdependent steps. The process is detailed in the
@@ -39,8 +35,7 @@ Clients] manual. Follow these instructions exactly and in order, and you
 will have a nice branded iOS app that you can distribute to your users.
 
 [[building-an-android-app]]
-Building an Android App
------------------------
+== Building an Android App
 
 Building and distributing your branded Android ownCloud app is fairly
 simple, and the process is detailed in

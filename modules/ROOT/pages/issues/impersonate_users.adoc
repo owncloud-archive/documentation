@@ -1,5 +1,4 @@
-Impersonating Users
-===================
+= Impersonating Users
 
 Sometimes you may need to use your ownCloud installation as another
 user, whether to help users debug an issue or to get a better
@@ -10,8 +9,7 @@ https://marketplace.owncloud.com/apps/impersonate[Impersonate].
 NOTE: This functionality is available only to administrators.
 
 [[impersonating-a-user]]
-Impersonating a User
---------------------
+== Impersonating a User
 
 When installed, you can then impersonate users; in effect, you will be
 logged in as said user. To do so, go to the Users list, where you will
@@ -31,8 +29,7 @@ Anything that you see until you log out will be what that user would
 see.
 
 [[ending-an-impersonation]]
-Ending an Impersonation
------------------------
+== Ending an Impersonation
 
 When you’re ready to stop impersonating the user, log out and you will
 return to your normal user session.

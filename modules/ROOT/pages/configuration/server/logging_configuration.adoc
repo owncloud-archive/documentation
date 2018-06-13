@@ -1,13 +1,11 @@
-Logging Configuration
-=====================
+= Logging Configuration
 
 Use your ownCloud log to review system status, or to help debug
 problems. You may adjust logging levels, and choose between using the
 ownCloud log or your syslog.
 
 [[parameters]]
-Parameters
-----------
+== Parameters
 
 Logging levels range from *DEBUG*, which logs all activity, to *FATAL*,
 which logs only fatal errors.
@@ -29,8 +27,7 @@ Logging level parameters are set in the config/config.php file, or on
 the Admin page of your ownCloud Web GUI.
 
 [[owncloud]]
-ownCloud
-~~~~~~~~
+=== ownCloud
 
 All log information will be written to a separate log file which can be
 viewed using the log viewer on your Admin page. By default, a log file
@@ -53,8 +50,7 @@ in the example below, the date/time format will be written in the format
 ....
 
 [[syslog]]
-syslog
-~~~~~~
+=== syslog
 
 All log information will be sent to your default syslog daemon.
 
@@ -77,8 +73,7 @@ used as a dedicated parameter to the syslog logging facility anyway.
 ....
 
 [[conditional-logging-level-increase]]
-Conditional Logging Level Increase
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Conditional Logging Level Increase
 
 You can configure the logging level to automatically increase to `debug`
 when the first condition inside a condition block is met. All conditions

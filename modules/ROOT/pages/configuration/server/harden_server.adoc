@@ -1,5 +1,4 @@
-Hardening and Security Guidance
-===============================
+= Hardening and Security Guidance
 
 ownCloud aims to ship with secure defaults that do not need to get
 modified by administrators. However, in some cases some additional
@@ -10,8 +9,7 @@ you run ownCloud Server on Apache2 in a Linux environment.
 NOTE: ownCloud will warn you in the administration interface if some critical security-relevant options are missing. However, it is still up to the server administrator to review and maintain system security.
 
 [[limit-on-password-length]]
-Limit on Password Length
-------------------------
+== Limit on Password Length
 
 ownCloud uses the https://en.m.wikipedia.org/wiki/Bcrypt[bcrypt]
 algorithm, and thus for security and performance reasons, e.g., denial
@@ -21,8 +19,7 @@ use in ownCloud: user passwords, passwords on link shares, and passwords
 on external shares.
 
 [[operating-system]]
-Operating system
-----------------
+== Operating system
 
 [[give-php-read-access-to-devurandom]]
 Give PHP read access to `/dev/urandom`
@@ -41,27 +38,23 @@ such a way that PHP is able to read random data from it.
 NOTE: When having an `open_basedir` configured within your `php.ini` file, make sure to include `/dev/urandom`.
 
 [[enable-hardening-modules-such-as-selinux]]
-Enable hardening modules such as SELinux
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Enable hardening modules such as SELinux
 
 It is highly recommended to enable hardening modules such as SELinux.
 where possible. See xref:installation/selinux_configuration.adoc[SELinux Configuration] to learn more about SELinux.
 
 [[deployment]]
-Deployment
-----------
+== Deployment
 
 [[place-data-directory-outside-of-the-web-root]]
-Place data directory outside of the web root
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Place data directory outside of the web root
 
 It is highly recommended to place your data directory outside of the Web
 root (i.e. outside of `/var/www`). It is easiest to do this on a new
 installation.
 
 [[disable-preview-image-generation]]
-Disable preview image generation
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Disable preview image generation
 
 ownCloud is able to generate preview images of common filetypes such as
 images or text files. By default the preview generation for some file
@@ -77,8 +70,7 @@ preview providers are enabled by modifying the `enabledPreviewProviders`
 option switch.
 
 [[use-https]]
-Use HTTPS
----------
+== Use HTTPS
 
 Using ownCloud without using an encrypted HTTPS connection opens up your
 server to a man-in-the-middle (MITM) attack, and risks the interception
@@ -91,8 +83,7 @@ consult the documentation for your HTTP server. The following examples
 are for Apache.
 
 [[redirect-all-unencrypted-traffic-to-https]]
-Redirect all unencrypted traffic to HTTPS
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Redirect all unencrypted traffic to HTTPS
 
 To redirect all HTTP traffic to HTTPS administrators are encouraged to
 issue a permanent redirect using the 301 status code. When using Apache
@@ -105,8 +96,7 @@ Redirect permanent / https://example.com/
 ....
 
 [[enable-http-strict-transport-security]]
-Enable HTTP Strict Transport Security
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Enable HTTP Strict Transport Security
 
 While redirecting all traffic to HTTPS is good, it may not completely
 prevent man-in-the-middle attacks. Thus administrators are encouraged to
@@ -139,8 +129,7 @@ HTTPS. If you have subdomains not accessible via HTTPS, remove
 NOTE: This requires the `mod_headers` extension in Apache.
 
 [[proper-ssl-configuration]]
-Proper SSL configuration
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== Proper SSL configuration
 
 Default SSL configurations by Web servers are often not
 state-of-the-art, and require fine-tuning for an optimal performance and
@@ -159,16 +148,14 @@ Also ensure that HTTP compression is disabled to mitigate the BREACH
 attack.
 
 [[use-a-dedicated-domain-for-owncloud]]
-Use a dedicated domain for ownCloud
------------------------------------
+== Use a dedicated domain for ownCloud
 
 Administrators are encouraged to install ownCloud on a dedicated domain
 such as cloud.domain.tld instead of domain.tld to gain all the benefits
 offered by the Same-Origin-Policy.
 
 [[ensure-that-your-owncloud-instance-is-installed-in-a-dmz]]
-Ensure that your ownCloud instance is installed in a DMZ
---------------------------------------------------------
+== Ensure that your ownCloud instance is installed in a DMZ
 
 As ownCloud supports features such as Federated File Sharing we do not
 consider Server Side Request Forgery (SSRF) part of our threat model. In
@@ -181,8 +168,7 @@ this you need to ensure that your ownCloud is properly installed in a
 segregated network and proper firewall rules are in place.
 
 [[serve-security-related-headers-by-the-web-server]]
-Serve security Related Headers by the Web server
-------------------------------------------------
+== Serve security Related Headers by the Web server
 
 Basic security headers are served by ownCloud already in a default
 environment. These include:

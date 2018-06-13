@@ -1,9 +1,7 @@
-Excluding Directories and Blacklisting Files
-============================================
+= Excluding Directories and Blacklisting Files
 
 [[definitions-of-terms]]
-Definitions of terms
---------------------
+== Definitions of terms
 
 *Blacklisted*::
   Files that may harm the ownCloud environment like a foreign
@@ -24,8 +22,7 @@ For example configurations please see
 `owncloud/config/config.sample.php`.
 
 [[impact-on-system-performance]]
-Impact on System Performance
-----------------------------
+== Impact on System Performance
 
 If you have a filesystem mounted with 200,000 files and directories and
 15 snapshots in rotation, you would now scan and process 200,000
@@ -36,8 +33,7 @@ a big and unnecessary overhead, most times confusing to clients, further
 processing can be eliminated by using excluded directories.
 
 [[blacklisted-files]]
-Blacklisted Files
------------------
+== Blacklisted Files
 
 By default, ownCloud blacklists the file `.htaccess` to secure the
 running instance, which is important when using Apache as webserver. A
@@ -47,8 +43,7 @@ parameter to the `blacklisted_files` array in `config.php`, but you can
 add more blacklisted file names if necessary.
 
 [[excluded-directories]]
-Excluded Directories
---------------------
+== Excluded Directories
 
 *Reason for excluding directories:*
 

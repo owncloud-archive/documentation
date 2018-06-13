@@ -1,5 +1,4 @@
-Background Jobs
-===============
+= Background Jobs
 
 ownCloud supports background job functionality (otherwise known as
 https://en.wikipedia.org/wiki/Cron[Cron jobs]). To create them requires
@@ -9,8 +8,7 @@ two steps to be completed:
 * Register the class with ownCloud
 
 [[create-a-job-class]]
-Create a Job Class
-------------------
+== Create a Job Class
 
 The first step is to create a job class, which will provide the job
 functionality. For this example, we will call it: lib/Cron/SomeTask.php.
@@ -22,8 +20,7 @@ Try to keep the method as small as possible, because its hard to test
 static methods.
 
 [[register-the-class-with-owncloud]]
-Register the Class with ownCloud
---------------------------------
+== Register the Class with ownCloud
 
 Next, you need to register the job as a background job. This is done in
 appinfo/info.xml by adding a job element, containing the name of the job
@@ -38,8 +35,7 @@ add the `SomeTask` class, which we just created, as a background job.:
 ----
 
 [[testing]]
-Testing
--------
+== Testing
 
 To test the job classes, you can run Cron manually, as in the example
 below:
@@ -58,8 +54,7 @@ UPDATE oc_jobs SET last_run=0,last_checked=0,reserved_at=0;
 ----
 
 [[is-the-cron-service-running]]
-Is The Cron Service Running?
-----------------------------
+== Is The Cron Service Running?
 
 Finally, don’t forget to add the ownCloud Cron process in the web
 server’s http://www.adminschoice.com/crontab-quick-reference[crontab].

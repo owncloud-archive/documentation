@@ -1,5 +1,4 @@
-Hooks
-=====
+= Hooks
 
 Hooks are used to execute code before or after an event has occurred.
 This is for instance useful to run cleanup code after users, groups or
@@ -68,8 +67,7 @@ class UserHooks {
 ----
 
 [[available-hooks]]
-Available Hooks
----------------
+== Available Hooks
 
 The scope is the first parameter that is passed to the `listen` method,
 the second parameter is the method and the third one the callback that
@@ -100,8 +98,7 @@ $userManager->removeListener(null, null, $callback);
 The following hooks are available:
 
 [[session]]
-Session
-~~~~~~~
+=== Session
 
 Injectable from the `ServerContainer` by calling the method
 `getUserSession()`.
@@ -122,8 +119,7 @@ $recoverPassword)
 * `logout` ()
 
 [[usermanager]]
-UserManager
-~~~~~~~~~~~
+=== UserManager
 
 Injectable from the `ServerContainer` by calling the method
 `getUserManager()`.
@@ -140,8 +136,7 @@ $recoverPassword)
 * `postCreateUser` (\OC\User\User $user, string $password)
 
 [[groupmanager]]
-GroupManager
-~~~~~~~~~~~~
+=== GroupManager
 
 Hooks available in scope `\\OC\\Group`:
 
@@ -155,8 +150,7 @@ Hooks available in scope `\\OC\\Group`:
 * `postCreate` (\OC\Group\Group $group)
 
 [[filesystem-root]]
-Filesystem Root
-~~~~~~~~~~~~~~~
+=== Filesystem Root
 
 Injectable from the `ServerContainer` by calling the method
 `getRootFolder()`, `getUserFolder()` or `getAppFolder()`.
@@ -177,8 +171,7 @@ Filesystem hooks available in scope `\\OC\\Files`:
 * `postRename` (\OCP\Files\Node $source, \OCP\Files\Node $target)
 
 [[filesystem-scanner]]
-Filesystem Scanner
-~~~~~~~~~~~~~~~~~~
+=== Filesystem Scanner
 
 Filesystem scanner hooks available in scope
 `\\OC\\Files\\Utils\\Scanner`:

@@ -1,13 +1,11 @@
-Testing
-=======
+= Testing
 
 All PHP classes can be tested with http://phpunit.de/[PHPUnit],
 JavaScript can be tested by using
 http://karma-runner.github.io/0.12/index.html[Karma].
 
 [[php]]
-PHP
----
+== PHP
 
 The PHP tests go into the `tests/` directory. Unfortunately the
 classloader in core requires a running server (as in a fully configured

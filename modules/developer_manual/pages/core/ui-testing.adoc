@@ -1,9 +1,7 @@
-User Interface Testing
-======================
+= User Interface Testing
 
 [[requirements]]
-Requirements
-------------
+== Requirements
 
 * ownCloud >= 10.0. Make sure you have a running instance of ownCloud
 https://doc.owncloud.com/server/latest/admin_manual/installation/[completely
@@ -44,8 +42,7 @@ sudo apt install tigervnc-viewer
 * To run the link:https://www.seleniumhq.org[Selenium server] locally (not in Docker) see the notes at the end.
 
 [[overview]]
-Overview
---------
+== Overview
 
 Tests are divided into suites, enabling each suite to test some logical portion of the functionality and for the total elapsed run-time of a single suite to be reasonable (up to about 40 minutes on Travis-CI, about 10 minutes on drone).
 Elapsed run-time on a local developer system is very dependent on the IO as well as CPU performance.
@@ -57,8 +54,7 @@ file. Each scenario has a number of scenario steps that define the steps
 taken to do the test.
 
 [[set-up-test]]
-Set Up Test
------------
+== Set Up Test
 
 - Start the Selenium Docker container in a terminal:
 
@@ -180,8 +176,7 @@ Because not everyone will have functional IPv6 on their test system yet, tests t
 To run those tests, follow the section below on running skipped tests and specify `--tags @ipv6`.
 
 [[running-ui-tests-for-one-feature]]
-Running UI Tests for One Feature
---------------------------------
+== Running UI Tests for One Feature
 
 You can run the UI tests for just a single feature by specifying the
 feature file:
@@ -202,8 +197,7 @@ bash tests/travis/start_ui_tests.sh
 ----
 
 [[running-ui-tests-for-an-app]]
-Running UI Tests for an App
----------------------------
+== Running UI Tests for an App
 
 With the app installed, run the UI tests for the app by specifying the
 location of the app’s `behat.yml` config file:
@@ -226,8 +220,7 @@ bash tests/travis/start_ui_tests.sh \
 ----
 
 [[skipping-tests]]
-Skipping Tests
---------------
+== Skipping Tests
 
 If a UI test is known to fail because of an existing bug, then it is
 left in the test set _but_ is skipped by default. Skip a test by tagging
@@ -308,8 +301,7 @@ java -jar selenium-server-standalone-3.12.0.jar \
 
 
 [[known-issues]]
-Known Issues
-------------
+== Known Issues
 
 * Tests that are known not to work in specific browsers are tagged e.g., `@skipOnFIREFOX47+` or `@skipOnINTERNETEXPLORER` and will be skipped by the script automatically
 * - The web driver for the current version of Firefox works differently to the old one. If you want to test FF < 56 you need to test on 47.0.2 and to use Selenium server 2.53.1 for it

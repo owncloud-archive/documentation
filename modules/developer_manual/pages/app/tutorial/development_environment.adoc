@@ -1,5 +1,4 @@
-The Core Application Files
-==========================
+= The Core Application Files
 
 Now that you know how the request life cycle works, let’s look at the
 core application files. Any ownCloud application, at its most

@@ -7,8 +7,7 @@ https://example.com/index.php/apps/files/). The following documentation
 provides the needed steps to configure this for the `Apache` Web server.
 
 [[prerequisites]]
-Prerequisites
--------------
+== Prerequisites
 
 Before being able to use index.php-less URLs you need to enable the
 `mod_rewrite` and `mod_env` Apache modules. Furthermore a configured
@@ -24,12 +23,11 @@ Finally the user running your Web server (e.g. `www-data`) needs to be
 able to write into the `.htaccess` file shipped within the ownCloud root
 directory (e.g., `/var/www/owncloud/.htaccess`). If you have applied
 strong_perms_label the user might be unable to write into this file and
-the needed update will fail. 
+the needed update will fail.
 You need to revert this strong permissions temporarily by following the steps described in xref:maintenance/update.adoc#setting-permissions-for-updating[setting permissions for updating].
 
 [[configuration-steps]]
-Configuration steps
--------------------
+== Configuration steps
 
 The first step is to configure the `overwrite.cli.url` and
 `htaccess.RewriteBase` config.php options (See
@@ -60,8 +58,7 @@ done:
 Afterwards your instance should have index.php-less URLs enabled.
 
 [[troubleshooting]]
-Troubleshooting
----------------
+== Troubleshooting
 
 If accessing your ownCloud installation fails after following these
 instructions and you see messages like this in your ownCloud log:

@@ -1,9 +1,7 @@
-Translation
-===========
+= Translation
 
 [[make-text-translatable]]
-Make text translatable
-----------------------
+== Make text translatable
 
 In HTML or PHP wrap it like this
 `<?php p($l->t('This is some text'));?>` or this
@@ -17,8 +15,7 @@ display HTML code. Otherwise, using `p()` is strongly preferred to
 escape HTML characters against XSS attacks.
 
 [[you-shall-never-split-sentences]]
-You shall never split sentences!
---------------------------------
+== You shall never split sentences!
 
 [[reason]]
 Reason:
@@ -52,15 +49,13 @@ grammatical order it prevents the translators from reordering the
 sentence components.
 
 [[html-in-translation-strings]]
-Html in translation strings
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Html in translation strings
 
 Html tags can be kept out of translation strings like in the example
 below. Then the detail of the tags is uncoupled from the translation.
 
 [[what-about-variables-in-the-strings]]
-What about variables in the strings?
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== What about variables in the strings?
 
 If you need to add variables to the translation strings do it like this:
 
@@ -74,8 +69,7 @@ have the chance to re-order them if they need to translate the whole
 sentence in a different word order.
 
 [[automated-synchronization-of-translations]]
-Automated synchronization of translations
------------------------------------------
+== Automated synchronization of translations
 
 Multiple nightly jobs have been setup in order to synchronize
 translations - it’s a multi-step process: `perl l10n.pl read` will
@@ -121,8 +115,7 @@ The translation script requires Locale::PO, installable via
 `apt-get install liblocale-po-perl`
 
 [[configure-transifex]]
-Configure transifex
--------------------
+== Configure transifex
 
 [source,bash]
 ----

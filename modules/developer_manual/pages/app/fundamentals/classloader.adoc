@@ -1,5 +1,4 @@
-The Classloader
-===============
+= The Classloader
 
 The classloader is provided by ownCloud and loads all your classes
 automatically. The only thing left to include by yourself are 3rd party
@@ -37,8 +36,7 @@ A second PSR-4 root is available when running tests.
 `\\OCA\\MyApp\\Tests` is thereby mapped to /apps/myapp/tests/.
 
 [[legacy-autoloading]]
-Legacy Autoloading
-------------------
+== Legacy Autoloading
 
 The legacy classloader, deprecated since 9.1, is still in place and
 works like this:

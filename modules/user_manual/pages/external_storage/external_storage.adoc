@@ -1,5 +1,4 @@
-Configuring External Storage
-============================
+= Configuring External Storage
 
 The External Storage application allows you to mount external storage
 services, such as Google Drive, Dropbox, Amazon S3, SMB/CIFS

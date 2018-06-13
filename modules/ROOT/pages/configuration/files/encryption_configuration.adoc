@@ -1,5 +1,4 @@
-Encryption Configuration
-========================
+= Encryption Configuration
 
 The primary purpose of the ownCloud server-side encryption is to protect
 users’ files when they’re located on remote storages, such as Dropbox
@@ -81,8 +80,7 @@ For more information, read: https://owncloud.org/blog/how-owncloud-uses-encrypti
 ====
 
 [[encryption-types]]
-Encryption Types
-----------------
+== Encryption Types
 
 ownCloud provides two encryption types:
 
@@ -94,8 +92,7 @@ encrypted using that key pair.
 IMPORTANT: These encryption types are *not compatible*.
 
 [[before-enabling-encryption]]
-Before Enabling Encryption
---------------------------
+== Before Enabling Encryption
 
 Plan very carefully before enabling encryption, because it is not
 reversible via the ownCloud Web interface. If you lose your encryption
@@ -113,8 +110,7 @@ In this case, *don’t enable encryption*!
 ====
 
 [[how-to-enable-encryption]]
-How To Enable Encryption
-------------------------
+== How To Enable Encryption
 
 The base encryption system is enabled and disabled on your Admin page.
 First, you must enable this, and then select an encryption module to
@@ -164,8 +160,7 @@ NOTE: Please note, the commands have to be run in this order.
 IMPORTANT: If you already have Basic encryption enabled - you *must not* enable Master Key Based encryption.
 
 [[enabling-master-key-based-encryption]]
-Enabling Master Key Based Encryption
-------------------------------------
+== Enabling Master Key Based Encryption
 
 To enable master key based encryption:
 
@@ -199,8 +194,7 @@ php occ encryption:encrypt-all
 NOTE: This is not typically required, as the master key is often enabled at install time. As a result, when enabling it, there should be no data to encrypt. But, in case it’s being enabled after install, and the installation does have files which are unencrypted, encrypt-all can be used to encrypt them.
 
 [[sharing-encrypted-files]]
-Sharing Encrypted Files
------------------------
+== Sharing Encrypted Files
 
 After encryption is enabled, your users must also log out and log back
 in to generate their personal encryption keys. They will see a yellow
@@ -218,16 +212,14 @@ encryption, and then the share owner can remove the individual shares.
 image:/owncloud-docs/_images/configuration/files/encryption9.png[image]
 
 [[encrypting-external-mountpoints]]
-Encrypting External Mountpoints
--------------------------------
+== Encrypting External Mountpoints
 
 You and your users can encrypt individual external mount points.
 You must have external storage enabled on your Admin page, and enabled for your users.
 Encryption settings can be configured in the mount options for xref:configuration/files/external_storage_configuration_gui.adoc[an external storage mount].
 
 [[how-to-enable-users-file-recovery-keys]]
-How To Enable Users File Recovery Keys
---------------------------------------
+== How To Enable Users File Recovery Keys
 
 Once a user has encrypted their files, if they lose their ownCloud
 password, then they lose access to their encrypted files, as their files
@@ -267,8 +259,7 @@ image:/owncloud-docs/_images/configuration/files/encryption12.png[image]
 NOTE: Sharing a recovery key with a user group is *not* supported. This is only supported with xref:create-a-new-master-key[the master key].
 
 [[changing-the-recovery-key-password]]
-Changing The Recovery Key Password
-----------------------------------
+== Changing The Recovery Key Password
 
 If you have misplaced your recovery key password and need to replace it,
 here’s what you need to do:
@@ -289,8 +280,7 @@ NOTE: You can only change the recovery key password if you know the original. Th
 IMPORTANT: Replacing the recovery key will mean that all users will lose the possibility to recover their files until they have applied the new recovery key.
 
 [[disabling-encryption]]
-Disabling Encryption
---------------------
+== Disabling Encryption
 
 To disable encryption, put your ownCloud server into single-user mode,
 and then disable your encryption module with these commands:
@@ -310,8 +300,7 @@ occ maintenance:singleuser --off
 CAUTION: You may only disable encryption with by using the link:[occ Encryption Commands]. Make sure you have backups of all encryption keys, including those for all your users.
 
 [[not-all-files-are-encrypted]]
-Not All Files Are Encrypted
----------------------------
+== Not All Files Are Encrypted
 
 Only the data in the files in `data/user/files` are encrypted, not the
 filenames or folder structures.
@@ -341,8 +330,7 @@ password in the ownCloud Users panel to match their back-end password
 and then — of course — notify the user and give them their new password.
 
 [[occ-encryption-commands]]
-occ Encryption Commands
------------------------
+== occ Encryption Commands
 
 If you have shell access, you may use the `occ` command to perform
 encryption operations. You also have additional options such as
@@ -350,8 +338,7 @@ decryption and creating a single master encryption key. See
 encryption_label for detailed instructions on using `occ`.
 
 [[view-current-encryption-status]]
-View Current Encryption Status
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== View Current Encryption Status
 
 Get the current encryption status and the loaded encryption module:
 
@@ -372,8 +359,7 @@ Default module: OC_DEFAULT_MODULE
 ....
 
 [[list-available-encryption-modules]]
-List Available Encryption Modules
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== List Available Encryption Modules
 
 To list the available encryption modules:
 
@@ -392,8 +378,7 @@ occ encryption:set-default-module [Module ID].
 The [module ID] is taken from the `encryption:list-modules` command.
 
 [[encrypt-and-decrypt-data-files-for-all-users]]
-Encrypt and Decrypt Data Files For All Users
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Encrypt and Decrypt Data Files For All Users
 
 For performance reasons, when you enable encryption on an ownCloud
 server only new and changed files are encrypted. This command gives you
@@ -437,8 +422,7 @@ Current key storage root:  default storage location (data/)
 ....
 
 [[move-key-location]]
-Move Key Location
-~~~~~~~~~~~~~~~~~
+=== Move Key Location
 
 Move keys to a different root folder, either locally or on a different
 server. The folder must already exist, be owned by root and your HTTP
@@ -457,8 +441,7 @@ Key storage root successfully changed to ../../../etc/keys
 ....
 
 [[create-a-new-master-key]]
-Create a New Master Key
-~~~~~~~~~~~~~~~~~~~~~~~
+=== Create a New Master Key
 
 Use this when you have:
 
@@ -473,16 +456,14 @@ occ encryption:enable-master-key
 IMPORTANT: It is not possible to disable it.
 
 [[recreating-an-existing-master-key]]
-Recreating an Existing Master Key
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Recreating an Existing Master Key
 
 If the master key needs replacing, for example, because it has been compromised, xref:configuration/server/occ_command.adoc#encryption[an occ command is available].
 The command is `encryption:recreate-master-key`.
 It replaces existing master key with new one and encrypts the files with the new key.
 
 [[disabling-encryption-1]]
-Disabling Encryption
---------------------
+== Disabling Encryption
 
 You may disable encryption only with `occ`. Make sure you have backups
 of all the encryption keys, including those for all users. When you do,
@@ -509,8 +490,7 @@ If so, "decrypt all" will use it to decrypt all files.
 NOTE: It is *not* planned to move this to the next user login or a background job. If that was done, then login passwords would need to be stored in the database, which could be a security issue.
 
 [[files-not-encrypted]]
-Files Not Encrypted
--------------------
+== Files Not Encrypted
 
 Only the data in the files in `data/user/files` are encrypted, and not
 the filenames or folder structures. These files are never encrypted:

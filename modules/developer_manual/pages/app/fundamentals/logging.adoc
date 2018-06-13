@@ -1,5 +1,4 @@
-Logging
-=======
+= Logging
 
 The logger can be injected from the `ServerContainer`:
 

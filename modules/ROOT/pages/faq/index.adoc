@@ -1,5 +1,4 @@
-FAQ
-===
+= FAQ
 
 [[how-do-i-transfer-files-from-one-user-to-another]]
 == How do I transfer files from one user to another?

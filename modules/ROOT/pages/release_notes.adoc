@@ -1,5 +1,4 @@
-Release Notes
-=============
+= Release Notes
 
 * xref:changes-in-10.0.8[Changes in 10.0.8]
 * xref:changes-in-10.0.7[Changes in 10.0.7]
@@ -41,8 +40,7 @@ https://doc.owncloud.com/server/latest/admin_manual/installation/system_requirem
 requirements in the ownCloud documentation].
 
 [[personal-note-for-public-link-mail-notification]]
-Personal note for public link mail notification
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Personal note for public link mail notification
 
 One of the usability enhancements of ownCloud Server 10.0.8 is the
 possibility for users to add a personal note when sending public links
@@ -53,8 +51,7 @@ block] for the personal note to customized templates in order to display
 the personal note in the mail notifications.
 
 [[new-mail-notifications-feature]]
-New mail notifications feature
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New mail notifications feature
 
 ownCloud Server 10.0.8 introduces a new extensible notification
 framework. Apart from technical changes under the hood the Notifications
@@ -89,8 +86,7 @@ administrators now have to explicitly specify the option
 `-c, --showCount` to display the number of users to be synchronized.
 
 [[new-events-for-audit-logging]]
-New events for audit logging
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New events for audit logging
 
 New events have been added to be used for audit logging, among others.
 These include _configuration changes_ by administrators and users, _file
@@ -100,8 +96,7 @@ check to add the new events. The latest version of the Auditing
 extension (_admin_audit_) is required.
 
 [[new-command-to-verify-and-repair-file-checksums]]
-New command to verify and repair file checksums
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New command to verify and repair file checksums
 
 With ownCloud 10 file integrity checking by computing and matching
 checksums has been introduced to ensure that transferred files arrive at
@@ -118,8 +113,7 @@ Note: Executing this command might take some time depending on the file
 count.
 
 [[new-config-setting-to-specify-minimum-characters-for-sharing-autocomplete]]
-New config setting to specify minimum characters for sharing autocomplete
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New config setting to specify minimum characters for sharing autocomplete
 
 For security reasons the default value for minimum characters to trigger
 the sharing autocomplete mechanism has been set to "4" (previously it
@@ -132,8 +126,7 @@ Therefore the value now is configurable via the _config.php_ option
 needs best.
 
 [[new-option-to-granularly-configure-public-link-password-enforcement]]
-New option to granularly configure public link password enforcement
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New option to granularly configure public link password enforcement
 
 With ownCloud 10 the ''File Drop'' feature has been merged with public
 link permissions. This kind of public link does not give recipients
@@ -145,8 +138,7 @@ write, upload only/File Drop_). Please check the administration settings
 _''Sharing''_ section and configure as desired.
 
 [[new-option-to-exclude-apps-from-integrity-check]]
-New option to exclude apps from integrity check
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New option to exclude apps from integrity check
 
 By verifying signature files the _integrity check_ ensures that the code
 running in an ownCloud instance has not been altered by third parties.
@@ -159,8 +151,7 @@ the _integrity check_ by using the _config.php_ option
 See _config.sample.php_ for more information.
 
 [[new-occ-command-to-modify-user-details]]
-New occ command to modify user details
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New occ command to modify user details
 
 It is now possible to modify user details like display names or mail
 addresses via the command `occ user:modify`. Please append `--help` for
@@ -175,8 +166,7 @@ _whole instances_ it can now be executed for _groups_ using
 `-g, --groups=GROUPS`. Please append `--help` for more information.
 
 [[new-configurable-default-format-for-syslog]]
-New configurable default format for syslog
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New configurable default format for syslog
 
 When using syslog as the log type (`'log_type' => 'syslog',` in
 _config.php_) the default format has been changed to include _request
@@ -186,8 +176,7 @@ a certain log format, please check the new format and
 _config.sample.php_ on how to change it.
 
 [[new-config-option-to-enable-fallback-to-http-for-federated-shares]]
-New config option to enable fallback to HTTP for federated shares
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== New config option to enable fallback to HTTP for federated shares
 
 For security reasons federated sharing (sharing between different
 ownCloud instances) strictly requires HTTPS (SSL/TLS). When this
@@ -234,8 +223,7 @@ to send notifications to all users. For now administrators can use the
 _occ_ command if more granularity is required.
 
 [[global-option-for-cors-domains]]
-Global option for CORS domains
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Global option for CORS domains
 
 For security reasons ownCloud has a _Same-Origin-Policy_ that prevents
 requests to ownCloud resources from other domains than the domain the
@@ -247,8 +235,7 @@ exceptions via _CORS (Cross-Origin Resource Sharing)_ using
 _config.sample.php_ for more information.
 
 [[solved-known-issues]]
-Solved known issues
-~~~~~~~~~~~~~~~~~~~
+=== Solved known issues
 
 * Bogus ``Login failed'' log entries have been removed (see
 https://doc.owncloud.com/server/10.0/admin_manual/release_notes.html#changes-in-10-0-7[10.0.7
@@ -261,8 +248,7 @@ the settings page has been fixed
 are checked correctly)
 
 [[known-issues]]
-Known issues
-~~~~~~~~~~~~
+=== Known issues
 
 * Issues with multiple theme apps and Mail Template Editor
 
@@ -278,8 +264,7 @@ theme app or disable the Mail Template Editor app.
 * `occ transfer:ownership` https://github.com/owncloud/core/issues/31150[does not transfer public link shares if they were created by the target user (reshare)].
 
 [[for-developers]]
-For developers
-~~~~~~~~~~~~~~
+=== For developers
 
 * The global JS variable ``oc_current_user'' was removed. Please use the public method `OC.getCurrentUser()` instead.
 * Lots of new Symfony events have been added for various user actions, see changelog for details, or the link:https://github.com/owncloud/documentation/issues/3738[documentation ticket].
@@ -296,8 +281,7 @@ authentication].
 Please consider the ownCloud Server 10.0.5 release notes.
 
 [[known-issues-1]]
-Known issues
-~~~~~~~~~~~~
+=== Known issues
 
 * When using application passwords,
 https://github.com/owncloud/core/issues/30157[log entries related to
@@ -364,8 +348,7 @@ Fixed: Only set CORS headers on WebDAV endpoint when Origin header is specified
 ownCloud Server 10.0.4 known issue is resolved.
 
 [[fixes-and-improvements-for-the-mail-template-editor]]
-Fixes and improvements for the Mail Template Editor
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Fixes and improvements for the Mail Template Editor
 
 * Known issues are resolved: Mail Template Editor works again, got
 support for app themes and additional templates were added for
@@ -376,8 +359,7 @@ soon be released as a separate app to ownCloud Marketplace.
 https://github.com/owncloud/templateeditor/blob/release/0.2.0/CHANGELOG.md
 
 [[known-issues-2]]
-Known issues
-~~~~~~~~~~~~
+=== Known issues
 
 * When using application passwords,
 https://github.com/owncloud/core/issues/30157[log entries related to
@@ -395,8 +377,7 @@ full ownCloud Server 10.0.4 changelog] for further details on what has
 changed.
 
 [[more-granular-sharing-restrictions]]
-More granular sharing restrictions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== More granular sharing restrictions
 
 The ``__Restrict users to only share with users in their groups__''
 option, in the Sharing settings, restricts users to only share with
@@ -412,8 +393,7 @@ installation, limiting them to only being able to share with groups
 which they are a member of, and vice versa.
 
 [[configurable-solution-for-indistinguishable-user-display-names]]
-Configurable solution for indistinguishable user display names
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Configurable solution for indistinguishable user display names
 
 The ownCloud sharing dialog displays users according to their display
 name. As users can choose their display name in self-service (which can
@@ -494,16 +474,14 @@ When upgrading to 10.0.4 migrations may increase update duration
 dependent on number of files.
 
 [[updated-minimum-supported-browser-versions]]
-Updated minimum supported browser versions
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Updated minimum supported browser versions
 
 Users with outdated browsers might get warnings. See
 https://doc.owncloud.com/server/latest/admin_manual/installation/system_requirements.html#web-browser[the
 list of supported browser versions].
 
 [[known-issues-3]]
-Known issues
-~~~~~~~~~~~~
+=== Known issues
 
 * When using application passwords,
 https://github.com/owncloud/core/issues/30157[log entries related to
@@ -525,8 +503,7 @@ ownCloud 10]
 boolean values in status.php output]
 
 [[known-issues-4]]
-Known issues
-~~~~~~~~~~~~
+=== Known issues
 
 * Impersonate app 0.1.1 does not work with ownCloud Server 10.0.4.
 Please update to
@@ -636,8 +613,7 @@ upgrading.
 NOTE: The template editor app is not included in the 10.0.1 release due to technical reasons, but will be distributed via the marketplace. However, you can still xref:configuration/server/email_configuration.adoc#using-email-templates[edit template files] manually.
 
 [[settings]]
-Settings
-~~~~~~~~
+=== Settings
 
 * *Settings design:* Admin, personal pages, and app management are now
 merged together into a single "Settings" entry.
@@ -647,8 +623,7 @@ panel has been added.
 to user passwords.
 
 [[infrastructure]]
-Infrastructure
-~~~~~~~~~~~~~~
+=== Infrastructure
 
 * *Client:* You need to update to
 https://doc.owncloud.com/desktop/latest/[the latest desktop client
@@ -662,8 +637,7 @@ split, see:
 https://doc.owncloud.org/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html#logging.
 
 [[known-issues-5]]
-Known Issues
-~~~~~~~~~~~~
+=== Known Issues
 
 [[converting-the-database-type-doesnt-work]]
 Converting the Database Type doesn’t work
@@ -1067,23 +1041,20 @@ Changes in 8.0
 --------------
 
 [[manual-ldap-port-configuration]]
-Manual LDAP Port Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Manual LDAP Port Configuration
 
 When you are configuring the LDAP user and group backend application,
 ownCloud may not auto-detect the LDAP server’s port number, so you will
 need to enter it manually.
 
 [[no-preview-icon-on-text-files]]
-No Preview Icon on Text Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== No Preview Icon on Text Files
 
 There is no preview icon displayed for text files when the file contains
 fewer than six characters.
 
 [[remote-federated-cloud-share-cannot-be-reshared-with-local-users]]
-Remote Federated Cloud Share Cannot be Reshared With Local Users
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Remote Federated Cloud Share Cannot be Reshared With Local Users
 
 When you mount a Federated Cloud share from a remote ownCloud server,
 you cannot re-share it with your local ownCloud users. (See
@@ -1091,14 +1062,12 @@ xref:configuration/files/federated_cloud_sharing_configuration.adoc[Federated Cl
 about federated cloud sharing)
 
 [[manually-migrate-encryption-keys-after-upgrade]]
-Manually Migrate Encryption Keys after Upgrade
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Manually Migrate Encryption Keys after Upgrade
 
 If you are using the Encryption application and upgrading from older versions of ownCloud to ownCloud 8.0, you must xref:configuration/server/occ_command.adoc#encryption[manually migrate your encryption keys].
 
 [[windows-server-not-supported]]
-Windows Server Not Supported
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Windows Server Not Supported
 
 Windows Server is not supported in ownCloud 8.
 
@@ -1110,8 +1079,7 @@ PHP 5.3 is not supported in ownCloud 8, and PHP 5.4 or better is
 required.
 
 [[disable-apache-multiviews]]
-Disable Apache Multiviews
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Disable Apache Multiviews
 
 If Multiviews are enabled in your Apache configuration, this may cause
 problems with content negotiation, so disable Multiviews by removing it
@@ -1125,23 +1093,20 @@ Options Indexes FollowSymLinks Multiviews
 Delete `Multiviews` and restart Apache.
 
 [[owncloud-does-not-follow-symlinks]]
-ownCloud Does Not Follow Symlinks
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== ownCloud Does Not Follow Symlinks
 
 ownCloud’s file scanner does not follow symlinks, which could lead to
 infinite loops. To avoid this do not use soft or hard links in your
 ownCloud data directory.
 
 [[no-commas-in-group-names]]
-No Commas in Group Names
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== No Commas in Group Names
 
 Creating an ownCloud group with a comma in the group name causes
 ownCloud to treat the group as two groups.
 
 [[hebrew-file-names-too-large-on-windows]]
-Hebrew File Names Too Large on Windows
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Hebrew File Names Too Large on Windows
 
 On Windows servers Hebrew file names grow to five times their original
 size after being translated to Unicode.
@@ -1155,8 +1120,7 @@ it to a temp file, and then stream it to the client, so very large file
 downloads from Google Drive may fail with a 500 internal server error.
 
 [[encrypting-large-numbers-of-files]]
-Encrypting Large Numbers of Files
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Encrypting Large Numbers of Files
 
 When you activate the Encryption application on a running server that
 has large numbers of files, it is possible that you will experience
@@ -1212,16 +1176,14 @@ Changes in 7.0
 --------------
 
 [[manual-ldap-port-configuration-1]]
-Manual LDAP Port Configuration
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Manual LDAP Port Configuration
 
 When you are configuring the LDAP user and group backend application,
 ownCloud may not auto-detect the LDAP server’s port number, so you will
 need to enter it manually.
 
 [[ldap-search-performance-improved]]
-LDAP Search Performance Improved
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== LDAP Search Performance Improved
 
 Prior to 7.0.4, LDAP searches were substring-based and would match
 search attributes if the substring occurred anywhere in the attribute
@@ -1250,8 +1212,7 @@ first name + last name very quickly. For example, you’ll find Terri
 Hanson by searching for `te ha`. Trailing whitespaces are ignored.
 
 [[protecting-owncloud-on-iis-from-data-loss]]
-Protecting ownCloud on IIS from Data Loss
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Protecting ownCloud on IIS from Data Loss
 
 Under certain circumstances, running your ownCloud server on IIS could
 be at risk of data loss. To prevent this, follow these steps.
@@ -1263,8 +1224,7 @@ be at risk of data loss. To prevent this, follow these steps.
 your updates are completed re-set it to read-only.
 
 [[antivirus-application-modes]]
-Antivirus Application Modes
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Antivirus Application Modes
 
 The Antivirus application offers three modes for running the ClamAV
 anti-virus scanner: as a daemon on the ownCloud server, a daemon on a
@@ -1281,8 +1241,7 @@ certain groups. However, when you select specific groups they do not get
 access to the app.
 
 [[changes-to-file-previews]]
-Changes to File Previews
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== Changes to File Previews
 
 For security and performance reasons, file previews are available only
 for image files, covers of MP3 files, and text files, and have been
@@ -1307,8 +1266,7 @@ Available'' error. A workaround is to set file quotas for all users
 instead of `unlimited`.
 
 [[no-more-expiration-date-on-local-shares]]
-No More Expiration Date On Local Shares
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== No More Expiration Date On Local Shares
 
 In older versions of ownCloud, you could set an expiration date on both
 local and public shares. Now you can set an expiration date only on

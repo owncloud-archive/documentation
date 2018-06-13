@@ -1,9 +1,7 @@
-Virus Scanner Support
-=====================
+= Virus Scanner Support
 
 [[overview]]
-Overview
---------
+== Overview
 
 http://www.clamav.net/index.html[ClamAV] is the only _officially_
 supported virus scanner available for use with ownCloud. It:
@@ -24,8 +22,7 @@ exit code
 2.  Return a parsable result on stdout
 
 [[how-clamav-works-with-owncloud]]
-How ClamAV Works With ownCloud
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== How ClamAV Works With ownCloud
 
 Before you install and configure ClamAV, here is a bit of background
 which may be handy to know. ownCloud integrates with anti-virus tools by
@@ -65,8 +62,7 @@ rejects file uploads.
 uploads.
 
 [[configuring-the-clamav-antivirus-scanner]]
-Configuring the ClamAV Antivirus Scanner
-----------------------------------------
+== Configuring the ClamAV Antivirus Scanner
 
 You can configure your ownCloud server to automatically run a virus scan
 on newly-uploaded files using the
@@ -75,8 +71,7 @@ https://github.com/owncloud/files_antivirus[Antivirus App for Files].
 NOTE: ClamAV must be installed before installing and configuring Antivirus App for Files.
 
 [[installing-clamav]]
-Installing ClamAV
------------------
+== Installing ClamAV
 
 As always, Linux distributions install and configure ClamAV in different
 ways. Below you can find the instructions for installing it on Debian or
@@ -115,8 +110,7 @@ clamav-server-systemd clamav-update
 NOTE: Regardless of your operating system, we recommend that you enable verbose logging in both `clamd.conf` and `freshclam.conf` until you get any kinks with your ClamAV installation worked out.
 
 [[configuring-and-running-clamav]]
-Configuring and Running ClamAV
-------------------------------
+== Configuring and Running ClamAV
 
 After installing ClamAV and the related tools, you will now have two
 configuration files: `/etc/freshclam.conf` and `/etc/clamd.d/scan.conf`.
@@ -141,8 +135,7 @@ That should take care of everything.
 NOTE: Enable verbose logging in `scan.conf` and `freshclam.conf` until it is running the way you want.
 
 [[automating-clamav-virus-database-updates]]
-Automating ClamAV Virus Database Updates
-----------------------------------------
+== Automating ClamAV Virus Database Updates
 
 To update your malware database and get the latest malware signatures,
 you need to run `freshclam` frequently. Do this by running `freshclam`
@@ -175,8 +168,7 @@ App Switcher).
 image:/owncloud-docs/_images/antivirus-app.png[image]
 
 [[configuring-clamav-within-owncloud]]
-Configuring ClamAV within ownCloud
-----------------------------------
+== Configuring ClamAV within ownCloud
 
 Once it is installed, go to your ownCloud Admin page and set your
 ownCloud logging level to `Everything`.
@@ -190,8 +182,7 @@ configuration options which ownCloud will pass to ClamAV.
 image:/owncloud-docs/_images/antivirus-config.png[image]
 
 [[configuration-warnings]]
-Configuration Warnings
-~~~~~~~~~~~~~~~~~~~~~~
+=== Configuration Warnings
 
 The Antivirus App for Files will show one of three warnings if it is
 either misconfigured, or ClamAV is not available. You can see an example
@@ -204,8 +195,7 @@ image:/owncloud-docs/_images/configuration/server/anti-virus-message-misconfigur
 image:/owncloud-docs/_images/configuration/server/anti-virus-message-socket-connection-problem.png[image]
 
 [[mode-configuration]]
-Mode Configuration
-~~~~~~~~~~~~~~~~~~
+=== Mode Configuration
 
 ClamAV runs in one of three modes: link:[Daemon (Socket)],
 link:[Daemon], and link:[Executable].
@@ -240,8 +230,7 @@ logging any alerts without deleting the files or immediately deleting
 infected files.
 
 [[daemon]]
-Daemon
-~~~~~~
+=== Daemon
 
 In this mode, ClamAV runs on a different server. This is a good option
 for ownCloud servers with high volumes of file uploads. For the Daemon
@@ -251,8 +240,7 @@ ClamAV and the server’s port number.
 image:/owncloud-docs/_images/antivirus-daemon-socket.png[image]
 
 [[executable]]
-Executable
-~~~~~~~~~~
+=== Executable
 
 In this mode, ClamAV runs on the same server as the ownCloud
 installation, and the `clamscan` command only runs when a file is
@@ -268,8 +256,7 @@ When you are satisfied with how ClamAV is operating, you might want to
 go back and change all of your logging to less verbose levels.
 
 [[rule-configuration]]
-Rule Configuration
-~~~~~~~~~~~~~~~~~~
+=== Rule Configuration
 
 ownCloud provides the ability to customize how it reacts to the response
 given by an anti-virus scan. To do so, under
@@ -292,8 +279,7 @@ in CLI mode while
 warning will be logged.
 
 [[default-ruleset]]
-Default Ruleset
-~~~~~~~~~~~~~~~
+=== Default Ruleset
 
 The default rule set for ClamAV is populated automatically with the
 following rules:

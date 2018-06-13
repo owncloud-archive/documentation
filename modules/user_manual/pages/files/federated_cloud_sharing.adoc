@@ -1,5 +1,4 @@
-Using Federation Shares
-=======================
+= Using Federation Shares
 
 Federation Sharing allows you to mount file shares from remote ownCloud
 servers, in effect creating your own cloud of ownClouds. You can create
@@ -8,8 +7,7 @@ direct share links with users on other ownCloud servers.
 IMPORTANT: Sharing to groups from federated ownCloud instances is not supported.
 
 [[how-federated-sharing-works]]
-How Federated Sharing Works
----------------------------
+== How Federated Sharing Works
 
 Federated sharing, conceptually, is not that sophisticated a concept.
 Here’s how it works.
@@ -32,8 +30,7 @@ shares, that show:
 * James shared a copy with Mary and Mary re-shared a copy with Paul.
 
 [[creating-a-new-federation-share]]
-Creating a New Federation Share
--------------------------------
+== Creating a New Federation Share
 
 Federation sharing is enabled on new or upgraded ownCloud installations
 by default. Follow these steps to create a new share with other ownCloud
@@ -57,8 +54,7 @@ with. Remove your linked share anytime by clicking the trash can icon.
 This only unlinks the share, and does not delete any files.
 
 [[creating-a-new-federated-cloud-share-via-email]]
-Creating a New Federated Cloud Share via Email
-----------------------------------------------
+== Creating a New Federated Cloud Share via Email
 
 Use this method when you are sharing with users on ownCloud 8.x and
 older.

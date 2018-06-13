@@ -1,5 +1,4 @@
-User Management
-===============
+= User Management
 
 Users can be managed using the `UserManager` which is injected from the
 `ServerContainer`:
@@ -36,8 +35,7 @@ class Application extends App {
 ----
 
 [[creating-users]]
-Creating Users
---------------
+== Creating Users
 
 Creating a user is done by passing a username and password to the
 `create` method:
@@ -63,8 +61,7 @@ class UserService {
 ----
 
 [[modifying-users]]
-Modifying Users
----------------
+== Modifying Users
 
 Users can be modified by getting a user by the `userId` or by a search
 pattern. The returned user objects can then be used to:
@@ -109,8 +106,7 @@ class UserService {
 ----
 
 [[user-session-information]]
-User Session Information
-------------------------
+== User Session Information
 
 To login, logout or getting the currently logged in user, the
 `UserSession` has to be injected from the `ServerContainer`:

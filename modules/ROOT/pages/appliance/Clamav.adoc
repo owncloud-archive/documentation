@@ -1,5 +1,4 @@
-Install Antivirus Software in the ownCloud Appliance
-====================================================
+= Install Antivirus Software in the ownCloud Appliance
 
 This guide details how to enable a virus scanner in the ownCloud
 Appliance. It is composed of two parts:
@@ -8,8 +7,7 @@ Appliance. It is composed of two parts:
 2.  link:[Configure ownCloud to use ClamAV]
 
 [[install-clamav-and-related-components]]
-Install ClamAV and Related Components
--------------------------------------
+== Install ClamAV and Related Components
 
 First, start the appliance and go to ``**System and domain settings**''.
 
@@ -42,8 +40,7 @@ image:/owncloud-docs/_images/appliance/ucs/clamav/confirm-clamav-installation.pn
 The installation should only take a few minutes.
 
 [[configure-owncloud-to-use-clamav]]
-Configure ownCloud to Use ClamAV
---------------------------------
+== Configure ownCloud to Use ClamAV
 
 You next need to configure ClamAV in your ownCloud instance. Please
 refer to

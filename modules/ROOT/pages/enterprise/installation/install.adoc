@@ -16,16 +16,14 @@ After you have completed your initial installation of ownCloud as detailed in th
 To upgrade your Enterprise server, refer to xref:maintenance/upgrade[How to Upgrade Your ownCloud Server].
 
 [[manual-installation]]
-Manual Installation
--------------------
+== Manual Installation
 
 Download the ownCloud archive from your account at
 https://customer.owncloud.com/owncloud, then follow the instructions at
 xref:installation/source_installation.adoc[Manual Installation on Linux].
 
 [[selinux]]
-SELinux
-~~~~~~~
+=== SELinux
 
 Linux distributions that use SELinux need to take some extra steps so
 that ownCloud will operate correctly under SELinux. Please see
@@ -33,12 +31,10 @@ xref:installation/selinux_configuration.adoc[SELinux Configuration] for some rec
 configurations.
 
 [[license-keys]]
-License Keys
-------------
+== License Keys
 
 [[introduction]]
-Introduction
-~~~~~~~~~~~~
+=== Introduction
 
 You’ll need to install a license key to use ownCloud Enterprise Edition.
 There are two types of license keys: one is a free 30-day trial key. The
@@ -52,8 +48,7 @@ regain access. See https://owncloud.com/how-to-buy-owncloud/[How to Buy
 ownCloud] for sales and contact information.
 
 [[configuration]]
-Configuration
-~~~~~~~~~~~~~
+=== Configuration
 
 Once you get your Enterprise license key, it needs to be copied to your
 ownCloud configuration file, `config/config.php` file like this example:
@@ -68,8 +63,7 @@ across upgrades without issue, so new keys will not be required when you
 upgrade your ownCloud Enterprise to a new version.
 
 [[supported-owncloud-enterprise-edition-apps]]
-Supported ownCloud Enterprise Edition Apps
-------------------------------------------
+== Supported ownCloud Enterprise Edition Apps
 
 See xref:installation/apps_supported.adoc[Supported Apps in ownCloud] for a list of supported apps.
 

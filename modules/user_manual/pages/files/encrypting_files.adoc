@@ -1,5 +1,4 @@
-Encrypting Your ownCloud Files
-==============================
+= Encrypting Your ownCloud Files
 
 ownCloud includes an Encryption app, and when it is enabled by your
 ownCloud administrator all of your ownCloud data files are automatically
@@ -29,8 +28,7 @@ https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/[How
 ownCloud uses encryption to protect your data] to learn more.)
 
 [[using-encryption]]
-Using Encryption
-----------------
+== Using Encryption
 
 ownCloud encryption is pretty much set it and forget it, but you have a
 few options you can use.
@@ -58,8 +56,7 @@ ownCloud administrator may enable; see the Recovery Key Password section
 ====
 
 [[sharing-encrypted-files]]
-Sharing Encrypted Files
------------------------
+== Sharing Encrypted Files
 
 Only users who have private encryption keys have access to shared
 encrypted files and folders. Users who have not yet created their
@@ -77,8 +74,7 @@ individuals who can’t access the share. This updates the encryption, and
 then the share owner can remove the individual shares.
 
 [[recovery-key-password]]
-Recovery Key Password
-~~~~~~~~~~~~~~~~~~~~~
+=== Recovery Key Password
 
 If your ownCloud administrator has enabled the recovery key feature, you
 can choose to use this feature for your account. If you enable
@@ -91,8 +87,7 @@ your login password.
 image:/owncloud-docs/user_manual/_images/encryption3.png[image]
 
 [[files-not-encrypted]]
-Files Not Encrypted
--------------------
+== Files Not Encrypted
 
 Only the data in your files is encrypted, and not the filenames or
 folder structures. These files are never encrypted:
@@ -107,8 +102,7 @@ There may be other files that are not encrypted; only files that are
 exposed to third-party storage providers are guaranteed to be encrypted.
 
 [[change-private-key-password]]
-Change Private Key Password
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Change Private Key Password
 
 This option is only available if your log-in password, but not your
 encryption password, was changed by your administrator. This can occur

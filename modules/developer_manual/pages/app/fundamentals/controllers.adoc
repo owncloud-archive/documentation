@@ -1,5 +1,4 @@
-Controllers
-===========
+= Controllers
 
 Controllers are used to connect routes <routes> with application logic.
 Think of them as callbacks that are executed once a request has come in.
@@ -26,8 +25,7 @@ class AuthorController extends Controller {
 ----
 
 [[connecting-a-controller-and-a-route]]
-Connecting a Controller and a Route
------------------------------------
+== Connecting a Controller and a Route
 
 To connect a controller and a route the controller has to be registered
 in the container like this:
@@ -101,8 +99,7 @@ the request, cast them if there are PHPDoc type annotations, and execute
 the `someMethod` method on the controller with those parameters.
 
 [[getting-request-parameters]]
-Getting Request Parameters
---------------------------
+== Getting Request Parameters
 
 Parameters can be passed in many ways, including:
 
@@ -157,8 +154,7 @@ class PageController extends Controller {
 ----
 
 [[casting-parameters]]
-Casting Parameters
-~~~~~~~~~~~~~~~~~~
+=== Casting Parameters
 
 `URL`, `GET` and `application/x-www-form-urlencoded` have the problem
 that every parameter is a string, meaning that `?doMore=false` would be
@@ -196,8 +192,7 @@ The following types will be cast:
 * `int` or `integer`
 
 [[json-parameters]]
-JSON Parameters
-~~~~~~~~~~~~~~~
+=== JSON Parameters
 
 It is possible to pass JSON data using a `POST`, `PUT` or `PATCH`
 request. To do that the `Content-Type` header has to be set to
@@ -266,8 +261,7 @@ http://c2.com/cgi/wiki?GlobalVariablesAreBad[because it’s bad practice]
 and will make testing harder.
 
 [[reading-and-writing-session-variables]]
-Reading and Writing Session Variables
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Reading and Writing Session Variables
 
 To set, get or modify session variables, the `ISession` object has to be
 injected into the controller. Then session variables can be accessed
@@ -309,8 +303,7 @@ class PageController extends Controller {
 ----
 
 [[setting-cookies]]
-Setting Cookies
-~~~~~~~~~~~~~~~
+=== Setting Cookies
 
 Cookies can be set or modified directly on the response class:
 
@@ -352,8 +345,7 @@ class BakeryController extends Controller {
 
 
 [[responses]]
-Responses
----------
+== Responses
 
 Similar to how every controller receives a request object, every
 controller method has to to return a Response. This can be in the form
@@ -361,8 +353,7 @@ of a `Response` subclass or in the form of a value that can be handled
 by a registered responder.
 
 [[json]]
-JSON
-~~~~
+=== JSON
 
 Returning JSON is simple, just pass an array to a `JSONResponse`:
 
@@ -404,8 +395,7 @@ not return a subclass of a `Response` and asks the controller to turn
 the value into a `Response`. That’s where responders come in.
 
 [[responders]]
-Responders
-~~~~~~~~~~
+=== Responders
 
 Responders are short functions that take a value and return a response.
 They are used to return different kinds of responses based on a `format`
@@ -513,8 +503,7 @@ class PageController extends Controller {
 ----
 
 [[templates]]
-Templates
-~~~~~~~~~
+=== Templates
 
 A template <templates> can be rendered by returning a
 `TemplateResponse`. A `TemplateResponse` takes the following parameters:
@@ -558,8 +547,7 @@ class PageController extends Controller {
 ----
 
 [[redirects]]
-Redirects
-~~~~~~~~~
+=== Redirects
 
 A redirect can be achieved by returning a `RedirectResponse`:
 
@@ -579,8 +567,7 @@ class PageController extends Controller {
 ----
 
 [[downloads]]
-Downloads
-~~~~~~~~~
+=== Downloads
 
 A file download can be triggered by returning a `DownloadResponse`:
 
@@ -603,8 +590,7 @@ class PageController extends Controller {
 ----
 
 [[creating-custom-responses]]
-Creating Custom Responses
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Creating Custom Responses
 
 If no premade `Response` object fits the needed use case, its possible
 to extend the `Response` base class and create a custom one. The only
@@ -637,8 +623,7 @@ class XMLResponse extends Response {
 ----
 
 [[streamed-and-lazily-rendered-responses]]
-Streamed and Lazily Rendered Responses
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Streamed and Lazily Rendered Responses
 
 By default all responses are rendered at once and sent as a string
 through middleware. In certain cases this is not a desirable behavior,
@@ -788,8 +773,7 @@ class ShareController extends OCSController {
 The format parameter works out of the box, no intervention is required.
 
 [[handling-errors]]
-Handling Errors
-~~~~~~~~~~~~~~~
+=== Handling Errors
 
 Sometimes a request should fail, for instance if an author with id 1 is
 requested but does not exist. In that case use an appropriate
@@ -822,8 +806,7 @@ class AuthorController extends Controller {
 ----
 
 [[authentication]]
-Authentication
---------------
+== Authentication
 
 By default every controller method enforces the maximum security, which
 is:

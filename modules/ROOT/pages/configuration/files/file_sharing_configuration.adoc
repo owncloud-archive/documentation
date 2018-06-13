@@ -1,5 +1,4 @@
-File Sharing
-============
+= File Sharing
 
 ownCloud users can :
 
@@ -79,8 +78,7 @@ https://github.com/owncloud/core/issues/7009[Wrong folder date when
 syncing] for discussion of this.
 
 [[transferring-files-to-another-user]]
-Transferring Files to Another User
-----------------------------------
+== Transferring Files to Another User
 
 You may transfer files from one user to another with `occ`. The command
 transfers either all or a limited set of files from one user to another.
@@ -119,8 +117,7 @@ above, it will be stored under:
 TIP: See xref:configuration/server/occ_command.adoc[the occ command], for a complete `occ` reference.)
 
 [[creating-persistent-file-shares]]
-Creating Persistent File Shares
--------------------------------
+== Creating Persistent File Shares
 
 When a user is deleted, their files are also deleted. As you can
 imagine, this is a problem if they created file shares that need to be

@@ -1,5 +1,4 @@
-Introduction
-============
+= Introduction
 
 Welcome to the ownCloud Server Administration Guide. This guide
 describes administration tasks for ownCloud, the flexible open source
@@ -22,8 +21,7 @@ Edition. This includes the core Server and Enterprise apps.
 See xref:whats_new_admin.adoc[What’s New in ownCloud] for more information on the different ownCloud editions.
 
 [[owncloud-videos-and-blogs]]
-ownCloud Videos and Blogs
--------------------------
+== ownCloud Videos and Blogs
 
 See the https://www.youtube.com/channel/UC_4gez4lsWqciH-otOlXo5w[official ownCloud channel] and https://www.youtube.com/channel/UCA8Ehsdu3KaxSz5KOcCgHbw[ownClouders community channel] on YouTube for tutorials, overviews, and conference
 videos.
@@ -31,8 +29,7 @@ Visit https://owncloud.org/news/[ownCloud Planet] for news and developer
 blogs.
 
 [[target-audience]]
-Target Audience
----------------
+== Target Audience
 
 This guide is for users who want to install, administer, and optimize
 their ownCloud servers. To learn more about the ownCloud Web user

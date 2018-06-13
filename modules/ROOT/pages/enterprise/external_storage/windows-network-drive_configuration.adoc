@@ -36,8 +36,7 @@ passwords are not stored and available only for the current session,
 which adds security.
 
 [[installation]]
-Installation
-~~~~~~~~~~~~
+=== Installation
 
 Install link:[the External Storage: Windows Network Drives app] from the
 ownCloud Market App or ownCloud Marketplace. For it to work, there are a
@@ -101,8 +100,7 @@ sudo phpenmod -v ALL smbclient
 ....
 
 [[creating-a-new-share]]
-Creating a New Share
-~~~~~~~~~~~~~~~~~~~~
+=== Creating a New Share
 
 When you create a new WND share you need three things:
 
@@ -148,8 +146,7 @@ Your changes are saved automatically.
 NOTE: When you create a new mountpoint using Login credentials, you must log out of ownCloud and then log back in so you can access the share. You only have to do this the first time.
 
 [[personal-wnd-mounts]]
-Personal WND Mounts
-~~~~~~~~~~~~~~~~~~~
+=== Personal WND Mounts
 
 Users create their own WND mounts on their Personal pages. These are
 created the same way as Admin-created shares. Users have four options
@@ -161,8 +158,7 @@ for login credentials:
 * Global credentials
 
 [[libsmbclient-issues]]
-libsmbclient Issues
-~~~~~~~~~~~~~~~~~~~
+=== libsmbclient Issues
 
 If your Linux distribution ships with `libsmbclient 3.x`, which is
 included in the Samba client, you may need to set up the HOME variable
@@ -209,8 +205,7 @@ Restart Apache, open your ownCloud Admin page and start creating
 SMB/CIFS mounts.
 
 [[windows-network-drive-listener]]
-Windows Network Drive Listener
-------------------------------
+== Windows Network Drive Listener
 
 The SMB protocol supports registering for notifications of file changes
 on remote Windows SMB storage servers. Notifications are more efficient
@@ -255,8 +250,7 @@ sudo -u www-data ./occ wnd:listen MyHost mydata svc_owncloud password
 ....
 
 [[setting-up-the-wnd-listener]]
-Setting Up the WND Listener
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Setting Up the WND Listener
 
 The WND listener for ownCloud 10 includes two different commands that
 need to be executed:
@@ -327,8 +321,7 @@ As said, you can wrap that command in a Cron job so it’s run every 5
 minutes for example.
 
 [[basic-setup-for-one-owncloud-server]]
-Basic Setup for One ownCloud Server
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Basic Setup for One ownCloud Server
 
 First, go to the admin settings and set up the required WND mounts. Be
 aware though, that there are some limitations. These are:
@@ -382,8 +375,7 @@ crash the process. Between 200 and 500 should be fine, and we’ll likely
 process all the notifications in one go.
 
 [[password-options]]
-Password Options
-~~~~~~~~~~~~~~~~
+=== Password Options
 
 There are several ways to supply a password:
 
@@ -519,8 +511,7 @@ are written in the data source so that they can be read on the next run.
 NOTE: It’s imperative to periodically clean up the data source to fetch fresh data, such as for new storages and updated passwords. There isn’t a generic command to do this from ownCloud, because it depends on the specific serializer type. Though this option could be provided at some point if requested.
 
 [[the-file-serializer]]
-The File Serializer
-~~~~~~~~~~~~~~~~~~~
+=== The File Serializer
 
 The file serializer is a serializer implementation that can be used with
 the `wnd:process-queue` command. It requires an additional parameter
@@ -627,8 +618,7 @@ and won’t be executed. Check https://linux.die.net/man/2/flock[flock’s
 documentation] for details and other options.
 
 [[multiple-server-setup]]
-Multiple Server Setup
-~~~~~~~~~~~~~~~~~~~~~
+=== Multiple Server Setup
 
 Setups with several servers might have some difficulties in some
 scenarios:
@@ -650,8 +640,7 @@ location for all the server. We might need to provide a specific
 serializer for this scenario (based on Redis or DB)
 
 [[basic-command-execution-examples]]
-Basic Command Execution Examples
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Basic Command Execution Examples
 
 ....
 sudo -u www-data ./occ ``wnd:listen`` host share username password

@@ -1,5 +1,4 @@
-File Firewall
-=============
+= File Firewall
 
 The File Firewall GUI enables you to manage firewall rule sets. You can
 find it in your ownCloud admin page, under `Admin -> Security`. The File
@@ -11,8 +10,7 @@ Firewall app also supports rules based on
 http://www.regular-expressions.info/[regular expressions].
 
 [[how-the-file-firewall-works]]
-How the File Firewall Works
----------------------------
+== How the File Firewall Works
 
 Each firewall rule set consists of one or more conditions. If a request
 matches all of the conditions, in at least one rule set, then the
@@ -22,8 +20,7 @@ the firewall.
 NOTE: The File Firewall app cannot lock out administrators from the web interface when rules are misconfigured.
 
 [[using-the-file-firewall]]
-Using the File Firewall
------------------------
+== Using the File Firewall
 
 Figure 1 shows an empty firewall configuration panel. Set your logging
 level to *Blocked Requests Only* for debugging, and create a new rule
@@ -45,8 +42,7 @@ logins per user group]
 All other users are not affected, and can log in anytime from anywhere.
 
 [[available-conditions]]
-Available Conditions
-~~~~~~~~~~~~~~~~~~~~
+=== Available Conditions
 
 [[user-group]]
 User Group
@@ -138,8 +134,7 @@ Regular Expression > ^(support|qa-team)$ > is > User group
 CAUTION: We do not recommend modifying the configuration values directly in your `config.php`. These use JSON encoding, so the values are difficult to read and a single typo will break all of your rules.
 
 [[controlling-access-to-folders]]
-Controlling Access to Folders
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Controlling Access to Folders
 
 The easiest way to block access to a folder, starting with ownCloud 9.0,
 is to use a system tag. A new rule type was added which allows you to
@@ -160,8 +155,7 @@ IP Range (IPv4):   is not   "192.168.1.0/24"
 image:/owncloud-docs/_images/enterprise/firewall/firewall-3.png[image]
 
 [[custom-configuration-for-branded-clients]]
-Custom Configuration for Branded Clients
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Custom Configuration for Branded Clients
 
 If you are using xref:clients/index.adoc[branded ownCloud clients], you may
 define `firewall.branded_clients` in your `config.php` to identify your

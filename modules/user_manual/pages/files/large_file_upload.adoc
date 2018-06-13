@@ -1,5 +1,4 @@
-Large File Uploads
-==================
+= Large File Uploads
 
 When uploading files through the web client, ownCloud is limited by PHP
 and Apache configurations. By default, PHP is configured for only 2

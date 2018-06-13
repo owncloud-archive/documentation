@@ -1,5 +1,4 @@
-Android Application Development
-===============================
+= Android Application Development
 
 ownCloud provides an official ownCloud Android client, which gives its
 users access to their files on their ownCloud. It also includes
@@ -8,8 +7,7 @@ ownCloud. For third party application developers, ownCloud offers the
 ownCloud Android library under the MIT license.
 
 [[android-owncloud-client-development]]
-Android ownCloud Client development
------------------------------------
+== Android ownCloud Client development
 
 If you are interested in working on the ownCloud android client, you can find the source code https://github.com/owncloud/android/[in github].
 The setup and process of contribution is https://github.com/owncloud/android/blob/master/SETUP.md[documented here]. 
@@ -17,8 +15,7 @@ You might want to start with doing one or two https://github.com/owncloud/androi
 Note that contribution to the Android client require signing the https://owncloud.org/contribute/agreement/[ownCloud Contributor Agreement].
 
 [[owncloud-android-library]]
-ownCloud Android Library
-------------------------
+== ownCloud Android Library
 
 This document will describe how to the use ownCloud Android Library. The
 ownCloud Android Library allows a developer to communicate with any

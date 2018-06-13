@@ -1,5 +1,4 @@
-Bugtracker
-==========
+= Bugtracker
 
 Thank you for helping ownCloud by reporting bugs. Before submitting an
 issue, please read

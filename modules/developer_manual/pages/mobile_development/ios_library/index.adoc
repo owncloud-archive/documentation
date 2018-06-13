@@ -1,5 +1,4 @@
-iOS Application Development
-===========================
+= iOS Application Development
 
 ownCloud provides an official ownCloud iOS client, which gives its users
 access to their files on their ownCloud. It also includes functionality
@@ -9,8 +8,7 @@ For third party application developers, ownCloud offers the ownCloud iOS
 library under the MIT license.
 
 [[ios-owncloud-client-development]]
-iOS ownCloud Client development
--------------------------------
+== iOS ownCloud Client development
 
 If you are interested in working on the ownCloud iOS client, you can
 find the source code https://github.com/owncloud/ios[in github]. The
@@ -23,8 +21,7 @@ Note that contribution to the iOS client require signing the iOS addendum to the
 You are permitted to test the iOS client on Apple hardware thanks to the https://owncloud.org/contribute/iOS-license-exception/[iOS license exception].
 
 [[owncloud-ios-library]]
-ownCloud iOS Library
---------------------
+== ownCloud iOS Library
 
 This document will describe how to the use ownCloud iOS library. The
 ownCloud iOS library for iOS allows a developer to communicate with any

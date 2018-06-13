@@ -1,9 +1,7 @@
-Database Connectivity
-=====================
+= Database Connectivity
 
 [[database-access]]
-Database Access
----------------
+== Database Access
 
 The basic way to run a database query is to use the database connection
 provided by `OCP\\IDBConnection`. Inside your database layer class you
@@ -43,8 +41,7 @@ class AuthorDAO {
 ----
 
 [[mappers]]
-Mappers
--------
+== Mappers
 
 The aforementioned example is the most basic way to write a simple
 database query but the more queries amass, the more code has to be
@@ -130,8 +127,7 @@ $authorMapper->update($entity);
 ....
 
 [[entities]]
-Entities
---------
+== Entities
 
 Entities are data objects that carry all the table’s information for one
 row. Every Entity has an `id` field by default that is set to the
@@ -163,8 +159,7 @@ class Author extends Entity {
 ----
 
 [[types]]
-Types
------
+== Types
 
 The following properties should be annotated by types, to not only
 assure that the types are converted correctly for storing them in the
@@ -179,8 +174,7 @@ The following types can be added for a field:
 * boolean
 
 [[accessing-attributes]]
-Accessing attributes
---------------------
+== Accessing attributes
 
 Since all attributes should be protected, getters and setters are
 automatically generated for you:
@@ -205,8 +199,7 @@ $author->getPhoneNumber()  // null
 ----
 
 [[custom-attribute-to-database-column-mapping]]
-Custom Attribute to Database Column Mapping
--------------------------------------------
+== Custom Attribute to Database Column Mapping
 
 By default each attribute will be mapped to a database column by a
 certain convention, e.g. `phoneNumber` will be mapped to the column
@@ -249,8 +242,7 @@ class Author extends Entity {
 ----
 
 [[slugs]]
-Slugs
------
+== Slugs
 
 Slugs are used to identify resources in the URL by a string rather than
 integer id. Since the URL allows only certain values, the entity
@@ -265,8 +257,7 @@ $author->slugify('name');  // Some-thing
 ----
 
 [[database-migrations]]
-Database Migrations
--------------------
+== Database Migrations
 
 ownCloud uses migration steps to perform changes between releases. In
 most cases, these changes relate to the core database schema. However,
@@ -350,8 +341,7 @@ It is still necessary to increment the application’s version number to
 trigger the execution of migrations.
 
 [[how-to-create-a-migration]]
-How to Create a Migration
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=== How to Create a Migration
 
 1.  Enable migrations by adding the XML tag to appinfo/info.xml
 
@@ -368,8 +358,7 @@ How to Create a Migration
 ----
 
 [[a-simple-migration-step]]
-A Simple Migration Step
-~~~~~~~~~~~~~~~~~~~~~~~
+=== A Simple Migration Step
 
 The simple migration step skeleton looks like this:
 
@@ -395,8 +384,7 @@ class Version20170213125339 implements ISimpleMigration {
 ----
 
 [[a-sql-migration-step]]
-A SQL Migration Step
-~~~~~~~~~~~~~~~~~~~~
+=== A SQL Migration Step
 
 A SQL migration step skeleton looks like this:
 
@@ -436,8 +424,7 @@ SQL code, please use the platform object or generate SQL commands for
 each supported database system.
 
 [[a-schema-migration-step]]
-A Schema Migration Step
-~~~~~~~~~~~~~~~~~~~~~~~
+=== A Schema Migration Step
 
 A schema migration step skeleton looks like this:
 
@@ -480,8 +467,7 @@ To trigger the migrations, the app version has to be increased. Doing so
 applies all steps which have not yet been executed.
 
 [[how-to-update-the-database-schema]]
-How to Update the Database Schema
----------------------------------
+== How to Update the Database Schema
 
 ownCloud uses a database abstraction layer on top of
 https://secure.php.net/manual/en/book.pdo.php[PDO], depending on its

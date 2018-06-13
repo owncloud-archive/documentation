@@ -1,5 +1,4 @@
-Wiring It Up
-============
+= Wiring It Up
 
 When the page is loaded, we want all the existing notes to load.
 Furthermore:
