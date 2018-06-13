@@ -13,7 +13,7 @@ However, this documentation only covers customizing the web front-end, *so far*.
    sure you change any references to match the location of your owncloud
    installation.
 
-To save you time and effort, you can use the shell script below, to create the basis of a new theme from ownCloud's example theme.
+To save you time and effort, you can use the shell script below, to create the basis of a new theme from `ownCloud's example theme`_.
 
 Using this script, you will have a new theme, ready to go, in less than five seconds.
 You can execute this script with two variables; the first one is the **theme name** and the second one is your **ownCloud directory**.
@@ -30,7 +30,7 @@ How to Create a New Theme
 
 At its most basic, to create a theme requires two steps:
 
-#. Copy and extend `an existing theme`_ or create one from scratch.
+#. Copy and extend `ownCloud's example theme`_, or create one from scratch.
 #. Enable the theme in the ownCloud Admin dashboard.
 
 All themes, whether copied or new, must meet two key criteria, these are:
@@ -364,4 +364,4 @@ If you think a new section should be added to core however, please create a PR w
 .. _signed: /app/advanced/code_signing.html?highlight=sign
 .. _the marketplace: https://marketplace.owncloud.com
 .. _a custom app directory: https://doc.owncloud.org/server/latest/admin_manual/installation/apps_management_installation.html#using-custom-app-directories
-.. _an existing theme: https://github.com/owncloud/theme-example
+.. _ownCloud's example theme: https://github.com/owncloud/theme-example
