@@ -15,7 +15,7 @@ theme, please make sure you change any references to match the location
 of your owncloud installation.
 
 To save you time and effort, you can use the shell script below, to
-create the basis of a new theme from ownCloud’s example theme.
+create the basis of a new theme from link:https://github.com/owncloud/theme-example[ownCloud's example theme].
 
 Using this script, you will have a new theme, ready to go, in less than
 five seconds. You can execute this script with two variables; the first
@@ -33,8 +33,7 @@ How to Create a New Theme
 
 At its most basic, to create a theme requires two steps:
 
-1.  Copy and extend https://github.com/owncloud/theme-example[an
-existing theme] or create one from scratch.
+1.  Copy and extend link:https://github.com/owncloud/theme-example[ownCloud's example theme], or create one from scratch.
 2.  Enable the theme in the ownCloud Admin dashboard.
 
 All themes, whether copied or new, must meet two key criteria, these
