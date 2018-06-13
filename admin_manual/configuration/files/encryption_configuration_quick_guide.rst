@@ -11,13 +11,13 @@ ownCloud provides two encryption types:
 **Highly recommended** for **new** instances to avoid **restrictions** in functionality of user key encryption.
 
 - **User-specific Key:** every user has their own private/public key pairs; the private key is protected by the user's password. 
-**Will be removed in the future releases**.
+**Will be removed in future releases**.
 
 **Master Key**
 ~~~~~~~~~~~~~~
 - The **recommended** type of encryption.
 - Best to activate on new instances with no data.
-- If you have existing data, use **encrypt all** command. Depending on the amount of exinsting data, this operation can take a long time.
+- If you have existing data, use **encrypt all** command. Depending on the amount of existing data, this operation can take a long time.
 
 **Activation**
 
@@ -37,7 +37,7 @@ ownCloud provides two encryption types:
 
 **Decryption**
 
-Depending on the amount of exinsting data, this operation can take a long time.
+Depending on the amount of existing data, this operation can take a long time.
 ::
 	occ maintenance:singleuser --on
  	occ encryption:decrypt-all
