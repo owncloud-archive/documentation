@@ -30,6 +30,16 @@ Server
 | PHP Runtime      | - 5.6+, 7.0, & 7.1                                                    |
 +------------------+-----------------------------------------------------------------------+
 
+.. Distribution Release Schedules
+
+.. - Debian: https://wiki.debian.org/DebianReleases
+.. - Ubuntu: https://www.ubuntu.com/info/release-end-of-life
+.. - Fedora: https://fedoraproject.org/wiki/End_of_life & https://fedoraproject.org/wiki/Releases
+.. - openSUSE: https://en.opensuse.org/Lifetime
+.. - Red Hat / Fedora: https://access.redhat.com/articles/3078
+.. - SUSE: https://www.suse.com/releasenotes/
+.. - Mozilla: https://wiki.mozilla.org/Release_Management/Calendar
+
 .. important::
 
     For the future release of ownCloud 10.1, a minimum php version of 7.1 is needed.
@@ -116,3 +126,4 @@ The following are currently required if you're running ownCloud together with a 
 
 .. _LTS: https://wiki.ubuntu.com/LTS
 .. _intl: http://php.net/manual/en/intro.intl.php
+
