@@ -230,30 +230,85 @@ You can get the full file path to an app
 
 .. _background_jobs_selector_label:   
    
-Background Jobs Selector
-------------------------
+Background Jobs
+---------------
 
-Use the ``background`` command to select which scheduler you want to use for controlling *background jobs*, *Ajax*, *Webcron*, or *Cron*. 
-This is the same as using the **Cron** section on your ownCloud Admin page.
+Use the ``background`` command set to manage background jobs.
 
 .. code-block:: console
 
  background
+  background:ajax          Use ajax to run background jobs
+  background:cron          Use cron to run background jobs
+  background:webcron       Use webcron to run background jobs
+  background:queue:delete  Delete a job from the queue
+  background:queue:status  List queue status
+    
+Selecting the scheduler for background jobs:
+
+You can select which scheduler you want to use for controlling background jobs, *Ajax*, *Cron* or *Webcron*. 
+You can access these settings also from the ownCloud Admin page.
+
+.. code-block:: console
+
   background:ajax       Use ajax to run background jobs
   background:cron       Use cron to run background jobs
   background:webcron    Use webcron to run background jobs
 
-This example selects Ajax::
+This example selects cron to run background jobs
 
- sudo -u www-data php occ background:ajax
-   Set mode for background jobs to 'ajax'
+::
 
-The other two commands are:
-
-* ``background:cron``
-* ``background:webcron``
+ sudo -u www-data php occ background:cron
+ 
+   Set mode for background jobs to 'cron'
 
 See :doc:`../../configuration/server/background_jobs_configuration` to learn more.
+
+Managing background jobs:
+
+.. code-block:: console
+
+  background:queue:delete
+  background:queue:status
+
+The command ``background:queue:status`` will list queued background jobs including details when it last run
+
+Example
+
+::
+
+  sudo -u www-data php occ background:queue:status
+  
+  +----+---------------------------------------------------+---------------------------+---------------+
+  | Id | Job                                               | Last run                  | Job Arguments |
+  +----+---------------------------------------------------+---------------------------+---------------+
+  | 1  | OCA\Files\BackgroundJob\ScanFiles                 | 2018-06-13T15:15:04+00:00 |               |
+  | 2  | OCA\Files\BackgroundJob\DeleteOrphanedItems       | 2018-06-13T15:15:04+00:00 |               |
+  | 3  | OCA\Files\BackgroundJob\CleanupFileLocks          | 2018-06-13T15:15:04+00:00 |               |
+  | 4  | OCA\DAV\CardDAV\SyncJob                           | 2018-06-12T19:15:02+00:00 |               |
+  | 5  | OCA\Federation\SyncJob                            | 2018-06-12T19:15:02+00:00 |               |
+  | 6  | OCA\Files_Sharing\DeleteOrphanedSharesJob         | 2018-06-13T15:15:04+00:00 |               |
+  | 7  | OCA\Files_Sharing\ExpireSharesJob                 | 2018-06-12T19:15:02+00:00 |               |
+  | 8  | OCA\Files_Trashbin\BackgroundJob\ExpireTrash      | 2018-06-13T15:15:04+00:00 |               |
+  | 9  | OCA\Files_Versions\BackgroundJob\ExpireVersions   | 2018-06-13T15:15:04+00:00 |               |
+  | 10 | OCA\UpdateNotification\Notification\BackgroundJob | 2018-06-12T19:15:03+00:00 |               |
+  | 11 | OC\Authentication\Token\DefaultTokenCleanupJob    | 2018-06-13T15:15:04+00:00 |               |
+  +----+---------------------------------------------------+---------------------------+---------------+
+
+The command ``background:queue:delete`` will delete a queued background job. Add as argument the job Id of the job to be deleted.
+
+**Attention: deleting a job can not be undone!**
+
+Example
+
+::
+
+  sudo -u www-data php occ background:queue:delete 12
+  
+  Job has been deleted.
+
+
 
 .. _config_commands_label:
 
