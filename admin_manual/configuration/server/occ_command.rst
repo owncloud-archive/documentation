@@ -243,11 +243,12 @@ Use the ``background`` command set to manage background jobs.
   background:webcron       Use webcron to run background jobs
   background:queue:delete  Delete a job from the queue
   background:queue:status  List queue status
-    
-Selecting the scheduler for background jobs:
 
-You can select which scheduler you want to use for controlling background jobs, *Ajax*, *Cron* or *Webcron*. 
-You can access these settings also from the ownCloud Admin page.
+Selecting the scheduler for background jobs
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- You can select which scheduler you want to use for controlling background jobs, *Ajax*, *Cron* or *Webcron*.
+- You can access these settings also from the ownCloud Admin page.
 
 .. code-block:: console
 
@@ -255,7 +256,7 @@ You can access these settings also from the ownCloud Admin page.
   background:cron       Use cron to run background jobs
   background:webcron    Use webcron to run background jobs
 
-This example selects cron to run background jobs
+This example selects Cron to run background jobs
 
 ::
 
@@ -263,18 +264,20 @@ This example selects cron to run background jobs
  
    Set mode for background jobs to 'cron'
 
-See :doc:`../../configuration/server/background_jobs_configuration` to learn more.
+.. NOTE:: See :doc:`../../configuration/server/background_jobs_configuration` to learn more.
 
-Managing background jobs:
+Managing background jobs
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 .. code-block:: console
 
   background:queue:delete
   background:queue:status
 
-The command ``background:queue:status`` will list queued background jobs including details when it last run
+The command ``background:queue:status`` will list queued background jobs, including details when it last ran.
 
 Example
+^^^^^^^
 
 ::
 
@@ -296,11 +299,15 @@ Example
   | 11 | OC\Authentication\Token\DefaultTokenCleanupJob    | 2018-06-13T15:15:04+00:00 |               |
   +----+---------------------------------------------------+---------------------------+---------------+
 
-The command ``background:queue:delete`` will delete a queued background job. Add as argument the job Id of the job to be deleted.
+The command ``background:queue:delete`` will delete a queued background job.
+It requires the job id of the job to be deleted.
 
-**Attention: deleting a job can not be undone!**
+.. IMPORTANT::
+   Deleting a job can not be undone.
+   Be sure that you want to delete the job before doing so.
 
 Example
+^^^^^^^
 
 ::
 
