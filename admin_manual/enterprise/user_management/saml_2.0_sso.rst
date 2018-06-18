@@ -5,11 +5,11 @@ SAML 2.0 Based SSO with Active Directory Federation Services (ADFS) and mod_shib
 Preparation
 ===========
 
-Before you can setup SAML 2.0 based SSO with `Active Directory Federation Services (ADFS) <https://msdn.microsoft.com/en-us/library/bb897402.aspx>`_ and mod_shibboleth, ask your ADFS admin for the relevant server URLs.
+Before you can setup SAML 2.0 based SSO with `Active Directory Federation Services (ADFS) <https://msdn.microsoft.com/en-us/library/bb897402.aspx>`_ and mod_shib, ask your ADFS admin for the relevant server URLs.
 These are:
 
-- The SAML 2.0 single sign-on service URL, e.g., ``https://sts.hostname.tld/adfs/ls``
-- The IdP metadata URL, e.g., ``https://sts.hostname.tld/FederationMetadata/2007-06/FederationMetadata.xml``
+- The SAML 2.0 single sign-on service URL, e.g., ``https://<adfs server fqdn>/adfs/ls``
+- The IdP metadata URL, e.g., ``https://<adfs server fqdn>/FederationMetadata/2007-06/FederationMetadata.xml``
 
 Then, make sure that the web server is accessible with a trusted certificate:
 
@@ -28,7 +28,9 @@ Firstly, install mod_shib. You can do this using the following command:
 
  $ sudo apt-get install libapache2-mod-shib2
 
-Then, generate certificates for mod_shib by running the following command:
+This will install packages needed for mod-shib including the shibd.
+
+Then, generate certificates for the shibd daemon by running the following command:
 
 .. code:: console
 
@@ -43,32 +45,36 @@ To do so, use ``adfs2fed.php``, as in the following command:
 .. code-block:: console
 
   php apps/user_shibboleth/tools/adfs2fed.php \
-     https://hostname.<AD-Domain>/FederationMetadata/2007-06/FederationMetadata.xml \
+     https://<adfs server fqdn>/FederationMetadata/2007-06/FederationMetadata.xml \
      <AD-Domain> > /etc/shibboleth/filtered-metadata.xml
 
-Configure mod_shib
-~~~~~~~~~~~~~~~~~~
+Configure shibd
+~~~~~~~~~~~~~~~
 
-Next, you need to configure mod_shib. 
+Next, you need to configure shibd. 
 To do this, in ``/etc/shibboleth/shibboleth2.xml``:
 
 1. Use the URL of the ownCloud instance as the ``entityID`` in the ``ApplicationDefaults``, e.g.,
 
    .. code:: xml
 
-    <ApplicationDefaults entityID="https://cloud.hostname.com/login/saml" REMOTE_USER="eppn upn">
+    <ApplicationDefaults entityID="https://<owncloud server fqdn>/login/saml" REMOTE_USER="eppn upn">
 
    .. note::
 
-    ``https://cloud.hostname.com/login/saml`` is just an example adjust to your needs.
+    ``https://<owncloud server fqdn>/login/saml`` is just an example.  Adjust <owncloud server fqdn> to the full qualified domain name of your server.
 
 2. Configure the SSO to use the ``entityID`` from the ``filtered-metadata.xml``, e.g.,
 
    .. code:: xml
 
-    <SSO entityID="https://sts.hostname.tld/11537aff-6d87-4bb1-ae81-d26948b8ea28/">
+    <SSO entityID="https://<adfs server fqdn>/<URI>/">
         SAML2
     </SSO>
+
+   .. note::
+
+    Grab <adfs server fqdn>/<URI>/ from the filtered-metadata.xml.
 
 3. Configure an XML ``MetadataProvider`` with the local ``filtered-metadata.xml`` file:
 
@@ -86,7 +92,7 @@ Further Reading
 Metadata Available
 ~~~~~~~~~~~~~~~~~~
 
-Under ``https://cloud.hostname.tld/Shibboleth.sso/Metadata`` mod_shib exposes the Metadata that is needed by ADFS to add the SP as a Relying party.
+Under ``https://<owncloud server fqdn>/Shibboleth.sso/Metadata`` shibd exposes the Metadata that is needed by ADFS to add the SP as a Relying party.
 
 ADFS
 -----
@@ -102,22 +108,19 @@ See `AD FS 2.0 Step-by-Step Guide <https://technet.microsoft.com/en-us/library/g
 Configure ADFS to send the userPrincipalName in the SAML token
 ---------------------------------------------------------------
 
-If you have control over ADFS make it send the ``UPN`` as ``eppn`` by adding the following custom claim rule:
+If you have control over ADFS make it send the ``UPN`` and ``Group`` by adding the following LDAP claim rule:
 
-.. code-block:: xml
+- Map ``User Principal Name`` to ``UPN``
+- Map ``Token Groups - Unqualified Names`` and map it to ``Group``
 
-   c:[Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn"]
-   => issue(Type = "urn:oid:1.3.6.1.4.1.5923.1.1.1.6", Value = c.Value, Properties["http://schemas.xmlsoap.org/ws/2005/05/identity/claimproperties/attributename"] = "urn:oasis:names:tc:SAML:2.0:attrname-format:uri");
-
-This will allow the default configuration of mod_shib to pick up the ``userPrincipalName`` and present it as the ``eppn`` to the SP.
-If something prevents you from sending a custom rule send the ``userPrincipalName`` and change mod_shibs ``attribute-map.xml`` to
+Change shibd ``attribute-map.xml`` to
 
 .. code:: xml
 
  <Attributes xmlns="urn:mace:shibboleth:2.0:attribute-map" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
      <Attribute name="http://schemas.xmlsoap.org/ws/2005/05/identity/claims/upn" id="upn"/>
  </Attributes>
-
+ 
 That will make the ``userPrincipalName`` available as the environment variable ``upn``.
 
 Further Reading
@@ -136,11 +139,17 @@ user_shibboleth
 
 When the app is enabled and ownCloud is protected by mod_shib, due to the Apache 2 configuration, you should be forced to authenticate against an ADFS. 
 After a successful authentication you will be redirected to the ownCloud login page, where you can login as the administrator.
-Double check you have a valid SAM session by browsing to https://cloud.hostname.tld/Shibboleth.sso/Session.
+Double check you have a valid SAML session by browsing to https://<owncloud server fqdn>/Shibboleth.sso/Session.
 
-In the "User Authentication" settings for Shibboleth the ``eppn`` or ``upn`` environment variables will be filled with the authenticated user’s ``userPrincipalName`` in the "Server Environment" section. 
+In the "User Authentication" settings for Shibboleth the ``upn`` environment variables will be filled with the authenticated user’s ``userPrincipalName`` in the "Server Environment" section. 
 
-Use ``eppn`` or ``upn`` as ``uid`` and set the app mode to 'SSO Only'.
+Use ``upn`` as ``uid`` and set the app mode to 'SSO Only' by running:
+.. code-block:: console
+
+  occ shibboleth:mode ssoonly
+  occ shibboleth:mapping -u upn
+
+
 ``displayName`` and email are only relevant for ``autoprovisioning`` mode. 
 Add Claims in ADFS and map them in the ``attribute-map.xml`` if needed. 
 
@@ -152,6 +161,22 @@ Testing
 - You should be logged in automatically.
 - Close the tab or delete the cookies to log out. 
 - To make the logout work see the Logout section in this document.
+
+Configuring  SSO
+================
+
+- On the ADFS Server add ``Windows Authentication`` to the ``Service``->``Authentication Methods`` for ``Intranet``
+- On the windows client:
+  - In the ``Internet Settings``->``Security``->``Local Intranet``
+    - Click on "Sites"
+    - Click on "Advanced"
+    - Add your adfs machine with `https://<adfs server fqdn>/` and click ok.
+    - Click on `customize level`
+    - Find `User Authtification`
+    - Check `Automatic login only for Intranet zone`
+
+Now if you logged into the domain and open your owncloud server in Internet Explorer or Edge with URI "oc-shib" you should get directly to your owncloud files without a login.
+
 
 Debugging
 =========
