@@ -47,7 +47,7 @@ Depending on the amount of existing data, this operation can take a long time.
 
 ::
 	occ encryption:disable
-	# ignore the "alredy disabled" message
+	# ignore the "already disabled" message
 	occ app:disable encryption
   	
 If the master key has been compromised or exposed, you can recreate it. You will need the current master key for it.
@@ -107,5 +107,6 @@ They need to:
 
 ::
 	occ encryption:disable
-	# ignore the "alredy disabled" message
+	# ignore the "already disabled" message
 	occ app:disable encryption
+	
