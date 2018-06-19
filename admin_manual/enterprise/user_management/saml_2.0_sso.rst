@@ -34,7 +34,7 @@ Then, generate certificates for the ``shibd`` daemon by running the following co
 
 .. code:: console
 
- $ sudo shib-keygen
+  sudo shib-keygen
 
 Download and Filter the ADFS Metadata
 -------------------------------------
