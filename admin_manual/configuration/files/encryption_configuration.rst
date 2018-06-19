@@ -184,7 +184,7 @@ Take it out of single-user mode when you are finished, by using the following co
  occ maintenance:singleuser --off
  
 .. important:: 
-   You may only disable encryption with by using the `occ Encryption
+   You may only disable encryption by using the `occ Encryption
    Commands`_. Make sure you have backups of all encryption keys, including
    those for all your users. 
 
@@ -225,7 +225,7 @@ To be safe, put your server in single user mode, to avoid any issues on a runnin
   
   occ encryption:encrypt-all
 
-Now you can turn the singleuser mode
+Now you can turn off the singleuser mode
 
 ::
 
@@ -402,9 +402,9 @@ How To Enable Encryption From the Web-UI
 1. First, you must enable the encrypton app, and then select an encryption type. 
 Go to the **Apps** section of your Admin page, click on **Show disabled Apps** and enable **Default encryption module**. 
 
-2. After that go to the encryption section of your Admin page, and ckeck the checkbox "Enable server-side encryption".
+2. After that go to the encryption section of your Admin page, and check the checkbox "Enable server-side encryption".
 
-3. Then select an encryption Type. Masterkey and User-key are your option. Masterkey is recommended. 
+3. Then select an encryption Type. Masterkey and User-key are the options. Masterkey is recommended. 
 
 4. Now you **must** log out and then log back in to initialize your encryption keys.
 
