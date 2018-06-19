@@ -5,7 +5,7 @@ SAML 2.0 Based SSO with Active Directory Federation Services (ADFS) and mod_shib
 Preparation
 -----------
 
-Before you can setup SAML 2.0 based SSO with `Active Directory Federation Services (ADFS) <https://msdn.microsoft.com/en-us/library/bb897402.aspx>`_ and mod_shib, ask your ADFS admin for the relevant server URLs.
+Before you can setup SAML 2.0 based |SSOabbr| with `Active Directory Federation Services (ADFS) <https://msdn.microsoft.com/en-us/library/bb897402.aspx>`_ and mod_shib, ask your ADFS admin for the relevant server URLs.
 These are:
 
 - The SAML 2.0 single sign-on service URL, e.g., ``https://<adfs server fqdn>/adfs/ls``
