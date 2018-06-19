@@ -81,7 +81,6 @@ Additional events for audit logging
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 New events have been added to be used for audit logging, among others. These include *settings changes by users*, *sending public links via mail* as well as *accepting/rejecting shares*. When logs are forwarded to external analyzers like Splunk, administrators can check to add the new events. The latest version of the Auditing extension (admin_audit) is required.
-https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#new-events-for-audit-logging
 
 Theming improvements and changes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
