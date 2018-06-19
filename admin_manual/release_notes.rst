@@ -2,6 +2,7 @@
 Release Notes
 =============
 
+* :ref:`10.0.9_release_notes_label`
 * :ref:`10.0.8_release_notes_label`
 * :ref:`10.0.7_release_notes_label`
 * :ref:`10.0.6_release_notes_label`
@@ -16,6 +17,111 @@ Release Notes
 * :ref:`8.1_release_notes_label`
 * :ref:`8.0_release_notes_label`
 * :ref:`7.0_release_notes_label`
+
+.. _10.0.9_release_notes_label:
+
+Changes in 10.0.9
+-----------------
+
+Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.9 that need your attention. You can also read `the full ownCloud Server changelog`_ for further details on what has changed.
+
+New feature: Pending Shares
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ownCloud Server 10.0.9 introduces new features to close usability gaps and to give users more control over incoming shares. Previously shared contents would just appear in the receiving user's file hierarchy and clients would start synchronizing. To provide means for a better management, incoming shares can now have a *pending* state offering the ability to accept or decline (as known from federated sharing). In addition the `recently introduced notifications framework <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#new-mail-notifications-feature>`_ is being used to inform users via mail. The bell icon in the web interface and the ownCloud Desktop Client can additionally be used to take action. To switch to the new behavior administrators need to disable the configuration option "Automatically accept new incoming local user shares" in the *Sharing* settings section. By default the option will be enabled to preserve the known behavior.
+
+**Please note** that there is no asynchronous batch processing for the mail notifications yet. For this reason ownCloud will send notification mails directly when initiating shares between users. Due to this limitation sharing with large groups (> 50 users) can take some time and might cause load peaks. When operating installations with large groups it is therefore not yet recommended to enable the feature.
+
+New feature: Overview of pending & rejected shares
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In addition to the *Pending Shares* feature ownCloud Server now provides means to view *accepted*, *pending* and *rejected* incoming shares. Leveraging the *Shared with you* filter in the left sidebar of the files view users can now list all incoming shares, their respective states and have the ability to easily switch between the states. This improvement not only empowers users to accept rejected shares subsequently but also to restore shares that have been unshared before without requiring the owner to share it again.
+
+Technology preview for new S3 Objectstore implementation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+ownCloud Server 10.0.9 comes with the prerequisites to be ready for the new S3 Objectstore implementation *files_primary_s3* that will massively improve performance, reliability and protocol-related capabilities. The `new extension is available as a technology preview via the ownCloud Marketplace <LINK>`_ and will supersede the current `Objectstore <https://marketplace.owncloud.com/apps/objectstore>`_ extension. It has received extensive testing and can be considered in very good shape. However, there is no out-of-the-box migration from the current *objectstore* to *files_primary_s3* as this will require individual guidance. Due to changes to the Versioning API `ownCloud Ransomware Protection <https://marketplace.owncloud.com/apps/ransomware_protection>`_ is not yet compatible with *files_primary_s3*. For now the *objectstore* extension will continue to work as usual. Once the new implementation leaves technology preview state and migrations have been taken care of the current implementation will be deprecated.
+
+SWIFT Objectstore deprecation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+As the markets are moving in the direction of the S3 protocol to communicate with object storages, ownCloud will follow this path with a clear focus. For this it will be a necessity to deprecate object storage via the OpenStack SWIFT protocol. The extension will still be available as part of ownCloud Server but it will not be maintained or developed any further by ownCloud and support will be discontinued. Please make sure to move to the S3 protocol to use object storage as primary storage with future ownCloud Server versions.
+
+New options to display Imprint and Privacy Policy
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To enable GDPR and legal compliance in various jurisdictions for ownCloud providers it is now possible to specify links to Imprint and Privacy Policy in the administration settings 'General' section or via the OCC commands ``php occ config:app:set core legal.imprint_url <link>`` and ``php occ config:app:set core legal.privacy_policy_url <link>``. These links can be displayed on all pages of the ownCloud web interface and in the footer of mail notifications. When using one of the default themes provided by ownCloud as well as the default mail templates, configured links will be automatically included. For customized themes or mail templates actions are required to include the links:
+
+- Add the following at the end of each HTML template to add the footer 
+
+``<?php print_unescaped($this->inc('html.mail.footer', ['app' => 'core'])); ?>``
+
+- Add the following at the end of each plain text template to add the footer 
+
+``<?php print_unescaped($this->inc('plain.mail.footer', ['app' => 'core'])); ?>``
+
+- In a custom theme change ``getShortFooter`` and ``getLongFooter`` in *defaults.php* `without links <https://github.com/owncloud/theme-example/blob/master/defaults.php#L124>`_  to `include the links <https://github.com/owncloud/core/blob/master/lib/private/legacy/defaults.php#L256>`_
+
+Changed behavior of "Exclude groups from sharing" option
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The option "Exclude groups from sharing" in the administration settings 'Sharing' section enables administrators to exclude groups of users from the ability to initiate file shares. In previous versions this restriction did only apply to users that are members of exactly these groups (membership of one or more non-excluded groups bypassed the restriction). This behavior has been changed to be more restrictive and to better cover the expectations of administrators. With ownCloud Server 10.0.9 it will apply to all users that are member of at least one of the excluded groups.
+
+Changes to the sharing autocomplete mechanism
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With ownCloud Server 10.0.8 the `value for minimum characters to trigger the sharing autocomplete mechanism has been made configurable and set to “4” by default <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#new-config-setting-to-specify-minimum-characters-for-sharing-autocomplete>`_. As this security-enhancing change came at the expense of usability and might only be required in special scenarios the default value has been set back to "2". For higher security requirements the *config.php* option ``'user.search_min_length' => 2,`` can be adapted. To further improve usability a hint has been added to inform users about the required character count to get suggestions.
+
+Improvements for *occ user:list*
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To improve the usability of ``occ user:list`` the output has been made configurable by using the ``-a`` option to include certain attributes. This change has mainly been introduced to facilitate automation tasks. Check the ``--help`` option for more information.
+
+Additional events for audit logging
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+New events have been added to be used for audit logging, among others. These include *settings changes by users*, *sending public links via mail* as well as *accepting/rejecting shares*. When logs are forwarded to external analyzers like Splunk, administrators can check to add the new events. The latest version of the Auditing extension (admin_audit) is required.
+https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#new-events-for-audit-logging
+
+Theming improvements and changes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+- HTML templates for *lost password* mails have been added
+- The mail notifications framework `introduced with ownCloud Server 10.0.8 <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#new-mail-notifications-feature>`_ has been extended to provide a basic framework and notification structure to be used by ownCloud features and third party extensions. In this context mail templates have been adapted in terms of wording and structuring. Please review the templates in ``apps/notifications/templates/mail/`` to align with your needs.
+
+- Mail templates can now include a footer for HTML (``core/templates/html.mail.footer.php``) and plain text mails (``core/templates/plain.mail.footer.php``). The default templates shipped with ownCloud Server 10.0.9 contain the respective references. For customized mail templates it is necessary to manually add the references:
+  - Add the following at the end of each HTML template to add the footer ``<?php print_unescaped($this->inc('html.mail.footer', ['app' => 'core'])); ?>``
+  - Add the following at the end of each plain text template to add the footer ``<?php print_unescaped($this->inc('plain.mail.footer', ['app' => 'core'])); ?>``
+
+- The ownCloud example theme (``theme-example``) which can be used as a solid base to create custom themes has been unbundled from ownCloud Server and now lives in it's own `repository on GitHub <https://github.com/owncloud/theme-example>`_.
+
+Solved known issues
+~~~~~~~~~~~~~~~~~~~
+
+ownCloud Server 10.0.9 takes care of `10.0.8 known issues <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#id1>`_ and provides remedy for several others:
+
+- Issues with multiple theme apps and Mail Template Editor `#31478 <https://github.com/owncloud/core/issues/31478>`_
+- OCC command to transfer data between users (``occ transfer:ownership``) works as expected again (previously public link shares were not transferred) `#31176 <https://github.com/owncloud/core/issues/31176>`_
+- OCC commands to encrypt (``occ encryption:encrypt-all``) and decrypt (``occ encryption:decrypt-all``) user data work properly again (previously shares might have been lost during the process) `#31600 <https://github.com/owncloud/core/issues/31600>`_ `#31590 <https://github.com/owncloud/core/issues/31590>`_
+
+- File upload > 10 MB for guests works again `#31596 <https://github.com/owncloud/core/issues/31596>`_
+- Issues with public link dialog when collaborative tags app is disabled are resolved `#31581 <https://github.com/owncloud/core/issues/31581>`_
+- Enabling/disabling of users by group administrators in the web UI works again `#31489 <https://github.com/owncloud/core/issues/31489>`_
+
+Known issues
+~~~~~~~~~~~~
+
+Currently there are no known issues with ownCloud Server 10.0.9.
+
+For developers @PVince81
+~~~~~~~~~~~~~~
+
+- Provide original exception via logging events `#31623 <https://github.com/owncloud/core/issues/31623>`_
+  - Added Symfony events for user preference changes `#31266 <https://github.com/owncloud/core/issues/31266>`_
+  - Added Symfony events for public links shared by email `#31632 <https://github.com/owncloud/core/issues/31632>`_
+  - Added Symfony events for accept and reject for local shares `#31702 <https://github.com/owncloud/core/issues/31702>`_
+- Versions API: Added public Webdav API for versions using a new "meta" DAV endpoint `#31729 <https://github.com/owncloud/core/pull/29207>`_ `#29637 <https://github.com/owncloud/core/pull/29637>`_
+- Added support for retrieving file previews using Webdav endpoint `#29319 <https://github.com/owncloud/core/pull/29319>`_ `#30192 <https://github.com/owncloud/core/pull/30192>`_
 
 .. _10.0.8_release_notes_label:
 
@@ -88,7 +194,7 @@ When the *"Sharing"* settings option ``Allow users to send mail notifications fo
 
 Notifications sent by *occ* can now include links
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-The command ``occ:notifications:generate`` can be used to send notifications to individual users or groups. With 10.0.8 it is also capable of including links to such notifications using the ``-l, --link=LINK`` option. Please append ``--help`` for more information. There is also `Announcementcenter <https://marketplace.owncloud.com/apps/announcementcenter>`_ to conduct such tasks from the web interface but it is currently limited to send notifications to all users. For now administrators can use the *occ* command if more granularity is required.
+The command ``occ notifications:generate`` can be used to send notifications to individual users or groups. With 10.0.8 it is also capable of including links to such notifications using the ``-l, --link=LINK`` option. Please append ``--help`` for more information. There is also `Announcementcenter <https://marketplace.owncloud.com/apps/announcementcenter>`_ to conduct such tasks from the web interface but it is currently limited to send notifications to all users. For now administrators can use the *occ* command if more granularity is required.
 
 Global option for CORS domains
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
