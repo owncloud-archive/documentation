@@ -407,8 +407,3 @@ Go to the **Apps** section of your Admin page, click on **Show disabled Apps** a
 3. Then select an encryption Type. Masterkey and User-key are the options. Masterkey is recommended. 
 
 4. Now you **must** log out and then log back in to initialize your encryption keys.
-
-When you log back in, a checkbox for enabling encryption on your home storage, will now be available — checked by default. 
-Uncheck it to avoid encrypting your home storage.
-
-.. figure:: images/encryption15.png
