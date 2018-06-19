@@ -82,13 +82,6 @@ To do this, in ``/etc/shibboleth/shibboleth2.xml``:
 
     <MetadataProvider type="XML" file="/etc/shibboleth/filtered-metadata.xml"/>
 
-Further Reading
-^^^^^^^^^^^^^^^
-
-- https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApplication#NativeSPApplication-BasicConfiguration(Version2.4andAbove)
-- https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPServiceSSO
-- https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPMetadataProvider#NativeSPMetadataProvider-XMLMetadataProvider
-
 Metadata Available
 ------------------
 
@@ -123,10 +116,6 @@ Change shibd ``attribute-map.xml`` to
 
 That will make the ``userPrincipalName`` available as the environment variable ``upn``.
 
-Further Reading
-~~~~~~~~~~~~~~~
-
-- https://technet.microsoft.com/de-de/library/gg317734(v=ws.10).aspx#BKMK_EditClaimRulesforRelyingPartyTrust
 
 Apache2
 -------
@@ -222,6 +211,10 @@ Further Reading
 -  `ADFS: How to Invoke a WS-Federation Sign-Out <https://social.technet.microsoft.com/wiki/contents/articles/1439.ad-fs-how-to-invoke-a-ws-federation-sign-out.aspx>`_
 -  `Shibboleth Service Provider Integration with ADFS <https://blog.kloud.com.au/2014/10/29/shibboleth-service-provider-integration-with-adfs/>`_
 -  https://github.com/rohe/pysfemma/blob/master/tools/adfs2fed.py
+- https://technet.microsoft.com/de-de/library/gg317734(v=ws.10).aspx#BKMK_EditClaimRulesforRelyingPartyTrust
+- https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApplication#NativeSPApplication-BasicConfiguration(Version2.4andAbove)
+- https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPMetadataProvider#NativeSPMetadataProvider-XMLMetadataProvider
+- https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPServiceSSO
 
 .. Text substitutions
 
