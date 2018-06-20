@@ -3,25 +3,26 @@ Encryption Configuration Quick Guide
 ====================================
 
 Encryption Types
-~~~~~~~~~~~~~~~~
+----------------
 
 ownCloud provides two encryption types:
 
-- **Master Key:** there is only one key (or key pair) and all files are encrypted using that key pair. 
-**Highly recommended** for **new** instances to avoid **restrictions** in functionality of user key encryption.
+- **Master Key:** there is only one key (or key pair) and all files are encrypted using that key pair. This is **highly recommended** for **new** instances to avoid **restrictions** in functionality of user key encryption.
 
-- **User-specific Key:** every user has their own private/public key pairs; the private key is protected by the user's password. 
-**Will be removed in future releases**.
+- **User-specific Key:** every user has their own private/public key pairs; the private key is protected by the user's password. This **will be removed in future a release**.
 
-**Master Key**
-~~~~~~~~~~~~~~
+Master Key
+~~~~~~~~~~
+
 - The **recommended** type of encryption.
 - Best to activate on new instances with no data.
 - If you have existing data, use **encrypt all** command. Depending on the amount of existing data, this operation can take a long time.
 
-**Activation**
+Activation
+^^^^^^^^^^
 
 ::
+
 	occ maintenance:singleuser --on
 	occ app:enable encryption
 	occ encryption:enable
@@ -29,38 +30,45 @@ ownCloud provides two encryption types:
 	occ encryption:encrypt-all
 	occ maintenance:singleuser --off
 
-**Status**
+Status
+^^^^^^
 
 ::
 
-	occ encryption:status 
+	occ encryption:status
 
-**Decryption**
+Decryption
+^^^^^^^^^^
 
 Depending on the amount of existing data, this operation can take a long time.
 ::
+
 	occ maintenance:singleuser --on
  	occ encryption:decrypt-all
  	occ maintenance:singleuser --off
 
-**Deactivation**
+Deactivation
+^^^^^^^^^^^^
 
 ::
+
 	occ encryption:disable
 	# ignore the "already disabled" message
 	occ app:disable encryption
-  	
-If the master key has been compromised or exposed, you can recreate it. You will need the current master key for it.
+
+If the master key has been compromised or exposed, you can recreate it.
+You will need the current master key for it.
 
 ::
 
-	occ encryption:recreate-master-key 
+	occ encryption:recreate-master-key
 
 
-**User-specific Key**
-~~~~~~~~~~~~~~~~~~~~~
+User-Specific Key
+~~~~~~~~~~~~~~~~~
 
-**Activation**
+Activation
+^^^^^^^^^^
 
 ::
 
@@ -69,31 +77,35 @@ If the master key has been compromised or exposed, you can recreate it. You will
 	occ encryption:enable
 	occ encryption:select-encryption-type user-keys
 	occ encryption:encrypt-all
-	occ maintenance:singleuser --off 
+	occ maintenance:singleuser --off
 
 
-After User-specific encryption is enabled, users must log out and log back in to trigger the automatic personal encryption key generation process. 
+After User-specific encryption is enabled, users must log out and log back in to trigger the automatic personal encryption key generation process.
 
-**Recovery Key**
+Recovery Key
+^^^^^^^^^^^^
 
-- Go to the "Encryption" section of your Admin page
-- Set a Recovery Key password
-- Ask the users to opt-in to the Recovery Key
+- Go to the "_Encryption_" section of your Admin page.
+- Set a recovery key password.
+- Ask the users to opt-in to the recovery key.
 
-If a **user** decides **not to opt-in** to the Recovery Key and forgets/loses his password, **all of the user's data can not be decrypted anymore**. This leads to **permanent data loss**.
+If a user decides not to opt-in to the recovery key and forgets or loses their password, **the user's data cannot be decrypted**.
+This leads to **permanent data loss**.
 
 They need to:
 
-- Go to the "**Personal**" page 
+- Go to the "**Personal**" page
 - Enable the Recovery Key
- 
-**Status**
+
+Status
+^^^^^^
 
 ::
 
-	occ encryption:status 
+	occ encryption:status
 
-**Decrypt**
+Decrypt
+^^^^^^^
 
 ::
 
@@ -103,10 +115,11 @@ They need to:
  	# Recovery Key is a password set by the admin
  	occ maintenance:singleuser --off
 
-**Deactivation**
+Deactivation
+^^^^^^^^^^^^
 
 ::
+
 	occ encryption:disable
 	# ignore the "already disabled" message
 	occ app:disable encryption
-	
