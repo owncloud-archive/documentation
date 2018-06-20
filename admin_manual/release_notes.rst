@@ -65,7 +65,7 @@ To enable GDPR and legal compliance in various jurisdictions for ownCloud provid
 Changed behavior of "Exclude groups from sharing" option
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The option "Exclude groups from sharing" in the administration settings 'Sharing' section enables administrators to exclude groups of users from the ability to initiate file shares. In previous versions this restriction did only apply to users that are members of exactly these groups (membership of one or more non-excluded groups bypassed the restriction). This behavior has been changed to be more restrictive and to better cover the expectations of administrators. With ownCloud Server 10.0.9 it will apply to all users that are member of at least one of the excluded groups.
+The option "Exclude groups from sharing" in the administration settings 'Sharing' section enables administrators to exclude groups of users from the ability to initiate file shares. In previous versions this restriction only applied to users that are members of exactly these groups (membership of one or more non-excluded groups bypassed the restriction). This behavior has been changed to be more restrictive and to better cover the expectations of administrators. With ownCloud Server 10.0.9 it will apply to all users that are member of at least one of the excluded groups.
 
 Changes to the sharing autocomplete mechanism
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
