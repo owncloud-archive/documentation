@@ -728,7 +728,7 @@ The ``files:scan`` command
 - Repairs file cache holes.
 - Updates the file cache.
 
-File scans can be performed per-user, for a space-delimited list of users, and for all users.  
+File scans can be performed per-user, for a space-delimited list of users, for groups of users, and for all users.
 
 ::
 
@@ -742,6 +742,7 @@ File scans can be performed per-user, for a space-delimited list of users, and f
   Options:
         --output[=OUTPUT]  Output format (plain, json or json_pretty, default is plain) [default: "plain"]
     -p, --path=PATH        Limit rescan to this path, eg. --path="/alice/files/Music", the user_id is determined by the path and the user_id parameter and --all are ignored
+    -g, --groups=GROUPS    Scan user(s) under the group(s). This option can be used as --groups=foo,bar to scan groups foo and bar
     -q, --quiet            Do not output any message
         --all              Will rescan all files of all known users
         --repair           Will repair detached filecache entries (slow)
@@ -780,7 +781,7 @@ In the example above, the user_id ``alice`` is determined implicitly from the pa
   Mounts are only scannable at the point of origin. Scanning of shares including federated shares 
   is not necessary on the receiver side and therefore not possible.
 
-The ``--path``, ``--all`` and ``[user_id]`` parameters are exclusive - only one must be specified.
+The ``--path``, ``--all``, ``--groups`` and ``[user_id]`` parameters are exclusive - only one must be specified.
 
 The ``--repair`` Option
 ~~~~~~~~~~~~~~~~~~~~~~~
