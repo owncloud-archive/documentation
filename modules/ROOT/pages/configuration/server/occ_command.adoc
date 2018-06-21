@@ -622,12 +622,9 @@ version upgrade.
 You may optionally specify individual users in a space-delimited list.
 See xref:configuration/files/encryption_configuration.adoc[encryption configuration] to learn more.
 
-`encryption:recreate-master-key` decrypts the ownCloud file system,
-replaces the existing master key with a new one, and encrypts the entire
-ownCloud file system with the new master key. Given the size of your
-ownCloud filesystem, this may take some time to complete. However, if
-your filesystem is quite small, then it will complete quite quickly. The
-`-y` switch can be supplied to automate acceptance of user input.
+[[recreate-master-key]]
+
+`encryption:recreate-master-key` decrypts the ownCloud file system, replaces the existing master key with a new one, and encrypts the entire ownCloud file system with the new master key. Given the size of your ownCloud filesystem, this may take some time to complete. However, if your filesystem is quite small, then it will complete quite quickly. The `-y` switch can be supplied to automate acceptance of user input.
 
 [[federation-sync]]
 Federation Sync
