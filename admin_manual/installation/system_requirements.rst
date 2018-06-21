@@ -60,6 +60,8 @@ Mobile
 - iOS 9.0+
 - Android 4.0+
 
+.. _supported-browsers-label:
+
 Web Browser
 ^^^^^^^^^^^
 
