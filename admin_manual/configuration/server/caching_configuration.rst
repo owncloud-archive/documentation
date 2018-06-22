@@ -106,6 +106,12 @@ On Debian/Ubuntu/Mint run the following command:
 
    apt-get install redis-server php5-redis
 
+If you have Ubuntu 16.04 or higher:
+
+.. code-block:: console
+  
+  apt install redis-server php-redis
+
 The installer will automatically launch Redis and configure it to launch at startup.
 
 .. note:: 
@@ -201,14 +207,14 @@ Here’s an example of what to look for:
 
 .. code-block:: php
 
-    'redis': {
+    'redis' => [
         'host' => 'localhost',  // Can also be a unix domain socket => '/tmp/redis.sock'
         'port' => 6379,
         'timeout' => 0,
         'password' => '',       // Optional, if not defined no password will be used.
         'dbindex' => 0          // Optional, if undefined SELECT will not run and will
                                 // use Redis Server's default DB Index.
-    },
+    ],
 
 Further Reading
 ===============
