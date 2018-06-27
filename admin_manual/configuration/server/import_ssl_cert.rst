@@ -20,11 +20,17 @@ Click the **Import root certificate** button to open a file picker. You can dist
 Site-wide SSL Import
 --------------------
 
-The personal imports only work for individual users. You can enable site-wide SSL certificates for all of your users on your ownCloud admin page. To enable this, you must add this line to your ``config.php`` file::
+The personal imports only work for individual users. You can enable site-wide SSL certificates for all of your users on your ownCloud admin page.
+To enable this, you must add this line to your ``config.php`` file::
 
  'enable_certificate_management' => true,
- 
+
 Then you'll have a  **Import root certificate** button on your admin page, just like the one on your personal page.
+Navigate to it by clicking "*admin -> Settings -> (Admin) General*" and then scroll almost to the bottom, where you will find the "*SSL Root Certificates*" section.
+
+.. figure:: images/import-ssl-cert/import-ssl-root-certificates-admin.png
+
+   Site-wide SSL Root Certificate Import
 
 Using OCC to Import and Manage SSL Certificates
 -----------------------------------------------
