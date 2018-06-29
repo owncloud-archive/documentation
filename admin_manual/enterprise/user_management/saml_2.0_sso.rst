@@ -121,7 +121,7 @@ Apache2
 -------
 
 To protect ownCloud with shibboleth you need to protect the URL with a mod_shib based ``auth``.
-Currently, `we recommend protecting everything <https://doc.owncloud.org/server/10.0/admin_manual/enterprise/user_management/user_auth_shibboleth.html#the-apache-shibboleth-module>`_ and adding a few exceptions.
+Currently, `we recommend protecting only the login page <https://doc.owncloud.org/server/10.0/admin_manual/enterprise/user_management/user_auth_shibboleth.html#the-apache-shibboleth-module>`_.
 
 user_shibboleth
 ~~~~~~~~~~~~~~~
@@ -146,7 +146,7 @@ Testing
 -------
 
 - Close the browser tab to kill the session.
-- Then visit https://cloud.hostname.tld again.
+- Then visit https://<owncloud server fqdn> again.
 - You should be logged in automatically.
 - Close the tab or delete the cookies to log out.
 - To make the logout work see the Logout section in this document.
