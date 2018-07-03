@@ -140,20 +140,23 @@ Firewall logging can be set to **Off**, **Blocked Requests Only** or **All Reque
 Off
 ^^^
 
-The firewall blocks according to the defined rules but does not log any of its actions.
+The firewall blocks requests according to the defined rules but does not log any of its actions.
 
 Blocked Requests Only
 ^^^^^^^^^^^^^^^^^^^^^
 
-The firewall logs blocked requests to the system log at **warning** level. To see these logs, the system log level must be
-set to include **warning**.
+The firewall logs blocked requests to the system log at **warning** level. To see these logs, the system log level must
+be set to a minimum level of **warning**.
 
 All Requests
 ^^^^^^^^^^^^
 
-The firewall logs both blocked and succcessful requests to the system log at **info** level. To see these logs, the
-system log level must be set to include **info**. Logging All Requests can generate a large amount of log data. It is
-recommended to only select All Requests for short-term checking of rule settings.
+The firewall logs blocked and successful requests to the system log at **warning** and **info** levels respectively.
+To see all these logs, the system log level must be set to a minimum level of **info**.
+
+.. note::
+   Logging all requests can generate a large amount of log data. It is recommended to only select all requests for
+   short-term checking of rule settings.
 
 Custom Configuration for Branded Clients
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
