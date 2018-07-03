@@ -90,7 +90,7 @@ Notes regarding the logfile key:
 
 ::
 
- 'log.condition' => [
+ 'log.conditions' => [
 	'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
 	'users' => ['user1', 'user2'],
 	'apps' => ['gallery'],
