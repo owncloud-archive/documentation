@@ -100,12 +100,15 @@ The following example demonstrates how all three conditions can look like.
 The first one that matches triggers the condition block writing the log entry to the defined logfile.
 --
 
+[source,php]
 ....
-'log.condition' => [
-   'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-   'users' => ['user1', 'user2'],
-   'apps' => ['gallery'],
-   'logfile' => '/tmp/test2.log'
+'log.conditions' => [
+  [
+    'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+    'users' => ['user1', 'user2'],
+    'apps' => ['gallery'],
+    'logfile' => '/tmp/test2.log'
+  ]
 ],
 ....
 
