@@ -91,10 +91,12 @@ Notes regarding the logfile key:
 ::
 
  'log.conditions' => [
-	'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
-	'users' => ['user1', 'user2'],
-	'apps' => ['gallery'],
-	'logfile' => '/tmp/test2.log'
+	[
+		'shared_secret' => '57b58edb6637fe3059b3595cf9c41b9',
+		'users' => ['user1', 'user2'],
+		'apps' => ['gallery'],
+		'logfile' => '/tmp/test2.log'
+	]
  ],
 
 Based on the conditional log settings above, following logs are written to the same logfile defined:
