@@ -7,7 +7,7 @@ now called Federation sharing. When you enable the Federation app you can
 easily and securely link file shares between ownCloud servers, in effect 
 creating a cloud of ownClouds.
 
-For security reasons federated sharing **strictly requires HTTPS** (SSL/TLS).
+For security reasons federated sharing **strictly requires HTTPS (SSL/TLS)**.
 
 Sharing With ownCloud 8 and Older
 ---------------------------------
