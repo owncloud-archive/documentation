@@ -145,8 +145,7 @@ The firewall blocks requests according to the defined rules but does not log any
 Blocked Requests Only
 ^^^^^^^^^^^^^^^^^^^^^
 
-The firewall logs blocked requests to the system log at **warning** level. To see these logs, the system log level must
-be set to a minimum level of **warning**.
+The firewall logs blocked requests to the system log at **warning** level. To see these logs, the system log level must be set to a minimum level of **warning**.
 
 All Requests
 ^^^^^^^^^^^^
@@ -155,8 +154,7 @@ The firewall logs blocked and successful requests to the system log at **warning
 To see all these logs, the system log level must be set to a minimum level of **info**.
 
 .. note::
-   Logging all requests can generate a large amount of log data. It is recommended to only select all requests for
-   short-term checking of rule settings.
+   Logging all requests can generate a large amount of log data. It is recommended to only select all requests for short-term checking of rule settings.
 
 Custom Configuration for Branded Clients
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
