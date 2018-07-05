@@ -19,6 +19,7 @@ Server Configuration
    custom_client_repos
    knowledgebase_configuration
    language_configuration
+   legal_settings_configuration
    logging_configuration
    harden_server
    security/password-policy
