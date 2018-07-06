@@ -114,6 +114,7 @@
 ***** xref:configuration/server/index_php_less_urls.adoc[Index PHP Less URLs]
 ***** xref:configuration/server/knowledgebase_configuration.adoc[Knowledgebase Configuration]
 ***** xref:configuration/server/language_configuration.adoc[Language Configuration]
+***** xref:configuration/server/legal_settings_configuration.adoc[Legal Settings Configuration]
 ***** xref:configuration/server/logging_configuration.adoc[Logging Configuration]
 ***** xref:configuration/server/oc_server_tuning.adoc[Server Tuning]
 ***** xref:configuration/server/occ_command.adoc[OCC Command]
