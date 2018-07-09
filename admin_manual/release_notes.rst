@@ -50,6 +50,14 @@ In addition to the "*Pending Shares*" feature, ownCloud Server now provides the 
 
 This improvement not only empowers users to accept rejected shares subsequently but also to restore shares that have been unshared before without requiring the owner to share it again.
 
+Password history and expiration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To prepare ownCloud Server for new capabilities in the authentication process an authentication middleware has been introduced. It offers a proper way to plug in certain actions between user authentication and actual access to an account that can't be circumvented. While this is the foundation to gather certain information about users on login (e.g. mail address) or forcing users to accept legal agreements in the future it currently is primarily targeted to offer means for new features of the _Password Policy_ extension:
+
+Together with ownCloud Server 10.0.9 a new major version of the `Password Policy <https://marketplace.owncloud.com/apps/password_policy>`_ extension has been released. In addition to the capabilities around password requirements new features have been introduced to allow for password expiration and history policies for guest user accounts or local user accounts created by an administrator (not for users imported from LDAP or other backends as these provide own mechanisms). Imposing such policies can increase security on the one hand because users will be forced to actually choose new passwords as the 10 last used passwords will not be usable when changing a user's password. On the other hand it enables to force users to change their password upon first login. Additionally it is possible to specify expiration policies for passwords forcing users to set new passwords every 90 days, for example. Users will be notified via mail by a configurable amount of days before the password expires and when the password has expired.
+Although `this practice is discouraged by NIST <https://pages.nist.gov/800-63-3/sp800-63b.html>`_ ownCloud now is fully compliant with common password guidelines in enterprise scenarios.
+
 Technology preview for new S3 Objectstore implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -153,6 +161,7 @@ ownCloud Server 10.0.9 takes care of `10.0.8 known issues <https://doc.owncloud.
 - Files larger than 10 MB can now properly be uploaded by guest users. See `#31596 <https://github.com/owncloud/core/issues/31596>`_ for further details.
 - Issues with public link dialog when collaborative tags app is disabled has been resolved. See `#31581 <https://github.com/owncloud/core/issues/31581>`_ for further details.
 - Enabling/disabling of users by group administrators in the web UI works again. See `#31489 <https://github.com/owncloud/core/issues/31489>`_ for further details.
+- Issues with file upload using Microsoft EDGE are now circumvented (hard memory limit of 5 GB causing uploads to fail randomly as garbage collection for file chunks did not work properly). See `#31884 <https://github.com/owncloud/core/pull/31825>`_ for further details.
 
 Known issues
 ~~~~~~~~~~~~
