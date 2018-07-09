@@ -275,6 +275,97 @@ XML Output
 </ocs>
 ----
 
+=== Enable User
+
+Enables a user on the ownCloud server.
+Authentication is done by sending a Basic HTTP Authorization header.
+
+[cols="2,1,1",options="headers"]
+|===
+|Request Path |Method |Content Type
+|`ocs/v1.php/cloud/users/{userid}/enable` |`PUT` |`text/plain`
+|===
+
+[cols="1,1,2",options="headers"]
+|===
+|Argument |Type |Description
+|userid |string |The id of the user to enable
+|===
+
+==== Status Codes
+
+* 100 - successful
+* 101 - failure
+
+==== Example
+
+[source,console]
+....
+# Enable the user ``Frank``
+curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable
+....
+
+==== XML Output
+
+[source,xml]
+....
+<?xml version="1.0"?>
+<ocs>
+  <meta>
+    <status>ok</status>
+    <statuscode>100</statuscode>
+    <message/>
+  </meta>
+  <data/>
+</ocs>
+....
+
+=== Disable User
+
+Disables a user on the ownCloud server.
+Authentication is done by sending a Basic HTTP Authorization header.
+
+[cols="2,1,1",options="headers"]
+|===
+|Request Path                              |Method |Content Type
+|`ocs/v1.php/cloud/users/{userid}/disable` |`PUT`  |`text/plain`
+|===
+
+[cols="1,1,2",options="headers"]
+|===
+|Argument |Type   |Description
+|userid   |string |The id of the user to disable
+|===
+
+==== Status Codes
+
+* 100 - successful
+* 101 - failure
+
+==== Example
+
+[source,console]
+....
+# Disable the user "Frank"
+curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable
+....
+
+==== XML Output
+
+[source,xml]
+....
+<?xml version="1.0"?>
+<ocs>
+  <meta>
+    <status>ok</status>
+    <statuscode>100</statuscode>
+     <message/>
+  </meta>
+  <data/>
+</ocs>
+....
+
+
 [[delete-user]]
 Delete User
 ~~~~~~~~~~~
