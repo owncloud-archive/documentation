@@ -63,12 +63,12 @@ Example
 
 [source,console]
 ----
-# Creates the user ``Frank`` with password ``frankspassword``
+# Creates the user "Frank" with password "frankspassword"
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \
    -d userid="Frank" \
    -d password="frankspassword"
 
-# Creates the user ``Frank`` with password ``frankspassword`` and adds him to the ``finance`` and ``management``groups
+# Creates the user "Frank" with password "frankspassword" and adds him to the "finance" and "management" groups
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \
    -d userid="Frank" \
    -d password="frankspassword" \
@@ -180,7 +180,7 @@ Example
 
 [source,xml]
 ----
-# Returns information on the user ``Frank``
+# Returns information on the user "Frank"
 curl http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
 ----
 
@@ -248,12 +248,12 @@ Examples
 
 [source,console]
 ----
-Updates the email address for the user ``Frank``
+Updates the email address for the user "Frank"
 curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank \
     -d key="email" \
     -d value="franksnewemail@example.org"
 
-Updates the quota for the user ``Frank``
+Updates the quota for the user "Frank"
 curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank \
     -d key="quota" \
     -d value="100MB"
@@ -301,7 +301,7 @@ Authentication is done by sending a Basic HTTP Authorization header.
 
 [source,console]
 ....
-# Enable the user ``Frank``
+# Enable the user "Frank"
 curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable
 ....
 
@@ -398,7 +398,7 @@ Example
 
 [source,console]
 ----
-# Deletes the user ``Frank``
+# Deletes the user "Frank"
 curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
 ----
 
@@ -449,7 +449,7 @@ Example
 
 [source,console]
 ----
-# Retrieves a list of groups of which ``Frank`` is a member
+# Retrieves a list of groups of which "Frank" is a member
 curl http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups
 ----
 
@@ -511,7 +511,7 @@ Example
 
 [source,console]
 ----
-# Adds the user ``Frank`` to the group ``newgroup``
+# Adds the user "Frank" to the group "newgroup"
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
 ----
 
@@ -568,7 +568,7 @@ Example
 
 [source,console]
 ----
-# Removes the user ``Frank`` from the group ``newgroup``
+# Removes the user "Frank" from the group "newgroup"
 curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
 ----
 
@@ -623,7 +623,7 @@ Example
 
 [source,console]
 ----
-# Makes the user ``Frank`` a sub-admin of the ``group`` group
+# Makes the user "Frank" a sub-admin of the "group" group
 curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="group"
 ----
 
@@ -680,7 +680,7 @@ Example
 ^^^^^^^
 
 ....
-# Removes ``Frank's`` sub-admin rights from the ``oldgroup`` group
+# Removes "Frank's" sub-admin rights from the "oldgroup" group
 curl -X DELETE https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"
 ....
 
@@ -733,7 +733,7 @@ Example
 
 [source,console]
 ----
-# Returns the groups of which ``Frank`` is a sub-admin
+# Returns the groups of which "Frank" is a sub-admin
 curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins
 ----
 
@@ -851,7 +851,7 @@ Example
 
 [source,console]
 ----
-# Adds a new group called ``newgroup``
+# Adds a new group called "newgroup"
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid="newgroup"
 ----
 
@@ -902,7 +902,7 @@ Example
 
 [source,console]
 ----
-# Returns a list of users in the ``admin`` group
+# Returns a list of users in the "admin" group
 curl http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin
 ----
 
@@ -959,7 +959,7 @@ Example
 
 [source,console]
 ----
-# Return the sub-admins of the group: ``mygroup``
+# Return the sub-admins of the group: "mygroup"
 curl https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins
 ----
 
@@ -1015,7 +1015,7 @@ Example
 
 [source,console]
 ----
-# Delete the group ``mygroup``
+# Delete the group "mygroup"
 curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup
 ----
 
@@ -1129,7 +1129,7 @@ Example
 
 [source,console]
 ----
-# Get app info for the ``files`` app
+# Get app info for the "files" app
 curl http://admin:secret@example.com/ocs/v1.php/cloud/apps/files
 ----
 
@@ -1200,7 +1200,7 @@ Example
 
 [source,console]
 ----
-# Enable the ``files_texteditor`` app
+# Enable the "files_texteditor" app
 curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
 ----
 
@@ -1250,7 +1250,7 @@ Example
 
 [source,console]
 ----
-Disable the ``files_texteditor`` app
+Disable the "files_texteditor" app
 curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
 ----
 
