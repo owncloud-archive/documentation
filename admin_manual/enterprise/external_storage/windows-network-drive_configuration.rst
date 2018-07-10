@@ -154,6 +154,121 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
 
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS mounts.
 
+
+Create Shares programmatically
+------------------------------
+
+Some users want to create new shares by command line scripts. There are two different approaches.
+
+### 1. occ files_external:create
+
+
+**One liner - personal share**
+
+::
+    occ files_external:create /WND windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'} --user someuser
+
+**One liner - general share**
+
+::
+    occ files_external:create /WND windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'}
+
+ 
+Arguments
+~~~~~~~~~
+
+> Usage::
+
+
+    files_external:create [options] [--] <mount_point> <storage_backend> <authentication_backend>
+
+::
+
+    Argument | Options
+    -------------|-----------
+    mount point | Path of the mount point within the file system
+    storage_backend | Storage backend indentifier
+    authentication_backend | authentication backend authentifier
+
+    Storage Backend | Identifier
+    ------------------------|-------------
+    Windows Network Drive | windows_network_drive
+    WebDav | dav
+    Local | local
+    ownCloud | owncloud
+    SFTP | sftp
+    Amazon S3 | amazons3
+    Dropbox | dropbox
+    Google Drive | googledrive
+    OpenStack Object Storage | swift
+    SMB / CIFS | smb
+
+    Authentication method | Identifier, name, configuration
+    -----------------------------|-------------
+    Log-in credentials, save in session | password::sessioncredentials 
+    Log-in credentials, save in database | identifier: password::logincredentials 
+    User entered, store in database | password::userprovided *
+    Global Credentials | password::global
+    None | null::null
+    Builtin | builtin::builtin
+    Username and password | password::password
+    OAuth1 | oauth1::oauth1 *
+    OAuth2 | oauth2::oauth2 *
+    RSA public key | publickey::rsa *
+    OpenStack | openstack::openstack *
+    Rackspace | openstack::rackspace *
+    Access key (Amazon S3) | amazons3::accesskey*
+
+
+ \* **authentication methods require aditional configuration**
+**Not all Storage Backends are work with some authentication methods.**
+
+There is an other alternative:
+**General Share**
+
+::
+    occ files_external:create /WND windows_network_drive password::logincredentials --config host=127.0.0.1 --config share='home' --config root='$user'  --config domain='somedomain.local' 
+
+**Personal Share**
+
+::
+    occ files_external:create /WND windows_network_drive password::logincredentials --config host=127.0.0.1 --config share='home' --config root='$user'  --config domain='somedomain.local'  --user someuser
+
+
+### 2. occ files_external:import
+The second approach uses a .json file for the whole configuration.
+::
+
+    json
+    {
+        "mount_point": "\/WND",
+        "storage": "OCA\\windows_network_drive\\lib\\WND",
+        "authentication_type": "password::logincredentials",
+        "configuration": {
+            "host": "127.0.0.1",
+            "share": "home",
+            "root": "$user",
+            "domain": "owncloud.local"
+        },
+        "options": {
+            "enable_sharing": false
+        },
+        "applicable_users": [],
+        "applicable_groups": []
+    } 
+
+**General Share**
+::
+
+occ files_external:import /import.json
+
+**Personal Share**
+
+::
+
+occ files_external:import /import.json --user someuser
+
+
 ==============================
 Windows Network Drive Listener
 ==============================
