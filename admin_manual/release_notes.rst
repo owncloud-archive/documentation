@@ -53,10 +53,31 @@ This improvement not only empowers users to accept rejected shares subsequently 
 Password history and expiration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To prepare ownCloud Server for new capabilities in the authentication process an authentication middleware has been introduced. It offers a proper way to plug in certain actions between user authentication and actual access to an account that can't be circumvented. While this is the foundation to gather certain information about users on login (e.g. mail address) or forcing users to accept legal agreements in the future it currently is primarily targeted to offer means for new features of the _Password Policy_ extension:
+To prepare ownCloud Server for new capabilities in the authentication process, we have introduced an authentication middleware, and a new major version of the `Password Policy <https://marketplace.owncloud.com/apps/password_policy>`_ extension is now available.
 
-Together with ownCloud Server 10.0.9 a new major version of the `Password Policy <https://marketplace.owncloud.com/apps/password_policy>`_ extension has been released. In addition to the capabilities around password requirements new features have been introduced to allow for password expiration and history policies for guest user accounts or local user accounts created by an administrator (not for users imported from LDAP or other backends as these provide own mechanisms). Imposing such policies can increase security on the one hand because users will be forced to actually choose new passwords as the 10 last used passwords will not be usable when changing a user's password. On the other hand it enables to force users to change their password upon first login. Additionally it is possible to specify expiration policies for passwords forcing users to set new passwords every 90 days, for example. Users will be notified via mail by a configurable amount of days before the password expires and when the password has expired.
-Although `this practice is discouraged by NIST <https://pages.nist.gov/800-63-3/sp800-63b.html>`_ ownCloud now is fully compliant with common password guidelines in enterprise scenarios.
+The Authentication Middleware
+`````````````````````````````
+
+It:
+
+1. Offers a defined way of inserting mandatory functionality between user authentication and user account access. For example, forcing users to accept legal agreements.
+2. Affords the ability to interact with the user during the login process, such as retrieving user details like their email address.
+
+.. note::
+   The authentication middleware is *currently* focused on offering new features in the Password Policy extension.
+
+The Password Policy Extension
+`````````````````````````````
+
+`The Password Policy Extension <https://marketplace.owncloud.com/apps/password_policy>`_ now supports password expiration and history policies for guest and local user accounts created by an administrator.
+
+.. note::
+   These features don't apply to users imported from LDAP or other backends.
+
+Imposing password expiration and history policies enhance security. For example, when users are forced to choose a new password, they can be blocked from using their ten previous passwords. However, increasing security can also decrease user satisfaction, such as forcing them to change their password upon first login, or change their passwords too frequently (such as every 90 days). That said, we encourage an acceptable balance between security and usability.
+
+.. note::
+   Although the above two password practices `are discouraged by NIST <https://pages.nist.gov/800-63-3/sp800-63b.html>`_, ownCloud is now fully compliant with common password guidelines in enterprise scenarios.
 
 Technology preview for new S3 Objectstore implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
