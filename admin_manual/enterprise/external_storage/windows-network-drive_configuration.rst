@@ -158,17 +158,17 @@ Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS mounts
 Create Shares programmatically
 ------------------------------
 
-Some users want to create new shares by command line scripts. There are two different approaches.
+Some admins want to create new shares by command line scripts. There are two different approaches.
 
 ### 1. occ files_external:create
 
 
-**One liner - personal share**
+**Personal share**
 
 ::
     occ files_external:create /WND windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'} --user someuser
 
-**One liner - general share**
+**General share**
 
 ::
     occ files_external:create /WND windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'}
@@ -221,7 +221,7 @@ Arguments
 
 
  \* **authentication methods require aditional configuration**
-**Not all Storage Backends are work with some authentication methods.**
+**Each Storage Backend needs its corresponding authentication methods.**
 
 There is an other alternative:
 **General Share**
