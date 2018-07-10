@@ -166,12 +166,12 @@ Some admins want to create new shares by command line scripts. There are two dif
 **Personal share**
 
 ::
-    occ files_external:create /WND windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'} --user someuser
+    occ files_external:create /my_share_name windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'} --user someuser
 
 **General share**
 
 ::
-    occ files_external:create /WND windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'}
+    occ files_external:create /my_share_name windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'}
 
  
 Arguments
@@ -227,12 +227,12 @@ There is an other alternative:
 **General Share**
 
 ::
-    occ files_external:create /WND windows_network_drive password::logincredentials --config host=127.0.0.1 --config share='home' --config root='$user'  --config domain='somedomain.local' 
+    occ files_external:create /my_share_name windows_network_drive password::logincredentials --config host=127.0.0.1 --config share='home' --config root='$user'  --config domain='somedomain.local' 
 
 **Personal Share**
 
 ::
-    occ files_external:create /WND windows_network_drive password::logincredentials --config host=127.0.0.1 --config share='home' --config root='$user'  --config domain='somedomain.local'  --user someuser
+    occ files_external:create /my_share_name windows_network_drive password::logincredentials --config host=127.0.0.1 --config share='home' --config root='$user'  --config domain='somedomain.local'  --user someuser
 
 
 ### 2. occ files_external:import
@@ -241,7 +241,7 @@ The second approach uses a .json file for the whole configuration.
 
     json
     {
-        "mount_point": "\/WND",
+        "mount_point": "\/my_share_name",
         "storage": "OCA\\windows_network_drive\\lib\\WND",
         "authentication_type": "password::logincredentials",
         "configuration": {
