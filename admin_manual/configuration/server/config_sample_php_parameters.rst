@@ -807,6 +807,39 @@ or no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
 old logfile reaches your limit. If a rotated log file is already present, it
 will be overwritten.
 
+Configure log rotation for the owncloud.log
+-------------------------------------------
+
+1. create a file and name it "owncloud" (for example) in /etc/logrotate.d/
+
+::
+
+vim /etc/logrotate.d/owncloud
+#or
+nano /etc/logrotate.d/owncloud
+
+2. Copy / Paste the following in to this file.
+
+Adjust to your needs and configuration.
+
+::
+
+/var/www/owncloud_data/owncloud.log 
+# Path to your owncloud.log file
+{
+size 10M
+# Logfile Size Limit
+rotate 12
+# Amount of Logfiles to keep
+missingok
+# If it's not there, no error will occur
+compress
+# after rotation, compress the old Logfile
+compresscmd /bin/gzip
+# use this compression command
+}
+
+
 Alternate Code Locations
 ------------------------
 
