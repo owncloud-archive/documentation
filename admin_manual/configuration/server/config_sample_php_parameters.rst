@@ -830,11 +830,11 @@ Adjust to your needs and configuration.
 size 10M
 # Logfile Size Limit
 rotate 12
-# Amount of Logfiles to keep
+# Amount of rotated logs to keeps
 missingok
 # If it's not there, no error will occur
 compress
-# after rotation, compress the old Logfile
+# after rotation, compress the copy of the Logfile
 compresscmd /bin/gzip
 # use this compression command
 }
@@ -1659,4 +1659,3 @@ Command Line
    
 .. _environment variables: https://12factor.net/config 
 .. _phpredis' Redis Cluster documentation: https://github.com/phpredis/phpredis/blob/develop/cluster.markdown
-     
