@@ -834,7 +834,7 @@ rotate 12
 missingok
 # If it's not there, no error will occur
 compress
-# after rotation, compress the copy of the Logfile
+# after rotation, compress the copy of the log file
 compresscmd /bin/gzip
 # use this compression command
 }
