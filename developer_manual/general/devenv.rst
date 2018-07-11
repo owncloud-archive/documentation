@@ -25,8 +25,7 @@ The first thing to do is to ensure that your server has the necessary software f
 
 https://doc.owncloud.com/server/latest/admin_manual/installation/source_installation.html#install-the-required-packages
 
-Then you will need to install software required to run the installation process for the development environment.
-
+Then you will need to install the software required to run the development environment's installation process.
 
 For Ubuntu 16.04 or 18.04
 
