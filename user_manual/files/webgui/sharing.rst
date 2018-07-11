@@ -32,6 +32,17 @@ folder with.
 If username auto-completion is enabled, when you start typing the user or group
 name ownCloud will automatically complete it for you, if possible.
 
+.. note::
+   From 10.0.8, user and group name search results are dependent on a new
+   `configuration setting`_, called ``user.search_min_length`` (it is set to 4 by
+   default).
+   This setting helps to aid search performance but requires that search
+   terms contain at least the defined number of characters.
+   Consequently, search terms shorter than the defined number of characters
+   will not return a list of matches.
+   However, they will return an existing user or group with a name of the same
+   length as the search term.
+
 After a file or folder has been shared, `Share Permissions`_ can be set on
 it. In the image below, you can see that the directory "event-Photos" is shared
 with the user "pierpont", who can *share*, *edit*, *create*, *change*, and
@@ -197,3 +208,4 @@ After the file's been successfully uploaded, they'll see (where possible) a prev
 .. Links
    
 .. _the Guest application: https://marketplace.owncloud.com/apps/guests
+.. _configuration setting: https://doc.owncloud.org/server/latest/admin_manual/configuration/server/config_sample_php_parameters.html

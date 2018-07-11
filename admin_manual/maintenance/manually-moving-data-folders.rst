@@ -114,5 +114,5 @@ Here, the "fictitious" application references the data directory as being set to
 
 .. Links
 
-.. _the directory permissions: https://doc.owncloud.org/server/9.1/admin_manual/installation/installation_wizard.html#strong-perms-label
+.. _the directory permissions: https://doc.owncloud.org/server/latest/admin_manual/installation/installation_wizard.html#strong-perms-label
 .. _the systemd essentials guide: https://www.digitalocean.com/community/tutorials/systemd-essentials-working-with-services-units-and-the-journal

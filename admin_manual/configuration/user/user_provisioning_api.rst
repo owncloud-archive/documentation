@@ -2,88 +2,121 @@
 User Provisioning API
 =====================
 
-The Provisioning API application enables a set of APIs that external systems can use to create, 
-edit, delete and query user attributes, query, set and remove groups, set quota 
-and query total storage used in ownCloud. Group admin users can also query 
-ownCloud and perform the same functions as an admin for groups they manage. The 
-API also enables an admin to query for active ownCloud applications, application 
-info, and to enable or disable an app remotely. HTTP 
-requests can be used via a Basic Auth header to perform any of the functions 
-listed above. The Provisioning API app is enabled by default.
+The Provisioning API application enables a set of APIs that external systems can use to:
 
+- Create, edit, delete and query user attributes
+- Query, set and remove groups
+- Set quota and query total storage used in ownCloud
+- Group admin users can also query ownCloud and perform the same functions as an admin for groups they manage.
+- Query for active ownCloud applications, application info, and to enable or disable an app.
+
+HTTP requests can be used via `a Basic Auth header`_ to perform any of the functions listed above.
+The Provisioning API app is enabled by default.
 The base URL for all calls to the share API is **owncloud_base_url/ocs/v1.php/cloud**.
 
 Instruction Set For Users
 =========================
 
-**users / adduser**
--------------------
+Add User
+--------
 
-Create a new user on the ownCloud server. Authentication is done by sending a 
-basic HTTP authentication header.
+Create a new user on the ownCloud server.
+Authentication is done by sending a basic HTTP authentication header.
 
-**Syntax: ocs/v1.php/cloud/users**
+Syntax
+^^^^^^
 
-* HTTP method: POST
-* POST argument: userid - string, the required username for the new user
-* POST argument: password - string, the required password for the new user
+============================= ============ ==============
+Request Path                  Method       Content Type
+============================= ============ ==============
+``ocs/v1.php/cloud/users``    ``POST``     ``text/plain``
+============================= ============ ==============
 
-Status codes:
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+userid   string The required username for the new user
+password string The required password for the new user
+groups   array  Groups to add the user to [optional]
+======== ====== ======================================
+
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - invalid input data
 * 102 - username already exists
 * 103 - unknown error occurred whilst adding the user
+* 104 - group does not exist
 
 Example
 ^^^^^^^
 
-* POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users -d 
-  userid="Frank" -d password="frankspassword"``
-* Creates the user ``Frank`` with password ``frankspassword``
+.. code-block:: console
+
+  # Creates the user ``Frank`` with password ``frankspassword``
+  curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \
+     -d userid="Frank" \
+     -d password="frankspassword"
+
+  # Creates the user ``Frank`` with password ``frankspassword`` and adds him to the ``finance`` and ``management``groups
+  curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users \
+     -d userid="Frank" \
+     -d password="frankspassword" \
+     -d groups[]="finance" -d groups[]="management"
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
  <?xml version="1.0"?>
  <ocs>
-  <meta>
-   <status>ok</status>
-   <statuscode>100</statuscode>
-   <message/>
-  </meta>
-  <data/>
+   <meta>
+     <status>ok</status>
+     <statuscode>100</statuscode>
+     <message/>
+   </meta>
+   <data/>
  </ocs>
 
-**users / getusers**
---------------------
+Get Users
+---------
 
-Retrieves a list of users from the ownCloud server. Authentication is done by 
-sending a Basic HTTP Authorization header.
+Retrieves a list of users from the ownCloud server.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users**
+========================== ======= ==============
+Request Path               Method  Content Type
+========================== ======= ==============
+``ocs/v1.php/cloud/users`` ``GET`` ``text/plain``
+========================== ======= ==============
 
-* HTTP method: GET
-* url arguments: search - string, optional search string
-* url arguments: limit - int, optional limit value
-* url arguments: offset - int, optional offset value
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+search   string optional search string
+limit    int    optional limit value
+offset   int    optional offset value
+======== ====== ======================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 
 Example
 ^^^^^^^
 
-* GET ``http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank``
-* Returns list of users matching the search string.
+.. code-block:: console
+
+  # Returns list of users matching the search string.
+  curl http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -98,67 +131,86 @@ XML Output
     </data>
   </ocs>
 
-**users / getuser**
--------------------
+Get User
+--------
 
-Retrieves information about a single user. Authentication is done by sending a 
-Basic HTTP Authorization header.
+Retrieves information about a single user.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users/{userid}**
+=========================================== ======= ==============
+Request Path                                Method  Content Type
+=========================================== ======= ==============
+``Syntax: ocs/v1.php/cloud/users/{userid}`` ``GET`` ``text/plain``
+=========================================== ======= ==============
 
-* HTTP method: GET
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+userid   int    Id of the user to retrieve
+======== ====== ======================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 
 Example
 ^^^^^^^
 
-  * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
-  * Returns information on the user ``Frank``
+.. code-block:: xml
+
+  # Returns information on the user ``Frank``
+  curl http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
-   <meta>
-    <status>ok</status>
-    <statuscode>100</statuscode>
-    <message/>
-   </meta>
-   <data>
-    <enabled>true</enabled>
-    <quota>
-     <free>81919008768</free>
-     <used>5809166</used>
-     <total>81924817934</total>
-     <relative>0.01</relative>
-    </quota>
-    <email>user@example.com</email>
-    <displayname>Frank</displayname>
-    <home>/mnt/data/files/Frank</home>
-    <two_factor_auth_enabled>false</two_factor_auth_enabled>
-   </data>
+     <meta>
+       <status>ok</status>
+       <statuscode>100</statuscode>
+       <message/>
+     </meta>
+     <data>
+       <enabled>true</enabled>
+       <quota>
+         <free>81919008768</free>
+         <used>5809166</used>
+         <total>81924817934</total>
+         <relative>0.01</relative>
+       </quota>
+       <email>user@example.com</email>
+       <displayname>Frank</displayname>
+       <home>/mnt/data/files/Frank</home>
+       <two_factor_auth_enabled>false</two_factor_auth_enabled>
+    </data>
   </ocs>
 
-**users / edituser**
---------------------
+Edit User
+---------
 
-Edits attributes related to a user. Users are able to edit email, displayname 
-and password; admins can also edit the quota value. Authentication is done by 
-sending a Basic HTTP Authorization header.
+Edits attributes related to a user.
+Users are able to edit *email*, *displayname* and *password*; admins can also edit the quota value.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users/{userid}**
+=================================== ======= ==============
+Request Path                        Method  Content Type
+=================================== ======= ==============
+``ocs/v1.php/cloud/users/{userid}`` ``PUT`` ``text/plain``
+=================================== ======= ==============
 
-* HTTP method: PUT
-* PUT argument: key, the field to edit (email, quota, display, password)
-* PUT argument: value, the new value for the field
+======== ====== ===================================================
+Argument Type   Description
+======== ====== ===================================================
+key      string the field to edit (email, quota, display, password)
+value    mixed  the new value for the field
+======== ====== ===================================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - user not found
@@ -167,18 +219,22 @@ Status codes:
 Examples
 ^^^^^^^^
 
-  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
-    key="email" -d value="franksnewemail@example.org"``
-  * Updates the email address for the user ``Frank``
-  
-  * PUT ``PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d 
-    key="quota" -d value="100MB"``
-  * Updates the quota for the user ``Frank``
-  
+.. code-block:: console
+
+  Updates the email address for the user ``Frank``
+  curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank \
+      -d key="email" \
+      -d value="franksnewemail@example.org"
+
+  Updates the quota for the user ``Frank``
+  curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank \
+      -d key="quota" \
+      -d value="100MB"
+
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -189,17 +245,26 @@ XML Output
     <data/>
   </ocs>
 
-**users / deleteuser**
-----------------------
+Enable User
+-----------
 
-Deletes a user from the ownCloud server. Authentication is done by sending a 
-Basic HTTP Authorization header.
+Enables a user on the ownCloud server.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users/{userid}**
+========================================== ======== ==============
+Request Path                               Method   Content Type
+========================================== ======== ==============
+``ocs/v1.php/cloud/users/{userid}/enable`` ``PUT``  ``text/plain``
+========================================== ======== ==============
 
-* HTTP method: DELETE
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+userid   string The id of the user to enable
+======== ====== ======================================
 
-Statuscodes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - failure
@@ -207,13 +272,109 @@ Statuscodes:
 Example
 ^^^^^^^
 
-  * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank``
-  * Deletes the user ``Frank``
+.. code-block:: console
+
+  # Enable the user ``Frank``
+  curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <ocs>
+    <meta>
+      <status>ok</status>
+      <statuscode>100</statuscode>
+       <message/>
+    </meta>
+    <data/>
+  </ocs>
+
+Disable User
+------------
+
+Disables a user on the ownCloud server.
+Authentication is done by sending a Basic HTTP Authorization header.
+
+=========================================== ======== ==============
+Request Path                                Method   Content Type
+=========================================== ======== ==============
+``ocs/v1.php/cloud/users/{userid}/disable`` ``PUT``  ``text/plain``
+=========================================== ======== ==============
+
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+userid   string The id of the user to disable
+======== ====== ======================================
+
+Status Codes
+^^^^^^^^^^^^
+
+* 100 - successful
+* 101 - failure
+
+Example
+^^^^^^^
+
+.. code-block:: console
+
+  # Disable the user ``Frank``
+  curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable
+
+XML Output
+^^^^^^^^^^
+
+.. code-block:: xml
+
+  <?xml version="1.0"?>
+  <ocs>
+    <meta>
+      <status>ok</status>
+      <statuscode>100</statuscode>
+       <message/>
+    </meta>
+    <data/>
+  </ocs>
+
+Delete User
+-----------
+
+Deletes a user from the ownCloud server.
+Authentication is done by sending a Basic HTTP Authorization header.
+
+=================================== ========== ==============
+Request Path                        Method     Content Type
+=================================== ========== ==============
+``ocs/v1.php/cloud/users/{userid}`` ``DELETE`` ``text/plain``
+=================================== ========== ==============
+
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+userid   string The id of the user to delete
+======== ====== ======================================
+
+Status Codes
+^^^^^^^^^^^^
+
+* 100 - successful
+* 101 - failure
+
+Example
+^^^^^^^
+
+.. code-block:: console
+
+  # Deletes the user ``Frank``
+  curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
+
+XML Output
+^^^^^^^^^^
+
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -224,30 +385,41 @@ XML Output
     <data/>
   </ocs>
 
-**users / getgroups**
----------------------
+Get Groups
+----------
 
-Retrieves a list of groups the specified user is a member of. Authentication is 
-done by sending a Basic HTTP Authorization header.
+Retrieves a list of groups the specified user is a member of.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users/{userid}/groups**
+========================================== ======= ==============
+Request Path                               Method  Content Type
+========================================== ======= ==============
+``ocs/v1.php/cloud/users/{userid}/groups`` ``GET`` ``text/plain``
+========================================== ======= ==============
 
-* HTTP method: GET
+======== ====== =========================================
+Argument Type   Description
+======== ====== =========================================
+userid   string The id of the user to retrieve groups for
+======== ====== =========================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 
 Example
 ^^^^^^^
 
-  * GET  ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups``
-  * Retrieves a list of groups of which ``Frank`` is a member
+.. code-block:: console
+
+  # Retrieves a list of groups of which ``Frank`` is a member
+  curl http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -263,18 +435,27 @@ XML Output
     </data>
   </ocs>
 
-**users / addtogroup**
-----------------------
+Add To Group
+------------
 
-Adds the specified user to the specified group. Authentication is done by 
-sending a Basic HTTP Authorization header.
+Adds the specified user to the specified group.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users/{userid}/groups**
+========================================== ======== ==============
+Request Path                               Method   Content Type
+========================================== ======== ==============
+``ocs/v1.php/cloud/users/{userid}/groups`` ``POST`` ``text/plain``
+========================================== ======== ==============
 
-* HTTP method: POST
-* POST argument: groupid, string - the group to add the user to
+======== ====== =========================================
+Argument Type   Description
+======== ====== =========================================
+userid   string The id of the user to retrieve groups for
+groupid  string The group to add the user to
+======== ====== =========================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - no group specified
@@ -286,14 +467,15 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups 
-    -d groupid="newgroup"``
-  * Adds the user ``Frank`` to the group ``newgroup``
+.. code-block:: console
+
+  # Adds the user ``Frank`` to the group ``newgroup``
+  curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -304,18 +486,27 @@ XML Output
     <data/>
   </ocs>
 
-**users / removefromgroup**
----------------------------
+Remove From Group
+-----------------
 
-Removes the specified user from the specified group. Authentication is done by 
-sending a Basic HTTP Authorization header.
+Removes the specified user from the specified group.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users/{userid}/groups**
+========================================== ========== ==============
+Request Path                               Method     Content Type
+========================================== ========== ==============
+``ocs/v1.php/cloud/users/{userid}/groups`` ``DELETE`` ``text/plain``
+========================================== ========== ==============
 
-* HTTP method: DELETE
-* POST argument: groupid, string - the group to remove the user from
+======== ====== =========================================
+Argument Type   Description
+======== ====== =========================================
+userid   string The id of the user to retrieve groups for
+groupid  string The group to remove the user from
+======== ====== =========================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - no group specified
@@ -327,15 +518,15 @@ Status codes:
 Example
 ^^^^^^^
 
-  * DELETE 
-    ``http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d 
-    groupid="newgroup"``
-  * Removes the user ``Frank`` from the group ``newgroup``
+.. code-block:: console
+
+  # Removes the user ``Frank`` from the group ``newgroup``
+  curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -345,20 +536,28 @@ XML Output
     </meta>
     <data/>
   </ocs>
-  
-**users / createsubadmin**
---------------------------
 
-Makes a user the subadmin of a group. Authentication is done by sending a Basic 
-HTTP Authorization header.
+Create Sub-admin
+----------------
 
-**Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
+Makes a user the sub-admin of a group.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-* HTTP method: POST
-* POST argument: groupid, string - the group of which to make the user a 
-  subadmin
+============================================= ======== ==============
+Request Path                                   Method   Content Type
+============================================= ======== ==============
+``ocs/v1.php/cloud/users/{userid}/subadmins`` ``POST`` ``text/plain``
+============================================= ======== ==============
 
-Status codes:
+======== ====== ===============================================
+Argument Type   Description
+======== ====== ===============================================
+userid   string The id of the user to be made a sub-admin
+groupid  string the group of which to make the user a sub-admin
+======== ====== ===============================================
+
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - user does not exist
@@ -368,15 +567,15 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins 
-    -d groupid="group"``
-  * Makes the user ``Frank`` a subadmin of the ``group`` group
+.. code-block:: console
+
+  # Makes the user ``Frank`` a sub-admin of the ``group`` group
+  curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="group"
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -387,37 +586,45 @@ XML Output
     <data/>
   </ocs>
 
-**users / removesubadmin**
---------------------------
+Remove Sub-admin
+----------------
 
-Removes the subadmin rights for the user specified from the group specified. 
+Removes the sub-admin rights for the user specified from the group specified.
 Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
+============================================= ========== ==============
+Request Path                                   Method     Content Type
+============================================= ========== ==============
+``ocs/v1.php/cloud/users/{userid}/subadmins`` ``DELETE`` ``text/plain``
+============================================= ========== ==============
 
-* HTTP method: DELETE
-* DELETE argument: groupid, string - the group from which to remove the user's 
-  subadmin rights
+======== ====== ==========================================================
+Argument Type   Description
+======== ====== ==========================================================
+userid   string the id of the user to retrieve groups for
+groupid  string the group from which to remove the user's sub-admin rights
+======== ====== ==========================================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - user does not exist
-* 102 - user is not a subadmin of the group / group does not exist
+* 102 - user is not a sub-admin of the group / group does not exist
 * 103 - unknown failure
 
 Example
 ^^^^^^^
 
-  * DELETE 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins 
-    -d groupid="oldgroup"``
-  * Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
+.. code-block:: console
+
+  # Removes ``Frank's`` sub-admin rights from the ``oldgroup`` group
+  curl -X DELETE https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -427,18 +634,27 @@ XML Output
     </meta>
     <data/>
   </ocs>
-  
-**users / getsubadmingroups**
------------------------------
 
-Returns the groups in which the user is a subadmin. Authentication is done by 
-sending a Basic HTTP Authorization header.
+Get Sub-admin Groups
+--------------------
 
-**Syntax: ocs/v1.php/cloud/users/{userid}/subadmins**
+Returns the groups in which the user is a sub-admin.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-* HTTP method: GET
+============================================= ======= ==============
+Request Path                                   Method  Content Type
+============================================= ======= ==============
+``ocs/v1.php/cloud/users/{userid}/subadmins`` ``GET`` ``text/plain``
+============================================= ======= ==============
 
-Status codes:
+======== ====== ===================================================
+Argument Type   Description
+======== ====== ===================================================
+userid   string The id of the user to retrieve sub-admin groups for
+======== ====== ===================================================
+
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - user does not exist
@@ -447,14 +663,15 @@ Status codes:
 Example
 ^^^^^^^
 
-  * GET 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins``
-  * Returns the groups of which ``Frank`` is a subadmin
+.. code-block:: console
+
+  # Returns the groups of which ``Frank`` is a sub-admin
+  curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -466,38 +683,48 @@ XML Output
     <data>
       <element>testgroup</element>
     </data>
-  </ocs>  
-  
+  </ocs>
+
 Instruction Set For Groups
-==========================  
+==========================
 
-**groups / getgroups**
-----------------------
+Get Groups
+----------
 
-Retrieves a list of groups from the ownCloud server. Authentication is done by 
-sending a Basic HTTP Authorization header.
+Retrieves a list of groups from the ownCloud server.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/groups**
+=========================== ======= ==============
+Request Path                Method  Content Type
+=========================== ======= ==============
+``ocs/v1.php/cloud/groups`` ``GET`` ``text/plain``
+=========================== ======= ==============
 
-* HTTP method: GET
-* url arguments: search - string, optional search string
-* url arguments: limit - int, optional limit value
-* url arguments: offset - int, optional offset value
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+search   string optional search string
+limit    int    optional limit value
+offset   int    optional offset value
+======== ====== ======================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 
 Example
 ^^^^^^^
 
-  * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=adm``
-  * Returns list of groups matching the search string.
+.. code-block:: console
+
+  # Returns list of groups matching the search string.
+  curl http://admin:secret@example.com/ocs/v1.php/cloud/groups?search=admi
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -512,18 +739,26 @@ XML Output
     </data>
   </ocs>
 
-**groups / addgroup**
----------------------
+Add Group
+---------
 
-Adds a new group. Authentication is done by
-sending a Basic HTTP Authorization header.
+Adds a new group.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/groups**
+=========================== ========= ==============
+Request Path                Method    Content Type
+=========================== ========= ==============
+``ocs/v1.php/cloud/groups`` ``POST``  ``text/plain``
+=========================== ========= ==============
 
-* HTTP method: POST
-* POST argument: groupid, string - the new groups name
+======== ====== ====================
+Argument Type   Description
+======== ====== ====================
+groupid  string the new group’s name
+======== ====== ====================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - invalid input data
@@ -533,14 +768,15 @@ Status codes:
 Example
 ^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups -d 
-    groupid="newgroup"``
-  * Adds a new group called ``newgroup``
+.. code-block:: console
+
+  # Adds a new group called ``newgroup``
+  curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/groups -d groupid="newgroup"
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -551,30 +787,41 @@ XML Output
     <data/>
   </ocs>
 
-**groups / getgroup**
----------------------
+Get Group
+---------
 
-Retrieves a list of group members. Authentication is done by sending a Basic 
-HTTP Authorization header.
+Retrieves a list of group members.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/groups/{groupid}**
+===================================== ======= ==============
+Request Path                          Method  Content Type
+===================================== ======= ==============
+``ocs/v1.php/cloud/groups/{groupid}`` ``GET`` ``text/plain``
+===================================== ======= ==============
 
-* HTTP method: GET
+======== ====== ===================================
+Argument Type   Description
+======== ====== ===================================
+groupid  string The group id to return members from
+======== ====== ===================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 
 Example
 ^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin``
-  * Returns a list of users in the ``admin`` group
+.. code-block:: console
+
+  # Returns a list of users in the ``admin`` group
+  curl http://admin:secret@example.com/ocs/v1.php/cloud/groups/admin
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -588,18 +835,27 @@ XML Output
       </users>
     </data>
   </ocs>
-  
-**groups / getsubadmins**
--------------------------
 
-Returns subadmins of the group. Authentication is done by
-sending a Basic HTTP Authorization header.
+Get Sub-admins
+--------------
 
-**Syntax: ocs/v1.php/cloud/groups/{groupid}/subadmins**
-      
-* HTTP method: GET
+Returns sub-admins of the group.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-Status codes:
+=============================================== ======= ==============
+Request Path                                     Method  Content Type
+=============================================== ======= ==============
+``ocs/v1.php/cloud/groups/{groupid}/subadmins`` ``GET`` ``text/plain``
+=============================================== ======= ==============
+
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+groupid  string The group id to get sub-admins for
+======== ====== ======================================
+
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - group does not exist
@@ -608,14 +864,15 @@ Status codes:
 Example
 ^^^^^^^
 
-  * GET 
-    ``https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins``
-  * Return the subadmins of the group: ``mygroup``
+.. code-block:: console
+
+  # Return the sub-admins of the group: ``mygroup``
+  curl https://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup/subadmins
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -627,19 +884,28 @@ XML Output
     <data>
       <element>Tom</element>
     </data>
-  </ocs>  
+  </ocs>
 
-**groups / deletegroup**
-------------------------
+Delete Group
+------------
 
-Removes a group. Authentication is done by
-sending a Basic HTTP Authorization header.
+Removes a group.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/groups/{groupid}**
+===================================== ========== ==============
+Request Path                          Method     Content Type
+===================================== ========== ==============
+``ocs/v1.php/cloud/groups/{groupid}`` ``DELETE`` ``text/plain``
+===================================== ========== ==============
 
-* HTTP method: DELETE
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+groupid  string the group to delete
+======== ====== ======================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - group does not exist
@@ -648,13 +914,15 @@ Status codes:
 Example
 ^^^^^^^
 
-  * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup``
-  * Delete the group ``mygroup``
+.. code-block:: console
+
+  # Delete the group ``mygroup``
+  curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/groups/mygroup
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -664,23 +932,32 @@ XML Output
     </meta>
     <data/>
   </ocs>
-  
+
 Instruction Set For Apps
-=========================  
+=========================
 
-**apps / getapps**
-------------------
+Get Apps
+--------
 
-Returns a list of apps installed on the ownCloud server. Authentication is done 
-by sending a Basic HTTP Authorization 
-header.
+Returns a list of apps installed on the ownCloud server.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/apps/**
+========================== ======= ==============
+Request Path               Method  Content Type
+========================== ======= ==============
+``ocs/v1.php/cloud/apps/`` ``GET`` ``text/plain``
+========================== ======= ==============
 
-* HTTP method: GET
-* url argument: filter, string - optional (``enabled`` or ``disabled``)
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+filter   string Whether to retrieve enabled or disable
+                apps. Available values are ``enabled``
+                and ``disabled``.
+======== ====== ======================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 * 101 - invalid input data
@@ -688,13 +965,15 @@ Status codes:
 Example
 ^^^^^^^
 
-  * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled``
-  * Gets enabled apps
+.. code-block:: console
+
+  # Gets enabled apps
+  curl http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -710,30 +989,41 @@ XML Output
     </data>
   </ocs>
 
-**apps / getappinfo**
----------------------
+Get App Info
+------------
 
-Provides information on a specific application. Authentication is done by 
-sending a Basic HTTP Authorization header.
+Provides information on a specific application.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/apps/{appid}**
+================================= ======= ==============
+Request Path                      Method  Content Type
+================================= ======= ==============
+``ocs/v1.php/cloud/apps/{appid}`` ``GET`` ``text/plain``
+================================= ======= ==============
 
-* HTTP method: GET
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+appid    string The app to retrieve information for
+======== ====== ======================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 
 Example
 ^^^^^^^
 
-  * GET ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files``
-  * Get app info for the ``files`` app
+.. code-block:: console
+
+  # Get app info for the ``files`` app
+  curl http://admin:secret@example.com/ocs/v1.php/cloud/apps/files
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -764,30 +1054,41 @@ XML Output
     </data>
   </ocs>
 
-**apps / enable**
------------------
+Enable
+------
 
-Enable an app.  Authentication is done by sending a Basic HTTP Authorization 
-header.
+Enable an app.
+Authentication is done by sending a Basic HTTP Authorization header.
 
-**Syntax: ocs/v1.php/cloud/apps/{appid}**
+================================= ======== ==============
+Request Path                      Method   Content Type
+================================= ======== ==============
+``ocs/v1.php/cloud/apps/{appid}`` ``POST`` ``text/plain``
+================================= ======== ==============
 
-* HTTP method: POST
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+appid    string The id of the app to enable
+======== ====== ======================================
 
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 
 Example
 ^^^^^^^
 
-  * POST ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor``
-  * Enable the ``files_texteditor`` app
+.. code-block:: console
+
+  # Enable the ``files_texteditor`` app
+  curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -797,31 +1098,40 @@ XML Output
     </meta>
   </ocs>
 
-**apps / disable**
-------------------
+Disable
+-------
 
-Disables the specified app. Authentication is
-done by sending a Basic HTTP Authorization header.
+Disables the specified app. Authentication is done by sending a Basic HTTP Authorization header.
 
+================================= ========== ==============
+Request Path                      Method     Content Type
+================================= ========== ==============
+``ocs/v1.php/cloud/apps/{appid}`` ``DELETE`` ``text/plain``
+================================= ========== ==============
 
-**Syntax: ocs/v1.php/cloud/apps/{appid}**
+======== ====== ======================================
+Argument Type   Description
+======== ====== ======================================
+appid    string The id of the app to disable
+======== ====== ======================================
 
-* HTTP method: DELETE
-
-Status codes:
+Status Codes
+^^^^^^^^^^^^
 
 * 100 - successful
 
 Example
 ^^^^^^^
 
-  * DELETE ``http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor``
-  * Disable the ``files_texteditor`` app
+.. code-block:: console
+
+  Disable the ``files_texteditor`` app
+  curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
 
 XML Output
 ^^^^^^^^^^
 
-::
+.. code-block:: xml
 
   <?xml version="1.0"?>
   <ocs>
@@ -830,4 +1140,7 @@ XML Output
       <status>ok</status>
     </meta>
   </ocs>
-  
+
+.. Links
+
+.. _a Basic Auth header: https://en.wikipedia.org/wiki/Basic_access_authentication

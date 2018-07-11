@@ -132,6 +132,30 @@ Block by System Tag::
 .. figure:: images/firewall-3.png
    :alt: Protecting files tagged with "Confidential" from outside access
 
+Logging
+~~~~~~~
+
+Firewall logging can be set to **Off**, **Blocked Requests Only** or **All Requests**
+
+Off
+^^^
+
+The firewall blocks requests according to the defined rules but does not log any of its actions.
+
+Blocked Requests Only
+^^^^^^^^^^^^^^^^^^^^^
+
+The firewall logs blocked requests to the system log at **warning** level. To see these logs, the system log level must be set to a minimum level of **warning**.
+
+All Requests
+^^^^^^^^^^^^
+
+The firewall logs blocked and successful requests to the system log at **warning** and **info** levels respectively.
+To see all these logs, the system log level must be set to a minimum level of **info**.
+
+.. note::
+   Logging all requests can generate a large amount of log data. It is recommended to only select all requests for short-term checking of rule settings.
+
 Custom Configuration for Branded Clients
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

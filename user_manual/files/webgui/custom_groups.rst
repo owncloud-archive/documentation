@@ -67,4 +67,4 @@ Change the name and click enter, and the name will be changed.
  
 .. Links
    
-.. _enabled custom groups: https://doc.owncloud.com/server/10.0/admin_manual/configuration/user/user_configuration.html#enabling-custom-groups
+.. _enabled custom groups: https://doc.owncloud.com/server/latest/admin_manual/configuration/user/user_configuration.html#enabling-custom-groups

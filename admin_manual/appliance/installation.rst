@@ -1,23 +1,26 @@
-=================
-How to Install It
-=================
+============================
+How to Install the Appliance
+============================
 
 The install process is a little involved, but not too much. 
 To keep it succinct, you need to:
 
-- :ref:`Download <appliance-download-label>` and :ref:`install <appliance-download-label>` the appliance 
-- Step through :ref:`the configuration wizard <appliance-download-label>`
-- :ref:`Activate <appliance-download-label>` the configured appliance 
+- :ref:`Download <appliance-download-label>` and :ref:`Install <appliance-install-label>` the appliance 
+- Step through :ref:`the configuration wizard <appliance-start-label>`
+- :ref:`Activate <appliance-activate-label>` the configured appliance 
 
-After that, you can access the running instance of ownCloud and :ref:`further configure it <appliance-download-label>` to suit your needs. 
+.. important:: 
+   You need **Internet access** to use the appliance. The appliance has to be activated with a license that you will receive from Univention via email. This license has to be imported in the appliance via the **web interface**.
+   The appliance also needs access to a DHCP server so that it can receive an IP address and be accessible.
+
+After that, you can access the running instance of ownCloud and :ref:`further configure it <appliance-administer-label>` to suit your needs. 
 
 .. _appliance-download-label:
 
 Download the Appliance
 ----------------------
 
-First off, you need to download the ownCloud X (10.0.1) Trial Appliance from `the
-ownCloud download page`_ and click "**DOWNLOAD NOW**". 
+First off, you need to download the ownCloud X Appliance from `the ownCloud download page`_ and click "DOWNLOAD NOW".  
 This will display a form, which you can see a sample of below, which you'll need to fill out. 
 It will ask you for the following details:
 
@@ -33,6 +36,9 @@ After you've filled out the form, click "**DOWNLOAD OWNCLOUD**" to begin the dow
 .. note::
    The virtual appliance files are around 1.4GB in size, so may take some time, depending on your network bandwidth.
 
+.. note::
+   You can also download it from `the owncloud.org page`_.
+
 .. _appliance-install-label:
 
 Install the Appliance
@@ -47,50 +53,8 @@ The example below shows this being done using VirtualBox.
 .. note:: 
    If you try to install an ownCloud appliance in your domain after removing an existing one, please remember to remove the original one from you DNS configuration.
 
-Don't Forget the IP Address!
-----------------------------
-
-At two points during the installation process, and one following it, the IP address of the virtual machine will be visible. 
-These appear:
-
-- During domain and network configuration 
-- On the final screen of the installation process
-- At the virtual machine’s login prompt. 
-
-An example of all three screens is visible below.
-Please make sure that you take note of the IP address, so that you can either map it to a hostname locally, such as in an ``/etc/hosts`` file, or add `an A record`_ to it in a local DNS configuration.
-That way you should not have problems logging in after the installation is complete.
-
-The Domain and Network Configuration Screen
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: ../images/appliance/domain-and-network-configuration.png
-   :alt: Domain and network configuration screen
-   :align: center
-
-The Final Appliance Installation Screen
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-.. image:: ../images/appliance/appliance-is-ready.png
-   :alt: Final appliance installation screen
-   
-.. note:: 
-   This screen is *also* visible when the virtual machine is finished booting.
-   
-The Virtual Machine Terminal Login
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-This screen is visible after the installation is completed and when the virtual machine is booted. 
-If it is not immediately visible, click enter and it will be.
-
-.. image:: ../images/appliance/appliance-post-installation-screen.png
-   :alt: The virtual machine terminal login
-
-Note that only the IP address is highlighted, in the screenshot above. 
-This is for two reasons. 
-Firstly, the URL will be removed in future releases of the ownCloud X Appliance. 
-Secondly, using the IP address avoids the need to update your DNS configuration or ``/etc/hosts`` file.
-Please bear this in mind.
+.. important:: 
+   Don't Forget the **IP Address** and the **Administrator Password**. You will need them to use the Appliance.
 
 .. _appliance-start-label:
 
@@ -130,8 +94,12 @@ The installer may instruct you to use ``https://`` to access the activation page
 Administer the Appliance
 ------------------------
 
-Once activated, you should be redirected to the appliance login page, which you can see below.
-Login using the password that you supplied during the configuration wizard earlier.
+Once activated, you should be redirected to the portal, which you can see below.
+
+.. image:: ../images/appliance/portal.png
+   :alt: Portal page.
+
+If you want to create new users and groups, or download apps from the Univention appcenter click on the "**System and domain settings**". Login as the "**Administrator**" using the password that you supplied during the configuration wizard earlier.
 
 .. image:: ../images/appliance/login-to-the-virtual-appliance.png
    :alt: Administer the ownCloud X Trial Appliance.
@@ -151,6 +119,9 @@ You will also be able to access the ownCloud web interface (2).
    The default username for the ownCloud is: ``owncloud`` and so is the password.
    The password is **not** the password you supplied during the configuration wizard.
 
+.. note:: 
+	For security reasons ``rpcbind`` should be disabled in the appliance. An open, from the internet accessable portmapper service like ``rpcbind`` can be used by an attacker to perform DDoS-Reflection-Attacks. Furthermore, the attacker can obtain information about your system, for example running rpc-services, or existing network shares. The german IT securyty agency "BSI" reported that systems with an open ``rpcbind`` service were used to perform DDoS-Reflection-Attacks against other systems.
+	If you want to create NFS shares on the appliance and give someone permission to access them, then you can enable ``rpcbind`` again.
 .. Links
    
 .. _VMware: https://www.vmware.com
@@ -161,3 +132,4 @@ You will also be able to access the ownCloud web interface (2).
 .. _purchase the license key: https://owncloud.com/contact
 .. _the ownCloud download page: https://owncloud.com/download
 .. _an A record: https://support.dnsimple.com/articles/differences-between-a-cname-alias-url/
+.. _the owncloud.org page: https://owncloud.org/download/#owncloud-server-appliance

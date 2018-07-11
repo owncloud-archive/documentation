@@ -68,7 +68,7 @@ You can find more information in `the PHPUnit documentation`_.
 Running PHP Unit tests for ownCloud >= 10.0
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-There are existing tests provided by ownCoud which are ready to run.
+There are existing tests provided by ownCloud which are ready to run.
 
 - Change into ``webroot`` and run ``make help`` to see tests and parameters available.
 
@@ -179,18 +179,18 @@ MySQL Setup
 
 ::
 
-  CREATE DATABASE oc_autotest
-  CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud'
-  GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost'
+  CREATE DATABASE oc_autotest;
+  CREATE USER 'oc_autotest'@'localhost' IDENTIFIED BY 'owncloud';
+  GRANT ALL ON oc_autotest.* TO 'oc_autotest'@'localhost';
 
 For parallel executor support with EXECUTOR_NUMBER=0 
 _____________________________________________________
 
 ::
 
-  CREATE DATABASE oc_autotest0
-  CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud'
-  GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost'
+  CREATE DATABASE oc_autotest0;
+  CREATE USER 'oc_autotest0'@'localhost' IDENTIFIED BY 'owncloud';
+  GRANT ALL ON oc_autotest0.* TO 'oc_autotest0'@'localhost';
 
 PostgreSQL Setup
 ^^^^^^^^^^^^^^^^
@@ -240,6 +240,12 @@ To run a particular test suite, use the following command as a guide:
 ::
 
   make test-php TEST_DATABASE=mysql TEST_PHP_SUITE=tests/lib/share/share.php
+
+By default, a code coverage report is generated after the test run. To avoid the time taken for that, specify ``NOCOVERAGE``:
+
+::
+
+  make test-php NOCOVERAGE=true TEST_DATABASE=mysql TEST_PHP_SUITE=tests/lib/share/share.php
 
 Further Reading
 ~~~~~~~~~~~~~~~

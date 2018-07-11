@@ -7,7 +7,7 @@ When you backup your ownCloud server, there are four things that you need to cop
 #. Your ``config/`` directory.
 #. Your ``data/`` directory.
 #. Your ownCloud database.
-#. Your custom theme files, if you have any. (See `Theming ownCloud <https://doc.owncloud.org/server/10.0/developer_manual/core/theming.html>`_)
+#. Your custom theme files, if you have any. (See `Theming ownCloud <https://doc.owncloud.org/server/latest/developer_manual/core/theming.html>`_)
 
 When you install your ownCloud server from our `Open Build Service <https://download.owncloud.org/download/repositories/stable/owncloud/>`_ packages (or from distro packages, which we do not recommend) **do not backup your ownCloud server files**, which are the other files in your ``owncloud/`` directory such as ``core/``, ``3rdparty/``, ``apps/``, ``lib/``, and all the rest of the ownCloud files. If you restore these files from backup they may not be in sync with the current package versions, and will fail the code integrity check. This may also cause other errors, such as white pages.
 
@@ -63,32 +63,101 @@ Restoring Files From Backup When Encryption Is Enabled
 ------------------------------------------------------
 
 If you need to restore files from backup, which were backed up when encryption
-was enabled, here’s how to do it.
+was enabled, here's how to do it.
 
-.. NOTE:: 
+.. NOTE::
    This is effective from at least version v8.2.7 of ownCloud onwards. Also,
    this is **not officially supported**. ownCloud officially supports either
    restoring the full backup or restoring nothing — not restoring individual
    parts of it.
 
 1. Restore the file from backup.
-2. Restore the file's encryption keys from backup.
-3. Run ``occ files:scan``; this makes the scanner find it. Note that, in the DB
-   it will (1) have the "size" set to the encrypted size, which is wrong (and
-   bigger) and (2) the "encrypted" flag will be set to 0.
-4. Update the "encrypted" flag to 1 in the DB to all *files* under
-   ``files/path``, but **not** directories. Setting the flag to 1 tells the
-   encryption application that the file is encrypted and needs to be processed.
-   
+
+2. Restore the file's encryption keys from your backup.
+
+3. Run ``occ files:scan``; this makes the scanner find it.
+
+.. NOTE::
+   In the DB it will:
+
+   - Have the "size" set to the encrypted size, which is wrong (and bigger);
+   - The "encrypted" flag will be set to 0
+
+4. :ref:`Retrieve the encrypted flag value <retrieve_encrypted_flag_value_label>`.
+
+5. Update the encrypted flag.
+
 .. NOTE::
    There's no need to update the encrypted flag for files in either
    "files_versions" or "files_trashbin", because these aren't scanned or found
    by ``occ files:scan``.
-   
-5. Download the file once as the user; the file's size will be corrected
+
+6. Download the file once as the user; the file's size will be corrected
    automatically.
 
-This process might not be suitable across all environments. 
-If it’s not suitable for yours, you might need to run an OCC command that does
-the scanning. 
+This process might not be suitable across all environments.
+If it's not suitable for yours, you might need to run an OCC command that does the scanning.
 But, that will require the user's password or recovery key.
+
+.. _retrieve_encrypted_flag_value_label:
+
+Retrieve the Encrypted Flag Value
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+1. In the backup database, retrieve the ``numeric_id`` value for `the storage`_
+   where the file was located from the ``oc_storages`` table and store the value
+   for later reference.
+
+   For example, if you have the following in your ``oc_storages`` table, then
+   ``numeric_id`` you should use is ``3``, if you need to restore a file for ``user1``.
+
+   ::
+
+    +--------------------------------+------------+-----------+--------------+
+    | id                             | numeric_id | available | last_checked |
+    +--------------------------------+------------+-----------+--------------+
+    | home::admin                    |          1 |         1 |         NULL |
+    | local::/var/www/owncloud/data/ |          2 |         1 |         NULL |
+    | home::user1                    |          3 |         1 |         NULL |
+    +--------------------------------+------------+-----------+--------------+
+
+2. In the live database instance, find the ``fileid`` of the file to restore by
+   running the query below, substituting the placeholders for the retrieved
+   values, and store the value for later reference.
+
+   ::
+
+     SELECT fileid
+     FROM oc_filecache
+     WHERE path = 'path/to/the/file/to/restore'
+       AND storage = <numeric_id>
+
+3. Retrieve the backup, which includes the data folder and database.
+
+4. Retrieve the required file from your backup and copy it to the real instance.
+
+5. In the backup database, retrieve the file's ``encrypted`` value, by running
+   the query below and store the value for later reference.
+
+   ::
+
+     SELECT encrypted
+     FROM oc_filecache
+     WHERE path = 'path/to/the/file/to/restore'
+       AND storage = <numeric_id>
+
+   This assumes the storage was the same and the file was in the same location.
+   If not, you will need to track down where the file was before.
+
+6. Update the live database instance with retrieved information, by running the
+   following query, substituting the placeholders for the retrieved values:
+
+   ::
+
+    UPDATE oc_filecache
+     SET encrypted = <encrypted>
+     WHERE fileid = <fileid>.
+
+.. Links
+
+.. _the storage: https://github.com/owncloud/core/wiki/Storage-IDs

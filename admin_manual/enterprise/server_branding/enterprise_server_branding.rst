@@ -5,12 +5,12 @@ Custom Theming ownCloud
 Overview
 --------
 
-ownBrander is an ownCloud build service that is exclusive to Enterprise 
-edition customers for creating branded ownCloud clients and servers. You 
-may brand your ownCloud server using ownBrander to easily build a custom theme, 
-using your own logo and artwork. ownCloud has always been theme-able, but it was 
-a manual process that required editing CSS and PHP files. Now Enterprise 
-customers can use ownBrander, which provides an easy graphical wizard. 
+ownBrander is an ownCloud build service that is exclusive to Enterprise
+edition customers for creating branded ownCloud clients and servers. You
+may brand your ownCloud server using ownBrander to easily build `a custom theme`_,
+using your own logo and artwork. ownCloud has always been theme-able, but it was
+a manual process that required editing CSS and PHP files. Now Enterprise
+customers can use ownBrander, which provides an easy graphical wizard.
 
 You need an Enterprise subscription, an account on 
 `Customer.owncloud.com <https://customer.owncloud.com/owncloud>`_, and the 
@@ -60,6 +60,9 @@ If anything goes wrong with your new theme, comment out this line to re-enable
 the default theme until you fix your branded theme. The branded theme follows 
 the same file structure as the default theme, and you may further customize it 
 by editing the source files. 
+.. Note:: Always edit only your custom theme files. Never edit the default
+   theme files.
 
-.. Note:: Always edit only your custom theme files. Never edit the default 
-   theme files.   
+.. Links
+
+.. _a custom theme: https://doc.owncloud.org/server/latest/developer_manual/core/theming.html

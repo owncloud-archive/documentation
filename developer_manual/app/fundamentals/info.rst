@@ -28,8 +28,8 @@ In this section, you will find a complete example configuration, along with an e
       </types>
 
       <documentation>
-          <user>https://doc.owncloud.org/server/10.0/user_manual/pim/contacts.html</user>
-          <admin>https://doc.owncloud.org/server/10.0/admin_manual/configuration_server/occ_command.html?highlight=contact#dav-commands</admin>
+          <user>https://doc.owncloud.org/server/latest/user_manual/pim/contacts.html</user>
+          <admin>https://doc.owncloud.org/server/latest/admin_manual/configuration_server/occ_command.html?highlight=contact#dav-commands</admin>
           <developer>https://github.com/owncloud/contacts/blob/master/README.md</developer>
       </documentation>
 

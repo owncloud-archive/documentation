@@ -32,10 +32,17 @@ After the upgrade is complete re-enable any which are compatible with the new re
 .. warning::
    Install unsupported apps at your own risk.
 
+Check ownCloud's Mandatory Requirements
+---------------------------------------
+
+:ref:`ownCloud's mandatory requirements <prerequisites_label>` (such as PHP versions and extensions) can change from one version to the next.
+Ensure that you review them and update your server(s), if required, before upgrading ownCloud.
+
 Enable Maintenance Mode
 -----------------------
 
 Put your server in :doc:`maintenance mode <enable_maintenance>` and disable :ref:`Cron jobs <cron_job_label>`.
+
 Doing so prevents new logins, locks the sessions of logged-in users, and displays a status screen so that users know what is happening.
 
 There are two ways to enable maintenance mode.
@@ -70,6 +77,7 @@ Setup the New Installation
 --------------------------
 
 Not all installations are the same, so we encourage you to take one of two paths to upgrade your ownCloud installation.
+
 These are `the standard upgrade` and `the power user upgrade`.
 
 If you're reasonably new to ownCloud, or not too familiar with upgrading an ownCloud installation, please follow the standard upgrade.

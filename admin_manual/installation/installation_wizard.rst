@@ -166,7 +166,7 @@ Now we will look at some important post-installation steps.
 For hardened security we recommend setting the permissions on your ownCloud directories as strictly as possible, and for proper server operations. 
 This should be done immediately after the initial installation and before running the setup. 
 
-Your HTTP user must own the ``config/``, ``data/``, ``apps/`` respectively the ``apps2/`` directories so that you can configure ownCloud, create, modify and delete your data files, and install apps via the ownCloud Web interface. 
+Your HTTP user must own the ``config/``, ``data/``, ``apps/`` respectively the ``apps-external/`` directories so that you can configure ownCloud, create, modify and delete your data files, and install apps via the ownCloud Web interface.
 
 You can find your HTTP user in your HTTP server configuration files, or you can use :ref:`label-phpinfo` (Look for the **User/Group** line).
 
@@ -183,16 +183,16 @@ You can find your HTTP user in your HTTP server configuration files, or you can 
 
 The easy way to set the correct permissions is to copy and run the script, below.
 The script sets proper permissions and ownership including the handling of necessary directories. 
-The script also prepares for an ``apps2`` directory, for details see ``config.sample.php``:
+The script also prepares for an ``apps-external`` directory, for details see ``config.sample.php``:
 
 - Replace the ``ocpath`` variable with the path to your ownCloud directory.
 - Replace the ``ocdata`` variable with the path to your ownCloud data directory.
-- Replace the ``ocapps2`` variable with the path to your ownCloud apps2 directory.
+- Replace the ``apps_external`` variable with the path to your ownCloud apps-external directory.
 
-In case use want to use links for the data and apps2 directory:
+In case use want to use links for the data and apps-external directory:
 
 - Replace the ``linkdata`` variable with the path to your ownCloud linked data directory.
-- Replace the ``linkapps2`` variable with the path to your ownCloud linked apps2 directory.
+- Replace the ``linkapps-external`` variable with the path to your ownCloud linked apps-external directory.
 
 Set the correct HTTP user and group according your needs:
  
@@ -212,7 +212,7 @@ This summary lists the recommended modes and ownership for your ownCloud directo
 * All files should be read-write for the file owner, read-only for the group owner, and zero for the world
 * All directories should be executable (because directories always need the executable bit set), read-write for the directory owner, and read-only for the group owner
 * The :file:`apps/` directory should be owned by ``[HTTP user]:[HTTP group]``
-* The :file:`apps2/` directory should be owned by ``[HTTP user]:[HTTP group]``
+* The :file:`apps-external/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`config/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`data/` directory should be owned by ``[HTTP user]:[HTTP group]``
 * The :file:`updater/` directory should be owned by ``[HTTP user]:[HTTP group]``

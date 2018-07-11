@@ -155,8 +155,8 @@ Limitations
 
 .. Links
 
-.. _trash bin retention policy: https://doc.owncloud.com/server/10.0/admin\_manual/configuration/server/config\_sample\_php\_parameters.html?highlight=trash%20bin#deleted-items-trash-bin
-.. _a built-in "thin-out" policy: https://doc.owncloud.com/server/10.0/admin\_manual/configuration/server/config\_sample\_php\_parameters.html?highlight=trash%20bin#file-versions
+.. _trash bin retention policy: https://doc.owncloud.com/server/latest/admin\_manual/configuration/server/config\_sample\_php\_parameters.html?highlight=trash%20bin#deleted-items-trash-bin
+.. _a built-in "thin-out" policy: https://doc.owncloud.com/server/latest/admin\_manual/configuration/server/config\_sample\_php\_parameters.html?highlight=trash%20bin#file-versions
 .. _is not a version anymore: https://github.com/owncloud/core/issues/29666
 .. _an ever-present threat: https://www.google.de/search?q=ransomware&source=lnms&tbm=nws&sa=X&ved=0ahUKEwiqmvL9rdfXAhWCyaQKHSkgDosQ_AUICigB&biw=1680&bih=908
 .. _a static extension list: https://fsrm.experiant.ca

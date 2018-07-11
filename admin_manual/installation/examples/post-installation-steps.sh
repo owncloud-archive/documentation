@@ -2,24 +2,24 @@
 
 ocpath='/var/www/owncloud'
 ocdata='/var/www/owncloud/data'
-ocapps2='/var/www/owncloud/apps2'
+ocapps_external='/var/www/owncloud/apps-external'
 oldocpath='/var/www/owncloud.old'
 linkdata="/var/mylinks/data"
-linkapps2="/var/mylinks/apps2"
+linkapps-external="/var/mylinks/apps-external"
 htuser='www-data'
 htgroup='www-data'
 rootuser='root'
 
 # Because the data directory can be huge or on external storage, an automatic chmod/chown can take a while.
 # Therefore this directory can be treated differently.
-# If you have already created an external data and apps2 directory which you want to link,
+# If you have already created an external data and apps-external directory which you want to link,
 # set the paths above accordingly. This script can link and set the proper rights and permissions
 # depending what you enter when running the script.
 # You have to run this script twice, one time to prepare installation and one time post installation
 
 # Example input
 # New install using mkdir:     n/n/n (create missing directories, setup permissions and ownership)
-# Upgrade using mkdir:         n/n/n (you move/replace data, apps2 and config.php manually, set setup permissions and ownership)
+# Upgrade using mkdir:         n/n/n (you move/replace data, apps-external and config.php manually, set setup permissions and ownership)
 # New install using links:     y/y/n (link existing directories, setup permissions and ownership)
 # Upgrade using links:         y/n/y (link existing directories, copy config.php, permissions and ownership are already ok)
 # Post installation/upgrade:   either n/n/n or y/y/n
@@ -60,13 +60,13 @@ if [ "$uselinks" = "n" ]; then
     echo
     mkdir -p $ocdata
   fi
-  if [ -L ${ocapps2} ]; then
-    echo "Symlink for $ocapps2 found but mkdir requested. Exiting."
+  if [ -L ${ocapps_external} ]; then
+    echo "Symlink for $ocapps_external found but mkdir requested. Exiting."
     echo
     exit
   else
-    printf "mkdir $ocapps2 \n"
-    mkdir -p $ocapps2
+    printf "mkdir $ocapps_external \n"
+    mkdir -p $ocapps_external
   fi
 else
   if [ -d ${ocdata} ]; then
@@ -77,13 +77,13 @@ else
     printf "ln $ocdata \n"
     ln -sfn $linkdata $ocdata
   fi
-  if [ -d ${ocapps2} ]; then
-    echo "Directory for $ocapps2 found but link requested. Exiting."
+  if [ -d ${ocapps_external} ]; then
+    echo "Directory for $ocapps_external found but link requested. Exiting."
     echo
     exit
   else
-    printf "ln $ocapps2 \n"
-    ln -sfn $linkapps2 $ocapps2
+    printf "ln $ocapps_external \n"
+    ln -sfn $linkapps-external $ocapps_external
   fi
 fi
 
@@ -97,38 +97,38 @@ if [ "$upgrdcfg" = "y" ]; then
   fi
 fi
 
-printf "\nchmod files and directories excluding data and apps2 directory \n"
-find -L ${ocpath} -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type f -print0 | xargs -0 chmod 0640
-find -L ${ocpath} -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type d -print0 | xargs -0 chmod 0750
+printf "\nchmod files and directories excluding data and apps-external directory \n"
+find -L ${ocpath} -path ${ocdata} -prune -o -path ${ocapps_external} -prune -o -type f -print0 | xargs -0 chmod 0640
+find -L ${ocpath} -path ${ocdata} -prune -o -path ${ocapps_external} -prune -o -type d -print0 | xargs -0 chmod 0750
 
 # no error messages on empty directories
 if [ "$chmdir" = "n" ] && [ "$uselinks" = "n" ]; then
-  printf "chmod data and apps2 directory (mkdir) \n"
+  printf "chmod data and apps-external directory (mkdir) \n"
   if [ -n "$(ls -A $ocdata)" ]; then
     find ${ocdata}/ -type f -print0 | xargs -0 chmod 0640
   fi
   find ${ocdata}/ -type d -print0 | xargs -0 chmod 0750
-  if [ -n "$(ls -A $ocapps2)" ]; then
-    find ${ocapps2}/ -type f -print0 | xargs -0 chmod 0640
+  if [ -n "$(ls -A $ocapps_external)" ]; then
+    find ${ocapps_external}/ -type f -print0 | xargs -0 chmod 0640
   fi
-  find ${ocapps2}/ -type d -print0 | xargs -0 chmod 0750
+  find ${ocapps_external}/ -type d -print0 | xargs -0 chmod 0750
 fi
 
 if [ "$chmdir" = "y" ] && [ "$uselinks" = "y" ]; then
-  printf "chmod data and apps2 directory (linked) \n"
+  printf "chmod data and apps-external directory (linked) \n"
   if [ -n "$(ls -A $ocdata)" ]; then
     find -L ${ocdata}/ -type f -print0 | xargs -0 chmod 0640
   fi
   find -L ${ocdata}/ -type d -print0 | xargs -0 chmod 0750
-  if [ -n "$(ls -A $ocapps2)" ]; then
-    find -L ${ocapps2}/ -type f -print0 | xargs -0 chmod 0640
+  if [ -n "$(ls -A $ocapps_external)" ]; then
+    find -L ${ocapps_external}/ -type f -print0 | xargs -0 chmod 0640
   fi
-  find -L ${ocapps2}/ -type d -print0 | xargs -0 chmod 0750
+  find -L ${ocapps_external}/ -type d -print0 | xargs -0 chmod 0750
 fi
 
-printf "\nchown files and directories excluding data and apps2 directory \n"
-find  -L $ocpath  -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type d -print0 | xargs -0 chown ${rootuser}:${htgroup}
-find  -L $ocpath  -path ${ocdata} -prune -o -path ${ocapps2} -prune -o -type f -print0 | xargs -0 chown ${rootuser}:${htgroup}
+printf "\nchown files and directories excluding data and apps-external directory \n"
+find  -L $ocpath  -path ${ocdata} -prune -o -path ${ocapps_external} -prune -o -type d -print0 | xargs -0 chown ${rootuser}:${htgroup}
+find  -L $ocpath  -path ${ocdata} -prune -o -path ${ocapps_external} -prune -o -type f -print0 | xargs -0 chown ${rootuser}:${htgroup}
 
 # do only if the directories are present
 if [ -d ${ocpath}/apps/ ]; then
@@ -145,13 +145,13 @@ if [ -d ${ocpath}/updater/ ]; then
 fi
 
 if [ "$chmdir" = "n" ] && [ "$uselinks" = "n" ]; then
-  printf "chown data and apps2 directories (mkdir) \n"
-  chown -R ${htuser}:${htgroup} ${ocapps2}/
+  printf "chown data and apps-external directories (mkdir) \n"
+  chown -R ${htuser}:${htgroup} ${ocapps_external}/
   chown -R ${htuser}:${htgroup} ${ocdata}/
 fi
 if [ "$chmdir" = "y" ] && [ "$uselinks" = "y" ]; then
-  printf "chown data and apps2 directories (linked) \n"
-  chown -R ${htuser}:${htgroup} ${ocapps2}/
+  printf "chown data and apps-external directories (linked) \n"
+  chown -R ${htuser}:${htgroup} ${ocapps_external}/
   chown -R ${htuser}:${htgroup} ${ocdata}/
 fi
 

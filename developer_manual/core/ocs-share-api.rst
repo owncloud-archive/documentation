@@ -21,6 +21,16 @@ Get all shares from the user.
 * Syntax: `/shares`
 * Method: `GET`
 
+Request Attributes
+^^^^^^^^^^^^^^^^^^
+
+==============  =======  =============================
+Attribute       Type     Description
+==============  =======  =============================
+shared_with_me  boolean  returns all shares shared with 
+                         the sharee
+==============  =======  =============================
+
 Returns
 ^^^^^^^
 
@@ -297,7 +307,7 @@ Function Arguments
    - Files will only ever have the **read** permission set
    - Folders will have **read**, **update**, **create**, and **delete** set
    - Public link shares **cannot** be shared with users and groups
-   - Public link shares are not available if public link sharing is enabled by the administrator
+   - Public link shares are not available if public link sharing is disabled by the administrator
 
 .. note:: **Mandatory Fields**
 
@@ -592,7 +602,7 @@ Federated Cloud Shares
 ======================
 
 Both the sending and the receiving instance need to have federated cloud sharing
-enabled and configured. See `Configuring Federated Cloud Sharing <https://doc.owncloud.org/server/9.0/admin_manual/configuration/files/federated_cloud_sharing_configuration.html>`_.
+enabled and configured. See `Configuring Federated Cloud Sharing <https://doc.owncloud.org/server/latest/admin_manual/configuration/files/federated_cloud_sharing_configuration.html>`_.
 
 Create A New Federated Cloud Share
 ----------------------------------

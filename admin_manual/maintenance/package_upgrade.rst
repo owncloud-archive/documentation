@@ -39,7 +39,7 @@ standard system upgrade command::
  
 Or you can upgrade just ownCloud with this command::
 
- apt-get update && apt-get install owncloud
+ apt-get update && apt-get install owncloud-files
  
 On Fedora, CentOS, and Red Hat Linux use ``yum`` to see all available updates::
 
@@ -51,7 +51,7 @@ You can apply all available updates with this command::
  
 Or update only ownCloud::
  
- yum update owncloud
+ yum update owncloud-files
  
 Your Linux package manager only downloads the current ownCloud packages. Then 
 your ownCloud server is immediately put into maintenance mode. You may not see 

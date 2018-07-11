@@ -147,8 +147,8 @@ We do not recommend developers to share their private key.
 Errors
 ------
 
-The following errors can be encountered when trying to verify a code signature. 
-For information about how to get access to those results please refer to `the Issues section of the ownCloud Server Administration manual <https://doc.owncloud.com/server/10.0/admin_manual/issues/code_signing.html#fixing-invalid-code-integrity-messages>`_.
+The following errors can be encountered when trying to verify a code signature.
+For information about how to get access to those results please refer to `the Issues section of the ownCloud Server Administration manual`_.
 
 ``INVALID_HASH``
 
@@ -192,3 +192,7 @@ For information about how to get access to those results please refer to `the Is
   - ``Signature could not get verified.``
 
     - There was a problem with verifying the signature of ``signature.json``.
+
+.. Links
+
+.. _the Issues section of the ownCloud Server Administration manual: https://doc.owncloud.com/server/latest/admin_manual/issues/code_signing.html#fixing-invalid-code-integrity-messages

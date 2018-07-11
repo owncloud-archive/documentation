@@ -7,7 +7,7 @@ When you install ownCloud from packages, follow these steps to restore your ownC
 #. Your ``config/`` directory.
 #. Your ``data/`` directory.
 #. Your ownCloud database.
-#. Your custom theme files, if you have any. (See `Theming ownCloud <https://doc.owncloud.org/server/10.0/developer_manual/core/theming.html>`_)
+#. Your custom theme files, if you have any. (See `Theming ownCloud <https://doc.owncloud.org/server/latest/developer_manual/core/theming.html>`_)
 
 When you install ownCloud from the source tarballs you may safely restore your entire ownCloud installation from backup, with the exception of your ownCloud database. Databases cannot be copied, but you must use the database tools to make a correct restoration.
 
@@ -37,7 +37,10 @@ MySQL
 
 MySQL is the recommended database engine. To restore MySQL::
 
+    occ maintenance:mode --on 
     mysql -h [server] -u [username] -p[password] [db_name] < owncloud-dbbackup.bak
+    occ maintenance:data-fingerprint
+    occ maintenance:mode --off
 
 SQLite
 ^^^^^^

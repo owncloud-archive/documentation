@@ -75,11 +75,11 @@ To do so:
 .. figure:: images/onedrive/configure-mountpoints.png
    :alt: OneDrive mount points configuration
 
-To be able to use the occ command ``files\_onedrive:subscribe``, you need to have the variable ``overwrite.cli.url`` set in ``config/config.php``, as in this example:
+To be able to use the occ command ``files_onedrive:subscribe``, you need to have the variable ``overwrite.cli.url`` set in ``config/config.php``, as in this example:
 
 .. code:: php
 
-    'overwrite.cli.url' => 'https://docker.oc.solidgear.es:63984/index.php',
+    'overwrite.cli.url' => 'https://example.org:63984/index.php',
 
 .. note::
    The HTTPS prefix, port, and ``/index.php`` suffix are mandatory.

@@ -26,6 +26,15 @@ General Recommendations
 .. note:: Whatever the size of your organization, always keep one thing in mind: 
    *The amount of data stored in ownCloud will only grow. So plan ahead.*
 
+ownCloud Administrators Must Have Command Line or Cron Access
+-------------------------------------------------------------
+
+We only recommend using hosts that provide command-line or Cron access (ideally both) *to ownCloud administrators*, for three key reasons:
+
+#. Without command-line access, :doc:`OCC commands <../configuration/server/occ_command>`, required for administrative tasks such as repairs and upgrades, are not available.
+#. Without crontab access, you cannot run background jobs reliably. :ref:`ajax/cron.php <ajax_cron_label>` is available, but it is not reliable enough, because it only runs when people are using the web UI. Additionally, ownCloud relies heavily on :ref:`background jobs <available_background_jobs_label>` especially for long-running operations, which will likely cause PHP timeouts.
+#. PHP timeout values are often low. Having low timeout settings can break long-running operations, such as moving a huge folder.
+
 Scenario 1: Small Workgroups and Departments
 --------------------------------------------
 
@@ -409,18 +418,18 @@ References
 .. Links
 
 .. _Maintenance: 
-   https://doc.owncloud.org/server/9.0/admin_manual/maintenance/index.html
+   https://doc.owncloud.org/server/latest/admin_manual/maintenance/index.html
 .. _User Authentication with LDAP:
-   https://doc.owncloud.org/server/10.0/admin_manual/configuration/user/    
+   https://doc.owncloud.org/server/latest/admin_manual/configuration/user/    
    user_auth_ldap.html
 .. _Configuring Memory Caching:   
-   https://doc.owncloud.org/server/10.0/admin_manual/configuration/server/ 
+   https://doc.owncloud.org/server/latest/admin_manual/configuration/server/ 
    caching_configuration.html
 .. _ownCloud Server or Enterprise Edition:  
    https://owncloud.com/owncloud-server-or-enterprise-edition/
 .. _F5 Big-IP: https://f5.com/products/big-ip/
 .. _Shibboleth Integration: 
-   https://doc.owncloud.org/server/9.0/admin_manual/enterprise_user_management/
+   https://doc.owncloud.org/server/latest/admin_manual/enterprise_user_management/
    user_auth_shibboleth.html
 .. _Database High Availability: 
    http://www.severalnines.com/blog/become-mysql-dba-blog-series-database-high-

@@ -43,6 +43,7 @@ Provider setup:
   requests accordingly (2-n)
 * GPFS or Ceph via phprados (2-n, 3 to be safe, Ceph 10+ nodes to see speed 
   benefits under load)
+* In case of clustering, your cluster nodes must have the same ownCloud configuration including an identical config.php to avoid any potential issues.
 
 Pros:
 
@@ -124,11 +125,10 @@ While many customers are starting with NFS, sooner or later that requires scale-
 Session Storage
 ---------------
 
-* Redis: provides persistence, nice graphical inspection tools available, 
-  supports ownCloud high-level file locking.
-   
-* If Shibboleth is a requirement you must use Memcached, and it can also be 
-  used to scale-out shibd session storage (see `Memcache StorageService`_).
+* Redis is required for :doc:`transactional file locking <../configuration/files/files_locking_transactional>`, provides
+  session persistence, and graphical inspection tools available.
+* If you need to scale out Shibboleth you must use Memcached, as Shibboleth does not provide an interface to Redis.
+  Memcached can also be used to scale-out shibd session storage (see `Memcache StorageService`_).
 
 .. Links
    

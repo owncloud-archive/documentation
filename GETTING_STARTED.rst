@@ -54,6 +54,22 @@ Required Software
 The README on https://github.com/owncloud/documentation has instructions for setting 
 up your build environment.
 
+How to Install Sphinx-Doc
+-------------------------
+
+On Ubuntu 16.10
+~~~~~~~~~~~~~~~
+
+To install Sphinx-Doc, follow the commands below.
+This will install all of the required packages so that you build the documentation.
+
+::
+
+  apt-get update
+  apt-get install python3-sphinx python-pip python-dev build-essential make --assume-yes
+  pip install sphinxcontrib-phpdomain
+  pip install rst2pdf
+
 Release Updates
 ---------------
 
@@ -138,7 +154,7 @@ separate system somewhere. I have been marking obsolete manuals with an "Unsuppo
 templates are in the ``_shared_assets`` directory. 
 
 See https://github.com/owncloud/documentation/commit/26022bb489218120977592409755152e63973d19 
-for example code, and https://doc.owncloud.org/server/8.0/user_manual/ to see how it looks. The manuals are 
+for example code, and https://doc.owncloud.org/server/latest/user_manual/ to see how it looks. The manuals are 
 left up because they come up in Google searches, so the banner tells users where to find current manuals.
 
 Pages
@@ -209,7 +225,7 @@ separate system somewhere. I have been marking obsolete manuals with an "Unsuppo
 templates are in the ``_shared_assets`` directory. 
 
 See https://github.com/owncloud/documentation/commit/26022bb489218120977592409755152e63973d19 
-for example code, and https://doc.owncloud.org/server/8.0/user_manual/ to see how it looks. The manuals are 
+for example code, and https://doc.owncloud.org/server/latest/user_manual/ to see how it looks. The manuals are 
 left up because they come up in Google searches, so the banner tells users where to find current manuals.
 
 Pages

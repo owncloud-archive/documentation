@@ -47,7 +47,12 @@ Required
 PHP Version
 ~~~~~~~~~~~
 
-PHP >= 5.6 (ideally 7.0 or above)
+PHP (5.6+, 7.0, & 7.1)
+
+.. WARNING::
+
+   ownCloud recommends the use of PHP 7.1 in new installations.
+   Sites using a version earlier than PHP 7.1 are *strongly encouraged* to migrate to PHP 7.1
 
 PHP Extensions
 ~~~~~~~~~~~~~~
@@ -448,12 +453,18 @@ Additional Apache Configurations
 
     a2enmod rewrite
   
-  Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``::
+  Additional recommended modules are ``mod_headers``, ``mod_env``, ``mod_dir`` and ``mod_mime``
+  
+  ::
   
     a2enmod headers
     a2enmod env
     a2enmod dir
     a2enmod mime
+  
+  .. note::
+     If you want to use `the OAuth2 app`_, then `mod_headers`_ must be installed and
+     enabled.
   
 - You must disable any server-configured authentication for ownCloud, as it uses Basic authentication internally for DAV services. If you have turned on authentication on a parent folder (via, e.g., an ``AuthType Basic`` directive), you can disable the authentication specifically for the ownCloud entry. Following the above example configuration file, add the following line in the ``<Directory`` section
 
@@ -524,6 +535,31 @@ Set Strong Directory Permissions
 After completing the installation, you must immediately :ref:`set the directory permissions <post_installation_steps_label>` in your ownCloud installation as strictly as possible for stronger security. 
 After you do so, your ownCloud server will be ready to use.
 
+.. _trusted_domains_label: 
+
+Managing Trusted Domains
+------------------------
+
+All URLs used to access your ownCloud server must be whitelisted in your ``config.php`` file, under the ``trusted_domains`` setting. 
+Users are allowed to log into ownCloud only when they point their browsers to a URL that is listed in the ``trusted_domains`` setting. 
+
+.. note:: 
+   This setting is important when changing or moving to a new domain name.
+   You may use IP addresses and domain names.
+ 
+A typical configuration looks like this:
+
+.. code-block:: php
+
+  'trusted_domains' => [
+     0 => 'localhost', 
+     1 => 'server1.example.com', 
+     2 => '192.168.1.50',
+  ],
+
+The loopback address, ``127.0.0.1``, is automatically whitelisted, so as long as you have access to the physical server you can always log in. 
+In the event that a load-balancer is in place, there will be no issues as long as it sends the correct ``X-Forwarded-Host`` header. 
+
 .. note::
  For further information on improving the quality of your ownCloud installation, please see the :doc:`configuration_notes_and_tips` guide.
 
@@ -534,6 +570,9 @@ After you do so, your ownCloud server will be ready to use.
 .. _Apache prefork: https://httpd.apache.org/docs/2.4/mod/prefork.html
 .. _not thread safe: https://secure.php.net/manual/en/install.unix.apache2.php
 .. _to setup your ownCloud environment: https://doc.owncloud.com/server/latest/developer_manual/general/devenv.html
+
+.. Apache Modules
+.. _mod_headers: http://httpd.apache.org/docs/current/mod/mod_headers.html
 
 .. PHP Extension Links
 
@@ -587,4 +626,4 @@ After you do so, your ownCloud server will be ready to use.
 .. Forum Links
    
 .. _in the forums: https://central.owncloud.org/t/no-basic-authentication-headers-were-found-message/819
-
+.. _the OAuth2 app: https://marketplace.owncloud.com/apps/oauth2
