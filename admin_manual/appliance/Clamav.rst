@@ -81,8 +81,8 @@ If you want to refresh the ClamAV database manually, follow these steps:
 
 ..note::
 
-	- When the app is just enabled (without configuration or with wrong configuration) it will strictly reject all uploads for the whole instance.
-	- Configuration can be done via occ config:app:set files_antivirus whatever_key value to circumvent this issue
+	- When the app is just enabled (without configuration or with wrong configuration) it will strictly reject **all** uploads for the whole instance.
+	- Configuration can be done via occ `config:app:set files_antivirus whatever_key value` to circumvent this issue.
 
 .. Links
 
