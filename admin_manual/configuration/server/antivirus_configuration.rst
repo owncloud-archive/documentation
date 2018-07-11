@@ -169,10 +169,10 @@ You can see an example of all three below.
    :alt: Configuration error message: "Antivirus app is misconfigured or antivirus inaccessible. Could not connect to host 'localhost' on port 999".
 
 .. figure:: ./images/anti-virus-message-misconfiguration-problem.png
-   :alt: Configuration error message: "Antivirus app is misconfigured or antivirus inaccessible. The antivirus executable could not be found at path '/usr/bin/clamsfcan'". 
+   :alt: Configuration error message: "Antivirus app is misconfigured or antivirus inaccessible. The antivirus executable could not be found at path '/usr/bin/clamscan'".
 
 .. figure:: ./images/anti-virus-message-socket-connection-problem.png
-   :alt: Configuration error message: "Antivirus app is misconfigured or antivirus inaccessible. Could not connect to socket '/var/run/clamav/cslamd-socket': No such file or directory (code 2)". 
+   :alt: Configuration error message: "Antivirus app is misconfigured or antivirus inaccessible. Could not connect to socket '/var/run/clamav/clamd.ctl': No such file or directory (code 2)".
 
 Mode Configuration
 ^^^^^^^^^^^^^^^^^^
