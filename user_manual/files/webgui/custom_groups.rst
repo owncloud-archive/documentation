@@ -10,7 +10,7 @@ To address that, as of ownCloud 10.0, you can now create your own groups on-the-
 Here's how to use it. 
 
 .. note::
-   	- creating a customgroup with existing display name displays an error
+   	- creating a customgroup with an existing display name displays an error
 	- renaming a customgroup to an existing display name displays an error
 	- a config switch (checkbox) makes it possible to allow duplicates (defaults to "allow")
 
