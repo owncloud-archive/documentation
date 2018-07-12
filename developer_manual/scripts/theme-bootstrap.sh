@@ -3,6 +3,19 @@
 # Invoke this script with one argument, the new theme's name.
 # Written by Dmitry Mayorov <dmitry@owncloud.com> & Matthew Setter <matthew@matthewsetter.com>
 # Copyright (c) ownCloud 2018.
+
+apt update
+
+apt install -y unzip wget
+
+wget https://github.com/owncloud/theme-example/archive/master.zip
+
+unzip master.zip
+
+mv theme-example-master theme-example
+
+mv theme-example /var/www/owncloud/apps/theme-example
+
 set -e
 
 E_BADARGS=85
