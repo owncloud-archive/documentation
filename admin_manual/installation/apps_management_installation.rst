@@ -96,7 +96,7 @@ In this example we called it `apps2`.
 	# first you need to install jq 
 	apt install -y jq
 	# then move the apps
-	for app in $(sudo -u www-data ./occ app:list --shipped=false --output=json | jq .enabled | jq -r keys[]); do
+	for app in $(sudo -u www-data ./occ app:list --shipped=false --output=json | jq '.enabled, .disabled' | jq -r 'keys[]'); do
   	sudo -u www-data mv apps/${app} apps2/${app}
 	done
 
