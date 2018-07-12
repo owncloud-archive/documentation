@@ -8,6 +8,44 @@ If you have an existing ownCloud installation which uses SQLite, and you want to
 
 .. note:: ownCloud Enterprise edition does not support SQLite.
 
+
+Preparation
+-----------
+
+Add to your config.php
+
+::
+
+	'mysql.utf8mb4' => true,
+
+Add / adjust in your /etc/mysql/mariadb.conf.d/50-server.cnf 
+
+::
+
+	key_buffer_size         = 32M
+	table_cache            = 400
+	query_cache_size        = 128M
+
+	#in InnoDB:
+	innodb_flush_method=O_DIRECT
+	innodb_flush_log_at_trx_commit=1
+	innodb_log_file_size=256Mser
+	innodb_log_buffer_size = 128M
+	innodb_buffer_pool_size=2048M
+	innodb_buffer_pool_instances=3
+	innodb_read_io_threads=4
+	innodb_write_io_threads=4
+	innodb_io_capacity = 500
+	innodb_thread_concurrency=2
+	innodb_file_format=Barracuda
+	innodb_file_per_table=ON
+	innodb_large_prefix = 1
+
+	character-set-server  = utf8mb4
+	collation-server      = utf8mb4_general_ci
+
+
+
 Run the conversion
 ------------------
 
@@ -33,6 +71,11 @@ To successfully proceed with the conversion, you must type ``yes`` when prompted
 with the question ``Continue with the conversion?``
 On success the converter will automatically configure the new database in your 
 ownCloud config ``config.php``.
+
+Restart the DB Server
+
+::
+	service mysql restart
 
 Unconvertible Tables
 --------------------
