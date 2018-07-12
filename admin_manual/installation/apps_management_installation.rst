@@ -82,6 +82,24 @@ To do so, follow these steps:
 #. Re-enable the apps.
 #. Disable maintenance mode.
 
+Script for moving non core apps in custom app directories
+---------------------------------------------------------
+
+If you want to move your non core / non shipped apps in a custom app directory, to keep your installation clean, here is a script you can use.
+
+You will need to create a second apps folder and call it something.
+
+In this example we called it `apps2`.
+
+::
+
+	# first you need to install jq 
+	apt install -y jq
+	# then move the apps
+	for app in $(sudo -u www-data ./occ app:list --shipped=false --output=json | jq .enabled | jq -r keys[]); do
+  	sudo -u www-data mv apps/${app} apps2/${app}
+	done
+
 Manually Installing Apps
 ------------------------
 
