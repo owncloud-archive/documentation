@@ -50,6 +50,37 @@ In addition to the "*Pending Shares*" feature, ownCloud Server now provides the 
 
 This improvement not only empowers users to accept rejected shares subsequently but also to restore shares that have been unshared before without requiring the owner to share it again.
 
+Password history and expiration
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To prepare ownCloud Server for new capabilities in the authentication process, we have introduced an authentication middleware, and a new major version of the `Password Policy <https://marketplace.owncloud.com/apps/password_policy>`_ extension is now available.
+
+The Authentication Middleware
+`````````````````````````````
+
+It:
+
+1. Offers a defined way of inserting mandatory functionality between user authentication and user account access. For example, forcing users to accept legal agreements.
+2. Affords the ability to interact with the user during the login process, such as retrieving user details like their email address.
+
+.. note::
+   The authentication middleware is *currently* focused on offering new features for the Password Policy extension.
+
+The Password Policy Extension
+`````````````````````````````
+
+`The Password Policy Extension <https://marketplace.owncloud.com/apps/password_policy>`_ has got a new major release and has been relicensed (OCL => GPLv2) to be available for community and standard subscription users as well. It now supports password expiration and history policies for user accounts.
+
+.. note::
+   These features don't apply to users imported from LDAP or other backends but only for local users created by administrators or the `Guests <https://marketplace.owncloud.com/apps/guests>`_ extension.
+
+Imposing password expiration and history policies enhance security. For example, when users are forced to choose a new password, they can be blocked from using their previous passwords (the password history count is configurable). However, increasing security can also decrease user satisfaction, such as forcing them to change their password upon first login, or change their passwords too frequently (such as every 90 days). That said, we encourage an acceptable balance between security and usability.
+
+.. note::
+   Although the above two password practices `are discouraged by NIST <https://pages.nist.gov/800-63-3/sp800-63b.html>`_, ownCloud is now fully compliant with common password guidelines in enterprise scenarios.
+
+.. note::
+   When imposing password expiration policies on an existing installation it is necessary to take some further actions once. Please consult the `ownCloud Documentation <https://doc.owncloud.com/server/latest/admin_manual/configuration/server/security/password-policy.html>`_ for guidance.
 Technology preview for new S3 Objectstore implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -153,6 +184,7 @@ ownCloud Server 10.0.9 takes care of `10.0.8 known issues <https://doc.owncloud.
 - Files larger than 10 MB can now properly be uploaded by guest users. See `#31596 <https://github.com/owncloud/core/issues/31596>`_ for further details.
 - Issues with public link dialog when collaborative tags app is disabled has been resolved. See `#31581 <https://github.com/owncloud/core/issues/31581>`_ for further details.
 - Enabling/disabling of users by group administrators in the web UI works again. See `#31489 <https://github.com/owncloud/core/issues/31489>`_ for further details.
+- Issues with file upload using Microsoft EDGE are now circumvented (hard memory limit of 5 GB causing uploads to fail randomly as garbage collection for file chunks did not work properly). See `#31884 <https://github.com/owncloud/core/pull/31825>`_ for further details.
 
 Known issues
 ~~~~~~~~~~~~
@@ -250,9 +282,12 @@ Global option for CORS domains
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 For security reasons ownCloud has a *Same-Origin-Policy* that prevents requests to ownCloud resources from other domains than the domain the backend server is hosted on. If ownCloud resources should be accessible from other domains, e.g. for a separate web frontend operated on a different domain, administrators can now globally specify policy exceptions via *CORS (Cross-Origin Resource Sharing)* using ``'cors.allowed-domains'`` in *config.php*. Please check *config.sample.php* for more information.
 
+Mail Template Editor is now unbundled
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The Mail Template Editor has been unbundled from the default apps and is not shipped with the Server anymore. When upgrading ownCloud will try to automatically `install the latest version from the ownCloud Marketplace <https://marketplace.owncloud.com/apps/templateeditor>`_ in case the app was installed before. If this is not possible (e.g. no internet connection or clustered setup) you will either need to disable the app (``occ app:disable templateeditor``) or `download and install it manually <https://doc.owncloud.com/server/latest/admin_manual/installation/apps_management_installation.html?highlight=install%20apps#manually-installing-apps>`_.
 Solved known issues
 ~~~~~~~~~~~~~~~~~~~
-- Bogus "Login failed" log entries have been removed (see `10.0.7 known issues <https://doc.owncloud.com/server/10.0/admin_manual/release_notes.html#changes-in-10-0-7>`_)
+- Bogus "Login failed" log entries have been removed (see `10.0.7 known issues <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#changes-in-10-0-7>`_)
 - The *Provisioning API* can now properly set default or zero quota
 - User quota settings can be queried through *Provisioning API*
 - A regression preventing a user from setting their e-mail address in the settings page has been fixed
