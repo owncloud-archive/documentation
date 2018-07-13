@@ -64,20 +64,23 @@ It:
 2. Affords the ability to interact with the user during the login process, such as retrieving user details like their email address.
 
 .. note::
-   The authentication middleware is *currently* focused on offering new features in the Password Policy extension.
+   The authentication middleware is *currently* focused on offering new features for the Password Policy extension.
 
 The Password Policy Extension
 `````````````````````````````
 
-`The Password Policy Extension <https://marketplace.owncloud.com/apps/password_policy>`_ now supports password expiration and history policies for guest and local user accounts created by an administrator.
+`The Password Policy Extension <https://marketplace.owncloud.com/apps/password_policy>`_ has got a new major release and has been relicensed (OCL => GPLv2) to be available for community and standard subscription users as well. It now supports password expiration and history policies for user accounts.
 
 .. note::
-   These features don't apply to users imported from LDAP or other backends.
+   These features don't apply to users imported from LDAP or other backends but only for local users created by administrators or the `Guests <https://marketplace.owncloud.com/apps/guests>`_ extension.
 
-Imposing password expiration and history policies enhance security. For example, when users are forced to choose a new password, they can be blocked from using their ten previous passwords. However, increasing security can also decrease user satisfaction, such as forcing them to change their password upon first login, or change their passwords too frequently (such as every 90 days). That said, we encourage an acceptable balance between security and usability.
+Imposing password expiration and history policies enhance security. For example, when users are forced to choose a new password, they can be blocked from using their previous passwords (the password history count is configurable). However, increasing security can also decrease user satisfaction, such as forcing them to change their password upon first login, or change their passwords too frequently (such as every 90 days). That said, we encourage an acceptable balance between security and usability.
 
 .. note::
    Although the above two password practices `are discouraged by NIST <https://pages.nist.gov/800-63-3/sp800-63b.html>`_, ownCloud is now fully compliant with common password guidelines in enterprise scenarios.
+
+.. note::
+   When imposing password expiration policies on an existing installation it is necessary to take some further actions once. Please consult the `ownCloud Documentation <https://doc.owncloud.com/server/latest/admin_manual/configuration/server/security/password-policy.html>`_ for guidance.
 
 Technology preview for new S3 Objectstore implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
