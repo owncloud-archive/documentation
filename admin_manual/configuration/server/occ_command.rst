@@ -1813,6 +1813,9 @@ The full list, of commands is:
   user:setting                        Read and modify user application settings
   user:sync                           Sync local users with an external backend service
 
+.. note::
+   The ``user:expire-password`` command is only available when `the Password Policy app`_ is installed.
+
 Creating Users
 ^^^^^^^^^^^^^^
 
@@ -1893,8 +1896,55 @@ To delete a user, you use the ``user:delete`` command, as in the example below:
 ::
 
  sudo -u www-data php occ user:delete fred
-   
-   
+
+Expiring a User’s Password
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. note:: This command is only available when `the Password Policy app`_ is installed.
+
+::
+
+    user:expire-password <uid> [<expiredate>]
+
+To expire a user’s password at a specific date and time, use the ``user:expire-password`` command.
+The command accepts two arguments, the user’s uid and an expiry date.
+The expiry date can be provided using any of `PHP’s supported date and time formats`_.
+It defaults to the previous day if it is not supplied.
+
+After the command completes, console output, similar to that below, confirms when the user’s password is set to expire.
+
+::
+
+  The password for frank is set to expire on 2018-07-12 13:15:28 UTC.
+
+Command Examples
+````````````````
+
+::
+
+  # Expire the user "frank"’s password 24 hours ago.
+  sudo -u www-data php occ user:expire-password frank
+
+  # Expire the user "frank"’s password in 2 days time.
+  sudo -u www-data php occ user:expire-password frank '+2 days'
+
+  # Expire the user "frank"’s password on the 15th of August 2005, at 15:52:01 in the local timezone.
+  sudo -u www-data php occ user:expire-password frank '2005-08-15T15:52:01+00:00'
+
+  # Expire the user "frank"’s password on the 15th of August 2005, at 15:52:01 UTC.
+  sudo -u www-data php occ user:expire-password frank '15-Aug-05 15:52:01 UTC'
+
+Caveats
+```````
+
+Please be aware of the following implications of enabling or changing the password policy’s "*days until user password expires*" option.
+
+- Administrators need to run the ``occ user:expire-password`` command to initiate expiry for new users.
+- Passwords will never expire for users who have *not* changed their initial password, because they do not have a password history. To force password expiration use the ``occ user:expire-password`` command.
+- A password expiration date will be set after users change their password for the first time. To force password expiration use the ``occ user:expire-password`` command.
+- Passwords changed for the first time, will expire based on the *active* password policy. If the policy is later changed, it will not update the password’s expiry date to reflect the new setting.
+- Password expiration dates of users where the administrator has run the ``occ user:expire-password`` command *won't* automatically update to reflect the policy change. In these cases, Administrators need to run the ``occ user:expire-password`` command again and supply a new expiry date.
+
 Listing Users
 ^^^^^^^^^^^^^
 
@@ -2599,3 +2649,5 @@ Using the output option ``json_pretty`` will render the output formatted as foll
    
 .. _the ownCloud Marketplace: https://marketplace.owncloud.com/
 .. _creating translation files: https://doc.owncloud.org/server/latest/developer_manual/app/advanced/l10n.html#creating-translatable-files-label
+.. _the Password Policy app: https://marketplace.owncloud.com/apps/password_policy
+.. _PHP’s supported date and time formats: https://secure.php.net/manual/en/datetime.formats.php
