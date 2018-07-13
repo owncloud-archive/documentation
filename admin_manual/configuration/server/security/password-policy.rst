@@ -11,8 +11,13 @@ Password Policy
    :alt: The Password Policy application
 
 From the 2.0.0 release of `the Password Policy app`_, all ownCloud users (both enterprise and community) have the option of installing and enabling the application.
-The Password Policy application enables administrators to define password requirements, including: *minimum characters*, *numbers*, *capital letters*, and more, for all kinds of password endpoints, such as for user passwords and public link sharing passwords.
-Additionally, the admin can enforce expiration dates for public link shares.
+The Password Policy application enables administrators to define password requirements, including:
+
+- Specify a valid password requirements.
+- Specify a password expiration period.
+- Specify expiration dates for public link shares.
+- Forced password change on first login.
+- Disallowing passwords that match a configurable number of previous passwords (defaults to the previous 3).
 
 .. figure:: ../../../configuration/files/images/sharing-files-2.png
 
