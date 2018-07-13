@@ -39,6 +39,21 @@ does not work.
    (See :doc:`../../server/background_jobs_configuration`.) Be
    aware that the Ajax cron mode is triggered by browsing the ownCloud Web GUI.
 
+Known Limitations
+~~~~~~~~~~~~~~~~~
+
+Please be aware that because of the way that credentials are stored in ownCloud, any operations must be performed by the logged-in mount owner, because credentials are not stored anywhere.
+As a result, there are three known limitations.
+These are:
+
+#. Directly sharing the storage or any its sub-folders will fail. They will not appear to the recipient, because the mount cannot be set up due to missing credentials.
+#. Any background task operating on the storage, such as background scanning.
+#. Any :doc:`occ command <../configuration/server/occ_command>` that operates on the storage like occ files:scan will fail.
+
+.. note:: **Enterprise Users Only**
+
+  The enterprise version has a mode called "Save in DB" where the credentials are saved, encrypted, in the database (via :doc:`the WND app <../../../enterprise/external_storage/windows-network-drive_configuration>`). In this mode, all of the above operations can work.
+
 Public-key Mechanisms
 ---------------------
 
@@ -63,3 +78,7 @@ perform an authentication request, establishing the storage connection.
    :alt: Dropbox storage mount configuration.
 
 If ownCloud client’s are unable to connect to your ownCloud server, check that the bearer authorization header :ref:`is not being stripped out <bearer_auth_header_problem_label>`.
+
+.. Links
+
+.. _occ command:
