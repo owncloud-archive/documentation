@@ -2,6 +2,12 @@
 FTP/FTPS
 ========
 
+If you want to mount a FTP Storage, please install the FTP Storage Support App from ownCloud market.
+
+.. figure:: admin_manual/images/ftp_storage_support.png
+   :alt: FTP Storage Support App
+
+
 To connect to an FTP server, you will need:
 
 * A folder name for your local mountpoint; the folder will be created if it 
