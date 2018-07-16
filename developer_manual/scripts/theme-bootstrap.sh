@@ -4,18 +4,6 @@
 # Written by Dmitry Mayorov <dmitry@owncloud.com> & Matthew Setter <matthew@matthewsetter.com>
 # Copyright (c) ownCloud 2018.
 
-apt update
-
-apt install -y unzip wget
-
-wget https://github.com/owncloud/theme-example/archive/master.zip
-
-unzip master.zip
-
-mv theme-example-master theme-example
-
-mv theme-example /var/www/owncloud/apps/theme-example
-
 set -e
 
 E_BADARGS=85
@@ -27,44 +15,90 @@ then
   exit $E_BADARGS
 fi
 
+# Utility function for installing missing packages
+# This only works on Debian-based distros or those that support Apt
+function install_package
+{
+  local NOT_INSTALLED="Unable to locate package"
+  local PACKAGE="$1"
+  if apt-cache show "$PACKAGE" | grep -q "$NOT_INSTALLED"
+  then
+    apt update && apt install -y "$PACKAGE"
+  fi
+}
+
+export -f install_package
+
+# Install any missing, but necessary, packages.
+function install_required_binaries
+{
+  echo unzip wget | xargs bash -c 'install_package "$@"'
+}
+
+# Clone a copy of the ownCloud example theme
+# It won't override an existing app directory of the same name.
+function clone_example_theme
+{
+  local APP_NAME="$1"
+  local INSTALL_BASE_DIR="$2"
+  local DOWNLOAD_FILE=/tmp/master.zip
+  local THEME_ARCHIVE_URL=https://github.com/owncloud/theme-example/archive/master.zip
+
+  if  [ -d "$INSTALL_BASE_DIR/$APP_NAME" ]
+  then
+    echo "The example theme ('$INSTALL_BASE_DIR/$APP_NAME') already exists."
+    echo "Please remove or rename it before running this script again."
+    return 1
+  fi;
+
+  echo "Cloning ownCloud example theme."
+  echo
+
+  [ -e "$DOWNLOAD_FILE" ] && rm "$DOWNLOAD_FILE"
+  wget --output-document=/tmp/master.zip --tries=3 --continue \
+    --timeout=3 --dns-timeout=3 --connect-timeout=3 --read-timeout=3  \
+    "$THEME_ARCHIVE_URL"
+
+  if unzip -t "$DOWNLOAD_FILE" | grep -q "No errors detected in compressed data"
+  then
+    cd /tmp > /dev/null || return
+    unzip master.zip \
+      && mv /tmp/theme-example-master "$INSTALL_BASE_DIR/$APP_NAME" \
+      && rm "$DOWNLOAD_FILE"
+    cd - > /dev/null || return
+  else 
+    echo "Cannot complete setup of the ownCloud example theme as it is corrupted."
+    return 1
+  fi
+}
+
+echo unzip wget | xargs bash -c 'install_package "$@"'
+
 app_name="$1"
 owncloud_directory="$2"
 apps="$owncloud_directory/apps"
-
 OLDPWD=${OLDPWD:=$(pwd)}
 
-echo "Bootstrapping theme development."
+if clone_example_theme "$app_name" "$apps" 
+then
+  # Remove the default signature, which will cause a code integrity violation
+  [ -f "$apps/$app_name/appinfo/signature.json" ] && rm "$apps/$app_name/appinfo/signature.json"
 
-cd "$owncloud_directory"
-
-# Copy the example theme to your theme
-echo 
-echo "Copying default theme"
-cp -r "$apps/theme-example" "$apps/$app_name"
-
-# Remove the default signature, which will cause a code integrity violation
-if [ -f "$apps/$app_name/appinfo/signature.json" ]; then
+  # Replace the default id
   echo 
-  echo "Removing default signature.json file to avoid code integrity violation"
-  rm "$apps/$app_name/appinfo/signature.json"
+  echo "- Updating theme id"
+  sed -i "s#<id>theme-example<#<id>$app_name<#" "$apps/$app_name/appinfo/info.xml"
+
+  # Set the appropriate permissions
+  echo "- Setting theme file permissions"
+  chown -R www-data:www-data "$apps/$app_name"
+
+  # Enable the theme (app)
+  echo "- Enabling theme"
+  php "$owncloud_directory/occ" app:enable "$app_name"
+
+  echo
+  echo "Finished bootstrapping the new theme."
+
+  cd "$OLDPWD" || return
 fi
-
-# Replace the default id
-echo 
-echo "Updating theme id"
-sed -i "s#<id>theme-example<#<id>$app_name<#" "$apps/$app_name/appinfo/info.xml"
-
-# Set the appropriate permissions
-echo
-echo "Setting theme file permissions"
-chown -R www-data:www-data "$apps/$app_name"
-
-# Enable the theme (app)
-echo 
-echo "Enabling theme"
-sudo -u www-data php "$owncloud_directory/occ" app:enable "$app_name"
-
-echo
-echo "Finished bootstrapping the new theme."
-
-cd "$OLDPWD" 
