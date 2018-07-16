@@ -172,4 +172,3 @@ If you want to mount a FTP Storage, please install the FTP Storage Support App f
 
 .. figure:: admin_manual/images/ftp_storage_support.png
    :alt: FTP Storage Support App
-admin_manual/images/ftp_storage_support.png
