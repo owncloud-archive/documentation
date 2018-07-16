@@ -6,35 +6,6 @@
 
 set -e
 
-E_BADARGS=85
-
-if (( $# != 2 ))
-then
-  echo "Not enough arguments supplied."
-  echo "Usage: $( basename "$0" ) [-v] [-h] [theme id] [owncloud directory]"
-  exit $E_BADARGS
-fi
-
-# Utility function for installing missing packages
-# This only works on Debian-based distros or those that support Apt
-function install_package
-{
-  local NOT_INSTALLED="Unable to locate package"
-  local PACKAGE="$1"
-  if apt-cache show "$PACKAGE" | grep -q "$NOT_INSTALLED"
-  then
-    apt update && apt install -y "$PACKAGE"
-  fi
-}
-
-export -f install_package
-
-# Install any missing, but necessary, packages.
-function install_required_binaries
-{
-  echo unzip wget | xargs bash -c 'install_package "$@"'
-}
-
 # Clone a copy of the ownCloud example theme
 # It won't override an existing app directory of the same name.
 function clone_example_theme
@@ -72,11 +43,22 @@ function clone_example_theme
   fi
 }
 
-echo unzip wget | xargs bash -c 'install_package "$@"'
+E_BADARGS=85
+
+# Stores the directory where this script was called from
+SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null && pwd )"
+
+if (( $# != 2 ))
+then
+  echo "Not enough arguments supplied."
+  echo "Usage: $( basename "$0" ) [-v] [-h] [theme id] [owncloud directory]"
+  exit $E_BADARGS
+fi
 
 app_name="$1"
 owncloud_directory="$2"
-apps="$owncloud_directory/apps"
+apps=$("$SCRIPT_DIR/read-config.php" "$owncloud_directory")
+
 OLDPWD=${OLDPWD:=$(pwd)}
 
 if clone_example_theme "$app_name" "$apps" 

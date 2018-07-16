@@ -25,6 +25,9 @@ For example:
 .. literalinclude:: ../scripts/theme-bootstrap.sh
    :language: bash
 
+.. literalinclude:: ../scripts/read-config.php
+   :language: php
+
 How to Create a New Theme
 -------------------------
 
