@@ -12,13 +12,13 @@ If you have an existing ownCloud installation which uses SQLite, and you want to
 Preparation
 -----------
 
-Add to your config.php
+Add to your ownCloud config.php
 
 ::
 
 	'mysql.utf8mb4' => true,
 
-Add / adjust in your /etc/mysql/mariadb.conf.d/50-server.cnf 
+Add or adjust in your /etc/mysql/mariadb.conf.d/50-server.cnf 
 
 ::
 
@@ -75,7 +75,7 @@ ownCloud config ``config.php``.
 Restart the DB Server
 
 ::
-	service mysql restart
+	sudo service mysql restart
 
 Unconvertible Tables
 --------------------
