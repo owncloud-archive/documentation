@@ -16,12 +16,10 @@ disabled by default.
 Enabling External Storage Support
 ---------------------------------
 
-.. warning:: Enabling this app will disable the **Stay logged in** checkbox on the login page.
+Tick the check box under Settings > Storage > "Enable External Storage".
 
-The External storage support application is enabled on your Apps page.
-
-.. figure:: external_storage/images/enable-app.png
-   :alt: Enable external storage on your Apps page.
+.. figure:: admin_manual/images/external_storage.png
+   :alt: Enable external storage on your Settings > Storage page.
 
 Storage Configuration
 ---------------------
@@ -30,7 +28,7 @@ To create a new external storage mount, select an available backend from the
 dropdown **Add storage**. Each backend has different required options, which 
 are configured in the configuration fields.
 
-.. figure:: external_storage/images/add_storage.png
+.. figure:: admin_manual/images/external_storage_types.png
 
 Each backend may also accept multiple authentication methods. These are selected 
 with the dropdown under **Authentication**. Different backends support different 
@@ -166,3 +164,12 @@ You might need to setup a cron job that runs ``sudo -u www-data php occ files:sc
 (or replace "--all" with the user name, see also :doc:`../server/occ_command`)
 to trigger a rescan of the user's files periodically (for example every 15 minutes), which includes
 the mounted external storage.
+
+FTP
+---
+
+If you want to mount a FTP Storage, please install the FTP Storage Support App from ownCloud market.
+
+.. figure:: admin_manual/images/ftp_storage_support.png
+   :alt: FTP Storage Support App
+admin_manual/images/ftp_storage_support.png
