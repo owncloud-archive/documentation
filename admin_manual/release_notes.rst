@@ -190,7 +190,7 @@ ownCloud Server 10.0.9 takes care of `10.0.8 known issues <https://doc.owncloud.
 Known issues
 ~~~~~~~~~~~~
 
-Currently there are no known issues with ownCloud Server 10.0.9.
+- `The new Password Policy feature "Password Expiration" <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#the-password-policy-extension>`_ does not work together with Multi-Factor Authentication (e.g. ``twofactor_totp``, ``twofactor_privacyidea``). Please do not deploy expiration policies yet when having Two- or Multi-Factor Authentication extensions in place. This issue will be solved with the next ownCloud Server release. See `#32059 <https://github.com/owncloud/core/issues/32059>`_ for more information.
 
 For developers
 ~~~~~~~~~~~~~~
