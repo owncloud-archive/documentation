@@ -54,7 +54,7 @@ Add or adjust in your /etc/mysql/mariadb.conf.d/50-server.cnf
 Run the conversion
 ------------------
 
-After you have setup the new database, in **the ownCloud root folder** run the following command to convert the database to the new format:
+After you have setup the new database, run the following command to convert the database to the new format in **the ownCloud root folder**:
 
 ::
 
