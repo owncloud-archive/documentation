@@ -34,7 +34,7 @@ Add or adjust in your /etc/mysql/mariadb.conf.d/50-server.cnf
 	#in InnoDB:
 	innodb_flush_method=O_DIRECT
 	innodb_flush_log_at_trx_commit=1
-	innodb_log_file_size=256Mser
+	innodb_log_file_size=256M
 	innodb_log_buffer_size = 128M
 	innodb_buffer_pool_size=2048M
 	innodb_buffer_pool_instances=3
