@@ -20,6 +20,11 @@ Add to your ownCloud config.php
 
 Add or adjust in your /etc/mysql/mariadb.conf.d/50-server.cnf 
 
+..note::
+
+		You can do the same for mysql by replacing mariadb.conf.d/50-server.cnf with mysql.conf.d/mysqld.cnf
+
+
 ::
 
 	key_buffer_size         = 32M
