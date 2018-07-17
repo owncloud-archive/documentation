@@ -197,6 +197,161 @@ The first is needed to enable translations in the JavaScript code and the second
    Only the changed strings need to be added to that file. 
    For all other terms, the shipped translation will be used.
 
+How to Render Imprint and Privacy Policy Settings in a Theme
+------------------------------------------------------------
+
+ownCloud provides the ability to configure `Imprint and Privacy Policy URLs`_, both in the WebUI and within email notification templates.
+If one (or both) of these have been set, they are automatically displayed in the common Web UI and email footer templates.
+
+However, these footer templates can be overridden in a custom theme, if it is necessary to adjust markup or use different wording.
+If that is required, here is how to do it.
+
+In Your Custom Theme
+~~~~~~~~~~~~~~~~~~~~
+
+.. note::
+  If your theme is based on `ownCloud's example theme`_, then you can skip this step.
+  If it’s not, then follow the instructions below to obtain the necessary functionality.
+
+**First**, paste the following code into the class ``OC_Theme``, that is located inside ``defaults.php`` inside your custom application theme.
+Doing so gives you functions for retrieving the privacy policy and imprint URLs that have been configured in your ownCloud installation.
+
+.. code-block:: php
+
+   <?php
+
+   public function getPrivacyPolicyUrl() {
+       try {
+           return \OC::$server->getConfig()->getAppValue('core', 'legal.privacy_policy_url', '');
+       } catch (\Exception $e) {
+           return '';
+       }
+   }
+
+   public function getImprintUrl() {
+       try {
+           return \OC::$server->getConfig()->getAppValue('core', 'legal.imprint_url', '');
+       } catch (\Exception $e) {
+           return '';
+       }
+   }
+
+   public function getL10n() {
+       return \OC::$server->getL10N('core');
+   }
+
+**Second**, adjust either the ``getShortFooter``, the ``getLongFooter`` method, or both, in the same file to call the new methods, using the code snippet below as a reference.
+
+.. code-block:: php
+
+   <?php
+
+   public function getShortFooter() {
+       $l10n = $this->getL10n();
+       $footer = '© 2018 <a href="'.$this->getBaseUrl().'" target="_blank\">'.$this->getEntity().'</a>'.
+           '<br/>' . $this->getSlogan();
+       if ($this->getImprintUrl() !== '') {
+           $footer .= '<span class="nowrap"> | <a href="' . $this->getImprintUrl() . '" target="_blank">' . $l10n->t('Imprint') . '</a></span>';
+       }
+
+       if ($this->getPrivacyPolicyUrl() !== '') {
+           $footer .= '<span class="nowrap"> | <a href="'. $this->getPrivacyPolicyUrl() .'" target="_blank">'. $l10n->t('Privacy Policy')	 .'</a></span>';
+       }
+       return $footer;
+   }
+
+.. code-block:: php
+
+   <?php
+
+   public function getLongFooter() {
+       $l10n = $this->getL10n();
+       $footer = '© 2018 <a href="'.$this->getBaseUrl().'" target="_blank\">'.$this->getEntity().'</a>'.
+           '<br/>' . $this->getSlogan();
+       if ($this->getImprintUrl() !== '') {
+           $footer .= '<span class="nowrap"> | <a href="' . $this->getImprintUrl() . '" target="_blank">' . $l10n->t('Imprint') . '</a></span>';
+       }
+
+       if ($this->getPrivacyPolicyUrl() !== '') {
+           $footer .= '<span class="nowrap"> | <a href="'. $this->getPrivacyPolicyUrl() .'" target="_blank">'. $l10n->t('Privacy Policy') .'</a></span>';
+       }
+       return $footer;
+   }
+
+Rendering Links In Templates
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+With the functionality to retrieve the URLs available, whether by using the example theme, or by adding the code above, you can now render the URLs in your templates.
+
+Rendering the Imprint URL
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To render the *Imprint* URL, add the following code snippet, or a variation of it, in the respective template(s).
+
+.. code-block:: php
+
+   <?php if ($theme->getImprintUrl() !== ''): ?>
+   <br>
+   <a href="<?php p($theme->getImprintUrl()); ?>"
+       ><?php p($l->t('Imprint')); ?></a>
+   <?php endif; ?>
+
+Rendering the Privacy Policy URL
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To render the *Privacy Policy* URL, add the following code snippet, or a variation of it, in your template.
+
+.. code-block:: php
+
+   <?php if ($theme->getPrivacyPolicyUrl() !== ''): ?>
+   <br>
+   <a href="<?php p($theme->getPrivacyPolicyUrl()); ?>"
+       ><?php p($l->t('Privacy Policy')); ?></a>
+   <?php endif ?>
+
+Reuse Common Email Footers in a 3rd Party App
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+To reuse common email footers in a 3rd Party app, add the following lines to the template of your email notification template:
+
+For HTML emails:
+
+.. code-block:: php
+
+  <?php print_unescaped(
+        $this->inc(
+            'html.mail.footer',
+            [
+                'app' => 'core'
+            ]
+        )
+    ); ?>
+
+For plain text emails:
+
+.. code-block:: php
+
+  <?php print_unescaped(
+        $this->inc(
+            'plain.mail.footer',
+            [
+                'app' => 'core'
+            ]
+        )
+    ); ?>
+
+Change How Links Are Shown In Email Notifications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+If you need to change how the links are shown by default, in the HTML or text markup in your emails, you need to override the following email templates in your custom theme:
+
+======================================== =============================
+Template                                 Reason
+======================================== =============================
+``core/templates/html.mail.footer.php``  For the HTML email part
+``core/templates/plain.mail.footer.php`` For the plain text email part
+======================================== =============================
+
 How to Override Names, Slogans, and URLs
 ----------------------------------------
 
@@ -365,3 +520,4 @@ If you think a new section should be added to core however, please create a PR w
 .. _the marketplace: https://marketplace.owncloud.com
 .. _a custom app directory: https://doc.owncloud.org/server/latest/admin_manual/installation/apps_management_installation.html#using-custom-app-directories
 .. _ownCloud's example theme: https://github.com/owncloud/theme-example
+.. _Imprint and Privacy Policy URLs: https://doc.owncloud.org/server/latest/admin_manual/configuration/server/legal_settings_configuration.html
