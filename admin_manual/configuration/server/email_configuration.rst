@@ -402,6 +402,10 @@ Public link share email    HTML             Notify users of new public link shar
                            plain text                                                  ``core/templates/altmail.php``
 New file share email       HTML             Notify users of new file shares.           ``core/templates/internalmail.php``
                            plain text                                                  ``core/templates/internalaltmail.php``
+New file share invitation  HTML             Notify users of new file shares.           ``apps/notifications/templates/mail/htmlmail.php``
+                           plain text                                                                             
+New file share invitation  plain text       Notify users of new file shares.           ``apps/notifications/templates/mail/plaintextmail.php``
+                                                                                                                                   
 ========================== ================ ========================================== ====================================================
 
 In addition to providing the email templates, this feature enables you to apply any pre-configured themes to the email.
