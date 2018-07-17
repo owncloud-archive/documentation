@@ -68,7 +68,7 @@ ownCloud root folder to convert the database to the new format:
 
 ::
 
-  sudo -uwww-data ./occ db:convert-type [options] type username hostname database
+  sudo -u www-data php occ db:convert-type [options] type username hostname database
 
 
 .. note::
@@ -81,7 +81,7 @@ For example
 
 ::
 
-  sudo -uwww-data ./occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
+  sudo -u www-data php occ db:convert-type --all-apps mysql oc_mysql_user 127.0.0.1 new_db_name
 
 To successfully proceed with the conversion, you must type ``yes`` when prompted 
 with the question ``Continue with the conversion?``
