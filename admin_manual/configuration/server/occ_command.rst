@@ -1606,7 +1606,7 @@ Example 1:
 
 ::
 
-  sudo -uwww-data ./occ security:routes
+  sudo -u www-data php occ security:routes
 
 ::
 
@@ -1624,7 +1624,7 @@ Example 2:
 
 ::
 
-  sudo  -uwww-data ./occ security:routes --output=json-pretty
+  sudo  -u www-data php occ security:routes --output=json-pretty
 
 ::
 
@@ -1641,7 +1641,7 @@ Example 3:
 
 ::
 
-  sudo  -uwww-data ./occ security:routes --with-details
+  sudo  -u www-data php occ security:routes --with-details
 
 ::
 
