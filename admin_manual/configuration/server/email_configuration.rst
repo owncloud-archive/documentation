@@ -403,8 +403,7 @@ Public link share email    HTML             Notify users of new public link shar
 New file share email       HTML             Notify users of new file shares.           ``core/templates/internalmail.php``
                            plain text                                                  ``core/templates/internalaltmail.php``
 New file share invitation  HTML             Notify users of new file shares.           ``apps/notifications/templates/mail/htmlmail.php``
-                           plain text                                                                             
-New file share invitation  plain text       Notify users of new file shares.           ``apps/notifications/templates/mail/plaintextmail.php``
+                           plain text                                                  ``apps/notifications/templates/mail/plaintextmail.php``                           
                                                                                                                                    
 ========================== ================ ========================================== ====================================================
 
