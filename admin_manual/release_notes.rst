@@ -74,13 +74,17 @@ The Password Policy Extension
 .. note::
    These features don't apply to users imported from LDAP or other backends but only for local users created by administrators or the `Guests <https://marketplace.owncloud.com/apps/guests>`_ extension.
 
-Imposing password expiration and history policies enhance security. For example, when users are forced to choose a new password, they can be blocked from using their previous passwords (the password history count is configurable). However, increasing security can also decrease user satisfaction, such as forcing them to change their password upon first login, or change their passwords too frequently (such as every 90 days). That said, we encourage an acceptable balance between security and usability.
+Imposing password expiration and history policies enhances security. For example, when users are forced to choose a new password, they can be prevented from using their previous passwords. It is possible to manually expire passwords or to configure the number of days that have to pass since the last change before the password expires. To ensure a good experience it is possible to configure user information via email and internal notifications that appear on the web interface and clients. The password history count and the days before the reminder notification is sent are both configurable. Users will always be informed when passwords have expired.
+However, we encourage an acceptable balance between security and usability by choosing sensible settings for password policies. A high frequency of password changes, for instance, might increase security but could also decrease user satisfaction.
 
 .. note::
    Although the above two password practices `are discouraged by NIST <https://pages.nist.gov/800-63-3/sp800-63b.html>`_, ownCloud is now fully compliant with common password guidelines in enterprise scenarios.
 
 .. note::
-   When imposing password expiration policies on an existing installation it is necessary to take some further actions once. Please consult the `ownCloud Documentation <https://doc.owncloud.com/server/latest/admin_manual/configuration/server/security/password-policy.html>`_ for guidance.
+   When users employ tokens for client authentication which can be configured on the user settings page ("App passwords"), those are not affected from password policies.
+
+.. note::
+   When imposing password expiration policies on an existing installation it is necessary to take some further actions once. Please consult the `ownCloud Documentation <https://doc.owncloud.com/server/latest/admin_manual/configuration/server/security/password_policy.html>`_ for guidance.
 
 Technology preview for new S3 Objectstore implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -191,6 +195,8 @@ Known issues
 ~~~~~~~~~~~~
 
 - `The new Password Policy feature "Password Expiration" <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#the-password-policy-extension>`_ does not work together with Multi-Factor Authentication (e.g. ``twofactor_totp``, ``twofactor_privacyidea``). Please do not deploy expiration policies yet when having Two- or Multi-Factor Authentication extensions in place. This issue will be solved with the next ownCloud Server release. See `#32059 <https://github.com/owncloud/core/issues/32059>`_ for more information.
+- `The new Password Policy feature "Password Expiration" <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#the-password-policy-extension>`_ includes an 
+*occ* command to manually force password expiration. Please run it directly after imposing expiration policies on an instance with existing users. Currently the command will only work when the policy *X days until user password expires* has been enabled. This might be confusing and will be solved with the next release of the extension. See `#66 <https://github.com/owncloud/password_policy/issues/66>`_ for more information.
 
 For developers
 ~~~~~~~~~~~~~~
