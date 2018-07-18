@@ -174,6 +174,7 @@ Set-AdfsProperties -WIASupportedUseragents $browsers
 # Restart the AD FS service
 Restart-Service adfssrv
 ``
+
 - On the windows client:
   - For Internet Explorer / Edge / Chrome
     - In the ``Internet Settings``->``Security``->``Local Intranet``
