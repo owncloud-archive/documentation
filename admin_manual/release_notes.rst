@@ -81,7 +81,7 @@ However, increasing security can also decrease user satisfaction, such as forcin
    Although the above two password practices `are discouraged by NIST <https://pages.nist.gov/800-63-3/sp800-63b.html>`_, ownCloud is now fully compliant with common password guidelines in enterprise scenarios.
 
 .. note::
-   When imposing password expiration policies on an existing installation it is necessary to take some further actions once. Please consult the `ownCloud Documentation <https://doc.owncloud.com/server/latest/admin_manual/configuration/server/security/password-policy.html>`_ for guidance.
+   When imposing password expiration policies on an existing installation it is necessary to take some further actions once. Please consult the `ownCloud Documentation <https://doc.owncloud.com/server/latest/admin_manual/configuration/server/security/password_policy.html>`_ for guidance.
 
 Technology preview for new S3 Objectstore implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
