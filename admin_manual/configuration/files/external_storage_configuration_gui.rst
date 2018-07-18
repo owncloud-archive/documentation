@@ -168,7 +168,7 @@ the mounted external storage.
 FTP
 ---
 
-If you want to mount a FTP Storage, please install the FTP Storage Support App from ownCloud market.
+If you want to mount a FTP Storage, please install the app ``FTP Storage Support`` from ownCloud market.
 
 .. figure:: admin_manual/images/ftp_storage_support.png
    :alt: FTP Storage Support App
