@@ -22,8 +22,8 @@ Server Configuration
    legal_settings_configuration
    logging_configuration
    harden_server
-   security/password-policy
-   reverse_proxy_configuration 
+   security/password_policy
+   reverse_proxy_configuration
    thirdparty_php_configuration
    automatic_configuration
    oc_server_tuning
