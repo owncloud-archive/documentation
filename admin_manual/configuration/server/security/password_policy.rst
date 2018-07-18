@@ -4,11 +4,10 @@ Password Policy
 
 .. _password_policy_label:
 
-Password Policy
----------------
-
 .. figure:: ../../../images/configuration/server/security/password-policy-app.png
    :alt: The Password Policy application
+
+.. caution:: The Security and Password Policy apps are mutually exclusive.
 
 From the 2.0.0 release of `the Password Policy app`_, all ownCloud users (both enterprise and community) have the option of installing and enabling the application.
 The Password Policy application enables administrators to define password requirements, including:
@@ -24,7 +23,9 @@ The Password Policy application enables administrators to define password requir
 The Security App
 ~~~~~~~~~~~~~~~~
 
-In addition to the Password Policy app, users can also use `the Security app`_.
+.. caution:: The Security and Password Policy apps are mutually exclusive.
+
+Users can, *alternatively*, use `the Security app`_.
 It supports configuring a basic password policy, which includes:
 
 #. Setting a password length
@@ -32,7 +33,7 @@ It supports configuring a basic password policy, which includes:
 
 .. figure:: ../../../images/configuration/server/security/security-app-password-policy.png
 
-.. note::
+.. tip::
    In the next release, the Security app's feature-set will be reduced to provide only brute-force protection capabilities and be renamed "*Brute-Force Protection*".
 
 .. Links
