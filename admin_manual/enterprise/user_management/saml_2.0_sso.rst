@@ -156,13 +156,34 @@ Configuring  SSO
 
 - On the ADFS Server add ``Windows Authentication`` to the ``Service``->``Authentication Methods`` for ``Intranet``
 - On the windows client:
+
   In the ``Internet Settings``->``Security``->``Local Intranet``
-  + Click on "Sites"
-  + Click on "Advanced"
-  + Add your adfs machine with `https://<adfs server fqdn>/` and click ok.
-  + Click on `customize level`
-  + Find `User Authtification`
-  + Check `Automatic login only for Intranet zone`
+  
+  - Click on "Sites"
+  
+  - Click on "Advanced"
+  
+  - Add your adfs machine with `https://<adfs server fqdn>/` and click ok.
+  
+  - Click on `customize level`
+  
+  - Find `User Authtification`
+  
+  - Check `Automatic login only for Intranet zone`
+  
+- Or to enable it via Domain Group Policy on the Domain controller:
+
+  - Edit the domain default policy
+  
+  - Go to `User Configuration`->`Polices`->`Administrative Templates`->`Windows Components`->`Internet Explorer`->`Internet Control Panel`->`Security Panel`
+  
+  - Double click `Site to Zone Assignmet List` 
+  
+  - Enable it
+  
+  - by clicking `Show` Add ADFS server with it FQDN for `value name` and use 1 for Intranet at `value`
+  
+  - do an update of the group policy with gpupdate /FORCE
 
 Now if you logged into the domain and open your ownCloud server in Internet Explorer or Edge with URI "oc-shib" you should get directly to your ownCloud files without a login.
 
