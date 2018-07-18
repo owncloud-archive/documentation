@@ -10,15 +10,34 @@ Password Policy
 .. caution:: The Security and Password Policy apps are mutually exclusive.
 
 From the 2.0.0 release of `the Password Policy app`_, all ownCloud users (both enterprise and community) have the option of installing and enabling the application.
-The Password Policy application enables administrators to define password requirements, including:
+The Password Policy application enables administrators to define password requirements for user passwords and public links.
 
-- Specify a valid password requirements.
-- Specify a password expiration period.
-- Specify expiration dates for public link shares.
-- Forced password change on first login.
-- Disallowing passwords that match a configurable number of previous passwords (defaults to the previous 3).
++------------------------------------------------------------------------------------+----------------+-----------------------+
+| Setting                                                                            | User Passwords | Public Link Passwords |
++====================================================================================+================+=======================+
+| Specify a valid password requirements.                                             | Yes            | Yes                   |
++------------------------------------------------------------------------------------+----------------+-----------------------+
+| Specify a password expiration period.                                              | Yes            | Yes                   |
++------------------------------------------------------------------------------------+----------------+-----------------------+
+| Specify expiration dates for public link shares.                                   | No             | Yes                   |
++------------------------------------------------------------------------------------+----------------+-----------------------+
+| Forced password change on first login.                                             | Yes            | No                    |
++------------------------------------------------------------------------------------+----------------+-----------------------+
+| Disallowing passwords that match a configurable number of previous passwords       | Yes            | Yes                   |
+| (defaults to the previous 3).                                                      |                |                       |
++------------------------------------------------------------------------------------+----------------+-----------------------+
+| Users can be notified a configurable number of days before their password expires. | Yes            | No                    |
++------------------------------------------------------------------------------------+----------------+-----------------------+
+| Users will be notified when their password has expired.                            | Yes            | No                    |
++------------------------------------------------------------------------------------+----------------+-----------------------+
 
-.. figure:: ../../../configuration/files/images/sharing-files-2.png
+.. note::
+   Active user sessions will **not** end when passwords expire.
+   However, a password change will be forced when the user session expires (e.g., on logout).
+   Token access for app or client authentication is not affected.
+
+.. note::
+   Installing and enabling the application also extends the occ command to support :ref:`the user\:expire-password command <user-expire-password_label>`.
 
 The Security App
 ~~~~~~~~~~~~~~~~
