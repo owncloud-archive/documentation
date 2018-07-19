@@ -1757,9 +1757,6 @@ The full list, of commands is:
   user:setting                        Read and modify user application settings
   user:sync                           Sync local users with an external backend service
 
-.. note::
-   The ``user:expire-password`` command is only available when `the Password Policy app`_ is installed.
-
 Creating Users
 ~~~~~~~~~~~~~~
 
@@ -1850,12 +1847,15 @@ Expiring a User's Password
 
 ::
 
-    user:expire-password <uid> [<expiredate>]
+  sudo -u www-data php user:expire-password <uid> [<expiredate>]
 
 To expire a user's password at a specific date and time, use the ``user:expire-password`` command.
 The command accepts two arguments, the user's uid and an expiry date.
 The expiry date can be provided using any of `PHP's supported date and time formats`_.
-It defaults to the previous day if it is not supplied.
+
+If an expiry date is not supplied, the password will expire with immediate effect.
+This is because the password will be set as being expired 24 hours before the command was run.
+For example, if the command was run at "2018-07-**12** 13:15:28 UTC", then the password's expiry date will be set to "2018-07-**11** 13:15:28 UTC".
 
 After the command completes, console output, similar to that below, confirms when the user's password is set to expire.
 
@@ -1868,7 +1868,7 @@ Command Examples
 
 ::
 
-  # The password for user "frank"'s will be set as being expired 24 hours prior to the moment that the command was run.
+  # The password for user "frank" will be set as being expired 24 hours before the command was run.
   sudo -u www-data php occ user:expire-password frank
 
   # Expire the user "frank"'s password in 2 days time.
