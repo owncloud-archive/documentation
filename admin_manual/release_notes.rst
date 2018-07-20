@@ -74,17 +74,38 @@ The Password Policy Extension
 .. note::
    These features don't apply to users imported from LDAP or other backends but only for local users created by administrators or the `Guests <https://marketplace.owncloud.com/apps/guests>`_ extension.
 
-Imposing password expiration and history policies enhances security. For example, when users are forced to choose a new password, they can be prevented from using their previous passwords. It is possible to manually expire passwords or to configure the number of days that have to pass since the last change before the password expires. To ensure a good experience it is possible to configure user information via email and internal notifications that appear on the web interface and clients. The password history count and the days before the reminder notification is sent are both configurable. Users will always be informed when passwords have expired.
-However, we encourage an acceptable balance between security and usability by choosing sensible settings for password policies. A high frequency of password changes, for instance, might increase security but could also decrease user satisfaction.
+Imposing password expiration and history policies enhances security for a number of reasons.
+For example, by forcing users to choose a new password, they can be prevented from using one or more of their previous passwords.
+In doing this, it encourages them to not use a previous password, which may be known to attackers.
+
+Two further examples are manually expiring passwords and configuring the number of days that have to pass since the last change before the password expires.
+These help ensure that users change their passwords on a semi-regular basis, making them harder to crack.
+
+However, we encourage administrators to always consider the implication of their password policies, so that they strike an appropriate balance between security and usability.
+For example, a high frequency of password changes, for instance, might increase security but could also decrease user satisfaction.
+
+To help ensure a good user experience it is possible to configure:
+
+- Email notifications.
+- Internal notifications (they appear on the web interface and clients).
+- The password history count.
+- The days before reminder notification are sent.
+
+Users will always be informed when passwords have expired.
 
 .. note::
-   Although the above two password practices `are discouraged by NIST <https://pages.nist.gov/800-63-3/sp800-63b.html>`_, ownCloud is now fully compliant with common password guidelines in enterprise scenarios.
+   Although the above two password practices `are discouraged by NIST
+   <https://pages.nist.gov/800-63-3/sp800-63b.html>`_, ownCloud is now fully
+   compliant with common password guidelines in enterprise scenarios.
 
 .. note::
-   When users employ tokens for client authentication which can be configured on the user settings page ("App passwords"), those are not affected from password policies.
+   When users employ tokens for client authentication, which can be configured
+   on the user settings page ("App passwords"), those are not affected from
+   password policies.
 
 .. note::
-   When imposing password expiration policies on an existing installation it is necessary to take some further actions once. Please consult the `ownCloud Documentation <https://doc.owncloud.com/server/latest/admin_manual/configuration/server/security/password_policy.html>`_ for guidance.
+   When imposing password expiration policies on an existing installation it is
+   necessary to take some further actions. Please consult `the ownCloud documentation`_ for guidance.
 
 Technology preview for new S3 Objectstore implementation
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -194,9 +215,10 @@ ownCloud Server 10.0.9 takes care of `10.0.8 known issues <https://doc.owncloud.
 Known issues
 ~~~~~~~~~~~~
 
-- `The new Password Policy feature "Password Expiration" <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#the-password-policy-extension>`_ does not work together with Multi-Factor Authentication (e.g. ``twofactor_totp``, ``twofactor_privacyidea``). Please do not deploy expiration policies yet when having Two- or Multi-Factor Authentication extensions in place. This issue will be solved with the next ownCloud Server release. See `#32059 <https://github.com/owncloud/core/issues/32059>`_ for more information.
-- `The new Password Policy feature "Password Expiration" <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#the-password-policy-extension>`_ includes an 
-*occ* command to manually force password expiration. Please run it directly after imposing expiration policies on an instance with existing users. Currently the command will only work when the policy *X days until user password expires* has been enabled. This might be confusing and will be solved with the next release of the extension. See `#66 <https://github.com/owncloud/password_policy/issues/66>`_ for more information.
+The new Password Policy feature `"Password Expiration"`_:
+
+- Does not work together with Multi-Factor Authentication (e.g. ``twofactor_totp``, ``twofactor_privacyidea``). Please do not deploy expiration policies yet when Two- or Multi-Factor Authentication extensions are in place. This issue will be solved with the next ownCloud Server release. See `#32059`_ for more information.
+- The new Password Policy feature `"Password Expiration"`_ includes an *occ* command to manually force password expiration. Please run it directly after imposing expiration policies on an instance with existing users. Currently the command will only work when the policy *X days until user password expires* has been enabled. This might be confusing and will be solved with the next release of the extension. See `#66`_ for more information.
 
 For developers
 ~~~~~~~~~~~~~~
@@ -838,7 +860,7 @@ anymore for most requests.
   
 When you upgrade from ownCloud 8.0, with encryption enabled, to 8.1, you must 
 enable the new encryption backend and migrate your encryption keys. See 
-:ref:`upgrading_encryption_label`.
+:ref:`occ_encryption_label`.
 
 Encryption can no longer be disabled in ownCloud 8.1. It is planned to re-add
 this feature to the command line client for a future release.
@@ -906,7 +928,7 @@ Manually Migrate Encryption Keys after Upgrade
 
 If you are using the Encryption application and upgrading from older versions of 
 ownCloud to ownCloud 8.0, you must manually migrate your encryption keys.
-See :ref:`upgrading_encryption_label`.
+See :ref:`occ_encryption_label`.
 
 Windows Server Not Supported
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -1198,3 +1220,7 @@ or PostgreSQL) to operate correctly.
 .. _repository on GitHub: https://github.com/owncloud/theme-example
 .. _the ownCloud Ransomware Protection: https://marketplace.owncloud.com/apps/ransomware_protection
 .. _the ownCloud Marketplace: https://marketplace.owncloud.com
+.. _the ownCloud documentation: https://doc.owncloud.com/server/latest/admin_manual/configuration/server/security/password_policy.html
+.. _"Password Expiration": https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#the-password-policy-extension
+.. _#32059: https://github.com/owncloud/core/issues/32059
+.. _#66: https://github.com/owncloud/password_policy/issues/66
