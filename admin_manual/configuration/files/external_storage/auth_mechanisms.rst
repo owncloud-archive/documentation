@@ -46,9 +46,9 @@ Please be aware that any operations must be performed by the logged-in mount own
 As a result, there are three known limitations, for both admin and personal mounts where both have the "log-in credentials, save in session" option.
 These are:
 
-#. Directly sharing the storage or any of its sub-folders will fail. They will not appear to the recipient, because the mount cannot be set up due to missing credentials.
+#. Directly sharing the storage or any of its sub-folders will go through, but the recipient will not see the share mounted. This is because the mount cannot be set up due to missing credentials. Federated sharing is also affected, because it works on a "public link share token" basis, which itself doesn't contain the user's storage password. As a result, the storage cannot be mounted in this case either.
 #. Any background task operating on the storage, such as background scanning.
-#. Any :doc:`occ command <../configuration/server/occ_command>` that operates on the storage, such as ``occ files:scan``, will fail.
+#. Any :doc:`occ command <../configuration/server/occ_command>` that operates on the storage, such as ``occ files:scan``, will have no effect.
 
 .. note:: **Enterprise Users Only**
 
