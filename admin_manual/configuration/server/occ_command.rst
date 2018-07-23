@@ -777,6 +777,12 @@ For example:
 
 In the example above, the user_id ``alice`` is determined implicitly from the path component given.
 
+To get a list of scannable mounts for a given user, use following command:
+
+::
+
+  sudo -u www-data php occ files_external:list user_id
+  
 .. note::
   Mounts are only scannable at the point of origin. Scanning of shares including federated shares 
   is not necessary on the receiver side and therefore not possible.
