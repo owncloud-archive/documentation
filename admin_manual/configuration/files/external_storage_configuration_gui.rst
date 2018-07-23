@@ -16,7 +16,7 @@ disabled by default.
 Enabling External Storage Support
 ---------------------------------
 
-Tick the check box under Settings > Storage > "Enable External Storage".
+Tick the checkbox under Settings > Storage > "Enable External Storage".
 
 .. figure:: admin_manual/images/external_storage.png
    :alt: Enable external storage on your Settings > Storage page.
@@ -168,7 +168,7 @@ the mounted external storage.
 FTP
 ---
 
-If you want to mount a FTP Storage, please install the app ``FTP Storage Support`` from ownCloud market.
+If you want to mount an FTP Storage, please install `the FTP Storage Support app`_ from the ownCloud market.
 
 .. figure:: admin_manual/images/ftp_storage_support.png
    :alt: FTP Storage Support App
