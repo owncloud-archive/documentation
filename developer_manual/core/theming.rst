@@ -28,71 +28,150 @@ For example:
 .. literalinclude:: ../scripts/read-config.php
    :language: php
 
-How to Create a New Theme
--------------------------
+How to create a theme
+---------------------
 
-At its most basic, to create a theme requires two steps:
+Before you can customize:
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-#. Copy and extend `ownCloud's example theme`_, or create one from scratch.
-#. Enable the theme in the ownCloud Admin dashboard.
+1. Download the theme-example app from github
 
-All themes, whether copied or new, must meet two key criteria, these are:
+https://github.com/owncloud/theme-example/archive/master.zip
 
-#. They must be store in an app directory of your ownCloud installation, whether that’s the core app directory (``apps``) or `a custom app directory`_.
-#. They require a configuration file called ``appinfo/info.xml`` to be present.
+2. Extract the folder and copy it in your owncloud apps directory
 
-.. note:: 
-   To ensure that custom themes aren’t lost during upgrades, we strongly
-   encourage you to store them in `a custom app directory`_.
+3. Rename theme-example-master to your theme's name
 
-appinfo/info.xml
-~~~~~~~~~~~~~~~~
+4. Change the appinfo/info.xml to the new name in the appID and appName fields
 
-Here’s an example of the bare minimum which the file needs to contain: 
+5. Don't forget to change ownership of the folder to www-data
+
+Theming:
+~~~~~~~~
+
+.. image:: developer_manual/images/core/theming/1_oc_login.png 
+
+This is the default look of ownCloud.
+
+developer_manual/images/core/theming/2_ow_login.png
+
+You can change the background image by following these steps:
+
+This guide assumes that you are in the folder of your custom theme. For example 
+
+/var/www/owncloud/apps/my_custom_theme/
+
+1. put image in core/img/background.jpg
+
+2. don't forget to change ownership of the file to www-data
+
+3. change in core/css/styles.css
+
+::
+   #body-login {
+   background-image: url("../img/background.jpg"); /* path to image /*
+   background-position: 50% 50%; /* ensure optimal scalability /*
+   background-repeat: no-repeat; /* prevent tiled background /*
+   background-size: cover; /* ensure screen coverage /*
+   text-align: center; /* Center Entitlement text, copyright /*
+   background-color: #000000 !important; /* Fallback for old browsers */
+   }
+
+if your image size is 1920x1680 you don't need the lines below the path, 
+but they ensure optimal positioning and scaling.
+
+.. image:: developer_manual/images/core/theming/3_cu_login.png
+
+You can also change backggound color, logo and slogan.
+
+How to change login background to a color:
+-----------------------------------------
+
+In core/css/styles.css
+
+search for
+
+::
+      #body-login {
+              background: #745bca; /* Old browsers */
+              background: -moz-linear-gradient(top, #947bea 0%, #745bca 100%);
+      }
+
+replace with
 
 ::
 
-  <?xml version="1.0"?>
-  <info>
-      <id>theme-example</id>
-      <name>Example Theme</name>
-      <types>
-          <theme/>
-      </types>
-      <dependencies>
-        <owncloud min-version="10" max-version="10" />
-      </dependencies>
-  </info>
+      #body-login {
+      		background: rgb(31,9,121);
+      		background: linear-gradient(90deg, rgba(31,9,121,1) 38%, rgba(2,0,36,1) 58%);
+      }
 
-And here’s a longer, more complete example:
+If you simply want one color replace the existing code with this: 
 
 ::
 
-  <?xml version="1.0"?>
-  <info>
-      <id>theme-example</id>
-      <name>Example Theme</name>
-      <description>This App provides the ownCloud theme.</description>
-      <licence>AGPL</licence>
-      <author>John Doe</author>
-      <version>0.0.1</version>
-      <types>
-          <theme/>
-      </types>
-      <dependencies>
-          <owncloud min-version="10" max-version="10" />
-      </dependencies>
-  </info>
+      #body-login {
+        		background: rgb(31,9,121);
+      		}
 
-The value of the ``id`` element needs to be the name of your theme’s folder. 
-We recommend that it always be prefixed with ``theme-``. 
-The main reason for doing so, is that it is alphabetically sorted in a terminal when handling app folders. 
+If you are not sure what color to pick, here is a site for you
 
-The ``type`` element needs to be the same as is listed above, so that ownCloud knows to handle the app as a theme.
-The dependencies element needs to be present to set the minimum and maximum versions of ownCloud which are supported. If it’s not present, a warning will be displayed in ownCloud 10 and an error will be thrown in the upcoming ownCloud 11.
+https://cssgradient.io/
 
-While the remaining elements are optional, they help when working with the theme in the ownCloud Admin dashboard. 
-Please consider filling out as many as possible, as completely as possible.
+Select 2 instead of 4.
+
+To change the icon replace the files in core/img logo.png  logo.svg with your icons.
+
+The reason for the png files is to have a fallback option for older browsers.
+
+If you keep the names - you don't need to change the path in core/css/styles.css. 
+If you have changed the names - adjust the styles.css file acordingly here:
+
+::
+
+      #header .logo {
+              background-image: url('../img/logo.svg');
+              width: 250px;
+              height: 121px;
+      }
+
+
+.. image:: developer_manual/images/core/theming/4_oc_header.png
+
+This is the default header of ownCloud.
+
+developer_manual/images/core/theming/5_cu_header.png
+
+You can change it to a custom color with a custom logo.
+
+How to change header:
+
+search for body-public #header in styles.css
+
+::
+      #body-public #header {
+              background-color: #745bca;
+      }
+
+write your own, like the one from login page:
+
+::
+      #body-public #header {
+              background: rgb(31,9,121);
+              background: linear-gradient(90deg, rgba(31,9,121,1) 38%, rgba(2,0,36,1) 58%);
+      }
+
+Change the logo by replacing this files with your logos: logo-icon.png  logo-icon.svg in core/img
+
+If you change the names of the logos, adjust the path acordingly in core/css/styles.css
+
+::
+      #header .logo-icon {
+              background-image: url('../img/logo-icon.svg');
+              height: 34px;
+      }
+
+To change the  Title or Slogan go in the defaults.php in your theme folder. The file is commented clearly.
 
 Theme Signing
 ~~~~~~~~~~~~~
