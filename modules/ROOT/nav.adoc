@@ -41,6 +41,7 @@
 ***** xref:enterprise/server_branding/enterprise_server_branding.adoc[Enterprise Server Branding]
 **** User Management
 ***** xref:enterprise/user_management/user_auth_shibboleth.adoc[Shibboleth Integration]
+***** xref:enterprise/user_management/saml_2.0_sso.adoc[SAML 2.0 Based SSO]
 *** xref:faq/index.adoc[FAQ]
 *** Installation
 **** xref:installation/system_requirements.adoc[System Requirements]
