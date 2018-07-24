@@ -222,6 +222,11 @@ Trash can image                                                  ``owncloud/core
 .. note:: 
    When overriding the favicon, make sure your custom theme includes and override for both ``owncloud/apps/core/img/favicon.svg`` and ``owncloud/apps/core/img/favicon.png``, to cover any future updates to favicon handling.
 
+.. note::   
+    When using different icons for file types in a custom theme it is necessary to use ``occ maintenance:mimetype:update-js`` for them to get used. For more information please refer to `mimetypes management`_.
+    
+
+
 How to Override the Default Colors
 ----------------------------------
 
@@ -593,3 +598,5 @@ If you think a new section should be added to core however, please create a PR w
 .. _a custom app directory: https://doc.owncloud.org/server/latest/admin_manual/installation/apps_management_installation.html#using-custom-app-directories
 .. _ownCloud's example theme: https://github.com/owncloud/theme-example
 .. _Imprint and Privacy Policy URLs: https://doc.owncloud.org/server/latest/admin_manual/configuration/server/legal_settings_configuration.html
+
+.. _mimetypes management: https://doc.owncloud.com/server/10.0/admin_manual/configuration/mimetypes/
