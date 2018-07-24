@@ -30,139 +30,150 @@ For example:
 .. literalinclude:: ../scripts/read-config.php
    :language: php
 
-How to Create a Theme
+How to create a theme
 ---------------------
 
 Before you can customize:
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. Download `the theme-example app <https://github.com/owncloud/theme-example/archive/master.zip>` from github
-2. Extract the folder and copy it in your ownCloud apps directory
+1. Download the theme-example app from github
+
+https://github.com/owncloud/theme-example/archive/master.zip
+
+2. Extract the folder and copy it in your owncloud apps directory
+
 3. Rename theme-example-master to your theme's name
-4. Change the ``appinfo/info.xml`` to the new name in the ``appID`` and ``appName`` fields
+
+4. Change the appinfo/info.xml to the new name in the appID and appName fields
+
 5. Don't forget to change ownership of the folder to www-data
 
-Theming
-~~~~~~~
+Theming:
+~~~~~~~~
 
-.. figure:: ../images/core/theming/1_oc_login.png
-   :alt: ownCloud’s default look.
+.. image:: developer_manual/images/core/theming/1_oc_login.png 
 
-This is ownCloud's default look.
+This is the default look of ownCloud.
 
-How to Change the Background Image
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+developer_manual/images/core/theming/2_ow_login.png
 
-.. figure:: ../images/core/theming/2_ow_login.png
+You can change the background image by following these steps:
 
-.. note:: This guide assumes that you are in the folder of your custom theme, for example: ``/var/www/owncloud/apps/my_custom_theme/``.
+This guide assumes that you are in the folder of your custom theme. For example 
 
-You can change the background login image by following these steps:
+/var/www/owncloud/apps/my_custom_theme/
 
-1. Put the new background image in ``core/img/background.jpg``.
-2. Change the owner and group permissions of the file to your web server user and group.
-3. Update ``background-image`` in ``core/css/styles.css``.
+1. put image in core/img/background.jpg
+
+2. don't forget to change ownership of the file to www-data
+
+3. change in core/css/styles.css
 
 ::
-
    #body-login {
-        background-image: url("../img/background.jpg"); /* path to image /*
-        background-position: 50% 50%; /* ensure optimal scalability /*
-        background-repeat: no-repeat; /* prevent tiled background /*
-        background-size: cover; /* ensure screen coverage /*
-        text-align: center; /* Center Entitlement text, copyright /*
-        background-color: #000000 !important; /* Fallback for old browsers */
+   background-image: url("../img/background.jpg"); /* path to image /*
+   background-position: 50% 50%; /* ensure optimal scalability /*
+   background-repeat: no-repeat; /* prevent tiled background /*
+   background-size: cover; /* ensure screen coverage /*
+   text-align: center; /* Center Entitlement text, copyright /*
+   background-color: #000000 !important; /* Fallback for old browsers */
    }
 
-If your image size is 1920px x 1680px, then you don't need the lines below the path.
-However, they ensure optimal positioning and scaling.
+if your image size is 1920x1680 you don't need the lines below the path, 
+but they ensure optimal positioning and scaling.
 
-.. figure:: ../images/core/theming/3_cu_login.png
+.. image:: developer_manual/images/core/theming/3_cu_login.png
 
-You can also change the background color, logo, and the slogan.
+You can also change backggound color, logo and slogan.
 
-How to Change Login Background to a Color
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+How to change login background to a color:
+-----------------------------------------
 
-In ``core/css/styles.css``, search for:
+In core/css/styles.css
+
+search for
+
+::
+      #body-login {
+              background: #745bca; /* Old browsers */
+              background: -moz-linear-gradient(top, #947bea 0%, #745bca 100%);
+      }
+
+replace with
 
 ::
 
-    #body-login {
-        background: #745bca; /* Old browsers */
-        background: -moz-linear-gradient(top, #947bea 0%, #745bca 100%);
-    }
-
-Replace it with the following:
-
-::
-
-    #body-login {
-        background: rgb(31,9,121);
-        background: linear-gradient(90deg, rgba(31,9,121,1) 38%, rgba(2,0,36,1) 58%);
-    }
+      #body-login {
+      		background: rgb(31,9,121);
+      		background: linear-gradient(90deg, rgba(31,9,121,1) 38%, rgba(2,0,36,1) 58%);
+      }
 
 If you simply want one color replace the existing code with this: 
 
 ::
 
-    #body-login {
-        background: rgb(31,9,121);
-    }
+      #body-login {
+        		background: rgb(31,9,121);
+      		}
 
-If you are not sure what color to pick, here is a site for you: https://cssgradient.io/
-To change the icon replace the files in ``core/img`` (``logo.png``, and ``logo.svg``) with your icons.
-The reason for the PNG files is to have a fallback option for older browsers.
+If you are not sure what color to pick, here is a site for you
 
-If you keep the names - you don't need to change the path in ``core/css/styles.css``.
-If you have changed the names - adjust ``styles.css`` file accordingly, as in this example:
+https://cssgradient.io/
+
+Select 2 instead of 4.
+
+To change the icon replace the files in core/img logo.png  logo.svg with your icons.
+
+The reason for the png files is to have a fallback option for older browsers.
+
+If you keep the names - you don't need to change the path in core/css/styles.css. 
+If you have changed the names - adjust the styles.css file acordingly here:
 
 ::
 
-    #header .logo {
-        background-image: url('../img/logo.svg');
-        width: 250px;
-        height: 121px;
-    }
+      #header .logo {
+              background-image: url('../img/logo.svg');
+              width: 250px;
+              height: 121px;
+      }
 
-How to Change the Header
-^^^^^^^^^^^^^^^^^^^^^^^^
 
-.. figure:: ../images/core/theming/4_oc_header.png
+.. image:: developer_manual/images/core/theming/4_oc_header.png
 
-This is the default ownCloud header.
+This is the default header of ownCloud.
 
-.. figure:: ../images/core/theming/5_cu_header.png
+developer_manual/images/core/theming/5_cu_header.png
 
 You can change it to a custom color with a custom logo.
-Search for body-public ``#header`` in styles.css.
+
+How to change header:
+
+search for body-public #header in styles.css
 
 ::
+      #body-public #header {
+              background-color: #745bca;
+      }
 
-    #body-public #header {
-        background-color: #745bca;
-    }
-
-You can also write your own, like the one from the login page, for example:
-
-::
-
-    #body-public #header {
-        background: rgb(31,9,121);
-        background: linear-gradient(90deg, rgba(31,9,121,1) 38%, rgba(2,0,36,1) 58%);
-    }
-
-Change the logo by replacing ``logo-icon.png`` and ``logo-icon.svg`` with your logos, in ``core/img``.
-If you change the names of the logos, adjust the path accordingly in ``core/css/styles.css``.
+write your own, like the one from login page:
 
 ::
+      #body-public #header {
+              background: rgb(31,9,121);
+              background: linear-gradient(90deg, rgba(31,9,121,1) 38%, rgba(2,0,36,1) 58%);
+      }
 
-    #header .logo-icon {
-        background-image: url('../img/logo-icon.svg');
-        height: 34px;
-    }
+Change the logo by replacing this files with your logos: logo-icon.png  logo-icon.svg in core/img
 
-To change the title or slogan, you can do so by editing ``defaults.php`` in your theme folder.
+If you change the names of the logos, adjust the path acordingly in core/css/styles.css
+
+::
+      #header .logo-icon {
+              background-image: url('../img/logo-icon.svg');
+              height: 34px;
+      }
+
+To change the  Title or Slogan go in the defaults.php in your theme folder. The file is commented clearly.
 
 Theme Signing
 ~~~~~~~~~~~~~
@@ -538,7 +549,7 @@ The interface specifies three methods:
 ownCloud Server comes with a predefined list of sections which group related settings together; the intention of which is to improve the user experience. 
 This can be found here in `this example`_: 
 
-**getPanel:** This method returns the ``OCP\Template`` or ``OCP\TemplateResponse`` which is used to render the panel.
+**getPanel:** This method returns the ``OCP\Template`` or ``OCP\TemplateReponse`` which is used to render the panel. 
 The method may also return ``null`` if the panel should not be shown to the user.
 
 **getPriority:** An integer between 0 and 100 representing the importance of the panel (higher is more important). 
