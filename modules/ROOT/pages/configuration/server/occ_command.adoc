@@ -1,6 +1,6 @@
 = Using the occ Command
 
-ownCloud’s `occ` command (ownCloud console) is ownCloud’s command-line
+ownCloud's `occ` command (ownCloud console) is ownCloud's command-line
 interface. You can perform many common server operations with `occ`,
 such as installing and upgrading ownCloud, managing users and groups,
 encryption, passwords, LDAP setting, and more.
@@ -212,7 +212,7 @@ market disabled
 NOTE: Be aware that the following apps cannot be disabled: _DAV_, _FederatedFileSharing_, _Files_ and _Files_External_.
 
 `app:check-code` has multiple checks: it checks if an app uses
-ownCloud’s public API (`OCP`) or private API (`OC_`), and it also checks
+ownCloud's public API (`OCP`) or private API (`OC_`), and it also checks
 for deprecated methods and the validity of the `info.xml` file. By
 default all checks are enabled. The Activity app is an example of a
 correctly-formatted app
@@ -222,7 +222,7 @@ sudo -u www-data php occ app:check-code notifications
 App is compliant - awesome job!
 ....
 
-If your app has issues, you’ll see output like this
+If your app has issues, you'll see output like this
 
 ....
 sudo -u www-data php occ app:check-code foo_app
@@ -325,8 +325,7 @@ sudo -u www-data php occ config:import < local-backup.json
 NOTE: While it is possible to update/set/delete the versions and installation statuses of apps and ownCloud itself, it is *not* recommended to do this directly. Use the `occ app:enable`, `occ app:disable` and `occ update` commands instead.
 
 [[getting-a-single-configuration-value]]
-Getting a Single Configuration Value
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Getting a Single Configuration Value
 
 These commands get the value of a single app or system configuration:
 
@@ -339,8 +338,7 @@ sudo -u www-data php occ config:app:get activity installed_version
 ....
 
 [[setting-a-single-configuration-value]]
-Setting a Single Configuration Value
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Setting a Single Configuration Value
 
 These commands set the value of a single app or system configuration:
 
@@ -384,8 +382,7 @@ System config value maintenance set to boolean false
 ....
 
 [[setting-an-array-of-configuration-values]]
-Setting an Array of Configuration Values
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Setting an Array of Configuration Values
 
 Some configurations (e.g., the trusted domain setting) are an array of
 data. In order to set (and also get) the value of one key, you can
@@ -407,8 +404,7 @@ sudo -u www-data php occ config:system:get trusted_domains localhost owncloud.lo
 ....
 
 [[deleting-a-single-configuration-value]]
-Deleting a Single Configuration Value
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Deleting a Single Configuration Value
 
 These commands delete the configuration of an app or system
 configuration:
@@ -482,7 +478,7 @@ Molly will immediately see these on her Calendar and Contacts pages.
 Your existing calendars and contacts should migrate automatically when
 you upgrade. If something goes wrong you can try a manual migration.
 First delete any partially-migrated calendars or address books. Then run
-this command to migrate user’s contacts:
+this command to migrate user's contacts:
 
 ....
 sudo -u www-data php occ dav:migrate-addressbooks [user]
@@ -668,8 +664,7 @@ files
 NOTE: These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [[the-fileschecksumsverify-command]]
-The files:checksums:verify command
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== The files:checksums:verify command
 
 ownCloud supports file integrity checking, by computing and matching
 checksums. Doing so ensures that transferred files arrive at their
@@ -702,15 +697,13 @@ Mismatch for thumbnails/9/2048-2048-max.png:
 ....
 
 [[the-filescleanup-command]]
-The files:cleanup command
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=== The files:cleanup command
 
-`files:cleanup` tidies up the server’s file cache by deleting all file
+`files:cleanup` tidies up the server's file cache by deleting all file
 entries that have no matching entries in the storage table.
 
 [[the-filesscan-command]]
-The files:scan command
-~~~~~~~~~~~~~~~~~~~~~~
+=== The files:scan command
 
 The `files:scan` command
 
@@ -783,7 +776,7 @@ The `--repair` Option
 ^^^^^^^^^^^^^^^^^^^^^
 
 As noted above, repairs can be performed for individual users, groups of
-users, and for all users in an ownCloud installation. What’s more,
+users, and for all users in an ownCloud installation. What's more,
 repair scans can be run even if no files are known to need repairing and
 if one or more files are known to be in need of repair. Two examples of
 when files need repairing are:
@@ -791,7 +784,7 @@ when files need repairing are:
 * If folders have the same entry twice in the web UI (known as a
 ``__ghost folder__''), this can also lead to strange error messages in
 the desktop client.
-* If entering a folder doesn’t seem to lead into that folder.
+* If entering a folder doesn't seem to lead into that folder.
 
 The repair command needs to be run in single user mode. The following
 commands show how to enable single user mode, run a repair file scan,
@@ -830,14 +823,14 @@ When using this command, please keep in mind:
 
 1.  The directory provided to the `--path` switch *must* exist inside
 `data/<source-user>/files`.
-2.  The directory (and its contents) won’t be moved as is between the
-users. It’ll be moved inside the destination user’s `files` directory,
+2.  The directory (and its contents) won't be moved as is between the
+users. It'll be moved inside the destination user's `files` directory,
 and placed in a directory which follows the format:
 `transferred from <source-user> on <timestamp>`. Using the example
 above, it will be stored under:
 `data/<destination-user>/files/transferred from <source-user> on 20170426_124510/`
-3.  Currently file versions can’t be transferred. Only the latest
-version of moved files will appear in the destination user’s account.
+3.  Currently file versions can't be transferred. Only the latest
+version of moved files will appear in the destination user's account.
 
 [[files-external]]
 Files External
@@ -895,8 +888,7 @@ group
 ----
 
 [[creating-groups]]
-Creating Groups
-~~~~~~~~~~~~~~~
+=== Creating Groups
 
 You can create a new group with the `group:add` command. The syntax is:
 
@@ -912,8 +904,7 @@ sudo -u www-data php occ group:add Finance
 ....
 
 [[listing-groups]]
-Listing Groups
-~~~~~~~~~~~~~~
+=== Listing Groups
 
 You can list the names of existing groups with the `group:list` command.
 The syntax is:
@@ -954,8 +945,7 @@ sudo -u www-data php occ group:list --output=json_pretty finance
 ....
 
 [[listing-group-members]]
-Listing Group Members
-~~~~~~~~~~~~~~~~~~~~~
+=== Listing Group Members
 
 You can list the user IDs of group members with the `group:list-members`
 command. The syntax is:
@@ -990,8 +980,7 @@ sudo -u www-data php occ group:list-members --output=json_pretty Finance
 ....
 
 [[adding-members-to-groups]]
-Adding Members to Groups
-~~~~~~~~~~~~~~~~~~~~~~~~
+=== Adding Members to Groups
 
 You can add members to an existing group with the `group:add-member`
 command. Members must be existing users. The syntax is
@@ -1020,8 +1009,7 @@ sudo -u www-data php occ group:add-member --member aaron --member julie --member
 ....
 
 [[removing-members-from-groups]]
-Removing Members from Groups
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Removing Members from Groups
 
 You can remove members from a group with the `group:remove-member`
 command. The syntax is:
@@ -1051,8 +1039,7 @@ sudo -u www-data php occ group:remove-member --member aaron --member fred Financ
 ....
 
 [[deleting-a-group]]
-Deleting a Group
-~~~~~~~~~~~~~~~~
+=== Deleting a Group
 
 To delete a group, you use the `group:delete` command, as in the example
 below:
@@ -1066,7 +1053,7 @@ Integrity Check
 ---------------
 
 Apps which have an official tag *must* be code signed. Unsigned official
-apps won’t be installable anymore. Code signing is optional for all
+apps won't be installable anymore. Code signing is optional for all
 third-party applications.
 
 [source,console]
@@ -1121,18 +1108,20 @@ To create the two translation files, the command reads translation data
 from a source PHP translation file.
 
 [[a-working-example]]
-A Working Example
-~~~~~~~~~~~~~~~~~
+=== A Working Example
 
-In this example, we’ll create Austrian German translations for the
+In this example, we'll create Austrian German translations for the
 Gallery app.
 
-NOTE: This example assumes that the ownCloud directory is `/var/www/owncloud` and that it uses ownCloud’s standard apps directory, `app`.
+[NOTE] 
+====
+This example assumes that the ownCloud directory is `/var/www/owncloud`` and that it uses ownCloud's standard apps directory, `app`.
+====
 
 First, create a source translation file in
 `/var/www/owncloud/apps/gallery/l10n`, called `de_AT.php`. In it, add
 the required translation strings, as in the following example.
-Refer to the developer documentation on xref:developer_manual:app/advanced/l10n.adoc#creating-translatable-files-label[creating translation files], if you’re not familiar with creating them.
+Refer to the developer documentation on xref:developer_manual:app/advanced/l10n.adoc#creating-translatable-files-label[creating translation files], if you're not familiar with creating them.
 
 [source,php]
 ----
@@ -1210,7 +1199,7 @@ sudo -u www-data php occ ldap:search "*rob"
 
 User search attributes are set with `ldap:set-config` (below). For
 example, if your search attributes are `givenName` and `sn` you can find
-users by first name + last name very quickly. For example, you’ll find
+users by first name + last name very quickly. For example, you'll find
 Terri Hanson by searching for `te ha`. Trailing whitespace is ignored.
 
 Check if an LDAP user exists. This works only if the ownCloud server is
@@ -1361,7 +1350,7 @@ have been added or removed from these groups in LDAP, ownCloud will
 update its details. If a group was deleted in LDAP, ownCloud will also
 delete the local mapping info about this group.
 
-CAUTION: New groups in LDAP won’t be synced with this command. The LDAP TTL configuration (by default 10 minutes) still applies. This means that recently deleted groups from LDAP might be considered as "active" and might not be deleted in ownCloud immediately.
+CAUTION: New groups in LDAP won't be synced with this command. The LDAP TTL configuration (by default 10 minutes) still applies. This means that recently deleted groups from LDAP might be considered as "active" and might not be deleted in ownCloud immediately.
 
 *Configuring the LDAP Refresh Attribute Interval*
 
@@ -1485,7 +1474,7 @@ sudo -u www-data php occ maintenance:singleuser --on
 Single user mode enabled
 ....
 
-Turn it off when you’re finished:
+Turn it off when you're finished:
 
 ....
 sudo -u www-data php occ maintenance:singleuser --off
@@ -1505,7 +1494,7 @@ versions.
 
 The `maintenance:repair` command runs automatically during upgrades to
 clean up the database, so while you can run it manually there usually
-isn’t a need to.
+isn't a need to.
 
 ....
 sudo -u www-data php occ maintenance:repair
@@ -1534,13 +1523,12 @@ market
   market:upgrade    Installs new app versions if available on the marketplace
 ----
 
-NOTE: The user running the update command, which will likely be your webserver user, needs write permission for the `/apps` folder. If they don’t have write permission, the command may report that the update was successful, but it may silently fail.
+NOTE: The user running the update command, which will likely be your webserver user, needs write permission for the `/apps` folder. If they don't have write permission, the command may report that the update was successful, but it may silently fail.
 
 NOTE: These commands are not available in xref:maintenance-commands[single-user (maintenance) mode].
 
 [[install-an-application]]
-Install an Application
-~~~~~~~~~~~~~~~~~~~~~~
+=== Install an Application
 
 Applications can be installed both from
 https://marketplace.owncloud.com/[the ownCloud Marketplace] and from a
@@ -1551,7 +1539,7 @@ Install Apps From The Marketplace
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To install an application from the Marketplace, you need to supply the
-app’s id, which can be found in the app’s Marketplace URL. For example,
+app's id, which can be found in the app's Marketplace URL. For example,
 the URL for _Two factor backup codes_ is
 https://marketplace.owncloud.com/apps/twofactor_backup_codes. So its app
 id is `twofactor_backup_codes`.
@@ -1619,7 +1607,7 @@ sudo -u www-data php occ notifications:generate -g Office "Emergeny Alert" "Rebo
 Reports
 -------
 
-If you’re working with ownCloud support and need to send them a
+If you're working with ownCloud support and need to send them a
 configuration summary, you can generate it using the
 `configreport:generate` command. This command generates the same
 JSON-based report as the Admin Config Report, which you can access under
@@ -1793,7 +1781,7 @@ Internally, the `fileid` will remain in the file cache and storage for
 that file will not be deleted.
 
 As a result, any user(s) who the share was re-shared with will now get
-an error when trying to access that file or folder. That’s why the
+an error when trying to access that file or folder. That's why the
 command is available.
 
 So, to cleanup all orphaned remote storages, run it as follows:
@@ -1891,13 +1879,12 @@ user
 ----
 
 [[creating-users]]
-Creating Users
-~~~~~~~~~~~~~~
+=== Creating Users
 
 You can create a new user with the `user:add` command. This command lets
 you set the following attributes:
 
-* *uid:* The `uid` is the user’s username and their login name
+* *uid:* The `uid` is the user's username and their login name
 * *display name:* This corresponds to the *Full Name* on the Users page
 in your ownCloud Web UI
 * *email address*
@@ -1905,7 +1892,7 @@ in your ownCloud Web UI
 * *login name*
 * *password*
 
-The command’s syntax is:
+The command's syntax is:
 
 [source,console]
 ----
@@ -1931,10 +1918,9 @@ After the command completes, go to your Users page, and you will see
 your new user.
 
 [[setting-a-users-password]]
-Setting a User’s Password
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Setting a User's Password
 
-`password-from-env` allows you to set the user’s password from an
+`password-from-env` allows you to set the user's password from an
 environment variable. This prevents the password from being exposed to
 all users via the process list, and will only be visible in the history
 of the user (root) running the command. This also permits creating
@@ -1953,7 +1939,7 @@ Display name set to "Fred Jones"
 User "fred" added to group "users"
 ....
 
-You can reset any user’s password, including administrators (see xref:configuration/user/reset_admin_password.adoc[Reset Admin Password]):
+You can reset any user's password, including administrators (see xref:configuration/user/reset_admin_password.adoc[Reset Admin Password]):
 
 ....
 sudo -u www-data php occ user:resetpassword layla
@@ -1971,8 +1957,7 @@ sudo -u www-data php occ user:resetpassword --password-from-env layla
 ....
 
 [[deleting-a-user]]
-Deleting A User
-~~~~~~~~~~~~~~~
+=== Deleting A User
 
 To delete a user, you use the `user:delete` command, as in the example
 below:
@@ -1981,9 +1966,62 @@ below:
 sudo -u www-data php occ user:delete fred
 ....
 
+
+.. _user-expire-password_label:
+
+=== Expiring a User's Password
+
+[NOTE] 
+====
+This command is only available when link:https://marketplace.owncloud.com/apps/password_policy[the Password Policy app] is installed.
+====
+
+....
+sudo -u www-data php user:expire-password <uid> [<expiredate>]
+....
+
+To expire a user's password at a specific date and time, use the `user:expire-password` command.
+The command accepts two arguments, the user's uid and an expiry date.
+The expiry date can be provided using any of link:https://secure.php.net/manual/en/datetime.formats.php[PHP's supported date and time formats].
+
+If an expiry date is not supplied, the password will expire with immediate effect.
+This is because the password will be set as being expired 24 hours before the command was run.
+For example, if the command was run at "2018-07-**12** 13:15:28 UTC", then the password's expiry date will be set to "2018-07-**11** 13:15:28 UTC".
+
+After the command completes, console output, similar to that below, confirms when the user's password is set to expire.
+
+....
+The password for frank is set to expire on 2018-07-12 13:15:28 UTC.
+....
+
+==== Command Examples
+
+....
+# The password for user "frank" will be set as being expired 24 hours before the command was run.
+sudo -u www-data php occ user:expire-password frank
+
+# Expire the user "frank"'s password in 2 days time.
+sudo -u www-data php occ user:expire-password frank '+2 days'
+
+# Expire the user "frank"'s password on the 15th of August 2005, at 15:52:01 in the local timezone.
+sudo -u www-data php occ user:expire-password frank '2005-08-15T15:52:01+00:00'
+
+# Expire the user "frank"'s password on the 15th of August 2005, at 15:52:01 UTC.
+sudo -u www-data php occ user:expire-password frank '15-Aug-05 15:52:01 UTC'
+....
+
+==== Caveats
+
+Please be aware of the following implications of enabling or changing the password policy's "*days until user password expires*" option.
+
+- Administrators need to run the `occ user:expire-password` command to initiate expiry for new users.
+- Passwords will never expire for users who have *not* changed their initial password, because they do not have a password history. To force password expiration use the `occ user:expire-password` command.
+- A password expiration date will be set after users change their password for the first time. To force password expiration use the `occ user:expire-password` command.
+- Passwords changed for the first time, will expire based on the *active* password policy. If the policy is later changed, it will not update the password's expiry date to reflect the new setting.
+- Password expiration dates of users where the administrator has run the `occ user:expire-password` command *won't* automatically update to reflect the policy change. In these cases, Administrators need to run the `occ user:expire-password` command again and supply a new expiry date.
+
 [[listing-users]]
-Listing Users
-~~~~~~~~~~~~~
+=== Listing Users
 
 You can list existing users with the `user:list` command. The syntax is
 
@@ -2038,8 +2076,7 @@ sudo -u www-data php occ user:list -a enabled
 ....
 
 [[listing-group-membership-of-a-user]]
-Listing Group Membership of a User
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Listing Group Membership of a User
 
 You can list the group membership of a user with the `user:list-groups`
 command. The syntax is
@@ -2069,10 +2106,9 @@ sudo -u www-data php occ user:list-groups --output=json_pretty julie
 ....
 
 [[finding-the-users-last-login]]
-Finding The User’s Last Login
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+=== Finding The User's Last Login
 
-To view a user’s most recent login, use the `user:lastseen` command, as
+To view a user's most recent login, use the `user:lastseen` command, as
 in the example below:
 
 ....
@@ -2081,8 +2117,7 @@ sudo -u www-data php occ user:lastseen layla
 ....
 
 [[user-application-settings]]
-User Application Settings
-~~~~~~~~~~~~~~~~~~~~~~~~~
+=== User Application Settings
 
 To manage application settings for a user, use the `user:setting`
 command. This command provides the ability to:
@@ -2110,8 +2145,8 @@ Arguments:
 sudo -u www-data php occ user:setting --help
 ....
 
-If you’re new to the `user:setting` command, the descriptions for the
-`app` and `key` arguments may not be completely transparent. So, here’s
+If you're new to the `user:setting` command, the descriptions for the
+`app` and `key` arguments may not be completely transparent. So, here's
 a lengthier description of both.
 
 [cols=",",options="header",]
@@ -2131,7 +2166,7 @@ Retrieving User Settings
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 To retrieve all settings for a user, you need to call the `user:setting`
-command and supply the user’s username, as in the example below.
+command and supply the user's username, as in the example below.
 
 ....
 sudo -u www-data php occ user:setting layla
@@ -2146,8 +2181,8 @@ sudo -u www-data php occ user:setting layla
 Here, we see that the user has settings for the application `core`, when
 they last logged in, and what their email address is.
 
-To retrieve the user’s settings for a specific application, you have to
-supply the username and the application’s name, which you want to
+To retrieve the user's settings for a specific application, you have to
+supply the username and the application's name, which you want to
 retrieve the settings for; such as in the example below:
 
 ....
@@ -2177,7 +2212,7 @@ To set a setting, you need to supply four things; these are:
 * the `--value` switch
 * the, quoted, value for that setting
 
-Here’s an example of how you would set the email address of the user
+Here's an example of how you would set the email address of the user
 `layla`.
 
 ....
@@ -2246,15 +2281,15 @@ sudo -u www-data php occ user:report
 [[syncing-user-accounts]]
 === Syncing User Accounts
 
-This command syncs users stored in external backend services, such as _LDAP_, _Shibboleth_, and _Samba_, with ownCloud’s, internal, user database. 
-However, it’s not essential to run it regularly, unless you have a large number of users whose account properties have changed in a backend outside of ownCloud. 
-When run, it will pick up changes from alternative user backends, such as LDAP where properties like `cn` or `display name` have changed, and sync them with ownCloud’s user database. 
+This command syncs users stored in external backend services, such as _LDAP_, _Shibboleth_, and _Samba_, with ownCloud's, internal, user database. 
+However, it's not essential to run it regularly, unless you have a large number of users whose account properties have changed in a backend outside of ownCloud. 
+When run, it will pick up changes from alternative user backends, such as LDAP where properties like `cn` or `display name` have changed, and sync them with ownCloud's user database. 
 If accounts are found that no longer exist in the external backend, you are given the choice of either removing or disabling the
 accounts.
 
-NOTE: It’s also xref:configuration/server/background_jobs_configuration.adoc#available-background-jobs[one of the commands] that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
+NOTE: It's also xref:configuration/server/background_jobs_configuration.adoc#available-background-jobs[one of the commands] that you should run on a regular basis to ensure that your ownCloud installation is running optimally.
 
-NOTE: This command replaces the old `show-remnants` functionality, and brings the LDAP feature more in line with the rest of ownCloud’s functionality.
+NOTE: This command replaces the old `show-remnants` functionality, and brings the LDAP feature more in line with the rest of ownCloud's functionality.
 
 ==== Usage
 
@@ -2535,11 +2570,9 @@ This example completes the installation:
 
 ....
 cd /var/www/owncloud/
-sudo -u www-data php occ maintenance:install --database "mysql" \
-   --database-name "owncloud" --database-user "root" \
-   --database-pass "password" --database-host "db" \
-   --admin-user "admin" --admin-pass "password"
-
+sudo -u www-data php occ maintenance:install --database
+"mysql" --database-name "owncloud"  --database-user "root" --database-pass
+"password" --admin-user "admin" --admin-pass "password"
 ownCloud is not installed - only a limited number of commands are available
 ownCloud was successfully installed
 ....
@@ -2681,10 +2714,9 @@ sudo -u www-data php occ user:enable <username>
 NOTE: Once users are disabled, their connected browsers will be disconnected.
 
 [[finding-inactive-users]]
-Finding Inactive Users
-~~~~~~~~~~~~~~~~~~~~~~
+=== Finding Inactive Users
 
-To view a list of users who’ve not logged in for a given number of days,
+To view a list of users who've not logged in for a given number of days,
 use the `user:inactive` command The example below searches for users
 inactive for five days, or more.
 
@@ -2707,8 +2739,8 @@ By default, this will generate output in the following format:
   - inactiveSinceDays: 5
 ....
 
-You can see the user’s user id, display name, and the number of days
-they’ve been inactive. If you’re passing or piping this information to
+You can see the user's user id, display name, and the number of days
+they've been inactive. If you're passing or piping this information to
 another application for further processing, you can also use the
 `--output` switch to change its format.
 
