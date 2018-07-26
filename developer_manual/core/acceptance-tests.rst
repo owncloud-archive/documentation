@@ -169,8 +169,8 @@ To do so, in the ``contexts`` section add your new context:
 After the name, add any variables required for your context. Mostly you will not need to have any.
 With that done, we're now ready to run the tests.
 
-Running Acceptance Tests
-~~~~~~~~~~~~~~~~~~~~~~~~
+Preparing to Run Acceptance Tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a concise guide to running acceptance tests on ownCloud 10.0.
 Before you can do so, you need to meet a few prerequisites available; these are
@@ -205,10 +205,51 @@ Now that the prerequisites are satisfied, and assuming that ``$installation_path
       --database='mysql' --database-name='owncloud' --database-user='root' \
       --database-pass='' --admin-user='admin' --admin-pass='admin'
 
-With the installation prepared, you should now be able to run the tests. 
-Go to the ``tests/acceptance`` folder and, assuming that your web user is ``www-data``, run the following command::
+Running Acceptance Tests for a Suite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  sudo -u www-data ./run.sh features/task-to-test.feature
+Run a command like the following::
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh --suite apiTrashbin
+
+Running Acceptance Tests for a Feature
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run a command like the following::
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh --feature features/apiTrashbin/trashbinDelete.feature
+
+Or just::
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh features/apiTrashbin/trashbinDelete.feature
+
+Running Acceptance Tests for a Tag
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some test scenarios are tagged. For example, tests that are known to fail and are awaiting fixes are tagged ``@skip``.
+To run test scenarios with a particular tag::
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh --suite apiTrashbin --tags @skip
+
+Displaying the ownCloud Log
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It can be useful to see the tail of the ownCloud log when the test run ends. To do that, specify ``--show-oc-logs``::
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh --suite apiTrashbin --show-oc-logs
+
+Optional Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to use an alternative home name using the ``env`` variable add to the execution ``OC_TEST_ALT_HOME=1``, as in the following example:
 
