@@ -74,7 +74,7 @@ The contexts needed by each suite are listed in ``behat.yml``.
 ``run.sh``
 ~~~~~~~~~~
   
-This script runs the tests suites. 
+This script runs the test suites.
 To use it we need to run it as the web server user, which is normally ``www-data`` or ``apache``.
 
 ``skeleton/``
@@ -129,7 +129,7 @@ Here’s example code for a scenario:
   public function exampleFunction($method, $url) {
 
 
-Following this, add a new feature file to the ``features/`` folder.
+Following this, add a new feature file in the ``features/`` folder structure.
 The name should be in the format: ``<task-to-test>.feature``.
 The content of this file should be Gherkin code. 
 You can use all the sentences available in the rest of the core contexts, just use the appropriate trait in your context.
@@ -141,10 +141,10 @@ Lets show an example of a feature file with scenarios:
 
     Feature: provisioning
       Background:
-        Given using api version "1"
+        Given using OCS API version "1"
 
       Scenario: Getting an not existing user
-        When user "admin" sends HTTP method "GET" to API endpoint "/cloud/users/test"
+        When user "admin" sends HTTP method "GET" to OCS API endpoint "/cloud/users/test"
         Then the OCS status code should be "998"
         And the HTTP status code should be "200"
 
@@ -154,7 +154,7 @@ Lets show an example of a feature file with scenarios:
 
 A scenario requires three parts, ``"Given"``, ``"When"``, and ``"Then"`` sections. 
 ``"Given"`` and ``"Then"`` can have several sentences joined together by ``"And"``, but ``"When"`` statements should just have one.
-And this should be the function to test. 
+And this should be the functionality to test.
 The other parts are preconditions and post-conditions of the test. 
 
 To be able to run your new feature tests you'll have to add a new context to ``config/behat.yml`` file.
@@ -163,12 +163,11 @@ To do so, in the ``contexts`` section add your new context:
 .. code-block:: yaml
 
     contexts:
-          * TaskToTestContext:
-              baseUrl:  http://localhost:8080/ocs/
+          - FeatureContext: *common_feature_context_params
+          - TaskToTestContext:
 
-After the name, add all the variables required for your context. 
-In this example we add just the required ``baseUrl`` variable.
-With that done, we're now ready to run the tests. 
+After the name, add any variables required for your context. Mostly you will not need to have any.
+With that done, we're now ready to run the tests.
 
 Running Acceptance Tests
 ~~~~~~~~~~~~~~~~~~~~~~~~

@@ -95,7 +95,7 @@ Set Up Test
     export REMOTE_FED_SRV_HOST_PORT=8180
     export BROWSER=chrome
 
-- If your ownCloud install is running locally on Apache, then it should already be available on the Docker  subnet at ``172.17.0.1``
+- If your ownCloud install is running locally on Apache, then it should already be available on the Docker subnet at ``172.17.0.1``
 
 - If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
 
@@ -118,7 +118,7 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 
   The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
 
-  The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
+  The tests need to be run as the same user who is running the webserver and this user must also be the owner of the config file (``config/config.php``).
   To run the tests as a user that is different to your current terminal user run ``sudo -E -u <username>``. For example, to execute the script as as ``www-data``, run ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
 
 - The browser for the tests runs inside the Selenium docker container. View it by running the ``vnc`` viewer:
