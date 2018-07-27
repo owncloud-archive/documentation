@@ -1,8 +1,7 @@
 #!/usr/bin/php
 <?php
 /**
- * @author Matthew Setter <matthew@matthewsetter.com>
- *
+ * @author Matthew Setter <matthew@matthewsetter.com> & Martin Mattel <github@diemattels.at>
  * @copyright Copyright (c) 2018, ownCloud GmbH
  * @license AGPL-3.0
  *
@@ -35,7 +34,7 @@ class SimpleConfigReader
 	 * String returned to the user.
 	 * @var string
 	 */
-	private $output = 'No writable apps directory was found.';
+	private $output = '';
 
 	/**
 	 * SimpleConfigReader constructor.
@@ -47,26 +46,27 @@ class SimpleConfigReader
 	}
 
 	/**
-	 * Find the first app directory path that is set as
-	 * being writable and is physically writable in the filesystem
+	 * Find a writable app directory path that is either defined by key 'apps_paths'
+	 * or use the default owncloud_root/apps path if the key is not set 
 	 *
 	 * @return string
 	 * @throws \Exception
 	 */
-	function findPath()
-	{
+	function findPath($ocAppsPath)	{
+
+		// default path = /apps
 		if (!array_key_exists('apps_paths', $this->config)) {
-			throw new \Exception('Configuration is missing the apps_path key');
+			$this->output = $ocAppsPath;
+			return $this->output;
 		}
 
 		foreach ($this->config['apps_paths'] as $path) {
 			if ($path['writable'] == true && is_writable($path['path'])) {
 				$this->output = $path['path'];
-				break;
+				return $this->output;
 			}
 		}
-
-		return $this->output;
+		return "Key 'apps_paths' found, but no writable path defined or path found not writeable";
 	}
 }
 
@@ -77,13 +77,27 @@ class SimpleConfigReader
  * @see https://secure.php.net/manual/en/reserved.variables.argv.php
  */
 if (count($argv) != 2) {
-    echo "Need to provide the path to the ownCloud directory.";
-    exit(1);
+	echo "Command usage: read-config.php <full path to ownCloud root dir> \n";
+	echo "Please provide the path to the ownCloud directory. \n";
+	exit(1);
 }
 
-$ownCloudConfigFile = sprintf("%s/config/config.php", (string) $argv[1]);
+// create a realpath and remove trailing "/" from argument if present
+$ocRoot = rtrim( (string) $argv[1], "/");
+$ownCloudConfigFile = sprintf("%s/config/config.php", $ocRoot);
 
-if (file_exists($ownCloudConfigFile)) {
+if (!realpath($ownCloudConfigFile)) {
+	// if path/file does not exist, return an error message
+	echo 'File not found: ' . $ownCloudConfigFile . PHP_EOL;
+} else {
+	// return the path, identified by a leading "/" and no new line character at the end
     require_once($ownCloudConfigFile);
-    print (new SimpleConfigReader($CONFIG))->findPath();
+    $result = (new SimpleConfigReader($CONFIG))->findPath($ocRoot . '/apps');
+	if (!strpos($result, '/')) {
+		// return an error string which does not start with a leading "/"
+		echo $result  . PHP_EOL;
+	} else {
+		// return the path, identified by a leading "/" and no new line character at the end
+		echo $result;
+	}
 }
