@@ -304,8 +304,8 @@ Backup (Replica) Port:
 
 Disable Main Server:
   You can manually override the main server and make ownCloud only connect to the **backup server**.
-  This is useful for planned downtimes for example **Upgrades or Updates to the Main Server**.  
-  **Handling with Backup Server**
+  This is useful for planned downtimes for example **Upgrades or Updates of the Main Server**.  
+  **Backup Server Handling**
   When ownCloud is not able to contact the main LDAP server, ownCloud assumes it is offline and will not try to connect again for the time specified in" **Cache Time-To-Live**".  
 
 Turn off SSL certificate validation:
