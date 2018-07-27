@@ -341,7 +341,7 @@ ownCloud provides the possibility to access public shares over WebDAV.
 
 To access the public share, open::
 
-  https://example.com/owncloud/public.php/dav
+  https://example.com/owncloud/public.php/webdav
 
 in a WebDAV client, use the share token as username and the (optional) share password
 as password.
