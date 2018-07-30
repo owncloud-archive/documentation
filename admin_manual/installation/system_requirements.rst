@@ -88,7 +88,7 @@ Desktop
 - Debian 8.0 & 9.0
 - Fedora 27 & 28
 - Ubuntu 16.04 & 18.04
-- openSUSE Leap 42.3
+- openSUSE Leap 42.3 & 15.0
 
 .. note::
    For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
