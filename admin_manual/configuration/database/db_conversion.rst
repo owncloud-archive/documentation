@@ -14,18 +14,17 @@ If you have an existing ownCloud installation which uses SQLite, and you want to
 Preparation
 -----------
 
-Add to your ownCloud config.php
+Add the following to your ownCloud ``config/config.php``.
 
 ::
 
 	'mysql.utf8mb4' => true,
 
-Add or adjust in your /etc/mysql/mariadb.conf.d/50-server.cnf 
+Add, or adjust, the following in ``/etc/mysql/mariadb.conf.d/50-server.cnf``.
 
 .. note::
 
-	You can do the same for mysql by replacing mariadb.conf.d/50-server.cnf with mysql.conf.d/mysqld.cnf
-
+	You can do the same for MySQL by replacing mariadb.conf.d/50-server.cnf with mysql.conf.d/mysqld.cnf
 
 ::
 
@@ -52,19 +51,19 @@ Add or adjust in your /etc/mysql/mariadb.conf.d/50-server.cnf
 	collation-server      = utf8mb4_general_ci
 
 
-Restart the DB Server
----------------------
+Restart the Database Server
+---------------------------
+
 When you have changed the database parameters, restart your database by running following command:
 
 ::
 
 	sudo service mysql restart
 
-Run the conversion
+Run the Conversion
 ------------------
 
-After you have restarted the database, run the following occ command in your 
-ownCloud root folder to convert the database to the new format:
+After you have restarted the database, run the following occ command in your ownCloud root folder, to convert the database to the new format:
 
 ::
 
