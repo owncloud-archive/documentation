@@ -74,36 +74,20 @@ Set Up Test
 
 - Set the following environment variables:
 
-  - ``SRV_HOST_NAME`` (The hostname where ownCloud runs)
-  - ``REMOTE_FED_SRV_HOST_NAME`` (An alternative hostname for federation share tests. This should be another IP/hostname on the same server)
-  - ``SRV_HOST_URL`` (The path, if ownCloud does not run in the root of the host)
-  - ``REMOTE_FED_SRV_HOST_URL`` (The path, if the alternative ownCloud for federation share tests does not run in the root of the host)
-  - ``SRV_HOST_PORT`` (The port of your webserver)
-  - ``REMOTE_FED_SRV_HOST_PORT`` (The alternative port of your webserver for federation share tests. This should be another port on the same server)
-  - ``BROWSER`` (Any one of ``chrome``, ``firefox``, ``internet explorer``)
+  - ``TEST_SERVER_URL`` (The URL of your webserver)
+  - ``TEST_SERVER_FED_URL`` (The alternative URL of your webserver for federation share tests.)
+  - ``BROWSER`` (Any one of ``chrome``, ``firefox``, ``internet explorer`` or ``MicrosoftEdge``. Defaults to ``chrome``)
   - ``BROWSER_VERSION`` (version of the browser you want to use - optional)
 
   e.g., to test an instance running on the Docker subnet with Chrome do:
 
   .. code-block:: console
 
-    export SRV_HOST_NAME=172.17.0.1
-    export REMOTE_FED_SRV_HOST_NAME=172.17.0.1
-    export SRV_HOST_URL=owncloud-core
-    export REMOTE_FED_SRV_HOST_URL=owncloud-core
-    export SRV_HOST_PORT=8080
-    export REMOTE_FED_SRV_HOST_PORT=8180
+    export TEST_SERVER_URL=http://172.17.0.1:8080/owncloud-core
+    export TEST_SERVER_FED_URL=http://172.17.0.1:8180/owncloud-core
     export BROWSER=chrome
 
-- If your ownCloud install is running locally on Apache, then it should already be available on the Docker  subnet at ``172.17.0.1``
-
-- If you don't have a webserver already running, leave SRV_HOST_URL empty ( ``export SRV_HOST_URL=""`` ), and start the PHP development server with:
-
-  .. code-block:: console
-
-    bash tests/travis/start_php_dev_server.sh
-
-The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
+- If your ownCloud install is running locally on Apache, then it should already be available on the Docker subnet at ``172.17.0.1``
 
 - To run the federation Sharing tests:
 
@@ -114,11 +98,12 @@ The server will bind to: ``$SRV_HOST_NAME:$SRV_HOST_PORT``.
 
   .. code-block:: console
 
-    bash tests/travis/start_ui_tests.sh --suite webUILogin
+    cd tests/acceptance
+    ./run.sh --suite webUILogin
 
   The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
 
-  The tests need to be run as the same user who is running the webserver and this user must be also owner of the config file (``config/config.php``).
+  The tests need to be run as the same user who is running the webserver and this user must also be the owner of the config file (``config/config.php``).
   To run the tests as a user that is different to your current terminal user run ``sudo -E -u <username>``. For example, to execute the script as as ``www-data``, run ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
 
 - The browser for the tests runs inside the Selenium docker container. View it by running the ``vnc`` viewer:
@@ -174,13 +159,13 @@ You can run the UI tests for just a single feature by specifying the feature fil
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature
+  ./run.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature
 
 To run just a single scenario within a feature, specify the line number of the scenario:
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature:<linenumber>
+  ./run.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature:<linenumber>
 
 Running UI Tests for an App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -189,13 +174,13 @@ With the app installed, run the UI tests for the app by specifying the location 
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite webUITextEditor
+  ./run.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite webUITextEditor
 
 Run UI the tests for just a single feature of the app by specifying the feature file:
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --feature apps/files_texteditor/tests/acceptance/features/webUITextEditor/editTextFiles.feature
+  ./run.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --feature apps/files_texteditor/tests/acceptance/features/webUITextEditor/editTextFiles.feature
 
 Skipping Tests
 ~~~~~~~~~~~~~~
@@ -205,22 +190,22 @@ Skip a test by tagging it ``@skip`` and then put another tag with text that desc
 
 .. code-block:: console
 
-  @skip @quota-should-not-be-set-to-invalid-values-issue-1234
-  Scenario Outline: change quota to an invalid value
+  @skip @trashbin-restore-problem-issue-1234
+  Scenario: restore a single file from the trashbin
 
 Skipped tests are listed at the end of a default UI test run.
 You can locally run the skipped test(s).
-Run all skipped tests with:
+Run all skipped tests for a suite with:
 
 .. code-block:: console
 
-   bash tests/travis/start_ui_tests.sh --tags @skip
+  ./run.sh --suite webUITrashbin --tags @skip
 
 Or run just a particular test by using its unique tag:
 
 .. code-block:: console
 
-  bash tests/travis/start_ui_tests.sh --tags @quota-should-not-be-set-to-invalid-values-issue-1234
+  ./run.sh --suite webUITrashbin --tags @trashbin-restore-problem-issue-1234
 
 When fixing the bug, remove these skip tags in the PR along with the bug fix code.
 
@@ -233,7 +218,7 @@ However, you may run all UI tests with:
 
 .. code-block:: console
 
-   bash tests/travis/start_ui_tests.sh --all-suites
+  ./run.sh --type webUI
 
 By default, any test scenarios that fail are automatically rerun once.
 This minimizes transient failures caused by browser and Selenium driver timing issues.
@@ -242,7 +227,7 @@ To not rerun failed test scenarios:
 
 .. code-block:: console
 
-   bash tests/travis/start_ui_tests.sh --norerun --suite webUILogin
+  ./run.sh --norerun --suite webUILogin
 
 Local Selenium Setup
 ~~~~~~~~~~~~~~~~~~~~
@@ -266,7 +251,7 @@ Docker is now the recommended way, but local Selenium is also possible:
 
 Known Issues
 ~~~~~~~~~~~~
-- Tests that are known not to work in specific browsers are tagged e.g. ``@skipOnFIREFOX47+`` or ``@skipOnINTERNETEXPLORER`` and will be skipped by the script automatically
+- Tests that are known not to work in specific browsers are tagged e.g. ``@skipOnFIREFOX`` or ``@skipOnINTERNETEXPLORER`` and will be skipped by the script automatically
 
 - The web driver for the current version of Firefox works differently to the old one. If you want to test FF < 56 you need to test on 47.0.2 and to use Selenium server 2.53.1 for it
 
