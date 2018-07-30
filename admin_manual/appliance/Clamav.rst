@@ -79,6 +79,10 @@ If you want to refresh the ClamAV database manually, follow these steps:
   # Start the refresh process again with this command:
   sudo freshclam
 
+..warning::
+
+  When the app is enabled — but is not configured or has an incorrect configuration — it will reject **all** uploads for the entire instance. To avoid this situation, use ``sudo -u www-data php occ config:app:set files_antivirus whatever_key value`` to configure the app correctly.
+
 .. Links
 
 .. _freshclam: https://linux.die.net/man/1/freshclam
