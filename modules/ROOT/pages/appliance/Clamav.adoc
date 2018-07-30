@@ -86,3 +86,8 @@ sudo pkill -15 -x freshclam
 # Start the refresh process again with this command:
 sudo freshclam
 ....
+
+[WARNING]
+====
+When the app is enabled — but is not configured or has an incorrect configuration — it will reject **all** uploads for the entire instance. To avoid this situation, use `sudo -u www-data php occ config:app:set files_antivirus whatever_key value` to configure the app correctly.
+====
