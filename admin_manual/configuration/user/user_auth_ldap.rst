@@ -298,8 +298,10 @@ Backup (Replica) Port:
   * ``389``
 
 Disable Main Server:
-  You can manually override the main server and make ownCloud only connect to the backup server.
-  This is useful for planned downtimes.
+  You can manually override the main server and make ownCloud only connect to the **backup server**.
+  This is useful for planned downtimes for example **Upgrades or Updates of the Main Server**.  
+  **Backup Server Handling**
+  When ownCloud is not able to contact the main LDAP server, ownCloud assumes it is offline and will not try to connect again for the time specified in" **Cache Time-To-Live**".  
 
 Turn off SSL certificate validation:
   Turns off SSL certificate checking. Use it for testing only!
@@ -707,6 +709,7 @@ This is not the case for group names, yet, i.e., a group name cannot be altered.
 That means that your LDAP configuration should be good and ready before putting it into production.
 The mapping tables are filled early, but as long as you are testing, you can empty the tables any time.
 Do not do this in production.
+
 
 Handling with Backup Server
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
