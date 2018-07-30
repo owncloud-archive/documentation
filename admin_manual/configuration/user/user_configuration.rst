@@ -135,6 +135,29 @@ have access to file shares that belong to their new groups.
 Setting Storage Quotas
 ~~~~~~~~~~~~~~~~~~~~~~
 
+There are 4 Types of Quota Settings in ownCloud when dealing with LDAP users.
+
+Quota Field
+^^^^^^^^^^^
+
+Found in "*User Authentication -> the Advanced Tab -> Special Attributes*", this setting overwrites the rest. If set, this is what will be set for an LDAP user’s quota in ownCloud.
+
+Quota Default
+^^^^^^^^^^^^^
+
+Found in "*User Authentication -> the Advanced Tab -> Special Attributes*", this is the fallback option if no quota field is defined.
+
+User Quota
+^^^^^^^^^^
+
+This is what you set in the web UI drop down menu, and is how you set user quota.
+
+Default Quota
+^^^^^^^^^^^^^
+
+This will be set if no quota is set, and is found in "*Users Tab -> Gear Wheel, Default Quota*".
+If Quota Field is not set, but Quota Default is, and a systems administrator tries to set a quota for an LDAP user with User Quota, it will not work, since it is overridden by Quota Default.
+
 Click the gear on the lower left pane to set a default storage quota. This is 
 automatically applied to new users. You may assign a different quota to any user 
 by selecting from the **Quota** dropdown, selecting either a preset value or 
