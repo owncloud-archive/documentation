@@ -166,7 +166,7 @@ To do so, in the ``contexts`` section add your new context:
           - FeatureContext: *common_feature_context_params
           - TaskToTestContext:
 
-After the name, add any variables required for your context. Mostly you will not need to have any.
+After the name, add any variables required for your context; you likely will not need any.
 With that done, we're now ready to run the tests.
 
 Preparing to Run Acceptance Tests
