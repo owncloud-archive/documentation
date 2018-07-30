@@ -199,9 +199,9 @@ contexts:
         TaskToTestContext
 ....
 
-After the name, add all the variables required for your context. In this
-example we add just the required `baseUrl` variable. With that done,
-we’re now ready to run the tests.
+After the name, add all the variables required for your context; you likely will not need any. 
+In this example we add just the required `baseUrl` variable. 
+With that done, we’re now ready to run the tests.
 
 [[running-acceptance-tests]]
 Preparing to Run Running Acceptance Tests
