@@ -7,6 +7,7 @@ branches:
 
 clone:
   git:
+    # TODO: use plugins/git:next after resolving merge conflicts!
     image: plugins/git:1
     pull: true
 
@@ -24,7 +25,7 @@ pipeline:
     image: antora/antora:1.0.1
     pull: true
     commands:
-      - antora generate --cache-dir /dron/src/cache --redirect-facility netlify site.yml
+      - antora generate --cache-dir /drone/src/cache --redirect-facility netlify site.yml
 
   cache-rebuild:
     image: plugins/s3-cache:1
