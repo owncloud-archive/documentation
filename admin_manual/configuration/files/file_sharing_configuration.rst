@@ -72,6 +72,18 @@ Configure your sharing policy on your Admin page in the Sharing section.
    `Wrong folder date when syncing 
    <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
 
+Blacklist Groups From Receiving Shares
+--------------------------------------
+
+Sometimes it's necessary or desirable to block groups from receiving shares.
+For example, if a group has a significant number of users (> 5,000) or if it's a system group, then it can be advisable to block it from receiving shares.
+In these cases, ownCloud administrators can blacklist one or more groups, so that they do not receive shares.
+
+To blacklist one or more groups, via the Web UI, under "**Admin -> Settings -> Sharing**", add one or more groups to the "*Files Sharing*" list.
+As you type the group’s name, if it exists, it will appear in the drop down list, where you can select it.
+
+.. figure:: ./images/sharing/blacklisting-groups.png
+
 .. _transfer_userfiles_label:   
 
 Transferring Files to Another User
