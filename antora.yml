@@ -1,6 +1,7 @@
-name: owncloud-docs
-title: ownCloud // Documentation
+name: server
+title: ownCloud Documentation
 version: master
+
 nav:
 - modules/ROOT/nav.adoc
 - modules/admin_manual/nav.adoc

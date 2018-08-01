@@ -1,12 +1,16 @@
 site:
   title: ownCloud Documentation
+
 content:
   sources:
-  - url: ./
-    branches: create-antora-build
+  - url: .
+    branches: HEAD
+
 ui:
-  bundle: ./ui-bundle.zip
-  output_dir: owncloud-docs
-output: 
- clean: true
- dir: ./docs
+  bundle:
+    url: ui-bundle.zip
+  output_dir: assets
+
+output:
+  clean: true
+  dir: public
