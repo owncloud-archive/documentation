@@ -154,92 +154,78 @@ In openSUSE, modify the ``/usr/sbin/start_apache2`` file::
 
 Restart Apache, open your ownCloud Admin page and start creating SMB/CIFS mounts.
 
-
-Create Shares programmatically
+Create Shares Programmatically
 ------------------------------
 
-Some admins want to create new shares by command line scripts. There are two different approaches.
+If you need to create new shares using command-line scripts, there are two available option.
 
-### 1. occ files_external:create
+- `occ files_external:create`_
+- `occ files_external:import`_
 
+occ files_external:create
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This command provides for the creation of both personal (for a specific user) and general shares.
+The command’s configuration options can be provided either as individual arguments or collectively, as a JSON object.
+For more information about the command, refer to the :ref:`the occ documentation <files_external_create_label>`.
 
 **Personal share**
 
 ::
-    occ files_external:create /my_share_name windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'} --user someuser
+
+    sudo -u www-data php occ files_external:create /my_share_name windows_network_drive \
+        password::logincredentials \
+        --config={host=127.0.0.1, share='home', root='$user', domain='owncloud.local'} \
+        --user someuser
+
+::
+ 
+    sudo -u www-data php occ files_external:create /my_share_name windows_network_drive \
+        password::logincredentials \
+        --config host=127.0.0.1 \
+        --config share='home' \
+        --config root='$user' \
+        --config domain='somedomain.local' \
+        --user someuser
 
 **General share**
 
 ::
-    occ files_external:create /my_share_name windows_network_drive password::logincredentials --config={host=127.0.0.1,share='home',root='$user',domain='owncloud.local'}
 
- 
-Arguments
-~~~~~~~~~
-
-> Usage::
-
-
-    files_external:create [options] [--] <mount_point> <storage_backend> <authentication_backend>
+    sudo -u www-data php occ files_external:create /my_share_name windows_network_drive \
+        password::logincredentials \
+        --config={host=127.0.0.1, share='home', root='$user', domain='owncloud.local'}
 
 ::
 
-    Argument | Options
-    -------------|-----------
-    mount point | Path of the mount point within the file system
-    storage_backend | Storage backend indentifier
-    authentication_backend | authentication backend authentifier
+    sudo -u www-data php occ files_external:create /my_share_name windows_network_drive \
+        password::logincredentials \
+        --config host=127.0.0.1 \
+        --config share='home' \
+        --config root='$user' \
+        --config domain='somedomain.local'
 
-    Storage Backend | Identifier
-    ------------------------|-------------
-    Windows Network Drive | windows_network_drive
-    WebDav | dav
-    Local | local
-    ownCloud | owncloud
-    SFTP | sftp
-    Amazon S3 | amazons3
-    Dropbox | dropbox
-    Google Drive | googledrive
-    OpenStack Object Storage | swift
-    SMB / CIFS | smb
+occ files_external:import
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    Authentication method | Identifier, name, configuration
-    -----------------------------|-------------
-    Log-in credentials, save in session | password::sessioncredentials 
-    Log-in credentials, save in database | identifier: password::logincredentials 
-    User entered, store in database | password::userprovided *
-    Global Credentials | password::global
-    None | null::null
-    Builtin | builtin::builtin
-    Username and password | password::password
-    OAuth1 | oauth1::oauth1 *
-    OAuth2 | oauth2::oauth2 *
-    RSA public key | publickey::rsa *
-    OpenStack | openstack::openstack *
-    Rackspace | openstack::rackspace *
-    Access key (Amazon S3) | amazons3::accesskey*
+You can create general and personal shares passing the configuration details via JSON files, using the ``occ files_external:import`` command.
 
-
- \* **authentication methods require aditional configuration**
-**Each Storage Backend needs its corresponding authentication methods.**
-
-There is an other alternative:
 **General Share**
 
 ::
-    occ files_external:create /my_share_name windows_network_drive password::logincredentials --config host=127.0.0.1 --config share='home' --config root='$user'  --config domain='somedomain.local' 
+
+    sudo -u www-data php occ files_external:import /import.json
 
 **Personal Share**
 
 ::
-    occ files_external:create /my_share_name windows_network_drive password::logincredentials --config host=127.0.0.1 --config share='home' --config root='$user'  --config domain='somedomain.local'  --user someuser
 
+    sudo -u www-data php occ files_external:import /import.json --user someuser
 
-### 2. occ files_external:import
-The second approach uses a .json file for the whole configuration.
-::
+In the two examples above, here is a sample JSON file, showing all of the available configuration options that the command supports.
 
-    json
+.. code-block:: json
+
     {
         "mount_point": "\/my_share_name",
         "storage": "OCA\\windows_network_drive\\lib\\WND",
@@ -256,18 +242,6 @@ The second approach uses a .json file for the whole configuration.
         "applicable_users": [],
         "applicable_groups": []
     } 
-
-**General Share**
-::
-
-occ files_external:import /import.json
-
-**Personal Share**
-
-::
-
-occ files_external:import /import.json --user someuser
-
 
 ==============================
 Windows Network Drive Listener
