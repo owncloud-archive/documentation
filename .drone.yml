@@ -7,7 +7,7 @@ branches:
 
 clone:
   git:
-    image: plugins/git:next
+    image: plugins/git:1
     pull: true
 
 pipeline:
