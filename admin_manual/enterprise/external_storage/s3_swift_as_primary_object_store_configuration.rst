@@ -19,7 +19,7 @@ However, `the Object Storage Support app`_ (``objectstore``) is still available.
 
 .. note:: OpenStack Swift has been deprecated.
 
-When using ``files_primary_s3``, the Amazon S3 bucket needs to be created manually according to the developer documentation, and versioning needs to be enabled.
+When using ``files_primary_s3``, the Amazon S3 bucket needs to be created manually `according to the developer documentation`_, and versioning needs to be enabled.
 
 .. note:: ownCloud GmbH provides consulting for migrations from ``objectstore`` to ``files_primary_s3``.
 
@@ -165,3 +165,4 @@ The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
 .. _the S3 Object Storage app: https://marketplace.owncloud.com/apps/files_primary_s3
 .. _is available on GitHub: https://github.com/owncloud/files_primary_s3
 .. _The Object Storage Support app: https://marketplace.owncloud.com/apps/objectstore
+.. _according to the developer documentation: https://docs.aws.amazon.com/AmazonS3/latest/gsg/CreatingABucket.html
