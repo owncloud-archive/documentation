@@ -77,8 +77,7 @@ Setup the New Installation
 --------------------------
 
 Not all installations are the same, so we encourage you to take one of two paths to upgrade your ownCloud installation.
-
-These are `the standard upgrade` and `the power user upgrade`.
+These are `the standard upgrade`_ and `the power user upgrade`_.
 
 If you're reasonably new to ownCloud, or not too familiar with upgrading an ownCloud installation, please follow the standard upgrade.
 Otherwise, take the approach that you're most comfortable with, likely the power
