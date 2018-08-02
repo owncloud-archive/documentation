@@ -13,6 +13,18 @@ You may still need to keep the ``owncloud/data`` directory for these reasons:
 Administrators can move their ownCloud log file, by changing its location in ``config.php``.
 However, even when this is done, ``owncloud/data`` may still be required for backward compatibility with some apps.
 
+
+`The S3 Object Storage app`_ (``files_primary_s3``) is the preferred way to provide S3 storage support,
+However, `the Object Storage Support app`_ (``objectstore``) is still available.
+
+.. note:: OpenStack Swift has been deprecated.
+
+When using ``files_primary_s3``, the Amazon S3 bucket needs to be created manually according to the developer documentation, and versioning needs to be enabled.
+
+.. note:: ownCloud GmbH provides consulting for migrations from ``objectstore`` to ``files_primary_s3``.
+
+.. note:: The source of the S3 Object Storage app `is available on gitHub`_.
+
 Implications
 ------------
 
@@ -149,3 +161,9 @@ The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
             ],
         ],
     ];
+
+.. Links
+
+.. _the S3 Object Storage app: https://marketplace.owncloud.com/apps/files_primary_s3
+.. _is available on GitHub: https://github.com/owncloud/files_primary_s3
+.. _The Object Storage Support app: https://marketplace.owncloud.com/apps/objectstore
