@@ -1,5 +1,4 @@
-User Management
-===============
+= User Management
 
 On the User management page of your ownCloud Web UI you can:
 
@@ -76,8 +75,7 @@ login information. You may edit this email using the email template
 editor on your Admin page (see xref:configuration/server/email_configuration.adoc[Email Configuration]).
 
 [[reset-a-users-password]]
-Reset a User’s Password
------------------------
+== Reset a User’s Password
 
 You cannot recover a user’s password, but you can set a new one:
 
@@ -92,8 +90,7 @@ user password resets.
 TIP: See xref:configuration/files/encryption_configuration.adoc[Encryption Configuration].
 
 [[renaming-a-user]]
-Renaming a User
----------------
+== Renaming a User
 
 Each ownCloud user has two names: a unique *Login Name* used for
 authentication, and a *Full Name*, which is their display name. You can
@@ -107,8 +104,7 @@ To set or change a user’s display name:
 * Enter the user’s new display name
 
 [[granting-administrator-privileges-to-a-user]]
-Granting Administrator Privileges to a User
--------------------------------------------
+== Granting Administrator Privileges to a User
 
 ownCloud has two types of administrators: *Super Administrators* and
 *Group Administrators*. Group administrators have the rights to create,
@@ -124,8 +120,7 @@ access and modify all settings. To assign the *Super Administrators*
 role to a user, simply add them to the `admin` group.
 
 [[managing-groups]]
-Managing Groups
----------------
+== Managing Groups
 
 You can assign new users to groups when you create them, and create new
 groups when you create new users. You may also use the *Add Group*
@@ -134,24 +129,23 @@ members will immediately have access to file shares that belong to their
 new groups.
 
 [[setting-storage-quotas]]
-Setting Storage Quotas
-----------------------
+== Setting Storage Quotas
 
 There are 4 types of quota settings in ownCloud when dealing with LDAP users.
 
-==== Quota Field
+=== Quota Field
 
 Found in *"User Authentication -> the Advanced Tab -> Special Attributes"*, this setting overwrites the rest. If set, this is what will be set for an LDAP user’s quota in ownCloud.
 
-==== Quota Default
+=== Quota Default
 
 Found in *"User Authentication -> the Advanced Tab -> Special Attributes"*, this is the fallback option if no quota field is defined.
 
-==== User Quota
+=== User Quota
 
 This is what you set in the web UI drop down menu, and is how you set user quota.
 
-==== Default Quota
+=== Default Quota
 
 This will be set if no quota is set, and is found in *"Users Tab -> Gear Wheel, Default Quota"*.
 If *Quota Field* is not set, but *Quota Default* is, and a systems administrator tries to set a quota for an LDAP user with *User Quota*, it will not work, since it is overridden by *Quota Default*.
@@ -198,8 +192,7 @@ When a user creates a public share via URL, and allows uploads, any
 uploaded files count against that user’s quota.
 
 [[deleting-users]]
-Deleting users
---------------
+== Deleting users
 
 Deleting a user is easy: hover your cursor over their name on the
 *Users* page until a trashcan icon appears at the far right. Click the
@@ -216,8 +209,7 @@ to your local computer.
 TIP: See xref:configuration/files/file_sharing_configuration.adoc[File Sharing Configuration] to learn how to create persistent file shares that survive user deletions.
 
 [[enabling-custom-groups]]
-Enabling Custom Groups
-----------------------
+== Enabling Custom Groups
 
 In previous versions of ownCloud, files and folders could only be shared
 with individual users or groups created by administrators. This wasn’t

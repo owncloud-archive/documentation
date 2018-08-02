@@ -137,7 +137,7 @@ For now the link:https://marketplace.owncloud.com/apps/objectstore[Objectstore] 
 Once the new implementation leaves the technology preview state and migrations have been taken care of, the current implementation will be deprecated.
 
 [[swift-objectstore-deprecation]]
-=== SWIFT Objectstore deprecation
+==== SWIFT Objectstore Deprecation
 
 As the markets are moving in the direction of link:https://aws.amazon.com/documentation/s3/[the S3 protocol] to
 communicate with object storages, ownCloud will follow this path with a
@@ -151,7 +151,7 @@ protocol to use object storage as primary storage with future ownCloud
 Server versions.
 
 [[new-options-to-display-imprint-and-privacy-policy]]
-=== New options to display Imprint and Privacy Policy
+==== New options to display Imprint and Privacy Policy
 
 To enable GDPR and legal compliance in various jurisdictions for
 ownCloud providers, it is now possible to specify links to Imprint and
@@ -517,7 +517,7 @@ The Mail Template Editor has been unbundled from the default apps and is not shi
 
 If this is not possible (e.g. no internet connection or clustered setup) you will either need to disable the app (`occ app:disable templateeditor`) or link:https://doc.owncloud.com/server/latest/admin_manual/installation/apps_management_installation.html?highlight=install%20apps#manually-installing-apps[download and install it manually].
 
-[[solved-known-issues]]
+[[10.0.8-solved-known-issues]]
 Solved known issues
 ~~~~~~~~~~~~~~~~~~~
 
@@ -531,7 +531,7 @@ the settings page has been fixed
 * File deletion as a guest user works correctly (trash bin permissions
 are checked correctly)
 
-[[known-issues]]
+[[10.0.8-known-issues]]
 Known issues
 ~~~~~~~~~~~~
 
@@ -548,7 +548,7 @@ theme app or disable the Mail Template Editor app.
 
 * `occ transfer:ownership` https://github.com/owncloud/core/issues/31150[does not transfer public link shares if they were created by the target user (reshare)].
 
-[[for-developers]]
+[[10.0.8-for-developers]]
 For developers
 ~~~~~~~~~~~~~~
 
