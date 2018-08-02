@@ -45,12 +45,12 @@ Amazon S3
 ~~~~~~~~~
 
 The S3 backend mounts a bucket of the Amazon S3 object store into the virtual filesystem.
-The class to be used is ``OCA\ObjectStore\S3``:
+The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
 
 ::
 
   'objectstore' => [
-      'class' => 'OCA\ObjectStore\S3',
+      'class' => 'OCA\Files_Primary_S3\S3Storage',
       'arguments' => [
           // replace with your bucket
           'bucket' => 'owncloud',
@@ -76,12 +76,12 @@ Ceph S3
 ~~~~~~~
 
 The S3 backend can also be used to mount the bucket of a ceph object store via the s3 API into the virtual filesystem.
-The class to be used is ``OCA\ObjectStore\S3``:
+The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
 
 ::
 
     'objectstore' => [
-        'class' => 'OCA\ObjectStore\S3',
+        'class' => 'OCA\Files_Primary_S3\S3Storage',
         'arguments' => [
             // replace with your bucket
             'bucket' => 'owncloud',
