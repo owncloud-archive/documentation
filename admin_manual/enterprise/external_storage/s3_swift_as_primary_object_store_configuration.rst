@@ -2,7 +2,7 @@
 Configuring S3 as Primary Storage
 =================================
 
-In ownCloud Enterprise edition, administrators can configure Amazon S3 objects as the primary storage.
+In ownCloud Enterprise edition administrators can configure Amazon S3 objects as the primary storage.
 Doing this replaces the default ownCloud ``owncloud/data`` directory.
 
 You may still need to keep the ``owncloud/data`` directory for these reasons:
@@ -30,9 +30,7 @@ Implications
 
 - Apply this configuration before the first login of any user – including the admin user; otherwise, ownCloud can no longer find the user's files.
 
-- ownCloud, in "object store" mode, expects exclusive access to the object store container, because it only stores the binary data for each file.
-
-.. note:: While in this mode, ownCloud stores the metadata in the local database for performance reasons.
+- ownCloud, in "object store" mode, expects exclusive access to the object store container, because it only stores the binary data for each file. While in this mode, ownCloud stores the metadata in the local database for performance reasons.
 
 - The current implementation is incompatible with any app that uses direct file I/O (input/output) as it circumvents the ownCloud virtual filesystem. Two excellent examples are:
 
