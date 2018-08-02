@@ -1,6 +1,6 @@
-=============================================================
-Configuring S3 and OpenStack Swift Objects as Primary Storage
-=============================================================
+=================================
+Configuring S3 as Primary Storage
+=================================
 
 In ownCloud Enterprise edition, you can configure S3 objects as primary 
 storage. This replaces the default ownCloud ``owncloud/data`` directory. You may 
@@ -129,31 +129,4 @@ ownCloud 9.1+ has multibucket support for S3 object stores::
         ],
     ],
  ],
-
-    
-    
-OpenStack Swift
-~~~~~~~~~~~~~~~
-
-The Swift backend mounts a container on an OpenStack Object Storage server
-into the virtual filesystem. The class to be used is ``\\OC\\Files\\ObjectStore\\Swift``:
-
-::
-
-    'objectstore' => [
-        'class' => 'OC\\Files\\ObjectStore\\Swift',
-        'arguments' => [
-            'username' => 'demo', 
-            'password' => 'password', 
-            'container' => 'owncloud', 
-            'autocreate' => true,
-            'region' => 'RegionOne', 
-            'url' => 'http://devstack:5000/v2.0',
-            'tenantName' => 'demo', 
-            'serviceName' => 'swift', 
-            // url Type, optional, public, internal or admin
-	    'urlType' => 'internal'
-        ],
-    ],
-
 
