@@ -32,7 +32,7 @@ Look in ``config.sample.php`` for a example configurations.
 Copy the relevant part to your ``config.php`` file.
 Any object store needs to implement ``\\OCP\\Files\\ObjectStore\\IObjectStore`` and can be passed parameters in the constructor with the ``arguments`` key:
 
-::
+.. code-block:: php
 
     'objectstore' => [
         'class' => 'Implementation\\Of\\OCP\\Files\\ObjectStore\\IObjectStore',
@@ -47,7 +47,7 @@ Amazon S3
 The S3 backend mounts a bucket of the Amazon S3 object store into the virtual filesystem.
 The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
 
-::
+.. code-block:: php
 
   'objectstore' => [
       'class' => 'OCA\Files_Primary_S3\S3Storage',
@@ -78,7 +78,7 @@ Ceph S3
 The S3 backend can also be used to mount the bucket of a ceph object store via the s3 API into the virtual filesystem.
 The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
 
-::
+.. code-block:: php
 
     'objectstore' => [
         'class' => 'OCA\Files_Primary_S3\S3Storage',
