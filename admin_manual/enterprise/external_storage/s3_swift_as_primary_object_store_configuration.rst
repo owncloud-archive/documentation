@@ -118,6 +118,9 @@ The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
 Scality S3
 ~~~~~~~~~~
 
+The S3 backend can also be used to mount the bucket of a Scality S3 object store via the Amazon S3 API into the virtual filesystem.
+The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
+
 .. code-block:: php
 
     <?php
