@@ -54,6 +54,20 @@ Allow users to send mail notification for shared files
 Check this option to enable sending notifications from ownCloud.
 When clicked, the administrator can choose the language for public mail notifications for shared files.
 
+.. figure:: images/sharing/choose-public-mail-notification-language.png
+   :alt: Choose the language for public mail notifications for shared files in ownCloud.
+
+What this means is that email notifications will be sent in the language of the user that shared an item.
+By default the language is the share owner’s languages.
+However, it can be changed to any of the currently available languages.
+It is also possible to change this setting on the command-line by using :ref:`the occ config:app:set command <apps_commands_label>`, as in this example:
+
+::
+
+    sudo -u www-data php occ config:app:set core shareapi_public_notification_lang --value '<language code>'
+
+.. note:: In the above example "<language code>" is `an ISO 3166-1 alpha-2 two-letter country code`_, such as *ru*, *gb*, *us*, and *au*.
+
 .. note:: To use this functionality, your ownCloud server must be configured to send mail.
 
 Allow users to share file via social media
