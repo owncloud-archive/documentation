@@ -67,8 +67,7 @@ This will install all of the required packages so that you build the documentati
 
   apt-get update
   apt-get install python3-sphinx python-pip python-dev build-essential make --assume-yes
-  pip install sphinxcontrib-phpdomain
-  pip install rst2pdf
+  pip install sphinxcontrib-phpdomain rst2pdf
 
 Release Updates
 ---------------
