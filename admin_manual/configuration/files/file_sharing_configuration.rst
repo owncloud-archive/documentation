@@ -2,7 +2,12 @@
 File Sharing
 ============
 
-ownCloud users can :
+The sharing policy is configured on the Admin page in the *"Sharing"* section.
+
+.. figure:: images/sharing-files-settings.png
+   :alt: ownCloud Sharing settings
+
+From this section, ownCloud users can:
 
 - Share files with their ownCloud groups and other users on the same ownCloud server
 - Share files with ownCloud users on :doc:`other ownCloud servers <federated_cloud_sharing_configuration>` 
@@ -20,8 +25,7 @@ You have control of a number of user permissions on file shares:
 * Allow email notifications of new public shares
 * Exclude groups from creating shares
 
-.. note:: ownCloud Enterprise includes a Share Link Password Policy app; see 
-   :ref:`password_policy_label`.
+.. note:: ownCloud Enterprise includes a Share Link Password Policy app; see :ref:`the Password Policy documentation <password_policy_label>`.
 
 Settings Explained
 ------------------
@@ -58,7 +62,7 @@ When clicked, the administrator can choose the language for public mail notifica
    :alt: Choose the language for public mail notifications for shared files in ownCloud.
 
 What this means is that email notifications will be sent in the language of the user that shared an item.
-By default the language is the share owner’s languages.
+By default the language is the share owner’s language.
 However, it can be changed to any of the currently available languages.
 It is also possible to change this setting on the command-line by using :ref:`the occ config:app:set command <apps_commands_label>`, as in this example:
 
@@ -73,7 +77,7 @@ It is also possible to change this setting on the command-line by using :ref:`th
 Allow users to share file via social media
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Check this option to enable displaying of a set of links that allow for quickly sharing files and share links via *Twitter*, *Facebook*, *Google+*, *Disaspora*, and email.
+Check this option to enable displaying of a set of links that allow for quickly sharing files and share links via *Twitter*, *Facebook*, *Google+*, *Diaspora*, and email.
 
 .. figure:: images/sharing-files-via-social-media.png
    :alt: ownCloud social media sharing links
