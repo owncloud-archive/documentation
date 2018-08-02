@@ -2,8 +2,10 @@
 Manual ownCloud Upgrade
 =======================
 
-.. warning::
-   When upgrading from oC 9.0 to 9.1 with existing Calendars or Addressbooks, please have a look at the :doc:`../release_notes` of ownCloud 9.0 for important info about the needed migration steps during that upgrade.
+.. note::
+   If you’re not comfortable performing a manual upgrade, you can also use your
+   Linux distribution’s :doc:`package manager <package_upgrade>`, or use
+   :doc:`the Updater App <update>`.
 
 Backup Your Existing Installation
 ---------------------------------
@@ -18,9 +20,17 @@ First, :doc:`backup <backup>` the following items:
 ::
 
   # This example assumes Ubuntu Linux and MariaDB
+  cp -rv /var/www/owncloud /opt/backup/owncloud && mysqldump <db_name> > /opt/backup/backup-file.sql
 
-  cp -rv /var/www/owncloud /opt/backup/owncloud
-  mysqldump <db_name> > /opt/backup/backup-file.sql
+Review Third-Party Apps
+-----------------------
+
+Review any installed third-party apps for compatibility with the new ownCloud release.
+Ensure that they are all disabled before beginning the upgrade.
+After the upgrade is complete re-enable any which are compatible with the new release.
+
+.. warning::
+   Install unsupported apps at your own risk.
 
 Check ownCloud's Mandatory Requirements
 ---------------------------------------
@@ -31,7 +41,8 @@ Ensure that you review them and update your server(s), if required, before upgra
 Enable Maintenance Mode
 -----------------------
 
-Then, put your server in :doc:`maintenance mode <enable_maintenance>`, and disable :ref:`Cron jobs <cron_job_label>`.
+Put your server in :doc:`maintenance mode <enable_maintenance>` and disable :ref:`Cron jobs <cron_job_label>`.
+
 Doing so prevents new logins, locks the sessions of logged-in users, and displays a status screen so that users know what is happening.
 
 There are two ways to enable maintenance mode.
@@ -45,7 +56,11 @@ The other way is by entering your ``config.php`` file and changing ``'maintenanc
   # Disable Cron jobs
   sudo service cron stop
 
-Irrespective of the approach that you take, with those steps completed, next stop your webserver.
+Stop the Webserver
+------------------
+
+With those steps completed, stop your webserver.
+
 ::
 
   sudo service apache2 stop
@@ -62,7 +77,7 @@ Setup the New Installation
 --------------------------
 
 Not all installations are the same, so we encourage you to take one of two paths to upgrade your ownCloud installation.
-These are the standard upgrade and the power user upgrade.
+These are `the standard upgrade`_ and `the power user upgrade`_.
 
 If you're reasonably new to ownCloud, or not too familiar with upgrading an ownCloud installation, please follow the standard upgrade.
 Otherwise, take the approach that you're most comfortable with, likely the power
@@ -106,16 +121,8 @@ With the new source files now in place of the old ones, next copy the ``config.p
 If you keep your ``data/`` directory *inside* your ``owncloud/`` directory, copy it from your old version of ownCloud to your new version.
 If you keep it *outside* of your ``owncloud/`` directory, then you don't have to do anything with it, because its location is configured in your original ``config.php``, and none of the upgrade steps touch it.
 
-Upgrade the Installation
-------------------------
-
-With all that done, restart your web server.
-::
-
-  sudo service apache2 start
-
 Disable Core Apps
-~~~~~~~~~~~~~~~~~
+-----------------
 
 Before the upgrade can run, several apps need to be disabled, if they’re enabled, before the upgrade can succeed.
 These are: *activity*, *files_pdfviewer*, *files_texteditor*, and *gallery*.
@@ -129,7 +136,7 @@ The following command provides an example of how to do so.
   sudo -u www-data php occ app:disable gallery
 
 Market and Marketplace App Upgrades
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-----------------------------------
 
 Before getting too far into the upgrade process, please be aware of how the Market app and its configuration options affect the upgrade process.
 
@@ -139,13 +146,13 @@ Before getting too far into the upgrade process, please be aware of how the Mark
 In addition to these two points, if there are installed apps (whether compatible or incompatible with the next version, or missing source code) and the Market app is enabled, but there is no available internet connection, then these apps will need to be manually updated once the upgrade is finished.
 
 Start the Upgrade
-~~~~~~~~~~~~~~~~~
+-----------------
 
 With the apps disabled and the webserver started, launch the upgrade process from the command line.
 ::
 
   # Here is an example on CentOS Linux
-  sudo -u apache php occ upgrade
+  sudo -u www-data php occ upgrade
 
 .. note::
    The optional parameter to skip migration tests during this step was removed in oC 10.0.
@@ -155,8 +162,14 @@ With the apps disabled and the webserver started, launch the upgrade process fro
 The upgrade operation can take anywhere from a few minutes to a few hours, depending on the size of your installation.
 When it is finished you will see either a success message, or an error message which indicates why the process did not complete successfully.
 
+Copy Old Apps
+-------------
+
+If you are using 3rd party applications, look in your new ``/var/www/owncloud/apps/`` directory to see if they are there.
+If not, copy them from your old ``apps/`` directory to your new one, and make sure that the directory permissions are the same as for the other ones.
+
 Disable Maintenance Mode
-~~~~~~~~~~~~~~~~~~~~~~~~
+------------------------
 
 Assuming your upgrade succeeded, next disable maintenance mode.
 The simplest way is by using occ from the command line.
@@ -165,11 +178,13 @@ The simplest way is by using occ from the command line.
 
    sudo -u www-data php occ maintenance:mode --off
 
-Copy Old Apps
-~~~~~~~~~~~~~
+Restart the Webserver
+---------------------
 
-If you are using 3rd party applications, look in your new ``/var/www/owncloud/apps/`` directory to see if they are there.
-If not, copy them from your old ``apps/`` directory to your new one, and make sure that the directory permissions are the same as for the other ones.
+With all that done, restart your web server.
+::
+
+  sudo service apache2 start
 
 Finalize the Installation
 -------------------------
@@ -235,3 +250,4 @@ If this does not work properly, try the repair function::
 
 .. _owncloud.org/install/: https://owncloud.org/install/
 .. _the ownCloud forums: https://central.owncloud.org
+.. _file a support ticket: https://owncloud.com/create-a-case/
