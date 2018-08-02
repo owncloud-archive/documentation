@@ -2,7 +2,7 @@
 Configuring S3 as Primary Storage
 =================================
 
-In ownCloud Enterprise edition, administrators can configure S3 objects as the primary storage.
+In ownCloud Enterprise edition, administrators can configure Amazon S3 objects as the primary storage.
 Doing this replaces the default ownCloud ``owncloud/data`` directory.
 
 You may still need to keep the ``owncloud/data`` directory for these reasons:
@@ -36,10 +36,12 @@ Any object store needs to implement ``\\OCP\\Files\\ObjectStore\\IObjectStore``,
 
 .. code-block:: php
 
-    'objectstore' => [
-        'class' => 'Implementation\\Of\\OCP\\Files\\ObjectStore\\IObjectStore',
-        'arguments' => [
-            ...
+    $CONFIG = [
+        'objectstore' => [
+            'class' => 'Implementation\\Of\\OCP\\Files\\ObjectStore\\IObjectStore',
+            'arguments' => [
+                ...
+            ],
         ],
     ],
 
@@ -47,64 +49,100 @@ Amazon S3
 ~~~~~~~~~
 
 The S3 backend mounts a bucket of the Amazon S3 object store into the virtual filesystem.
-The class to be used is ``OCA\Files_Primary_S3\S3Storage``, as in the following
-example:
+The class to be used is ``OCA\Files_Primary_S3\S3Storage``, as in the following example:
 
 .. code-block:: php
 
-  'objectstore' => [
-      'class' => 'OCA\Files_Primary_S3\S3Storage',
-      'arguments' => [
-          // replace with your bucket
-          'bucket' => 'owncloud',
-          'autocreate' => true,
-          // uncomment to enable server side encryption
-          //'serversideencryption' => 'AES256',
-          'options' => [
-              // version and region are required
-              'version' => '2006-03-01',
-              // change to your region
-              'region'  => 'eu-central-1',
-              'credentials' => [
-                  // replace key and secret with your credentials
-                  'key' => 'EJ39ITYZEUH5BGWDRUFY',
-                  'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
-              ],
-          ],
-      ],
-  ],
+   <?php
+
+    $CONFIG = [
+        'objectstore' => [
+            'class' => 'OCA\Files_Primary_S3\S3Storage',
+            'arguments' => [
+                // replace with your bucket
+                'bucket' => 'owncloud',
+                'autocreate' => true,
+                // uncomment to enable server side encryption
+                //'serversideencryption' => 'AES256',
+                'options' => [
+                    // version and region are required
+                    'version' => '2006-03-01',
+                    // change to your region
+                    'region'  => 'eu-central-1',
+                    'credentials' => [
+                        // replace key and secret with your credentials
+                        'key' => 'EJ39ITYZEUH5BGWDRUFY',
+                        'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
+                    ],
+                ],
+            ],
+       ],
+   ],
 
 
 Ceph S3
 ~~~~~~~
 
-The S3 backend can also be used to mount the bucket of a Ceph S3 object store via the S3 API into the virtual filesystem.
+The S3 backend can also be used to mount the bucket of a Ceph S3 object store via the Amazon S3 API into the virtual filesystem.
 The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
 
 .. code-block:: php
 
-    'objectstore' => [
-        'class' => 'OCA\Files_Primary_S3\S3Storage',
-        'arguments' => [
-            // replace with your bucket
-            'bucket' => 'owncloud',
-            'autocreate' => true,
-            'options' => [
-                // version and region are required
-                'version' => '2006-03-01',
-                'region'  => '',
-                // replace key, secret and bucket with your credentials
-                'credentials' => [
-                    // replace key and secret with your credentials
-                    'key'    => 'EJ39ITYZEUH5BGWDRUFY',
-                    'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
-                ],
-                // replace the ceph endpoint with your rgw url
-                'endpoint' => 'http://cephhost:8000/',
-                // Use path style when talking to ceph
-                'command.params' => [
-                    'PathStyle' => true,
+    <?php
+
+    $CONFIG = [
+        'objectstore' => [
+            'class' => 'OCA\Files_Primary_S3\S3Storage',
+            'arguments' => [
+                // replace with your bucket
+                'bucket' => 'OWNCLOUD',
+                'autocreate' => true,
+                // uncomment to enable server side encryption
+                //'serversideencryption' => 'AES256',
+                'options' => [
+                    // version and region are required
+                    'version' => '2006-03-01',
+                    'region'  => 'us-central-1',
+                    'credentials' => [
+                        // replace key and secret with your credentials
+                        'key' => 'owncloud123456',
+                        'secret' => 'secret123456',
+                    ],
+                    'use_path_style_endpoint' => true,
+                    'endpoint' => 'http://ceph:80/',
                 ],
             ],
         ],
-    ],
+    ];
+
+Scality S3
+~~~~~~~~~~
+
+.. code-block:: php
+
+    <?php
+
+    $CONFIG = [
+        'objectstore' => [
+            'class' => 'OCA\Files_Primary_S3\S3Storage',
+            'arguments' => [
+                // replace with your bucket
+                'bucket' => 'owncloud',
+                'autocreate' => true,
+                // uncomment to enable server side encryption
+                //'serversideencryption' => 'AES256',
+                'options' => [
+                    // version and region are required
+                    'version' => '2006-03-01',
+                    'region'  => 'us-east-1',
+                    'credentials' => [
+                        // replace key and secret with your credentials
+                        'key' => 'accessKey1',
+                        'secret' => 'verySecretKey1',
+                    ],
+                    'use_path_style_endpoint' => true,
+                    'endpoint' => 'http://scality:8000/',
+                ],
+            ],
+        ],
+    ];
