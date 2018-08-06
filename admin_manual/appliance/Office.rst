@@ -13,9 +13,8 @@ Here is an overview of the process:
 
 .. warning::  Access with **HTTPS** using **domain name** is required.
 
-If you encounter an error when trying to open documents, please restart the collabora docker container or simply the appliance.
-
-This is the error "Failed to load the document. Please endure the file type is supported and not corrupted, and try again."
+.. tip::
+If you encounter the error, "Failed to load the document. Please endure the file type is supported and not corrupted, and try again.", when trying to open documents, either restart the Collabora Docker container or the appliance.
 
 .. _appcenter-label:
 
