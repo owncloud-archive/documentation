@@ -163,7 +163,7 @@ This is because the earlier versions of ownCloud are installed with a different 
 More specifically, the versions of the ownCloud app, prior to 10, have a version suffix in the name. 
 For example the ownCloud 8.2 app is named ``owncloud82``.
 
-For owncloud82 users: During the upgrade to the owncloud App, the user files will be moved to the new docker data directory `/var/lib/univention-appcenter/apps/owncloud/data/files`. Essentially, the following the command will be executed:
+For ownCloud 8.2 users: during the ownCloud App upgrade, user files will be moved to the new Docker data directory, ``/var/lib/univention-appcenter/apps/owncloud/data/files``.  Essentially, the following the command will be executed:
 
 ::
       mv /var/lib/owncloud/* /var/lib/univention-appcenter/apps/owncloud/data/files
