@@ -12,8 +12,8 @@ Here's how to use it.
 .. note::
 	Depending on your custom groups setting, configured by the ownCloud admin, custom groups may behave differently
 	
-	- creating or renaming a custom group using an existing display name will show an error
-	- a config switch in the ownCloud's admin settings (checkbox) makes it possible to allow multiple custom groups with the same name
+	- Creating or renaming a custom group using an existing display name will show an error
+	- A config switch (checkbox) makes it possible to allow multiple custom groups with the same name
 	- Custom group creation can be limited to the ownCloud **group admins**
 
 Creating Custom Groups
