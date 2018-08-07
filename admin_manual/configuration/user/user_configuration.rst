@@ -233,6 +233,9 @@ To enable Custom Groups:
 
 With this done, Custom Group functionality will be available in your ownCloud installation.
 
+Custom Groups Settings
+~~~~~~~~~~~~~~~~~~~~~~
+
 .. image:: ../../images/custom-groups/customgroup.png
    :alt: Configuration for ownCloud admins
 
