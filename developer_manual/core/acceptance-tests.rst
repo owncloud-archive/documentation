@@ -208,7 +208,7 @@ Now that the prerequisites are satisfied, and assuming that ``$installation_path
 Running Acceptance Tests for a Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Run a command like the following::
+Run a command like the following:
 
 .. code-block:: bash
 
@@ -217,13 +217,13 @@ Run a command like the following::
 Running Acceptance Tests for a Feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Run a command like the following::
+Run a command like the following:
 
 .. code-block:: bash
 
   sudo -u www-data ./run.sh --feature features/apiTrashbin/trashbinDelete.feature
 
-Or just::
+Or just:
 
 .. code-block:: bash
 
@@ -233,7 +233,7 @@ Running Acceptance Tests for a Tag
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some test scenarios are tagged. For example, tests that are known to fail and are awaiting fixes are tagged ``@skip``.
-To run test scenarios with a particular tag::
+To run test scenarios with a particular tag:
 
 .. code-block:: bash
 
@@ -242,7 +242,7 @@ To run test scenarios with a particular tag::
 Displaying the ownCloud Log
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It can be useful to see the tail of the ownCloud log when the test run ends. To do that, specify ``--show-oc-logs``::
+It can be useful to see the tail of the ownCloud log when the test run ends. To do that, specify ``--show-oc-logs``:
 
 .. code-block:: bash
 
@@ -253,9 +253,13 @@ Optional Environment Variables
 
 If you want to use an alternative home name using the ``env`` variable add to the execution ``OC_TEST_ALT_HOME=1``, as in the following example:
 
+::
+
   sudo -u www-data OC_TEST_ALT_HOME=1 ./run.sh features/task-to-test.feature
 
 If you want to have encryption enabled add ``OC_TEST_ENCRYPTION_ENABLED=1``, as in the following example:
+
+::
 
   sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/task-to-test.feature
 
