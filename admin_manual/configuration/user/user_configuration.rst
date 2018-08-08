@@ -232,3 +232,16 @@ To enable Custom Groups:
    :alt: Install the Custom Groups application from the ownCloud Market
 
 With this done, Custom Group functionality will be available in your ownCloud installation.
+
+Custom Groups Settings
+~~~~~~~~~~~~~~~~~~~~~~
+
+.. image:: ../../images/custom-groups/customgroup.png
+   :alt: Configuration for ownCloud admins
+
+As an ownCloud admin, you can enable/disable these 2 options for custom groups.
+
+- The first one limits the creation of custom groups to group admins.
+- The second option allows the creation of custom groups with the same name.
+
+ownCloud admins can see all custom groups of an instance and have group admin privileges for those.
