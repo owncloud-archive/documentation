@@ -10,11 +10,9 @@ To address that, as of ownCloud 10.0, you can now create your own groups on-the-
 Here's how to use it. 
 
 .. note::
-	Depending on your custom groups setting, configured by the ownCloud admin, custom groups may behave differently
-	
-	- Creating or renaming a custom group using an existing display name will show an error
-	- A config switch (checkbox) makes it possible to allow multiple custom groups with the same name
-	- Custom group creation can be limited to the ownCloud **group admins**
+	Depending on your Custom Groups setting, configured by the ownCloud admin, Custom Groups may behave differently
+	- Creating or renaming a Custom Group using an existing name of another Custom Group can be allowed or not depending on administrative settings.
+	- Custom Group creation can be limited to the ownCloud **group admins**
 
 Creating Custom Groups
 ~~~~~~~~~~~~~~~~~~~~~~
