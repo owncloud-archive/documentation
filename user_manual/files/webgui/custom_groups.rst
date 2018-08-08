@@ -12,7 +12,7 @@ Here's how to use it.
 .. note::
 	Depending on your Custom Groups setting, configured by the ownCloud admin, Custom Groups may behave differently
 	- Creating or renaming a Custom Group using an existing name of another Custom Group can be allowed or not depending on administrative settings.
-	- Custom Group creation can be limited to the ownCloud **group admins**
+	- Custom Group creation can be limited to ownCloud **group admins**
 
 Creating Custom Groups
 ~~~~~~~~~~~~~~~~~~~~~~
