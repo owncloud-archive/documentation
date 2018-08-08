@@ -47,7 +47,7 @@ The Updater app performs these operations:
   version
 * Copies your old ``config.php`` to the new ``config/`` directory
 
-.. note:: The backups, created by the updater app, can use up large amount of space if kept over many updates. We recommend that you keep only the ones that you find crucial to your instance and remove the obsolete ones to save storage space.
+.. note:: Backups created by the updater app can use up significant disc space, if kept across multiple updates. We recommend that you save storage space by only keeping the ones that are crucial to your instance and removing any others.
 
 Using the Updater app to update your ownCloud installation is just a few 
 steps:
