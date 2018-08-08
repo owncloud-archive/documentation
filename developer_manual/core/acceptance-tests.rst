@@ -65,7 +65,7 @@ These contain Behat's test cases, called scenarios, which use the Gherkin langua
 Features are grouped into suites. The features for a suite are stored in a folder like ``features/apiMain``.
 
 ``features/bootstrap``
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 This folder contains all the Behat contexts. 
 Contexts contain the PHP code required to run Behat's scenarios. 
