@@ -174,13 +174,13 @@ With the app installed, run the UI tests for the app by specifying the location 
 
 .. code-block:: console
 
-  ./run.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --suite webUITextEditor
+  ./run.sh --config ../../apps/files_texteditor/tests/acceptance/config/behat.yml --suite webUITextEditor
 
 Run UI the tests for just a single feature of the app by specifying the feature file:
 
 .. code-block:: console
 
-  ./run.sh --config apps/files_texteditor/tests/acceptance/config/behat.yml --feature apps/files_texteditor/tests/acceptance/features/webUITextEditor/editTextFiles.feature
+  ./run.sh --config ../../apps/files_texteditor/tests/acceptance/config/behat.yml --feature ../../apps/files_texteditor/tests/acceptance/features/webUITextEditor/editTextFiles.feature
 
 Skipping Tests
 ~~~~~~~~~~~~~~
