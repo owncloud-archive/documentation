@@ -2,6 +2,19 @@
 How to add certificates
 =======================
 
+Let's Encrypt App
+~~~~~~~~~~~~~~~~~~
+
+Univention offers an easy way to get secure certificates with their Let's Encrypt app. 
+
+- Install it in the **Univention Appcenter** if you click on **Software** and search for **Let's Encrypt**.
+- Go to the **App Settings** and generate an certificate by entering your **domain name(s)**.
+- After the certificate is generated, all you have to do is **restart** the web server or the appliance.
+
+
+Import your own certificates
+~~~~~~~~~~~~~~~~~~~~~~~~
+
 If you want to use your own SSL certificates for the appliance, you have to follow these three steps:
 
 1. Create the certificates and deposit them on your appliance.
