@@ -806,6 +806,197 @@ Use ``files_external:export`` to export all admin mounts to stdout, and ``files_
   (``files_external``) is enabled.
   It is not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
+
+
+files_external:list        
+~~~~~~~~~~~~~~~~~~~
+
+List configured mounts
+
+Usage::
+
+    files_external:list [--show-password] [--full] [-a|--all] [--] [<user_id>]
+
+Arguments::
+
+    user_id                user id to list the personal mounts for, if no user is provided admin mounts will be listed
+
+
+example::
+
+    occ files_external:list -- user1
+
+files_external:applicable     
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Manage applicable users and groups for a mount
+
+Usage::
+
+    files_external:applicable 
+    [--add-user     ADD-USER] 
+    [--remove-user  REMOVE-USER] 
+    [--add-group    ADD-GROUP] 
+    [--remove-group REMOVE-GROUP] 
+    [--remove-all] 
+    [--output       [OUTPUT]] 
+    [--]
+    <mount_id>
+
+files_external:backends    
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Show available authentication and storage backends
+
+Usage::
+
+    files_external:backends [options] 
+    [--] 
+    [<type>] 
+    [<backend>]
+
+Arguments:
+
+type                   only show backends of a certain type. Possible values are "authentication" or "storage"
+
+backend                only show information of a specific backend
+
+files_external:config      
+~~~~~~~~~~~~~~~~~~~~~
+
+Manage backend configuration for a mount
+
+Usage::
+
+    files_external:config [options] 
+    [--] 
+    <mount_id> 
+    <key> 
+    [<value>]
+
+Arguments:
+
+mount_id               The id of the mount to edit
+
+key                    key of the config option to set/get
+
+value                  value to set the config option to, when no value is provided the existing value will be printed
+
+
+files_external:create      
+~~~~~~~~~~~~~~~~~~~~~
+
+Create a new mount configuration
+
+Usage::
+
+    files_external:create [options] 
+    [--] 
+    <mount_point> 
+    <storage_backend> 
+    <authentication_backend>
+
+Arguments:
+mount_point             mount point for the new mount
+
+storage_backend         storage backend identifier for the new mount, see `occ files_external:backends` for possible values
+
+authentication_backend  authentication backend identifier for the new mount, see `occ files_external:backends` for possible values
+
+Options::
+
+    --user[=USER]           user to add the mount configuration for, if not set the mount will be added as system mount
+    -c, --config=CONFIG     Mount configuration option in key=value format (multiple values allowed)
+    --dry                   Don't save the created mount, only list the new mount
+
+files_external:delete      
+~~~~~~~~~~~~~~~~~~~~~
+
+Delete an external mount
+
+Usage::
+    
+    files_external:delete [options] [--] <mount_id>
+
+Arguments:
+
+mount_id               The id of the mount to edit
+
+Options::
+
+    -y, --yes              Skip confirmation
+
+
+files_external:export
+~~~~~~~~~~~~~~~~~~~~~
+
+Usage::
+
+    files_external:export [options] [--] [<user_id>]
+
+Arguments:
+
+user_id               user id to export the personal mounts for, if no user is provided admin mounts will be exported
+
+Options:
+
+-a, --all             show both system wide mounts and all personal mounts
+
+
+
+
+files_external:import      
+~~~~~~~~~~~~~~~~~~~~~
+
+Import mount configurations
+
+
+Usage::
+
+    files_external:import [options] [--] <path>
+
+Arguments::
+
+    path                   path to a json file containing the mounts to import, use "-" to read from stdin
+
+Options::
+
+      --user[=USER]      user to add the mount configurations for, if not set the mount will be added as system mount
+      --dry              Don't save the imported mounts, only list the new mounts
+
+
+
+files_external:option      
+~~~~~~~~~~~~~~~~~~~~~
+
+Manage mount options for a mount
+
+Usage::
+    files_external:option <mount_id> <key> [<value>]
+
+Arguments::
+
+    mount_id              The id of the mount to edit
+    key                   key of the mount option to set/get
+    value                 value to set the mount option to, when no value is provided the existing value will be printed
+
+files_external:verify      
+~~~~~~~~~~~~~~~~~~~~~
+
+Verify mount configuration
+
+Usage::
+
+    files_external:verify [options] [--] <mount_id>
+
+Arguments::
+    mount_id               The id of the mount to check
+
+Options::
+
+    -c, --config=CONFIG    Additional config option to set before checking in key=value pairs, required for certain auth backends such as login credentails (multiple values allowed)
+
+
 .. _group_commands_label:
 
 Group Commands
