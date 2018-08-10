@@ -12,10 +12,10 @@ To install it:
 - Go to the **App Settings** and generate an certificate by entering your **domain name(s)**.
 - After the certificate is generated, restart the web server (or the appliance).
 
-.. figure:: ../images/appliance/ucs/letsencrypt.png
+.. figure:: ../images/appliance/ucs/letsencrypt.PNG
    :alt: Let's Encrypt
 
-.. figure:: ../images/appliance/ucs/letsencrypt-settings.png
+.. figure:: ../images/appliance/ucs/letsencrypt-settings.PNG
    :alt: App Settings
 
 Import your own certificates
