@@ -2,13 +2,19 @@
 FTP/FTPS
 ========
 
+If you want to mount an FTP Storage, please install the `FTP Storage Support`_ app from the ownCloud Marketplace.
+
+.. figure:: admin_manual/images/ftp_storage_support.png
+   :alt: The ownCloud FTP Storage Support App.
+
+
 To connect to an FTP server, you will need:
 
 * A folder name for your local mountpoint; the folder will be created if it 
   does not exist
 * The URL of the FTP server
 * Port number (default: 21)
-* FTP server username and password
+* Username and password to access the resource
 * Remote Subfolder, the FTP directory to mount in ownCloud. ownCloud defaults 
   to the root directory. If you specify a subfolder you must leave 
   off the leading slash. For example, ``public_html/images``
@@ -33,3 +39,7 @@ options and information.
 
 FTP uses the password authentication scheme; see :doc:`auth_mechanisms` for 
 more information on authentication schemes.
+
+.. Links
+
+.. _FTP Storage Support: https://marketplace.owncloud.com/apps/files_external_ftp
