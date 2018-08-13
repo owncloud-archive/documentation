@@ -2,7 +2,12 @@
 File Sharing
 ============
 
-ownCloud users can :
+The sharing policy is configured on the Admin page in the *"Sharing"* section.
+
+.. figure:: images/sharing-files-settings.png
+   :alt: ownCloud Sharing settings
+
+From this section, ownCloud users can:
 
 - Share files with their ownCloud groups and other users on the same ownCloud server
 - Share files with ownCloud users on :doc:`other ownCloud servers <federated_cloud_sharing_configuration>` 
@@ -20,57 +25,122 @@ You have control of a number of user permissions on file shares:
 * Allow email notifications of new public shares
 * Exclude groups from creating shares
 
-.. note:: ownCloud Enterprise includes a Share Link Password Policy app; see 
-   :ref:`password_policy_label`.
+.. note:: ownCloud Enterprise includes a Share Link Password Policy app; see :ref:`the Password Policy documentation <password_policy_label>`.
 
-Configure your sharing policy on your Admin page in the Sharing section.
+Settings Explained
+------------------
 
-.. figure:: images/sharing-files-settings.png
-   :alt: ownCloud Sharing settings
+Allow apps to use the Share API
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Check ``Allow apps to use the Share API`` to enable users to share files. If 
-  this is not checked, no users can create file shares.
-* Check ``Allow users to share via link`` to enable creating public shares for  
-  people who are not ownCloud users via hyperlink.
-* Check ``Enforce password protection`` to force users to set a password on all 
-  public share links. This does not apply to local user and group shares.
-* Check ``Allow public uploads`` to allow anyone to upload files to 
-  public shares.
-* Check ``Allow users to send mail notification for shared files`` to enable 
-  sending notifications from ownCloud. (Your ownCloud server must be configured 
-  to send mail)
-* Check ``Allow users to share file via social media`` to enable displaying of a set of links that allow for quickly sharing files and share links via *Twitter*, *Facebook*, *Google+*, *Disaspora*, and email.
+Check this option to enable users to share files.
+If this is not checked, no users can create file shares.
 
-  .. figure:: images/sharing-files-via-social-media.png
-     :alt: ownCloud social media sharing links
+Allow users to share via link
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Check ``Set default expiration date`` to set a default expiration date on 
-  public shares.
-* Check ``Allow resharing`` to enable users to re-share files shared with them.
-* Check ``Restrict users to only share with users in their groups`` to confine 
-  sharing within group memberships.
+Check this option to enable creating public shares for people who are not ownCloud users via hyperlink.
 
-    .. note:: This setting does not apply to the Federated Cloud sharing 
-       feature. If :doc:`Federated Cloud Sharing 
-       <federated_cloud_sharing_configuration>` is
-       enabled, users can still share items with any users on any instances
-       (including the one they are on) via a remote share.
+Enforce password protection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-* Check ``Allow users to send mail notification for shared files`` enables 
-  users to send an email notification to every ownCloud user that the file is 
-  shared with.
-* Check ``Exclude groups from sharing`` to prevent members of specific groups 
-  from creating any file shares in those groups. When you check this, you'll 
-  get a dropdown list of all your groups to choose from. Members of excluded 
-  groups can still receive shares, but not create any
-* Check ``Allow username autocompletion in share dialog`` to enable 
-  auto-completion of ownCloud usernames.
-* Check ``Restrict enumeration to group members`` to restrict auto-completion of ownCloud usernames to only those users who are members of the same group(s) that the user is in.
+Check this option to force users to set a password on all public share links.
+This does not apply to local user and group shares.
 
-.. note:: ownCloud does not preserve the mtime (modification time) of 
-   directories, though it does update the mtimes on files. See  
-   `Wrong folder date when syncing 
+Allow public uploads
+~~~~~~~~~~~~~~~~~~~~
+
+Check this option to allow anyone to upload files to public shares.
+
+Allow users to send mail notification for shared files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check this option to enable sending notifications from ownCloud.
+When clicked, the administrator can choose the language for public mail notifications for shared files.
+
+.. figure:: images/sharing/choose-public-mail-notification-language.png
+   :alt: Choose the language for public mail notifications for shared files in ownCloud.
+
+What this means is that email notifications will be sent in the language of the user that shared an item.
+By default the language is the share owner’s language.
+However, it can be changed to any of the currently available languages.
+It is also possible to change this setting on the command-line by using :ref:`the occ config:app:set command <apps_commands_label>`, as in this example:
+
+::
+
+    sudo -u www-data php occ config:app:set core shareapi_public_notification_lang --value '<language code>'
+
+.. note:: In the above example "<language code>" is `an ISO 3166-1 alpha-2 two-letter country code`_, such as *ru*, *gb*, *us*, and *au*.
+
+.. note:: To use this functionality, your ownCloud server must be configured to send mail.
+
+Allow users to share file via social media
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check this option to enable displaying of a set of links that allow for quickly sharing files and share links via *Twitter*, *Facebook*, *Google+*, *Diaspora*, and email.
+
+.. figure:: images/sharing-files-via-social-media.png
+   :alt: ownCloud social media sharing links
+
+Set default expiration date
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check this option to set a default expiration date on public shares.
+
+Allow resharing
+~~~~~~~~~~~~~~~
+
+Check this option to enable users to re-share files shared with them.
+
+Restrict users to only share with users in their groups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check this option to confine sharing within group memberships.
+
+.. note::
+   This setting does not apply to the Federated Cloud sharing feature.
+   If :doc:`Federated Cloud Sharing <federated_cloud_sharing_configuration>`
+   is enabled, users can still share items with any users on any instances
+   (including the one they are on) via a remote share.
+
+Allow users to send mail notification for shared files
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check this option to enable users to send an email notification to every ownCloud user that the file is shared with.
+
+Exclude groups from sharing
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check this option to prevent members of specific groups from creating any file shares in those groups.
+When you check this, you'll get a dropdown list of all your groups to choose from.
+Members of excluded groups can still receive shares, but not create any.
+
+Allow username autocompletion in share dialog
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check this option to enable auto-completion of ownCloud usernames.
+
+Restrict enumeration to group members
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check this option to restrict auto-completion of ownCloud usernames to only those users who are members of the same group(s) that the user is in.
+
+.. note:: ownCloud does not preserve the mtime (modification time) of
+   directories, though it does update the mtimes on files. See
+   `Wrong folder date when syncing
    <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
+
+Blacklist Groups From Receiving Shares
+--------------------------------------
+
+Sometimes it's necessary or desirable to block groups from receiving shares.
+For example, if a group has a significant number of users (> 5,000) or if it's a system group, then it can be advisable to block it from receiving shares.
+In these cases, ownCloud administrators can blacklist one or more groups, so that they do not receive shares.
+
+To blacklist one or more groups, via the Web UI, under "**Admin -> Settings -> Sharing**", add one or more groups to the "*Files Sharing*" list.
+As you type the group’s name, if it exists, it will appear in the drop down list, where you can select it.
+
+.. figure:: ./images/sharing/blacklisting-groups.png
 
 .. _transfer_userfiles_label:   
 
@@ -211,3 +281,7 @@ In the two examples above, here is a sample JSON file, showing all of the availa
         "applicable_users": [],
         "applicable_groups": []
     }
+
+.. Links
+
+.. _an ISO 3166-1 alpha-2 two-letter country code: https://en.wikipedia.org/wiki/ISO_3166-1_alpha-2

@@ -8,8 +8,8 @@ Preparation
 Before you can setup SAML 2.0 based |SSOabbr| with `Active Directory Federation Services (ADFS) <https://msdn.microsoft.com/en-us/library/bb897402.aspx>`_ and mod_shib, ask your ADFS admin for the relevant server URLs.
 These are:
 
-- The SAML 2.0 single sign-on service URL, e.g., ``https://<adfs server fqdn>/adfs/ls``
-- The IdP metadata URL, e.g., ``https://<adfs server fqdn>/FederationMetadata/2007-06/FederationMetadata.xml``
+- The SAML 2.0 single sign-on service URL, e.g., ``https://<ADFS server FQDN>/ADFS/ls``
+- The IdP metadata URL, e.g., ``https://<ADFS server FQDN>/FederationMetadata/2007-06/FederationMetadata.xml``
 
 Then, make sure that the web server is accessible with a trusted certificate:
 
@@ -45,7 +45,7 @@ To do so, use ``adfs2fed.php``, as in the following command:
 .. code-block:: console
 
   php apps/user_shibboleth/tools/adfs2fed.php \
-     https://<adfs server fqdn>/FederationMetadata/2007-06/FederationMetadata.xml \
+     https://<ADFS server FQDN>/FederationMetadata/2007-06/FederationMetadata.xml \
      <AD-Domain> > /etc/shibboleth/filtered-metadata.xml
 
 Configure shibd
@@ -58,23 +58,23 @@ To do this, in ``/etc/shibboleth/shibboleth2.xml``:
 
    .. code:: xml
 
-    <ApplicationDefaults entityID="https://<owncloud server fqdn>/login/saml" REMOTE_USER="eppn upn">
+    <ApplicationDefaults entityID="https://<owncloud server FQDN>/login/saml" REMOTE_USER="eppn upn">
 
    .. note::
 
-    ``https://<owncloud server fqdn>/login/saml`` is just an example.  Adjust <owncloud server fqdn> to the full qualified domain name of your server.
+    ``https://<owncloud server FQDN>/login/saml`` is just an example.  Adjust <owncloud server FQDN> to the full qualified domain name of your server.
 
 2. Configure the SSO to use the ``entityID`` from the ``filtered-metadata.xml``, e.g.,
 
    .. code:: xml
 
-    <SSO entityID="https://<adfs server fqdn>/<URI>/">
+    <SSO entityID="https://<ADFS server FQDN>/<URI>/">
         SAML2
     </SSO>
 
    .. note::
 
-    Grab <adfs server fqdn>/<URI>/ from the filtered-metadata.xml.
+    Grab <ADFS server FQDN>/<URI>/ from the filtered-metadata.xml.
 
 3. Configure an XML ``MetadataProvider`` with the local ``filtered-metadata.xml`` file:
 
@@ -85,7 +85,7 @@ To do this, in ``/etc/shibboleth/shibboleth2.xml``:
 Metadata Available
 ------------------
 
-Under ``https://<owncloud server fqdn>/Shibboleth.sso/Metadata`` shibd exposes the Metadata that is needed by ADFS to add the SP as a Relying party.
+Under ``https://<owncloud server FQDN>/Shibboleth.sso/Metadata`` shibd exposes the Metadata that is needed by ADFS to add the SP as a Relying party.
 
 ADFS
 ----
@@ -128,7 +128,7 @@ user_shibboleth
 
 When the app is enabled and ownCloud is protected by mod_shib, due to the Apache 2 configuration, you should be forced to authenticate against an ADFS.
 After a successful authentication you will be redirected to the ownCloud login page, where you can login as the administrator.
-Double check you have a valid SAML session by browsing to https://<owncloud server fqdn>/Shibboleth.sso/Session.
+Double check you have a valid SAML session by browsing to https://<owncloud server FQDN>/Shibboleth.sso/Session.
 
 In the "User Authentication" settings for Shibboleth the ``upn`` environment variables will be filled with the authenticated user’s ``userPrincipalName`` in the "Server Environment" section.
 
@@ -146,7 +146,7 @@ Testing
 -------
 
 - Close the browser tab to kill the session.
-- Then visit https://<owncloud server fqdn> again.
+- Then visit ``https://<owncloud server FQDN>`` again.
 - You should be logged in automatically.
 - Close the tab or delete the cookies to log out.
 - To make the logout work see the Logout section in this document.
@@ -154,17 +154,47 @@ Testing
 Configuring  SSO
 ----------------
 
-- On the ADFS Server add ``Windows Authentication`` to the ``Service``->``Authentication Methods`` for ``Intranet``
-- On the windows client:
-  In the ``Internet Settings``->``Security``->``Local Intranet``
-  + Click on "Sites"
-  + Click on "Advanced"
-  + Add your adfs machine with `https://<adfs server fqdn>/` and click ok.
-  + Click on `customize level`
-  + Find `User Authtification`
-  + Check `Automatic login only for Intranet zone`
+- On the ADFS Server:
+    - Add "Windows Authentication" to the "Service" -> "Authentication Methods" for "Intranet"
+    - Run the following Powershell script for Firefox:
 
-Now if you logged into the domain and open your ownCloud server in Internet Explorer or Edge with URI "oc-shib" you should get directly to your ownCloud files without a login.
+::
+
+    # Save the list of currently supported browser user-agents to a variable
+    $browsers=Get-ADFSProperties | Select -ExpandProperty WIASupportedUseragents
+
+    # Add Mozilla/5.0 user-agent to the list
+    $browsers+="Mozilla/5.0"
+
+    # Apply the new list
+    Set-ADFSProperties -WIASupportedUseragents $browsers
+
+    # Turn off Extended Protection
+    #Set-ADFSProperties –ExtendedProtectionTokenCheck None
+
+    # Restart the AD FS service
+    Restart-Service ADFSsrv
+
+- On the Windows client:
+
+  - For Internet Explorer, Edge, and Chrome
+
+    - In the "Internet Settings" -> "Security" -> "Local Intranet"
+    - Click on "Sites"
+    - Click on "Advanced"
+    - Add your ADFS machine with ``https://<ADFS server FQDN>/`` and click OK.
+    - Click on "customize level"
+    - Find "User Authentication"
+    - Check "Automatic login only for Intranet zone"
+
+  - For Firefox
+
+    - Open "about:config"
+    - Accept the warning
+    - Search for ``network.negotiate-auth.trusted-uris`` and set it to the FQDN of your ADFS server
+    - Search for ``network.automatic-ntlm-auth.trusted-uris`` and set it to the FQDN of your ADFS server
+
+Now if you logged into the domain and open your ownCloud server in the browser of your choice you should get directly to your ownCloud files without a login.
 
 Debugging
 ---------
@@ -206,10 +236,10 @@ In upcoming versions the clients will use OAuth2 to obtain a device specific tok
 Further Reading
 ---------------
 
--  `ADFS 2.0 Step-by-Step Guide: Federation with Shibboleth 2 and the InCommon Federation <https://technet.microsoft.com/en-us/library/gg317734%28v=ws.10%29.aspx>`_
--  `ADFS: How to Invoke a WS-Federation Sign-Out <https://social.technet.microsoft.com/wiki/contents/articles/1439.ad-fs-how-to-invoke-a-ws-federation-sign-out.aspx>`_
--  `Shibboleth Service Provider Integration with ADFS <https://blog.kloud.com.au/2014/10/29/shibboleth-service-provider-integration-with-adfs/>`_
--  https://github.com/rohe/pysfemma/blob/master/tools/adfs2fed.py
+- `ADFS 2.0 Step-by-Step Guide: Federation with Shibboleth 2 and the InCommon Federation <https://technet.microsoft.com/en-us/library/gg317734%28v=ws.10%29.aspx>`_
+- `ADFS: How to Invoke a WS-Federation Sign-Out <https://social.technet.microsoft.com/wiki/contents/articles/1439.ad-fs-how-to-invoke-a-ws-federation-sign-out.aspx>`_
+- `Shibboleth Service Provider Integration with ADFS <https://blog.kloud.com.au/2014/10/29/shibboleth-service-provider-integration-with-adfs/>`_
+- https://github.com/rohe/pysfemma/blob/master/tools/adfs2fed.py
 - https://technet.microsoft.com/de-de/library/gg317734(v=ws.10).aspx#BKMK_EditClaimRulesforRelyingPartyTrust
 - https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPApplication#NativeSPApplication-BasicConfiguration(Version2.4andAbove)
 - https://wiki.shibboleth.net/confluence/display/SHIB2/NativeSPMetadataProvider#NativeSPMetadataProvider-XMLMetadataProvider

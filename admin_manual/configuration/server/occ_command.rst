@@ -371,7 +371,7 @@ It is also possible to import remote files, by piping the input:
   commands instead.  
 
 Getting a Single Configuration Value
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 These commands get the value of a single app or system configuration:
 
@@ -384,7 +384,7 @@ These commands get the value of a single app or system configuration:
   2.2.1
 
 Setting a Single Configuration Value
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 These commands set the value of a single app or system configuration:
 
@@ -425,7 +425,7 @@ When you want to e.g., disable the maintenance mode run the following command:
   System config value maintenance set to boolean false
 
 Setting an Array of Configuration Values
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Some configurations (e.g., the trusted domain setting) are an array of data.
 In order to set (and also get) the value of one key, you can specify multiple ``config`` names separated by spaces:
@@ -445,7 +445,7 @@ To replace ``sample.tld`` with ``example.com`` trusted_domains => 2 needs to be 
   sudo -u www-data php occ config:system:get trusted_domains localhost owncloud.local example.com
 
 Deleting a Single Configuration Value
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 These commands delete the configuration of an app or system configuration:
 
@@ -685,7 +685,7 @@ File Operations
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
 The files:checksums:verify command
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ownCloud supports file integrity checking, by computing and matching checksums.
 Doing so ensures that transferred files arrive at their target in the exact state as they left their origin.
@@ -714,12 +714,12 @@ Below is sample output that you can expect to see when using the command.
    Actual:	SHA1:da39a3ee5e6b4b0d3255bfef95601890afd80709 MD5:d41d8cd98f00b204e9800998ecf8427e ADLER32:00000001
 
 The files:cleanup command
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``files:cleanup`` tidies up the server's file cache by deleting all file entries that have no matching entries in the storage table. 
 
 The files:scan command
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 The ``files:scan`` command 
 
@@ -777,6 +777,12 @@ For example:
 
 In the example above, the user_id ``alice`` is determined implicitly from the path component given.
 
+To get a list of scannable mounts for a given user, use following command:
+
+::
+
+  sudo -u www-data php occ files_external:list user_id
+  
 .. note::
   Mounts are only scannable at the point of origin. Scanning of shares including federated shares 
   is not necessary on the receiver side and therefore not possible.
@@ -787,7 +793,7 @@ The ``--repair`` Option
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 As noted above, repairs can be performed for individual users, groups of users, and for all users in an ownCloud installation.
-What’s more, repair scans can be run even if no files are known to need repairing and if one or more files are known to be in need of repair.
+What's more, repair scans can be run even if no files are known to need repairing and if one or more files are known to be in need of repair.
 Two examples of when files need repairing are:
 
 - If folders have the same entry twice in the web UI (known as a "*ghost folder*"), this can also lead to strange error messages in the desktop client.
@@ -951,7 +957,7 @@ The full list of commands is:
   group:remove-member                 Remove member(s) from a group
 
 Creating Groups
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 You can create a new group with the ``group:add`` command. 
 The syntax is::
@@ -966,7 +972,7 @@ This example adds a new group, called "Finance":
    Created group "Finance"
 
 Listing Groups
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 You can list the names of existing groups with the ``group:list`` command.
 The syntax is::
@@ -1004,7 +1010,7 @@ This example lists groups containing the string "finance" formatted with ``json_
   ]
 
 Listing Group Members
-^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~
 
 You can list the user IDs of group members with the ``group:list-members`` command.
 The syntax is::
@@ -1036,7 +1042,7 @@ This example lists members of the Finance group formatted with ``json_pretty``.
   }
 
 Adding Members to Groups
-^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can add members to an existing group with the ``group:add-member`` command.
 Members must be existing users. 
@@ -1062,7 +1068,7 @@ For example::
    User fred" added to group "Finance"
 
 Removing Members from Groups
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can remove members from a group with the ``group:remove-member`` command.
 The syntax is::
@@ -1088,7 +1094,7 @@ For example:
    Member "fred" removed from group "Finance"
 
 Deleting a Group
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 To delete a group, you use the ``group:delete`` command, as in the example below:
 
@@ -1158,16 +1164,16 @@ The command takes two parameters; these are:
 To create the two translation files, the command reads translation data from a source PHP translation file. 
 
 A Working Example
-^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~
 
 In this example, we'll create Austrian German translations for the Gallery app.
 
 .. note:: 
-   This example assumes that the ownCloud directory is `/var/www/owncloud`` and that it uses ownCloud’s standard apps directory, ``app``. 
+   This example assumes that the ownCloud directory is `/var/www/owncloud`` and that it uses ownCloud's standard apps directory, ``app``.
 
 First, create a source translation file in ``/var/www/owncloud/apps/gallery/l10n``, called ``de_AT.php``.
 In it, add the required translation strings, as in the following example.
-Refer to the developer documentation on `creating translation files`_, if you’re not familiar with creating them.
+Refer to the developer documentation on `creating translation files`_, if you're not familiar with creating them.
 
 .. code-block:: php
 
@@ -1544,20 +1550,20 @@ The ``market`` commands *install*, *list*, and *upgrade* applications from `the 
 
 .. note::
    The user running the update command, which will likely be your webserver user, needs write permission for the ``/apps`` folder. 
-   If they don’t have write permission, the command may report that the update was successful, but it may silently fail.
+   If they don't have write permission, the command may report that the update was successful, but it may silently fail.
 
 .. note::
    These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
 Install an Application
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 Applications can be installed both from `the ownCloud Marketplace`_ and from a local file archive. 
 
 Install Apps From The Marketplace
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To install an application from the Marketplace, you need to supply the app’s id, which can be found in the app’s Marketplace URL. 
+To install an application from the Marketplace, you need to supply the app's id, which can be found in the app's Marketplace URL.
 For example, the URL for *Two factor backup codes* is https://marketplace.owncloud.com/apps/twofactor_backup_codes.
 So its app id is ``twofactor_backup_codes``.
 
@@ -1673,7 +1679,7 @@ Example 1:
 
 ::
 
-  sudo -uwww-data ./occ security:routes
+  sudo -u www-data php occ security:routes
 
 ::
 
@@ -1691,7 +1697,7 @@ Example 2:
 
 ::
 
-  sudo  -uwww-data ./occ security:routes --output=json-pretty
+  sudo  -u www-data php occ security:routes --output=json-pretty
 
 ::
 
@@ -1708,7 +1714,7 @@ Example 3:
 
 ::
 
-  sudo  -uwww-data ./occ security:routes --with-details
+  sudo  -u www-data php occ security:routes --with-details
 
 ::
 
@@ -1881,7 +1887,7 @@ The full list, of commands is:
   user:sync                           Sync local users with an external backend service
 
 Creating Users
-^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~
 
 You can create a new user with the ``user:add`` command.
 This command lets you set the following attributes:
@@ -1917,7 +1923,7 @@ Any groups that do not exist are created.
 After the command completes, go to your Users page, and you will see your new user. 
 
 Setting a User's Password
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ``password-from-env`` allows you to set the user's password from an environment variable. 
 This prevents the password from being exposed to all users via the process list, and will only be visible in the history of the user (root) running the command. 
@@ -1953,17 +1959,69 @@ You may also use ``password-from-env`` to reset passwords:
    Successfully reset password for layla
    
 Deleting A User
-^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~
 
 To delete a user, you use the ``user:delete`` command, as in the example below:
 
 ::
 
  sudo -u www-data php occ user:delete fred
-   
-   
+
+.. _user-expire-password_label:
+
+Expiring a User's Password
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. note:: This command is only available when `the Password Policy app`_ is installed.
+
+::
+
+  sudo -u www-data php user:expire-password <uid> [<expiredate>]
+
+To expire a user's password at a specific date and time, use the ``user:expire-password`` command.
+The command accepts two arguments, the user's uid and an expiry date.
+The expiry date can be provided using any of `PHP's supported date and time formats`_.
+
+If an expiry date is not supplied, the password will expire with immediate effect.
+This is because the password will be set as being expired 24 hours before the command was run.
+For example, if the command was run at "2018-07-**12** 13:15:28 UTC", then the password's expiry date will be set to "2018-07-**11** 13:15:28 UTC".
+
+After the command completes, console output, similar to that below, confirms when the user's password is set to expire.
+
+::
+
+  The password for frank is set to expire on 2018-07-12 13:15:28 UTC.
+
+Command Examples
+^^^^^^^^^^^^^^^^
+
+::
+
+  # The password for user "frank" will be set as being expired 24 hours before the command was run.
+  sudo -u www-data php occ user:expire-password frank
+
+  # Expire the user "frank"'s password in 2 days time.
+  sudo -u www-data php occ user:expire-password frank '+2 days'
+
+  # Expire the user "frank"'s password on the 15th of August 2005, at 15:52:01 in the local timezone.
+  sudo -u www-data php occ user:expire-password frank '2005-08-15T15:52:01+00:00'
+
+  # Expire the user "frank"'s password on the 15th of August 2005, at 15:52:01 UTC.
+  sudo -u www-data php occ user:expire-password frank '15-Aug-05 15:52:01 UTC'
+
+Caveats
+^^^^^^^
+
+Please be aware of the following implications of enabling or changing the password policy's "*days until user password expires*" option.
+
+- Administrators need to run the ``occ user:expire-password`` command to initiate expiry for new users.
+- Passwords will never expire for users who have *not* changed their initial password, because they do not have a password history. To force password expiration use the ``occ user:expire-password`` command.
+- A password expiration date will be set after users change their password for the first time. To force password expiration use the ``occ user:expire-password`` command.
+- Passwords changed for the first time, will expire based on the *active* password policy. If the policy is later changed, it will not update the password's expiry date to reflect the new setting.
+- Password expiration dates of users where the administrator has run the ``occ user:expire-password`` command *won't* automatically update to reflect the policy change. In these cases, Administrators need to run the ``occ user:expire-password`` command again and supply a new expiry date.
+
 Listing Users
-^^^^^^^^^^^^^
+~~~~~~~~~~~~~
 
 You can list existing users with the ``user:list`` command.
 The syntax is
@@ -2018,7 +2076,7 @@ This example lists all users including the attribute "enabled".
 
 
 Listing Group Membership of a User
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 You can list the group membership of a user with the ``user:list-groups`` command.
 The syntax is
@@ -2042,7 +2100,7 @@ The output can be formatted in JSON with the output option ``json`` or ``json_pr
   ]
 
 Finding The User's Last Login
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To view a user's most recent login, use the ``user:lastseen`` command, as in the example below:
 
@@ -2052,7 +2110,7 @@ To view a user's most recent login, use the ``user:lastseen`` command, as in the
    layla's last login: 09.01.2015 18:46
 
 User Application Settings
-^^^^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~~~~
 
 To manage application settings for a user, use the ``user:setting`` command. 
 This command provides the ability to:
@@ -2479,9 +2537,11 @@ This example completes the installation:
 ::
 
  cd /var/www/owncloud/
- sudo -u www-data php occ maintenance:install --database 
- "mysql" --database-name "owncloud"  --database-user "root" --database-pass 
- "password" --admin-user "admin" --admin-pass "password" 
+ sudo -u www-data php occ maintenance:install --database "mysql" \
+    --database-name "owncloud" --database-user "root" \
+    --database-pass "password" --database-host "db" \
+    --admin-user "admin" --admin-pass "password"
+
  ownCloud is not installed - only a limited number of commands are available
  ownCloud was successfully installed
 
@@ -2616,7 +2676,7 @@ Use the following command to enable the user again:
    Once users are disabled, their connected browsers will be disconnected.
 
 Finding Inactive Users
-^^^^^^^^^^^^^^^^^^^^^^
+~~~~~~~~~~~~~~~~~~~~~~
 
 To view a list of users who've not logged in for a given number of days, use the ``user:inactive`` command
 The example below searches for users inactive for five days, or more.
@@ -2666,3 +2726,5 @@ Using the output option ``json_pretty`` will render the output formatted as foll
    
 .. _the ownCloud Marketplace: https://marketplace.owncloud.com/
 .. _creating translation files: https://doc.owncloud.org/server/latest/developer_manual/app/advanced/l10n.html#creating-translatable-files-label
+.. _the Password Policy app: https://marketplace.owncloud.com/apps/password_policy
+.. _PHP's supported date and time formats: https://secure.php.net/manual/en/datetime.formats.php

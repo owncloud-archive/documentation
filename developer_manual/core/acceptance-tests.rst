@@ -65,7 +65,7 @@ These contain Behat's test cases, called scenarios, which use the Gherkin langua
 Features are grouped into suites. The features for a suite are stored in a folder like ``features/apiMain``.
 
 ``features/bootstrap``
-~~~~~~~~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~~~~~~~~
 
 This folder contains all the Behat contexts. 
 Contexts contain the PHP code required to run Behat's scenarios. 
@@ -74,7 +74,7 @@ The contexts needed by each suite are listed in ``behat.yml``.
 ``run.sh``
 ~~~~~~~~~~
   
-This script runs the tests suites. 
+This script runs the test suites.
 To use it we need to run it as the web server user, which is normally ``www-data`` or ``apache``.
 
 ``skeleton/``
@@ -129,7 +129,7 @@ Here’s example code for a scenario:
   public function exampleFunction($method, $url) {
 
 
-Following this, add a new feature file to the ``features/`` folder.
+Following this, add a new feature file in the ``features/`` folder structure.
 The name should be in the format: ``<task-to-test>.feature``.
 The content of this file should be Gherkin code. 
 You can use all the sentences available in the rest of the core contexts, just use the appropriate trait in your context.
@@ -141,10 +141,10 @@ Lets show an example of a feature file with scenarios:
 
     Feature: provisioning
       Background:
-        Given using api version "1"
+        Given using OCS API version "1"
 
       Scenario: Getting an not existing user
-        When user "admin" sends HTTP method "GET" to API endpoint "/cloud/users/test"
+        When user "admin" sends HTTP method "GET" to OCS API endpoint "/cloud/users/test"
         Then the OCS status code should be "998"
         And the HTTP status code should be "200"
 
@@ -154,7 +154,7 @@ Lets show an example of a feature file with scenarios:
 
 A scenario requires three parts, ``"Given"``, ``"When"``, and ``"Then"`` sections. 
 ``"Given"`` and ``"Then"`` can have several sentences joined together by ``"And"``, but ``"When"`` statements should just have one.
-And this should be the function to test. 
+And this should be the functionality to test.
 The other parts are preconditions and post-conditions of the test. 
 
 To be able to run your new feature tests you'll have to add a new context to ``config/behat.yml`` file.
@@ -163,15 +163,14 @@ To do so, in the ``contexts`` section add your new context:
 ::
 
     contexts:
-          * TaskToTestContext:
-              baseUrl:  http://localhost:8080/ocs/
+          - FeatureContext: *common_feature_context_params
+          - TaskToTestContext:
 
-After the name, add all the variables required for your context. 
-In this example we add just the required ``baseUrl`` variable.
-With that done, we're now ready to run the tests. 
+After the name, add any variables required for your context; you likely will not need any.
+With that done, we're now ready to run the tests.
 
-Running Acceptance Tests
-~~~~~~~~~~~~~~~~~~~~~~~~
+Preparing to Run Acceptance Tests
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 This is a concise guide to running acceptance tests on ownCloud 10.0.
 Before you can do so, you need to meet a few prerequisites available; these are
@@ -206,16 +205,61 @@ Now that the prerequisites are satisfied, and assuming that ``$installation_path
       --database='mysql' --database-name='owncloud' --database-user='root' \
       --database-pass='' --admin-user='admin' --admin-pass='admin'
 
-With the installation prepared, you should now be able to run the tests. 
-Go to the ``tests/acceptance`` folder and, assuming that your web user is ``www-data``, run the following command::
+Running Acceptance Tests for a Suite
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-  sudo -u www-data ./run.sh features/task-to-test.feature
+Run a command like the following:
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh --suite apiTrashbin
+
+Running Acceptance Tests for a Feature
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Run a command like the following:
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh --feature features/apiTrashbin/trashbinDelete.feature
+
+Or just:
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh features/apiTrashbin/trashbinDelete.feature
+
+Running Acceptance Tests for a Tag
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Some test scenarios are tagged. For example, tests that are known to fail and are awaiting fixes are tagged ``@skip``.
+To run test scenarios with a particular tag:
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh --suite apiTrashbin --tags @skip
+
+Displaying the ownCloud Log
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+It can be useful to see the tail of the ownCloud log when the test run ends. To do that, specify ``--show-oc-logs``:
+
+.. code-block:: bash
+
+  sudo -u www-data ./run.sh --suite apiTrashbin --show-oc-logs
+
+Optional Environment Variables
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 If you want to use an alternative home name using the ``env`` variable add to the execution ``OC_TEST_ALT_HOME=1``, as in the following example:
+
+::
 
   sudo -u www-data OC_TEST_ALT_HOME=1 ./run.sh features/task-to-test.feature
 
 If you want to have encryption enabled add ``OC_TEST_ENCRYPTION_ENABLED=1``, as in the following example:
+
+::
 
   sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/task-to-test.feature
 

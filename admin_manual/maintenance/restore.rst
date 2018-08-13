@@ -37,7 +37,10 @@ MySQL
 
 MySQL is the recommended database engine. To restore MySQL::
 
+    occ maintenance:mode --on 
     mysql -h [server] -u [username] -p[password] [db_name] < owncloud-dbbackup.bak
+    occ maintenance:data-fingerprint
+    occ maintenance:mode --off
 
 SQLite
 ^^^^^^
