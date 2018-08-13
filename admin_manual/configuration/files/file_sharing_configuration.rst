@@ -103,8 +103,7 @@ When using this command keep two things in mind:
 1. The directory provided to the ``--path`` switch **must** exist inside ``data/<source-user>/files``.
 2. The directory (and its contents) won’t be moved as is between the users. It’ll be moved inside the destination user’s ``files`` directory, and placed in a directory which follows the format: ``transferred from <source-user> on <timestamp>``. Using the example above, it will be stored under: ``data/<destination-user>/files/transferred from <source-user> on 20170426_124510/``
  
-(See :doc:`../../configuration/server/occ_command` for a complete ``occ`` 
-reference.) 
+(See :doc:`../../configuration/server/occ_command` for a complete ``occ`` reference.)
    
 Creating Persistent File Shares
 -------------------------------
@@ -122,3 +121,93 @@ appropriate permissions on it, and then no matter which users come and go, the
 file shares will remain. Because all files added to the share, or edited in it, 
 automatically become owned by the owner of the share regardless of who adds or 
 edits them.   
+
+Create Shares Programmatically
+------------------------------
+
+If you need to create new shares using command-line scripts, there are two available option.
+
+- `occ files_external:create`_
+- `occ files_external:import`_
+
+occ files_external:create
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+This command provides for the creation of both personal (for a specific user) and general shares.
+The command’s configuration options can be provided either as individual arguments or collectively, as a JSON object.
+For more information about the command, refer to the :ref:`the occ documentation <files_external_create_label>`.
+
+Personal Share
+^^^^^^^^^^^^^^
+
+::
+
+   sudo -u www-data php occ files_external:create /my_share_name windows_network_drive \
+        password::logincredentials \
+        --config={host=127.0.0.1, share='home', root='$user', domain='owncloud.local'} \
+        --user someuser
+::
+
+    sudo -u www-data php occ files_external:create /my_share_name windows_network_drive \
+        password::logincredentials \
+        --config host=127.0.0.1 \
+        --config share='home' \
+        --config root='$user' \
+        --config domain='somedomain.local' \
+        --user someuser
+
+General Share
+^^^^^^^^^^^^^
+
+::
+
+    sudo -u www-data php occ files_external:create /my_share_name windows_network_drive \
+        password::logincredentials \
+        --config={host=127.0.0.1, share='home', root='$user', domain='owncloud.local'}
+
+::
+
+    sudo -u www-data php occ files_external:create /my_share_name windows_network_drive \
+        password::logincredentials \
+        --config host=127.0.0.1 \
+        --config share='home' \
+        --config root='$user' \
+        --config domain='somedomain.local'
+
+occ files_external:import
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can create general and personal shares passing the configuration details via JSON files, using the ``occ files_external:import`` command.
+
+**General Share**
+
+::
+
+    sudo -u www-data php occ files_external:import /import.json
+
+**Personal Share**
+
+::
+
+    sudo -u www-data php occ files_external:import /import.json --user someuser
+
+In the two examples above, here is a sample JSON file, showing all of the available configuration options that the command supports.
+
+.. code-block:: json
+
+    {
+        "mount_point": "\/my_share_name",
+        "storage": "OCA\\windows_network_drive\\lib\\WND",
+        "authentication_type": "password::logincredentials",
+        "configuration": {
+            "host": "127.0.0.1",
+            "share": "home",
+            "root": "$user",
+            "domain": "owncloud.local"
+        },
+        "options": {
+            "enable_sharing": false
+        },
+        "applicable_users": [],
+        "applicable_groups": []
+    }
