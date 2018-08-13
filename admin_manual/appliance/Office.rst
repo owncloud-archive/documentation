@@ -11,7 +11,7 @@ Here is an overview of the process:
 2. Install :ref:`Collabora <collabora-label>` or :ref:`OnlyOffice <onlyoffice-label>`
 3. :ref:`Update <update-label>` the App
 
-.. warning::  Access with **HTTPS** using **domain name** is required. Edit your **hosts** file: enter there the **IP** of your Appliance and the **domainname** of your appliance if you don't want to use the Appliance as your DNS server.
+.. warning::  Access with **HTTPS** using **domain name** is required. Add the IP address and the domain name of your appliance to your `/etc/hosts` file, or have it added to your existing DNS server, if you don't want to use the Appliance as your DNS server.
 
 .. _appcenter-label:
 
