@@ -42,3 +42,9 @@ Once you've completed these steps, restart Apache using the following command:
   service apache2 restart
 
 Now your certificates will be used to access your appliance.
+
+If you want to limit the access to your server exclusively to HTTPS, use this command:
+
+::
+
+   ucr set apache2/force_https=yes
