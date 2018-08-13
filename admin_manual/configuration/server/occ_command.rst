@@ -868,6 +868,73 @@ Use ``files_external:export`` to export all admin mounts to stdout, and ``files_
   (``files_external``) is enabled.
   It is not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
+.. _files_external_create_label:
+
+files_external:create
+~~~~~~~~~~~~~~~~~~~~~
+
+You can create general (for all users) and personal (user-specific) shares by passing share configuration information on the command line, with the ``files_external:create`` command.
+The syntax is:
+
+::
+
+    files_external:create [options] [--] <mount_point> <storage_backend> <authentication_backend>
+
+
+Arguments
+^^^^^^^^^
+
+====================== ================================================
+Argument               Description
+====================== ================================================
+mount point            Path of the mount point within the file system
+storage_backend        Storage backend identifier
+authentication_backend authentication backend authentifier
+====================== ================================================
+
+Storage Backend Details
+^^^^^^^^^^^^^^^^^^^^^^^
+
+======================== =======================
+Storage Backend          Identifier
+======================== =======================
+Windows Network Drive    windows_network_drive
+WebDav                   dav
+Local                    local
+ownCloud                 owncloud
+SFTP                     sftp
+Amazon S3                amazons3
+Dropbox                  dropbox
+Google Drive             googledrive
+OpenStack Object Storage swift
+SMB / CIFS               smb
+======================== =======================
+
+Authentication Details
+^^^^^^^^^^^^^^^^^^^^^^
+
+==================================== =========================================
+Authentication method                Identifier, name, configuration
+==================================== =========================================
+Log-in credentials, save in session  password::sessioncredentials
+Log-in credentials, save in database password::logincredentials
+User entered, store in database      password::userprovided (*)
+Global Credentials                   password::global
+None                                 null::null
+Builtin                              builtin::builtin
+Username and password                password::password
+OAuth1                               oauth1::oauth1 (*)
+OAuth2                               oauth2::oauth2 (*)
+RSA public key                       publickey::rsa (*)
+OpenStack                            openstack::openstack (*)
+Rackspace                            openstack::rackspace (*)
+Access key (Amazon S3)               amazons3::accesskey (*)
+==================================== =========================================
+
+(\*) - Authentication methods require additional configuration.
+
+.. note:: Each Storage Backend needs its corresponding authentication methods.
+
 .. _group_commands_label:
 
 Group Commands
