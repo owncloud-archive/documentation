@@ -14,7 +14,7 @@ Here is an overview of the process:
 .. warning::  Access with **HTTPS** using **domain name** is required. Add the IP address and the domain name of your appliance to your `/etc/hosts` file, or have it added to your existing DNS server, if you don't want to use the Appliance as your DNS server.
 
 .. tip::
-If you encounter the error, "Failed to load the document. Please endure the file type is supported and not corrupted, and try again.", when trying to open documents, either restart the Collabora Docker container or the appliance.
+If you encounter the error, "Failed to load the document. Please ensure the file type is supported and not corrupted, and try again.", when trying to open documents, either restart the Collabora Docker container or the appliance.
 
 .. _appcenter-label:
 
