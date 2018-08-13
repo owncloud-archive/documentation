@@ -868,72 +868,226 @@ Use ``files_external:export`` to export all admin mounts to stdout, and ``files_
   (``files_external``) is enabled.
   It is not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
-.. _files_external_create_label:
+files_external:list        
+~~~~~~~~~~~~~~~~~~~
 
-files_external:create
+List configured mounts.
+
+Usage::
+
+    files_external:list [--show-password] [--full] [-a|--all] [--] [<user_id>]
+
+Arguments:
+
++-------------+----------------------------------------------------------------------------------------------+
+| ``user_id`` | User ID to list the personal mounts for, if no user is provided admin mounts will be listed. |
++-------------+----------------------------------------------------------------------------------------------+
+
+Example::
+
+    occ files_external:list -- user1
+
+files_external:applicable     
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Manage applicable users and groups for a mount.
+
+Usage::
+
+    files_external:applicable 
+    [--add-user     ADD-USER] 
+    [--remove-user  REMOVE-USER] 
+    [--add-group    ADD-GROUP] 
+    [--remove-group REMOVE-GROUP] 
+    [--remove-all] 
+    [--output       [OUTPUT]] 
+    [--]
+    <mount_id>
+
+Arguments:
+
++--------------+----------------------------------------------------+
+| ``mount_id`` | Can be obtained using ``occ files_external:list``. |
++--------------+----------------------------------------------------+
+
+files_external:backends    
+~~~~~~~~~~~~~~~~~~~~~~~
+
+Show available authentication and storage backends.
+
+Usage::
+
+    files_external:backends [options] 
+    [--] 
+    [<type>] 
+    [<backend>]
+
+Arguments:
+
++-------------+----------------------------------------------------------------------------------------------+
+| ``type`` | Only show backends of a certain type. Possible values are ``authentication`` or ``storage``. |
++-------------+----------------------------------------------------------------------------------------------+
+| ``backend`` | Only show information of a specific backend. |
++-------------+----------------------------------------------------------------------------------------------+
+
+files_external:config      
 ~~~~~~~~~~~~~~~~~~~~~
 
-You can create general (for all users) and personal (user-specific) shares by passing share configuration information on the command line, with the ``files_external:create`` command.
-The syntax is:
+Manage backend configuration for a mount.
 
-::
+Usage::
 
-    files_external:create [options] [--] <mount_point> <storage_backend> <authentication_backend>
+    files_external:config [options] 
+    [--] 
+    <mount_id> 
+    <key> 
+    [<value>]
+
+Arguments:
+
++--------------+--------------------------------------------------------------------------------------------------+
+| ``mount_id`` | The ID of the mount to edit. |
++--------------+--------------------------------------------------------------------------------------------------+
+| ``key`` | Key of the config option to set/get. |
++--------------+--------------------------------------------------------------------------------------------------+
+| ``value`` | Value to set the config option to, when no value is provided the existing value will be printed. |
++--------------+--------------------------------------------------------------------------------------------------+
 
 
-Arguments
-^^^^^^^^^
+files_external:create      
+~~~~~~~~~~~~~~~~~~~~~
 
-====================== ================================================
-Argument               Description
-====================== ================================================
-mount point            Path of the mount point within the file system
-storage_backend        Storage backend identifier
-authentication_backend authentication backend authentifier
-====================== ================================================
+Create a new mount configuration.
 
-Storage Backend Details
-^^^^^^^^^^^^^^^^^^^^^^^
+Usage::
 
-======================== =======================
-Storage Backend          Identifier
-======================== =======================
-Windows Network Drive    windows_network_drive
-WebDav                   dav
-Local                    local
-ownCloud                 owncloud
-SFTP                     sftp
-Amazon S3                amazons3
-Dropbox                  dropbox
-Google Drive             googledrive
-OpenStack Object Storage swift
-SMB / CIFS               smb
-======================== =======================
+    files_external:create [options] 
+    [--] 
+    <mount_point> 
+    <storage_backend> 
+    <authentication_backend>
 
-Authentication Details
-^^^^^^^^^^^^^^^^^^^^^^
+Arguments:
 
-==================================== =========================================
-Authentication method                Identifier, name, configuration
-==================================== =========================================
-Log-in credentials, save in session  password::sessioncredentials
-Log-in credentials, save in database password::logincredentials
-User entered, store in database      password::userprovided (*)
-Global Credentials                   password::global
-None                                 null::null
-Builtin                              builtin::builtin
-Username and password                password::password
-OAuth1                               oauth1::oauth1 (*)
-OAuth2                               oauth2::oauth2 (*)
-RSA public key                       publickey::rsa (*)
-OpenStack                            openstack::openstack (*)
-Rackspace                            openstack::rackspace (*)
-Access key (Amazon S3)               amazons3::accesskey (*)
-==================================== =========================================
++----------------------------+-------------------------------------------------------------------------------------------------------------+
+| ``mount_point`` | Mount point for the new mount. |
++----------------------------+-------------------------------------------------------------------------------------------------------------+
+| ``storage_backend`` | Storage backend identifier for the new mount, see `occ files_external:backends` for possible values. |
++----------------------------+-------------------------------------------------------------------------------------------------------------+
+| ``authentication_backend`` | Authentication backend identifier for the new mount, see `occ files_external:backends` for possible values. |
++----------------------------+-------------------------------------------------------------------------------------------------------------+
 
-(\*) - Authentication methods require additional configuration.
+Options:
 
-.. note:: Each Storage Backend needs its corresponding authentication methods.
++-------------------------+-----------------------------------------------------------------------------------------------+
+| ``--user[=USER]`` | User to add the mount configurations for, if not set the mount will be added as system mount. |
++-------------------------+-----------------------------------------------------------------------------------------------+
+| ``--dry`` | Don't save the imported mounts, only list the new mounts. |
++-------------------------+-----------------------------------------------------------------------------------------------+
+| ``-c, --config=CONFIG`` | Mount configuration option in ``key=value`` format (multiple values allowed). |
++-------------------------+-----------------------------------------------------------------------------------------------+
+
+files_external:delete      
+~~~~~~~~~~~~~~~~~~~~~
+
+Delete an external mount.
+
+Usage::
+    
+    files_external:delete [options] [--] <mount_id>
+
+Arguments:
+
++--------------+------------------------------+
+| ``mount_id`` | The ID of the mount to edit. |
++--------------+------------------------------+
+
+Options:
+
++---------------+--------------------+
+| ``-y, --yes`` | Skip confirmation. |
++---------------+--------------------+
+
+files_external:export
+~~~~~~~~~~~~~~~~~~~~~
+
+Usage::
+
+    files_external:export [options] [--] [<user_id>]
+
+Arguments:
+
++-------------+--------------------------------------------------------------------------------------------------+
+| ``user_id`` | User ID to export the personal mounts for, if no user is provided admin mounts will be exported. |
++-------------+--------------------------------------------------------------------------------------------------+
+
+Options:
++---------------+-------------------------------------------------------+
+| ``-a, --all`` | Show both system wide mounts and all personal mounts. |
++---------------+-------------------------------------------------------+
+
+files_external:import      
+~~~~~~~~~~~~~~~~~~~~~
+
+Import mount configurations.
+
+Usage::
+
+    files_external:import [options] [--] <path>
+
+Arguments:
+
++----------+------------------------------------------------------------------------------------+
+| ``path`` | Path to a json file containing the mounts to import, use ``-`` to read from stdin. |
++----------+------------------------------------------------------------------------------------+
+
+Options:
+
++-------------------+-----------------------------------------------------------------------------------------------+
+| ``--user[=USER]`` | User to add the mount configurations for, if not set the mount will be added as system mount. |
++-------------------+-----------------------------------------------------------------------------------------------+
+| ``--dry`` | Don't save the imported mounts, only list the new mounts. |
++-------------------+-----------------------------------------------------------------------------------------------+
+
+files_external:option      
+~~~~~~~~~~~~~~~~~~~~~
+
+Manage mount options for a mount.
+
+Usage::
+    files_external:option <mount_id> <key> [<value>]
+
+Arguments:
+
++--------------+-------------------------------------------------------------------------------------------------+
+| ``mount_id`` | The ID of the mount to edit. |
++--------------+-------------------------------------------------------------------------------------------------+
+| ``key`` | Key of the mount option to set/get. |
++--------------+-------------------------------------------------------------------------------------------------+
+| ``value`` | Value to set the mount option to, when no value is provided the existing value will be printed. |
++--------------+-------------------------------------------------------------------------------------------------+
+
+files_external:verify      
+~~~~~~~~~~~~~~~~~~~~~
+
+Verify mount configuration.
+
+Usage::
+
+    files_external:verify [options] [--] <mount_id>
+
+Arguments:
+
++--------------+-------------------------------+
+| ``mount_id`` | The ID of the mount to check. |
++--------------+-------------------------------+
+
+Options:
+
++-------------------------+------------------------------------------------------------------------------------------------+
+| ``-c, --config=CONFIG`` | Additional config option to set before checking in ``key=value``                               |
+|                         | pairs, required for certain auth backends such as login credentails (multiple values allowed). |
++-------------------------+------------------------------------------------------------------------------------------------+
 
 .. _group_commands_label:
 
