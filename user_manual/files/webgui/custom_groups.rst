@@ -9,6 +9,11 @@ This wasn't the most efficient way to work.
 To address that, as of ownCloud 10.0, you can now create your own groups on-the-fly, through a feature called "Custom Groups". 
 Here's how to use it. 
 
+.. note::
+	Depending on your Custom Groups setting, configured by the ownCloud admin, Custom Groups may behave differently
+	- Creating or renaming a Custom Group using an existing name of another Custom Group can be allowed or not depending on administrative settings.
+	- Custom Group creation can be limited to ownCloud **group admins**
+
 Creating Custom Groups
 ~~~~~~~~~~~~~~~~~~~~~~
 
@@ -62,7 +67,6 @@ Change the name and click enter, and the name will be changed.
 
 .. image:: ../../images/custom-groups/rename-custom-group.png
    :alt: Rename a custom group
-
 
  
 .. Links

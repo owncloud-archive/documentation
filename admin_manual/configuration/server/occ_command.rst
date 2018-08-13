@@ -868,8 +868,6 @@ Use ``files_external:export`` to export all admin mounts to stdout, and ``files_
   (``files_external``) is enabled.
   It is not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
-
-
 files_external:list        
 ~~~~~~~~~~~~~~~~~~~
 
@@ -1057,7 +1055,6 @@ Arguments::
 Options::
 
     -c, --config=CONFIG    Additional config option to set before checking in key=value pairs, required for certain auth backends such as login credentails (multiple values allowed)
-
 
 .. _group_commands_label:
 
