@@ -9,6 +9,7 @@ There are two options to update an ownCloud installation hosted on an ownCloud X
 
 .. WARNING::
    Do not use the ownCloud built in web updater!
+   
 
 Use the Univention Management Console
 -------------------------------------
@@ -161,6 +162,14 @@ If you’re running a version of ownCloud prior to 10.0, the above in-place upgr
 This is because the earlier versions of ownCloud are installed with a different application to the 10.x version.
 More specifically, the versions of the ownCloud app, prior to 10, have a version suffix in the name. 
 For example the ownCloud 8.2 app is named ``owncloud82``.
+
+For ownCloud 8.2 users: during the ownCloud App upgrade, user files will be moved to the new Docker data directory, ``/var/lib/univention-appcenter/apps/owncloud/data/files``.  Essentially, the following command will be executed:
+
+::
+      mv /var/lib/owncloud/* /var/lib/univention-appcenter/apps/owncloud/data/files
+
+Please check your filesystems and mountpoints and make sure enough space is available for the operation.
+
 
 Given that, you first have to uninstall the existing version and then install the 10.x version.
 To do so, run the following commands:
