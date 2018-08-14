@@ -65,7 +65,6 @@ The class to be used is ``OCA\Files_Primary_S3\S3Storage``, as in the following 
             'arguments' => [
                 // replace with your bucket
                 'bucket' => 'owncloud',
-                'autocreate' => true,
                 // uncomment to enable server side encryption
                 //'serversideencryption' => 'AES256',
                 'options' => [
@@ -100,7 +99,6 @@ The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
             'arguments' => [
                 // replace with your bucket
                 'bucket' => 'OWNCLOUD',
-                'autocreate' => true,
                 // uncomment to enable server side encryption
                 //'serversideencryption' => 'AES256',
                 'options' => [
@@ -135,7 +133,6 @@ The class to be used is ``OCA\Files_Primary_S3\S3Storage``:
             'arguments' => [
                 // replace with your bucket
                 'bucket' => 'owncloud',
-                'autocreate' => true,
                 // uncomment to enable server side encryption
                 //'serversideencryption' => 'AES256',
                 'options' => [
