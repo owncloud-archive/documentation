@@ -6,7 +6,7 @@
 Development Environment
 =======================
 
-To be able to use and develop with ownCloud takes a few steps.
+To be able to use and develop with ownCloud follow these steps.
 
 #. Install the Core Software
 #. Setup the web server and database
@@ -18,29 +18,28 @@ To be able to use and develop with ownCloud takes a few steps.
 If you have already completed one or more of these steps, feel free to skip them.
 Otherwise, if you're just getting started, begin by getting the ownCloud source code.
 
-Install the Core Software 
+1. Install the Core Software 
 -------------------------
 
 The first thing to do is to ensure that your server has the necessary software for installing and running ownCloud.
-While you can go further, you need to install at least the following:
 
-- `Make <https://www.gnu.org/software/make/>`_
-- `Node.js <https://nodejs.org>`_.
-- `git <https://git-scm.com/>`_
-- `npm <https://www.npmjs.com/>`_
-- `unzip <https://linux.die.net/man/1/unzip>`_
-- `wget <https://www.gnu.org/software/wget/>`_
+https://doc.owncloud.com/server/latest/admin_manual/installation/source_installation.html#install-the-required-packages
 
-Install Dependencies on Ubuntu 16.04
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Then you will need to install the software required to run the development environment's installation process.
+
+For Ubuntu 16.04 or 18.04
 
 ::
+  
+  cd ~
+  curl -sL https://deb.nodesource.com/setup_8.x -o nodesource_setup.sh
 
-  # Ensure that Apt's cache is up to date
+  sudo bash nodesource_setup.sh
+
   sudo apt-get -y -q update
 
-  # Auto-install the required dependencies with a minimum of output
-  sudo apt-get install -y -q wget make npm nodejs unzip git
+  sudo apt-get install nodejs build-essential make unzip git
+
 
 Install Dependencies on openSUSE Leap 42.3
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
