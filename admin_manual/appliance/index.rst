@@ -7,6 +7,7 @@ The ownCloud X Appliance
 
    what-is-it
    installation
+   enterprise-trial
    login_information
    howto-update-owncloud
    managing-ucs
