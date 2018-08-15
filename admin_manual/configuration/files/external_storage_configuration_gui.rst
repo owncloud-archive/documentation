@@ -172,3 +172,7 @@ If you want to mount a FTP Storage, please install the app ``FTP Storage Support
 
 .. figure:: ../../images/ftp_storage_support.png
    :alt: FTP Storage Support App
+
+.. Links
+
+.. _the FTP Storage Support app: https://marketplace.owncloud.com/apps/files_external_ftp
