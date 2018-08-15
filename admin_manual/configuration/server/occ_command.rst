@@ -865,9 +865,9 @@ Usage::
 Arguments:
 
 +-------------+----------------------------------------------------------------------------------------------+
-| ``type`` | Only show backends of a certain type. Possible values are ``authentication`` or ``storage``. |
+| ``type``    | Only show backends of a certain type. Possible values are ``authentication`` or ``storage``. |
 +-------------+----------------------------------------------------------------------------------------------+
-| ``backend`` | Only show information of a specific backend. |
+| ``backend`` | Only show information of a specific backend.                                                 |
 +-------------+----------------------------------------------------------------------------------------------+
 
 files_external:config      
@@ -886,11 +886,11 @@ Usage::
 Arguments:
 
 +--------------+--------------------------------------------------------------------------------------------------+
-| ``mount_id`` | The ID of the mount to edit. |
+| ``mount_id`` | The ID of the mount to edit.                                                                     |
 +--------------+--------------------------------------------------------------------------------------------------+
-| ``key`` | Key of the config option to set/get. |
+| ``key``      | Key of the config option to set/get.                                                             |
 +--------------+--------------------------------------------------------------------------------------------------+
-| ``value`` | Value to set the config option to, when no value is provided the existing value will be printed. |
+| ``value``    | Value to set the config option to, when no value is provided the existing value will be printed. |
 +--------------+--------------------------------------------------------------------------------------------------+
 
 
@@ -910,9 +910,9 @@ Usage::
 Arguments:
 
 +----------------------------+-------------------------------------------------------------------------------------------------------------+
-| ``mount_point`` | Mount point for the new mount. |
+| ``mount_point``            | Mount point for the new mount.                                                                              |
 +----------------------------+-------------------------------------------------------------------------------------------------------------+
-| ``storage_backend`` | Storage backend identifier for the new mount, see `occ files_external:backends` for possible values. |
+| ``storage_backend``        | Storage backend identifier for the new mount, see `occ files_external:backends` for possible values.        |
 +----------------------------+-------------------------------------------------------------------------------------------------------------+
 | ``authentication_backend`` | Authentication backend identifier for the new mount, see `occ files_external:backends` for possible values. |
 +----------------------------+-------------------------------------------------------------------------------------------------------------+
@@ -920,11 +920,11 @@ Arguments:
 Options:
 
 +-------------------------+-----------------------------------------------------------------------------------------------+
-| ``--user[=USER]`` | User to add the mount configurations for, if not set the mount will be added as system mount. |
+| ``--user[=USER]``       | User to add the mount configurations for, if not set the mount will be added as system mount. |
 +-------------------------+-----------------------------------------------------------------------------------------------+
-| ``--dry`` | Don't save the imported mounts, only list the new mounts. |
+| ``--dry``               | Don't save the imported mounts, only list the new mounts.                                     |
 +-------------------------+-----------------------------------------------------------------------------------------------+
-| ``-c, --config=CONFIG`` | Mount configuration option in ``key=value`` format (multiple values allowed). |
+| ``-c, --config=CONFIG`` | Mount configuration option in ``key=value`` format (multiple values allowed).                 |
 +-------------------------+-----------------------------------------------------------------------------------------------+
 
 files_external:delete      
@@ -986,7 +986,7 @@ Options:
 +-------------------+-----------------------------------------------------------------------------------------------+
 | ``--user[=USER]`` | User to add the mount configurations for, if not set the mount will be added as system mount. |
 +-------------------+-----------------------------------------------------------------------------------------------+
-| ``--dry`` | Don't save the imported mounts, only list the new mounts. |
+| ``--dry``         | Don't save the imported mounts, only list the new mounts.                                     |
 +-------------------+-----------------------------------------------------------------------------------------------+
 
 files_external:option      
@@ -1000,11 +1000,11 @@ Usage::
 Arguments:
 
 +--------------+-------------------------------------------------------------------------------------------------+
-| ``mount_id`` | The ID of the mount to edit. |
+| ``mount_id`` | The ID of the mount to edit.                                                                    |
 +--------------+-------------------------------------------------------------------------------------------------+
-| ``key`` | Key of the mount option to set/get. |
+| ``key``      | Key of the mount option to set/get.                                                             |
 +--------------+-------------------------------------------------------------------------------------------------+
-| ``value`` | Value to set the mount option to, when no value is provided the existing value will be printed. |
+| ``value``    | Value to set the mount option to, when no value is provided the existing value will be printed. |
 +--------------+-------------------------------------------------------------------------------------------------+
 
 files_external:verify      
