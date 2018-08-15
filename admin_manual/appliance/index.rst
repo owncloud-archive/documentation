@@ -7,13 +7,13 @@ The ownCloud X Appliance
 
    what-is-it
    installation
-   certificates
+   enterprise-trial
    login_information
    howto-update-owncloud
    managing-ucs
    Clamav
+   certificates
    Active_Directory
    Backup
-   Collabora
    Office
    firewall

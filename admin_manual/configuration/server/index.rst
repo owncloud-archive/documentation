@@ -23,6 +23,7 @@ Server Configuration
    logging_configuration
    harden_server
    security/password_policy
+   security/oauth2
    reverse_proxy_configuration
    thirdparty_php_configuration
    automatic_configuration

@@ -39,6 +39,20 @@ does not work.
    (See :doc:`../../server/background_jobs_configuration`.) Be
    aware that the Ajax cron mode is triggered by browsing the ownCloud Web GUI.
 
+Known Limitations
+~~~~~~~~~~~~~~~~~
+
+Please be aware that any operations must be performed by the logged-in mount owner, as credentials are not stored anywhere.
+As a result, there are three known limitations, for both admin and personal mounts where both have the "log-in credentials, save in session" option.
+These are:
+
+#. Directly sharing the storage or any of its sub-folders will go through, but the recipient will not see the share mounted. This is because the mount cannot be set up due to missing credentials. Federated sharing is also affected, because it works on a "public link share token" basis, which itself doesn't contain the user's storage password. As a result, the storage cannot be mounted in this case either.
+#. Any background task operating on the storage, such as background scanning.
+#. Any :doc:`occ command <../../server/occ_command>` that operates on the storage, such as ``occ files:scan``, will have no effect.
+
+.. note:: **Enterprise Users Only**
+
+  The enterprise version has a mode called "Save in DB" where the credentials are saved, in encrypted form, in the database (via :doc:`the WND app <../../../enterprise/external_storage/windows-network-drive_configuration>`). In this mode, all of the above operations work.
 Public-key Mechanisms
 ---------------------
 
