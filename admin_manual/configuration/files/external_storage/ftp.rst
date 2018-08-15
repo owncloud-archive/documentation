@@ -4,7 +4,7 @@ FTP/FTPS
 
 If you want to mount an FTP Storage, please install the `FTP Storage Support`_ app from the ownCloud Marketplace.
 
-.. figure:: admin_manual/images/ftp_storage_support.png
+.. figure:: ../../../images/ftp_storage_support.png
    :alt: The ownCloud FTP Storage Support App.
 
 
