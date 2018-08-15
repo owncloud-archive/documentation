@@ -18,7 +18,7 @@ Enabling External Storage Support
 
 Tick the check box under Settings > Storage > "Enable External Storage".
 
-.. figure:: admin_manual/images/external_storage.png
+.. figure:: ../../images/external_storage.png
    :alt: Enable external storage on your Settings > Storage page.
 
 Storage Configuration
@@ -28,7 +28,7 @@ To create a new external storage mount, select an available backend from the
 dropdown **Add storage**. Each backend has different required options, which 
 are configured in the configuration fields.
 
-.. figure:: admin_manual/images/external_storage_types.png
+.. figure:: ../../images/external_storage_types.png
 
 Each backend may also accept multiple authentication methods. These are selected 
 with the dropdown under **Authentication**. Different backends support different 
@@ -170,5 +170,9 @@ FTP
 
 If you want to mount a FTP Storage, please install the app ``FTP Storage Support`` from ownCloud market.
 
-.. figure:: admin_manual/images/ftp_storage_support.png
+.. figure:: ../../images/ftp_storage_support.png
    :alt: FTP Storage Support App
+
+.. Links
+
+.. _the FTP Storage Support app: https://marketplace.owncloud.com/apps/files_external_ftp

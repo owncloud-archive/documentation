@@ -2,10 +2,10 @@
 FTP/FTPS
 ========
 
-If you want to mount a FTP Storage, please install the app ``FTP Storage Support`` from ownCloud market.
+If you want to mount an FTP Storage, please install the `FTP Storage Support`_ app from the ownCloud Marketplace.
 
-.. figure:: admin_manual/images/ftp_storage_support.png
-   :alt: FTP Storage Support App
+.. figure:: ../../../images/ftp_storage_support.png
+   :alt: The ownCloud FTP Storage Support App.
 
 
 To connect to an FTP server, you will need:
@@ -39,3 +39,6 @@ options and information.
 
 FTP uses the password authentication scheme; see :doc:`auth_mechanisms` for 
 more information on authentication schemes.
+.. Links
+
+.. _FTP Storage Support: https://marketplace.owncloud.com/apps/files_external_ftp
