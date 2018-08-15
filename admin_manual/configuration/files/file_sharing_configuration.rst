@@ -205,7 +205,7 @@ occ files_external:create
 
 This command provides for the creation of both personal (for a specific user) and general shares.
 The command’s configuration options can be provided either as individual arguments or collectively, as a JSON object.
-For more information about the command, refer to the :ref:`the occ documentation <files_external_create_label>`.
+For more information about the command, refer to the :ref:`the occ documentation <files_external_label>`.
 
 Personal Share
 ^^^^^^^^^^^^^^

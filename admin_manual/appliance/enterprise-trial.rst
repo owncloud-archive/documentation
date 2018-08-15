@@ -1,3 +1,7 @@
+=========================================
+The ownCloud X Appliance Enterprise Trial
+=========================================
+
 The appliance contains the community edition of ownCloud but can be easily upgraded to the enterprise edition. This upgrade gives you access to a free, 30-day trial of the enterprise edition and all it's features. All you need is an email address to get started. Here are the necessary steps:
 
 - Visit https://marketplace.owncloud.com/enterprise-trial

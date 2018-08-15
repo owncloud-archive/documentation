@@ -267,7 +267,7 @@ You may change your recovery key password.
 
 .. note::
    Sharing a recovery key with a user group is **not** supported.
-   This is only supported with :ref:`the master key <create-a-master-key>`.
+   This is only supported with :ref:`the master key <occ_encryption_label>`.
    
 Changing The Recovery Key Password
 ----------------------------------
