@@ -71,28 +71,27 @@ The configuration example below shows how to add a second directory, called ``ap
    :emphasize-lines: 9-13
 
 After you add a new directory configuration, you can then move apps from the original app directory to the new one. 
-If you want to identify as an example all non core / non shipped apps, use the following command:
+If you want to identify, as an example, all non-core or non-shipped apps, use the following command:
 
 ::
 
-  sudo -uwww-data ./occ app:list --shipped=false
+  sudo -u www-data php occ app:list --shipped=false
 
 Follow these steps to manually move apps:
 
 #. :ref:`Enable maintenance mode <maintenance_commands_label>`.
 #. :ref:`Disable the apps <apps_commands_label>` that you want to move.
-#. Create a new apps directory like ``apps-external`` and assign it the same user, group and ownership permissions as the core apps directory.
+#. Create a new apps directory, like ``apps-external`` and assign it the same user, group and ownership permissions as the core apps directory.
 #. Move the apps from the old apps directory to the new apps directory.
 #. Add the key for the new app directory in ``config/config.php``.
-#. If you're using a cache, such as `Redis <../configuration/server/caching_configuration.html#clearing-the-redis-cache>`_ or `Memcached <../configuration/server/caching_configuration.html#clearing-the-memcached-cache>`_, ensure that you clear the cache.
+#. If you're using a cache, such as `Redis`_ or `Memcached`_, ensure that you clear the cache.
 #. Re-enable the apps.
 #. Disable maintenance mode.
 
 Script for moving non core apps in custom app directories
 ---------------------------------------------------------
 
-In the same way as you can manually move eg non core / non shipped apps to a custom directory, a script
-might automate and help in this task.
+In the same way as you can manually move apps, e.g., non-core or non-shipped, to a custom directory, a script might automate and help in this task.
 
 Follow these steps to automate moving apps:
 
@@ -105,8 +104,8 @@ Follow these steps to automate moving apps:
 #. Re-enable the apps.
 #. Disable maintenance mode.
 
-As preparation, please install the ``jq`` library. 
-``jq`` is like sed for JSON data - you can use it to slice, filter, map and transform structured data.
+In preparation, please install the ``jq`` library. 
+jq is like sed for JSON data - you can use it to slice, filter, map and transform structured data.
 
 
 To install ``jq`` run the following command:
@@ -142,3 +141,5 @@ Using the example below, both the app's name and directory name would be ``youra
 
 .. _the Marketplace: https://marketplace.owncloud.com
 .. _the application's metadata file: https://doc.owncloud.org/server/latest/developer_manual/app/fundamentals/info.html
+.. _Redis: ../configuration/server/caching_configuration.html#clearing-the-redis-cache
+.. _Memcached: ../configuration/server/caching_configuration.html#clearing-the-memcached-cache
