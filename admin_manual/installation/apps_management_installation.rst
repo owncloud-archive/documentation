@@ -108,7 +108,7 @@ In preparation, please install the ``jq`` library.
 jq is like sed for JSON data - you can use it to slice, filter, map and transform structured data.
 
 
-To install ``jq`` run the following command:
+To install jq <http://https://stedolan.github.io/jq/> run the following command:
 
 ::
 
