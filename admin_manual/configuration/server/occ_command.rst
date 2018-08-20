@@ -868,25 +868,6 @@ Use ``files_external:export`` to export all admin mounts to stdout, and ``files_
   (``files_external``) is enabled.
   It is not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
-files_external:list        
-~~~~~~~~~~~~~~~~~~~
-
-List configured mounts.
-
-Usage::
-
-    files_external:list [--show-password] [--full] [-a|--all] [--] [<user_id>]
-
-Arguments:
-
-+-------------+----------------------------------------------------------------------------------------------+
-| ``user_id`` | User ID to list the personal mounts for, if no user is provided admin mounts will be listed. |
-+-------------+----------------------------------------------------------------------------------------------+
-
-Example::
-
-    occ files_external:list -- user1
-
 files_external:applicable     
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -895,20 +876,37 @@ Manage applicable users and groups for a mount.
 Usage::
 
     files_external:applicable 
-    [--add-user     ADD-USER] 
-    [--remove-user  REMOVE-USER] 
-    [--add-group    ADD-GROUP] 
-    [--remove-group REMOVE-GROUP] 
-    [--remove-all] 
-    [--output       [OUTPUT]] 
+    [--add-user     ADD-USER]       
+    [--remove-user  REMOVE-USER]    
+    [--add-group    ADD-GROUP]      
+    [--remove-group REMOVE-GROUP]   
+    [--remove-all]                  
+    [--output       [OUTPUT]]       
     [--]
-    <mount_id>
+    <mount_id>                      
 
 Arguments:
 
-+--------------+----------------------------------------------------+
-| ``mount_id`` | Can be obtained using ``occ files_external:list``. |
-+--------------+----------------------------------------------------+
++------------------+--------------------------------------------------------------------------+
+| ``mount_id``     | The ID of the mount to edit                                              |
++------------------+--------------------------------------------------------------------------+
+
+Options:
+
++-------------------+--------------------------------------------------------------------------+
+| ``--add-user``    | user to add as applicable (multiple values allowed)                      |
++-------------------+--------------------------------------------------------------------------+
+| ``--remove-user`` | user to remove as applicable (multiple values allowed)                   |
++-------------------+--------------------------------------------------------------------------+
+| ``--add-group``   | group to add as applicable (multiple values allowed)                     |
++-------------------+--------------------------------------------------------------------------+
+| ``--remove-group``| group to remove as applicable (multiple values allowed)                  |
++-------------------+--------------------------------------------------------------------------+
+| ``--remove-all``  | Set the mount to be globally applicable                                  |
++-------------------+--------------------------------------------------------------------------+
+| ``--output``      | The output format to use (plain, json or json_pretty, default is plain). |
++-------------------+--------------------------------------------------------------------------+
+
 
 files_external:backends    
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -929,6 +927,12 @@ Arguments:
 +-------------+----------------------------------------------------------------------------------------------+
 | ``backend`` | Only show information of a specific backend.                                                 |
 +-------------+----------------------------------------------------------------------------------------------+
+
+Options:
+
++------------------+--------------------------------------------------------------------------+
+| ``--output``     | The output format to use (plain, json or json_pretty, default is plain). |
++------------------+--------------------------------------------------------------------------+
 
 files_external:config      
 ~~~~~~~~~~~~~~~~~~~~~
@@ -953,6 +957,12 @@ Arguments:
 | ``value``    | Value to set the config option to, when no value is provided the existing value will be printed. |
 +--------------+--------------------------------------------------------------------------------------------------+
 
+Options:
+
++------------------+--------------------------------------------------------------------------+
+| ``--output``     | The output format to use (plain, json or json_pretty, default is plain). |
++------------------+--------------------------------------------------------------------------+
+
 
 files_external:create      
 ~~~~~~~~~~~~~~~~~~~~~
@@ -967,7 +977,8 @@ Usage::
     <storage_backend> 
     <authentication_backend>
 
-Arguments:
+Arguments
+^^^^^^^^^
 
 +----------------------------+-------------------------------------------------------------------------------------------------------------+
 | ``mount_point``            | Mount point for the new mount.                                                                              |
@@ -977,15 +988,61 @@ Arguments:
 | ``authentication_backend`` | Authentication backend identifier for the new mount, see `occ files_external:backends` for possible values. |
 +----------------------------+-------------------------------------------------------------------------------------------------------------+
 
-Options:
+Options
+^^^^^^^
 
 +-------------------------+-----------------------------------------------------------------------------------------------+
 | ``--user[=USER]``       | User to add the mount configurations for, if not set the mount will be added as system mount. |
 +-------------------------+-----------------------------------------------------------------------------------------------+
-| ``--dry``               | Don't save the imported mounts, only list the new mounts.                                     |
-+-------------------------+-----------------------------------------------------------------------------------------------+
 | ``-c, --config=CONFIG`` | Mount configuration option in ``key=value`` format (multiple values allowed).                 |
 +-------------------------+-----------------------------------------------------------------------------------------------+
+| ``--dry``               | Don't save the imported mounts, only list the new mounts.                                     |
++-------------------------+-----------------------------------------------------------------------------------------------+
+| ``--output``            | The output format to use (plain, json or json_pretty, default is plain).                      |
++-------------------------+-----------------------------------------------------------------------------------------------+
+
+Storage Backend Details
+^^^^^^^^^^^^^^^^^^^^^^^
+
+======================== =======================
+Storage Backend          Identifier
+======================== =======================
+Windows Network Drive    windows_network_drive
+WebDav                   dav
+Local                    local
+ownCloud                 owncloud
+SFTP                     sftp
+Amazon S3                amazons3
+Dropbox                  dropbox
+Google Drive             googledrive
+OpenStack Object Storage swift
+SMB / CIFS               smb
+======================== =======================
+
+Authentication Details
+^^^^^^^^^^^^^^^^^^^^^^
+
+==================================== =========================================
+Authentication method                Identifier, name, configuration
+==================================== =========================================
+Log-in credentials, save in session  password::sessioncredentials
+Log-in credentials, save in database password::logincredentials
+User entered, store in database      password::userprovided (*)
+Global Credentials                   password::global
+None                                 null::null
+Builtin                              builtin::builtin
+Username and password                password::password
+OAuth1                               oauth1::oauth1 (*)
+OAuth2                               oauth2::oauth2 (*)
+RSA public key                       publickey::rsa (*)
+OpenStack                            openstack::openstack (*)
+Rackspace                            openstack::rackspace (*)
+Access key (Amazon S3)               amazons3::accesskey (*)
+==================================== =========================================
+
+ (\*) - Authentication methods require additional configuration.
+
+.. note:: Each Storage Backend needs its corresponding authentication methods.
 
 files_external:delete      
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1004,9 +1061,11 @@ Arguments:
 
 Options:
 
-+---------------+--------------------+
-| ``-y, --yes`` | Skip confirmation. |
-+---------------+--------------------+
++------------------+--------------------------------------------------------------------------+
+| ``-y, --yes``    | Skip confirmation.                                                       |
++------------------+--------------------------------------------------------------------------+
+| ``--output``     | The output format to use (plain, json or json_pretty, default is plain). |
++------------------+--------------------------------------------------------------------------+
 
 files_external:export
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1022,6 +1081,7 @@ Arguments:
 +-------------+--------------------------------------------------------------------------------------------------+
 
 Options:
+
 +---------------+-------------------------------------------------------+
 | ``-a, --all`` | Show both system wide mounts and all personal mounts. |
 +---------------+-------------------------------------------------------+
@@ -1048,6 +1108,40 @@ Options:
 +-------------------+-----------------------------------------------------------------------------------------------+
 | ``--dry``         | Don't save the imported mounts, only list the new mounts.                                     |
 +-------------------+-----------------------------------------------------------------------------------------------+
+| ``--output``      | The output format to use (plain, json or json_pretty, default is plain).                      |
++-------------------+-----------------------------------------------------------------------------------------------+
+
+files_external:list        
+~~~~~~~~~~~~~~~~~~~
+
+List configured mounts.
+
+Usage::
+
+    files_external:list [--show-password] [--full] [-a|--all] [--] [<user_id>]
+
+Arguments:
+
++-------------+----------------------------------------------------------------------------------------------+
+| ``user_id`` | User ID to list the personal mounts for, if no user is provided admin mounts will be listed. |
++-------------+----------------------------------------------------------------------------------------------+
+
+Options:
+
++---------------------+-----------------------------------------------------------------------------------------------+
+| ``--show-password`` | User to add the mount configurations for, if not set the mount will be added as system mount. |
++---------------------+-----------------------------------------------------------------------------------------------+
+| ``--full``          | Don't save the imported mounts, only list the new mounts.                                     |
++---------------------+-----------------------------------------------------------------------------------------------+
+| ``-a, --all``       | Show both system wide mounts and all personal mounts.                                         |
++---------------------+-----------------------------------------------------------------------------------------------+
+| ``--output``        | The output format to use (plain, json or json_pretty, default is plain).                      |
++---------------------+-----------------------------------------------------------------------------------------------+
+
+
+Example::
+
+    occ files_external:list -- user1
 
 files_external:option      
 ~~~~~~~~~~~~~~~~~~~~~
@@ -1087,6 +1181,8 @@ Options:
 +-------------------------+------------------------------------------------------------------------------------------------+
 | ``-c, --config=CONFIG`` | Additional config option to set before checking in ``key=value``                               |
 |                         | pairs, required for certain auth backends such as login credentails (multiple values allowed). |
++-------------------------+------------------------------------------------------------------------------------------------+
+| ``--output``            | The output format to use (plain, json or json_pretty, default is plain).                       |
 +-------------------------+------------------------------------------------------------------------------------------------+
 
 .. _group_commands_label:
