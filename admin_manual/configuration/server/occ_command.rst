@@ -1,8 +1,10 @@
-=====================
-Using the occ Command
-=====================
+==========================
+Using the occ core Command
+==========================
 
-ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line interface. 
+This command description references to ownCloud core commands only.
+
+ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line interface.
 You can perform many common server operations with ``occ``, such as installing and upgrading ownCloud, managing users and groups, encryption, passwords, LDAP setting, and more.
 
 ``occ`` is in the :file:`owncloud/` directory; for example :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. 
@@ -24,20 +26,14 @@ occ Command Directory
 * :ref:`group_commands_label`
 * :ref:`integrity_check_label`
 * :ref:`create_javascript_translation_files_label`
-* :ref:`ldap_commands_label`
 * :ref:`logging_commands_label`
 * :ref:`maintenance_commands_label`
-* :ref:`market_commands_label`
-* :ref:`reports_commands_label`
 * :ref:`security_commands_label`
-* :ref:`ransomware_commands_label`
-* :ref:`shibboleth_label`
 * :ref:`trashbin_label`
 * :ref:`user_commands_label`
 * :ref:`versions_label`
 * :ref:`command_line_installation_label`
 * :ref:`command_line_upgrade_label`
-* :ref:`two_factor_auth_label`
 * :ref:`disable_user_label`
 
 .. _http_user_label:
@@ -1406,224 +1402,8 @@ Create Translations in Multiple Languages
 To create translations in multiple languages simultaneously, supply multiple languages to the command, as in the following example:
 
 ::
-  
+
  sudo -u www-data php occ l10n:createjs gallery de_AT de_DE hu_HU es fr
-
-.. _ldap_commands_label: 
- 
-LDAP Commands
--------------
-
-.. note::
-  These commands are only available when the "LDAP user and group backend" app
-  (``user_ldap``) is enabled.
-
-These LDAP commands appear only when you have enabled the LDAP app. 
-Then you can run the following LDAP commands with ``occ``:
-
-.. code-block:: console
-
- ldap
-  ldap:check-user               Checks whether a user exists on LDAP.
-  ldap:create-empty-config      Creates an empty LDAP configuration
-  ldap:delete-config            Deletes an existing LDAP configuration
-  ldap:search                   Executes a user or group search
-  ldap:set-config               Modifies an LDAP configuration
-  ldap:show-config              Shows the LDAP configuration
-  ldap:test-config              Tests an LDAP configuration
-  ldap:update-group             Update the specified group membership
-                                Information stored locally
-
-Search for an LDAP user, using this syntax:
-
-::
-
- sudo -u www-data php occ ldap:search [--group] [--offset="..."] 
- [--limit="..."] search
-
-Searches will match at the beginning of the attribute value only. 
-This example searches for ``givenNames`` that start with "rob":
-
-::
-
- sudo -u www-data php occ ldap:search "rob"
- 
-This will find robbie, roberta, and robin. Broaden the search to find, for example, ``jeroboam`` with the asterisk wildcard:
-
-::
-
- sudo -u www-data php occ ldap:search "*rob"
-
-User search attributes are set with ``ldap:set-config`` (below). 
-For example, if your search attributes are ``givenName`` and ``sn`` you can find users by first name + last name very quickly. 
-For example, you'll find Terri Hanson by searching for ``te ha``. 
-Trailing whitespace is ignored.
- 
-Check if an LDAP user exists. 
-This works only if the ownCloud server is connected to an LDAP server.
-
-::
-
- sudo -u www-data php occ ldap:check-user robert
- 
-``ldap:check-user`` will not run a check when it finds a disabled LDAP connection. 
-This prevents users that exist on disabled LDAP connections from being marked as deleted. 
-If you know for certain that the user you are searching for is not in one of the disabled connections, and exists on an active connection, use the ``--force`` option to force it to check all active LDAP connections.
-
-::
-
- sudo -u www-data php occ ldap:check-user --force robert
-
-``ldap:create-empty-config`` creates an empty LDAP configuration. 
-The first one you create has no ``configID``, like this example:
-
-::
-
- sudo -u www-data php occ ldap:create-empty-config
-   Created new configuration with configID ''
-   
-This is a holdover from the early days, when there was no option to create additional configurations. 
-The second, and all subsequent, configurations that you create are automatically assigned IDs.
-
-::
- 
- sudo -u www-data php occ ldap:create-empty-config
-    Created new configuration with configID 's01' 
- 
-Then you can list and view your configurations:
-
-::
-
- sudo -u www-data php occ ldap:show-config
- 
-And view the configuration for a single ``configID``:
-
-::
-
- sudo -u www-data php occ ldap:show-config s01
- 
-``ldap:delete-config [configID]`` deletes an existing LDAP configuration.
-
-:: 
-
- sudo -u www-data php occ ldap:delete  s01
- Deleted configuration with configID 's01'
- 
-The ``ldap:set-config`` command is for manipulating configurations, like this example that sets search attributes:
-
-::
- 
- sudo -u www-data php occ ldap:set-config s01 ldapAttributesForUserSearch 
- "cn;givenname;sn;displayname;mail"
-
-The command takes the following format:
-
-::
-
-  ldap:set-config <configID> <configKey> <configValue>
-
-All of the available keys, along with default values for `configValue`, are listed in the table below.
-
-================================ ==============================================
-Configuration                    Setting
-================================ ==============================================
-hasMemberOfFilterSupport
-hasPagedResultSupport
-homeFolderNamingRule
-lastJpegPhotoLookup              0 
-ldapAgentName                    `cn=admin,dc=owncloudqa,dc=com`
-ldapAgentPassword                *\**
-ldapAttributesForGroupSearch
-ldapAttributesForUserSearch
-ldapBackupHost
-ldapBackupPort
-ldapBase                         `dc=owncloudqa,dc=com`
-ldapBaseGroups                   `dc=owncloudqa,dc=com`
-ldapBaseUsers                    `dc=owncloudqa,dc=com`
-ldapCacheTTL                     600 
-ldapConfigurationActive          1
-ldapDynamicGroupMemberURL
-ldapEmailAttribute
-ldapExperiencedAdmin             0 
-ldapExpertUUIDGroupAttr
-ldapExpertUUIDUserAttr
-ldapExpertUsernameAttr                                                                            ldapGroupDisplayName             `cn`
-ldapGroupFilter                                                                                  ldapGroupFilterGroups
-ldapGroupFilterMode              0
-ldapGroupFilterObjectclass
-ldapGroupMemberAssocAttr         `uniqueMember`
-ldapHost                         `ldap://host`
-ldapIgnoreNamingRules
-ldapLoginFilter                  `(&((objectclass=inetOrgPerson))(uid=%uid))`
-ldapLoginFilterAttributes
-ldapLoginFilterEmail             0
-ldapLoginFilterMode              0
-ldapLoginFilterUsername          1
-ldapNestedGroups                 0
-ldapOverrideMainServer
-ldapPagingSize                   500
-ldapPort                         389
-ldapQuotaAttribute
-ldapQuotaDefault
-ldapTLS                          0
-ldapUserDisplayName              `displayName`
-ldapUserDisplayName2
-ldapUserFilter                   `((objectclass=inetOrgPerson))`
-ldapUserFilterGroups
-ldapUserFilterMode               0
-ldapUserFilterObjectclass        `inetOrgPerson`
-ldapUuidGroupAttribute           `auto`
-ldapUuidUserAttribute            `auto`
-turnOffCertCheck                 0
-useMemberOfToDetectMembership    1
-================================ ==============================================
-
-``ldap:test-config`` tests whether your configuration is correct and can bind to the server.
-
-::
-
- sudo -u www-data php occ ldap:test-config s01
- The configuration is valid and the connection could be established!
-
-``ldap:update-group`` updates the specified group membership information stored locally.
-
-The command takes the following format:
-
-::
-
-  ldap:update-group <groupID> <groupID <groupID> ...>
-
-The command allows for running a manual group sync on one or more groups, instead of having to wait for group syncing to occur.
-If users have been added or removed from these groups in LDAP, ownCloud will update its details.
-If a group was deleted in LDAP, ownCloud will also delete the local mapping info about this group.
-
-.. note::
-   New groups in LDAP won't be synced with this command.
-   The LDAP TTL configuration (by default 10 minutes) still applies. This means
-   that recently deleted groups from LDAP might be considered as "active" and
-   might not be deleted in ownCloud immediately.
-
-**Configuring the LDAP Refresh Attribute Interval**
-
-You can configure the LDAP refresh attribute interval, but not with the ``ldap`` commands. 
-Instead, you need to use the ``config:app:set`` command, as in the following example, which takes a number of seconds to the ``--value`` switch.
-
-::
-   
-  sudo -u www-data php occ config:app:set user_ldap updateAttributesInterval --value=7200
-   
-In the example above, the interval is being set to 7200 seconds.
-Assuming the above example was used, the command would output the following:
-
-.. code-block:: console
-   
-  Config value updateAttributesInterval for app user_ldap set to 7200
-
-If you want to reset (or unset) the setting, then you can use the following command:
-
-::
-   
-  sudo -u www-data php occ config:app:delete user_ldap updateAttributesInterval
 
 .. _logging_commands_label:
 
@@ -1734,133 +1514,12 @@ After the command completes, users will be prompted to resolve any conflicts bet
 The ``maintenance:repair`` command runs automatically during upgrades to clean up the database, so while you can run it manually there usually isn't a need to.
 
 ::
-  
+
  sudo -u www-data php occ maintenance:repair
- 
-``maintenance:mimetype:update-db`` updates the ownCloud database and file cache with changed mimetypes found in ``config/mimetypemapping.json``. 
-Run this command after modifying ``config/mimetypemapping.json``. 
+
+``maintenance:mimetype:update-db`` updates the ownCloud database and file cache with changed mimetypes found in ``config/mimetypemapping.json``.
+Run this command after modifying ``config/mimetypemapping.json``.
 If you change a mimetype, run ``maintenance:mimetype:update-db --repair-filecache`` to apply the change to existing files.
-
-.. _market_commands_label:
-   
-Market
-------
-
-The ``market`` commands *install*, *list*, and *upgrade* applications from `the ownCloud Marketplace`_.
-
-.. code-block:: console
-   
-  market
-    market:install    Install apps from the marketplace. If already installed and 
-                      an update is available the update will be installed.
-    market:list       Lists apps as available on the marketplace.
-    market:upgrade    Installs new app versions if available on the marketplace
-
-.. note::
-   The user running the update command, which will likely be your webserver user, needs write permission for the ``/apps`` folder. 
-   If they don't have write permission, the command may report that the update was successful, but it may silently fail.
-
-.. note::
-   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
-
-Install an Application
-~~~~~~~~~~~~~~~~~~~~~~
-
-Applications can be installed both from `the ownCloud Marketplace`_ and from a local file archive. 
-
-Install Apps From The Marketplace
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To install an application from the Marketplace, you need to supply the app's id, which can be found in the app's Marketplace URL.
-For example, the URL for *Two factor backup codes* is https://marketplace.owncloud.com/apps/twofactor_backup_codes.
-So its app id is ``twofactor_backup_codes``.
-
-Install Apps From a File Archive
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-To install an application from a local file archive, you need to supply the path to the archive, and that you pass the ``-l`` switch. 
-Only ``zip``, ``gzip``, and ``bzip2`` archives are supported.
-
-Usage Example
-~~~~~~~~~~~~~
-
-::
-
-  # Install an app from the marketplace.
-  sudo -u www-data occ market:install twofactor_backup_codes
-
-  # Install an app from a local archive.
-  sudo -u www-data occ market:install -l /mnt/data/richdocuments-2.0.0.tar.gz
-
-.. _notifications_commands_label:
-
-Notifications
--------------
-
-If you want to send notifications to users or groups use the following command.
-
-.. code-block:: console
-   
-  notifications
-    notifications:generate   Generates a notification.
-
-Options and Arguments:
-
-::
-   
-  notifications:generate [-u|--user USER] [-g|--group GROUP] [-l|--link <linktext>] [--] <subject> [<message>]
-
-  Options:
-    -u --user              User id to whom the notification shall be sent
-    -g --group             Group id to whom the notification shall be sent
-    -l --link              A link associated with the notification
-
-  Arguments:
-    subject                The notification subject - maximum 255 characters
-    message                A longer message - maximum 4000 characters
-    linktext               A link to an HTML page
-
-At least one user or group must be set.
-
-A link can be useful for notifications shown in client apps.
-
-Example:
-
-::
-
- sudo -u www-data php occ notifications:generate -g Office "Emergeny Alert" "Rebooting in 5min"
-
-.. _reports_commands_label:
-
-Reports
--------
-
-If you're working with ownCloud support and need to send them a configuration summary, you can generate it using the ``configreport:generate`` command. 
-This command generates the same JSON-based report as the Admin Config Report, which you can access under ``admin -> Settings -> Admin -> Help & Tips -> Download ownCloud config report``.
-
-From the command-line in the root directory of your ownCloud installation, run it as your webserver user as follows, (assuming your webserver user is ``www-data``):
-
-::
-
-  sudo -u www-data occ configreport:generate
-
-This will generate the report and send it to ``STDOUT``. 
-You can optionally pipe the output to a file and then attach it to an email to ownCloud support, by running the following command:
-
-::
-
-  sudo -u www-data occ configreport:generate > generated-config-report.txt
-
-Alternatively, you could generate the report and email it all in one command, by running:
-
-::
-
-  sudo -u www-data occ configreport:generate | mail -s "configuration report" \ 
-      -r <the email address to send from> \
-      support@owncloud.com
-
-.. note::
-  These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
 .. _security_commands_label:
 
@@ -1962,25 +1621,6 @@ Remove a certificate:
 
  sudo -u www-data php occ security:certificates:remove [certificate name]
 
-.. _ransomware_commands_label:
-
-Ransomware Protection
----------------------
-
-Use these commands to help users recover from a Ransomware attack.
-You can find more information about the application :doc:`in the documentation <../../enterprise/ransomware-protection/index>`.
-
-.. note::
-  Ransomware Protection (which is an Enterprise app) needs to be installed and enabled to be able to use these commands.
-
-::
-
-  occ ransomguard:scan <timestamp> <user>     Report all changes in a user's account, starting from timestamp.
-  occ ransomguard:restore <timestamp> <user>  Revert all operations in a user account after a point in time.
-  occ ransomguard:lock <user>                 Set a user account as read-only for ownCloud and other WebDAV 
-                                              clients when malicious activity is suspected.
-  occ ransomguard:unlock <user>               Unlock a user account after ransomware issues have been resolved.
-
 .. _sharing_commands_label:
 
 Sharing
@@ -2009,23 +1649,7 @@ You can also set it up to run as :ref:`a background job <background-jobs-header>
 .. note::
   These commands are not available in :ref:`single-user (maintenance) mode <maintenance_commands_label>`.
 
-.. _shibboleth_label:
-
-Shibboleth Modes (Enterprise Edition only)
-------------------------------------------
-
-``shibboleth:mode`` sets your Shibboleth mode to ``notactive``, 
-``autoprovision``, or ``ssoonly``
-
-.. code-block:: console
-
- shibboleth:mode [mode]
-
-.. note::
-  These commands are only available when the "Shibboleth user backend" app
-  (``user_shibboleth``) is enabled.
-
-.. _trashbin_label: 
+.. _trashbin_label:
 
 Trashbin
 --------
@@ -2843,24 +2467,6 @@ If there is an error it throws an exception, and the error is detailed in your o
  Update failed
  Turned off maintenance mode
 
-.. _two_factor_auth_label:
-
-Two-factor Authentication
--------------------------
-
-If a two-factor provider app is enabled, it is enabled for all users by default (though the provider can decide whether or not the user has to pass the challenge).
-In the case of an user losing access to the second factor (e.g., a lost phone with two-factor SMS verification), the admin can temporarily disable the two-factor check for that user via the occ command:
-
-::
-
- sudo -u www-data php occ twofactor:disable <username>
-
-To re-enable two-factor authentication again, use the following commmand:
-
-::
-
- sudo -u www-data php occ twofactor:enable <username>
-
 .. _disable_user_label:
 
 Disable Users
@@ -2929,8 +2535,6 @@ Using the output option ``json_pretty`` will render the output formatted as foll
    ]
 
 .. Links
-   
-.. _the ownCloud Marketplace: https://marketplace.owncloud.com/
+
 .. _creating translation files: https://doc.owncloud.org/server/latest/developer_manual/app/advanced/l10n.html#creating-translatable-files-label
-.. _the Password Policy app: https://marketplace.owncloud.com/apps/password_policy
 .. _PHP's supported date and time formats: https://secure.php.net/manual/en/datetime.formats.php
