@@ -336,7 +336,7 @@ in the sharing dialog.
 
 ::
 
-	'user.search_min_length' => 4,
+	'user.search_min_length' => 2,
 
 Defines the minimum characters entered before a search returns results for
 users or groups in the share autocomplete form. Lower values increase search
@@ -493,9 +493,9 @@ URLs.
 This option allows you to define a manual override condition as a regular
 expression for the remote IP address. The keys ``overwritewebroot``,
 ``overwriteprotocol``, and ``overwritehost`` are subject to this condition.
-For example, defining a range of IP
-addresses starting with ``10.0.0.`` and ending with 1 to 3:
-``^10\.0\.0\.[1-3]$``
+
+For example, defining a range of IP  addresses starting with ``10.0.0.``
+and ending with 1 to 3: * ``^10\.0\.0\.[1-3]$``
 
 ::
 
@@ -698,6 +698,10 @@ nodes. The mode of operations has various impact on the behavior of ownCloud.
 Logging
 -------
 
+These parameters configure the logging options.
+For additional information or advanced configuration, please see the logging
+section in the documentation.
+
 
 ::
 
@@ -801,11 +805,14 @@ Log successful cron runs.
 
 	'log_rotate_size' => false,
 
-Enables log rotation and limits the total size of logfiles. The default is 0,
-or no rotation. Specify a size in bytes, for example 104857600 (100 megabytes
-= 100 * 1024 * 1024 bytes). A new logfile is created with a new name when the
-old logfile reaches your limit. If a rotated log file is already present, it
-will be overwritten.
+Enables log rotation and limits the total size of the logfiles.
+
+The default is 0 or false which disables log rotation.
+Specify a size in bytes, for example 104857600
+(100 megabytes = 100 * 1024 * 1024 bytes).
+A new logfile is created with a new name when the old logfile reaches the defined limit.
+If a rotated log file is already present, it will be overwritten.
+If enabled, only the active log file and one rotated file are stored.
 
 Alternate Code Locations
 ------------------------
@@ -1522,6 +1529,11 @@ Set this ownCloud instance to debugging mode
 
 Only enable this for local development and not in production environments
 This will disable the minifier and outputs some additional debug information
+
+.. warning::
+   Be warned that, if you set this to ``true``, exceptions display
+   stack traces on the web interface, *including passwords*, — **in plain text!**.
+   We strongly encourage you never to use it in production.
 
 ::
 
