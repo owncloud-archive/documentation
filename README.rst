@@ -2,7 +2,11 @@
 ownCloud Documentation
 ======================
 
-This repository stores the official documentation for ownCloud. Here, you will 
+**This repository is no longer accepting new issues and PRs.**
+**If you want to make or suggest a change to the documentation, you need to create
+an issue or a PR in the new docs repository at: https://github.com/owncloud/docs.**
+
+This repository stores the official documentation for ownCloud. Here, you will
 find all the information that you need to contribute to the official
 documentation. 
 
