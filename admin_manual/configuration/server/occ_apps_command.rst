@@ -2,13 +2,14 @@
 Using the occ apps Command
 ==========================
 
-This command description references to ownCloud maintained apps commands only.
+.. note:: This command reference covers the ownCloud maintained apps commands.
 
 ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line interface. 
-You can perform many common server operations with ``occ``, such as installing and upgrading ownCloud, managing users and groups, encryption, passwords, LDAP setting, and more.
+You can perform common server operations with ``occ``, including installing and upgrading ownCloud, managing users and groups, encryption, passwords, and LDAP setting.
 
-``occ`` is in the :file:`owncloud/` directory; for example :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. 
-**You must run it as your HTTP user** to ensure that the correct permissions are maintained on your ownCloud files and directories. 
+``occ`` is in the :file:`owncloud/` directory; for example :file:`/var/www/owncloud` on Ubuntu Linux.
+``occ`` is a PHP script.
+**You must run it as your HTTP user** to ensure that your ownCloud files and directories retain the correct permissions.
 
 occ Command Directory
 ---------------------
@@ -31,20 +32,24 @@ occ Command Directory
 Run occ As Your HTTP User
 -------------------------
 
-The HTTP user is different on the various Linux distributions. 
-See :ref:`strong_perms_label` to learn how to find your HTTP user.
+There are different HTTP user's across Linux distributions.
+For example:
    
-* The HTTP user and group in Debian/Ubuntu is www-data.
-* The HTTP user and group in Fedora/CentOS is apache.
-* The HTTP user and group in Arch Linux is http.
-* The HTTP user in openSUSE is wwwrun, and the HTTP group is www.   
+* The HTTP user and group in Debian/Ubuntu is ``www-data``.
+* The HTTP user and group in Fedora/CentOS is ``apache``.
+* The HTTP user and group in Arch Linux is ``http``.
+* The HTTP user in openSUSE is wwwrun, and the HTTP group is ``www``.
+
+.. note:: See :ref:`strong_perms_label` to learn how to find your HTTP user.
 
 If your HTTP server is configured to use a different PHP version than the default (/usr/bin/php), ``occ`` should be run with the same version. 
 For example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this::
 
   sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/owncloud/occ
 
-Running ``occ`` with no options lists all commands and options, like this example on Ubuntu::
+Running ``occ`` with no options lists all commands and options, like this example on Ubuntu:
+
+::
 
  sudo -u www-data php occ 
  ownCloud version 10.0.8
@@ -72,11 +77,15 @@ Running ``occ`` with no options lists all commands and options, like this exampl
                         a new release. The release has to be installed before
 
 This is the same as ``sudo -u www-data php occ list``.
-Run it with the ``-h`` option for syntax help::
+Run it with the ``-h`` option for syntax help.
+
+::
 
  sudo -u www-data php occ -h
  
-Display your ownCloud version::
+Display your ownCloud version:
+
+::
 
  sudo -u www-data php occ -V
    ownCloud version 10.0.8
@@ -86,21 +95,23 @@ Display your ownCloud version::
 Calendar Commands
 -----------------
 
-For commands managing the calendar, please see the DAV Command section in the occ core command set.
+For commands for managing the calendar, please see the DAV Command section in the occ core command set.
 
 .. _ocapps_contacts_label:
 
 Contacts Commands
 -----------------
 
-For commands managing contacts, please see the DAV Command section in the occ core command set.
+For commands for managing contacts, please see the DAV Command section in the occ core command set.
 
 .. _ocapps_files_primary_s3_label:
 
 S3 Objectstore Commands
 -----------------------
 
-**List objects, buckets or versions of an object**
+List objects, buckets or versions of an object
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
 ::
 
   sudo -u www-data occ s3:list
@@ -113,7 +124,8 @@ Arguments:
 | ``object``   | Key of the object; it`s versions will be listed |
 +--------------+-------------------------------------------------+
 
-**Create a bucket as necessary to be used**
+Create a bucket as necessary to be used
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 ::
 
@@ -166,14 +178,15 @@ Search for an LDAP user, using this syntax:
  sudo -u www-data php occ ldap:search [--group] [--offset="..."] 
  [--limit="..."] search
 
-Searches will match at the beginning of the attribute value only. 
+Searches match at the beginning of the attribute value only.
 This example searches for ``givenNames`` that start with "rob":
 
 ::
 
  sudo -u www-data php occ ldap:search "rob"
  
-This will find robbie, roberta, and robin. Broaden the search to find, for example, ``jeroboam`` with the asterisk wildcard:
+This will find _robbie_, _roberta_, and _robin_.
+Broaden the search to find, for example, ``jeroboam`` with the asterisk wildcard:
 
 ::
 
@@ -181,7 +194,7 @@ This will find robbie, roberta, and robin. Broaden the search to find, for examp
 
 User search attributes are set with ``ldap:set-config`` (below). 
 For example, if your search attributes are ``givenName`` and ``sn`` you can find users by first name + last name very quickly. 
-For example, you'll find Terri Hanson by searching for ``te ha``. 
+For example, you'll find "Terri Hanson" by searching for ``te ha``.
 Trailing whitespace is ignored.
  
 Check if an LDAP user exists. 
@@ -193,7 +206,7 @@ This works only if the ownCloud server is connected to an LDAP server.
  
 ``ldap:check-user`` will not run a check when it finds a disabled LDAP connection. 
 This prevents users that exist on disabled LDAP connections from being marked as deleted. 
-If you know for certain that the user you are searching for is not in one of the disabled connections, and exists on an active connection, use the ``--force`` option to force it to check all active LDAP connections.
+If you know for sure that the user you are searching for is not in one of the disabled connections, and exists on an active connection, use the ``--force`` option to force it to check all active LDAP connections.
 
 ::
 
@@ -367,7 +380,7 @@ The ``market`` commands *install*, *uninstall*, *list*, and *upgrade* applicatio
     market:upgrade    Installs new app versions if available on the marketplace
 
 .. note::
-   The user running the update command, which will likely be your webserver user, needs write permission for the ``/apps`` folder. 
+   The user running the update command, which will likely be your webserver user, requires write permission for the ``/apps`` folder.
    If they don't have write permission, the command may report that the update was successful, but it may silently fail.
 
 .. note::
@@ -428,7 +441,7 @@ Options and Arguments:
 
   Arguments:
     subject                The notification subject - maximum 255 characters
-    message                A longer message - maximum 4000 characters
+    message A more extended message - maximum 4000 characters
     linktext               A link to an HTML page
 
 At least one user or group must be set.
@@ -446,7 +459,7 @@ Example:
 Password Policy
 ---------------
 
-**Ccommand to expire a users password**
+**Command to expire a users password**
 
 ::
 
@@ -460,13 +473,16 @@ Arguments:
 
 Options:
 
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``-a, --all``     | Will add password expiry to all known users. uid and group option will be discarded if all option is provided by user                                                                                                                                |
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------------+
+| ``-a, --all``     | Will add password expiry to all known users. uid and group option are discarded if the |
+|                   | option is provided by user                                                             |
++-------------------+----------------------------------------------------------------------------------------+
 | ``-u, --uid``     | The user\'s uid is used. This option can be used as --uid "Alice" --uid "Bob"                                                                                                                                                                        |
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``-g, --group``   | Add password expiry to user(s) under group(s). This option can be used as --group "foo" --group "bar" to add expiry passwords for users in group foo and bar. If uid option (eg: --uid "user1") is passed with group, then uid will also be processed|
-+-------------------+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
++-------------------+----------------------------------------------------------------------------------------+
+| ``-g, --group``   | Add password expiry to user(s) under group(s). This option can be used as --group      |
+|                   | "foo" --group "bar" to add expiry passwords for users in group foo and bar. If         |
+|                   | uid option (eg: --uid "user1") is passed with group, then uid will also be processed   |
++-------------------+----------------------------------------------------------------------------------------+
 
 .. _ocapps_reports_commands_label:
 
@@ -482,7 +498,7 @@ From the command-line in the root directory of your ownCloud installation, run i
 
   sudo -u www-data occ configreport:generate
 
-This will generate the report and send it to ``STDOUT``. 
+This generates the report and send it to ``STDOUT``.
 You can optionally pipe the output to a file and then attach it to an email to ownCloud support, by running the following command:
 
 ::
@@ -552,8 +568,6 @@ To re-enable two-factor authentication again, use the following commmand:
 ::
 
  sudo -u www-data php occ twofactor:enable <username>
-
-
 
 .. Links
    
