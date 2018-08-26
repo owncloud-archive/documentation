@@ -7,7 +7,8 @@ This command description references to ownCloud core commands only.
 ownCloud's ``occ`` command (ownCloud console) is ownCloud's command-line interface.
 You can perform many common server operations with ``occ``, such as installing and upgrading ownCloud, managing users and groups, encryption, passwords, LDAP setting, and more.
 
-``occ`` is in the :file:`owncloud/` directory; for example :file:`/var/www/owncloud` on Ubuntu Linux. ``occ`` is a PHP script. 
+``occ`` is in the :file:`owncloud/` directory; for example :file:`/var/www/owncloud` on Ubuntu Linux. 
+``occ`` is a PHP script. 
 **You must run it as your HTTP user** to ensure that the correct permissions are maintained on your ownCloud files and directories. 
 
 occ Command Directory
