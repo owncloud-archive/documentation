@@ -1,6 +1,6 @@
-==========================
-Using the occ core Command
-==========================
+=======================
+Using occ core commands
+=======================
 
 This command description references to ownCloud core commands only.
 
@@ -54,7 +54,11 @@ For example, in CentOS 6.5 with SCL-PHP54 installed, the command looks like this
 
   sudo -u apache /opt/rh/php54/root/usr/bin/php /var/www/html/owncloud/occ
 
-Running ``occ`` with no options lists all commands and options, like this example on Ubuntu::
+The following examples are based on Ubuntu.
+
+Running ``occ`` with no options lists all commands and options
+
+::
 
  sudo -u www-data php occ 
  ownCloud version 10.0.8
@@ -82,16 +86,28 @@ Running ``occ`` with no options lists all commands and options, like this exampl
                         a new release. The release has to be installed before
 
 This is the same as ``sudo -u www-data php occ list``.
-Run it with the ``-h`` option for syntax help::
+
+General syntax help
+~~~~~~~~~~~~~~~~~~~
+
+Run occ with the ``-h`` option for syntax help
+
+::
 
  sudo -u www-data php occ -h
  
-Display your ownCloud version::
+Display your ownCloud version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
  sudo -u www-data php occ -V
    ownCloud version 10.0.8
    
-Query your ownCloud server status::
+Query your ownCloud server status
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+::
 
  sudo -u www-data php occ status
    - installed: true
@@ -99,21 +115,14 @@ Query your ownCloud server status::
    - versionstring: 10.0.8
    - edition: Community
 
-``occ`` has *options*, *commands*, and *arguments*. 
-Commands are required.
-Options are optional.
-Arguments can be required *or* optional.
-The, generic, syntax is
+Command syntax help
+~~~~~~~~~~~~~~~~~~~
 
-::
-
- occ [options] command [arguments]
- 
 Get detailed information on individual commands with the ``help`` command, like this example for the ``maintenance:mode`` command
 
 ::
 
- sudo -u www-data php occ help maintenance:mode
+ sudo -u www-data php occ --help maintenance:mode
  Usage:
   maintenance:mode [options]
 
@@ -131,7 +140,21 @@ Get detailed information on individual commands with the ``help`` command, like 
   -v|vv|vvv, --verbose  Increase the verbosity of messages: 1 for normal output, 
                         2 for more verbose output and 3 for debug
 
+Options and Arguments
+~~~~~~~~~~~~~~~~~~~~~
+
+``occ`` has *options*, *commands*, and *arguments*. 
+Commands are required.
+Options are optional.
+Arguments can be required *or* optional.
+The, generic, syntax is
+
+::
+
+ occ [options] command [arguments]
+ 
 The ``status`` command from above has an option to define the output format.
+
 The default is plain text, but it can also be ``json``
 
 ::
@@ -153,10 +176,30 @@ or ``json_pretty``
 
 This output option is available on all list and list-like commands, which include ``status``, ``check``, ``app:list``, ``config:list``, ``encryption:status`` and ``encryption:list-modules``.
 
+Usage of parameters in Options
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+In case an option requires parameters, following format should be used for short or long Options forms
+
+The following example command has an option in ``-p`` (short) form and ``--path`` (long) form.
+
+Parameters for long form options will be written after a blank or equal sign  
+
+::
+
+ sudo -u www-data ./occ files:scan --path="user_x/files/folder"
+ 
+Parameters for short form options will be written either directly after the option or after a blank.
+Do not use the equal sign as this could be interpreted as part of the parameter.
+
+::
+
+ sudo -u www-data ./occ files:scan -p "user_x/files/folder"  
+
 .. _apps_commands_label:
 
-Apps Commands
--------------
+Commands managing Apps
+----------------------
 
 The ``app`` commands list, enable, and disable apps
 
@@ -223,6 +266,10 @@ You can get the full file path to an app
     
     sudo -u www-data php occ app:getpath notifications
     /var/www/owncloud/apps/notifications
+
+.. note::
+   Please see the command set ``market`` for managing apps (install, uninstall ect) from the marketplace
+
 
 .. _background_jobs_selector_label:   
    
