@@ -570,16 +570,16 @@ Arguments:
 
 Options:
 
-+-------------------+----------------------------------------------------------------------------------------+
-| ``-a, --all``     | Will add password expiry to all known users. uid and group option are discarded if the |
-|                   | option is provided by user                                                             |
-+-------------------+----------------------------------------------------------------------------------------+
-| ``-u, --uid``     | The user\'s uid is used. This option can be used as --uid "Alice" --uid "Bob"                                                                                                                                                                        |
-+-------------------+----------------------------------------------------------------------------------------+
-| ``-g, --group``   | Add password expiry to user(s) under group(s). This option can be used as --group      |
-|                   | "foo" --group "bar" to add expiry passwords for users in group foo and bar. If         |
-|                   | uid option (eg: --uid "user1") is passed with group, then uid will also be processed   |
-+-------------------+----------------------------------------------------------------------------------------+
++-----------------+--------------------------------------------------------------------------------------+
+| ``-a, --all``   | Will add password expiry to all known users. uid and group option are discarded if   |
+|                 | the option is provided by user                                                       |
++-----------------+--------------------------------------------------------------------------------------+
+| ``-u, --uid``   | The user's uid is used. This option can be used as --uid "Alice" --uid Bob"          |
++-----------------+--------------------------------------------------------------------------------------+
+| ``-g, --group`` | Add password expiry to user(s) under group(s). This option can be used as --group    |
+|                 | "foo" --group "bar" to add expiry passwords for users in group foo and bar. If       |
+|                 | uid option (eg: --uid "user1") is passed with group, then uid will also be processed |
++-----------------+--------------------------------------------------------------------------------------+
 
 .. _ocapps_reports_commands_label:
 
