@@ -46,7 +46,7 @@ function clone_example_theme
   # first test if unzip would error then extract
   if unzip -t "$DOWNLOAD_FILE" >/dev/null 2>&1
   then
-	# unzip with overwriting existing files and directories and supressed output
+	# unzip with overwriting existing files and directories and suppressed output
 	echo "Unzipping download"
 	unzip -oq "$DOWNLOAD_FILE" -d "$UNZIPDIR"
 	echo "Moving to target location"
