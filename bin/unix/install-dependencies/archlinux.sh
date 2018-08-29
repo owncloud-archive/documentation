@@ -4,7 +4,7 @@
 ## Usage: archlinux
 ## 
 ## This script automates the building of ownCloud documentation on the ArchLinux platform.
-## While new, it should handle installing all of the required platform depencies, and afterwards
+## While new, it should handle installing all of the required platform dependencies, and afterwards
 ## build the documentation. 
 ##
 ## Author: Matthew Setter <msetter@owncloud.com>
