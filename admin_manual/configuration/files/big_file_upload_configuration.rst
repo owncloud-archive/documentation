@@ -65,7 +65,7 @@ Apache with mod_fcgid
 
 .. note:: If you are using Apache/2.4 with mod_fcgid, as of February/March 2016,
    ``FcgidMaxRequestInMem`` still needs to be significantly increased from its default value
-   to avoid the occurence of segmentation faults when uploading big files. This is not a regular
+   to avoid the occurrence of segmentation faults when uploading big files. This is not a regular
    setting but serves as a workaround for `Apache with mod_fcgid bug #51747 <https://bz.apache.org/bugzilla/show_bug.cgi?id=51747>`_.
    
    Setting ``FcgidMaxRequestInMem`` significantly higher than normal may no longer be
@@ -79,7 +79,7 @@ NGINX
 
 Since NGINX 1.7.11 a new config option `fastcgi_request_buffering
 <https://nginx.org/en/docs/http/ngx_http_fastcgi_module.html#fastcgi_request_buffering>`_
-is availabe. Setting this option to ``fastcgi_request_buffering off;`` in your NGINX config
+is available. Setting this option to ``fastcgi_request_buffering off;`` in your NGINX config
 might help with timeouts during the upload. Furthermore it helps if you're running out of
 disc space on the ``/tmp`` partition of your system.
 

@@ -74,7 +74,7 @@ There are existing tests provided by ownCloud which are ready to run.
 
 Testing apps
 
-- To run test for a specific app with the provided PHPUnit version, change into ``<webroot>/apps/<appnname>/<testfolder>`` and call ``<webroot>/lib/composer/phpunit/phpunit/phpunit`` plus optional parameters when needed.
+- To run test for a specific app with the provided PHPUnit version, change into ``<webroot>/apps/<appname>/<testfolder>`` and call ``<webroot>/lib/composer/phpunit/phpunit/phpunit`` plus optional parameters when needed.
 
 
 
