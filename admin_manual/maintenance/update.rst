@@ -8,7 +8,7 @@ such as shared hosting, for installations with a smaller number of users
 and data, and it automates updating 
 :doc:`manual installations <../installation/source_installation>`.
 
-.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Adressbooks
+.. warning:: When upgrading from oC 9.0 to 9.1 with existing Calendars or Addressbooks
    please have a look at the :doc:`../release_notes` of oC 9.0 for important info
    about this migration.
 

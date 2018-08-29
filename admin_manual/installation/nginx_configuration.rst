@@ -94,7 +94,7 @@ JavaScript (.js) or CSS (.css) files not served properly
 
 A standard issue with custom NGINX configurations is, that JavaScript (.js) or CSS (.css) files are not served properly, leading to a 404 (File Not Found) error on those files and a broken web interface.
 
-- This could be caused by an inproper sequence of ``location`` blocks.
+- This could be caused by an improper sequence of ``location`` blocks.
 
   The following sequence is correct:
    

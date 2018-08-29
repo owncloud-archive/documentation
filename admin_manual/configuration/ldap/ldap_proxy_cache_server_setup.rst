@@ -136,13 +136,13 @@ Configure Server-Tab
 
 First enter the server address, either IP or DN.
 
-You can click on the button to detect your servers port or enter it manualy.
+You can click on the button to detect your servers port or enter it manually.
 
 Next, enter the dn of the user, you want to log in with and in the next line enter the password.
 
-Then you can click on "detect base dn" or enter it manualy. then click on "test base dn".
+Then you can click on "detect base dn" or enter it manually. then click on "test base dn".
 
-If you fullfill all the requirements you should get a green light and "configuration ok" message.
+If you fulfill all the requirements you should get a green light and "configuration ok" message.
 
 
 Configure Users
@@ -156,7 +156,7 @@ Configure Login Attributes
 
 A configuration appears by default, adjusted it to your users configuration. 
 
-If required, adjust the login paramethers additional login attributes.
+If required, adjust the login parameters additional login attributes.
 
 
 You can check users with any of the allowed login options. You can adjust them or leave them the way they are.
@@ -169,11 +169,11 @@ Select all the objectclasses for your groups, for example "group". Verify your s
 
 Configure Advanced
 
-Configuration Active shoud be selected.
+Configuration Active should be selected.
 
 Adjust the Cache TTL (time to live) value as required.   
 
-ownCloud usualy autoselects the best settings for each AD configuration.
+ownCloud usually autoselects the best settings for each AD configuration.
 
 Check if the Group-Member association is "Member (AD)".
 That's important for the users being shown in their respective groups.
