@@ -4,7 +4,7 @@
 ## Usage: debian-ubuntu
 ## 
 ## This script automates the building of ownCloud documentation on Debian and Ubuntu distributions.
-## While new, it should handle installing all of the required platform depencies, and afterwards
+## While new, it should handle installing all of the required platform dependencies, and afterwards
 ## build the documentation. 
 ##
 ## Author: Matthew Setter <msetter@owncloud.com>
