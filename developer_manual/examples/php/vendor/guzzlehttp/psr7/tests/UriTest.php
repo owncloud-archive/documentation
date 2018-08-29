@@ -519,7 +519,7 @@ class UriTest extends \PHPUnit_Framework_TestCase
         $this->assertSame('//example.com/foo', (string) $uri);
     }
 
-    public function testRemoveExtraSlashesWihoutHost()
+    public function testRemoveExtraSlashesWithoutHost()
     {
         // If the path is starting with more than one "/" and no authority is
         // present, the starting slashes MUST be reduced to one.

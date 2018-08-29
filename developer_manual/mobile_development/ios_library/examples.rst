@@ -125,7 +125,7 @@ Code example
  errorBeforeRequest :^( NSError *error) {
  //Error before request
 
- if (error.code == OCErrorForbidenCharacters) {
+ if (error.code == OCErrorForbiddenCharacters) {
    //Forbidden characters
  }
  else
@@ -317,7 +317,7 @@ Download a file
 
 Download an existing file on the cloud server. The info needed is the server
 URL, path of the file on the server and localPath, path where the file will be
-stored on the device and a boolean to indicate if is neccesary to use LIFO queue or FIFO.
+stored on the device and a boolean to indicate if is necessary to use LIFO queue or FIFO.
 
 Code example
 ~~~~~~~~~~~~
@@ -435,14 +435,14 @@ Code example
 Set callback when background download task finishes
 ---------------------------------------------------
 
-Method to set callbacks of the pending download transfers when the app starts. It's used when there are pendings download background transfers. The block is executed when a pending background task finishes.
+Method to set callbacks of the pending download transfers when the app starts. It's used when there are pending download background transfers. The block is executed when a pending background task finishes.
 
 Code example
 ~~~~~~~~~~~~
 
 .. code-block:: objective-c
 
-    [[AppDelegate sharedOCCommunication] setDownloadTaskComleteBlock:^NSURL *(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, NSURL *location) {
+    [[AppDelegate sharedOCCommunication] setDownloadTaskCompleteBlock:^NSURL *(NSURLSession *session, NSURLSessionDownloadTask *downloadTask, NSURL *location) {
     
               
     }];
@@ -450,7 +450,7 @@ Code example
 Set progress callback with pending background download tasks
 ------------------------------------------------------------
 
-Method to set progress callbacks of the pending download transfers. It's used when there are pendings background download transfers. The block is executed when a pending task get a input porgress.
+Method to set progress callbacks of the pending download transfers. It's used when there are pending background download transfers. The block is executed when a pending task get a input progress.
 
 Code example
 ~~~~~~~~~~~~
@@ -592,7 +592,7 @@ Code example
 Set callback when background task finish
 -----------------------------------------
 
-Method to set callbacks of the pending transfers when the app starts. It's used when there are pendings background transfers. The block is executed when a pending background task finished.
+Method to set callbacks of the pending transfers when the app starts. It's used when there are pending background transfers. The block is executed when a pending background task finished.
 
 Code example
 ~~~~~~~~~~~~
@@ -607,7 +607,7 @@ Code example
 Set progress callback with pending background tasks
 ---------------------------------------------------
 
-Method to set progress callbacks of the pending transfers. It's used when there are pendings background transfers. The block is executed when a pending task get a input porgress.
+Method to set progress callbacks of the pending transfers. It's used when there are pending background transfers. The block is executed when a pending task get a input porgress.
 
 Code example
 ~~~~~~~~~~~~

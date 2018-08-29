@@ -310,7 +310,7 @@ The interface specifies three methods:
 ownCloud Server comes with a predefined list of sections which group related settings together; the intention of which is to improve the user experience.
 This can be found here in `this example`_:
 
-**getPanel:** This method returns the ``OCP\Template`` or ``OCP\TemplateReponse`` which is used to render the panel.
+**getPanel:** This method returns the ``OCP\Template`` or ``OCP\TemplateResponse`` which is used to render the panel.
 The method may also return ``null`` if the panel should not be shown to the user.
 
 **getPriority:** An integer between 0 and 100 representing the importance of the panel (higher is more important).

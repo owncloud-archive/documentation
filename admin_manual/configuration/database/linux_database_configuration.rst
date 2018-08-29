@@ -53,7 +53,7 @@ detailed information.
 
 .. _db-transaction-label:
 
-MySQL / MariaDB "READ COMMITED" transaction isolation level
+MySQL / MariaDB "READ COMMITTED" transaction isolation level
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 As discussed above ownCloud is using the ``TRANSACTION_READ_COMMITTED`` transaction isolation

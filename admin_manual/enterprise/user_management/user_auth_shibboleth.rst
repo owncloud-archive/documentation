@@ -213,7 +213,7 @@ have a session length longer than the length controlled by the IdP. In extreme
 cases this could result in re-login on mobile clients and desktop clients every
 hour.
 
-UID Considerations and Windows Network Drive compatability
+UID Considerations and Windows Network Drive compatibility
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To log in LDAP users via SAML for Single Sign On the user in LDAP must

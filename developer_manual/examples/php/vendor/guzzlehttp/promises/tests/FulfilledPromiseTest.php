@@ -26,7 +26,7 @@ class FulfilledPromiseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \LogicException
-     * @exepctedExceptionMessage Cannot resolve a fulfilled promise
+     * @expectedExceptionMessage Cannot resolve a fulfilled promise
      */
     public function testCannotResolve()
     {
@@ -36,7 +36,7 @@ class FulfilledPromiseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \LogicException
-     * @exepctedExceptionMessage Cannot reject a fulfilled promise
+     * @expectedExceptionMessage Cannot reject a fulfilled promise
      */
     public function testCannotReject()
     {
