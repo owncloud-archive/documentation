@@ -63,7 +63,7 @@ Example:
     owncloud.1
 
 In case you want to implement more sophisticated log rotation, you can use the log rotation 
-machanism of your Linux operating system, see the following example. Please adopt or customize 
+mechanism of your Linux operating system, see the following example. Please adopt or customize
 the configuration by your needs. The script assumes that the folder ``/etc/logrotate.d/`` 
 is included in your Linux log rotate configuration. More information on Linux log rotation
 can be found in the `logrotate <https://linux.die.net/man/8/logrotate>`_ documentation.

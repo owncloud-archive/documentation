@@ -298,7 +298,7 @@ There are several ways to supply a password:
 
       sudo -u www-data ./occ wnd:listen <host> <share> <username> <password>
 
-#. Read from a file, using the ``--password-file`` switch to specify the file to read from. Note that the password must be in plain text inside the file, and neither spaces nor newline characters will be removed from the file by default, unless the ``--pasword-trim`` option is added. The password file must be readable by the apache user (or www-data)
+#. Read from a file, using the ``--password-file`` switch to specify the file to read from. Note that the password must be in plain text inside the file, and neither spaces nor newline characters will be removed from the file by default, unless the ``--password-trim`` option is added. The password file must be readable by the apache user (or www-data)
 
    ::
 
