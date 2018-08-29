@@ -14,7 +14,7 @@ AGPL Apps
 * External Storage
 * ownCloud WebDAV Endpoint (handles old and new webdav endpoints)
 * Federated File Sharing (allows file sharing across ownCloud instances)
-* Federation (allows usernname auto-complete across ownCloud instances)
+* Federation (allows username auto-complete across ownCloud instances)
 * Files (cannot be disabled)
 * Files PDF Viewer
 * Files Sharing
