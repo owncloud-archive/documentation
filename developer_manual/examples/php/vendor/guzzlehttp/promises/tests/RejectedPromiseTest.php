@@ -31,7 +31,7 @@ class RejectedPromiseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \LogicException
-     * @exepctedExceptionMessage Cannot resolve a rejected promise
+     * @expectedExceptionMessage Cannot resolve a rejected promise
      */
     public function testCannotResolve()
     {
@@ -41,7 +41,7 @@ class RejectedPromiseTest extends \PHPUnit_Framework_TestCase
 
     /**
      * @expectedException \LogicException
-     * @exepctedExceptionMessage Cannot reject a rejected promise
+     * @expectedExceptionMessage Cannot reject a rejected promise
      */
     public function testCannotReject()
     {
