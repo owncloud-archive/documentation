@@ -35,10 +35,54 @@ date format in the example below, the date/time format will be written in the fo
 
 ::
 
-    "log_type" => "owncloud",
-    "logfile" => "owncloud.log",
-    "loglevel" => "3",
-    "logdateformat" => "F d, Y H:i:s",
+    'log_type' => 'owncloud',
+    'logfile' => 'owncloud.log',
+    'loglevel' => 2,
+    'logdateformat' => 'F d, Y H:i:s',
+
+**Log rotation:**
+
+To rotate this log file, use the following key:
+
+::
+
+	'log_rotate_size' => false,
+
+| The default is 0 or false which disables log rotation. 
+| Specify a size in bytes, for example 104857600 
+| (100 megabytes = 100 * 1024 * 1024 bytes). 
+| A new logfile is created with a new name when the old logfile reaches your limit.
+| If a rotated log file is already present, it will be overwritten.
+| If enabled, only the active log file and one rotation file are present.
+
+The file name of the rotated logfile is defined by the key ``logfile`` and a number as extension.
+Example:
+
+:: 
+
+    owncloud.1
+
+In case you want to implement more sophisticated log rotation, you can use the log rotation 
+mechanism of your Linux operating system, see the following example. Please adopt or customize
+the configuration by your needs. The script assumes that the folder ``/etc/logrotate.d/`` 
+is included in your Linux log rotate configuration. More information on Linux log rotation
+can be found in the `logrotate <https://linux.die.net/man/8/logrotate>`_ documentation.
+
+::
+
+  # Use an editor of your choice like vim
+  
+  vim /etc/logrotate.d/owncloud
+  
+  # Copy and paste the following into the file
+  
+  /var/www/owncloud/data/owncloud.log {
+  size 10M			# Logfile Size Limit
+  rotate 12			# Amount of rotated logs to keeps
+  missingok			# If it's not there, no error will occur
+  compress			# after rotation, compress the copy of the log file
+  compresscmd /bin/gzip		# use this compression command
+  }
 
 syslog
 ~~~~~~
@@ -47,9 +91,9 @@ All log information will be sent to your default syslog daemon.
 
 ::
 
-    "log_type" => "syslog",
-    "logfile" => "",
-    "loglevel" => "3",
+    'log_type' => 'syslog',
+    'logfile' => '',
+    'loglevel' => 2,
 
 The syslog format can be changed to remove or add information.
 In addition to the ``%replacements%`` below ``%level%`` can be used, but it is used
