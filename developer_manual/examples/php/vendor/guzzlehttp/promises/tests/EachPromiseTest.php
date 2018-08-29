@@ -163,7 +163,7 @@ class EachPromiseTest extends \PHPUnit_Framework_TestCase
     public function testFulfillsImmediatelyWhenGivenAnEmptyIterator()
     {
         $each = new EachPromise(new \ArrayIterator([]));
-        $result = $each->promise()->wait();
+        $each->promise()->wait();
     }
 
     public function testDoesNotBlowStackWithFulfilledPromises()

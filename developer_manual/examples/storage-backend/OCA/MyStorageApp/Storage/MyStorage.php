@@ -150,7 +150,7 @@ class MyStorage extends StorageAdapter {
 
 				// this wrapper will call the callback whenever fclose() was called on the file,
 				// after which we send the file to the library
-				$result = CallbackWrapper::wrap(
+				CallbackWrapper::wrap(
 					$source,
 					null,
 					null,

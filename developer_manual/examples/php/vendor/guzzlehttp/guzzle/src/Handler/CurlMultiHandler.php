@@ -3,7 +3,6 @@ namespace GuzzleHttp\Handler;
 
 use GuzzleHttp\Promise as P;
 use GuzzleHttp\Promise\Promise;
-use GuzzleHttp\Psr7;
 use Psr\Http\Message\RequestInterface;
 
 /**
