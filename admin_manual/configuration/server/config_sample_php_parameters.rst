@@ -31,7 +31,7 @@ large complex configuration file into a set of smaller files.
    and the values in these files take precedence over `config.php`
 
 .. note:: ownCloud may write configurations into the ``config.php`` file.
-   These configurations may confict with identical keys already set in additional config files.
+   These configurations may conflict with identical keys already set in additional config files.
    Be careful when using this capability!
 
 .. The following section is auto-generated from 
@@ -39,7 +39,7 @@ large complex configuration file into a set of smaller files.
 .. Do not edit the content of this file between _section_start and _sections_end
 .. The content there will be loaded and replaced via script from the source file from the link above
 .. Any configuration changes done in this file will be overwritten on the next update
-.. You can of course change the common desription above this text which will then be part of the next update
+.. You can of course change the common description above this text which will then be part of the next update
 
 .. DEFAULT_SECTION_START
 
