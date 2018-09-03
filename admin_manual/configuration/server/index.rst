@@ -8,6 +8,7 @@ Server Configuration
    security_setup_warnings
    import_ssl_cert
    occ_command
+   occ_apps_command
    activity_configuration
    antivirus_configuration
    caching_configuration
