@@ -451,22 +451,37 @@ To update an existing value,  set ``--update-only``:
      --type=boolean --update-only
   Value not updated, as it has not been set before.
 
-Note that in order to write a Boolean, float, or integer value to the configuration file, you need to specify the type on your command. 
-This applies only to the ``config:system:set`` command. The following values are known:
+Note that in order to write a boolean, float, JSON, or integer value to the configuration file, you need to specify the type on your command.
+This applies only to the ``config:system:set`` command.
+The following values are known:
 
 * ``boolean``
 * ``integer``
 * ``float``
+* ``json``
 * ``string`` (default)
 
-When you want to e.g., disable the maintenance mode run the following command:
+Examples
+^^^^^^^^
+
+Disable the maintenance mode:
 
 ::
 
-  sudo -u www-data php occ config:system:set maintenance --value=false 
+  sudo -u www-data php occ config:system:set maintenance \
+     --value=false
      --type=boolean
+
   ownCloud is in maintenance mode - no app have been loaded
   System config value maintenance set to boolean false
+
+Create the ``app_paths`` config setting (using a JSON payload):
+
+::
+
+   sudo -u www-data php occ config:system:set apps_paths \
+      --type=json \
+      --value='[{"path":"/var/www/owncloud/apps","url":"apps","writable":1},{"path":"/var/www/owncloud/apps-external","url":"apps-external","writable":1}]'
 
 Setting an Array of Configuration Values
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
