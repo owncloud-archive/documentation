@@ -13,6 +13,7 @@ Server Configuration
    caching_configuration
    background_jobs_configuration   
    config_sample_php_parameters
+   config_apps_sample_php_parameters
    email_configuration
    excluded_blacklisted_files
    external_sites
