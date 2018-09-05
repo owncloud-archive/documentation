@@ -430,7 +430,7 @@ Configuring Transactional File Locking
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 :doc:`Transactional File Locking <../../configuration/files/files_locking_transactional>` prevents simultaneous file saving.
-To use it, you have to enable it in ``config.php`` as in the following example, which uses Redis as the cache backend:
+It is enabled per default and uses the database to store the locking data. This places a significant load on your database. It is recommended to use a cache backend instead. You have to configure it in ``config.php`` as in the following example, which uses Redis as the cache backend:
 
 .. code-block:: php
 
