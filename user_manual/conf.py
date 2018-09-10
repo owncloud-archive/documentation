@@ -45,9 +45,9 @@ master_doc = 'contents'
 # built documents.
 #
 # The short X.Y version.
-version = '10.0.9'
+version = '10.0.10'
 # The full version, including alpha/beta/rc tags.
-release = '10.0.9'
+release = '10.0.10'
 
 # General information about the project.
 project = u'ownCloud %s User Manual' % (version)
