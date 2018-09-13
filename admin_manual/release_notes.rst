@@ -2,6 +2,7 @@
 Release Notes
 =============
 
+* :ref:`10.0.10_release_notes_label`
 * :ref:`10.0.9_release_notes_label`
 * :ref:`10.0.8_release_notes_label`
 * :ref:`10.0.7_release_notes_label`
@@ -17,6 +18,100 @@ Release Notes
 * :ref:`8.1_release_notes_label`
 * :ref:`8.0_release_notes_label`
 * :ref:`7.0_release_notes_label`
+
+.. _10.0.10_release_notes_label:
+
+Changes in 10.0.10
+--------------------------
+
+Dear ownCloud administrator, please find below the changes and known issues in ownCloud Server 10.0.10 that need your attention. You can also read `the full ownCloud Server changelog`_ for further details on what has changed.
+
+Official PHP 7.2 support
+~~~~~~~~~~~~~~~~~~~~~~~~
+After announcing the future deprecation of PHP 5.6 and 7.0 with the `10.0.8 release <https://doc.owncloud.com/server/10.0/admin_manual/release_notes.html#php-5-6-deprecation>`_, ownCloud Server now follows up with official PHP 7.2 support. The Server Core and all apps maintained by ownCloud have received a full QA cycle and are proven to work reliably. With this step ownCloud Server is also being prepared for PHP 7.3 which is `scheduled to become available by the end of 2018 <https://wiki.php.net/todo/php73>`_. When still operating on 5.6 or 7.0, please plan an upgrade to 7.2 soon. See the `system requirements in the ownCloud Documentation <https://doc.owncloud.com/server/latest/admin_manual/installation/system_requirements.html#officially-recommended-supported-options>`_.
+
+Note: With PHP 7.2 some extensions have changed. When it's not installed yet, you need to additionally install ``php-openssl``. See `#30337 <https://github.com/owncloud/core/issues/30337>`_ for more information.
+
+New local user creation flow
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In previous versions administrators created local users by entering a *Username* and a *Password*. In many cases this is undesirable as administrators set the password for new users and need to provide it on another communication channel. For this reason the local user creation flow has been changed to expect a *Username* and an *E-Mail address* which will be used to send an activation link to new users. This way user creation is easier and more secure as new users are informed automatically and can choose a password in self-service. For cases where administrators want to set the iniial password it's possible to deviate from the default by setting the option "Set a password for new users" on the bottom left settings cog. The former option "Send email to new users" has been removed as this change made it obsolete.
+
+HTTP API for Search
+~~~~~~~~~~~~~~~~~~~
+ownCloud Server 10.0.10 introduces a HTTP API for the search functionality. It enables to query for search terms on the server and deliver results via HTTP. With upcoming releases the ownCloud Clients will make use of it to be able to search contents on the server without the need of having them available locally. 
+In combination with the Full Text Search integration which is soon to be released as an ownCloud Server extension (Community Edition) this will boost usability and productivity for users as they can basically search through all contents they store in their account and find the files they actually need quickly on their mobile phone, for example.
+
+Native Brute-Force Protection
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Check out the `Brute Force Protection <https://marketplace.owncloud.com/apps/brute_force_protection>`_ extension on the ownCloud Marketplace
+Support can be obtained on an individual basis.
+
+Improved reliability for uploads via web interface on unreliable connections
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The reliability of the file upload feature in the ownCloud web interface has been improved. When uploading larger amounts of data on unreliable connections (e.g., on the train or with mobile data) you have to deal with interruptions and timeouts which in the past required users to restart stalled uploads from the beginning in the worst case.
+On top of ownCloud's chunking mechanism that splits large files into pieces and uploads them separately there's new logic that takes care of retrying stalled chunks. With this uploads can now continue from the point they froze when a connection becomes available again.
+
+New option to prevent sharing with specific system groups
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+System groups in ownCloud can have many purposes. They can be used for sharing with many users at once, for feature and access restrictions or for storage mounts to specific users - just to name a few. In some cases, especially in larger deployments, it's undesirable that groups which are used for other purposes are available for sharing, too. To prevent users from sharing with such groups, administrators can now blacklist the respective system groups using the option *Exclude groups from receiving shares* in the administration settings *Sharing* section.
+
+New options for the occ command to reset user passwords
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+The occ command ``user:resetpassword`` allows system administrators to reset or change user passwords. It has been extended to provide the additional options ``--send-email`` and ``--output-link`` which can be used to send a password reset link to the user via mail or to output the password reset link to the command line, respectively. This change is in line with the new local user creation flow which is explained above and can also be used for further processing with scripts. See the ownCloud Documentation and the ``--help`` option for more information.
+
+New default minimum supported Desktop Client version
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+To ensure a clean and reliable operation of the ownCloud platform it is important to stay up-to-date with the latest releases for the Server as well as the Clients. To take care for compatibility between the Server and Desktop Clients the minimum version the Server will accept connections from has been risen to ``2.3.3``. While it's recommended to keep up with later versions this is the new default value. It can be changed by altering the config.php parameter ``'minimum.supported.desktop.version' => '2.3.3',`` if it really is necessary.
+
+New option to configure the language of mail notifications for public links
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Usually ownCloud renders mail notifications in the language of the recipients, when they are known. For the `recently improved feature <https://doc.owncloud.com/server/10.0/admin_manual/release_notes.html#personal-note-for-public-link-mail-notification>`_ to send public links with a personal note directly from the user interface the recipients' language can't be determined automatically it just knows the recipients' mail addresses. ownCloud therefore uses the language of the user who sent the notification which can have the drawback that recipients can't understand them.
+This is still the default behavior but administrators can now change it via a dropdown menu *Language used for public mail notifications for shared files* in the settings *Sharing* section.
+
+Theming changes
+~~~~~~~~~~~~~~
+
+Mail templates for share notifications do not strip linebreaks from the personal note anymore. This affects the HTML (``core/templates/mail.php``) and plain text (``core/templates/altmail.php``) mail templates. The default templates shipped with ownCloud Server 10.0.10 have been modified to accomodate to these changes. If your custom theme overrides these templates, you have to follow up with the changes:
+- Replace the following line of the HTML template ``p($l->t("Personal note from the sender: %s.", [$_['personal_note']]));`` with ``print_unescaped($l->t("Personal note from the sender: <br> %s.", $_['personal_note']));``
+- Replace the following of the plain text template ``print_unescaped($l->t("Personal note from the sender: %s.", [$_['personal_note']]));`` with ``print_unescaped($l->t("Personal note from the sender: \n %s.", $_['personal_note']));``
+
+Other notable changes
+~~~~~~~~~~~~~~~~~~~~~
+- Allow automated SSL certificate verifications for other CAs than Let's Encrypt. See `#31858 <https://github.com/owncloud/core/issues/31858>`_ for further details.
+-  "/" and "%" are now valid characters in group names. See `#31109 <https://github.com/owncloud/core/issues/31109>`_ for further details.
+- New audit events for login action with token or Apache. See `_#31985 <https://github.com/owncloud/core/issues/31985>`_ for further details.
+- Log entries for user quota exceedance: Loglevel changed to "debug" (Insufficient storage exception is now logged with "debug" log level).
+- The app for embedding external sites to the app launcher ("*external*") now supports icons that originate from theme apps.
+- The occ command to deactivate storage encryption (``occ encryption:decrypt-all``) has received stability improvements and can now read the required recovery key from an environment variable which is very helpful for a scripted per-user decryption process.
+
+Solved known issues
+~~~~~~~~~~~~~~~~~~~
+ownCloud Server 10.0.10 takes care of `10.0.9 known issues <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#id10>`_ and provides remedy for several others:
+
+- The *Password Policy* extension now works with two- or multi-factor authentication extensions. See `#32058 <https://github.com/owncloud/core/issues/32058>`_ for further details.
+- The *Versions* feature now works also when the *Comments* app is disabled. See `#32208 <https://github.com/owncloud/core/issues/32208>`_ for further details.
+- E-mail addresses with subdomains with hyphens are now also accepted for public link emails. See `#32281 <https://github.com/owncloud/core/issues/32281>`_ for further details.
+- Allow null in "Origin" header for third party clients that send it with WebDAV. See `#32189 <https://github.com/owncloud/core/issues/32189>`_ for further details.
+- Properly log failed message when token based authentication is enforced (fail2ban). See `#31948 <https://github.com/owncloud/core/issues/31948>`_ for further details.
+- Deleting a user now also properly deletes their external storages and storage assignations. See `#32069 <https://github.com/owncloud/core/issues/32069>`_ for further details.
+- Lockout issues with wrong passwords for Windows Network Drives are mitigated: Fixed mount config in frontend to only load once to avoid side effects. See `#32095 <https://github.com/owncloud/core/issues/32095>`_ for further details.
+- Fixed update issue related to oc_jobs when automatically enabling market app to assist for update in OC 10. See `#32573 <https://github.com/owncloud/core/pull/32573>`_ for further details.
+- Fixed missing migrations in files_sharing app and add indices to improve performance. See `#32562 <https://github.com/owncloud/core/issues/32562>`_ for further details.
+- Fixed issue with spam filters when sending public link emails. See `#32542 <https://github.com/owncloud/core/issues/32542>`_ for further details.
+
+Known issues
+~~~~~~~~~~~~
+Currently there are no known issues with ownCloud Server 10.0.10. This section will be updated in the case that issues become known.
+
+For developers
+~~~~~~~~~~~~~~
+- Search API for files using Webdav REPORT and underlying search provider. See `#31946 <https://github.com/owncloud/core/issues/31946>`_ and `#32328 <https://github.com/owncloud/core/issues/32328>`_ for further details.
+- Add information whether user can share to capabilities API. See `#31824 <https://github.com/owncloud/core/issues/31824>`_ for further details.
+- Hook "loadAdditionalScripts" now also available for public link page. See `#31944 <https://github.com/owncloud/core/issues/31944>`_ for further details.
+- Added url parameter to files app which opens a specific sidebar tab. See `#32202 <https://github.com/owncloud/core/issues/32202>`_ for further details.
+- Allow slashes in generated resource routes in app framework. See `#31939 <https://github.com/owncloud/core/issues/31939>`_ for further details.
+- The app for embedding external sites to the app launcher ("*external*") has been moved to a `separate repository <https://github.com/owncloud/external>`_. It is still bundled with ownCloud Server releases and can be used normally.
 
 .. _10.0.9_release_notes_label:
 
