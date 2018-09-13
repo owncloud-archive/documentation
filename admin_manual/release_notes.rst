@@ -73,8 +73,21 @@ Theming changes
 ~~~~~~~~~~~~~~
 
 Mail templates for share notifications do not strip linebreaks from the personal note anymore. This affects the HTML (``core/templates/mail.php``) and plain text (``core/templates/altmail.php``) mail templates. The default templates shipped with ownCloud Server 10.0.10 have been modified to accomodate to these changes. If your custom theme overrides these templates, you have to follow up with the changes:
-- Replace the following line of the HTML template ``p($l->t("Personal note from the sender: %s.", [$_['personal_note']]));`` with ``print_unescaped($l->t("Personal note from the sender: <br> %s.", $_['personal_note']));``
-- Replace the following of the plain text template ``print_unescaped($l->t("Personal note from the sender: %s.", [$_['personal_note']]));`` with ``print_unescaped($l->t("Personal note from the sender: \n %s.", $_['personal_note']));``
+
+- Replace the following line of the HTML template
+``p($l->t("Personal note from the sender: %s.", [$_['personal_note']]));``
+
+with
+
+``print_unescaped($l->t("Personal note from the sender: <br> %s.", $_['personal_note']));``.
+
+- Replace the following of the plain text template
+
+``print_unescaped($l->t("Personal note from the sender: %s.", [$_['personal_note']]));``
+
+with
+
+``print_unescaped($l->t("Personal note from the sender: \n %s.", $_['personal_note']));``.
 
 Other notable changes
 ~~~~~~~~~~~~~~~~~~~~~
