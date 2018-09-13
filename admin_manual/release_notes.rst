@@ -38,7 +38,7 @@ In previous versions administrators created local users by entering a *Username*
 
 HTTP API for Search
 ~~~~~~~~~~~~~~~~~~~
-ownCloud Server 10.0.10 introduces a HTTP API for the search functionality. It enables to query for search terms on the server and deliver results via HTTP. With upcoming releases the ownCloud Clients will make use of it to be able to search contents on the server without the need of having them available locally. 
+ownCloud Server 10.0.10 introduces a HTTP API for the search functionality. It enables querying for search terms on the server and delivering results via HTTP. With upcoming releases the ownCloud Clients will make use of it to be able to search contents on the server without the need of having them available locally. 
 In combination with the Full Text Search integration which is soon to be released as an ownCloud Server extension (Community Edition) this will boost usability and productivity for users as they can basically search through all contents they store in their account and find the files they actually need quickly on their mobile phone, for example.
 
 Native Brute-Force Protection
@@ -62,7 +62,7 @@ The occ command ``user:resetpassword`` allows system administrators to reset or 
 
 New default minimum supported Desktop Client version
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-To ensure a clean and reliable operation of the ownCloud platform it is important to stay up-to-date with the latest releases for the Server as well as the Clients. To take care for compatibility between the Server and Desktop Clients the minimum version the Server will accept connections from has been risen to ``2.3.3``. While it's recommended to keep up with later versions this is the new default value. It can be changed by altering the config.php parameter ``'minimum.supported.desktop.version' => '2.3.3',`` if it really is necessary.
+To ensure a clean and reliable operation of the ownCloud platform it is important to stay up-to-date with the latest releases for the Server as well as the Clients. To take care of compatibility between the Server and Desktop Clients the minimum version the Server will accept connections from has been raised to ``2.3.3``. While it's recommended to keep up with later versions this is the new default value. It can be changed by altering the config.php parameter ``'minimum.supported.desktop.version' => '2.3.3',`` if it really is necessary.
 
 New option to configure the language of mail notifications for public links
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
