@@ -38,7 +38,7 @@ In previous versions administrators created local users by entering a *Username*
 
 HTTP API for Search
 ~~~~~~~~~~~~~~~~~~~
-ownCloud Server 10.0.10 introduces a HTTP API for the search functionality. It enables querying for search terms on the server and delivering results via HTTP. With upcoming releases the ownCloud Clients will make use of it to be able to search contents on the server without the need of having them available locally. 
+ownCloud Server 10.0.10 introduces a HTTP API for the search functionality. It enables querying for search terms on the server and delivering results via HTTP (WebDAV). With upcoming releases the ownCloud Clients will make use of it to be able to search contents on the server without the need of having them available locally. 
 In combination with the Full Text Search integration which is soon to be released as an ownCloud Server extension (Community Edition) this will boost usability and productivity for users as they can basically search through all contents they store in their account and find the files they actually need quickly on their mobile phone, for example.
 
 Native Brute-Force Protection
@@ -70,7 +70,7 @@ Usually ownCloud renders mail notifications in the language of the recipients, w
 This is still the default behavior but administrators can now change it via a dropdown menu *Language used for public mail notifications for shared files* in the settings *Sharing* section.
 
 Theming changes
-~~~~~~~~~~~~~~
+~~~~~~~~~~~~~~~
 
 Mail templates for share notifications do not strip linebreaks from the personal note anymore. This affects the HTML (``core/templates/mail.php``) and plain text (``core/templates/altmail.php``) mail templates. The default templates shipped with ownCloud Server 10.0.10 have been modified to accomodate these changes. If your custom theme overrides these templates, you have to follow up with the changes:
 
