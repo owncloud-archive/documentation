@@ -68,6 +68,7 @@ Web Browser
 ^^^^^^^^^^^
 .. Only the latest versions from desktop and mobile apps are supported
 
+
 - Edge (current version on Windows 10)
 - IE11+ (except Compatibility Mode)
 - Firefox 62 or 60.2 ESR
