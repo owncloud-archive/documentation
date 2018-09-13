@@ -72,7 +72,7 @@ This is still the default behavior but administrators can now change it via a dr
 Theming changes
 ~~~~~~~~~~~~~~
 
-Mail templates for share notifications do not strip linebreaks from the personal note anymore. This affects the HTML (``core/templates/mail.php``) and plain text (``core/templates/altmail.php``) mail templates. The default templates shipped with ownCloud Server 10.0.10 have been modified to accomodate to these changes. If your custom theme overrides these templates, you have to follow up with the changes:
+Mail templates for share notifications do not strip linebreaks from the personal note anymore. This affects the HTML (``core/templates/mail.php``) and plain text (``core/templates/altmail.php``) mail templates. The default templates shipped with ownCloud Server 10.0.10 have been modified to accomodate these changes. If your custom theme overrides these templates, you have to follow up with the changes:
 
 - Replace the following line of the HTML template
 ``p($l->t("Personal note from the sender: %s.", [$_['personal_note']]));``
@@ -81,7 +81,7 @@ with
 
 ``print_unescaped($l->t("Personal note from the sender: <br> %s.", $_['personal_note']));``.
 
-- Replace the following of the plain text template
+- Replace the following line of the plain text template
 
 ``print_unescaped($l->t("Personal note from the sender: %s.", [$_['personal_note']]));``
 
@@ -94,13 +94,13 @@ Other notable changes
 - Allow automated SSL certificate verifications for other CAs than Let's Encrypt. See `#31858 <https://github.com/owncloud/core/issues/31858>`_ for further details.
 -  "/" and "%" are now valid characters in group names. See `#31109 <https://github.com/owncloud/core/issues/31109>`_ for further details.
 - New audit events for login action with token or Apache. See `_#31985 <https://github.com/owncloud/core/issues/31985>`_ for further details.
-- Log entries for user quota exceedance: Loglevel changed to "debug" (Insufficient storage exception is now logged with "debug" log level).
+- Log entries for exceeding user quota: Loglevel changed to "debug" (Insufficient storage exception is now logged with "debug" log level).
 - The app for embedding external sites to the app launcher ("*external*") now supports icons that originate from theme apps.
 - The occ command to deactivate storage encryption (``occ encryption:decrypt-all``) has received stability improvements and can now read the required recovery key from an environment variable which is very helpful for a scripted per-user decryption process.
 
 Solved known issues
 ~~~~~~~~~~~~~~~~~~~
-ownCloud Server 10.0.10 takes care of `10.0.9 known issues <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#id10>`_ and provides remedy for several others:
+ownCloud Server 10.0.10 takes care of `10.0.9 known issues <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#id10>`_ and provides remedies for several others:
 
 - The *Password Policy* extension now works with two- or multi-factor authentication extensions. See `#32058 <https://github.com/owncloud/core/issues/32058>`_ for further details.
 - The *Versions* feature now works also when the *Comments* app is disabled. See `#32208 <https://github.com/owncloud/core/issues/32208>`_ for further details.
