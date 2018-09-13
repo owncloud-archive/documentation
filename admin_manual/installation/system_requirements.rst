@@ -31,7 +31,7 @@ Server
 | PHP Runtime\ :sup:`*` | - 5.6, 7.0, 7.1 & 7.2                                                 |
 +-----------------------+-----------------------------------------------------------------------+
 
-.. note:: \*\ We strongly encourage you to migrate to PHP 7.1+.
+.. note:: \*\ We strongly encourage you to migrate to PHP 7.2.
 
 .. Distribution Release Schedules
 
@@ -47,7 +47,7 @@ Server
 
     If you use Ubuntu 16.04:
 
-    - PHP 7.1 or 7.2 is only available via ppa. To add a ppa to your system, use this command: ``sudo add-apt-repository ppa:user/ppa-name``.
+    - PHP 7.1 and 7.2 are only available via ppa. To add a ppa to your system, use this command: ``sudo add-apt-repository ppa:user/ppa-name``.
 
 .. note::
 
