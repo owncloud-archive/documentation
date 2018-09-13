@@ -52,7 +52,6 @@ Server
 
 .. note::
 
-   - Ubuntu 18.04 ships with PHP 7.2. For production use, install PHP 7.1
    - Red Hat Enterprise Linux & Centos 7 are 64-bit only.
    - Oracle 11g is only supported for the Enterprise edition.
    - SQLite is not encouraged for production use.
