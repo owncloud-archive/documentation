@@ -28,7 +28,7 @@ Server
 +-----------------------+-----------------------------------------------------------------------+
 | Web server            | - Apache 2.4 with ``prefork`` :ref:`apache-mpm-label` and ``mod_php`` |
 +-----------------------+-----------------------------------------------------------------------+
-| PHP Runtime\ :sup:`*` | - 5.6+, 7.0, & 7.1                                                    |
+| PHP Runtime\ :sup:`*` | - 5.6, 7.0, 7.1 & 7.2                                                 |
 +-----------------------+-----------------------------------------------------------------------+
 
 .. note:: \*\ We strongly encourage you to migrate to PHP 7.1+.
@@ -47,11 +47,10 @@ Server
 
     If you use Ubuntu 16.04:
 
-    - PHP 7.1 is only available via ppa. To add a ppa to your system, use this command: ``sudo add-apt-repository ppa:user/ppa-name``.
+    - PHP 7.1 or 7.2 is only available via ppa. To add a ppa to your system, use this command: ``sudo add-apt-repository ppa:user/ppa-name``.
 
 .. note::
 
-   - Ubuntu 18.04 ships with PHP 7.2. For production use, install PHP 7.1
    - Red Hat Enterprise Linux & Centos 7 are 64-bit only.
    - Oracle 11g is only supported for the Enterprise edition.
    - SQLite is not encouraged for production use.
