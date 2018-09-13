@@ -86,7 +86,7 @@ Hypervisors
 Desktop
 ^^^^^^^
 
-- Windows 8+
+- Windows 7, 8+
 - Mac OS X 10.12+ (**64-bit only**)
 - CentOS 6 & 7 (64-bit only)
 - Debian 7 & 8
