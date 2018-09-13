@@ -10,31 +10,34 @@ For *best performance*, *stability*, *support*, and *full functionality* we offi
 Server
 ^^^^^^
 
-+------------------+-----------------------------------------------------------------------+
-| Platform         | Options                                                               |
-+==================+=======================================================================+
-| Operating System | - Ubuntu 16.04 and 18.04                                              |
-|                  | - Debian 7, 8, and 8                                                  |
-|                  | - Red Hat Enterprise Linux/Centos 6.9, 7.3, 7.4, and 7.5              |
-|                  | - Fedora 26, 27 and 28                                                |
-|                  | - SUSE Linux Enterprise Server 12 with SP1, SP2 and SP3               |
-|                  | - openSUSE Tumbleweed and Leap 42.1, 42.2, 42.3                       |
-+------------------+-----------------------------------------------------------------------+
-| Database         | - MySQL or MariaDB 5.5+                                               |
-|                  | - Oracle 11g                                                          |
-|                  | - PostgreSQL                                                          |
-|                  | - SQLite                                                              |
-+------------------+-----------------------------------------------------------------------+
-| Web server       | - Apache 2.4 with ``prefork`` :ref:`apache-mpm-label` and ``mod_php`` |
-+------------------+-----------------------------------------------------------------------+
-| PHP Runtime      | - 5.6+, 7.0, & 7.1                                                    |
-+------------------+-----------------------------------------------------------------------+
++-----------------------+-----------------------------------------------------------------------+
+| Platform              | Options                                                               |
++=======================+=======================================================================+
+| Operating System      | - Centos Linux 6 and 7                                                |
+|                       | - Debian 7 and 8                                                      |
+|                       | - Fedora 27 and 28                                                    |
+|                       | - Red Hat Enterprise Linux 6 and 7                                    |
+|                       | - SUSE Linux Enterprise Server 12 with SP1, SP2 and SP3               |
+|                       | - openSUSE Tumbleweed and Leap 15.0, 42.3                             |
+|                       | - Ubuntu 16.04 and 18.04                                              |
++-----------------------+-----------------------------------------------------------------------+
+| Database              | - MySQL or MariaDB 5.5+                                               |
+|                       | - Oracle 11g                                                          |
+|                       | - PostgreSQL                                                          |
+|                       | - SQLite                                                              |
++-----------------------+-----------------------------------------------------------------------+
+| Web server            | - Apache 2.4 with ``prefork`` :ref:`apache-mpm-label` and ``mod_php`` |
++-----------------------+-----------------------------------------------------------------------+
+| PHP Runtime\ :sup:`*` | - 5.6+, 7.0, & 7.1                                                    |
++-----------------------+-----------------------------------------------------------------------+
+
+.. note:: \*\ We strongly encourage you to migrate to PHP 7.1+.
 
 .. Distribution Release Schedules
 
-.. - Debian: https://wiki.debian.org/DebianReleases
+.. - Debian: https://wiki.debian.org/LTS
 .. - Ubuntu: https://www.ubuntu.com/info/release-end-of-life
-.. - Fedora: https://fedoraproject.org/wiki/End_of_life & https://fedoraproject.org/wiki/Releases
+.. - Fedora: https://en.wikipedia.org/wiki/Fedora_version_history
 .. - openSUSE: https://en.opensuse.org/Lifetime
 .. - Red Hat / Fedora: https://access.redhat.com/articles/3078
 .. - SUSE: https://www.suse.com/releasenotes/
@@ -42,7 +45,6 @@ Server
 
 .. important::
 
-    For the future release of ownCloud 10.1, a minimum php version of 7.1 is needed.
     If you use Ubuntu 16.04:
 
     - PHP 7.1 is only available via ppa. To add a ppa to your system, use this command: ``sudo add-apt-repository ppa:user/ppa-name``.
@@ -65,11 +67,13 @@ Mobile
 Web Browser
 ^^^^^^^^^^^
 
+.. Only the latest versions from desktop and mobile apps are supported
+
 - Edge (current version on Windows 10)
 - IE11+ (except Compatibility Mode)
-- Firefox 57+ or 52 ESR
-- Chrome 66+
-- Safari 10+
+- Firefox 62 or 60.2 ESR
+- Google Chrome 68+
+- Safari 11
 
 Hypervisors
 ^^^^^^^^^^^
@@ -82,13 +86,13 @@ Hypervisors
 Desktop
 ^^^^^^^
 
-- Windows 7+
-- Mac OS X 10.7+ (**64-bit only**)
+- Windows 7, 8+
+- Mac OS X 10.12+ (**64-bit only**)
 - CentOS 6 & 7 (64-bit only)
-- Debian 8.0 & 9.0
+- Debian 7 & 8
 - Fedora 27 & 28
 - Ubuntu 16.04 & 18.04
-- openSUSE Leap 42.3 & 15.0
+- openSUSE Leap 15.0, 42.3
 
 .. note::
    For Linux distributions, we support, if technically feasible, the latest 2 versions per platform and the previous `LTS`_.
