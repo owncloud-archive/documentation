@@ -43,9 +43,7 @@ In combination with the Full Text Search integration which is soon to be release
 
 Native Brute-Force Protection
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-
-Check out the `Brute Force Protection <https://marketplace.owncloud.com/apps/brute_force_protection>`_ extension on the ownCloud Marketplace
-Support can be obtained on an individual basis.
+Together with the new server version another security-enhancing extension comes along. The `Brute Force Protection <https://marketplace.owncloud.com/apps/brute_force_protection>`_ extension is tasked to prevent attackers from guessing user passwords (brute-force attack) by delaying subsequent failed login attempts for a user account from the same IP address. While in the past a similar functionality was only achievable via third party applications like *Fail2Ban* reading ownCloud's log files, the extension now provides a native way which is configurable by ownCloud administrators on the settings section *Security*. The new extension supersedes the former `Security <https://marketplace.owncloud.com/apps/security>`_ extension together with the new `Password Policy <https://marketplace.owncloud.com/apps/password_policy>`_ extension which `has been released with ownCloud Server 10.0.9 <https://doc.owncloud.com/server/latest/admin_manual/release_notes.html#password-history-and-expiration>`_. This community-contributed extension is well-tested but out of ownCloud's general support scope. However, individual support can be obtained on request.
 
 Improved reliability for uploads via web interface on unreliable connections
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
