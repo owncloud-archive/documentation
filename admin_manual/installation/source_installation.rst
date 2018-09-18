@@ -47,12 +47,12 @@ Required
 PHP Version
 ~~~~~~~~~~~
 
-PHP (5.6+, 7.0, & 7.1)
+PHP (5.6+, 7.0, 7.1, & 7.2)
 
 .. WARNING::
 
-   ownCloud recommends the use of PHP 7.1 in new installations.
-   Sites using a version earlier than PHP 7.1 are *strongly encouraged* to migrate to PHP 7.1
+   ownCloud recommends the use of PHP 7.2 in new installations.
+   Sites using a version earlier than PHP 7.2 are *strongly encouraged* to migrate to PHP 7.2.
 
 PHP Extensions
 ~~~~~~~~~~~~~~
@@ -214,56 +214,22 @@ On a machine running a pristine Ubuntu 16.04 LTS server, install the required an
 
 ::
 
-    apt-get install -y apache2 mariadb-server libapache2-mod-php7.0 \
-        openssl php-imagick php7.0-common php7.0-curl php7.0-gd \
-        php7.0-imap php7.0-intl php7.0-json php7.0-ldap php7.0-mbstring \
-        php7.0-mcrypt php7.0-mysql php7.0-pgsql php-smbclient php-ssh2 \
-        php7.0-sqlite3 php7.0-xml php7.0-zip
+    # If the add-apt-repository command is not available install software-properties-common
+    sudo add-apt-repository ppa:ondrej/php
+    sudo apt-get update
+
+    sudo apt-get install -y apache2 mariadb-server libapache2-mod-php7.2 \
+        openssl php-imagick php7.2-common php7.2-curl php7.2-gd \
+        php7.2-imap php7.2-intl php7.2-json php7.2-ldap php7.2-mbstring \
+        php7.2-mysql php7.2-pgsql php-smbclient php-ssh2 \
+        php7.2-sqlite3 php7.2-xml php7.2-zip
 
 **Please note:**
 
-- ``php7.0-common`` provides: ftp, Phar, posix, iconv, ctype
+- ``php7.2-common`` provides: ftp, Phar, posix, iconv, ctype
 - The Hash extension is available from PHP 5.1.2 by default
-- ``php7.0-xml`` provides DOM, SimpleXML, XML, & XMLWriter
-- ``php7.0-zip`` provides zlib
-
-The remaining steps are analogous to the installation on Ubuntu 14.04 as shown below.
-
-On Ubuntu 14.04 LTS Server
-^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-On a machine running a pristine Ubuntu 14.04 LTS server, install the required and recommended modules for a typical ownCloud installation, using Apache and MariaDB, by issuing the following commands in a terminal:
-
-::
-
-    apt-get install -y wget expect apache2 mariadb-server libapache2-mod-php5 \
-        libsmbclient-dev libssh2-1-dev openssl php5-imagick \
-        php5-common php5-curl php5-dev php5-gd \
-        php5-imap php5-intl php5-json php5-ldap \
-        php5-mcrypt php5-mysql php5-pgsql php5-sqlite
-
-**Please note:**
-
-``libapache2-mod-php5`` provides the following PHP extensions.
-
-- ctype 
-- dom 
-- ftp 
-- hash 
-- iconv 
-- libxml 
-- mbstring 
-- openssl 
-- Phar 
-- posix 
-- SimpleXML 
-- xml 
-- xmlreader 
-- xmlwriter 
-- zip 
-- zlib
-
-So if you don’t see an applicable package in the list above, that’s why.
+- ``php7.2-xml`` provides DOM, SimpleXML, XML, & XMLWriter
+- ``php7.2-zip`` provides zlib
 
 Installing smbclient
 ~~~~~~~~~~~~~~~~~~~~
@@ -290,10 +256,10 @@ So the final two commands upgrade PEAR to version 1.9.5 and then install smbclie
   pear install PEAR-1.9.5
   pecl install smbclient
 
-Installing ssh2
+Installing SSH2
 ~~~~~~~~~~~~~~~
 
-To install ssh2, which provides sftp, you can use the following command:
+To install SSH2, which provides SFTP, you can use the following command:
 
 ::
 
@@ -314,7 +280,7 @@ Additional Extensions
 
 ::
 
-  apt-get install -y php-apcu php-redis redis-server php7.0-ldap
+  apt-get install -y php-apcu php-redis redis-server php7.2-ldap
 
 RHEL (RedHat Enterprise Linux) 7.2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -328,16 +294,35 @@ Required Extensions
   subscription-manager repos --enable rhel-server-rhscl-7-eus-rpms
   
   # Install the required packages
-  yum install httpd mariadb-server php55 php55-php \
-    php55-php-gd php55-php-mbstring php55-php-mysqlnd
+  sudo yum install httpd mariadb-server php72 php72-php \
+    php72-php-gd php72-php-mbstring php72-php-mysqlnd
 
 Optional Extensions
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-  yum install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm \
-    php-pecl-apcu redis php-pecl-redis php55-php-ldap
+  sudo yum install -y epel-release http://rpms.remirepo.net/enterprise/remi-release-7.rpm yum-utils \
+    && sudo yum-config-manager --enable remi-php72 \
+    && sudo yum update -y \
+    && sudo yum install -y php72-pecl-apcu \
+      redis php72-php-pecl-redis php72-php-ldap \
+      mariadb-server mariadb
+
+Centos 7
+^^^^^^^^
+
+::
+
+  sudo yum install -y -q epel-release http://rpms.remirepo.net/enterprise/remi-release-7.rpm yum-utils \
+  && sudo yum-config-manager --enable remi-php72 \
+  && sudo yum update -y -q \
+  && sudo yum install -y -q \
+     httpd mariadb-server php72 php72-php php72-php-gd \
+     php72-php-mbstring php72-php-mysqlnd php72-php-cli \
+     php72-pecl-apcu redis php72-php-pecl-redis php72-php-common \
+     php72-php-ldap mariadb-server mariadb \
+  && sudo scl enable php72 bash
 
 SLES (SUSE Linux Enterprise Server) 12
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -347,15 +332,15 @@ Required Extensions
 
 ::
 
-  zypper install apache2 apache2-mod_php5 php5-gd php5-json php5-curl \
-    php5-intl php5-mcrypt php5-zip php5-zlib
+  zypper install -y apache2 apache2-mod_php7 php7-gd php7-openssl \
+    php7-json php7-curl php7-intl php7-sodium php7-zip php7-zlib
 
 Optional Extensions
 ~~~~~~~~~~~~~~~~~~~
 
 ::
 
-  zypper install php5-ldap
+  zypper install -y php7-ldap
 
 APCu
 ||||
@@ -367,7 +352,7 @@ However, if you want or need to install it, then we suggest the following steps:
 
   wget http://download.opensuse.org/repositories/server:/php:/extensions/SLE_12_SP1/ server:php:extensions.repo -O /etc/zypp/repos.d/memcached.repo 
   zypper refresh
-  zypper install php5-APCu
+  zypper install -y php7-APCu
 
 Redis
 |||||
@@ -375,6 +360,13 @@ Redis
 The latest versions of Redis servers have shown to be incompatible with SLES 12. 
 Therefore it is currently recommended to download and install version 2.2.7 or a previous release from: https://pecl.php.net/package/redis.
 Keep in mind that version 2.2.5 is the minimum version which ownCloud supports.
+
+If you want or need to install it, we suggest the following steps:
+
+::
+
+  zypper refresh
+  zypper install -y php7-redis
 
 Install ownCloud
 ----------------
