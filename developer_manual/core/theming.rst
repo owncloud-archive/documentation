@@ -14,7 +14,6 @@ However, this documentation only covers customizing the web front-end, *so far*.
    installation.
 
 To save you time and effort, you can use the shell script below, to create the basis of a new theme from `ownCloud's example theme`_.
-
 Using this script, you will have a new theme, ready to go, in less than five seconds.
 You can execute this script with two variables; the first one is the **theme name** and the second one is your **ownCloud directory**.
 
@@ -538,7 +537,7 @@ The interface specifies three methods:
 ownCloud Server comes with a predefined list of sections which group related settings together; the intention of which is to improve the user experience. 
 This can be found here in `this example`_: 
 
-**getPanel:** This method returns the ``OCP\Template`` or ``OCP\TemplateResponse`` which is used to render the panel.
+**getPanel:** This method returns the ``OCP\Template`` or ``OCP\TemplateReponse`` which is used to render the panel. 
 The method may also return ``null`` if the panel should not be shown to the user.
 
 **getPriority:** An integer between 0 and 100 representing the importance of the panel (higher is more important). 
