@@ -587,7 +587,7 @@ Reports
 -------
 
 If you're working with ownCloud support and need to send them a configuration summary, you can generate it using the ``configreport:generate`` command. 
-This command generates the same JSON-based report as the Admin Config Report, which you can access under ``admin -> Settings -> Admin -> Help & Tips -> Download ownCloud config report``.
+This command generates the same JSON-based report as the Admin Config Report, which you can access under ``admin -> Settings -> Admin -> General -> Generate Config Report -> Download ownCloud config report``.
 
 From the command-line in the root directory of your ownCloud installation, run it as your webserver user as follows, (assuming your webserver user is ``www-data``):
 
