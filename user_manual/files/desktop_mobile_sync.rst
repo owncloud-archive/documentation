@@ -24,7 +24,7 @@ Mobile Clients
 
 Visit your Personal page in your ownCloud Web interface to find download links 
 for Android and iOS mobile sync clients. Or, visit the `ownCloud download page 
-<https://owncloud.org/install/>`_.
+<https://owncloud.org/download/>`_.
 
 Visit the `ownCloud documentation page <https://doc.owncloud.org/>`_ to read 
 the mobile apps user manuals.
