@@ -23,8 +23,14 @@ For example:
 
      theme-bootstrap.sh mynewtheme /var/www/owncloud
 
+theme-bootstrap.sh
+~~~~~~~~~~~~~~~~~~
+
 .. literalinclude:: ../scripts/theme-bootstrap.sh
    :language: bash
+
+read-config.php
+~~~~~~~~~~~~~~~
 
 .. literalinclude:: ../scripts/read-config.php
    :language: php
