@@ -136,8 +136,9 @@ ownCloud Server 10.0.10 takes care of `10.0.9 known issues <https://doc.owncloud
 Known Issues
 ~~~~~~~~~~~~
 
-Currently there are no known issues with ownCloud Server 10.0.10.
-This section will be updated in the case that issues become known.
+- ownCloud Server 10.0.10 introduced an issue with the `Auditing <https://marketplace.owncloud.com/apps/admin_audit>`_ extension (Enterprise Edition) version 1.0.0 that caused SAML/SSO login to fail. A new version of the Auditing extension (1.0.1) that takes care of the issue has been released and the Enterprise packages (10.0.10.1) have been updated to include that new version. If you updated to ownCloud Server 10.0.10 with Auditing version 1.0.0, please upgrade the extension to version 1.0.1.
+
+This section will be updated in the case that more issues become known.
 
 For Developers
 ~~~~~~~~~~~~~~
