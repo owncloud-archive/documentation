@@ -1862,12 +1862,23 @@ After the command completes, go to your Users page, and you will see your new us
 Setting a User's Password
 ~~~~~~~~~~~~~~~~~~~~~~~~~
 
-``password-from-env`` allows you to set the user's password from an environment variable. 
+The command's syntax is:
+
+.. code-block:: console
+
+ user:resetpassword [options] [--] <uid>
+
+The command supports three options, these are: ``--password-from-env``, ``--send-email``, and ``--output-link``.
+
+password-from-env
+^^^^^^^^^^^^^^^^^^
+
+This option allows you to set the user's password from an environment variable.
 This prevents the password from being exposed to all users via the process list, and will only be visible in the history of the user (root) running the command. 
 This also permits creating scripts for adding multiple new users.
 
 To use ``password-from-env`` you must run as "real" root, rather than ``sudo``, because ``sudo`` strips environment variables. 
-This example adds new user Fred Jones:
+This example adds a new user, called Fred Jones:
 
 ::
 
@@ -1895,6 +1906,33 @@ You may also use ``password-from-env`` to reset passwords:
  sudo -u www-data php occ user:resetpassword --password-from-env layla
    Successfully reset password for layla
    
+send-email
+^^^^^^^^^^
+
+.. important:: For this command to work, the ownCloud instance must have email access fully configured.
+
+This option emails a password reset link to the user.
+Additionally, when the command completes, it outputs the password reset link to the console, such as in the following example:
+
+::
+
+   The password reset link is: http://localhost:8080/index.php/lostpassword/reset/form/rQAlCjNeQf3aphA6Hraq2/user1
+
+If the specified user does not have a valid email address set, then the following error will be output to the console, and the email will not be sent:
+
+::
+
+   Email address is not set for the user foo
+
+output-link
+^^^^^^^^^^^
+
+This option outputs the password reset link to the console, such as in the example below.
+
+::
+
+   The password reset link is: http://localhost:8080/index.php/lostpassword/reset/form/rQAlCjNeQf3aphA6Hraq2/user1
+
 Deleting A User
 ~~~~~~~~~~~~~~~
 
