@@ -12,6 +12,7 @@ See `Tagging Files
 <https://doc.owncloud.com/server/latest/user_manual/files/access_webgui.html>`_ in 
 the ownCloud User manual to learn how to apply and filter tags on files.
 
+.. tag_manager_label:
 Tag Manager
 -----------
 
