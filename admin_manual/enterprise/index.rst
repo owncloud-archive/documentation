@@ -14,4 +14,4 @@ Enterprise Features
    clients/index
    logging/index
    server_branding/index
-
+   classification_and_policy_enforcement
