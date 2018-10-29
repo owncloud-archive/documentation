@@ -36,7 +36,7 @@ This adds the capability to ensure that sensitive data is handled as required by
 
 Specifically, it enables ownCloud providers to:
 
-- Comply with information security standards, such as `recommended by the German Association of the Automotive Industry (VDA) <https://www.iso.org/isoiec-27001-information-security.html[ISO 27001/2] as https://www.vda.de/en/services/Publications/information-security-assessment.html>`_ and get certified to work securely within your value chain.
+- Comply with information security standards like ISO 27001/2 as `recommended by the German Association of the Automotive Industry (VDA) <https://www.vda.de/en/services/Publications/information-security-assessment.html>`_ and get certified to work securely within your value chain.
 - Handle data in compliance with GDPR
 - Manage risks effectively and cover potential data breaches.
 - Separate information based on metadata.
@@ -48,9 +48,9 @@ Overview
 ========
 
 - :ref:`Classification <classification_label>`
-    - :ref:`Tags-for-Classification <tags-for-classification_label>`
-    - :ref:`automated-classification-based-on-document-metadata-<automated-classification-based-on-document-metadata_label>`
-    - :ref:`automated-classification-based-on-file-or-user-properties-<automated-classification-based-on-file-or-user-properties_label>`
+    - :ref:`Tags for Classification <tags-for-classification_label>`
+    - :ref:`Automated Classification Based on Document Metadata <automated-classification-based-on-document-metadata_label>`
+    - :ref:`Automated Classification Based on File or User Properties <automated-classification-based-on-file-or-user-properties_label>`
     - :ref:`Manual Classification <manual-classification_label>`
 - :ref:`Policy Enforcement <policy_enforcement_label>`
     - :ref:`Feature Policies <feature-policies_label>`
@@ -74,7 +74,7 @@ Employing document classification and respective policies in ownCloud generally 
 Tags for Classification
 -----------------------
 
-Document classification levels in ownCloud are represented via `Collaborative Tags <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_.
+Document classification levels in ownCloud are represented via `Tagging Files <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_.
 Different categories of tags can be used to achieve different behaviors for users; these are detailed in the table below.
 
 ========== =======================================================================================
@@ -83,17 +83,21 @@ Tag Name   Description
 Visible    These tags are not available for classification based on metadata and feature policies
            because users can edit and delete them, which is undesirable in many cases
 Restricted These tags can be created by administrators using
-           `Collaborative Tags Management <file_management/files_tagging>`_. This category is
-           recommended as it enables users to recognize the classification level of files and
-           to be able to filter accordingly. Additionally, certain groups of users can have
-           the privilege to edit and assign or unassign these tags.
+           `Tagging Files
+           <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_.
+           This category is recommended as it enables users to recognize the
+           classification level of files and to be able to filter accordingly.
+           Additionally, certain groups of users can have the privilege to edit
+           and assign or unassign these tags.
 Invisible  These tags can be created by administrators using
-           `Collaborative Tags Management <file_management/files_tagging>`_. This category is
-           recommended when users should not be able to recognize the classification level of
-           files or to be able to filter accordingly.
+           `Tagging Files
+           <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_.
+           This category is recommended when users should not be able to
+           recognize the classification level of files or to be able to filter
+           accordingly.
 ========== =======================================================================================
 
-For setting up each classification rule, create a separate tag using `Collaborative Tags Management <file_management/files_tagging>`_, which you can later assign to classification rules and/or policies.
+For setting up each classification rule, create a separate tag using `Tagging Files <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_, which you can later assign to classification rules and/or policies.
 
 .. _automated-classification-based-on-document-metadata_label:
 
@@ -134,7 +138,7 @@ In addition, let's assume that you take the classification level for documents c
 This is how you set up an automated classification and the access policy in ownCloud:
 
 - As an ownCloud administrator, navigate to the *Settings* section *Workflows & Tags*.
-- In the `Collaborative Tags Management <file_management/files_tagging>`_ panel, create a tag of type *Restricted* and call it ``Class: Confidential``.
+- In the `Tagging Files <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_ panel, create a tag of type *Restricted* and call it ``Class: Confidential``.
   Adding a group with special privileges for the tag is optional.
 - Within "User Management", create the group *Trainees* and add some users.
 - Set up the classification rule in the panel *Document Classification and Feature Policies* in the same section, and set the following two properties:
@@ -179,7 +183,7 @@ Assume you want to use the BAF category *Intellectual Property* and take the cla
 This is how you set up an automated classification and the feature policy in ownCloud:
 
 - As an ownCloud administrator, navigate to the *Settings* section *Workflows & Tags*.
-- In the `Collaborative Tags Management <file_management/files_tagging>`_ panel, create a tag of type *Restricted* and call it ``Class: Confidential``.
+- In the `Tagging Files <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_ panel, create a tag of type *Restricted* and call it ``Class: Confidential``.
   Adding a group with special privileges for the tag is optional.
 - Set up the classification rule and feature policy in the panel *Document Classification and Feature Policies* of the same section:
     - **Property XPath** = ``//property[@name='urn:bails:IntellectualProperty:BusinessAuthorizationCategory:Name']/vt:lpwstr``
@@ -230,7 +234,7 @@ Set Up Classification Rules
 Automated Classification Based on File or User Properties
 ---------------------------------------------------------
 
-Apart from automated classification based on document metadata, uploaded files may also be classified according to criteria inherent to files or to the users uploading them, making use of the `Workflow <file_management/files_tagging>`_ extension.
+Apart from automated classification based on document metadata, uploaded files may also be classified according to criteria inherent to files or to the users uploading them, making use of `Tagging Files <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_.
 
 - Administrators may add rules for automated classification of files according to a file's size or file type.
 - File uploads by specific users, devices, or source networks can be used as indicators for classification.
@@ -242,7 +246,7 @@ You can construct a workflow rule using the following steps:
 
 - Within user management create the group *Management* and add some users.
 - Navigate to the *Settings* section *Workflows & Tags*.
-- In the `Collaborative Tags Management <file_management/files_tagging>`_ panel, create a tag of type *Restricted* and call it ``Class: Confidential``.
+- In the `Tagging Files <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_ panel, create a tag of type *Restricted* and call it ``Class: Confidential``.
   Adding a group with special privileges for the tag is optional.
 - In the panel *Workflow* you can now set up the classification rules. Hit *Add new workflow* and specify a useful name.
   Now configure the conditions that trigger the classification once they are met.
@@ -264,7 +268,7 @@ As a further measure, it is possible to supply tags for users to autonomously cl
 
 - As an ownCloud administrator, create a group within user management and add the users that should be able to classify files.
 - Then navigate to the *Settings* section *Workflows & Tags*.
-- In the `Collaborative Tags Management <file_management/files_tagging>`_ panel, create a tag of type *Restricted* and give it a meaningful name.
+- In the `Tagging Files <https://doc.owncloud.com/server/latest/user_manual/files/webgui/tagging.html>`_ panel, create a tag of type *Restricted* and give it a meaningful name.
   Then assign the group you created, in the beginning, to give it's users special privileges for the tag.
 - Users that are not a member of the specified group(s) will only be able to see the respective tag but can't alter or assign/un-assign it.
 
@@ -287,9 +291,9 @@ Feature Policies
 Feature policies are restrictions that prevent users from using a feature or force them to use it in a certain way.
 They are provided by the `Document Classification <https://marketplace.owncloud.com/apps/files_classifier>`_ extension, which currently supports the following policies:
 
-- `Prevent Upload <prevent-upload>`_
-- `Prevent-Link-Sharing <prevent-link-sharing>`_
-- `Unprotected-Links-Expire-After-X-Days <unprotected-links-expire-after-x-days>`_
+- :ref:`Prevent Upload <prevent-upload_label>`
+- :ref:`Prevent Link Sharing <prevent-link-sharing_label>`
+- :ref:`Unprotected Links Expire After X Days <unprotected-links-expire-after-x-days_label>`
 
 .. _prevent-upload_label:
 
@@ -304,7 +308,8 @@ When trying to upload documents caught by the policy, users will get the followi
 
    A policy prohibits uploading files classified as '<tag>', where '<tag>' is the tag chosen for the classification rule.
 
-.. _note:: Even though the server won't accept the uploaded files, in the end, it is mandatory to configure a tag for the classification rule to work.
+.. note::
+   Even though the server won't accept the uploaded files, in the end, it is mandatory to configure a tag for the classification rule to work.
 
 .. _prevent-link-sharing_label:
 
@@ -346,7 +351,7 @@ In contrast, the Password Policy option *X days until link expires if password i
 Setting Up Policies Without Automated Classification Based on Document Metadata
 -------------------------------------------------------------------------------
 
-All policies can also be enforced when using `Manual Classification <manual-classification>`_ or `Automated Classification based on File or User Properties <Automated Classification based on File or User Properties>`_.
+All policies can also be enforced when using :ref:`Manual Classification <manual-classification_label>` or :ref:`Automated Classification Based on File or User Properties <automated-classification-based-on-file-or-user-properties_label>`.
 For this, specify the tag that determines the files that the policy should apply to and leave the fields for *Property XPath* and *Property Value* empty.
 Then choose the desired policy and hit *Save*.
 
