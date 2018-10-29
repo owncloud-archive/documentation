@@ -6,7 +6,7 @@ ownCloud can be installed using Docker, using `the official ownCloud Docker imag
 This official image is designed to work with a data volume in the host filesystem and with separate *MariaDB* and *Redis* containers.
 The configuration:
 
-- exposes ports 80 and 443, allowing for HTTP and HTTPS connections.
+- exposes port 8080, which allows for HTTP connections.
 - mounts the data and MySQL data directories on the host for persistent storage.
 
 Installation on a Local Machine
@@ -23,8 +23,7 @@ Setting Name         Description                    Example
 ``OWNCLOUD_DOMAIN``  The ownCloud domain            ``localhost``
 ``ADMIN_USERNAME``   The admin username             ``admin``
 ``ADMIN_PASSWORD``   The admin user's password      ``admin``
-``HTTP_PORT``        The HTTP port to bind to       ``80``
-``HTTPS_PORT``       The HTTP port to bind to       ``443``
+``HTTP_PORT``        The HTTP port to bind to       ``8080``
 ==================== ============================== =============
 
 Then, you can start the container, using your preferred Docker command-line tool.
@@ -49,8 +48,7 @@ The example below shows how to use `Docker Compose <https://docs.docker.com/comp
    OWNCLOUD_DOMAIN=localhost
    ADMIN_USERNAME=admin
    ADMIN_PASSWORD=admin
-   HTTP_PORT=80
-   HTTPS_PORT=443
+   HTTP_PORT=8080
    EOF
 
    # Build and start the container
@@ -66,10 +64,10 @@ that below:
             Name                     Command               State                     Ports
    -------------------------------------------------------------------------------------------------------
    server_db_1         /usr/bin/entrypoint /bin/s ...   Up      3306/tcp
-   server_owncloud_1   /usr/local/bin/entrypoint  ...   Up      0.0.0.0:443->443/tcp, 0.0.0.0:80->80/tcp
+   server_owncloud_1   /usr/local/bin/entrypoint  ...   Up      0.0.0.0:8080->8080/tcp
    server_redis_1      /bin/s6-svscan /etc/s6           Up      6379/tcp
 
-In it, you can see that the database, ownCloud, and Redis containers are running, and that ownCloud is accessible via ports 443 and 8080 on the host machine.
+In it, you can see that the database, ownCloud, and Redis containers are running, and that ownCloud is accessible via port 8080 on the host machine.
 
 .. note::
    Just because all the containers are running, it takes a few minutes for ownCloud to be fully functional.
