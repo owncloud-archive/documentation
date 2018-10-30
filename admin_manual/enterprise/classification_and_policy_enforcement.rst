@@ -322,7 +322,7 @@ To enable such policies, tick the checkbox associated with the classification ru
 
 Documents with the associated classification level:
 
-- Can't be shared via link (*public link on single files and folders containing classified files*); and
+- Can't be shared via link (*public links on single files and folders containing classified files*); and
 - Can't be moved to a publicly shared folder.
 
 In all cases the user will see an error message containing the reasoning and the respective file(s):
@@ -333,17 +333,18 @@ In all cases the user will see an error message containing the reasoning and the
 Unprotected Links Expire After X Days
 -------------------------------------
 
-The policy *Unprotected links expire after X days* enables administrators to deviate from the general public link expiration policies for data of certain classification levels.
-The general public link expiration policy originates from a :doc:`Sharing settings option <../../configuration/files/file_sharing_configuration>` and will be overridden when users choose not to set a password ("**unprotected**").
+The policy *Unprotected links expire after X days* enables administrators to define public link expiration policies depending on the classification levels of the data that is shared via public links without password protection. 
 
-This makes it possible, for instance, to allow documents classified as *public* to be shared via public link for 30 days while the general policy requires public links to expire after seven days.
-To enable such policies, tick the checkbox associated with the classification rule for the respective classification level and choose an alternative expiration period.
+This makes it possible, for instance, to allow documents classified as *public* to be shared via public links for 30 days while documents classified as *internal* require public links to expire after seven days.
+To enable such policies, just define an expiration period associated with the classification rule for the respective classification level.
 
-**Note:** the :doc:`Password Policy <../configuration/server/security/password_policy>` extension also provides options to enforce public link expiration depending on whether the user sets a password or not.
+**Note:** The :doc:`Password Policy <../configuration/server/security/password_policy>` extension also provides options to enforce public link expiration depending on whether the user sets a password or not.
 
 The option *X days until link expires if password is not set* is mutually exclusive with this policy.
 When you enable the Password Policy option, it will always be dominant and effectively override the policy discussed in this section.
 In contrast, the Password Policy option *X days until link expires if password is set* can be used in parallel.
+
+**Note:** The :doc:`Sharing settings option <../../configuration/files/file_sharing_configuration>` provides the means to define a general public link expiration policy. This option currently is also mutually exclusive and will always override the policy discussed in this section.
 
 
 .. _setting-up-policies-without-Automated Classification based on Document Metadata_label:
