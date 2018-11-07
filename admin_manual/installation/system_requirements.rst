@@ -13,10 +13,11 @@ Server
 +-----------------------+-----------------------------------------------------------------------+
 | Platform              | Options                                                               |
 +=======================+=======================================================================+
-| Operating System      | - Centos Linux 6 and 7                                                |
+| Operating System      | - Ubuntu 16.04 and 18.04                                              |
 |                       | - Debian 7 and 8                                                      |
-|                       | - Fedora 27 and 28                                                    |
 |                       | - Red Hat Enterprise Linux 6 and 7                                    |
+|                       | - Centos Linux 6 and 7                                                |
+|                       | - Fedora 27 and 28                                                    |
 |                       | - SUSE Linux Enterprise Server 12 with SP1, SP2 and SP3               |
 |                       | - openSUSE Leap 15.0, 42.3                             |
 |                       | - Ubuntu 16.04 and 18.04                                              |
@@ -32,6 +33,7 @@ Server
 +-----------------------+-----------------------------------------------------------------------+
 
 .. note:: \*\ We strongly encourage you to migrate to PHP 7.2.
+          \*\ Ubuntu comes with the full set of required packages out of the box. All other distributions may require additional repositories to deliver certain functionality.
 
 .. Distribution Release Schedules
 
