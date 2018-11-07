@@ -137,6 +137,7 @@ Known Issues
 ~~~~~~~~~~~~
 
 - ownCloud Server 10.0.10 introduced an issue with the `Auditing <https://marketplace.owncloud.com/apps/admin_audit>`_ extension (Enterprise Edition) version 1.0.0 that caused SAML/SSO login to fail. A new version of the Auditing extension (1.0.1) that takes care of the issue has been released and the Enterprise packages (10.0.10.1) have been updated to include that new version. If you updated to ownCloud Server 10.0.10 with Auditing version 1.0.0, please upgrade the extension to version 1.0.1.
+- There are issues when using the new flow to create local users together with password requirements defined in the `Password Policy <https://marketplace.owncloud.com/apps/password_policy>`_ extension: The invited user does not get hints on password requirements when setting their password initially. `This patch <https://github.com/owncloud/core/pull/33453>`_ fixes the issue and will be included in the next release of ownCloud Server.
 
 This section will be updated in the case that more issues become known.
 
