@@ -113,7 +113,7 @@ Automated classification based on document metadata consists of two parts:
 Office Suite Features for Document Classification
 -------------------------------------------------
 
-Microsoft Office can be extended with the `NovaPath <https://www.m-und-h.de/informationsklassifizierung/>`_ addon, to provide classification capabilities.
+Microsoft Office can be extended with the `NovaPath <https://www.m-und-h.de/en-novapath/>`_ addon, to provide classification capabilities.
 Currently Microsoft Office formats (*docx*, *dotx*, *xlsx*, *xltx*, *pptx*, *ppsx* and *potx*) are supported
 LibreOffice provides an integrated classification manager (TSCP).
 
@@ -129,7 +129,7 @@ Microsoft Office with the NovaPath Add-On
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Microsoft Office does *not* provide classification capabilities out-of-the-box.
-To extend it, we recommend the `NovaPath Add-On by M&H IT-Security GmbH <https://www.m-und-h.de/informationsklassifizierung>`_.
+To extend it, we recommend the `NovaPath Add-On by M&H IT-Security GmbH <https://www.m-und-h.de/en-novapath/>`_.
 It comes with easy-to-use default classification categories, and provides the flexibility to set up custom classification schemes as desired.
 
 Let's assume you want to use the default classification framework provided by NovaPath.
