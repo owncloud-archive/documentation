@@ -18,7 +18,7 @@ Server
 |                       | - Fedora 27 and 28                                                    |
 |                       | - Red Hat Enterprise Linux 6 and 7                                    |
 |                       | - SUSE Linux Enterprise Server 12 with SP1, SP2 and SP3               |
-|                       | - openSUSE Tumbleweed and Leap 15.0, 42.3                             |
+|                       | - openSUSE Leap 15.0, 42.3                             |
 |                       | - Ubuntu 16.04 and 18.04                                              |
 +-----------------------+-----------------------------------------------------------------------+
 | Database              | - MySQL or MariaDB 5.5+                                               |
