@@ -12,6 +12,7 @@ Requirements
 - Default language set to ``en`` (in ``config/config.php`` set ``'default_language' => 'en',``).
 - An admin user called ``admin`` with the password ``admin``.
 - No self-signed SSL certificates.
+- The testing app installed and enabled.
 - Testing utils (running ``make`` in your terminal from the ``webroot`` directory will install them).
 - `Docker CE Installed`_
 - `Docker Post-install`_ done to put your developer account in the docker group so you can run Docker without ``sudo``
@@ -98,13 +99,12 @@ Set Up Test
 
   .. code-block:: console
 
-    cd tests/acceptance
-    ./run.sh --suite webUILogin
+    make test-acceptance-webui BEHAT_SUITE=webUILogin
 
   The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
 
-  The tests need to be run as the same user who is running the webserver and this user must also be the owner of the config file (``config/config.php``).
-  To run the tests as a user that is different to your current terminal user run ``sudo -E -u <username>``. For example, to execute the script as as ``www-data``, run ``sudo -E -u www-data bash tests/travis/start_ui_tests.sh``.
+  The tests may need to be run as the same user who is running the webserver and this user must also be the owner of the config file (``config/config.php``).
+  To run the tests as a user that is different to your current terminal user run ``sudo -E -u <username>``. For example, to execute the script as as ``www-data``, run ``sudo -E -u www-data make test-acceptance-webui BEHAT_SUITE=webUILogin``.
 
 - The browser for the tests runs inside the Selenium docker container. View it by running the ``vnc`` viewer:
 
@@ -159,28 +159,30 @@ You can run the UI tests for just a single feature by specifying the feature fil
 
 .. code-block:: console
 
-  ./run.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature
+  make test-acceptance-webui BEHAT_FEATURE=tests/acceptance/features/webUITrashbin/trashbinDelete.feature
 
 To run just a single scenario within a feature, specify the line number of the scenario:
 
 .. code-block:: console
 
-  ./run.sh --feature tests/acceptance/features/webUITrashbin/trashbinDelete.feature:<linenumber>
+  make test-acceptance-webui BEHAT_FEATURE=tests/acceptance/features/webUITrashbin/trashbinDelete.feature:<linenumber>
 
 Running UI Tests for an App
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-With the app installed, run the UI tests for the app by specifying the location of the app's ``behat.yml`` config file:
+With the app installed, run the UI tests for the app from the app root folder:
 
 .. code-block:: console
 
-  ./run.sh --config ../../apps/files_texteditor/tests/acceptance/config/behat.yml --suite webUITextEditor
+  cd apps/files_texteditor
+  ../../tests/acceptance/run.sh --suite webUITextEditor
 
 Run UI the tests for just a single feature of the app by specifying the feature file:
 
 .. code-block:: console
 
-  ./run.sh --config ../../apps/files_texteditor/tests/acceptance/config/behat.yml --feature ../../apps/files_texteditor/tests/acceptance/features/webUITextEditor/editTextFiles.feature
+  cd apps/files_texteditor
+  ../../tests/acceptance/run.sh tests/acceptance/features/webUITextEditor/editTextFiles.feature
 
 Skipping Tests
 ~~~~~~~~~~~~~~
@@ -199,13 +201,13 @@ Run all skipped tests for a suite with:
 
 .. code-block:: console
 
-  ./run.sh --suite webUITrashbin --tags @skip
+  make test-acceptance-webui BEHAT_SUITE=webUITrashbin BEHAT_FILTER_TAGS=@skip
 
 Or run just a particular test by using its unique tag:
 
 .. code-block:: console
 
-  ./run.sh --suite webUITrashbin --tags @trashbin-restore-problem-issue-1234
+  make test-acceptance-webui BEHAT_SUITE=webUITrashbin BEHAT_FILTER_TAGS=@trashbin-restore-problem-issue-1234
 
 When fixing the bug, remove these skip tags in the PR along with the bug fix code.
 
@@ -218,7 +220,7 @@ However, you may run all UI tests with:
 
 .. code-block:: console
 
-  ./run.sh --type webUI
+  make test-acceptance-webui
 
 By default, any test scenarios that fail are automatically rerun once.
 This minimizes transient failures caused by browser and Selenium driver timing issues.
@@ -227,7 +229,7 @@ To not rerun failed test scenarios:
 
 .. code-block:: console
 
-  ./run.sh --norerun --suite webUILogin
+  make test-acceptance-webui NORERUN=true BEHAT_SUITE=webUILogin
 
 Local Selenium Setup
 ~~~~~~~~~~~~~~~~~~~~
