@@ -76,7 +76,7 @@ In it, you can see that the database, ownCloud, and Redis containers are running
 Logging In
 ^^^^^^^^^^
 
-To log in to the ownCloud UI, open ``https://localhost`` in your browser of
+To log in to the ownCloud UI, open ``http://localhost`` in your browser of
 choice, where you see the standard ownCloud login screen, as in the image
 below.
 
@@ -84,11 +84,6 @@ below.
    :alt: The ownCloud UI via Docker
 
 The username and password are the admin username and password which you stored in ``.env`` earlier.
-
-.. note::
-   The first time that you access the login page via HTTPS, a browser
-   warning appears, as the SSL certificate in the Docker setup is self-signed.
-   However, the self-signed certificate can be overwritten with a valid cert, within the host volume.
 
 Stopping the Containers
 ^^^^^^^^^^^^^^^^^^^^^^^
