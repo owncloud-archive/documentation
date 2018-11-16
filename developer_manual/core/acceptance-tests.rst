@@ -5,7 +5,7 @@ Acceptance Tests
 The Test Directory Structure
 ----------------------------
 
-This is the structure of acceptance directory inside `the core repository's`_ ``tests`` directory:
+This is the structure of the acceptance directory inside `the core repository's`_ ``tests`` directory:
 
 .. code-block:: bash
 
@@ -205,6 +205,19 @@ Now that the prerequisites are satisfied, and assuming that ``$installation_path
       --database='mysql' --database-name='owncloud' --database-user='root' \
       --database-pass='' --admin-user='admin' --admin-pass='admin'
 
+Types of Acceptance Tests
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+There are 3 types of acceptance tests; API, CLI and webUI.
+
+- API tests test the ownCloud public APIs.
+- CLI tests test the ``occ`` command-line commands.
+- webUI tests test the browser-based user interface.
+
+webUI tests require an additional environment to be set up.
+See the UI testing documentation for more information.
+API and CLI tests are run by using the ``test-acceptance-api`` and ``test-acceptance-cli`` make commands.
+
 Running Acceptance Tests for a Suite
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -212,7 +225,8 @@ Run a command like the following:
 
 .. code-block:: bash
 
-  sudo -u www-data ./run.sh --suite apiTrashbin
+  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags
+  sudo -u www-data make test-acceptance-cli BEHAT_SUITE=cliProvisioning
 
 Running Acceptance Tests for a Feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -221,13 +235,8 @@ Run a command like the following:
 
 .. code-block:: bash
 
-  sudo -u www-data ./run.sh --feature features/apiTrashbin/trashbinDelete.feature
-
-Or just:
-
-.. code-block:: bash
-
-  sudo -u www-data ./run.sh features/apiTrashbin/trashbinDelete.feature
+  sudo -u www-data make test-acceptance-api BEHAT_FEATURE=tests/acceptance/features/apiTags/createTags.feature
+  sudo -u www-data make test-acceptance-cli BEHAT_FEATURE=tests/acceptance/features/cliProvisioning/addUser.feature
 
 Running Acceptance Tests for a Tag
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -237,16 +246,17 @@ To run test scenarios with a particular tag:
 
 .. code-block:: bash
 
-  sudo -u www-data ./run.sh --suite apiTrashbin --tags @skip
+  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags BEHAT_FILTER_TAGS=@skip
+  sudo -u www-data make test-acceptance-cli BEHAT_SUITE=cliProvisioning BEHAT_FILTER_TAGS=@skip
 
 Displaying the ownCloud Log
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It can be useful to see the tail of the ownCloud log when the test run ends. To do that, specify ``--show-oc-logs``:
+It can be useful to see the tail of the ownCloud log when the test run ends. To do that, specify ``SHOW_OC_LOGS``:
 
 .. code-block:: bash
 
-  sudo -u www-data ./run.sh --suite apiTrashbin --show-oc-logs
+  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags SHOW_OC_LOGS=true
 
 Optional Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -255,13 +265,13 @@ If you want to use an alternative home name using the ``env`` variable add to th
 
 ::
 
-  sudo -u www-data OC_TEST_ALT_HOME=1 ./run.sh features/task-to-test.feature
+  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags OC_TEST_ALT_HOME=1
 
 If you want to have encryption enabled add ``OC_TEST_ENCRYPTION_ENABLED=1``, as in the following example:
 
 ::
 
-  sudo -u www-data OC_TEST_ENCRYPTION_ENABLED=1 ./run.sh features/task-to-test.feature
+  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags OC_TEST_ENCRYPTION_ENABLED=1
 
 For more information on Behat, and how to write acceptance tests using it, check out `the online documentation`_.
 
