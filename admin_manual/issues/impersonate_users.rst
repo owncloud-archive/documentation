@@ -43,7 +43,7 @@ No other users can impersonate other users.
 .. note::
  ownCloud administrators can always impersonate all users of an ownCloud instance when the application is installed.
 
-To enable this option, in the administrator settings panel (``administrator -> Settings -> Admin``) in the "**Additional**" section, you'll see a section titled: "**Impersonate Settings**"; which you can see below.
+To enable this option, in the administrator settings panel (``administrator -> Settings -> Admin``) in the "**User Authentication**" section, you'll see a section titled: "**Impersonate Settings**"; which you can see below.
 
 .. image:: ../images/apps/impersonate/impersonate-settings.png
    :alt: Impersonate App settings
