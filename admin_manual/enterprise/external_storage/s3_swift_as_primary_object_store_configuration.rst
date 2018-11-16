@@ -31,6 +31,8 @@ When using ``files_primary_s3``, the Amazon S3 bucket needs to be created manual
        A. **The Encryption app:** It fetches critical files in addition to any requested file, which results in significant overhead.
        B. **The Gallery app:** It stores thumbnails directly in the filesystem.
 
+    4. When using S3 primary storage with multiple buckets it is not recommended to use the command to transfer file ownership between users (`occ files:transfer-ownership <https://doc.owncloud.com/server/latest/admin_manual/configuration/server/occ_command.html?highlight=transfer%20ownership#the-files-transfer-ownership-command>`_) as shares on the files can get lost. The reason for this is that fileIDs are changed during such cross-storage move operations.
+
 Configuration
 -------------
 
