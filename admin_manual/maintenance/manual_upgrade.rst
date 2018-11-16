@@ -120,20 +120,6 @@ With the new source files now in place of the old ones, next copy the ``config.p
 If you keep your ``data/`` directory *inside* your ``owncloud/`` directory, copy it from your old version of ownCloud to your new version.
 If you keep it *outside* of your ``owncloud/`` directory, then you don't have to do anything with it, because its location is configured in your original ``config.php``, and none of the upgrade steps touch it.
 
-Disable Core Apps
------------------
-
-Before the upgrade can run, several apps need to be disabled, if they’re enabled, before the upgrade can succeed.
-These are: *activity*, *files_pdfviewer*, *files_texteditor*, and *gallery*.
-The following command provides an example of how to do so.
-
-::
-
-  sudo -u www-data php occ app:disable activity
-  sudo -u www-data php occ app:disable files_pdfviewer
-  sudo -u www-data php occ app:disable files_texteditor
-  sudo -u www-data php occ app:disable gallery
-
 Market and Marketplace App Upgrades
 -----------------------------------
 
