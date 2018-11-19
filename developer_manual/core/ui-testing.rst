@@ -103,9 +103,6 @@ Set Up Test
 
   The names of suites are found in the ``tests/acceptance/config/behat.yml`` file, and start with ``webUI``.
 
-  The tests may need to be run as the same user who is running the webserver and this user must also be the owner of the config file (``config/config.php``).
-  To run the tests as a user that is different to your current terminal user run ``sudo -E -u <username>``. For example, to execute the script as as ``www-data``, run ``sudo -E -u www-data make test-acceptance-webui BEHAT_SUITE=webUILogin``.
-
 - The browser for the tests runs inside the Selenium docker container. View it by running the ``vnc`` viewer:
 
   .. code-block:: console
