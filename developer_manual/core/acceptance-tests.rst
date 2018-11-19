@@ -225,8 +225,8 @@ Run a command like the following:
 
 .. code-block:: bash
 
-  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags
-  sudo -u www-data make test-acceptance-cli BEHAT_SUITE=cliProvisioning
+  make test-acceptance-api BEHAT_SUITE=apiTags
+  make test-acceptance-cli BEHAT_SUITE=cliProvisioning
 
 Running Acceptance Tests for a Feature
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -235,8 +235,8 @@ Run a command like the following:
 
 .. code-block:: bash
 
-  sudo -u www-data make test-acceptance-api BEHAT_FEATURE=tests/acceptance/features/apiTags/createTags.feature
-  sudo -u www-data make test-acceptance-cli BEHAT_FEATURE=tests/acceptance/features/cliProvisioning/addUser.feature
+  make test-acceptance-api BEHAT_FEATURE=tests/acceptance/features/apiTags/createTags.feature
+  make test-acceptance-cli BEHAT_FEATURE=tests/acceptance/features/cliProvisioning/addUser.feature
 
 Running Acceptance Tests for a Tag
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -246,8 +246,8 @@ To run test scenarios with a particular tag:
 
 .. code-block:: bash
 
-  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags BEHAT_FILTER_TAGS=@skip
-  sudo -u www-data make test-acceptance-cli BEHAT_SUITE=cliProvisioning BEHAT_FILTER_TAGS=@skip
+  make test-acceptance-api BEHAT_SUITE=apiTags BEHAT_FILTER_TAGS=@skip
+  make test-acceptance-cli BEHAT_SUITE=cliProvisioning BEHAT_FILTER_TAGS=@skip
 
 Displaying the ownCloud Log
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -256,7 +256,7 @@ It can be useful to see the tail of the ownCloud log when the test run ends. To 
 
 .. code-block:: bash
 
-  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags SHOW_OC_LOGS=true
+  make test-acceptance-api BEHAT_SUITE=apiTags SHOW_OC_LOGS=true
 
 Optional Environment Variables
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -265,13 +265,13 @@ If you want to use an alternative home name using the ``env`` variable add to th
 
 ::
 
-  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags OC_TEST_ALT_HOME=1
+  make test-acceptance-api BEHAT_SUITE=apiTags OC_TEST_ALT_HOME=1
 
 If you want to have encryption enabled add ``OC_TEST_ENCRYPTION_ENABLED=1``, as in the following example:
 
 ::
 
-  sudo -u www-data make test-acceptance-api BEHAT_SUITE=apiTags OC_TEST_ENCRYPTION_ENABLED=1
+  make test-acceptance-api BEHAT_SUITE=apiTags OC_TEST_ENCRYPTION_ENABLED=1
 
 For more information on Behat, and how to write acceptance tests using it, check out `the online documentation`_.
 
