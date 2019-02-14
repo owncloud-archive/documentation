@@ -16,14 +16,14 @@ Type as many words as you want for the tag name.
 When you press the return key your tag will be saved.
 
 .. NOTE::
-   All tags are system tags, so they are shared by all users on your ownCloud
+   All tags are collaborative tags, so they are shared by all users on your ownCloud
    server.
 
 .. figure:: ../../images/files_page-7.png
    :alt: Creating file tags.
 
 When you place the cursor inside the tags field, and as you type the tag name,
-a list of the system tags will appear. If you type a new tag name, the visible
+a list of the collaborative tags will appear. If you type a new tag name, the visible
 tags list will be filtered, based on the text that you've typed. 
 
 If you see a tag in the list which is what you had intended to type, or is
@@ -53,7 +53,7 @@ the tag's name, in the tags popup list. Next to the text box containing the
 tag's name, you will also see a delete icon. 
 
 Click this to remove the tag from
-the system tag's list. As with renaming a tag, remember that deleting a tag
+the Collaborative tag's list. As with renaming a tag, remember that deleting a tag
 removes it for all users. So please be sure that you want to do this.
 
 Filter By Tag
