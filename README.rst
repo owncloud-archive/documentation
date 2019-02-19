@@ -1,4 +1,4 @@
-:warning: **This repository is no longer accepting new issues and PRs.**
+**This repository is no longer accepting new issues and PRs.**
 **If you want to make or suggest a change to the documentation, you need to create
 an issue or a PR in the new docs repository at: https://github.com/owncloud/docs.**
 
